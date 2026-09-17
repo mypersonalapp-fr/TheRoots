@@ -3,12 +3,18 @@
 // voir js/data/store.js.
 
 import { store } from "../data/store.js";
+import { mountContainFrame } from "./contain-frame.js";
+
+const BG_IMG_W = 768, BG_IMG_H = 1352;
 
 export function renderLogin(root, { mode = "login", onDone, onBack }) {
   const isSignup = mode === "signup";
   const el = document.createElement("div");
   el.className = "screen auth-form-screen";
   el.innerHTML = `
+    <div class="shell-bg" id="loginShellBg">
+      <img class="screen-backdrop" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
+    </div>
     <div class="auth-form-top">
       <button class="back-btn" id="backBtn" aria-label="Retour">‹</button>
       <div class="title">${isSignup ? "Créer un compte" : "Se connecter"}</div>
@@ -29,6 +35,8 @@ export function renderLogin(root, { mode = "login", onDone, onBack }) {
     </div>
   `;
   root.appendChild(el);
+  mountContainFrame(el.querySelector("#loginShellBg"), BG_IMG_W, BG_IMG_H,
+    `<img src="assets/img/shell-bg.jpg" alt=""/>`);
 
   el.querySelector("#backBtn").addEventListener("click", () => { el.remove(); onBack(); });
   el.querySelector("#loginForm").addEventListener("submit", (e) => {
