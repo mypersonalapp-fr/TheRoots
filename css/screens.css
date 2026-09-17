@@ -52,11 +52,15 @@
   color: #1b3c39; font-weight: 700; font-size: 12.5px; cursor: pointer;
 }
 
-/* --- Formulaire connexion / inscription / mdp oublié --- */
-.auth-form-screen{ background: linear-gradient(180deg, #fdf3e3 0%, #ffffff 40%); }
+/* --- Formulaire connexion / inscription / mdp oublié : la 4e image
+   (globe/drapeaux en haut, villes en bas) reste en fond, entière, comme
+   sur le reste de l'appli — le formulaire flotte par-dessus dans sa carte
+   en verre dépoli (.card), déjà assez opaque pour rester lisible --- */
+.auth-form-screen{ position: relative; overflow: hidden; background: #fdf3e3; min-height: 100vh; }
 .auth-form-top{
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 18px 8px;
+  position: relative; z-index: 2;
 }
 .auth-form-top .back-btn{
   border: none; background: #ffffff; color: var(--brand-teal);
@@ -64,7 +68,7 @@
   box-shadow: 0 2px 6px rgba(20,20,30,0.1);
 }
 .auth-form-top .title{ font-weight: 800; font-size: 18px; color: var(--brand-teal); }
-.auth-form-body{ padding: 18px 22px 40px; }
+.auth-form-body{ padding: 18px 22px 40px; position: relative; z-index: 2; }
 .login-form{ display: flex; flex-direction: column; gap: 14px; max-width: 420px; }
 .field{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-soft); font-weight: 600; }
 .login-submit{ margin-top: 4px; }
