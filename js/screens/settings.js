@@ -1,5 +1,5 @@
 // The Roots — onglet Paramètres, organisé en dossiers, dans cet ordre :
-// 1) Réglages généraux (apparence, langue de l'interface)
+// 1) Réglages généraux (apparence, langue de l'interface, voix audio)
 // 2) Attribution des niveaux (3 onglets : méthode, grille de score, définitions par langue)
 // 3) Sécurité (modifier l'adresse e-mail et le mot de passe)
 // 4) Version de l'application (tout en bas)
@@ -7,6 +7,7 @@
 // par langue, avec le "Niveau d'entrée" gardé en référence permanente.
 
 import { store } from "../data/store.js";
+import { t } from "../data/i18n.js";
 
 const APP_VERSION = "1.2";
 
@@ -14,33 +15,42 @@ const APP_VERSION = "1.2";
 // toutes les langues), pensée pour couvrir tout de suite les 6 paliers
 // A1 → C2, même si seul le contenu A1 existe pour l'instant côté leçons.
 // Elle sera affinée langue par langue au fur et à mesure. ---
-const SCORE_BANDS = [
-  { level: "A1", min: 0, max: 39, desc: "Découverte" },
-  { level: "A2", min: 40, max: 54, desc: "Survie" },
-  { level: "B1", min: 55, max: 69, desc: "Seuil" },
-  { level: "B2", min: 70, max: 79, desc: "Avancé" },
-  { level: "C1", min: 80, max: 89, desc: "Autonome" },
-  { level: "C2", min: 90, max: 100, desc: "Maîtrise" },
-];
+function scoreBands(lang) {
+  return [
+    { level: "A1", min: 0, max: 39, desc: t("band_decouverte", lang) },
+    { level: "A2", min: 40, max: 54, desc: t("band_survie", lang) },
+    { level: "B1", min: 55, max: 69, desc: t("band_seuil", lang) },
+    { level: "B2", min: 70, max: 79, desc: t("band_avance", lang) },
+    { level: "C1", min: 80, max: 89, desc: t("band_autonome", lang) },
+    { level: "C2", min: 90, max: 100, desc: t("band_maitrise", lang) },
+  ];
+}
 
 // Définitions CECR (échelle globale du Conseil de l'Europe) — génériques par
-// défaut, avec la possibilité d'affiner par langue au cas par cas plus tard
-// (ex. LEVEL_DEFINITIONS["pt-br"] pour des nuances propres au portugais).
-const GENERIC_DEFINITIONS = {
-  A1: "Peut comprendre et utiliser des expressions familières et quotidiennes, se présenter, poser des questions simples sur des sujets familiers (où il/elle habite, les gens qu'il/elle connaît) et y répondre.",
-  A2: "Peut comprendre des phrases isolées et des expressions fréquemment utilisées en relation avec des domaines immédiats (informations personnelles, achats, environnement proche) et communiquer lors de tâches simples et habituelles.",
-  B1: "Peut comprendre les points essentiels quand un langage clair et standard est utilisé sur des choses familières, produire un discours simple et cohérent, raconter un événement ou une expérience.",
-  B2: "Peut comprendre le contenu essentiel de sujets concrets ou abstraits, communiquer avec spontanéité et aisance, s'exprimer sur une grande gamme de sujets.",
-  C1: "Peut comprendre une grande gamme de textes longs et exigeants, en saisir les significations implicites, s'exprimer spontanément et couramment sans trop chercher ses mots.",
-  C2: "Peut comprendre sans effort pratiquement tout ce qu'il/elle lit ou entend, s'exprimer spontanément, très couramment et avec précision, même sur des sujets complexes.",
-};
-const LEVEL_DEFINITIONS = {
-  // "en-gb": { A1: "...", ... } — à personnaliser langue par langue si besoin ;
-  // sans entrée ici, GENERIC_DEFINITIONS s'applique (voir defsFor()).
-};
-function defsFor(code) {
-  return { ...GENERIC_DEFINITIONS, ...(LEVEL_DEFINITIONS[code] || {}) };
+// défaut, avec la possibilité d'affiner par langue au cas par cas plus tard.
+function genericDefinitions(lang) {
+  return {
+    A1: t("cefr_a1", lang),
+    A2: t("cefr_a2", lang),
+    B1: t("cefr_b1", lang),
+    B2: t("cefr_b2", lang),
+    C1: t("cefr_c1", lang),
+    C2: t("cefr_c2", lang),
+  };
 }
+
+// --- Voix audio : liste les voix anglaises disponibles sur l'appareil
+// (Web Speech API) pour laisser choisir autre chose que la voix par défaut
+// du téléphone. Le choix est gardé dans settings.preferredVoiceURI (une clé
+// stable : "nom|langue", le voiceURI natif n'étant pas toujours fiable
+// d'un appareil à l'autre) et relu par lessons.html et le test de niveau. ---
+function englishVoices() {
+  if (!window.speechSynthesis) return [];
+  return window.speechSynthesis.getVoices()
+    .filter((v) => v.lang && v.lang.toLowerCase().startsWith("en"))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+function voiceKey(v) { return `${v.name}|${v.lang}`; }
 
 export function renderSettings(container, onChange) {
   let view = "root"; // "root" | "general" | "niveaux" | "securite"
@@ -50,6 +60,8 @@ export function renderSettings(container, onChange) {
   let securityMsg = "";
   let editingEmail = false;
   let editingPassword = false;
+  let voicesLoaded = englishVoices().length > 0;
+  let voicesListenerAttached = false;
 
   paint();
 
@@ -65,25 +77,27 @@ export function renderSettings(container, onChange) {
   }
 
   function paintRoot() {
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
     container.innerHTML = `
       <div class="settings-tabs">
         <div class="card settings-tab" id="openGeneral">
-          <div><strong>Réglages généraux</strong><div style="font-size:12px;color:var(--ink-soft)">Apparence, langue de l'interface</div></div>
+          <div><strong>${t("set_general", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_general_desc", lang)}</div></div>
           <span class="chev">›</span>
         </div>
 
         <div class="card settings-tab" id="openNiveaux">
-          <div><strong>Attribution des niveaux</strong><div style="font-size:12px;color:var(--ink-soft)">Méthode, grille de score, définitions par langue</div></div>
+          <div><strong>${t("set_levels", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_levels_desc", lang)}</div></div>
           <span class="chev">›</span>
         </div>
 
         <div class="card settings-tab" id="openSecurite">
-          <div><strong>Sécurité</strong><div style="font-size:12px;color:var(--ink-soft)">Adresse e-mail, mot de passe</div></div>
+          <div><strong>${t("set_security", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_security_desc", lang)}</div></div>
           <span class="chev">›</span>
         </div>
 
         <div class="card settings-tab">
-          <div><strong>Version de l'application</strong></div>
+          <div><strong>${t("set_version", lang)}</strong></div>
           <span style="color:var(--ink-soft)">${APP_VERSION}</span>
         </div>
       </div>
@@ -97,22 +111,49 @@ export function renderSettings(container, onChange) {
 
   function paintGeneral() {
     const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const voices = englishVoices();
+    const currentVoiceKey = settings.preferredVoiceURI || "";
+
+    if (!voicesLoaded && window.speechSynthesis && !voicesListenerAttached) {
+      voicesListenerAttached = true;
+      window.speechSynthesis.onvoiceschanged = () => {
+        voicesLoaded = englishVoices().length > 0;
+        if (view === "general") paintGeneral();
+      };
+    }
+
     container.innerHTML = `
-      ${backRow("Paramètres")}
+      ${backRow(t("title_parametres", lang))}
       <div class="settings-tabs">
         <div class="card settings-tab">
-          <div><strong>Apparence</strong><div style="font-size:12px;color:var(--ink-soft)">Mode clair / sombre</div></div>
-          <button class="btn btn-ghost" id="themeToggle">${settings.theme === "dark" ? "Mode sombre" : "Mode clair"}</button>
+          <div><strong>${t("set_appearance", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_appearance_desc", lang)}</div></div>
+          <button class="btn btn-ghost" id="themeToggle">${settings.theme === "dark" ? t("set_theme_dark_btn", lang) : t("set_theme_light_btn", lang)}</button>
         </div>
 
         <div class="card settings-tab">
-          <div><strong>Langue de l'interface</strong><div style="font-size:12px;color:var(--ink-soft)">Menus de l'application</div></div>
+          <div><strong>${t("set_interface_lang", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_interface_lang_desc", lang)}</div></div>
           <select id="interfaceLang">
             <option value="fr" ${settings.interfaceLang==="fr"?"selected":""}>Français</option>
             <option value="en" ${settings.interfaceLang==="en"?"selected":""}>English</option>
             <option value="pt" ${settings.interfaceLang==="pt"?"selected":""}>Português</option>
             <option value="es" ${settings.interfaceLang==="es"?"selected":""}>Español</option>
           </select>
+        </div>
+
+        <div class="card settings-tab" style="flex-direction:column;align-items:stretch;gap:10px">
+          <div><strong>${t("set_voice", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_voice_desc", lang)}</div></div>
+          ${!voicesLoaded ? `
+            <div style="font-size:12px;color:var(--ink-soft)">${t("set_voice_loading", lang)}</div>
+          ` : voices.length === 0 ? `
+            <div style="font-size:12px;color:var(--ink-soft)">${t("set_voice_none", lang)}</div>
+          ` : `
+            <select id="voiceSelect">
+              <option value="">${t("set_voice_default_option", lang)}</option>
+              ${voices.map((v) => `<option value="${voiceKey(v)}" ${currentVoiceKey === voiceKey(v) ? "selected" : ""}>${v.name} (${v.lang})</option>`).join("")}
+            </select>
+            <button class="btn btn-ghost" id="voicePreview">${t("set_voice_preview", lang)}</button>
+          `}
         </div>
       </div>
     `;
@@ -126,17 +167,39 @@ export function renderSettings(container, onChange) {
     });
     container.querySelector("#interfaceLang").addEventListener("change", (e) => {
       store.updateSettings({ interfaceLang: e.target.value });
+      // La langue de l'interface change tout l'habillage de l'appli (menus,
+      // titres, boutons...) déjà construit au premier rendu : le plus sûr et
+      // le plus simple est de recharger, ça prend une seconde et applique le
+      // changement partout d'un coup, sans écran à moitié traduit.
+      window.location.reload();
+    });
+    const voiceSelect = container.querySelector("#voiceSelect");
+    if (voiceSelect) voiceSelect.addEventListener("change", (e) => {
+      store.updateSettings({ preferredVoiceURI: e.target.value || null });
+    });
+    const voicePreview = container.querySelector("#voicePreview");
+    if (voicePreview) voicePreview.addEventListener("click", () => {
+      if (!window.speechSynthesis) return;
+      const key = voiceSelect.value;
+      const u = new SpeechSynthesisUtterance(t("set_voice_sample", lang));
+      const match = voices.find((v) => voiceKey(v) === key);
+      if (match) u.voice = match;
+      u.lang = match ? match.lang : "en-GB";
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(u);
     });
   }
 
   // --- Attribution des niveaux : 3 onglets nommés ---
   function paintNiveaux() {
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
     container.innerHTML = `
-      ${backRow("Paramètres")}
+      ${backRow(t("title_parametres", lang))}
       <div class="settings-pill-tabs">
-        <button class="settings-pill ${niveauxTab === "methode" ? "active" : ""}" data-tab="methode">Comment ça marche</button>
-        <button class="settings-pill ${niveauxTab === "grille" ? "active" : ""}" data-tab="grille">Grille de score</button>
-        <button class="settings-pill ${niveauxTab === "definitions" ? "active" : ""}" data-tab="definitions">Définitions par langue</button>
+        <button class="settings-pill ${niveauxTab === "methode" ? "active" : ""}" data-tab="methode">${t("set_tab_methode", lang)}</button>
+        <button class="settings-pill ${niveauxTab === "grille" ? "active" : ""}" data-tab="grille">${t("set_tab_grille", lang)}</button>
+        <button class="settings-pill ${niveauxTab === "definitions" ? "active" : ""}" data-tab="definitions">${t("set_tab_definitions", lang)}</button>
       </div>
       <div id="niveauxBody"></div>
     `;
@@ -145,47 +208,31 @@ export function renderSettings(container, onChange) {
       btn.addEventListener("click", () => { niveauxTab = btn.dataset.tab; paint(); });
     });
     const body = container.querySelector("#niveauxBody");
-    if (niveauxTab === "methode") paintMethode(body);
-    else if (niveauxTab === "grille") paintGrille(body);
-    else paintDefinitions(body);
+    if (niveauxTab === "methode") paintMethode(body, lang);
+    else if (niveauxTab === "grille") paintGrille(body, lang);
+    else paintDefinitions(body, lang);
   }
 
-  function paintMethode(body) {
+  function paintMethode(body, lang) {
     body.innerHTML = `
       <div class="card">
-        <h3 style="margin:0 0 10px">Comment on détermine ton niveau</h3>
-        <p style="font-size:13px;color:var(--ink-soft);line-height:1.6">
-          Dès que tu choisis une langue à apprendre, un test de niveau te place automatiquement
-          dans le bon palier de départ (échelle CECR : A1 à C2) — pour que tu ne perdes pas de
-          temps sur des choses déjà acquises, et que tu ne sois pas non plus mise en difficulté
-          trop tôt.
-        </p>
-        <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:10px">
-          Ton tout premier résultat est gardé pour toujours comme <strong>« niveau d'entrée »</strong>
-          (visible dans Mes cours, par langue) : même si ton niveau progresse ensuite avec les
-          leçons, cette référence de départ ne bouge pas, pour que tu puisses mesurer ton chemin
-          parcouru dans le temps.
-        </p>
-        <p style="font-size:12px;color:var(--ink-soft);margin-top:10px">
-          Le test est en cours de retravail pour se rapprocher des standards des grandes
-          applications de langues — la méthode ci-dessus restera la même, seul le test lui-même
-          va s'affiner.
-        </p>
+        <h3 style="margin:0 0 10px">${t("set_methode_title", lang)}</h3>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.6">${t("set_methode_p1", lang)}</p>
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:10px">${t("set_methode_p2", lang)}</p>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("set_methode_p3", lang)}</p>
       </div>
     `;
   }
 
-  function paintGrille(body) {
+  function paintGrille(body, lang) {
     const { settings } = store.get();
     const allOpen = settings.langs.every((l) => expandedGrille[l.code]);
+    const bands = scoreBands(lang);
     body.innerHTML = `
       <div class="lvl-toolbar">
-        <button class="btn btn-ghost" id="lvlToggleAll">${allOpen ? "Tout masquer" : "Tout afficher"}</button>
+        <button class="btn btn-ghost" id="lvlToggleAll">${allOpen ? t("set_toggle_all_hide", lang) : t("set_toggle_all_show", lang)}</button>
       </div>
-      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">
-        Grille commune A1 → C2 (sera affinée langue par langue). Le pourcentage correspond au
-        score obtenu au test de placement de cette langue.
-      </p>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">${t("set_grille_desc", lang)}</p>
       ${settings.langs.map((l) => `
         <div class="card lvl-lang-group">
           <div class="lvl-lang-head" data-code="${l.code}">
@@ -194,8 +241,8 @@ export function renderSettings(container, onChange) {
           </div>
           <div class="lvl-lang-body" ${expandedGrille[l.code] ? "" : "hidden"}>
             <div class="cefr-table">
-              <div class="cefr-row cefr-head"><span>Score au test</span><span>Niveau</span><span>Repère</span></div>
-              ${SCORE_BANDS.map((b) => `
+              <div class="cefr-row cefr-head"><span>${t("set_grille_col_score", lang)}</span><span>${t("set_grille_col_level", lang)}</span><span>${t("set_grille_col_desc", lang)}</span></div>
+              ${bands.map((b) => `
                 <div class="cefr-row">
                   <span>${b.min}–${b.max}%</span>
                   <span class="cefr-level-badge">${b.level}</span>
@@ -211,29 +258,26 @@ export function renderSettings(container, onChange) {
       head.addEventListener("click", () => {
         const code = head.dataset.code;
         expandedGrille[code] = !expandedGrille[code];
-        paintGrille(body);
+        paintGrille(body, lang);
       });
     });
     body.querySelector("#lvlToggleAll").addEventListener("click", () => {
       const next = !allOpen;
       settings.langs.forEach((l) => { expandedGrille[l.code] = next; });
-      paintGrille(body);
+      paintGrille(body, lang);
     });
   }
 
-  function paintDefinitions(body) {
+  function paintDefinitions(body, lang) {
     const { settings } = store.get();
     const allOpen = settings.langs.every((l) => expandedDefs[l.code]);
+    const defs0 = genericDefinitions(lang);
     body.innerHTML = `
       <div class="lvl-toolbar">
-        <button class="btn btn-ghost" id="defToggleAll">${allOpen ? "Tout masquer" : "Tout afficher"}</button>
+        <button class="btn btn-ghost" id="defToggleAll">${allOpen ? t("set_toggle_all_hide", lang) : t("set_toggle_all_show", lang)}</button>
       </div>
-      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">
-        Ce que chaque niveau veut dire, langue par langue — un « A2 » n'a pas exactement le même
-        contenu selon la langue apprise, ces définitions seront affinées au fur et à mesure.
-      </p>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">${t("set_definitions_desc", lang)}</p>
       ${settings.langs.map((l) => {
-        const defs = defsFor(l.code);
         return `
         <div class="card lvl-lang-group">
           <div class="lvl-lang-head" data-code="${l.code}">
@@ -241,10 +285,10 @@ export function renderSettings(container, onChange) {
             <span class="chev">${expandedDefs[l.code] ? "⌄" : "›"}</span>
           </div>
           <div class="lvl-lang-body" ${expandedDefs[l.code] ? "" : "hidden"}>
-            ${Object.keys(defs).map((lvl) => `
+            ${Object.keys(defs0).map((lvl) => `
               <div class="lvl-def-row">
                 <span class="cefr-level-badge">${lvl}</span>
-                <span>${defs[lvl]}</span>
+                <span>${defs0[lvl]}</span>
               </div>
             `).join("")}
           </div>
@@ -255,13 +299,13 @@ export function renderSettings(container, onChange) {
       head.addEventListener("click", () => {
         const code = head.dataset.code;
         expandedDefs[code] = !expandedDefs[code];
-        paintDefinitions(body);
+        paintDefinitions(body, lang);
       });
     });
     body.querySelector("#defToggleAll").addEventListener("click", () => {
       const next = !allOpen;
       settings.langs.forEach((l) => { expandedDefs[l.code] = next; });
-      paintDefinitions(body);
+      paintDefinitions(body, lang);
     });
   }
 
@@ -269,49 +313,50 @@ export function renderSettings(container, onChange) {
   // pour l'adresse e-mail et pour le mot de passe (pas un seul formulaire
   // combiné) — plus la déconnexion. ---
   function paintSecurite() {
-    const { session } = store.get();
+    const { session, settings } = store.get();
+    const lang = settings.interfaceLang;
     container.innerHTML = `
-      ${backRow("Paramètres")}
+      ${backRow(t("title_parametres", lang))}
       <div class="card">
-        <h3 style="margin:0 0 14px">Sécurité du compte</h3>
+        <h3 style="margin:0 0 14px">${t("set_security_title", lang)}</h3>
 
         <div class="sec-row">
           <div>
-            <div class="sec-row-label">Adresse e-mail</div>
+            <div class="sec-row-label">${t("set_email_label", lang)}</div>
             <div class="sec-row-value">${session ? session.email : ""}</div>
           </div>
-          <button class="mc-variant-change" id="toggleEmail">${editingEmail ? "Annuler" : "Changer"}</button>
+          <button class="mc-variant-change" id="toggleEmail">${editingEmail ? t("set_cancel", lang) : t("set_change", lang)}</button>
         </div>
         ${editingEmail ? `
           <form class="login-form" id="emailForm" style="margin-top:10px">
             <label class="field">
-              <span>Nouvelle adresse e-mail</span>
+              <span>${t("set_new_email_label", lang)}</span>
               <input type="email" name="email" value="${session ? session.email : ""}" required/>
             </label>
-            <button type="submit" class="btn btn-primary" style="width:100%">Enregistrer l'adresse e-mail</button>
+            <button type="submit" class="btn btn-primary" style="width:100%">${t("set_save_email", lang)}</button>
           </form>
         ` : ""}
 
         <div class="sec-row" style="margin-top:18px">
           <div>
-            <div class="sec-row-label">Mot de passe</div>
+            <div class="sec-row-label">${t("set_password_label", lang)}</div>
             <div class="sec-row-value">••••••••</div>
           </div>
-          <button class="mc-variant-change" id="togglePassword">${editingPassword ? "Annuler" : "Changer"}</button>
+          <button class="mc-variant-change" id="togglePassword">${editingPassword ? t("set_cancel", lang) : t("set_change", lang)}</button>
         </div>
         ${editingPassword ? `
           <form class="login-form" id="passwordForm" style="margin-top:10px">
             <label class="field">
-              <span>Nouveau mot de passe</span>
+              <span>${t("set_new_password_label", lang)}</span>
               <input type="password" name="password" required autocomplete="new-password"/>
             </label>
-            <button type="submit" class="btn btn-primary" style="width:100%">Enregistrer le mot de passe</button>
+            <button type="submit" class="btn btn-primary" style="width:100%">${t("set_save_password", lang)}</button>
           </form>
         ` : ""}
 
         ${securityMsg ? `<div class="lt-ok" style="margin-top:14px;font-weight:700;font-size:13px">${securityMsg}</div>` : ""}
 
-        <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">Se déconnecter</button>
+        <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">${t("set_logout", lang)}</button>
       </div>
     `;
     container.querySelector("#settingsBack").addEventListener("click", () => { view = "root"; paint(); });
@@ -328,7 +373,7 @@ export function renderSettings(container, onChange) {
       e.preventDefault();
       const email = e.target.email.value.trim();
       store.updateAccount({ email });
-      securityMsg = "Adresse e-mail mise à jour ✓";
+      securityMsg = t("set_email_updated", lang);
       editingEmail = false;
       paintSecurite();
     });
@@ -338,7 +383,7 @@ export function renderSettings(container, onChange) {
       e.preventDefault();
       const password = e.target.password.value;
       store.updateAccount({ password });
-      securityMsg = "Mot de passe mis à jour ✓";
+      securityMsg = t("set_password_updated", lang);
       editingPassword = false;
       paintSecurite();
     });

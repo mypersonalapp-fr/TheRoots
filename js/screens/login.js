@@ -4,21 +4,22 @@
 
 import { store } from "../data/store.js";
 import { webauthn } from "../data/webauthn.js";
+import { t } from "../data/i18n.js";
 
 // Petite carte qui propose d'activer Face ID / Touch ID juste après une
 // connexion réussie — seulement si le téléphone le permet et que ce n'est
 // pas déjà activé. On ne bloque jamais l'entrée dans l'appli : si ça
 // échoue ou si l'utilisateur dit "Plus tard", on continue normalement.
-function offerFaceId(email, done) {
+function offerFaceId(email, lang, done) {
   const overlay = document.createElement("div");
   overlay.className = "faceid-offer-backdrop";
   overlay.innerHTML = `
     <div class="faceid-offer-card">
       <div class="faceid-offer-icon">🔒</div>
-      <div class="faceid-offer-title">Activer Face ID ?</div>
-      <div class="faceid-offer-text">La prochaine fois, tu pourras ouvrir l'appli juste avec ton visage ou ton empreinte, sans retaper ton mot de passe.</div>
-      <button class="btn btn-primary" id="faceidYes">Activer Face ID</button>
-      <button class="faceid-offer-later" id="faceidLater">Plus tard</button>
+      <div class="faceid-offer-title">${t("login_faceid_offer_title", lang)}</div>
+      <div class="faceid-offer-text">${t("login_faceid_offer_desc", lang)}</div>
+      <button class="btn btn-primary" id="faceidYes">${t("login_faceid_yes", lang)}</button>
+      <button class="faceid-offer-later" id="faceidLater">${t("login_faceid_later", lang)}</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -36,6 +37,8 @@ function offerFaceId(email, done) {
 }
 
 export function renderLogin(root, { mode = "login", prefillEmail = "", onDone, onBack }) {
+  const { settings } = store.get();
+  const lang = settings.interfaceLang;
   const isSignup = mode === "signup";
   const isReconnect = mode === "reconnect";
   const el = document.createElement("div");
@@ -46,22 +49,22 @@ export function renderLogin(root, { mode = "login", prefillEmail = "", onDone, o
       <img class="screen-cover-bg bg-img-dark" src="assets/img/shell-bg-dark.jpg" alt="" aria-hidden="true"/>
     </div>
     <div class="auth-form-top">
-      <button class="back-btn" id="backBtn" aria-label="Retour">‹</button>
-      <div class="title">${isSignup ? "Créer un compte" : isReconnect ? "Reconnecte-toi" : "Se connecter"}</div>
+      <button class="back-btn" id="backBtn" aria-label="${t("aria_back", lang)}">‹</button>
+      <div class="title">${isSignup ? t("login_title_signup", lang) : isReconnect ? t("login_title_reconnect", lang) : t("login_title_login", lang)}</div>
       <span style="width:38px"></span>
     </div>
     <div class="auth-form-body">
-      ${isReconnect ? `<p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Pour ta sécurité, on te redemande ton mot de passe à chaque fois que tu rouvres l'appli.</p>` : ""}
+      ${isReconnect ? `<p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">${t("login_reconnect_desc", lang)}</p>` : ""}
       <form class="login-form card" id="loginForm">
         <label class="field">
-          <span>Adresse e-mail</span>
-          <input type="email" name="email" required placeholder="toi@exemple.com" autocomplete="email" value="${prefillEmail}"/>
+          <span>${t("login_email_label", lang)}</span>
+          <input type="email" name="email" required placeholder="${t("login_email_placeholder", lang)}" autocomplete="email" value="${prefillEmail}"/>
         </label>
         <label class="field">
-          <span>Mot de passe</span>
+          <span>${t("login_password_label", lang)}</span>
           <input type="password" name="password" required placeholder="••••••••" autocomplete="${isSignup ? 'new-password' : 'current-password'}"/>
         </label>
-        <button type="submit" class="btn btn-primary login-submit">${isSignup ? "Créer mon compte" : isReconnect ? "Me reconnecter" : "Se connecter"}</button>
+        <button type="submit" class="btn btn-primary login-submit">${isSignup ? t("login_submit_signup", lang) : isReconnect ? t("login_submit_reconnect", lang) : t("login_submit_login", lang)}</button>
       </form>
     </div>
   `;
@@ -79,7 +82,7 @@ export function renderLogin(root, { mode = "login", prefillEmail = "", onDone, o
     const faceId = store.getFaceId();
     const canOfferFaceId = !faceId.enabled && await webauthn.isAvailable();
     if (canOfferFaceId) {
-      offerFaceId(email, finish);
+      offerFaceId(email, lang, finish);
     } else {
       finish();
     }

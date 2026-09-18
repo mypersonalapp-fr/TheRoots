@@ -9,25 +9,35 @@ import { renderMesCours } from "./mes-cours.js";
 import { renderComprehension } from "./comprehension.js";
 import { renderExpression } from "./expression.js";
 import { renderTraduction } from "./traduction.js";
-const MENU_ITEMS = [
-  { id: "accueil", label: "Accueil", icon: "🏠" },
-  { id: "mes-cours", label: "Mes cours", icon: "📚" },
-  { id: "comprehension", label: "Compréhension orale et écrite", icon: "🎧" },
-  { id: "expression", label: "Expression écrite et orale", icon: "🗣️" },
-  { id: "traduction", label: "Traduction", icon: "🌐" },
-  { id: "parametres", label: "Paramètres", icon: "⚙️" },
-];
+import { store } from "../data/store.js";
+import { t } from "../data/i18n.js";
 
-const TITLES = {
-  "accueil": "The Roots",
-  "mes-cours": "Mes cours",
-  "comprehension": "Compréhension",
-  "expression": "Expression",
-  "traduction": "Traduction",
-  "parametres": "Paramètres",
-};
+function menuItems(lang) {
+  return [
+    { id: "accueil", label: t("menu_accueil", lang), icon: "🏠" },
+    { id: "mes-cours", label: t("menu_mescours", lang), icon: "📚" },
+    { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
+    { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
+    { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
+    { id: "parametres", label: t("menu_parametres", lang), icon: "⚙️" },
+  ];
+}
+
+function titles(lang) {
+  return {
+    "accueil": "The Roots",
+    "mes-cours": t("title_mescours", lang),
+    "comprehension": t("title_comprehension", lang),
+    "expression": t("title_expression", lang),
+    "traduction": t("title_traduction", lang),
+    "parametres": t("title_parametres", lang),
+  };
+}
 
 export function renderShell(root) {
+  const lang = store.get().settings.interfaceLang;
+  const MENU_ITEMS = menuItems(lang);
+  const TITLES = titles(lang);
   const el = document.createElement("div");
   el.className = "screen app-shell";
   el.innerHTML = `
@@ -36,11 +46,11 @@ export function renderShell(root) {
       <img class="screen-cover-bg bg-img-dark" src="assets/img/shell-bg-dark.jpg" alt="" aria-hidden="true"/>
     </div>
     <div class="app-topbar">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="${t("aria_menu", lang)}" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <div class="title" id="screenTitle">The Roots</div>
-      <button class="back-btn" id="backBtn" aria-label="Retour" style="visibility:hidden">‹</button>
+      <button class="back-btn" id="backBtn" aria-label="${t("aria_back", lang)}" style="visibility:hidden">‹</button>
     </div>
     <div class="app-body" id="appBody"></div>
 
@@ -48,13 +58,13 @@ export function renderShell(root) {
     <nav class="nav-drawer" id="navDrawer" aria-hidden="true">
       <div class="nav-drawer-head">
         <div class="nav-drawer-brand">The Roots</div>
-        <button class="nav-drawer-close" id="navClose" aria-label="Fermer le menu">✕</button>
+        <button class="nav-drawer-close" id="navClose" aria-label="${t("aria_close_menu", lang)}">✕</button>
       </div>
       <div class="nav-drawer-items">
-        ${MENU_ITEMS.map(t => `
-          <button class="nav-drawer-item" data-tab="${t.id}">
-            <span class="nav-drawer-icon">${t.icon}</span>
-            <span class="nav-drawer-label">${t.label}</span>
+        ${MENU_ITEMS.map(mi => `
+          <button class="nav-drawer-item" data-tab="${mi.id}">
+            <span class="nav-drawer-icon">${mi.icon}</span>
+            <span class="nav-drawer-label">${mi.label}</span>
             <span class="nav-drawer-chev">›</span>
           </button>`).join("")}
       </div>

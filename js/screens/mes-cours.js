@@ -1,133 +1,176 @@
-// The Roots — onglet "Mes cours" : un dossier par langue. On y entre pour
-// voir son niveau actuel et ses cours en PDF ; si la langue n'a pas encore
-// de niveau, le test de niveau se lance depuis là et les cours restent
-// verrouillés tant qu'il n'est pas fait. Une fois le test passé, le score
-// obtenu reste gardé pour toujours comme "niveau d'entrée" (distinct du
-// "niveau actuel", qui lui peut évoluer avec la progression), pour pouvoir
-// se comparer dans le temps.
-
-function frenchDate(iso) {
-  if (!iso) return "";
-  try {
-    return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
-  } catch (e) { return ""; }
-}
+// The Roots — onglet "Mes cours" : une grille de petits "cubes", un par
+// langue (anglais/espagnol/portugais) plus un 4e cube "Mon livret". On
+// touche un cube langue pour voir son niveau actuel et ses cours en PDF ;
+// si la langue n'a pas encore de niveau, le test de niveau se lance depuis
+// là et les cours restent verrouillés tant qu'il n'est pas fait. Une fois
+// le test passé, le score obtenu reste gardé pour toujours comme "niveau
+// d'entrée" (distinct du "niveau actuel", qui lui peut évoluer avec la
+// progression), pour pouvoir se comparer dans le temps. "Mon livret"
+// rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js";
 import { renderLevelTest } from "./level-test.js";
+import { t, formatDate } from "../data/i18n.js";
 
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
+  let openLivret = false;
 
   paint();
 
   function paint() {
+    if (openLivret) return paintLivret();
     if (openCode) return paintLangDetail(openCode);
     return paintList();
   }
 
   function paintList() {
     const { settings } = store.get();
+    const lang = settings.interfaceLang;
     container.innerHTML = `
       <div class="dash-box">
-        <h3>Mes langues</h3>
-        ${settings.langs.map((l) => {
-          const variant = l.variants?.find((v) => v.code === l.selectedVariant);
-          const status = !l.leveled
-            ? "Test de niveau à faire"
-            : variant ? `Niveau ${l.level} — ${variant.label}` : `Niveau ${l.level} — choisir le cours`;
-          return `
-          <div class="card mc-lang-card" data-code="${l.code}">
-            <div class="mc-lang-top">
-              <div>
-                <div style="font-weight:800">${l.label}</div>
-                <div style="font-size:12px;color:var(--ink-soft)">${status}</div>
-              </div>
-              <span class="chev">›</span>
+        <h3>${t("mc_my_languages", lang)}</h3>
+        <div class="mc-cube-grid">
+          ${settings.langs.map((l) => {
+            const variant = l.variants?.find((v) => v.code === l.selectedVariant);
+            const status = !l.leveled
+              ? t("mc_level_test_todo", lang)
+              : variant ? t("mc_level_variant", lang, { level: l.level, variant: variant.label }) : t("mc_level_choose_course", lang, { level: l.level });
+            return `
+            <div class="mc-cube-wrap">
+              <button class="card mc-cube" data-code="${l.code}">
+                <div class="mc-cube-lang">${l.label}</div>
+                <div class="mc-cube-status">${status}</div>
+              </button>
+              <div class="mc-cube-gauge${l.leveled ? "" : " mc-cube-gauge-empty"}"><div class="mc-cube-gauge-fill" style="width:${l.leveled ? Math.round((l.progress||0)*100) : 0}%"></div></div>
             </div>
-            ${l.leveled ? `
-              <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
-              <div style="font-size:12px;margin-top:4px;color:var(--ink-soft)">${Math.round((l.progress||0)*100)}%</div>
-            ` : ""}
+          `;
+          }).join("")}
+
+          <div class="mc-cube-wrap">
+            <button class="card mc-cube mc-cube-livret" id="mcOpenLivret">
+              <div class="mc-cube-lang">📘 ${t("mc_livret_title", lang)}</div>
+              <div class="mc-cube-status">${t("mc_livret_subtitle", lang)}</div>
+            </button>
+            <div class="mc-cube-gauge mc-cube-gauge-empty" style="visibility:hidden"><div class="mc-cube-gauge-fill"></div></div>
           </div>
-        `;
-        }).join("")}
+        </div>
       </div>
     `;
-    container.querySelectorAll(".mc-lang-card").forEach((cardEl) => {
+    container.querySelectorAll(".mc-cube[data-code]").forEach((cardEl) => {
       cardEl.addEventListener("click", () => { openCode = cardEl.dataset.code; paint(); });
     });
+    const livretBtn = container.querySelector("#mcOpenLivret");
+    if (livretBtn) livretBtn.addEventListener("click", () => { openLivret = true; paint(); });
+  }
+
+  // --- "Mon livret" : vue d'ensemble façon livret scolaire — le résultat du
+  // test de niveau (niveau d'entrée, daté) et le niveau/progression actuels,
+  // pour chaque langue déjà nivelée. Les notes détaillées par leçon/contrôle
+  // ne sont pas encore remontées ici (elles vivent aujourd'hui uniquement
+  // dans lessons.html) — prochaine étape si besoin : faire remonter chaque
+  // score de Grand Contrôle jusqu'ici pour un vrai historique de notes. ---
+  function paintLivret() {
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const leveledLangs = settings.langs.filter((l) => l.leveled);
+    container.innerHTML = `
+      <button class="settings-back" id="mcLivretBack">${t("mc_back", lang)}</button>
+      <div class="dash-box">
+        <h3>📘 ${t("mc_livret_title", lang)}</h3>
+        ${leveledLangs.length === 0 ? `
+          <div class="card" style="color:var(--ink-soft);font-size:13px">${t("mc_livret_empty", lang)}</div>
+        ` : leveledLangs.map((l) => `
+          <div class="card mc-livret-row">
+            <div style="font-weight:800">${l.label}</div>
+            <div class="mc-livret-grid">
+              <div class="mc-livret-cell">
+                <div class="mc-livret-cell-label">${t("mc_entry_level", lang)}</div>
+                <span class="cefr-level-badge">${l.entryLevel || l.level}</span>
+                <div class="mc-livret-cell-sub">${l.entryDate ? formatDate(l.entryDate, lang) : ""}</div>
+              </div>
+              <div class="mc-livret-cell">
+                <div class="mc-livret-cell-label">${t("mc_current_level", lang)}</div>
+                <span class="cefr-level-badge">${l.level}</span>
+                <div class="mc-livret-cell-sub">${t("mc_lesson_progress", lang, { pct: Math.round((l.progress||0)*100) })}</div>
+              </div>
+            </div>
+          </div>
+        `).join("")}
+        <p style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">${t("mc_livret_note", lang)}</p>
+      </div>
+    `;
+    container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
   }
 
   function paintLangDetail(code) {
-    const lang = store.getLang(code);
-    if (!lang) { openCode = null; return paint(); }
-    const variant = lang.variants?.find((v) => v.code === lang.selectedVariant);
-    const needsVariantChoice = lang.leveled && !variant;
+    const langData = store.getLang(code);
+    if (!langData) { openCode = null; return paint(); }
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const variant = langData.variants?.find((v) => v.code === langData.selectedVariant);
+    const needsVariantChoice = langData.leveled && !variant;
 
     container.innerHTML = `
-      <button class="settings-back" id="mcBack">‹ Mes cours</button>
+      <button class="settings-back" id="mcBack">${t("mc_back", lang)}</button>
       <div class="dash-box">
-        <h3>${lang.label}</h3>
+        <h3>${langData.label}</h3>
         <div class="card">
-          <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">Mon niveau actuel</div>
-          ${lang.leveled ? `
-            <div style="font-size:22px;font-weight:800;margin-top:4px">${lang.level}</div>
-            <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((lang.progress||0)*100)}%"></div></div>
-            <div style="font-size:12px;margin-top:4px">${Math.round((lang.progress||0)*100)}% de la leçon en cours</div>
+          <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">${t("mc_my_level", lang)}</div>
+          ${langData.leveled ? `
+            <div style="font-size:22px;font-weight:800;margin-top:4px">${langData.level}</div>
+            <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((langData.progress||0)*100)}%"></div></div>
+            <div style="font-size:12px;margin-top:4px">${t("mc_lesson_progress", lang, { pct: Math.round((langData.progress||0)*100) })}</div>
             ${!needsVariantChoice ? `
-              <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">Cours suivi : <strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">changer</button></div>
-              <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">Continuer mes leçons →</button>
+              <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("mc_course_followed", lang)}<strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">${t("mc_change", lang)}</button></div>
+              <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">${t("mc_continue", lang)}</button>
             ` : ""}
           ` : `
             <div class="mc-locked-msg">
               <span class="mc-lock-icon">🔒</span>
               <div>
-                <div style="font-weight:700;color:var(--accent)">Test de niveau pas encore fait</div>
-                <p style="font-size:13px;color:var(--ink-soft);margin:4px 0 0">Tes cours restent verrouillés tant que ce petit test (5-10 min) n'est pas fait — il détermine ton niveau de départ. Un seul test pour ${lang.label.toLowerCase()}, quel que soit l'accent choisi ensuite.</p>
+                <div style="font-weight:700;color:var(--accent)">${t("mc_test_not_done", lang)}</div>
+                <p style="font-size:13px;color:var(--ink-soft);margin:4px 0 0">${t("mc_locked_desc", lang, { lang: langData.label.toLowerCase() })}</p>
               </div>
             </div>
-            <button class="btn btn-primary" id="mcStartTest" style="width:100%;margin-top:12px">Faire le test de niveau →</button>
+            <button class="btn btn-primary" id="mcStartTest" style="width:100%;margin-top:12px">${t("mc_start_test", lang)}</button>
           `}
         </div>
       </div>
 
       ${needsVariantChoice ? `
         <div class="dash-box">
-          <h3>Quel cours veux-tu suivre ?</h3>
+          <h3>${t("mc_which_course", lang)}</h3>
           <div class="card">
-            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px">Ton niveau est déjà acquis — choisis juste l'accent/variante à suivre dans tes leçons.</p>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px">${t("mc_already_leveled_desc", lang)}</p>
             <div style="display:flex;flex-direction:column;gap:10px">
-              ${lang.variants.map((v) => `<button class="lt-opt mc-variant-btn" data-variant="${v.code}">${v.label}</button>`).join("")}
+              ${langData.variants.map((v) => `<button class="lt-opt mc-variant-btn" data-variant="${v.code}">${v.label}</button>`).join("")}
             </div>
           </div>
         </div>
       ` : ""}
 
-      ${lang.leveled ? `
+      ${langData.leveled ? `
         <div class="dash-box">
-          <h3>Niveau d'entrée</h3>
+          <h3>${t("mc_entry_level", lang)}</h3>
           <div class="card">
             <div style="display:flex;align-items:center;gap:10px">
-              <span class="cefr-level-badge" style="font-size:15px">${lang.entryLevel || lang.level}</span>
+              <span class="cefr-level-badge" style="font-size:15px">${langData.entryLevel || langData.level}</span>
               <div style="font-size:12px;color:var(--ink-soft)">
-                Résultat de ton tout premier test${lang.entryDate ? `, passé le ${frenchDate(lang.entryDate)}` : ""}.
+                ${t("mc_first_result", lang, { date: langData.entryDate ? t("mc_first_result_date", lang, { date: formatDate(langData.entryDate, lang) }) : "" })}
               </div>
             </div>
-            <p style="font-size:12px;color:var(--ink-soft);margin-top:8px">
-              Cette référence ne change jamais, même si ton niveau actuel évolue avec tes leçons —
-              elle sert à mesurer ton chemin parcouru dans le temps.
-            </p>
+            <p style="font-size:12px;color:var(--ink-soft);margin-top:8px">${t("mc_entry_desc", lang)}</p>
           </div>
         </div>
       ` : ""}
 
       <div class="dash-box">
-        <h3>Mes cours en PDF</h3>
+        <h3>${t("mc_pdf_title", lang)}</h3>
         <div class="card" style="color:var(--ink-soft);font-size:13px">
-          ${lang.leveled
-            ? "Une fiche mémo téléchargeable apparaîtra ici à la fin de chaque leçon."
-            : `<span class="mc-lock-icon" style="font-size:14px">🔒</span> Débloqués dès que le test de niveau est fait.`}
+          ${langData.leveled
+            ? t("mc_pdf_available", lang)
+            : `<span class="mc-lock-icon" style="font-size:14px">🔒</span> ${t("mc_pdf_locked", lang).replace("🔒 ", "")}`}
         </div>
       </div>
     `;
@@ -154,7 +197,7 @@ export function renderMesCours(container, shellRoot) {
     if (startBtn) startBtn.addEventListener("click", () => {
       renderLevelTest(shellRoot, {
         langCode: code,
-        langLabel: lang.label,
+        langLabel: langData.label,
         onDone: () => { window.location.href = "lessons.html"; },
       });
     });

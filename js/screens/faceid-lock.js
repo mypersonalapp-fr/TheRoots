@@ -3,8 +3,12 @@
 // d'entrer, au lieu de retaper le mot de passe (voir js/data/webauthn.js).
 
 import { webauthn } from "../data/webauthn.js";
+import { store } from "../data/store.js";
+import { t } from "../data/i18n.js";
 
 export function renderFaceIdLock(root, { credentialId, onUnlocked, onUsePassword }) {
+  const { settings } = store.get();
+  const lang = settings.interfaceLang;
   const el = document.createElement("div");
   el.className = "screen login-hero-screen faceid-lock-screen";
   el.innerHTML = `
@@ -12,10 +16,10 @@ export function renderFaceIdLock(root, { credentialId, onUnlocked, onUsePassword
     <img class="screen-cover-bg bg-img-dark" src="assets/img/shell-bg-dark.jpg" alt="" aria-hidden="true"/>
     <div class="auth-menu-panel card faceid-panel">
       <div class="faceid-icon">🔒</div>
-      <div class="faceid-title">The Roots est verrouillée</div>
-      <button class="btn btn-primary" id="btnUnlock">Déverrouiller avec Face ID</button>
-      <button class="auth-menu-forgot" id="btnUsePassword">Utiliser mon mot de passe</button>
-      <div class="faceid-error" id="faceidError" hidden>Ça n'a pas fonctionné — réessaie.</div>
+      <div class="faceid-title">${t("fid_locked", lang)}</div>
+      <button class="btn btn-primary" id="btnUnlock">${t("fid_unlock_btn", lang)}</button>
+      <button class="auth-menu-forgot" id="btnUsePassword">${t("fid_use_password", lang)}</button>
+      <div class="faceid-error" id="faceidError" hidden>${t("fid_error", lang)}</div>
     </div>
   `;
   root.appendChild(el);

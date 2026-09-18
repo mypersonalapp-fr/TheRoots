@@ -5,8 +5,14 @@
 // (ou qu'on a validé le plus haut palier proposé). Le score obtenu est
 // gardé comme "niveau d'entrée" même si, pour l'instant, seules les leçons
 // A1 existent dans l'application.
+//
+// Habillage (intro, écrans de résultat, boutons) traduit selon la langue de
+// l'interface via i18n.js — les QUESTIONS elles-mêmes (tableau TIERS)
+// restent en français volontairement : tester l'anglais dans une autre
+// langue d'interface ne changerait rien aux questions.
 
 import { store } from "../data/store.js";
+import { t } from "../data/i18n.js";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant
@@ -17,6 +23,13 @@ function speak(text) {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "en-GB";
     u.rate = 0.92;
+    const { settings } = store.get();
+    const preferred = settings.preferredVoiceURI;
+    if (preferred) {
+      const [name, voiceLang] = preferred.split("|");
+      const match = window.speechSynthesis.getVoices().find((v) => v.name === name && v.lang === voiceLang);
+      if (match) { u.voice = match; u.lang = match.lang; }
+    }
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
   } catch (e) { /* pas grave si la synthèse vocale n'est pas dispo */ }
@@ -65,6 +78,8 @@ const TIERS = [
 ];
 
 export function renderLevelTest(root, { langCode, langLabel, onDone }) {
+  const { settings } = store.get();
+  const lang = settings.interfaceLang;
   const el = document.createElement("div");
   el.className = "screen level-test-screen";
   root.appendChild(el);
@@ -95,19 +110,19 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
 
   function renderIntro() {
     el.innerHTML = `
-      <div class="app-topbar"><div class="title">Test de niveau</div></div>
+      <div class="app-topbar"><div class="title">${t("lt_title", lang)}</div></div>
       <div class="app-body">
         <div class="card lt-intro">
-          <div class="lt-eyebrow">Avant de commencer — ${langLabel}</div>
-          <h2>On détermine ton niveau de départ</h2>
-          <p class="lt-lede">Le test avance par paliers (A1 → A2 → B1) : tu continues tant que tu réussis, et il s'arrête dès qu'un palier n'est pas validé — comme ça, il reflète vraiment ton niveau, pas juste une série de questions au hasard.</p>
+          <div class="lt-eyebrow">${t("lt_before_start", lang, { lang: langLabel })}</div>
+          <h2>${t("lt_h2", lang)}</h2>
+          <p class="lt-lede">${t("lt_lede1", lang)}</p>
           <div class="lt-facts">
-            <div class="lt-fact"><span class="lt-fact-n">⏱️ ${TEST_MAX_MINUTES} min max</span><span>Il peut s'arrêter avant, selon ton niveau</span></div>
-            <div class="lt-fact"><span class="lt-fact-n">📝 QCM, écoute, texte à trous, lecture</span><span>Plusieurs formats, comme dans une vraie leçon</span></div>
-            <div class="lt-fact"><span class="lt-fact-n">🎯 Palier par palier</span><span>70% dans un palier pour débloquer le suivant</span></div>
+            <div class="lt-fact"><span class="lt-fact-n">${t("lt_fact_time", lang, { min: TEST_MAX_MINUTES })}</span><span>${t("lt_fact_time_desc", lang)}</span></div>
+            <div class="lt-fact"><span class="lt-fact-n">${t("lt_fact_formats", lang)}</span><span>${t("lt_fact_formats_desc", lang)}</span></div>
+            <div class="lt-fact"><span class="lt-fact-n">${t("lt_fact_tier", lang)}</span><span>${t("lt_fact_tier_desc", lang)}</span></div>
           </div>
-          <p class="lt-lede">Réponds du mieux que tu peux, sans chercher les réponses ailleurs. Ton score de départ reste gardé en mémoire pour que tu puisses te comparer plus tard, une fois que tu auras progressé.</p>
-          <button class="btn btn-primary" id="ltStart" style="width:100%;margin-top:8px">C'est parti →</button>
+          <p class="lt-lede">${t("lt_lede2", lang)}</p>
+          <button class="btn btn-primary" id="ltStart" style="width:100%;margin-top:8px">${t("lt_start_btn", lang)}</button>
         </div>
       </div>
     `;
@@ -118,8 +133,8 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     clearInterval(timerId);
     timerId = setInterval(() => {
       timeLeft--;
-      const t = el.querySelector("#ltTimer");
-      if (t) t.textContent = formatTime(timeLeft);
+      const timerEl = el.querySelector("#ltTimer");
+      if (timerEl) timerEl.textContent = formatTime(timeLeft);
       if (timeLeft <= 0) { clearInterval(timerId); finish(); }
     }, 1000);
     qIdx = 0; tierCorrect = 0; orderPicked = [];
@@ -137,7 +152,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
   function shellFor(bodyHtml) {
     const tier = currentTier();
     return `
-      <div class="app-topbar"><div class="title">Test de niveau</div></div>
+      <div class="app-topbar"><div class="title">${t("lt_title", lang)}</div></div>
       <div class="app-body">
         <div class="card lt-quiz">
           <div class="lt-quiz-top">
@@ -279,14 +294,14 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     clearInterval(timerId);
     const nextTier = currentTier();
     el.innerHTML = `
-      <div class="app-topbar"><div class="title">Test de niveau</div></div>
+      <div class="app-topbar"><div class="title">${t("lt_title", lang)}</div></div>
       <div class="app-body">
         <div class="card lt-result">
-          <div class="lt-badge">Palier ${highestLevel} validé ✓</div>
-          <h2 style="margin:10px 0">On continue un peu plus loin ?</h2>
-          <p class="lt-lede">Tu peux t'arrêter ici et garder ${highestLevel}, ou continuer avec des questions un peu plus difficiles (${nextTier.id}) pour voir jusqu'où tu vas.</p>
-          <button class="btn btn-primary" id="ltContinue" style="width:100%;margin-top:8px">Continuer vers ${nextTier.id} →</button>
-          <button class="btn btn-ghost" id="ltStopHere" style="width:100%;margin-top:8px">M'arrêter à ${highestLevel}</button>
+          <div class="lt-badge">${t("lt_badge_validated", lang, { level: highestLevel })}</div>
+          <h2 style="margin:10px 0">${t("lt_tierup_h2", lang)}</h2>
+          <p class="lt-lede">${t("lt_tierup_lede", lang, { level: highestLevel, next: nextTier.id })}</p>
+          <button class="btn btn-primary" id="ltContinue" style="width:100%;margin-top:8px">${t("lt_continue_btn", lang, { next: nextTier.id })}</button>
+          <button class="btn btn-ghost" id="ltStopHere" style="width:100%;margin-top:8px">${t("lt_stop_btn", lang, { level: highestLevel })}</button>
         </div>
       </div>
     `;
@@ -303,18 +318,18 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     store.setPlacementResult(langCode, { score: null, level: finalLevel, entryLevel: finalLevel, entryDate: new Date().toISOString() });
 
     el.innerHTML = `
-      <div class="app-topbar"><div class="title">Résultat</div></div>
+      <div class="app-topbar"><div class="title">${t("lt_title_result", lang)}</div></div>
       <div class="app-body">
         <div class="card lt-result">
           <div class="lt-eyebrow">${langLabel}</div>
-          <div class="lt-badge">Niveau d'entrée : ${finalLevel}</div>
+          <div class="lt-badge">${t("lt_badge_entry", lang, { level: finalLevel })}</div>
           ${maxedOut
-            ? `<p class="lt-lede">Bravo, tu as validé le palier le plus élevé de ce test ! Les leçons ${finalLevel} et au-delà sont en cours de construction — en attendant, commence par les leçons A1 pour garder la main, ton niveau d'entrée reste enregistré pour comparaison plus tard.</p>`
+            ? `<p class="lt-lede">${t("lt_result_maxed", lang, { level: finalLevel })}</p>`
             : finalLevel === "A1"
-              ? `<p class="lt-lede">On te place en niveau Débutant (A1) — le point de départ idéal pour construire des bases solides.</p>`
-              : `<p class="lt-lede">Bien joué ! Ton niveau d'entrée est ${finalLevel}. Les leçons ${finalLevel} arrivent bientôt — en attendant, commence par les leçons A1 pour consolider, ton score de départ reste gardé pour te comparer plus tard.</p>`
+              ? `<p class="lt-lede">${t("lt_result_a1", lang)}</p>`
+              : `<p class="lt-lede">${t("lt_result_other", lang, { level: finalLevel })}</p>`
           }
-          <button class="btn btn-primary" id="ltGo" style="width:100%;margin-top:8px">Commencer mes leçons →</button>
+          <button class="btn btn-primary" id="ltGo" style="width:100%;margin-top:8px">${t("lt_go_btn", lang)}</button>
         </div>
       </div>
     `;

@@ -3,6 +3,9 @@
 // question de culture, vidéo du jour par langue.
 
 import { store } from "../data/store.js";
+import { t, langName, formatDate } from "../data/i18n.js";
+
+const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
 // Petit pool de contenu "du jour" — à terme, généré/tiré selon la date réelle
 // et la langue apprise. Pour l'instant : exemples illustrant le format attendu.
@@ -64,18 +67,20 @@ function pickVideoOfTheDay(list) {
   return list[rotationIndex % list.length];
 }
 
-function frenchDateTime() {
+function localizedDateTime(lang) {
   const now = new Date();
-  const date = new Intl.DateTimeFormat("fr-FR", {
+  const locale = LOCALE_MAP[lang] || "fr-FR";
+  const date = new Intl.DateTimeFormat(locale, {
     weekday: "long", day: "numeric", month: "long", year: "numeric",
   }).format(now);
-  const time = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" }).format(now);
+  const time = new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit" }).format(now);
   return { date: date.charAt(0).toUpperCase() + date.slice(1), time };
 }
 
 export function renderDashboard(container, { onGoToCourses } = {}) {
   const { settings } = store.get();
-  const { date, time } = frenchDateTime();
+  const lang = settings.interfaceLang;
+  const { date, time } = localizedDateTime(lang);
   const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
   const quote = QUOTES[new Date().getDate() % QUOTES.length];
   const video = pickVideoOfTheDay(VIDEOS_EN);
@@ -85,12 +90,12 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
     <div class="dash-greeting card">${date} · <strong>${time}</strong></div>
 
     <div class="dash-box">
-      <h3>Ma progression</h3>
+      <h3>${t("dash_progress_title", lang)}</h3>
       <div class="dash-progress-row">
         ${leveledLangs.length === 0 ? `
           <button class="card dash-progress-card clickable" data-goto-courses="1">
-            <div>Test de niveau à passer</div>
-            <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">Choisis ta langue → onglet « Mes cours »</div>
+            <div>${t("dash_level_test_todo", lang)}</div>
+            <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">${t("dash_choose_lang", lang)}</div>
           </button>
         ` : leveledLangs.map((l) => {
           const variant = l.variants?.find((v) => v.code === l.selectedVariant);
@@ -98,7 +103,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
           return `
           <button class="card dash-progress-card clickable" data-goto-courses="1">
             <div>${label}</div>
-            <div style="font-size:12px;color:var(--ink-soft)">Niveau ${l.level}</div>
+            <div style="font-size:12px;color:var(--ink-soft)">${t("dash_level", lang, { level: l.level })}</div>
             <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
             <div style="font-size:12px;margin-top:4px">${Math.round((l.progress||0)*100)}%</div>
           </button>
@@ -106,7 +111,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
         }).join("")}
 
         <div class="card dash-culture-card">
-          <div class="dash-culture-label">Question culture</div>
+          <div class="dash-culture-label">${t("dash_culture_label", lang)}</div>
           <div class="dash-culture-text">${CULTURE_QUESTIONS.en.question}</div>
           <div class="dash-culture-answer">${CULTURE_QUESTIONS.en.answer}</div>
         </div>
@@ -114,7 +119,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
     </div>
 
     <div class="dash-box">
-      <h3>Expression du jour</h3>
+      <h3>${t("dash_expression_title", lang)}</h3>
       <div class="card">
         <div style="font-weight:700">${expr.en}</div>
         <div style="color:var(--accent);margin-top:4px">${expr.fr_equiv}</div>
@@ -123,7 +128,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
     </div>
 
     <div class="dash-box">
-      <h3>Vidéo du jour — Anglais</h3>
+      <h3>${t("dash_video_title", lang)}</h3>
       <div class="card card-media dash-video-card">
         ${video ? `
           <a class="dash-video-thumb" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
@@ -132,18 +137,18 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
           </a>
           <div class="dash-video-info">
             <div class="dash-video-title">${video.title}</div>
-            <div class="dash-video-cta">Appuie sur l'image pour regarder sur YouTube</div>
+            <div class="dash-video-cta">${t("dash_video_cta", lang)}</div>
           </div>
-        ` : `<div style="text-align:center;color:var(--ink-soft);padding:20px">🎬 Emplacement vidéo (à intégrer)</div>`}
+        ` : `<div style="text-align:center;color:var(--ink-soft);padding:20px">${t("dash_video_placeholder", lang)}</div>`}
       </div>
     </div>
 
     <div class="dash-box">
-      <h3>Citation du jour</h3>
+      <h3>${t("dash_quote_title", lang)}</h3>
       ${leveledLangs.filter((l) => quote.byLang[l.code]).length > 0 ? leveledLangs.filter((l) => quote.byLang[l.code]).map((l) => `
         <div class="card dash-quote-card">
           <div class="dash-quote">${quote.byLang[l.code]}</div>
-          <div class="dash-quote-equiv-label">${l.label} — équivalent français (pas une traduction mot à mot) : ${quote.fr}</div>
+          <div class="dash-quote-equiv-label">${t("dash_quote_equiv", lang, { lang: l.label, fr: quote.fr })}</div>
         </div>
       `).join("") : `
         <div class="card dash-quote-card">
