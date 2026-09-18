@@ -105,6 +105,36 @@
   font-family: var(--font-main); cursor: pointer; padding: 6px 10px;
 }
 
+/* --- Écran de verrouillage Face ID / Touch ID (affiché à l'ouverture si
+   activé, à la place du mot de passe) --- */
+.faceid-panel{ align-items: center; text-align: center; }
+.faceid-icon{ font-size: 40px; margin-bottom: 2px; }
+.faceid-title{ font-weight: 800; font-size: 16.5px; color: var(--brand-teal); margin-bottom: 4px; }
+.faceid-error{ color: var(--pop); font-size: 13px; font-weight: 700; margin-top: 2px; }
+
+/* --- Proposition d'activer Face ID juste après une connexion réussie :
+   petite carte au centre, par-dessus tout (y compris la coquille qui
+   apparaît juste derrière), jamais bloquante --- */
+.faceid-offer-backdrop{
+  position: fixed; inset: 0; z-index: 40;
+  background: rgba(10,14,16,0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.faceid-offer-card{
+  background: #fff; border-radius: var(--radius-lg); padding: 24px;
+  max-width: 340px; width: 100%; text-align: center;
+  box-shadow: var(--shadow-pop);
+}
+.faceid-offer-icon{ font-size: 36px; margin-bottom: 8px; }
+.faceid-offer-title{ font-weight: 800; font-size: 16px; color: var(--brand-teal); margin-bottom: 6px; }
+.faceid-offer-text{ font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.5; }
+.faceid-offer-card .btn{ width: 100%; margin-bottom: 8px; }
+.faceid-offer-later{
+  background: none; border: none; color: var(--ink-soft);
+  font-family: var(--font-main); font-weight: 700; font-size: 13px; cursor: pointer; padding: 6px;
+}
+
 /* --- Formulaire connexion / inscription / mdp oublié : la 4e image
    (globe/drapeaux en haut, villes en bas) reste en fond, entière, comme
    sur le reste de l'appli — le formulaire flotte par-dessus dans sa carte
