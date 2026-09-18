@@ -70,7 +70,7 @@ function frenchDateTime() {
   return { date: date.charAt(0).toUpperCase() + date.slice(1), time };
 }
 
-export function renderDashboard(container) {
+export function renderDashboard(container, { onGoToCourses } = {}) {
   const { settings } = store.get();
   const { date, time } = frenchDateTime();
   const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
@@ -84,18 +84,23 @@ export function renderDashboard(container) {
       <h3>Ma progression</h3>
       <div class="dash-progress-row">
         ${settings.langs.map(l => l.leveled ? `
-          <div class="card dash-progress-card">
+          <button class="card dash-progress-card clickable" data-goto-courses="1">
             <div>${l.label}</div>
             <div style="font-size:12px;color:var(--ink-soft)">Niveau ${l.level}</div>
             <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
             <div style="font-size:12px;margin-top:4px">${Math.round((l.progress||0)*100)}%</div>
-          </div>
+          </button>
         ` : `
-          <div class="card dash-progress-card">
+          <button class="card dash-progress-card clickable" data-goto-courses="1">
             <div>${l.label}</div>
             <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">Test de niveau à faire → onglet « Mes cours »</div>
-          </div>
+          </button>
         `).join("")}
+
+        <div class="card dash-culture-card">
+          <div class="dash-culture-label">Question culture</div>
+          <div class="dash-culture-text">${CULTURE_QUESTIONS["en-gb"]}</div>
+        </div>
       </div>
     </div>
 
@@ -109,22 +114,17 @@ export function renderDashboard(container) {
     </div>
 
     <div class="dash-box">
-      <h3>Question culture</h3>
-      <div class="card">${CULTURE_QUESTIONS["en-gb"]}</div>
-    </div>
-
-    <div class="dash-box">
       <h3>Vidéo du jour — Anglais</h3>
       <div class="card card-media" style="padding:0">
         ${video ? `
-          <div style="position:relative;padding-top:56.25%">
-            <iframe src="https://www.youtube-nocookie.com/embed/${video.id}" title="${video.title}"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0"
-              allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-          </div>
+          <a class="dash-video-thumb" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" loading="lazy"/>
+            <span class="dash-video-play">▶</span>
+          </a>
           <div style="padding:12px 14px">
             <div style="font-weight:700;font-size:13px">${video.title}</div>
             <div style="font-size:12px;color:var(--ink-soft);margin-top:4px">${video.why}</div>
+            <div style="font-size:11px;color:var(--accent);margin-top:6px;font-weight:700">Appuie sur l'image pour regarder sur YouTube</div>
           </div>
         ` : `<div style="text-align:center;color:var(--ink-soft);padding:20px">🎬 Emplacement vidéo (à intégrer)</div>`}
       </div>
@@ -141,4 +141,8 @@ export function renderDashboard(container) {
       </div>
     </div>
   `;
+
+  container.querySelectorAll('[data-goto-courses]').forEach((btn) => {
+    btn.addEventListener("click", () => onGoToCourses && onGoToCourses());
+  });
 }
