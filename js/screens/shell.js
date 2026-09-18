@@ -9,10 +9,6 @@ import { renderMesCours } from "./mes-cours.js";
 import { renderComprehension } from "./comprehension.js";
 import { renderExpression } from "./expression.js";
 import { renderTraduction } from "./traduction.js";
-import { mountContainFrame } from "./contain-frame.js";
-
-const BG_IMG_W = 768, BG_IMG_H = 1352;
-
 const MENU_ITEMS = [
   { id: "accueil", label: "Accueil", icon: "🏠" },
   { id: "mes-cours", label: "Mes cours", icon: "📚" },
@@ -36,7 +32,7 @@ export function renderShell(root) {
   el.className = "screen app-shell";
   el.innerHTML = `
     <div class="shell-bg" id="shellBg">
-      <img class="screen-backdrop" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
+      <img class="screen-cover-bg" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
     </div>
     <div class="app-topbar">
       <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
@@ -64,8 +60,6 @@ export function renderShell(root) {
     </nav>
   `;
   root.appendChild(el);
-  mountContainFrame(el.querySelector("#shellBg"), BG_IMG_W, BG_IMG_H,
-    `<img src="assets/img/shell-bg.jpg" alt=""/>`);
 
   const body = el.querySelector("#appBody");
   const titleEl = el.querySelector("#screenTitle");
@@ -96,7 +90,7 @@ export function renderShell(root) {
     backBtn.style.visibility = id === "accueil" ? "hidden" : "visible";
     el.querySelectorAll(".nav-drawer-item").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
 
-    if (id === "accueil") renderDashboard(body);
+    if (id === "accueil") renderDashboard(body, { onGoToCourses: () => renderTab("mes-cours") });
     else if (id === "parametres") renderSettings(body, () => {});
     else if (id === "mes-cours") renderMesCours(body, root);
     else if (id === "comprehension") renderComprehension(body);
