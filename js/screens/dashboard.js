@@ -115,16 +115,15 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
     <div class="dash-box">
       <h3>Vidéo du jour — Anglais</h3>
-      <div class="card card-media" style="padding:0">
+      <div class="card card-media dash-video-card">
         ${video ? `
           <a class="dash-video-thumb" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
             <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" loading="lazy"/>
             <span class="dash-video-play">▶</span>
           </a>
-          <div style="padding:12px 14px">
-            <div style="font-weight:700;font-size:13px">${video.title}</div>
-            <div style="font-size:12px;color:var(--ink-soft);margin-top:4px">${video.why}</div>
-            <div style="font-size:11px;color:var(--accent);margin-top:6px;font-weight:700">Appuie sur l'image pour regarder sur YouTube</div>
+          <div class="dash-video-info">
+            <div class="dash-video-title">${video.title}</div>
+            <div class="dash-video-cta">Appuie sur l'image pour regarder sur YouTube</div>
           </div>
         ` : `<div style="text-align:center;color:var(--ink-soft);padding:20px">🎬 Emplacement vidéo (à intégrer)</div>`}
       </div>
@@ -132,11 +131,11 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
     <div class="dash-box">
       <h3>Citation du jour</h3>
-      <div class="card" style="text-align:center">
-        <div class="dash-quote" style="padding:4px 4px 0">${quote.fr}</div>
+      <div class="card dash-quote-card">
+        <div class="dash-quote">${quote.fr}</div>
         ${settings.langs.filter((l) => l.leveled && quote.byLang[l.code]).map((l) => `
-          <div style="font-size:13px;color:var(--accent);font-weight:700;margin-top:8px">${quote.byLang[l.code]}</div>
-          <div style="font-size:11px;color:var(--ink-soft)">${l.label} — équivalent le plus proche, pas une traduction mot à mot</div>
+          <div class="dash-quote-equiv">${quote.byLang[l.code]}</div>
+          <div class="dash-quote-equiv-label">${l.label} — équivalent le plus proche, pas une traduction mot à mot</div>
         `).join("")}
       </div>
     </div>
