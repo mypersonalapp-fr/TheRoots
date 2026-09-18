@@ -41,7 +41,8 @@ export function renderLogin(root, { mode = "login", onDone, onBack }) {
   el.className = "screen auth-form-screen";
   el.innerHTML = `
     <div class="shell-bg" id="loginShellBg">
-      <img class="screen-cover-bg" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
+      <img class="screen-cover-bg bg-img-light" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
+      <img class="screen-cover-bg bg-img-dark" src="assets/img/shell-bg-dark.jpg" alt="" aria-hidden="true"/>
     </div>
     <div class="auth-form-top">
       <button class="back-btn" id="backBtn" aria-label="Retour">‹</button>

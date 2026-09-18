@@ -9,10 +9,17 @@ export function renderSplash(root, onDone) {
   root.appendChild(el);
 
   const bg = document.createElement("img");
-  bg.className = "screen-cover-bg";
+  bg.className = "screen-cover-bg bg-img-light";
   bg.src = "assets/img/splash-bg.jpg";
   bg.alt = "The Roots — apprends, parle, voyage";
   el.appendChild(bg);
+
+  const bgDark = document.createElement("img");
+  bgDark.className = "screen-cover-bg bg-img-dark";
+  bgDark.src = "assets/img/splash-bg-dark.jpg";
+  bgDark.alt = "";
+  bgDark.setAttribute("aria-hidden", "true");
+  el.appendChild(bgDark);
 
   // Petites bulles de salutations qui apparaissent une à une dans le haut
   // de l'écran, façon "Hello / Bonjour / Hola..." de l'icône de l'appli.
