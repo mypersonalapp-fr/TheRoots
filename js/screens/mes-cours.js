@@ -31,19 +31,23 @@ export function renderMesCours(container, shellRoot) {
     container.innerHTML = `
       <div class="dash-box">
         <h3>Mes langues</h3>
-        ${settings.langs.map((l) => `
+        ${settings.langs.map((l) => {
+          const variant = l.variants?.find((v) => v.code === l.selectedVariant);
+          const status = !l.leveled
+            ? "Test de niveau à faire"
+            : variant ? `Niveau ${l.level} — ${variant.label}` : `Niveau ${l.level} — choisir le cours`;
+          return `
           <div class="card mc-lang-card" data-code="${l.code}">
             <div class="mc-lang-top">
               <div>
                 <div style="font-weight:800">${l.label}</div>
-                <div style="font-size:12px;color:var(--ink-soft)">
-                  ${l.leveled ? `Niveau ${l.level}` : "Test de niveau à faire"}
-                </div>
+                <div style="font-size:12px;color:var(--ink-soft)">${status}</div>
               </div>
               <span class="chev">›</span>
             </div>
           </div>
-        `).join("")}
+        `;
+        }).join("")}
       </div>
     `;
     container.querySelectorAll(".mc-lang-card").forEach((cardEl) => {
@@ -54,6 +58,8 @@ export function renderMesCours(container, shellRoot) {
   function paintLangDetail(code) {
     const lang = store.getLang(code);
     if (!lang) { openCode = null; return paint(); }
+    const variant = lang.variants?.find((v) => v.code === lang.selectedVariant);
+    const needsVariantChoice = lang.leveled && !variant;
 
     container.innerHTML = `
       <button class="settings-back" id="mcBack">‹ Mes cours</button>
@@ -65,19 +71,34 @@ export function renderMesCours(container, shellRoot) {
             <div style="font-size:22px;font-weight:800;margin-top:4px">${lang.level}</div>
             <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((lang.progress||0)*100)}%"></div></div>
             <div style="font-size:12px;margin-top:4px">${Math.round((lang.progress||0)*100)}% de la leçon en cours</div>
-            <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">Continuer mes leçons →</button>
+            ${!needsVariantChoice ? `
+              <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">Cours suivi : <strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">changer</button></div>
+              <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">Continuer mes leçons →</button>
+            ` : ""}
           ` : `
             <div class="mc-locked-msg">
               <span class="mc-lock-icon">🔒</span>
               <div>
                 <div style="font-weight:700;color:var(--accent)">Test de niveau pas encore fait</div>
-                <p style="font-size:13px;color:var(--ink-soft);margin:4px 0 0">Tes cours restent verrouillés tant que ce petit test (5-10 min) n'est pas fait — il détermine ton niveau de départ.</p>
+                <p style="font-size:13px;color:var(--ink-soft);margin:4px 0 0">Tes cours restent verrouillés tant que ce petit test (5-10 min) n'est pas fait — il détermine ton niveau de départ. Un seul test pour ${lang.label.toLowerCase()}, quel que soit l'accent choisi ensuite.</p>
               </div>
             </div>
             <button class="btn btn-primary" id="mcStartTest" style="width:100%;margin-top:12px">Faire le test de niveau →</button>
           `}
         </div>
       </div>
+
+      ${needsVariantChoice ? `
+        <div class="dash-box">
+          <h3>Quel cours veux-tu suivre ?</h3>
+          <div class="card">
+            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px">Ton niveau est déjà acquis — choisis juste l'accent/variante à suivre dans tes leçons.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              ${lang.variants.map((v) => `<button class="lt-opt mc-variant-btn" data-variant="${v.code}">${v.label}</button>`).join("")}
+            </div>
+          </div>
+        </div>
+      ` : ""}
 
       ${lang.leveled ? `
         <div class="dash-box">
@@ -111,6 +132,19 @@ export function renderMesCours(container, shellRoot) {
 
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { window.location.href = "lessons.html"; });
+
+    const changeBtn = container.querySelector("#mcChangeVariant");
+    if (changeBtn) changeBtn.addEventListener("click", () => {
+      store.selectVariant(code, null);
+      paint();
+    });
+
+    container.querySelectorAll(".mc-variant-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        store.selectVariant(code, btn.dataset.variant);
+        paint();
+      });
+    });
 
     const startBtn = container.querySelector("#mcStartTest");
     if (startBtn) startBtn.addEventListener("click", () => {
