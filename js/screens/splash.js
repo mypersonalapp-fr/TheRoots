@@ -1,25 +1,34 @@
 // The Roots — écran affiché à l'ouverture de l'application : l'image
-// d'Ashley (assets/img/splash-bg.jpg), fixe, affichée EN ENTIER (jamais
-// coupée) quel que soit l'écran, grâce au cadre "contain" partagé.
-
-import { mountContainFrame } from "./contain-frame.js";
-
-const IMG_W = 768, IMG_H = 1352;
+// d'Ashley (assets/img/splash-bg.jpg) remplit tout l'écran (téléphone ou
+// tablette, portrait ou paysage), quitte à recadrer légèrement les bords —
+// aucun bouton n'est dessiné dans cette image, rien à réaligner.
 
 export function renderSplash(root, onDone) {
   const el = document.createElement("div");
   el.className = "screen splash-screen";
   root.appendChild(el);
 
-  const backdrop = document.createElement("img");
-  backdrop.className = "screen-backdrop";
-  backdrop.src = "assets/img/splash-bg.jpg";
-  backdrop.alt = "";
-  backdrop.setAttribute("aria-hidden", "true");
-  el.appendChild(backdrop);
+  const bg = document.createElement("img");
+  bg.className = "screen-cover-bg";
+  bg.src = "assets/img/splash-bg.jpg";
+  bg.alt = "The Roots — apprends, parle, voyage";
+  el.appendChild(bg);
 
-  mountContainFrame(el, IMG_W, IMG_H,
-    `<img src="assets/img/splash-bg.jpg" alt="The Roots — apprends, parle, voyage"/>`);
+  // Petites bulles de salutations qui apparaissent une à une dans le haut
+  // de l'écran, façon "Hello / Bonjour / Hola..." de l'icône de l'appli.
+  const greetings = [
+    { text: "Hello", cls: "splash-greeting-1" },
+    { text: "Bonjour", cls: "splash-greeting-2" },
+    { text: "Hola", cls: "splash-greeting-3" },
+    { text: "Ciao", cls: "splash-greeting-4" },
+    { text: "Hallo", cls: "splash-greeting-5" },
+  ];
+  greetings.forEach(g => {
+    const b = document.createElement("span");
+    b.className = "splash-greeting " + g.cls;
+    b.textContent = g.text;
+    el.appendChild(b);
+  });
 
   requestAnimationFrame(() => el.classList.add("splash-in"));
 
