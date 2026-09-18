@@ -19,6 +19,7 @@ function defaultData() {
     settings: {
       theme: "light",
       interfaceLang: "fr",
+      preferredVoiceURI: null, // voix choisie dans Paramètres > Réglages généraux > Voix
       langs: [
         {
           code: "en", label: "Anglais",
