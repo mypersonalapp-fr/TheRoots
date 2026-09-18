@@ -21,6 +21,19 @@
   z-index: 0;
 }
 
+/* --- Fond "plein écran" : remplit TOUJOURS tout l'écran (téléphone,
+   tablette, portrait ou paysage), quitte à recadrer un peu les bords de
+   l'image — contrairement à .contain-frame qui montre l'image entière
+   mais peut laisser du vide sur les côtés. Réservé aux écrans où aucun
+   bouton n'est dessiné DANS l'image (splash, coquille principale,
+   formulaires) : rien à réaligner si un bord est coupé. --- */
+.screen-cover-bg{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 /* --- Écran de démarrage : l'image d'Ashley, fixe, entière --- */
 .splash-screen{
   position: relative;
@@ -32,24 +45,32 @@
 .splash-screen.splash-in{ opacity: 1; }
 .splash-screen.splash-fade-out{ opacity: 0; }
 
-/* --- Écran de connexion : l'illustration d'Ashley entière, avec des
-   zones cliquables invisibles posées sur les boutons déjà dessinés dedans --- */
-.login-hero-screen{ position: relative; background: #fdf3e3; overflow: hidden; }
-.hero-hit{
-  position: absolute; left: 50%; transform: translateX(-50%);
-  width: 63%; max-width: 420px;
-  background: transparent; border: none; border-radius: 999px;
-  cursor: pointer;
+/* --- Écran de connexion : l'illustration remplit tout l'écran (portrait
+   ou paysage, téléphone ou tablette) ; les boutons sont de VRAIS boutons
+   HTML posés dans un panneau flottant, plus des zones invisibles calées
+   au pixel près sur des boutons dessinés dans l'image — ça reste net et
+   cliquable quel que soit le recadrage. --- */
+.login-hero-screen{
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
 }
-.hero-hit:focus-visible{ outline: 3px solid rgba(255,255,255,0.9); outline-offset: 2px; }
-.hero-hit-login{ top: 49.4%; height: 5.6%; }
-.hero-hit-signup{ top: 56.2%; height: 5.6%; }
-.hero-forgot{
-  position: absolute; left: 50%; transform: translateX(-50%);
-  top: 63%;
-  background: rgba(255,255,255,0.55); backdrop-filter: blur(2px);
-  border: none; border-radius: 999px; padding: 6px 14px;
-  color: #1b3c39; font-weight: 700; font-size: 12.5px; cursor: pointer;
+.auth-menu-panel{
+  position: relative; z-index: 2;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 24px;
+}
+.auth-menu-brand{
+  text-align: center; font-family: var(--font-main);
+  font-weight: 800; font-size: 20px; color: var(--brand-teal);
+  margin-bottom: 4px;
+}
+.auth-menu-panel .btn{ width: 100%; }
+.auth-menu-forgot{
+  background: none; border: none; margin: 2px auto 0;
+  color: var(--brand-teal); font-weight: 700; font-size: 13px;
+  font-family: var(--font-main); cursor: pointer; padding: 6px 10px;
 }
 
 /* --- Formulaire connexion / inscription / mdp oublié : la 4e image
@@ -82,6 +103,13 @@
   overflow: hidden;
   background: #fdf3e3;
 }
+/* Sur l'écran de connexion/inscription, l'écran entier défile déjà d'un
+   bloc (pas de zone à défilement séparée comme .app-body) : on fixe donc
+   ce fond en "absolute" plutôt qu'en "fixed", ce qui évite un bug connu
+   de Safari iPad où une image en position "fixed" se décentre quand son
+   parent a "overflow: hidden" (elle glissait vers la droite au lieu de
+   rester bien au milieu). */
+.auth-form-screen .shell-bg{ position: absolute; }
 
 /* --- Coquille principale + navigation --- */
 .app-shell{ display: flex; flex-direction: column; min-height: 100vh; }
@@ -357,20 +385,3 @@
 /* --- Mes cours : message de verrouillage tant que le test n'est pas fait --- */
 .mc-locked-msg{ display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
 .mc-lock-icon{ font-size: 20px; line-height: 1; }
-.auth-form-screen .shell-bg{ position: absolute; }
-
-/* --- Fond "plein écran" : remplit TOUJOURS tout l'écran (téléphone,
-   tablette, portrait ou paysage), quitte à recadrer un peu les bords de
-   l'image — contrairement à .contain-frame qui montre l'image entière
-   mais peut laisser du vide sur les côtés. Réservé aux écrans où aucun
-   bouton n'est dessiné DANS l'image (splash, coquille principale,
-   formulaires) : rien à réaligner si un bord est coupé. --- */
-.screen-cover-bg{
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-
-
