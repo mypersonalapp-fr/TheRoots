@@ -34,6 +34,13 @@
   z-index: 0;
 }
 
+/* --- Fond jour/nuit : deux images empilées au même endroit, on affiche
+   seulement celle qui correspond au thème actif (data-theme sur <html>) —
+   pas besoin de rechargement, ça suit le thème automatiquement. --- */
+.bg-img-dark{ display: none; }
+:root[data-theme="dark"] .bg-img-dark{ display: block; }
+:root[data-theme="dark"] .bg-img-light{ display: none; }
+
 /* --- Écran de démarrage : l'image d'Ashley, fixe, entière --- */
 .splash-screen{
   position: relative;
