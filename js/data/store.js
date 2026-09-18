@@ -15,6 +15,9 @@ function defaultData() {
       interfaceLang: "fr",
       langs: [
         { code: "en-gb", label: "Anglais (britannique)", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
+        { code: "en-us", label: "Anglais (américain)", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
+        { code: "es", label: "Espagnol", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
+        { code: "pt", label: "Portugais", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
       ],
     },
   };
@@ -24,7 +27,23 @@ function load() {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaultData();
-    return { ...defaultData(), ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    const defaults = defaultData();
+    const merged = { ...defaults, ...parsed };
+
+    // Migration : si de nouvelles langues ont été ajoutées à l'appli depuis
+    // la création du compte (ex. espagnol/portugais ajoutés après coup), on
+    // les ajoute à la liste sans toucher à la progression déjà enregistrée
+    // pour les langues déjà suivies.
+    const existingLangs = parsed.settings?.langs || defaults.settings.langs;
+    const existingCodes = new Set(existingLangs.map((l) => l.code));
+    const missingLangs = defaults.settings.langs.filter((l) => !existingCodes.has(l.code));
+    merged.settings = {
+      ...defaults.settings,
+      ...(parsed.settings || {}),
+      langs: [...existingLangs, ...missingLangs],
+    };
+    return merged;
   } catch (e) {
     return defaultData();
   }
