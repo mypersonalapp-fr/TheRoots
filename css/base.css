@@ -108,6 +108,17 @@ body{
   overflow: hidden;
 }
 
+/* Mode sombre : le verre dépoli clair devient un verre dépoli foncé — sinon
+   le texte clair (--ink en mode sombre) se noie sur un fond resté blanc. */
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .card-media{
+  background: rgba(18,19,23,0.55);
+  border-color: rgba(255,255,255,0.10);
+}
+:root[data-theme="dark"] .card{
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
 input[type="email"], input[type="password"], input[type="text"]{
   font-family: var(--font-main);
   font-size: 16px;
