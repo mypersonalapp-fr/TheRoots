@@ -192,7 +192,7 @@
   width: 38px; height: 38px; border-radius: 50%; font-size: 18px; cursor: pointer;
   box-shadow: 0 2px 6px rgba(20,20,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
 }
-.app-topbar .title{ font-weight: 800; font-size: 18px; }
+.app-topbar .title{ font-weight: 800; font-size: 22px; }
 .app-body{ flex: 1; position: relative; z-index: 2; padding: 8px 18px 48px; }
 
 /* --- Bouton hamburger (haut à gauche) : effet de profondeur "3D léger" --- */
@@ -377,6 +377,7 @@
   color: var(--accent);
 }
 .dash-culture-card .dash-culture-text{ font-size: 13px; line-height: 1.4; }
+.dash-culture-card .dash-culture-answer{ font-size: 11.5px; line-height: 1.4; font-style: italic; color: var(--ink-soft); }
 
 /* --- Carte de progression cliquable (mène vers "Mes cours") --- */
 .dash-progress-card.clickable{
