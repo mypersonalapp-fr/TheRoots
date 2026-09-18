@@ -35,8 +35,9 @@ function offerFaceId(email, done) {
   });
 }
 
-export function renderLogin(root, { mode = "login", onDone, onBack }) {
+export function renderLogin(root, { mode = "login", prefillEmail = "", onDone, onBack }) {
   const isSignup = mode === "signup";
+  const isReconnect = mode === "reconnect";
   const el = document.createElement("div");
   el.className = "screen auth-form-screen";
   el.innerHTML = `
@@ -46,20 +47,21 @@ export function renderLogin(root, { mode = "login", onDone, onBack }) {
     </div>
     <div class="auth-form-top">
       <button class="back-btn" id="backBtn" aria-label="Retour">‹</button>
-      <div class="title">${isSignup ? "Créer un compte" : "Se connecter"}</div>
+      <div class="title">${isSignup ? "Créer un compte" : isReconnect ? "Reconnecte-toi" : "Se connecter"}</div>
       <span style="width:38px"></span>
     </div>
     <div class="auth-form-body">
+      ${isReconnect ? `<p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Pour ta sécurité, on te redemande ton mot de passe à chaque fois que tu rouvres l'appli.</p>` : ""}
       <form class="login-form card" id="loginForm">
         <label class="field">
           <span>Adresse e-mail</span>
-          <input type="email" name="email" required placeholder="toi@exemple.com" autocomplete="email"/>
+          <input type="email" name="email" required placeholder="toi@exemple.com" autocomplete="email" value="${prefillEmail}"/>
         </label>
         <label class="field">
           <span>Mot de passe</span>
           <input type="password" name="password" required placeholder="••••••••" autocomplete="${isSignup ? 'new-password' : 'current-password'}"/>
         </label>
-        <button type="submit" class="btn btn-primary login-submit">${isSignup ? "Créer mon compte" : "Se connecter"}</button>
+        <button type="submit" class="btn btn-primary login-submit">${isSignup ? "Créer mon compte" : isReconnect ? "Me reconnecter" : "Se connecter"}</button>
       </form>
     </div>
   `;
