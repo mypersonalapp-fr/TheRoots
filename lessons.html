@@ -2565,14 +2565,35 @@
     loadVoices();
     window.speechSynthesis.onvoiceschanged = loadVoices;
   }
+  // Voix préférée choisie dans Paramètres > Réglages généraux > Voix (app
+  // principale) : gardée sous forme "nom|langue" dans le store partagé
+  // (localStorage "the_roots_store_v1"), relue ici pour que lessons.html
+  // utilise la même voix plutôt que de toujours forcer l'accent britannique.
+  function preferredVoiceKey(){
+    try{
+      var raw = localStorage.getItem("the_roots_store_v1");
+      if(!raw) return null;
+      var data = JSON.parse(raw);
+      return (data && data.settings && data.settings.preferredVoiceURI) || null;
+    }catch(e){ return null; }
+  }
   function speak(text){
     try{
       if(!window.speechSynthesis) return;
       var u = new SpeechSynthesisUtterance(text);
       u.lang = "en-GB";
-      var gbVoice = cachedVoices.find(function(v){ return v.lang === "en-GB"; }) ||
-                    cachedVoices.find(function(v){ return (v.lang||"").indexOf("en-GB") === 0; });
-      if(gbVoice) u.voice = gbVoice;
+      var chosen = null;
+      var key = preferredVoiceKey();
+      if(key){
+        var parts = key.split("|");
+        var name = parts[0], voiceLang = parts[1];
+        chosen = cachedVoices.find(function(v){ return v.name === name && v.lang === voiceLang; });
+      }
+      if(!chosen){
+        chosen = cachedVoices.find(function(v){ return v.lang === "en-GB"; }) ||
+                 cachedVoices.find(function(v){ return (v.lang||"").indexOf("en-GB") === 0; });
+      }
+      if(chosen){ u.voice = chosen; u.lang = chosen.lang; }
       u.rate = 0.92;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
