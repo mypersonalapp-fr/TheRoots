@@ -3,6 +3,12 @@
 // entièrement ; ce fichier est le seul à remplacer quand un vrai backend
 // (comptes partagés entre appareils, PDF stockés côté serveur, etc.) sera
 // branché — le reste de l'app ne parlera qu'à ces fonctions.
+//
+// Modèle des langues : un seul "groupe" par langue (Anglais, Espagnol,
+// Portugais), avec ses variantes régionales (britannique/américain,
+// colombien/Espagne, brésilien/Europe). Un seul test de niveau par groupe
+// (pas un par variante) ; une fois le niveau obtenu, l'utilisateur choisit
+// quelle variante suivre comme cours (selectedVariant).
 
 const KEY = "the_roots_store_v1";
 
@@ -14,13 +20,66 @@ function defaultData() {
       theme: "light",
       interfaceLang: "fr",
       langs: [
-        { code: "en-gb", label: "Anglais (britannique)", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
-        { code: "en-us", label: "Anglais (américain)", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
-        { code: "es", label: "Espagnol", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
-        { code: "pt", label: "Portugais", level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null },
+        {
+          code: "en", label: "Anglais",
+          variants: [
+            { code: "en-gb", label: "Britannique" },
+            { code: "en-us", label: "Américain" },
+          ],
+          selectedVariant: null,
+          level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null,
+        },
+        {
+          code: "es", label: "Espagnol",
+          variants: [
+            { code: "es-co", label: "Colombien" },
+            { code: "es-es", label: "Espagne" },
+          ],
+          selectedVariant: null,
+          level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null,
+        },
+        {
+          code: "pt", label: "Portugais",
+          variants: [
+            { code: "pt-br", label: "Brésilien" },
+            { code: "pt-pt", label: "Europe" },
+          ],
+          selectedVariant: null,
+          level: null, progress: 0, leveled: false, entryLevel: null, entryDate: null,
+        },
       ],
     },
   };
+}
+
+// Reprend un ancien format "une entrée par variante" (en-gb / en-us / es-co /
+// es-es / pt-br / pt-pt séparément) et le fusionne dans le nouveau format
+// groupé, sans perdre un niveau déjà obtenu sur une variante.
+function migrateLangsToGroups(oldLangs, groups) {
+  if (!Array.isArray(oldLangs) || !oldLangs.length) return groups;
+  const alreadyGrouped = oldLangs.every((l) => Array.isArray(l.variants));
+  if (alreadyGrouped) return oldLangs;
+
+  const leveledByGroup = {};
+  oldLangs.forEach((l) => {
+    if (!l.leveled) return;
+    const groupCode = (l.code || "").split("-")[0];
+    if (!leveledByGroup[groupCode]) leveledByGroup[groupCode] = l;
+  });
+
+  return groups.map((g) => {
+    const found = leveledByGroup[g.code];
+    if (!found) return g;
+    return {
+      ...g,
+      leveled: true,
+      level: found.level,
+      progress: found.progress || 0,
+      entryLevel: found.entryLevel || found.level,
+      entryDate: found.entryDate || null,
+      selectedVariant: found.code && found.code.includes("-") ? found.code : g.selectedVariant,
+    };
+  });
 }
 
 function load() {
@@ -31,17 +90,15 @@ function load() {
     const defaults = defaultData();
     const merged = { ...defaults, ...parsed };
 
-    // Migration : si de nouvelles langues ont été ajoutées à l'appli depuis
-    // la création du compte (ex. espagnol/portugais ajoutés après coup), on
-    // les ajoute à la liste sans toucher à la progression déjà enregistrée
-    // pour les langues déjà suivies.
-    const existingLangs = parsed.settings?.langs || defaults.settings.langs;
-    const existingCodes = new Set(existingLangs.map((l) => l.code));
+    const rawExistingLangs = parsed.settings?.langs || defaults.settings.langs;
+    const groupedLangs = migrateLangsToGroups(rawExistingLangs, defaults.settings.langs);
+    const existingCodes = new Set(groupedLangs.map((l) => l.code));
     const missingLangs = defaults.settings.langs.filter((l) => !existingCodes.has(l.code));
+
     merged.settings = {
       ...defaults.settings,
       ...(parsed.settings || {}),
-      langs: [...existingLangs, ...missingLangs],
+      langs: [...groupedLangs, ...missingLangs],
     };
     return merged;
   } catch (e) {
@@ -108,12 +165,12 @@ export const store = {
     save(data);
     return data.settings;
   },
-  // Enregistre le résultat du test de niveau initial pour une langue :
-  // niveau attribué (palier CECR atteint), et marque la langue comme
-  // "leveled" pour débloquer les leçons. "entryLevel"/"entryDate" ne sont
-  // écrits qu'une seule fois (le tout premier test) et ne bougent plus
+  // Enregistre le résultat du test de niveau initial pour un GROUPE de
+  // langue (ex. "en" pour anglais, tous accents confondus) — un seul test
+  // par groupe, pas un par variante régionale. "entryLevel"/"entryDate" ne
+  // sont écrits qu'une seule fois (le tout premier test) et ne bougent plus
   // ensuite — c'est la référence gardée pour se comparer plus tard, même
-  // si "level" (le niveau courant) évolue avec la progression.
+  // si "level" (le niveau actuel) évolue avec la progression.
   setPlacementResult(code, { level, entryLevel, entryDate }) {
     const data = load();
     data.settings.langs = data.settings.langs.map((l) => {
@@ -127,6 +184,17 @@ export const store = {
         entryDate: l.entryDate || entryDate || new Date().toISOString(),
       };
     });
+    save(data);
+    return data.settings;
+  },
+  // Choix du "cours" suivi une fois le niveau obtenu pour le groupe (ex.
+  // britannique ou américain pour l'anglais) — pas besoin de repasser un
+  // test, c'est juste la variante de contenu suivie.
+  selectVariant(groupCode, variantCode) {
+    const data = load();
+    data.settings.langs = data.settings.langs.map((l) => (
+      l.code === groupCode ? { ...l, selectedVariant: variantCode } : l
+    ));
     save(data);
     return data.settings;
   },
