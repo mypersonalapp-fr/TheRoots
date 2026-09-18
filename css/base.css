@@ -40,6 +40,9 @@
   --ink: #f2f3f5;
   --ink-soft: #a7abb4;
   --border: #2c2f37;
+  --pop-soft: #3a2222; /* zones "écriture"/erreur en rouge doux : version foncée,
+                           sinon le texte clair devenait illisible sur un fond
+                           resté rose pâle */
 }
 
 *{ box-sizing: border-box; }
