@@ -8,6 +8,7 @@ import { renderAuthMenu } from "./screens/auth-menu.js";
 import { renderLogin } from "./screens/login.js";
 import { renderForgotPassword } from "./screens/forgot-password.js";
 import { renderShell } from "./screens/shell.js";
+import { renderFaceIdLock } from "./screens/faceid-lock.js";
 
 const root = document.getElementById("app");
 
@@ -22,7 +23,16 @@ function showAuthMenu() {
 function start() {
   renderSplash(root, () => {
     if (store.isLoggedIn()) {
-      renderShell(root);
+      const faceId = store.getFaceId();
+      if (faceId.enabled && faceId.credentialId) {
+        renderFaceIdLock(root, {
+          credentialId: faceId.credentialId,
+          onUnlocked: () => renderShell(root),
+          onUsePassword: () => { store.logout(); showAuthMenu(); },
+        });
+      } else {
+        renderShell(root);
+      }
     } else {
       showAuthMenu();
     }
