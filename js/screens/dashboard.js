@@ -39,7 +39,10 @@ const QUOTES = [
 ];
 
 const CULTURE_QUESTIONS = {
-  en: "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
+  en: {
+    question: "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
+    answer: "Réponse : Covent Garden Market (aussi appelé Apple Market).",
+  },
 };
 
 // Vidéo du jour — playlist qui change tous les 2 jours (pas tous les jours).
@@ -104,7 +107,8 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
         <div class="card dash-culture-card">
           <div class="dash-culture-label">Question culture</div>
-          <div class="dash-culture-text">${CULTURE_QUESTIONS.en}</div>
+          <div class="dash-culture-text">${CULTURE_QUESTIONS.en.question}</div>
+          <div class="dash-culture-answer">${CULTURE_QUESTIONS.en.answer}</div>
         </div>
       </div>
     </div>
@@ -136,13 +140,16 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
     <div class="dash-box">
       <h3>Citation du jour</h3>
-      <div class="card dash-quote-card">
-        <div class="dash-quote">${quote.fr}</div>
-        ${settings.langs.filter((l) => l.leveled && quote.byLang[l.code]).map((l) => `
-          <div class="dash-quote-equiv">${quote.byLang[l.code]}</div>
-          <div class="dash-quote-equiv-label">${l.label} — équivalent le plus proche, pas une traduction mot à mot</div>
-        `).join("")}
-      </div>
+      ${leveledLangs.filter((l) => quote.byLang[l.code]).length > 0 ? leveledLangs.filter((l) => quote.byLang[l.code]).map((l) => `
+        <div class="card dash-quote-card">
+          <div class="dash-quote">${quote.byLang[l.code]}</div>
+          <div class="dash-quote-equiv-label">${l.label} — équivalent français (pas une traduction mot à mot) : ${quote.fr}</div>
+        </div>
+      `).join("") : `
+        <div class="card dash-quote-card">
+          <div class="dash-quote">${quote.fr}</div>
+        </div>
+      `}
     </div>
   `;
 
