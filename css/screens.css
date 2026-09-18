@@ -355,7 +355,10 @@
   color: var(--ink); font-weight: 800;
   text-shadow: 0 1px 3px rgba(255,255,255,.55);
 }
-.dash-quote{ font-style: italic; color: var(--ink-soft); text-align: center; padding: 18px 10px; }
+.dash-quote-card{ text-align: center; padding: 14px 16px; }
+.dash-quote{ font-style: italic; color: var(--ink-soft); font-size: 14px; line-height: 1.4; }
+.dash-quote-equiv{ font-size: 12.5px; color: var(--accent); font-weight: 700; margin-top: 6px; }
+.dash-quote-equiv-label{ font-size: 10.5px; color: var(--ink-soft); margin-top: 1px; }
 
 /* --- Carte "Question culture" glissée dans la même rangée que la
    progression, pour ne pas avoir à faire défiler tout l'écran pour la voir --- */
@@ -374,21 +377,32 @@
   border: none; color: inherit; background: var(--surface);
 }
 
-/* --- Vidéo du jour : vignette cliquable (image + bouton lecture) plutôt
-   qu'un cadre vidéo intégré, qui prend beaucoup de place et affiche parfois
-   "vidéo non disponible" quand la lecture hors YouTube est désactivée --- */
+/* --- Vidéo du jour : image pleine largeur mais hauteur limitée (pas les
+   ~220px d'un vrai 16:9 plein écran), avec un bouton lecture clair (rond
+   blanc, pas un pavé noir) — vignette cliquable plutôt qu'un cadre vidéo
+   intégré, qui prend beaucoup de place et affiche parfois "vidéo non
+   disponible" quand la lecture hors YouTube est désactivée --- */
+.dash-video-card{ padding: 0; overflow: hidden; }
 .dash-video-thumb{
   position: relative; display: block; text-decoration: none; color: inherit;
-  aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-soft);
+  width: 100%; height: 132px; overflow: hidden;
+  background: var(--surface-soft);
 }
 .dash-video-thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .dash-video-play{
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 54px; height: 54px; border-radius: 50%;
-  background: rgba(20,20,30,0.55);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 20px;
+  color: var(--brand-teal); font-size: 15px; padding-left: 2px;
+  box-shadow: 0 3px 10px rgba(20,20,30,0.28);
 }
+.dash-video-info{ padding: 10px 14px 12px; }
+.dash-video-title{
+  font-weight: 700; font-size: 13px; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.dash-video-cta{ font-size: 11px; color: var(--accent); font-weight: 700; margin-top: 4px; }
 
 /* --- Mes cours : cartes de langues --- */
 .mc-lang-card{ cursor: pointer; }
