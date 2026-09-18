@@ -26,20 +26,20 @@ const EXPRESSIONS_EN = [
 const QUOTES = [
   {
     fr: "« C'est en forgeant qu'on devient forgeron. »",
-    byLang: { "en-gb": "“Practice makes perfect.”" },
+    byLang: { en: "“Practice makes perfect.”" },
   },
   {
     fr: "« Petit à petit, l'oiseau fait son nid. »",
-    byLang: { "en-gb": "“Slow and steady wins the race.”" },
+    byLang: { en: "“Slow and steady wins the race.”" },
   },
   {
     fr: "« Qui cherche trouve. »",
-    byLang: { "en-gb": "“Seek and you shall find.”" },
+    byLang: { en: "“Seek and you shall find.”" },
   },
 ];
 
 const CULTURE_QUESTIONS = {
-  "en-gb": "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
+  en: "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
 };
 
 // Vidéo du jour — playlist qui change tous les 2 jours (pas tous les jours).
@@ -76,6 +76,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
   const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
   const quote = QUOTES[new Date().getDate() % QUOTES.length];
   const video = pickVideoOfTheDay(VIDEOS_EN);
+  const leveledLangs = settings.langs.filter((l) => l.leveled);
 
   container.innerHTML = `
     <div class="dash-greeting card">${date} · <strong>${time}</strong></div>
@@ -83,23 +84,27 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
     <div class="dash-box">
       <h3>Ma progression</h3>
       <div class="dash-progress-row">
-        ${settings.langs.map(l => l.leveled ? `
+        ${leveledLangs.length === 0 ? `
           <button class="card dash-progress-card clickable" data-goto-courses="1">
-            <div>${l.label}</div>
+            <div>Test de niveau à passer</div>
+            <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">Choisis ta langue → onglet « Mes cours »</div>
+          </button>
+        ` : leveledLangs.map((l) => {
+          const variant = l.variants?.find((v) => v.code === l.selectedVariant);
+          const label = variant ? `${l.label} (${variant.label})` : l.label;
+          return `
+          <button class="card dash-progress-card clickable" data-goto-courses="1">
+            <div>${label}</div>
             <div style="font-size:12px;color:var(--ink-soft)">Niveau ${l.level}</div>
             <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
             <div style="font-size:12px;margin-top:4px">${Math.round((l.progress||0)*100)}%</div>
           </button>
-        ` : `
-          <button class="card dash-progress-card clickable" data-goto-courses="1">
-            <div>${l.label}</div>
-            <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">Test de niveau à faire → onglet « Mes cours »</div>
-          </button>
-        `).join("")}
+        `;
+        }).join("")}
 
         <div class="card dash-culture-card">
           <div class="dash-culture-label">Question culture</div>
-          <div class="dash-culture-text">${CULTURE_QUESTIONS["en-gb"]}</div>
+          <div class="dash-culture-text">${CULTURE_QUESTIONS.en}</div>
         </div>
       </div>
     </div>
