@@ -358,6 +358,19 @@
 .mc-locked-msg{ display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
 .mc-lock-icon{ font-size: 20px; line-height: 1; }
 .auth-form-screen .shell-bg{ position: absolute; }
-.aut
+
+/* --- Fond "plein écran" : remplit TOUJOURS tout l'écran (téléphone,
+   tablette, portrait ou paysage), quitte à recadrer un peu les bords de
+   l'image — contrairement à .contain-frame qui montre l'image entière
+   mais peut laisser du vide sur les côtés. Réservé aux écrans où aucun
+   bouton n'est dessiné DANS l'image (splash, coquille principale,
+   formulaires) : rien à réaligner si un bord est coupé. --- */
+.screen-cover-bg{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 
 
