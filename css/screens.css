@@ -357,3 +357,5 @@
 /* --- Mes cours : message de verrouillage tant que le test n'est pas fait --- */
 .mc-locked-msg{ display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
 .mc-lock-icon{ font-size: 20px; line-height: 1; }
+.auth-form-screen .shell-bg{ position: absolute; }
+
