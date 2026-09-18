@@ -12,6 +12,19 @@ import { renderFaceIdLock } from "./screens/faceid-lock.js";
 
 const root = document.getElementById("app");
 
+// Marque que l'appli a déjà été déverrouillée pendant cette "ouverture" (cet
+// onglet/cette instance de l'appli) — sessionStorage est vidé à chaque
+// fermeture réelle de l'appli (contrairement à localStorage, qui lui garde
+// le compte connecté). C'est ce qui permet de redemander une reconnexion à
+// chaque vraie réouverture, sans pour autant déconnecter le compte.
+const UNLOCK_KEY = "the_roots_unlocked_session";
+function markUnlockedThisSession() {
+  try { sessionStorage.setItem(UNLOCK_KEY, "1"); } catch (e) { /* stockage indisponible */ }
+}
+function isUnlockedThisSession() {
+  try { return sessionStorage.getItem(UNLOCK_KEY) === "1"; } catch (e) { return false; }
+}
+
 function showAuthMenu() {
   renderAuthMenu(root, {
     onSignup: () => renderLogin(root, { mode: "signup", onDone: () => renderShell(root), onBack: showAuthMenu }),
@@ -27,11 +40,21 @@ function start() {
       if (faceId.enabled && faceId.credentialId) {
         renderFaceIdLock(root, {
           credentialId: faceId.credentialId,
-          onUnlocked: () => renderShell(root),
+          onUnlocked: () => { markUnlockedThisSession(); renderShell(root); },
           onUsePassword: () => { store.logout(); showAuthMenu(); },
         });
-      } else {
+      } else if (isUnlockedThisSession()) {
         renderShell(root);
+      } else {
+        // Appli rouverte après une vraie fermeture, sans Face ID activé :
+        // on redemande le mot de passe avant d'entrer.
+        const { session } = store.get();
+        renderLogin(root, {
+          mode: "reconnect",
+          prefillEmail: session ? session.email : "",
+          onDone: () => { markUnlockedThisSession(); renderShell(root); },
+          onBack: () => { store.logout(); showAuthMenu(); },
+        });
       }
     } else {
       showAuthMenu();
