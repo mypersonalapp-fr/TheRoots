@@ -1,7 +1,8 @@
-// The Roots — écran de connexion : l'illustration remplit tout l'écran
-// (téléphone comme tablette, portrait comme paysage), et les boutons sont
-// de vrais boutons posés dans un panneau flottant par-dessus — plus besoin
-// d'aligner des zones invisibles sur des pixels précis de l'image.
+// The Roots — écran de connexion : l'illustration (logo + texte déjà dessinés
+// dedans) remplit tout l'écran, téléphone comme tablette, portrait comme
+// paysage. Les boutons sont de vrais boutons HTML, posés dans la zone vide
+// de l'image (sous le logo, au-dessus de l'illustration du bas) — jamais de
+// texte "The Roots" en double, puisqu'il est déjà dans l'image.
 
 export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
   const el = document.createElement("div");
@@ -9,7 +10,6 @@ export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
   el.innerHTML = `
     <img class="screen-cover-bg" src="assets/img/login-bg.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
     <div class="auth-menu-panel card">
-      <div class="auth-menu-brand">The Roots</div>
       <button class="btn btn-primary" id="btnLogin">Se connecter →</button>
       <button class="btn btn-ghost" id="btnSignup">Créer un compte</button>
       <button class="auth-menu-forgot" id="btnForgot">Mot de passe oublié ?</button>
