@@ -45,6 +45,10 @@ export function renderMesCours(container, shellRoot) {
               </div>
               <span class="chev">›</span>
             </div>
+            ${l.leveled ? `
+              <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
+              <div style="font-size:12px;margin-top:4px;color:var(--ink-soft)">${Math.round((l.progress||0)*100)}%</div>
+            ` : ""}
           </div>
         `;
         }).join("")}
