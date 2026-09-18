@@ -350,8 +350,45 @@
 .dash-progress-bar{ height: 8px; border-radius: 6px; background: var(--surface-soft); overflow: hidden; margin-top: 8px; }
 .dash-progress-fill{ height: 100%; background: var(--accent); }
 .dash-box{ margin-top: 14px; }
-.dash-box h3{ margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); }
+.dash-box h3{
+  margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--ink); font-weight: 800;
+  text-shadow: 0 1px 3px rgba(255,255,255,.55);
+}
 .dash-quote{ font-style: italic; color: var(--ink-soft); text-align: center; padding: 18px 10px; }
+
+/* --- Carte "Question culture" glissée dans la même rangée que la
+   progression, pour ne pas avoir à faire défiler tout l'écran pour la voir --- */
+.dash-culture-card{
+  min-width: 220px; display: flex; flex-direction: column; gap: 6px;
+}
+.dash-culture-card .dash-culture-label{
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--accent);
+}
+.dash-culture-card .dash-culture-text{ font-size: 13px; line-height: 1.4; }
+
+/* --- Carte de progression cliquable (mène vers "Mes cours") --- */
+.dash-progress-card.clickable{
+  cursor: pointer; text-align: left; font-family: var(--font-main);
+  border: none; color: inherit; background: var(--surface);
+}
+
+/* --- Vidéo du jour : vignette cliquable (image + bouton lecture) plutôt
+   qu'un cadre vidéo intégré, qui prend beaucoup de place et affiche parfois
+   "vidéo non disponible" quand la lecture hors YouTube est désactivée --- */
+.dash-video-thumb{
+  position: relative; display: block; text-decoration: none; color: inherit;
+  aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-soft);
+}
+.dash-video-thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.dash-video-play{
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(20,20,30,0.55);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 20px;
+}
 
 /* --- Mes cours : cartes de langues --- */
 .mc-lang-card{ cursor: pointer; }
