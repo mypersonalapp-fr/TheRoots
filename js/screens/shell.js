@@ -108,5 +108,29 @@ export function renderShell(root) {
   });
   backBtn.addEventListener("click", () => renderTab("accueil"));
 
+  // Geste "glisser à droite" depuis le bord gauche de l'écran pour rouvrir
+  // le menu (comme le bouton hamburger) — parti du bord pour ne pas gêner
+  // les zones qui défilent horizontalement ailleurs dans l'appli (cartes de
+  // progression, sélecteurs de traduction, etc.).
+  let touchStartX = null;
+  let touchStartY = null;
+  let touchStartedAtEdge = false;
+  el.addEventListener("touchstart", (e) => {
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchStartedAtEdge = t.clientX < 24;
+  }, { passive: true });
+  el.addEventListener("touchend", (e) => {
+    if (touchStartX === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = Math.abs(t.clientY - touchStartY);
+    if (touchStartedAtEdge && dx > 60 && dy < 60 && !drawer.classList.contains("open")) {
+      openDrawer();
+    }
+    touchStartX = null;
+  }, { passive: true });
+
   renderTab("accueil");
 }
