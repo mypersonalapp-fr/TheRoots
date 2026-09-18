@@ -8,6 +8,7 @@
 
 import { store } from "../data/store.js";
 import { t } from "../data/i18n.js";
+import { webauthn } from "../data/webauthn.js";
 
 const APP_VERSION = "1.2";
 
@@ -58,10 +59,12 @@ export function renderSettings(container, onChange) {
   const expandedGrille = {};
   const expandedDefs = {};
   let securityMsg = "";
+  let faceidMsg = "";
   let editingEmail = false;
   let editingPassword = false;
   let voicesLoaded = englishVoices().length > 0;
   let voicesListenerAttached = false;
+  let voicesPollId = null;
 
   paint();
 
@@ -105,7 +108,7 @@ export function renderSettings(container, onChange) {
     container.querySelector("#openGeneral").addEventListener("click", () => { view = "general"; paint(); });
     container.querySelector("#openNiveaux").addEventListener("click", () => { view = "niveaux"; niveauxTab = "methode"; paint(); });
     container.querySelector("#openSecurite").addEventListener("click", () => {
-      view = "securite"; securityMsg = ""; editingEmail = false; editingPassword = false; paint();
+      view = "securite"; securityMsg = ""; faceidMsg = ""; editingEmail = false; editingPassword = false; paint();
     });
   }
 
@@ -115,12 +118,34 @@ export function renderSettings(container, onChange) {
     const voices = englishVoices();
     const currentVoiceKey = settings.preferredVoiceURI || "";
 
-    if (!voicesLoaded && window.speechSynthesis && !voicesListenerAttached) {
-      voicesListenerAttached = true;
-      window.speechSynthesis.onvoiceschanged = () => {
-        voicesLoaded = englishVoices().length > 0;
-        if (view === "general") paintGeneral();
-      };
+    // Sur iPhone/Safari, l'évènement "voiceschanged" ne se déclenche pas
+    // toujours de façon fiable (bug connu de WebKit) : sans ce filet, la
+    // liste peut rester bloquée sur "Chargement…" indéfiniment. En plus de
+    // l'évènement, on retente donc aussi par petites relances pendant
+    // quelques secondes après l'ouverture de l'écran.
+    if (!voicesLoaded && window.speechSynthesis) {
+      if (!voicesListenerAttached) {
+        voicesListenerAttached = true;
+        window.speechSynthesis.onvoiceschanged = () => {
+          voicesLoaded = englishVoices().length > 0;
+          if (view === "general") paintGeneral();
+        };
+      }
+      if (!voicesPollId) {
+        let tries = 0;
+        voicesPollId = setInterval(() => {
+          tries++;
+          const found = englishVoices().length > 0;
+          if (found || tries >= 20) {
+            clearInterval(voicesPollId);
+            voicesPollId = null;
+            if (found) {
+              voicesLoaded = true;
+              if (view === "general") paintGeneral();
+            }
+          }
+        }, 300);
+      }
     }
 
     container.innerHTML = `
@@ -154,6 +179,7 @@ export function renderSettings(container, onChange) {
             </select>
             <button class="btn btn-ghost" id="voicePreview">${t("set_voice_preview", lang)}</button>
           `}
+          <p style="font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:2px 0 0">${t("set_voice_tip", lang)}</p>
         </div>
       </div>
     `;
@@ -313,7 +339,7 @@ export function renderSettings(container, onChange) {
   // pour l'adresse e-mail et pour le mot de passe (pas un seul formulaire
   // combiné) — plus la déconnexion. ---
   function paintSecurite() {
-    const { session, settings } = store.get();
+    const { session, settings, faceId } = store.get();
     const lang = settings.interfaceLang;
     container.innerHTML = `
       ${backRow(t("title_parametres", lang))}
@@ -356,6 +382,15 @@ export function renderSettings(container, onChange) {
 
         ${securityMsg ? `<div class="lt-ok" style="margin-top:14px;font-weight:700;font-size:13px">${securityMsg}</div>` : ""}
 
+        <div class="sec-row" style="margin-top:18px">
+          <div>
+            <div class="sec-row-label">${t("sec_faceid_label", lang)}</div>
+            <div class="sec-row-value">${faceId.enabled ? t("sec_faceid_on", lang) : t("sec_faceid_off", lang)}</div>
+          </div>
+          <button class="mc-variant-change" id="toggleFaceid">${faceId.enabled ? t("sec_faceid_disable_btn", lang) : t("sec_faceid_enable_btn", lang)}</button>
+        </div>
+        ${faceidMsg ? `<div class="lt-cloze-fb" style="margin-top:8px"><span class="${faceidMsg.ok ? 'lt-ok' : 'lt-bad'}">${faceidMsg.text}</span></div>` : ""}
+
         <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">${t("set_logout", lang)}</button>
       </div>
     `;
@@ -366,6 +401,29 @@ export function renderSettings(container, onChange) {
     });
     container.querySelector("#togglePassword").addEventListener("click", () => {
       editingPassword = !editingPassword; securityMsg = ""; paintSecurite();
+    });
+
+    container.querySelector("#toggleFaceid").addEventListener("click", async () => {
+      if (faceId.enabled) {
+        store.disableFaceId();
+        faceidMsg = { ok: true, text: t("sec_faceid_disabled_msg", lang) };
+        paintSecurite();
+        return;
+      }
+      const available = await webauthn.isAvailable();
+      if (!available) {
+        faceidMsg = { ok: false, text: t("sec_faceid_unavailable", lang) };
+        paintSecurite();
+        return;
+      }
+      const credentialId = await webauthn.register(session ? session.email : "");
+      if (credentialId) {
+        store.enableFaceId(credentialId);
+        faceidMsg = { ok: true, text: t("sec_faceid_enabled_msg", lang) };
+      } else {
+        faceidMsg = { ok: false, text: t("sec_faceid_failed", lang) };
+      }
+      paintSecurite();
     });
 
     const emailForm = container.querySelector("#emailForm");
