@@ -52,21 +52,25 @@
    cliquable quel que soit le recadrage. --- */
 .login-hero-screen{
   position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
+  min-height: 100vh;
 }
+/* Le panneau de boutons est calé dans la zone vide de l'image (entre le
+   logo/texte du haut et la silhouette en bas) — jamais en plein centre,
+   pour ne jamais recouvrir le texte déjà dessiné dans l'image. */
 .auth-menu-panel{
-  position: relative; z-index: 2;
-  width: 100%; max-width: 380px;
+  position: absolute; z-index: 2;
+  top: 60%; left: 50%; transform: translate(-50%, -50%);
+  width: 100%; max-width: 340px;
   display: flex; flex-direction: column; gap: 12px;
-  padding: 24px;
-}
-.auth-menu-brand{
-  text-align: center; font-family: var(--font-main);
-  font-weight: 800; font-size: 20px; color: var(--brand-teal);
-  margin-bottom: 4px;
+  padding: 18px;
 }
 .auth-menu-panel .btn{ width: 100%; }
+/* Téléphone en mode paysage : l'écran est très bas, on resserre le panneau
+   pour qu'il ne touche jamais le texte du haut ni l'illustration du bas. */
+@media (max-height: 480px){
+  .auth-menu-panel{ top: 68%; max-width: 300px; gap: 8px; padding: 12px; }
+  .auth-menu-panel .btn{ padding-top: 10px; padding-bottom: 10px; }
+}
 .auth-menu-forgot{
   background: none; border: none; margin: 2px auto 0;
   color: var(--brand-teal); font-weight: 700; font-size: 13px;
