@@ -9,6 +9,7 @@ const KEY = "the_roots_store_v1";
 function defaultData() {
   return {
     session: null, // { email }
+    faceId: { enabled: false, credentialId: null },
     settings: {
       theme: "light",
       interfaceLang: "fr",
@@ -63,6 +64,24 @@ export const store = {
   },
   isLoggedIn() {
     return !!load().session;
+  },
+  // Face ID / Touch ID pour reverrouiller l'accès à l'appli sur cet
+  // appareil (voir js/data/webauthn.js) — rien à voir avec un vrai compte
+  // en ligne, juste un verrou local en plus du mot de passe.
+  getFaceId() {
+    return load().faceId;
+  },
+  enableFaceId(credentialId) {
+    const data = load();
+    data.faceId = { enabled: true, credentialId };
+    save(data);
+    return data.faceId;
+  },
+  disableFaceId() {
+    const data = load();
+    data.faceId = { enabled: false, credentialId: null };
+    save(data);
+    return data.faceId;
   },
   updateSettings(patch) {
     const data = load();
