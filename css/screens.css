@@ -322,12 +322,14 @@
 .immersion-note{ color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
 
 .translate-box{ display: flex; flex-direction: column; gap: 10px; }
-.translate-lang-row{ display: flex; align-items: center; gap: 10px; }
+.translate-lang-row{ display: flex; align-items: center; gap: 8px; }
 .translate-lang-select{
-  flex: 1; font-family: var(--font-main); font-weight: 700; font-size: 13.5px;
-  padding: 11px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  flex: 1; min-width: 0; font-family: var(--font-main); font-weight: 700; font-size: 13.5px;
+  padding: 11px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border);
   background: var(--surface-soft); color: var(--ink);
+  text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
 }
+.translate-swap{ flex: 0 0 auto; }
 .translate-swap{
   width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
   background: var(--surface); font-size: 15px;
