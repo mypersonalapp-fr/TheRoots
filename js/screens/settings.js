@@ -48,6 +48,8 @@ export function renderSettings(container, onChange) {
   const expandedGrille = {};
   const expandedDefs = {};
   let securityMsg = "";
+  let editingEmail = false;
+  let editingPassword = false;
 
   paint();
 
@@ -88,7 +90,9 @@ export function renderSettings(container, onChange) {
     `;
     container.querySelector("#openGeneral").addEventListener("click", () => { view = "general"; paint(); });
     container.querySelector("#openNiveaux").addEventListener("click", () => { view = "niveaux"; niveauxTab = "methode"; paint(); });
-    container.querySelector("#openSecurite").addEventListener("click", () => { view = "securite"; securityMsg = ""; paint(); });
+    container.querySelector("#openSecurite").addEventListener("click", () => {
+      view = "securite"; securityMsg = ""; editingEmail = false; editingPassword = false; paint();
+    });
   }
 
   function paintGeneral() {
@@ -261,37 +265,87 @@ export function renderSettings(container, onChange) {
     });
   }
 
-  // --- Sécurité : modifier l'adresse e-mail et le mot de passe ---
+  // --- Sécurité : compte actuel affiché, avec une action "Changer" séparée
+  // pour l'adresse e-mail et pour le mot de passe (pas un seul formulaire
+  // combiné) — plus la déconnexion. ---
   function paintSecurite() {
     const { session } = store.get();
     container.innerHTML = `
       ${backRow("Paramètres")}
       <div class="card">
         <h3 style="margin:0 0 14px">Sécurité du compte</h3>
-        <form class="login-form" id="securityForm">
-          <label class="field">
-            <span>Adresse e-mail</span>
-            <input type="email" name="email" value="${session ? session.email : ""}" required/>
-          </label>
-          <label class="field">
-            <span>Nouveau mot de passe</span>
-            <input type="password" name="password" placeholder="Laisser vide pour ne pas le changer" autocomplete="new-password"/>
-          </label>
-          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:4px">Enregistrer</button>
-          ${securityMsg ? `<div class="lt-ok" style="margin-top:8px;font-weight:700;font-size:13px">${securityMsg}</div>` : ""}
-        </form>
+
+        <div class="sec-row">
+          <div>
+            <div class="sec-row-label">Adresse e-mail</div>
+            <div class="sec-row-value">${session ? session.email : ""}</div>
+          </div>
+          <button class="mc-variant-change" id="toggleEmail">${editingEmail ? "Annuler" : "Changer"}</button>
+        </div>
+        ${editingEmail ? `
+          <form class="login-form" id="emailForm" style="margin-top:10px">
+            <label class="field">
+              <span>Nouvelle adresse e-mail</span>
+              <input type="email" name="email" value="${session ? session.email : ""}" required/>
+            </label>
+            <button type="submit" class="btn btn-primary" style="width:100%">Enregistrer l'adresse e-mail</button>
+          </form>
+        ` : ""}
+
+        <div class="sec-row" style="margin-top:18px">
+          <div>
+            <div class="sec-row-label">Mot de passe</div>
+            <div class="sec-row-value">••••••••</div>
+          </div>
+          <button class="mc-variant-change" id="togglePassword">${editingPassword ? "Annuler" : "Changer"}</button>
+        </div>
+        ${editingPassword ? `
+          <form class="login-form" id="passwordForm" style="margin-top:10px">
+            <label class="field">
+              <span>Nouveau mot de passe</span>
+              <input type="password" name="password" required autocomplete="new-password"/>
+            </label>
+            <button type="submit" class="btn btn-primary" style="width:100%">Enregistrer le mot de passe</button>
+          </form>
+        ` : ""}
+
+        ${securityMsg ? `<div class="lt-ok" style="margin-top:14px;font-weight:700;font-size:13px">${securityMsg}</div>` : ""}
+
+        <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">Se déconnecter</button>
       </div>
     `;
     container.querySelector("#settingsBack").addEventListener("click", () => { view = "root"; paint(); });
-    container.querySelector("#securityForm").addEventListener("submit", (e) => {
+
+    container.querySelector("#toggleEmail").addEventListener("click", () => {
+      editingEmail = !editingEmail; securityMsg = ""; paintSecurite();
+    });
+    container.querySelector("#togglePassword").addEventListener("click", () => {
+      editingPassword = !editingPassword; securityMsg = ""; paintSecurite();
+    });
+
+    const emailForm = container.querySelector("#emailForm");
+    if (emailForm) emailForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const email = e.target.email.value.trim();
-      const password = e.target.password.value;
-      const patch = { email };
-      if (password) patch.password = password;
-      store.updateAccount(patch);
-      securityMsg = "Informations mises à jour ✓";
+      store.updateAccount({ email });
+      securityMsg = "Adresse e-mail mise à jour ✓";
+      editingEmail = false;
       paintSecurite();
+    });
+
+    const passwordForm = container.querySelector("#passwordForm");
+    if (passwordForm) passwordForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const password = e.target.password.value;
+      store.updateAccount({ password });
+      securityMsg = "Mot de passe mis à jour ✓";
+      editingPassword = false;
+      paintSecurite();
+    });
+
+    container.querySelector("#logoutBtn").addEventListener("click", () => {
+      store.logout();
+      window.location.reload();
     });
   }
 }
