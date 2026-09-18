@@ -44,6 +44,34 @@
 }
 .splash-screen.splash-in{ opacity: 1; }
 .splash-screen.splash-fade-out{ opacity: 0; }
+/* Petites bulles "Bonjour / Hello / Hola..." qui apparaissent une à une
+   au-dessus du décor, dans le haut de l'écran (jamais sur les monuments
+   en bas), pour donner vie à l'écran d'ouverture — même esprit que les
+   bulles déjà dessinées sur l'icône de l'appli. */
+.splash-greeting{
+  position: absolute; z-index: 1;
+  font-family: var(--font-main); font-weight: 800; font-size: 15px;
+  padding: 8px 16px; border-radius: 999px; white-space: nowrap;
+  color: var(--brand-teal);
+  box-shadow: 0 4px 12px rgba(20,20,30,0.14), 0 1px 0 rgba(255,255,255,0.5) inset;
+  opacity: 0; transform: scale(0.5);
+  animation: splashGreetingPop .5s cubic-bezier(.2,.8,.3,1.4) forwards;
+}
+@keyframes splashGreetingPop{
+  to{ opacity: 1; transform: scale(1); }
+}
+.splash-greeting-1{ top: 8%;  left: 8%;  background: #fbe08a; animation-delay: .15s; }
+.splash-greeting-2{ top: 6%;  right: 8%; background: #bfe3ee; animation-delay: .55s; }
+.splash-greeting-3{ top: 22%; left: 6%;  background: #f3b3ad; animation-delay: .95s; }
+.splash-greeting-4{ top: 20%; right: 6%; background: #d2c2ec; animation-delay: 1.35s; }
+.splash-greeting-5{ top: 36%; left: 50%; transform: translateX(-50%) scale(0.5); background: #b7ddc4; animation-delay: 1.75s; }
+.splash-greeting-5{ animation-name: splashGreetingPopCenter; }
+@keyframes splashGreetingPopCenter{
+  to{ opacity: 1; transform: translateX(-50%) scale(1); }
+}
+@media (max-width: 360px), (max-height: 480px){
+  .splash-greeting{ font-size: 13px; padding: 6px 12px; }
+}
 
 /* --- Écran de connexion : l'illustration remplit tout l'écran (portrait
    ou paysage, téléphone ou tablette) ; les boutons sont de VRAIS boutons
