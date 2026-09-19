@@ -131,7 +131,7 @@ export function renderTraduction(container) {
         <button class="btn btn-primary" id="translateBtn" style="width:100%">${t("tr_translate_btn", lang)}</button>
 
         <div class="translate-output" id="translateOutput">${t("tr_output_placeholder", lang)}</div>
-        <div class="translate-hint" id="translateHint">${t("tr_hint_deepl", lang)}</div>
+        <div class="translate-hint" id="translateHint">${isRelayConfigured() ? t("tr_hint_deepl", lang) : t("tr_hint_fallback_static", lang)}</div>
       </div>
     </div>
   `;
@@ -164,7 +164,9 @@ export function renderTraduction(container) {
     try {
       const result = await translateWith(text, fromSel.value, toSel.value, formalitySel.value);
       output.textContent = result.text;
-      hint.textContent = result.source === "deepl" ? t("tr_hint_deepl", lang) : t("tr_hint_fallback", lang);
+      hint.textContent = result.source === "deepl"
+        ? t("tr_hint_deepl", lang)
+        : (isRelayConfigured() ? t("tr_hint_fallback", lang) : t("tr_hint_fallback_static", lang));
     } catch (e) {
       output.textContent = t("tr_error", lang);
     } finally {
