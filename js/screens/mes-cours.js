@@ -12,12 +12,20 @@ import { store } from "../data/store.js";
 import { renderLevelTest } from "./level-test.js";
 import { t, formatDate } from "../data/i18n.js";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js";
 
-// Programme par palier, par langue — seul l'anglais A1 est rédigé pour
-// l'instant (voir claude/cahier-des-charges-the-roots-v1.md dans le projet
-// Claude) ; l'espagnol et le portugais afficheront "bientôt disponible"
-// tant que leurs paliers n'auront pas été rédigés au même niveau de détail.
-const PROGRAMS_BY_LANG = { en: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS } };
+// Programme par palier, par langue ET par niveau — seul l'anglais A1 et A2
+// sont rédigés pour l'instant (voir claude/cahier-des-charges-the-roots-v1.md
+// et claude/contenu-paliers-a2-lot1.md dans le projet Claude) ; l'espagnol et
+// le portugais, ainsi que les niveaux B1 à C2, afficheront "bientôt
+// disponible" tant qu'ils n'auront pas été rédigés au même niveau de détail.
+const PROGRAM_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const PROGRAMS_BY_LANG = {
+  en: {
+    A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS },
+    A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS },
+  },
+};
 
 // Petit drapeau à côté du nom de chaque langue — celui de l'accent choisi
 // une fois qu'une variante est suivie (ex. 🇺🇸 pour l'anglais américain),
@@ -44,7 +52,7 @@ function bothFlagsFor(l) {
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
-  let openProgram = null; // { code, palier: string|null } — null = fermé
+  let openProgram = null; // { code, level, palier: string|null } — null = fermé
 
   paint();
 
@@ -208,7 +216,7 @@ export function renderMesCours(container, shellRoot) {
     `;
 
     container.querySelector("#mcBack").addEventListener("click", () => { openCode = null; paint(); });
-    container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, palier: null }; paint(); });
+    container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, level: "A1", palier: null }; paint(); });
 
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { window.location.href = "lessons.html"; });
@@ -237,51 +245,58 @@ export function renderMesCours(container, shellRoot) {
   }
 
   // --- Programme affiché par palier (voir claude/specs-programme-...
-  // .md, section 1) : vue d'ensemble du niveau A1 (objectif général + les
-  // 12 paliers), puis programme+attentes détaillés d'un palier précis au
-  // clic. Seul l'anglais a un programme rédigé pour l'instant. ---
+  // .md, section 1) : vue d'ensemble du niveau choisi (objectif général +
+  // les 12 paliers), puis programme+attentes détaillés d'un palier précis au
+  // clic. Un sélecteur de niveau (A1 à C2, même principe que Compréhension/
+  // Expression) permet de changer de niveau depuis la vue d'ensemble ; seuls
+  // l'anglais A1 et A2 ont un programme rédigé pour l'instant, les autres
+  // niveaux/langues affichent "bientôt disponible" sans jamais planter. ---
   function paintProgram() {
-    const { code, palier } = openProgram;
+    const { code, level, palier } = openProgram;
     const langData = store.getLang(code);
     const { settings } = store.get();
     const lang = settings.interfaceLang;
-    const program = PROGRAMS_BY_LANG[code];
-
-    if (!program) {
-      container.innerHTML = `
-        <button class="settings-back" id="progBack">${t("prog_back", lang)}</button>
-        <div class="dash-box"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
-      `;
-      container.querySelector("#progBack").addEventListener("click", () => { openProgram = null; paint(); });
-      return;
-    }
+    const program = (PROGRAMS_BY_LANG[code] || {})[level];
 
     if (!palier) {
       container.innerHTML = `
         <button class="settings-back" id="progBack">${t("prog_back", lang)}</button>
-        <div class="dash-box">
-          <h3>${flagFor(langData)} ${t("prog_overview_title", lang)}</h3>
-          <div class="card">
-            <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("prog_general_objective_label", lang)}</div>
-            <p style="font-size:13.5px;margin:6px 0 0">${program.objective}</p>
-          </div>
+        <div class="level-chip-row" id="progLevelRow">
+          ${PROGRAM_LEVELS.map((lvl) => `<button class="level-chip${lvl === level ? " active" : ""}" data-level="${lvl}">${lvl}</button>`).join("")}
         </div>
-        <div class="dash-box">
-          <h3>${t("prog_paliers_title", lang)}</h3>
-          <p style="font-size:12px;color:var(--ink-soft);margin:0 0 10px">${t("prog_palier_tap_hint", lang)}</p>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            ${program.paliers.map((p) => `
-              <button class="lt-opt" data-palier="${p.code}" style="text-align:left">
-                <strong>${p.code}</strong> — ${p.title}
-              </button>
-            `).join("")}
+        ${!program ? `
+          <div class="dash-box"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
+        ` : `
+          <div class="dash-box">
+            <h3>${flagFor(langData)} ${t("prog_overview_title", lang, { level })}</h3>
+            <div class="card">
+              <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("prog_general_objective_label", lang)}</div>
+              <p style="font-size:13.5px;margin:6px 0 0">${program.objective}</p>
+            </div>
           </div>
-          <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px">${t("prog_end_note", lang)}</p>
-        </div>
+          <div class="dash-box">
+            <h3>${t("prog_paliers_title", lang)}</h3>
+            <p style="font-size:12px;color:var(--ink-soft);margin:0 0 10px">${t("prog_palier_tap_hint", lang)}</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              ${program.paliers.map((p) => `
+                <button class="lt-opt" data-palier="${p.code}" style="text-align:left">
+                  <strong>${p.code}</strong> — ${p.title}
+                </button>
+              `).join("")}
+            </div>
+            <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px">${t("prog_end_note", lang)}</p>
+          </div>
+        `}
       `;
       container.querySelector("#progBack").addEventListener("click", () => { openProgram = null; paint(); });
+      container.querySelector("#progLevelRow").addEventListener("click", (e) => {
+        const chip = e.target.closest(".level-chip");
+        if (!chip) return;
+        openProgram = { code, level: chip.dataset.level, palier: null };
+        paint();
+      });
       container.querySelectorAll("button[data-palier]").forEach((btn) => {
-        btn.addEventListener("click", () => { openProgram = { code, palier: btn.dataset.palier }; paint(); });
+        btn.addEventListener("click", () => { openProgram = { code, level, palier: btn.dataset.palier }; paint(); });
       });
       return;
     }
@@ -314,6 +329,6 @@ export function renderMesCours(container, shellRoot) {
         <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px">${t("prog_end_note", lang)}</p>
       </div>
     `;
-    container.querySelector("#progBackToOverview").addEventListener("click", () => { openProgram = { code, palier: null }; paint(); });
+    container.querySelector("#progBackToOverview").addEventListener("click", () => { openProgram = { code, level, palier: null }; paint(); });
   }
 }
