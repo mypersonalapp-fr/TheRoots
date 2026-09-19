@@ -23,6 +23,17 @@ function flagFor(l) {
   return (variantCode && VARIANT_FLAGS[variantCode]) || GROUP_FLAGS[l.code] || "";
 }
 
+// Les deux drapeaux des accents proposés pour une langue (ex. 🇬🇧🇺🇸 pour
+// l'anglais, 🇪🇸🇨🇴 pour l'espagnol, 🇵🇹🇧🇷 pour le portugais) — utilisé dans
+// la grille de cubes pour montrer d'un coup d'oeil les deux accents
+// disponibles, même avant qu'un accent soit choisi.
+function bothFlagsFor(l) {
+  if (l.variants && l.variants.length) {
+    return l.variants.map((v) => VARIANT_FLAGS[v.code] || "").join("");
+  }
+  return GROUP_FLAGS[l.code] || "";
+}
+
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
@@ -50,7 +61,7 @@ export function renderMesCours(container, shellRoot) {
             return `
             <div class="mc-cube-wrap">
               <button class="card mc-cube" data-code="${l.code}">
-                <div class="mc-cube-lang">${flagFor(l)} ${l.label}</div>
+                <div class="mc-cube-lang">${bothFlagsFor(l)} ${l.label}</div>
                 <div class="mc-cube-status">${status}</div>
               </button>
               <div class="mc-cube-gauge${l.leveled ? "" : " mc-cube-gauge-empty"}"><div class="mc-cube-gauge-fill" style="width:${l.leveled ? Math.round((l.progress||0)*100) : 0}%"></div></div>
