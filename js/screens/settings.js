@@ -393,6 +393,7 @@ export function renderSettings(container, onChange) {
           </div>
           <button class="mc-variant-change" id="toggleFaceid">${faceId.enabled ? t("sec_faceid_disable_btn", lang) : t("sec_faceid_enable_btn", lang)}</button>
         </div>
+        ${!faceId.enabled ? `<p style="font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:8px 0 0">${t("sec_faceid_hint", lang)}</p>` : ""}
         ${faceidMsg ? `<div class="lt-cloze-fb" style="margin-top:8px"><span class="${faceidMsg.ok ? 'lt-ok' : 'lt-bad'}">${faceidMsg.text}</span></div>` : ""}
 
         <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">${t("set_logout", lang)}</button>
