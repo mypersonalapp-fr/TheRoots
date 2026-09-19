@@ -21,9 +21,9 @@ const API_LANG = { en: "en", es: "es", pt: "pt-BR" };
 const DICT_LANGS = ["en", "es", "pt"];
 const LOOKUP_TIMEOUT_MS = 12000;
 
-async function lookupWord(word, apiLang) {
+async function lookupWord(word, apiLang, timeoutMs) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), LOOKUP_TIMEOUT_MS);
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/${apiLang}/${encodeURIComponent(word)}`;
     const res = await fetch(url, { signal: controller.signal });
@@ -32,6 +32,20 @@ async function lookupWord(word, apiLang) {
     return await res.json();
   } finally {
     clearTimeout(timeoutId);
+  }
+}
+
+// L'API gratuite dictionaryapi.dev est parfois lente ou temporairement en
+// erreur (panne passagère côté serveur) — plutôt que d'afficher tout de
+// suite "dictionnaire indisponible", on retente une seconde fois (délai plus
+// court) avant d'abandonner pour de bon. Un mot vraiment introuvable (404,
+// lookupWord renvoie null sans lever d'erreur) ne déclenche jamais cette
+// deuxième tentative.
+async function lookupWordWithRetry(word, apiLang) {
+  try {
+    return await lookupWord(word, apiLang, LOOKUP_TIMEOUT_MS);
+  } catch (e) {
+    return await lookupWord(word, apiLang, 6000);
   }
 }
 
@@ -192,11 +206,11 @@ export function renderDictionnaire(container) {
   async function doSearch() {
     const word = input.value.trim();
     if (!word) { results.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_empty_input", lang)}</div>`; return; }
-    results.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_loading", lang)}</div>`;
+    results.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px;display:flex;align-items:center"><span class="mini-spinner"></span>${t("dict_loading", lang)}</div>`;
     btn.disabled = true;
 
     const [entriesResult, translationResult] = await Promise.allSettled([
-      lookupWord(word, API_LANG[dictLang]),
+      lookupWordWithRetry(word, API_LANG[dictLang]),
       translateWord(word, dictLang, lang),
     ]);
 

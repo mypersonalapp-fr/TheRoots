@@ -98,6 +98,39 @@ async function translateWith(text, fromCode, toCode, formality) {
   return { text: await translateWithMyMemory(text, fromCode, toCode), source: "mymemory" };
 }
 
+// Prononciation du résultat traduit, dans la langue cible choisie (pas la
+// langue de départ). La préférence de voix choisie dans Paramètres >
+// Réglages généraux > Voix ne couvre que l'anglais (voir settings.js,
+// englishVoices()), donc on ne l'applique que pour en-GB/en-US ; pour les
+// autres langues on garde la voix par défaut du système.
+const SPEECH_LOCALE = { fr: "fr-FR", "en-GB": "en-GB", "en-US": "en-US", "es-CO": "es-CO", "es-ES": "es-ES", "pt-BR": "pt-BR", "pt-PT": "pt-PT" };
+
+function pickPreferredVoice(code) {
+  if (!window.speechSynthesis || (code !== "en-GB" && code !== "en-US")) return null;
+  try {
+    const { settings } = store.get();
+    const key = settings.preferredVoiceURI;
+    if (!key) return null;
+    const [name, voiceLang] = key.split("|");
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find((v) => v.name === name && v.lang === voiceLang) || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function speak(text, code) {
+  if (!window.speechSynthesis || !text) return;
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    const chosen = pickPreferredVoice(code);
+    if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = SPEECH_LOCALE[code] || "en-GB"; }
+    u.rate = 0.92;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  } catch (e) { /* synthèse vocale indisponible sur cet appareil */ }
+}
+
 export function renderTraduction(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
@@ -130,7 +163,10 @@ export function renderTraduction(container) {
 
         <button class="btn btn-primary" id="translateBtn" style="width:100%">${t("tr_translate_btn", lang)}</button>
 
-        <div class="translate-output" id="translateOutput">${t("tr_output_placeholder", lang)}</div>
+        <div style="display:flex;align-items:flex-start;gap:8px">
+          <div class="translate-output" id="translateOutput" style="flex:1">${t("tr_output_placeholder", lang)}</div>
+          <button type="button" class="btn btn-ghost" id="translateSpeakBtn" aria-label="${t("dict_listen_aria", lang)}" style="display:none;flex:0 0 auto;padding:6px 12px;font-size:16px">🔊</button>
+        </div>
         <div class="translate-hint" id="translateHint">${isRelayConfigured() ? t("tr_hint_deepl", lang) : t("tr_hint_fallback_static", lang)}</div>
       </div>
     </div>
@@ -144,6 +180,8 @@ export function renderTraduction(container) {
   const output = container.querySelector("#translateOutput");
   const hint = container.querySelector("#translateHint");
   const btn = container.querySelector("#translateBtn");
+  const speakBtn = container.querySelector("#translateSpeakBtn");
+  let lastResultText = "";
 
   function updateFormalityVisibility() {
     formalityRow.style.display = SUPPORTS_FORMALITY.has(toSel.value) ? "flex" : "none";
@@ -158,12 +196,15 @@ export function renderTraduction(container) {
 
   btn.addEventListener("click", async () => {
     const text = input.value.trim();
+    speakBtn.style.display = "none";
     if (!text) { output.textContent = t("tr_empty_input", lang); return; }
     output.textContent = t("tr_translating", lang);
     btn.disabled = true;
     try {
       const result = await translateWith(text, fromSel.value, toSel.value, formalitySel.value);
       output.textContent = result.text;
+      lastResultText = result.text;
+      speakBtn.style.display = "inline-flex";
       hint.textContent = result.source === "deepl"
         ? t("tr_hint_deepl", lang)
         : (isRelayConfigured() ? t("tr_hint_fallback", lang) : t("tr_hint_fallback_static", lang));
@@ -173,4 +214,6 @@ export function renderTraduction(container) {
       btn.disabled = false;
     }
   });
+
+  speakBtn.addEventListener("click", () => speak(lastResultText, toSel.value));
 }
