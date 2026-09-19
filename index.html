@@ -13,12 +13,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css"/>
-  <link rel="stylesheet" href="css/backgrounds.css"/>
-  <link rel="stylesheet" href="css/screens.css"/>
+  <!-- Le "?v=..." après chaque fichier force le téléphone/la tablette à
+       retélécharger la vraie dernière version au lieu de garder une copie
+       en mémoire (cache) — sinon un correctif tout juste envoyé peut ne
+       pas apparaître tant qu'on n'a pas forcé un rechargement complet.
+       À changer (n'importe quelle nouvelle valeur suffit) à chaque fois
+       qu'un fichier est remplacé. -->
+  <link rel="stylesheet" href="css/base.css?v=20260919c"/>
+  <link rel="stylesheet" href="css/backgrounds.css?v=20260919c"/>
+  <link rel="stylesheet" href="css/screens.css?v=20260919c"/>
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/app.js?v=20260919c"></script>
 </body>
 </html>
