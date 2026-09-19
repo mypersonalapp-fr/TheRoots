@@ -13,7 +13,9 @@ export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
   const el = document.createElement("div");
   el.className = "screen login-hero-screen";
   el.innerHTML = `
-    <img class="screen-cover-bg" src="assets/img/login-bg.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
+    <img class="screen-cover-bg bg-img-portrait" src="assets/img/login-bg.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
+    <img class="screen-cover-bg bg-img-landscape-hero" src="assets/img/login-bg-landscape.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
+    <img class="screen-cover-bg bg-img-landscape-hero-dark" src="assets/img/login-bg-landscape-dark.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
     <div class="auth-menu-panel card">
       <button class="btn btn-primary" id="btnLogin">${t("auth_login_btn", lang)}</button>
       <button class="btn btn-ghost" id="btnSignup">${t("auth_signup_btn", lang)}</button>
