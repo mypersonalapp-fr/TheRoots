@@ -196,7 +196,11 @@ export function renderSettings(container, onChange) {
       // La langue de l'interface change tout l'habillage de l'appli (menus,
       // titres, boutons...) déjà construit au premier rendu : le plus sûr et
       // le plus simple est de recharger, ça prend une seconde et applique le
-      // changement partout d'un coup, sans écran à moitié traduit.
+      // changement partout d'un coup, sans écran à moitié traduit. On garde
+      // juste une trace de l'onglet ouvert (ici "Paramètres") pour y revenir
+      // directement après le rechargement, plutôt que de retomber sur
+      // l'Accueil à chaque changement de langue.
+      try { sessionStorage.setItem("the_roots_last_tab", "parametres"); } catch (err) { /* stockage indisponible */ }
       window.location.reload();
     });
     const voiceSelect = container.querySelector("#voiceSelect");
