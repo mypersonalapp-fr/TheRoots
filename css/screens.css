@@ -180,6 +180,35 @@
    rester bien au milieu). */
 .auth-form-screen .shell-bg{ position: absolute; }
 
+/* --- Correctif format paysage (tablette et téléphone) : shell-bg.jpg est
+   une image "haute" (globe/drapeaux en haut, silhouette de villes en bas —
+   1024×1536, plus haute que large). En mode paysage, "cover" doit
+   l'agrandir énormément pour remplir toute la largeur de l'écran, ce qui
+   coupait presque tout le haut ET le bas de l'image : il ne restait
+   visible qu'une mince bande du milieu (plus de globe, plus de villes, ni
+   lac ni pont visibles — signalé par capture d'écran). On montre donc en
+   paysage l'image ENTIÈRE, centrée, jamais coupée ("contain"), avec une
+   version floutée/agrandie de la MÊME image posée derrière pour combler
+   les bandes vides sur les côtés sans qu'une couleur unie ne jure à côté
+   de l'illustration. */
+@media (orientation: landscape){
+  .shell-bg::before{
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("assets/img/shell-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(38px) saturate(1.15) brightness(0.85);
+    transform: scale(1.15);
+  }
+  :root[data-theme="dark"] .shell-bg::before{
+    background-image: url("assets/img/shell-bg-dark.jpg");
+  }
+  .shell-bg .screen-cover-bg{
+    object-fit: contain;
+  }
+}
+
 /* --- Coquille principale + navigation --- */
 .app-shell{ display: flex; flex-direction: column; min-height: 100vh; }
 .app-topbar{
