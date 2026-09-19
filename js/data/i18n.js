@@ -212,6 +212,8 @@ const STRINGS = {
     dict_error: "Le dictionnaire est momentanément indisponible. Réessaie dans un instant.",
     dict_empty_input: "Écris un mot à chercher.",
     dict_pt_note: "Pour le portugais, le dictionnaire utilise la variante brésilienne (pt-BR), quelle que soit la variante suivie dans tes cours.",
+    dict_translation_label: "Traduction",
+    dict_listen_aria: "Écouter",
 
     prog_btn: "Voir le programme",
     prog_overview_title: "Programme du niveau A1",
@@ -498,6 +500,8 @@ const STRINGS = {
     dict_error: "The dictionary is temporarily unavailable. Try again in a moment.",
     dict_empty_input: "Type a word to search.",
     dict_pt_note: "For Portuguese, the dictionary uses the Brazilian variant (pt-BR), whichever variant you're following in your courses.",
+    dict_translation_label: "Translation",
+    dict_listen_aria: "Listen",
 
     prog_btn: "See the programme",
     prog_overview_title: "A1 level programme",
@@ -776,6 +780,8 @@ const STRINGS = {
     dict_error: "El diccionario no está disponible en este momento. Inténtalo de nuevo en un momento.",
     dict_empty_input: "Escribe una palabra para buscar.",
     dict_pt_note: "Para el portugués, el diccionario usa la variante brasileña (pt-BR), sea cual sea la variante que sigues en tus cursos.",
+    dict_translation_label: "Traducción",
+    dict_listen_aria: "Escuchar",
 
     prog_btn: "Ver el programa",
     prog_overview_title: "Programa del nivel A1",
@@ -1054,6 +1060,8 @@ const STRINGS = {
     dict_error: "O dicionário está temporariamente indisponível. Tenta novamente daqui a pouco.",
     dict_empty_input: "Escreve uma palavra para procurar.",
     dict_pt_note: "Para o português, o dicionário usa a variante brasileira (pt-BR), seja qual for a variante que segues nos teus cursos.",
+    dict_translation_label: "Tradução",
+    dict_listen_aria: "Ouvir",
 
     prog_btn: "Ver o programa",
     prog_overview_title: "Programa do nível A1",
