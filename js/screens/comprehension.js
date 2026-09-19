@@ -1,16 +1,26 @@
 // The Roots — Compréhension orale et écrite : espace d'immersion libre,
 // indépendant de la progression par palier (voir comp_indep_note). Contenu
-// réel pour l'anglais niveau A1 : 25 textes de lecture (affichage progressif,
-// un par un, questions + correction — voir COMPREHENSION_ECRITE_EN) et 4
-// vidéos fournies par Ashley (voir COMPREHENSION_ORALE_EN). Les autres
-// niveaux/langues affichent un message "bientôt disponible".
+// réel pour l'anglais : niveau A1 — 25 textes de lecture (affichage
+// progressif, un par un, questions + correction — voir
+// COMPREHENSION_ECRITE_EN) et 5 vidéos fournies par Ashley (voir
+// COMPREHENSION_ORALE_EN) ; niveau A2 — 8 extraits de films fournis par
+// Ashley (voir COMPREHENSION_ORALE_A2_EN), pas encore de textes de lecture.
+// Les autres niveaux/langues, et les sections sans contenu à un niveau
+// donné, affichent un message "bientôt disponible".
 
 import { store } from "../data/store.js";
 import { t } from "../data/i18n.js";
 import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js";
 import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js";
+import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+// Contenu disponible par niveau (anglais uniquement pour l'instant) — un
+// niveau absent de l'une de ces deux tables affiche "bientôt disponible"
+// pour la section correspondante, même si l'autre section a du contenu.
+const ORAL_BY_LEVEL = { A1: COMPREHENSION_ORALE_EN, A2: COMPREHENSION_ORALE_A2_EN };
+const ECRITE_BY_LEVEL = { A1: COMPREHENSION_ECRITE_EN };
 
 // Réponse libre à une question de compréhension : l'apprenant écrit sa
 // propre réponse (pas un QCM — demande explicite d'Ashley le 19/09 au soir :
@@ -79,6 +89,8 @@ export function renderComprehension(container) {
   function paint() {
     const ecriteProgress = store.getCompProgress("ecrite", "en");
     const oraleProgress = store.getCompProgress("orale", "en");
+    const oralVideos = ORAL_BY_LEVEL[selectedLevel] || null;
+    const ecriteTexts = ECRITE_BY_LEVEL[selectedLevel] || null;
 
     container.innerHTML = `
       <div class="dash-greeting" style="padding:4px 0 6px">${t("comp_intro", lang)}</div>
@@ -88,7 +100,7 @@ export function renderComprehension(container) {
         ${LEVELS.map((l) => `<button class="level-chip${l === selectedLevel ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
       </div>
 
-      ${selectedLevel !== "A1" ? `
+      ${!oralVideos && !ecriteTexts ? `
         <div class="card-3d"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
       ` : `
         <div class="card-3d" style="margin-bottom:14px">
@@ -99,7 +111,7 @@ export function renderComprehension(container) {
               <div class="immersion-note">${t("comp_oral_desc", lang)}</div>
             </div>
           </div>
-          ${oralHtml(oraleProgress)}
+          ${oralVideos ? oralHtml(oraleProgress, oralVideos) : `<div class="card" style="margin-top:14px;color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div>`}
         </div>
 
         <div class="card-3d">
@@ -110,7 +122,7 @@ export function renderComprehension(container) {
               <div class="immersion-note">${t("comp_written_desc", lang)}</div>
             </div>
           </div>
-          ${ecriteHtml(ecriteProgress)}
+          ${ecriteTexts ? ecriteHtml(ecriteProgress) : `<div class="card" style="margin-top:14px;color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div>`}
         </div>
       `}
     `;
@@ -120,23 +132,24 @@ export function renderComprehension(container) {
       if (!chip) return;
       selectedLevel = chip.dataset.level;
       showQuestions = false; answers = {}; graded = false; gradeResults = null;
+      selectedVideoId = null; oralCheckIssues = null;
       paint();
     });
 
-    if (selectedLevel === "A1") wireOral(oraleProgress);
-    if (selectedLevel === "A1") wireEcrite(ecriteProgress);
+    if (oralVideos) wireOral(oraleProgress);
+    if (ecriteTexts) wireEcrite(ecriteProgress);
   }
 
   // ---------- Compréhension orale ----------
 
-  function oralHtml(progress) {
+  function oralHtml(progress, videos) {
     const savedSummaries = progress.results || {};
     return `
       <div style="margin-top:14px;font-weight:700;font-size:13px">${t("comp_orale_pick_video", lang)}</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px" id="oralPicker">
-        ${COMPREHENSION_ORALE_EN.map((v) => `<button class="lt-opt" data-video="${v.videoId}" style="padding:8px 12px;font-size:13px">${v.title}</button>`).join("")}
+        ${videos.map((v) => `<button class="lt-opt" data-video="${v.videoId}" style="padding:8px 12px;font-size:13px">${v.title}</button>`).join("")}
       </div>
-      ${selectedVideoId ? oralPlayerHtml(COMPREHENSION_ORALE_EN.find((v) => v.videoId === selectedVideoId), savedSummaries) : ""}
+      ${selectedVideoId ? oralPlayerHtml(videos.find((v) => v.videoId === selectedVideoId), savedSummaries) : ""}
     `;
   }
 
