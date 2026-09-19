@@ -571,4 +571,17 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* Cas particulier : la grille de "cubes" de Mes cours (un cube carré par
+     langue, .mc-cube{aspect-ratio:1/1}) et la grille "Mon livret" prennent
+     chacune la moitié de la largeur du conteneur — dans une colonne de
+     640px ça reste deux cubes carrés d'environ 300px de côté, beaucoup
+     trop grands pour les 2 lignes de texte qu'ils contiennent (tout le bas
+     du cube reste vide). On les recentre dans une colonne plus étroite,
+     pour retrouver des cubes de taille comparable à ceux du téléphone. */
+  .mc-cube-grid, .mc-livret-grid{
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
