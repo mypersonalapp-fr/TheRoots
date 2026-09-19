@@ -12,6 +12,39 @@ import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
+// Réponse libre à une question de compréhension : l'apprenant écrit sa
+// propre réponse (pas un QCM — demande explicite d'Ashley le 19/09 au soir :
+// "sa main et sa puissance créative"). On juge le FOND en cherchant un des
+// mots/expressions clés attendus dans la réponse (recherche souple, sans
+// tenir compte des accents/majuscules/ponctuation) — pas une IA qui
+// comprendrait vraiment la phrase, mais une vraie zone de texte libre avec
+// une correction automatique raisonnable pour un niveau A1.
+function normalizeAnswer(s) {
+  return (s || "")
+    .toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function contentMatches(answer, accepted) {
+  const norm = normalizeAnswer(answer);
+  if (!norm) return false;
+  return accepted.some((a) => norm.includes(normalizeAnswer(a)));
+}
+// Vraie vérification orthographe/grammaire (LanguageTool, API publique
+// gratuite, sans clé — même outil que pour l'expression écrite).
+async function checkSpelling(text) {
+  const res = await fetch("https://api.languagetool.org/v2/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ text, language: "en-US" }).toString(),
+  });
+  if (!res.ok) throw new Error("languagetool_network");
+  const data = await res.json();
+  return data.matches || [];
+}
+
 export function renderComprehension(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
@@ -22,6 +55,8 @@ export function renderComprehension(container) {
   let showQuestions = false;
   let answers = {};
   let graded = false;
+  let grading = false;
+  let gradeResults = null; // rempli après correction : [{ contentOk, spellingIssues }, ...]
 
   let selectedVideoId = null;
   let showTranscript = false;
@@ -69,7 +104,7 @@ export function renderComprehension(container) {
       const chip = e.target.closest(".level-chip");
       if (!chip) return;
       selectedLevel = chip.dataset.level;
-      showQuestions = false; answers = {}; graded = false;
+      showQuestions = false; answers = {}; graded = false; gradeResults = null;
       paint();
     });
 
@@ -149,37 +184,35 @@ export function renderComprehension(container) {
   }
 
   function questionsHtml(text) {
-    const correctCount = graded ? text.questions.reduce((n, q, i) => n + (answers[i] === q.correct ? 1 : 0), 0) : 0;
+    const correctCount = graded ? gradeResults.filter((r) => r.contentOk && r.spellingIssues.length === 0).length : 0;
     return `
       <div style="margin-top:14px">
-        ${text.questions.map((q, i) => `
+        ${text.questions.map((q, i) => {
+          const result = graded ? gradeResults[i] : null;
+          const isGood = result && result.contentOk && result.spellingIssues.length === 0;
+          return `
           <div class="card" style="margin-top:10px">
             <div style="font-weight:700;font-size:13px">${t("comp_ecrite_question_label", lang, { n: i + 1 })} — ${q.q}</div>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-              ${q.options.map((opt, oi) => {
-                let cls = "lt-opt";
-                if (graded && oi === q.correct) cls += " correct";
-                else if (graded && oi === answers[i] && oi !== q.correct) cls += " incorrect";
-                else if (!graded && answers[i] === oi) cls += " lt-opt-selected";
-                return `<button class="${cls}" data-q="${i}" data-opt="${oi}" ${graded ? "disabled" : ""}>${opt}</button>`;
-              }).join("")}
-            </div>
-            ${graded && answers[i] !== q.correct ? `<div style="font-size:12px;color:var(--ink-soft);margin-top:6px">${t("comp_ecrite_incorrect", lang)} — ${q.options[q.correct]}</div>` : ""}
-            ${graded && answers[i] === q.correct ? `<div style="font-size:12px;color:var(--accent);margin-top:6px">${t("comp_ecrite_correct", lang)}</div>` : ""}
+            <input type="text" class="translate-lang-select" id="ecriteAnswer${i}" data-q="${i}" value="${(answers[i] || "").replace(/"/g, "&quot;")}" placeholder="${t("comp_ecrite_answer_placeholder", lang)}" style="width:100%;box-sizing:border-box;margin-top:8px" ${graded ? "disabled" : ""} autocapitalize="none"/>
+            ${graded ? `
+              <div style="font-size:12px;margin-top:6px;color:${isGood ? "var(--accent)" : "var(--pop)"}">${isGood ? t("comp_ecrite_correct", lang) : t("comp_ecrite_incorrect", lang)}</div>
+              ${!result.contentOk ? `<div style="font-size:12px;color:var(--ink-soft);margin-top:2px">${t("comp_ecrite_correction_answer", lang, { answer: q.accepted[0] })}</div>` : ""}
+              ${result.spellingIssues.length ? `
+                <ul style="margin:4px 0 0;padding-left:16px;font-size:12px;color:var(--ink-soft)">
+                  ${result.spellingIssues.slice(0, 3).map((m) => `<li>${m.message}${m.replacements && m.replacements[0] ? ` → <strong>${m.replacements[0].value}</strong>` : ""}</li>`).join("")}
+                </ul>
+              ` : ""}
+            ` : ""}
           </div>
-        `).join("")}
+        `;
+        }).join("")}
       </div>
       ${!graded ? `
-        <button class="btn btn-primary" id="ecriteSubmitBtn" style="width:100%;margin-top:12px" ${Object.keys(answers).length < text.questions.length ? "disabled" : ""}>${t("comp_ecrite_submit_btn", lang)}</button>
+        <button class="btn btn-primary" id="ecriteSubmitBtn" style="width:100%;margin-top:12px" ${grading ? "disabled" : ""}>${grading ? t("expr_ecrite_checking", lang) : t("comp_ecrite_submit_btn", lang)}</button>
       ` : `
         <div class="card" style="margin-top:12px">
           <div style="font-weight:800">${t("comp_ecrite_correction_title", lang)}</div>
           <div style="font-size:13px;margin-top:4px">${t("comp_ecrite_score", lang, { score: correctCount, total: text.questions.length })}</div>
-          ${correctCount < text.questions.length ? `
-            <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">
-              ${text.questions.map((q, i) => answers[i] !== q.correct ? `<li>${q.q} → <strong>${q.options[q.correct]}</strong></li>` : "").join("")}
-            </ul>
-          ` : ""}
         </div>
         <button class="btn btn-primary" id="ecriteNextBtn" style="width:100%;margin-top:12px">${t("comp_ecrite_next_btn", lang)}</button>
       `}
@@ -193,24 +226,36 @@ export function renderComprehension(container) {
     const restartBtn = container.querySelector("#ecriteRestartBtn");
     if (restartBtn) restartBtn.addEventListener("click", () => {
       store.setCompProgress("ecrite", "en", { currentIndex: 0, results: {} });
-      showQuestions = false; answers = {}; graded = false;
+      showQuestions = false; answers = {}; graded = false; gradeResults = null;
       paint();
     });
 
     if (showQuestions) {
-      container.querySelectorAll("button[data-q]").forEach((b) => {
+      container.querySelectorAll("input[data-q]").forEach((input) => {
         if (graded) return;
-        b.addEventListener("click", () => {
-          answers[Number(b.dataset.q)] = Number(b.dataset.opt);
-          paint();
-        });
+        input.addEventListener("input", (e) => { answers[Number(e.target.dataset.q)] = e.target.value; });
       });
+
       const submitBtn = container.querySelector("#ecriteSubmitBtn");
-      if (submitBtn) submitBtn.addEventListener("click", () => {
-        graded = true;
+      if (submitBtn) submitBtn.addEventListener("click", async () => {
+        grading = true;
+        paint();
         const idx = progress.currentIndex || 0;
         const text = COMPREHENSION_ECRITE_EN[idx];
-        const correctCount = text.questions.reduce((n, q, i) => n + (answers[i] === q.correct ? 1 : 0), 0);
+        // Corrige chaque réponse : le fond (mots-clés attendus) + une vraie
+        // vérification orthographe/grammaire (LanguageTool), en parallèle.
+        gradeResults = await Promise.all(text.questions.map(async (q, i) => {
+          const answer = answers[i] || "";
+          const contentOk = contentMatches(answer, q.accepted);
+          let spellingIssues = [];
+          if (answer.trim()) {
+            try { spellingIssues = await checkSpelling(answer); } catch (e) { /* correcteur indisponible — on garde juste le jugement de fond */ }
+          }
+          return { contentOk, spellingIssues };
+        }));
+        grading = false;
+        graded = true;
+        const correctCount = gradeResults.filter((r) => r.contentOk && r.spellingIssues.length === 0).length;
         const results = { ...(progress.results || {}), [text.id]: { correct: correctCount, total: text.questions.length } };
         store.setCompProgress("ecrite", "en", { results });
         paint();
@@ -219,7 +264,7 @@ export function renderComprehension(container) {
       if (nextBtn) nextBtn.addEventListener("click", () => {
         const idx = (progress.currentIndex || 0) + 1;
         store.setCompProgress("ecrite", "en", { currentIndex: idx });
-        showQuestions = false; answers = {}; graded = false;
+        showQuestions = false; answers = {}; graded = false; gradeResults = null;
         paint();
       });
     }
