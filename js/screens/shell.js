@@ -47,6 +47,8 @@ export function renderShell(root) {
     <div class="shell-bg" id="shellBg">
       <img class="screen-cover-bg bg-img-light" src="assets/img/shell-bg.jpg" alt="" aria-hidden="true"/>
       <img class="screen-cover-bg bg-img-dark" src="assets/img/shell-bg-dark.jpg" alt="" aria-hidden="true"/>
+      <img class="screen-cover-bg bg-img-landscape" src="assets/img/shell-bg-landscape.jpg" alt="" aria-hidden="true"/>
+      <img class="screen-cover-bg bg-img-landscape-dark" src="assets/img/shell-bg-landscape-dark.jpg" alt="" aria-hidden="true"/>
     </div>
     <div class="app-topbar">
       <button class="hamburger-btn" id="hamburgerBtn" aria-label="${t("aria_menu", lang)}" aria-expanded="false">
