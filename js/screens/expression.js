@@ -29,6 +29,25 @@ function checklistResults(text, expectedPoints) {
   }));
 }
 
+// Voix préférée choisie dans Paramètres > Réglages généraux > Voix (ex.
+// "Samantha", voix américaine) — mémorisée dans settings.preferredVoiceURI.
+// "Écouter l'appel" l'ignorait complètement et forçait toujours une voix
+// britannique par défaut, ce qui explique une voix différente de celle
+// choisie ("Sam" au lieu de "Samantha") : même logique que lessons.html.
+function pickPreferredVoice() {
+  if (!window.speechSynthesis) return null;
+  try {
+    const { settings } = store.get();
+    const key = settings.preferredVoiceURI;
+    if (!key) return null;
+    const [name, voiceLang] = key.split("|");
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find((v) => v.name === name && v.lang === voiceLang) || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 async function checkGrammar(text) {
   const res = await fetch("https://api.languagetool.org/v2/check", {
     method: "POST",
@@ -54,6 +73,7 @@ export function renderExpression(container) {
   let oraleIndex = 0;
   let oraleTranscript = "";
   let oraleRecording = false;
+  let oraleSpeaking = false;
   let recognition = null;
 
   function paint() {
@@ -109,15 +129,16 @@ export function renderExpression(container) {
     return `
       <div class="card" style="margin-top:14px">
         <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">${t("expr_orale_incoming", lang)} — ${prompt.from}</div>
-        <button class="btn btn-ghost" id="oraleListenBtn" style="width:100%;margin-top:10px">${t("expr_orale_listen_call_btn", lang)}</button>
+        <button class="btn btn-ghost" id="oraleListenBtn" style="width:100%;margin-top:10px" ${oraleSpeaking ? "disabled" : ""}>${t("expr_orale_listen_call_btn", lang)}</button>
         ${supported ? `
-          <button class="btn btn-primary" id="oraleRecordBtn" style="width:100%;margin-top:10px">${oraleRecording ? t("expr_orale_recording", lang) : t("expr_orale_record_btn", lang)}</button>
+          <button class="btn btn-primary" id="oraleRecordBtn" style="width:100%;margin-top:10px" ${oraleSpeaking ? "disabled" : ""}>${oraleRecording ? t("expr_orale_recording", lang) : t("expr_orale_record_btn", lang)}</button>
+          ${oraleSpeaking ? `<div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px">${t("expr_orale_playing_note", lang)}</div>` : ""}
         ` : `<div class="card" style="margin-top:10px;font-size:12.5px;color:var(--ink-soft)">${t("expr_orale_not_supported", lang)}</div>`}
         ${oraleTranscript ? `
           <div style="margin-top:12px">
             <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("expr_orale_transcript_label", lang)}</div>
             <div class="card" style="margin-top:6px;font-size:13.5px">${oraleTranscript}</div>
-            ${checklistHtml(checklistResults(oraleTranscript, prompt.expectedPoints))}
+            ${checklistHtml(checklistResults(oraleTranscript, prompt.expectedPoints), lang)}
           </div>
         ` : ""}
         <button class="btn btn-ghost" id="oraleNextBtn" style="width:100%;margin-top:10px">${t("expr_orale_next_prompt", lang)}</button>
@@ -132,11 +153,21 @@ export function renderExpression(container) {
       try {
         if (!window.speechSynthesis) return;
         const u = new SpeechSynthesisUtterance(prompt.callText);
-        u.lang = "en-GB";
+        const chosen = pickPreferredVoice();
+        if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = "en-GB"; }
         u.rate = 0.92;
+        // Tant que l'appel se lit à voix haute, on bloque "Répondre à l'oral" :
+        // sinon, sur un téléphone sans écouteurs, le micro capte le son du
+        // haut-parleur (l'appel lui-même) au lieu de la voix de l'apprenant —
+        // c'est ce qui causait des transcriptions absurdes (le texte de
+        // l'appel recopié tel quel dans "Ce que l'app a entendu").
+        oraleSpeaking = true;
+        paint();
+        u.onend = () => { oraleSpeaking = false; paint(); };
+        u.onerror = () => { oraleSpeaking = false; paint(); };
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(u);
-      } catch (e) { /* synthèse vocale indisponible */ }
+      } catch (e) { oraleSpeaking = false; /* synthèse vocale indisponible */ }
     });
 
     const recordBtn = container.querySelector("#oraleRecordBtn");
@@ -144,6 +175,10 @@ export function renderExpression(container) {
       const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!Recognition) return;
       try {
+        // Filet de sécurité supplémentaire : on coupe toute synthèse vocale
+        // encore active avant de démarrer l'écoute, au cas où l'appel jouerait
+        // encore (ou un reliquat d'une lecture précédente).
+        window.speechSynthesis.cancel();
         recognition = new Recognition();
         recognition.lang = "en-GB";
         recognition.interimResults = false;
@@ -193,7 +228,7 @@ export function renderExpression(container) {
         </div>
         <div class="card" style="margin-top:10px">
           <div style="font-weight:800">${t("expr_ecrite_checklist_title", lang)}</div>
-          ${checklistHtml(checklistResults(ecriteReplyText, prompt.expectedPoints))}
+          ${checklistHtml(checklistResults(ecriteReplyText, prompt.expectedPoints), lang)}
         </div>
       ` : ""}
       <button class="btn btn-ghost" id="exprNextBtn" style="width:100%;margin-top:10px">${t("expr_ecrite_next_prompt", lang)}</button>
@@ -228,8 +263,22 @@ export function renderExpression(container) {
     });
   }
 
-  function checklistHtml(items) {
+  // Résumé explicite au-dessus de la liste : c'est lui qui donne le vrai
+  // verdict (contenu attendu trouvé ou non), pas le bloc grammaire — celui-ci
+  // ne vérifie que l'orthographe/la grammaire et peut très bien ne "voir"
+  // aucune faute dans une réponse hors sujet ("It's love" est grammaticalement
+  // correct, mais ne répond à rien). Sans ce résumé, "Aucune erreur détectée"
+  // pouvait donner l'impression trompeuse que tout était bon.
+  function checklistHtml(items, lang) {
+    const total = items.length;
+    const metCount = items.filter((it) => it.met).length;
+    const summaryKey = total === 0 ? null
+      : metCount === total ? "expr_checklist_all_met"
+      : metCount === 0 ? "expr_checklist_none_met"
+      : "expr_checklist_partial";
+    const summaryClass = metCount === total ? "lt-ok" : "lt-bad";
     return `
+      ${summaryKey ? `<div class="${summaryClass}" style="font-weight:700;font-size:13px;margin-bottom:6px">${t(summaryKey, lang, { count: metCount, total })}</div>` : ""}
       <ul style="list-style:none;margin:6px 0 0;padding:0;font-size:13px">
         ${items.map((it) => `<li style="margin-bottom:4px">${it.met ? "✅" : "▫️"} ${it.label}</li>`).join("")}
       </ul>

@@ -65,11 +65,30 @@ async function translateWord(word, fromLang, toLang) {
 // plus bas, dans renderDictionnaire).
 const SPEECH_LOCALE = { en: "en-GB", es: "es-ES", pt: "pt-BR" };
 
+// Voix préférée choisie dans Paramètres > Réglages généraux > Voix (ex.
+// "Samantha", voix américaine) — ce réglage ne couvre que l'anglais (voir
+// settings.js, englishVoices()), donc on ne l'applique que pour dictLang
+// "en" ; pour l'espagnol/le portugais on garde la voix par défaut du système.
+function pickPreferredVoice(dictLang) {
+  if (!window.speechSynthesis || dictLang !== "en") return null;
+  try {
+    const { settings } = store.get();
+    const key = settings.preferredVoiceURI;
+    if (!key) return null;
+    const [name, voiceLang] = key.split("|");
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find((v) => v.name === name && v.lang === voiceLang) || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 function speak(text, dictLang) {
   if (!window.speechSynthesis || !text) return;
   try {
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = SPEECH_LOCALE[dictLang] || "en-GB";
+    const chosen = pickPreferredVoice(dictLang);
+    if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = SPEECH_LOCALE[dictLang] || "en-GB"; }
     u.rate = 0.92;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
