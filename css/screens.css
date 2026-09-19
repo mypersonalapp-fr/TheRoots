@@ -613,16 +613,30 @@
    écrans (.app-body — Accueil, Mes cours, Dictionnaire...), sans aucun
    max-width, s'étiraient au contraire sur toute la largeur, avec des
    cartes trop écartées et un texte qui perdait en lisibilité. On centre
-   donc tout dans une colonne de largeur confortable au-delà de 720px de
-   large, comme le fait la plupart des applis mobiles consultées sur un
-   grand écran — rien ne change sur téléphone (l'écran principal, sous ce
-   seuil). Le fond décoratif (.shell-bg) n'est volontairement pas touché :
-   il doit rester plein écran. */
+   donc le CONTENU dans une colonne de largeur confortable au-delà de
+   720px de large, comme le fait la plupart des applis mobiles consultées
+   sur un grand écran — rien ne change sur téléphone (l'écran principal,
+   sous ce seuil). Le fond décoratif (.shell-bg) n'est volontairement pas
+   touché : il doit rester plein écran. */
 @media (min-width: 720px){
-  .app-topbar, .app-body, .auth-form-top, .auth-form-body{
+  .app-body, .auth-form-body{
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Les barres du haut (bouton hamburger + titre sur .app-topbar, bouton
+     retour + titre sur .auth-form-top), elles, restent volontairement EN
+     DEHORS de cette colonne centrée : sur un iPad en paysage (écran très
+     large), centrer aussi la barre du haut éloignait le hamburger du bord
+     gauche de l'écran, comme s'il flottait au milieu — signalé par
+     capture d'écran. Le hamburger doit toujours rester collé à gauche,
+     comme sur téléphone (portrait ou paysage), quelle que soit la largeur
+     de l'écran. */
+  .app-topbar, .auth-form-top{
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /* Cas particulier : la grille de "cubes" de Mes cours (un cube carré par
