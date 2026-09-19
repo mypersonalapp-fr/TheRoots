@@ -211,14 +211,21 @@
   .shell-bg::before{
     content: "";
     position: absolute; inset: 0;
-    background-image: url("assets/img/shell-bg.jpg");
+    /* "../assets/..." et non "assets/..." : dans un fichier CSS, un chemin
+       d'image se lit depuis l'EMPLACEMENT DU FICHIER CSS (donc depuis
+       css/), pas depuis la racine du site comme dans le HTML — avec
+       "assets/..." tout court, le navigateur cherchait l'image dans
+       css/assets/img/ (qui n'existe pas), l'image ne se chargeait jamais,
+       et il ne restait que le fond crème uni sur les côtés, sans flou du
+       tout. C'était le vrai bug derrière "l'image reste en portrait". */
+    background-image: url("../assets/img/shell-bg.jpg");
     background-size: cover;
     background-position: center;
     filter: blur(38px) saturate(1.15) brightness(0.85);
     transform: scale(1.15);
   }
   :root[data-theme="dark"] .shell-bg::before{
-    background-image: url("assets/img/shell-bg-dark.jpg");
+    background-image: url("../assets/img/shell-bg-dark.jpg");
   }
   .shell-bg .screen-cover-bg{
     object-fit: contain;
