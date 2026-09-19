@@ -2997,10 +2997,20 @@
     if(readAllBtn){
       readAllBtn.addEventListener("click", function(){
         var i = 0;
+        // Même logique de voix préférée que speak() plus haut : on essaie
+        // d'abord la voix choisie dans Paramètres, sinon on retombe sur
+        // l'accent britannique/américain du cours en cours.
+        var key = preferredVoiceKey();
+        var chosen = null;
+        if(key){
+          var parts = key.split("|");
+          chosen = cachedVoices.find(function(v){ return v.name === parts[0] && v.lang === parts[1]; });
+        }
         function next(){
           if(i >= plainSentences.length) return;
           var u = new SpeechSynthesisUtterance(plainSentences[i]);
           u.lang = state.variant === "us" ? "en-US" : "en-GB";
+          if(chosen){ u.voice = chosen; u.lang = chosen.lang; }
           u.rate = 0.95;
           u.onend = function(){ i++; next(); };
           window.speechSynthesis.speak(u);
