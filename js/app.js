@@ -12,6 +12,21 @@ import { renderFaceIdLock } from "./screens/faceid-lock.js";
 
 const root = document.getElementById("app");
 
+// Précharge le plus tôt possible la liste des voix de synthèse vocale
+// (speechSynthesis.getVoices()) : sur Safari/iOS, cette liste est souvent
+// vide au tout premier appel et se remplit en arrière-plan un peu après —
+// sans ce préchargement au démarrage, un écran ouvert plus tard
+// (Dictionnaire, Traduction, Expression orale, une leçon...) peut appeler
+// getVoices() avant que "Samantha" (ou toute autre voix choisie dans
+// Paramètres) ne soit dans la liste, et retombe alors silencieusement sur
+// la voix par défaut de l'appareil.
+if (window.speechSynthesis) {
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.addEventListener("voiceschanged", () => {
+    window.speechSynthesis.getVoices();
+  });
+}
+
 // Marque que l'appli a déjà été déverrouillée pendant cette "ouverture" (cet
 // onglet/cette instance de l'appli) — sessionStorage est vidé à chaque
 // fermeture réelle de l'appli (contrairement à localStorage, qui lui garde
@@ -27,8 +42,8 @@ function isUnlockedThisSession() {
 
 function showAuthMenu() {
   renderAuthMenu(root, {
-    onSignup: () => renderLogin(root, { mode: "signup", onDone: () => renderShell(root), onBack: showAuthMenu }),
-    onLogin: () => renderLogin(root, { mode: "login", onDone: () => renderShell(root), onBack: showAuthMenu }),
+    onSignup: () => renderLogin(root, { mode: "signup", onDone: () => { markUnlockedThisSession(); renderShell(root); }, onBack: showAuthMenu }),
+    onLogin: () => renderLogin(root, { mode: "login", onDone: () => { markUnlockedThisSession(); renderShell(root); }, onBack: showAuthMenu }),
     onForgot: () => renderForgotPassword(root, { onBack: showAuthMenu }),
   });
 }
@@ -36,6 +51,16 @@ function showAuthMenu() {
 function start() {
   renderSplash(root, () => {
     if (store.isLoggedIn()) {
+      // Si l'appli a déjà été déverrouillée pendant cette même ouverture
+      // (ex. juste après connexion, ou après un rechargement déclenché par
+      // un changement dans Paramètres comme la langue de l'interface), on
+      // n'a pas à redemander Face ID ni le mot de passe une deuxième fois —
+      // sessionStorage garde ce drapeau tant que l'appli reste ouverte, et
+      // c'est seulement à une VRAIE réouverture qu'il redevient absent.
+      if (isUnlockedThisSession()) {
+        renderShell(root);
+        return;
+      }
       const faceId = store.getFaceId();
       if (faceId.enabled && faceId.credentialId) {
         renderFaceIdLock(root, {
@@ -43,8 +68,6 @@ function start() {
           onUnlocked: () => { markUnlockedThisSession(); renderShell(root); },
           onUsePassword: () => { store.logout(); showAuthMenu(); },
         });
-      } else if (isUnlockedThisSession()) {
-        renderShell(root);
       } else {
         // Appli rouverte après une vraie fermeture, sans Face ID activé :
         // on redemande le mot de passe avant d'entrer.
