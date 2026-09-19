@@ -163,22 +163,38 @@
 .field{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-soft); font-weight: 600; }
 .login-submit{ margin-top: 4px; }
 
+/* --- Petit indicateur de chargement (ex. recherche dans le dictionnaire) :
+   un rond qui tourne à côté du texte "Recherche en cours…", pour que
+   l'attente soit visible même si la réponse met du temps. --- */
+.mini-spinner{
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: mini-spin 0.7s linear infinite;
+  flex: 0 0 auto;
+  margin-right: 8px;
+}
+@keyframes mini-spin{ to{ transform: rotate(360deg); } }
+
 /* --- Fond de la coquille principale (Accueil + tous les onglets) : la
    4e image d'Ashley (globe/drapeaux en haut, silhouette de villes en bas,
    milieu volontairement vide pour accueillir le contenu), fixe derrière
    tout, entière, jamais coupée --- */
+/* NB : "absolute" et non "fixed" — sur TOUS les écrans de l'appli, l'écran
+   entier défile déjà d'un bloc (pas de zone à défilement séparée comme
+   .app-body), donc "fixed" n'apporte rien et déclenche un bug connu de
+   Safari iPad où une image en position "fixed" se décentre ou se découpe
+   en plusieurs morceaux mal alignés au lieu de rester bien au milieu —
+   déjà contourné sur connexion/inscription, étendu ici à la coquille
+   principale (Accueil et tous les onglets) où le même bug se voyait en
+   mode paysage. */
 .shell-bg{
-  position: fixed; inset: 0; z-index: 0;
+  position: absolute; inset: 0; z-index: 0;
   overflow: hidden;
   background: #fdf3e3;
 }
-/* Sur l'écran de connexion/inscription, l'écran entier défile déjà d'un
-   bloc (pas de zone à défilement séparée comme .app-body) : on fixe donc
-   ce fond en "absolute" plutôt qu'en "fixed", ce qui évite un bug connu
-   de Safari iPad où une image en position "fixed" se décentre quand son
-   parent a "overflow: hidden" (elle glissait vers la droite au lieu de
-   rester bien au milieu). */
-.auth-form-screen .shell-bg{ position: absolute; }
 
 /* --- Correctif format paysage (tablette et téléphone) : shell-bg.jpg est
    une image "haute" (globe/drapeaux en haut, silhouette de villes en bas —
