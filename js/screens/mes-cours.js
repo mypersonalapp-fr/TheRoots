@@ -11,6 +11,13 @@
 import { store } from "../data/store.js";
 import { renderLevelTest } from "./level-test.js";
 import { t, formatDate } from "../data/i18n.js";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js";
+
+// Programme par palier, par langue — seul l'anglais A1 est rédigé pour
+// l'instant (voir claude/cahier-des-charges-the-roots-v1.md dans le projet
+// Claude) ; l'espagnol et le portugais afficheront "bientôt disponible"
+// tant que leurs paliers n'auront pas été rédigés au même niveau de détail.
+const PROGRAMS_BY_LANG = { en: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS } };
 
 // Petit drapeau à côté du nom de chaque langue — celui de l'accent choisi
 // une fois qu'une variante est suivie (ex. 🇺🇸 pour l'anglais américain),
@@ -37,10 +44,12 @@ function bothFlagsFor(l) {
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
+  let openProgram = null; // { code, palier: string|null } — null = fermé
 
   paint();
 
   function paint() {
+    if (openProgram) return paintProgram();
     if (openLivret) return paintLivret();
     if (openCode) return paintLangDetail(openCode);
     return paintList();
@@ -194,10 +203,12 @@ export function renderMesCours(container, shellRoot) {
             ? t("mc_pdf_available", lang)
             : `<span class="mc-lock-icon" style="font-size:14px">🔒</span> ${t("mc_pdf_locked", lang).replace("🔒 ", "")}`}
         </div>
+        <button class="btn btn-ghost" id="mcOpenProgram" style="width:100%;margin-top:10px">${t("prog_btn", lang)}</button>
       </div>
     `;
 
     container.querySelector("#mcBack").addEventListener("click", () => { openCode = null; paint(); });
+    container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, palier: null }; paint(); });
 
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { window.location.href = "lessons.html"; });
@@ -223,5 +234,86 @@ export function renderMesCours(container, shellRoot) {
         onDone: () => { window.location.href = "lessons.html"; },
       });
     });
+  }
+
+  // --- Programme affiché par palier (voir claude/specs-programme-...
+  // .md, section 1) : vue d'ensemble du niveau A1 (objectif général + les
+  // 12 paliers), puis programme+attentes détaillés d'un palier précis au
+  // clic. Seul l'anglais a un programme rédigé pour l'instant. ---
+  function paintProgram() {
+    const { code, palier } = openProgram;
+    const langData = store.getLang(code);
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const program = PROGRAMS_BY_LANG[code];
+
+    if (!program) {
+      container.innerHTML = `
+        <button class="settings-back" id="progBack">${t("prog_back", lang)}</button>
+        <div class="dash-box"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
+      `;
+      container.querySelector("#progBack").addEventListener("click", () => { openProgram = null; paint(); });
+      return;
+    }
+
+    if (!palier) {
+      container.innerHTML = `
+        <button class="settings-back" id="progBack">${t("prog_back", lang)}</button>
+        <div class="dash-box">
+          <h3>${flagFor(langData)} ${t("prog_overview_title", lang)}</h3>
+          <div class="card">
+            <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("prog_general_objective_label", lang)}</div>
+            <p style="font-size:13.5px;margin:6px 0 0">${program.objective}</p>
+          </div>
+        </div>
+        <div class="dash-box">
+          <h3>${t("prog_paliers_title", lang)}</h3>
+          <p style="font-size:12px;color:var(--ink-soft);margin:0 0 10px">${t("prog_palier_tap_hint", lang)}</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            ${program.paliers.map((p) => `
+              <button class="lt-opt" data-palier="${p.code}" style="text-align:left">
+                <strong>${p.code}</strong> — ${p.title}
+              </button>
+            `).join("")}
+          </div>
+          <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px">${t("prog_end_note", lang)}</p>
+        </div>
+      `;
+      container.querySelector("#progBack").addEventListener("click", () => { openProgram = null; paint(); });
+      container.querySelectorAll("button[data-palier]").forEach((btn) => {
+        btn.addEventListener("click", () => { openProgram = { code, palier: btn.dataset.palier }; paint(); });
+      });
+      return;
+    }
+
+    const p = program.paliers.find((x) => x.code === palier);
+    container.innerHTML = `
+      <button class="settings-back" id="progBackToOverview">${t("prog_back", lang)}</button>
+      <div class="dash-box">
+        <h3>${p.code} — ${p.title}</h3>
+        <div class="card">
+          <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("prog_objective_label", lang)}</div>
+          <p style="font-size:13.5px;margin:6px 0 0">${p.objective}</p>
+        </div>
+      </div>
+      <div class="dash-box">
+        <h3>${t("prog_vocab_label", lang)}</h3>
+        <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.vocab.map((v) => `<li style="margin-bottom:6px">${v}</li>`).join("")}</ul></div>
+      </div>
+      <div class="dash-box">
+        <h3>${t("prog_grammar_label", lang)}</h3>
+        <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.grammar.map((g) => `<li style="margin-bottom:6px">${g}</li>`).join("")}</ul></div>
+      </div>
+      <div class="dash-box">
+        <h3>${t("prog_conjugation_label", lang)}</h3>
+        <div class="card" style="font-size:13px">${p.conjugation}</div>
+      </div>
+      <div class="dash-box">
+        <h3>${t("prog_activities_label", lang)}</h3>
+        <div class="card"><ol style="margin:0;padding-left:18px;font-size:13px">${p.activities.map((a) => `<li style="margin-bottom:4px">${a}</li>`).join("")}</ol></div>
+        <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px">${t("prog_end_note", lang)}</p>
+      </div>
+    `;
+    container.querySelector("#progBackToOverview").addEventListener("click", () => { openProgram = { code, palier: null }; paint(); });
   }
 }

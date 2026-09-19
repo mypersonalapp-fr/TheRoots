@@ -9,6 +9,7 @@ import { renderMesCours } from "./mes-cours.js";
 import { renderComprehension } from "./comprehension.js";
 import { renderExpression } from "./expression.js";
 import { renderTraduction } from "./traduction.js";
+import { renderDictionnaire } from "./dictionnaire.js";
 import { store } from "../data/store.js";
 import { t } from "../data/i18n.js";
 
@@ -18,6 +19,7 @@ function menuItems(lang) {
     { id: "mes-cours", label: t("menu_mescours", lang), icon: "📚" },
     { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
     { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
+    { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },
     { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
     { id: "parametres", label: t("menu_parametres", lang), icon: "⚙️" },
   ];
@@ -29,6 +31,7 @@ function titles(lang) {
     "mes-cours": t("title_mescours", lang),
     "comprehension": t("title_comprehension", lang),
     "expression": t("title_expression", lang),
+    "dictionnaire": t("title_dictionnaire", lang),
     "traduction": t("title_traduction", lang),
     "parametres": t("title_parametres", lang),
   };
@@ -106,6 +109,7 @@ export function renderShell(root) {
     else if (id === "mes-cours") renderMesCours(body, root);
     else if (id === "comprehension") renderComprehension(body);
     else if (id === "expression") renderExpression(body);
+    else if (id === "dictionnaire") renderDictionnaire(body);
     else if (id === "traduction") renderTraduction(body);
   }
 
@@ -142,5 +146,13 @@ export function renderShell(root) {
     touchStartX = null;
   }, { passive: true });
 
-  renderTab("accueil");
+  // Si Paramètres a mémorisé un onglet avant un rechargement (ex. juste
+  // après un changement de langue d'interface), on rouvre cet onglet-là au
+  // lieu de retomber systématiquement sur l'Accueil.
+  let startTab = "accueil";
+  try {
+    const savedTab = sessionStorage.getItem("the_roots_last_tab");
+    if (savedTab) { startTab = savedTab; sessionStorage.removeItem("the_roots_last_tab"); }
+  } catch (e) { /* stockage indisponible */ }
+  renderTab(startTab);
 }

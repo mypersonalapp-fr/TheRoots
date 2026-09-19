@@ -1,54 +1,240 @@
-// The Roots — Expression écrite et orale : immersion libre, indépendante
-// de la progression par palier. Maquette visuelle.
+// The Roots — Expression écrite et orale : immersion libre, indépendante de
+// la progression par palier. Contenu réel pour l'anglais niveau A1 :
+// - Expression écrite : réponse écrite à un email/message reçu, corrigée
+//   avec LanguageTool (grammaire/orthographe, API publique gratuite, sans
+//   clé) + une checklist de contenu (points attendus détectés par mots-clés
+//   — voir EXPRESSION_ECRITE_PROMPTS_EN).
+// - Expression orale : "appel" lu à voix haute (synthèse vocale), réponse
+//   au micro captée par la reconnaissance vocale du navigateur (quand
+//   disponible), même checklist de contenu sur ce qui a été capté.
+//
+// Ni l'une ni l'autre ne fait de correction grammaticale "par IA" à
+// proprement parler (pas de backend branché sur l'appli) — LanguageTool est
+// un vrai correcteur grammatical gratuit, mais reste un outil séparé, pas
+// une IA qui comprend le sens ; la checklist de contenu comble ce manque en
+// vérifiant simplement la présence des idées attendues.
 
 import { store } from "../data/store.js";
 import { t } from "../data/i18n.js";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+function checklistResults(text, expectedPoints) {
+  const lower = (text || "").toLowerCase();
+  return expectedPoints.map((p) => ({
+    label: p.label,
+    met: p.keywords.some((k) => lower.includes(k.toLowerCase())),
+  }));
+}
+
+async function checkGrammar(text) {
+  const res = await fetch("https://api.languagetool.org/v2/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ text, language: "en-US" }).toString(),
+  });
+  if (!res.ok) throw new Error("languagetool_network");
+  const data = await res.json();
+  return data.matches || [];
+}
 
 export function renderExpression(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
-  container.innerHTML = `
-    <div class="dash-greeting" style="padding:4px 0 10px">
-      ${t("expr_intro", lang)}
-    </div>
+  let selectedLevel = "A1";
 
-    <div class="level-chip-row" id="exprLevels">
-      ${LEVELS.map((l, i) => `<button class="level-chip${i === 0 ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
-    </div>
+  let ecriteIndex = 0;
+  let ecriteChecking = false;
+  let ecriteMatches = null;
+  let ecriteError = false;
+  let ecriteReplyText = "";
 
-    <div class="card-3d" style="margin-bottom:14px">
-      <div class="immersion-card" style="margin-bottom:0">
-        <div class="immersion-icon">🗣️</div>
-        <div>
-          <div class="immersion-title">${t("expr_oral_title", lang)}</div>
-          <div class="immersion-note">${t("expr_oral_desc", lang)}</div>
+  let oraleIndex = 0;
+  let oraleTranscript = "";
+  let oraleRecording = false;
+  let recognition = null;
+
+  function paint() {
+    container.innerHTML = `
+      <div class="dash-greeting" style="padding:4px 0 10px">${t("expr_intro", lang)}</div>
+
+      <div class="level-chip-row" id="exprLevels">
+        ${LEVELS.map((l) => `<button class="level-chip${l === selectedLevel ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
+      </div>
+
+      ${selectedLevel !== "A1" ? `
+        <div class="card-3d"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
+      ` : `
+        <div class="card-3d" style="margin-bottom:14px">
+          <div class="immersion-card" style="margin-bottom:0">
+            <div class="immersion-icon">🗣️</div>
+            <div>
+              <div class="immersion-title">${t("expr_oral_title", lang)}</div>
+              <div class="immersion-note">${t("expr_oral_desc", lang)}</div>
+            </div>
+          </div>
+          ${oraleHtml()}
         </div>
-      </div>
-      <div class="card-media" style="margin-top:14px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:13px;text-shadow:none">
-        ${t("expr_video_mock", lang)}
-      </div>
-      <button class="btn btn-primary" style="margin-top:12px;width:100%">${t("expr_record_btn", lang)}</button>
-    </div>
 
-    <div class="card-3d">
-      <div class="immersion-card" style="margin-bottom:0">
-        <div class="immersion-icon">✍️</div>
-        <div>
-          <div class="immersion-title">${t("expr_written_title", lang)}</div>
-          <div class="immersion-note">${t("expr_written_desc", lang)}</div>
+        <div class="card-3d">
+          <div class="immersion-card" style="margin-bottom:0">
+            <div class="immersion-icon">✍️</div>
+            <div>
+              <div class="immersion-title">${t("expr_written_title", lang)}</div>
+              <div class="immersion-note">${t("expr_written_desc", lang)}</div>
+            </div>
+          </div>
+          ${ecriteHtml()}
         </div>
-      </div>
-      <button class="q-audio-btn-lt" style="margin-top:14px">${t("expr_listen_btn", lang)}</button>
-      <textarea class="translate-area" placeholder="${t("expr_write_placeholder", lang)}" style="min-height:100px"></textarea>
-      <button class="btn btn-ghost" style="width:100%;margin-top:10px">${t("expr_check_btn", lang)}</button>
-    </div>
-  `;
+      `}
+    `;
 
-  container.querySelector("#exprLevels").addEventListener("click", (e) => {
-    const chip = e.target.closest(".level-chip");
-    if (!chip) return;
-    container.querySelectorAll("#exprLevels .level-chip").forEach(c => c.classList.toggle("active", c === chip));
-  });
+    container.querySelector("#exprLevels").addEventListener("click", (e) => {
+      const chip = e.target.closest(".level-chip");
+      if (!chip) return;
+      selectedLevel = chip.dataset.level;
+      paint();
+    });
+
+    if (selectedLevel === "A1") { wireOrale(); wireEcrite(); }
+  }
+
+  // ---------- Expression orale ----------
+
+  function oraleHtml() {
+    const prompt = EXPRESSION_ORALE_PROMPTS_EN[oraleIndex];
+    const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+    return `
+      <div class="card" style="margin-top:14px">
+        <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">${t("expr_orale_incoming", lang)} — ${prompt.from}</div>
+        <button class="btn btn-ghost" id="oraleListenBtn" style="width:100%;margin-top:10px">${t("expr_orale_listen_call_btn", lang)}</button>
+        ${supported ? `
+          <button class="btn btn-primary" id="oraleRecordBtn" style="width:100%;margin-top:10px">${oraleRecording ? t("expr_orale_recording", lang) : t("expr_orale_record_btn", lang)}</button>
+        ` : `<div class="card" style="margin-top:10px;font-size:12.5px;color:var(--ink-soft)">${t("expr_orale_not_supported", lang)}</div>`}
+        ${oraleTranscript ? `
+          <div style="margin-top:12px">
+            <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("expr_orale_transcript_label", lang)}</div>
+            <div class="card" style="margin-top:6px;font-size:13.5px">${oraleTranscript}</div>
+            ${checklistHtml(checklistResults(oraleTranscript, prompt.expectedPoints))}
+          </div>
+        ` : ""}
+        <button class="btn btn-ghost" id="oraleNextBtn" style="width:100%;margin-top:10px">${t("expr_orale_next_prompt", lang)}</button>
+      </div>
+    `;
+  }
+
+  function wireOrale() {
+    const prompt = EXPRESSION_ORALE_PROMPTS_EN[oraleIndex];
+    const listenBtn = container.querySelector("#oraleListenBtn");
+    if (listenBtn) listenBtn.addEventListener("click", () => {
+      try {
+        if (!window.speechSynthesis) return;
+        const u = new SpeechSynthesisUtterance(prompt.callText);
+        u.lang = "en-GB";
+        u.rate = 0.92;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      } catch (e) { /* synthèse vocale indisponible */ }
+    });
+
+    const recordBtn = container.querySelector("#oraleRecordBtn");
+    if (recordBtn) recordBtn.addEventListener("click", () => {
+      const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!Recognition) return;
+      try {
+        recognition = new Recognition();
+        recognition.lang = "en-GB";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        oraleRecording = true;
+        paint();
+        recognition.onresult = (e) => {
+          oraleTranscript = e.results[0][0].transcript;
+          oraleRecording = false;
+          paint();
+        };
+        recognition.onerror = () => { oraleRecording = false; paint(); };
+        recognition.onend = () => { oraleRecording = false; };
+        recognition.start();
+      } catch (e) { oraleRecording = false; }
+    });
+
+    const nextBtn = container.querySelector("#oraleNextBtn");
+    if (nextBtn) nextBtn.addEventListener("click", () => {
+      oraleIndex = (oraleIndex + 1) % EXPRESSION_ORALE_PROMPTS_EN.length;
+      oraleTranscript = "";
+      paint();
+    });
+  }
+
+  // ---------- Expression écrite ----------
+
+  function ecriteHtml() {
+    const prompt = EXPRESSION_ECRITE_PROMPTS_EN[ecriteIndex];
+    return `
+      <div class="card" style="margin-top:14px">
+        <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("expr_ecrite_prompt_label", lang)} — ${prompt.from}</div>
+        <div style="margin-top:6px;font-size:13.5px">${prompt.message}</div>
+      </div>
+      <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft);margin-top:12px">${t("expr_ecrite_reply_label", lang)}</div>
+      <textarea class="translate-area" id="exprReplyInput" placeholder="${t("expr_write_placeholder", lang)}" style="min-height:100px;margin-top:6px">${ecriteReplyText}</textarea>
+      <button class="btn btn-ghost" id="exprCheckBtn" style="width:100%;margin-top:10px" ${ecriteChecking ? "disabled" : ""}>${ecriteChecking ? t("expr_ecrite_checking", lang) : t("expr_check_btn", lang)}</button>
+      ${ecriteError ? `<div class="card" style="margin-top:10px;font-size:12.5px;color:var(--ink-soft)">${t("expr_ecrite_error", lang)}</div>` : ""}
+      ${ecriteMatches !== null ? `
+        <div class="card" style="margin-top:10px">
+          <div style="font-weight:800">${t("expr_ecrite_grammar_title", lang)}</div>
+          ${ecriteMatches.length === 0 ? `<div style="font-size:13px;color:var(--accent);margin-top:4px">${t("expr_ecrite_no_issues", lang)}</div>` : `
+            <ul style="margin:6px 0 0;padding-left:18px;font-size:13px">
+              ${ecriteMatches.slice(0, 8).map((m) => `<li style="margin-bottom:4px">${m.message}${m.replacements && m.replacements[0] ? ` → <strong>${m.replacements[0].value}</strong>` : ""}</li>`).join("")}
+            </ul>
+          `}
+        </div>
+        <div class="card" style="margin-top:10px">
+          <div style="font-weight:800">${t("expr_ecrite_checklist_title", lang)}</div>
+          ${checklistHtml(checklistResults(ecriteReplyText, prompt.expectedPoints))}
+        </div>
+      ` : ""}
+      <button class="btn btn-ghost" id="exprNextBtn" style="width:100%;margin-top:10px">${t("expr_ecrite_next_prompt", lang)}</button>
+    `;
+  }
+
+  function wireEcrite() {
+    const textarea = container.querySelector("#exprReplyInput");
+    if (textarea) textarea.addEventListener("input", (e) => { ecriteReplyText = e.target.value; });
+
+    const checkBtn = container.querySelector("#exprCheckBtn");
+    if (checkBtn) checkBtn.addEventListener("click", async () => {
+      const text = ecriteReplyText.trim();
+      if (!text) { ecriteMatches = null; ecriteError = false; return; }
+      ecriteChecking = true; ecriteError = false; ecriteMatches = null;
+      paint();
+      try {
+        ecriteMatches = await checkGrammar(text);
+      } catch (e) {
+        ecriteError = true;
+        ecriteMatches = [];
+      } finally {
+        ecriteChecking = false;
+        paint();
+      }
+    });
+    const nextBtn = container.querySelector("#exprNextBtn");
+    if (nextBtn) nextBtn.addEventListener("click", () => {
+      ecriteIndex = (ecriteIndex + 1) % EXPRESSION_ECRITE_PROMPTS_EN.length;
+      ecriteMatches = null; ecriteError = false; ecriteReplyText = "";
+      paint();
+    });
+  }
+
+  function checklistHtml(items) {
+    return `
+      <ul style="list-style:none;margin:6px 0 0;padding:0;font-size:13px">
+        ${items.map((it) => `<li style="margin-bottom:4px">${it.met ? "✅" : "▫️"} ${it.label}</li>`).join("")}
+      </ul>
+    `;
+  }
+
+  paint();
 }
