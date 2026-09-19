@@ -41,12 +41,35 @@ const QUOTES = [
   },
 ];
 
-const CULTURE_QUESTIONS = {
-  en: {
+// Question de culture du jour — même principe que EXPRESSIONS_EN/QUOTES
+// juste au-dessus : un petit pool, et on choisit dedans selon la date (voir
+// plus bas, "new Date().getDate() % ...length"). Avant le 20/09, il n'y
+// avait qu'UNE SEULE question ici, donc rien ne pouvait jamais changer d'un
+// jour à l'autre, peu importe le "délai" — le bug n'était pas le délai,
+// c'est qu'il n'y avait tout simplement pas d'autres questions dans le pool
+// ni de logique de rotation branchée sur celui-ci.
+const CULTURE_QUESTIONS_EN = [
+  {
     question: "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
     answer: "Réponse : Covent Garden Market (aussi appelé Apple Market).",
   },
-};
+  {
+    question: "Combien de temps peut durer un match de cricket \"test-match\" ?",
+    answer: "Réponse : jusqu'à 5 jours !",
+  },
+  {
+    question: "Comment s'appelle le garde royal posté devant Buckingham Palace ?",
+    answer: "Réponse : The King's Guard (autrefois The Queen's Guard).",
+  },
+  {
+    question: "À quelle heure prend-on traditionnellement l'\"afternoon tea\" au Royaume-Uni ?",
+    answer: "Réponse : en général entre 15h et 17h.",
+  },
+  {
+    question: "Quel plat, pourtant d'origine indienne, est souvent considéré comme le plat national britannique ?",
+    answer: "Réponse : le chicken tikka masala.",
+  },
+];
 
 // Vidéo du jour — playlist qui change tous les 2 jours (pas tous les jours).
 // Pour l'instant : une seule vidéo A1 proposée en test (Ashley enverra les
@@ -83,6 +106,7 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
   const { date, time } = localizedDateTime(lang);
   const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
   const quote = QUOTES[new Date().getDate() % QUOTES.length];
+  const culture = CULTURE_QUESTIONS_EN[new Date().getDate() % CULTURE_QUESTIONS_EN.length];
   const video = pickVideoOfTheDay(VIDEOS_EN);
   const leveledLangs = settings.langs.filter((l) => l.leveled);
 
@@ -112,8 +136,8 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
         <div class="card dash-culture-card">
           <div class="dash-culture-label">${t("dash_culture_label", lang)}</div>
-          <div class="dash-culture-text">${CULTURE_QUESTIONS.en.question}</div>
-          <div class="dash-culture-answer">${CULTURE_QUESTIONS.en.answer}</div>
+          <div class="dash-culture-text">${culture.question}</div>
+          <div class="dash-culture-answer">${culture.answer}</div>
         </div>
       </div>
     </div>
