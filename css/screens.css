@@ -196,39 +196,40 @@
   background: #fdf3e3;
 }
 
-/* --- Correctif format paysage (tablette et téléphone) : shell-bg.jpg est
-   une image "haute" (globe/drapeaux en haut, silhouette de villes en bas —
-   1024×1536, plus haute que large). En mode paysage, "cover" doit
-   l'agrandir énormément pour remplir toute la largeur de l'écran, ce qui
-   coupait presque tout le haut ET le bas de l'image : il ne restait
-   visible qu'une mince bande du milieu (plus de globe, plus de villes, ni
-   lac ni pont visibles — signalé par capture d'écran). On montre donc en
-   paysage l'image ENTIÈRE, centrée, jamais coupée ("contain"), avec une
-   version floutée/agrandie de la MÊME image posée derrière pour combler
-   les bandes vides sur les côtés sans qu'une couleur unie ne jure à côté
-   de l'illustration. */
+/* --- Format paysage (tablette et téléphone) : shell-bg.jpg est une image
+   "haute" (portrait, 1024×1536) pensée pour un écran de téléphone debout —
+   en paysage elle ne peut que se retrouver soit coupée en haut/en bas
+   (cover), soit entourée de vide sur les côtés (contain + flou). Ashley a
+   fourni 4 images DÉJÀ DESSINÉES EN FORMAT PAYSAGE (1376×768, jour + nuit,
+   avec et sans logo) : on les affiche telles quelles en paysage à la place
+   des images portrait, avec un simple "cover" (déjà la valeur par défaut de
+   .screen-cover-bg) puisqu'elles remplissent nativement un écran large —
+   plus besoin de flou ni de recadrage. Les images portrait (bg-img-light /
+   bg-img-dark / bg-img-portrait) sont cachées en paysage, et inversement les
+   images paysage (bg-img-landscape*) sont cachées en portrait. */
+.bg-img-landscape,
+.bg-img-landscape-dark,
+.bg-img-landscape-hero,
+.bg-img-landscape-hero-dark{
+  display: none;
+}
 @media (orientation: landscape){
-  .shell-bg::before{
-    content: "";
-    position: absolute; inset: 0;
-    /* "../assets/..." et non "assets/..." : dans un fichier CSS, un chemin
-       d'image se lit depuis l'EMPLACEMENT DU FICHIER CSS (donc depuis
-       css/), pas depuis la racine du site comme dans le HTML — avec
-       "assets/..." tout court, le navigateur cherchait l'image dans
-       css/assets/img/ (qui n'existe pas), l'image ne se chargeait jamais,
-       et il ne restait que le fond crème uni sur les côtés, sans flou du
-       tout. C'était le vrai bug derrière "l'image reste en portrait". */
-    background-image: url("../assets/img/shell-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: blur(38px) saturate(1.15) brightness(0.85);
-    transform: scale(1.15);
+  .bg-img-light,
+  .bg-img-dark,
+  .bg-img-portrait{
+    display: none !important;
   }
-  :root[data-theme="dark"] .shell-bg::before{
-    background-image: url("../assets/img/shell-bg-dark.jpg");
+  .bg-img-landscape,
+  .bg-img-landscape-hero{
+    display: block;
   }
-  .shell-bg .screen-cover-bg{
-    object-fit: contain;
+  :root[data-theme="dark"] .bg-img-landscape,
+  :root[data-theme="dark"] .bg-img-landscape-hero{
+    display: none;
+  }
+  :root[data-theme="dark"] .bg-img-landscape-dark,
+  :root[data-theme="dark"] .bg-img-landscape-hero-dark{
+    display: block;
   }
 }
 
