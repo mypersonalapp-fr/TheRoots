@@ -2581,7 +2581,15 @@
     try{
       if(!window.speechSynthesis) return;
       var u = new SpeechSynthesisUtterance(text);
-      u.lang = "en-GB";
+      // Bug corrigé : cette fonction (utilisée pour QUASI tout l'audio de la
+      // leçon — vocabulaire, quiz, exemples...) forçait toujours l'accent
+      // britannique "en-GB", même quand l'apprenant suit le cours en anglais
+      // AMÉRICAIN (state.variant === "us") — seul le bouton "Tout écouter"
+      // (readAllBtn, plus bas) tenait compte du variant choisi. Les deux
+      // utilisent maintenant exactement la même logique : la voix choisie
+      // dans Paramètres si elle existe, sinon l'accent du variant suivi.
+      var variantLang = state.variant === "us" ? "en-US" : "en-GB";
+      u.lang = variantLang;
       var chosen = null;
       var key = preferredVoiceKey();
       if(key){
@@ -2590,8 +2598,8 @@
         chosen = cachedVoices.find(function(v){ return v.name === name && v.lang === voiceLang; });
       }
       if(!chosen){
-        chosen = cachedVoices.find(function(v){ return v.lang === "en-GB"; }) ||
-                 cachedVoices.find(function(v){ return (v.lang||"").indexOf("en-GB") === 0; });
+        chosen = cachedVoices.find(function(v){ return v.lang === variantLang; }) ||
+                 cachedVoices.find(function(v){ return (v.lang||"").indexOf(variantLang) === 0; });
       }
       if(chosen){ u.voice = chosen; u.lang = chosen.lang; }
       u.rate = 0.92;
