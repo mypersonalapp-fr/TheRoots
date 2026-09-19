@@ -41,13 +41,14 @@ const QUOTES = [
   },
 ];
 
-// Question de culture du jour — même principe que EXPRESSIONS_EN/QUOTES
-// juste au-dessus : un petit pool, et on choisit dedans selon la date (voir
-// plus bas, "new Date().getDate() % ...length"). Avant le 20/09, il n'y
-// avait qu'UNE SEULE question ici, donc rien ne pouvait jamais changer d'un
-// jour à l'autre, peu importe le "délai" — le bug n'était pas le délai,
-// c'est qu'il n'y avait tout simplement pas d'autres questions dans le pool
-// ni de logique de rotation branchée sur celui-ci.
+// Question de culture du jour — un pool avec une question par jour du mois
+// (31 questions ci-dessous), choisie selon la date : "new Date().getDate() %
+// CULTURE_QUESTIONS_EN.length". Avec exactement 31 questions, chaque jour du
+// mois (1 à 31) tombe sur un index différent — donc une vraie question
+// différente chaque jour, sans jamais répéter dans le même mois. Avant le
+// 20/09, il n'y avait qu'UNE SEULE question ici, donc rien ne pouvait jamais
+// changer d'un jour à l'autre — le bug n'était pas un "délai" à régler, c'est
+// qu'il n'y avait tout simplement pas d'autres questions dans le pool.
 const CULTURE_QUESTIONS_EN = [
   {
     question: "Sais-tu quel est le nom du célèbre marché couvert de Londres, près de Covent Garden ?",
@@ -68,6 +69,110 @@ const CULTURE_QUESTIONS_EN = [
   {
     question: "Quel plat, pourtant d'origine indienne, est souvent considéré comme le plat national britannique ?",
     answer: "Réponse : le chicken tikka masala.",
+  },
+  {
+    question: "\"Big Ben\", est-ce le nom de la tour de l'horloge à Londres ou d'autre chose ?",
+    answer: "Réponse : c'est le nom de la grosse cloche à l'intérieur — la tour s'appelle officiellement Elizabeth Tower.",
+  },
+  {
+    question: "Comment les Londoniens surnomment-ils leur métro ?",
+    answer: "Réponse : \"The Tube\".",
+  },
+  {
+    question: "De quelle couleur sont les célèbres cabines téléphoniques de Londres ?",
+    answer: "Réponse : rouges (le modèle \"K2\", dessiné par Giles Gilbert Scott).",
+  },
+  {
+    question: "Comment appelle-t-on les taxis noirs traditionnels de Londres ?",
+    answer: "Réponse : les \"black cabs\".",
+  },
+  {
+    question: "Combien d'étages ont les célèbres bus rouges de Londres ?",
+    answer: "Réponse : deux étages — ce sont des \"double-decker buses\".",
+  },
+  {
+    question: "Comment s'appelle le drapeau du Royaume-Uni ?",
+    answer: "Réponse : the Union Jack.",
+  },
+  {
+    question: "Sais-tu où se trouve le célèbre cercle de pierres préhistorique de Stonehenge ?",
+    answer: "Réponse : dans le comté du Wiltshire, en Angleterre.",
+  },
+  {
+    question: "Comment surnomme-t-on le mystérieux monstre du Loch Ness, en Écosse ?",
+    answer: "Réponse : \"Nessie\".",
+  },
+  {
+    question: "Quelle est la résidence officielle du roi/de la reine à Londres ?",
+    answer: "Réponse : Buckingham Palace.",
+  },
+  {
+    question: "Quel est le plus grand château habité du monde, résidence de week-end du monarque ?",
+    answer: "Réponse : Windsor Castle.",
+  },
+  {
+    question: "Que fête-t-on le 26 décembre au Royaume-Uni ?",
+    answer: "Réponse : \"Boxing Day\" — un jour férié, avec traditionnellement les soldes.",
+  },
+  {
+    question: "Que célèbre-t-on le 5 novembre avec des feux d'artifice au Royaume-Uni ?",
+    answer: "Réponse : \"Bonfire Night\" (ou \"Guy Fawkes Night\").",
+  },
+  {
+    question: "Que fait-on de spécial pour \"Pancake Day\" (Shrove Tuesday) ?",
+    answer: "Réponse : on mange des crêpes, et certaines villes organisent des courses de crêpes dans la rue !",
+  },
+  {
+    question: "Comment s'appelle la plus ancienne compétition de football du monde, jouée en Angleterre ?",
+    answer: "Réponse : la FA Cup.",
+  },
+  {
+    question: "Quel célèbre tournoi de tennis se joue chaque année à Londres, avec fraises et crème ?",
+    answer: "Réponse : Wimbledon.",
+  },
+  {
+    question: "Comment s'appelle le plat traditionnel britannique de poisson pané avec des frites ?",
+    answer: "Réponse : \"fish and chips\", souvent servi enveloppé dans du papier.",
+  },
+  {
+    question: "Que mangent traditionnellement les Britanniques le dimanche midi ?",
+    answer: "Réponse : un \"Sunday roast\" — une viande rôtie avec légumes et \"Yorkshire pudding\".",
+  },
+  {
+    question: "Comment s'appelle la grande roue géante installée au bord de la Tamise à Londres ?",
+    answer: "Réponse : le London Eye.",
+  },
+  {
+    question: "Quelles deux universités s'affrontent chaque année dans une célèbre course d'aviron sur la Tamise ?",
+    answer: "Réponse : Oxford et Cambridge — \"The Boat Race\".",
+  },
+  {
+    question: "Dans quelle ville anglaise est né le célèbre écrivain William Shakespeare ?",
+    answer: "Réponse : Stratford-upon-Avon.",
+  },
+  {
+    question: "Quel festival d'arts, l'un des plus grands du monde, a lieu chaque août en Écosse ?",
+    answer: "Réponse : l'Edinburgh Festival (Fringe).",
+  },
+  {
+    question: "Comment s'appelle le grand festival de musique classique organisé chaque été par la BBC ?",
+    answer: "Réponse : \"The Proms\", avec sa célèbre soirée finale \"Last Night of the Proms\".",
+  },
+  {
+    question: "Que trouve-t-on à l'intérieur d'un \"Christmas cracker\", tiré à deux à table le jour de Noël ?",
+    answer: "Réponse : une petite couronne en papier, une blague et un petit cadeau surprise.",
+  },
+  {
+    question: "Comment s'appelle le défilé militaire annuel qui célèbre l'anniversaire officiel du monarque ?",
+    answer: "Réponse : \"Trooping the Colour\".",
+  },
+  {
+    question: "De quel côté de la route conduit-on au Royaume-Uni ?",
+    answer: "Réponse : à gauche !",
+  },
+  {
+    question: "Pour quoi les Britanniques sont-ils connus, quand il s'agit d'attendre son tour (au bus, au magasin...) ?",
+    answer: "Réponse : \"queueing\" — faire la queue proprement et dans l'ordre, une vraie institution culturelle !",
   },
 ];
 
