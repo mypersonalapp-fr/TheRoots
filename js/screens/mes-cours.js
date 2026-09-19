@@ -12,6 +12,17 @@ import { store } from "../data/store.js";
 import { renderLevelTest } from "./level-test.js";
 import { t, formatDate } from "../data/i18n.js";
 
+// Petit drapeau à côté du nom de chaque langue — celui de l'accent choisi
+// une fois qu'une variante est suivie (ex. 🇺🇸 pour l'anglais américain),
+// sinon un drapeau générique pour le groupe de langue tant qu'aucun accent
+// n'est encore choisi.
+const GROUP_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
+const VARIANT_FLAGS = { "en-gb": "🇬🇧", "en-us": "🇺🇸", "es-co": "🇨🇴", "es-es": "🇪🇸", "pt-br": "🇧🇷", "pt-pt": "🇵🇹" };
+function flagFor(l) {
+  const variantCode = l.variants?.find((v) => v.code === l.selectedVariant)?.code;
+  return (variantCode && VARIANT_FLAGS[variantCode]) || GROUP_FLAGS[l.code] || "";
+}
+
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
@@ -39,7 +50,7 @@ export function renderMesCours(container, shellRoot) {
             return `
             <div class="mc-cube-wrap">
               <button class="card mc-cube" data-code="${l.code}">
-                <div class="mc-cube-lang">${l.label}</div>
+                <div class="mc-cube-lang">${flagFor(l)} ${l.label}</div>
                 <div class="mc-cube-status">${status}</div>
               </button>
               <div class="mc-cube-gauge${l.leveled ? "" : " mc-cube-gauge-empty"}"><div class="mc-cube-gauge-fill" style="width:${l.leveled ? Math.round((l.progress||0)*100) : 0}%"></div></div>
@@ -82,7 +93,7 @@ export function renderMesCours(container, shellRoot) {
           <div class="card" style="color:var(--ink-soft);font-size:13px">${t("mc_livret_empty", lang)}</div>
         ` : leveledLangs.map((l) => `
           <div class="card mc-livret-row">
-            <div style="font-weight:800">${l.label}</div>
+            <div style="font-weight:800">${flagFor(l)} ${l.label}</div>
             <div class="mc-livret-grid">
               <div class="mc-livret-cell">
                 <div class="mc-livret-cell-label">${t("mc_entry_level", lang)}</div>
@@ -114,7 +125,7 @@ export function renderMesCours(container, shellRoot) {
     container.innerHTML = `
       <button class="settings-back" id="mcBack">${t("mc_back", lang)}</button>
       <div class="dash-box">
-        <h3>${langData.label}</h3>
+        <h3>${flagFor(langData)} ${langData.label}</h3>
         <div class="card">
           <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">${t("mc_my_level", lang)}</div>
           ${langData.leveled ? `
