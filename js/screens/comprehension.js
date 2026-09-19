@@ -27,10 +27,24 @@ function normalizeAnswer(s) {
     .replace(/\s+/g, " ")
     .trim();
 }
-function contentMatches(answer, accepted) {
+// Mots-outils ignorés quand on compare la réponse au mot-à-mot du texte —
+// volontairement SANS les mots de nombre (twenty, one, two…), qui sont
+// souvent la réponse elle-même (âge, heure, quantité...).
+const STOPWORDS = new Set(["the", "a", "an", "is", "are", "was", "were", "am", "be", "been", "being", "in", "on", "at", "to", "of", "and", "or", "but", "so", "because", "i", "we", "they", "he", "she", "it", "you", "my", "his", "her", "their", "our", "your", "do", "does", "did", "has", "have", "had", "with", "for", "this", "that", "these", "those", "from", "by", "as", "not", "there", "here", "also", "very", "some", "any"]);
+function significantWords(s) {
+  return normalizeAnswer(s).split(" ").filter((w) => w.length >= 3 && !STOPWORDS.has(w));
+}
+function contentMatches(answer, q) {
   const norm = normalizeAnswer(answer);
   if (!norm) return false;
-  return accepted.some((a) => norm.includes(normalizeAnswer(a)));
+  // 1) correspondance directe avec les mots-clés attendus (la plus fiable).
+  if (q.accepted.some((a) => norm.includes(normalizeAnswer(a)))) return true;
+  // 2) sinon, on vérifie que la réponse reprend au moins un mot important de
+  // la phrase du texte qui contient la réponse — à ce niveau, l'apprenant
+  // ne peut de toute façon construire sa phrase qu'avec des mots déjà vus
+  // dans le texte qu'il est en train de lire.
+  const answerWords = new Set(significantWords(answer));
+  return significantWords(q.answerSentence).some((w) => answerWords.has(w));
 }
 // Vraie vérification orthographe/grammaire (LanguageTool, API publique
 // gratuite, sans clé — même outil que pour l'expression écrite).
@@ -246,7 +260,7 @@ export function renderComprehension(container) {
         // vérification orthographe/grammaire (LanguageTool), en parallèle.
         gradeResults = await Promise.all(text.questions.map(async (q, i) => {
           const answer = answers[i] || "";
-          const contentOk = contentMatches(answer, q.accepted);
+          const contentOk = contentMatches(answer, q);
           let spellingIssues = [];
           if (answer.trim()) {
             try { spellingIssues = await checkSpelling(answer); } catch (e) { /* correcteur indisponible — on garde juste le jugement de fond */ }
