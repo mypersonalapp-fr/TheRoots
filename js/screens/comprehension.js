@@ -73,7 +73,8 @@ export function renderComprehension(container) {
   let gradeResults = null; // rempli après correction : [{ contentOk, spellingIssues }, ...]
 
   let selectedVideoId = null;
-  let showTranscript = false;
+  let oralChecking = false;
+  let oralCheckIssues = null; // rempli après correction (LanguageTool) — null = pas encore vérifié
 
   function paint() {
     const ecriteProgress = store.getCompProgress("ecrite", "en");
@@ -147,11 +148,18 @@ export function renderComprehension(container) {
         <iframe src="https://www.youtube.com/embed/${video.videoId}" title="${video.title}" style="width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <textarea class="translate-area" id="oralSummary" placeholder="${t("comp_orale_summary_placeholder", lang)}" style="min-height:90px;margin-top:10px">${saved}</textarea>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <button class="btn btn-ghost" id="oralSaveBtn" style="flex:1">${t("comp_summary_btn", lang)}</button>
-        <button class="btn btn-ghost" id="oralTranscriptBtn" style="flex:1">${t("comp_orale_see_transcript_btn", lang)}</button>
-      </div>
-      ${showTranscript ? `<div class="card" style="margin-top:8px;font-size:13px;color:var(--ink-soft)">${video.transcript ? video.transcript : t("comp_orale_transcript_pending", lang)}</div>` : ""}
+      <button class="btn btn-primary" id="oralSaveBtn" style="width:100%;margin-top:8px" ${oralChecking ? "disabled" : ""}>${oralChecking ? t("expr_ecrite_checking", lang) : t("comp_summary_btn", lang)}</button>
+      ${oralCheckIssues !== null ? `
+        <div class="card" style="margin-top:8px">
+          ${oralCheckIssues.length === 0 ? `
+            <div style="font-size:13px;color:var(--accent);font-weight:700">${t("expr_ecrite_no_issues", lang)}</div>
+          ` : `
+            <ul style="margin:0;padding-left:16px;font-size:12.5px;color:var(--ink-soft)">
+              ${oralCheckIssues.slice(0, 6).map((m) => `<li style="margin-bottom:4px">${m.message}${m.replacements && m.replacements[0] ? ` → <strong>${m.replacements[0].value}</strong>` : ""}</li>`).join("")}
+            </ul>
+          `}
+        </div>
+      ` : ""}
       <div id="oralSaveMsg" style="font-size:12px;color:var(--accent);margin-top:6px"></div>
     `;
   }
@@ -162,18 +170,23 @@ export function renderComprehension(container) {
       const b = e.target.closest("button[data-video]");
       if (!b) return;
       selectedVideoId = b.dataset.video;
-      showTranscript = false;
+      oralCheckIssues = null;
       paint();
     });
     const saveBtn = container.querySelector("#oralSaveBtn");
-    if (saveBtn) saveBtn.addEventListener("click", () => {
+    if (saveBtn) saveBtn.addEventListener("click", async () => {
       const text = container.querySelector("#oralSummary").value;
       const results = { ...(progress.results || {}), [selectedVideoId]: text };
       store.setCompProgress("orale", "en", { results });
-      container.querySelector("#oralSaveMsg").textContent = t("comp_orale_summary_saved", lang);
+      if (!text.trim()) { oralCheckIssues = null; paint(); return; }
+      oralChecking = true;
+      paint();
+      let issues = [];
+      try { issues = await checkSpelling(text); } catch (e) { /* correcteur indisponible — le résumé reste quand même enregistré */ }
+      oralChecking = false;
+      oralCheckIssues = issues;
+      paint();
     });
-    const transcriptBtn = container.querySelector("#oralTranscriptBtn");
-    if (transcriptBtn) transcriptBtn.addEventListener("click", () => { showTranscript = !showTranscript; paint(); });
   }
 
   // ---------- Compréhension écrite ----------

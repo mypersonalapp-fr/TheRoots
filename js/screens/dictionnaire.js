@@ -77,7 +77,7 @@ async function translateWord(word, fromLang, toLang) {
 // des apostrophes/guillemets casseraient sinon l'attribut HTML) : ils portent
 // juste des index, et le texte est relu depuis "lastEntries" au clic (voir
 // plus bas, dans renderDictionnaire).
-const SPEECH_LOCALE = { en: "en-GB", es: "es-ES", pt: "pt-BR" };
+const SPEECH_LOCALE = { en: "en-GB", es: "es-ES", pt: "pt-BR", fr: "fr-FR" };
 
 // Voix préférée choisie dans Paramètres > Réglages généraux > Voix (ex.
 // "Samantha", voix américaine) — ce réglage ne couvre que l'anglais (voir
@@ -175,10 +175,16 @@ export function renderDictionnaire(container) {
   // exact à lire sans avoir eu à l'encoder dans un attribut HTML.
   let lastEntries = null;
   let lastDictLang = dictLang;
+  let lastTranslation = null;
 
   results.addEventListener("click", (e) => {
     const speakBtn = e.target.closest(".dict-speak");
-    if (!speakBtn || !lastEntries) return;
+    if (!speakBtn) return;
+    if (speakBtn.dataset.kind === "translation") {
+      if (lastTranslation) speak(lastTranslation, lang);
+      return;
+    }
+    if (!lastEntries) return;
     const entry = lastEntries[Number(speakBtn.dataset.entry)];
     if (!entry) return;
     if (speakBtn.dataset.kind === "word") {
@@ -215,10 +221,14 @@ export function renderDictionnaire(container) {
     ]);
 
     const translation = translationResult.status === "fulfilled" ? translationResult.value : null;
+    lastTranslation = translation;
     const translationHtml = translation ? `
       <div class="card" style="margin-bottom:10px">
         <div style="font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;font-weight:700">${t("dict_translation_label", lang)}</div>
-        <div style="font-size:16px;font-weight:800;margin-top:4px">${translation}</div>
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <div style="font-size:16px;font-weight:800;margin-top:4px">${translation}</div>
+          <button type="button" class="btn btn-ghost dict-speak" data-kind="translation" aria-label="${t("dict_listen_aria", lang)}" style="padding:2px 10px;font-size:15px;margin-left:auto">🔊</button>
+        </div>
       </div>
     ` : "";
 
