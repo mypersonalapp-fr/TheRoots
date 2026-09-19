@@ -202,4 +202,24 @@ export const store = {
   getLang(code) {
     return load().settings.langs.find((l) => l.code === code) || null;
   },
+  // Progression dans les espaces libres "Compréhension" (écrite/orale) —
+  // indépendants des paliers de cours. On garde, par langue et par type
+  // (ecrite/orale), l'index du prochain contenu à débloquer et le résultat
+  // de chaque contenu déjà fait (pour ne pas re-proposer/re-corriger).
+  getCompProgress(kind, langCode) {
+    const data = load();
+    const store_ = (data.settings.compProgress || {})[kind] || {};
+    return store_[langCode] || { currentIndex: 0, results: {} };
+  },
+  setCompProgress(kind, langCode, patch) {
+    const data = load();
+    const compProgress = data.settings.compProgress || {};
+    const forKind = compProgress[kind] || {};
+    const current = forKind[langCode] || { currentIndex: 0, results: {} };
+    forKind[langCode] = { ...current, ...patch };
+    compProgress[kind] = forKind;
+    data.settings.compProgress = compProgress;
+    save(data);
+    return forKind[langCode];
+  },
 };
