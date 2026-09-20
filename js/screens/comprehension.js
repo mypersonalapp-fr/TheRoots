@@ -11,6 +11,7 @@
 import { store } from "../data/store.js";
 import { t } from "../data/i18n.js";
 import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js";
+import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js";
 import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js";
 import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js";
 
@@ -20,7 +21,18 @@ const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 // niveau absent de l'une de ces deux tables affiche "bientôt disponible"
 // pour la section correspondante, même si l'autre section a du contenu.
 const ORAL_BY_LEVEL = { A1: COMPREHENSION_ORALE_EN, A2: COMPREHENSION_ORALE_A2_EN };
-const ECRITE_BY_LEVEL = { A1: COMPREHENSION_ECRITE_EN };
+const ECRITE_BY_LEVEL = { A1: COMPREHENSION_ECRITE_EN, A2: COMPREHENSION_ECRITE_A2_EN };
+
+// Clé de sauvegarde de la progression en compréhension écrite, PAR NIVEAU :
+// les textes A1 et A2 ont chacun leurs propres id (1, 2, 3…), et la
+// progression (currentIndex, results) ne doit donc pas être partagée entre
+// les deux listes, sinon avancer dans l'A2 dérègle l'A1 (et inversement).
+// "en" tout seul est gardé pour l'A1 (clé historique, ne change pas pour ne
+// pas perdre la progression déjà enregistrée) ; les autres niveaux utilisent
+// "en-<niveau>".
+function ecriteStoreKey(level) {
+  return level === "A1" ? "en" : `en-${level}`;
+}
 
 // Réponse libre à une question de compréhension : l'apprenant écrit sa
 // propre réponse (pas un QCM — demande explicite d'Ashley le 19/09 au soir :
@@ -87,7 +99,7 @@ export function renderComprehension(container) {
   let oralCheckIssues = null; // rempli après correction (LanguageTool) — null = pas encore vérifié
 
   function paint() {
-    const ecriteProgress = store.getCompProgress("ecrite", "en");
+    const ecriteProgress = store.getCompProgress("ecrite", ecriteStoreKey(selectedLevel));
     const oraleProgress = store.getCompProgress("orale", "en");
     const oralVideos = ORAL_BY_LEVEL[selectedLevel] || null;
     const ecriteTexts = ECRITE_BY_LEVEL[selectedLevel] || null;
@@ -122,7 +134,7 @@ export function renderComprehension(container) {
               <div class="immersion-note">${t("comp_written_desc", lang)}</div>
             </div>
           </div>
-          ${ecriteTexts ? ecriteHtml(ecriteProgress) : `<div class="card" style="margin-top:14px;color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div>`}
+          ${ecriteTexts ? ecriteHtml(ecriteProgress, ecriteTexts) : `<div class="card" style="margin-top:14px;color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div>`}
         </div>
       `}
     `;
@@ -137,7 +149,7 @@ export function renderComprehension(container) {
     });
 
     if (oralVideos) wireOral(oraleProgress);
-    if (ecriteTexts) wireEcrite(ecriteProgress);
+    if (ecriteTexts) wireEcrite(ecriteProgress, ecriteTexts);
   }
 
   // ---------- Compréhension orale ----------
@@ -204,17 +216,17 @@ export function renderComprehension(container) {
 
   // ---------- Compréhension écrite ----------
 
-  function ecriteHtml(progress) {
+  function ecriteHtml(progress, texts) {
     const idx = progress.currentIndex || 0;
-    if (idx >= COMPREHENSION_ECRITE_EN.length) {
+    if (idx >= texts.length) {
       return `
         <div class="card" style="margin-top:14px">${t("comp_ecrite_all_done", lang)}</div>
         <button class="btn btn-ghost" id="ecriteRestartBtn" style="width:100%;margin-top:10px">${t("comp_ecrite_restart", lang)}</button>
       `;
     }
-    const text = COMPREHENSION_ECRITE_EN[idx];
+    const text = texts[idx];
     return `
-      <div style="font-size:12px;color:var(--ink-soft);margin-top:14px">${t("comp_ecrite_progress", lang, { n: idx + 1, total: COMPREHENSION_ECRITE_EN.length })}</div>
+      <div style="font-size:12px;color:var(--ink-soft);margin-top:14px">${t("comp_ecrite_progress", lang, { n: idx + 1, total: texts.length })}</div>
       <div style="font-weight:800;margin-top:4px">${text.title}</div>
       <div class="lt-passage" style="margin-top:8px">${text.body}</div>
       ${!showQuestions ? `
@@ -259,13 +271,13 @@ export function renderComprehension(container) {
     `;
   }
 
-  function wireEcrite(progress) {
+  function wireEcrite(progress, texts) {
     const readBtn = container.querySelector("#ecriteReadBtn");
     if (readBtn) readBtn.addEventListener("click", () => { showQuestions = true; paint(); });
 
     const restartBtn = container.querySelector("#ecriteRestartBtn");
     if (restartBtn) restartBtn.addEventListener("click", () => {
-      store.setCompProgress("ecrite", "en", { currentIndex: 0, results: {} });
+      store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { currentIndex: 0, results: {} });
       showQuestions = false; answers = {}; graded = false; gradeResults = null;
       paint();
     });
@@ -281,7 +293,7 @@ export function renderComprehension(container) {
         grading = true;
         paint();
         const idx = progress.currentIndex || 0;
-        const text = COMPREHENSION_ECRITE_EN[idx];
+        const text = texts[idx];
         // Corrige chaque réponse : le fond (mots-clés attendus) + une vraie
         // vérification orthographe/grammaire (LanguageTool), en parallèle.
         gradeResults = await Promise.all(text.questions.map(async (q, i) => {
@@ -297,13 +309,13 @@ export function renderComprehension(container) {
         graded = true;
         const correctCount = gradeResults.filter((r) => r.contentOk && r.spellingIssues.length === 0).length;
         const results = { ...(progress.results || {}), [text.id]: { correct: correctCount, total: text.questions.length } };
-        store.setCompProgress("ecrite", "en", { results });
+        store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { results });
         paint();
       });
       const nextBtn = container.querySelector("#ecriteNextBtn");
       if (nextBtn) nextBtn.addEventListener("click", () => {
         const idx = (progress.currentIndex || 0) + 1;
-        store.setCompProgress("ecrite", "en", { currentIndex: idx });
+        store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { currentIndex: idx });
         showQuestions = false; answers = {}; graded = false; gradeResults = null;
         paint();
       });
