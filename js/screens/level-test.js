@@ -3,25 +3,32 @@
 // formats de question — pas juste du QCM). On avance de palier en palier
 // tant qu'on réussit ; le test s'arrête dès qu'un palier n'est pas atteint
 // (ou qu'on a validé le plus haut palier proposé). Le score obtenu est
-// gardé comme "niveau d'entrée" même si, pour l'instant, seules les leçons
-// A1 existent dans l'application.
+// gardé comme "niveau d'entrée" même si, pour un niveau donné, les leçons
+// correspondantes ne sont pas encore toutes rédigées dans l'application
+// (ex. B1 anglais, ou A2+ espagnol) — un test de placement doit dire où en
+// est vraiment l'apprenant, indépendamment de ce qui est déjà construit.
 //
 // Habillage (intro, écrans de résultat, boutons) traduit selon la langue de
-// l'interface via i18n.js — les QUESTIONS elles-mêmes (tableau TIERS)
-// restent en français volontairement : tester l'anglais dans une autre
-// langue d'interface ne changerait rien aux questions.
+// l'interface via i18n.js. Les QUESTIONS elles-mêmes, en revanche, dépendent
+// de la LANGUE APPRISE (langCode) et pas de la langue d'interface : un
+// jeu de paliers par langue apprise (TIERS_BY_LANG), chacun testant bien la
+// langue choisie plutôt que de renvoyer par défaut des questions d'anglais.
 
-import { store } from "../data/store.js?v=20260920e";
-import { t } from "../data/i18n.js?v=20260920e";
+import { store } from "../data/store.js?v=20260920g";
+import { t } from "../data/i18n.js?v=20260920g";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant
 
-function speak(text) {
+// Langue de la synthèse vocale (questions "listening") selon la langue
+// apprise testée — pas la langue d'interface.
+const SPEAK_LANG_BY_CODE = { en: "en-GB", es: "es-ES", pt: "pt-PT" };
+
+function speak(text, langTag) {
   try {
     if (!window.speechSynthesis) return;
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-GB";
+    u.lang = langTag || "en-GB";
     u.rate = 0.92;
     const { settings } = store.get();
     const preferred = settings.preferredVoiceURI;
@@ -35,10 +42,10 @@ function speak(text) {
   } catch (e) { /* pas grave si la synthèse vocale n'est pas dispo */ }
 }
 
-// ---- Paliers : chaque palier mélange QCM, écoute, texte à trous et
+// ---- Paliers ANGLAIS : chaque palier mélange QCM, écoute, texte à trous et
 // compréhension de lecture — comme un vrai test de placement plutôt qu'une
 // simple liste de questions de vocabulaire. ----
-const TIERS = [
+const TIERS_EN = [
   {
     id: "A1",
     label: "Palier A1 — les bases",
@@ -77,9 +84,65 @@ const TIERS = [
   },
 ];
 
+// ---- Paliers ESPAGNOL : même principe et même niveau d'exigence que
+// TIERS_EN (mêmes formats de question, même longueur par palier), avec des
+// points de grammaire adaptés à ce qui rend l'espagnol spécifique (HAY
+// invariable, subjonctif imparfait dans les hypothèses, LLEVAR + gérondif
+// pour une durée...) plutôt qu'une simple traduction des questions
+// anglaises. ----
+const TIERS_ES = [
+  {
+    id: "A1",
+    label: "Palier A1 — les bases",
+    questions: [
+      { type: "mcq", q: "Comment dit-on « Bonjour » (à toute heure) ?", opts: ["Adiós", "Hola", "Lo siento", "Por favor"], correct: 1 },
+      { type: "mcq", q: "Complète : «Yo ___ de Francia.»", opts: ["es", "eres", "soy", "son"], correct: 2 },
+      { type: "listening", audio: "Gracias", q: "Écoute : que dit-on ?", opts: ["Merci", "Désolé", "S'il te plaît", "Au revoir"], correct: 0 },
+      { type: "mcq", q: "Comment dit-on « Tante » ?", opts: ["Tío", "Tía", "Primo", "Sobrina"], correct: 1 },
+      { type: "cloze", q: "Complète avec le bon mot : «Ella ___ mi hermana.»", accept: ["es"] },
+      { type: "reading", passage: "«¡Hola! Me llamo Emma. Soy de Londres. Tengo una hermana.»", q: "¿De dónde es Emma?", opts: ["París", "Londres", "Madrid"], correct: 1 },
+    ],
+  },
+  {
+    id: "A2",
+    label: "Palier A2 — un peu plus loin",
+    questions: [
+      { type: "mcq", q: "Complète : «Ayer, yo ___ al cine.»", opts: ["voy", "fui", "va", "iré"], correct: 1 },
+      { type: "mcq", q: "Quel est le comparatif de « caro » ?", opts: ["más caro", "carísimo", "el más caro", "caro más"], correct: 0 },
+      { type: "listening", audio: "A ella no le gustan las verduras.", q: "Écoute : qu'exprime cette phrase ?", opts: ["Un goût", "Une action passée", "Une question", "Un ordre"], correct: 0 },
+      { type: "cloze", q: "Complète (verbe HABER, forme impersonnelle) : «___ dos gatos en el jardín.»", accept: ["hay"] },
+      { type: "mcq", q: "Comment dit-on « la semaine dernière » ?", opts: ["La próxima semana", "La semana pasada", "Esta semana", "Cada semana"], correct: 1 },
+      { type: "reading", passage: "«El fin de semana pasado, Tom fue a la playa con su familia. Nadaron en el mar y comieron helado.»", q: "¿Qué hicieron en la playa?", opts: ["Montaron en bicicleta", "Nadaron", "Durmieron"], correct: 1 },
+    ],
+  },
+  {
+    id: "B1",
+    label: "Palier B1 — pour aller plus loin",
+    questions: [
+      { type: "mcq", q: "Complète : «Nunca ___ sushi antes.»", opts: ["como", "he comido", "comí", "estoy comiendo"], correct: 1 },
+      { type: "mcq", q: "Choisis la forme correcte : «Si ___ más tiempo, viajaría más.»", opts: ["tengo", "tuviera", "tengo que", "tendré"], correct: 1 },
+      { type: "listening", audio: "Aunque estaba lloviendo, decidimos salir a caminar.", q: "Écoute : que signifie « aunque » ici ?", opts: ["Parce que", "Bien que", "Ensuite", "Donc"], correct: 1 },
+      { type: "cloze", q: "Complète : «Cuando ella llegó, la reunión ya había ___.» (verbe « empezar »)", accept: ["empezado"] },
+      { type: "order", bank: ["una", "hora", "esperando", "Llevo"], answer: "llevo una hora esperando", display: "Llevo una hora esperando." },
+      { type: "reading", passage: "«Marc dijo que terminaría el informe el viernes, pero, a juzgar por lo estresado que parecía en la reunión, yo no contaría con ello.»", q: "Según el tono del texto, la narradora piensa que Marc...", opts: ["...terminará seguro a tiempo", "...podría no terminar a tiempo", "...ya ha terminado"], correct: 1 },
+    ],
+  },
+];
+
+// ---- Sélection du bon jeu de paliers selon la langue APPRISE (langCode),
+// pas selon la langue d'interface. Le portugais n'a pas encore de test
+// rédigé : il retombe sur l'anglais par défaut plutôt que de planter (à
+// remplacer par TIERS_PT le jour où ce contenu sera rédigé). ----
+const TIERS_BY_LANG = { en: TIERS_EN, es: TIERS_ES };
+
 export function renderLevelTest(root, { langCode, langLabel, onDone }) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
+  // Questions dans la langue apprise (langCode) — pas dans la langue
+  // d'interface. Repli sur l'anglais tant qu'une langue n'a pas encore son
+  // propre test rédigé (voir TIERS_BY_LANG).
+  const TIERS = TIERS_BY_LANG[langCode] || TIERS_BY_LANG.en;
+  const speakLangTag = SPEAK_LANG_BY_CODE[langCode] || "en-GB";
   const el = document.createElement("div");
   el.className = "screen level-test-screen";
   root.appendChild(el);
@@ -259,7 +322,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
       wireQuizControls();
       if (item.type === "listening") {
         const playBtn = el.querySelector("#ltPlay");
-        const playIt = () => speak(item.audio);
+        const playIt = () => speak(item.audio, speakLangTag);
         playBtn.addEventListener("click", playIt);
         setTimeout(playIt, 300);
       }

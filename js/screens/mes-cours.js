@@ -8,22 +8,29 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260920e";
-import { renderLevelTest } from "./level-test.js?v=20260920e";
-import { t, formatDate } from "../data/i18n.js?v=20260920e";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260920e";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260920e";
+import { store } from "../data/store.js?v=20260920g";
+import { renderLevelTest } from "./level-test.js?v=20260920g";
+import { t, formatDate } from "../data/i18n.js?v=20260920g";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260920g";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260920g";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260920g";
 
-// Programme par palier, par langue ET par niveau — seul l'anglais A1 et A2
-// sont rédigés pour l'instant (voir claude/cahier-des-charges-the-roots-v1.md
-// et claude/contenu-paliers-a2-lot1.md dans le projet Claude) ; l'espagnol et
-// le portugais, ainsi que les niveaux B1 à C2, afficheront "bientôt
-// disponible" tant qu'ils n'auront pas été rédigés au même niveau de détail.
+// Programme par palier, par langue ET par niveau — l'anglais A1/A2 et
+// l'espagnol A1 sont rédigés pour l'instant (voir claude/cahier-des-charges-
+// the-roots-v1.md et claude/contenu-paliers-a2-lot1.md dans le projet
+// Claude) ; le reste (espagnol A2+, portugais, niveaux B1 à C2) affichera
+// "bientôt disponible" tant qu'il n'aura pas été rédigé au même niveau de
+// détail. Le programme espagnol a un champ en plus par palier ("whyHow",
+// voir programme-a1-es.js) — absent des paliers anglais, donc son affichage
+// plus bas est conditionnel pour ne rien casser côté anglais.
 const PROGRAM_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const PROGRAMS_BY_LANG = {
   en: {
     A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS },
     A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS },
+  },
+  es: {
+    A1: { objective: A1_ES_GENERAL_OBJECTIVE, paliers: A1_ES_PALIERS },
   },
 };
 
@@ -311,6 +318,12 @@ export function renderMesCours(container, shellRoot) {
           <p style="font-size:13.5px;margin:6px 0 0">${p.objective}</p>
         </div>
       </div>
+      ${p.whyHow ? `
+      <div class="dash-box">
+        <h3>${t("prog_why_how_label", lang)}</h3>
+        <div class="card" style="font-size:13px;line-height:1.55">${p.whyHow}</div>
+      </div>
+      ` : ""}
       <div class="dash-box">
         <h3>${t("prog_vocab_label", lang)}</h3>
         <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.vocab.map((v) => `<li style="margin-bottom:6px">${v}</li>`).join("")}</ul></div>

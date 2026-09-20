@@ -6,9 +6,9 @@
 // "Mon niveau actuel" ne vit plus ici : il est désormais dans Mes cours,
 // par langue, avec le "Niveau d'entrée" gardé en référence permanente.
 
-import { store } from "../data/store.js?v=20260920b";
-import { t, langName } from "../data/i18n.js?v=20260920b";
-import { webauthn } from "../data/webauthn.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920g";
+import { t, langName } from "../data/i18n.js?v=20260920g";
+import { webauthn } from "../data/webauthn.js?v=20260920g";
 
 const APP_VERSION = "1.2";
 
