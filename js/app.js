@@ -2,13 +2,14 @@
 // démarrage (racines + bonjour → nom de l'appli) → menu (inscription /
 // connexion / mot de passe oublié) → coquille de l'application.
 
-import { store } from "./data/store.js";
-import { renderSplash } from "./screens/splash.js";
-import { renderAuthMenu } from "./screens/auth-menu.js";
-import { renderLogin } from "./screens/login.js";
-import { renderForgotPassword } from "./screens/forgot-password.js";
-import { renderShell } from "./screens/shell.js";
-import { renderFaceIdLock } from "./screens/faceid-lock.js";
+import { store } from "./data/store.js?v=20260920b";
+import { renderSplash } from "./screens/splash.js?v=20260920b";
+import { renderAuthMenu } from "./screens/auth-menu.js?v=20260920b";
+import { renderLogin } from "./screens/login.js?v=20260920b";
+import { renderForgotPassword } from "./screens/forgot-password.js?v=20260920b";
+import { renderShell } from "./screens/shell.js?v=20260920b";
+import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260920b";
+import { renderChooseLanguage } from "./screens/choose-language.js?v=20260920b";
 
 const root = document.getElementById("app");
 
@@ -40,10 +41,24 @@ function isUnlockedThisSession() {
   try { return sessionStorage.getItem(UNLOCK_KEY) === "1"; } catch (e) { return false; }
 }
 
+// Point d'entrée dans l'appli une fois déverrouillée (après connexion,
+// inscription, reconnexion ou Face ID) : pose la question "quelle langue
+// veux-tu apprendre ?" une seule fois, tant que settings.primaryLearningLang
+// est encore vide, puis n'affiche plus jamais cet écran ensuite (voir
+// choose-language.js et store.setPrimaryLearningLang).
+function enterApp() {
+  const { settings } = store.get();
+  if (!settings.primaryLearningLang) {
+    renderChooseLanguage(root, { onDone: () => renderShell(root) });
+  } else {
+    renderShell(root);
+  }
+}
+
 function showAuthMenu() {
   renderAuthMenu(root, {
-    onSignup: () => renderLogin(root, { mode: "signup", onDone: () => { markUnlockedThisSession(); renderShell(root); }, onBack: showAuthMenu }),
-    onLogin: () => renderLogin(root, { mode: "login", onDone: () => { markUnlockedThisSession(); renderShell(root); }, onBack: showAuthMenu }),
+    onSignup: () => renderLogin(root, { mode: "signup", onDone: () => { markUnlockedThisSession(); enterApp(); }, onBack: showAuthMenu }),
+    onLogin: () => renderLogin(root, { mode: "login", onDone: () => { markUnlockedThisSession(); enterApp(); }, onBack: showAuthMenu }),
     onForgot: () => renderForgotPassword(root, { onBack: showAuthMenu }),
   });
 }
@@ -58,14 +73,14 @@ function start() {
       // sessionStorage garde ce drapeau tant que l'appli reste ouverte, et
       // c'est seulement à une VRAIE réouverture qu'il redevient absent.
       if (isUnlockedThisSession()) {
-        renderShell(root);
+        enterApp();
         return;
       }
       const faceId = store.getFaceId();
       if (faceId.enabled && faceId.credentialId) {
         renderFaceIdLock(root, {
           credentialId: faceId.credentialId,
-          onUnlocked: () => { markUnlockedThisSession(); renderShell(root); },
+          onUnlocked: () => { markUnlockedThisSession(); enterApp(); },
           onUsePassword: () => { store.logout(); showAuthMenu(); },
         });
       } else {
@@ -75,7 +90,7 @@ function start() {
         renderLogin(root, {
           mode: "reconnect",
           prefillEmail: session ? session.email : "",
-          onDone: () => { markUnlockedThisSession(); renderShell(root); },
+          onDone: () => { markUnlockedThisSession(); enterApp(); },
           onBack: () => { store.logout(); showAuthMenu(); },
         });
       }
