@@ -8,11 +8,11 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260920b";
-import { renderLevelTest } from "./level-test.js?v=20260920b";
-import { t, formatDate } from "../data/i18n.js?v=20260920b";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260920b";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { renderLevelTest } from "./level-test.js?v=20260920e";
+import { t, formatDate } from "../data/i18n.js?v=20260920e";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260920e";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260920e";
 
 // Programme par palier, par langue ET par niveau — seul l'anglais A1 et A2
 // sont rédigés pour l'instant (voir claude/cahier-des-charges-the-roots-v1.md

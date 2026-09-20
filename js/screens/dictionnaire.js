@@ -13,13 +13,23 @@
 // et inversement. Un timeout est posé sur l'appel au dictionnaire pour ne
 // jamais rester bloqué indéfiniment sur "Recherche en cours…".
 
-import { store } from "../data/store.js?v=20260920b";
-import { t, langName } from "../data/i18n.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { t, langName } from "../data/i18n.js?v=20260920e";
 
 // Nos codes de langue (en/es/pt) vers les codes attendus par l'API.
 const API_LANG = { en: "en", es: "es", pt: "pt-BR" };
 const DICT_LANGS = ["en", "es", "pt"];
-const LOOKUP_TIMEOUT_MS = 12000;
+const LOOKUP_TIMEOUT_MS = 8000;
+
+// Cache en mémoire (le temps de la session dans l'appli, vidé à la
+// fermeture) : une recherche déjà faite pour un mot + langue donnés
+// réapparaît instantanément, sans repasser par le réseau. C'est ce qui
+// réglait le plus la lenteur ressentie — Ashley cherche souvent plusieurs
+// fois le même mot (pour le réécouter, comparer, etc.) et chaque recherche
+// repartait sinon à zéro vers les APIs externes (dictionaryapi.dev,
+// MyMemory), qui sont parfois lentes de leur côté.
+const dictCache = new Map(); // clé "entries:<apiLang>:<mot>" -> résultat (ou null)
+const translationCache = new Map(); // clé "tr:<from>:<to>:<mot>" -> texte (ou null)
 
 async function lookupWord(word, apiLang, timeoutMs) {
   const controller = new AbortController();
@@ -42,11 +52,16 @@ async function lookupWord(word, apiLang, timeoutMs) {
 // lookupWord renvoie null sans lever d'erreur) ne déclenche jamais cette
 // deuxième tentative.
 async function lookupWordWithRetry(word, apiLang) {
+  const cacheKey = `entries:${apiLang}:${word.toLowerCase()}`;
+  if (dictCache.has(cacheKey)) return dictCache.get(cacheKey);
+  let result;
   try {
-    return await lookupWord(word, apiLang, LOOKUP_TIMEOUT_MS);
+    result = await lookupWord(word, apiLang, LOOKUP_TIMEOUT_MS);
   } catch (e) {
-    return await lookupWord(word, apiLang, 6000);
+    result = await lookupWord(word, apiLang, 4000);
   }
+  dictCache.set(cacheKey, result);
+  return result;
 }
 
 // Traduction du mot cherché vers la langue de l'interface — un bonus qui ne
@@ -54,15 +69,19 @@ async function lookupWordWithRetry(word, apiLang) {
 // "pas de traduction" plutôt que de remonter une exception.
 async function translateWord(word, fromLang, toLang) {
   if (!word || fromLang === toLang) return null;
+  const cacheKey = `tr:${fromLang}:${toLang}:${word.toLowerCase()}`;
+  if (translationCache.has(cacheKey)) return translationCache.get(cacheKey);
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), LOOKUP_TIMEOUT_MS);
     try {
       const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(word)}&langpair=${fromLang}|${toLang}`;
       const res = await fetch(url, { signal: controller.signal });
-      if (!res.ok) return null;
+      if (!res.ok) { translationCache.set(cacheKey, null); return null; }
       const data = await res.json();
-      return data?.responseData?.translatedText || null;
+      const result = data?.responseData?.translatedText || null;
+      translationCache.set(cacheKey, result);
+      return result;
     } finally {
       clearTimeout(timeoutId);
     }
@@ -176,6 +195,11 @@ export function renderDictionnaire(container) {
   let lastEntries = null;
   let lastDictLang = dictLang;
   let lastTranslation = null;
+  // Compteur de recherche : si une nouvelle recherche démarre avant que
+  // l'ancienne ait fini de répondre (nouveau mot tapé vite), on ignore la
+  // réponse tardive de l'ancienne au lieu de laisser un vieux résultat
+  // s'afficher par-dessus le nouveau par accident.
+  let searchSeq = 0;
 
   results.addEventListener("click", (e) => {
     const speakBtn = e.target.closest(".dict-speak");
@@ -209,40 +233,60 @@ export function renderDictionnaire(container) {
     updatePtNote();
   });
 
-  async function doSearch() {
+  // Recherche "progressive" : la traduction (rapide, via MyMemory) et la
+  // définition (dictionaryapi.dev, parfois plus lente) s'affichent chacune
+  // dès qu'elle est prête, au lieu d'attendre que les deux soient revenues
+  // avant de montrer quoi que ce soit — avant, une définition lente faisait
+  // patienter Ashley même quand la traduction, elle, était déjà prête
+  // depuis longtemps. Avec le cache (voir plus haut), une recherche déjà
+  // faite pour ce mot + cette langue revient maintenant instantanément.
+  function doSearch() {
     const word = input.value.trim();
     if (!word) { results.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_empty_input", lang)}</div>`; return; }
-    results.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px;display:flex;align-items:center"><span class="mini-spinner"></span>${t("dict_loading", lang)}</div>`;
+
+    const searchDictLang = dictLang;
+    const searchToken = ++searchSeq;
     btn.disabled = true;
 
-    const [entriesResult, translationResult] = await Promise.allSettled([
-      lookupWordWithRetry(word, API_LANG[dictLang]),
-      translateWord(word, dictLang, lang),
-    ]);
+    const spinner = `<div class="card" style="color:var(--ink-soft);font-size:13px;display:flex;align-items:center"><span class="mini-spinner"></span>${t("dict_loading", lang)}</div>`;
+    results.innerHTML = `<div id="dictTranslationBox"></div><div id="dictEntriesBox">${spinner}</div>`;
 
-    const translation = translationResult.status === "fulfilled" ? translationResult.value : null;
-    lastTranslation = translation;
-    const translationHtml = translation ? `
-      <div class="card" style="margin-bottom:10px">
-        <div style="font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;font-weight:700">${t("dict_translation_label", lang)}</div>
-        <div style="display:flex;align-items:baseline;gap:8px">
-          <div style="font-size:16px;font-weight:800;margin-top:4px">${translation}</div>
-          <button type="button" class="btn btn-ghost dict-speak" data-kind="translation" aria-label="${t("dict_listen_aria", lang)}" style="padding:2px 10px;font-size:15px;margin-left:auto">🔊</button>
+    const translationPromise = translateWord(word, searchDictLang, lang).then((translation) => {
+      if (searchToken !== searchSeq) return;
+      lastTranslation = translation;
+      const box = results.querySelector("#dictTranslationBox");
+      if (!box) return;
+      box.innerHTML = translation ? `
+        <div class="card" style="margin-bottom:10px">
+          <div style="font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;font-weight:700">${t("dict_translation_label", lang)}</div>
+          <div style="display:flex;align-items:baseline;gap:8px">
+            <div style="font-size:16px;font-weight:800;margin-top:4px">${translation}</div>
+            <button type="button" class="btn btn-ghost dict-speak" data-kind="translation" aria-label="${t("dict_listen_aria", lang)}" style="padding:2px 10px;font-size:15px;margin-left:auto">🔊</button>
+          </div>
         </div>
-      </div>
-    ` : "";
+      ` : "";
+    });
 
-    lastDictLang = dictLang;
-    lastEntries = entriesResult.status === "fulfilled" ? entriesResult.value : null;
+    const entriesPromise = lookupWordWithRetry(word, API_LANG[searchDictLang])
+      .then((entries) => {
+        if (searchToken !== searchSeq) return;
+        lastDictLang = searchDictLang;
+        lastEntries = entries;
+        const box = results.querySelector("#dictEntriesBox");
+        if (!box) return;
+        box.innerHTML = entries
+          ? renderEntries(entries, lang)
+          : `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_not_found", lang)}</div>`;
+      })
+      .catch(() => {
+        if (searchToken !== searchSeq) return;
+        const box = results.querySelector("#dictEntriesBox");
+        if (box) box.innerHTML = `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_error", lang)}</div>`;
+      });
 
-    if (entriesResult.status === "rejected") {
-      results.innerHTML = translationHtml + `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_error", lang)}</div>`;
-    } else if (!entriesResult.value) {
-      results.innerHTML = translationHtml + `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_not_found", lang)}</div>`;
-    } else {
-      results.innerHTML = translationHtml + renderEntries(entriesResult.value, lang);
-    }
-    btn.disabled = false;
+    Promise.allSettled([translationPromise, entriesPromise]).then(() => {
+      if (searchToken === searchSeq) btn.disabled = false;
+    });
   }
 
   btn.addEventListener("click", doSearch);

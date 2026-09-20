@@ -2,8 +2,8 @@
 // expression du jour (équivalent idiomatique, pas une traduction littérale),
 // question de culture, vidéo du jour par langue.
 
-import { store } from "../data/store.js?v=20260920b";
-import { t, langName, formatDate } from "../data/i18n.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { t, langName, formatDate } from "../data/i18n.js?v=20260920e";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 

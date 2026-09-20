@@ -11,8 +11,8 @@
 // restent en français volontairement : tester l'anglais dans une autre
 // langue d'interface ne changerait rien aux questions.
 
-import { store } from "../data/store.js?v=20260920b";
-import { t } from "../data/i18n.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { t } from "../data/i18n.js?v=20260920e";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant
@@ -105,6 +105,14 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
   let tierIdx = 0, qIdx = 0, tierCorrect = 0, highestLevel = null;
   let timeLeft = TEST_MAX_MINUTES * 60, timerId = null;
   let orderPicked = [];
+  // Pause : un seul droit à la pause pour tout le test (pas par palier) —
+  // pauseUsed reste vrai même en repartant sur un nouveau palier.
+  // tierAnswers garde, pour le palier en cours, si chaque question posée
+  // était juste ou non (null = pas encore répondue) : c'est ce qui permet au
+  // bouton "Précédent" de redonner la main sur la question sans fausser le
+  // score (on retire le point si la question annulée était juste).
+  let paused = false, pauseUsed = false;
+  let tierAnswers = [];
 
   renderIntro();
 
@@ -129,7 +137,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     el.querySelector("#ltStart").addEventListener("click", startTier);
   }
 
-  function startTier() {
+  function startTimer() {
     clearInterval(timerId);
     timerId = setInterval(() => {
       timeLeft--;
@@ -137,8 +145,74 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
       if (timerEl) timerEl.textContent = formatTime(timeLeft);
       if (timeLeft <= 0) { clearInterval(timerId); finish(); }
     }, 1000);
-    qIdx = 0; tierCorrect = 0; orderPicked = [];
+  }
+
+  function startTier() {
+    startTimer();
+    qIdx = 0; tierCorrect = 0; orderPicked = []; tierAnswers = [];
     paintQuestion();
+  }
+
+  // ---- Pause : demandée une seule fois pour tout le test. On avertit
+  // clairement avant de confirmer (elle ne pourra plus faire pause ensuite),
+  // puis on arrête le chrono et on coupe toute lecture audio en cours. ----
+  function requestPause() {
+    if (pauseUsed || paused) return;
+    const overlay = document.createElement("div");
+    overlay.className = "lt-pause-confirm-backdrop";
+    overlay.innerHTML = `
+      <div class="lt-pause-confirm-card">
+        <div class="lt-pause-confirm-title">${t("lt_pause_confirm_title", lang)}</div>
+        <div class="lt-pause-confirm-desc">${t("lt_pause_confirm_desc", lang)}</div>
+        <button type="button" class="btn btn-primary" id="ltPauseYes" style="width:100%;margin-top:12px">${t("lt_pause_confirm_yes", lang)}</button>
+        <button type="button" class="btn btn-ghost" id="ltPauseNo" style="width:100%;margin-top:8px">${t("lt_pause_confirm_no", lang)}</button>
+      </div>
+    `;
+    el.appendChild(overlay);
+    overlay.querySelector("#ltPauseYes").addEventListener("click", () => { overlay.remove(); doPause(); });
+    overlay.querySelector("#ltPauseNo").addEventListener("click", () => overlay.remove());
+  }
+
+  function doPause() {
+    pauseUsed = true;
+    paused = true;
+    clearInterval(timerId);
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    el.innerHTML = `
+      <div class="app-topbar"><div class="title">${t("lt_title", lang)}</div></div>
+      <div class="app-body">
+        <div class="card lt-result">
+          <div class="lt-badge">⏸</div>
+          <h2 style="margin:10px 0">${t("lt_paused_title", lang)}</h2>
+          <p class="lt-lede">${t("lt_paused_desc", lang)}</p>
+          <button type="button" class="btn btn-primary" id="ltResume" style="width:100%;margin-top:8px">${t("lt_resume_btn", lang)}</button>
+        </div>
+      </div>
+    `;
+    el.querySelector("#ltResume").addEventListener("click", () => {
+      paused = false;
+      startTimer();
+      paintQuestion();
+    });
+  }
+
+  // ---- Retour à la question précédente (dans le palier en cours) : on
+  // annule le point si elle avait été comptée juste, puis on la réaffiche
+  // vierge (boutons réactivés) pour pouvoir y répondre à nouveau. ----
+  function goBack() {
+    if (qIdx === 0) return;
+    qIdx--;
+    const prev = tierAnswers[qIdx];
+    if (prev && prev.correct) tierCorrect--;
+    tierAnswers[qIdx] = undefined;
+    paintQuestion();
+  }
+
+  function wireQuizControls() {
+    const backBtn = el.querySelector("#ltBack");
+    if (backBtn) backBtn.addEventListener("click", goBack);
+    const pauseBtn = el.querySelector("#ltPause");
+    if (pauseBtn && !pauseUsed) pauseBtn.addEventListener("click", requestPause);
   }
 
   function formatTime(s) {
@@ -159,6 +233,10 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
             <span class="lt-progress">${tier.label} · ${qIdx + 1}/${tier.questions.length}</span>
             <span class="lt-timer" id="ltTimer">${formatTime(timeLeft)}</span>
           </div>
+          <div class="lt-quiz-controls">
+            ${qIdx > 0 ? `<button type="button" class="btn btn-ghost lt-back-btn" id="ltBack">${t("lt_back_btn", lang)}</button>` : `<span></span>`}
+            <button type="button" class="btn btn-ghost lt-pause-btn" id="ltPause" ${pauseUsed ? "disabled" : ""}>${pauseUsed ? t("lt_pause_used_btn", lang) : t("lt_pause_btn", lang)}</button>
+          </div>
           ${bodyHtml}
         </div>
       </div>
@@ -178,6 +256,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
           ${item.opts.map((o, i) => `<button class="lt-opt" data-i="${i}">${o}</button>`).join("")}
         </div>
       `);
+      wireQuizControls();
       if (item.type === "listening") {
         const playBtn = el.querySelector("#ltPlay");
         const playIt = () => speak(item.audio);
@@ -188,11 +267,13 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
         btn.addEventListener("click", () => {
           const i = Number(btn.dataset.i);
           el.querySelectorAll(".lt-opt").forEach((b) => (b.disabled = true));
-          if (i === item.correct) { btn.classList.add("correct"); tierCorrect++; }
+          const ok = i === item.correct;
+          if (ok) { btn.classList.add("correct"); tierCorrect++; }
           else {
             btn.classList.add("incorrect");
             el.querySelectorAll(".lt-opt")[item.correct].classList.add("correct");
           }
+          tierAnswers[qIdx] = { correct: ok };
           advanceAfter();
         });
       });
@@ -205,6 +286,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
         <button class="btn btn-primary" id="ltClozeCheck" style="width:100%;margin-top:12px">Valider</button>
         <div id="ltClozeFb" class="lt-cloze-fb"></div>
       `);
+      wireQuizControls();
       const input = el.querySelector("#ltClozeInput");
       input.focus();
       const check = () => {
@@ -215,6 +297,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
         const fb = el.querySelector("#ltClozeFb");
         if (ok) { tierCorrect++; fb.innerHTML = `<span class="lt-ok">✓ Correct !</span>`; }
         else { fb.innerHTML = `<span class="lt-bad">✗ Réponse attendue : « ${item.accept[0]} »</span>`; }
+        tierAnswers[qIdx] = { correct: ok };
         advanceAfter();
       };
       el.querySelector("#ltClozeCheck").addEventListener("click", check);
@@ -229,15 +312,18 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
           ${item.opts.map((o, i) => `<button class="lt-opt" data-i="${i}">${o}</button>`).join("")}
         </div>
       `);
+      wireQuizControls();
       el.querySelectorAll(".lt-opt").forEach((btn) => {
         btn.addEventListener("click", () => {
           const i = Number(btn.dataset.i);
           el.querySelectorAll(".lt-opt").forEach((b) => (b.disabled = true));
-          if (i === item.correct) { btn.classList.add("correct"); tierCorrect++; }
+          const ok = i === item.correct;
+          if (ok) { btn.classList.add("correct"); tierCorrect++; }
           else {
             btn.classList.add("incorrect");
             el.querySelectorAll(".lt-opt")[item.correct].classList.add("correct");
           }
+          tierAnswers[qIdx] = { correct: ok };
           advanceAfter();
         });
       });
@@ -254,6 +340,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
         </div>
         <button class="btn btn-primary" id="ltOrderCheck" style="width:100%;margin-top:12px" disabled>Valider</button>
       `);
+      wireQuizControls();
       const answerEl = el.querySelector("#ltOrderAnswer");
       const checkBtn = el.querySelector("#ltOrderCheck");
       el.querySelectorAll("#ltOrderBank .lt-chip").forEach((chip) => {
@@ -269,6 +356,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
         const ok = orderPicked.join(" ").toLowerCase() === item.answer;
         if (ok) { tierCorrect++; answerEl.classList.add("lt-ok-bg"); }
         else { answerEl.classList.add("lt-bad-bg"); answerEl.insertAdjacentHTML("afterend", `<div class="lt-cloze-fb"><span class="lt-bad">Réponse attendue : « ${item.display} »</span></div>`); }
+        tierAnswers[qIdx] = { correct: ok };
         advanceAfter();
       });
     }

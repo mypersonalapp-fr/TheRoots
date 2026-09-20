@@ -14,12 +14,22 @@
 // une IA qui comprend le sens ; la checklist de contenu comble ce manque en
 // vérifiant simplement la présence des idées attendues.
 
-import { store } from "../data/store.js?v=20260920b";
-import { t } from "../data/i18n.js?v=20260920b";
-import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260920b";
-import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { t } from "../data/i18n.js?v=20260920e";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260920e";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260920e";
+import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260920e";
+import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260920e";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+// Contenu disponible par palier, oral et écrit indépendamment l'un de
+// l'autre (même logique que comprehension.js) : un palier peut avoir l'un
+// sans l'autre. Pour A2, l'oral et l'écrit sont maintenant prêts tous les
+// deux (10 appels + 10 messages, sur les mêmes 5 thèmes : santé, imprévus
+// de voyage, goûts alimentaires, scolarité et un mariage familial).
+const ORAL_BY_LEVEL = { A1: EXPRESSION_ORALE_PROMPTS_EN, A2: EXPRESSION_ORALE_PROMPTS_A2_EN };
+const ECRITE_BY_LEVEL = { A1: EXPRESSION_ECRITE_PROMPTS_EN, A2: EXPRESSION_ECRITE_PROMPTS_A2_EN };
 
 function checklistResults(text, expectedPoints) {
   const lower = (text || "").toLowerCase();
@@ -77,6 +87,9 @@ export function renderExpression(container) {
   let recognition = null;
 
   function paint() {
+    const oralePrompts = ORAL_BY_LEVEL[selectedLevel] || null;
+    const ecritePrompts = ECRITE_BY_LEVEL[selectedLevel] || null;
+
     container.innerHTML = `
       <div class="dash-greeting" style="padding:4px 0 10px">${t("expr_intro", lang)}</div>
 
@@ -84,47 +97,49 @@ export function renderExpression(container) {
         ${LEVELS.map((l) => `<button class="level-chip${l === selectedLevel ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
       </div>
 
-      ${selectedLevel !== "A1" ? `
-        <div class="card-3d"><div class="card" style="color:var(--ink-soft);font-size:13px">${t("prog_not_ready", lang)}</div></div>
-      ` : `
-        <div class="card-3d" style="margin-bottom:14px">
-          <div class="immersion-card" style="margin-bottom:0">
-            <div class="immersion-icon">🗣️</div>
-            <div>
-              <div class="immersion-title">${t("expr_oral_title", lang)}</div>
-              <div class="immersion-note">${t("expr_oral_desc", lang)}</div>
-            </div>
+      <div class="card-3d" style="margin-bottom:14px">
+        <div class="immersion-card" style="margin-bottom:0">
+          <div class="immersion-icon">🗣️</div>
+          <div>
+            <div class="immersion-title">${t("expr_oral_title", lang)}</div>
+            <div class="immersion-note">${t("expr_oral_desc", lang)}</div>
           </div>
-          ${oraleHtml()}
         </div>
+        ${oralePrompts ? oraleHtml(oralePrompts) : `<div class="card" style="color:var(--ink-soft);font-size:13px;margin-top:10px">${t("prog_not_ready", lang)}</div>`}
+      </div>
 
-        <div class="card-3d">
-          <div class="immersion-card" style="margin-bottom:0">
-            <div class="immersion-icon">✍️</div>
-            <div>
-              <div class="immersion-title">${t("expr_written_title", lang)}</div>
-              <div class="immersion-note">${t("expr_written_desc", lang)}</div>
-            </div>
+      <div class="card-3d">
+        <div class="immersion-card" style="margin-bottom:0">
+          <div class="immersion-icon">✍️</div>
+          <div>
+            <div class="immersion-title">${t("expr_written_title", lang)}</div>
+            <div class="immersion-note">${t("expr_written_desc", lang)}</div>
           </div>
-          ${ecriteHtml()}
         </div>
-      `}
+        ${ecritePrompts ? ecriteHtml(ecritePrompts) : `<div class="card" style="color:var(--ink-soft);font-size:13px;margin-top:10px">${t("prog_not_ready", lang)}</div>`}
+      </div>
     `;
 
     container.querySelector("#exprLevels").addEventListener("click", (e) => {
       const chip = e.target.closest(".level-chip");
       if (!chip) return;
       selectedLevel = chip.dataset.level;
+      // On repart du premier appel/message du nouveau palier, et on efface
+      // tout ce qui avait été capté/écrit pour l'ancien (sinon on pourrait
+      // se retrouver avec l'index d'un palier qui n'existe pas dans l'autre).
+      oraleIndex = 0; oraleTranscript = ""; oraleRecording = false; oraleSpeaking = false;
+      ecriteIndex = 0; ecriteMatches = null; ecriteError = false; ecriteReplyText = "";
       paint();
     });
 
-    if (selectedLevel === "A1") { wireOrale(); wireEcrite(); }
+    if (oralePrompts) wireOrale(oralePrompts);
+    if (ecritePrompts) wireEcrite(ecritePrompts);
   }
 
   // ---------- Expression orale ----------
 
-  function oraleHtml() {
-    const prompt = EXPRESSION_ORALE_PROMPTS_EN[oraleIndex];
+  function oraleHtml(prompts) {
+    const prompt = prompts[oraleIndex];
     const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
     return `
       <div class="card" style="margin-top:14px">
@@ -146,8 +161,8 @@ export function renderExpression(container) {
     `;
   }
 
-  function wireOrale() {
-    const prompt = EXPRESSION_ORALE_PROMPTS_EN[oraleIndex];
+  function wireOrale(prompts) {
+    const prompt = prompts[oraleIndex];
     const listenBtn = container.querySelector("#oraleListenBtn");
     if (listenBtn) listenBtn.addEventListener("click", () => {
       try {
@@ -198,7 +213,7 @@ export function renderExpression(container) {
 
     const nextBtn = container.querySelector("#oraleNextBtn");
     if (nextBtn) nextBtn.addEventListener("click", () => {
-      oraleIndex = (oraleIndex + 1) % EXPRESSION_ORALE_PROMPTS_EN.length;
+      oraleIndex = (oraleIndex + 1) % prompts.length;
       oraleTranscript = "";
       paint();
     });
@@ -206,8 +221,8 @@ export function renderExpression(container) {
 
   // ---------- Expression écrite ----------
 
-  function ecriteHtml() {
-    const prompt = EXPRESSION_ECRITE_PROMPTS_EN[ecriteIndex];
+  function ecriteHtml(prompts) {
+    const prompt = prompts[ecriteIndex];
     return `
       <div class="card" style="margin-top:14px">
         <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("expr_ecrite_prompt_label", lang)} — ${prompt.from}</div>
@@ -235,7 +250,7 @@ export function renderExpression(container) {
     `;
   }
 
-  function wireEcrite() {
+  function wireEcrite(prompts) {
     const textarea = container.querySelector("#exprReplyInput");
     if (textarea) textarea.addEventListener("input", (e) => { ecriteReplyText = e.target.value; });
 
@@ -257,7 +272,7 @@ export function renderExpression(container) {
     });
     const nextBtn = container.querySelector("#exprNextBtn");
     if (nextBtn) nextBtn.addEventListener("click", () => {
-      ecriteIndex = (ecriteIndex + 1) % EXPRESSION_ECRITE_PROMPTS_EN.length;
+      ecriteIndex = (ecriteIndex + 1) % prompts.length;
       ecriteMatches = null; ecriteError = false; ecriteReplyText = "";
       paint();
     });

@@ -8,12 +8,12 @@
 // Les autres niveaux/langues, et les sections sans contenu à un niveau
 // donné, affichent un message "bientôt disponible".
 
-import { store } from "../data/store.js?v=20260920b";
-import { t } from "../data/i18n.js?v=20260920b";
-import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260920b";
-import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260920b";
-import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260920b";
-import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920e";
+import { t } from "../data/i18n.js?v=20260920e";
+import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260920e";
+import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260920e";
+import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260920e";
+import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260920e";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
