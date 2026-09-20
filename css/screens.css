@@ -539,6 +539,31 @@
 .lt-quiz-top{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
 .lt-progress{ font-weight: 700; font-size: 12px; color: var(--ink-soft); }
 .lt-timer{ font-weight: 800; font-size: 14px; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* --- Ligne "Précédent" / "Pause" au-dessus de chaque question du test de
+   niveau : le bouton Précédent n'apparaît qu'à partir de la 2e question du
+   palier (voir shellFor dans level-test.js), Pause reste toujours visible
+   mais se désactive après le premier usage (une seule pause pour tout le
+   test) --- */
+.lt-quiz-controls{ display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+.lt-back-btn, .lt-pause-btn{ font-size: 12.5px; padding: 6px 12px; }
+.lt-pause-btn:disabled{ opacity: 0.5; cursor: default; }
+
+/* --- Confirmation avant de mettre le test en pause : même habillage que la
+   proposition Face ID (carte centrée par-dessus tout) --- */
+.lt-pause-confirm-backdrop{
+  position: fixed; inset: 0; z-index: 40;
+  background: rgba(10,14,16,0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lt-pause-confirm-card{
+  background: #fff; border-radius: var(--radius-lg); padding: 24px;
+  max-width: 340px; width: 100%; text-align: center;
+  box-shadow: var(--shadow-pop);
+}
+.lt-pause-confirm-title{ font-weight: 800; font-size: 16px; color: var(--brand-teal); margin-bottom: 6px; }
+.lt-pause-confirm-desc{ font-size: 13px; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.5; }
 .lt-qtext{ font-weight: 800; font-size: 17px; margin-bottom: 16px; }
 .lt-opts{ display: flex; flex-direction: column; gap: 10px; }
 .lt-opt{ text-align: left; background: var(--surface-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 14px; font-family: var(--font-main); color: var(--ink); cursor: pointer; }
