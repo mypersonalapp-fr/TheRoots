@@ -196,6 +196,25 @@
   background: #fdf3e3;
 }
 
+/* --- "Quelle langue veux-tu apprendre ?" (choose-language.js), demandé une
+   seule fois à la première connexion : même fond que la coquille
+   principale (.shell-bg), avec un panneau "verre dépoli" centré verticalement
+   par-dessus, façon écran de connexion. --- */
+.choose-lang-body{
+  position: relative; z-index: 2; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24px;
+}
+.choose-lang-panel{
+  max-width: 420px; width: 100%; margin: 0 auto;
+  text-align: center;
+}
+.choose-lang-title{ font-weight: 800; font-size: 19px; color: var(--brand-teal); margin-bottom: 8px; }
+.choose-lang-desc{ font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 18px; }
+.choose-lang-options{ display: flex; flex-direction: column; gap: 12px; }
+.choose-lang-btn{ width: 100%; font-size: 15px; }
+.choose-lang-flag{ margin-right: 6px; }
+
 /* --- Format paysage (tablette et téléphone) : shell-bg.jpg est une image
    "haute" (portrait, 1024×1536) pensée pour un écran de téléphone debout —
    en paysage elle ne peut que se retrouver soit coupée en haut/en bas
