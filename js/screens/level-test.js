@@ -11,8 +11,8 @@
 // restent en français volontairement : tester l'anglais dans une autre
 // langue d'interface ne changerait rien aux questions.
 
-import { store } from "../data/store.js";
-import { t } from "../data/i18n.js";
+import { store } from "../data/store.js?v=20260920b";
+import { t } from "../data/i18n.js?v=20260920b";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant

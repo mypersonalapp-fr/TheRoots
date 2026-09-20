@@ -14,10 +14,10 @@
 // une IA qui comprend le sens ; la checklist de contenu comble ce manque en
 // vérifiant simplement la présence des idées attendues.
 
-import { store } from "../data/store.js";
-import { t } from "../data/i18n.js";
-import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js";
-import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js";
+import { store } from "../data/store.js?v=20260920b";
+import { t } from "../data/i18n.js?v=20260920b";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260920b";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260920b";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 

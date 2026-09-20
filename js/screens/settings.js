@@ -6,9 +6,9 @@
 // "Mon niveau actuel" ne vit plus ici : il est désormais dans Mes cours,
 // par langue, avec le "Niveau d'entrée" gardé en référence permanente.
 
-import { store } from "../data/store.js";
-import { t } from "../data/i18n.js";
-import { webauthn } from "../data/webauthn.js";
+import { store } from "../data/store.js?v=20260920b";
+import { t, langName } from "../data/i18n.js?v=20260920b";
+import { webauthn } from "../data/webauthn.js?v=20260920b";
 
 const APP_VERSION = "1.2";
 
@@ -166,6 +166,15 @@ export function renderSettings(container, onChange) {
           </select>
         </div>
 
+        <div class="card settings-tab">
+          <div><strong>${t("set_learning_lang", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_learning_lang_desc", lang)}</div></div>
+          <select id="learningLang">
+            <option value="en" ${settings.primaryLearningLang==="en"?"selected":""}>${langName("en", lang)}</option>
+            <option value="es" ${settings.primaryLearningLang==="es"?"selected":""}>${langName("es", lang)}</option>
+            <option value="pt" ${settings.primaryLearningLang==="pt"?"selected":""}>${langName("pt", lang)}</option>
+          </select>
+        </div>
+
         <div class="card settings-tab" style="flex-direction:column;align-items:stretch;gap:10px">
           <div><strong>${t("set_voice", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_voice_desc", lang)}</div></div>
           ${!voicesLoaded ? `
@@ -202,6 +211,11 @@ export function renderSettings(container, onChange) {
       // l'Accueil à chaque changement de langue.
       try { sessionStorage.setItem("the_roots_last_tab", "parametres"); } catch (err) { /* stockage indisponible */ }
       window.location.reload();
+    });
+    container.querySelector("#learningLang").addEventListener("change", (e) => {
+      store.setPrimaryLearningLang(e.target.value);
+      onChange && onChange();
+      paint();
     });
     const voiceSelect = container.querySelector("#voiceSelect");
     if (voiceSelect) voiceSelect.addEventListener("change", (e) => {

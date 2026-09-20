@@ -2,8 +2,8 @@
 // expression du jour (équivalent idiomatique, pas une traduction littérale),
 // question de culture, vidéo du jour par langue.
 
-import { store } from "../data/store.js";
-import { t, langName, formatDate } from "../data/i18n.js";
+import { store } from "../data/store.js?v=20260920b";
+import { t, langName, formatDate } from "../data/i18n.js?v=20260920b";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
@@ -208,7 +208,13 @@ function localizedDateTime(lang) {
 export function renderDashboard(container, { onGoToCourses } = {}) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
-  const { date, time } = localizedDateTime(lang);
+  // La date/l'heure de l'Accueil suivent la langue APPRISE (choisie une
+  // fois à la première connexion — voir choose-language.js), pas la langue
+  // de l'INTERFACE (menus) : ça reste en français par défaut tant
+  // qu'aucune langue apprise n'a encore été choisie (cas impossible en
+  // pratique, app.js pose la question avant d'arriver ici, mais on garde
+  // un repli sûr).
+  const { date, time } = localizedDateTime(settings.primaryLearningLang || lang);
   const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
   const quote = QUOTES[new Date().getDate() % QUOTES.length];
   const culture = CULTURE_QUESTIONS_EN[new Date().getDate() % CULTURE_QUESTIONS_EN.length];

@@ -13,8 +13,8 @@
 // et inversement. Un timeout est posé sur l'appel au dictionnaire pour ne
 // jamais rester bloqué indéfiniment sur "Recherche en cours…".
 
-import { store } from "../data/store.js";
-import { t, langName } from "../data/i18n.js";
+import { store } from "../data/store.js?v=20260920b";
+import { t, langName } from "../data/i18n.js?v=20260920b";
 
 // Nos codes de langue (en/es/pt) vers les codes attendus par l'API.
 const API_LANG = { en: "en", es: "es", pt: "pt-BR" };

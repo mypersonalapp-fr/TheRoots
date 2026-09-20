@@ -2,9 +2,9 @@
 // Face ID / Touch ID est activé : on redemande le visage/l'empreinte avant
 // d'entrer, au lieu de retaper le mot de passe (voir js/data/webauthn.js).
 
-import { webauthn } from "../data/webauthn.js";
-import { store } from "../data/store.js";
-import { t } from "../data/i18n.js";
+import { webauthn } from "../data/webauthn.js?v=20260920b";
+import { store } from "../data/store.js?v=20260920b";
+import { t } from "../data/i18n.js?v=20260920b";
 
 export function renderFaceIdLock(root, { credentialId, onUnlocked, onUsePassword }) {
   const { settings } = store.get();
