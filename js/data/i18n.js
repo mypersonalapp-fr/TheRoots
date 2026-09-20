@@ -70,6 +70,12 @@ const STRINGS = {
     dash_progress_title: "Ma progression",
     dash_level_test_todo: "Test de niveau à passer",
     dash_choose_lang: "Choisis ta langue → onglet « Mes cours »",
+
+    // --- choose-language.js : demandée une seule fois, à la première connexion ---
+    chooselang_title: "Quelle langue veux-tu apprendre ?",
+    chooselang_desc: "Ce choix personnalise la date et l'heure affichées sur ton accueil. Tu pourras en changer plus tard dans Paramètres.",
+    set_learning_lang: "Langue apprise principale",
+    set_learning_lang_desc: "Personnalise la date et l'heure affichées sur l'accueil.",
     dash_level: "Niveau {level}",
     dash_culture_label: "Question culture",
     dash_expression_title: "Expression du jour",
@@ -367,6 +373,12 @@ const STRINGS = {
     dash_progress_title: "My progress",
     dash_level_test_todo: "Placement test to take",
     dash_choose_lang: "Choose your language → \"My courses\" tab",
+
+    // --- choose-language.js : asked once only, at the very first login ---
+    chooselang_title: "Which language do you want to learn?",
+    chooselang_desc: "This sets the date and time shown on your home screen. You can change it later in Settings.",
+    set_learning_lang: "Main language you're learning",
+    set_learning_lang_desc: "Personalises the date and time shown on the home screen.",
     dash_level: "Level {level}",
     dash_culture_label: "Culture question",
     dash_expression_title: "Expression of the day",
@@ -652,6 +664,12 @@ const STRINGS = {
     dash_progress_title: "Mi progreso",
     dash_level_test_todo: "Prueba de nivel pendiente",
     dash_choose_lang: "Elige tu idioma → pestaña «Mis cursos»",
+
+    // --- choose-language.js : se pregunta una sola vez, en la primera conexión ---
+    chooselang_title: "¿Qué idioma quieres aprender?",
+    chooselang_desc: "Esto personaliza la fecha y la hora que se muestran en tu inicio. Podrás cambiarlo más tarde en Ajustes.",
+    set_learning_lang: "Idioma principal que aprendes",
+    set_learning_lang_desc: "Personaliza la fecha y la hora que se muestran en el inicio.",
     dash_level: "Nivel {level}",
     dash_culture_label: "Pregunta de cultura",
     dash_expression_title: "Expresión del día",
@@ -937,6 +955,12 @@ const STRINGS = {
     dash_progress_title: "Meu progresso",
     dash_level_test_todo: "Teste de nível por fazer",
     dash_choose_lang: "Escolhe o teu idioma → aba «Meus cursos»",
+
+    // --- choose-language.js : perguntado uma única vez, na primeira ligação ---
+    chooselang_title: "Que idioma queres aprender?",
+    chooselang_desc: "Isto personaliza a data e a hora mostradas no teu início. Podes mudar mais tarde em Definições.",
+    set_learning_lang: "Idioma principal que estás a aprender",
+    set_learning_lang_desc: "Personaliza a data e a hora mostradas no início.",
     dash_level: "Nível {level}",
     dash_culture_label: "Pergunta de cultura",
     dash_expression_title: "Expressão do dia",

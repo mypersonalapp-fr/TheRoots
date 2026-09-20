@@ -20,6 +20,12 @@ function defaultData() {
       theme: "light",
       interfaceLang: "fr",
       preferredVoiceURI: null, // voix choisie dans Paramètres > Réglages généraux > Voix
+      // Langue apprise principale (en/es/pt) — demandée une seule fois, à la
+      // toute première connexion (voir js/screens/choose-language.js et
+      // app.js), modifiable ensuite dans Paramètres. Sert à personnaliser la
+      // date/l'heure affichées sur l'Accueil (voir dashboard.js) : null tant
+      // que la question n'a pas encore été posée.
+      primaryLearningLang: null,
       langs: [
         {
           code: "en", label: "Anglais",
@@ -163,6 +169,14 @@ export const store = {
   updateSettings(patch) {
     const data = load();
     data.settings = { ...data.settings, ...patch };
+    save(data);
+    return data.settings;
+  },
+  // Langue apprise principale — posée une seule fois (voir choose-language.js
+  // et app.js), rappelable ensuite depuis Paramètres.
+  setPrimaryLearningLang(code) {
+    const data = load();
+    data.settings.primaryLearningLang = code;
     save(data);
     return data.settings;
   },
