@@ -2,14 +2,14 @@
 // démarrage (racines + bonjour → nom de l'appli) → menu (inscription /
 // connexion / mot de passe oublié) → coquille de l'application.
 
-import { store } from "./data/store.js?v=20260920f";
-import { renderSplash } from "./screens/splash.js?v=20260920f";
-import { renderAuthMenu } from "./screens/auth-menu.js?v=20260920f";
-import { renderLogin } from "./screens/login.js?v=20260920f";
-import { renderForgotPassword } from "./screens/forgot-password.js?v=20260920f";
-import { renderShell } from "./screens/shell.js?v=20260920f";
-import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260920f";
-import { renderChooseLanguage } from "./screens/choose-language.js?v=20260920f";
+import { store } from "./data/store.js?v=20260920g";
+import { renderSplash } from "./screens/splash.js?v=20260920g";
+import { renderAuthMenu } from "./screens/auth-menu.js?v=20260920g";
+import { renderLogin } from "./screens/login.js?v=20260920g";
+import { renderForgotPassword } from "./screens/forgot-password.js?v=20260920g";
+import { renderShell } from "./screens/shell.js?v=20260920g";
+import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260920g";
+import { renderChooseLanguage } from "./screens/choose-language.js?v=20260920g";
 
 const root = document.getElementById("app");
 
