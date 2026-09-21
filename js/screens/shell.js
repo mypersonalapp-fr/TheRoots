@@ -3,15 +3,15 @@
 // orale et écrite, Expression écrite et orale, Traduction, Paramètres),
 // bouton retour, et routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260920g";
-import { renderSettings } from "./settings.js?v=20260920g";
-import { renderMesCours } from "./mes-cours.js?v=20260920g";
-import { renderComprehension } from "./comprehension.js?v=20260920g";
-import { renderExpression } from "./expression.js?v=20260920g";
-import { renderTraduction } from "./traduction.js?v=20260920g";
-import { renderDictionnaire } from "./dictionnaire.js?v=20260920g";
-import { store } from "../data/store.js?v=20260920g";
-import { t } from "../data/i18n.js?v=20260920g";
+import { renderDashboard } from "./dashboard.js?v=20260920i";
+import { renderSettings } from "./settings.js?v=20260920i";
+import { renderMesCours } from "./mes-cours.js?v=20260920i";
+import { renderComprehension } from "./comprehension.js?v=20260920i";
+import { renderExpression } from "./expression.js?v=20260920i";
+import { renderTraduction } from "./traduction.js?v=20260920i";
+import { renderDictionnaire } from "./dictionnaire.js?v=20260920i";
+import { store } from "../data/store.js?v=20260920i";
+import { t } from "../data/i18n.js?v=20260920i";
 
 function menuItems(lang) {
   return [

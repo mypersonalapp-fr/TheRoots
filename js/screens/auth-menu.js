@@ -4,8 +4,8 @@
 // de l'image (sous le logo, au-dessus de l'illustration du bas) — jamais de
 // texte "The Roots" en double, puisqu'il est déjà dans l'image.
 
-import { store } from "../data/store.js?v=20260920g";
-import { t } from "../data/i18n.js?v=20260920g";
+import { store } from "../data/store.js?v=20260920i";
+import { t } from "../data/i18n.js?v=20260920i";
 
 export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
   const { settings } = store.get();

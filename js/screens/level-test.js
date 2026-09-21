@@ -14,8 +14,8 @@
 // jeu de paliers par langue apprise (TIERS_BY_LANG), chacun testant bien la
 // langue choisie plutôt que de renvoyer par défaut des questions d'anglais.
 
-import { store } from "../data/store.js?v=20260920g";
-import { t } from "../data/i18n.js?v=20260920g";
+import { store } from "../data/store.js?v=20260920i";
+import { t } from "../data/i18n.js?v=20260920i";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant
