@@ -350,9 +350,12 @@
   // document "contenu-paliers-a2-lot1.md". lesson = 25 : A2.12 "Imprévus en voyage", qui sert AUSSI
   // de Grand Contrôle A2 (sentinelle, même principe que GRAND_CONTROLE_LESSON pour le niveau A1).
   var GRAND_CONTROLE_A2_LESSON = 25;
+  // lesson = 26 : Grand contrôle FINAL (A1 + A2 mélangés) — validé le 23/09 par Ashley : contrôle A1,
+  // puis contrôle A2, puis grand contrôle final qui ouvre le niveau supérieur (B1).
+  var GRAND_CONTROLE_FINAL_LESSON = 26;
   // true pour n'importe lequel des deux grands contrôles (A1 ou A2) : évite de dupliquer
   // "state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON" partout.
-  function isGrandControle(){ return state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON; }
+  function isGrandControle(){ return state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON || state.lesson === GRAND_CONTROLE_FINAL_LESSON; }
   // Seuil de réussite du contrôle pour débloquer la leçon suivante (60% des points, arrondi au
   // supérieur — ex : 8/13). En dessous, le Bilan propose de revoir la leçon plutôt que d'avancer.
   // Même seuil réutilisé pour le Grand Contrôle A1 (le cahier des charges délègue ce choix à
@@ -360,13 +363,14 @@
   var PASS_THRESHOLD_RATIO = 0.6;
   try {
     var savedLesson = parseInt(localStorage.getItem(LESSON_KEY), 10);
-    if(!isNaN(savedLesson) && savedLesson >= -1 && savedLesson <= GRAND_CONTROLE_A2_LESSON){ state.lesson = savedLesson; }
+    if(!isNaN(savedLesson) && savedLesson >= -1 && savedLesson <= GRAND_CONTROLE_FINAL_LESSON){ state.lesson = savedLesson; }
   } catch(e){}
   var VOCAB, MINI_CHECKS, ROUNDS, QUIZ, PRON_VERBS, MEM_WORDS, READING, GLOSS, TEXTS, NEXT_PREVIEW, GRAMMAR1, GRAMMAR2, REVIEW, META, LECON_SUBSTEPS, LECTURE_SUBSTEPS, CULTURE_NOTE;
   function lessonLabel(){
     if(state.lesson === -1) return "Fondamentaux";
     if(state.lesson === GRAND_CONTROLE_LESSON) return "Grand Contrôle A1";
     if(state.lesson === GRAND_CONTROLE_A2_LESSON) return "Grand Contrôle A2";
+    if(state.lesson === GRAND_CONTROLE_FINAL_LESSON) return "Grand contrôle final";
     if(state.lesson >= 13) return "A2." + (state.lesson - 13);
     return "Leçon " + (state.lesson + 1);
   }
@@ -464,7 +468,8 @@
       META = { vocabTitle:"Anglais social (A1.12)", lectureTitle:"Une belle rencontre", bilanTitle:"Bravo, tu as terminé tout le niveau A1 de The Roots !", pronLabel:"Questions de synthèse & formules polies", todayLede:"saluer, remercier, t\'excuser, faire une demande polie et tenir une petite conversation — la synthèse de tout ton niveau A1" };
     } else if(state.lesson === GRAND_CONTROLE_LESSON){
       buildGrandControle();
-      VOCAB = null; MINI_CHECKS = null; ROUNDS = GC_ROUNDS; QUIZ = GC_QUIZ;
+      var drawA1 = controlDraw("A1");
+      VOCAB = null; MINI_CHECKS = null; ROUNDS = drawA1.rounds; QUIZ = drawA1.quiz;
       PRON_VERBS = null; MEM_WORDS = null; READING = null; GLOSS = null;
       GRAMMAR1 = null; GRAMMAR2 = null; REVIEW = null; CULTURE_NOTE = null;
       LECON_SUBSTEPS = 1; LECTURE_SUBSTEPS = 1;
@@ -561,14 +566,23 @@
       META = { vocabTitle:"Opinions et ressentis (A2.11)", lectureTitle:"Un avis partagé", bilanTitle:"Bravo, tu sais maintenant donner ton avis, le justifier et exprimer tes ressentis avec nuance !", pronLabel:"Verbe + gérondif ou infinitif", todayLede:"donner ton avis, le justifier avec « because/so », et exprimer un sentiment — s'appuie sur A1.5 (Likes and Preferences), à un niveau plus nuancé", videoTheme:"deux personnages qui débattent gentiment d'une opinion différente", videoUrl:null };
     } else if(state.lesson === GRAND_CONTROLE_A2_LESSON){
       buildGrandControleA2();
-      VOCAB = null; MINI_CHECKS = null; ROUNDS = GC_ROUNDS_A2; QUIZ = GC_QUIZ_A2;
+      var drawA2 = controlDraw("A2");
+      VOCAB = null; MINI_CHECKS = null; ROUNDS = drawA2.rounds; QUIZ = drawA2.quiz;
       PRON_VERBS = null; MEM_WORDS = null; READING = null; GLOSS = null;
       GRAMMAR1 = null; GRAMMAR2 = null; REVIEW = null; CULTURE_NOTE = null;
       LECON_SUBSTEPS = 1; LECTURE_SUBSTEPS = 1;
       NEXT_PREVIEW = "";
       META = { vocabTitle:"", lectureTitle:"", bilanTitle:"Bravo, le niveau A2 est validé !", pronLabel:"", todayLede:"", videoTheme:"une scène d'aéroport calme (enregistrement, renseignement, objet égaré) — à éviter : les scènes de catastrophe/action, très fréquentes dans les recherches « airport scene »" };
+    } else if(state.lesson === GRAND_CONTROLE_FINAL_LESSON){
+      var drawF = controlDraw("FINAL");
+      VOCAB = null; MINI_CHECKS = null; ROUNDS = drawF.rounds; QUIZ = drawF.quiz;
+      PRON_VERBS = null; MEM_WORDS = null; READING = null; GLOSS = null;
+      GRAMMAR1 = null; GRAMMAR2 = null; REVIEW = null; CULTURE_NOTE = null;
+      LECON_SUBSTEPS = 1; LECTURE_SUBSTEPS = 1;
+      NEXT_PREVIEW = "";
+      META = { vocabTitle:"", lectureTitle:"", bilanTitle:"Bravo, A1 et A2 sont validés !", pronLabel:"", todayLede:"" };
     } else {
-      // Repli défensif (ne devrait pas arriver, lesson borné à -1..25 ailleurs) : évite un plantage
+      // Repli défensif (ne devrait pas arriver, lesson borné à -1..26 ailleurs) : évite un plantage
       // si un état invalide est un jour restauré depuis localStorage.
       VOCAB = VOCAB_L1; MINI_CHECKS = MINI_CHECKS_L1; ROUNDS = ROUNDS_L1; QUIZ = QUIZ_L1;
       PRON_VERBS = PRON_VERBS_L1; MEM_WORDS = MEM_WORDS_L1; READING = READING_L1; GLOSS = GLOSS_L1;
@@ -577,6 +591,346 @@
       NEXT_PREVIEW = "";
       META = { vocabTitle:"Identité (A1.1)", lectureTitle:"Une présentation", bilanTitle:"Bien joué !", pronLabel:"Se présenter", todayLede:"te présenter" };
     }
+    // Rappels intégrés (contrôle validé entre 80 et 92 %) : 2 questions des notions fragiles du
+    // niveau précédent glissées dans le contrôle de chaque leçon du niveau suivant.
+    if(!isGrandControle() && QUIZ) QUIZ = withRappels(QUIZ);
+  }
+
+  // =====================================================================
+  // CONTRÔLES A1 / A2 / FINAL, JAUGES, RENFORTS, MISSIONS (validé par Ashley le 23/09)
+  // Données partagées avec l'appli principale par le stockage du téléphone (mêmes clés que
+  // js/data/progress.js) :
+  //  - the_roots_skills_v1  : réussite par compétence (jauges du profil)
+  //  - the_roots_errors_v1  : erreurs par leçon → missions de récupération (J+1, J+7)
+  //  - the_roots_controls_v1: résultats des contrôles
+  //  - the_roots_boosts_v1  : renforts / rappels à faire au niveau suivant
+  //  - the_roots_lesson_passes_v1 : date de la dernière réussite de chaque leçon
+  // Grille (validée) : < 70 % non validé (retour aux leçons, nouveau contrôle 7 jours après, avec
+  // d'autres questions) · 70-79 % validé + renfort (leçons ajoutées au début du niveau suivant) ·
+  // 80-92 % validé + rappels glissés dans les leçons suivantes · 93-100 % validé net · et toute
+  // compétence sous 50 % déclenche un renfort, même si la moyenne est bonne.
+  // =====================================================================
+  var CREATOR_MODE = true; // miroir de js/data/dev-config.js : délai de 7 jours désactivé, renforts sautables
+  var K_SKILLS = "the_roots_skills_v1", K_CTRL = "the_roots_controls_v1", K_ERR = "the_roots_errors_v1",
+      K_PASS = "the_roots_lesson_passes_v1", K_BOOST = "the_roots_boosts_v1";
+  var LANG = "en";
+  var DAY_MS = 86400000;
+  function lsGet(k, d){ try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch(e){ return d; } }
+  function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  function shuffleArr(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function fmtDate(ts){ try { return new Date(ts).toLocaleDateString("fr-FR", { day:"numeric", month:"long" }); } catch(e){ return ""; } }
+
+  var A1_IDS = [-1,0,1,2,3,4,5,6,7,8,9,10,11];
+  var A2_IDS = [13,14,15,16,17,18,19,20,21,22,23,24];
+  function ctrlLevel(){ return state.lesson === GRAND_CONTROLE_LESSON ? "A1" : (state.lesson === GRAND_CONTROLE_A2_LESSON ? "A2" : "FINAL"); }
+  function ctrlLabel(level){ return level === "FINAL" ? "grand contrôle final (A1 + A2)" : "contrôle " + level; }
+  function nextLevelOf(level){ return level === "A1" ? "A2" : "B1"; }
+  function quizOf(id){
+    var m = { "-1":QUIZ_F0, 0:QUIZ_L1, 1:QUIZ_L2, 2:QUIZ_L3, 3:QUIZ_L4, 4:QUIZ_L5, 5:QUIZ_L6, 6:QUIZ_L7, 7:QUIZ_L8, 8:QUIZ_L9, 9:QUIZ_L10, 10:QUIZ_L11, 11:QUIZ_L12,
+      13:QUIZ_A2_0, 14:QUIZ_A2_1, 15:QUIZ_A2_2, 16:QUIZ_A2_3, 17:QUIZ_A2_4, 18:QUIZ_A2_5, 19:QUIZ_A2_6, 20:QUIZ_A2_7, 21:QUIZ_A2_8, 22:QUIZ_A2_9, 23:QUIZ_A2_10, 24:QUIZ_A2_11 };
+    return m[id] || null;
+  }
+  function roundsOf(id){
+    var m = { "-1":ROUNDS_F0, 0:ROUNDS_L1, 1:ROUNDS_L2, 2:ROUNDS_L3, 3:ROUNDS_L4, 4:ROUNDS_L5, 5:ROUNDS_L6, 6:ROUNDS_L7, 7:ROUNDS_L8, 8:ROUNDS_L9, 9:ROUNDS_L10, 10:ROUNDS_L11, 11:ROUNDS_L12,
+      13:ROUNDS_A2_0, 14:ROUNDS_A2_1, 15:ROUNDS_A2_2, 16:ROUNDS_A2_3, 17:ROUNDS_A2_4, 18:ROUNDS_A2_5, 19:ROUNDS_A2_6, 20:ROUNDS_A2_7, 21:ROUNDS_A2_8, 22:ROUNDS_A2_9, 23:ROUNDS_A2_10, 24:ROUNDS_A2_11 };
+    return m[id] || null;
+  }
+  // Les questions propres aux grands contrôles citent leur leçon d'origine dans l'explication
+  // (« (Leçon 3) », « (A2.6) ») : on s'en sert pour savoir quelle leçon renvoyer à revoir.
+  function lessonFromWhy(q, fallback){
+    var w = q.why || "", m = /Leçon (\d+)/.exec(w);
+    if(m) return Math.max(0, Math.min(11, parseInt(m[1], 10) - 1));
+    m = /A2\.(\d+)/.exec(w);
+    if(m){ var n = parseInt(m[1], 10); return n <= 11 ? 13 + n : null; }
+    return fallback;
+  }
+  function qKey(q){ return (q.q || "") + "|" + (q.audio || "") + "|" + (q.passage || ""); }
+
+  // Tirage au sort d'un contrôle : jamais les mêmes questions d'un passage à l'autre. On puise dans
+  // les contrôles de TOUTES les leçons du niveau + les questions propres au grand contrôle, en
+  // gardant l'équilibre écoute / lecture / grammaire-vocabulaire (8 / 7 / 10) et 15 manches
+  // d'expression (construction de phrase). Le final mélange A1 et A2.
+  function controlDraw(level){
+    if(state.ctrlDraw && state.ctrlDraw.level === level) return state.ctrlDraw;
+    var ids = level === "A1" ? A1_IDS : (level === "A2" ? A2_IDS : A1_IDS.concat(A2_IDS));
+    var pool = [];
+    ids.forEach(function(id){ (quizOf(id) || []).forEach(function(q){ pool.push(Object.assign({}, q, { _lesson:id })); }); });
+    if(level !== "A2"){ buildGrandControle(); GC_QUIZ.forEach(function(q){ pool.push(Object.assign({}, q, { _lesson:lessonFromWhy(q, null) })); }); }
+    if(level !== "A1"){ buildGrandControleA2(); GC_QUIZ_A2.forEach(function(q){ pool.push(Object.assign({}, q, { _lesson:lessonFromWhy(q, null) })); }); }
+    var seen = {}, byCat = { oral:[], comprehension:[], ecrit:[] };
+    pool.forEach(function(q){ var k = qKey(q); if(seen[k]) return; seen[k] = 1; (byCat[q.cat] || byCat.ecrit).push(q); });
+    var target = { oral:8, comprehension:7, ecrit:10 }, quiz = [], left = [];
+    Object.keys(target).forEach(function(c){ var sh = shuffleArr(byCat[c]); quiz = quiz.concat(sh.slice(0, target[c])); left = left.concat(sh.slice(target[c])); });
+    if(quiz.length < 25) quiz = quiz.concat(shuffleArr(left).slice(0, 25 - quiz.length));
+    var rpool = [], rseen = {};
+    ids.forEach(function(id){ (roundsOf(id) || []).forEach(function(r){ rpool.push(Object.assign({}, r, { _lesson:id })); }); });
+    if(level !== "A2") (GC_ROUNDS || []).forEach(function(r){ rpool.push(Object.assign({}, r, { _lesson:null })); });
+    if(level !== "A1") (GC_ROUNDS_A2 || []).forEach(function(r){ rpool.push(Object.assign({}, r, { _lesson:null })); });
+    rpool = rpool.filter(function(r){ if(!r || !r.bank || !r.answer || rseen[r.answer]) return false; rseen[r.answer] = 1; return true; });
+    state.ctrlDraw = { level:level, quiz:shuffleArr(quiz), rounds:shuffleArr(rpool).slice(0, 15), saved:false };
+    return state.ctrlDraw;
+  }
+
+  // ---------- Compétences (jauges) ----------
+  var SKILL_LABEL = { co:"Compréhension orale", ce:"Compréhension écrite", ee:"Expression écrite", eo:"Expression orale", gr:"Grammaire", vo:"Vocabulaire", pr:"Prononciation", gv:"Grammaire et vocabulaire" };
+  function skillOfQ(q){
+    if(q.cat === "oral") return "co";
+    if(q.cat === "comprehension") return "ce";
+    var t = (q.q || "") + " " + (q.why || "");
+    return /(veut dire|signifie|traduction|traduis|quel mot|vocabulaire|synonyme|contraire|désigne|comment dit-on|comment dire)/i.test(t) ? "vo" : "gr";
+  }
+  function recordSkill(skill, ok){
+    var all = lsGet(K_SKILLS, {}), m = all[LANG] || {}, s = m[skill] || { ok:0, total:0 };
+    s.ok += ok ? 1 : 0; s.total += 1;
+    if(s.total > 80){ s.ok *= 0.8; s.total *= 0.8; } // les résultats récents comptent plus
+    s.at = Date.now(); m[skill] = s; all[LANG] = m; lsSet(K_SKILLS, all);
+  }
+  function recordError(lessonId){
+    if(lessonId == null || lessonId === GRAND_CONTROLE_LESSON || lessonId > 24) return;
+    var all = lsGet(K_ERR, {}), m = all[LANG] || {}, e = m[lessonId] || { count:0, stage:0, due:0 };
+    e.count += 1; e.stage = 0; e.due = Date.now(); e.at = Date.now();
+    m[lessonId] = e; all[LANG] = m; lsSet(K_ERR, all);
+  }
+  function recordPass(lessonId){
+    var all = lsGet(K_PASS, {}), m = all[LANG] || {};
+    m[lessonId] = Date.now(); all[LANG] = m; lsSet(K_PASS, all);
+  }
+  function onQuizAnswered(Q, ok){
+    recordSkill(skillOfQ(Q), ok);
+    if(!ok) recordError(Q._lesson != null ? Q._lesson : state.lesson);
+  }
+  function gaugeHtml(label, pct){
+    var col = pct == null ? "#9aa5a3" : (pct >= 70 ? "#2e8a57" : (pct >= 50 ? "#b8741a" : "#c2412f"));
+    return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:.86rem;font-weight:700"><span>'+label+'</span><span style="color:'+col+'">'+(pct == null ? "—" : pct+" %")+'</span></div>' +
+      '<div style="height:9px;border-radius:6px;background:rgba(27,60,57,.1);overflow:hidden;margin-top:4px"><div style="width:'+(pct || 0)+'%;height:100%;background:'+col+';border-radius:6px"></div></div></div>';
+  }
+  // Jauges du contrôle d'une leçon (fin de chaque leçon, demande d'Ashley).
+  function lessonGaugesHtml(){
+    var sk = {};
+    QUIZ.forEach(function(q, i){ var k = skillOfQ(q); sk[k] = sk[k] || [0,0]; sk[k][1]++; if(state.quizLog[i]) sk[k][0]++; });
+    var order = ["co","ce","gr","vo"];
+    return '<div class="card" style="margin-top:14px;padding:14px 16px"><div class="eyebrow" style="margin-bottom:4px">Tes jauges sur cette leçon</div>' +
+      order.filter(function(k){ return sk[k]; }).map(function(k){ return gaugeHtml(SKILL_LABEL[k], Math.round(sk[k][0] / sk[k][1] * 100)); }).join("") + '</div>';
+  }
+
+  // ---------- Renforts & rappels ----------
+  function getBoosts(){ return (lsGet(K_BOOST, {})[LANG]) || {}; }
+  function setBoost(level, data){ var all = lsGet(K_BOOST, {}), m = all[LANG] || {}; m[level] = data; all[LANG] = m; lsSet(K_BOOST, all); }
+  var rappelCache = {};
+  function withRappels(quiz){
+    var lvl = (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
+    var b = lvl && getBoosts()[lvl];
+    if(!b || !b.rappel || !b.rappel.length) return quiz;
+    var key = state.lesson + ":" + b.rappel.join(",");
+    if(!rappelCache[key]){
+      var pool = [];
+      b.rappel.forEach(function(id){ (quizOf(id) || []).forEach(function(q){ pool.push(Object.assign({}, q, { _lesson:id, q:"🔁 Rappel · " + q.q })); }); });
+      rappelCache[key] = shuffleArr(pool).slice(0, 2);
+    }
+    return quiz.concat(rappelCache[key]);
+  }
+  function pendingRenforts(level){
+    var b = getBoosts()[level];
+    if(!b || !b.renfort) return [];
+    var done = b.done || [];
+    return b.renfort.filter(function(id){ return done.indexOf(id) < 0; });
+  }
+  function markRenfortDone(id){
+    var boosts = getBoosts();
+    Object.keys(boosts).forEach(function(level){
+      var b = boosts[level];
+      if(b && b.renfort && b.renfort.indexOf(id) >= 0){ b.done = (b.done || []); if(b.done.indexOf(id) < 0) b.done.push(id); setBoost(level, b); }
+    });
+  }
+
+  // ---------- Titres des leçons (calculés une fois au démarrage) ----------
+  var LESSON_TITLES = {};
+  function computeLessonTitles(){
+    var keep = state.lesson, keepDraw = state.ctrlDraw;
+    A1_IDS.concat(A2_IDS).forEach(function(i){
+      state.lesson = i; loadLessonData();
+      var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2)\.\d+\)\s*$/, "");
+      LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1))) + (t && i !== -1 ? " · " + t : "");
+    });
+    state.lesson = keep; state.ctrlDraw = keepDraw;
+  }
+  function lessonTitle(id){ return LESSON_TITLES[id] || ("Leçon " + id); }
+  function publishTitles(){ lsSet("the_roots_lesson_titles_v1", LESSON_TITLES); }
+
+  // ---------- Évaluation d'un contrôle ----------
+  function ctrlEvaluate(){
+    var sk = { co:[0,0], ce:[0,0], gv:[0,0], ee:[0,0] }, miss = {}, missBySkill = { co:{}, ce:{}, gv:{}, ee:{} };
+    function addMiss(k, id){ if(id == null) return; miss[id] = (miss[id] || 0) + 1; missBySkill[k][id] = (missBySkill[k][id] || 0) + 1; }
+    QUIZ.forEach(function(q, i){ var k = q.cat === "oral" ? "co" : (q.cat === "comprehension" ? "ce" : "gv"); sk[k][1]++; if(state.quizLog[i]) sk[k][0]++; else addMiss(k, q._lesson); });
+    ROUNDS.forEach(function(r, i){ sk.ee[1]++; if(state.gcExprLog[i]) sk.ee[0]++; else addMiss("ee", r._lesson); });
+    var total = state.quizScore + state.gcExprScore, max = QUIZ.length + ROUNDS.length;
+    var pct = Math.round(total / max * 100);
+    var skills = {};
+    Object.keys(sk).forEach(function(k){ skills[k] = sk[k][1] ? Math.round(sk[k][0] / sk[k][1] * 100) : null; });
+    function top(obj, n){ return Object.keys(obj).map(Number).sort(function(a, b){ return obj[b] - obj[a]; }).slice(0, n); }
+    var weak = top(miss, 4);
+    var decision = pct < 70 ? "fail" : (pct < 80 ? "renfort" : (pct < 93 ? "rappel" : "net"));
+    var floor = Object.keys(skills).filter(function(k){ return skills[k] != null && skills[k] < 50; });
+    var floorLessons = [];
+    floor.forEach(function(k){ top(missBySkill[k], 2).forEach(function(id){ if(floorLessons.indexOf(id) < 0) floorLessons.push(id); }); });
+    return { pct:pct, total:total, max:max, skills:skills, weak:weak, decision:decision, floor:floor, floorLessons:floorLessons };
+  }
+  function saveControlResult(level, ev){
+    var all = lsGet(K_CTRL, {}), m = all[LANG] || {}, rec = m[level] || { attempts:0, passed:false };
+    rec.attempts += 1;
+    rec.last = { at:Date.now(), pct:ev.pct, decision:ev.decision, skills:ev.skills, weak:ev.weak, floor:ev.floor };
+    if(ev.decision !== "fail"){ rec.passed = true; rec.passedAt = rec.passedAt || Date.now(); rec.best = Math.max(rec.best || 0, ev.pct); }
+    m[level] = rec; all[LANG] = m; lsSet(K_CTRL, all);
+    if(ev.decision !== "fail"){
+      var target = nextLevelOf(level), b = getBoosts()[target] || { renfort:[], rappel:[], done:[] };
+      var add = function(list, ids){ ids.forEach(function(id){ if(list.indexOf(id) < 0) list.push(id); }); };
+      if(ev.decision === "renfort") add(b.renfort, ev.weak);
+      if(ev.decision === "rappel") add(b.rappel, ev.weak);
+      add(b.renfort, ev.floorLessons);
+      b.from = level; b.at = Date.now();
+      setBoost(target, b);
+    }
+  }
+  function controlRecord(level){ return ((lsGet(K_CTRL, {})[LANG]) || {})[level] || null; }
+  // Nouveau passage après un échec : 7 jours après ET leçons à revoir refaites (réussies) depuis.
+  function retakeStatus(level){
+    var rec = controlRecord(level);
+    if(!rec || !rec.last || rec.last.decision !== "fail") return { ok:true };
+    var passes = (lsGet(K_PASS, {})[LANG]) || {};
+    var todo = (rec.last.weak || []).filter(function(id){ return !(passes[id] > rec.last.at); });
+    var openAt = rec.last.at + 7 * DAY_MS;
+    var ok = CREATOR_MODE || (Date.now() >= openAt && todo.length === 0);
+    return { ok:ok, todo:todo, openAt:openAt, creator:CREATOR_MODE };
+  }
+  function reviewButtonsHtml(ids, returnTo){
+    return ids.map(function(id){ return '<button class="opt review-lesson" data-id="'+id+'" data-return="'+returnTo+'" style="text-align:left">↺ Revoir '+lessonTitle(id)+'</button>'; }).join("");
+  }
+  function wireReviewButtons(){
+    Array.prototype.forEach.call(screen.querySelectorAll(".review-lesson"), function(b){
+      b.addEventListener("click", function(){
+        state.returnTo = parseInt(b.getAttribute("data-return"), 10);
+        state.lesson = parseInt(b.getAttribute("data-id"), 10);
+        state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
+        state.ctrlDraw = null; memState = null; sbRound = 0; vocabBlockIdx = 0;
+        render();
+      });
+    });
+  }
+
+  // ---------- Écran « renforts » avant le niveau suivant ----------
+  function screenRenfortGate(todo){
+    postmark.innerHTML = "RENFORT";
+    itinerary.hidden = true;
+    backBtn.style.visibility = "hidden";
+    screen.innerHTML =
+      '<div class="eyebrow">Avant de commencer le niveau A2</div>' +
+      '<h2 class="screen-title">Ton renfort : '+todo.length+' leçon'+(todo.length > 1 ? "s" : "")+' à consolider</h2>' +
+      '<p class="lede">Ton contrôle A1 est validé, mais ces notions n\'étaient pas encore bien ancrées. Elles s\'ajoutent au début de ton parcours A2 — rien n\'est enlevé, c\'est en plus.</p>' +
+      '<div class="options">'+reviewButtonsHtml(todo, 13)+'</div>' +
+      (CREATOR_MODE ? '<p class="lede" style="font-size:.85rem;margin-top:10px">Mode créatrice : tu peux passer le renfort pour tester la suite.</p>' : "");
+    wireReviewButtons();
+    nextBtn.style.display = CREATOR_MODE ? "" : "none";
+    nextBtn.textContent = "Passer (mode créatrice)";
+    hint.textContent = "";
+    state.renfortSkipped = false;
+  }
+
+  // ---------- Mode entraînement (missions, « J'ai 5 minutes ») ----------
+  // lessons.html#practice=auto  → mission du jour (leçons avec des erreurs à revoir aujourd'hui)
+  // lessons.html#practice=mix   → 8 questions au hasard parmi les leçons déjà faites
+  // lessons.html#practice=3,8   → questions des leçons 3 et 8
+  var PRACTICE = null;
+  (function(){
+    var m = /practice=([^&]+)/.exec(location.hash || "");
+    if(!m) return;
+    PRACTICE = { mode:decodeURIComponent(m[1]), idx:0, score:0, log:[], built:false };
+  })();
+  function buildPractice(){
+    var ids = [], mode = PRACTICE.mode;
+    if(mode === "auto"){
+      var errs = (lsGet(K_ERR, {})[LANG]) || {};
+      ids = Object.keys(errs).map(Number).filter(function(id){ return errs[id].count > 0 && errs[id].due <= Date.now(); })
+        .sort(function(a, b){ return errs[b].count - errs[a].count; }).slice(0, 2);
+    } else if(mode === "mix"){
+      var done = A1_IDS.concat(A2_IDS).filter(function(id){ return id < Math.min(state.lesson, 25) || (state.lesson === -1 && id === -1); });
+      ids = shuffleArr(done.length ? done : [-1, 0]).slice(0, 3);
+    } else {
+      ids = mode.split(",").map(function(x){ return parseInt(x, 10); }).filter(function(x){ return !isNaN(x) && quizOf(x); });
+    }
+    var pool = [];
+    ids.forEach(function(id){ (quizOf(id) || []).forEach(function(q){ pool.push(Object.assign({}, q, { _lesson:id })); }); });
+    PRACTICE.ids = ids; PRACTICE.quiz = shuffleArr(pool).slice(0, 8); PRACTICE.built = true;
+  }
+  function renderPractice(){
+    if(!PRACTICE.built) buildPractice();
+    itinerary.hidden = true; backBtn.style.visibility = "hidden";
+    postmark.innerHTML = "MISSION<br>5 MIN";
+    var P = PRACTICE, Q = P.quiz[P.idx];
+    if(!P.quiz.length){
+      screen.innerHTML = '<div class="eyebrow">Mission du jour</div><h2 class="screen-title">Rien à retravailler aujourd\'hui 🎉</h2><p class="lede">Aucune erreur en attente : continue tes leçons, ou reviens demain.</p>';
+      nextBtn.style.display = ""; nextBtn.textContent = "Retour à l'appli"; hint.textContent = "";
+      return;
+    }
+    if(P.idx >= P.quiz.length){ return renderPracticeEnd(); }
+    var cat = Q.cat || "ecrit";
+    screen.innerHTML =
+      '<div class="eyebrow">'+(P.mode === "auto" ? "Mission de récupération" : "Entraînement express")+' · '+lessonTitle(Q._lesson)+'</div>' +
+      '<div class="q-progress"><span>Question '+(P.idx+1)+' / '+P.quiz.length+'</span><span class="q-cat '+cat+'">'+Q_CAT_LABEL[cat]+'</span></div>' +
+      '<div class="q-text">'+Q.q+'</div>' +
+      (Q.passage ? '<div class="q-passage">'+Q.passage+'</div>' : "") +
+      (Q.audio ? '<div class="q-audio"><button class="q-audio-btn" id="qAudioBtn" aria-label="Écouter">🔊</button><span class="q-audio-hint">Écoute avant de répondre.</span></div>' : "") +
+      '<div class="options" id="opts"></div><div id="qWhyWrap"></div>';
+    if(Q.audio) document.getElementById("qAudioBtn").addEventListener("click", function(){ speak(Q.audio); });
+    nextBtn.style.display = "none"; hint.textContent = "";
+    var opts = document.getElementById("opts"), attempts = 0, resolved = false;
+    Q.opts.forEach(function(opt, i){
+      var b = document.createElement("button");
+      b.className = "opt"; b.textContent = opt;
+      b.addEventListener("click", function(){
+        if(resolved || b.disabled) return;
+        if(looksEnglish(opt)) speak(opt);
+        attempts++;
+        if(i === Q.correct){
+          markOption(b, "correct"); resolved = true;
+          Array.prototype.forEach.call(opts.children, function(o){ o.disabled = true; });
+          var first = attempts === 1; P.log[P.idx] = first; if(first) P.score++;
+          recordSkill(skillOfQ(Q), first);
+          setTimeout(function(){ P.idx++; renderPractice(); }, 650);
+        } else if(attempts >= 2){
+          markOption(b, "incorrect"); markOption(opts.children[Q.correct], "correct"); resolved = true;
+          Array.prototype.forEach.call(opts.children, function(o){ o.disabled = true; });
+          P.log[P.idx] = false; recordSkill(skillOfQ(Q), false);
+          document.getElementById("qWhyWrap").innerHTML = '<div class="why-inline"><span class="icon">💡</span><div>'+Q.why+'</div></div><button class="btn btn-primary" id="qContinue" style="margin-top:12px">Suivant</button>';
+          document.getElementById("qContinue").addEventListener("click", function(){ P.idx++; renderPractice(); });
+        } else { markOption(b, "incorrect"); b.disabled = true; }
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderPracticeEnd(){
+    var P = PRACTICE;
+    if(!P.saved){
+      P.saved = true;
+      // Missions : une leçon réussie sans faute passe à l'étape suivante (demain → dans 7 jours →
+      // acquise) ; sinon elle revient demain.
+      var all = lsGet(K_ERR, {}), m = all[LANG] || {};
+      P.ids.forEach(function(id){
+        var qs = []; P.quiz.forEach(function(q, i){ if(q._lesson === id) qs.push(P.log[i]); });
+        if(!qs.length || !m[id]) return;
+        var clean = qs.every(function(x){ return x; });
+        if(clean){ m[id].stage = (m[id].stage || 0) + 1; m[id].due = Date.now() + (m[id].stage === 1 ? 1 : 7) * DAY_MS; if(m[id].stage >= 3) delete m[id]; }
+        else { m[id].stage = 0; m[id].due = Date.now() + DAY_MS; }
+      });
+      all[LANG] = m; lsSet(K_ERR, all);
+    }
+    screen.innerHTML = '<div class="eyebrow">Mission terminée</div><h2 class="screen-title">'+P.score+' / '+P.quiz.length+' du premier coup</h2>' +
+      '<p class="lede">'+(P.score === P.quiz.length ? "Parfait : ces notions reviendront pour une dernière vérification plus tard, puis elles seront acquises." : "Les notions encore fragiles reviendront demain dans ta mission.")+'</p>';
+    nextBtn.style.display = ""; nextBtn.textContent = "Retour à l'appli"; hint.textContent = "";
+  }
+  function backToApp(e){
+    if(e && e.stopImmediatePropagation) e.stopImmediatePropagation();
+    try { sessionStorage.setItem("the_roots_last_tab", "accueil"); } catch(err){}
+    window.location.href = "index.html";
   }
 
   // ---------- Grand Contrôle de fin de niveau A1 ----------
@@ -2664,9 +3018,9 @@
     if(!state.variant){
       chip.innerHTML = '<span class="flags">🇫🇷→🌍</span><span>Choisis ta version</span>';
     } else if(state.variant === "us"){
-      chip.innerHTML = '<span class="flags">🇫🇷→🇺🇸</span><span>Anglais américain · <b>A1</b></span>';
+      chip.innerHTML = '<span class="flags">🇫🇷→🇺🇸</span><span>Anglais américain · <b>'+(state.lesson >= 13 ? "A2" : "A1")+'</b></span>';
     } else {
-      chip.innerHTML = '<span class="flags">🇫🇷→🇬🇧</span><span>Anglais britannique · <b>A1</b></span>';
+      chip.innerHTML = '<span class="flags">🇫🇷→🇬🇧</span><span>Anglais britannique · <b>'+(state.lesson >= 13 ? "A2" : "A1")+'</b></span>';
     }
   }
 
@@ -3167,6 +3521,8 @@
           if(state.gcExprLog[sbRound] === undefined){
             state.gcExprLog[sbRound] = ok;
             if(ok) state.gcExprScore++;
+            recordSkill("ee", ok);
+            if(!ok) recordError(r._lesson);
           }
         }
         fb.innerHTML = ok
@@ -3598,6 +3954,7 @@
             var firstTry = attempts === 1;
             state.quizLog[qi] = firstTry;
             if(firstTry) state.quizScore++;
+            onQuizAnswered(Q, firstTry);
           }
           pendingAutoAdvance = setTimeout(goNext, 650);
         } else if(attempts >= 2){
@@ -3605,7 +3962,7 @@
           markOption(opts.children[Q.correct], "correct");
           Array.prototype.forEach.call(opts.children, function(o){ o.disabled = true; });
           resolved = true;
-          if(state.quizLog[qi] === undefined) state.quizLog[qi] = false;
+          if(state.quizLog[qi] === undefined){ state.quizLog[qi] = false; onQuizAnswered(Q, false); }
           document.getElementById("qWhyWrap").innerHTML =
             '<div class="why-inline"><span class="icon">💡</span><div>'+Q.why+'</div></div>' +
             '<button class="btn btn-primary" id="qContinue" style="margin-top:12px">'+(qi===QUIZ.length-1?"Voir mon bilan":"Suivant")+'</button>';
@@ -3654,13 +4011,14 @@
       var hit = state.quizLog[i];
       return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
     }).join("");
-    if(passed) grantAiCredit();
+    if(passed){ grantAiCredit(); recordPass(state.lesson); }
     var aiHtml = passed
       ? '<div class="bilan-ai" style="margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(27,60,57,.08);font-size:14px;line-height:1.45">💬 <b>Conversation IA débloquée</b> — entraîne-toi à parler de ce thème avec l\'IA, à l\'écrit ou au micro. <button type="button" id="goAiChat" style="display:block;margin-top:8px;border:none;background:#1b3c39;color:#fff;font-weight:700;padding:9px 14px;border-radius:12px;cursor:pointer;font-family:inherit">Discuter maintenant</button></div>'
       : '';
     var nextStepHtml = passed
       ? aiHtml + '<p class="lede" style="margin-top:14px"><b>Prochaine étape —</b> '+NEXT_PREVIEW+'</p>'
       : '<div class="bilan-retry"><b>Palier pas encore acquis</b> — il faut au moins '+passThreshold+'/'+QUIZ.length+' pour débloquer la suite (60%). Revois la leçon pour consolider les notions fragiles avant de continuer.</div>';
+    var gaugesHtml = lessonGaugesHtml();
     screen.innerHTML =
       '<div class="eyebrow">Bilan de session</div>' +
       '<h2 class="screen-title">'+(passed ? META.bilanTitle : "Cette leçon a besoin d\'être consolidée.")+'</h2>' +
@@ -3670,9 +4028,10 @@
         '<div class="stat"><div class="n">'+memState.moves+'</div><div class="l">Coups au jeu</div></div>' +
         '<div class="stat"><div class="n">'+(state.lesson === -1 ? "F" : (isA2 ? "A2."+(state.lesson-13) : "J"+(state.lesson+1)))+'</div><div class="l">Série</div></div>' +
       '</div>' +
+      gaugesHtml +
       '<div class="recap">'+recap+'</div>' +
       nextStepHtml;
-    nextBtn.textContent = passed
+    nextBtn.textContent = (passed && state.returnTo != null) ? (state.returnTo === 13 ? "Retour à mes renforts" : "Retour au contrôle") : passed
       ? (hasNext ? "Passer à " + (isA2 ? "A2." + (state.lesson+1-13) : "la leçon " + (state.lesson+2)) : "Passer au grand contrôle " + (isA2 ? "A2" : "A1"))
       : "Revoir la leçon";
     backBtn.style.visibility = "hidden";
@@ -3688,53 +4047,71 @@
   // NB : QUIZ et ROUNDS pointent déjà, via loadLessonData(), vers GC_QUIZ/GC_ROUNDS (niveau A1) ou
   // GC_QUIZ_A2/GC_ROUNDS_A2 (niveau A2) selon state.lesson — ces écrans restent donc communs aux deux.
   function screenGCAccueil(){
-    var isA2 = state.lesson === GRAND_CONTROLE_A2_LESSON;
+    var level = ctrlLevel();
+    var isA2 = level === "A2", isFinal = level === "FINAL";
     backBtn.style.visibility = "hidden";
+    postmark.innerHTML = isFinal ? "CONTRÔLE<br>FINAL" : "CONTRÔLE<br>" + level;
+    var rs = retakeStatus(level);
+    var rec = controlRecord(level);
+    var lockHtml = "";
+    if(rec && rec.last && rec.last.decision === "fail"){
+      lockHtml =
+        '<div class="bilan-retry" style="margin-top:14px"><b>Dernier passage : '+rec.last.pct+' % — pas encore validé.</b><br>' +
+        (rs.creator ? 'Mode créatrice : tu peux le repasser tout de suite (le délai d\'une semaine et les leçons à revoir ne sont pas obligatoires pendant tes tests).'
+                    : (rs.ok ? 'Tu peux le repasser : les questions seront différentes.' : 'Nouveau passage possible à partir du <b>'+fmtDate(rs.openAt)+'</b>, une fois les leçons ci-dessous revues.')) +
+        '</div>' +
+        ((rs.todo && rs.todo.length) ? '<div class="eyebrow" style="margin-top:14px">Leçons à revoir avant de repasser</div><div class="options">'+reviewButtonsHtml(rs.todo, state.lesson)+'</div>' : "");
+    }
     screen.innerHTML =
-      '<div class="eyebrow">Grand Contrôle · fin de niveau '+(isA2?"A2":"A1")+'</div>' +
-      '<h2 class="screen-title">'+(isA2 ? "Tu as terminé les 12 paliers A2 — prêt·e pour le grand contrôle ?" : "Tu as terminé les 12 paliers — prêt·e pour le grand contrôle ?")+'</h2>' +
+      '<div class="eyebrow">'+(isFinal ? "Grand contrôle final · A1 + A2" : "Contrôle de fin de niveau " + level)+'</div>' +
+      '<h2 class="screen-title">'+(isFinal ? "Dernière étape avant le niveau supérieur : tout A1 et A2 en un seul contrôle." : (isA2 ? "Tu as terminé les paliers A2 — prêt·e pour le contrôle A2 ?" : "Tu as terminé les paliers A1 — prêt·e pour le contrôle A1 ?"))+'</h2>' +
       (isA2 && META.videoTheme ? videoPlaceholderHtml() : "") +
-      '<p class="lede">Il reprend tout ce que tu as travaillé depuis '+(isA2 ? "A2.0" : "la Leçon 1")+' : d\'abord '+ROUNDS.length+' manches de construction de phrase (expression, /15), puis '+QUIZ.length+' questions QCM mêlant écoute, lecture et grammaire/vocabulaire (/25). Résultat final sur 40, présenté aussi sur 20.</p>' +
-      '<p class="lede">Bonne réponse au 1er essai à chaque manche/question : ça compte. Une 2e chance t\'est donnée en cas d\'erreur, mais seul le 1er essai rapporte des points.</p>';
-    nextBtn.style.display = "";
-    nextBtn.textContent = "Commencer le grand contrôle";
-    hint.textContent = "";
+      '<p class="lede">'+ROUNDS.length+' manches de construction de phrase, puis '+QUIZ.length+' questions (écoute, lecture, grammaire et vocabulaire). <b>Les questions sont tirées au sort à chaque passage</b> : jamais deux fois le même contrôle.</p>' +
+      '<p class="lede" style="font-size:.9rem">Moins de 70 % : pas encore validé, on revoit les leçons. 70 à 79 % : validé avec renfort. 80 à 92 % : validé avec rappels. 93 % et plus : validé. Et une compétence sous 50 % déclenche toujours un renfort.</p>' +
+      lockHtml;
+    wireReviewButtons();
+    nextBtn.style.display = rs.ok ? "" : "none";
+    nextBtn.textContent = rec && rec.last && rec.last.decision === "fail" ? "Repasser le contrôle" : "Commencer le contrôle";
+    hint.textContent = rs.ok ? "Seul le 1er essai de chaque question compte." : "";
   }
 
   function screenGCBilan(){
-    var isA2 = state.lesson === GRAND_CONTROLE_A2_LESSON;
-    var gcTotal = state.quizScore + state.gcExprScore;
-    var gcMax = QUIZ.length + ROUNDS.length; // /40
-    var gcOn20 = Math.round(gcTotal / gcMax * 20);
-    var passThreshold = Math.ceil(gcMax * PASS_THRESHOLD_RATIO);
-    var passed = gcTotal >= passThreshold;
-    postmark.innerHTML = isA2 ? "BILAN<br>NIV. A2" : "BILAN<br>NIV. A1";
+    var level = ctrlLevel();
+    var draw = state.ctrlDraw;
+    var ev = state.lastEval || ctrlEvaluate();
+    state.lastEval = ev;
+    if(draw && !draw.saved){ draw.saved = true; saveControlResult(level, ev); }
+    var nameLvl = level === "FINAL" ? "A1 + A2" : level;
+    postmark.innerHTML = "BILAN<br>" + (level === "FINAL" ? "FINAL" : "NIV. " + level);
+    var DEC = {
+      fail:{ t:"Pas encore validé", c:"#c2412f", d:"Il faut au moins 70 % : c'est la règle The Roots, on veut que ce soit bien ancré. Revois les leçons ci-dessous, puis repasse le contrôle (d'autres questions) dans une semaine." },
+      renfort:{ t:"Validé avec renfort", c:"#b8741a", d:"Tu passes au niveau suivant. Les leçons ci-dessous s'ajoutent au début de ton prochain parcours pour les consolider." },
+      rappel:{ t:"Validé avec rappels", c:"#2e8a57", d:"Tu passes au niveau suivant. Les notions ci-dessous reviendront en petites questions de rappel dans tes prochaines leçons." },
+      net:{ t:"Validé", c:"#2e8a57", d:"Excellent : tout est bien ancré." }
+    }[ev.decision];
+    var gauges = gaugeHtml(SKILL_LABEL.co, ev.skills.co) + gaugeHtml(SKILL_LABEL.ce, ev.skills.ce) + gaugeHtml(SKILL_LABEL.gv, ev.skills.gv) + gaugeHtml(SKILL_LABEL.ee, ev.skills.ee);
+    var listIds = ev.decision === "net" ? [] : ev.weak;
+    var floorHtml = ev.floor.length ? '<p class="lede" style="font-size:.9rem;margin-top:8px">⚠️ '+ev.floor.map(function(k){ return SKILL_LABEL[k]; }).join(", ")+' sous 50 % : un renfort est ajouté sur ce point, même si la moyenne est bonne.</p>' : "";
+    var rs = ev.decision === "fail" ? retakeStatus(level) : null;
+    var nextInfo = ev.decision === "fail"
+      ? (rs && rs.creator ? '<p class="lede" style="font-size:.85rem">Mode créatrice : repassage possible tout de suite.</p>' : '<p class="lede" style="font-size:.9rem">Nouveau contrôle possible à partir du <b>'+fmtDate(Date.now() + 7 * DAY_MS)+'</b>.</p>')
+      : (level === "FINAL" ? '<p class="lede" style="font-size:.9rem">Le niveau B1 arrive bientôt dans The Roots : en attendant, tes leçons restent ouvertes pour réviser.</p>' : "");
     var recap = QUIZ.map(function(q, i){
       var hit = state.quizLog[i];
       return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
     }).join("");
-    var exprRecap = '<div class="recap-item '+(state.gcExprScore===ROUNDS.length?"hit":"miss")+'">' +
-      '<span class="tick">'+(state.gcExprScore===ROUNDS.length?"✓":"…")+'</span>' +
-      '<span>Expression (construction de phrase) : '+state.gcExprScore+' / '+ROUNDS.length+' manches réussies du 1er coup</span></div>';
-    var nextStepHtml = passed
-      ? (isA2
-          ? '<p class="lede" style="margin-top:14px"><b>Niveau A2 validé !</b> Tu as terminé tout le parcours A1 + A2 de The Roots. Tu peux repasser sur tes leçons pour continuer à consolider.</p>'
-          : '<p class="lede" style="margin-top:14px"><b>Niveau A1 validé !</b> Direction le niveau A2 — ça enchaîne directement avec A2.0, les bases transversales du niveau.</p>')
-      : '<div class="bilan-retry"><b>Niveau '+(isA2?"A2":"A1")+' pas encore validé</b> — il faut au moins '+passThreshold+'/'+gcMax+' pour valider (60%). Reprends tes leçons pour consolider les notions fragiles, puis retente le grand contrôle.</div>';
     screen.innerHTML =
-      '<div class="eyebrow">Bilan du Grand Contrôle</div>' +
-      '<h2 class="screen-title">'+(passed ? "Bravo, le niveau "+(isA2?"A2":"A1")+" est validé !" : "Le niveau "+(isA2?"A2":"A1")+" a besoin d\'être consolidé.")+'</h2>' +
-      '<div class="score-band"><span class="big">'+gcTotal+'</span><span class="of">/ '+gcMax+' (soit '+gcOn20+'/20)</span></div>' +
-      '<div class="stat-grid">' +
-        '<div class="stat"><div class="n">'+state.quizScore+'</div><div class="l">Compréhension + gram./vocab (/'+QUIZ.length+')</div></div>' +
-        '<div class="stat"><div class="n">'+state.gcExprScore+'</div><div class="l">Expression (/'+ROUNDS.length+')</div></div>' +
-        '<div class="stat"><div class="n">'+(isA2?"A2":"A1")+'</div><div class="l">Niveau évalué</div></div>' +
-      '</div>' +
-      nextStepHtml +
-      '<details class="gc-recap-toggle"><summary>Voir le détail des '+(QUIZ.length+1)+' réponses</summary>' +
-        '<div class="recap">'+exprRecap+recap+'</div>' +
-      '</details>';
-    nextBtn.textContent = passed ? (isA2 ? "Revoir mes leçons" : "Commencer le niveau A2") : "Recommencer le grand contrôle";
+      '<div class="eyebrow">Bilan · '+ctrlLabel(level)+'</div>' +
+      '<h2 class="screen-title" style="color:'+DEC.c+'">'+DEC.t+'</h2>' +
+      '<div class="score-band"><span class="big">'+ev.pct+' %</span><span class="of">'+ev.total+' / '+ev.max+' · niveau '+nameLvl+'</span></div>' +
+      '<div class="card" style="padding:14px 16px;margin-top:12px"><div class="eyebrow" style="margin-bottom:4px">Tes jauges</div>'+gauges+'</div>' +
+      '<p class="lede" style="margin-top:12px">'+DEC.d+'</p>' +
+      (listIds.length ? '<div class="eyebrow" style="margin-top:12px">'+(ev.decision === "fail" ? "Leçons à revoir" : (ev.decision === "rappel" ? "Notions en rappel" : "Leçons de renfort"))+'</div>' +
+        (ev.decision === "fail" ? '<div class="options">'+reviewButtonsHtml(listIds, state.lesson)+'</div>' : '<ul class="lede" style="margin:6px 0 0 18px">'+listIds.map(function(id){ return '<li>'+lessonTitle(id)+'</li>'; }).join("")+'</ul>') : "") +
+      floorHtml + nextInfo +
+      '<details class="gc-recap-toggle"><summary>Voir le détail des '+QUIZ.length+' questions</summary><div class="recap">'+recap+'</div></details>';
+    wireReviewButtons();
+    nextBtn.textContent = ev.decision === "fail" ? "Retour à l'accueil du contrôle" : (level === "A1" ? "Commencer le niveau A2" : (level === "A2" ? "Passer au grand contrôle final" : "Revoir mes leçons"));
     backBtn.style.visibility = "hidden";
     hint.textContent = "";
   }
@@ -5585,13 +5962,20 @@
   }
 
   function render(){
+    if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
-    try { localStorage.setItem(LESSON_KEY, String(state.lesson)); } catch(e){}
+    // Pendant une leçon revue à la demande d'un contrôle/renfort, on ne déplace pas la progression.
+    if(state.returnTo == null){ try { localStorage.setItem(LESSON_KEY, String(state.lesson)); } catch(e){} }
     if(state.variant){ document.documentElement.setAttribute("data-flag", state.variant); }
     else { document.documentElement.removeAttribute("data-flag"); }
     updateRouteChip();
     nextBtn.style.display = "";
     nextBtn.disabled = false;
+    state.gateOpen = false;
+    if(state.lesson === 13 && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
+      var renfortTodo = pendingRenforts("A2");
+      if(renfortTodo.length){ state.gateOpen = true; screenRenfortGate(renfortTodo); return; }
+    }
     if(isGrandControle()){
       itinerary.hidden = true;
       postmark.innerHTML = state.lesson === GRAND_CONTROLE_A2_LESSON ? "GRAND<br>CTRL A2" : "GRAND<br>CONTRÔLE";
@@ -5615,8 +5999,11 @@
   var pendingAutoAdvance = null;
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
+    if(PRACTICE){ backToApp(); return; }
+    if(state.gateOpen){ state.gateOpen = false; state.renfortSkipped = true; render(); return; }
     if(isGrandControle()){
       if(state.step === 0){
+        if(!retakeStatus(ctrlLevel()).ok) return;
         state.step = 1; sbRound = 0;
       } else if(state.step === 1 && sbRound < ROUNDS.length-1){
         sbRound++;
@@ -5627,22 +6014,24 @@
       } else if(state.step === 2){
         state.step = 3;
       } else if(state.step === 3){
-        var gcTotal = state.quizScore + state.gcExprScore;
-        var gcMax = QUIZ.length + ROUNDS.length;
-        var gcPassed = gcTotal >= Math.ceil(gcMax * PASS_THRESHOLD_RATIO);
+        var ev = state.lastEval || ctrlEvaluate();
+        var gcPassed = ev.decision !== "fail";
         state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
         state.gcExprScore = 0; state.gcExprLog = []; sbRound = 0;
+        state.ctrlDraw = null; state.lastEval = null; // prochain passage = nouvelles questions
         if(gcPassed){
           if(state.lesson === GRAND_CONTROLE_LESSON){
-            // A1 validé : on enchaîne directement sur le niveau A2, à commencer par A2.0.
-            state.lesson = 13; state.step = 0; state.reviewDone = false; state.reviewLog = [];
+            // A1 validé : on enchaîne sur le niveau A2 (A2.0), précédé des renforts éventuels.
+            state.lesson = 13; state.step = 0; state.reviewDone = false; state.reviewLog = []; state.renfortSkipped = false;
+          } else if(state.lesson === GRAND_CONTROLE_A2_LESSON){
+            // A2 validé : place au grand contrôle final (A1 + A2).
+            state.lesson = GRAND_CONTROLE_FINAL_LESSON; state.step = 0;
           } else {
-            // A2 validé (fin du parcours actuel) : retour à la Leçon 1 pour réviser, comme
-            // auparavant en fin de niveau A1 avant que le niveau A2 n'existe dans l'appli.
+            // Final validé : le niveau B1 n'existe pas encore → retour aux leçons pour réviser.
             state.lesson = 0; state.step = 0; state.reviewDone = true; state.reviewLog = [];
           }
         } else {
-          // Niveau pas encore validé : on relance un nouveau passage du Grand Contrôle.
+          // Pas validé : retour à l'accueil du contrôle (leçons à revoir + délai d'une semaine).
           state.step = 0;
         }
       }
@@ -5668,7 +6057,11 @@
       state.quizIndex++;
     } else if(state.step === 6){
       var bilanPassed = state.quizScore >= Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
-      if(bilanPassed && state.lesson < GRAND_CONTROLE_A2_LESSON){
+      if(bilanPassed && state.returnTo != null){
+        // Leçon revue à la demande d'un contrôle ou d'un renfort : on y retourne.
+        markRenfortDone(state.lesson);
+        state.lesson = state.returnTo; state.returnTo = null; state.ctrlDraw = null;
+      } else if(bilanPassed && state.lesson < GRAND_CONTROLE_A2_LESSON){
         state.lesson++;
         state.reviewDone = false; state.reviewLog = [];
         if(isGrandControle()){ state.gcExprScore = 0; state.gcExprLog = []; }
@@ -5712,6 +6105,24 @@
     render();
   });
 
+  computeLessonTitles();
+  publishTitles();
+  // lessons.html#renfort=3 (depuis Mes cours › Mes renforts) : refaire la leçon 3 en entier,
+  // puis revenir à la leçon en cours ; la leçon réussie est cochée « renfort fait ».
+  (function(){
+    var m = /renfort=(-?\d+)/.exec(location.hash || "");
+    if(!m || PRACTICE) return;
+    var id = parseInt(m[1], 10);
+    if(!quizOf(id)) return;
+    try { history.replaceState(null, "", location.pathname); } catch(e){}
+    state.returnTo = state.lesson; state.lesson = id; state.renfortSkipped = true;
+    state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
+    state.ctrlDraw = null; memState = null; sbRound = 0; vocabBlockIdx = 0;
+  })();
+  // Accès de test (uniquement si l'adresse contient #rootstest) — sans effet pour les utilisateurs.
+  if(/rootstest/.test(location.hash || "")){
+    window.__rootsTest = { state:state, render:render, goNext:goNext, quiz:function(){ return QUIZ; }, rounds:function(){ return ROUNDS; } };
+  }
   render();
 
 })();
