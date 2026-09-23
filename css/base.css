@@ -46,7 +46,17 @@
 }
 
 *{ box-sizing: border-box; }
-html, body{ height: 100%; }
+/* Écran "fixe", comme une vraie appli (Duolingo...) : la page elle-même ne
+   bouge JAMAIS — ni glissement à gauche/droite, ni effet élastique qui
+   laissait apparaître une bande blanche en haut ou en bas. Seul le contenu
+   d'un écran défile, et uniquement s'il est plus haut que l'écran ; la
+   barre du haut et l'image de fond restent immobiles (voir .app-body). */
+html, body{
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
 body{
   margin: 0;
   background: var(--bg);
@@ -56,9 +66,12 @@ body{
 }
 
 #app{
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden; /* les décors animés restent contenus */
+  position: fixed;
+  inset: 0;
+  overflow-x: hidden;  /* jamais de glissement gauche/droite */
+  overflow-y: auto;    /* écrans hors coquille (connexion...) : défilent si besoin */
+  overscroll-behavior: none; /* pas d'effet élastique */
+  -webkit-overflow-scrolling: touch;
 }
 
 .screen{
