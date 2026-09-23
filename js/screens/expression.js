@@ -14,12 +14,12 @@
 // une IA qui comprend le sens ; la checklist de contenu comble ce manque en
 // vérifiant simplement la présence des idées attendues.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
-import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260920i";
-import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260920i";
-import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260920i";
-import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260920i";
+import { store } from "../data/store.js?v=20260923a";
+import { t } from "../data/i18n.js?v=20260923a";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260923a";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260923a";
+import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260923a";
+import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260923a";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
@@ -28,8 +28,19 @@ const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 // sans l'autre. Pour A2, l'oral et l'écrit sont maintenant prêts tous les
 // deux (10 appels + 10 messages, sur les mêmes 5 thèmes : santé, imprévus
 // de voyage, goûts alimentaires, scolarité et un mariage familial).
-const ORAL_BY_LEVEL = { A1: EXPRESSION_ORALE_PROMPTS_EN, A2: EXPRESSION_ORALE_PROMPTS_A2_EN };
-const ECRITE_BY_LEVEL = { A1: EXPRESSION_ECRITE_PROMPTS_EN, A2: EXPRESSION_ECRITE_PROMPTS_A2_EN };
+//
+// Depuis le 23/09 : rangé aussi PAR LANGUE (onglets Anglais / Espagnol /
+// Portugais en haut de l'écran). Une langue sans contenu pour un palier
+// affiche simplement "bientôt disponible", sans cas particulier.
+const ORAL_BY_LANG = {
+  en: { A1: EXPRESSION_ORALE_PROMPTS_EN, A2: EXPRESSION_ORALE_PROMPTS_A2_EN },
+};
+const ECRITE_BY_LANG = {
+  en: { A1: EXPRESSION_ECRITE_PROMPTS_EN, A2: EXPRESSION_ECRITE_PROMPTS_A2_EN },
+};
+const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
+const LANGUAGETOOL_LANG = { en: "en-US", es: "es", pt: "pt-PT" };
+const SPEAK_LANG_BY_CODE = { en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
 function checklistResults(text, expectedPoints) {
   const lower = (text || "").toLowerCase();
@@ -44,8 +55,10 @@ function checklistResults(text, expectedPoints) {
 // "Écouter l'appel" l'ignorait complètement et forçait toujours une voix
 // britannique par défaut, ce qui explique une voix différente de celle
 // choisie ("Sam" au lieu de "Samantha") : même logique que lessons.html.
-function pickPreferredVoice() {
-  if (!window.speechSynthesis) return null;
+function pickPreferredVoice(langCode) {
+  // La voix choisie dans Paramètres est une voix anglaise : on ne l'applique
+  // qu'à l'anglais (sinon l'espagnol serait lu avec un accent anglais).
+  if (!window.speechSynthesis || (langCode && langCode !== "en")) return null;
   try {
     const { settings } = store.get();
     const key = settings.preferredVoiceURI;
@@ -58,11 +71,11 @@ function pickPreferredVoice() {
   }
 }
 
-async function checkGrammar(text) {
+async function checkGrammar(text, ltLang) {
   const res = await fetch("https://api.languagetool.org/v2/check", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ text, language: "en-US" }).toString(),
+    body: new URLSearchParams({ text, language: ltLang || "en-US" }).toString(),
   });
   if (!res.ok) throw new Error("languagetool_network");
   const data = await res.json();
@@ -72,6 +85,7 @@ async function checkGrammar(text) {
 export function renderExpression(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
+  let selectedLang = settings.primaryLearningLang || "en";
   let selectedLevel = "A1";
 
   let ecriteIndex = 0;
@@ -87,11 +101,15 @@ export function renderExpression(container) {
   let recognition = null;
 
   function paint() {
-    const oralePrompts = ORAL_BY_LEVEL[selectedLevel] || null;
-    const ecritePrompts = ECRITE_BY_LEVEL[selectedLevel] || null;
+    const oralePrompts = (ORAL_BY_LANG[selectedLang] || {})[selectedLevel] || null;
+    const ecritePrompts = (ECRITE_BY_LANG[selectedLang] || {})[selectedLevel] || null;
 
     container.innerHTML = `
       <div class="dash-greeting" style="padding:4px 0 10px">${t("expr_intro", lang)}</div>
+
+      <div class="level-chip-row lang-chip-row" id="exprLangs">
+        ${settings.langs.map((l) => `<button class="level-chip${l.code === selectedLang ? " active" : ""}" data-lang="${l.code}">${LANG_FLAGS[l.code] || ""} ${l.label}</button>`).join("")}
+      </div>
 
       <div class="level-chip-row" id="exprLevels">
         ${LEVELS.map((l) => `<button class="level-chip${l === selectedLevel ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
@@ -119,6 +137,16 @@ export function renderExpression(container) {
         ${ecritePrompts ? ecriteHtml(ecritePrompts) : `<div class="card" style="color:var(--ink-soft);font-size:13px;margin-top:10px">${t("prog_not_ready", lang)}</div>`}
       </div>
     `;
+
+    container.querySelector("#exprLangs").addEventListener("click", (e) => {
+      const chip = e.target.closest(".level-chip");
+      if (!chip) return;
+      selectedLang = chip.dataset.lang;
+      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (err) { /* rien */ }
+      oraleIndex = 0; oraleTranscript = ""; oraleRecording = false; oraleSpeaking = false;
+      ecriteIndex = 0; ecriteMatches = null; ecriteError = false; ecriteReplyText = "";
+      paint();
+    });
 
     container.querySelector("#exprLevels").addEventListener("click", (e) => {
       const chip = e.target.closest(".level-chip");
@@ -168,8 +196,8 @@ export function renderExpression(container) {
       try {
         if (!window.speechSynthesis) return;
         const u = new SpeechSynthesisUtterance(prompt.callText);
-        const chosen = pickPreferredVoice();
-        if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = "en-GB"; }
+        const chosen = pickPreferredVoice(selectedLang);
+        if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = SPEAK_LANG_BY_CODE[selectedLang] || "en-GB"; }
         u.rate = 0.92;
         // Tant que l'appel se lit à voix haute, on bloque "Répondre à l'oral" :
         // sinon, sur un téléphone sans écouteurs, le micro capte le son du
@@ -195,7 +223,7 @@ export function renderExpression(container) {
         // encore (ou un reliquat d'une lecture précédente).
         window.speechSynthesis.cancel();
         recognition = new Recognition();
-        recognition.lang = "en-GB";
+        recognition.lang = SPEAK_LANG_BY_CODE[selectedLang] || "en-GB";
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
         oraleRecording = true;
@@ -261,7 +289,7 @@ export function renderExpression(container) {
       ecriteChecking = true; ecriteError = false; ecriteMatches = null;
       paint();
       try {
-        ecriteMatches = await checkGrammar(text);
+        ecriteMatches = await checkGrammar(text, LANGUAGETOOL_LANG[selectedLang]);
       } catch (e) {
         ecriteError = true;
         ecriteMatches = [];

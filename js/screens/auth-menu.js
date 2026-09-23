@@ -4,8 +4,9 @@
 // de l'image (sous le logo, au-dessus de l'illustration du bas) — jamais de
 // texte "The Roots" en double, puisqu'il est déjà dans l'image.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
+import { store } from "../data/store.js?v=20260923a";
+import { t } from "../data/i18n.js?v=20260923a";
+import { greetingHtml } from "./greeting.js?v=20260923a";
 
 export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
   const { settings } = store.get();
@@ -17,9 +18,10 @@ export function renderAuthMenu(root, { onSignup, onLogin, onForgot }) {
     <img class="screen-cover-bg bg-img-landscape-hero" src="assets/img/login-bg-landscape.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
     <img class="screen-cover-bg bg-img-landscape-hero-dark" src="assets/img/login-bg-landscape-dark.jpg" alt="The Roots — apprends, parle, voyage" aria-hidden="true"/>
     <div class="auth-menu-panel card">
+      ${greetingHtml(lang)}
       <button class="btn btn-primary" id="btnLogin">${t("auth_login_btn", lang)}</button>
-      <button class="btn btn-ghost" id="btnSignup">${t("auth_signup_btn", lang)}</button>
       <button class="auth-menu-forgot" id="btnForgot">${t("auth_forgot_btn", lang)}</button>
+      <div class="auth-first-visit">${t("auth_first_visit", lang)} <button class="auth-first-visit-link" id="btnSignup">${t("auth_signup_btn", lang)}</button></div>
     </div>
   `;
   root.appendChild(el);

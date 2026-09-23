@@ -1,37 +1,55 @@
 // The Roots — Compréhension orale et écrite : espace d'immersion libre,
-// indépendant de la progression par palier (voir comp_indep_note). Contenu
-// réel pour l'anglais : niveau A1 — 25 textes de lecture (affichage
+// indépendant de la progression par palier (voir comp_indep_note). Un
+// sélecteur de LANGUE (anglais/espagnol/portugais) s'ajoute maintenant au-
+// dessus du sélecteur de niveau — chaque langue a son propre contenu et sa
+// propre progression, complètement indépendants. Contenu réel aujourd'hui,
+// uniquement en anglais : niveau A1 — 25 textes de lecture (affichage
 // progressif, un par un, questions + correction — voir
 // COMPREHENSION_ECRITE_EN) et 5 vidéos fournies par Ashley (voir
 // COMPREHENSION_ORALE_EN) ; niveau A2 — 8 extraits de films fournis par
 // Ashley (voir COMPREHENSION_ORALE_A2_EN), pas encore de textes de lecture.
-// Les autres niveaux/langues, et les sections sans contenu à un niveau
-// donné, affichent un message "bientôt disponible".
+// Espagnol et portugais n'ont pas encore de contenu ici (seul le programme
+// par palier existe pour l'espagnol A1, dans "Mes cours") : sélectionner ces
+// langues affiche "bientôt disponible", sans jamais planter. Toute
+// combinaison langue/niveau sans contenu, dans l'une ou l'autre section,
+// affiche ce même message.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
-import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260920i";
-import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260920i";
-import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260920i";
-import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260920i";
+import { store } from "../data/store.js?v=20260923a";
+import { t } from "../data/i18n.js?v=20260923a";
+import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260923a";
+import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260923a";
+import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260923a";
+import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260923a";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 
-// Contenu disponible par niveau (anglais uniquement pour l'instant) — un
-// niveau absent de l'une de ces deux tables affiche "bientôt disponible"
-// pour la section correspondante, même si l'autre section a du contenu.
-const ORAL_BY_LEVEL = { A1: COMPREHENSION_ORALE_EN, A2: COMPREHENSION_ORALE_A2_EN };
-const ECRITE_BY_LEVEL = { A1: COMPREHENSION_ECRITE_EN, A2: COMPREHENSION_ECRITE_A2_EN };
+// Codes acceptés par LanguageTool (orthographe/grammaire) selon la langue
+// apprise sélectionnée — l'anglais utilisait "en-US" en dur avant que
+// l'espagnol/le portugais existent ici.
+const LANGUAGETOOL_LANG = { en: "en-US", es: "es", pt: "pt-PT" };
 
-// Clé de sauvegarde de la progression en compréhension écrite, PAR NIVEAU :
-// les textes A1 et A2 ont chacun leurs propres id (1, 2, 3…), et la
-// progression (currentIndex, results) ne doit donc pas être partagée entre
-// les deux listes, sinon avancer dans l'A2 dérègle l'A1 (et inversement).
-// "en" tout seul est gardé pour l'A1 (clé historique, ne change pas pour ne
-// pas perdre la progression déjà enregistrée) ; les autres niveaux utilisent
-// "en-<niveau>".
-function ecriteStoreKey(level) {
-  return level === "A1" ? "en" : `en-${level}`;
+// Contenu disponible par LANGUE puis par niveau (anglais uniquement pour
+// l'instant) — une langue ou un niveau absent de l'une de ces deux tables
+// affiche "bientôt disponible" pour la section correspondante, même si
+// l'autre section (ou l'autre langue) a du contenu.
+const ORAL_BY_LANG = {
+  en: { A1: COMPREHENSION_ORALE_EN, A2: COMPREHENSION_ORALE_A2_EN },
+};
+const ECRITE_BY_LANG = {
+  en: { A1: COMPREHENSION_ECRITE_EN, A2: COMPREHENSION_ECRITE_A2_EN },
+};
+
+// Clé de sauvegarde de la progression en compréhension écrite, PAR LANGUE ET
+// PAR NIVEAU : les textes de chaque langue/niveau ont leurs propres id (1,
+// 2, 3…), et la progression (currentIndex, results) ne doit donc pas être
+// partagée entre deux listes différentes, sinon avancer dans l'une dérègle
+// l'autre. "en" tout seul est gardé pour l'anglais A1 (clé historique, ne
+// change pas pour ne pas perdre la progression déjà enregistrée) ; toutes
+// les autres combinaisons utilisent "<langue>-<niveau>".
+function ecriteStoreKey(langCode, level) {
+  if (langCode === "en" && level === "A1") return "en";
+  return `${langCode}-${level}`;
 }
 
 // Réponse libre à une question de compréhension : l'apprenant écrit sa
@@ -69,12 +87,13 @@ function contentMatches(answer, q) {
   return significantWords(q.answerSentence).some((w) => answerWords.has(w));
 }
 // Vraie vérification orthographe/grammaire (LanguageTool, API publique
-// gratuite, sans clé — même outil que pour l'expression écrite).
-async function checkSpelling(text) {
+// gratuite, sans clé — même outil que pour l'expression écrite), dans la
+// langue apprise sélectionnée (ltLang, ex. "en-US"/"es"/"pt-PT").
+async function checkSpelling(text, ltLang) {
   const res = await fetch("https://api.languagetool.org/v2/check", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ text, language: "en-US" }).toString(),
+    body: new URLSearchParams({ text, language: ltLang || "en-US" }).toString(),
   });
   if (!res.ok) throw new Error("languagetool_network");
   const data = await res.json();
@@ -84,6 +103,7 @@ async function checkSpelling(text) {
 export function renderComprehension(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
+  let selectedLang = settings.primaryLearningLang || "en";
   let selectedLevel = "A1";
 
   // État éphémère de la lecture en cours (pas persisté — repart à zéro si on
@@ -99,14 +119,18 @@ export function renderComprehension(container) {
   let oralCheckIssues = null; // rempli après correction (LanguageTool) — null = pas encore vérifié
 
   function paint() {
-    const ecriteProgress = store.getCompProgress("ecrite", ecriteStoreKey(selectedLevel));
-    const oraleProgress = store.getCompProgress("orale", "en");
-    const oralVideos = ORAL_BY_LEVEL[selectedLevel] || null;
-    const ecriteTexts = ECRITE_BY_LEVEL[selectedLevel] || null;
+    const ecriteProgress = store.getCompProgress("ecrite", ecriteStoreKey(selectedLang, selectedLevel));
+    const oraleProgress = store.getCompProgress("orale", selectedLang);
+    const oralVideos = (ORAL_BY_LANG[selectedLang] || {})[selectedLevel] || null;
+    const ecriteTexts = (ECRITE_BY_LANG[selectedLang] || {})[selectedLevel] || null;
 
     container.innerHTML = `
       <div class="dash-greeting" style="padding:4px 0 6px">${t("comp_intro", lang)}</div>
       <div class="card" style="font-size:12.5px;color:var(--ink-soft);margin-bottom:12px">${t("comp_indep_note", lang)}</div>
+
+      <div class="level-chip-row lang-chip-row" id="compLangs">
+        ${settings.langs.map((l) => `<button class="level-chip${l.code === selectedLang ? " active" : ""}" data-lang="${l.code}">${LANG_FLAGS[l.code] || ""} ${l.label}</button>`).join("")}
+      </div>
 
       <div class="level-chip-row" id="compLevels">
         ${LEVELS.map((l) => `<button class="level-chip${l === selectedLevel ? " active" : ""}" data-level="${l}">${l}</button>`).join("")}
@@ -138,6 +162,15 @@ export function renderComprehension(container) {
         </div>
       `}
     `;
+
+    container.querySelector("#compLangs").addEventListener("click", (e) => {
+      const chip = e.target.closest(".level-chip");
+      if (!chip) return;
+      selectedLang = chip.dataset.lang;
+      showQuestions = false; answers = {}; graded = false; gradeResults = null;
+      selectedVideoId = null; oralCheckIssues = null;
+      paint();
+    });
 
     container.querySelector("#compLevels").addEventListener("click", (e) => {
       const chip = e.target.closest(".level-chip");
@@ -202,12 +235,12 @@ export function renderComprehension(container) {
     if (saveBtn) saveBtn.addEventListener("click", async () => {
       const text = container.querySelector("#oralSummary").value;
       const results = { ...(progress.results || {}), [selectedVideoId]: text };
-      store.setCompProgress("orale", "en", { results });
+      store.setCompProgress("orale", selectedLang, { results });
       if (!text.trim()) { oralCheckIssues = null; paint(); return; }
       oralChecking = true;
       paint();
       let issues = [];
-      try { issues = await checkSpelling(text); } catch (e) { /* correcteur indisponible — le résumé reste quand même enregistré */ }
+      try { issues = await checkSpelling(text, LANGUAGETOOL_LANG[selectedLang]); } catch (e) { /* correcteur indisponible — le résumé reste quand même enregistré */ }
       oralChecking = false;
       oralCheckIssues = issues;
       paint();
@@ -301,7 +334,7 @@ export function renderComprehension(container) {
           const contentOk = contentMatches(answer, q);
           let spellingIssues = [];
           if (answer.trim()) {
-            try { spellingIssues = await checkSpelling(answer); } catch (e) { /* correcteur indisponible — on garde juste le jugement de fond */ }
+            try { spellingIssues = await checkSpelling(answer, LANGUAGETOOL_LANG[selectedLang]); } catch (e) { /* correcteur indisponible — on garde juste le jugement de fond */ }
           }
           return { contentOk, spellingIssues };
         }));

@@ -13,8 +13,19 @@
 // et inversement. Un timeout est posé sur l'appel au dictionnaire pour ne
 // jamais rester bloqué indéfiniment sur "Recherche en cours…".
 
-import { store } from "../data/store.js?v=20260920i";
-import { t, langName } from "../data/i18n.js?v=20260920i";
+// --- 23/09 : dictionnaire "langue étrangère → FRANÇAIS" ---
+// Source principale désormais : le Wiktionnaire FRANÇAIS (fr.wiktionary.org),
+// qui décrit aussi les mots anglais, espagnols et portugais… mais avec des
+// définitions et des traductions d'exemples EN FRANÇAIS — bien plus utile
+// pour un niveau A1/A2 qu'une définition "anglais → anglais". API publique
+// de Wikimedia, gratuite, sans clé, autorisée depuis un navigateur
+// (origin=*). Contenu sous licence CC BY-SA : la source est affichée sous
+// les résultats. Si le Wiktionnaire ne connaît pas le mot (ou ne répond
+// pas), on retombe automatiquement sur l'ancien dictionnaire
+// (dictionaryapi.dev, définitions dans la langue apprise).
+
+import { store } from "../data/store.js?v=20260923a";
+import { t, langName } from "../data/i18n.js?v=20260923a";
 
 // Nos codes de langue (en/es/pt) vers les codes attendus par l'API.
 const API_LANG = { en: "en", es: "es", pt: "pt-BR" };
@@ -90,6 +101,116 @@ async function translateWord(word, fromLang, toLang) {
   }
 }
 
+// Wiktionnaire : nom de la section de langue et identifiant utilisés sur
+// fr.wiktionary.org pour chaque langue apprise.
+const WIKT_SECTION = { en: ["Anglais", "en"], es: ["Espagnol", "es"], pt: ["Portugais", "pt"] };
+// Titres de sections qui ne sont PAS des natures de mot (on les ignore).
+const WIKT_SKIP = /^(étymologie|prononciation|voir aussi|références|anagrammes|synonymes|antonymes|dérivés|apparentés|traductions|homophones|paronymes|vocabulaire|hyperonymes|hyponymes|holonymes|méronymes|variantes|notes|forme|faux-amis|expressions|phrases|proverbes|citations|dérivés dans d'autres langues)/i;
+const wiktCache = new Map();
+
+function textOf(node) {
+  return (node && node.textContent ? node.textContent : "").replace(/\s+/g, " ").trim();
+}
+
+// Lit la page Wiktionnaire du mot et garde uniquement la section de la
+// langue demandée. Renvoie le même format que dictionaryapi.dev (pour
+// réutiliser l'affichage existant) : [{ word, phonetic, meanings: [{
+// partOfSpeech, definitions: [{ definition, example, exampleTr }] }] }].
+async function lookupWiktionnaire(word, dictLang) {
+  const key = `${dictLang}:${word}`;
+  if (wiktCache.has(key)) return wiktCache.get(key);
+  const [sectionName, sectionId] = WIKT_SECTION[dictLang] || WIKT_SECTION.en;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), LOOKUP_TIMEOUT_MS);
+  let html;
+  try {
+    const url = `https://fr.wiktionary.org/w/api.php?action=parse&format=json&formatversion=2&prop=text&redirects=1&origin=*&page=${encodeURIComponent(word)}`;
+    const res = await fetch(url, { signal: controller.signal });
+    if (!res.ok) throw new Error("wikt_network");
+    const data = await res.json();
+    if (data.error) { wiktCache.set(key, null); return null; } // page inexistante
+    html = data.parse && data.parse.text;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+  if (!html) { wiktCache.set(key, null); return null; }
+
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const rootEl = doc.querySelector(".mw-parser-output") || doc.body;
+  let inLang = false;
+  let phonetic = "";
+  let currentPos = null;
+  const meanings = [];
+
+  for (const child of Array.from(rootEl.children)) {
+    // Les titres sont soit <h2>/<h3> directement, soit enveloppés dans
+    // <div class="mw-heading mw-heading2|3"> (nouvelle présentation).
+    const h = /^H[2-4]$/.test(child.tagName) ? child : child.querySelector(":scope > h2, :scope > h3, :scope > h4");
+    if (h && h.tagName === "H2") {
+      const langSpan = h.querySelector(".sectionlangue");
+      const id = (langSpan && langSpan.id) || h.id || "";
+      const title = textOf(h).replace(/\[.*?\]/g, "").trim();
+      inLang = id === sectionId || id === sectionName || title === sectionName;
+      currentPos = null;
+      continue;
+    }
+    if (!inLang) continue;
+    if (h) {
+      const titredef = h.querySelector(".titredef");
+      const title = textOf(titredef || h).replace(/\[.*?\]/g, "").trim();
+      const isPos = (titredef || h.tagName === "H3") && !WIKT_SKIP.test(title);
+      currentPos = isPos ? { partOfSpeech: title, definitions: [] } : null;
+      if (currentPos) meanings.push(currentPos);
+      continue;
+    }
+    if (!currentPos) continue;
+    if (child.tagName === "P" && !phonetic) {
+      const api = child.querySelector(".API");
+      if (api) phonetic = textOf(api);
+    }
+    if (child.tagName === "OL") {
+      for (const li of Array.from(child.children)) {
+        if (li.tagName !== "LI") continue;
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll("ul, ol, dl, .reference, sup").forEach((n) => n.remove());
+        const definition = textOf(clone);
+        if (!definition) continue;
+        let example = "", exampleTr = "";
+        const ex = li.querySelector(".example") || li.querySelector("ul > li");
+        if (ex) {
+          const q = ex.querySelector("q, bdi, i");
+          example = textOf(q);
+          const exClone = ex.cloneNode(true);
+          exClone.querySelectorAll("q, bdi, .sources, .reference, sup").forEach((n) => n.remove());
+          exClone.querySelectorAll("i").forEach((n) => { if (textOf(n) === example) n.remove(); });
+          exampleTr = textOf(exClone).replace(/^[—–\-:\s]+/, "");
+          if (!example) { example = textOf(ex); exampleTr = ""; }
+        }
+        currentPos.definitions.push({ definition, example, exampleTr });
+        if (currentPos.definitions.length >= 5) break;
+      }
+    }
+  }
+  const useful = meanings.filter((m) => m.definitions.length);
+  const result = useful.length ? [{ word, phonetic: phonetic || "", meanings: useful, source: "wiktionnaire" }] : null;
+  wiktCache.set(key, result);
+  return result;
+}
+
+// Wiktionnaire d'abord (définitions en français), puis ancien dictionnaire
+// en secours. Une panne du Wiktionnaire ne bloque jamais la recherche.
+async function lookupBest(word, dictLang) {
+  try {
+    const w = await lookupWiktionnaire(word, dictLang);
+    if (w) return w;
+    if (word !== word.toLowerCase()) {
+      const w2 = await lookupWiktionnaire(word.toLowerCase(), dictLang);
+      if (w2) return w2;
+    }
+  } catch (e) { /* on passe au dictionnaire de secours */ }
+  return lookupWordWithRetry(word, API_LANG[dictLang]);
+}
+
 // Prononciation : lit à voix haute (Web Speech API) dans la langue apprise
 // cherchée (pas la langue de l'interface) — le mot trouvé, et chaque exemple.
 // Les boutons ne portent pas le texte à lire directement (des exemples avec
@@ -145,7 +266,7 @@ function renderEntries(entries, lang) {
                 ${d.definition}
                 ${d.example ? `
                   <div style="color:var(--ink-soft);font-style:italic;margin-top:2px;display:flex;align-items:center;gap:6px">
-                    <span>“${d.example}”</span>
+                    <span>“${d.example}”${d.exampleTr ? `<span style="display:block;font-style:normal;font-size:12.5px;margin-top:2px">→ ${d.exampleTr}</span>` : ""}</span>
                     <button type="button" class="btn btn-ghost dict-speak" data-entry="${ei}" data-kind="example" data-meaning="${mi}" data-def="${di}" aria-label="${t("dict_listen_aria", lang)}" style="padding:0 7px;font-size:12.5px;flex:0 0 auto">🔊</button>
                   </div>
                 ` : ""}
@@ -161,13 +282,13 @@ function renderEntries(entries, lang) {
 export function renderDictionnaire(container) {
   const { settings } = store.get();
   const lang = settings.interfaceLang;
-  let dictLang = "en";
+  let dictLang = DICT_LANGS.includes(settings.primaryLearningLang) ? settings.primaryLearningLang : "en";
 
   container.innerHTML = `
     <div class="dash-greeting" style="padding:4px 0 10px">${t("dict_intro", lang)}</div>
 
     <div class="level-chip-row" id="dictLangRow">
-      ${DICT_LANGS.map((c, i) => `<button class="level-chip${i === 0 ? " active" : ""}" data-lang="${c}">${langName(c, lang)}</button>`).join("")}
+      ${DICT_LANGS.map((c) => `<button class="level-chip${c === dictLang ? " active" : ""}" data-lang="${c}">${langName(c, lang)}</button>`).join("")}
     </div>
 
     <div class="card-3d">
@@ -267,7 +388,7 @@ export function renderDictionnaire(container) {
       ` : "";
     });
 
-    const entriesPromise = lookupWordWithRetry(word, API_LANG[searchDictLang])
+    const entriesPromise = lookupBest(word, searchDictLang)
       .then((entries) => {
         if (searchToken !== searchSeq) return;
         lastDictLang = searchDictLang;
@@ -275,7 +396,9 @@ export function renderDictionnaire(container) {
         const box = results.querySelector("#dictEntriesBox");
         if (!box) return;
         box.innerHTML = entries
-          ? renderEntries(entries, lang)
+          ? renderEntries(entries, lang) + (entries[0] && entries[0].source === "wiktionnaire"
+            ? `<div style="font-size:11px;color:var(--ink-soft);text-align:center;margin-top:4px">Source : <a href="https://fr.wiktionary.org/wiki/${encodeURIComponent(entries[0].word)}" target="_blank" rel="noopener" style="color:inherit">Wiktionnaire</a> (licence CC BY-SA)</div>`
+            : "")
           : `<div class="card" style="color:var(--ink-soft);font-size:13px">${t("dict_not_found", lang)}</div>`;
       })
       .catch(() => {

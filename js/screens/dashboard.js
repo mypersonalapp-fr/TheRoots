@@ -2,44 +2,16 @@
 // expression du jour (équivalent idiomatique, pas une traduction littérale),
 // question de culture, vidéo du jour par langue.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t, langName, formatDate } from "../data/i18n.js?v=20260920i";
+import { store } from "../data/store.js?v=20260923a";
+import { t, langName, formatDate } from "../data/i18n.js?v=20260923a";
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260923a";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
-// Petit pool de contenu "du jour" — à terme, généré/tiré selon la date réelle
-// et la langue apprise. Pour l'instant : exemples illustrant le format attendu.
-const EXPRESSIONS_EN = [
-  {
-    en: "It's raining cats and dogs.",
-    fr_equiv: "Il pleut des cordes.",
-    note: "Pas une traduction mot à mot (« il pleut des chats et des chiens » ne veut rien dire en français) — c'est l'expression française qu'on utilise dans la même situation.",
-  },
-  {
-    en: "Break a leg!",
-    fr_equiv: "Merde ! (pour souhaiter bonne chance avant une épreuve)",
-    note: "Équivalent du souhait de bonne chance avant une représentation ou un examen.",
-  },
-];
-
-// Citation du jour : la citation française est accompagnée, pour chaque
-// langue apprise, de son équivalent le plus proche dans cette langue — un
-// vrai dicton/expression équivalent, pas une traduction mot à mot (même
-// esprit que l'« Expression du jour » ci-dessus).
-const QUOTES = [
-  {
-    fr: "« C'est en forgeant qu'on devient forgeron. »",
-    byLang: { en: "“Practice makes perfect.”" },
-  },
-  {
-    fr: "« Petit à petit, l'oiseau fait son nid. »",
-    byLang: { en: "“Slow and steady wins the race.”" },
-  },
-  {
-    fr: "« Qui cherche trouve. »",
-    byLang: { en: "“Seek and you shall find.”" },
-  },
-];
+// Expression, citation et vidéo du jour : voir js/data/daily-content.js
+// (31 expressions par langue, 31 proverbes, 15 vidéos par langue qui
+// changent tous les 2 jours). Avant le 23/09, il n'y avait ici que 2
+// expressions, 3 citations et 1 seule vidéo : rien ne pouvait changer.
 
 // Question de culture du jour — un pool avec une question par jour du mois
 // (31 questions ci-dessous), choisie selon la date : "new Date().getDate() %
@@ -176,25 +148,6 @@ const CULTURE_QUESTIONS_EN = [
   },
 ];
 
-// Vidéo du jour — playlist qui change tous les 2 jours (pas tous les jours).
-// Pour l'instant : une seule vidéo A1 proposée en test (Ashley enverra les
-// siennes ensuite) — dès qu'il y en a plusieurs, la rotation choisit
-// automatiquement selon la date, tous les 2 jours.
-const VIDEOS_EN = [
-  {
-    id: "Yj4JSvVUHkg",
-    title: "Daily English Conversation for Beginners (A1-A2) — Slow English",
-    why: "Anglais A1-A2 : conversations du quotidien, débit volontairement lent — bon point de départ pour tester l'encadré. À remplacer par tes propres vidéos.",
-  },
-];
-
-function pickVideoOfTheDay(list) {
-  if (!list.length) return null;
-  const dayIndex = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
-  const rotationIndex = Math.floor(dayIndex / 2); // change tous les 2 jours
-  return list[rotationIndex % list.length];
-}
-
 function localizedDateTime(lang) {
   const now = new Date();
   const locale = LOCALE_MAP[lang] || "fr-FR";
@@ -215,11 +168,18 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
   // pratique, app.js pose la question avant d'arriver ici, mais on garde
   // un repli sûr).
   const { date, time } = localizedDateTime(settings.primaryLearningLang || lang);
-  const expr = EXPRESSIONS_EN[new Date().getDate() % EXPRESSIONS_EN.length];
-  const quote = QUOTES[new Date().getDate() % QUOTES.length];
-  const culture = CULTURE_QUESTIONS_EN[new Date().getDate() % CULTURE_QUESTIONS_EN.length];
-  const video = pickVideoOfTheDay(VIDEOS_EN);
+  // Langue apprise principale (choisie à la première connexion) : c'est
+  // elle qui décide de l'expression et de la vidéo du jour.
+  const learnLang = EXPRESSIONS[settings.primaryLearningLang] ? settings.primaryLearningLang : "en";
+  const learnLabel = (settings.langs.find((l) => l.code === learnLang) || {}).label || "";
+  const expr = pickDaily(EXPRESSIONS[learnLang]);
+  const quote = pickDaily(QUOTES);
+  const culture = pickDaily(CULTURE_QUESTIONS_EN);
+  const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
   const leveledLangs = settings.langs.filter((l) => l.leveled);
+  // Citation : l'équivalent dans chaque langue déjà commencée (test fait),
+  // sinon au moins dans la langue apprise principale.
+  const quoteLangs = leveledLangs.length ? leveledLangs : settings.langs.filter((l) => l.code === learnLang);
 
   container.innerHTML = `
     <div class="dash-greeting card">${date} · <strong>${time}</strong></div>
@@ -256,8 +216,9 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
     <div class="dash-box">
       <h3>${t("dash_expression_title", lang)}</h3>
       <div class="card">
-        <div style="font-weight:700">${expr.en}</div>
-        <div style="color:var(--accent);margin-top:4px">${expr.fr_equiv}</div>
+        <div style="font-size:11.5px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">${learnLabel}</div>
+        <div style="font-weight:700">${expr.text}</div>
+        <div style="color:var(--accent);margin-top:4px">${expr.fr}</div>
         <div style="font-size:13px;color:var(--ink-soft);margin-top:6px">${expr.note}</div>
       </div>
     </div>
@@ -280,16 +241,12 @@ export function renderDashboard(container, { onGoToCourses } = {}) {
 
     <div class="dash-box">
       <h3>${t("dash_quote_title", lang)}</h3>
-      ${leveledLangs.filter((l) => quote.byLang[l.code]).length > 0 ? leveledLangs.filter((l) => quote.byLang[l.code]).map((l) => `
-        <div class="card dash-quote-card">
-          <div class="dash-quote">${quote.byLang[l.code]}</div>
-          <div class="dash-quote-equiv-label">${t("dash_quote_equiv", lang, { lang: l.label, fr: quote.fr })}</div>
-        </div>
-      `).join("") : `
-        <div class="card dash-quote-card">
-          <div class="dash-quote">${quote.fr}</div>
-        </div>
-      `}
+      <div class="card dash-quote-card">
+        <div class="dash-quote">« ${quote.fr} »</div>
+        ${quoteLangs.filter((l) => quote.byLang[l.code]).map((l) => `
+          <div class="dash-quote-equiv-label" style="margin-top:8px"><strong>${l.label} :</strong> “${quote.byLang[l.code]}”</div>
+        `).join("")}
+      </div>
     </div>
   `;
 

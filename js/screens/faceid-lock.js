@@ -2,9 +2,10 @@
 // Face ID / Touch ID est activé : on redemande le visage/l'empreinte avant
 // d'entrer, au lieu de retaper le mot de passe (voir js/data/webauthn.js).
 
-import { webauthn } from "../data/webauthn.js?v=20260920i";
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
+import { webauthn } from "../data/webauthn.js?v=20260923a";
+import { store } from "../data/store.js?v=20260923a";
+import { t } from "../data/i18n.js?v=20260923a";
+import { greetingHtml } from "./greeting.js?v=20260923a";
 
 export function renderFaceIdLock(root, { credentialId, onUnlocked, onUsePassword }) {
   const { settings } = store.get();
@@ -17,6 +18,7 @@ export function renderFaceIdLock(root, { credentialId, onUnlocked, onUsePassword
     <img class="screen-cover-bg bg-img-landscape" src="assets/img/shell-bg-landscape.jpg" alt="" aria-hidden="true"/>
     <img class="screen-cover-bg bg-img-landscape-dark" src="assets/img/shell-bg-landscape-dark.jpg" alt="" aria-hidden="true"/>
     <div class="auth-menu-panel card faceid-panel">
+      ${greetingHtml(lang)}
       <div class="faceid-icon">🔒</div>
       <div class="faceid-title">${t("fid_locked", lang)}</div>
       <button class="btn btn-primary" id="btnUnlock">${t("fid_unlock_btn", lang)}</button>
