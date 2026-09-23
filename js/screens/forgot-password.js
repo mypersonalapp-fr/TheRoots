@@ -1,8 +1,8 @@
 // The Roots — mot de passe oublié (formulaire minimal, pas de backend
 // pour l'instant : simule l'envoi d'un lien de réinitialisation).
 
-import { store } from "../data/store.js?v=20260923a";
-import { t } from "../data/i18n.js?v=20260923a";
+import { store } from "../data/store.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
 
 export function renderForgotPassword(root, { onBack }) {
   const { settings } = store.get();

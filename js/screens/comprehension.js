@@ -14,12 +14,13 @@
 // combinaison langue/niveau sans contenu, dans l'une ou l'autre section,
 // affiche ce même message.
 
-import { store } from "../data/store.js?v=20260923a";
-import { t } from "../data/i18n.js?v=20260923a";
-import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260923a";
-import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260923a";
-import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260923a";
-import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260923a";
+import { store } from "../data/store.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
+import { recordSkill } from "../data/progress.js?v=20260924b";
+import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260924b";
+import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260924b";
+import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260924b";
+import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260924b";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
@@ -310,7 +311,7 @@ export function renderComprehension(container) {
 
     const restartBtn = container.querySelector("#ecriteRestartBtn");
     if (restartBtn) restartBtn.addEventListener("click", () => {
-      store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { currentIndex: 0, results: {} });
+      store.setCompProgress("ecrite", ecriteStoreKey(selectedLang, selectedLevel), { currentIndex: 0, results: {} });
       showQuestions = false; answers = {}; graded = false; gradeResults = null;
       paint();
     });
@@ -340,15 +341,17 @@ export function renderComprehension(container) {
         }));
         grading = false;
         graded = true;
+        // Jauge « Compréhension écrite » (Mon livret › Mon profil) : une mesure par question.
+        gradeResults.forEach((r) => recordSkill(selectedLang, "ce", r.contentOk ? 1 : 0));
         const correctCount = gradeResults.filter((r) => r.contentOk && r.spellingIssues.length === 0).length;
         const results = { ...(progress.results || {}), [text.id]: { correct: correctCount, total: text.questions.length } };
-        store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { results });
+        store.setCompProgress("ecrite", ecriteStoreKey(selectedLang, selectedLevel), { results });
         paint();
       });
       const nextBtn = container.querySelector("#ecriteNextBtn");
       if (nextBtn) nextBtn.addEventListener("click", () => {
         const idx = (progress.currentIndex || 0) + 1;
-        store.setCompProgress("ecrite", ecriteStoreKey(selectedLevel), { currentIndex: idx });
+        store.setCompProgress("ecrite", ecriteStoreKey(selectedLang, selectedLevel), { currentIndex: idx });
         showQuestions = false; answers = {}; graded = false; gradeResults = null;
         paint();
       });

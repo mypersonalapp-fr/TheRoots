@@ -1,10 +1,13 @@
-// The Roots — onglet Accueil : date/heure, progression par langue, citation,
-// expression du jour (équivalent idiomatique, pas une traduction littérale),
-// question de culture, vidéo du jour par langue.
+// The Roots — onglet Accueil : date/heure, mes arbres (une plante par
+// langue), « J'ai 5 minutes » (avec la question culture), mission du jour,
+// et 3 petites cartes qui s'ouvrent : expression, vidéo, citation du jour.
 
-import { store } from "../data/store.js?v=20260923a";
-import { t, langName, formatDate } from "../data/i18n.js?v=20260923a";
-import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260923a";
+import { store } from "../data/store.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
+import { langGrowth, dueMissions } from "../data/progress.js?v=20260924b";
+import { aiCredits } from "../data/ai-credits.js?v=20260924b";
+import { plantSvg } from "./plant.js?v=20260924b";
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260924b";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
@@ -158,99 +161,166 @@ function localizedDateTime(lang) {
   return { date: date.charAt(0).toUpperCase() + date.slice(1), time };
 }
 
-export function renderDashboard(container, { onGoToCourses } = {}) {
-  const { settings } = store.get();
-  const lang = settings.interfaceLang;
-  // La date/l'heure de l'Accueil suivent la langue APPRISE (choisie une
-  // fois à la première connexion — voir choose-language.js), pas la langue
-  // de l'INTERFACE (menus) : ça reste en français par défaut tant
-  // qu'aucune langue apprise n'a encore été choisie (cas impossible en
-  // pratique, app.js pose la question avant d'arriver ici, mais on garde
-  // un repli sûr).
-  const { date, time } = localizedDateTime(settings.primaryLearningLang || lang);
-  // Langue apprise principale (choisie à la première connexion) : c'est
-  // elle qui décide de l'expression et de la vidéo du jour.
-  const learnLang = EXPRESSIONS[settings.primaryLearningLang] ? settings.primaryLearningLang : "en";
-  const learnLabel = (settings.langs.find((l) => l.code === learnLang) || {}).label || "";
-  const expr = pickDaily(EXPRESSIONS[learnLang]);
-  const quote = pickDaily(QUOTES);
-  const culture = pickDaily(CULTURE_QUESTIONS_EN);
-  const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
-  const leveledLangs = settings.langs.filter((l) => l.leveled);
-  // Citation : l'équivalent dans chaque langue déjà commencée (test fait),
-  // sinon au moins dans la langue apprise principale.
-  const quoteLangs = leveledLangs.length ? leveledLangs : settings.langs.filter((l) => l.code === learnLang);
+const GROUP_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
+const VARIANT_FLAGS = { "en-gb": "🇬🇧", "en-us": "🇺🇸", "es-co": "🇨🇴", "es-es": "🇪🇸", "pt-br": "🇧🇷", "pt-pt": "🇵🇹" };
+const flagOf = (l) => VARIANT_FLAGS[l.selectedVariant] || GROUP_FLAGS[l.code] || "";
 
-  container.innerHTML = `
-    <div class="dash-greeting card">${date} · <strong>${time}</strong></div>
+// Accueil (validé sur maquette le 23/09) — volontairement léger :
+// 1. mes arbres (une plante par langue, qui grandit avec le niveau) ;
+// 2. deux boutons : « J'ai 5 minutes » et « Mission du jour » ;
+// 3. expression / vidéo / citation du jour en 3 PETITES cartes qui
+//    s'ouvrent quand on les touche.
+// La question culture est rangée dans « J'ai 5 minutes ».
+export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
+  let view = "home";
+  paint();
 
-    <div class="dash-box">
-      <h3>${t("dash_progress_title", lang)}</h3>
-      <div class="dash-progress-row">
-        ${leveledLangs.length === 0 ? `
-          <button class="card dash-progress-card clickable" data-goto-courses="1">
-            <div>${t("dash_level_test_todo", lang)}</div>
-            <div style="font-size:12px;color:var(--accent);margin-top:4px;font-weight:700">${t("dash_choose_lang", lang)}</div>
-          </button>
-        ` : leveledLangs.map((l) => {
-          const variant = l.variants?.find((v) => v.code === l.selectedVariant);
-          const label = variant ? `${l.label} (${variant.label})` : l.label;
-          return `
-          <button class="card dash-progress-card clickable" data-goto-courses="1">
-            <div>${label}</div>
-            <div style="font-size:12px;color:var(--ink-soft)">${t("dash_level", lang, { level: l.level })}</div>
-            <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${Math.round((l.progress||0)*100)}%"></div></div>
-            <div style="font-size:12px;margin-top:4px">${Math.round((l.progress||0)*100)}%</div>
-          </button>
-        `;
-        }).join("")}
+  function paint() {
+    container.scrollTop = 0;
+    if (view === "five") return paintFive();
+    return paintHome();
+  }
 
-        <div class="card dash-culture-card">
-          <div class="dash-culture-label">${t("dash_culture_label", lang)}</div>
-          <div class="dash-culture-text">${culture.question}</div>
-          <div class="dash-culture-answer">${culture.answer}</div>
+  function paintHome() {
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const { date, time } = localizedDateTime(settings.primaryLearningLang || lang);
+    const learnLang = EXPRESSIONS[settings.primaryLearningLang] ? settings.primaryLearningLang : "en";
+    const learnLabel = (settings.langs.find((l) => l.code === learnLang) || {}).label || "";
+    const expr = pickDaily(EXPRESSIONS[learnLang]);
+    const quote = pickDaily(QUOTES);
+    const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
+    const leveledLangs = settings.langs.filter((l) => l.leveled);
+    const quoteLangs = leveledLangs.length ? leveledLangs : settings.langs.filter((l) => l.code === learnLang);
+    const due = dueMissions("en");
+
+    const trees = settings.langs.map((l) => {
+      const g = langGrowth(l.code);
+      const status = g.stage === 0
+        ? `${t("stage_0", lang)} · ${t("stage_test", lang)}`
+        : `${t("stage_" + g.stage, lang)} · ${g.level}`;
+      return `
+        <button class="card dash-tree clickable" data-goto-courses="1">
+          ${plantSvg(g.stage, { w: 64, h: 78, grow: g.pct / 100 })}
+          <div class="dash-tree-lang">${flagOf(l)} ${l.label}</div>
+          <div class="dash-tree-status">${status}</div>
+          ${g.stage > 0 ? `<div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${g.pct}%"></div></div>` : ""}
+        </button>`;
+    }).join("");
+
+    container.innerHTML = `
+      <div class="dash-date">${date} · <strong>${time}</strong></div>
+
+      <div class="dash-box">
+        <h3>${t("dash_trees_title", lang)}</h3>
+        <div class="dash-trees">${trees}</div>
+      </div>
+
+      <div class="dash-actions">
+        <button class="dash-five" id="dashFive">
+          <span class="dash-five-icon">⏱️</span>
+          <span class="dash-five-title">${t("dash_5min", lang)}</span>
+          <span class="dash-five-sub">${t("dash_5min_sub", lang)}</span>
+        </button>
+        <button class="card dash-mission clickable" id="dashMission">
+          <span class="dash-mission-label">${t("dash_mission_label", lang)}</span>
+          ${due.length
+            ? `<span class="dash-mission-title">${t("dash_mission_min", lang, { title: esc(due[0].title) })}</span>
+               <span class="dash-mission-sub">${due.length > 1 ? t("five_errors_sub_n", lang, { n: due.length }) : ""}</span>`
+            : `<span class="dash-mission-title">${t("dash_mission_none", lang)}</span>
+               <span class="dash-mission-sub">${t("dash_mission_none_sub", lang)}</span>`}
+        </button>
+      </div>
+
+      <details class="card dash-mini">
+        <summary><span class="dash-mini-label">${t("dash_expression_title", lang)} · ${learnLabel}</span><span class="dash-mini-line">${esc(expr.text)}</span></summary>
+        <div class="dash-mini-body">
+          <div style="color:var(--accent);font-weight:700">${esc(expr.fr)}</div>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:6px">${esc(expr.note)}</div>
         </div>
-      </div>
-    </div>
+      </details>
 
-    <div class="dash-box">
-      <h3>${t("dash_expression_title", lang)}</h3>
-      <div class="card">
-        <div style="font-size:11.5px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">${learnLabel}</div>
-        <div style="font-weight:700">${expr.text}</div>
-        <div style="color:var(--accent);margin-top:4px">${expr.fr}</div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px">${expr.note}</div>
-      </div>
-    </div>
-
-    <div class="dash-box">
-      <h3>${t("dash_video_title", lang)}</h3>
-      <div class="card card-media dash-video-card">
+      <details class="card dash-mini">
+        <summary><span class="dash-mini-label">${t("dash_video_short", lang)} · ${learnLabel}</span><span class="dash-mini-line">${video ? esc(video.title) : t("dash_video_placeholder", lang)}</span></summary>
         ${video ? `
+        <div class="dash-mini-body">
           <a class="dash-video-thumb" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
-            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" loading="lazy"/>
+            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${esc(video.title)}" loading="lazy"/>
             <span class="dash-video-play">▶</span>
           </a>
-          <div class="dash-video-info">
-            <div class="dash-video-title">${video.title}</div>
-            <div class="dash-video-cta">${t("dash_video_cta", lang)}</div>
-          </div>
-        ` : `<div style="text-align:center;color:var(--ink-soft);padding:20px">${t("dash_video_placeholder", lang)}</div>`}
-      </div>
-    </div>
+          <div class="dash-video-cta" style="margin-top:6px">${t("dash_video_cta", lang)}</div>
+        </div>` : ""}
+      </details>
 
-    <div class="dash-box">
-      <h3>${t("dash_quote_title", lang)}</h3>
-      <div class="card dash-quote-card">
-        <div class="dash-quote">« ${quote.fr} »</div>
-        ${quoteLangs.filter((l) => quote.byLang[l.code]).map((l) => `
-          <div class="dash-quote-equiv-label" style="margin-top:8px"><strong>${l.label} :</strong> “${quote.byLang[l.code]}”</div>
-        `).join("")}
-      </div>
-    </div>
-  `;
+      <details class="card dash-mini">
+        <summary><span class="dash-mini-label">${t("dash_quote_title", lang)}</span><span class="dash-mini-line">« ${esc(quote.fr)} »</span></summary>
+        <div class="dash-mini-body">
+          ${quoteLangs.filter((l) => quote.byLang[l.code]).map((l) => `
+            <div class="dash-quote-equiv-label"><strong>${l.label} :</strong> “${esc(quote.byLang[l.code])}”</div>
+          `).join("")}
+        </div>
+      </details>
+    `;
 
-  container.querySelectorAll('[data-goto-courses]').forEach((btn) => {
-    btn.addEventListener("click", () => onGoToCourses && onGoToCourses());
-  });
+    container.querySelectorAll("[data-goto-courses]").forEach((btn) => {
+      btn.addEventListener("click", () => onGoToCourses && onGoToCourses());
+    });
+    container.querySelector("#dashFive").addEventListener("click", () => { view = "five"; paint(); });
+    container.querySelector("#dashMission").addEventListener("click", () => {
+      window.location.href = due.length ? "lessons.html#practice=auto" : "lessons.html";
+    });
+    // Une seule petite carte ouverte à la fois : l'Accueil reste léger.
+    const minis = [...container.querySelectorAll("details.dash-mini")];
+    minis.forEach((d) => d.addEventListener("toggle", () => {
+      if (d.open) minis.forEach((o) => { if (o !== d) o.open = false; });
+    }));
+  }
+
+  // --- « J'ai 5 minutes » : 4 activités courtes + la question culture. ---
+  function paintFive() {
+    const { settings } = store.get();
+    const lang = settings.interfaceLang;
+    const due = dueMissions("en");
+    const credits = aiCredits.available().length;
+    const culture = pickDaily(CULTURE_QUESTIONS_EN);
+    container.innerHTML = `
+      <button class="settings-back" id="fiveBack">${t("five_back", lang)}</button>
+      <div class="card five-head">
+        <span style="font-size:26px">⏱️</span>
+        <div><div class="five-title">${t("five_title", lang)}</div><div class="five-sub">${t("five_sub", lang)}</div></div>
+      </div>
+      <div class="five-grid">
+        <button class="five-tile five-errors" data-act="errors"><span class="five-ic">🔁</span><strong>${t("five_errors", lang)}</strong><span>${due.length ? t("five_errors_sub_n", lang, { n: due.length }) : t("five_errors_sub_0", lang)}</span></button>
+        <button class="five-tile five-express" data-act="express"><span class="five-ic">✍️</span><strong>${t("five_express", lang)}</strong><span>${t("five_express_sub", lang)}</span></button>
+        <button class="five-tile five-chat" data-act="chat"><span class="five-ic">💬</span><strong>${t("five_chat", lang)}</strong><span>${t("five_chat_sub", lang, { n: credits })}</span></button>
+        <button class="five-tile five-surprise" data-act="surprise"><span class="five-ic">✨</span><strong>${t("five_surprise", lang)}</strong><span>${t("five_surprise_sub", lang)}</span></button>
+      </div>
+      <div class="card dash-culture-card five-culture">
+        <div class="dash-culture-label">${t("dash_culture_label", lang)} · 🇬🇧</div>
+        <div class="dash-culture-text">${esc(culture.question)}</div>
+        <button class="btn btn-ghost five-reveal" id="fiveReveal">${t("five_culture_reveal", lang)}</button>
+        <div class="dash-culture-answer" id="fiveAnswer" hidden>${esc(culture.answer)}</div>
+      </div>
+    `;
+    container.querySelector("#fiveBack").addEventListener("click", () => { view = "home"; paint(); });
+    container.querySelector("#fiveReveal").addEventListener("click", (e) => {
+      e.currentTarget.hidden = true;
+      container.querySelector("#fiveAnswer").hidden = false;
+    });
+    const go = (act) => {
+      if (act === "errors") window.location.href = due.length ? "lessons.html#practice=auto" : "lessons.html#practice=mix";
+      else if (act === "express") window.location.href = "lessons.html#practice=mix";
+      else if (act === "chat") { if (onGoToTab) onGoToTab("conversation"); }
+      else if (act === "surprise") {
+        const pool = ["express", "chat"];
+        if (due.length) pool.push("errors");
+        go(pool[Math.floor(Math.random() * pool.length)]);
+      }
+    };
+    container.querySelectorAll(".five-tile").forEach((b) => b.addEventListener("click", () => go(b.dataset.act)));
+  }
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 }

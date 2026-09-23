@@ -8,12 +8,104 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260920i";
-import { renderLevelTest } from "./level-test.js?v=20260920i";
-import { t, formatDate } from "../data/i18n.js?v=20260920i";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260920i";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260920i";
-import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260920i";
+import { store } from "../data/store.js?v=20260924b";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924b";
+import { renderLevelTest } from "./level-test.js?v=20260924b";
+import { t, formatDate } from "../data/i18n.js?v=20260924b";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924b";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924b";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924b";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924b";
+import { plantSvg } from "./plant.js?v=20260924b";
+
+// --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
+const DAY = 24 * 3600 * 1000;
+// Niveau actuel réel : pour l'anglais il suit les leçons et les contrôles
+// (langGrowth), pas seulement le résultat du test de positionnement.
+function currentOf(l) {
+  const g = langGrowth(l.code);
+  return g.level ? { level: g.level, pct: g.pct } : { level: l.level, pct: Math.round((l.progress || 0) * 100) };
+}
+function gaugeColor(p) { return p >= 70 ? "var(--success)" : p >= 50 ? "var(--accent)" : "var(--pop)"; }
+function shortDate(ts) { const d = new Date(ts); return `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`; }
+
+function profileHtml(code) {
+  const g = skillGauges(code);
+  const sum = profileSummary(code);
+  const rows = g.map((x) => `
+    <div class="mc-gauge">
+      <span class="mc-gauge-label">${x.label}</span>
+      <div class="mc-gauge-track"><div class="mc-gauge-fill" style="width:${x.pct == null ? 0 : x.pct}%;background:${x.pct == null ? "transparent" : gaugeColor(x.pct)}"></div></div>
+      <span class="mc-gauge-val">${x.pct == null ? "—" : x.pct}</span>
+    </div>`).join("");
+  return `
+    <div class="mc-gauges">${rows}</div>
+    ${sum ? `<div class="mc-profile-notes">
+      ${sum.strength ? `<div><span class="dot" style="background:var(--success)"></span><strong>Tes forces :</strong> ${sum.strength}</div>` : ""}
+      <div><span class="dot" style="background:var(--accent)"></span><strong>À travailler :</strong> ${sum.work}</div>
+      <div><span class="dot" style="background:var(--brand-teal)"></span><strong>Ton objectif :</strong> ${sum.goal}</div>
+    </div>` : `<p style="font-size:12px;color:var(--ink-soft);margin:10px 0 0">« — » = pas encore assez d'exercices faits pour mesurer. Les jauges se remplissent avec tes leçons, tes contrôles, Compréhension et Expression.</p>`}
+  `;
+}
+
+const CTRL_DEF = [
+  ["A1", "Contrôle A1", "après la leçon A1.12"],
+  ["A2", "Contrôle A2", "après la leçon A2.11"],
+  ["FINAL", "Grand contrôle final A1 + A2", "ouvre le niveau B1"],
+];
+const DECISION_NOTE = {
+  net: "validé net",
+  rappel: "rappels glissés dans les leçons suivantes",
+  renfort: "leçons de renfort ajoutées",
+};
+function controlsHtml(code) {
+  if (code !== "en") return `<p style="font-size:12.5px;color:var(--ink-soft);margin:0">Les contrôles arrivent avec les leçons de cette langue.</p>`;
+  const c = controls(code);
+  return CTRL_DEF.map(([lvl, name, when]) => {
+    const r = c[lvl];
+    let tag, note;
+    if (r && r.passed) {
+      tag = `<span class="mc-tag ok">Validé · ${r.best} %</span>`;
+      note = `${shortDate(r.passedAt)} · ${DECISION_NOTE[r.last && r.last.decision !== "fail" ? r.last.decision : "net"] || ""}`;
+    } else if (r && r.last && r.last.decision === "fail") {
+      tag = `<span class="mc-tag ko">Non validé · ${r.last.pct} %</span>`;
+      note = CREATOR_MODE ? "mode créatrice : nouvel essai possible tout de suite"
+        : `nouvel essai à partir du ${shortDate(r.last.at + 7 * DAY)}, après avoir refait les leçons à revoir`;
+    } else {
+      const locked = lvl === "FINAL" && !(c.A2 && c.A2.passed);
+      tag = `<span class="mc-tag mute">${locked ? "Verrouillé" : "À venir"}</span>`;
+      note = when;
+    }
+    return `<div class="mc-ctrl-row"><div style="flex-grow:1"><div class="mc-ctrl-name">${name}</div><div class="mc-ctrl-note">${note}</div></div>${tag}</div>`;
+  }).join("");
+}
+
+function missionsHtml(code) {
+  const list = missions(code);
+  if (!list.length) return `<p style="font-size:12.5px;color:var(--ink-soft);margin:0">Aucune erreur en attente 🎉 Les notions ratées dans tes leçons et contrôles apparaîtront ici, puis reviendront en petites missions (aujourd'hui → demain → dans 7 jours → acquis).</p>`;
+  const col = (n) => n >= 4 ? "var(--pop)" : n >= 2 ? "var(--accent)" : "#caa21b";
+  const STEP = ["à revoir", "rappel J+1 fait", "vérif. J+7 à venir"];
+  return list.slice(0, 8).map((m) => `
+    <div class="mc-mission"><span class="dot" style="background:${col(m.count)}"></span>
+      <div style="flex-grow:1"><div style="font-weight:800">${m.title}</div><div style="font-size:11.5px;color:var(--ink-soft)">${m.count} erreur${m.count > 1 ? "s" : ""} · ${STEP[Math.min(2, m.stage || 0)]}${m.due ? " · aujourd'hui" : ""}</div></div>
+    </div>`).join("") + (list.some((m) => m.due) ? `<button class="btn btn-primary" data-href="lessons.html#practice=auto" style="width:100%;margin-top:10px">Commencer la mission du jour</button>` : "");
+}
+
+function renfortsHtml(code) {
+  if (code !== "en") return "";
+  const b = boosts(code);
+  const parts = [];
+  Object.keys(b).forEach((lvl) => {
+    const x = b[lvl] || {};
+    const done = x.done || [];
+    const todo = (x.renfort || []).filter((id) => done.indexOf(id) < 0);
+    if (todo.length) parts.push(`<div style="font-size:12.5px;font-weight:700;margin:4px 0 6px">Leçons de renfort avant ${lvl} :</div>` +
+      todo.map((id) => `<button class="lt-opt" data-href="lessons.html#renfort=${id}" style="text-align:left;margin-bottom:6px">↺ ${lessonTitle(id)}</button>`).join(""));
+    if (done.length) parts.push(`<div style="font-size:12px;color:var(--success);margin:4px 0">✓ Déjà refaites : ${done.map((id) => lessonTitle(id)).join(", ")}</div>`);
+    if ((x.rappel || []).length) parts.push(`<div style="font-size:12.5px;color:var(--ink-soft);margin:4px 0">🔁 Rappels glissés dans les leçons ${lvl} : ${x.rappel.map((id) => lessonTitle(id)).join(", ")}</div>`);
+  });
+  return parts.join("");
+}
 
 // Programme par palier, par langue ET par niveau — l'anglais A1/A2 et
 // l'espagnol A1 sont rédigés pour l'instant (voir claude/cahier-des-charges-
@@ -81,14 +173,15 @@ export function renderMesCours(container, shellRoot) {
             const variant = l.variants?.find((v) => v.code === l.selectedVariant);
             const status = !l.leveled
               ? t("mc_level_test_todo", lang)
-              : variant ? t("mc_level_variant", lang, { level: l.level, variant: variant.label }) : t("mc_level_choose_course", lang, { level: l.level });
+              : variant ? t("mc_level_variant", lang, { level: currentOf(l).level, variant: variant.label }) : t("mc_level_choose_course", lang, { level: currentOf(l).level });
             return `
             <div class="mc-cube-wrap">
-              <button class="card mc-cube" data-code="${l.code}">
+              <button class="card mc-cube has-plant" data-code="${l.code}">
+                ${plantSvg(langGrowth(l.code).stage, { w: 70, h: 80, grow: langGrowth(l.code).pct / 100 })}
                 <div class="mc-cube-lang">${bothFlagsFor(l)} ${l.label}</div>
                 <div class="mc-cube-status">${status}</div>
               </button>
-              <div class="mc-cube-gauge${l.leveled ? "" : " mc-cube-gauge-empty"}"><div class="mc-cube-gauge-fill" style="width:${l.leveled ? Math.round((l.progress||0)*100) : 0}%"></div></div>
+              <div class="mc-cube-gauge${l.leveled ? "" : " mc-cube-gauge-empty"}"><div class="mc-cube-gauge-fill" style="width:${l.leveled ? currentOf(l).pct : 0}%"></div></div>
             </div>
           `;
           }).join("")}
@@ -97,6 +190,7 @@ export function renderMesCours(container, shellRoot) {
             <button class="card mc-cube mc-cube-livret" id="mcOpenLivret">
               <div class="mc-cube-lang">📘 ${t("mc_livret_title", lang)}</div>
               <div class="mc-cube-status">${t("mc_livret_subtitle", lang)}</div>
+              <div class="mc-cube-status" style="margin-top:4px">Mon profil · Mes contrôles · Mes missions</div>
             </button>
             <div class="mc-cube-gauge mc-cube-gauge-empty" style="visibility:hidden"><div class="mc-cube-gauge-fill"></div></div>
           </div>
@@ -116,17 +210,22 @@ export function renderMesCours(container, shellRoot) {
   // ne sont pas encore remontées ici (elles vivent aujourd'hui uniquement
   // dans lessons.html) — prochaine étape si besoin : faire remonter chaque
   // score de Grand Contrôle jusqu'ici pour un vrai historique de notes. ---
+  let livretLang = null;
   function paintLivret() {
     const { settings } = store.get();
     const lang = settings.interfaceLang;
     const leveledLangs = settings.langs.filter((l) => l.leveled);
+    if (!livretLang || !leveledLangs.some((l) => l.code === livretLang)) livretLang = (leveledLangs.find((l) => l.code === "en") || leveledLangs[0] || {}).code || null;
+    const shown = leveledLangs.filter((l) => l.code === livretLang);
     container.innerHTML = `
       <button class="settings-back" id="mcLivretBack">${t("mc_back", lang)}</button>
       <div class="dash-box">
         <h3>📘 ${t("mc_livret_title", lang)}</h3>
         ${leveledLangs.length === 0 ? `
           <div class="card" style="color:var(--ink-soft);font-size:13px">${t("mc_livret_empty", lang)}</div>
-        ` : leveledLangs.map((l) => `
+        ` : `
+          ${leveledLangs.length > 1 ? `<div class="mc-livret-tabs">${leveledLangs.map((l) => `<button class="level-chip${l.code === livretLang ? " active" : ""}" data-livret-lang="${l.code}">${flagFor(l)} ${l.label}</button>`).join("")}</div>` : ""}
+          ${shown.map((l) => `
           <div class="card mc-livret-row">
             <div style="font-weight:800">${flagFor(l)} ${l.label}</div>
             <div class="mc-livret-grid">
@@ -137,16 +236,21 @@ export function renderMesCours(container, shellRoot) {
               </div>
               <div class="mc-livret-cell">
                 <div class="mc-livret-cell-label">${t("mc_current_level", lang)}</div>
-                <span class="cefr-level-badge">${l.level}</span>
-                <div class="mc-livret-cell-sub">${t("mc_lesson_progress", lang, { pct: Math.round((l.progress||0)*100) })}</div>
+                <span class="cefr-level-badge">${currentOf(l).level}</span>
+                <div class="mc-livret-cell-sub">${t("mc_lesson_progress", lang, { pct: currentOf(l).pct })}</div>
               </div>
             </div>
           </div>
-        `).join("")}
-        <p style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">${t("mc_livret_note", lang)}</p>
+          <div class="dash-box"><h3>Mon profil</h3><div class="card">${profileHtml(l.code)}</div></div>
+          <div class="dash-box"><h3>Mes contrôles</h3><div class="card">${controlsHtml(l.code)}</div></div>
+          <div class="dash-box"><h3>Mes missions</h3><div class="card">${missionsHtml(l.code)}</div></div>
+          `).join("")}
+        `}
       </div>
     `;
     container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
+    container.querySelectorAll("[data-livret-lang]").forEach((b) => b.addEventListener("click", () => { livretLang = b.dataset.livretLang; paint(); }));
+    container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
   }
 
   function paintLangDetail(code) {
@@ -164,9 +268,12 @@ export function renderMesCours(container, shellRoot) {
         <div class="card">
           <div style="font-weight:700;font-size:13px;color:var(--ink-soft)">${t("mc_my_level", lang)}</div>
           ${langData.leveled ? `
-            <div style="font-size:22px;font-weight:800;margin-top:4px">${langData.level}</div>
-            <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${Math.round((langData.progress||0)*100)}%"></div></div>
-            <div style="font-size:12px;margin-top:4px">${t("mc_lesson_progress", lang, { pct: Math.round((langData.progress||0)*100) })}</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
+              ${plantSvg(langGrowth(code).stage, { w: 64, h: 78, grow: langGrowth(code).pct / 100 })}
+              <div style="font-size:22px;font-weight:800">${currentOf(langData).level}</div>
+            </div>
+            <div class="dash-progress-bar" style="margin-top:10px"><div class="dash-progress-fill" style="width:${currentOf(langData).pct}%"></div></div>
+            <div style="font-size:12px;margin-top:4px">${t("mc_lesson_progress", lang, { pct: currentOf(langData).pct })}</div>
             ${!needsVariantChoice ? `
               <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("mc_course_followed", lang)}<strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">${t("mc_change", lang)}</button></div>
               <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">${t("mc_continue", lang)}</button>
@@ -183,6 +290,11 @@ export function renderMesCours(container, shellRoot) {
           `}
         </div>
       </div>
+
+      ${langData.leveled && code === "en" ? `
+        ${renfortsHtml(code) ? `<div class="dash-box"><h3>Mes renforts</h3><div class="card">${renfortsHtml(code)}</div></div>` : ""}
+        <div class="dash-box"><h3>Contrôles A1 · A2 · final</h3><div class="card">${controlsHtml(code)}</div></div>
+      ` : ""}
 
       ${needsVariantChoice ? `
         <div class="dash-box">
@@ -208,6 +320,10 @@ export function renderMesCours(container, shellRoot) {
             </div>
             <p style="font-size:12px;color:var(--ink-soft);margin-top:8px">${t("mc_entry_desc", lang)}</p>
           </div>
+          ${CREATOR_MODE ? `
+            <button class="btn btn-ghost" id="mcRetakeTest" style="width:100%;margin-top:10px">🔁 Repasser le test de positionnement</button>
+            <div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;text-align:center">Mode créatrice : essais illimités (à verrouiller plus tard dans dev-config.js).</div>
+          ` : ""}
         </div>
       ` : ""}
 
@@ -223,6 +339,7 @@ export function renderMesCours(container, shellRoot) {
     `;
 
     container.querySelector("#mcBack").addEventListener("click", () => { openCode = null; paint(); });
+    container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
     container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, level: "A1", palier: null }; paint(); });
 
     const continueBtn = container.querySelector("#mcContinue");
@@ -238,6 +355,17 @@ export function renderMesCours(container, shellRoot) {
       btn.addEventListener("click", () => {
         store.selectVariant(code, btn.dataset.variant);
         paint();
+      });
+    });
+
+    const retakeBtn = container.querySelector("#mcRetakeTest");
+    if (retakeBtn) retakeBtn.addEventListener("click", () => {
+      renderLevelTest(shellRoot, {
+        langCode: code,
+        langLabel: langData.label,
+        // En mode créatrice, on revient sur la fiche de la langue pour voir
+        // tout de suite le nouveau résultat (et pouvoir recommencer).
+        onDone: () => paint(),
       });
     });
 

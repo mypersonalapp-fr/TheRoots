@@ -14,12 +14,13 @@
 // une IA qui comprend le sens ; la checklist de contenu comble ce manque en
 // vérifiant simplement la présence des idées attendues.
 
-import { store } from "../data/store.js?v=20260923a";
-import { t } from "../data/i18n.js?v=20260923a";
-import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260923a";
-import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260923a";
-import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260923a";
-import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260923a";
+import { store } from "../data/store.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
+import { recordSkill } from "../data/progress.js?v=20260924b";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260924b";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260924b";
+import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260924b";
+import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260924b";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
@@ -230,6 +231,16 @@ export function renderExpression(container) {
         paint();
         recognition.onresult = (e) => {
           oraleTranscript = e.results[0][0].transcript;
+          // Jauges : expression orale = points attendus trouvés dans ce que le
+          // micro a compris ; prononciation = confiance du micro (uniquement
+          // quand le téléphone la donne — sinon on ne mesure rien).
+          try {
+            const pr = prompts[oraleIndex];
+            const items = checklistResults(oraleTranscript, pr.expectedPoints || []);
+            if (items.length) recordSkill(selectedLang, "eo", items.filter((x) => x.met).length / items.length);
+            const conf = e.results[0][0].confidence;
+            if (conf > 0) recordSkill(selectedLang, "pr", conf);
+          } catch (err) { /* mesure facultative */ }
           oraleRecording = false;
           paint();
         };
@@ -290,6 +301,11 @@ export function renderExpression(container) {
       paint();
       try {
         ecriteMatches = await checkGrammar(text, LANGUAGETOOL_LANG[selectedLang]);
+        // Jauges : expression écrite = points attendus présents ; grammaire =
+        // moins il y a de fautes relevées, plus la jauge monte.
+        const items = checklistResults(text, prompts[ecriteIndex].expectedPoints || []);
+        if (items.length) recordSkill(selectedLang, "ee", items.filter((x) => x.met).length / items.length);
+        recordSkill(selectedLang, "gr", Math.max(0, 1 - ecriteMatches.length / 5));
       } catch (e) {
         ecriteError = true;
         ecriteMatches = [];

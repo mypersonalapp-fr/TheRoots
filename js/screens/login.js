@@ -2,9 +2,10 @@
 // passe). Connexion simulée en local tant qu'il n'y a pas de vrai backend —
 // voir js/data/store.js.
 
-import { store } from "../data/store.js?v=20260920i";
-import { webauthn } from "../data/webauthn.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
+import { store } from "../data/store.js?v=20260924b";
+import { webauthn } from "../data/webauthn.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
+import { greetingHtml } from "./greeting.js?v=20260924b";
 
 // Petite carte qui propose d'activer Face ID / Touch ID juste après une
 // connexion réussie — seulement si le téléphone le permet et que ce n'est
@@ -56,6 +57,7 @@ export function renderLogin(root, { mode = "login", prefillEmail = "", onDone, o
       <span style="width:38px"></span>
     </div>
     <div class="auth-form-body">
+      ${isSignup ? "" : greetingHtml(lang)}
       ${isReconnect ? `<p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">${t("login_reconnect_desc", lang)}</p>` : ""}
       <form class="login-form card" id="loginForm">
         <label class="field">

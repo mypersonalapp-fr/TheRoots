@@ -18,9 +18,9 @@
 //   cloudflare-worker-gemini.js, dont l'adresse se colle dans
 //   js/data/ai-config.js.
 
-import { store } from "../data/store.js?v=20260923a";
-import { aiCredits } from "../data/ai-credits.js?v=20260923a";
-import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260923a";
+import { store } from "../data/store.js?v=20260924b";
+import { aiCredits } from "../data/ai-credits.js?v=20260924b";
+import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260924b";
 
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const SPEECH_BY_VARIANT = { "en-gb": "en-GB", "en-us": "en-US", "es-es": "es-ES", "es-co": "es-CO", "pt-pt": "pt-PT", "pt-br": "pt-BR" };

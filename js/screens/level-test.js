@@ -14,8 +14,9 @@
 // jeu de paliers par langue apprise (TIERS_BY_LANG), chacun testant bien la
 // langue choisie plutôt que de renvoyer par défaut des questions d'anglais.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
+import { store } from "../data/store.js?v=20260924b";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
 
 const TEST_MAX_MINUTES = 10;
 const PASS_RATIO = 0.7; // il faut 70% dans un palier pour débloquer le suivant
@@ -466,7 +467,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     const finalLevel = highestLevel || TIERS[0].id; // plancher : Débutant A1
     const maxedOut = finalLevel === TIERS[TIERS.length - 1].id;
 
-    store.setPlacementResult(langCode, { score: null, level: finalLevel, entryLevel: finalLevel, entryDate: new Date().toISOString() });
+    store.setPlacementResult(langCode, { score: null, level: finalLevel, entryLevel: finalLevel, entryDate: new Date().toISOString(), resetEntry: CREATOR_MODE });
 
     el.innerHTML = `
       <div class="app-topbar"><div class="title">${t("lt_title_result", lang)}</div></div>

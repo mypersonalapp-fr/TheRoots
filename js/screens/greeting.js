@@ -8,6 +8,8 @@
 // chaque affichage : on ne voit donc jamais deux fois de suite le même
 // bonjour. Si le stockage est indisponible, on tire au hasard.
 
+// Sous le mot, on précise seulement la langue (« en lingala »), et rien du
+// tout quand c'est le bonjour français (demande d'Ashley du 23/09).
 const GREETINGS = [
   { text: "Bonjour", lang: "français" },
   { text: "Hello", lang: "anglais" },
@@ -94,8 +96,8 @@ export function greetingHtml(uiLang) {
   const tagline = lines[n % lines.length];
   return `
     <div class="hello-block">
-      <div class="hello-word">${greeting.text} !</div>
-      <div class="hello-lang">« bonjour » en ${greeting.lang}</div>
+      <div class="hello-word">${/!$/.test(greeting.text) ? greeting.text : greeting.text + " !"}</div>
+      ${greeting.lang === "français" ? "" : `<div class="hello-lang">en ${greeting.lang}</div>`}
       <div class="hello-tagline">${tagline}</div>
     </div>
   `;

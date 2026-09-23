@@ -6,9 +6,9 @@
 // "Mon niveau actuel" ne vit plus ici : il est désormais dans Mes cours,
 // par langue, avec le "Niveau d'entrée" gardé en référence permanente.
 
-import { store } from "../data/store.js?v=20260920i";
-import { t, langName } from "../data/i18n.js?v=20260920i";
-import { webauthn } from "../data/webauthn.js?v=20260920i";
+import { store } from "../data/store.js?v=20260924b";
+import { t, langName } from "../data/i18n.js?v=20260924b";
+import { webauthn } from "../data/webauthn.js?v=20260924b";
 
 const APP_VERSION = "1.2";
 
@@ -39,6 +39,40 @@ function genericDefinitions(lang) {
     C2: t("cefr_c2", lang),
   };
 }
+
+// Ce que chaque niveau veut dire CONCRÈTEMENT dans chaque langue (23/09) :
+// l'échelle CECR officielle est volontairement la même pour toutes les
+// langues (c'est son principe) — l'afficher trois fois à l'identique
+// n'apportait rien. Ici, au contraire, ce qui change vraiment d'une langue
+// à l'autre : la grammaire à maîtriser, et les pièges d'un francophone.
+// Rédigé en français (langue d'Ashley) ; affiché tel quel dans les autres
+// langues d'interface en attendant une traduction.
+const LEVEL_SPECIFICS = {
+  en: {
+    A1: "Verbe « to be », présent simple, « there is / there are », nombres et heure. Se présenter, commander un café, demander son chemin. Pièges : le « th » et le « h » qui se prononce.",
+    A2: "Prétérit (I went, I saw), futur avec « going to », comparatifs (bigger, more expensive), can / must. Raconter son week-end, réserver un hôtel. Piège : les verbes irréguliers.",
+    B1: "Present perfect (I have lived here for three years) contre prétérit, « If it rains, I'll stay », phrasal verbs courants (get up, look for). Donner son avis, suivre une série avec sous-titres anglais.",
+    B2: "Voix passive, discours rapporté, conditionnels (If I had known…), « must have been ». Nuancer une opinion, débattre en réunion, comprendre la plupart des films.",
+    C1: "Inversions (Never have I seen…), expressions idiomatiques, passer du formel à l'informel. Comprendre des accents variés (écossais, américain du Sud…), écrire un rapport structuré.",
+    C2: "Niveau quasi natif : humour, ironie, jeux de mots, littérature, nuances très fines entre synonymes.",
+  },
+  es: {
+    A1: "Ser / estar (soy de París, estoy cansada), hay, présent des verbes en -ar/-er/-ir, tener et ir, « me gusta ». Se présenter, commander, demander un prix. Pièges : la jota et le « r » roulé.",
+    A2: "Passé simple espagnol (fui, comí) et imparfait (era, comía), « voy a + infinitif », pronoms lo / la / le, comparatifs (más… que). Raconter un voyage ou sa journée.",
+    B1: "Passé composé (he comido), subjonctif après un souhait (Espero que vengas), impératif, por / para. Donner son avis et argumenter simplement.",
+    B2: "Subjonctif imparfait (Si tuviera tiempo…), conditionnel, concordance des temps, passif avec « se ». Comprendre les accents d'Espagne ET d'Amérique latine.",
+    C1: "Nuances du subjonctif, périphrases (llevar + gérondif, acabar de…), expressions idiomatiques, écrit soutenu.",
+    C2: "Niveau quasi natif : argot régional (Espagne, Mexique, Argentine…), jeux de mots, littérature, ironie.",
+  },
+  pt: {
+    A1: "Ser / estar, présent des verbes réguliers, ter, « gosto de », contractions (no, na, do, da). Tu ou você (au Portugal, « você » peut sembler distant). Piège : les voyelles « avalées » du portugais du Portugal.",
+    A2: "Passé simple (fui, comi) et imparfait (era, comia), « vou + infinitif », pronom placé après le verbe (vi-o), comparatifs. Raconter sa journée.",
+    B1: "« Estou a comer » (typique du Portugal), subjonctif présent (Espero que venhas), infinitif personnel (para fazermos), impératif. Donner son avis.",
+    B2: "Subjonctif futur (Se tiveres tempo…, Quando puderes…) et imparfait, conditionnel, passif. Comprendre le portugais parlé rapide de Lisbonne.",
+    C1: "Pronom au milieu du verbe (dir-te-ei), nuances du subjonctif, expressions idiomatiques, différences Portugal / Brésil maîtrisées.",
+    C2: "Niveau quasi natif : humour, littérature (Pessoa, Saramago), registres et accents régionaux (Porto, Açores).",
+  },
+};
 
 // --- Voix audio : liste les voix anglaises disponibles sur l'appareil
 // (Web Speech API) pour laisser choisir autre chose que la voix par défaut
@@ -263,76 +297,69 @@ export function renderSettings(container, onChange) {
         <h3 style="margin:0 0 10px">${t("set_methode_title", lang)}</h3>
         <p style="font-size:13px;color:var(--ink-soft);line-height:1.6">${t("set_methode_p1", lang)}</p>
         <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:10px">${t("set_methode_p2", lang)}</p>
-        <p style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("set_methode_p3", lang)}</p>
       </div>
     `;
   }
 
+  // Une seule grille, commune aux trois langues (23/09) : elle était
+  // répétée à l'identique sous Anglais / Espagnol / Portugais.
   function paintGrille(body, lang) {
-    const { settings } = store.get();
-    const allOpen = settings.langs.every((l) => expandedGrille[l.code]);
     const bands = scoreBands(lang);
     body.innerHTML = `
-      <div class="lvl-toolbar">
-        <button class="btn btn-ghost" id="lvlToggleAll">${allOpen ? t("set_toggle_all_hide", lang) : t("set_toggle_all_show", lang)}</button>
-      </div>
       <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">${t("set_grille_desc", lang)}</p>
-      ${settings.langs.map((l) => `
-        <div class="card lvl-lang-group">
-          <div class="lvl-lang-head" data-code="${l.code}">
-            <strong>${l.label}</strong>
-            <span class="chev">${expandedGrille[l.code] ? "⌄" : "›"}</span>
-          </div>
-          <div class="lvl-lang-body" ${expandedGrille[l.code] ? "" : "hidden"}>
-            <div class="cefr-table">
-              <div class="cefr-row cefr-head"><span>${t("set_grille_col_score", lang)}</span><span>${t("set_grille_col_level", lang)}</span><span>${t("set_grille_col_desc", lang)}</span></div>
-              ${bands.map((b) => `
-                <div class="cefr-row">
-                  <span>${b.min}–${b.max}%</span>
-                  <span class="cefr-level-badge">${b.level}</span>
-                  <span>${b.desc}</span>
-                </div>
-              `).join("")}
+      <div class="card">
+        <div class="cefr-table">
+          <div class="cefr-row cefr-head"><span>${t("set_grille_col_score", lang)}</span><span>${t("set_grille_col_level", lang)}</span><span>${t("set_grille_col_desc", lang)}</span></div>
+          ${bands.map((b) => `
+            <div class="cefr-row">
+              <span>${b.min}–${b.max}%</span>
+              <span class="cefr-level-badge">${b.level}</span>
+              <span>${b.desc}</span>
             </div>
-          </div>
+          `).join("")}
         </div>
-      `).join("")}
+      </div>
     `;
-    body.querySelectorAll(".lvl-lang-head").forEach((head) => {
-      head.addEventListener("click", () => {
-        const code = head.dataset.code;
-        expandedGrille[code] = !expandedGrille[code];
-        paintGrille(body, lang);
-      });
-    });
-    body.querySelector("#lvlToggleAll").addEventListener("click", () => {
-      const next = !allOpen;
-      settings.langs.forEach((l) => { expandedGrille[l.code] = next; });
-      paintGrille(body, lang);
-    });
   }
 
   function paintDefinitions(body, lang) {
     const { settings } = store.get();
-    const allOpen = settings.langs.every((l) => expandedDefs[l.code]);
+    const allOpen = expandedDefs.__common && settings.langs.every((l) => expandedDefs[l.code]);
     const defs0 = genericDefinitions(lang);
     body.innerHTML = `
       <div class="lvl-toolbar">
         <button class="btn btn-ghost" id="defToggleAll">${allOpen ? t("set_toggle_all_hide", lang) : t("set_toggle_all_show", lang)}</button>
       </div>
       <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px">${t("set_definitions_desc", lang)}</p>
+      <div class="card lvl-lang-group">
+        <div class="lvl-lang-head" data-code="__common">
+          <strong>${t("set_defs_common_title", lang)}</strong>
+          <span class="chev">${expandedDefs.__common ? "⌄" : "›"}</span>
+        </div>
+        <div class="lvl-lang-body" ${expandedDefs.__common ? "" : "hidden"}>
+          ${Object.keys(defs0).map((lvl) => `
+            <div class="lvl-def-row">
+              <span class="cefr-level-badge">${lvl}</span>
+              <span>${defs0[lvl]}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
       ${settings.langs.map((l) => {
+        const specifics = LEVEL_SPECIFICS[l.code] || {};
+        const nm = langName(l.code, lang);
+        const title = t("set_defs_concrete", lang, { lang: lang === "en" ? nm : nm.toLowerCase() });
         return `
         <div class="card lvl-lang-group">
           <div class="lvl-lang-head" data-code="${l.code}">
-            <strong>${l.label}</strong>
+            <strong>${title}</strong>
             <span class="chev">${expandedDefs[l.code] ? "⌄" : "›"}</span>
           </div>
           <div class="lvl-lang-body" ${expandedDefs[l.code] ? "" : "hidden"}>
             ${Object.keys(defs0).map((lvl) => `
               <div class="lvl-def-row">
                 <span class="cefr-level-badge">${lvl}</span>
-                <span>${defs0[lvl]}</span>
+                <span>${specifics[lvl] || defs0[lvl]}</span>
               </div>
             `).join("")}
           </div>
@@ -349,6 +376,7 @@ export function renderSettings(container, onChange) {
     body.querySelector("#defToggleAll").addEventListener("click", () => {
       const next = !allOpen;
       settings.langs.forEach((l) => { expandedDefs[l.code] = next; });
+      expandedDefs.__common = next;
       paintDefinitions(body, lang);
     });
   }

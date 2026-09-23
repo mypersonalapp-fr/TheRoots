@@ -3,15 +3,18 @@
 // orale et écrite, Expression écrite et orale, Traduction, Paramètres),
 // bouton retour, et routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260920i";
-import { renderSettings } from "./settings.js?v=20260920i";
-import { renderMesCours } from "./mes-cours.js?v=20260920i";
-import { renderComprehension } from "./comprehension.js?v=20260920i";
-import { renderExpression } from "./expression.js?v=20260920i";
-import { renderTraduction } from "./traduction.js?v=20260920i";
-import { renderDictionnaire } from "./dictionnaire.js?v=20260920i";
-import { store } from "../data/store.js?v=20260920i";
-import { t } from "../data/i18n.js?v=20260920i";
+import { renderDashboard } from "./dashboard.js?v=20260924b";
+import { renderSettings } from "./settings.js?v=20260924b";
+import { renderMesCours } from "./mes-cours.js?v=20260924b";
+import { renderComprehension } from "./comprehension.js?v=20260924b";
+import { renderExpression } from "./expression.js?v=20260924b";
+import { renderTraduction } from "./traduction.js?v=20260924b";
+import { renderDictionnaire } from "./dictionnaire.js?v=20260924b";
+import { renderConversation } from "./conversation.js?v=20260924b";
+import { mountMyWorld } from "./my-world.js?v=20260924b";
+import { renderCountry } from "./country.js?v=20260924b";
+import { store } from "../data/store.js?v=20260924b";
+import { t } from "../data/i18n.js?v=20260924b";
 
 function menuItems(lang) {
   return [
@@ -19,8 +22,10 @@ function menuItems(lang) {
     { id: "mes-cours", label: t("menu_mescours", lang), icon: "📚" },
     { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
     { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
+    { id: "conversation", label: t("menu_conversation", lang), icon: "💬" },
     { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },
     { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
+    { id: "my-world", label: t("menu_myworld", lang), icon: "🌍" },
     { id: "parametres", label: t("menu_parametres", lang), icon: "⚙️" },
   ];
 }
@@ -31,8 +36,10 @@ function titles(lang) {
     "mes-cours": t("title_mescours", lang),
     "comprehension": t("title_comprehension", lang),
     "expression": t("title_expression", lang),
+    "conversation": t("title_conversation", lang),
     "dictionnaire": t("title_dictionnaire", lang),
     "traduction": t("title_traduction", lang),
+    "my-world": t("title_myworld", lang),
     "parametres": t("title_parametres", lang),
   };
 }
@@ -100,19 +107,54 @@ export function renderShell(root) {
     setTimeout(() => { if (!drawer.classList.contains("open")) drawerBackdrop.hidden = true; }, 250);
   }
 
+  let renderedDay = new Date().toDateString();
+  // Le globe de My World tourne en continu : on l'arrête quand on quitte l'onglet.
+  let mwCleanup = null;
+  function stopMyWorld() { if (mwCleanup) { try { mwCleanup(); } catch (e) { /* rien */ } mwCleanup = null; } }
+  // My World › Royaume-Uni : Explorer ce pays / Mode Survie (écran plein, fond habituel).
+  function openCountry(countryId, mode) {
+    stopMyWorld();
+    el.classList.remove("is-myworld", "mw-night");
+    titleEl.textContent = countryId === "gb" ? "Royaume-Uni" : TITLES["my-world"];
+    body.innerHTML = "";
+    body.scrollTop = 0;
+    renderCountry(body, { countryId, mode, onBack: () => renderTab("my-world") });
+  }
   function renderTab(id) {
+    stopMyWorld();
+    body.onclick = null;
+    if (!TITLES[id]) id = "accueil";
     current = id;
+    renderedDay = new Date().toDateString();
+    // Chaque onglet s'ouvre en haut de page (la zone qui défile est
+    // .app-body, elle garderait sinon la position de l'onglet précédent).
+    body.scrollTop = 0;
+    try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) { /* rien */ }
     titleEl.textContent = TITLES[id];
+    // My World occupe tout l'écran (son propre fond jour/nuit) : on masque
+    // le fond habituel de la coquille le temps de l'onglet.
+    el.classList.toggle("is-myworld", id === "my-world");
+    el.classList.remove("mw-night");
     backBtn.style.visibility = id === "accueil" ? "hidden" : "visible";
     el.querySelectorAll(".nav-drawer-item").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
 
-    if (id === "accueil") renderDashboard(body, { onGoToCourses: () => renderTab("mes-cours") });
+    if (id === "accueil") renderDashboard(body, { onGoToCourses: () => renderTab("mes-cours"), onGoToTab: (tab) => renderTab(tab) });
     else if (id === "parametres") renderSettings(body, () => {});
     else if (id === "mes-cours") renderMesCours(body, root);
     else if (id === "comprehension") renderComprehension(body);
     else if (id === "expression") renderExpression(body);
+    else if (id === "conversation") renderConversation(body);
     else if (id === "dictionnaire") renderDictionnaire(body);
     else if (id === "traduction") renderTraduction(body);
+    else if (id === "my-world") {
+      body.innerHTML = "";
+      const topbar = el.querySelector(".app-topbar");
+      mountMyWorld(body, {
+        topOffset: topbar ? topbar.offsetHeight : 64,
+        onNightChange: (on) => { if (current === "my-world") el.classList.toggle("mw-night", on); },
+        onExplore: (countryId, mode) => openCountry(countryId, mode),
+      }).then((cleanup) => { if (current === "my-world" && el.classList.contains("is-myworld")) mwCleanup = cleanup; else if (cleanup) cleanup(); });
+    }
   }
 
   hamburgerBtn.addEventListener("click", openDrawer);
@@ -147,6 +189,16 @@ export function renderShell(root) {
     }
     touchStartX = null;
   }, { passive: true });
+
+  // Appli installée sur l'écran d'accueil : iOS la "réveille" sans la
+  // recharger, donc l'Accueil pouvait rester figé sur la date (et donc
+  // l'expression, la citation, la vidéo) du jour où il avait été affiché —
+  // c'est pour ça que "l'expression du jour" semblait ne plus changer. Au
+  // retour dans l'appli, si on a changé de jour, on réaffiche l'Accueil.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    if (current === "accueil" && new Date().toDateString() !== renderedDay) renderTab("accueil");
+  });
 
   // Si Paramètres a mémorisé un onglet avant un rechargement (ex. juste
   // après un changement de langue d'interface), on rouvre cet onglet-là au
