@@ -302,6 +302,33 @@
     .postmark{ display:none; }
     .memgrid{ gap:8px; }
   }
+  /* Images dégressives (24/09) */
+  .px-fig{ margin:10px 0 0; position:relative; border-radius:14px; overflow:hidden; background:var(--surface-2); }
+  .px-fig img{ display:block; width:100%; height:190px; object-fit:cover; }
+  .px-fig.px-scene img{ height:240px; }
+  .px-fallback{ display:none; padding:40px 12px; text-align:center; color:var(--muted); font-size:.85rem; }
+  .px-fig.px-missing img{ display:none; } .px-fig.px-missing .px-fallback{ display:block; }
+  .px-credit{ position:absolute; right:6px; bottom:6px; font-size:.62rem; color:#fff; background:rgba(0,0,0,.45); padding:2px 6px; border-radius:6px; }
+  .disc-grid{ display:flex; flex-direction:column; gap:12px; margin-top:12px; }
+  .disc-card{ display:block; width:100%; text-align:left; padding:0 0 10px; border:1px solid var(--line); border-radius:16px; background:var(--surface); cursor:pointer; font-family:inherit; color:var(--ink); box-shadow:var(--shadow); overflow:hidden; }
+  .disc-card .px-fig{ margin:0; border-radius:0; }
+  .disc-card .px-fig img{ height:150px; }
+  .disc-word{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:8px 14px 0; }
+  .disc-en{ font-weight:800; font-size:1.05rem; } .disc-fr{ color:var(--muted); font-size:.9rem; }
+  .disc-card.seen{ border-color:var(--good); }
+  .verb-photo{ display:flex; gap:12px; align-items:center; margin:8px 0 12px; }
+  .verb-photo .px-fig{ margin:0; width:44%; flex-shrink:0; } .verb-photo .px-fig img{ height:120px; }
+  .verb-photo-text{ display:flex; flex-direction:column; gap:4px; }
+  .say-line{ font-family:inherit; font-weight:800; font-size:.98rem; text-align:left; background:none; border:none; color:var(--ink); cursor:pointer; padding:0; }
+  .verb-photo-fr{ color:var(--muted); font-size:.88rem; } .verb-photo-note{ font-size:.75rem; color:var(--muted); font-style:italic; }
+  .desc-area{ width:100%; min-height:96px; margin-top:10px; font-family:inherit; font-size:.95rem; padding:12px; border-radius:12px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); resize:none; box-sizing:border-box; }
+  .desc-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .desc-actions .btn{ padding:10px 14px; font-size:.88rem; }
+  .desc-hint{ margin-top:10px; font-size:.85rem; background:var(--gold-soft); border-radius:10px; padding:9px 12px; line-height:1.45; }
+  .desc-result{ margin-top:12px; border:1px solid var(--line); border-radius:14px; padding:12px 14px; background:var(--surface); }
+  .desc-verdict{ font-weight:800; margin-bottom:6px; }
+  .desc-item{ font-size:.88rem; padding:2px 0; } .desc-item.ok{ color:var(--good); } .desc-item.ko{ color:var(--muted); }
+  .desc-model{ margin-top:10px; font-size:.9rem; line-height:1.45; }
 </style>
 </head>
 <body>
@@ -333,6 +360,7 @@
   <div class="hint" id="hint"></div>
 </div>
 
+<script src="js/data/lesson-images.js?v=20260924b"></script>
 <script>
 (function(){
 
@@ -594,6 +622,8 @@
     // Rappels intégrés (contrôle validé entre 80 et 92 %) : 2 questions des notions fragiles du
     // niveau précédent glissées dans le contrôle de chaque leçon du niveau suivant.
     if(!isGrandControle() && QUIZ) QUIZ = withRappels(QUIZ);
+    IMG = (!isGrandControle() && window.LESSON_IMAGES) ? (window.LESSON_IMAGES[state.lesson] || null) : null;
+    if(IMG && IMG.scene) LECTURE_SUBSTEPS += 1;
   }
 
   // =====================================================================
@@ -932,6 +962,159 @@
     try { sessionStorage.setItem("the_roots_last_tab", "accueil"); } catch(err){}
     window.location.href = "index.html";
   }
+
+  // ---------- IMAGES DÉGRESSIVES (validé le 23/09) ----------
+  // Vraies photos Pexels (js/data/lesson-images.js). Parcours d'une leçon :
+  // découverte en images → vocabulaire sans image → 1re phrase de conjugaison avec
+  // image puis sans → texte écouté d'abord SANS le lire (image pour vérifier, A1) →
+  // … → « Décris l'image » juste avant le contrôle.
+  var IMG = null;
+  function pxUrl(id, w){ return "https://images.pexels.com/photos/"+id+"/pexels-photo-"+id+".jpeg?auto=compress&cs=tinysrgb&w="+(w||800); }
+  function escAttr(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;"); }
+  function photoHtml(p, extraCls){
+    if(!p) return "";
+    return '<figure class="px-fig'+(extraCls ? " "+extraCls : "")+'"><img src="'+pxUrl(p.id)+'" alt="'+escAttr(p.alt)+'" loading="lazy" onerror="this.parentNode.classList.add(\'px-missing\')">' +
+      '<span class="px-fallback">🖼️ Photo indisponible (connexion ?)</span>' +
+      '<figcaption class="px-credit">Photo : '+escAttr(p.by)+' · Pexels</figcaption></figure>';
+  }
+  function discoverPending(){
+    return !!(IMG && IMG.discover && state.step === 1 && state.subStep === 0 && vocabBlockIdx === 0 && state.discoverSeen !== state.lesson);
+  }
+  function renderDiscover(){
+    screen.innerHTML =
+      '<div class="eyebrow">'+lessonLabel()+' · Découverte en images</div>' +
+      '<h2 class="screen-title">Regarde, écoute, retiens</h2>' +
+      '<p class="lede">Touche chaque photo pour entendre le mot. Juste après, tu retrouveras ces mots <b>sans image</b>.</p>' +
+      '<div class="disc-grid">' + IMG.discover.map(function(d, i){
+        return '<button class="disc-card" data-disc="'+i+'">' + photoHtml(d) +
+          '<span class="disc-word"><span class="disc-en">🔊 '+d.en+'</span><span class="disc-fr">'+d.fr+'</span></span></button>';
+      }).join("") + '</div>';
+    nextBtn.textContent = "Voir tout le vocabulaire";
+  }
+  function verbPhotoHtml(){
+    if(!IMG || !IMG.verb) return "";
+    return '<div class="verb-photo">' + photoHtml(IMG.verb) +
+      '<div class="verb-photo-text"><div class="sub-eyebrow" style="margin:0">Regarde l\'action</div>' +
+      '<button class="say-line" data-say="'+escAttr(IMG.verb.en)+'">🔊 '+IMG.verb.en+'</button>' +
+      '<div class="verb-photo-fr">'+IMG.verb.fr+'</div>' +
+      '<div class="verb-photo-note">Les phrases suivantes : sans image, à l\'oreille.</div></div></div>';
+  }
+  // Texte de lecture : on l'écoute d'abord sans le lire.
+  function earFirstHtml(blockHtml){
+    var shown = state.readShown === state.lesson;
+    var check = (state.lesson >= 0 && state.lesson <= 11 && IMG && IMG.check)
+      ? '<button class="btn btn-ghost" id="showCheck" style="margin-top:10px">🖼️ Vérifier avec l\'image</button>' +
+        '<div id="checkWrap" hidden>' + photoHtml(IMG.check) + '<p class="lede" style="margin-top:6px">'+IMG.check.caption+'</p></div>'
+      : "";
+    return (shown ? "" :
+        '<div class="why-inline"><span class="icon">🎧</span><div><b>Écoute d\'abord, sans lire.</b> Essaie de comprendre : qui ? où ? quoi ? Puis affiche le texte pour vérifier.</div></div>') +
+      '<button class="btn btn-ghost" id="readAll" style="margin:10px 0 6px">🔊 Écouter tout le texte</button>' +
+      (shown ? "" : '<button class="btn btn-primary" id="showText" style="margin:0 0 8px;display:block">📖 Afficher le texte</button>') +
+      '<div id="readingWrap"'+(shown ? "" : " hidden")+'>' +
+        '<div class="reading-block" id="readingBlock">'+blockHtml+'</div>' + check +
+      '</div>';
+  }
+  // « Décris l'image » : juste avant le contrôle de la leçon.
+  var descState = { lesson:null, text:"", hints:0, checked:false, recorded:false, usedMic:false };
+  function screenDescribe(){
+    if(descState.lesson !== state.lesson) descState = { lesson:state.lesson, text:"", hints:0, checked:false, recorded:false, usedMic:false };
+    var S = IMG.scene;
+    backBtn.style.visibility = "visible";
+    postmark.innerHTML = "DÉCRIS<br>L'IMAGE";
+    nextBtn.textContent = "Passer au contrôle";
+    hint.textContent = "";
+    screen.innerHTML =
+      '<div class="eyebrow">'+lessonLabel()+' · Décris l\'image</div>' +
+      '<h2 class="screen-title">Qu\'est-ce que tu vois ?</h2>' +
+      photoHtml(S, "px-scene") +
+      '<p class="lede">'+S.prompt+' <b>2 ou 3 phrases en anglais</b>, à l\'écrit ou au micro.</p>' +
+      '<textarea class="desc-area" id="descText" placeholder="There is… / There are… / They are…">'+escAttr(descState.text)+'</textarea>' +
+      '<div class="desc-actions">' +
+        (micSupported ? '<button class="btn btn-ghost" id="descMic">🎤 Dicter</button>' : "") +
+        '<button class="btn btn-ghost" id="descHint">💡 Un indice</button>' +
+        '<button class="btn btn-primary" id="descCheck" style="margin-left:0">✓ Vérifier</button>' +
+      '</div>' +
+      '<div id="descHints">'+descHintsHtml()+'</div>' +
+      '<div id="descResult">'+(descState.checked ? descResultHtml() : "")+'</div>';
+    var ta = document.getElementById("descText");
+    ta.addEventListener("input", function(){ descState.text = ta.value; });
+    document.getElementById("descHint").addEventListener("click", function(){
+      descState.hints = Math.min(3, descState.hints + 1);
+      document.getElementById("descHints").innerHTML = descHintsHtml();
+    });
+    document.getElementById("descCheck").addEventListener("click", function(){
+      descState.text = ta.value; descState.checked = true;
+      var r = descEvaluate();
+      if(!descState.recorded && descState.text.trim()){
+        descState.recorded = true;
+        recordSkill("ee", r.ratio >= 0.6);
+        if(descState.usedMic) recordSkill("eo", r.ratio >= 0.6);
+      }
+      document.getElementById("descResult").innerHTML = descResultHtml();
+    });
+    var mic = document.getElementById("descMic");
+    if(mic) mic.addEventListener("click", function(){
+      try {
+        window.speechSynthesis && window.speechSynthesis.cancel();
+        var rec = new SpeechRec();
+        rec.lang = state.variant === "us" ? "en-US" : "en-GB";
+        rec.interimResults = false; rec.maxAlternatives = 1;
+        mic.textContent = "🎙️ Je t'écoute…";
+        rec.onresult = function(e){
+          var said = e.results[0][0].transcript;
+          descState.usedMic = true;
+          descState.text = (ta.value.trim() ? ta.value.trim() + " " : "") + said.charAt(0).toUpperCase() + said.slice(1) + ".";
+          ta.value = descState.text;
+        };
+        rec.onend = function(){ mic.textContent = "🎤 Dicter"; };
+        rec.onerror = function(){ mic.textContent = "🎤 Dicter"; };
+        rec.start();
+      } catch(err){ mic.textContent = "🎤 Dicter"; }
+    });
+  }
+  function descHintsHtml(){
+    var S = IMG.scene, h = descState.hints;
+    if(!h) return "";
+    var out = '<div class="desc-hint"><b>Indice 1 — de quoi parler :</b> ' + S.keywords.map(function(k){ return k.label; }).join(" · ") + '</div>';
+    if(h >= 2) out += '<div class="desc-hint"><b>Indice 2 — des mots utiles :</b> ' + S.keywords.map(function(k){ return "<i>"+k.words[0]+"</i>"; }).join(", ") + '</div>';
+    if(h >= 3) out += '<div class="desc-hint"><b>Indice 3 — le début des phrases :</b> ' + S.model.split(/[.!?]\s+/).filter(Boolean).map(function(s){ return "<i>"+s.split(" ").slice(0, 3).join(" ")+"…</i>"; }).join(" ") + '</div>';
+    return out;
+  }
+  function descEvaluate(){
+    var txt = " " + (descState.text || "").toLowerCase().replace(/[^a-z' ]+/g, " ") + " ";
+    var res = IMG.scene.keywords.map(function(k){
+      return { label:k.label, met:k.words.some(function(w){ return txt.indexOf(" " + w.toLowerCase() + " ") >= 0 || txt.indexOf(" " + w.toLowerCase()) >= 0; }) };
+    });
+    var met = res.filter(function(x){ return x.met; }).length;
+    return { res:res, met:met, ratio: res.length ? met / res.length : 0 };
+  }
+  function descResultHtml(){
+    if(!(descState.text || "").trim()) return '<div class="desc-hint">Écris ou dicte au moins une phrase, puis touche « Vérifier ».</div>';
+    var r = descEvaluate();
+    var verdict = r.ratio >= 0.8 ? "Très complet, bravo !" : r.ratio >= 0.6 ? "Bien : l'essentiel y est." : r.ratio > 0 ? "C'est un début : ajoute ce qui manque." : "On ne retrouve pas encore les éléments de la photo.";
+    return '<div class="desc-result"><div class="desc-verdict">'+verdict+' ('+r.met+'/'+r.res.length+')</div>' +
+      r.res.map(function(x){ return '<div class="desc-item '+(x.met ? "ok" : "ko")+'">'+(x.met ? "✓" : "○")+' '+x.label+'</div>'; }).join("") +
+      '<div class="desc-model"><b>Exemple de réponse :</b> <button class="say-line" data-say="'+escAttr(IMG.scene.model)+'">🔊</button><br>'+IMG.scene.model+'</div>' +
+      '<div class="lede" style="margin-top:6px">Ta phrase peut être différente et juste : ce qui compte, c\'est de dire qui, où et ce qui se passe.</div></div>';
+  }
+  // Clics communs : 🔊 d'une phrase, cartes de découverte, texte et image de vérification.
+  document.addEventListener("click", function(e){
+    var say = e.target.closest && e.target.closest("[data-say]");
+    if(say){ speak(say.getAttribute("data-say")); return; }
+    var disc = e.target.closest && e.target.closest("[data-disc]");
+    if(disc && IMG && IMG.discover){ var d = IMG.discover[+disc.getAttribute("data-disc")]; disc.classList.add("seen"); if(d) speak(d.en); return; }
+    if(e.target.id === "showText"){
+      state.readShown = state.lesson;
+      var w = document.getElementById("readingWrap"); if(w) w.hidden = false;
+      e.target.remove();
+      var cue = screen.querySelector(".why-inline"); if(cue) cue.remove();
+      return;
+    }
+    if(e.target.id === "showCheck"){
+      var c = document.getElementById("checkWrap"); if(c) c.hidden = false;
+      e.target.remove();
+    }
+  });
 
   // ---------- Grand Contrôle de fin de niveau A1 ----------
   // Compréhension écrite+orale /15, Expression écrite+orale /15, Grammaire+vocabulaire+verbes /10
@@ -3189,6 +3372,7 @@
   }
 
   function renderVocab(){
+    if(discoverPending()) return renderDiscover();
     var blocks = vocabBlocks();
     if(vocabBlockIdx > blocks.length-1) vocabBlockIdx = blocks.length-1;
     if(vocabBlockIdx < 0) vocabBlockIdx = 0;
@@ -3653,6 +3837,7 @@
       '<div class="sub-eyebrow">Vocabulaire — au moins 10 mots</div>' +
       '<div class="pron-list" id="pronVocab"></div>' +
       '<div class="sub-eyebrow">'+META.pronLabel+'</div>' +
+      verbPhotoHtml() +
       '<div class="pron-list" id="pronVerbs"></div>';
     if(document.getElementById("micAllow")){
       document.getElementById("micAllow").addEventListener("click", function(){
@@ -3885,9 +4070,10 @@
     {en:"best friend", fr:"meilleur(e) ami(e)"}
   ];
   function screenLecture(){
+    if(IMG && IMG.scene && state.subStep === LECTURE_SUBSTEPS-1) return screenDescribe();
     backBtn.style.visibility = "visible";
     postmark.innerHTML = "LECTURE<br>+ AUDIO";
-    nextBtn.textContent = "Passer au contrôle";
+    nextBtn.textContent = (IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle";
     hint.textContent = "Touche une phrase pour l'écouter. Les mots soulignés en pointillés se traduisent au clic.";
     var blockHtml = buildReadingBlockHtml(READING);
     var glossHtml = (GLOSS && GLOSS.length)
@@ -3900,8 +4086,7 @@
       '<h2 class="screen-title">'+META.lectureTitle+'</h2>' +
       '<p class="lede">Un texte qui reprend uniquement le vocabulaire et la grammaire déjà vus dans cette leçon.</p>' +
       glossHtml +
-      '<button class="btn btn-ghost" id="readAll" style="margin-bottom:6px">🔊 Écouter tout le texte</button>' +
-      '<div class="reading-block" id="readingBlock">'+blockHtml+'</div>' +
+      earFirstHtml(blockHtml) +
       cultureNoteHtml() +
       videoPlaceholderHtml();
     wireReadingBlock(READING);
@@ -6043,6 +6228,7 @@
       render();
       return;
     }
+    if(discoverPending()){ state.discoverSeen = state.lesson; render(); return; }
     if(state.step === 1 && state.subStep === 0 && vocabBlockIdx < vocabBlocks().length-1){
       vocabBlockIdx++;
       render();
@@ -6091,6 +6277,9 @@
       vocabBlockIdx--;
       render();
       return;
+    }
+    if(state.step === 1 && state.subStep === 0 && IMG && IMG.discover && state.discoverSeen === state.lesson){
+      state.discoverSeen = null; render(); return;
     }
     if(state.step === 1 && state.subStep > 0){
       state.subStep--;
