@@ -14,7 +14,7 @@
 // et même format écrits directement par lessons.html (fichier séparé, qui
 // ne peut pas importer ce module) — garder les deux cohérents.
 
-import { AI_MAX_PER_DAY } from "./ai-config.js?v=20260924a";
+import { AI_MAX_PER_DAY } from "./ai-config.js?v=20260924b";
 
 const KEY = "the_roots_ai_v1";
 
