@@ -5,7 +5,7 @@
 // déploiement — du style "https://the-roots-ia.ton-compte.workers.dev".
 // Tant que c'est vide, l'onglet Conversation IA explique simplement que
 // l'IA n'est pas encore branchée (rien ne plante).
-export const AI_RELAY_URL = "";
+export const AI_RELAY_URL = "https://the-roots-ia.ashleymubama.workers.dev";
 
 // Nombre maximum de conversations par jour (les conversations débloquées
 // et non utilisées restent en réserve pour les jours suivants).
