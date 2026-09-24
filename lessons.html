@@ -360,7 +360,7 @@
   <div class="hint" id="hint"></div>
 </div>
 
-<script src="js/data/lesson-images.js?v=20260924b"></script>
+<script src="js/data/lesson-images.js?v=20260924e"></script>
 <script>
 (function(){
 
@@ -641,6 +641,23 @@
   // compétence sous 50 % déclenche un renfort, même si la moyenne est bonne.
   // =====================================================================
   var CREATOR_MODE = true; // miroir de js/data/dev-config.js : délai de 7 jours désactivé, renforts sautables
+
+  // Garde-fou (24/09, suite au retour d'Ashley : "pourquoi j'ai accès aux
+  // cours sans avoir fait le test ?") — lessons.html ne doit jamais rester
+  // ouvert pour l'anglais tant que le test de niveau n'a pas été passé
+  // (leveled=false), même en cas d'accès direct qui contourne la garde de
+  // Mes cours : lien direct, "Mission du jour" ou "J'ai 5 minutes" sur
+  // l'Accueil, qui pointaient jusqu'ici droit vers lessons.html sans
+  // vérifier le niveau. Mode créatrice = accès libre pour tester.
+  if(!CREATOR_MODE){
+    try {
+      var __store = JSON.parse(localStorage.getItem("the_roots_store_v1") || "null");
+      var __enLang = __store && __store.settings && __store.settings.langs &&
+        __store.settings.langs.find(function(l){ return l.code === "en"; });
+      if(!__enLang || !__enLang.leveled){ window.location.href = "index.html"; return; }
+    } catch(e){}
+  }
+
   var K_SKILLS = "the_roots_skills_v1", K_CTRL = "the_roots_controls_v1", K_ERR = "the_roots_errors_v1",
       K_PASS = "the_roots_lesson_passes_v1", K_BOOST = "the_roots_boosts_v1";
   var LANG = "en";
