@@ -8,7 +8,7 @@
 // sa propre copie des petites fonctions d'écriture (voir le bloc
 // "CONTRÔLES A1 / A2 / FINAL" dans lessons.html).
 
-import { store } from "./store.js?v=20260924f";
+import { store } from "./store.js?v=20260924g";
 
 const K_SKILLS = "the_roots_skills_v1";
 const K_CTRL = "the_roots_controls_v1";
