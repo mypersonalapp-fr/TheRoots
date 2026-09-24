@@ -2,14 +2,15 @@
 // démarrage (racines + bonjour → nom de l'appli) → menu (inscription /
 // connexion / mot de passe oublié) → coquille de l'application.
 
-import { store } from "./data/store.js?v=20260924b";
-import { renderSplash } from "./screens/splash.js?v=20260924b";
-import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924b";
-import { renderLogin } from "./screens/login.js?v=20260924b";
-import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924b";
-import { renderShell } from "./screens/shell.js?v=20260924b";
-import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924b";
-import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924b";
+import { store } from "./data/store.js?v=20260924e";
+import { renderSplash } from "./screens/splash.js?v=20260924e";
+import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924e";
+import { renderLogin } from "./screens/login.js?v=20260924e";
+import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924e";
+import { renderShell } from "./screens/shell.js?v=20260924e";
+import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924e";
+import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924e";
+import { renderOnboarding, hasSeenOnboarding } from "./screens/onboarding.js?v=20260924e";
 
 const root = document.getElementById("app");
 
@@ -49,7 +50,19 @@ function isUnlockedThisSession() {
 function enterApp() {
   const { settings } = store.get();
   if (!settings.primaryLearningLang) {
-    renderChooseLanguage(root, { onDone: () => renderShell(root) });
+    renderChooseLanguage(root, { onDone: () => enterShellMaybeOnboarding() });
+  } else {
+    enterShellMaybeOnboarding();
+  }
+}
+
+// Tutoriel de première connexion (validé sur maquette le 23/09) : montré
+// une seule fois, juste après le choix de la langue apprise principale
+// (ou dès la prochaine ouverture si elle était déjà choisie), jamais
+// ensuite — revisitable à la main depuis Réglages > Aide & FAQ.
+function enterShellMaybeOnboarding() {
+  if (!hasSeenOnboarding()) {
+    renderOnboarding(root, { onDone: () => renderShell(root) });
   } else {
     renderShell(root);
   }
@@ -64,18 +77,23 @@ function showAuthMenu() {
 }
 
 function start() {
+  // Si l'appli a déjà été déverrouillée pendant cette même ouverture (ex.
+  // retour depuis lessons.html via "‹ Retour à l'app", qui recharge
+  // index.html — ou juste après connexion, ou après un rechargement
+  // déclenché par un changement dans Paramètres), on saute complètement
+  // l'écran de démarrage (racines + "Hello/Bonjour/Hola...") : il ne doit
+  // s'afficher qu'à une VRAIE réouverture de l'appli, pas à chaque retour
+  // à l'Accueil. Avant ce correctif (retour d'Ashley le 23/09 : "pourquoi
+  // à chaque que je reviens en arrière il y'a hello et tout ?"), le splash
+  // était toujours affiché en premier, et ce n'est qu'ensuite qu'on
+  // vérifiait si on était déjà déverrouillé — trop tard, l'animation avait
+  // déjà tourné.
+  if (store.isLoggedIn() && isUnlockedThisSession()) {
+    enterApp();
+    return;
+  }
   renderSplash(root, () => {
     if (store.isLoggedIn()) {
-      // Si l'appli a déjà été déverrouillée pendant cette même ouverture
-      // (ex. juste après connexion, ou après un rechargement déclenché par
-      // un changement dans Paramètres comme la langue de l'interface), on
-      // n'a pas à redemander Face ID ni le mot de passe une deuxième fois —
-      // sessionStorage garde ce drapeau tant que l'appli reste ouverte, et
-      // c'est seulement à une VRAIE réouverture qu'il redevient absent.
-      if (isUnlockedThisSession()) {
-        enterApp();
-        return;
-      }
       const faceId = store.getFaceId();
       if (faceId.enabled && faceId.credentialId) {
         renderFaceIdLock(root, {
