@@ -2,15 +2,15 @@
 // démarrage (racines + bonjour → nom de l'appli) → menu (inscription /
 // connexion / mot de passe oublié) → coquille de l'application.
 
-import { store } from "./data/store.js?v=20260924g";
-import { renderSplash } from "./screens/splash.js?v=20260924g";
-import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924g";
-import { renderLogin } from "./screens/login.js?v=20260924g";
-import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924g";
-import { renderShell } from "./screens/shell.js?v=20260924g";
-import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924g";
-import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924g";
-import { renderOnboarding, hasSeenOnboarding } from "./screens/onboarding.js?v=20260924g";
+import { store } from "./data/store.js?v=20260924h";
+import { renderSplash } from "./screens/splash.js?v=20260924h";
+import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924h";
+import { renderLogin } from "./screens/login.js?v=20260924h";
+import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924h";
+import { renderShell } from "./screens/shell.js?v=20260924h";
+import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924h";
+import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924h";
+import { renderOnboarding, hasSeenOnboarding } from "./screens/onboarding.js?v=20260924h";
 
 const root = document.getElementById("app");
 
@@ -102,8 +102,21 @@ function start() {
           onUsePassword: () => { store.logout(); showAuthMenu(); },
         });
       } else {
-        // Appli rouverte après une vraie fermeture, sans Face ID activé :
-        // on redemande le mot de passe avant d'entrer.
+        // "Rester connecté sans mot de passe" (24/09, Paramètres > Sécurité) :
+        // si activé et pas encore expiré (30 jours par défaut), on saute la
+        // reconnexion complètement, sans pour autant activer Face ID. Passé
+        // le délai, le réglage expire tout seul et on redemande le mot de
+        // passe normalement, comme avant.
+        const passwordSkip = store.getPasswordSkip();
+        if (passwordSkip.enabled && passwordSkip.until && Date.now() < passwordSkip.until) {
+          markUnlockedThisSession();
+          enterApp();
+          return;
+        }
+        if (passwordSkip.enabled) store.disablePasswordSkip();
+        // Appli rouverte après une vraie fermeture, sans Face ID activé et
+        // sans "rester connecté" actif : on redemande le mot de passe avant
+        // d'entrer.
         const { session } = store.get();
         renderLogin(root, {
           mode: "reconnect",
