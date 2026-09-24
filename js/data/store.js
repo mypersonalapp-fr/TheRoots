@@ -15,7 +15,13 @@ const KEY = "the_roots_store_v1";
 function defaultData() {
   return {
     session: null, // { email }
-    faceId: { enabled: false, credentialId: null },
+    faceId: { enabled: false, credentialId: null, declined: false },
+    // "Rester connecté sans mot de passe" (24/09, demandé par Ashley) : si
+    // activé, jusqu'à quelle date (timestamp ms) l'appli peut sauter
+    // l'écran "Reconnecte-toi" à une vraie réouverture, sans pour autant
+    // activer Face ID. Indépendant de Face ID — les deux peuvent être actifs
+    // en même temps, Face ID prenant alors le dessus (voir app.js).
+    passwordSkip: { enabled: false, until: null },
     settings: {
       theme: "light",
       interfaceLang: "fr",
@@ -162,9 +168,36 @@ export const store = {
   },
   disableFaceId() {
     const data = load();
-    data.faceId = { enabled: false, credentialId: null };
+    data.faceId = { enabled: false, credentialId: null, declined: data.faceId?.declined || false };
     save(data);
     return data.faceId;
+  },
+  // L'apprenti a répondu "Plus tard" à la proposition Face ID (voir
+  // login.js) — on ne la reproposera plus à chaque connexion, seulement
+  // depuis Paramètres > Sécurité si l'apprenti veut l'activer plus tard.
+  declineFaceIdOffer() {
+    const data = load();
+    data.faceId = { ...data.faceId, declined: true };
+    save(data);
+    return data.faceId;
+  },
+  // "Rester connecté sans mot de passe" pendant N jours (par défaut 30,
+  // voir Paramètres > Sécurité) : au bout de N jours, la date "until" est
+  // dépassée et l'appli redemande une reconnexion normale (voir app.js).
+  getPasswordSkip() {
+    return load().passwordSkip || { enabled: false, until: null };
+  },
+  enablePasswordSkip(days = 30) {
+    const data = load();
+    data.passwordSkip = { enabled: true, until: Date.now() + days * 24 * 3600 * 1000 };
+    save(data);
+    return data.passwordSkip;
+  },
+  disablePasswordSkip() {
+    const data = load();
+    data.passwordSkip = { enabled: false, until: null };
+    save(data);
+    return data.passwordSkip;
   },
   updateSettings(patch) {
     const data = load();
