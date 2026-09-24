@@ -929,3 +929,18 @@
 .mc-mission:first-of-type{ border-top: none; }
 .mc-mission .dot{ width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
 .mc-livret-tabs{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+
+/* --- Aide & FAQ : accordéon des questions fréquentes (24/09) --- */
+.faq-list{ display: flex; flex-direction: column; gap: 8px; }
+.faq-item{
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 14px;
+}
+.faq-item-q{
+  font-weight: 800; font-size: 13.5px; cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.faq-item-q::-webkit-details-marker{ display: none; }
+.faq-item-q::after{ content: "+"; font-size: 18px; font-weight: 700; color: var(--ink-soft); flex-shrink: 0; }
+.faq-item[open] .faq-item-q::after{ content: "–"; }
+.faq-item-a{ font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-top: 8px; }
