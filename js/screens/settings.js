@@ -6,9 +6,9 @@
 // "Mon niveau actuel" ne vit plus ici : il est désormais dans Mes cours,
 // par langue, avec le "Niveau d'entrée" gardé en référence permanente.
 
-import { store } from "../data/store.js?v=20260924g";
-import { t, langName } from "../data/i18n.js?v=20260924g";
-import { webauthn } from "../data/webauthn.js?v=20260924g";
+import { store } from "../data/store.js?v=20260924j";
+import { t, langName, formatDate } from "../data/i18n.js?v=20260924j";
+import { webauthn } from "../data/webauthn.js?v=20260924j";
 
 const APP_VERSION = "1.2";
 
@@ -385,8 +385,10 @@ export function renderSettings(container, onChange) {
   // pour l'adresse e-mail et pour le mot de passe (pas un seul formulaire
   // combiné) — plus la déconnexion. ---
   function paintSecurite() {
-    const { session, settings, faceId } = store.get();
+    const { session, settings, faceId, passwordSkip } = store.get();
     const lang = settings.interfaceLang;
+    const skipActive = passwordSkip.enabled && passwordSkip.until && Date.now() < passwordSkip.until;
+    const skipUntilLabel = skipActive ? formatDate(passwordSkip.until, lang) : "";
     container.innerHTML = `
       ${backRow(t("title_parametres", lang))}
       <div class="card">
@@ -438,6 +440,15 @@ export function renderSettings(container, onChange) {
         ${!faceId.enabled ? `<p style="font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:8px 0 0">${t("sec_faceid_hint", lang)}</p>` : ""}
         ${faceidMsg ? `<div class="lt-cloze-fb" style="margin-top:8px"><span class="${faceidMsg.ok ? 'lt-ok' : 'lt-bad'}">${faceidMsg.text}</span></div>` : ""}
 
+        <div class="sec-row" style="margin-top:18px">
+          <div>
+            <div class="sec-row-label">${t("sec_password_skip_label", lang)}</div>
+            <div class="sec-row-value">${skipActive ? t("sec_password_skip_on", lang, { date: skipUntilLabel }) : t("sec_password_skip_off", lang)}</div>
+          </div>
+          <button class="mc-variant-change" id="togglePasswordSkip">${skipActive ? t("sec_password_skip_disable_btn", lang) : t("sec_password_skip_enable_btn", lang)}</button>
+        </div>
+        <p style="font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin:8px 0 0">${t("sec_password_skip_hint", lang)}</p>
+
         <button class="btn btn-ghost" id="logoutBtn" style="width:100%;margin-top:22px;color:var(--pop);border-color:var(--pop)">${t("set_logout", lang)}</button>
       </div>
     `;
@@ -469,6 +480,15 @@ export function renderSettings(container, onChange) {
         faceidMsg = { ok: true, text: t("sec_faceid_enabled_msg", lang) };
       } else {
         faceidMsg = { ok: false, text: t("sec_faceid_failed", lang) };
+      }
+      paintSecurite();
+    });
+
+    container.querySelector("#togglePasswordSkip").addEventListener("click", () => {
+      if (skipActive) {
+        store.disablePasswordSkip();
+      } else {
+        store.enablePasswordSkip(30);
       }
       paintSecurite();
     });

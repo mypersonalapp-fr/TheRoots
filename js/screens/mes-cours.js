@@ -8,17 +8,17 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260924g";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924g";
-import { renderLevelTest } from "./level-test.js?v=20260924g";
-import { t, formatDate } from "../data/i18n.js?v=20260924g";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924g";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924g";
-import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS } from "../data/programme-b1-en.js?v=20260924g";
-import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS } from "../data/programme-b2-en.js?v=20260924g";
-import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924g";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924g";
-import { plantSvg } from "./plant.js?v=20260924g";
+import { store } from "../data/store.js?v=20260924j";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
+import { renderLevelTest } from "./level-test.js?v=20260924j";
+import { t, formatDate } from "../data/i18n.js?v=20260924j";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924j";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924j";
+import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS } from "../data/programme-b1-en.js?v=20260924j";
+import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS } from "../data/programme-b2-en.js?v=20260924j";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924j";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924j";
+import { plantSvg } from "./plant.js?v=20260924j";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;
