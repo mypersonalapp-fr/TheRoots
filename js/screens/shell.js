@@ -1,52 +1,73 @@
 // The Roots — coquille principale : menu hamburger (haut à gauche) ouvrant
-// un panneau de navigation à 6 entrées (Accueil, Mes cours, Compréhension
-// orale et écrite, Expression écrite et orale, Traduction, Paramètres),
-// bouton retour, et routage entre les onglets.
+// un tiroir de navigation rangé en 4 sections (validé sur maquette le
+// 23/09) — Apprendre, Ressources, Explorer, Réglages —, bouton retour, et
+// routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260924b";
-import { renderSettings } from "./settings.js?v=20260924b";
-import { renderMesCours } from "./mes-cours.js?v=20260924b";
-import { renderComprehension } from "./comprehension.js?v=20260924b";
-import { renderExpression } from "./expression.js?v=20260924b";
-import { renderTraduction } from "./traduction.js?v=20260924b";
-import { renderDictionnaire } from "./dictionnaire.js?v=20260924b";
-import { renderConversation } from "./conversation.js?v=20260924b";
-import { mountMyWorld } from "./my-world.js?v=20260924b";
-import { renderCountry } from "./country.js?v=20260924b";
-import { store } from "../data/store.js?v=20260924b";
-import { t } from "../data/i18n.js?v=20260924b";
+import { renderDashboard } from "./dashboard.js?v=20260924e";
+import { renderSettings } from "./settings.js?v=20260924e";
+import { renderMesCours } from "./mes-cours.js?v=20260924e";
+import { renderMesArbres } from "./mes-arbres.js?v=20260924e";
+import { renderComprehension } from "./comprehension.js?v=20260924e";
+import { renderExpression } from "./expression.js?v=20260924e";
+import { renderTraduction } from "./traduction.js?v=20260924e";
+import { renderDictionnaire } from "./dictionnaire.js?v=20260924e";
+import { renderConversation } from "./conversation.js?v=20260924e";
+import { renderBibliotheque } from "./bibliotheque.js?v=20260924e";
+import { renderAideFaq } from "./aide-faq.js?v=20260924e";
+import { mountMyWorld } from "./my-world.js?v=20260924e";
+import { renderCountry } from "./country.js?v=20260924e";
+import { store } from "../data/store.js?v=20260924e";
+import { t } from "../data/i18n.js?v=20260924e";
 
-function menuItems(lang) {
+// Structure du tiroir : "Accueil" seul en haut, puis 4 sections. Les noms
+// de "Conversation" (avant "Conversation IA") et de la section
+// "Ressources" restent à confirmer avec Ashley (voir badge "à valider"
+// dans la maquette) — faciles à renommer ensuite, juste une clé i18n.
+function menuSections(lang) {
   return [
-    { id: "accueil", label: t("menu_accueil", lang), icon: "🏠" },
-    { id: "mes-cours", label: t("menu_mescours", lang), icon: "📚" },
-    { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
-    { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
-    { id: "conversation", label: t("menu_conversation", lang), icon: "💬" },
-    { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },
-    { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
-    { id: "my-world", label: t("menu_myworld", lang), icon: "🌍" },
-    { id: "parametres", label: t("menu_parametres", lang), icon: "⚙️" },
+    { items: [{ id: "accueil", label: t("menu_accueil", lang), icon: "🏠" }] },
+    { title: t("menu_section_apprendre", lang), items: [
+      { id: "mes-arbres", label: t("menu_mesarbres", lang), icon: "🌳" },
+      { id: "mes-cours", label: t("menu_mescours", lang), icon: "📚" },
+      { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
+      { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
+      { id: "conversation", label: t("menu_conversation", lang), icon: "💬" },
+    ] },
+    { title: t("menu_section_ressources", lang), items: [
+      { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },
+      { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
+      { id: "bibliotheque", label: t("menu_bibliotheque", lang), icon: "📖", badge: t("menu_badge_new", lang) },
+    ] },
+    { title: t("menu_section_explorer", lang), items: [
+      { id: "my-world", label: t("menu_myworld", lang), icon: "🌍" },
+    ] },
+    { title: t("menu_section_reglages", lang), items: [
+      { id: "parametres", label: t("menu_parametres", lang), icon: "⚙️" },
+      { id: "aide", label: t("menu_aide", lang), icon: "❓", badge: t("menu_badge_new", lang) },
+    ] },
   ];
 }
 
 function titles(lang) {
   return {
     "accueil": "The Roots",
+    "mes-arbres": t("title_mesarbres", lang),
     "mes-cours": t("title_mescours", lang),
     "comprehension": t("title_comprehension", lang),
     "expression": t("title_expression", lang),
     "conversation": t("title_conversation", lang),
     "dictionnaire": t("title_dictionnaire", lang),
     "traduction": t("title_traduction", lang),
+    "bibliotheque": t("title_bibliotheque", lang),
     "my-world": t("title_myworld", lang),
     "parametres": t("title_parametres", lang),
+    "aide": t("title_aide", lang),
   };
 }
 
 export function renderShell(root) {
   const lang = store.get().settings.interfaceLang;
-  const MENU_ITEMS = menuItems(lang);
+  const SECTIONS = menuSections(lang);
   const TITLES = titles(lang);
   const el = document.createElement("div");
   el.className = "screen app-shell";
@@ -73,12 +94,15 @@ export function renderShell(root) {
         <button class="nav-drawer-close" id="navClose" aria-label="${t("aria_close_menu", lang)}">✕</button>
       </div>
       <div class="nav-drawer-items">
-        ${MENU_ITEMS.map(mi => `
-          <button class="nav-drawer-item" data-tab="${mi.id}">
-            <span class="nav-drawer-icon">${mi.icon}</span>
-            <span class="nav-drawer-label">${mi.label}</span>
-            <span class="nav-drawer-chev">›</span>
-          </button>`).join("")}
+        ${SECTIONS.map(sec => `
+          ${sec.title ? `<div class="nav-drawer-section">${sec.title}</div>` : ""}
+          ${sec.items.map(mi => `
+            <button class="nav-drawer-item" data-tab="${mi.id}">
+              <span class="nav-drawer-icon">${mi.icon}</span>
+              <span class="nav-drawer-label">${mi.label}${mi.badge ? `<span class="nav-drawer-badge">${mi.badge}</span>` : ""}</span>
+              <span class="nav-drawer-chev">›</span>
+            </button>`).join("")}
+        `).join("")}
       </div>
     </nav>
   `;
@@ -139,6 +163,7 @@ export function renderShell(root) {
     el.querySelectorAll(".nav-drawer-item").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
 
     if (id === "accueil") renderDashboard(body, { onGoToCourses: () => renderTab("mes-cours"), onGoToTab: (tab) => renderTab(tab) });
+    else if (id === "mes-arbres") renderMesArbres(body, { onGoToCourses: () => renderTab("mes-cours") });
     else if (id === "parametres") renderSettings(body, () => {});
     else if (id === "mes-cours") renderMesCours(body, root);
     else if (id === "comprehension") renderComprehension(body);
@@ -146,6 +171,8 @@ export function renderShell(root) {
     else if (id === "conversation") renderConversation(body);
     else if (id === "dictionnaire") renderDictionnaire(body);
     else if (id === "traduction") renderTraduction(body);
+    else if (id === "bibliotheque") renderBibliotheque(body);
+    else if (id === "aide") renderAideFaq(body);
     else if (id === "my-world") {
       body.innerHTML = "";
       const topbar = el.querySelector(".app-topbar");

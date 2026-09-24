@@ -26,8 +26,12 @@ export function plantSvg(stage, { w = 120, h = 150, roots = true, grow = 0 } = {
     }
   }
   if (stage === 0) {
-    p.push(`<ellipse cx="${f(cx)}" cy="${f(gy + 4)}" rx="7" ry="5" fill="#9b6b3f"/>`);
-    p.push(`<path d="M${f(cx)} ${f(gy)} q2 -6 6 -8" stroke="#5fae62" stroke-width="2" fill="none" stroke-linecap="round"/>`);
+    // Graine bien enterrée (retour d'Ashley le 23/09 : "la graine doit
+    // être sous terre déjà et pas énorme") — avant, l'ellipse dépassait
+    // encore un peu au-dessus de la ligne du sol et était trop grosse ;
+    // elle est maintenant petite et entièrement sous la ligne du sol.
+    p.push(`<ellipse cx="${f(cx)}" cy="${f(gy + 7)}" rx="5" ry="3.5" fill="#9b6b3f"/>`);
+    p.push(`<path d="M${f(cx)} ${f(gy)} q2 -5 5 -7" stroke="#5fae62" stroke-width="1.6" fill="none" stroke-linecap="round"/>`);
   } else {
     const th = [0, 22, 38, 52, 62, 72, 80][stage] * (h / 150);
     const tw = [0, 2, 3, 5, 7, 9, 11][stage] * (w / 120);

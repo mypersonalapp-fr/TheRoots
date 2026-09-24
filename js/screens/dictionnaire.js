@@ -24,8 +24,8 @@
 // pas), on retombe automatiquement sur l'ancien dictionnaire
 // (dictionaryapi.dev, définitions dans la langue apprise).
 
-import { store } from "../data/store.js?v=20260924b";
-import { t, langName } from "../data/i18n.js?v=20260924b";
+import { store } from "../data/store.js?v=20260924e";
+import { t, langName } from "../data/i18n.js?v=20260924e";
 
 // Nos codes de langue (en/es/pt) vers les codes attendus par l'API.
 const API_LANG = { en: "en", es: "es", pt: "pt-BR" };

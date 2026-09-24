@@ -1,13 +1,13 @@
-// The Roots — onglet Accueil : date/heure, mes arbres (une plante par
-// langue), « J'ai 5 minutes » (avec la question culture), mission du jour,
-// et 3 petites cartes qui s'ouvrent : expression, vidéo, citation du jour.
+// The Roots — onglet Accueil, 2 états (voir renderDashboard plus bas) :
+// avant le test de niveau (carte "Test de niveau" visible) et après
+// (remplacée par "J'ai 5 minutes" / "Mission du jour" juste après la
+// date). "Mes arbres" a déménagé dans le menu (voir mes-arbres.js).
 
-import { store } from "../data/store.js?v=20260924b";
-import { t } from "../data/i18n.js?v=20260924b";
-import { langGrowth, dueMissions } from "../data/progress.js?v=20260924b";
-import { aiCredits } from "../data/ai-credits.js?v=20260924b";
-import { plantSvg } from "./plant.js?v=20260924b";
-import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260924b";
+import { store } from "../data/store.js?v=20260924e";
+import { t } from "../data/i18n.js?v=20260924e";
+import { dueMissions } from "../data/progress.js?v=20260924e";
+import { aiCredits } from "../data/ai-credits.js?v=20260924e";
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260924e";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
@@ -165,12 +165,18 @@ const GROUP_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const VARIANT_FLAGS = { "en-gb": "🇬🇧", "en-us": "🇺🇸", "es-co": "🇨🇴", "es-es": "🇪🇸", "pt-br": "🇧🇷", "pt-pt": "🇵🇹" };
 const flagOf = (l) => VARIANT_FLAGS[l.selectedVariant] || GROUP_FLAGS[l.code] || "";
 
-// Accueil (validé sur maquette le 23/09) — volontairement léger :
-// 1. mes arbres (une plante par langue, qui grandit avec le niveau) ;
-// 2. deux boutons : « J'ai 5 minutes » et « Mission du jour » ;
-// 3. expression / vidéo / citation du jour en 3 PETITES cartes qui
-//    s'ouvrent quand on les touche.
-// La question culture est rangée dans « J'ai 5 minutes ».
+// Accueil (validé sur maquette le 23/09, message vocal ~23h) — 2 états :
+// 1. AVANT le test de niveau : Test de niveau | Question culture (en
+//    paire), puis Expression du jour (pleine largeur), puis J'ai 5 minutes
+//    | Mission du jour (en paire), puis Citation du jour, puis Vidéo du
+//    jour (pleines largeurs).
+// 2. APRÈS le test de niveau (dès qu'il n'y a plus aucune langue en
+//    attente de test) : la carte Test de niveau disparaît, J'ai 5 minutes
+//    | Mission du jour remonte juste après la date, puis Question culture,
+//    Expression du jour, Citation du jour, Vidéo du jour, chacune pleine
+//    largeur, dans cet ordre.
+// Plus de bloc "Mes arbres" ici (déplacé dans le menu, voir shell.js) —
+// Ashley ne l'a pas redemandé sur l'Accueil dans la version finale.
 export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
   let view = "home";
   paint();
@@ -191,38 +197,46 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
     const quote = pickDaily(QUOTES);
     const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
     const leveledLangs = settings.langs.filter((l) => l.leveled);
-    const quoteLangs = leveledLangs.length ? leveledLangs : settings.langs.filter((l) => l.code === learnLang);
+    const quoteLang = leveledLangs.find((l) => l.code === learnLang) || leveledLangs[0] || settings.langs.find((l) => l.code === learnLang);
     const due = dueMissions("en");
+    const culture = pickDaily(CULTURE_QUESTIONS_EN);
+    // Langues qui n'ont pas encore de test de niveau fait — affichées dans
+    // la carte "Test de niveau" tant qu'elle est là.
+    const pendingTests = settings.langs.filter((l) => !l.leveled);
+    // On bascule dans l'état "après" (carte Test de niveau disparue) dès
+    // que la langue apprise PRINCIPALE a son test fait — pas seulement
+    // quand les 3 langues (anglais/espagnol/portugais) le sont : sinon la
+    // carte ne disparaîtrait jamais pour quelqu'un qui n'apprend qu'une
+    // seule langue, ce qui n'est pas ce qu'Ashley a demandé ("une fois que
+    // le test est passé... cette case-là disparaît").
+    const primaryLang = settings.langs.find((l) => l.code === settings.primaryLearningLang)
+      || settings.langs.find((l) => l.code === "en");
+    const showTestCard = !primaryLang || !primaryLang.leveled;
 
-    const trees = settings.langs.map((l) => {
-      const g = langGrowth(l.code);
-      const status = g.stage === 0
-        ? `${t("stage_0", lang)} · ${t("stage_test", lang)}`
-        : `${t("stage_" + g.stage, lang)} · ${g.level}`;
-      return `
-        <button class="card dash-tree clickable" data-goto-courses="1">
-          ${plantSvg(g.stage, { w: 64, h: 78, grow: g.pct / 100 })}
-          <div class="dash-tree-lang">${flagOf(l)} ${l.label}</div>
-          <div class="dash-tree-status">${status}</div>
-          ${g.stage > 0 ? `<div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${g.pct}%"></div></div>` : ""}
-        </button>`;
-    }).join("");
+    const testCardHtml = `
+      <div class="card dash-half">
+        <h3 class="dash-card-h3">${t("dash_test_title", lang)}</h3>
+        <div class="dash-test-sub">${t("dash_test_choose", lang)}</div>
+        <div class="dash-test-list">
+          ${pendingTests.map((l) => `<button type="button" class="dash-test-row" data-goto-courses="1">${flagOf(l)} ${l.label} →</button>`).join("")}
+        </div>
+      </div>`;
 
-    container.innerHTML = `
-      <div class="dash-date">${date} · <strong>${time}</strong></div>
+    const cultureCardHtml = `
+      <div class="card dash-half dash-culture-card">
+        <h3 class="dash-card-h3">${t("dash_culture_label", lang)} · 🇬🇧</h3>
+        <div class="dash-culture-text">${esc(culture.question)}</div>
+        <div class="dash-culture-answer">${esc(culture.answer)}</div>
+      </div>`;
 
-      <div class="dash-box">
-        <h3>${t("dash_trees_title", lang)}</h3>
-        <div class="dash-trees">${trees}</div>
-      </div>
-
-      <div class="dash-actions">
-        <button class="dash-five" id="dashFive">
+    const fiveMissionRowHtml = `
+      <div class="dash-row">
+        <button type="button" class="card dash-half dash-five" id="dashFive">
           <span class="dash-five-icon">⏱️</span>
           <span class="dash-five-title">${t("dash_5min", lang)}</span>
           <span class="dash-five-sub">${t("dash_5min_sub", lang)}</span>
         </button>
-        <button class="card dash-mission clickable" id="dashMission">
+        <button type="button" class="card dash-half dash-mission clickable" id="dashMission">
           <span class="dash-mission-label">${t("dash_mission_label", lang)}</span>
           ${due.length
             ? `<span class="dash-mission-title">${t("dash_mission_min", lang, { title: esc(due[0].title) })}</span>
@@ -230,59 +244,83 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
             : `<span class="dash-mission-title">${t("dash_mission_none", lang)}</span>
                <span class="dash-mission-sub">${t("dash_mission_none_sub", lang)}</span>`}
         </button>
-      </div>
+      </div>`;
 
-      <details class="card dash-mini">
-        <summary><span class="dash-mini-label">${t("dash_expression_title", lang)} · ${learnLabel}</span><span class="dash-mini-line">${esc(expr.text)}</span></summary>
-        <div class="dash-mini-body">
-          <div style="color:var(--accent);font-weight:700">${esc(expr.fr)}</div>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:6px">${esc(expr.note)}</div>
-        </div>
-      </details>
+    const exprCardHtml = `
+      <div class="card dash-expr-card">
+        <h3 class="dash-card-h3">${t("dash_expression_title", lang)} · ${learnLabel}</h3>
+        <div class="dash-expr-text">${esc(expr.text)}</div>
+        <div class="dash-expr-fr">${esc(expr.fr)}</div>
+      </div>`;
 
-      <details class="card dash-mini">
-        <summary><span class="dash-mini-label">${t("dash_video_short", lang)} · ${learnLabel}</span><span class="dash-mini-line">${video ? esc(video.title) : t("dash_video_placeholder", lang)}</span></summary>
+    const quoteCardHtml = `
+      <div class="card dash-quote-card">
+        <h3 class="dash-card-h3">${t("dash_quote_title", lang)}</h3>
+        <div class="dash-quote">« ${esc(quote.fr)} »</div>
+        ${quoteLang && quote.byLang[quoteLang.code] ? `<div class="dash-quote-equiv">“${esc(quote.byLang[quoteLang.code])}”</div>` : ""}
+      </div>`;
+
+    const videoCardHtml = `
+      <div class="card dash-video-card">
+        <h3 class="dash-card-h3" style="padding:14px 16px 0">${t("dash_video_short", lang)}</h3>
         ${video ? `
-        <div class="dash-mini-body">
           <a class="dash-video-thumb" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
             <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${esc(video.title)}" loading="lazy"/>
             <span class="dash-video-play">▶</span>
           </a>
-          <div class="dash-video-cta" style="margin-top:6px">${t("dash_video_cta", lang)}</div>
-        </div>` : ""}
-      </details>
+          <div class="dash-video-info">
+            <div class="dash-video-title">${esc(video.title)}</div>
+            <div class="dash-video-cta">${t("dash_video_cta", lang)}</div>
+          </div>
+        ` : `<div class="dash-video-info"><div class="dash-video-title">${t("dash_video_placeholder", lang)}</div></div>`}
+      </div>`;
 
-      <details class="card dash-mini">
-        <summary><span class="dash-mini-label">${t("dash_quote_title", lang)}</span><span class="dash-mini-line">« ${esc(quote.fr)} »</span></summary>
-        <div class="dash-mini-body">
-          ${quoteLangs.filter((l) => quote.byLang[l.code]).map((l) => `
-            <div class="dash-quote-equiv-label"><strong>${l.label} :</strong> “${esc(quote.byLang[l.code])}”</div>
-          `).join("")}
-        </div>
-      </details>
+    const bodyHtml = showTestCard
+      ? `
+        <div class="dash-row">${testCardHtml}${cultureCardHtml}</div>
+        ${exprCardHtml}
+        ${fiveMissionRowHtml}
+        ${quoteCardHtml}
+        ${videoCardHtml}
+      `
+      : `
+        ${fiveMissionRowHtml}
+        ${cultureCardHtml}
+        ${exprCardHtml}
+        ${quoteCardHtml}
+        ${videoCardHtml}
+      `;
+
+    container.innerHTML = `
+      <div class="dash-date">${date} · <strong>${time}</strong></div>
+      ${bodyHtml}
     `;
 
     container.querySelectorAll("[data-goto-courses]").forEach((btn) => {
       btn.addEventListener("click", () => onGoToCourses && onGoToCourses());
     });
-    container.querySelector("#dashFive").addEventListener("click", () => { view = "five"; paint(); });
-    container.querySelector("#dashMission").addEventListener("click", () => {
+    const fiveBtn = container.querySelector("#dashFive");
+    if (fiveBtn) fiveBtn.addEventListener("click", () => { view = "five"; paint(); });
+    const missionBtn = container.querySelector("#dashMission");
+    if (missionBtn) missionBtn.addEventListener("click", () => {
+      // Tant que le test de niveau anglais n'est pas fait, on ne peut pas encore
+      // avoir de mission (les missions viennent des erreurs dans les leçons) —
+      // on renvoie donc vers Mes cours (qui propose le test) plutôt que d'ouvrir
+      // lessons.html directement, pour ne jamais contourner cette garde.
+      const enLang = settings.langs.find((l) => l.code === "en");
+      if (!enLang || !enLang.leveled) { onGoToCourses && onGoToCourses(); return; }
       window.location.href = due.length ? "lessons.html#practice=auto" : "lessons.html";
     });
-    // Une seule petite carte ouverte à la fois : l'Accueil reste léger.
-    const minis = [...container.querySelectorAll("details.dash-mini")];
-    minis.forEach((d) => d.addEventListener("toggle", () => {
-      if (d.open) minis.forEach((o) => { if (o !== d) o.open = false; });
-    }));
   }
 
-  // --- « J'ai 5 minutes » : 4 activités courtes + la question culture. ---
+  // --- « J'ai 5 minutes » : 4 activités courtes. La question culture est
+  // maintenant affichée directement sur l'Accueil (plus besoin d'un bouton
+  // "voir la réponse" ici, elle serait redondante). ---
   function paintFive() {
     const { settings } = store.get();
     const lang = settings.interfaceLang;
     const due = dueMissions("en");
     const credits = aiCredits.available().length;
-    const culture = pickDaily(CULTURE_QUESTIONS_EN);
     container.innerHTML = `
       <button class="settings-back" id="fiveBack">${t("five_back", lang)}</button>
       <div class="card five-head">
@@ -295,19 +333,15 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
         <button class="five-tile five-chat" data-act="chat"><span class="five-ic">💬</span><strong>${t("five_chat", lang)}</strong><span>${t("five_chat_sub", lang, { n: credits })}</span></button>
         <button class="five-tile five-surprise" data-act="surprise"><span class="five-ic">✨</span><strong>${t("five_surprise", lang)}</strong><span>${t("five_surprise_sub", lang)}</span></button>
       </div>
-      <div class="card dash-culture-card five-culture">
-        <div class="dash-culture-label">${t("dash_culture_label", lang)} · 🇬🇧</div>
-        <div class="dash-culture-text">${esc(culture.question)}</div>
-        <button class="btn btn-ghost five-reveal" id="fiveReveal">${t("five_culture_reveal", lang)}</button>
-        <div class="dash-culture-answer" id="fiveAnswer" hidden>${esc(culture.answer)}</div>
-      </div>
     `;
     container.querySelector("#fiveBack").addEventListener("click", () => { view = "home"; paint(); });
-    container.querySelector("#fiveReveal").addEventListener("click", (e) => {
-      e.currentTarget.hidden = true;
-      container.querySelector("#fiveAnswer").hidden = false;
-    });
     const go = (act) => {
+      // Même garde que la carte « Mission du jour » de l'Accueil : ces deux
+      // activités ouvrent lessons.html (anglais), à ne jamais contourner tant
+      // que le test de niveau anglais n'est pas fait.
+      const enLang = settings.langs.find((l) => l.code === "en");
+      const enLeveled = enLang && enLang.leveled;
+      if ((act === "errors" || act === "express") && !enLeveled) { onGoToCourses && onGoToCourses(); return; }
       if (act === "errors") window.location.href = due.length ? "lessons.html#practice=auto" : "lessons.html#practice=mix";
       else if (act === "express") window.location.href = "lessons.html#practice=mix";
       else if (act === "chat") { if (onGoToTab) onGoToTab("conversation"); }

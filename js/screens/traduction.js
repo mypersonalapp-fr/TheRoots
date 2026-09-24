@@ -15,8 +15,8 @@
 // (un seul "ES" côté DeepL) — les deux variantes choisies dans l'appli donnent
 // donc la même traduction espagnole pour l'instant.
 
-import { store } from "../data/store.js?v=20260924b";
-import { t, langName, variantName } from "../data/i18n.js?v=20260924b";
+import { store } from "../data/store.js?v=20260924e";
+import { t, langName, variantName } from "../data/i18n.js?v=20260924e";
 
 // Remplace cette URL par celle de TON Worker une fois déployé sur Cloudflare
 // (donnée à la fin du déploiement, du style https://xxxxx.ton-compte.workers.dev).
