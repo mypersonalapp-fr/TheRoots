@@ -2,15 +2,15 @@
 // démarrage (racines + bonjour → nom de l'appli) → menu (inscription /
 // connexion / mot de passe oublié) → coquille de l'application.
 
-import { store } from "./data/store.js?v=20260924e";
-import { renderSplash } from "./screens/splash.js?v=20260924e";
-import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924e";
-import { renderLogin } from "./screens/login.js?v=20260924e";
-import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924e";
-import { renderShell } from "./screens/shell.js?v=20260924e";
-import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924e";
-import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924e";
-import { renderOnboarding, hasSeenOnboarding } from "./screens/onboarding.js?v=20260924e";
+import { store } from "./data/store.js?v=20260924f";
+import { renderSplash } from "./screens/splash.js?v=20260924f";
+import { renderAuthMenu } from "./screens/auth-menu.js?v=20260924f";
+import { renderLogin } from "./screens/login.js?v=20260924f";
+import { renderForgotPassword } from "./screens/forgot-password.js?v=20260924f";
+import { renderShell } from "./screens/shell.js?v=20260924f";
+import { renderFaceIdLock } from "./screens/faceid-lock.js?v=20260924f";
+import { renderChooseLanguage } from "./screens/choose-language.js?v=20260924f";
+import { renderOnboarding, hasSeenOnboarding } from "./screens/onboarding.js?v=20260924f";
 
 const root = document.getElementById("app");
 
