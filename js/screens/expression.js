@@ -14,13 +14,13 @@
 // une IA qui comprend le sens ; la checklist de contenu comble ce manque en
 // vérifiant simplement la présence des idées attendues.
 
-import { store } from "../data/store.js?v=20260924e";
-import { t } from "../data/i18n.js?v=20260924e";
-import { recordSkill } from "../data/progress.js?v=20260924e";
-import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260924e";
-import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260924e";
-import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260924e";
-import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260924e";
+import { store } from "../data/store.js?v=20260924f";
+import { t } from "../data/i18n.js?v=20260924f";
+import { recordSkill } from "../data/progress.js?v=20260924f";
+import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260924f";
+import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260924f";
+import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260924f";
+import { EXPRESSION_ECRITE_PROMPTS_A2_EN } from "../data/expression-ecrite-prompts-a2-en.js?v=20260924f";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 

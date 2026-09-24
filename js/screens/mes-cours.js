@@ -8,15 +8,15 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260924e";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924e";
-import { renderLevelTest } from "./level-test.js?v=20260924e";
-import { t, formatDate } from "../data/i18n.js?v=20260924e";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924e";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924e";
-import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924e";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924e";
-import { plantSvg } from "./plant.js?v=20260924e";
+import { store } from "../data/store.js?v=20260924f";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924f";
+import { renderLevelTest } from "./level-test.js?v=20260924f";
+import { t, formatDate } from "../data/i18n.js?v=20260924f";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924f";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924f";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924f";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924f";
+import { plantSvg } from "./plant.js?v=20260924f";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;

@@ -3,21 +3,21 @@
 // 23/09) — Apprendre, Ressources, Explorer, Réglages —, bouton retour, et
 // routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260924e";
-import { renderSettings } from "./settings.js?v=20260924e";
-import { renderMesCours } from "./mes-cours.js?v=20260924e";
-import { renderMesArbres } from "./mes-arbres.js?v=20260924e";
-import { renderComprehension } from "./comprehension.js?v=20260924e";
-import { renderExpression } from "./expression.js?v=20260924e";
-import { renderTraduction } from "./traduction.js?v=20260924e";
-import { renderDictionnaire } from "./dictionnaire.js?v=20260924e";
-import { renderConversation } from "./conversation.js?v=20260924e";
-import { renderBibliotheque } from "./bibliotheque.js?v=20260924e";
-import { renderAideFaq } from "./aide-faq.js?v=20260924e";
-import { mountMyWorld } from "./my-world.js?v=20260924e";
-import { renderCountry } from "./country.js?v=20260924e";
-import { store } from "../data/store.js?v=20260924e";
-import { t } from "../data/i18n.js?v=20260924e";
+import { renderDashboard } from "./dashboard.js?v=20260924f";
+import { renderSettings } from "./settings.js?v=20260924f";
+import { renderMesCours } from "./mes-cours.js?v=20260924f";
+import { renderMesArbres } from "./mes-arbres.js?v=20260924f";
+import { renderComprehension } from "./comprehension.js?v=20260924f";
+import { renderExpression } from "./expression.js?v=20260924f";
+import { renderTraduction } from "./traduction.js?v=20260924f";
+import { renderDictionnaire } from "./dictionnaire.js?v=20260924f";
+import { renderConversation } from "./conversation.js?v=20260924f";
+import { renderBibliotheque } from "./bibliotheque.js?v=20260924f";
+import { renderAideFaq } from "./aide-faq.js?v=20260924f";
+import { mountMyWorld } from "./my-world.js?v=20260924f";
+import { renderCountry } from "./country.js?v=20260924f";
+import { store } from "../data/store.js?v=20260924f";
+import { t } from "../data/i18n.js?v=20260924f";
 
 // Structure du tiroir : "Accueil" seul en haut, puis 4 sections. Les noms
 // de "Conversation" (avant "Conversation IA") et de la section

@@ -5,8 +5,8 @@
 // donc pour l'instant un message d'attente clair plutôt que du contenu
 // inventé, en gardant la place déjà prête dans le menu (Ressources).
 
-import { store } from "../data/store.js?v=20260924e";
-import { t } from "../data/i18n.js?v=20260924e";
+import { store } from "../data/store.js?v=20260924f";
+import { t } from "../data/i18n.js?v=20260924f";
 
 export function renderBibliotheque(container) {
   const { settings } = store.get();
