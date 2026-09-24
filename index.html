@@ -28,12 +28,61 @@
        bien à jour sur GitHub. À changer partout (même valeur partout,
        n'importe quelle nouvelle valeur suffit) à chaque fois qu'un fichier
        est remplacé. -->
-  <link rel="stylesheet" href="css/base.css?v=20260924h"/>
-  <link rel="stylesheet" href="css/backgrounds.css?v=20260924h"/>
-  <link rel="stylesheet" href="css/screens.css?v=20260924h"/>
+  <link rel="stylesheet" href="css/base.css?v=20260924j"/>
+  <link rel="stylesheet" href="css/backgrounds.css?v=20260924j"/>
+  <link rel="stylesheet" href="css/screens.css?v=20260924j"/>
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="js/app.js?v=20260924h"></script>
+  <!-- Filet de secours (24/09) : si l'appli n'a rien affiché au bout de
+       6 secondes (écran tout blanc), au lieu de rester blanc on affiche ce
+       qui a bloqué — en particulier la liste des fichiers introuvables sur
+       GitHub (fichier oublié ou déposé dans le mauvais dossier), cause
+       n°1 d'un écran blanc au démarrage. La liste ROOTS_FILES doit être
+       remise à jour à chaque lot qui ajoute/renomme un fichier. -->
+  <script>
+    (function () {
+      var ROOTS_FILES = ["js/app.js", "js/data/ai-config.js", "js/data/ai-credits.js", "js/data/comprehension-ecrite-a2-en.js", "js/data/comprehension-ecrite-en.js", "js/data/comprehension-orale-a2-en.js", "js/data/comprehension-orale-en.js", "js/data/daily-content.js", "js/data/dev-config.js", "js/data/explore-uk.js", "js/data/expression-ecrite-prompts-a2-en.js", "js/data/expression-ecrite-prompts-en.js", "js/data/expression-orale-prompts-a2-en.js", "js/data/expression-orale-prompts-en.js", "js/data/i18n.js", "js/data/lesson-images.js", "js/data/programme-a1-en.js", "js/data/programme-a1-es.js", "js/data/programme-a2-en.js", "js/data/programme-b1-en.js", "js/data/programme-b2-en.js", "js/data/progress.js", "js/data/store.js", "js/data/webauthn.js", "js/screens/aide-faq.js", "js/screens/auth-menu.js", "js/screens/bg-flags.js", "js/screens/bg-uk.js", "js/screens/bibliotheque.js", "js/screens/choose-language.js", "js/screens/comprehension.js", "js/screens/contain-frame.js", "js/screens/conversation.js", "js/screens/country.js", "js/screens/dashboard.js", "js/screens/dictionnaire.js", "js/screens/expression.js", "js/screens/faceid-lock.js", "js/screens/forgot-password.js", "js/screens/greeting.js", "js/screens/level-test.js", "js/screens/login.js", "js/screens/mes-arbres.js", "js/screens/mes-cours.js", "js/screens/my-world.js", "js/screens/onboarding.js", "js/screens/placeholders.js", "js/screens/plant.js", "js/screens/settings.js", "js/screens/shell.js", "js/screens/splash.js", "js/screens/traduction.js", "css/base.css", "css/backgrounds.css", "css/screens.css"];
+      var errors = [];
+      window.addEventListener("error", function (e) {
+        var msg = e && e.message ? e.message : (e && e.target && (e.target.src || e.target.href)) ? "Chargement impossible : " + (e.target.src || e.target.href) : "Erreur inconnue";
+        errors.push(msg);
+      }, true);
+      window.addEventListener("unhandledrejection", function (e) {
+        errors.push(String(e && e.reason && (e.reason.message || e.reason)));
+      });
+      setTimeout(function () {
+        var app = document.getElementById("app");
+        if (!app || app.children.length) return;
+        app.innerHTML = '<div style="font-family:system-ui,sans-serif;padding:28px 20px;max-width:520px;margin:0 auto;color:#222">'
+          + '<h2 style="margin:0 0 8px">L\'appli n\'a pas pu démarrer</h2>'
+          + '<p style="font-size:14px;line-height:1.5;margin:0 0 14px">Vérification des fichiers sur GitHub en cours…</p>'
+          + '<div id="rootsDiag" style="font-size:13px;line-height:1.5"></div>'
+          + '<button onclick="location.reload()" style="margin-top:18px;padding:12px 18px;border-radius:10px;border:0;background:#2f5d3a;color:#fff;font-weight:700;font-size:15px">Réessayer</button></div>';
+        var out = document.getElementById("rootsDiag");
+        Promise.all(ROOTS_FILES.map(function (f) {
+          return fetch(f + "?check=" + Date.now(), { cache: "no-store" })
+            .then(function (r) { return r.ok ? null : f; })
+            .catch(function () { return null; });
+        })).then(function (res) {
+          var missing = res.filter(Boolean);
+          var html = "";
+          if (missing.length) {
+            html += "<p style=\"margin:0 0 6px\"><b>Fichiers introuvables sur GitHub (" + missing.length + ")</b> — à redéposer au bon endroit :</p><ul style=\"margin:0 0 12px;padding-left:18px\">"
+              + missing.map(function (m) { return "<li><code>" + m + "</code></li>"; }).join("") + "</ul>";
+          } else {
+            html += "<p style=\"margin:0 0 12px\">Aucun fichier manquant détecté.</p>";
+          }
+          if (errors.length) {
+            html += "<p style=\"margin:0 0 6px\"><b>Message d'erreur :</b></p><ul style=\"margin:0;padding-left:18px;word-break:break-word\">"
+              + errors.slice(0, 5).map(function (m) { return "<li>" + String(m).replace(/</g, "&lt;") + "</li>"; }).join("") + "</ul>";
+          }
+          html += "<p style=\"margin:12px 0 0;color:#666\">Fais une capture de cet écran et envoie-la à Claude.</p>";
+          out.innerHTML = html;
+        });
+      }, 6000);
+    })();
+  </script>
+  <script type="module" src="js/app.js?v=20260924j"></script>
 </body>
 </html>
