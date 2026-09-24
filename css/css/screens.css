@@ -106,6 +106,32 @@
   .auth-menu-panel{ top: 68%; max-width: 300px; gap: 8px; padding: 12px; }
   .auth-menu-panel .btn{ padding-top: 10px; padding-bottom: 10px; }
 }
+/* Bonjour qui change de langue à chaque connexion + phrase "frontières" */
+.hello-block{ text-align: center; margin-bottom: 4px; }
+.hello-word{ font-weight: 800; font-size: 28px; line-height: 1.1; color: var(--brand-teal); letter-spacing: -.01em; }
+.hello-lang{ font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; font-style: italic; }
+.hello-tagline{ font-size: 13px; color: var(--ink); margin-top: 6px; line-height: 1.35; font-weight: 600; }
+.auth-form-body .hello-block{ margin-bottom: 16px; }
+:root[data-theme="dark"] .hello-word{ color: #f2f3f5; }
+.auth-first-visit{ text-align: center; font-size: 13px; color: var(--ink-soft); }
+.auth-first-visit-link{
+  background: none; border: none; padding: 4px 2px; cursor: pointer;
+  font-family: var(--font-main); font-weight: 800; font-size: 13px; color: var(--accent);
+}
+/* Écran de connexion : le panneau (plus haut depuis l'ajout du bonjour)
+   démarre juste SOUS le slogan dessiné dans l'image, au lieu d'être centré
+   sur 60 % (il remontait alors sur le logo). */
+.login-hero-screen:not(.faceid-lock-screen) .auth-menu-panel{
+  top: 51%; transform: translate(-50%, 0); gap: 8px; padding: 14px 18px;
+  width: calc(100% - 32px);
+}
+.login-hero-screen .hello-word{ font-size: 24px; }
+@media (max-height: 480px){
+  .login-hero-screen:not(.faceid-lock-screen) .auth-menu-panel{ top: 40%; }
+  .hello-word, .login-hero-screen .hello-word{ font-size: 20px; }
+  .hello-tagline{ font-size: 11.5px; margin-top: 3px; }
+  .hello-lang{ display: none; }
+}
 .auth-menu-forgot{
   background: none; border: none; margin: 2px auto 0;
   color: var(--brand-teal); font-weight: 700; font-size: 13px;
@@ -163,25 +189,126 @@
 .field{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-soft); font-weight: 600; }
 .login-submit{ margin-top: 4px; }
 
+/* --- Petit indicateur de chargement (ex. recherche dans le dictionnaire) :
+   un rond qui tourne à côté du texte "Recherche en cours…", pour que
+   l'attente soit visible même si la réponse met du temps. --- */
+.mini-spinner{
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: mini-spin 0.7s linear infinite;
+  flex: 0 0 auto;
+  margin-right: 8px;
+}
+@keyframes mini-spin{ to{ transform: rotate(360deg); } }
+
 /* --- Fond de la coquille principale (Accueil + tous les onglets) : la
    4e image d'Ashley (globe/drapeaux en haut, silhouette de villes en bas,
    milieu volontairement vide pour accueillir le contenu), fixe derrière
    tout, entière, jamais coupée --- */
+/* NB : "absolute" et non "fixed" — sur TOUS les écrans de l'appli, l'écran
+   entier défile déjà d'un bloc (pas de zone à défilement séparée comme
+   .app-body), donc "fixed" n'apporte rien et déclenche un bug connu de
+   Safari iPad où une image en position "fixed" se décentre ou se découpe
+   en plusieurs morceaux mal alignés au lieu de rester bien au milieu —
+   déjà contourné sur connexion/inscription, étendu ici à la coquille
+   principale (Accueil et tous les onglets) où le même bug se voyait en
+   mode paysage. */
 .shell-bg{
-  position: fixed; inset: 0; z-index: 0;
+  position: absolute; inset: 0; z-index: 0;
   overflow: hidden;
   background: #fdf3e3;
 }
-/* Sur l'écran de connexion/inscription, l'écran entier défile déjà d'un
-   bloc (pas de zone à défilement séparée comme .app-body) : on fixe donc
-   ce fond en "absolute" plutôt qu'en "fixed", ce qui évite un bug connu
-   de Safari iPad où une image en position "fixed" se décentre quand son
-   parent a "overflow: hidden" (elle glissait vers la droite au lieu de
-   rester bien au milieu). */
-.auth-form-screen .shell-bg{ position: absolute; }
+
+/* --- "Quelle langue veux-tu apprendre ?" (choose-language.js), demandé une
+   seule fois à la première connexion : même fond que la coquille
+   principale (.shell-bg), avec un panneau "verre dépoli" centré verticalement
+   par-dessus, façon écran de connexion. --- */
+.choose-lang-body{
+  position: relative; z-index: 2; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24px;
+}
+.choose-lang-panel{
+  max-width: 420px; width: 100%; margin: 0 auto;
+  text-align: center;
+}
+.choose-lang-title{ font-weight: 800; font-size: 19px; color: var(--brand-teal); margin-bottom: 8px; }
+.choose-lang-desc{ font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 18px; }
+.choose-lang-options{ display: flex; flex-direction: column; gap: 12px; }
+.choose-lang-btn{ width: 100%; font-size: 15px; }
+.choose-lang-flag{ margin-right: 6px; }
+
+/* --- Tutoriel de première connexion (onboarding.js, validé sur maquette
+   le 23/09) : même principe visuel que "Quelle langue veux-tu apprendre ?"
+   — fond de la coquille + panneau "verre dépoli" centré, avec en plus des
+   points de pagination et 2 boutons (Passer / Suivant). --- */
+.onb-body{
+  position: relative; z-index: 2; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24px;
+}
+.onb-panel{
+  max-width: 420px; width: 100%; margin: 0 auto;
+  text-align: center;
+}
+.onb-icon{
+  width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 16px;
+  background: rgba(95,174,98,0.16);
+  display: flex; align-items: center; justify-content: center; font-size: 28px;
+}
+.onb-title{ font-weight: 800; font-size: 18px; color: var(--brand-teal); margin-bottom: 10px; }
+.onb-text{ font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+.onb-dots{ display: flex; gap: 6px; justify-content: center; margin: 20px 0 18px; }
+.onb-dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--surface-soft); }
+.onb-dot.on{ background: var(--accent); width: 18px; border-radius: 4px; }
+.onb-actions{ display: flex; gap: 10px; }
+.onb-actions .btn{ flex: 1; }
+.onb-actions #onbNext{ flex: 2; }
+
+/* --- Format paysage (tablette et téléphone) : shell-bg.jpg est une image
+   "haute" (portrait, 1024×1536) pensée pour un écran de téléphone debout —
+   en paysage elle ne peut que se retrouver soit coupée en haut/en bas
+   (cover), soit entourée de vide sur les côtés (contain + flou). Ashley a
+   fourni 4 images DÉJÀ DESSINÉES EN FORMAT PAYSAGE (1376×768, jour + nuit,
+   avec et sans logo) : on les affiche telles quelles en paysage à la place
+   des images portrait, avec un simple "cover" (déjà la valeur par défaut de
+   .screen-cover-bg) puisqu'elles remplissent nativement un écran large —
+   plus besoin de flou ni de recadrage. Les images portrait (bg-img-light /
+   bg-img-dark / bg-img-portrait) sont cachées en paysage, et inversement les
+   images paysage (bg-img-landscape*) sont cachées en portrait. */
+.bg-img-landscape,
+.bg-img-landscape-dark,
+.bg-img-landscape-hero,
+.bg-img-landscape-hero-dark{
+  display: none;
+}
+@media (orientation: landscape){
+  .bg-img-light,
+  .bg-img-dark,
+  .bg-img-portrait{
+    display: none !important;
+  }
+  .bg-img-landscape,
+  .bg-img-landscape-hero{
+    display: block;
+  }
+  :root[data-theme="dark"] .bg-img-landscape,
+  :root[data-theme="dark"] .bg-img-landscape-hero{
+    display: none;
+  }
+  :root[data-theme="dark"] .bg-img-landscape-dark,
+  :root[data-theme="dark"] .bg-img-landscape-hero-dark{
+    display: block;
+  }
+}
 
 /* --- Coquille principale + navigation --- */
-.app-shell{ display: flex; flex-direction: column; min-height: 100vh; }
+/* La coquille fait exactement la taille de l'écran : fond et barre du haut
+   immobiles, seul .app-body défile (et seulement si le contenu dépasse). */
+.app-shell{ display: flex; flex-direction: column; height: 100%; min-height: 0; overflow: hidden; }
 .app-topbar{
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 18px 8px;
@@ -193,7 +320,13 @@
   box-shadow: 0 2px 6px rgba(20,20,30,0.10), 0 1px 0 rgba(255,255,255,0.6) inset;
 }
 .app-topbar .title{ font-weight: 800; font-size: 22px; }
-.app-body{ flex: 1; position: relative; z-index: 2; padding: 8px 18px 48px; }
+.app-body{
+  flex: 1; min-height: 0; position: relative; z-index: 2; padding: 8px 18px 32px;
+  overflow-x: hidden; overflow-y: auto;
+  overscroll-behavior: none; -webkit-overflow-scrolling: touch;
+}
+.app-topbar{ flex: 0 0 auto; padding-top: max(16px, env(safe-area-inset-top)); }
+.lang-chip-row{ margin-bottom: 8px; }
 
 /* --- Bouton hamburger (haut à gauche) : effet de profondeur "3D léger" --- */
 .hamburger-btn{
@@ -265,7 +398,18 @@
   font-size: 21px; width: 26px; text-align: center;
   filter: drop-shadow(0 3px 4px rgba(0,0,0,.4));
 }
-.nav-drawer-label{ flex: 1; line-height: 1.25; }
+.nav-drawer-label{ flex: 1; line-height: 1.25; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+/* --- Tiroir en 4 sections (validé sur maquette le 23/09) --- */
+.nav-drawer-section{
+  font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+  color: rgba(244,242,234,0.55); margin: 16px 10px 4px; text-shadow: none;
+}
+.nav-drawer-items .nav-drawer-section:first-child{ margin-top: 4px; }
+.nav-drawer-badge{
+  font-size: 9px; font-weight: 800; letter-spacing: .02em;
+  color: var(--accent-ink, #1f2937); background: var(--accent);
+  border-radius: 6px; padding: 2px 6px; text-transform: uppercase;
+}
 .nav-drawer-chev{ color: rgba(244,242,234,0.65); font-size: 16px; text-shadow: none; }
 
 /* --- "Cartes" en verre dépoli clair, réutilisées dans les nouvelles
@@ -367,7 +511,7 @@
 .dash-quote-card{ text-align: center; padding: 14px 16px; }
 .dash-quote{ font-style: italic; color: var(--ink-soft); font-size: 14px; line-height: 1.4; }
 .dash-quote-equiv{ font-size: 12.5px; color: var(--accent); font-weight: 700; margin-top: 6px; }
-.dash-quote-equiv-label{ font-size: 10.5px; color: var(--ink-soft); margin-top: 1px; }
+.dash-quote-equiv-label{ font-size: 12.5px; color: var(--ink-soft); margin-top: 1px; }
 
 /* --- Carte "Question culture" glissée dans la même rangée que la
    progression, pour ne pas avoir à faire défiler tout l'écran pour la voir --- */
@@ -414,6 +558,28 @@
 }
 .dash-video-cta{ font-size: 11px; color: var(--accent); font-weight: 700; margin-top: 4px; }
 
+/* --- Accueil, 2 états (validé sur maquette le 23/09) : rangées de 2
+   cartes côte à côte (Test de niveau/Question culture, puis J'ai 5
+   minutes/Mission du jour), et cartes pleine largeur en dessous. --- */
+.dash-row{ display: flex; gap: 12px; margin-top: 14px; }
+.dash-row .dash-half{ flex: 1; min-width: 0; }
+.dash-card-h3{
+  margin: 0 0 8px; font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--ink-soft);
+}
+.dash-test-sub{ font-size: 12px; color: var(--ink-soft); }
+.dash-test-list{ display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+.dash-test-row{
+  text-align: left; background: transparent; border: none; padding: 1px 0;
+  font-family: var(--font-main); font-weight: 700; font-size: 12.5px; color: var(--ink);
+  cursor: pointer;
+}
+.dash-expr-card{ margin-top: 14px; }
+.dash-expr-text{ font-weight: 700; font-size: 14.5px; }
+.dash-expr-fr{ color: var(--accent); font-weight: 700; margin-top: 6px; font-size: 13.5px; }
+.dash-quote-card{ margin-top: 14px; }
+.dash-video-card{ margin-top: 14px; }
+
 /* --- Mes cours : grille de "cubes" (un par langue + un pour "Mon livret"),
    plutôt que les anciennes cartes pleine largeur — chaque cube est
    accompagné juste en dessous d'une jauge de progression de la même
@@ -457,7 +623,7 @@
    image n°4) doit rester visible derrière le test aussi, comme partout
    ailleurs dans l'appli — jamais masqué, même sur un écran temporaire
    comme celui-ci. */
-.level-test-screen{ position: fixed; inset: 0; z-index: 20; background: transparent; overflow-y: auto; }
+.level-test-screen{ position: fixed; inset: 0; z-index: 20; background: transparent; overflow-y: auto; overflow-x: hidden; overscroll-behavior: none; }
 .lt-eyebrow{ font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); margin-bottom: 6px; }
 .lt-intro h2{ margin: 0 0 8px; font-size: 20px; }
 .lt-lede{ color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
@@ -467,6 +633,31 @@
 .lt-quiz-top{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
 .lt-progress{ font-weight: 700; font-size: 12px; color: var(--ink-soft); }
 .lt-timer{ font-weight: 800; font-size: 14px; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* --- Ligne "Précédent" / "Pause" au-dessus de chaque question du test de
+   niveau : le bouton Précédent n'apparaît qu'à partir de la 2e question du
+   palier (voir shellFor dans level-test.js), Pause reste toujours visible
+   mais se désactive après le premier usage (une seule pause pour tout le
+   test) --- */
+.lt-quiz-controls{ display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+.lt-back-btn, .lt-pause-btn{ font-size: 12.5px; padding: 6px 12px; }
+.lt-pause-btn:disabled{ opacity: 0.5; cursor: default; }
+
+/* --- Confirmation avant de mettre le test en pause : même habillage que la
+   proposition Face ID (carte centrée par-dessus tout) --- */
+.lt-pause-confirm-backdrop{
+  position: fixed; inset: 0; z-index: 40;
+  background: rgba(10,14,16,0.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.lt-pause-confirm-card{
+  background: #fff; border-radius: var(--radius-lg); padding: 24px;
+  max-width: 340px; width: 100%; text-align: center;
+  box-shadow: var(--shadow-pop);
+}
+.lt-pause-confirm-title{ font-weight: 800; font-size: 16px; color: var(--brand-teal); margin-bottom: 6px; }
+.lt-pause-confirm-desc{ font-size: 13px; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.5; }
 .lt-qtext{ font-weight: 800; font-size: 17px; margin-bottom: 16px; }
 .lt-opts{ display: flex; flex-direction: column; gap: 10px; }
 .lt-opt{ text-align: left; background: var(--surface-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 14px; font-family: var(--font-main); color: var(--ink); cursor: pointer; }
@@ -550,3 +741,191 @@
   font-weight: 700; font-size: 12px; color: var(--brand-teal); text-decoration: underline;
   cursor: pointer;
 }
+
+/* --- Tablette / grands écrans, notamment en mode paysage : toute l'appli
+   a été pensée pour un écran de téléphone étroit, sans jamais limiter la
+   largeur du contenu. Sur un iPad en paysage (~1500-2000px de large), ça
+   donnait deux symptômes différents selon l'écran : le formulaire de
+   connexion (.auth-form-body), qui a un max-width mais pas de centrage,
+   restait collé tout à gauche avec un immense vide à droite ; les autres
+   écrans (.app-body — Accueil, Mes cours, Dictionnaire...), sans aucun
+   max-width, s'étiraient au contraire sur toute la largeur, avec des
+   cartes trop écartées et un texte qui perdait en lisibilité. On centre
+   donc le CONTENU dans une colonne de largeur confortable au-delà de
+   720px de large, comme le fait la plupart des applis mobiles consultées
+   sur un grand écran — rien ne change sur téléphone (l'écran principal,
+   sous ce seuil). Le fond décoratif (.shell-bg) n'est volontairement pas
+   touché : il doit rester plein écran. */
+@media (min-width: 720px){
+  /* .app-body est maintenant la zone qui défile : elle reste pleine
+     largeur (on peut faire défiler même en posant le doigt sur les côtés)
+     et c'est son padding qui centre la colonne de 640px. */
+  .app-body{
+    padding-left: max(18px, calc((100% - 640px) / 2));
+    padding-right: max(18px, calc((100% - 640px) / 2));
+  }
+  .auth-form-body{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Les barres du haut (bouton hamburger + titre sur .app-topbar, bouton
+     retour + titre sur .auth-form-top), elles, restent volontairement EN
+     DEHORS de cette colonne centrée : sur un iPad en paysage (écran très
+     large), centrer aussi la barre du haut éloignait le hamburger du bord
+     gauche de l'écran, comme s'il flottait au milieu — signalé par
+     capture d'écran. Le hamburger doit toujours rester collé à gauche,
+     comme sur téléphone (portrait ou paysage), quelle que soit la largeur
+     de l'écran. */
+  .app-topbar, .auth-form-top{
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Cas particulier : la grille de "cubes" de Mes cours (un cube carré par
+     langue, .mc-cube{aspect-ratio:1/1}) et la grille "Mon livret" prennent
+     chacune la moitié de la largeur du conteneur — dans une colonne de
+     640px ça reste deux cubes carrés d'environ 300px de côté, beaucoup
+     trop grands pour les 2 lignes de texte qu'ils contiennent (tout le bas
+     du cube reste vide). On les recentre dans une colonne plus étroite,
+     pour retrouver des cubes de taille comparable à ceux du téléphone. */
+  .mc-cube-grid, .mc-livret-grid{
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* --- Conversation IA (conversation.js) --- */
+.chat-counters{ display: flex; gap: 10px; text-align: center; }
+.chat-counters > div{ flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.chat-counters strong{ font-size: 22px; color: var(--brand-teal); }
+.chat-counters span{ font-size: 12px; color: var(--ink-soft); }
+:root[data-theme="dark"] .chat-counters strong{ color: var(--accent); }
+.chat-credit{ margin-bottom: 10px; padding: 16px; }
+.chat-credit-head{ display: flex; align-items: center; gap: 12px; }
+.chat-credit-flag{ font-size: 26px; line-height: 1; }
+.chat-credit-title{ font-weight: 800; font-size: 15px; }
+.chat-credit-sub{ font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.chat-head{ display: flex; align-items: center; gap: 12px; padding: 12px 14px; }
+.chat-autoread{ font-size: 12px; font-weight: 700; color: var(--ink-soft); display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.chat-log{ display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.chat-row{ display: flex; }
+.chat-row-user{ justify-content: flex-end; }
+.chat-row-ai{ justify-content: flex-start; }
+.chat-bubble{ max-width: 85%; padding: 10px 14px; border-radius: 18px; font-size: 14.5px; line-height: 1.45; position: relative; overflow-wrap: anywhere; }
+.chat-user{ background: var(--brand-teal); color: #fff; border-bottom-right-radius: 6px; }
+.chat-ai{ background: rgba(255,255,255,0.85); color: var(--ink); border: 1px solid var(--border); border-bottom-left-radius: 6px; padding-right: 40px; }
+:root[data-theme="dark"] .chat-ai{ background: rgba(27,29,34,0.9); }
+.chat-tip{ margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: #fff6e6; color: #6b4a12; font-size: 13px; }
+:root[data-theme="dark"] .chat-tip{ background: #3a2f1c; color: #f3dca8; }
+.chat-speak{ position: absolute; top: 6px; right: 6px; border: none; background: none; font-size: 16px; cursor: pointer; padding: 4px; }
+.chat-mic-tag{ font-size: 12px; opacity: .85; }
+.chat-typing{ display: flex; gap: 4px; padding: 14px 16px; }
+.chat-typing span{ width: 7px; height: 7px; border-radius: 50%; background: var(--ink-soft); animation: chat-dot 1s infinite ease-in-out; }
+.chat-typing span:nth-child(2){ animation-delay: .15s; }
+.chat-typing span:nth-child(3){ animation-delay: .3s; }
+@keyframes chat-dot{ 0%, 80%, 100%{ opacity: .25; transform: translateY(0); } 40%{ opacity: 1; transform: translateY(-3px); } }
+.chat-error{ font-size: 13px; }
+.chat-feedback{ font-size: 13.5px; line-height: 1.55; }
+.chat-compose{ padding: 12px; }
+.chat-compose textarea{ width: 100%; min-height: 64px; resize: none; }
+.chat-compose-row{ display: flex; gap: 8px; margin-top: 8px; }
+.chat-mic{ flex: 0 0 auto; min-width: 56px; font-size: 18px; }
+.chat-mic.recording{ background: var(--pop-soft); border-color: var(--pop); color: var(--pop); font-size: 14px; }
+.chat-note{ font-size: 11.5px; color: var(--ink-soft); margin-top: 8px; line-height: 1.4; }
+
+/* --- My World (my-world.js) : l'onglet occupe tout l'écran avec son propre
+   fond jour/nuit ; la barre du haut de l'appli reste par-dessus. --- */
+.app-shell.is-myworld .shell-bg{ display: none; }
+.app-shell.is-myworld .app-body{ position: absolute; inset: 0; padding: 0; overflow: hidden; max-width: none; margin: 0; }
+.app-shell.is-myworld .app-topbar{ z-index: 6; }
+.app-shell.is-myworld .app-topbar .title{ transition: color 1.2s ease; text-shadow: 0 1px 8px rgba(255,255,255,.5); }
+.app-shell.mw-night .app-topbar .title{ color: #eef3ff; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+
+/* ===== Accueil allégé (24/09) : arbres, J'ai 5 minutes, mission du jour,
+   3 petites cartes qui s'ouvrent. ===== */
+.dash-date{
+  font-size: 12.5px; color: var(--ink-soft); margin: 2px 2px 0; font-weight: 600;
+  text-shadow: 0 1px 4px rgba(255,255,255,.6);
+}
+.dash-date strong{ color: var(--ink); }
+.dash-trees{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.dash-tree{
+  display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;
+  padding: 8px 6px 10px; border: none; cursor: pointer; font-family: var(--font-main); color: var(--ink);
+  min-width: 0;
+}
+.dash-tree .dash-progress-bar{ width: 100%; margin-top: 4px; height: 6px; }
+.dash-tree-lang{ font-weight: 800; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.dash-tree-status{ font-size: 10.5px; color: var(--ink-soft); line-height: 1.25; }
+.dash-actions{ display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; margin-top: 12px; }
+.dash-five{
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left;
+  border: none; border-radius: var(--radius-md); padding: 12px 14px; cursor: pointer;
+  background: var(--brand-teal); color: #fff; font-family: var(--font-main);
+  box-shadow: var(--shadow-card);
+}
+.dash-five-icon{ font-size: 20px; }
+.dash-five-title{ font-weight: 800; font-size: 15px; }
+.dash-five-sub{ font-size: 11px; opacity: .85; line-height: 1.3; }
+.dash-mission{
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left;
+  border: none; cursor: pointer; font-family: var(--font-main); color: var(--ink); padding: 12px 14px;
+}
+.dash-mission-label{ font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.dash-mission-title{ font-weight: 800; font-size: 13.5px; line-height: 1.3; }
+.dash-mission-sub{ font-size: 11px; color: var(--ink-soft); }
+.dash-mini{ margin-top: 8px; padding: 12px 14px; }
+.dash-mini-head{ display: flex; align-items: center; gap: 6px; }
+.dash-mini-icon{ font-size: 14px; line-height: 1; }
+.dash-mini-label{ font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+.dash-mini-line{ font-weight: 700; font-size: 13.5px; line-height: 1.3; white-space: normal; margin-top: 3px; }
+.dash-mini-body{ margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line, rgba(0,0,0,.08)); font-size: 13.5px; }
+.dash-mini-body .dash-video-thumb{ border-radius: var(--radius-sm); height: 150px; }
+
+/* « J'ai 5 minutes » */
+.five-head{ display: flex; align-items: center; gap: 12px; }
+.five-title{ font-weight: 800; font-size: 18px; }
+.five-sub{ font-size: 12.5px; color: var(--ink-soft); }
+.five-grid{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.five-tile{
+  display: flex; flex-direction: column; align-items: flex-start; gap: 5px; text-align: left;
+  min-height: 118px; padding: 14px; border-radius: 18px; border: 1px solid rgba(255,255,255,.8);
+  font-family: var(--font-main); color: #1b1d22; cursor: pointer; box-shadow: var(--shadow-card);
+}
+.five-tile strong{ font-size: 14px; line-height: 1.25; }
+.five-tile span:last-child{ font-size: 11.5px; color: #5b6068; line-height: 1.3; }
+.five-ic{ width: 36px; height: 36px; border-radius: 11px; background: rgba(255,255,255,.85); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.five-errors{ background: rgba(255,236,232,.95); }
+.five-express{ background: rgba(226,244,238,.95); }
+.five-chat{ background: rgba(230,238,252,.95); }
+.five-surprise{ background: rgba(253,243,222,.95); }
+.five-culture{ margin-top: 12px; }
+.five-reveal{ align-self: flex-start; padding: 6px 12px; font-size: 12.5px; }
+
+/* ===== Mes cours : plantes sur les cubes, livret enrichi (24/09) ===== */
+.mc-cube.has-plant{ align-items: center; text-align: center; gap: 3px; padding: 8px; }
+.mc-cube.has-plant .roots-plant{ margin-bottom: 2px; }
+.mc-gauges{ display: flex; flex-direction: column; gap: 7px; }
+.mc-gauge{ display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; }
+.mc-gauge-label{ width: 118px; flex-shrink: 0; }
+.mc-gauge-track{ flex-grow: 1; height: 7px; border-radius: 5px; background: var(--surface-soft); overflow: hidden; }
+.mc-gauge-fill{ height: 100%; border-radius: 5px; }
+.mc-gauge-val{ width: 34px; text-align: right; color: var(--ink-soft); }
+.mc-profile-notes{ display: flex; flex-direction: column; gap: 8px; margin-top: 12px; font-size: 13px; line-height: 1.4; }
+.mc-profile-notes .dot{ width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.mc-ctrl-row{ display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--border); }
+.mc-ctrl-row:first-of-type{ border-top: none; }
+.mc-ctrl-name{ font-weight: 800; font-size: 13.5px; }
+.mc-ctrl-note{ font-size: 11.5px; color: var(--ink-soft); }
+.mc-tag{ font-size: 11.5px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: var(--surface-soft); white-space: nowrap; }
+.mc-tag.ok{ color: var(--success); background: rgba(47,163,94,.12); }
+.mc-tag.ko{ color: var(--pop); background: var(--pop-soft); }
+.mc-tag.mute{ color: var(--ink-soft); }
+.mc-mission{ display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--border); font-size: 13px; }
+.mc-mission:first-of-type{ border-top: none; }
+.mc-mission .dot{ width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.mc-livret-tabs{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }

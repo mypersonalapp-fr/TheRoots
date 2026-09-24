@@ -1,0 +1,155 @@
+/* The Roots — base styles : tokens de couleur, typographie, mise en page */
+
+:root{
+  /* Fond blanc de base partout (le thème pays s'affiche derrière, cf backgrounds.css) */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f6f7f9;
+  --ink: #1b1d22;
+  --ink-soft: #5b6068;
+  --border: #e6e8ec;
+
+  --accent: #e2a13d;      /* orange chaud — couleur de marque "The Roots" */
+  --accent-ink: #ffffff;
+  --brand-teal: #1b3c39;  /* vert foncé du logo "The Roots" */
+  --pop: #e0432f;         /* rouge — utilisé pour le nouveau vocabulaire, les erreurs */
+  --pop-soft: #fdeceb;
+  --gold: #e0a52f;        /* accents, badges, progression */
+  --success: #2fa35e;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Ombre à double couche + liseré clair en haut = léger effet de relief
+     ("3D léger") appliqué à toutes les cartes de l'appli, sans transform
+     3D coûteux ni animation — cohérent avec les nouveaux .card-3d et
+     .nav-drawer-item du menu. */
+  --shadow-card: 0 8px 20px rgba(20,20,30,0.08), 0 2px 5px rgba(20,20,30,0.05), 0 1px 0 rgba(255,255,255,0.6) inset;
+  --shadow-pop:  0 14px 34px rgba(20,20,30,0.18), 0 1px 0 rgba(255,255,255,0.5) inset;
+
+  /* Police par défaut : à remplacer une fois la police choisie parmi les aperçus.
+     Manrope posé ici comme valeur temporaire (alternative libre au style Avenir). */
+  --font-main: "Manrope", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme="dark"]{
+  --bg: #121317;
+  --surface: #1b1d22;
+  --surface-soft: #21232a;
+  --ink: #f2f3f5;
+  --ink-soft: #a7abb4;
+  --border: #2c2f37;
+  --pop-soft: #3a2222; /* zones "écriture"/erreur en rouge doux : version foncée,
+                           sinon le texte clair devenait illisible sur un fond
+                           resté rose pâle */
+}
+
+*{ box-sizing: border-box; }
+/* Écran "fixe", comme une vraie appli (Duolingo...) : la page elle-même ne
+   bouge JAMAIS — ni glissement à gauche/droite, ni effet élastique qui
+   laissait apparaître une bande blanche en haut ou en bas. Seul le contenu
+   d'un écran défile, et uniquement s'il est plus haut que l'écran ; la
+   barre du haut et l'image de fond restent immobiles (voir .app-body). */
+html, body{
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app{
+  position: fixed;
+  inset: 0;
+  overflow-x: hidden;  /* jamais de glissement gauche/droite */
+  overflow-y: auto;    /* écrans hors coquille (connexion...) : défilent si besoin */
+  overscroll-behavior: none; /* pas d'effet élastique */
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen{
+  position: relative;
+  z-index: 2; /* toujours au-dessus du fond animé */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn{
+  font-family: var(--font-main);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:active{ transform: scale(0.97); }
+.btn-primary{ background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow-card); }
+.btn-ghost{ background: transparent; color: var(--ink); border: 1px solid var(--border); }
+
+/* --- Cartes "encadré transparent" : un verre dépoli clair, pas un bloc
+   blanc plein. Le décor se devine flouté derrière, mais le cadre (même
+   léger) donne assez de séparation pour que le texte ne se noie plus
+   dans les zones chargées de l'illustration (globe, drapeaux). Le halo
+   sur le texte s'ajoute par-dessus pour le relief ("3D"). --- */
+.card{
+  background: rgba(255,255,255,0.40);
+  backdrop-filter: blur(12px) saturate(1.15);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 20px rgba(20,20,30,0.07), 0 1px 0 rgba(255,255,255,0.6) inset;
+  padding: 20px;
+  color: var(--ink);
+  text-shadow: 0 1px 2px rgba(255,255,255,.4);
+}
+/* Exception : les cartes qui contiennent un vrai média (vidéo embarquée)
+   gardent un fond léger, juste pour l'espace autour du lecteur, jamais
+   un pavé blanc plein écran. */
+.card-media{
+  background: rgba(255,255,255,0.40);
+  backdrop-filter: blur(12px) saturate(1.15);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Mode sombre : le verre dépoli clair devient un verre dépoli foncé — sinon
+   le texte clair (--ink en mode sombre) se noie sur un fond resté blanc. */
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .card-media{
+  background: rgba(18,19,23,0.55);
+  border-color: rgba(255,255,255,0.10);
+}
+:root[data-theme="dark"] .card{
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+input[type="email"], input[type="password"], input[type="text"]{
+  font-family: var(--font-main);
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--ink);
+  width: 100%;
+}
+input:focus{ outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.newword{ color: var(--pop); font-weight: 700; text-decoration: underline; }
+
+.visually-hidden{
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}

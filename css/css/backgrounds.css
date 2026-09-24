@@ -1,0 +1,72 @@
+/* The Roots — fonds animés illustrés par pays.
+   Toujours en position absolue derrière le contenu (#app garde un fond blanc). */
+
+.bg-scene{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+/* NB: sélecteur d'enfant direct uniquement — ne doit pas s'appliquer aux
+   petits SVG imbriqués dans une mosaïque de drapeaux (.flags-mosaic) */
+.bg-scene > svg{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 160vw);
+  height: auto;
+  opacity: 0.85;
+}
+
+/* --- Royaume-Uni : drapeau qui flotte, Big Ben (aiguilles animées), Tower Bridge (levée animée) --- */
+
+.uk-flag{
+  transform-origin: left center;
+  animation: uk-flag-wave 3.2s ease-in-out infinite;
+}
+@keyframes uk-flag-wave{
+  0%, 100% { transform: skewY(0deg) scaleY(1); }
+  25%      { transform: skewY(1.2deg) scaleY(0.99); }
+  50%      { transform: skewY(0deg) scaleY(1.01); }
+  75%      { transform: skewY(-1.2deg) scaleY(0.99); }
+}
+
+.uk-hand-hour{
+  transform-origin: 0px 0px;
+  animation: uk-rotate-hour 24s linear infinite;
+}
+.uk-hand-min{
+  transform-origin: 0px 0px;
+  animation: uk-rotate-min 8s linear infinite;
+}
+@keyframes uk-rotate-hour{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
+@keyframes uk-rotate-min{  from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
+
+.uk-bridge-leaf-left{
+  transform-origin: bottom left;
+  animation: uk-bridge-open-left 9s ease-in-out infinite;
+}
+.uk-bridge-leaf-right{
+  transform-origin: bottom right;
+  animation: uk-bridge-open-right 9s ease-in-out infinite;
+}
+@keyframes uk-bridge-open-left{
+  0%, 35%   { transform: rotate(0deg); }
+  50%, 85%  { transform: rotate(-38deg); }
+  100%      { transform: rotate(0deg); }
+}
+@keyframes uk-bridge-open-right{
+  0%, 35%   { transform: rotate(0deg); }
+  50%, 85%  { transform: rotate(38deg); }
+  100%      { transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .uk-flag, .uk-hand-hour, .uk-hand-min, .uk-bridge-leaf-left, .uk-bridge-leaf-right{
+    animation: none !important;
+  }
+}
