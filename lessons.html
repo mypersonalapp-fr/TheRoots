@@ -360,7 +360,7 @@
   <div class="hint" id="hint"></div>
 </div>
 
-<script src="js/data/lesson-images.js?v=20260924f"></script>
+<script src="js/data/lesson-images.js?v=20260924j"></script>
 <script>
 (function(){
 
@@ -381,6 +381,13 @@
   // lesson = 26 : Grand contrôle FINAL (A1 + A2 mélangés) — validé le 23/09 par Ashley : contrôle A1,
   // puis contrôle A2, puis grand contrôle final qui ouvre le niveau supérieur (B1).
   var GRAND_CONTROLE_FINAL_LESSON = 26;
+  // lesson = 27..29 : les 3 premiers paliers thématiques du niveau B1 (B1.1 à B1.3), continuation
+  // directe de la même séquence de leçons après le Grand Contrôle final — construits à partir de
+  // "js/data/programme-b1-en.js". B1.4 et les paliers suivants (jusqu'à B1.12) n'existent pas encore
+  // dans lessons.html : B1_LAST_LESSON marque la fin du contenu B1 jouable à ce jour. Pas encore de
+  // Grand Contrôle B1 (voir goNext : après B1_LAST_LESSON, on revient réviser en attendant la suite).
+  var B1_START_LESSON = 27;
+  var B1_LAST_LESSON = 29;
   // true pour n'importe lequel des deux grands contrôles (A1 ou A2) : évite de dupliquer
   // "state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON" partout.
   function isGrandControle(){ return state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON || state.lesson === GRAND_CONTROLE_FINAL_LESSON; }
@@ -391,7 +398,7 @@
   var PASS_THRESHOLD_RATIO = 0.6;
   try {
     var savedLesson = parseInt(localStorage.getItem(LESSON_KEY), 10);
-    if(!isNaN(savedLesson) && savedLesson >= -1 && savedLesson <= GRAND_CONTROLE_FINAL_LESSON){ state.lesson = savedLesson; }
+    if(!isNaN(savedLesson) && savedLesson >= -1 && savedLesson <= B1_LAST_LESSON){ state.lesson = savedLesson; }
   } catch(e){}
   var VOCAB, MINI_CHECKS, ROUNDS, QUIZ, PRON_VERBS, MEM_WORDS, READING, GLOSS, TEXTS, NEXT_PREVIEW, GRAMMAR1, GRAMMAR2, REVIEW, META, LECON_SUBSTEPS, LECTURE_SUBSTEPS, CULTURE_NOTE;
   function lessonLabel(){
@@ -399,6 +406,7 @@
     if(state.lesson === GRAND_CONTROLE_LESSON) return "Grand Contrôle A1";
     if(state.lesson === GRAND_CONTROLE_A2_LESSON) return "Grand Contrôle A2";
     if(state.lesson === GRAND_CONTROLE_FINAL_LESSON) return "Grand contrôle final";
+    if(state.lesson >= B1_START_LESSON) return "B1." + (state.lesson - B1_START_LESSON + 1);
     if(state.lesson >= 13) return "A2." + (state.lesson - 13);
     return "Leçon " + (state.lesson + 1);
   }
@@ -609,8 +617,33 @@
       LECON_SUBSTEPS = 1; LECTURE_SUBSTEPS = 1;
       NEXT_PREVIEW = "";
       META = { vocabTitle:"", lectureTitle:"", bilanTitle:"Bravo, A1 et A2 sont validés !", pronLabel:"", todayLede:"" };
+    // =====================================================================
+    // NIVEAU B1 (lesson 27..29 à ce jour) — continuation directe de la même séquence de leçons après
+    // le Grand Contrôle final. Voir B1_START_LESSON / B1_LAST_LESSON plus haut.
+    // =====================================================================
+    } else if(state.lesson === 27){
+      VOCAB = VOCAB_B1_1; MINI_CHECKS = MINI_CHECKS_B1_1; ROUNDS = ROUNDS_B1_1; QUIZ = QUIZ_B1_1;
+      PRON_VERBS = PRON_VERBS_B1_1; MEM_WORDS = MEM_WORDS_B1_1; READING = READING_B1_1; GLOSS = GLOSS_B1_1;
+      GRAMMAR1 = GRAMMAR1_B1_1; GRAMMAR2 = GRAMMAR2_B1_1; REVIEW = REVIEW_B1_1; CULTURE_NOTE = null;
+      LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1;
+      NEXT_PREVIEW = "B1.2 (Tell Me What Happened) : raconter un événement de manière structurée (décor, événement, problème, réaction, conséquence, chute), avec les temps du récit (Past Simple, Past Continuous, Past Perfect).";
+      META = { vocabTitle:"Mon identité aujourd'hui (B1.1)", lectureTitle:"Qui je suis aujourd'hui", bilanTitle:"Bien joué, tu sais maintenant te présenter en détail et parler de ton évolution !", pronLabel:"Present Perfect vs Past Simple, et used to / be used to / get used to", todayLede:"te présenter de manière développée, parler de ta personnalité et de tes habitudes, et comparer ton présent avec ton passé — premier palier du niveau B1" };
+    } else if(state.lesson === 28){
+      VOCAB = VOCAB_B1_2; MINI_CHECKS = MINI_CHECKS_B1_2; ROUNDS = ROUNDS_B1_2; QUIZ = QUIZ_B1_2;
+      PRON_VERBS = PRON_VERBS_B1_2; MEM_WORDS = MEM_WORDS_B1_2; READING = READING_B1_2; GLOSS = GLOSS_B1_2;
+      GRAMMAR1 = GRAMMAR1_B1_2; GRAMMAR2 = GRAMMAR2_B1_2; REVIEW = REVIEW_B1_2; CULTURE_NOTE = CULTURE_NOTE_B1_2;
+      LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1;
+      NEXT_PREVIEW = "B1.3 (Real Conversations) : réagir, interrompre poliment, demander une précision, montrer son intérêt et terminer une conversation naturellement — questions indirectes et question tags.";
+      META = { vocabTitle:"Raconter un événement (B1.2)", lectureTitle:"Une soirée inattendue", bilanTitle:"Bravo, tu sais maintenant raconter un événement de manière structurée !", pronLabel:"Les temps du récit : Past Simple, Past Continuous, Past Perfect", todayLede:"raconter un événement de manière structurée (décor, imprévu, réaction, conséquence, chute), avec when/while/as/by the time — s'appuie sur B1.1 et A2.3 (Past Continuous)" };
+    } else if(state.lesson === B1_LAST_LESSON){
+      VOCAB = VOCAB_B1_3; MINI_CHECKS = MINI_CHECKS_B1_3; ROUNDS = ROUNDS_B1_3; QUIZ = QUIZ_B1_3;
+      PRON_VERBS = PRON_VERBS_B1_3; MEM_WORDS = MEM_WORDS_B1_3; READING = READING_B1_3; GLOSS = GLOSS_B1_3;
+      GRAMMAR1 = GRAMMAR1_B1_3; GRAMMAR2 = GRAMMAR2_B1_3; REVIEW = REVIEW_B1_3; CULTURE_NOTE = CULTURE_NOTE_B1_3;
+      LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1;
+      NEXT_PREVIEW = "Tu as terminé les 3 premiers paliers du niveau B1 de The Roots ! B1.4 (Everyday English) arrive bientôt — en attendant, reviens réviser tes paliers passés, ils restent ouverts.";
+      META = { vocabTitle:"De vraies conversations (B1.3)", lectureTitle:"Une rencontre à une soirée", bilanTitle:"Bravo, tu sais maintenant gérer une vraie conversation en anglais !", pronLabel:"Questions indirectes et question tags", todayLede:"réagir, interrompre poliment, demander une précision, montrer ton intérêt et terminer une conversation naturellement — s'appuie sur B1.2 et A2.9 (au téléphone)" };
     } else {
-      // Repli défensif (ne devrait pas arriver, lesson borné à -1..26 ailleurs) : évite un plantage
+      // Repli défensif (ne devrait pas arriver, lesson borné à -1..B1_LAST_LESSON ailleurs) : évite un plantage
       // si un état invalide est un jour restauré depuis localStorage.
       VOCAB = VOCAB_L1; MINI_CHECKS = MINI_CHECKS_L1; ROUNDS = ROUNDS_L1; QUIZ = QUIZ_L1;
       PRON_VERBS = PRON_VERBS_L1; MEM_WORDS = MEM_WORDS_L1; READING = READING_L1; GLOSS = GLOSS_L1;
@@ -669,6 +702,7 @@
 
   var A1_IDS = [-1,0,1,2,3,4,5,6,7,8,9,10,11];
   var A2_IDS = [13,14,15,16,17,18,19,20,21,22,23,24];
+  var B1_IDS = [27,28,29]; // B1.1 à B1.3 — pas encore de Grand Contrôle B1, donc pas (encore) utilisé par controlDraw().
   function ctrlLevel(){ return state.lesson === GRAND_CONTROLE_LESSON ? "A1" : (state.lesson === GRAND_CONTROLE_A2_LESSON ? "A2" : "FINAL"); }
   function ctrlLabel(level){ return level === "FINAL" ? "grand contrôle final (A1 + A2)" : "contrôle " + level; }
   function nextLevelOf(level){ return level === "A1" ? "A2" : "B1"; }
@@ -733,7 +767,7 @@
     s.at = Date.now(); m[skill] = s; all[LANG] = m; lsSet(K_SKILLS, all);
   }
   function recordError(lessonId){
-    if(lessonId == null || lessonId === GRAND_CONTROLE_LESSON || lessonId > 24) return;
+    if(lessonId == null || lessonId === GRAND_CONTROLE_LESSON || lessonId === GRAND_CONTROLE_A2_LESSON || lessonId === GRAND_CONTROLE_FINAL_LESSON) return;
     var all = lsGet(K_ERR, {}), m = all[LANG] || {}, e = m[lessonId] || { count:0, stage:0, due:0 };
     e.count += 1; e.stage = 0; e.due = Date.now(); e.at = Date.now();
     m[lessonId] = e; all[LANG] = m; lsSet(K_ERR, all);
@@ -765,7 +799,7 @@
   function setBoost(level, data){ var all = lsGet(K_BOOST, {}), m = all[LANG] || {}; m[level] = data; all[LANG] = m; lsSet(K_BOOST, all); }
   var rappelCache = {};
   function withRappels(quiz){
-    var lvl = (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
+    var lvl = (state.lesson >= B1_START_LESSON && state.lesson <= B1_LAST_LESSON) ? "B1" : (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
     var b = lvl && getBoosts()[lvl];
     if(!b || !b.rappel || !b.rappel.length) return quiz;
     var key = state.lesson + ":" + b.rappel.join(",");
@@ -794,10 +828,10 @@
   var LESSON_TITLES = {};
   function computeLessonTitles(){
     var keep = state.lesson, keepDraw = state.ctrlDraw;
-    A1_IDS.concat(A2_IDS).forEach(function(i){
+    A1_IDS.concat(A2_IDS).concat(B1_IDS).forEach(function(i){
       state.lesson = i; loadLessonData();
-      var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2)\.\d+\)\s*$/, "");
-      LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1))) + (t && i !== -1 ? " · " + t : "");
+      var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2|B1)\.\d+\)\s*$/, "");
+      LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (i >= B1_START_LESSON ? "B1." + (i - B1_START_LESSON + 1) : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1)))) + (t && i !== -1 ? " · " + t : "");
     });
     state.lesson = keep; state.ctrlDraw = keepDraw;
   }
@@ -899,7 +933,7 @@
       ids = Object.keys(errs).map(Number).filter(function(id){ return errs[id].count > 0 && errs[id].due <= Date.now(); })
         .sort(function(a, b){ return errs[b].count - errs[a].count; }).slice(0, 2);
     } else if(mode === "mix"){
-      var done = A1_IDS.concat(A2_IDS).filter(function(id){ return id < Math.min(state.lesson, 25) || (state.lesson === -1 && id === -1); });
+      var done = A1_IDS.concat(A2_IDS).concat(B1_IDS).filter(function(id){ return id < state.lesson || (state.lesson === -1 && id === -1); });
       ids = shuffleArr(done.length ? done : [-1, 0]).slice(0, 3);
     } else {
       ids = mode.split(",").map(function(x){ return parseInt(x, 10); }).filter(function(x){ return !isNaN(x) && quizOf(x); });
@@ -3218,9 +3252,9 @@
     if(!state.variant){
       chip.innerHTML = '<span class="flags">🇫🇷→🌍</span><span>Choisis ta version</span>';
     } else if(state.variant === "us"){
-      chip.innerHTML = '<span class="flags">🇫🇷→🇺🇸</span><span>Anglais américain · <b>'+(state.lesson >= 13 ? "A2" : "A1")+'</b></span>';
+      chip.innerHTML = '<span class="flags">🇫🇷→🇺🇸</span><span>Anglais américain · <b>'+(state.lesson >= B1_START_LESSON ? "B1" : (state.lesson >= 13 ? "A2" : "A1"))+'</b></span>';
     } else {
-      chip.innerHTML = '<span class="flags">🇫🇷→🇬🇧</span><span>Anglais britannique · <b>'+(state.lesson >= 13 ? "A2" : "A1")+'</b></span>';
+      chip.innerHTML = '<span class="flags">🇫🇷→🇬🇧</span><span>Anglais britannique · <b>'+(state.lesson >= B1_START_LESSON ? "B1" : (state.lesson >= 13 ? "A2" : "A1"))+'</b></span>';
     }
   }
 
@@ -3236,7 +3270,7 @@
 
   // ---------- Screen 0 : Accueil ----------
   function screenAccueil(){
-    postmark.innerHTML = state.lesson === -1 ? "ROOTS<br>FOND." : (state.lesson >= 13 ? "ROOTS<br>A2." + (state.lesson-13) : "ROOTS<br>LEÇON&nbsp;" + String(state.lesson+1).padStart(2,"0"));
+    postmark.innerHTML = state.lesson === -1 ? "ROOTS<br>FOND." : (state.lesson >= B1_START_LESSON ? "ROOTS<br>B1." + (state.lesson - B1_START_LESSON + 1) : (state.lesson >= 13 ? "ROOTS<br>A2." + (state.lesson-13) : "ROOTS<br>LEÇON&nbsp;" + String(state.lesson+1).padStart(2,"0")));
     backBtn.style.visibility = "hidden";
     if(!state.variant){
       screen.innerHTML =
@@ -3488,9 +3522,11 @@
       });
     }
     var vocabArrays = [VOCAB_L1,VOCAB_L2,VOCAB_L3,VOCAB_L4,VOCAB_L5,VOCAB_L6,VOCAB_L7,VOCAB_L8,VOCAB_L9,VOCAB_L10,VOCAB_L11,VOCAB_L12,
-      VOCAB_A2_0,VOCAB_A2_1,VOCAB_A2_2,VOCAB_A2_3,VOCAB_A2_4,VOCAB_A2_5,VOCAB_A2_6,VOCAB_A2_7,VOCAB_A2_8,VOCAB_A2_9,VOCAB_A2_10,VOCAB_A2_11];
+      VOCAB_A2_0,VOCAB_A2_1,VOCAB_A2_2,VOCAB_A2_3,VOCAB_A2_4,VOCAB_A2_5,VOCAB_A2_6,VOCAB_A2_7,VOCAB_A2_8,VOCAB_A2_9,VOCAB_A2_10,VOCAB_A2_11,
+      VOCAB_B1_1,VOCAB_B1_2,VOCAB_B1_3];
     var glossArrays = [GLOSS_L1,GLOSS_L2,GLOSS_L3,GLOSS_L4,GLOSS_L5,GLOSS_L6,GLOSS_L7,GLOSS_L8,GLOSS_L9,GLOSS_L10,GLOSS_L11,GLOSS_L12,GLOSS_COMMON,
-      GLOSS_A2_0,GLOSS_A2_1,GLOSS_A2_2,GLOSS_A2_3,GLOSS_A2_4,GLOSS_A2_5,GLOSS_A2_6,GLOSS_A2_7,GLOSS_A2_8,GLOSS_A2_9,GLOSS_A2_10,GLOSS_A2_11];
+      GLOSS_A2_0,GLOSS_A2_1,GLOSS_A2_2,GLOSS_A2_3,GLOSS_A2_4,GLOSS_A2_5,GLOSS_A2_6,GLOSS_A2_7,GLOSS_A2_8,GLOSS_A2_9,GLOSS_A2_10,GLOSS_A2_11,
+      GLOSS_B1_1,GLOSS_B1_2,GLOSS_B1_3];
     vocabArrays.forEach(function(arr){ (arr||[]).forEach(function(v){ addEntry(v.en, v.fr); }); });
     glossArrays.forEach(function(arr){ (arr||[]).forEach(function(g){ addEntry(g.en, g.fr); }); });
     GLOSS_DICT = dict;
@@ -4191,7 +4227,7 @@
       if(data.credits.some(function(c){ return c.id === id; })) return false;
       var d = new Date();
       var today = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
-      data.credits.push({ id: id, lang: "en", level: state.lesson >= 13 ? "A2" : "A1",
+      data.credits.push({ id: id, lang: "en", level: state.lesson >= B1_START_LESSON ? "B1" : (state.lesson >= 13 ? "A2" : "A1"),
         topic: lessonLabel() + (META && META.vocabTitle ? " — " + META.vocabTitle : ""),
         lede: (META && META.todayLede) || "", earnedAt: today, usedAt: null });
       localStorage.setItem(KEY, JSON.stringify(data));
@@ -4204,11 +4240,14 @@
     // "isA2" : palier thématique A2 en cours (13..24, borne haute exclue puisque
     // GRAND_CONTROLE_A2_LESSON a son propre écran de bilan, screenGCBilan).
     var isA2 = state.lesson >= 13 && state.lesson < GRAND_CONTROLE_A2_LESSON;
-    var lastThematicOfBlock = isA2 ? (GRAND_CONTROLE_A2_LESSON - 1) : (GRAND_CONTROLE_LESSON - 1);
+    // "isB1" : palier thématique B1 en cours (27..29 à ce jour). Pas de Grand Contrôle B1 pour
+    // l'instant, donc pas de borne haute exclue ici comme pour isA2 (voir B1_LAST_LESSON).
+    var isB1 = state.lesson >= B1_START_LESSON;
+    var lastThematicOfBlock = isB1 ? B1_LAST_LESSON : (isA2 ? (GRAND_CONTROLE_A2_LESSON - 1) : (GRAND_CONTROLE_LESSON - 1));
     var hasNext = state.lesson < lastThematicOfBlock;
     var passThreshold = Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
     var passed = state.quizScore >= passThreshold;
-    postmark.innerHTML = state.lesson === -1 ? "BILAN<br>FOND." : (state.lesson >= 13 ? "BILAN<br>A2." + (state.lesson-13) : "BILAN<br>JOUR&nbsp;" + String(state.lesson+1).padStart(2,"0"));
+    postmark.innerHTML = state.lesson === -1 ? "BILAN<br>FOND." : (isB1 ? "BILAN<br>B1." + (state.lesson - B1_START_LESSON + 1) : (state.lesson >= 13 ? "BILAN<br>A2." + (state.lesson-13) : "BILAN<br>JOUR&nbsp;" + String(state.lesson+1).padStart(2,"0")));
     var recap = QUIZ.map(function(q, i){
       var hit = state.quizLog[i];
       return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
@@ -4228,13 +4267,13 @@
       '<div class="stat-grid">' +
         '<div class="stat"><div class="n">'+VOCAB.length+'</div><div class="l">Mots vus</div></div>' +
         '<div class="stat"><div class="n">'+memState.moves+'</div><div class="l">Coups au jeu</div></div>' +
-        '<div class="stat"><div class="n">'+(state.lesson === -1 ? "F" : (isA2 ? "A2."+(state.lesson-13) : "J"+(state.lesson+1)))+'</div><div class="l">Série</div></div>' +
+        '<div class="stat"><div class="n">'+(state.lesson === -1 ? "F" : (isB1 ? "B1."+(state.lesson-B1_START_LESSON+1) : (isA2 ? "A2."+(state.lesson-13) : "J"+(state.lesson+1))))+'</div><div class="l">Série</div></div>' +
       '</div>' +
       gaugesHtml +
       '<div class="recap">'+recap+'</div>' +
       nextStepHtml;
     nextBtn.textContent = (passed && state.returnTo != null) ? (state.returnTo === 13 ? "Retour à mes renforts" : "Retour au contrôle") : passed
-      ? (hasNext ? "Passer à " + (isA2 ? "A2." + (state.lesson+1-13) : "la leçon " + (state.lesson+2)) : "Passer au grand contrôle " + (isA2 ? "A2" : "A1"))
+      ? (hasNext ? "Passer à " + (isB1 ? "B1." + (state.lesson+2-B1_START_LESSON) : (isA2 ? "A2." + (state.lesson+1-13) : "la leçon " + (state.lesson+2))) : (isB1 ? "Revoir mes leçons (B1.4 arrive bientôt)" : "Passer au grand contrôle " + (isA2 ? "A2" : "A1")))
       : "Revoir la leçon";
     backBtn.style.visibility = "hidden";
     hint.textContent = passed ? "" : "Reprends la leçon depuis le début pour retravailler les points fragiles.";
@@ -4297,7 +4336,7 @@
     var rs = ev.decision === "fail" ? retakeStatus(level) : null;
     var nextInfo = ev.decision === "fail"
       ? (rs && rs.creator ? '<p class="lede" style="font-size:.85rem">Mode créatrice : repassage possible tout de suite.</p>' : '<p class="lede" style="font-size:.9rem">Nouveau contrôle possible à partir du <b>'+fmtDate(Date.now() + 7 * DAY_MS)+'</b>.</p>')
-      : (level === "FINAL" ? '<p class="lede" style="font-size:.9rem">Le niveau B1 arrive bientôt dans The Roots : en attendant, tes leçons restent ouvertes pour réviser.</p>' : "");
+      : (level === "FINAL" ? '<p class="lede" style="font-size:.9rem">Direction le niveau B1 ! B1.1 (My Identity Today) t\'attend — les leçons A1/A2 restent ouvertes si tu veux réviser.</p>' : "");
     var recap = QUIZ.map(function(q, i){
       var hit = state.quizLog[i];
       return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
@@ -4313,7 +4352,7 @@
       floorHtml + nextInfo +
       '<details class="gc-recap-toggle"><summary>Voir le détail des '+QUIZ.length+' questions</summary><div class="recap">'+recap+'</div></details>';
     wireReviewButtons();
-    nextBtn.textContent = ev.decision === "fail" ? "Retour à l'accueil du contrôle" : (level === "A1" ? "Commencer le niveau A2" : (level === "A2" ? "Passer au grand contrôle final" : "Revoir mes leçons"));
+    nextBtn.textContent = ev.decision === "fail" ? "Retour à l'accueil du contrôle" : (level === "A1" ? "Commencer le niveau A2" : (level === "A2" ? "Passer au grand contrôle final" : (level === "FINAL" ? "Commencer le niveau B1" : "Revoir mes leçons")));
     backBtn.style.visibility = "hidden";
     hint.textContent = "";
   }
@@ -6163,6 +6202,414 @@
     ]; // 15 manches = 15 points
   }
 
+
+  // =====================================================================
+  // NIVEAU B1 (lesson 27..) — continuation directe de la même séquence de leçons après le Grand
+  // Contrôle final A1+A2. Construit à partir de "js/data/programme-b1-en.js" (B1.1 à B1.3 pour
+  // l'instant — B1.4 et suivants seront ajoutés dans une prochaine session, voir B1_LAST_LESSON).
+  // Comme pour A1/A2 : contenu interactif entièrement réécrit pour lessons.html, jamais un simple
+  // copier-coller du texte de présentation du programme (qui reste un résumé pour l'écran "Voir le
+  // programme" de l'appli principale, pas un scénario pédagogique).
+  // =====================================================================
+
+  // ---------- B1.1 — Mon identité aujourd'hui — s'appuie sur A2.11 (opinions) et A1.1 (identité) ----------
+  var VOCAB_B1_1 = [
+    {block:"Décrire sa personnalité", en:"Outgoing", ipa:"/ˈaʊtɡoʊɪŋ/", fr:"Sociable, extraverti(e)", note:"« She's very outgoing » = elle est très sociable, à l'aise avec les autres."},
+    {block:"Décrire sa personnalité", en:"Reserved", ipa:"/rɪˈzɜːrvd/", fr:"Réservé(e)", note:"Contraire d'« outgoing » : quelqu'un qui parle peu de lui/elle-même au début."},
+    {block:"Décrire sa personnalité", en:"Ambitious", ipa:"/æmˈbɪʃəs/", fr:"Ambitieux(se)", note:"« an ambitious goal » = un objectif ambitieux, pas seulement pour les gens."},
+    {block:"Décrire sa personnalité", en:"Easy-going", ipa:"/ˈiːzi ˈɡoʊɪŋ/", fr:"Facile à vivre, cool", note:"Toujours avec un trait d'union : « he's easy-going about plans »."},
+    {block:"Décrire sa personnalité", en:"Stubborn", ipa:"/ˈstʌbərn/", fr:"Têtu(e)", note:"Peut être positif (déterminé) ou négatif (borné) selon le ton."},
+    {block:"Décrire sa personnalité", en:"Reliable", ipa:"/rɪˈlaɪəbəl/", fr:"Fiable, sur qui on peut compter", note:"« a reliable friend » = un ami sur qui on peut compter."},
+    {block:"Décrire sa personnalité", en:"Sensitive", ipa:"/ˈsɛnsɪtɪv/", fr:"Sensible", note:"Faux ami partiel : ne veut jamais dire « raisonnable » (= « sensible » en anglais veut dire « raisonnable, censé »)."},
+    {block:"Décrire sa personnalité", en:"Confident", ipa:"/ˈkɒnfɪdənt/", fr:"Sûr(e) de soi, confiant(e)", note:"« self-confident » insiste encore plus sur la confiance en soi."},
+    {block:"Habitudes et mode de vie", en:"Habit", ipa:"/ˈhæbɪt/", fr:"Habitude", note:"« a bad habit » = une mauvaise habitude ; ne se confond pas avec « custom » (coutume collective)."},
+    {block:"Habitudes et mode de vie", en:"Routine", ipa:"/ruːˈtiːn/", fr:"Routine, train-train", note:"« my daily routine » = mon quotidien, ma routine journalière."},
+    {block:"Habitudes et mode de vie", en:"Lifestyle", ipa:"/ˈlaɪfstaɪl/", fr:"Mode de vie", note:"« a healthy lifestyle » = un mode de vie sain — un seul mot en anglais."},
+    {block:"Habitudes et mode de vie", en:"Balance", ipa:"/ˈbæləns/", fr:"Équilibre", note:"« work-life balance » = équilibre entre vie pro et vie perso, expression très courante."},
+    {block:"Habitudes et mode de vie", en:"On a daily basis", ipa:"/ɒn ə ˈdeɪli ˈbeɪsɪs/", fr:"Au quotidien, tous les jours", note:"Formule un peu plus soutenue que « every day », fréquente à l'oral B1."},
+    {block:"Habitudes et mode de vie", en:"Occasionally", ipa:"/əˈkeɪʒənəli/", fr:"Occasionnellement, de temps en temps", note:"Entre « sometimes » et « rarely » sur l'échelle de fréquence."},
+    {block:"Parler de son évolution", en:"To change", ipa:"/tʃeɪndʒ/", fr:"Changer", note:"« I've changed a lot » = j'ai beaucoup changé — souvent au Present Perfect (voir grammaire)."},
+    {block:"Parler de son évolution", en:"No longer", ipa:"/noʊ ˈlɒŋɡər/", fr:"Ne plus (formel)", note:"« I no longer live there » = je n'y habite plus — équivalent plus soutenu de « not...anymore »."},
+    {block:"Parler de son évolution", en:"These days", ipa:"/ðiːz deɪz/", fr:"De nos jours, en ce moment", note:"Introduit souvent un contraste avec le passé : « These days, I prefer staying in »."},
+    {block:"Parler de son évolution", en:"Compared to before", ipa:"/kəmˈpɛərd tə bɪˈfɔːr/", fr:"Comparé(e) à avant", note:"Utile pour introduire une comparaison présent/passé dans un même paragraphe."},
+    {block:"Parler de son évolution", en:"A turning point", ipa:"/ə ˈtɜːrnɪŋ pɔɪnt/", fr:"Un tournant", note:"« a turning point in my life » = un tournant dans ma vie, un moment charnière."},
+    {block:"Parler de son évolution", en:"To grow as a person", ipa:"/tə ɡroʊ æz ə ˈpɜːrsən/", fr:"Évoluer, grandir en tant que personne", note:"« grow » ici ne parle pas de taille, mais de maturité et d'évolution personnelle."},
+    {block:"Verbes clés (B1.1)", en:"Feel", ipa:"/fiːl/", fr:"Se sentir, ressentir", note:"« I feel more confident now » = je me sens plus confiant(e) maintenant."},
+    {block:"Verbes clés (B1.1)", en:"Seem", ipa:"/siːm/", fr:"Sembler, paraître", note:"« You seem happier these days » = tu sembles plus heureux(se) ces temps-ci."},
+    {block:"Verbes clés (B1.1)", en:"Prefer", ipa:"/prɪˈfɜːr/", fr:"Préférer", note:"Rappel A2.11 : « prefer » accepte « -ing » ou « to + base »."},
+    {block:"Verbes clés (B1.1)", en:"Enjoy", ipa:"/ɪnˈdʒɔɪ/", fr:"Apprécier, aimer", note:"Rappel A2.11 : toujours suivi du gérondif « -ing »."},
+    {block:"Verbes clés (B1.1)", en:"Avoid", ipa:"/əˈvɔɪd/", fr:"Éviter", note:"« I try to avoid stress » = j'essaie d'éviter le stress."},
+    {block:"Verbes clés (B1.1)", en:"Matter", ipa:"/ˈmætər/", fr:"Compter, avoir de l'importance", note:"« Family matters to me » = la famille compte pour moi — jamais suivi d'un objet direct sans « to »."}
+  ];
+  var MEM_WORDS_B1_1 = [1,4,10,14,18,25]; // indexes into VOCAB_B1_1 : Reserved, Stubborn, Lifestyle, To change, A turning point, Matter
+
+  var MINI_CHECKS_B1_1 = [
+    { q:"“I ___ (live) in Lyon for six years now.” — bilan qui continue jusqu'à aujourd'hui.", opts:["lived","have lived","live"], correct:1, fb:"Present Perfect (« have lived ») : une situation qui a commencé dans le passé et continue maintenant." },
+    { q:"“I ___ (move) to Lyon in 2018.” — date précise, terminée.", opts:["have moved","moved","move"], correct:1, fb:"Past Simple (« moved ») avec une date précise : l'action est terminée et datée." },
+    { q:"Quelle est la différence entre « I used to smoke » et « I'm used to waking up early » ?", opts:["Aucune, c'est la même chose","« used to » = habitude passée disparue ; « be used to » = être habitué(e) à quelque chose","« used to » parle du futur"], correct:1, fb:"« used to + base » = une habitude passée qu'on n'a plus. « be used to + -ing/nom » = être habitué(e) à une situation, présente ou passée." },
+    { q:"Comment dit-on « têtu(e) » ?", opts:["Reliable","Stubborn","Sensitive"], correct:1, fb:"« Stubborn » = têtu(e)." }
+  ];
+
+  var ROUNDS_B1_1 = [
+    { bank:["Lyon","in","have","I","lived","years","six","for","."], answer:"i have lived in lyon for six years .", display:"I have lived in Lyon for six years.", fr:"J'habite à Lyon depuis six ans." },
+    { bank:["2018","Lyon","to","I","moved","in","."], answer:"i moved to lyon in 2018 .", display:"I moved to Lyon in 2018.", fr:"J'ai déménagé à Lyon en 2018." },
+    { bank:["smoke","used","I","to","."], answer:"i used to smoke .", display:"I used to smoke.", fr:"Je fumais, avant (plus maintenant)." },
+    { bank:["early","used","I'm","waking","to","up","."], answer:"i'm used to waking up early .", display:"I'm used to waking up early.", fr:"Je suis habitué(e) à me lever tôt." },
+    { bank:["confident","more","feel","I","now","."], answer:"i feel more confident now .", display:"I feel more confident now.", fr:"Je me sens plus confiant(e) maintenant." },
+    { bank:["happier","seem","these","You","days","."], answer:"you seem happier these days .", display:"You seem happier these days.", fr:"Tu sembles plus heureux(se) ces temps-ci." },
+    { bank:["life","was","turning","in","point","my","a","It","."], answer:"it was a turning point in my life .", display:"It was a turning point in my life.", fr:"C'était un tournant dans ma vie." },
+    { bank:["live","longer","there","I","no","."], answer:"i no longer live there .", display:"I no longer live there.", fr:"Je n'y habite plus." },
+    { bank:["outgoing","really","She's","."], answer:"she's really outgoing .", display:"She's really outgoing.", fr:"Elle est vraiment sociable." },
+    { bank:["stress","try","avoid","I","to","."], answer:"i try to avoid stress .", display:"I try to avoid stress.", fr:"J'essaie d'éviter le stress." }
+  ];
+
+  var QUIZ_B1_1 = [
+    { cat:"ecrit", q:"“I ___ (live) in Lyon for six years now.”", opts:["lived","have lived","am living"], correct:1, why:"Present Perfect : une situation commencée dans le passé et qui continue maintenant, avec « for ». « I've lived » suffit aussi, sans « now »." },
+    { cat:"ecrit", q:"“I ___ (move) to Lyon in 2018.”", opts:["have moved","moved","was moving"], correct:1, why:"Une date précise (2018) = Past Simple, action terminée dans le passé." },
+    { cat:"ecrit", q:"“I ___ (smoke), but I stopped five years ago.”", opts:["use to smoke","used to smoke","am used to smoke"], correct:1, why:"« used to + base verbale » = habitude passée qui n'existe plus." },
+    { cat:"ecrit", q:"“I've lived in London for years, so I ___ the rain now.” — être habitué(e) à.", opts:["used to","am used to","use to"], correct:1, why:"« be used to + -ing/nom » = être habitué(e) à une situation." },
+    { cat:"ecrit", q:"“It took me a while, but I ___ working nights.” — processus, devenir habitué.", opts:["am used to","get used to","got used to"], correct:2, why:"« get used to » décrit le processus de devenir habitué à quelque chose — ici au passé (« got »)." },
+    { cat:"ecrit", q:"Comment dit-on « têtu(e) » ?", opts:["Reliable","Sensitive","Stubborn"], correct:2, why:"« Stubborn » = têtu(e)." },
+    { cat:"ecrit", q:"Comment dit-on « facile à vivre » ?", opts:["Easy-going","Outgoing","Reserved"], correct:0, why:"« Easy-going » = facile à vivre, cool." },
+    { cat:"ecrit", q:"Comment dit-on « je n'y habite plus » (formel) ?", opts:["I don't live there anymore","I no longer live there","I never live there"], correct:1, why:"« No longer » = ne plus, registre un peu plus soutenu que « not...anymore » (les deux sont corrects)." },
+    { cat:"ecrit", q:"Comment dit-on « un tournant dans ma vie » ?", opts:["A turning point in my life","A changing life","A life turn"], correct:0, why:"« A turning point » = un tournant, un moment charnière." },
+    { cat:"ecrit", q:"“Family really ___ to me.” — avoir de l'importance.", opts:["matters","interests","depends"], correct:0, why:"« Matter » = compter, avoir de l'importance ; toujours « matter to somebody »." },
+    { cat:"oral", audio:"I have lived in Lyon for six years now.", q:"Écoute : depuis quand la personne habite-t-elle à Lyon ?", opts:["Depuis six mois","Depuis six ans","Depuis 2018 exactement","On ne sait pas"], correct:1, why:"« for six years » = depuis six ans, jusqu'à maintenant." },
+    { cat:"oral", audio:"I used to smoke, but I stopped five years ago.", q:"Écoute : est-ce que la personne fume aujourd'hui ?", opts:["Oui, tous les jours","Non, elle a arrêté","Elle vient de commencer","On ne sait pas"], correct:1, why:"« used to smoke » + « I stopped » = habitude passée, terminée." },
+    { cat:"oral", audio:"You seem happier these days.", q:"Écoute : quelle observation fait-on sur la personne ?", opts:["Elle a l'air plus stressée","Elle a l'air plus heureuse ces temps-ci","Elle a l'air fatiguée","Elle a changé de travail"], correct:1, why:"« seem happier these days » = sembler plus heureux(se) ces temps-ci." },
+    { cat:"oral", audio:"It was a real turning point in my life.", q:"Écoute : comment la personne décrit-elle ce moment ?", opts:["Un moment sans importance","Un tournant important dans sa vie","Un moment triste seulement","Un moment ordinaire"], correct:1, why:"« a turning point » = un tournant, un moment charnière." },
+    { cat:"comprehension", passage:"“I've changed a lot compared to before. I used to be quite reserved, but these days I'm much more outgoing. I think moving to a new city was a real turning point for me.”", q:"D'après le texte, comment la personnalité de la personne a-t-elle évolué ?", opts:["Elle est devenue plus réservée","Elle est devenue plus sociable","Elle n'a pas changé","Elle est devenue plus têtue"], correct:1, why:"« I used to be quite reserved, but these days I'm much more outgoing »." },
+    { cat:"comprehension", passage:"“It took me a few months, but I finally got used to working from home. At first it felt strange, but now I really enjoy the flexibility it gives me.”", q:"D'après le texte, comment la personne se sent-elle aujourd'hui à propos du télétravail ?", opts:["Elle ne s'y est jamais habituée","Elle est habituée et apprécie la flexibilité","Elle a arrêté de télétravailler","Elle trouve encore cela étrange"], correct:1, why:"« I finally got used to working from home... now I really enjoy it »." },
+    { cat:"comprehension", passage:"“(rappel) In my opinion, the most important thing in life is a good work-life balance. Personally, I try to avoid working too much, because family really matters to me.”", q:"D'après le texte, pourquoi la personne évite-t-elle de trop travailler ?", opts:["Parce que le travail ne l'intéresse pas","Parce que la famille compte beaucoup pour elle","Parce qu'elle est fatiguée","Parce qu'elle change de travail"], correct:1, why:"« family really matters to me » (rappel A2.11 : « in my opinion », « personally »)." },
+    { cat:"comprehension", passage:"“(rappel) My grandmother always says that a reliable friend is worth more than ten new ones. I've always remembered her advice, and it has shaped who I am today.”", q:"D'après le texte, quel conseil la grand-mère a-t-elle donné ?", opts:["Il faut avoir le plus d'amis possible","Un ami fiable vaut plus que dix nouveaux amis","Il ne faut faire confiance à personne","Les amis d'enfance sont les meilleurs"], correct:1, why:"« a reliable friend is worth more than ten new ones » (rappel A1.2 : « grandmother »)." }
+  ];
+
+  var PRON_VERBS_B1_1 = [
+    {en:"I have lived in Lyon for six years now.", fr:"J'habite à Lyon depuis six ans."},
+    {en:"I used to smoke, but I stopped five years ago.", fr:"Je fumais, avant, mais j'ai arrêté il y a cinq ans."},
+    {en:"I'm used to waking up early.", fr:"Je suis habitué(e) à me lever tôt."},
+    {en:"It took me a while, but I got used to it.", fr:"Ça m'a pris du temps, mais je m'y suis habitué(e)."},
+    {en:"You seem happier these days.", fr:"Tu sembles plus heureux(se) ces temps-ci."},
+    {en:"It was a real turning point in my life.", fr:"C'était un vrai tournant dans ma vie."}
+  ];
+
+  var READING_B1_1 = [
+    "Ten years ago, I was a shy, reserved teenager who avoided speaking in front of people.",
+    "These days, things are very different — I feel much more confident and outgoing.",
+    "I've lived in three different cities since then, and each move changed me a little.",
+    "Moving abroad for a year was probably the biggest turning point in my life.",
+    "At first, I found it hard to adapt, and I really missed my old routine.",
+    "But little by little, I got used to a completely new lifestyle.",
+    "I used to hate small talk, but now I actually enjoy meeting new people.",
+    "Compared to before, I worry less about what other people think of me.",
+    "My friends say I seem calmer and more easy-going than I used to be.",
+    "In the end, I think change matters — it's how we grow as a person."
+  ];
+  var GLOSS_B1_1 = [
+    {en:"shy", fr:"timide"},
+    {en:"to adapt", fr:"s'adapter"},
+    {en:"to miss (something)", fr:"que quelque chose vous manque"},
+    {en:"little by little", fr:"petit à petit"}
+  ];
+
+  var GRAMMAR1_B1_1 = {
+    heading: "Present Perfect vs Past Simple : parler de sa vie et de ses changements",
+    lede: "Le Present Perfect relie le passé au présent : une situation qui a commencé avant et qui continue, ou une expérience sans date précise. Le Past Simple raconte un moment terminé, souvent avec une date.",
+    conj: [["Bilan qui continue →","Present Perfect","I have lived in three countries."],["Moment précis, daté →","Past Simple","I moved to Paris in 2019."],["Habitude qui continue →","Present Simple","I usually wake up early."],["Action temporaire, en ce moment →","Present Continuous","I'm working on a new project this year."]],
+    ruleHtml: "📖 Utilise le <b>Present Perfect</b> pour un <b>bilan</b>, une expérience ou une situation qui dure encore : « I <b>have lived</b> here <b>for</b> six years. » Utilise le <b>Past Simple</b> dès qu'il y a une <b>date précise</b> ou que l'action est clairement terminée : « I <b>moved</b> here <b>in</b> 2018. » Piège fréquent chez les francophones : ne jamais dire « I live here since 3 years » — c'est « I <b>have lived</b> here <b>for</b> 3 years » (« since » + un point de départ, « for » + une durée).",
+    dialogueLede: "Deux amis qui se retrouvent après longtemps :",
+    dialogue: [
+      {who:"them", en:"How long have you lived in Lyon?", fr:"Depuis combien de temps habites-tu à Lyon ?"},
+      {who:"you", en:"I've lived here for six years — I moved here in 2018.", fr:"J'y habite depuis six ans — j'ai déménagé ici en 2018."}
+    ],
+    whyLabel: "« Since » + point de départ, « for » + durée",
+    whyText: "Erreur très fréquente chez les francophones : « I live here since 3 years ». En anglais, il faut le Present Perfect + « since » (un <b>point de départ</b> précis : « since 2018 », « since March ») ou + « for » (une <b>durée</b> : « for 3 years », « for six months »). Jamais de présent simple avec « since/for » pour une situation qui continue !"
+  };
+  var GRAMMAR2_B1_1 = {
+    heading: "used to / be used to / get used to : trois expressions, trois sens",
+    dialogueLede: "Une amie parle d'un grand changement de vie :",
+    dialogue: [
+      {who:"them", en:"Wasn't it hard to move to a new city?", fr:"Ce n'était pas dur de déménager dans une nouvelle ville ?"},
+      {who:"you", en:"At first, yes — but I got used to it, and now I'm used to living here.", fr:"Au début, si — mais je m'y suis habitué(e), et maintenant j'ai l'habitude d'y vivre."}
+    ],
+    ruleHtml: "💭 <b>used to + base verbale</b> : une <b>habitude passée</b> qui n'existe plus — « I <b>used to smoke</b> » (je fumais, avant). <b>be used to + -ing/nom</b> : être <b>habitué(e)</b> à quelque chose, présent ou passé — « I'<b>m used to waking up</b> early » (j'ai l'habitude de me lever tôt). <b>get used to + -ing/nom</b> : le <b>processus</b> de devenir habitué(e) — « I <b>got used to</b> the noise » (je me suis habitué(e) au bruit).",
+    whyLabel: "Le piège classique : confondre les trois",
+    whyText: "Les trois se ressemblent beaucoup à l'oral, mais n'ont pas du tout le même sens ! « I used to live in Paris » = j'habitais à Paris, avant (plus maintenant). « I'm used to living in a big city » = je suis habitué(e) à vivre dans une grande ville (c'est ma situation actuelle). « I'm getting used to living here » = je suis en train de m'habituer à vivre ici (processus en cours)."
+  };
+
+  var REVIEW_B1_1 = [
+    { q:"“I ___ (enjoy) reading in the evening.” — goût général.", opts:["enjoy to read","enjoy reading"], correct:1, fb:"« enjoy » est toujours suivi du gérondif. (rappel A2.11)" },
+    { q:"Comment dit-on « à mon avis » ?", opts:["In my opinion","On the other hand"], correct:0, fb:"« In my opinion » = à mon avis. (rappel A2.11)" },
+    { q:"Comment dit-on « je ne supporte pas » ?", opts:["Can't stand","Don't mind"], correct:0, fb:"« Can't stand » = ne pas supporter du tout. (rappel A2.11)" },
+    { q:"Comment justifier une opinion avec « c'est pourquoi » ?", opts:["That's why","Even though"], correct:0, fb:"« That's why » introduit une conséquence. (rappel A2.11)" },
+    { q:"Comment dit-on « pour être honnête » ?", opts:["To be honest","Actually"], correct:0, fb:"« To be honest » introduit une opinion franche. (rappel A2.11)" }
+  ];
+
+  // ---------- B1.2 — Raconter un événement — s'appuie sur B1.1 et A2.3 (Past Continuous) ----------
+  var VOCAB_B1_2 = [
+    {block:"Raconter un événement", en:"Event", ipa:"/ɪˈvɛnt/", fr:"Événement", note:"« a life-changing event » = un événement qui change une vie."},
+    {block:"Raconter un événement", en:"Accident", ipa:"/ˈæksɪdənt/", fr:"Accident", note:"« by accident » = par accident, involontairement."},
+    {block:"Raconter un événement", en:"Memory", ipa:"/ˈmɛməri/", fr:"Souvenir, mémoire", note:"« a childhood memory » = un souvenir d'enfance ; pluriel « memories »."},
+    {block:"Raconter un événement", en:"Experience", ipa:"/ɪkˈspɪəriəns/", fr:"Expérience", note:"Indénombrable pour l'expérience en général, dénombrable pour « une expérience » précise : « an amazing experience »."},
+    {block:"Raconter un événement", en:"To happen", ipa:"/tə ˈhæpən/", fr:"Arriver, se produire", note:"« What happened? » = que s'est-il passé ? — verbe intransitif, jamais suivi d'un objet direct."},
+    {block:"Raconter un événement", en:"To occur", ipa:"/tə əˈkɜːr/", fr:"Se produire (plus formel)", note:"Synonyme plus soutenu de « happen », fréquent à l'écrit."},
+    {block:"Raconter un événement", en:"Unexpectedly", ipa:"/ˌʌnɪkˈspɛktɪdli/", fr:"De manière inattendue", note:"« it happened unexpectedly » = c'est arrivé de manière inattendue."},
+    {block:"Raconter un événement", en:"Suddenly", ipa:"/ˈsʌdənli/", fr:"Soudainement, tout à coup", note:"Marqueur classique pour introduire l'événement inattendu d'un récit."},
+    {block:"Réagir et se souvenir", en:"To realize", ipa:"/tə ˈrɪəlaɪz/", fr:"Se rendre compte", note:"« I realized I had lost my keys » = je me suis rendu(e) compte que j'avais perdu mes clés."},
+    {block:"Réagir et se souvenir", en:"To notice", ipa:"/tə ˈnoʊtɪs/", fr:"Remarquer", note:"« I noticed something strange » = j'ai remarqué quelque chose d'étrange."},
+    {block:"Réagir et se souvenir", en:"To remember", ipa:"/tə rɪˈmɛmbər/", fr:"Se souvenir de", note:"Jamais de préposition avant l'objet direct : « I remember it », pas « I remember of it »."},
+    {block:"Réagir et se souvenir", en:"To forget", ipa:"/tə fərˈɡɛt/", fr:"Oublier", note:"Passé irrégulier : « forgot »."},
+    {block:"Réagir et se souvenir", en:"To manage to", ipa:"/tə ˈmænɪdʒ tə/", fr:"Réussir à", note:"« I managed to fix it » = j'ai réussi à le réparer, malgré une difficulté."},
+    {block:"Réagir et se souvenir", en:"To fail to", ipa:"/tə feɪl tə/", fr:"Ne pas réussir à, échouer à", note:"« I failed to explain it clearly » = je n'ai pas réussi à l'expliquer clairement."},
+    {block:"Connecteurs de récit", en:"When", ipa:"/wɛn/", fr:"Quand (moment précis)", note:"Introduit souvent l'action courte qui interrompt une action longue au Past Continuous."},
+    {block:"Connecteurs de récit", en:"While", ipa:"/waɪl/", fr:"Pendant que", note:"Introduit l'action longue, en arrière-plan (souvent Past Continuous)."},
+    {block:"Connecteurs de récit", en:"As", ipa:"/æz/", fr:"Alors que, au moment où", note:"Très proche de « while », mais insiste sur deux actions qui se déroulent exactement en même temps."},
+    {block:"Connecteurs de récit", en:"By the time", ipa:"/baɪ ðə taɪm/", fr:"Au moment où, avant que", note:"Introduit souvent un Past Perfect : « By the time I arrived, they had already left »."},
+    {block:"Connecteurs de récit", en:"Eventually", ipa:"/ɪˈvɛntʃuəli/", fr:"Finalement, au bout du compte", note:"Faux ami : ne veut jamais dire « éventuellement » (= « possibly »)."},
+    {block:"Connecteurs de récit", en:"In the end", ipa:"/ɪn ði ɛnd/", fr:"Finalement, en fin de compte", note:"Synonyme plus courant qu'« eventually » à l'oral, souvent en fin de récit."},
+    {block:"Structure d'un récit (Secret English)", en:"Setting", ipa:"/ˈsɛtɪŋ/", fr:"Le décor, le contexte", note:"Premier ingrédient d'un récit anglais : où et quand ça se passe."},
+    {block:"Structure d'un récit (Secret English)", en:"Problem", ipa:"/ˈprɒbləm/", fr:"Le problème, l'imprévu", note:"Ce qui fait qu'une anecdote est intéressante à raconter — sans problème, pas d'histoire !"},
+    {block:"Structure d'un récit (Secret English)", en:"Reaction", ipa:"/riˈækʃən/", fr:"La réaction", note:"Comment on a réagi face au problème — souvent le moment le plus vivant du récit."}
+  ];
+  var MEM_WORDS_B1_2 = [4,8,11,15,17,21]; // indexes into VOCAB_B1_2 : To happen, To realize, To forget, While, By the time, Problem
+
+  var MINI_CHECKS_B1_2 = [
+    { q:"“I ___ (walk) to work when it started to rain.” — action longue, en arrière-plan.", opts:["walked","was walking","had walked"], correct:1, fb:"Past Continuous (« was walking ») pour l'action longue, interrompue par une action courte au Past Simple." },
+    { q:"“By the time I arrived, the train ___ (already leave).”", opts:["already left","had already left","was already leaving"], correct:1, fb:"Past Perfect (« had already left ») : l'action est terminée AVANT un autre moment du passé." },
+    { q:"Quelle est la différence entre « when » et « while » dans un récit ?", opts:["Aucune différence","« when » introduit souvent l'action courte, « while » l'action longue en arrière-plan","« while » ne s'utilise qu'au futur"], correct:1, fb:"« while »/« as » accompagnent souvent le Past Continuous (action longue), « when » l'action courte au Past Simple qui interrompt." },
+    { q:"Comment dit-on « se rendre compte » ?", opts:["To notice","To realize","To remember"], correct:1, fb:"« To realize » = se rendre compte de quelque chose." }
+  ];
+
+  var ROUNDS_B1_2 = [
+    { bank:["rain","to","when","started","walking","was","I","it","."], answer:"i was walking when it started to rain .", display:"I was walking when it started to rain.", fr:"Je marchais quand il a commencé à pleuvoir." },
+    { bank:["left","train","already","the","arrived","had","by","I","the","time","."], answer:"by the time i arrived the train had already left .", display:"By the time I arrived, the train had already left.", fr:"Au moment où je suis arrivé(e), le train était déjà parti." },
+    { bank:["keys","my","realized","I","lost","had","I","."], answer:"i realized i had lost my keys .", display:"I realized I had lost my keys.", fr:"Je me suis rendu(e) compte que j'avais perdu mes clés." },
+    { bank:["strange","something","noticed","I","."], answer:"i noticed something strange .", display:"I noticed something strange.", fr:"J'ai remarqué quelque chose d'étrange." },
+    { bank:["it","fix","managed","I","to","."], answer:"i managed to fix it .", display:"I managed to fix it.", fr:"J'ai réussi à le réparer." },
+    { bank:["clearly","failed","explain","I","to","it","."], answer:"i failed to explain it clearly .", display:"I failed to explain it clearly.", fr:"Je n'ai pas réussi à l'expliquer clairement." },
+    { bank:["unexpectedly","happened","It","."], answer:"it happened unexpectedly .", display:"It happened unexpectedly.", fr:"C'est arrivé de manière inattendue." },
+    { bank:["phone","cooking","rang","was","the","While","I","."], answer:"while i was cooking the phone rang .", display:"While I was cooking, the phone rang.", fr:"Pendant que je cuisinais, le téléphone a sonné." },
+    { bank:["okay","end","was","the","everything","In","."], answer:"in the end everything was okay .", display:"In the end, everything was okay.", fr:"Finalement, tout allait bien." },
+    { bank:["it","forgot","completely","I","."], answer:"i forgot it completely .", display:"I forgot it completely.", fr:"Je l'ai complètement oublié." }
+  ];
+
+  var QUIZ_B1_2 = [
+    { cat:"ecrit", q:"“I ___ (walk) to work when it started to rain.”", opts:["walked","was walking","have walked"], correct:1, why:"Past Continuous : l'action longue et en cours, interrompue par une action courte au Past Simple (« started »)." },
+    { cat:"ecrit", q:"“By the time I arrived, the train ___ (already leave).”", opts:["already left","had already left","was leaving"], correct:1, why:"Past Perfect : une action terminée avant un autre moment du passé, introduite par « by the time »." },
+    { cat:"ecrit", q:"“While I ___ (cook), the phone rang.”", opts:["cooked","was cooking","cook"], correct:1, why:"« while » introduit souvent l'action longue, en arrière-plan, au Past Continuous." },
+    { cat:"ecrit", q:"“I ___ (realize) I had lost my keys.”", opts:["realized","was realizing","had realize"], correct:0, why:"« realize » décrit un moment précis, au Past Simple — c'est ce qu'il précède (« had lost ») qui est au Past Perfect." },
+    { cat:"ecrit", q:"Comment dit-on « se rendre compte » ?", opts:["To notice","To realize","To remember"], correct:1, why:"« To realize » = se rendre compte." },
+    { cat:"ecrit", q:"Comment dit-on « réussir à » ?", opts:["To manage to","To fail to","To forget to"], correct:0, why:"« To manage to » = réussir à faire quelque chose malgré une difficulté." },
+    { cat:"ecrit", q:"Comment dit-on « soudainement » ?", opts:["Eventually","Suddenly","Occasionally"], correct:1, why:"« Suddenly » = soudainement, tout à coup." },
+    { cat:"ecrit", q:"« Eventually » veut dire :", opts:["Éventuellement, peut-être","Finalement, au bout du compte","Rarement"], correct:1, why:"Faux ami classique : « eventually » = finalement, jamais « éventuellement » (= « possibly »)." },
+    { cat:"ecrit", q:"Comment dit-on « un souvenir d'enfance » ?", opts:["A childhood memory","A childhood experience","A childhood event"], correct:0, why:"« Memory » = souvenir ; « a childhood memory » est l'expression courante." },
+    { cat:"ecrit", q:"Quel connecteur introduit le mieux « au moment où, avant que » ?", opts:["While","By the time","As"], correct:1, why:"« By the time » introduit souvent un Past Perfect : une action déjà terminée avant un autre moment." },
+    { cat:"oral", audio:"I was walking to work when it started to rain.", q:"Écoute : que faisait la personne quand il a commencé à pleuvoir ?", opts:["Elle dormait","Elle marchait pour aller au travail","Elle conduisait","Elle attendait le bus"], correct:1, why:"« I was walking to work when it started to rain »." },
+    { cat:"oral", audio:"By the time I arrived, the train had already left.", q:"Écoute : qu'est-ce qui s'était déjà passé quand la personne est arrivée ?", opts:["Le train venait d'arriver","Le train était déjà parti","Le train était en retard","Le train n'existait pas encore"], correct:1, why:"« the train had already left » = Past Perfect, action terminée avant l'arrivée." },
+    { cat:"oral", audio:"I managed to fix it, even though it wasn't easy.", q:"Écoute : la personne a-t-elle réussi à réparer l'objet ?", opts:["Oui, malgré la difficulté","Non, elle a abandonné","Elle ne l'a même pas essayé","On ne sait pas"], correct:0, why:"« I managed to fix it » = j'ai réussi à le réparer." },
+    { cat:"oral", audio:"It happened so unexpectedly that nobody knew what to do.", q:"Écoute : comment l'événement est-il décrit ?", opts:["Prévisible depuis longtemps","Totalement inattendu","Sans importance","Amusant"], correct:1, why:"« so unexpectedly » = de manière totalement inattendue." },
+    { cat:"comprehension", passage:"“I was cooking dinner when I suddenly heard a strange noise outside. I looked out of the window and noticed smoke coming from my neighbour's garden. I immediately ran outside to see what was happening.”", q:"D'après le texte, que faisait la personne quand elle a entendu le bruit ?", opts:["Elle dormait","Elle préparait le dîner","Elle regardait la télévision","Elle lisait dans le jardin"], correct:1, why:"« I was cooking dinner when I suddenly heard a strange noise »." },
+    { cat:"comprehension", passage:"“By the time the firefighters arrived, my neighbour had already managed to put the small fire out himself. Everyone was relieved that nothing serious had happened, and in the end, we all laughed about it over tea.”", q:"D'après le texte, qu'avait déjà fait le voisin avant l'arrivée des pompiers ?", opts:["Il avait appelé la police","Il avait déjà éteint le petit feu lui-même","Il avait quitté la maison","Il avait appelé une ambulance"], correct:1, why:"« had already managed to put the small fire out himself »." },
+    { cat:"comprehension", passage:"“(rappel) I've lived in this neighbourhood for ten years now, and I've seen a lot of things happen here. This particular event, though, was definitely a turning point for the whole street.”", q:"D'après le texte, depuis combien de temps la personne habite-t-elle dans le quartier ?", opts:["Depuis un an","Depuis dix ans","Depuis toujours","On ne sait pas"], correct:1, why:"« I've lived in this neighbourhood for ten years now » (rappel B1.1 : Present Perfect + « for »)." },
+    { cat:"comprehension", passage:"“(rappel) To be honest, I was really worried at first, but I'm relieved everything turned out okay. In my opinion, it's moments like these that remind us how quickly a normal day can change.”", q:"D'après le texte, comment la personne se sent-elle finalement ?", opts:["Toujours inquiète","Soulagée","En colère","Indifférente"], correct:1, why:"« I'm relieved everything turned out okay » (rappel A2.11 : « to be honest », « in my opinion »)." }
+  ];
+
+  var PRON_VERBS_B1_2 = [
+    {en:"I was walking to work when it started to rain.", fr:"Je marchais pour aller au travail quand il a commencé à pleuvoir."},
+    {en:"By the time I arrived, the train had already left.", fr:"Au moment où je suis arrivé(e), le train était déjà parti."},
+    {en:"I realized I had lost my keys.", fr:"Je me suis rendu(e) compte que j'avais perdu mes clés."},
+    {en:"I managed to fix it, even though it wasn't easy.", fr:"J'ai réussi à le réparer, même si ce n'était pas facile."},
+    {en:"It happened so unexpectedly that nobody knew what to do.", fr:"C'est arrivé si soudainement que personne ne savait quoi faire."},
+    {en:"In the end, everything was okay.", fr:"Finalement, tout allait bien."}
+  ];
+
+  var READING_B1_2 = [
+    "Last summer, something strange happened to me while I was on holiday.",
+    "I was walking back to my hotel late one evening when I noticed a small crowd near the beach.",
+    "As I got closer, I realized that a group of tourists had gotten lost during a boat trip.",
+    "By the time the local fishermen found them, it was already almost midnight.",
+    "Everyone had been extremely worried, but eventually, all the tourists were found safe.",
+    "I remember feeling both relieved and fascinated by how the whole town had come together to help.",
+    "A local fisherman later told me he had managed to spot their boat thanks to a small light.",
+    "In the end, the story became famous in the area, and people still talk about it today.",
+    "It was a good reminder that even a normal holiday can suddenly turn into a real adventure.",
+    "That night definitely became one of my most memorable travel experiences."
+  ];
+  var GLOSS_B1_2 = [
+    {en:"crowd", fr:"foule, attroupement"},
+    {en:"fisherman", fr:"pêcheur"},
+    {en:"to spot", fr:"repérer, apercevoir"},
+    {en:"memorable", fr:"mémorable"}
+  ];
+
+  var GRAMMAR1_B1_2 = {
+    heading: "Les temps du récit : Past Simple, Past Continuous, Past Perfect",
+    lede: "Un bon récit anglais mêle souvent les trois : le Past Simple pour les actions principales, le Past Continuous pour le décor/l'arrière-plan, et le Past Perfect pour ce qui s'est passé AVANT le reste du récit.",
+    conj: [["Action principale, ponctuelle →","Past Simple","The phone rang."],["Action longue, en arrière-plan →","Past Continuous","I was cooking dinner."],["Action antérieure à une autre action passée →","Past Perfect","I realized I had lost my keys."],["Deux actions longues en même temps →","Past Continuous + Past Continuous","While I was cooking, she was setting the table."]],
+    ruleHtml: "📖 Le <b>Past Perfect</b> (« had + participe passé ») s'utilise pour montrer qu'une action s'est déroulée <b>avant</b> une autre action déjà au passé : « By the time I arrived, the train <b>had</b> already <b>left</b>. » (le train est parti AVANT mon arrivée). Sans Past Perfect, l'ordre des deux actions passées resterait ambigu.",
+    dialogueLede: "Un ami raconte un souvenir de voyage :",
+    dialogue: [
+      {who:"them", en:"What happened? You look worried just thinking about it!", fr:"Que s'est-il passé ? Tu as l'air inquiet rien que d'y penser !"},
+      {who:"you", en:"By the time we arrived, the last bus had already left, and it was raining!", fr:"Au moment où on est arrivés, le dernier bus était déjà parti, et il pleuvait !"}
+    ],
+    whyLabel: "Pourquoi ne pas tout mettre au Past Simple ?",
+    whyText: "Techniquement possible, mais on perd la nuance ! « The train left when I arrived » suggère que les deux actions sont presque simultanées. « The train <b>had</b> already <b>left</b> when I arrived » montre clairement que le train est parti AVANT — c'est cette précision qui rend un récit B1 plus clair et plus naturel qu'un récit A2."
+  };
+  var GRAMMAR2_B1_2 = {
+    heading: "when / while / as / by the time : bien choisir son connecteur",
+    dialogueLede: "Deux amis racontent une soirée mouvementée :",
+    dialogue: [
+      {who:"them", en:"What were you doing when the lights went out?", fr:"Qu'est-ce que tu faisais quand la lumière s'est éteinte ?"},
+      {who:"you", en:"I was cooking, and while I was looking for candles, I heard a strange noise.", fr:"Je cuisinais, et pendant que je cherchais des bougies, j'ai entendu un bruit étrange."}
+    ],
+    ruleHtml: "💭 <b>when</b> + Past Simple = l'action courte qui interrompt : « ...<b>when</b> the phone <b>rang</b>. » <b>while / as</b> + Past Continuous = l'action longue, l'arrière-plan : « <b>While</b> I <b>was cooking</b>... ». <b>by the time</b> + Past Simple, ... + Past Perfect = un délai entre deux moments : « <b>By the time</b> I arrived, they <b>had</b> already <b>left</b>. »",
+    whyLabel: "Secret English — la structure d'un bon récit",
+    whyText: "Un récit anglais efficace suit presque toujours la même structure : <b>setting</b> (le décor : où, quand) → <b>event</b> (ce qui déclenche l'histoire) → <b>problem</b> (l'imprévu) → <b>reaction</b> (comment on a réagi) → <b>consequence</b> (ce qui en a résulté) → <b>ending</b> (comment ça s'est terminé, souvent avec « in the end » ou « eventually »). Garder cette structure en tête aide énormément à raconter une histoire de façon claire, même avec un vocabulaire simple."
+  };
+
+  var REVIEW_B1_2 = [
+    { q:"“I ___ (live) here for six years now.” — bilan qui continue.", opts:["lived","have lived"], correct:1, fb:"Present Perfect + « for » pour une situation qui continue. (rappel B1.1)" },
+    { q:"Quelle est la différence entre « used to » et « be used to » ?", opts:["« used to » = habitude passée disparue ; « be used to » = être habitué(e)","Aucune différence"], correct:0, fb:"« used to » décrit une habitude passée qui n'existe plus ; « be used to » décrit une habitude actuelle. (rappel B1.1)" },
+    { q:"Comment dit-on « têtu(e) » ?", opts:["Stubborn","Reliable"], correct:0, fb:"« Stubborn » = têtu(e). (rappel B1.1)" },
+    { q:"Comment dit-on « un tournant dans ma vie » ?", opts:["A turning point in my life","A change of life"], correct:0, fb:"« A turning point » = un tournant. (rappel B1.1)" },
+    { q:"Comment dit-on « je suis habitué(e) à me lever tôt » ?", opts:["I used to wake up early","I'm used to waking up early"], correct:1, fb:"« be used to + -ing » pour une habitude actuelle. (rappel B1.1)" }
+  ];
+
+  var CULTURE_NOTE_B1_2 = {
+    icon: "🎤",
+    title: "Note culturelle — raconter une anecdote à l'anglaise",
+    html: "Dans les cultures anglophones, raconter une anecdote personnelle (« telling a story ») est une compétence sociale très valorisée, en particulier au travail ou entre amis. On attend souvent un peu d'<b>autodérision</b> (« self-deprecating humour ») : se moquer gentiment de sa propre maladresse rend le récit plus sympathique qu'une histoire où l'on se donne le beau rôle. On va aussi <b>droit au problème</b> — les anglophones apprécient rarement une longue mise en contexte avant d'arriver à l'imprévu qui rend l'histoire intéressante. Enfin, une bonne anecdote se termine presque toujours par une petite <b>chute</b> ou une leçon tirée de l'expérience (« and that's when I realised... »), pas juste un « et voilà »."
+  };
+
+  // ---------- B1.3 — De vraies conversations — s'appuie sur B1.2 et A2.9 (au téléphone) ----------
+  var VOCAB_B1_3 = [
+    {block:"Réagir dans une conversation", en:"Really?", ipa:"/ˈrɪəli/", fr:"Vraiment ?", note:"La réaction la plus simple et la plus fréquente pour montrer son intérêt ou sa surprise."},
+    {block:"Réagir dans une conversation", en:"No way!", ipa:"/noʊ weɪ/", fr:"Sans blague ! Pas possible !", note:"Très familier, marque une forte surprise — à réserver aux échanges informels."},
+    {block:"Réagir dans une conversation", en:"I see.", ipa:"/aɪ siː/", fr:"Je vois, d'accord.", note:"Montre qu'on a compris et qu'on suit, sans forcément être d'accord."},
+    {block:"Réagir dans une conversation", en:"Exactly.", ipa:"/ɪɡˈzæktli/", fr:"Exactement, tout à fait.", note:"Confirme fortement ce que l'autre personne vient de dire."},
+    {block:"Réagir dans une conversation", en:"That's a good point.", ipa:"/ðæts ə ɡʊd pɔɪnt/", fr:"C'est un bon argument.", note:"Formule très utile pour valoriser ce que quelqu'un vient de dire avant de répondre."},
+    {block:"Réagir dans une conversation", en:"I know what you mean.", ipa:"/aɪ noʊ wɒt juː miːn/", fr:"Je vois ce que tu veux dire.", note:"Montre de l'empathie sans forcément partager le même avis."},
+    {block:"Demander une précision", en:"You mean...?", ipa:"/juː miːn/", fr:"Tu veux dire... ?", note:"Se place devant une reformulation pour vérifier qu'on a bien compris."},
+    {block:"Demander une précision", en:"What do you mean by...?", ipa:"/wɒt də juː miːn baɪ/", fr:"Qu'entends-tu par... ?", note:"Demande explicitement de préciser le sens d'un mot ou d'une idée."},
+    {block:"Demander une précision", en:"Could you say that again?", ipa:"/kʊd juː seɪ ðæt əˈɡɛn/", fr:"Tu peux répéter ?", note:"Formule polie et neutre pour demander une répétition, sans montrer d'agacement."},
+    {block:"Demander une précision", en:"Sorry, I didn't catch that.", ipa:"/ˈsɒri aɪ ˈdɪdənt kætʃ ðæt/", fr:"Désolé(e), je n'ai pas bien entendu/compris.", note:"« catch » ici veut dire « saisir, comprendre à l'oral », pas « attraper »."},
+    {block:"Interrompre poliment", en:"Sorry to interrupt, but...", ipa:"/ˈsɒri tə ˌɪntəˈrʌpt bʌt/", fr:"Désolé(e) de t'interrompre, mais...", note:"La formule la plus sûre pour couper la parole sans paraître impoli(e)."},
+    {block:"Interrompre poliment", en:"Can I just say something?", ipa:"/kæn aɪ dʒʌst seɪ ˈsʌmθɪŋ/", fr:"Je peux juste dire un truc ?", note:"Demande discrètement la parole sans couper brutalement."},
+    {block:"Interrompre poliment", en:"Hold that thought.", ipa:"/hoʊld ðæt θɔːt/", fr:"Garde ton idée pour tout à l'heure.", note:"Utile pour reprendre la parole poliment sans faire oublier l'idée de l'autre."},
+    {block:"Terminer une conversation", en:"Anyway, I should get going.", ipa:"/ˈɛniweɪ aɪ ʃʊd ɡɛt ˈɡoʊɪŋ/", fr:"Bon, il faut que j'y aille.", note:"« anyway » signale un changement de sujet, souvent pour amorcer la fin de l'échange."},
+    {block:"Terminer une conversation", en:"It was great talking to you.", ipa:"/ɪt wəz ɡreɪt ˈtɔːkɪŋ tə juː/", fr:"C'était un plaisir de te parler.", note:"Formule chaleureuse et naturelle pour clore une conversation."},
+    {block:"Terminer une conversation", en:"Let's catch up again soon.", ipa:"/lɛts kætʃ ʌp əˈɡɛn suːn/", fr:"On se refait un point bientôt.", note:"« catch up » = se retrouver pour échanger des nouvelles, très courant entre amis."}
+  ];
+  var MEM_WORDS_B1_3 = [0,6,10,13,14,15]; // indexes into VOCAB_B1_3 : Really?, You mean...?, Sorry to interrupt but..., Anyway I should get going, It was great talking to you, Let's catch up again soon
+
+  var MINI_CHECKS_B1_3 = [
+    { q:"“___ you're saying we should cancel the trip?” — vérifier qu'on a compris.", opts:["Exactly","You mean","I see"], correct:1, fb:"« You mean...? » sert à vérifier ou reformuler ce que quelqu'un vient de dire." },
+    { q:"Quelle question indirecte est correcte ?", opts:["Do you know where is the station?","Do you know where the station is?","Do you know where the station?"], correct:1, fb:"Dans une question indirecte, l'ordre reste sujet-verbe (« where the station is »), pas d'inversion." },
+    { q:"“It's a nice day, ___?” — question tag.", opts:["isn't it","doesn't it","is it"], correct:0, fb:"Affirmatif → question tag négatif : « It's..., isn't it? »" },
+    { q:"Comment interrompre poliment quelqu'un ?", opts:["Shut up a second","Sorry to interrupt, but...","Stop talking"], correct:1, fb:"« Sorry to interrupt, but... » est la formule polie standard." }
+  ];
+
+  var ROUNDS_B1_3 = [
+    { bank:["trip","the","cancel","should","we","mean","You","."], answer:"you mean we should cancel the trip .", display:"You mean we should cancel the trip?", fr:"Tu veux dire qu'on devrait annuler le voyage ?" },
+    { bank:["is","where","Do","the","station","know","you","."], answer:"do you know where the station is .", display:"Do you know where the station is?", fr:"Sais-tu où se trouve la gare ?" },
+    { bank:["it","day","isn't","nice","a","It's","."], answer:"it's a nice day isn't it .", display:"It's a nice day, isn't it?", fr:"Il fait beau, n'est-ce pas ?" },
+    { bank:["but","interrupt","to","Sorry","."], answer:"sorry to interrupt but .", display:"Sorry to interrupt, but...", fr:"Désolé(e) de t'interrompre, mais..." },
+    { bank:["something","I","say","just","Can","?"], answer:"can i just say something ?", display:"Can I just say something?", fr:"Je peux juste dire un truc ?" },
+    { bank:["mean","by","do","that","What","you","?"], answer:"what do you mean by that ?", display:"What do you mean by that?", fr:"Qu'entends-tu par là ?" },
+    { bank:["catch","didn't","Sorry","that","I","."], answer:"sorry i didn't catch that .", display:"Sorry, I didn't catch that.", fr:"Désolé(e), je n'ai pas bien entendu." },
+    { bank:["get","should","I","going","Anyway","."], answer:"anyway i should get going .", display:"Anyway, I should get going.", fr:"Bon, il faut que j'y aille." },
+    { bank:["you","talking","great","was","to","It","."], answer:"it was great talking to you .", display:"It was great talking to you.", fr:"C'était un plaisir de te parler." },
+    { bank:["soon","catch","again","Let's","up","."], answer:"let's catch up again soon .", display:"Let's catch up again soon.", fr:"On se refait un point bientôt." }
+  ];
+
+  var QUIZ_B1_3 = [
+    { cat:"ecrit", q:"“___ you're saying we should cancel the trip?”", opts:["Exactly","You mean","I see"], correct:1, why:"« You mean...? » sert à reformuler ce que quelqu'un vient de dire pour vérifier qu'on a compris." },
+    { cat:"ecrit", q:"Quelle question indirecte est correcte ?", opts:["Do you know where is the station?","Do you know where the station is?","Do you know is the station where?"], correct:1, why:"Dans une question indirecte, on garde l'ordre sujet-verbe normal, sans inversion." },
+    { cat:"ecrit", q:"“It's a nice day, ___?”", opts:["isn't it","is it","doesn't it"], correct:0, why:"Phrase affirmative → question tag négatif : « It's..., isn't it? »" },
+    { cat:"ecrit", q:"“You don't like it, ___?”", opts:["do you","don't you","are you"], correct:0, why:"Phrase négative → question tag affirmatif : « You don't..., do you? »" },
+    { cat:"ecrit", q:"Comment interrompre poliment quelqu'un ?", opts:["Shut up a second","Sorry to interrupt, but...","Listen to me now"], correct:1, why:"« Sorry to interrupt, but... » est la formule polie standard pour couper la parole." },
+    { cat:"ecrit", q:"Comment demander poliment de répéter ?", opts:["What?","Could you say that again?","Say it now"], correct:1, why:"« Could you say that again? » est poli et neutre — « What? » seul est perçu comme brusque." },
+    { cat:"ecrit", q:"Comment terminer une conversation naturellement ?", opts:["Bye.","Anyway, I should get going.","Stop talking now."], correct:1, why:"« Anyway, I should get going » amorce naturellement la fin d'un échange, avant un « bye »." },
+    { cat:"ecrit", q:"Comment dit-on « je vois ce que tu veux dire » ?", opts:["I know what you mean.","You mean what I know.","I mean what you know."], correct:0, why:"« I know what you mean » montre de l'empathie sans forcément être d'accord." },
+    { cat:"ecrit", q:"Comment demander poliment la parole sans couper brutalement ?", opts:["Be quiet please.","Can I just say something?","Stop, my turn."], correct:1, why:"« Can I just say something? » demande poliment la parole." },
+    { cat:"ecrit", q:"Comment dit-on « c'est un bon argument » ?", opts:["That's a good point.","That's a good idea only.","That's exactly right always."], correct:0, why:"« That's a good point » valorise l'argument de l'autre avant de répondre." },
+    { cat:"oral", audio:"You mean we should cancel the whole trip?", q:"Écoute : que fait la personne ?", opts:["Elle donne un ordre","Elle vérifie qu'elle a bien compris","Elle raconte une histoire","Elle pose une question météo"], correct:1, why:"« You mean...? » sert à vérifier sa compréhension." },
+    { cat:"oral", audio:"Sorry to interrupt, but I think we should leave now.", q:"Écoute : que fait la personne avant de donner son avis ?", opts:["Elle s'excuse de couper la parole","Elle ignore l'autre personne","Elle change de sujet sans prévenir","Elle termine la conversation"], correct:0, why:"« Sorry to interrupt, but... » = s'excuser poliment avant d'interrompre." },
+    { cat:"oral", audio:"It's a lovely evening, isn't it?", q:"Écoute : quel type de question entend-on ?", opts:["Une question indirecte","Une question tag","Une question fermée simple","Un ordre"], correct:1, why:"« isn't it? » à la fin d'une phrase affirmative = une question tag." },
+    { cat:"oral", audio:"Anyway, I should get going — it was great talking to you!", q:"Écoute : que fait la personne ?", opts:["Elle commence une conversation","Elle termine poliment la conversation","Elle pose une question indirecte","Elle interrompt quelqu'un"], correct:1, why:"« Anyway, I should get going... it was great talking to you » = clôturer poliment un échange." },
+    { cat:"comprehension", passage:"“— Do you know if the meeting has been moved? — Sorry, I didn't catch that, could you say that again? — Sure, I was asking if the meeting has been moved to tomorrow.”", q:"D'après le dialogue, que demande la première personne à répéter ?", opts:["L'heure du rendez-vous","Si la réunion a été déplacée","Le lieu de la réunion","Le nom d'un collègue"], correct:1, why:"« I was asking if the meeting has been moved to tomorrow »." },
+    { cat:"comprehension", passage:"“— That's a good point, but I think you mean something slightly different. — What do you mean by that? — Well, I see it more as a long-term issue than a quick fix.”", q:"D'après le dialogue, que demande la deuxième personne ?", opts:["De changer de sujet","Une précision sur ce que l'autre veut dire","De parler plus fort","De terminer la conversation"], correct:1, why:"« What do you mean by that? » demande une précision." },
+    { cat:"comprehension", passage:"“(rappel) By the time I called her back, she had already left for the airport, so we only managed to talk for two minutes before she had to go.”", q:"D'après le texte, qu'avait déjà fait la personne appelée avant le rappel ?", opts:["Elle avait déjà quitté pour l'aéroport","Elle dormait encore","Elle n'avait pas de téléphone","Elle était déjà arrivée à destination"], correct:0, why:"« she had already left for the airport » (rappel B1.2 : Past Perfect)." },
+    { cat:"comprehension", passage:"“(rappel) I've always found small talk difficult, but I've got used to it over the years — these days, I even enjoy chatting with strangers at the bus stop.”", q:"D'après le texte, comment la personne se sent-elle aujourd'hui par rapport au small talk ?", opts:["Elle le déteste toujours","Elle s'y est habituée et l'apprécie même","Elle ne le pratique jamais","Elle l'évite complètement"], correct:1, why:"« I've got used to it... these days, I even enjoy chatting » (rappel B1.1 : get used to, these days)." }
+  ];
+
+  var PRON_VERBS_B1_3 = [
+    {en:"You mean we should cancel the whole trip?", fr:"Tu veux dire qu'on devrait annuler tout le voyage ?"},
+    {en:"Sorry to interrupt, but I think we should leave now.", fr:"Désolé(e) de t'interrompre, mais je pense qu'on devrait partir maintenant."},
+    {en:"It's a lovely evening, isn't it?", fr:"C'est une belle soirée, n'est-ce pas ?"},
+    {en:"Could you say that again?", fr:"Peux-tu répéter ça ?"},
+    {en:"That's a good point.", fr:"C'est un bon argument."},
+    {en:"Anyway, I should get going — it was great talking to you!", fr:"Bon, il faut que j'y aille — c'était un plaisir de te parler !"}
+  ];
+
+  var READING_B1_3 = [
+    "At the party, I ended up talking to someone I had never met before.",
+    "\"So, what do you do?\" she asked, and we started chatting straight away.",
+    "\"I see,\" I said, when she explained she worked in graphic design.",
+    "\"You mean you design logos and things like that?\" I asked, trying to understand better.",
+    "\"Exactly,\" she replied, \"and I also do a bit of illustration.\"",
+    "At one point, another guest tried to interrupt, saying, \"Sorry to interrupt, but is this seat free?\"",
+    "We laughed, and she said, \"Hold that thought,\" before answering him.",
+    "A few minutes later, she looked at her watch and said, \"Anyway, I should get going.\"",
+    "\"It was great talking to you,\" I replied, and we agreed to catch up again soon.",
+    "Small talk isn't always easy, but that evening, it felt completely natural."
+  ];
+  var GLOSS_B1_3 = [
+    {en:"to end up (doing something)", fr:"finir par (faire quelque chose)"},
+    {en:"straight away", fr:"tout de suite"},
+    {en:"guest", fr:"invité(e)"},
+    {en:"small talk", fr:"conversation de politesse, discussion légère"}
+  ];
+
+  var GRAMMAR1_B1_3 = {
+    heading: "Questions indirectes : demander poliment",
+    lede: "Une question indirecte commence par une formule polie (« Do you know... », « Could you tell me... »), mais garde ensuite l'ordre normal sujet-verbe, sans inversion.",
+    conj: [["Question directe →","Inversion","Where is the station?"],["Question indirecte →","Sujet-verbe, sans inversion","Do you know where the station is?"],["Question directe (oui/non) →","Inversion + auxiliaire","Is the shop open?"],["Question indirecte (oui/non) →","if/whether + sujet-verbe","Do you know if the shop is open?"]],
+    ruleHtml: "📖 Après une formule polie comme <b>« Do you know... »</b>, <b>« Could you tell me... »</b> ou <b>« I wonder... »</b>, la question intégrée retrouve l'ordre <b>sujet + verbe</b> normal — <b>pas d'inversion</b> : « Do you know <b>where the station is</b>? » (pas « where is the station »). Pour une question fermée (oui/non), on ajoute <b>if</b> ou <b>whether</b> : « Do you know <b>if</b> the shop is open? »",
+    dialogueLede: "Dans la rue, on demande poliment son chemin :",
+    dialogue: [
+      {who:"you", en:"Excuse me, do you know where the nearest pharmacy is?", fr:"Excusez-moi, savez-vous où se trouve la pharmacie la plus proche ?"},
+      {who:"them", en:"I'm not sure, but I think it's near the station.", fr:"Je ne suis pas sûr(e), mais je pense que c'est près de la gare."}
+    ],
+    whyLabel: "L'erreur la plus fréquente des francophones",
+    whyText: "L'erreur classique est de garder l'inversion de la question directe : « Do you know where <b>is</b> the station? » — incorrect ! Une fois la question « habillée » par une formule polie, elle redevient une phrase normale à l'intérieur : sujet, puis verbe. C'est un des marqueurs les plus visibles d'un niveau B1 solide à l'oral."
+  };
+  var GRAMMAR2_B1_3 = {
+    heading: "Les question tags : « isn't it? », « don't you? »...",
+    dialogueLede: "Une petite conversation autour d'un café :",
+    dialogue: [
+      {who:"them", en:"This coffee is really good, isn't it?", fr:"Ce café est vraiment bon, non ?"},
+      {who:"you", en:"It is! You don't usually drink coffee, do you?", fr:"Oui ! Tu ne bois pas de café d'habitude, si ?"}
+    ],
+    ruleHtml: "💭 Une question tag se construit avec l'<b>auxiliaire de la phrase principale</b> (ou « do/does/did » s'il n'y en a pas), <b>inversé en polarité</b> : phrase <b>affirmative</b> → tag <b>négatif</b> (« It's nice, <b>isn't it</b>? ») ; phrase <b>négative</b> → tag <b>affirmatif</b> (« You don't like it, <b>do you</b>? »). Elles servent surtout à <b>engager la conversation</b> ou à demander une confirmation, pas à poser une vraie question fermée.",
+    whyLabel: "Ce n'est (presque) jamais « no? » ou « isn't it » tout court",
+    whyText: "En français, on ajoute souvent « non ? » ou « hein ? » en fin de phrase — le réflexe est de traduire par « isn't it? » à toutes les sauces. Mais le tag doit correspondre au verbe de la phrase : « You like it, <b>don't you</b>? », « She can swim, <b>can't she</b>? », « They didn't call, <b>did they</b>? ». Un tag mal accordé sonne immédiatement étranger à l'oreille anglophone."
+  };
+
+  var REVIEW_B1_3 = [
+    { q:"“I ___ (walk) home when it started to rain.” — action longue interrompue.", opts:["walked","was walking"], correct:1, fb:"Past Continuous pour l'action longue interrompue. (rappel B1.2)" },
+    { q:"“By the time I arrived, they ___ (already leave).”", opts:["already left","had already left"], correct:1, fb:"Past Perfect pour une action terminée avant un autre moment du passé. (rappel B1.2)" },
+    { q:"Comment dit-on « se rendre compte » ?", opts:["To realize","To remember"], correct:0, fb:"« To realize » = se rendre compte. (rappel B1.2)" },
+    { q:"Comment dit-on « finalement, en fin de compte » ?", opts:["In the end","By the time"], correct:0, fb:"« In the end » = finalement. (rappel B1.2)" },
+    { q:"Comment dit-on « soudainement » ?", opts:["Suddenly","Occasionally"], correct:0, fb:"« Suddenly » = soudainement. (rappel B1.2)" }
+  ];
+
+  var CULTURE_NOTE_B1_3 = {
+    icon: "💬",
+    title: "Note culturelle — interrompre et gérer une conversation",
+    html: "Dans la culture britannique en particulier, <b>couper la parole directement</b> est perçu comme assez impoli — même dans une conversation animée, on préfère glisser un « <b>Sorry to interrupt, but...</b> » ou attendre une micro-pause. Les <b>question tags</b> (« isn't it? », « don't you think? ») jouent aussi un rôle social important : ils adoucissent une affirmation et invitent l'autre à réagir, un peu comme le « hein ? » ou le « non ? » français, mais de façon plus systématique. Enfin, terminer une conversation sans un minimum de politesse (« It was great talking to you », « Let's catch up soon ») peut sembler brusque, même si l'échange était court."
+  };
+
   function render(){
     if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
@@ -6229,8 +6676,9 @@
             // A2 validé : place au grand contrôle final (A1 + A2).
             state.lesson = GRAND_CONTROLE_FINAL_LESSON; state.step = 0;
           } else {
-            // Final validé : le niveau B1 n'existe pas encore → retour aux leçons pour réviser.
-            state.lesson = 0; state.step = 0; state.reviewDone = true; state.reviewLog = [];
+            // Final validé : on enchaîne sur le niveau B1 (B1.1), précédé des renforts éventuels
+            // (comme A1 → A2 ci-dessus — voir aussi B1_START_LESSON).
+            state.lesson = B1_START_LESSON; state.step = 0; state.reviewDone = false; state.reviewLog = []; state.renfortSkipped = false;
           }
         } else {
           // Pas validé : retour à l'accueil du contrôle (leçons à revoir + délai d'une semaine).
@@ -6264,10 +6712,14 @@
         // Leçon revue à la demande d'un contrôle ou d'un renfort : on y retourne.
         markRenfortDone(state.lesson);
         state.lesson = state.returnTo; state.returnTo = null; state.ctrlDraw = null;
-      } else if(bilanPassed && state.lesson < GRAND_CONTROLE_A2_LESSON){
+      } else if(bilanPassed && (state.lesson < GRAND_CONTROLE_A2_LESSON || (state.lesson >= B1_START_LESSON && state.lesson < B1_LAST_LESSON))){
         state.lesson++;
         state.reviewDone = false; state.reviewLog = [];
         if(isGrandControle()){ state.gcExprScore = 0; state.gcExprLog = []; }
+      } else if(bilanPassed && state.lesson === B1_LAST_LESSON){
+        // Fin du contenu B1 jouable à ce jour (B1.4+ pas encore construits) : retour aux leçons pour
+        // réviser en attendant la suite — même repli que l'ancien "le niveau B1 n'existe pas encore".
+        state.lesson = 0; state.reviewDone = true; state.reviewLog = [];
       }
       state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
       memState = null; sbRound = 0; vocabBlockIdx = 0;
