@@ -4,8 +4,8 @@
 // sur sa demande explicite ("pour l'instant il n'y a pas besoin de
 // questions, on va les créer plus tard avec les réponses").
 
-import { store } from "../data/store.js?v=20260924f";
-import { t } from "../data/i18n.js?v=20260924f";
+import { store } from "../data/store.js?v=20260924g";
+import { t } from "../data/i18n.js?v=20260924g";
 
 export function renderAideFaq(container) {
   const { settings } = store.get();

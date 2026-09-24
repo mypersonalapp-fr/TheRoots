@@ -5,9 +5,9 @@
 // « Je pars bientôt · Mode Survie » = 7 jours, 6 phrases indispensables par
 // jour + un petit quiz. Les autres pays affichent « Bientôt » (voir my-world.js).
 
-import { UK_SITUATIONS, UK_SURVIVAL, UK_PHOTOS } from "../data/explore-uk.js?v=20260924f";
-import { recordSkill } from "../data/progress.js?v=20260924f";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924f";
+import { UK_SITUATIONS, UK_SURVIVAL, UK_PHOTOS } from "../data/explore-uk.js?v=20260924g";
+import { recordSkill } from "../data/progress.js?v=20260924g";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924g";
 
 const K_EXPLORE = "the_roots_explore_v1";
 const K_SURVIVAL = "the_roots_survival_v1";

@@ -8,15 +8,17 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260924f";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924f";
-import { renderLevelTest } from "./level-test.js?v=20260924f";
-import { t, formatDate } from "../data/i18n.js?v=20260924f";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924f";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924f";
-import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924f";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924f";
-import { plantSvg } from "./plant.js?v=20260924f";
+import { store } from "../data/store.js?v=20260924g";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924g";
+import { renderLevelTest } from "./level-test.js?v=20260924g";
+import { t, formatDate } from "../data/i18n.js?v=20260924g";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924g";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924g";
+import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS } from "../data/programme-b1-en.js?v=20260924g";
+import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS } from "../data/programme-b2-en.js?v=20260924g";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924g";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260924g";
+import { plantSvg } from "./plant.js?v=20260924g";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;
@@ -120,6 +122,8 @@ const PROGRAMS_BY_LANG = {
   en: {
     A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS },
     A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS },
+    B1: { objective: B1_EN_GENERAL_OBJECTIVE, paliers: B1_EN_PALIERS },
+    B2: { objective: B2_EN_GENERAL_OBJECTIVE, paliers: B2_EN_PALIERS },
   },
   es: {
     A1: { objective: A1_ES_GENERAL_OBJECTIVE, paliers: A1_ES_PALIERS },
@@ -410,7 +414,7 @@ export function renderMesCours(container, shellRoot) {
             </div>
           </div>
           <div class="dash-box">
-            <h3>${t("prog_paliers_title", lang)}</h3>
+            <h3>${t("prog_paliers_title", lang, { count: program.paliers.length, level })}</h3>
             <p style="font-size:12px;color:var(--ink-soft);margin:0 0 10px">${t("prog_palier_tap_hint", lang)}</p>
             <div style="display:flex;flex-direction:column;gap:10px">
               ${program.paliers.map((p) => `
@@ -452,18 +456,60 @@ export function renderMesCours(container, shellRoot) {
         <div class="card" style="font-size:13px;line-height:1.55">${p.whyHow}</div>
       </div>
       ` : ""}
+      ${p.communication ? `
+      <div class="dash-box">
+        <h3>${t("prog_communication_label", lang)}</h3>
+        <div class="card" style="font-size:13px;line-height:1.55">${p.communication}</div>
+      </div>
+      ` : ""}
+      ${p.vocab ? `
       <div class="dash-box">
         <h3>${t("prog_vocab_label", lang)}</h3>
         <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.vocab.map((v) => `<li style="margin-bottom:6px">${v}</li>`).join("")}</ul></div>
       </div>
+      ` : ""}
+      ${p.verbs ? `
+      <div class="dash-box">
+        <h3>${t("prog_verbs_label", lang)}</h3>
+        <div class="card" style="font-size:13px">${p.verbs.join(" · ")}</div>
+      </div>
+      ` : ""}
+      ${p.collocations ? `
+      <div class="dash-box">
+        <h3>${t("prog_collocations_label", lang)}</h3>
+        <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.collocations.map((c) => `<li style="margin-bottom:6px">${c}</li>`).join("")}</ul></div>
+      </div>
+      ` : ""}
+      ${p.phrasalVerbs ? `
+      <div class="dash-box">
+        <h3>${t("prog_phrasal_verbs_label", lang)}</h3>
+        <div class="card" style="font-size:13px">${p.phrasalVerbs.join(" · ")}</div>
+      </div>
+      ` : ""}
+      ${p.grammar ? `
       <div class="dash-box">
         <h3>${t("prog_grammar_label", lang)}</h3>
         <div class="card"><ul style="margin:0;padding-left:18px;font-size:13px">${p.grammar.map((g) => `<li style="margin-bottom:6px">${g}</li>`).join("")}</ul></div>
       </div>
+      ` : ""}
+      ${p.conjugation ? `
       <div class="dash-box">
         <h3>${t("prog_conjugation_label", lang)}</h3>
         <div class="card" style="font-size:13px">${p.conjugation}</div>
       </div>
+      ` : ""}
+      ${p.secretEnglish ? `
+      <div class="dash-box">
+        <h3>${t("prog_secret_english_label", lang)}</h3>
+        <div class="card" style="font-size:13px;line-height:1.55">${p.secretEnglish}</div>
+      </div>
+      ` : ""}
+      ${p.mission ? `
+      <div class="dash-box">
+        <h3>${t("prog_mission_label", lang)}</h3>
+        <div class="card" style="font-size:13px;font-style:italic">${p.mission}</div>
+      </div>
+      ` : ""}
       <div class="dash-box">
         <h3>${t("prog_activities_label", lang)}</h3>
         <div class="card"><ol style="margin:0;padding-left:18px;font-size:13px">${p.activities.map((a) => `<li style="margin-bottom:4px">${a}</li>`).join("")}</ol></div>
