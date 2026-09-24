@@ -8,7 +8,7 @@
 // sa propre copie des petites fonctions d'écriture (voir le bloc
 // "CONTRÔLES A1 / A2 / FINAL" dans lessons.html).
 
-import { store } from "./store.js?v=20260924b";
+import { store } from "./store.js?v=20260924f";
 
 const K_SKILLS = "the_roots_skills_v1";
 const K_CTRL = "the_roots_controls_v1";
@@ -117,7 +117,13 @@ export function langGrowth(code) {
     let lesson = null;
     try { const v = parseInt(localStorage.getItem(K_LESSON_EN), 10); if (!isNaN(v)) lesson = v; } catch (e) { /* rien */ }
     const c = controls("en");
-    if (lesson == null && !l.leveled) return { stage: 0, level: null, pct: 0 };
+    // Tant que le test de positionnement n'est pas passé (leveled=false), la
+    // plante reste une graine — même si "the_roots_lesson_en_gb" contient déjà
+    // une valeur (ex. -1 "Fondamentaux" écrite dès l'ouverture de lessons.html,
+    // avant tout accès normalement bloqué ; voir la garde ajoutée dans
+    // lessons.html le 24/09). Avant ce correctif, une simple ouverture de
+    // lessons.html sans test ni leçon faisait déjà apparaître une pousse.
+    if (!l.leveled) return { stage: 0, level: null, pct: 0 };
     let level = "A1", pct = 0;
     if (c.FINAL && c.FINAL.passed) { level = "B1"; pct = 0; }
     else if ((c.A1 && c.A1.passed) || (lesson != null && lesson >= 13)) { level = "A2"; pct = lesson != null && lesson >= 13 ? Math.round(((Math.min(lesson, 26) - 12) / 14) * 100) : 0; }
