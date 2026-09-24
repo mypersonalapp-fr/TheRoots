@@ -14,13 +14,13 @@
 // combinaison langue/niveau sans contenu, dans l'une ou l'autre section,
 // affiche ce même message.
 
-import { store } from "../data/store.js?v=20260924g";
-import { t } from "../data/i18n.js?v=20260924g";
-import { recordSkill } from "../data/progress.js?v=20260924g";
-import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260924g";
-import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260924g";
-import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260924g";
-import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260924g";
+import { store } from "../data/store.js?v=20260924j";
+import { t } from "../data/i18n.js?v=20260924j";
+import { recordSkill } from "../data/progress.js?v=20260924j";
+import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260924j";
+import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260924j";
+import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260924j";
+import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260924j";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
