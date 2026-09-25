@@ -19,8 +19,9 @@
 //   js/data/ai-config.js.
 
 import { store } from "../data/store.js?v=20260924j";
-import { aiCredits } from "../data/ai-credits.js?v=20260924j";
+import { aiCredits } from "../data/ai-credits.js?v=20260924l";
 import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260924k";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
 
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const SPEECH_BY_VARIANT = { "en-gb": "en-GB", "en-us": "en-US", "es-es": "es-ES", "es-co": "es-CO", "pt-pt": "pt-PT", "pt-br": "pt-BR" };
@@ -132,12 +133,37 @@ export function renderConversation(container) {
     if (active) paintChat(active); else paintHub();
   }
 
+  function lockedCardHtml(gate) {
+    const step = (done, label) => `<div style="margin-top:6px">${done ? "✅" : "⬜"} ${label}</div>`;
+    return `
+      <div class="card" style="font-size:13.5px;line-height:1.5">
+        <strong>🔒 La Conversation se débloque bientôt</strong><br>
+        Pour discuter avec l'IA, il faut d'abord :
+        ${step(gate.testDone, "passer ton test de niveau (dans Mes cours)")}
+        ${step(gate.lessonDone, "réussir ta première leçon")}
+        <div style="margin-top:8px;color:var(--ink-soft)">Ensuite, chaque leçon réussie te donne une conversation sur son thème.</div>
+      </div>`;
+  }
+
+  function paintLocked(gate) {
+    container.innerHTML = `
+      <div class="dash-greeting" style="padding:4px 0 10px">Discute avec l'IA dans ta langue d'apprentissage, à l'écrit ou au micro.</div>
+      ${lockedCardHtml(gate)}
+    `;
+  }
+
   // ---------- Accueil de l'onglet : conversations disponibles ----------
   function paintHub() {
-    const available = aiCredits.available();
+    const gate = aiCredits.isUnlocked(settings);
+    // Verrou (25/09) : tant que test de niveau + première leçon ne sont pas
+    // faits, l'apprenti ne voit que l'explication. En mode créatrice, la
+    // conversation d'essai reste en plus accessible, pour tester l'IA.
+    if (!gate.ok && !CREATOR_MODE) { paintLocked(gate); return; }
+    const available = aiCredits.available({ includeWelcome: CREATOR_MODE });
     const remaining = aiCredits.remainingToday();
     const relayOk = isRelayConfigured();
     container.innerHTML = `
+      ${gate.ok ? "" : lockedCardHtml(gate) + `<div style="font-size:11.5px;color:var(--ink-soft);margin:6px 0 12px;text-align:center">Mode créatrice : conversation d'essai accessible quand même (les apprentis, eux, voient seulement le message ci-dessus).</div>`}
       <div class="dash-greeting" style="padding:4px 0 10px">Discute avec l'IA dans ta langue d'apprentissage, à l'écrit ou au micro. Chaque leçon réussie débloque une conversation sur son thème.</div>
 
       <div class="card chat-counters">
@@ -160,7 +186,7 @@ export function renderConversation(container) {
               <span class="chat-credit-flag">${c.lang ? LANG_FLAGS[c.lang] || "" : "🌍"}</span>
               <div>
                 <div class="chat-credit-title">${esc(c.topic)}</div>
-                <div class="chat-credit-sub">${c.id === "welcome" ? "Offerte pour essayer" : `Débloquée le ${esc(c.earnedAt.split("-").reverse().join("/"))}`}</div>
+                <div class="chat-credit-sub">${c.id === "welcome" ? "Essai (mode créatrice)" : `Débloquée le ${esc(c.earnedAt.split("-").reverse().join("/"))}`}</div>
               </div>
             </div>
             ${c.lang ? "" : `

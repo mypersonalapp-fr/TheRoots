@@ -6,7 +6,7 @@
 import { store } from "../data/store.js?v=20260924j";
 import { t } from "../data/i18n.js?v=20260924j";
 import { dueMissions } from "../data/progress.js?v=20260924j";
-import { aiCredits } from "../data/ai-credits.js?v=20260924j";
+import { aiCredits } from "../data/ai-credits.js?v=20260924l";
 import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260924j";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
