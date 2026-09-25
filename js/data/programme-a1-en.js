@@ -112,3 +112,15 @@ export const A1_EN_PALIERS = [
     activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Compréhension orale", "Compréhension écrite", "Expression écrite (message informel)", "Expression orale (conversation complète)", "Grand contrôle de fin de niveau A1", "Bonus : 10 expressions", "Fiche PDF"],
   },
 ];
+
+
+// Module d'entrée « Les Fondamentaux » (ajouté au programme le 25/09) : joué AVANT A1.1 dans
+// lessons.html (module transversal, leçon -1). Affiché dans « Voir le programme » au-dessus
+// des paliers, sans être compté comme un palier.
+export const A1_EN_ENTRY_MODULE = {
+  code: "A1.0", title: "Les Fondamentaux (bases transversales)",
+  objective: "Poser, avant le premier palier, les bases dont tu auras besoin dans tous les paliers A1 : couleurs, nombres, jours, mois, saisons, dates et heure.",
+  vocab: ["Les couleurs", "Les nombres (0 à 100 et au-delà)", "Les jours de la semaine, les mois, les saisons", "Dire la date et l'heure"],
+  grammar: ["Dire la date en anglais (on the 5th of May / May 5th)", "Dire l'heure (It's half past three / It's 3:30)"],
+  activities: ["Vocabulaire", "Jeux", "Prononciation", "Lecture", "Contrôle"],
+};

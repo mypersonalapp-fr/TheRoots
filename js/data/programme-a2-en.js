@@ -166,3 +166,14 @@ export const A2_EN_PALIERS = [
     activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Compréhension orale", "Compréhension écrite", "Expression écrite (message informel avancé)", "Expression orale (conversation complète)", "Grand contrôle de fin de niveau A2", "Bonus : 10 expressions", "Fiche PDF"],
   },
 ];
+
+
+// Module d'entrée A2.0 « Bases transversales A2 » (ajouté au programme le 25/09) : joué AVANT
+// A2.1 dans lessons.html (leçon 13). Affiché dans « Voir le programme » au-dessus des paliers.
+export const A2_EN_ENTRY_MODULE = {
+  code: "A2.0", title: "Bases transversales A2",
+  objective: "Poser, avant le premier palier A2, les briques qui reviennent dans tous les paliers : les verbes irréguliers, les marqueurs de temps, les connecteurs pour raconter et la formation des questions au passé et au futur.",
+  vocab: ["Verbes irréguliers courants (go/went/gone, see/saw/seen…)", "Marqueurs de temps : yesterday, last week, ago, tomorrow, next month…", "Connecteurs de récit : first, then, after that, finally"],
+  grammar: ["Les questions au passé (Did you…?) et au futur (Will you… ? / Are you going to…?)", "Past Simple des verbes irréguliers"],
+  activities: ["Vocabulaire", "Jeux", "Grammaire", "Prononciation", "Lecture", "Contrôle"],
+};

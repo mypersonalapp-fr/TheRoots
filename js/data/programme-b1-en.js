@@ -29,7 +29,7 @@ export const B1_EN_GENERAL_OBJECTIVE =
 
 export const B1_EN_PALIERS = [
   {
-    code: "B1.1", title: "My Identity Today",
+    code: "B1.1", media: "🎵 Chanson « Golden Shackles » (école, travail, liberté) — la même chanson en version informelle et en version formelle/littéraire, à écouter ligne par ligne, avec le tableau informel ↔ formel et des questions.", title: "My Identity Today",
     objective: "Se présenter de manière développée, parler de sa personnalité et de ses habitudes, expliquer ses goûts, parler de son évolution et comparer son présent avec son passé.",
     communication: "Se présenter de manière développée ; parler de sa personnalité ; parler de ses habitudes ; expliquer ses goûts ; parler de son évolution ; comparer son présent avec son passé.",
     vocab: ["personality, lifestyle, habits, preferences, personal development"],
@@ -41,7 +41,7 @@ export const B1_EN_PALIERS = [
     activities: ["Vocabulaire", "Verbes", "Grammaire", "Compréhension orale", "Compréhension écrite", "Expression écrite", "Expression orale", "Secret English", "Mission", "Contrôle de niveau", "Bonus : Reformulate", "Fiche PDF"],
   },
   {
-    code: "B1.2", title: "Tell Me What Happened",
+    code: "B1.2", media: "🎵 Chanson « One Split Second » (des vacances à la mer qui tournent au drame) — versions informelle et formelle, vocabulaire et questions.", title: "Tell Me What Happened",
     objective: "Raconter un événement de manière structurée (setting → event → problem → reaction → consequence → ending).",
     communication: "Raconter un événement de manière structurée.",
     vocab: ["events, accidents, memories, experiences"],
@@ -53,7 +53,7 @@ export const B1_EN_PALIERS = [
     activities: ["Vocabulaire", "Verbes", "Grammaire", "Compréhension orale", "Compréhension écrite", "Expression écrite (récit)", "Expression orale (récit)", "Secret English", "Mission", "Contrôle de niveau", "Bonus : Reformulate", "Fiche PDF"],
   },
   {
-    code: "B1.3", title: "Real Conversations",
+    code: "B1.3", media: "🎬 Résumé du film Avatar (James Cameron, 2009) — résumé original en anglais B1, vocabulaire et questions de compréhension.", title: "Real Conversations",
     objective: "Réagir, interrompre poliment, demander une précision, montrer son intérêt, reprendre la parole, terminer une conversation.",
     communication: "Réagir ; interrompre ; demander une précision ; montrer son intérêt ; reprendre la parole ; terminer une conversation.",
     vocab: ["conversation, reactions, social interaction", "Really?, No way!, I see., Exactly., You mean…?, What do you mean by…?, I know what you mean., That's a good point."],
@@ -64,7 +64,7 @@ export const B1_EN_PALIERS = [
     activities: ["Vocabulaire", "Grammaire", "Compréhension orale", "Compréhension écrite", "Expression orale (dialogue)", "Secret English", "Mission", "Contrôle de niveau", "Bonus : Reformulate", "Fiche PDF"],
   },
   {
-    code: "B1.4", title: "Everyday English",
+    code: "B1.4", media: "🎬 Résumé du film Taken (Pierre Morel, 2008) — résumé original en anglais B1 (sans détails violents), vocabulaire et questions.", title: "Everyday English",
     objective: "Gérer des situations quotidiennes imprévues : shopping, restaurant, transports, téléphone, administration, services, logement.",
     communication: "Gérer une situation quotidienne avec un imprévu : expliquer → demander → négocier → conclure.",
     vocab: ["shopping, restaurant, transports, téléphone, administration, services, logement", "Could I…?, Would it be possible…?, Do you happen to…?, I'd like to…, I'm looking for…"],
@@ -85,7 +85,7 @@ export const B1_EN_PALIERS = [
     activities: ["Vocabulaire", "Phrasal verbs", "Grammaire", "Compréhension orale", "Compréhension écrite", "Expression orale (réunion)", "Expression écrite (compte rendu)", "Mission", "Contrôle de niveau", "Fiche PDF"],
   },
   {
-    code: "B1.6", title: "Travel Without Panic",
+    code: "B1.6", media: "🧳 Étude de cas « The Ultimate Travel Crisis » — une famille, 30 jours avant le départ : présenter un problème, l'analyser et proposer des solutions étape par étape.", title: "Travel Without Panic",
     objective: "Gérer les situations de voyage : aéroport, hôtel, train, location de voiture, bagages, retards, problèmes de réservation.",
     communication: "Gérer un imprévu de voyage du début à la fin.",
     vocab: ["airport, hotel, train, car rental, luggage, delays, booking problems"],
@@ -150,6 +150,9 @@ export const B1_EN_PALIERS = [
   },
 ];
 
+
+// Champ « media » (25/09) : Musique & Ciné / étude de cas intégrés à la leçon (étape Lecture),
+// affichés dans la fiche du palier. Voir js/data/lessons-media.js.
 
 // Module d'entrée B1.0 « Bases transversales B1 » (ajouté le 25/09, à la demande d'Ashley) :
 // joué juste AVANT B1.1 dans lessons.html (leçon 52). Affiché dans « Voir le programme »
