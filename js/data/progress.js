@@ -125,7 +125,10 @@ export function langGrowth(code) {
     // lessons.html sans test ni leçon faisait déjà apparaître une pousse.
     if (!l.leveled) return { stage: 0, level: null, pct: 0 };
     let level = "A1", pct = 0;
-    if (c.FINAL && c.FINAL.passed) { level = "B1"; pct = 0; }
+    // Numéros de leçon (voir lessons.html) : A1 -1..12 · A2 13..26 (26 = grand contrôle final) ·
+    // B1 27..38 (+ 39 réservée au futur Grand Contrôle B1) · B2 40..51 (+ 52 pour un futur contrôle B2).
+    if (lesson != null && lesson >= 40) { level = "B2"; pct = Math.round(((Math.min(lesson, 52) - 39) / 13) * 100); }
+    else if ((c.FINAL && c.FINAL.passed) || (lesson != null && lesson >= 27)) { level = "B1"; pct = lesson != null && lesson >= 27 ? Math.round(((Math.min(lesson, 39) - 26) / 13) * 100) : 0; }
     else if ((c.A1 && c.A1.passed) || (lesson != null && lesson >= 13)) { level = "A2"; pct = lesson != null && lesson >= 13 ? Math.round(((Math.min(lesson, 26) - 12) / 14) * 100) : 0; }
     else { level = "A1"; pct = lesson != null ? Math.round(((Math.min(lesson, 12) + 2) / 14) * 100) : 0; }
     // Test de positionnement plus haut que le parcours (ex. B1 d'entrée) : on garde le plus haut.
