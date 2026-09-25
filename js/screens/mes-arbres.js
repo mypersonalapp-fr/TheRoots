@@ -5,7 +5,7 @@
 
 import { store } from "../data/store.js?v=20260924j";
 import { t } from "../data/i18n.js?v=20260924j";
-import { langGrowth } from "../data/progress.js?v=20260924j";
+import { langGrowth } from "../data/progress.js?v=20260925n";
 import { plantSvg } from "./plant.js?v=20260924j";
 
 const GROUP_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
