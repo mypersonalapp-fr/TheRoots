@@ -350,6 +350,28 @@
   .media-say-word{ background:none; border:none; cursor:pointer; font-size:.8rem; padding:0 2px; }
   .media-lines + .sub-eyebrow, .media-pairs + .sub-eyebrow{ margin-top:18px; }
   .desc-model{ margin-top:10px; font-size:.9rem; line-height:1.45; }
+  /* Encart transversal B1/B2 (25/09) : « French Interference Lab » + « Survival English »,
+     sous-étape de la Leçon après la grammaire (voir renderTransversal). */
+  .tv-card{ margin-top:14px; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--pop); border-radius:16px; padding:12px 14px 4px; box-shadow:var(--shadow); }
+  .tv-card.tv-survival{ border-left-color:var(--good); }
+  .tv-head{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:1rem; color:var(--ink); }
+  .tv-head .tv-ico{ flex:0 0 auto; font-size:1.1rem; }
+  .tv-sub{ font-size:.8rem; color:var(--muted); margin:3px 0 4px; line-height:1.4; }
+  .tv-item{ padding:10px 0; border-top:1px dashed var(--line); overflow-wrap:anywhere; }
+  .tv-sub + .tv-item{ border-top:none; }
+  .tv-line{ display:flex; gap:8px; align-items:flex-start; line-height:1.4; }
+  .tv-line .tv-mark{ flex:0 0 auto; width:1.3em; text-align:center; }
+  .tv-line .tv-txt{ flex:1; min-width:0; }
+  .tv-wrong{ color:var(--pop); font-size:.92rem; }
+  .tv-wrong s{ text-decoration-thickness:2px; text-decoration-color:var(--pop); }
+  .tv-right{ color:var(--good); font-weight:700; font-size:.95rem; margin-top:5px; }
+  .tv-say{ flex:0 0 auto; width:32px; height:32px; border-radius:50%; border:1px solid var(--line); background:var(--surface-2); color:var(--accent); font-size:.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .tv-say:active{ transform:scale(.92); }
+  .tv-why{ margin-top:7px; font-size:.82rem; line-height:1.45; background:var(--gold-soft); border-radius:10px; padding:8px 10px; color:var(--ink); }
+  .tv-why b, .tv-when b{ color:var(--gold); }
+  .tv-en{ font-weight:800; font-size:.96rem; color:var(--ink); }
+  .tv-fr{ font-size:.86rem; color:var(--muted); font-style:italic; margin-top:2px; }
+  .tv-when{ margin-top:6px; font-size:.8rem; line-height:1.45; color:var(--ink); background:var(--good-soft); border-radius:10px; padding:7px 10px; }
   /* Examen de fin de palier (phase d'immersion B1+) : consigne anglaise en gras, traduction en petit */
   .exam-fr{ font-size:.78rem; font-weight:500; color:var(--muted); margin-top:3px; line-height:1.4; }
   .exam-instr{ margin-top:12px; padding:10px 12px; background:var(--surface-2); border-radius:12px; font-size:.9rem; line-height:1.45; }
@@ -449,12 +471,15 @@
 <!-- Leçons B1.4-B1.12 et B2.1-B2.12 (window.LESSONS_EXT) et contenus « Musique & Ciné »
      (window.LESSONS_MEDIA) : fichiers de données séparés. Le moteur reste fonctionnel si l'un
      d'eux est absent (leçons correspondantes simplement non proposées). -->
-<script src="js/data/lessons-b1.js?v=20260925n"></script>
-<script src="js/data/lessons-b2.js?v=20260925n"></script>
+<script src="js/data/lessons-b1.js?v=20260925q"></script>
+<script src="js/data/lessons-b2.js?v=20260925q"></script>
 <script src="js/data/lessons-media.js?v=20260925o"></script>
 <!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
      l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
 <script src="js/data/exams.js?v=20260925p"></script>
+<!-- Encarts « French Interference Lab » + « Survival English » des paliers B1/B2
+     (window.LESSONS_TRANSVERSAL). Fichier absent → leçons inchangées. -->
+<script src="js/data/transversal.js?v=20260925q"></script>
 <script>
 (function(){
 
@@ -481,7 +506,7 @@
   // VOCAB_B1_1…, jusqu'à B1_LAST_BUILTIN_LESSON) ; B1.4 à B1.12 (30..38) viennent du fichier
   // "js/data/lessons-b1.js" (window.LESSONS_EXT[30..38], voir loadLessonData).
   // lesson = 39 : RÉSERVÉ au futur Grand Contrôle B1 (pas encore jouable : goNext saute de B1.12
-  // directement à B2.1 en attendant).
+  // directement à B2.0 / B2.1 en attendant).
   // lesson = 40..51 : les 12 paliers du niveau B2 (B2.1 à B2.12), fichier "js/data/lessons-b2.js"
   // (window.LESSONS_EXT[40..51]). Après B2_LAST_LESSON : pas encore de suite, on revient réviser.
   // Une leçon 30..51 dont le fichier de données n'est pas (encore) déposé n'est jamais proposée
@@ -492,31 +517,80 @@
   var GRAND_CONTROLE_B1_LESSON = 39;
   var B2_START_LESSON = 40;
   var B2_LAST_LESSON = 51;
+  // lesson = 52 : B1.0 « Bases transversales B1 », joué juste AVANT B1.1 (27) ; lesson = 53 : B2.0,
+  // joué juste AVANT B2.1 (40). Données au format habituel (window.LESSONS_EXT[52] / [53], fichiers
+  // lessons-b1.js / lessons-b2.js). Leur numéro ne suit PAS l'ordre pédagogique : toute comparaison
+  // de progression (« avant / après », « déjà faite », niveau…) passe donc par lessonRank() et
+  // LESSON_ORDER ci-dessous, jamais par une comparaison directe des numéros. Si leur fichier manque,
+  // ces deux modules sont simplement sautés (26 → 27 et 38 → 40, comme avant).
+  var B1_ENTRY_MODULE = 52;
+  var B2_ENTRY_MODULE = 53;
   var LESSONS_EXT = window.LESSONS_EXT || {};
+  // Ordre pédagogique explicite de TOUS les numéros de leçon (y compris les contrôles et la 39
+  // réservée) : Fondamentaux, A1.1-A1.12, Grand Contrôle A1, A2.0-A2.12 (25 = Grand Contrôle A2),
+  // Grand contrôle final, B1.0, B1.1-B1.12, (39), B2.0, B2.1-B2.12.
+  var LESSON_ORDER = (function(){
+    var o = [], i;
+    for(i = -1; i <= 26; i++) o.push(i);
+    o.push(B1_ENTRY_MODULE);
+    for(i = B1_START_LESSON; i <= GRAND_CONTROLE_B1_LESSON; i++) o.push(i);
+    o.push(B2_ENTRY_MODULE);
+    for(i = B2_START_LESSON; i <= B2_LAST_LESSON; i++) o.push(i);
+    return o;
+  })();
+  var LESSON_RANK = {};
+  LESSON_ORDER.forEach(function(n, i){ LESSON_RANK[n] = i; });
+  // Rang pédagogique d'un numéro de leçon (0 = Fondamentaux) ; -1 pour un numéro inconnu.
+  function lessonRank(n){ return LESSON_RANK.hasOwnProperty(n) ? LESSON_RANK[n] : -1; }
   // Contenus « Musique & Ciné » (chanson / film) par numéro de leçon — sous-étape de la Lecture.
   var LESSONS_MEDIA = window.LESSONS_MEDIA || {};
+  // Encarts « French Interference Lab » + « Survival English » par palier B1/B2 (js/data/transversal.js,
+  // format .staging/TRANSVERSAL-FORMAT.md) — sous-étape de la Leçon, voir renderTransversal.
+  var LESSONS_TRANSVERSAL = window.LESSONS_TRANSVERSAL || {};
   // Examens de fin de palier (js/data/exams.js) par numéro de leçon — voir « EXAMEN DE FIN DE PALIER ».
   var LESSON_EXAMS = window.LESSON_EXAMS || {};
   var EXAM = null; // examen de la leçon en cours (ou null : contrôle QCM classique), fixé par loadLessonData
-  // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html, 30..51
-  // seulement si leur fichier de données est chargé (39 réservé, jamais jouable pour l'instant).
+  // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html ; 30..38, 40..51,
+  // 52 (B1.0) et 53 (B2.0) seulement si leur fichier de données est chargé (39 réservé, jamais
+  // jouable pour l'instant).
   function isPlayableLesson(n){
     if(n >= -1 && n <= B1_LAST_BUILTIN_LESSON) return true;
-    if(n === GRAND_CONTROLE_B1_LESSON || n > B2_LAST_LESSON) return false;
+    if(n === GRAND_CONTROLE_B1_LESSON || lessonRank(n) < 0) return false;
     return !!LESSONS_EXT[n];
   }
-  // Leçon suivante d'un palier B1/B2 (saute la 39 réservée), ou null s'il n'y a pas (encore) de suite.
+  // true pour B1.0 (52) / B2.0 (53) : modules d'entrée de niveau, facultatifs (sautés si absents).
+  function isEntryModule(n){ return n === B1_ENTRY_MODULE || n === B2_ENTRY_MODULE; }
+  // Première leçon du niveau B1 / B2 : B1.0 / B2.0 si leur fichier est chargé, sinon B1.1 / B2.1.
+  function b1EntryLesson(){ return isPlayableLesson(B1_ENTRY_MODULE) ? B1_ENTRY_MODULE : B1_START_LESSON; }
+  function b2EntryLesson(){ return isPlayableLesson(B2_ENTRY_MODULE) ? B2_ENTRY_MODULE : B2_START_LESSON; }
+  // Leçon suivante (dans l'ordre pédagogique) d'un palier B1/B2 ou de B1.0/B2.0 : saute la 39
+  // réservée et un module d'entrée absent (26 → 52 → 27, 38 → 53 → 40, ou 38 → 40 sans B2.0) ;
+  // null s'il n'y a pas (encore) de suite (après B2.12, ou fichier de la suite pas encore déposé).
   function nextPlayableLesson(n){
-    var next = n + 1;
-    if(next === GRAND_CONTROLE_B1_LESSON) next = B2_START_LESSON;
-    if(next > B2_LAST_LESSON) return null;
-    return isPlayableLesson(next) ? next : null;
+    var r = lessonRank(n);
+    if(r < 0) return null;
+    for(var i = r + 1; i < LESSON_ORDER.length; i++){
+      var next = LESSON_ORDER[i];
+      if(next === GRAND_CONTROLE_B1_LESSON) continue;
+      if(isEntryModule(next) && !isPlayableLesson(next)) continue;
+      return isPlayableLesson(next) ? next : null;
+    }
+    return null;
   }
-  // Niveau CECRL d'un numéro de leçon (puce de niveau, crédits IA…) : A1 jusqu'à 12, A2 13..26,
-  // B1 27..39, B2 à partir de 40.
-  function levelOfLesson(n){ return n >= B2_START_LESSON ? "B2" : (n >= B1_START_LESSON ? "B1" : (n >= 13 ? "A2" : "A1")); }
-  // Code court d'un palier B1/B2 : 27 → "B1.1", 38 → "B1.12", 40 → "B2.1", 51 → "B2.12".
-  function bCode(n){ return n >= B2_START_LESSON ? "B2." + (n - B2_START_LESSON + 1) : "B1." + (n - B1_START_LESSON + 1); }
+  // Niveau CECRL d'un numéro de leçon (puce de niveau, crédits IA…), d'après son rang : A1 jusqu'à
+  // 12, A2 13..26, B1 52 (B1.0) + 27..39, B2 53 (B2.0) + 40..51.
+  function levelOfLesson(n){
+    var r = lessonRank(n);
+    return r >= lessonRank(B2_ENTRY_MODULE) ? "B2" : (r >= lessonRank(B1_ENTRY_MODULE) ? "B1" : (r >= lessonRank(13) ? "A2" : "A1"));
+  }
+  // true pour un palier thématique B1/B2 jouable dans le parcours (B1.0-B1.12, B2.0-B2.12 — hors 39).
+  function isBLesson(n){ var l = levelOfLesson(n); return (l === "B1" || l === "B2") && n !== GRAND_CONTROLE_B1_LESSON; }
+  // Code court d'un palier B1/B2 : 52 → "B1.0", 27 → "B1.1", 38 → "B1.12", 53 → "B2.0", 40 → "B2.1", 51 → "B2.12".
+  function bCode(n){
+    if(n === B1_ENTRY_MODULE) return "B1.0";
+    if(n === B2_ENTRY_MODULE) return "B2.0";
+    return n >= B2_START_LESSON ? "B2." + (n - B2_START_LESSON + 1) : "B1." + (n - B1_START_LESSON + 1);
+  }
   // true pour n'importe lequel des deux grands contrôles (A1 ou A2) : évite de dupliquer
   // "state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON" partout.
   function isGrandControle(){ return state.lesson === GRAND_CONTROLE_LESSON || state.lesson === GRAND_CONTROLE_A2_LESSON || state.lesson === GRAND_CONTROLE_FINAL_LESSON; }
@@ -527,15 +601,20 @@
   var PASS_THRESHOLD_RATIO = 0.6;
   try {
     var savedLesson = parseInt(localStorage.getItem(LESSON_KEY), 10);
-    if(!isNaN(savedLesson) && savedLesson >= -1 && savedLesson <= B2_LAST_LESSON){
+    if(!isNaN(savedLesson) && lessonRank(savedLesson) >= 0){
+      // B1.0 / B2.0 enregistré mais son fichier manque : on se place sur le palier qui le suit
+      // (B1.1 / B2.1), comme si le module d'entrée n'existait pas.
+      if(isEntryModule(savedLesson) && !isPlayableLesson(savedLesson)) savedLesson = savedLesson === B1_ENTRY_MODULE ? B1_START_LESSON : B2_START_LESSON;
       // Leçon enregistrée mais plus chargeable (fichier de données absent, ou 39 réservée) : on
-      // redescend à la dernière leçon disponible avant elle, plutôt que de repartir à zéro.
-      while(savedLesson > B1_LAST_BUILTIN_LESSON && !isPlayableLesson(savedLesson)) savedLesson--;
+      // redescend (dans l'ordre pédagogique) à la dernière leçon disponible avant elle, plutôt que
+      // de repartir à zéro. -1..29 étant toujours jouables, la boucle s'arrête au plus tard à 29.
+      while(!isPlayableLesson(savedLesson) && lessonRank(savedLesson) > 0) savedLesson = LESSON_ORDER[lessonRank(savedLesson) - 1];
       state.lesson = savedLesson;
     }
   } catch(e){}
   // Positionnement (test de niveau) : un apprenant dont le niveau d'entrée en anglais est B1 commence
-  // à B1.1 (27), B2 à B2.1 (40) — au lieu des Fondamentaux. Appliqué UNE seule fois par résultat de
+  // à B1.0 (52, ou B1.1 = 27 si B1.0 n'est pas déposé), B2 à B2.0 (53, sinon B2.1 = 40) — au lieu des
+  // Fondamentaux. Toutes les comparaisons se font dans l'ordre pédagogique (lessonRank). Appliqué UNE seule fois par résultat de
   // test (repère "the_roots_lesson_entry_en" = niveau|date du test) et seulement si la leçon
   // enregistrée est plus basse : on ne recule jamais quelqu'un, et il reste libre ensuite d'aller
   // revoir des leçons plus anciennes. Si les leçons B2 ne sont pas encore déposées, on se place à la
@@ -547,25 +626,25 @@
     var __en0 = __st0 && __st0.settings && __st0.settings.langs &&
       __st0.settings.langs.filter(function(l){ return l.code === "en"; })[0];
     var __entry = __en0 && __en0.leveled ? (__en0.entryLevel || __en0.level) : null;
-    var __target = __entry === "B2" ? B2_START_LESSON : (__entry === "B1" ? B1_START_LESSON : null);
+    var __target = __entry === "B2" ? b2EntryLesson() : (__entry === "B1" ? b1EntryLesson() : null);
     if(__target != null){
       var __mark = __entry + "|" + (__en0.entryDate || "");
       if(localStorage.getItem(ENTRY_KEY) !== __mark){
         var __startAt = __target;
-        while(__startAt > B1_START_LESSON && !isPlayableLesson(__startAt)) __startAt--;
-        if(state.lesson < __startAt) state.lesson = __startAt;
+        while(lessonRank(__startAt) > lessonRank(B1_START_LESSON) && !isPlayableLesson(__startAt)) __startAt = LESSON_ORDER[lessonRank(__startAt) - 1];
+        if(lessonRank(state.lesson) < lessonRank(__startAt)) state.lesson = __startAt;
         if(__startAt === __target) localStorage.setItem(ENTRY_KEY, __mark);
       }
     }
   } catch(e){}
-  var VOCAB, MINI_CHECKS, ROUNDS, QUIZ, PRON_VERBS, MEM_WORDS, READING, GLOSS, TEXTS, NEXT_PREVIEW, GRAMMAR1, GRAMMAR2, REVIEW, META, LECON_SUBSTEPS, LECTURE_SUBSTEPS, CULTURE_NOTE, MEDIA = null;
+  var VOCAB, MINI_CHECKS, ROUNDS, QUIZ, PRON_VERBS, MEM_WORDS, READING, GLOSS, TEXTS, NEXT_PREVIEW, GRAMMAR1, GRAMMAR2, REVIEW, META, LECON_SUBSTEPS, LECTURE_SUBSTEPS, CULTURE_NOTE, MEDIA = null, TRANSV = null;
   function lessonLabel(){
     if(state.lesson === -1) return "Fondamentaux";
     if(state.lesson === GRAND_CONTROLE_LESSON) return "Grand Contrôle A1";
     if(state.lesson === GRAND_CONTROLE_A2_LESSON) return "Grand Contrôle A2";
     if(state.lesson === GRAND_CONTROLE_FINAL_LESSON) return "Grand contrôle final";
     if(state.lesson === GRAND_CONTROLE_B1_LESSON) return "Grand Contrôle B1";
-    if(state.lesson >= B1_START_LESSON) return bCode(state.lesson);
+    if(isBLesson(state.lesson)) return bCode(state.lesson);
     if(state.lesson >= 13) return "A2." + (state.lesson - 13);
     return "Leçon " + (state.lesson + 1);
   }
@@ -837,6 +916,11 @@
     // et « Décris l'image » (voir screenLecture / screenMedia).
     MEDIA = !isGrandControle() ? (LESSONS_MEDIA[state.lesson] || null) : null;
     if(MEDIA) LECTURE_SUBSTEPS += 1;
+    // Encart transversal (paliers B1/B2, js/data/transversal.js) : une sous-étape de plus dans la
+    // Leçon, entre la grammaire 2 et la construction de phrase (voir renderTransversal). Fichier
+    // absent ou palier sans encart → rien ne change (5 sous-étapes comme avant).
+    TRANSV = (!isGrandControle() && isBLesson(state.lesson)) ? validTransversal(LESSONS_TRANSVERSAL[state.lesson]) : null;
+    if(TRANSV) LECON_SUBSTEPS += 1;
     // Examen de fin de palier (s'il existe pour cette leçon) : remplace le QCM à l'étape Contrôle.
     EXAM = (!isGrandControle() && isValidExam(LESSON_EXAMS[state.lesson])) ? LESSON_EXAMS[state.lesson] : null;
   }
@@ -891,8 +975,9 @@
   // B1.1 à B1.12 et B2.1 à B2.12 — pas encore de Grand Contrôle B1/B2, donc pas (encore) utilisés par
   // controlDraw(). Les leçons dont le fichier de données est absent sont écartées là où ces listes
   // servent (voir isPlayableLesson / quizOf).
-  var B1_IDS = [27,28,29,30,31,32,33,34,35,36,37,38];
-  var B2_IDS = [40,41,42,43,44,45,46,47,48,49,50,51];
+  // B1.0 (52) et B2.0 (53) en tête de leur niveau (ordre pédagogique).
+  var B1_IDS = [52,27,28,29,30,31,32,33,34,35,36,37,38];
+  var B2_IDS = [53,40,41,42,43,44,45,46,47,48,49,50,51];
   function ctrlLevel(){ return state.lesson === GRAND_CONTROLE_LESSON ? "A1" : (state.lesson === GRAND_CONTROLE_A2_LESSON ? "A2" : "FINAL"); }
   function ctrlLabel(level){ return level === "FINAL" ? "grand contrôle final (A1 + A2)" : "contrôle " + level; }
   function nextLevelOf(level){ return level === "A1" ? "A2" : "B1"; }
@@ -994,7 +1079,8 @@
   function setBoost(level, data){ var all = lsGet(K_BOOST, {}), m = all[LANG] || {}; m[level] = data; all[LANG] = m; lsSet(K_BOOST, all); }
   var rappelCache = {};
   function withRappels(quiz){
-    var lvl = (state.lesson >= B2_START_LESSON && state.lesson <= B2_LAST_LESSON) ? "B2" : (state.lesson >= B1_START_LESSON && state.lesson <= B1_LAST_LESSON) ? "B1" : (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
+    // Niveau de la leçon en cours (B1.0/B2.0 compris) ; A2 = paliers 13..24 seulement (pas les contrôles).
+    var lvl = isBLesson(state.lesson) ? levelOfLesson(state.lesson) : (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
     var b = lvl && getBoosts()[lvl];
     if(!b || !b.rappel || !b.rappel.length) return quiz;
     var key = state.lesson + ":" + b.rappel.join(",");
@@ -1026,7 +1112,7 @@
     A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).filter(isPlayableLesson).forEach(function(i){
       state.lesson = i; loadLessonData();
       var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2|B1|B2)\.\d+\)\s*$/, "");
-      LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (i >= B1_START_LESSON ? bCode(i) : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1)))) + (t && i !== -1 ? " · " + t : "");
+      LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (isBLesson(i) ? bCode(i) : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1)))) + (t && i !== -1 ? " · " + t : "");
     });
     state.lesson = keep; state.ctrlDraw = keepDraw;
   }
@@ -1094,12 +1180,12 @@
   }
 
   // ---------- Écran « renforts » avant le niveau suivant ----------
-  // level = "A2" (entrée en A2.0, lesson 13, renforts du contrôle A1) ou "B1" (entrée en B1.1,
-  // lesson B1_START_LESSON, renforts écrits par le contrôle A2 et/ou le grand contrôle final — voir
+  // level = "A2" (entrée en A2.0, lesson 13, renforts du contrôle A1) ou "B1" (entrée du niveau B1 :
+  // B1.0 = lesson 52 s'il est déposé, sinon B1.1 = 27 — voir b1EntryLesson —, renforts écrits par le contrôle A2 et/ou le grand contrôle final — voir
   // saveControlResult / nextLevelOf). Chaque leçon revue ramène ici (data-return = 1re leçon du niveau).
   function screenRenfortGate(todo, level){
     level = level || "A2";
-    var startId = level === "B1" ? B1_START_LESSON : 13;
+    var startId = level === "B1" ? b1EntryLesson() : 13;
     var b = getBoosts()[level] || {};
     var fromTxt = level === "B1"
       ? (b.from === "A2" ? "Ton contrôle A2 est validé" : "Ton grand contrôle final est validé")
@@ -1137,7 +1223,7 @@
       ids = Object.keys(errs).map(Number).filter(function(id){ return errs[id].count > 0 && errs[id].due <= Date.now(); })
         .sort(function(a, b){ return errs[b].count - errs[a].count; }).slice(0, 2);
     } else if(mode === "mix"){
-      var done = A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).filter(function(id){ return (id < state.lesson || (state.lesson === -1 && id === -1)) && quizOf(id); });
+      var done = A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).filter(function(id){ return (lessonRank(id) < lessonRank(state.lesson) || (state.lesson === -1 && id === -1)) && quizOf(id); });
       ids = shuffleArr(done.length ? done : [-1, 0]).slice(0, 3);
     } else {
       ids = mode.split(",").map(function(x){ return parseInt(x, 10); }).filter(function(x){ return !isNaN(x) && quizOf(x); });
@@ -3479,7 +3565,7 @@
 
   // ---------- Screen 0 : Accueil ----------
   function screenAccueil(){
-    postmark.innerHTML = state.lesson === -1 ? "ROOTS<br>FOND." : (state.lesson >= B1_START_LESSON ? "ROOTS<br>" + bCode(state.lesson) : (state.lesson >= 13 ? "ROOTS<br>A2." + (state.lesson-13) : "ROOTS<br>LEÇON&nbsp;" + String(state.lesson+1).padStart(2,"0")));
+    postmark.innerHTML = state.lesson === -1 ? "ROOTS<br>FOND." : (isBLesson(state.lesson) ? "ROOTS<br>" + bCode(state.lesson) : (state.lesson >= 13 ? "ROOTS<br>A2." + (state.lesson-13) : "ROOTS<br>LEÇON&nbsp;" + String(state.lesson+1).padStart(2,"0")));
     backBtn.style.visibility = "hidden";
     if(!state.variant){
       screen.innerHTML =
@@ -3615,6 +3701,7 @@
     else if(state.subStep === 1) renderGrammar1();
     else if(state.subStep === 2) renderMiniChecks();
     else if(state.subStep === 3) renderGrammar2();
+    else if(TRANSV && state.subStep === 4) renderTransversal();
     else renderSentenceBuilder();
   }
 
@@ -3745,8 +3832,8 @@
     var glossArrays = [GLOSS_L1,GLOSS_L2,GLOSS_L3,GLOSS_L4,GLOSS_L5,GLOSS_L6,GLOSS_L7,GLOSS_L8,GLOSS_L9,GLOSS_L10,GLOSS_L11,GLOSS_L12,GLOSS_COMMON,
       GLOSS_A2_0,GLOSS_A2_1,GLOSS_A2_2,GLOSS_A2_3,GLOSS_A2_4,GLOSS_A2_5,GLOSS_A2_6,GLOSS_A2_7,GLOSS_A2_8,GLOSS_A2_9,GLOSS_A2_10,GLOSS_A2_11,
       GLOSS_B1_1,GLOSS_B1_2,GLOSS_B1_3];
-    // B1.4+ / B2 (fichiers de données) : ajoutés à la suite, dans l'ordre des leçons.
-    Object.keys(LESSONS_EXT).map(Number).sort(function(a, b){ return a - b; }).forEach(function(n){
+    // B1.0, B1.4+ / B2 (fichiers de données) : ajoutés à la suite, dans l'ordre pédagogique (lessonRank).
+    Object.keys(LESSONS_EXT).map(Number).sort(function(a, b){ return lessonRank(a) - lessonRank(b); }).forEach(function(n){
       if(!isPlayableLesson(n)) return;
       vocabArrays.push(LESSONS_EXT[n].VOCAB); glossArrays.push(LESSONS_EXT[n].GLOSS);
     });
@@ -3929,6 +4016,57 @@
       '<div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>' +
       '<p class="lede">'+G.ruleHtml+'</p>';
     whyToggle(screen, G.whyLabel, G.whyText);
+    nextBtn.textContent = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : "Construire une phrase";
+    nextBtn.disabled = false;
+  }
+
+  // ---------- Encart transversal B1/B2 : French Interference Lab + Survival English (25/09) ----------
+  // Données : window.LESSONS_TRANSVERSAL[n] = { interference:[{wrong,right,why}], survival:[{en,fr,when}] }
+  // (js/data/transversal.js, format .staging/TRANSVERSAL-FORMAT.md). Seule la balise <b> est
+  // autorisée dans les textes : tout le reste est échappé (tvHtml).
+  function validTransversal(T){
+    if(!T || typeof T !== "object") return null;
+    var inter = (T.interference || []).filter(function(x){ return x && x.wrong && x.right; });
+    var surv = (T.survival || []).filter(function(x){ return x && x.en; });
+    return (inter.length || surv.length) ? { interference:inter, survival:surv } : null;
+  }
+  function tvHtml(s){ return escAttr(s).replace(/&lt;(\/?)b>/gi, "<$1b>"); }
+  function tvPlain(s){ return String(s == null ? "" : s).replace(/<\/?b>/gi, ""); }
+  function renderTransversal(){
+    var T = TRANSV;
+    var interHtml = T.interference.length
+      ? '<div class="tv-card tv-interference">' +
+          '<div class="tv-head"><span class="tv-ico" aria-hidden="true">🇫🇷➜🇬🇧</span><span>French Interference Lab</span></div>' +
+          '<p class="tv-sub">Les erreurs que font souvent les francophones sur ce palier — le français « transparaît » dans l\'anglais.</p>' +
+          T.interference.map(function(x){
+            return '<div class="tv-item">' +
+              '<div class="tv-line tv-wrong"><span class="tv-mark" aria-label="Fautif">❌</span><span class="tv-txt"><s>'+tvHtml(x.wrong)+'</s></span></div>' +
+              '<div class="tv-line tv-right"><span class="tv-mark" aria-label="Correct">✅</span><span class="tv-txt">'+tvHtml(x.right)+'</span>' +
+                '<button type="button" class="tv-say" data-say="'+escAttr(tvPlain(x.right))+'" aria-label="Écouter la phrase correcte">🔊</button></div>' +
+              (x.why ? '<div class="tv-why">💡 '+tvHtml(x.why)+'</div>' : "") +
+            '</div>';
+          }).join("") +
+        '</div>'
+      : "";
+    var survHtml = T.survival.length
+      ? '<div class="tv-card tv-survival">' +
+          '<div class="tv-head"><span class="tv-ico" aria-hidden="true">🛟</span><span>Survival English</span></div>' +
+          '<p class="tv-sub">Des formules pour continuer à parler quand un mot te manque ou que tu ne comprends pas.</p>' +
+          T.survival.map(function(x){
+            return '<div class="tv-item">' +
+              '<div class="tv-line"><button type="button" class="tv-say" data-say="'+escAttr(tvPlain(x.en))+'" aria-label="Écouter la formule">🔊</button>' +
+                '<div class="tv-txt"><div class="tv-en">'+tvHtml(x.en)+'</div>'+(x.fr ? '<div class="tv-fr">'+tvHtml(x.fr)+'</div>' : "")+'</div></div>' +
+              (x.when ? '<div class="tv-when"><b>Quand ?</b> '+tvHtml(x.when)+'</div>' : "") +
+            '</div>';
+          }).join("") +
+        '</div>'
+      : "";
+    screen.innerHTML =
+      '<div class="eyebrow">'+lessonLabel()+' · Anglais transversal · 5/'+LECON_SUBSTEPS+'</div>' +
+      '<h2 class="screen-title">Pièges et formules de survie</h2>' +
+      '<p class="lede">Avant de construire tes phrases : les faux réflexes venus du français à éviter, et des phrases toutes faites pour ne jamais rester bloqué(e). Touche 🔊 pour écouter.</p>' +
+      interHtml + survHtml;
+    backBtn.style.visibility = "visible";
     nextBtn.textContent = "Construire une phrase";
     nextBtn.disabled = false;
   }
@@ -3939,7 +4077,7 @@
     var r = ROUNDS[sbRound];
     var firstAttemptDone = false; // ne compte que le tout premier assemblage complet de la manche (Grand Contrôle)
     screen.innerHTML =
-      '<div class="eyebrow">'+(isGC ? "Grand Contrôle · Expression" : lessonLabel()+' · Construction de phrase · 5/'+LECON_SUBSTEPS)+'</div>' +
+      '<div class="eyebrow">'+(isGC ? "Grand Contrôle · Expression" : lessonLabel()+' · Construction de phrase · '+LECON_SUBSTEPS+'/'+LECON_SUBSTEPS)+'</div>' +
       '<div class="round-tag">Manche '+(sbRound+1)+' / '+ROUNDS.length+'</div>' +
       '<h2 class="screen-title">Remets les mots dans l\'ordre</h2>' +
       '<p class="lede">Forme : « '+r.fr+' »</p>' +
@@ -5191,7 +5329,7 @@
   // ---------- Bilan de l'examen (step 6) ----------
   function screenExamBilan(){
     var R = state.examResult, passed = R.decision !== "fail";
-    var isB = state.lesson >= B1_START_LESSON && state.lesson <= B2_LAST_LESSON;
+    var isB = isBLesson(state.lesson);
     var nextB = isB ? nextPlayableLesson(state.lesson) : null;
     postmark.innerHTML = "BILAN<br>" + examEsc(R.code);
     var rs = passed ? null : retakeStatus(R.code);
@@ -5262,16 +5400,17 @@
   function screenBilan(){
     // "isA2" : palier thématique A2 en cours (13..24, borne haute exclue puisque
     // GRAND_CONTROLE_A2_LESSON a son propre écran de bilan, screenGCBilan).
-    var isA2 = state.lesson >= 13 && state.lesson < GRAND_CONTROLE_A2_LESSON;
-    // "isB1" / "isB2" : palier thématique B1 (27..38) ou B2 (40..51) en cours. Pas encore de Grand
-    // Contrôle B1/B2 : la suite est la leçon jouable suivante (B1.12 → B2.1, 39 réservée), s'il y en
-    // a une (voir nextPlayableLesson) ; sinon, retour réviser ses leçons (voir goNext).
-    var isB1 = state.lesson >= B1_START_LESSON && state.lesson <= B1_LAST_LESSON;
-    var isB2 = state.lesson >= B2_START_LESSON && state.lesson <= B2_LAST_LESSON;
+    var isA2 = lessonRank(state.lesson) >= lessonRank(13) && lessonRank(state.lesson) < lessonRank(GRAND_CONTROLE_A2_LESSON);
+    // "isB1" / "isB2" : palier B1 (B1.0 = 52, puis 27..38) ou B2 (B2.0 = 53, puis 40..51) en cours.
+    // Pas encore de Grand Contrôle B1/B2 : la suite est la leçon jouable suivante dans l'ordre
+    // pédagogique (B1.0 → B1.1, B1.12 → B2.0 → B2.1, 39 réservée), s'il y en a une (voir
+    // nextPlayableLesson) ; sinon, retour réviser ses leçons (voir goNext).
+    var isB1 = isBLesson(state.lesson) && levelOfLesson(state.lesson) === "B1";
+    var isB2 = isBLesson(state.lesson) && levelOfLesson(state.lesson) === "B2";
     var isB = isB1 || isB2;
     var nextB = isB ? nextPlayableLesson(state.lesson) : null;
     var lastThematicOfBlock = isA2 ? (GRAND_CONTROLE_A2_LESSON - 1) : (GRAND_CONTROLE_LESSON - 1);
-    var hasNext = isB ? nextB != null : state.lesson < lastThematicOfBlock;
+    var hasNext = isB ? nextB != null : lessonRank(state.lesson) < lessonRank(lastThematicOfBlock);
     var passThreshold = Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
     var passed = state.quizScore >= passThreshold;
     postmark.innerHTML = state.lesson === -1 ? "BILAN<br>FOND." : (isB ? "BILAN<br>" + bCode(state.lesson) : (state.lesson >= 13 ? "BILAN<br>A2." + (state.lesson-13) : "BILAN<br>JOUR&nbsp;" + String(state.lesson+1).padStart(2,"0")));
@@ -5299,7 +5438,7 @@
       gaugesHtml +
       '<div class="recap">'+recap+'</div>' +
       nextStepHtml;
-    nextBtn.textContent = (passed && state.returnTo != null) ? ((state.returnTo === 13 || state.returnTo === B1_START_LESSON) ? "Retour à mes renforts" : "Retour au contrôle") : passed
+    nextBtn.textContent = (passed && state.returnTo != null) ? ((state.returnTo === 13 || state.returnTo === b1EntryLesson()) ? "Retour à mes renforts" : "Retour au contrôle") : passed
       ? (hasNext ? "Passer à " + (isB ? bCode(nextB) : (isA2 ? "A2." + (state.lesson+1-13) : "la leçon " + (state.lesson+2))) : (isB ? "Revoir mes leçons (la suite arrive bientôt)" : "Passer au grand contrôle " + (isA2 ? "A2" : "A1")))
       : "Revoir la leçon";
     backBtn.style.visibility = "hidden";
@@ -5363,7 +5502,7 @@
     var rs = ev.decision === "fail" ? retakeStatus(level) : null;
     var nextInfo = ev.decision === "fail"
       ? (rs && rs.creator ? '<p class="lede" style="font-size:.85rem">Mode créatrice : repassage possible tout de suite.</p>' : '<p class="lede" style="font-size:.9rem">Nouveau contrôle possible à partir du <b>'+fmtDate(Date.now() + 7 * DAY_MS)+'</b>.</p>')
-      : (level === "FINAL" ? '<p class="lede" style="font-size:.9rem">Direction le niveau B1 ! B1.1 (My Identity Today) t\'attend — les leçons A1/A2 restent ouvertes si tu veux réviser.</p>' : "");
+      : (level === "FINAL" ? '<p class="lede" style="font-size:.9rem">Direction le niveau B1 ! '+(b1EntryLesson() === B1_ENTRY_MODULE ? "B1.0 (Bases transversales B1) t\'attend, puis B1.1 (My Identity Today)" : "B1.1 (My Identity Today) t\'attend")+' — les leçons A1/A2 restent ouvertes si tu veux réviser.</p>' : "");
     var recap = QUIZ.map(function(q, i){
       var hit = state.quizLog[i];
       return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
@@ -7652,11 +7791,12 @@
       var renfortTodo = pendingRenforts("A2");
       if(renfortTodo.length){ state.gateOpen = true; screenRenfortGate(renfortTodo, "A2"); return; }
     }
-    // Même porte à l'entrée du B1 (B1.1) : renforts du contrôle A2 / du grand contrôle final.
-    if(state.lesson === B1_START_LESSON && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
+    // Même porte à l'entrée du niveau B1 (B1.0 s'il est déposé, sinon B1.1 — voir b1EntryLesson) :
+    // renforts du contrôle A2 / du grand contrôle final.
+    if(state.lesson === b1EntryLesson() && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
       // (Les renforts ajoutés par un examen de palier B1 — le palier lui-même — ne bloquent pas l'entrée
-      // en B1.1 : ils se refont depuis Mes cours › Mes renforts.)
-      var renfortTodoB1 = pendingRenforts("B1").filter(function(id){ return id < B1_START_LESSON; });
+      // en B1 : ils se refont depuis Mes cours › Mes renforts. Tri dans l'ordre pédagogique.)
+      var renfortTodoB1 = pendingRenforts("B1").filter(function(id){ return lessonRank(id) < lessonRank(b1EntryLesson()); });
       if(renfortTodoB1.length){ state.gateOpen = true; screenRenfortGate(renfortTodoB1, "B1"); return; }
     }
     if(isGrandControle()){
@@ -7711,9 +7851,9 @@
             // A2 validé : place au grand contrôle final (A1 + A2).
             state.lesson = GRAND_CONTROLE_FINAL_LESSON; state.step = 0;
           } else {
-            // Final validé : on enchaîne sur le niveau B1 (B1.1), précédé des renforts éventuels
-            // (comme A1 → A2 ci-dessus — voir aussi B1_START_LESSON).
-            state.lesson = B1_START_LESSON; state.step = 0; state.reviewDone = false; state.reviewLog = []; state.renfortSkipped = false;
+            // Final validé : on enchaîne sur le niveau B1 (B1.0 s'il est déposé, sinon B1.1), précédé
+            // des renforts éventuels (comme A1 → A2 ci-dessus — voir b1EntryLesson).
+            state.lesson = b1EntryLesson(); state.step = 0; state.reviewDone = false; state.reviewLog = []; state.renfortSkipped = false;
           }
         } else {
           // Pas validé : retour à l'accueil du contrôle (leçons à revoir + délai d'une semaine).
@@ -7725,7 +7865,8 @@
     }
     // Examen de fin de palier : le bouton principal valide la section / passe à la suivante.
     if(state.step === 5 && examActive()){ examPrimaryAction(); return; }
-    if(state.step === 1 && state.subStep === 4 && sbRound < ROUNDS.length-1){
+    // Construction de phrase = dernière sous-étape de la Leçon (4, ou 5 avec l'encart transversal).
+    if(state.step === 1 && state.subStep === LECON_SUBSTEPS-1 && sbRound < ROUNDS.length-1){
       sbRound++;
       render();
       return;
@@ -7753,13 +7894,13 @@
         // Leçon revue à la demande d'un contrôle ou d'un renfort : on y retourne.
         markRenfortDone(state.lesson);
         state.lesson = state.returnTo; state.returnTo = null; state.ctrlDraw = null;
-      } else if(bilanPassed && state.lesson < GRAND_CONTROLE_A2_LESSON){
+      } else if(bilanPassed && lessonRank(state.lesson) < lessonRank(GRAND_CONTROLE_A2_LESSON)){
         state.lesson++;
         state.reviewDone = false; state.reviewLog = [];
         if(isGrandControle()){ state.gcExprScore = 0; state.gcExprLog = []; }
-      } else if(bilanPassed && state.lesson >= B1_START_LESSON && state.lesson <= B2_LAST_LESSON){
-        // B1 / B2 : leçon jouable suivante (B1.12 → B2.1 directement, la 39 étant réservée au futur
-        // Grand Contrôle B1). S'il n'y en a pas (fin de B2.12, ou fichier de la suite pas encore
+      } else if(bilanPassed && isBLesson(state.lesson)){
+        // B1 / B2 : leçon jouable suivante dans l'ordre pédagogique (B1.0 → B1.1 ; B1.12 → B2.0 → B2.1,
+        // ou B1.12 → B2.1 sans B2.0, la 39 étant réservée au futur Grand Contrôle B1). S'il n'y en a pas (fin de B2.12, ou fichier de la suite pas encore
         // déposé) : retour aux leçons pour réviser en attendant — même repli qu'après B1.3 jusqu'ici.
         var nextId = nextPlayableLesson(state.lesson);
         if(nextId != null){
@@ -7784,7 +7925,7 @@
       if(state.step === 1 && sbRound === 0){ state.step = 0; render(); return; }
       return; // pas de retour arrière pendant le Contrôle ou depuis le Bilan (comme pour les leçons)
     }
-    if(state.step === 1 && state.subStep === 4 && sbRound > 0){
+    if(state.step === 1 && state.subStep === LECON_SUBSTEPS-1 && sbRound > 0){
       sbRound--;
       render();
       return;
@@ -7828,6 +7969,7 @@
   if(/rootstest/.test(location.hash || "")){
     window.__rootsTest = { state:state, render:render, goNext:goNext, quiz:function(){ return QUIZ; }, rounds:function(){ return ROUNDS; },
       label:lessonLabel, meta:function(){ return META; }, media:function(){ return MEDIA; }, lectureSubsteps:function(){ return LECTURE_SUBSTEPS; },
+      leconSubsteps:function(){ return LECON_SUBSTEPS; }, transversal:function(){ return TRANSV; }, rank:lessonRank, order:LESSON_ORDER, level:levelOfLesson, practice:function(){ return PRACTICE; },
       titles:function(){ return LESSON_TITLES; }, playable:isPlayableLesson,
       exam:function(){ return EXAM; }, examActive:examActive, examResult:function(){ return state.examResult; },
       examNormalize:examNormalize, examBlankOk:examBlankOk };
