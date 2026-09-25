@@ -108,6 +108,34 @@ export function dueMissions(lang) { return missions(lang).filter((x) => x.due); 
 
 export function stageLabel(stage) { return STAGES[Math.max(0, Math.min(6, stage))]; }
 
+// Ordre pédagogique des leçons d'anglais par niveau (miroir de LESSON_ORDER dans lessons.html).
+// B1.0 (52) et B2.0 (53) ne comptent que si lessons.html les a publiés dans les titres de leçons
+// (the_roots_lesson_titles_v1 — c.-à-d. si leur fichier de données est déposé) : sans eux, les
+// pourcentages restent exactement ceux d'avant. "B2ctrl" = place d'un futur contrôle B2.
+function levelLessons() {
+  const titles = lessonTitles();
+  const has = (n) => Object.prototype.hasOwnProperty.call(titles, String(n));
+  const range = (a, b) => { const o = []; for (let i = a; i <= b; i++) o.push(i); return o; };
+  return {
+    A1: range(-1, 12),
+    A2: range(13, 26),
+    B1: (has(52) ? [52] : []).concat(range(27, 39)),
+    B2: (has(53) ? [53] : []).concat(range(40, 51), ["B2ctrl"]),
+  };
+}
+// Niveau et pourcentage (position dans le niveau, 1re leçon = 1/N) d'un numéro de leçon, ou null.
+function lessonLevelPos(lesson) {
+  if (lesson == null) return null;
+  const lv = levelLessons();
+  for (const level of ["A1", "A2", "B1", "B2"]) {
+    const i = lv[level].indexOf(lesson);
+    if (i >= 0) return { level, pct: Math.round(((i + 1) / lv[level].length) * 100) };
+  }
+  // Numéro inconnu au-delà du B2 (ne devrait pas arriver) : fin du B2, comme avant.
+  if (lesson > 53) return { level: "B2", pct: 100 };
+  return null;
+}
+
 // Niveau de travail + plante d'une langue. Pour l'anglais (seule langue avec
 // des leçons pour l'instant), on suit les leçons et les contrôles ; sinon, le
 // résultat du test de positionnement.
@@ -125,14 +153,17 @@ export function langGrowth(code) {
     // lessons.html sans test ni leçon faisait déjà apparaître une pousse.
     if (!l.leveled) return { stage: 0, level: null, pct: 0 };
     let level = "A1", pct = 0;
-    // Numéros de leçon (voir lessons.html) : A1 -1..12 · A2 13..26 (26 = grand contrôle final) ·
-    // B1 27..38 (+ 39 réservée au futur Grand Contrôle B1) · B2 40..51 (+ 52 pour un futur contrôle B2).
-    if (lesson != null && lesson >= 40) { level = "B2"; pct = Math.round(((Math.min(lesson, 52) - 39) / 13) * 100); }
-    else if ((c.FINAL && c.FINAL.passed) || (lesson != null && lesson >= 27)) { level = "B1"; pct = lesson != null && lesson >= 27 ? Math.round(((Math.min(lesson, 39) - 26) / 13) * 100) : 0; }
-    else if ((c.A1 && c.A1.passed) || (lesson != null && lesson >= 13)) { level = "A2"; pct = lesson != null && lesson >= 13 ? Math.round(((Math.min(lesson, 26) - 12) / 14) * 100) : 0; }
-    else { level = "A1"; pct = lesson != null ? Math.round(((Math.min(lesson, 12) + 2) / 14) * 100) : 0; }
+    // Numéros de leçon (voir lessons.html, LESSON_ORDER) : A1 -1..12 · A2 13..26 (26 = grand contrôle
+    // final) · B1 52 (B1.0) puis 27..38 (+ 39 réservée au futur Grand Contrôle B1) · B2 53 (B2.0) puis
+    // 40..51 (+ une place pour un futur contrôle B2). 52 et 53 ne suivent pas l'ordre des numéros :
+    // le niveau et le pourcentage se calculent d'après la POSITION dans l'ordre pédagogique.
+    const r = lessonLevelPos(lesson);
+    if (r && r.level === "B2") { level = "B2"; pct = r.pct; }
+    else if ((c.FINAL && c.FINAL.passed) || (r && r.level === "B1")) { level = "B1"; pct = r && r.level === "B1" ? r.pct : 0; }
+    else if ((c.A1 && c.A1.passed) || (r && r.level === "A2")) { level = "A2"; pct = r && r.level === "A2" ? r.pct : 0; }
+    else { level = "A1"; pct = r && r.level === "A1" ? r.pct : 0; }
     // Test de positionnement plus haut que le parcours (ex. B1 d'entrée) : on garde le plus haut.
-    if (l.level && LEVELS.indexOf(l.level) > LEVELS.indexOf(level) && (lesson == null || lesson <= 0)) { level = l.level; pct = 0; }
+    if (l.level && LEVELS.indexOf(l.level) > LEVELS.indexOf(level) && (lesson == null || lesson === -1 || lesson === 0)) { level = l.level; pct = 0; }
     return { stage: LEVELS.indexOf(level) + 1, level, pct };
   }
   if (!l.leveled) return { stage: 0, level: null, pct: 0 };

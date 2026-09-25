@@ -1,8 +1,156 @@
-// The Roots — leçons jouables B1.4 à B1.12 (leçons 30 à 38)
+// The Roots — leçons jouables B1.0 (module d'entrée, leçon 52) et B1.4 à B1.12 (leçons 30 à 38)
 // Fichier de DONNÉES chargé par lessons.html (balise <script src>). Ne contient que du contenu
 // pédagogique : window.LESSONS_EXT[N] = {…} où N est le numéro de leçon du moteur.
 window.LESSONS_EXT = window.LESSONS_EXT || {};
 (function (LESSONS_EXT) {
+  // B1.0 — Bases transversales B1 — French Interference Lab, anglais de survie et pragmatique — s'appuie sur A2.9 (discours rapporté), A2.10 (propositions) et A2.11 (opinions)
+  LESSONS_EXT[52] = {
+    code: "B1.0", level: "B1",
+    VOCAB: [
+      {block:"French Interference Lab : les calques", en:"I agree.", ipa:"/aɪ əˈɡriː/", fr:"Je suis d'accord.", note:"« Agree » est un VERBE : jamais « I am agree ». Au négatif : « I don't agree » ou « I disagree »."},
+      {block:"French Interference Lab : les calques", en:"To make a mistake", ipa:"/tə meɪk ə mɪˈsteɪk/", fr:"Faire une erreur", note:"On « make » une erreur, on ne la « do » pas : « I made a mistake » (jamais « I did a mistake »)."},
+      {block:"French Interference Lab : les calques", en:"I miss it.", ipa:"/aɪ mɪs ɪt/", fr:"Ça me manque.", note:"La phrase est inversée par rapport au français : « it misses me » veut dire « ça me rate » ! Tu me manques = « I miss you »."},
+      {block:"French Interference Lab : les calques", en:"In my opinion", ipa:"/ɪn maɪ əˈpɪnjən/", fr:"Selon moi, à mon avis", note:"« According to me » ne se dit pas pour son propre avis. « According to » sert à citer une source : « according to the doctor »."},
+      {block:"French Interference Lab : les calques", en:"For three years", ipa:"/fə θriː jɪəz/", fr:"Depuis trois ans (durée)", note:"« for » + une durée, « since » + un point de départ : « for three years » mais « since 2022 ». Jamais « since three years »."},
+      {block:"French Interference Lab : les calques", en:"Information", ipa:"/ˌɪnfəˈmeɪʃən/", fr:"Des informations, un renseignement", note:"Indénombrable : jamais de -s ni de « an ». « some information », « a piece of information »."},
+      {block:"French Interference Lab : les calques", en:"Advice", ipa:"/ədˈvaɪs/", fr:"Des conseils", note:"Indénombrable aussi : « some advice », « a piece of advice » (un conseil). Le verbe s'écrit avec un s : « to advise » /ədˈvaɪz/."},
+      {block:"Faux amis à désamorcer", en:"Actually", ipa:"/ˈæktʃuəli/", fr:"En fait, en réalité", note:"Ne veut PAS dire « actuellement » (= currently, at the moment). « Actually, I'm from Lyon » = en fait, je viens de Lyon."},
+      {block:"Faux amis à désamorcer", en:"Eventually", ipa:"/ɪˈventʃuəli/", fr:"Finalement, au bout du compte", note:"Ne veut PAS dire « éventuellement » (= possibly, maybe). « Eventually, she found a job » = elle a fini par trouver un emploi."},
+      {block:"Faux amis à désamorcer", en:"Sensible", ipa:"/ˈsensəbəl/", fr:"Raisonnable, sensé(e)", note:"« Sensible » en français se dit « sensitive ». « That's a sensible idea » = c'est une idée raisonnable."},
+      {block:"Faux amis à désamorcer", en:"A library", ipa:"/ə ˈlaɪbrəri/", fr:"Une bibliothèque", note:"Une librairie (où l'on achète des livres) se dit « a bookshop » (US : « a bookstore »)."},
+      {block:"Faux amis à désamorcer", en:"To attend", ipa:"/tu əˈtend/", fr:"Assister à, participer à", note:"« I attended the meeting » = j'ai assisté à la réunion. Attendre se dit « to wait for »."},
+      {block:"Anglais de survie", en:"It's a kind of...", ipa:"/ɪts ə kaɪnd əv/", fr:"C'est une sorte de...", note:"La formule reine quand le mot te manque : « It's a kind of big spoon for soup » (= une louche, « a ladle »)."},
+      {block:"Anglais de survie", en:"It's something you use to...", ipa:"/ɪts ˈsʌmθɪŋ juː juːz tə/", fr:"C'est un truc qui sert à...", note:"Décrire la fonction : « It's something you use to open bottles » (= a bottle opener). Ton interlocuteur te donnera souvent le mot."},
+      {block:"Anglais de survie", en:"Could you say that again?", ipa:"/kʊd juː seɪ ðæt əˈɡen/", fr:"Pourriez-vous répéter ?", note:"Plus naturel que « Can you repeat? ». Version courte et polie : « Sorry? » avec une intonation montante."},
+      {block:"Anglais de survie", en:"Could you speak a bit more slowly?", ipa:"/kʊd juː spiːk ə bɪt mɔː ˈsləʊli/", fr:"Pourriez-vous parler un peu plus lentement ?", note:"Parfaitement légitime : les natifs ralentissent volontiers si on le demande gentiment."},
+      {block:"Anglais de survie", en:"So what you mean is...", ipa:"/səʊ wɒt juː miːn ɪz/", fr:"Donc, ce que tu veux dire, c'est...", note:"Pour vérifier qu'on a bien compris en reformulant. Variante : « Do you mean that...? »."},
+      {block:"Anglais de survie", en:"Let me think...", ipa:"/let mi θɪŋk/", fr:"Laisse-moi réfléchir...", note:"Pour gagner du temps sans silence gênant. Aussi : « That's a good question... », « How can I put it? » (comment dire ?)."},
+      {block:"Connecteurs pour structurer", en:"First of all", ipa:"/fɜːst əv ɔːl/", fr:"Tout d'abord", note:"Ouvre une explication ou une liste d'arguments. Plus léger à l'oral : « First, ... »."},
+      {block:"Connecteurs pour structurer", en:"Then", ipa:"/ðen/", fr:"Ensuite, puis", note:"Enchaîne les étapes d'un récit ou d'une explication. Variante : « After that, ... »."},
+      {block:"Connecteurs pour structurer", en:"However", ipa:"/haʊˈevə/", fr:"Cependant, toutefois", note:"Plus soutenu que « but ». En début de phrase, suivi d'une virgule : « However, it was too expensive. »"},
+      {block:"Connecteurs pour structurer", en:"In the end", ipa:"/ɪn ði end/", fr:"Finalement, au final", note:"À ne pas confondre avec « at the end of » (à la fin de) : « at the end of the film » / « In the end, we stayed at home. »"},
+      {block:"Verbes clés (B1.0)", en:"Depend on", ipa:"/dɪˈpend ɒn/", fr:"Dépendre de", note:"Toujours « on », jamais « of » : « It depends on the price. » Réponse passe-partout : « It depends! »"},
+      {block:"Verbes clés (B1.0)", en:"Listen to", ipa:"/ˈlɪsən tuː/", fr:"Écouter", note:"« listen to » + ce qu'on écoute : « I listen to podcasts ». Sans complément : « Listen! »"},
+      {block:"Verbes clés (B1.0)", en:"Explain", ipa:"/ɪkˈspleɪn/", fr:"Expliquer", note:"« explain something to someone » : « Can you explain it to me? » — jamais « explain me »."},
+      {block:"Verbes clés (B1.0)", en:"Rephrase", ipa:"/ˌriːˈfreɪz/", fr:"Reformuler", note:"« Let me rephrase that » = je reformule. Très utile quand on sent qu'on n'a pas été compris(e)."},
+      {block:"Verbes clés (B1.0)", en:"Mean", ipa:"/miːn/", fr:"Vouloir dire, signifier", note:"Passé : meant /ment/. « What does this word mean? » ; « I mean... » = je veux dire..."}
+    ],
+    MEM_WORDS: [0,1,4,7,12,24], // I agree, To make a mistake, For three years, Actually, It's a kind of..., Explain
+
+    MINI_CHECKS: [
+      { q:"Comment dit-on « Je suis d'accord avec toi » ?", opts:["I am agree with you.","I agree with you.","I'm agree with you."], correct:1, fb:"« Agree » est un verbe : « I agree with you ». Le « am » est un calque du français « je suis »." },
+      { q:"“I've lived in this town ___ five years.”", opts:["since","during","for"], correct:2, fb:"« for » + une durée (five years) ; « since » + un point de départ (since 2020)." },
+      { q:"« Actually » veut dire…", opts:["en fait","actuellement","activement"], correct:0, fb:"Faux ami : « actually » = en fait. « Actuellement » = currently / at the moment." },
+      { q:"Tu ne connais pas le mot « tire-bouchon ». Que dis-tu ?", opts:["I don't know. Sorry.","It's a bottle thing.","It's something you use to open a bottle of wine."], correct:2, fb:"Décrire la fonction (« something you use to... ») permet de continuer la conversation — et on te donnera le mot : « a corkscrew »." }
+    ],
+
+    ROUNDS: [
+      { bank:["with","I","you","agree","."], answer:"i agree with you .", display:"I agree with you.", fr:"Je suis d'accord avec toi." },
+      { bank:["mistake","I","in","made","email","a","my","."], answer:"i made a mistake in my email .", display:"I made a mistake in my email.", fr:"J'ai fait une erreur dans mon e-mail." },
+      { bank:["to","Could","word","explain","me","you","this","?"], answer:"could you explain this word to me ?", display:"Could you explain this word to me?", fr:"Pourriez-vous m'expliquer ce mot ?" },
+      { bank:["for","I","here","lived","three","have","years","."], answer:"i have lived here for three years .", display:"I have lived here for three years.", fr:"J'habite ici depuis trois ans." },
+      { bank:["the","It","on","depends","weather","."], answer:"it depends on the weather .", display:"It depends on the weather.", fr:"Ça dépend du temps." },
+      { bank:["slowly","Could","a","speak","more","you","bit","?"], answer:"could you speak a bit more slowly ?", display:"Could you speak a bit more slowly?", fr:"Pourriez-vous parler un peu plus lentement ?" },
+      { bank:["spoon","It's","of","a","big","kind","."], answer:"it's a kind of big spoon .", display:"It's a kind of big spoon.", fr:"C'est une sorte de grosse cuillère." },
+      { bank:["mean","So","late","is","you","that","what","it's","too","?"], answer:"so what you mean is that it's too late ?", display:"So what you mean is that it's too late?", fr:"Donc, ce que tu veux dire, c'est qu'il est trop tard ?" },
+      { bank:["advice","Can","me","some","give","you","?"], answer:"can you give me some advice ?", display:"Can you give me some advice?", fr:"Tu peux me donner des conseils ?" },
+      { bank:["idea","In","sensible","opinion","it's","my","a","."], answer:"in my opinion it's a sensible idea .", display:"In my opinion, it's a sensible idea.", fr:"À mon avis, c'est une idée raisonnable." }
+    ],
+
+    QUIZ: [
+      { cat:"ecrit", q:"Quelle phrase est correcte ?", opts:["I did a mistake yesterday.","I made a mistake yesterday.","I have done a mistake yesterday."], correct:1, why:"On dit « make a mistake ». Et avec « yesterday », c'est le Past Simple : « I made a mistake »." },
+      { cat:"ecrit", q:"“Can you explain ___?” — tu veux qu'on t'explique la règle.", opts:["me the rule","to me the rule","the rule to me"], correct:2, why:"« explain + chose + to + personne » : « explain the rule to me ». « Explain me » est un calque du français." },
+      { cat:"ecrit", q:"Comment dit-on « Ma famille me manque » ?", opts:["I miss my family.","My family misses me.","My family is missing me."], correct:0, why:"En anglais, c'est la personne qui ressent le manque qui est sujet : « I miss my family ». « My family misses me » = je manque à ma famille." },
+      { cat:"ecrit", q:"“Could you give me some ___ about the course?”", opts:["informations","information","an information"], correct:1, why:"« Information » est indénombrable : pas de -s, pas de « an ». On peut dire « some information » ou « a piece of information »." },
+      { cat:"ecrit", q:"“We waited for hours and ___ the train arrived.” — il a fini par arriver.", opts:["possibly","actually","eventually"], correct:2, why:"« Eventually » = finalement, au bout du compte. Faux ami : éventuellement = possibly / maybe." },
+      { cat:"ecrit", q:"Pour donner TON avis, tu dis :", opts:["According to me, it's too expensive.","In my opinion, it's too expensive.","For me opinion, it's too expensive."], correct:1, why:"« In my opinion » (ou « I think », « Personally ») ; « according to » sert à citer quelqu'un d'autre : « according to the news »." },
+      { cat:"ecrit", q:"“Whether we go out tonight depends ___ the weather.”", opts:["on","of","from"], correct:0, why:"« depend on » — jamais « depend of », calque de « dépendre de »." },
+      { cat:"ecrit", q:"Au travail, laquelle de ces demandes est la plus polie ?", opts:["Send me the report.","I want the report now.","Could you send me the report when you have a moment?"], correct:2, why:"« Could you...? » + « when you have a moment » adoucit la demande. L'impératif « Send me... » sonne comme un ordre." },
+      { cat:"ecrit", q:"Tu n'as pas compris ce que ton interlocuteur vient de dire. Le plus naturel :", opts:["Sorry, could you say that again?","What? Repeat.","I don't understand nothing."], correct:0, why:"« Sorry, could you say that again? » est poli et naturel ; « What? » seul sonne brusque, et « don't... nothing » est une double négation incorrecte." },
+      { cat:"ecrit", q:"“We looked at three flats. ___, we chose the smallest one because it was near the station.”", opts:["At the end","In the end","First of all"], correct:1, why:"« In the end » = finalement, au final. « At the end » demande un complément : « at the end of the day »." },
+      { cat:"oral", audio:"Sorry, I don't know the word. It's a kind of machine you use to wash the dishes.", q:"Écoute : que fait la personne ?", opts:["Elle se plaint d'une machine","Elle décrit un objet dont elle ne connaît pas le nom","Elle demande de répéter","Elle achète un lave-linge"], correct:1, why:"Elle paraphrase : « a kind of machine you use to wash the dishes » (= a dishwasher, un lave-vaisselle)." },
+      { cat:"oral", audio:"Actually, I've been working here for six months, not six years.", q:"Écoute : depuis combien de temps la personne travaille-t-elle ici ?", opts:["Six ans","Elle travaille ici actuellement, sans précision","Six semaines","Six mois"], correct:3, why:"« for six months » = depuis six mois ; « actually » corrige une information (= en fait), il ne veut pas dire « actuellement »." },
+      { cat:"oral", audio:"Could you speak a bit more slowly, please? My English isn't perfect yet.", q:"Écoute : que demande la personne ?", opts:["Qu'on parle plus lentement","Qu'on parle plus fort","Qu'on répète en français","Qu'on corrige son anglais"], correct:0, why:"« Could you speak a bit more slowly? » = pourriez-vous parler un peu plus lentement ?" },
+      { cat:"oral", audio:"So what you mean is that the meeting has been moved to Friday?", q:"Écoute : que fait la personne ?", opts:["Elle annule la réunion","Elle propose une nouvelle date","Elle vérifie qu'elle a bien compris","Elle refuse de venir vendredi"], correct:2, why:"« So what you mean is... » = reformuler pour vérifier sa compréhension : la réunion a été déplacée à vendredi ?" },
+      { cat:"comprehension", passage:"“— Excuse me, where can I find books about gardening? — Books? This is a bookshop, but if you want to borrow them for free, you need the library. It's just across the square. — Oh, thank you! I'll go there then.”", q:"D'après le dialogue, où la personne va-t-elle aller ?", opts:["Dans une librairie, pour acheter un livre","Dans une jardinerie","À la bibliothèque, pour emprunter des livres","Chez elle"], correct:2, why:"« Library » = bibliothèque (on emprunte gratuitement) ; « bookshop » = librairie. Faux ami classique." },
+      { cat:"comprehension", passage:"“First of all, I'd like to thank you all for coming. Then, I'll explain the new timetable. However, I'm afraid we don't have much time, so please keep your questions for the end.”", q:"D'après le texte, que demande l'orateur au public ?", opts:["De poser ses questions tout de suite","De garder ses questions pour la fin","De partir plus tôt","D'expliquer le nouvel emploi du temps"], correct:1, why:"« please keep your questions for the end » ; les connecteurs « First of all… Then… However… » structurent son discours." },
+      { cat:"comprehension", passage:"“(rappel) Tom called this morning. He said that he was stuck in traffic and that he would be about twenty minutes late for the meeting.”", q:"D'après le texte, qu'a dit Tom ?", opts:["Qu'il ne viendrait pas","Qu'il était malade","Qu'il avait oublié la réunion","Qu'il arriverait avec environ vingt minutes de retard"], correct:3, why:"« he would be about twenty minutes late » (rappel A2.9 : discours rapporté, « will » devient « would »)." },
+      { cat:"comprehension", passage:"“(rappel) I really enjoy watching series in English. Last month, I decided to watch one episode without subtitles. I didn't understand everything, but I was so relieved when I followed the main story!”", q:"D'après le texte, comment la personne s'est-elle sentie ?", opts:["Soulagée","Déçue","Inquiète","Ennuyée"], correct:0, why:"« I was so relieved » = j'étais tellement soulagée (rappel A2.11 : sentiments, « enjoy + -ing » et « decide + to »)." }
+    ],
+
+    PRON_VERBS: [
+      {en:"I agree with you, but it depends on the price.", fr:"Je suis d'accord avec toi, mais ça dépend du prix."},
+      {en:"Sorry, I made a mistake. Let me rephrase that.", fr:"Désolé(e), j'ai fait une erreur. Je reformule."},
+      {en:"Could you explain it to me again, a bit more slowly?", fr:"Pourriez-vous me le réexpliquer, un peu plus lentement ?"},
+      {en:"It's a kind of tool you use to fix bikes.", fr:"C'est une sorte d'outil qui sert à réparer les vélos."},
+      {en:"Actually, I've lived here for three years.", fr:"En fait, j'habite ici depuis trois ans."},
+      {en:"Let me think... In my opinion, it's a sensible idea.", fr:"Laisse-moi réfléchir... À mon avis, c'est une idée raisonnable."}
+    ],
+
+    READING: [
+      "Last spring, I attended a conference in Manchester for my job.",
+      "First of all, I was nervous, because I had never spoken English for a whole day.",
+      "During the coffee break, a woman asked me a question, and I didn't understand a single word.",
+      "Instead of panicking, I smiled and said, “Sorry, could you say that again, a bit more slowly?”",
+      "She repeated her question, and this time I understood: she wanted some advice about a hotel in Lyon.",
+      "Then I wanted to tell her about the shuttle from the airport, but I couldn't remember the word.",
+      "So I said, “It's a kind of small bus that takes you directly to the city centre.”",
+      "She laughed and said, “Oh, you mean a shuttle!” — and I never forgot the word again.",
+      "However, I noticed that I said “I am agree” twice, so I wrote the correct phrase in my notebook.",
+      "In the end, it was a great day: I made mistakes, but I never stopped communicating."
+    ],
+    GLOSS: [
+      {en:"a conference", fr:"un congrès, une conférence (événement professionnel)"},
+      {en:"to panic", fr:"paniquer (-ing : panicking)"},
+      {en:"a coffee break", fr:"une pause-café"},
+      {en:"a shuttle", fr:"une navette"},
+      {en:"a notebook", fr:"un carnet"}
+    ],
+
+    GRAMMAR1: {
+      heading: "French Interference Lab : corriger les calques du français",
+      lede: "Beaucoup d'erreurs des francophones viennent d'une traduction mot à mot. La bonne nouvelle : ce sont toujours les mêmes, et quelques structures verbales suffisent à en corriger la plupart.",
+      conj: [["Être d'accord →","agree est un verbe (pas d'adjectif)","✗ I am agree → ✓ I agree with you."],["Expliquer →","explain + chose + to + personne","✗ I explain you → ✓ Let me explain it to you."],["Dépendre / écouter →","depend on, listen to","✗ It depends of you → ✓ It depends on you. / I listen to music."],["Depuis →","for + durée / since + point de départ","✗ since three years → ✓ for three years / since 2022"]],
+      ruleHtml: "📖 Quatre réflexes à installer pour tout le niveau B1 : <b>agree</b> est un verbe (« I agree », « I don't agree »), jamais « I am agree ». <b>Explain</b> ne prend pas la personne directement : « explain <b>it to me</b> ». <b>Depend</b> se construit avec <b>on</b> et <b>listen</b> avec <b>to</b>. Enfin, « depuis » se traduit par <b>for</b> + une durée ou <b>since</b> + un point de départ, avec le <b>Present Perfect</b> quand l'action continue : « I <b>have lived</b> here <b>for</b> three years » (jamais « I live here since three years »).",
+      dialogueLede: "Pendant une réunion d'équipe, avec un collègue anglais :",
+      dialogue: [
+        {who:"them", en:"I think we should move the deadline to next month. What do you think?", fr:"Je pense qu'on devrait repousser l'échéance au mois prochain. Qu'en penses-tu ?"},
+        {who:"you", en:"I agree with you, but it depends on the client. Let me explain the situation to you.", fr:"Je suis d'accord avec toi, mais ça dépend du client. Laisse-moi t'expliquer la situation."}
+      ],
+      whyLabel: "Les autres pièges à surveiller",
+      whyText: "Le cerveau francophone produit aussi : « I <b>did</b> a mistake » (→ I <b>made</b> a mistake), « <b>according to me</b> » (→ <b>in my opinion</b>), « <b>informations</b> / <b>advices</b> » (→ information / advice, toujours sans -s), et « <b>it misses me</b> » (→ <b>I miss it</b>). Sans oublier les faux amis : <b>actually</b> = en fait, <b>eventually</b> = finalement, <b>sensible</b> = raisonnable, <b>library</b> = bibliothèque. Tu les retrouveras dans le French Interference Lab de chaque palier."
+    },
+    GRAMMAR2: {
+      heading: "Anglais de survie : continuer à communiquer même sans le mot",
+      dialogueLede: "Dans une quincaillerie à Londres, tu cherches un objet dont tu ignores le nom :",
+      dialogue: [
+        {who:"you", en:"Sorry, I don't know the word. It's a kind of tool, something you use to put nails in the wall.", fr:"Désolé(e), je ne connais pas le mot. C'est une sorte d'outil, un truc qui sert à planter des clous dans le mur."},
+        {who:"them", en:"Oh, you mean a hammer! They're just over there.", fr:"Ah, vous voulez dire un marteau ! Ils sont juste là-bas."}
+      ],
+      ruleHtml: "💭 Quatre stratégies pour ne jamais rester bloqué(e). <b>Paraphraser</b> : « It's a kind of... », « It's something you use to... », « It's like a... but bigger ». <b>Faire répéter ou ralentir</b> : « Sorry? », « Could you say that again? », « Could you speak a bit more slowly? ». <b>Vérifier qu'on a compris</b> : « So what you mean is...? », « Do you mean that...? ». <b>Gagner du temps</b> : « Let me think... », « How can I put it? ». Et côté <b>pragmatique</b>, le ton compte autant que les mots : « <b>Could you</b> help me? » est une demande, « <b>Help me</b>. » sonne comme un ordre.",
+      whyLabel: "Pourquoi c'est une compétence B1",
+      whyText: "Au niveau B1, on ne te demande pas de connaître tous les mots, mais de <b>te débrouiller</b> quand il t'en manque un (« I can function in English »). Un natif ne se vexe jamais d'un « <b>Could you say that again?</b> » ; en revanche, un silence ou un « <b>What?</b> » sec peut sembler impoli. Et quand tu reformules avec « <b>So what you mean is...</b> », tu montres que tu écoutes vraiment — c'est apprécié dans toutes les cultures anglophones."
+    },
+
+    REVIEW: [
+      { q:"“I really enjoy ___ in the evening.”", opts:["reading","to read"], correct:0, fb:"« enjoy » est suivi de -ing pour un goût général : « I enjoy reading ». (rappel A2.11)" },
+      { q:"“I decided ___ a new language this year.”", opts:["learning","to learn"], correct:1, fb:"« decide » est suivi de « to » pour une décision précise : « I decided to learn ». (rappel A2.11)" },
+      { q:"« I am busy. » → She said that she ___ busy.", opts:["was","is"], correct:0, fb:"Au discours rapporté, le temps recule d'un cran : am → was. (rappel A2.9)" },
+      { q:"« I will call you back. » → He said that he ___ call me back.", opts:["will","would"], correct:1, fb:"Au discours rapporté, « will » devient « would ». (rappel A2.9)" },
+      { q:"Tu proposes une sortie à un ami :", opts:["Shall we go to the cinema tonight?","Do we go to the cinema tonight?"], correct:0, fb:"« Shall we...? » (ou « Why don't we...? ») sert à proposer une activité ensemble. (rappel A2.10)" }
+    ],
+
+    CULTURE_NOTE: {
+      icon: "🌍",
+      title: "Note culturelle — l'anglais, une langue de non-natifs",
+      html: "Aujourd'hui, la grande majorité des personnes qui parlent anglais dans le monde ne sont <b>pas des natifs</b> : l'anglais sert surtout de langue commune entre Italiens, Brésiliens, Indiens, Coréens… et Français. Dans ce contexte, ce qui compte, c'est d'être <b>compris(e)</b>, pas d'avoir un accent parfait. Côté britannique, retiens deux réflexes : pour faire répéter, un simple « <b>Sorry?</b> » avec l'intonation montante est bien plus poli que « What? » ; et les Britanniques adoucissent souvent leurs demandes (« <b>Could you possibly...?</b> », « <b>I was wondering if...</b> »), si bien qu'un impératif direct peut sonner plus sec qu'en français."
+    },
+
+    NEXT_PREVIEW: "B1.1 (My Identity Today) : te présenter de manière développée, parler de ta personnalité, de tes habitudes et de ton évolution, et comparer ton présent avec ton passé — avec les temps du présent, le Past Simple et la différence entre « used to », « be used to » et « get used to ».",
+
+    META: { vocabTitle: "Bases transversales B1 (B1.0)", lectureTitle: "Ma journée en anglais à Manchester", bilanTitle: "Bravo, tu as les bases du niveau B1 : corriger tes calques du français, te débrouiller sans le mot et structurer ce que tu dis !", pronLabel: "Calques corrigés & phrases de survie", todayLede: "poser les bases transversales du niveau B1 : le French Interference Lab (les erreurs typiques des francophones), l'anglais de survie (continuer à communiquer sans le mot) et la pragmatique (le ton, les connecteurs) — dans la continuité de ton niveau A2" }
+  };
+
   // B1.4 — Everyday English — s'appuie sur B1.3 (Real Conversations : questions indirectes, réactions) et A2.9 (au téléphone)
   LESSONS_EXT[30] = {
     code: "B1.4", level: "B1",
@@ -1296,7 +1444,7 @@ window.LESSONS_EXT = window.LESSONS_EXT || {};
       title: "Note culturelle — l'anglais de survie : ne jamais laisser tomber la conversation",
       html: "Les anglophones, surtout dans les grandes villes où l'on croise des dizaines d'accents, sont très habitués à parler avec des non-natifs. Ce qu'ils apprécient le plus n'est pas un anglais parfait, mais quelqu'un qui <b>continue d'essayer</b>. Quelques réflexes : <b>paraphraser</b> un mot inconnu (« It's a kind of… », « the thing you use to… ») ; <b>demander de l'aide</b> sans gêne (« What's the word for…? ») ; <b>vérifier</b> qu'on a compris (« So you mean… ? ») ; et <b>ralentir l'échange</b> poliment (« Sorry, could you say that again? »). Les natifs le font eux-mêmes en permanence — c'est une compétence de conversation, pas un aveu de faiblesse."
     },
-    NEXT_PREVIEW: "Tu as terminé les 12 paliers du niveau B1 ! Prochaine étape : B2.1 (Argumentation) — construire une argumentation complète (thèse, raison, exemple, contre-argument, conclusion) et anticiper l'objection avec des connecteurs avancés comme however, nevertheless, whereas, therefore ou provided that.",
+    NEXT_PREVIEW: "Tu as terminé les 12 paliers du niveau B1 ! Prochaine étape : B2.0 (Bases transversales B2) — faux amis et calques avancés, reformuler et nuancer, penser directement en anglais — puis B2.1 (Argumentation).",
     META: { vocabTitle:"Une journée en anglais (B1.12)", lectureTitle:"Ma première journée entièrement en anglais", bilanTitle:"Bravo, tu as vécu une journée entière en anglais : le niveau B1 est à ta portée !", pronLabel:"La boîte à outils du B1 : bon temps, bon registre, anglais de survie", todayLede:"vivre une journée fictive entièrement en anglais en mobilisant tout le B1 (se présenter, raconter, converser, travailler, voyager, donner son avis, résoudre un problème) — mission finale du niveau B1" }
   };
 })(window.LESSONS_EXT);

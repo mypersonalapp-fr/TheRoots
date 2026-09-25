@@ -1,8 +1,148 @@
-// The Roots — leçons jouables B2.1 à B2.12 (leçons 40 à 51)
+// The Roots — leçons jouables B2.0 (module d'entrée, leçon 53) et B2.1 à B2.12 (leçons 40 à 51)
 // Fichier de DONNÉES chargé par lessons.html (balise <script src>). Ne contient que du contenu
 // pédagogique : window.LESSONS_EXT[N] = {…} où N est le numéro de leçon du moteur.
 window.LESSONS_EXT = window.LESSONS_EXT || {};
 (function (LESSONS_EXT) {
+  // B2.0 — Bases transversales B2 — module d'entrée du niveau B2 (joué avant B2.1) : French Interference Lab avancé, Survival English avancé, penser en anglais, registre et collocations — s'appuie sur tout le B1 (B1.1 à B1.12)
+  LESSONS_EXT[53] = {
+    code: "B2.0", level: "B2",
+    VOCAB: [
+      {block:"Faux amis de niveau B2", en:"Actually", ipa:"/ˈæktʃuəli/", fr:"En fait, en réalité", note:"Faux ami n°1 : ne veut JAMAIS dire « actuellement » (= « currently », « at the moment »). « Actually, I disagree » = en fait, je ne suis pas d'accord — sert aussi à corriger poliment."},
+      {block:"Faux amis de niveau B2", en:"Eventually", ipa:"/ɪˈventʃuəli/", fr:"Finalement, à la longue, un jour", note:"Ne veut pas dire « éventuellement » (= « possibly », « if necessary »). « We eventually found it » = on a fini par le trouver."},
+      {block:"Faux amis de niveau B2", en:"Sensible", ipa:"/ˈsensəbl/", fr:"Raisonnable, sensé(e)", note:"« sensible » (fr) = « sensitive ». « A sensible decision » = une décision raisonnable ; « a sensitive person » = une personne sensible."},
+      {block:"Faux amis de niveau B2", en:"To attend", ipa:"/tu əˈtend/", fr:"Assister à, être présent à", note:"« I attended the meeting » = j'ai assisté à la réunion — sans préposition. « Attendre » se dit « to wait (for) »."},
+      {block:"Faux amis de niveau B2", en:"To assist", ipa:"/tu əˈsɪst/", fr:"Aider, prêter assistance", note:"Registre soutenu : « How can I assist you? » = en quoi puis-je vous aider ? Ne veut pas dire « assister à » (= « to attend »)."},
+      {block:"Faux amis de niveau B2", en:"To pretend", ipa:"/tə prɪˈtend/", fr:"Faire semblant", note:"« He pretended to be ill » = il a fait semblant d'être malade. « Prétendre » (affirmer) = « to claim »."},
+      {block:"Faux amis de niveau B2", en:"Library", ipa:"/ˈlaɪbrəri/", fr:"Bibliothèque", note:"Une librairie = « a bookshop » (UK) / « a bookstore » (US). On emprunte à la library, on achète au bookshop."},
+      {block:"Faux amis de niveau B2", en:"Deception", ipa:"/dɪˈsepʃn/", fr:"Tromperie, supercherie", note:"Faux ami piégeux : « une déception » = « a disappointment ». « I was disappointed » = j'ai été déçu(e)."},
+      {block:"Calques à désactiver", en:"Training", ipa:"/ˈtreɪnɪŋ/", fr:"Formation (professionnelle)", note:"« Une formation » ≠ « a formation » (= une formation géologique ou militaire). « I'm on a training course » = je suis en formation. Indénombrable : « some training »."},
+      {block:"Calques à désactiver", en:"To check", ipa:"/tə tʃek/", fr:"Contrôler, vérifier", note:"« To control » = maîtriser, diriger (« control your emotions »). Pour vérifier des chiffres ou des papiers : « to check »."},
+      {block:"Calques à désactiver", en:"To realise", ipa:"/tə ˈrɪəlaɪz/", fr:"Se rendre compte, prendre conscience", note:"« Réaliser un projet » = « to carry out / to complete a project ». US : « realize ». « I didn't realise it was so late » = je ne m'étais pas rendu compte qu'il était si tard."},
+      {block:"Calques à désactiver", en:"Ultimately", ipa:"/ˈʌltɪmətli/", fr:"In fine, en fin de compte", note:"« In fine » n'existe pas en anglais. « Ultimately, it's your decision » = en fin de compte, c'est ta décision."},
+      {block:"Calques à désactiver", en:"It's the first time I've…", ipa:"/ɪts ðə ˈfɜːst taɪm aɪv/", fr:"C'est la première fois que je…", note:"Toujours le Present Perfect : « It's the first time I've been here », jamais « the first time I come »."},
+      {block:"Calques à désactiver", en:"To depend on", ipa:"/tə dɪˈpend ɒn/", fr:"Dépendre de", note:"Préposition calquée n°1 : « depend ON », jamais « depend of ». Même famille : « married TO », « consist OF », « listen TO »."},
+      {block:"Reformuler et gérer l'imprévu", en:"What I mean is…", ipa:"/ˈwɒt aɪ ˈmiːn ɪz/", fr:"Ce que je veux dire, c'est…", note:"Pour préciser sa pensée quand on sent qu'on a été mal compris(e) — plus naturel que « I want to say »."},
+      {block:"Reformuler et gérer l'imprévu", en:"Let me put it another way", ipa:"/let mi ˈpʊt ɪt əˈnʌðə weɪ/", fr:"Je vais le dire autrement", note:"La bouée de sauvetage du B2 : quand un mot manque, on contourne au lieu de s'arrêter."},
+      {block:"Reformuler et gérer l'imprévu", en:"I'm not sure I follow", ipa:"/aɪm nɒt ˈʃʊər aɪ ˈfɒləʊ/", fr:"Je ne suis pas sûr(e) de te suivre", note:"Bien plus élégant que « I don't understand ». Suite naturelle : « Could you clarify what you mean by…? »"},
+      {block:"Reformuler et gérer l'imprévu", en:"Correct me if I'm wrong, but…", ipa:"/kəˈrekt mi ɪf aɪm ˈrɒŋ bət/", fr:"Corrige-moi si je me trompe, mais…", note:"Permet de contredire ou de vérifier une information sans braquer l'interlocuteur."},
+      {block:"Reformuler et gérer l'imprévu", en:"In other words", ipa:"/ɪn ˈʌðə ˈwɜːdz/", fr:"Autrement dit, en d'autres termes", note:"Sert à résumer ou reformuler — ce qu'a dit l'autre (« In other words, you're leaving? ») ou ce qu'on vient de dire."},
+      {block:"Reformuler et gérer l'imprévu", en:"Sort of / kind of", ipa:"/ˈsɔːt əv/ /ˈkaɪnd əv/", fr:"Un peu, plus ou moins, genre", note:"Hedging familier à l'oral : « It's sort of complicated ». À éviter à l'écrit formel (préférer « somewhat »)."},
+      {block:"Verbes clés (B2.0)", en:"To rephrase", ipa:"/tə ˌriːˈfreɪz/", fr:"Reformuler", note:"« Could you rephrase that? » = pourrais-tu reformuler ? « Let me rephrase » = je reformule."},
+      {block:"Verbes clés (B2.0)", en:"To clarify", ipa:"/tə ˈklærəfaɪ/", fr:"Clarifier, préciser", note:"« Just to clarify, … » = juste pour être sûr(e)… — formule très courante en réunion."},
+      {block:"Verbes clés (B2.0)", en:"To make a decision", ipa:"/tə meɪk ə dɪˈsɪʒn/", fr:"Prendre une décision", note:"Calque de « faire » ou de « prendre » à éviter : MAKE = produire, créer, décider (make a mistake, make progress, make an effort)."},
+      {block:"Verbes clés (B2.0)", en:"To do research", ipa:"/tə duː rɪˈsɜːtʃ/", fr:"Faire des recherches", note:"DO = activité, tâche, travail (do the shopping, do your homework, do someone a favour). « Research » est indénombrable : jamais « researches »."},
+      {block:"Verbes clés (B2.0)", en:"To tend to", ipa:"/tə ˈtend tə/", fr:"Avoir tendance à", note:"Outil de nuance majeur : « People tend to… » au lieu de « People always… ». Parfait pour éviter les généralisations."},
+      {block:"Verbes clés (B2.0)", en:"To come across", ipa:"/tə kʌm əˈkrɒs/", fr:"Tomber sur ; donner l'impression d'être", note:"Deux sens : « I came across an old photo » (tomber sur) et « She comes across as shy » (elle a l'air timide)."},
+      {block:"Collocations réflexes", en:"Heavy traffic", ipa:"/ˈhevi ˈtræfɪk/", fr:"Circulation dense, bouchons", note:"Collocation : on ne dit pas « big traffic » mais « heavy traffic », comme « heavy rain » (forte pluie) et « a heavy smoker »."},
+      {block:"Collocations réflexes", en:"Highly recommended", ipa:"/ˈhaɪli ˌrekəˈmendɪd/", fr:"Vivement recommandé(e)", note:"« highly » + adjectif/participe : highly likely, highly unlikely, highly qualified. Jamais « very recommended »."}
+    ],
+    MEM_WORDS: [0,1,10,14,16,22],
+    MINI_CHECKS: [
+      { q:"“We'll ___ find a solution, I'm sure.” — finir par.", opts:["eventually","actually","possibly"], correct:0, fb:"« Eventually » = finalement, à la longue. « Éventuellement » se dit « possibly » ou « if necessary »." },
+      { q:"Comment dit-on « Je suis en formation cette semaine » ?", opts:["I'm in formation this week.","I'm on a training course this week.","I'm formating this week."], correct:1, fb:"« Une formation » professionnelle = « training » ou « a training course ». « Formation » en anglais évoque une formation militaire ou géologique." },
+      { q:"Tu n'as pas compris ce que ton collègue vient de dire en réunion. Que dis-tu ?", opts:["I don't understand nothing.","Repeat, please.","Sorry, I'm not sure I follow. Could you clarify?"], correct:2, fb:"« I'm not sure I follow » + « Could you clarify? » : poli, naturel, et ça montre que tu gères la situation." },
+      { q:"“I ___ a big mistake yesterday.”", opts:["did","made","had"], correct:1, fb:"On « make » une erreur : MAKE = produire un résultat. DO = accomplir une activité (do the dishes, do research)." }
+    ],
+    ROUNDS: [
+      { bank:["London","to","been","never","I've","Actually","."], answer:"actually i've never been to london .", display:"Actually, I've never been to London.", fr:"En fait, je ne suis jamais allé(e) à Londres." },
+      { bank:["here","been","I've","time","first","the","It's","."], answer:"it's the first time i've been here .", display:"It's the first time I've been here.", fr:"C'est la première fois que je viens ici." },
+      { bank:["time","more","need","we","that","is","mean","I","What","."], answer:"what i mean is that we need more time .", display:"What I mean is that we need more time.", fr:"Ce que je veux dire, c'est qu'il nous faut plus de temps." },
+      { bank:["cancelled","was","meeting","the","but","wrong","I'm","if","me","Correct","."], answer:"correct me if i'm wrong but the meeting was cancelled .", display:"Correct me if I'm wrong, but the meeting was cancelled.", fr:"Corrige-moi si je me trompe, mais la réunion a été annulée." },
+      { bank:["follow","I","sure","not","I'm","Sorry","."], answer:"sorry i'm not sure i follow .", display:"Sorry, I'm not sure I follow.", fr:"Désolé(e), je ne suis pas sûr(e) de te suivre." },
+      { bank:["month","last","course","training","a","attended","I","."], answer:"i attended a training course last month .", display:"I attended a training course last month.", fr:"J'ai suivi une formation le mois dernier." },
+      { bank:["way","another","it","put","me","Let","."], answer:"let me put it another way .", display:"Let me put it another way.", fr:"Je vais le dire autrement." },
+      { bank:["debate","long","a","after","decision","a","made","eventually","We","."], answer:"we eventually made a decision after a long debate .", display:"We eventually made a decision after a long debate.", fr:"Nous avons fini par prendre une décision après un long débat." },
+      { bank:["late","so","was","it","realise","didn't","I","."], answer:"i didn't realise it was so late .", display:"I didn't realise it was so late.", fr:"Je ne m'étais pas rendu compte qu'il était si tard." },
+      { bank:["suppose","I","weather","the","on","depends","It","."], answer:"it depends on the weather i suppose .", display:"It depends on the weather, I suppose.", fr:"Ça dépend du temps, j'imagine." }
+    ],
+    QUIZ: [
+      { cat:"ecrit", q:"Que signifie “Eventually, she found a job in Leeds.” ?", opts:["Éventuellement, elle a trouvé un travail à Leeds.","Elle a fini par trouver un travail à Leeds.","Actuellement, elle trouve un travail à Leeds."], correct:1, why:"« Eventually » = finalement, au bout d'un certain temps. Pour « éventuellement », on dit « possibly » ou « if necessary »." },
+      { cat:"ecrit", q:"Comment dit-on « J'ai assisté à la réunion de lundi » ?", opts:["I assisted the meeting on Monday.","I assisted at the meeting on Monday.","I attended the meeting on Monday."], correct:2, why:"« To attend » = être présent à, sans préposition. « To assist » = aider (registre soutenu) : « I assisted the manager »." },
+      { cat:"ecrit", q:"Comment dit-on « C'est la première fois que je viens ici » ?", opts:["It's the first time I've come here.","It's the first time I come here.","It's the first time I came here."], correct:0, why:"Après « It's the first time… », l'anglais exige le Present Perfect : on fait le bilan d'une expérience jusqu'à maintenant. « I come » est un calque direct du français." },
+      { cat:"ecrit", q:"« Elle est très sensible, elle pleure facilement. » — Quel adjectif ?", opts:["She's very sensible.","She's very reasonable.","She's very sensitive."], correct:2, why:"« Sensitive » = sensible (émotif). « Sensible » = raisonnable, sensé(e) : « a sensible choice ». Les deux se confondent très souvent." },
+      { cat:"ecrit", q:"Quel est l'ordre correct des adjectifs ?", opts:["a big red car","a red big car","a car big red"], correct:0, why:"En anglais, l'opinion et la taille viennent avant la couleur, et tous les adjectifs se placent AVANT le nom : « a lovely little old red car »." },
+      { cat:"ecrit", q:"Comment dit-on « Il faut contrôler les chiffres avant la réunion » ?", opts:["We need to control the figures before the meeting.","We need to check the figures before the meeting.","We need to make a control of the figures before the meeting."], correct:1, why:"Contrôler (vérifier) = « to check ». « To control » signifie maîtriser, diriger : « to control a situation »." },
+      { cat:"ecrit", q:"“Whether we go or not depends ___ the weather.”", opts:["of","from","on"], correct:2, why:"« Depend ON » : préposition calquée n°1 des francophones (« dépendre de » → « depend of », incorrect)." },
+      { cat:"ecrit", q:"Quelle phrase est la plus nuancée (hedging) pour critiquer un projet en réunion ?", opts:["Your plan is wrong.","I'm not entirely sure this plan would work.","Your plan will never work."], correct:1, why:"« I'm not entirely sure… would… » adoucit la critique : on garde la position, sans attaquer. Les deux autres sont des affirmations absolues, perçues comme brutales en anglais." },
+      { cat:"ecrit", q:"Quelle phrase relève du registre formel ?", opts:["Can you help me out?","Could you help me?","I would appreciate your assistance."], correct:2, why:"Échelle des registres : casual (« help me out ») → neutral (« Could you… ») → formal (« I would appreciate your assistance »), typique d'un e-mail officiel." },
+      { cat:"ecrit", q:"Quelle collocation est naturelle en anglais ?", opts:["There was heavy traffic this morning.","There was big traffic this morning.","There was strong traffic this morning."], correct:0, why:"On dit « heavy traffic », comme « heavy rain ». Traduire « gros » ou « fort » mot à mot donne des combinaisons que les natifs n'emploient pas." },
+      { cat:"oral", audio:"Actually, I've never been to Scotland, but I'd love to go there eventually.", q:"Écoute : que dit la personne ?", opts:["Elle est actuellement en Écosse","Elle n'est jamais allée en Écosse mais aimerait y aller un jour","Elle part en Écosse la semaine prochaine","Elle a vécu en Écosse autrefois"], correct:1, why:"« Actually » = en fait (pas « actuellement ») ; « eventually » = un jour, à terme (pas « éventuellement »)." },
+      { cat:"oral", audio:"Sorry, I'm not sure I follow. Could you put it another way?", q:"Écoute : que demande la personne ?", opts:["Elle veut suivre son interlocuteur dehors","Elle est d'accord avec ce qui a été dit","Elle veut changer de sujet","Elle demande qu'on reformule, car elle n'a pas compris"], correct:3, why:"« I'm not sure I follow » = je ne suis pas sûr(e) de te suivre ; « put it another way » = le dire autrement." },
+      { cat:"oral", audio:"Correct me if I'm wrong, but didn't we agree to postpone the launch until June?", q:"Écoute : que fait la personne ?", opts:["Elle vérifie poliment qu'on avait bien décidé de reporter le lancement à juin","Elle annonce que le lancement est avancé","Elle reconnaît qu'elle s'est trompée","Elle refuse de reporter le lancement"], correct:0, why:"« Correct me if I'm wrong, but… » introduit une vérification ou un désaccord sans agressivité ; « to postpone » = reporter." },
+      { cat:"oral", audio:"I went to the library to borrow a novel, and then I bought a cookbook at the bookshop next door.", q:"Écoute : où la personne a-t-elle ACHETÉ un livre ?", opts:["À la bibliothèque","En ligne","À la librairie d'à côté","Nulle part"], correct:2, why:"« Library » = bibliothèque (on y emprunte : « borrow ») ; « bookshop » = librairie (on y achète : « bought »)." },
+      { cat:"comprehension", passage:"“During her first month in Manchester, Camille attended a two-day training course. When a colleague described it as ‘quite interesting’, she assumed he had loved it. Eventually, she realised that British people often understate what they think, and that ‘quite interesting’ can actually mean ‘rather boring’.”", q:"D'après le texte, qu'a fini par comprendre Camille ?", opts:["Que la formation avait été annulée","Que ses collègues avaient adoré la formation","Que les Britanniques minimisent souvent ce qu'ils pensent vraiment","Qu'elle devait aider ses collègues pendant la formation"], correct:2, why:"« Eventually, she realised that British people often understate what they think » = elle a fini par se rendre compte que les Britanniques minimisent souvent leur pensée." },
+      { cat:"comprehension", passage:"“In the meeting, Tom suggested cutting the marketing budget by half. Nobody reacted, so he added: ‘Let me put it another way — if we don't reduce costs now, we may have to cut jobs later.’ His manager replied: ‘That's a fair point, although I'd rather wait until we have the final figures.’”", q:"D'après le texte, quelle est la position de la manager ?", opts:["Elle refuse catégoriquement la proposition","Elle accepte immédiatement de réduire le budget","Elle veut supprimer des emplois","Elle reconnaît l'argument mais préfère attendre les chiffres définitifs"], correct:3, why:"« That's a fair point » = c'est un argument juste ; « although I'd rather wait until we have the final figures » = mais je préférerais attendre les chiffres définitifs." },
+      { cat:"comprehension", passage:"“(rappel) Hi Sam, could you let me know when the report is due? I've been working on it since Monday, but I haven't finished the conclusion yet. If I had one more day, I'd be able to include the latest figures.”", q:"D'après le texte, pourquoi la personne aimerait-elle un jour de plus ?", opts:["Pour intégrer les chiffres les plus récents","Pour commencer le rapport","Parce qu'elle part en vacances","Pour relire le rapport de Sam"], correct:0, why:"« If I had one more day, I'd be able to include the latest figures » : conditionnel (B1.6) + Present Perfect Continuous « I've been working… since Monday » (B1.1)." },
+      { cat:"comprehension", passage:"“(rappel) When I got to the airport, my flight had already left. I was so frustrated that I nearly cried. Luckily, a very kind agent managed to put me on the next one, which left two hours later.”", q:"D'après le texte, que s'était-il passé quand la personne est arrivée à l'aéroport ?", opts:["Son vol était retardé de deux heures","Son vol était déjà parti","Elle avait oublié son passeport","L'agent avait annulé son billet"], correct:1, why:"« My flight had already left » : Past Perfect (B1.2) — le départ a eu lieu AVANT son arrivée." }
+    ],
+    PRON_VERBS: [
+      {en:"Actually, I didn't realise it was so late.", fr:"En fait, je ne m'étais pas rendu compte qu'il était si tard."},
+      {en:"It's the first time I've attended a training course in English.", fr:"C'est la première fois que je suis une formation en anglais."},
+      {en:"Sorry, I'm not sure I follow. Could you rephrase that?", fr:"Désolé(e), je ne suis pas sûr(e) de te suivre. Pourrais-tu reformuler ?"},
+      {en:"Let me put it another way: what I mean is that we need more time.", fr:"Je vais le dire autrement : ce que je veux dire, c'est qu'il nous faut plus de temps."},
+      {en:"Correct me if I'm wrong, but it depends on the budget, doesn't it?", fr:"Corrige-moi si je me trompe, mais ça dépend du budget, non ?"},
+      {en:"We eventually made a decision, and ultimately it was the right one.", fr:"Nous avons fini par prendre une décision, et en fin de compte c'était la bonne."}
+    ],
+    READING: [
+      "When Julien moved to Bristol for work, he thought his English was good enough: after all, he had passed his B1 exam with flying colours.",
+      "On his first day, he proudly told his new team that he had followed a formation in marketing and that he was actually working on a big project.",
+      "His colleagues looked puzzled, and one of them politely asked whether he meant a training course and a project he was currently working on.",
+      "Julien realised that he had been translating from French word by word, and that some of his favourite words were false friends.",
+      "Over the following weeks, he stopped trying to find the perfect sentence in French first and started thinking directly in English.",
+      "Whenever he got stuck, he would say, “Let me put it another way,” and simply describe the idea with easier words.",
+      "He also noticed that his colleagues rarely said “You're wrong”; they tended to say things like “I'm not sure that would work” or “Correct me if I'm wrong, but…”.",
+      "At first, this indirect style seemed a bit vague to him, but he gradually understood that it helped people disagree without offending anyone.",
+      "He started paying attention to word combinations too, such as “heavy traffic”, “make a decision” and “highly recommended”, and wrote them down in a small notebook.",
+      "Six months later, a British friend told him he sounded far more natural, and Julien realised that he no longer translated in his head."
+    ],
+    GLOSS: [
+      {en:"with flying colours", fr:"haut la main, avec brio"},
+      {en:"puzzled", fr:"perplexe, déconcerté(e)"},
+      {en:"false friends", fr:"faux amis"},
+      {en:"to get stuck", fr:"bloquer, être coincé(e)"},
+      {en:"to offend", fr:"vexer, offenser"},
+      {en:"gradually", fr:"progressivement, peu à peu"}
+    ],
+    GRAMMAR1: {
+      heading: "French Interference Lab avancé : faux amis, calques et prépositions",
+      lede: "Au niveau B2, les erreurs qui restent ne viennent presque plus de la grammaire de base : elles viennent du français qui « souffle » la phrase. Faux amis, temps calqués, prépositions traduites mot à mot, ordre des adjectifs, make/do : voici les interférences à neutraliser une fois pour toutes.",
+      conj: [["Faux amis →","actually / eventually / sensible / to attend","Actually, I attended the meeting. (= en fait, j'ai assisté à la réunion)"],["Temps calqué →","It's the first time + Present Perfect","It's the first time I've been to Bristol."],["Préposition calquée →","depend ON, married TO, listen TO, consist OF","It depends on the budget."],["Faire → make / do","MAKE = produire ; DO = activité","make a decision / do research"]],
+      ruleHtml: "📖 <b>Faux amis</b> : actually = en fait (≠ actuellement → <b>currently</b>) ; eventually = finalement (≠ éventuellement → <b>possibly</b>) ; sensible = raisonnable (≠ sensible → <b>sensitive</b>) ; to attend = assister à ; to assist = aider ; to pretend = faire semblant ; library = bibliothèque ; deception = tromperie (≠ déception → <b>disappointment</b>). <b>Calques</b> : une formation → <b>training</b> ; contrôler → <b>to check</b> ; réaliser un projet → <b>to carry out</b> ; in fine → <b>ultimately</b> ; « c'est la première fois que je viens » → <b>It's the first time I've come</b>. <b>Ordre des adjectifs</b> : opinion → taille → âge → couleur → nom (« a nice big old house »). <b>Make / do</b> : make a mistake, make a decision, make progress / do research, do the shopping, do someone a favour.",
+      dialogueLede: "Julien raconte sa semaine à une collègue britannique :",
+      dialogue: [
+        {who:"them", en:"So, how was your first week? Did you manage to settle in?", fr:"Alors, ta première semaine ? Tu as réussi à t'installer ?"},
+        {who:"you", en:"Actually, it went really well. I attended a training course, and I eventually realised how many false friends I use!", fr:"En fait, ça s'est très bien passé. J'ai suivi une formation, et j'ai fini par me rendre compte du nombre de faux amis que j'utilise !"}
+      ],
+      whyLabel: "Penser en anglais plutôt que traduire",
+      whyText: "Le vrai progrès du B2, c'est d'arrêter de construire la phrase en français puis de la traduire. Méthode : 1) mémorise des <b>blocs entiers</b> (« make a decision », « heavy traffic », « it depends on ») plutôt que des mots isolés ; 2) quand un mot te manque, <b>décris l'idée</b> avec des mots simples au lieu de chercher l'équivalent exact ; 3) méfie-toi des mots qui <b>ressemblent trop</b> au français : c'est souvent là que se cache le piège."
+    },
+    GRAMMAR2: {
+      heading: "Reformuler et nuancer : Survival English avancé, hedging et softeners",
+      dialogueLede: "En réunion, une collègue propose un changement que tu n'as pas bien compris :",
+      dialogue: [
+        {who:"them", en:"I think we should move the whole process online by the end of the month.", fr:"Je pense qu'on devrait passer tout le processus en ligne d'ici la fin du mois."},
+        {who:"you", en:"Sorry, I'm not sure I follow. Do you mean everything, including client meetings? Correct me if I'm wrong, but that might be a bit ambitious.", fr:"Désolé(e), je ne suis pas sûr(e) de te suivre. Tu veux dire tout, y compris les rendez-vous clients ? Corrige-moi si je me trompe, mais ce serait peut-être un peu ambitieux."}
+      ],
+      ruleHtml: "💭 <b>Gérer l'imprévu</b> : « I'm not sure I follow », « Could you clarify what you mean by… ? », « Do you mean… ? ». <b>Reformuler sa pensée</b> : « What I mean is… », « Let me put it another way », « In other words, … ». <b>Contredire sans braquer</b> : « Correct me if I'm wrong, but… », « I see your point, but… ». <b>Hedging (adoucir)</b> : modaux (<b>might, could, would</b>), adverbes (<b>perhaps, slightly, a bit, somewhat</b>), verbes (<b>tend to, seem to, appear to</b>) et tournures (« I'm not entirely sure that… »). Ex. : « This is wrong » → « This <b>might not be quite</b> right ». <b>Registre</b> : casual (sort of, kind of) → neutral (a bit) → formal (somewhat, to some extent).",
+      whyLabel: "Pourquoi les anglophones adoucissent tout",
+      whyText: "En anglais, surtout britannique, une affirmation directe (« You're wrong », « This won't work ») sonne souvent <b>agressive</b>, même quand le français la jugerait simplement franche. Les <b>softeners</b> ne rendent pas ton propos plus faible : ils montrent que tu maîtrises les codes. Retiens la formule du B2 : <b>position claire + forme adoucie</b>. « I'm not entirely convinced this would work » dit exactement la même chose que « This won't work »… mais personne ne se vexe."
+    },
+    REVIEW: [
+      { q:"“I ___ in this company since 2018.” — situation qui continue.", opts:["work","have worked"], correct:1, fb:"Present Perfect + « since » + point de départ : jamais le présent simple comme en français. (rappel B1.1)" },
+      { q:"“When we arrived at the cinema, the film ___.”", opts:["had already started","has already started"], correct:0, fb:"Past Perfect : l'action est antérieure à un autre moment du passé. (rappel B1.2)" },
+      { q:"Quelle question indirecte est correcte ?", opts:["Do you know what time it is?","Do you know what time is it?"], correct:0, fb:"Dans une question indirecte, on revient à l'ordre sujet + verbe : « what time it is ». (rappel B1.3)" },
+      { q:"“If I ___ you, I would accept the offer.”", opts:["were","would be"], correct:0, fb:"Conditionnel : « if + prétérit (were), would + base ». Jamais « would » après « if ». (rappel B1.6)" },
+      { q:"Comment dit-on « Je suis d'accord avec toi » ?", opts:["I am agree with you.","I agree with you."], correct:1, fb:"« Agree » est un verbe : pas de « am » devant. (rappel B1.7)" }
+    ],
+    CULTURE_NOTE: {
+      icon: "🫖",
+      title: "Note culturelle — l'art britannique de l'understatement",
+      html: "Les Britanniques pratiquent l'<b>understatement</b> : dire moins que ce qu'on pense. « <b>Not bad</b> » peut signifier « excellent », « <b>quite interesting</b> » peut vouloir dire « ennuyeux », et « <b>I'm sure it's my fault</b> » signifie souvent… que c'est la vôtre. Attention aussi à <b>« quite »</b> : en anglais britannique, « quite good » = assez bien, sans plus ; en anglais américain, « quite good » = vraiment très bien. Enfin, « <b>With all due respect</b> » annonce presque toujours un désaccord ferme. Au niveau B2, repérer ce décalage entre les mots et l'intention fait partie de la compréhension."
+    },
+    NEXT_PREVIEW: "B2.1 (Argumentation) : construire une argumentation complète en 5 étapes — claim, reason, example, counterargument, conclusion — avec les connecteurs avancés (however, nevertheless, although, provided that…) et l'art d'anticiper l'objection.",
+    META: { vocabTitle:"Bases transversales B2 (B2.0)", lectureTitle:"Julien arrête de traduire", bilanTitle:"Bravo, tu as neutralisé les pièges du français et tu sais reformuler et nuancer comme un·e anglophone !", pronLabel:"Faux amis, calques et formules pour reformuler", todayLede:"poser les bases du B2 : neutraliser les faux amis et calques avancés, reformuler et nuancer quand la conversation devient imprévisible, et commencer à penser directement en anglais." }
+  };
+
   // B2.1 — Argumentation — s'appuie sur B1.12 (mission de fin de B1) et B1.7 (Say What You Think : opinion, connecteurs)
   LESSONS_EXT[40] = {
     code: "B2.1", level: "B2",
