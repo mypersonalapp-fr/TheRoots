@@ -350,6 +350,70 @@
   .media-say-word{ background:none; border:none; cursor:pointer; font-size:.8rem; padding:0 2px; }
   .media-lines + .sub-eyebrow, .media-pairs + .sub-eyebrow{ margin-top:18px; }
   .desc-model{ margin-top:10px; font-size:.9rem; line-height:1.45; }
+  /* Examen de fin de palier (phase d'immersion B1+) : consigne anglaise en gras, traduction en petit */
+  .exam-fr{ font-size:.78rem; font-weight:500; color:var(--muted); margin-top:3px; line-height:1.4; }
+  .exam-instr{ margin-top:12px; padding:10px 12px; background:var(--surface-2); border-radius:12px; font-size:.9rem; line-height:1.45; }
+  .exam-title{ max-width:100%; }
+  .exam-pts{ font-family:"IBM Plex Mono", monospace; font-size:.78rem; font-weight:600; color:var(--accent); white-space:nowrap; vertical-align:middle; }
+  .exam-progress{ display:flex; gap:4px; margin:4px 0 12px; }
+  .exam-progress span{ flex:1; height:6px; border-radius:4px; background:var(--line); }
+  .exam-progress span.done{ background:var(--good); }
+  .exam-progress span.active{ background:var(--accent); }
+  .exam-sec-list{ margin-top:14px; display:flex; flex-direction:column; gap:6px; }
+  .exam-sec-row{ display:flex; align-items:center; gap:10px; padding:9px 12px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); font-size:.9rem; }
+  .exam-sec-row.done{ border-color:var(--good); }
+  .exam-sec-ico{ flex:0 0 auto; width:22px; text-align:center; }
+  .exam-sec-row.done .exam-sec-ico{ color:var(--good); font-weight:800; }
+  .exam-sec-name{ flex:1; min-width:0; }
+  .exam-sec-name .exam-fr{ display:block; margin-top:1px; }
+  .exam-bank{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .exam-chip{ font-family:inherit; font-weight:700; font-size:.84rem; padding:6px 11px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; }
+  .exam-chip:hover{ border-color:var(--accent); }
+  .exam-chip:disabled{ opacity:.55; cursor:default; }
+  .exam-sub{ margin-top:18px !important; }
+  .exam-item{ margin-top:14px; font-size:.95rem; line-height:2.1; overflow-wrap:anywhere; }
+  .exam-mcq{ line-height:1.45; padding-top:12px; border-top:1px dashed var(--line); }
+  .exam-mcq:first-of-type{ border-top:none; }
+  .exam-n{ font-weight:800; color:var(--accent); }
+  .exam-blank{ font:inherit; font-size:16px; width:10.5em; max-width:100%; padding:1px 8px; margin:0 2px; border:none; border-bottom:2px solid var(--accent); border-radius:6px 6px 0 0; background:var(--surface-2); color:var(--ink); line-height:1.6; }
+  .exam-blank:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .exam-blank.ok{ border-bottom-color:var(--good); background:var(--good-soft); }
+  .exam-blank.ko{ border-bottom-color:var(--pop); background:var(--pop-soft); }
+  .exam-blank:disabled{ -webkit-text-fill-color:var(--ink); opacity:1; }
+  .exam-ok{ font-size:.82rem; font-weight:700; color:var(--good); margin-top:2px; }
+  .exam-q{ margin-top:8px; font-size:.95rem; }
+  .opt.selected{ border:2px solid var(--accent); background:var(--accent-soft); font-weight:700; }
+  .exam-passage p{ margin:0 0 10px; }
+  .exam-passage p:last-child{ margin-bottom:0; }
+  .exam-prompt{ margin-top:12px; padding:12px 14px; border-left:3px solid var(--accent); background:var(--surface-2); border-radius:0 12px 12px 0; font-size:.93rem; line-height:1.5; }
+  .exam-text{ font-size:16px; min-height:120px; resize:vertical; }
+  .exam-count{ font-size:.78rem; color:var(--muted); margin-top:4px; text-align:right; font-variant-numeric:tabular-nums; }
+  .exam-count .warn{ color:var(--pop); font-weight:700; }
+  .exam-mic-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; }
+  .exam-mic-row .btn{ padding:10px 16px; }
+  .exam-mic.recording{ border-color:var(--pop); color:var(--pop); }
+  .exam-timer{ font-family:"IBM Plex Mono", monospace; font-size:.82rem; color:var(--muted); }
+  .exam-ai{ margin-top:14px; padding:12px 14px; border-radius:12px; background:var(--gold-soft); border:1px solid var(--line); font-size:.88rem; line-height:1.5; }
+  .exam-ai-score{ font-weight:700; margin-bottom:6px; }
+  .exam-ai-good{ margin-top:8px; }
+  .exam-ai-sub{ margin-top:8px; font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .exam-ai-corr{ margin:4px 0 0 18px; padding:0; }
+  .exam-ai-corr li{ margin-top:3px; }
+  .exam-busy{ display:flex; align-items:center; gap:8px; }
+  .exam-spin{ flex:0 0 auto; display:inline-block; width:16px; height:16px; border:2px solid var(--line); border-top-color:var(--accent); border-radius:50%; animation:examspin .8s linear infinite; }
+  @keyframes examspin{ to{ transform:rotate(360deg); } }
+  .exam-err{ margin-top:14px; padding:12px 14px; background:var(--pop-soft); border:2px solid var(--pop); border-radius:12px; font-size:.88rem; line-height:1.45; }
+  .exam-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .exam-actions .btn{ padding:9px 14px; font-size:.88rem; }
+  .exam-score-line{ margin-top:16px; font-weight:800; font-family:"Sora", sans-serif; color:var(--accent); }
+  .exam-script{ margin-top:6px; }
+  .exam-band{ flex-wrap:wrap; }
+  .exam-band .big{ white-space:nowrap; }
+  .exam-row{ margin:9px 0; }
+  .exam-row-head{ display:flex; justify-content:space-between; gap:10px; font-size:.86rem; font-weight:700; }
+  .exam-row-head b{ white-space:nowrap; }
+  .exam-row-bar{ height:9px; border-radius:6px; background:rgba(27,60,57,.1); overflow:hidden; margin-top:4px; }
+  .exam-row-bar div{ height:100%; border-radius:6px; }
 </style>
 </head>
 <body>
@@ -388,6 +452,9 @@
 <script src="js/data/lessons-b1.js?v=20260925n"></script>
 <script src="js/data/lessons-b2.js?v=20260925n"></script>
 <script src="js/data/lessons-media.js?v=20260925o"></script>
+<!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
+     l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
+<script src="js/data/exams.js?v=20260925p"></script>
 <script>
 (function(){
 
@@ -428,6 +495,9 @@
   var LESSONS_EXT = window.LESSONS_EXT || {};
   // Contenus « Musique & Ciné » (chanson / film) par numéro de leçon — sous-étape de la Lecture.
   var LESSONS_MEDIA = window.LESSONS_MEDIA || {};
+  // Examens de fin de palier (js/data/exams.js) par numéro de leçon — voir « EXAMEN DE FIN DE PALIER ».
+  var LESSON_EXAMS = window.LESSON_EXAMS || {};
+  var EXAM = null; // examen de la leçon en cours (ou null : contrôle QCM classique), fixé par loadLessonData
   // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html, 30..51
   // seulement si leur fichier de données est chargé (39 réservé, jamais jouable pour l'instant).
   function isPlayableLesson(n){
@@ -767,6 +837,8 @@
     // et « Décris l'image » (voir screenLecture / screenMedia).
     MEDIA = !isGrandControle() ? (LESSONS_MEDIA[state.lesson] || null) : null;
     if(MEDIA) LECTURE_SUBSTEPS += 1;
+    // Examen de fin de palier (s'il existe pour cette leçon) : remplace le QCM à l'étape Contrôle.
+    EXAM = (!isGrandControle() && isValidExam(LESSON_EXAMS[state.lesson])) ? LESSON_EXAMS[state.lesson] : null;
   }
 
   // =====================================================================
@@ -784,6 +856,10 @@
   // compétence sous 50 % déclenche un renfort, même si la moyenne est bonne.
   // =====================================================================
   var CREATOR_MODE = true; // miroir de js/data/dev-config.js : délai de 7 jours désactivé, renforts sautables
+  // Miroir de AI_RELAY_URL (js/data/ai-config.js) : lessons.html ne peut pas importer ce module.
+  // Adresse du relais Cloudflare (cloudflare-worker-gemini.js) qui corrige les parties d'examen
+  // rédigées / orales (mode "grade"). Si l'adresse change, la changer AUX DEUX ENDROITS.
+  var EXAM_AI_RELAY_URL = "https://the-roots-ia.ashleymubama.workers.dev";
 
   // Garde-fou (24/09, suite au retour d'Ashley : "pourquoi j'ai accès aux
   // cours sans avoir fait le test ?") — lessons.html ne doit jamais rester
@@ -3293,9 +3369,8 @@
       return (data && data.settings && data.settings.preferredVoiceURI) || null;
     }catch(e){ return null; }
   }
-  function speak(text){
-    try{
-      if(!window.speechSynthesis) return;
+  // Phrase prête à être lue (voix + accent), utilisée par speak() et par l'écoute des examens.
+  function makeUtterance(text){
       var u = new SpeechSynthesisUtterance(text);
       // Bug corrigé : cette fonction (utilisée pour QUASI tout l'audio de la
       // leçon — vocabulaire, quiz, exemples...) forçait toujours l'accent
@@ -3319,6 +3394,12 @@
       }
       if(chosen){ u.voice = chosen; u.lang = chosen.lang; }
       u.rate = 0.92;
+      return u;
+  }
+  function speak(text){
+    try{
+      if(!window.speechSynthesis) return;
+      var u = makeUtterance(text);
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
     }catch(e){}
@@ -3433,17 +3514,26 @@
     var foundationsLinkHtml = state.lesson !== -1
       ? '<button class="variant-switch" id="goFoundations">📚 Revoir les fondamentaux (couleurs, nombres, heure...)</button>'
       : "";
+    // Examen de fin de palier commencé (ou terminé sans avoir vu le bilan) : on propose d'y revenir.
+    var examDraftNow = examActive() ? examPeekDraft() : null;
+    var examResumeHtml = (examDraftNow && (examDraftNow.done || examDraftNow.sec >= 0))
+      ? '<div class="exam-instr" style="margin-top:14px"><b>📝 '+(examDraftNow.done ? "Ton résultat d'examen "+examEsc(EXAM.code)+" t'attend." : "Ton examen "+examEsc(EXAM.code)+" est en cours : tes réponses sont gardées.")+'</b>' +
+        '<button class="btn btn-primary" id="goExam" style="display:block;margin:10px 0 0">'+(examDraftNow.done ? "Voir mon résultat" : "Reprendre l'examen")+'</button></div>'
+      : "";
     screen.innerHTML =
       '<div class="eyebrow">Ouverture · '+lessonLabel()+' · anglais '+(state.variant==="us"?"américain":"britannique")+'</div>' +
       '<h2 class="screen-title">'+titleText+'</h2>' +
       '<p class="lede">'+introLede+'</p>' +
       '<p class="lede"><b>Aujourd\'hui —</b> '+todayLede+', escale à '+placeName+'.</p>' +
+      examResumeHtml +
       '<button class="variant-switch" id="switchVariant">Changer de version d\'anglais</button>' +
       foundationsLinkHtml;
     nextBtn.style.display = "";
     nextBtn.textContent = "Commencer la leçon";
     hint.textContent = "";
     document.getElementById("switchVariant").addEventListener("click", function(){ state.variant = null; render(); });
+    var goExam = document.getElementById("goExam");
+    if(goExam) goExam.addEventListener("click", function(){ state.step = 5; state.subStep = 0; render(); window.scrollTo(0, 0); });
     var goF = document.getElementById("goFoundations");
     if(goF){
       goF.addEventListener("click", function(){
@@ -4488,6 +4578,663 @@
       });
       opts.appendChild(b);
     });
+  }
+
+  // =====================================================================
+  // EXAMEN DE FIN DE PALIER (phase d'immersion, à partir du B1) — 25/09
+  // Quand js/data/exams.js définit un examen pour la leçon en cours (window.LESSON_EXAMS[n],
+  // format documenté en tête de ce fichier), l'étape « Contrôle » (step 5) devient cet examen :
+  // sections I, II… une par écran, consignes en anglais + traduction française (.exam-fr).
+  // Types : "fill" (trous tapés, corrigés ici), "mcq" (QCM, lecture/écoute), "ai-text" et
+  // "ai-oral" (corrigés par l'IA via le relais Cloudflare, mode "grade").
+  // - Uniquement pour le passage normal du palier (state.returnTo == null) : une leçon revue
+  //   comme renfort garde le QCM classique (rapide), tout comme les missions et la pratique.
+  // - Note sur 100 → même grille que les contrôles de niveau (ctrlEvaluate) : < 70 % pas
+  //   validé (nouvel essai 7 jours après, sauf CREATOR_MODE), 70-79 renfort, 80-92 rappels,
+  //   93+ validé ; résultat enregistré par saveControlResult(code du palier, ex. "B1.1").
+  // - Avancement gardé dans localStorage (EXAM_KEY) : quitter / revenir sans rien perdre.
+  // - Fichier exams.js absent ou palier sans examen : EXAM = null → QCM classique.
+  // =====================================================================
+  var EXAM_KEY = "the_roots_exam_v1";
+  var examUi = null; // état d'écran (brouillon chargé, correction IA en cours, micro…)
+
+  function isValidExam(X){ return !!(X && X.code && X.sections && X.sections.length); }
+  function examActive(){ return !!(EXAM && state.returnTo == null && !PRACTICE); }
+  function examEsc(s){ return escAttr(s).replace(/>/g, "&gt;"); }
+  function examFmt(n){ var r = Math.round(n * 10) / 10; return String(r).replace(".", ","); }
+  function examWords(t){ var m = String(t || "").trim().match(/[A-Za-zÀ-ÿ0-9'’-]+/g); return m ? m.length : 0; }
+
+  // >>> EXAM-NORMALIZE (bloc extrait tel quel par le test unitaire Node .staging/test-exam-normalize.js)
+  // Comparaison souple d'une réponse tapée dans un trou : majuscules, espaces multiples,
+  // apostrophes droites/typographiques, ponctuation, contractions (I've = I have, 'm = am,
+  // 'll = will, 're = are, n't = not, he's = he is), orthographe UK/US (travelled = traveled).
+  var EXAM_UKUS_RE = /\b(travel|cancel|label|model|level|fuel|signal|dial|marvel|quarrel|total|counsel|jewel|channel|tunnel|equal|panel|rival|shovel)l(ed|ing|er|ers)\b/g;
+  function examNormalize(s){
+    s = String(s == null ? "" : s).toLowerCase();
+    s = s.replace(/[‘’‚‛ʼ`´]/g, "'");
+    s = s.replace(/[“”„"«»]/g, " ");
+    s = s.replace(/[.,!?;:…()\[\]]+/g, " ");
+    s = s.replace(/\bwon't\b/g, "will not").replace(/\bcan't\b/g, "can not").replace(/\bshan't\b/g, "shall not").replace(/\bcannot\b/g, "can not");
+    s = s.replace(/n't\b/g, " not");
+    s = s.replace(/'ve\b/g, " have").replace(/'m\b/g, " am").replace(/'ll\b/g, " will").replace(/'re\b/g, " are");
+    s = s.replace(/\b(he|she|it|that|there|what|who|where|here|how)'s\b/g, "$1 is");
+    s = s.replace(/(^|\s)'s\b/g, "$1is");
+    s = s.replace(EXAM_UKUS_RE, "$1$2");
+    return s.replace(/\s+/g, " ").trim();
+  }
+  // true si "given" correspond à l'une des réponses acceptées. before / after = texte de la
+  // phrase juste avant / après le trou : on accepte aussi que l'apprenant ait retapé le sujet
+  // (« I have lived » pour « I ___ ») ou le mot qui suit (« … waking up » pour « ___ (wake) up »).
+  function examBlankOk(given, accepted, before, after){
+    var g = examNormalize(given);
+    if(!g) return false;
+    var cands = [g];
+    var prev = examNormalize(before || "").split(" ").pop();
+    var next = examNormalize(String(after || "").replace(/^\s*\([^)]*\)/, "")).split(" ")[0];
+    if(prev && g.indexOf(prev + " ") === 0) cands.push(g.slice(prev.length + 1));
+    cands.slice().forEach(function(c){
+      if(next && c.length > next.length && c.slice(-(next.length + 1)) === " " + next) cands.push(c.slice(0, -(next.length + 1)));
+    });
+    for(var i = 0; i < (accepted || []).length; i++){
+      if(cands.indexOf(examNormalize(accepted[i])) >= 0) return true;
+    }
+    return false;
+  }
+  // <<< EXAM-NORMALIZE
+
+  // ---------- Brouillon (localStorage) ----------
+  function examDraftAll(){ var a = lsGet(EXAM_KEY, {}); return (a && typeof a === "object") ? a : {}; }
+  function examPeekDraft(){
+    if(!EXAM) return null;
+    var d = examDraftAll()[state.lesson];
+    return (d && d.v === 1 && d.code === EXAM.code) ? d : null;
+  }
+  function examSaveDraft(){ if(!examUi) return; var all = examDraftAll(); all[examUi.lesson] = examUi.d; lsSet(EXAM_KEY, all); }
+  function examClearDraft(){ var all = examDraftAll(); delete all[state.lesson]; lsSet(EXAM_KEY, all); examUi = null; }
+  function examDraft(){
+    if(!examUi || examUi.lesson !== state.lesson || examUi.code !== EXAM.code){
+      examStopMic();
+      examUi = { lesson:state.lesson, code:EXAM.code, busy:false, error:"", confirm:false, rec:null,
+        d: examPeekDraft() || { v:1, code:EXAM.code, sec:-1, answers:{}, results:{}, done:false, startedAt:Date.now() } };
+    }
+    return examUi.d;
+  }
+
+  // ---------- Écran de l'examen (step 5) ----------
+  function screenExam(){
+    var d = examDraft();
+    postmark.innerHTML = "EXAMEN<br>" + examEsc(EXAM.code);
+    backBtn.style.visibility = "hidden";
+    nextBtn.style.display = "";
+    nextBtn.disabled = false;
+    hint.textContent = "";
+    if(d.done && d.result){ state.examResult = d.result; state.step = 6; render(); return; }
+    if(d.sec < 0 || d.sec >= EXAM.sections.length) screenExamIntro(d);
+    else screenExamSection(d, d.sec);
+  }
+
+  var EXAM_TYPE_ICON = { fill:"✍️", mcq:"☑️", "ai-text":"📝", "ai-oral":"🎤" };
+  function screenExamIntro(d){
+    var rs = retakeStatus(EXAM.code), rec = controlRecord(EXAM.code);
+    var started = Object.keys(d.results).length > 0 || Object.keys(d.answers).length > 0;
+    var hasAi = EXAM.sections.some(function(S){ return S.type === "ai-text" || S.type === "ai-oral"; });
+    var total = EXAM.sections.reduce(function(a, S){ return a + (S.points || 0); }, 0);
+    var lockHtml = "";
+    if(rec && rec.last && rec.last.decision === "fail" && !started){
+      lockHtml = '<div class="bilan-retry" style="margin-top:14px"><b>Dernier passage : '+rec.last.pct+' % — pas encore validé.</b><br>' +
+        (rs.creator ? 'Mode créatrice : tu peux le repasser tout de suite (le délai d\'une semaine ne s\'applique pas pendant tes tests).'
+                    : (rs.ok ? 'Tu peux le repasser maintenant.' : 'Nouveau passage possible à partir du <b>'+fmtDate(rs.openAt)+'</b>. En attendant, revois la leçon.')) + '</div>';
+    }
+    screen.innerHTML =
+      '<div class="eyebrow">Contrôle de fin de palier · Examen '+examEsc(EXAM.code)+'</div>' +
+      '<h2 class="screen-title">'+examEsc(EXAM.title)+'</h2>' +
+      '<div class="exam-fr">'+examEsc(EXAM.titleFr)+'</div>' +
+      '<div class="exam-instr"><b>🌍 Immersion phase: from B1 onwards, your tests are entirely in English.</b>' +
+        '<div class="exam-fr">Phase d\'immersion : à partir du B1, les contrôles sont entièrement en anglais. La traduction de chaque consigne est écrite en petit, juste en dessous.</div></div>' +
+      '<p class="lede"><b>'+examEsc(EXAM.objective)+'</b></p><div class="exam-fr">'+examEsc(EXAM.objectiveFr)+'</div>' +
+      '<div class="exam-sec-list">' + EXAM.sections.map(function(S, i){
+        var r = d.results[S.id];
+        return '<div class="exam-sec-row'+(r ? " done" : "")+'"><span class="exam-sec-ico">'+(r ? "✓" : (EXAM_TYPE_ICON[S.type] || "•"))+'</span>' +
+          '<span class="exam-sec-name"><b>'+examEsc(S.num)+'. '+examEsc(S.title)+'</b><span class="exam-fr">'+examEsc(S.titleFr)+'</span></span>' +
+          '<span class="exam-pts">'+(r ? examFmt(r.score) + " / " : "")+S.points+' pts</span></div>';
+      }).join("") + '</div>' +
+      '<p class="lede" style="font-size:.86rem">Total '+total+' points. Moins de 70 % : pas encore validé (nouvel essai une semaine plus tard). 70 à 79 % : validé avec renfort. 80 à 92 % : validé avec rappels. 93 % et plus : validé.</p>' +
+      (hasAi ? '<p class="lede" style="font-size:.86rem">📝🎤 Les parties d\'expression sont corrigées par l\'IA (connexion Internet nécessaire). Tes réponses sont enregistrées au fur et à mesure : tu peux t\'arrêter et reprendre plus tard.</p>' : "") +
+      lockHtml;
+    var canStart = started || rs.ok;
+    nextBtn.style.display = canStart ? "" : "none";
+    nextBtn.textContent = started ? "Reprendre l'examen" : (rec && rec.last && rec.last.decision === "fail" ? "Repasser l'examen" : "Commencer l'examen");
+  }
+
+  function examProgressHtml(d, i){
+    return '<div class="exam-progress" aria-hidden="true">' + EXAM.sections.map(function(S, k){
+      return '<span class="'+(d.results[S.id] ? "done" : (k === i ? "active" : ""))+'"></span>';
+    }).join("") + '</div>';
+  }
+
+  function screenExamSection(d, i){
+    var S = EXAM.sections[i], res = d.results[S.id] || null, n = EXAM.sections.length;
+    var body = S.type === "fill" ? examFillHtml(S, d, res)
+      : S.type === "mcq" ? examMcqHtml(S, d, res)
+      : examAiHtml(S, d, res);
+    screen.innerHTML =
+      '<div class="eyebrow">Examen '+examEsc(EXAM.code)+' · Section '+(i+1)+' / '+n+'</div>' +
+      examProgressHtml(d, i) +
+      '<h2 class="screen-title exam-title">'+examEsc(S.num)+'. '+examEsc(S.title)+' <span class="exam-pts">'+S.points+' pts</span></h2>' +
+      '<div class="exam-fr">'+examEsc(S.titleFr)+'</div>' +
+      '<div class="exam-instr"><b>'+examEsc(S.instructions)+'</b><div class="exam-fr">'+examEsc(S.instructionsFr)+'</div></div>' +
+      body +
+      (res ? '<div class="exam-score-line">Score : '+examFmt(res.score)+' / '+S.points+(res.skipped ? " (partie passée)" : "")+'</div>' : "") +
+      '<div id="examMsg"></div>';
+    if(S.type === "fill") wireExamFill(S, d, res);
+    else if(S.type === "mcq") wireExamMcq(S, d, res);
+    else wireExamAi(S, d, res);
+    var last = i === n - 1;
+    nextBtn.textContent = !res ? (examUi.confirm ? "Valider quand même" : "Valider la section") : (last ? "Voir mon résultat" : "Section suivante");
+    nextBtn.disabled = !!examUi.busy;
+    if(examUi.confirmMsg && !res) document.getElementById("examMsg").innerHTML = '<div class="why-inline"><span class="icon">⚠️</span><div>'+examUi.confirmMsg+'</div></div>';
+    hint.textContent = res ? "" : (S.type === "mcq" ? "Un seul essai par question : choisis, puis valide la section." : "Tes réponses sont enregistrées au fur et à mesure.");
+  }
+
+  // ----- Type "fill" -----
+  function examFillPts(S, k){
+    var it = S.items[k];
+    return it.points != null ? it.points : S.points / S.items.length;
+  }
+  function examFillHtml(S, d, res){
+    var ans = d.answers[S.id] || [];
+    var bank = (S.bank && S.bank.length)
+      ? '<div class="exam-bank" role="group" aria-label="Word bank">' + S.bank.map(function(w){ return '<button type="button" class="exam-chip" data-word="'+escAttr(w)+'"'+(res ? " disabled" : "")+'>'+examEsc(w)+'</button>'; }).join("") + '</div>'
+      : "";
+    return bank + S.items.map(function(it, k){
+      var parts = String(it.text).split("___"), a = ans[k] || [], det = res && res.detail ? res.detail[k] || [] : [];
+      var html = "";
+      for(var p = 0; p < parts.length; p++){
+        html += examEsc(parts[p]);
+        if(p < parts.length - 1){
+          var cls = res ? (det[p] ? " ok" : " ko") : "";
+          html += '<input type="text" class="exam-blank'+cls+'" data-k="'+k+'" data-b="'+p+'" value="'+escAttr(a[p] || "")+'" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Blank '+(p+1)+'"'+(res ? " disabled" : "")+'>';
+        }
+      }
+      var corr = "";
+      if(res){
+        var allOk = det.length && det.every(function(x){ return x; });
+        corr = allOk
+          ? '<div class="exam-ok">✓ Correct</div>'
+          : '<div class="why-inline"><span class="icon">💡</span><div><b>'+it.blanks.map(function(b){ return examEsc(b[0]); }).join(" / ")+'</b>'+(it.why ? '<br>'+examEsc(it.why) : "")+'</div></div>';
+      }
+      return (it.header ? '<div class="sub-eyebrow exam-sub">'+examEsc(it.header.en)+'</div><div class="exam-fr">'+examEsc(it.header.fr)+'</div>' : "") +
+        '<div class="exam-item"><span class="exam-n">'+(k+1)+'.</span> '+html+'</div>' + corr;
+    }).join("");
+  }
+  function wireExamFill(S, d, res){
+    if(res) return;
+    var lastFocus = null;
+    Array.prototype.forEach.call(screen.querySelectorAll(".exam-blank"), function(inp){
+      inp.addEventListener("focus", function(){ lastFocus = inp; });
+      inp.addEventListener("input", function(){
+        var k = +inp.getAttribute("data-k"), b = +inp.getAttribute("data-b");
+        var ans = d.answers[S.id] = d.answers[S.id] || [];
+        ans[k] = ans[k] || []; ans[k][b] = inp.value;
+        examUi.confirm = false; examUi.confirmMsg = "";
+        examSaveDraft();
+      });
+    });
+    Array.prototype.forEach.call(screen.querySelectorAll(".exam-chip"), function(c){
+      // Pastille : remplit le dernier trou touché (ou le premier trou vide).
+      c.addEventListener("mousedown", function(e){ e.preventDefault(); });
+      c.addEventListener("click", function(){
+        var target = lastFocus;
+        if(!target || target.value.trim()){
+          var empty = Array.prototype.filter.call(screen.querySelectorAll(".exam-blank"), function(x){ return !x.value.trim(); })[0];
+          target = (!lastFocus || lastFocus.value.trim()) ? (empty || lastFocus) : lastFocus;
+        }
+        if(!target) return;
+        target.value = c.getAttribute("data-word");
+        target.dispatchEvent(new Event("input"));
+        target.focus();
+      });
+    });
+  }
+  function examGradeFill(S, d){
+    var ans = d.answers[S.id] || [], score = 0, detail = [];
+    S.items.forEach(function(it, k){
+      var parts = String(it.text).split("___"), per = examFillPts(S, k) / it.blanks.length, row = [];
+      it.blanks.forEach(function(acc, b){
+        var ok = examBlankOk((ans[k] || [])[b], acc, parts[b], parts[b + 1]);
+        row.push(ok);
+        if(ok) score += per;
+        recordSkill(S.skill || "gr", ok);
+        if(!ok) recordError(state.lesson);
+      });
+      detail.push(row);
+    });
+    return { score:Math.round(score * 100) / 100, max:S.points, detail:detail };
+  }
+  function examFillEmpty(S, d){
+    var ans = d.answers[S.id] || [], n = 0;
+    S.items.forEach(function(it, k){ it.blanks.forEach(function(acc, b){ if(!String((ans[k] || [])[b] || "").trim()) n++; }); });
+    return n;
+  }
+
+  // ----- Type "mcq" -----
+  function examMcqHtml(S, d, res){
+    var ans = d.answers[S.id] || [];
+    var passage = S.passage
+      ? '<div class="q-passage exam-passage">' + String(S.passage).split(/\n\s*\n/).map(function(p){ return '<p>'+examEsc(p)+'</p>'; }).join("") + '</div>'
+      : "";
+    return passage + S.items.map(function(it, k){
+      var audio = "";
+      if(it.audio){
+        var script = typeof it.audio === "string" ? examEsc(it.audio)
+          : it.audio.map(function(l){ return '<b>'+examEsc(l.who)+':</b> '+examEsc(l.text); }).join("<br>");
+        audio = '<div class="q-audio"><button type="button" class="q-audio-btn exam-play" data-k="'+k+'" aria-label="Play recording '+(k+1)+'">🔊</button>' +
+          '<span class="q-audio-hint">Recording '+(k+1)+' — listen (again)<span class="exam-fr" style="margin:0">Enregistrement '+(k+1)+' — écouter (réécouter)</span></span></div>' +
+          (res ? '<details class="gc-recap-toggle exam-script"><summary>Voir le texte de l\'enregistrement</summary><div class="q-passage">'+script+'</div></details>' : "");
+      }
+      var chosen = ans[k];
+      var opts = it.opts.map(function(o, j){
+        var cls = "opt exam-opt";
+        var icon = "";
+        if(res){
+          if(j === it.correct){ cls += " correct"; icon = '<span class="opt-icon">✓ </span>'; }
+          else if(j === chosen){ cls += " incorrect"; icon = '<span class="opt-icon">✕ </span>'; }
+        } else if(j === chosen) cls += " selected";
+        return '<button type="button" class="'+cls+'" data-k="'+k+'" data-o="'+j+'" aria-pressed="'+(j === chosen ? "true" : "false")+'"'+(res ? " disabled" : "")+'>'+icon+examEsc(o)+'</button>';
+      }).join("");
+      var why = (res && chosen !== it.correct && it.why) ? '<div class="why-inline"><span class="icon">💡</span><div>'+(chosen == null ? "<b>Pas de réponse.</b> " : "")+examEsc(it.why)+'</div></div>' : "";
+      return '<div class="exam-item exam-mcq">' + audio +
+        '<div class="exam-q"><b>'+(k+1)+'. '+examEsc(it.q)+'</b>'+(it.qFr ? '<div class="exam-fr">'+examEsc(it.qFr)+'</div>' : "")+'</div>' +
+        '<div class="options" style="margin-top:8px">'+opts+'</div>' + why + '</div>';
+    }).join("");
+  }
+  function examPlay(audio){
+    if(!audio) return;
+    if(typeof audio === "string"){ speak(audio); return; }
+    try {
+      if(!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      var voiceA = null;
+      audio.forEach(function(line, i){
+        var u = makeUtterance(line.text);
+        if(i === 0) voiceA = u.voice || null;
+        if(line.who !== audio[0].who){
+          // 2e personne : une autre voix de la même langue si le téléphone en a une, et une voix plus aiguë.
+          var lang = (u.lang || "").slice(0, 2);
+          var other = cachedVoices.filter(function(v){ return (v.lang || "").slice(0, 2) === lang && v !== voiceA; })[0];
+          if(other && (other.lang || "").replace("_", "-").indexOf(state.variant === "us" ? "en-US" : "en-GB") === 0){ u.voice = other; u.lang = other.lang; }
+          u.pitch = 1.25;
+        } else { u.pitch = 0.95; }
+        window.speechSynthesis.speak(u);
+      });
+    } catch(e){}
+  }
+  function wireExamMcq(S, d, res){
+    Array.prototype.forEach.call(screen.querySelectorAll(".exam-play"), function(b){
+      b.addEventListener("click", function(){ examPlay(S.items[+b.getAttribute("data-k")].audio); });
+    });
+    if(res) return;
+    Array.prototype.forEach.call(screen.querySelectorAll(".exam-opt"), function(b){
+      b.addEventListener("click", function(){
+        var k = +b.getAttribute("data-k"), j = +b.getAttribute("data-o");
+        var ans = d.answers[S.id] = d.answers[S.id] || [];
+        ans[k] = j;
+        examUi.confirm = false; examUi.confirmMsg = "";
+        examSaveDraft();
+        Array.prototype.forEach.call(screen.querySelectorAll('.exam-opt[data-k="'+k+'"]'), function(o){
+          var on = o === b;
+          o.classList.toggle("selected", on);
+          o.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      });
+    });
+  }
+  function examGradeMcq(S, d){
+    var ans = d.answers[S.id] || [], score = 0, detail = [];
+    S.items.forEach(function(it, k){
+      var ok = ans[k] === it.correct, pts = it.points != null ? it.points : S.points / S.items.length;
+      if(ok) score += pts;
+      detail.push(ok);
+      recordSkill(S.skill || "ce", ok);
+      if(!ok) recordError(state.lesson);
+    });
+    return { score:Math.round(score * 100) / 100, max:S.points, detail:detail };
+  }
+  function examMcqEmpty(S, d){
+    var ans = d.answers[S.id] || [];
+    return S.items.filter(function(it, k){ return ans[k] == null; }).length;
+  }
+
+  // ----- Types "ai-text" / "ai-oral" -----
+  function examAiAnswer(S, d){
+    var a = d.answers[S.id];
+    if(S.type === "ai-oral") return a && typeof a === "object" ? a : { text:"", confs:[], typed:false, micUsed:false };
+    return typeof a === "string" ? a : "";
+  }
+  function examAiText(S, d){ var a = examAiAnswer(S, d); return typeof a === "string" ? a : (a.text || ""); }
+  function examCountHtml(S, text){
+    var n = examWords(text), lo = S.minWords, hi = S.maxWords;
+    var warn = (lo && n < lo) || (hi && n > hi);
+    var range = lo && hi ? " · " + lo + "–" + hi + " words" : (lo ? " · min. " + lo + " words" : "");
+    return '<span class="'+(warn ? "warn" : "")+'">'+n+' word'+(n > 1 ? "s" : "")+range+'</span>';
+  }
+  function examAiResultHtml(r){
+    if(!r) return "";
+    var ai = r.ai || {};
+    return '<div class="exam-ai">' +
+      '<div class="exam-ai-score">'+(r.skipped ? "⏭️ Partie passée (mode créatrice) — non corrigée" : "🤖 Correction de l'IA : <b>"+examFmt(r.score)+" / "+r.max+"</b>")+'</div>' +
+      (ai.feedback ? '<div class="exam-ai-fb">'+examEsc(ai.feedback).replace(/\n/g, "<br>")+'</div>' : "") +
+      (ai.strengths ? '<div class="exam-ai-good">👍 '+examEsc(ai.strengths)+'</div>' : "") +
+      (ai.corrections && ai.corrections.length ? '<div class="exam-ai-sub">À corriger</div><ul class="exam-ai-corr">'+ai.corrections.map(function(c){ return '<li>'+examEsc(c)+'</li>'; }).join("")+'</ul>' : "") +
+      '</div>';
+  }
+  function examAiHtml(S, d, res){
+    var oral = S.type === "ai-oral";
+    var text = examAiText(S, d);
+    var locked = !!res || examUi.busy;
+    var micOk = !!SpeechRec;
+    var recording = !!(examUi.rec && examUi.rec.running);
+    var quotes = (S.quotes && S.quotes.length) ? '<div class="q-passage">'+S.quotes.map(function(q){ return '<div><b>'+examEsc(q)+'</b></div>'; }).join("")+'</div>' : "";
+    var prompt = '<div class="exam-prompt"><b>'+examEsc(S.prompt)+'</b><div class="exam-fr">'+examEsc(S.promptFr)+'</div></div>';
+    var mic = "";
+    if(oral){
+      mic = micOk
+        ? '<div class="exam-mic-row"><button type="button" class="btn btn-ghost exam-mic'+(recording ? " recording" : "")+'" id="examMic"'+(locked ? " disabled" : "")+'>'+(recording ? "⏹ Stop" : (text.trim() ? "🎤 Continue speaking" : "🎤 Start speaking"))+'</button>' +
+          '<span class="exam-timer" id="examTimer">'+(recording ? "⏺ 0 s" : (S.targetSeconds ? "≈ " + S.targetSeconds + " s" : ""))+'</span>' +
+          (!locked && text.trim() ? '<button type="button" class="btn btn-ghost" id="examMicReset">↺ Try again</button>' : "") + '</div>' +
+          '<div class="exam-fr">'+(recording ? "Je t'écoute… appuie sur Stop quand tu as fini." : (text.trim() ? "« Continue » ajoute à ta réponse, « Try again » efface tout pour recommencer." : "Appuie sur le micro, parle, puis appuie sur Stop."))+'</div>'
+        : '<div class="why-inline"><span class="icon">🎤</span><div>Le micro n\'est pas disponible sur ce navigateur : écris ce que tu dirais à l\'oral (la note de fluidité en tiendra compte).</div></div>';
+    }
+    var area = '<textarea class="desc-area exam-text" id="examText" rows="'+(oral ? 6 : (S.maxWords && S.maxWords > 100 ? 12 : 7))+'" placeholder="'+(oral ? "Your words will appear here… (you can also type) / Tes paroles s'affichent ici… (tu peux aussi écrire)" : "Write your answer here… / Écris ta réponse ici…")+'"'+(locked || recording ? " disabled" : "")+'>'+examEsc(text)+'</textarea>' +
+      '<div class="exam-count" id="examCount">'+examCountHtml(S, text)+'</div>' +
+      (oral ? '<div class="exam-fr">🎤 L\'IA n\'entend pas ta voix : elle lit ce que le micro a compris (et son taux de confiance). Si le micro se trompe de mot, c\'est souvent un son à travailler.</div>' : "");
+    var status = "";
+    if(examUi.busy) status = '<div class="exam-ai exam-busy"><span class="exam-spin" aria-hidden="true"></span> L\'IA corrige ta réponse… (quelques secondes)</div>';
+    else if(!res && examUi.error){
+      status = '<div class="exam-err"><b>'+examEsc(examUi.error)+'</b>' +
+        '<div class="exam-actions"><button type="button" class="btn btn-primary" id="examRetry" style="margin-left:0">Réessayer</button>' +
+        '<button type="button" class="btn btn-ghost" id="examLater">Revenir plus tard</button>' +
+        (CREATOR_MODE ? '<button type="button" class="btn btn-ghost" id="examSkip">Passer (mode créatrice)</button>' : "") + '</div>' +
+        '<div style="margin-top:8px;font-size:.8rem">Tes réponses sont gardées sur ce téléphone : rien n\'est perdu.' + (CREATOR_MODE ? "" : " L'examen ne peut pas être terminé sans cette correction.") + '</div></div>';
+    }
+    return quotes + prompt + mic + area + status + examAiResultHtml(res);
+  }
+  function wireExamAi(S, d, res){
+    var ta = document.getElementById("examText");
+    var oral = S.type === "ai-oral";
+    if(ta && !res) ta.addEventListener("input", function(){
+      if(oral){ var a = examAiAnswer(S, d); a.text = ta.value; a.typed = true; d.answers[S.id] = a; }
+      else d.answers[S.id] = ta.value;
+      examUi.confirm = false; examUi.confirmMsg = "";
+      document.getElementById("examCount").innerHTML = examCountHtml(S, ta.value);
+      examSaveDraft();
+    });
+    var mic = document.getElementById("examMic");
+    if(mic) mic.addEventListener("click", function(){ examToggleMic(S, d); });
+    var reset = document.getElementById("examMicReset");
+    if(reset) reset.addEventListener("click", function(){
+      d.answers[S.id] = { text:"", confs:[], typed:false, micUsed:false };
+      examUi.confirm = false; examUi.confirmMsg = "";
+      examSaveDraft(); render();
+    });
+    var retry = document.getElementById("examRetry");
+    if(retry) retry.addEventListener("click", function(){ examUi.error = ""; examValidate(S, d, true); });
+    var later = document.getElementById("examLater");
+    if(later) later.addEventListener("click", function(){ examSaveDraft(); window.location.href = "index.html"; });
+    var skip = document.getElementById("examSkip");
+    if(skip) skip.addEventListener("click", function(){
+      if(!CREATOR_MODE) return;
+      d.results[S.id] = { score:0, max:S.points, skipped:true, ai:{ feedback:"Partie passée en mode créatrice : elle compte 0 point." } };
+      examUi.error = ""; examSaveDraft(); render();
+    });
+  }
+  function examStopMic(){
+    if(examUi && examUi.rec){
+      var r = examUi.rec;
+      r.running = false;
+      if(r.timer){ clearInterval(r.timer); r.timer = null; }
+      try { r.obj && r.obj.stop(); } catch(e){}
+    }
+  }
+  // Micro : reconnaissance vocale du navigateur (en-GB ou en-US selon la variante), en continu ;
+  // on garde les confiances de chaque morceau reconnu (envoyées à l'IA, comme la Conversation IA).
+  function examToggleMic(S, d){
+    if(!SpeechRec) return;
+    if(examUi.rec && examUi.rec.running){ examStopMic(); render(); return; }
+    var a = examAiAnswer(S, d);
+    var base = (a.text || "").trim();
+    var r = { running:true, finals:[], start:Date.now(), timer:null, obj:null };
+    examUi.rec = r;
+    function current(interim){
+      var t = r.finals.join(" ").trim();
+      if(interim) t = (t + " " + interim).trim();
+      return (base ? base + (t ? " " : "") : "") + t;
+    }
+    function commit(){
+      var ans = examAiAnswer(S, d);
+      ans.text = current("");
+      ans.micUsed = true;
+      d.answers[S.id] = ans;
+      examSaveDraft();
+    }
+    try {
+      window.speechSynthesis && window.speechSynthesis.cancel();
+      var rec = new SpeechRec();
+      r.obj = rec;
+      rec.lang = state.variant === "us" ? "en-US" : "en-GB";
+      rec.continuous = true;
+      rec.interimResults = true;
+      rec.maxAlternatives = 1;
+      rec.onresult = function(e){
+        var interim = "";
+        for(var i = e.resultIndex; i < e.results.length; i++){
+          var alt = e.results[i][0];
+          if(e.results[i].isFinal){
+            r.finals.push(alt.transcript.trim());
+            var ans = examAiAnswer(S, d);
+            ans.confs = (ans.confs || []).concat(typeof alt.confidence === "number" && alt.confidence > 0 ? [alt.confidence] : []);
+            d.answers[S.id] = ans;
+          } else interim += alt.transcript;
+        }
+        commit();
+        var ta = document.getElementById("examText");
+        if(ta){ ta.value = current(interim); var c = document.getElementById("examCount"); if(c) c.innerHTML = examCountHtml(S, ta.value); }
+      };
+      rec.onerror = function(){ if(examUi && examUi.rec === r && r.running){ examStopMic(); render(); } };
+      rec.onend = function(){ if(examUi && examUi.rec === r && r.running){ examStopMic(); commit(); render(); } };
+      r.timer = setInterval(function(){
+        var t = document.getElementById("examTimer");
+        if(t) t.textContent = "⏺ " + Math.round((Date.now() - r.start) / 1000) + " s";
+      }, 1000);
+      render();
+      rec.start();
+    } catch(err){ examStopMic(); render(); }
+  }
+
+  // Appel au relais IA (mode "grade") — voir cloudflare-worker-gemini.js.
+  function examGradeAi(S, answer, mic){
+    var body = {
+      mode:"grade", lang:"en", variant: state.variant === "us" ? "en-us" : "en-gb", level: levelOfLesson(state.lesson),
+      task:{
+        title: EXAM.code + " – " + S.num + ". " + S.title,
+        instructions: S.instructions + (S.quotes && S.quotes.length ? " " + S.quotes.join(" ") : "") + (S.prompt ? " Task: " + S.prompt : "") +
+          (S.minWords ? " Expected length: " + S.minWords + (S.maxWords ? "-" + S.maxWords : "+") + " words." : ""),
+        rubric: S.rubric || "", maxPoints: S.points, reference: S.reference || "",
+        kind: S.type === "ai-oral" ? "oral" : "text"
+      },
+      answer: answer
+    };
+    if(mic) body.mic = mic;
+    return new Promise(function(resolve, reject){
+      if(!/^https:\/\//.test(EXAM_AI_RELAY_URL || "")){ reject(new Error("not_configured")); return; }
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var done = false;
+      var to = setTimeout(function(){ if(done) return; done = true; try { ctrl && ctrl.abort(); } catch(e){} reject(new Error("timeout")); }, 30000);
+      fetch(EXAM_AI_RELAY_URL, { method:"POST", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined })
+        .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(data){ return { ok:res.ok, data:data || {} }; }); })
+        .then(function(r){
+          if(done) return; done = true; clearTimeout(to);
+          var g = r.data, sc = Number(g.score);
+          if(!r.ok || typeof g.score !== "number" || !isFinite(sc)){ reject(new Error(g.error || "relay_error")); return; }
+          resolve({
+            score: Math.round(Math.max(0, Math.min(S.points, sc)) * 2) / 2,
+            max: S.points,
+            ai:{ feedback: String(g.feedback || ""), strengths: String(g.strengths || ""),
+                 corrections: Array.isArray(g.corrections) ? g.corrections.filter(function(c){ return typeof c === "string"; }).slice(0, 8) : [] }
+          });
+        })
+        .catch(function(e){ if(done) return; done = true; clearTimeout(to); reject(e); });
+    });
+  }
+  function examErrorText(code){
+    if(code === "quota_exceeded") return "L'IA a atteint sa limite pour le moment. Réessaie dans une minute.";
+    if(code === "not_configured") return "La correction par l'IA n'est pas encore branchée (adresse du relais manquante).";
+    return "L'IA ne répond pas pour l'instant (connexion ou relais). Réessaie, ou reviens plus tard.";
+  }
+
+  // ---------- Validation d'une section / navigation ----------
+  function examValidate(S, d, force){
+    if(d.results[S.id] || examUi.busy) return;
+    var empty = 0, msg = "";
+    if(S.type === "fill"){ empty = examFillEmpty(S, d); if(empty) msg = "Il reste "+empty+" trou"+(empty > 1 ? "s" : "")+" vide"+(empty > 1 ? "s" : "")+". Tu peux les remplir, ou valider quand même (0 point pour un trou vide)."; }
+    else if(S.type === "mcq"){ empty = examMcqEmpty(S, d); if(empty) msg = empty+" question"+(empty > 1 ? "s" : "")+" sans réponse. Tu peux répondre, ou valider quand même (0 point)."; }
+    else {
+      var n = examWords(examAiText(S, d));
+      if(!n) msg = "Ta réponse est vide : écris (ou dis) quelque chose avant de valider.";
+      else if(S.minWords && n < S.minWords) msg = "Ta réponse fait "+n+" mot"+(n > 1 ? "s" : "")+" (attendu : "+S.minWords+(S.maxWords ? " à "+S.maxWords : " minimum")+"). Tu peux la compléter, ou valider quand même.";
+      if(!n){ examUi.confirmMsg = msg; examUi.confirm = false; render(); return; }
+    }
+    if(msg && !force && !examUi.confirm){ examUi.confirm = true; examUi.confirmMsg = msg; render(); return; }
+    examUi.confirm = false; examUi.confirmMsg = "";
+    if(S.type === "fill" || S.type === "mcq"){
+      d.results[S.id] = S.type === "fill" ? examGradeFill(S, d) : examGradeMcq(S, d);
+      examSaveDraft(); render(); window.scrollTo(0, 0);
+      return;
+    }
+    examStopMic();
+    var a = examAiAnswer(S, d), mic = null;
+    if(S.type === "ai-oral"){
+      var confs = a.confs || [], avg = confs.length ? confs.reduce(function(x, y){ return x + y; }, 0) / confs.length : 0;
+      mic = { confidence: avg ? Math.round(avg * 100) / 100 : null, typed: !!a.typed || !a.micUsed };
+    }
+    examUi.busy = true; examUi.error = "";
+    render();
+    var lesson = state.lesson;
+    examGradeAi(S, examAiText(S, d), mic).then(function(r){
+      if(!examUi || examUi.lesson !== lesson) return;
+      examUi.busy = false;
+      d.results[S.id] = r;
+      recordSkill(S.skill || "ee", r.score / r.max >= 0.6);
+      examSaveDraft(); render();
+    }, function(e){
+      if(!examUi || examUi.lesson !== lesson) return;
+      examUi.busy = false;
+      examUi.error = examErrorText(e && e.message);
+      examSaveDraft(); render();
+    });
+  }
+  // Bouton principal (nextBtn) pendant l'examen — appelé par goNext.
+  function examPrimaryAction(){
+    var d = examDraft();
+    if(examUi.busy) return;
+    if(d.done && d.result){ state.examResult = d.result; state.step = 6; render(); return; }
+    if(d.sec < 0 || d.sec >= EXAM.sections.length){
+      var started = Object.keys(d.results).length > 0 || Object.keys(d.answers).length > 0;
+      if(!started && !retakeStatus(EXAM.code).ok) return;
+      if(d.sec < 0) d.sec = 0;
+      var firstTodo = 0;
+      while(firstTodo < EXAM.sections.length - 1 && d.results[EXAM.sections[firstTodo].id]) firstTodo++;
+      d.sec = firstTodo;
+      examSaveDraft(); render(); window.scrollTo(0, 0);
+      return;
+    }
+    var S = EXAM.sections[d.sec];
+    if(!d.results[S.id]){ examValidate(S, d, false); return; }
+    examStopMic();
+    if(d.sec < EXAM.sections.length - 1){
+      d.sec++; examUi.error = ""; examUi.confirm = false; examUi.confirmMsg = "";
+      examSaveDraft(); render(); window.scrollTo(0, 0);
+      return;
+    }
+    examFinalize(d);
+    state.step = 6;
+    render(); window.scrollTo(0, 0);
+  }
+
+  // ---------- Note finale → résultat compatible avec les contrôles existants ----------
+  function examFinalize(d){
+    var total = 0, max = 0, sk = {}, rows = [];
+    EXAM.sections.forEach(function(S){
+      var r = d.results[S.id] || { score:0, max:S.points };
+      total += r.score; max += S.points;
+      var k = S.skill || "gr"; sk[k] = sk[k] || [0, 0]; sk[k][0] += r.score; sk[k][1] += S.points;
+      rows.push({ id:S.id, num:S.num, title:S.title, titleFr:S.titleFr, type:S.type, score:r.score, max:S.points, ai:r.ai || null, skipped:!!r.skipped });
+    });
+    total = Math.round(total * 10) / 10;
+    var pct = max ? Math.round(total / max * 100) : 0;
+    var skills = {};
+    Object.keys(sk).forEach(function(k){ skills[k] = sk[k][1] ? Math.round(sk[k][0] / sk[k][1] * 100) : null; });
+    var decision = pct < 70 ? "fail" : (pct < 80 ? "renfort" : (pct < 93 ? "rappel" : "net"));
+    var floor = Object.keys(skills).filter(function(k){ return skills[k] != null && skills[k] < 50; });
+    // Le palier lui-même est la « leçon à consolider » (renfort / rappels vers les leçons B1 suivantes).
+    // En cas d'échec, pas de leçon imposée (weak vide) : seul le délai d'une semaine s'applique.
+    var ev = { pct:pct, total:total, max:max, skills:skills, decision:decision, floor:floor,
+      weak: decision === "fail" ? [] : [state.lesson], floorLessons: floor.length ? [state.lesson] : [] };
+    saveControlResult(EXAM.code, ev);
+    if(decision !== "fail"){ grantAiCredit(); recordPass(state.lesson); }
+    d.done = true;
+    d.result = { code:EXAM.code, pct:pct, total:total, max:max, decision:decision, skills:skills, floor:floor, rows:rows, at:Date.now() };
+    examSaveDraft();
+    state.examResult = d.result;
+  }
+
+  // ---------- Bilan de l'examen (step 6) ----------
+  function screenExamBilan(){
+    var R = state.examResult, passed = R.decision !== "fail";
+    var isB = state.lesson >= B1_START_LESSON && state.lesson <= B2_LAST_LESSON;
+    var nextB = isB ? nextPlayableLesson(state.lesson) : null;
+    postmark.innerHTML = "BILAN<br>" + examEsc(R.code);
+    var rs = passed ? null : retakeStatus(R.code);
+    var DEC = {
+      fail:{ t:"Pas encore validé", c:"var(--pop)", d:"Il faut au moins 70 % pour valider le palier "+examEsc(R.code)+". Revois la leçon, surtout les parties où tu as perdu des points, puis repasse l'examen." },
+      renfort:{ t:"Validé avec renfort", c:"#b8741a", d:"Tu passes à la suite. Le palier "+examEsc(R.code)+" est ajouté à tes renforts (Mes cours › Mes renforts) pour le consolider." },
+      rappel:{ t:"Validé avec rappels", c:"var(--good)", d:"Tu passes à la suite. Quelques questions de "+examEsc(R.code)+" reviendront en rappel dans tes prochaines leçons." },
+      net:{ t:"Validé", c:"var(--good)", d:"Excellent : tout est bien ancré." }
+    }[R.decision];
+    // Même barre que gaugeHtml, mais avec les points (et sans retour à la ligne du pourcentage).
+    var rowsHtml = R.rows.map(function(r){
+      var pct = r.max ? Math.round(r.score / r.max * 100) : 0;
+      var col = pct >= 70 ? "#2e8a57" : (pct >= 50 ? "#b8741a" : "#c2412f");
+      return '<div class="exam-row"><div class="exam-row-head"><span>'+examEsc(r.num)+'. '+examEsc(r.title)+'</span><b style="color:'+col+'">'+examFmt(r.score)+'&nbsp;/&nbsp;'+r.max+'</b></div>' +
+        '<div class="exam-row-bar"><div style="width:'+pct+'%;background:'+col+'"></div></div></div>';
+    }).join("");
+    var aiHtml = R.rows.filter(function(r){ return r.ai; }).map(function(r){
+      return '<details class="gc-recap-toggle"><summary>'+(r.type === "ai-oral" ? "🎤" : "📝")+' '+examEsc(r.num)+'. '+examEsc(r.title)+' — retour de l\'IA ('+examFmt(r.score)+' / '+r.max+')</summary>' +
+        examAiResultHtml({ score:r.score, max:r.max, ai:r.ai, skipped:r.skipped }) + '</details>';
+    }).join("");
+    var floorHtml = (passed && R.floor.length) ? '<p class="lede" style="font-size:.9rem;margin-top:8px">⚠️ '+R.floor.map(function(k){ return SKILL_LABEL[k] || k; }).join(", ")+' sous 50 % : le palier est ajouté à tes renforts sur ce point, même si la moyenne est bonne.</p>' : "";
+    var nextInfo = passed
+      ? '<div class="bilan-ai" style="margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(27,60,57,.08);font-size:14px;line-height:1.45">💬 <b>Conversation IA débloquée</b> — entraîne-toi à parler de ce thème avec l\'IA, à l\'écrit ou au micro. <button type="button" id="goAiChat" style="display:block;margin-top:8px;border:none;background:#1b3c39;color:#fff;font-weight:700;padding:9px 14px;border-radius:12px;cursor:pointer;font-family:inherit">Discuter maintenant</button></div>' +
+        (NEXT_PREVIEW ? '<p class="lede" style="margin-top:14px"><b>Prochaine étape —</b> '+NEXT_PREVIEW+'</p>' : "")
+      : (rs && rs.creator ? '<p class="lede" style="font-size:.85rem">Mode créatrice : nouvel essai possible tout de suite.</p>' : '<p class="lede" style="font-size:.9rem">Nouvel examen possible à partir du <b>'+fmtDate(Date.now() + 7 * DAY_MS)+'</b>.</p>');
+    screen.innerHTML =
+      '<div class="eyebrow">Bilan · Examen '+examEsc(R.code)+'</div>' +
+      '<h2 class="screen-title" style="color:'+DEC.c+'">'+DEC.t+'</h2>' +
+      (passed && META.bilanTitle ? '<p class="lede" style="margin-top:4px"><b>'+examEsc(META.bilanTitle)+'</b></p>' : "") +
+      '<div class="score-band exam-band"><span class="big">'+R.pct+'&nbsp;%</span><span class="of">'+examFmt(R.total)+' / '+R.max+' · examen '+examEsc(R.code)+'</span></div>' +
+      '<div class="card" style="padding:14px 16px;margin-top:12px"><div class="eyebrow" style="margin-bottom:4px">Détail par section</div>'+rowsHtml+'</div>' +
+      '<p class="lede" style="margin-top:12px">'+DEC.d+'</p>' + floorHtml +
+      aiHtml + nextInfo;
+    nextBtn.style.display = "";
+    nextBtn.disabled = false;
+    nextBtn.textContent = passed ? (isB ? (nextB != null ? "Passer à " + bCode(nextB) : "Revoir mes leçons (la suite arrive bientôt)") : "Continuer") : "Revoir la leçon";
+    backBtn.style.visibility = "hidden";
+    hint.textContent = passed ? "" : "Reprends la leçon depuis le début pour retravailler les points fragiles.";
+    var goAi = document.getElementById("goAiChat");
+    if(goAi){ goAi.addEventListener("click", function(){
+      try { sessionStorage.setItem("the_roots_last_tab", "conversation"); } catch(e){}
+      window.location.href = "index.html";
+    }); }
   }
 
   // ---------- Conversation IA débloquée par une leçon réussie (23/09) ----------
@@ -6907,7 +7654,9 @@
     }
     // Même porte à l'entrée du B1 (B1.1) : renforts du contrôle A2 / du grand contrôle final.
     if(state.lesson === B1_START_LESSON && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
-      var renfortTodoB1 = pendingRenforts("B1");
+      // (Les renforts ajoutés par un examen de palier B1 — le palier lui-même — ne bloquent pas l'entrée
+      // en B1.1 : ils se refont depuis Mes cours › Mes renforts.)
+      var renfortTodoB1 = pendingRenforts("B1").filter(function(id){ return id < B1_START_LESSON; });
       if(renfortTodoB1.length){ state.gateOpen = true; screenRenfortGate(renfortTodoB1, "B1"); return; }
     }
     if(isGrandControle()){
@@ -6926,7 +7675,8 @@
     else if(state.step === 2) screenPrononciation();
     else if(state.step === 3) screenJeu();
     else if(state.step === 4) screenLecture();
-    else if(state.step === 5) screenControle();
+    else if(state.step === 5){ if(examActive()) screenExam(); else screenControle(); }
+    else if(examActive() && state.examResult) screenExamBilan();
     else screenBilan();
   }
 
@@ -6973,6 +7723,8 @@
       render();
       return;
     }
+    // Examen de fin de palier : le bouton principal valide la section / passe à la suivante.
+    if(state.step === 5 && examActive()){ examPrimaryAction(); return; }
     if(state.step === 1 && state.subStep === 4 && sbRound < ROUNDS.length-1){
       sbRound++;
       render();
@@ -6992,7 +7744,11 @@
     } else if(state.step === 5 && state.quizIndex < QUIZ.length-1){
       state.quizIndex++;
     } else if(state.step === 6){
-      var bilanPassed = state.quizScore >= Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
+      // Examen de fin de palier : réussite = décision ≠ "fail" (grille 70/80/93, voir examFinalize) ;
+      // le brouillon est effacé (un nouveau passage repartira de zéro).
+      var examDone = examActive() && state.examResult;
+      var bilanPassed = examDone ? state.examResult.decision !== "fail" : state.quizScore >= Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
+      if(examDone){ examClearDraft(); state.examResult = null; }
       if(bilanPassed && state.returnTo != null){
         // Leçon revue à la demande d'un contrôle ou d'un renfort : on y retourne.
         markRenfortDone(state.lesson);
@@ -7072,7 +7828,9 @@
   if(/rootstest/.test(location.hash || "")){
     window.__rootsTest = { state:state, render:render, goNext:goNext, quiz:function(){ return QUIZ; }, rounds:function(){ return ROUNDS; },
       label:lessonLabel, meta:function(){ return META; }, media:function(){ return MEDIA; }, lectureSubsteps:function(){ return LECTURE_SUBSTEPS; },
-      titles:function(){ return LESSON_TITLES; }, playable:isPlayableLesson };
+      titles:function(){ return LESSON_TITLES; }, playable:isPlayableLesson,
+      exam:function(){ return EXAM; }, examActive:examActive, examResult:function(){ return state.examResult; },
+      examNormalize:examNormalize, examBlankOk:examBlankOk };
   }
   render();
 
