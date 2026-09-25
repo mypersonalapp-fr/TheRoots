@@ -14,8 +14,8 @@ import { renderLevelTest } from "./level-test.js?v=20260924j";
 import { t, formatDate } from "../data/i18n.js?v=20260924j";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924j";
 import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924j";
-import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS } from "../data/programme-b1-en.js?v=20260924j";
-import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS } from "../data/programme-b2-en.js?v=20260924j";
+import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260925r";
+import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260925r";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924j";
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260925q";
 import { plantSvg } from "./plant.js?v=20260924j";
@@ -122,8 +122,8 @@ const PROGRAMS_BY_LANG = {
   en: {
     A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS },
     A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS },
-    B1: { objective: B1_EN_GENERAL_OBJECTIVE, paliers: B1_EN_PALIERS },
-    B2: { objective: B2_EN_GENERAL_OBJECTIVE, paliers: B2_EN_PALIERS },
+    B1: { objective: B1_EN_GENERAL_OBJECTIVE, paliers: B1_EN_PALIERS, entry: B1_EN_ENTRY_MODULE },
+    B2: { objective: B2_EN_GENERAL_OBJECTIVE, paliers: B2_EN_PALIERS, entry: B2_EN_ENTRY_MODULE },
   },
   es: {
     A1: { objective: A1_ES_GENERAL_OBJECTIVE, paliers: A1_ES_PALIERS },
@@ -417,6 +417,11 @@ export function renderMesCours(container, shellRoot) {
             <h3>${t("prog_paliers_title", lang, { count: program.paliers.length, level })}</h3>
             <p style="font-size:12px;color:var(--ink-soft);margin:0 0 10px">${t("prog_palier_tap_hint", lang)}</p>
             <div style="display:flex;flex-direction:column;gap:10px">
+              ${program.entry ? `
+                <button class="lt-opt" data-palier="${program.entry.code}" style="text-align:left">
+                  <strong>${program.entry.code}</strong> — ${program.entry.title}
+                  <span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">Module d'entrée, avant ${level}.1</span>
+                </button>` : ""}
               ${program.paliers.map((p) => `
                 <button class="lt-opt" data-palier="${p.code}" style="text-align:left">
                   <strong>${p.code}</strong> — ${p.title}
@@ -440,7 +445,7 @@ export function renderMesCours(container, shellRoot) {
       return;
     }
 
-    const p = program.paliers.find((x) => x.code === palier);
+    const p = program.paliers.find((x) => x.code === palier) || (program.entry && program.entry.code === palier ? program.entry : null);
     container.innerHTML = `
       <button class="settings-back" id="progBackToOverview">${t("prog_back", lang)}</button>
       <div class="dash-box">
