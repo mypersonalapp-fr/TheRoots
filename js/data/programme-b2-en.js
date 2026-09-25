@@ -110,3 +110,15 @@ export const B2_EN_PALIERS = [
     activities: ["Simulation imprévue", "Grand contrôle final B2 (/40 — compréhension 15, expression 15, grammaire/vocabulaire/verbes 10)", "Diagnostic 6 dimensions (accuracy, fluency, range, interaction, naturalness, adaptability)", "Fiche PDF"],
   },
 ];
+
+
+// Module d'entrée B2.0 « Bases transversales B2 » (ajouté le 25/09) : joué juste AVANT B2.1
+// dans lessons.html (leçon 53). Affiché dans « Voir le programme » au-dessus des 12 paliers.
+export const B2_EN_ENTRY_MODULE = {
+  code: "B2.0", title: "Bases transversales B2",
+  objective: "Poser, avant le premier palier B2, les réflexes d'un utilisateur indépendant : éviter les faux amis et calques avancés, reformuler et nuancer, penser directement en anglais et adapter son registre.",
+  communication: "Repérer les faux amis et calques de niveau B2 ; reformuler quand on n'est pas compris ; nuancer une affirmation ; choisir le bon registre (casual, neutral, polite, formal).",
+  vocab: ["Faux amis avancés : actually, eventually, sensible, to assist, to attend, to pretend, library, deception, a formation, to control", "Calques : « It's the first time I come » → It's the first time I've come ; make / do calqués sur « faire »", "Reformuler : What I mean is… / Let me put it another way / I'm not sure I follow / Correct me if I'm wrong, but…", "Nuancer (hedging) : It seems that…, arguably, to some extent, I'd say that…"],
+  grammar: ["Faux amis et calques avancés, ordre des adjectifs, prépositions calquées", "Reformuler et nuancer : hedging, adoucisseurs (softeners), distance polie"],
+  activities: ["Vocabulaire", "Jeux", "Grammaire", "Prononciation", "Lecture", "Contrôle"],
+};

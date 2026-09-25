@@ -149,3 +149,16 @@ export const B1_EN_PALIERS = [
     activities: ["Écoute", "Lecture", "Expression orale", "Expression écrite", "Récit", "Résolution de problème", "Opinion", "Grand contrôle de fin de niveau B1 (/40 — compréhension 15, expression 15, grammaire/vocabulaire/verbes 10)", "Fiche PDF"],
   },
 ];
+
+
+// Module d'entrée B1.0 « Bases transversales B1 » (ajouté le 25/09, à la demande d'Ashley) :
+// joué juste AVANT B1.1 dans lessons.html (leçon 52). Affiché dans « Voir le programme »
+// au-dessus des 12 paliers, sans être compté comme un palier (même logique que A2.0).
+export const B1_EN_ENTRY_MODULE = {
+  code: "B1.0", title: "Bases transversales B1",
+  objective: "Poser, avant le premier palier B1, les réflexes qui reviendront dans TOUS les paliers : corriger les calques du français, continuer à communiquer même quand un mot manque, et comprendre l'intention et le ton d'une phrase.",
+  communication: "Reconnaître et éviter les erreurs typiques des francophones ; demander de répéter, de ralentir ou de reformuler ; décrire un mot qu'on ne connaît pas ; structurer ce qu'on dit à l'oral.",
+  vocab: ["French Interference Lab : I agree (et non « I am agree »), explain something to someone, depend on, listen to, since / for, information / advice (indénombrables)", "Faux amis : actually, eventually, sensible, library, attend", "Survie : It's a kind of… / something you use to… / Could you say that again? / Could you speak more slowly? / Let me think…", "Connecteurs à l'oral : first of all, then, however, in the end"],
+  grammar: ["Les calques du français : structures verbales avec ou sans préposition (agree, explain to, depend on, listen to), since + point de départ / for + durée", "Stratégies de survie et de reformulation : paraphraser, vérifier qu'on a compris, gagner du temps", "Pragmatique : poli (« Could you…? ») ou direct (« Give me… ») — même idée, effet social différent"],
+  activities: ["Vocabulaire", "Jeux", "Grammaire", "Prononciation", "Lecture", "Contrôle"],
+};
