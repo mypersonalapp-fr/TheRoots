@@ -16,7 +16,7 @@
 
 import { store } from "../data/store.js?v=20260924j";
 import { t } from "../data/i18n.js?v=20260924j";
-import { recordSkill } from "../data/progress.js?v=20260925n";
+import { recordSkill } from "../data/progress.js?v=20260925q";
 import { EXPRESSION_ECRITE_PROMPTS_EN } from "../data/expression-ecrite-prompts-en.js?v=20260924j";
 import { EXPRESSION_ORALE_PROMPTS_EN } from "../data/expression-orale-prompts-en.js?v=20260924j";
 import { EXPRESSION_ORALE_PROMPTS_A2_EN } from "../data/expression-orale-prompts-a2-en.js?v=20260924j";

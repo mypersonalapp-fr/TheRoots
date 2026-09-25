@@ -6,7 +6,7 @@
 // jour + un petit quiz. Les autres pays affichent « Bientôt » (voir my-world.js).
 
 import { UK_SITUATIONS, UK_SURVIVAL, UK_PHOTOS } from "../data/explore-uk.js?v=20260924j";
-import { recordSkill } from "../data/progress.js?v=20260925n";
+import { recordSkill } from "../data/progress.js?v=20260925q";
 import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
 
 const K_EXPLORE = "the_roots_explore_v1";

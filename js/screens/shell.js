@@ -3,19 +3,19 @@
 // 23/09) — Apprendre, Ressources, Explorer, Réglages —, bouton retour, et
 // routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260925n";
+import { renderDashboard } from "./dashboard.js?v=20260925q";
 import { renderSettings } from "./settings.js?v=20260924j";
-import { renderMesCours } from "./mes-cours.js?v=20260925n";
-import { renderMesArbres } from "./mes-arbres.js?v=20260925n";
-import { renderComprehension } from "./comprehension.js?v=20260925n";
-import { renderExpression } from "./expression.js?v=20260925n";
+import { renderMesCours } from "./mes-cours.js?v=20260925q";
+import { renderMesArbres } from "./mes-arbres.js?v=20260925q";
+import { renderComprehension } from "./comprehension.js?v=20260925q";
+import { renderExpression } from "./expression.js?v=20260925q";
 import { renderTraduction } from "./traduction.js?v=20260924j";
 import { renderDictionnaire } from "./dictionnaire.js?v=20260924j";
 import { renderConversation } from "./conversation.js?v=20260925m";
 import { renderBibliotheque } from "./bibliotheque.js?v=20260924j";
 import { renderAideFaq } from "./aide-faq.js?v=20260924j";
 import { mountMyWorld } from "./my-world.js?v=20260924j";
-import { renderCountry } from "./country.js?v=20260925n";
+import { renderCountry } from "./country.js?v=20260925q";
 import { store } from "../data/store.js?v=20260924j";
 import { t } from "../data/i18n.js?v=20260924j";
 
