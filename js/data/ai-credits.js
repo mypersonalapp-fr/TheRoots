@@ -7,8 +7,10 @@
 // - une conversation débloquée mais pas utilisée reste en réserve : si on
 //   finit une leçon lundi sans discuter, puis une autre mardi, on a 2
 //   conversations disponibles mardi (cumul).
-// Une conversation "de bienvenue" (se présenter) est offerte une fois, pour
-// pouvoir essayer tout de suite.
+// Règle ajoutée le 25/09 (Ashley) : la Conversation n'est accessible
+// qu'APRÈS le test de niveau ET la première leçon réussie (voir
+// isUnlocked). La conversation "de bienvenue" offerte n'existe donc plus
+// pour les apprentis — elle ne sert plus qu'en mode créatrice, pour tester.
 //
 // Stocké dans le téléphone (localStorage "the_roots_ai_v1"). NB : même clé
 // et même format écrits directement par lessons.html (fichier séparé, qui
@@ -51,8 +53,22 @@ export const aiCredits = {
     }
     return data;
   },
-  available() {
-    return this.get().credits.filter((c) => !c.usedAt);
+  // includeWelcome : seulement en mode créatrice (dev-config.js), pour que
+  // la créatrice puisse tester l'IA sans refaire test + leçon.
+  available({ includeWelcome = false } = {}) {
+    return this.get().credits.filter((c) => !c.usedAt && (includeWelcome || c.id !== "welcome"));
+  },
+  // A-t-on déjà réussi au moins une leçon ? (une conversation gagnée en
+  // leçon, utilisée ou non, en est la trace — voir grantAiCredit dans
+  // lessons.html).
+  hasPassedALesson() {
+    return this.get().credits.some((c) => c.id !== "welcome");
+  },
+  // Conversation accessible : test de niveau fait (au moins une langue)
+  // ET au moins une leçon réussie.
+  isUnlocked(settings) {
+    const testDone = (settings.langs || []).some((l) => l.leveled);
+    return { testDone, lessonDone: this.hasPassedALesson(), ok: testDone && this.hasPassedALesson() };
   },
   usedToday() {
     const today = todayStr();
