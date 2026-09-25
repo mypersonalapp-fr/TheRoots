@@ -12,9 +12,9 @@ import { store } from "../data/store.js?v=20260924j";
 import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
 import { renderLevelTest } from "./level-test.js?v=20260924j";
 import { t, formatDate } from "../data/i18n.js?v=20260924j";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS } from "../data/programme-a1-en.js?v=20260924j";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS } from "../data/programme-a2-en.js?v=20260924j";
-import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260925r";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260925s";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS, A2_EN_ENTRY_MODULE } from "../data/programme-a2-en.js?v=20260925s";
+import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260925s";
 import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260925r";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924j";
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260925q";
@@ -120,8 +120,8 @@ function renfortsHtml(code) {
 const PROGRAM_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const PROGRAMS_BY_LANG = {
   en: {
-    A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS },
-    A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS },
+    A1: { objective: A1_EN_GENERAL_OBJECTIVE, paliers: A1_EN_PALIERS, entry: A1_EN_ENTRY_MODULE },
+    A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS, entry: A2_EN_ENTRY_MODULE },
     B1: { objective: B1_EN_GENERAL_OBJECTIVE, paliers: B1_EN_PALIERS, entry: B1_EN_ENTRY_MODULE },
     B2: { objective: B2_EN_GENERAL_OBJECTIVE, paliers: B2_EN_PALIERS, entry: B2_EN_ENTRY_MODULE },
   },
@@ -424,7 +424,7 @@ export function renderMesCours(container, shellRoot) {
                 </button>` : ""}
               ${program.paliers.map((p) => `
                 <button class="lt-opt" data-palier="${p.code}" style="text-align:left">
-                  <strong>${p.code}</strong> — ${p.title}
+                  <strong>${p.code}</strong> — ${p.title}${p.media ? ` <span style="font-size:12px">${p.media.slice(0, 2)}</span>` : ""}
                 </button>
               `).join("")}
             </div>
@@ -513,6 +513,12 @@ export function renderMesCours(container, shellRoot) {
       <div class="dash-box">
         <h3>${t("prog_mission_label", lang)}</h3>
         <div class="card" style="font-size:13px;font-style:italic">${p.mission}</div>
+      </div>
+      ` : ""}
+      ${p.media ? `
+      <div class="dash-box">
+        <h3>🎵🎬 Musique &amp; Ciné</h3>
+        <div class="card" style="font-size:13px;line-height:1.55">${p.media}<div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px">Dans la leçon, à l'étape « Lecture », juste après le texte.</div></div>
       </div>
       ` : ""}
       <div class="dash-box">
