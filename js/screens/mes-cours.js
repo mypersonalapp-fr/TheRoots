@@ -16,9 +16,11 @@ import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../d
 import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS, A2_EN_ENTRY_MODULE } from "../data/programme-a2-en.js?v=20260925s";
 import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260925s";
 import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260925r";
+import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260925t";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924j";
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260925q";
 import { plantSvg } from "./plant.js?v=20260924j";
+import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260926a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;
@@ -93,6 +95,26 @@ function missionsHtml(code) {
     </div>`).join("") + (list.some((m) => m.due) ? `<button class="btn btn-primary" data-href="lessons.html#practice=auto" style="width:100%;margin-top:10px">Commencer la mission du jour</button>` : "");
 }
 
+// (26/09) Espagnol : carte « Atelier : les blocages du francophone » — les 8 chapitres du moteur de
+// leçons en mode espagnol (lessons.html?lang=es), en accès libre, avec ✓ pour ceux déjà réussis.
+function blocagesHtml() {
+  const done = blocagesDone();
+  return `
+    <div class="dash-box">
+      <h3>${BLOCAGES_ES_TITLE}</h3>
+      <div class="card">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px">Les 8 points où l'on « bugue » en espagnol, expliqués simplement : le pourquoi avant la règle, un entraînement intensif et un texte légendé mot par mot. Accès libre, dans l'ordre que tu veux.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${BLOCAGES_ES.map((c) => `
+            <button class="lt-opt" data-href="${blocageHref(c.n)}" style="text-align:left;display:flex;align-items:center;gap:8px">
+              <span style="flex-grow:1"><strong>${c.code}</strong> — ${c.title}</span>
+              ${done[c.n] ? `<span style="color:var(--success);font-weight:800" aria-label="Chapitre terminé">✓</span>` : ""}
+            </button>`).join("")}
+        </div>
+      </div>
+    </div>`;
+}
+
 function renfortsHtml(code) {
   if (code !== "en") return "";
   const b = boosts(code);
@@ -124,6 +146,7 @@ const PROGRAMS_BY_LANG = {
     A2: { objective: A2_EN_GENERAL_OBJECTIVE, paliers: A2_EN_PALIERS, entry: A2_EN_ENTRY_MODULE },
     B1: { objective: B1_EN_GENERAL_OBJECTIVE, paliers: B1_EN_PALIERS, entry: B1_EN_ENTRY_MODULE },
     B2: { objective: B2_EN_GENERAL_OBJECTIVE, paliers: B2_EN_PALIERS, entry: B2_EN_ENTRY_MODULE },
+    C1: { objective: C1_EN_GENERAL_OBJECTIVE, paliers: C1_EN_PALIERS, entry: C1_EN_ENTRY_MODULE },
   },
   es: {
     A1: { objective: A1_ES_GENERAL_OBJECTIVE, paliers: A1_ES_PALIERS },
@@ -299,6 +322,8 @@ export function renderMesCours(container, shellRoot) {
         ${renfortsHtml(code) ? `<div class="dash-box"><h3>Mes renforts</h3><div class="card">${renfortsHtml(code)}</div></div>` : ""}
         <div class="dash-box"><h3>Contrôles A1 · A2 · final</h3><div class="card">${controlsHtml(code)}</div></div>
       ` : ""}
+
+      ${code === "es" ? blocagesHtml() : ""}
 
       ${needsVariantChoice ? `
         <div class="dash-box">
