@@ -436,6 +436,99 @@
   .exam-row-head b{ white-space:nowrap; }
   .exam-row-bar{ height:9px; border-radius:6px; background:rgba(27,60,57,.1); overflow:hidden; margin-top:4px; }
   .exam-row-bar div{ height:100%; border-radius:6px; }
+  /* ---------- Entraînement intensif (DRILLS) et texte légendé (ANNOTATED) — 26/09 ---------- */
+  .drill-card{ margin-top:12px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:12px 14px 14px; box-shadow:var(--shadow); }
+  .drill-card .screen-title{ margin-top:0; }
+  .ann-qs .mini-opt{ color:var(--ink); background:var(--surface-2); }
+  .drill-top{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:4px; }
+  .drill-count{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:.82rem; color:var(--muted); }
+  .drill-bar{ height:6px; border-radius:6px; background:var(--surface-2); overflow:hidden; margin-top:8px; }
+  .drill-bar div{ height:100%; background:var(--accent); border-radius:6px; }
+  .drill-text{ font-size:1.12rem; font-weight:700; line-height:1.5; margin-top:14px; overflow-wrap:anywhere; }
+  .drill-blank{ display:inline-block; min-width:3.2em; border-bottom:3px solid var(--accent); line-height:1.1; }
+  .drill-input{ display:block; width:100%; margin-top:14px; font:inherit; font-size:17px; padding:12px 14px; border-radius:12px; border:2px solid var(--line); background:var(--surface); color:var(--ink); }
+  .drill-input:focus{ outline:none; border-color:var(--accent); }
+  .drill-input.ok{ border-color:var(--good); background:var(--good-soft); }
+  .drill-input.warn{ border-color:var(--accent); background:var(--accent-soft); }
+  .drill-input.ko{ border-color:var(--pop); background:var(--pop-soft); }
+  .drill-input:disabled{ -webkit-text-fill-color:var(--ink); opacity:1; }
+  .drill-accents{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .drill-acc{ font-family:"Manrope", sans-serif; font-weight:700; font-size:1rem; min-width:38px; height:38px; padding:0 8px; border-radius:9px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); cursor:pointer; touch-action:manipulation; }
+  .drill-acc:active{ border-color:var(--accent); }
+  .drill-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .drill-actions .btn{ margin-left:0; }
+  .drill-fb{ margin-top:14px; padding:12px 14px; border-radius:12px; font-size:.9rem; line-height:1.5; border:2px solid var(--line); }
+  .drill-fb.ok{ background:var(--good-soft); border-color:var(--good); }
+  .drill-fb.warn{ background:var(--accent-soft); border-color:var(--accent); }
+  .drill-fb.ko{ background:var(--pop-soft); border-color:var(--pop); }
+  .drill-fb-head{ font-weight:800; }
+  .drill-fb-why{ margin-top:6px; }
+  .drill-say{ margin-top:8px; font-family:"Manrope", sans-serif; font-weight:700; font-size:.86rem; background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:7px 12px; cursor:pointer; }
+  .drill-score{ font-family:"Sora", sans-serif; font-weight:800; font-size:2.4rem; color:var(--accent); margin-top:10px; }
+  .drill-score small{ font-size:1rem; color:var(--muted); font-weight:700; }
+  .drill-miss{ margin-top:10px; font-size:.86rem; }
+  .drill-miss li{ margin-top:4px; }
+
+  :root{
+    --tg-nom-bg:#E3EEFB; --tg-nom-ink:#1D4E89; --tg-nom-line:#9DBDE6;
+    --tg-det-bg:#ECEEF1; --tg-det-ink:#434B58; --tg-det-line:#C3C8D0;
+    --tg-adj-bg:#F1E6FA; --tg-adj-ink:#6B2F93; --tg-adj-line:#CDA9E6;
+    --tg-pro-bg:#FFF0D6; --tg-pro-ink:#7F4B00; --tg-pro-line:#F0C27A;
+    --tg-verbe-bg:#FDE3DF; --tg-verbe-ink:#A3291A; --tg-verbe-line:#F2A294;
+    --tg-adv-bg:#FBE3F1; --tg-adv-ink:#8E1F62; --tg-adv-line:#EBA3CC;
+    --tg-lien-bg:#DDF3EE; --tg-lien-ink:#0F6655; --tg-lien-line:#8FD1C2;
+    --tg-autre-bg:#F2F2EE; --tg-autre-ink:#55554A; --tg-autre-line:#D0D0C6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --tg-nom-bg:#1C3350; --tg-nom-ink:#A9CCF5; --tg-nom-line:#3A5F8A;
+      --tg-det-bg:#262D36; --tg-det-ink:#C9D0DA; --tg-det-line:#48525F;
+      --tg-adj-bg:#33244A; --tg-adj-ink:#DCBDF4; --tg-adj-line:#5E4684;
+      --tg-pro-bg:#3D2E12; --tg-pro-ink:#F5CD86; --tg-pro-line:#735826;
+      --tg-verbe-bg:#45211C; --tg-verbe-ink:#FFB4A8; --tg-verbe-line:#834035;
+      --tg-adv-bg:#43203A; --tg-adv-ink:#F5B6DB; --tg-adv-line:#7A3F69;
+      --tg-lien-bg:#173A33; --tg-lien-ink:#97E3D2; --tg-lien-line:#336B5F;
+      --tg-autre-bg:#2A2A26; --tg-autre-ink:#D2D2C7; --tg-autre-line:#4E4E45;
+    }
+  }
+  :root[data-theme="dark"]{
+    --tg-nom-bg:#1C3350; --tg-nom-ink:#A9CCF5; --tg-nom-line:#3A5F8A;
+    --tg-det-bg:#262D36; --tg-det-ink:#C9D0DA; --tg-det-line:#48525F;
+    --tg-adj-bg:#33244A; --tg-adj-ink:#DCBDF4; --tg-adj-line:#5E4684;
+    --tg-pro-bg:#3D2E12; --tg-pro-ink:#F5CD86; --tg-pro-line:#735826;
+    --tg-verbe-bg:#45211C; --tg-verbe-ink:#FFB4A8; --tg-verbe-line:#834035;
+    --tg-adv-bg:#43203A; --tg-adv-ink:#F5B6DB; --tg-adv-line:#7A3F69;
+    --tg-lien-bg:#173A33; --tg-lien-ink:#97E3D2; --tg-lien-line:#336B5F;
+    --tg-autre-bg:#2A2A26; --tg-autre-ink:#D2D2C7; --tg-autre-line:#4E4E45;
+  }
+  .tg-nom{ --tg-bg:var(--tg-nom-bg); --tg-ink:var(--tg-nom-ink); --tg-line:var(--tg-nom-line); }
+  .tg-det{ --tg-bg:var(--tg-det-bg); --tg-ink:var(--tg-det-ink); --tg-line:var(--tg-det-line); }
+  .tg-adj{ --tg-bg:var(--tg-adj-bg); --tg-ink:var(--tg-adj-ink); --tg-line:var(--tg-adj-line); }
+  .tg-pro{ --tg-bg:var(--tg-pro-bg); --tg-ink:var(--tg-pro-ink); --tg-line:var(--tg-pro-line); }
+  .tg-verbe{ --tg-bg:var(--tg-verbe-bg); --tg-ink:var(--tg-verbe-ink); --tg-line:var(--tg-verbe-line); }
+  .tg-adv{ --tg-bg:var(--tg-adv-bg); --tg-ink:var(--tg-adv-ink); --tg-line:var(--tg-adv-line); }
+  .tg-lien{ --tg-bg:var(--tg-lien-bg); --tg-ink:var(--tg-lien-ink); --tg-line:var(--tg-lien-line); }
+  .tg-autre{ --tg-bg:var(--tg-autre-bg); --tg-ink:var(--tg-autre-ink); --tg-line:var(--tg-autre-line); }
+  .ann-legend{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .ann-chip{ display:inline-flex; align-items:center; font-size:.72rem; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--tg-bg); color:var(--tg-ink); border:1px solid var(--tg-line); }
+  .ann-chip.pronominal, .ann-w.pronominal{ border-style:dashed; border-width:2px; }
+  .ann-sent{ margin-top:12px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:10px 12px; box-shadow:var(--shadow); }
+  .ann-row{ display:flex; align-items:flex-start; gap:8px; }
+  .ann-say{ flex:0 0 auto; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--surface-2); cursor:pointer; font-size:.95rem; }
+  .ann-words{ display:flex; flex-wrap:wrap; gap:6px; min-width:0; }
+  .ann-w{ font-family:"Manrope", sans-serif; font-weight:700; font-size:1rem; padding:5px 10px; border-radius:10px; background:var(--tg-bg); color:var(--tg-ink); border:1px solid var(--tg-line); cursor:pointer; max-width:100%; overflow-wrap:anywhere; text-align:left; }
+  .ann-w.active{ box-shadow:0 0 0 2px var(--ink); }
+  .ann-w:focus-visible, .ann-say:focus-visible, .ann-trbtn:focus-visible, .drill-acc:focus-visible, .drill-say:focus-visible{ outline:2px solid var(--pop); outline-offset:2px; }
+  .ann-panel{ margin-top:10px; padding:10px 12px; border-radius:12px; background:var(--tg-bg); color:var(--tg-ink); border:1px solid var(--tg-line); font-size:.9rem; line-height:1.45; }
+  .ann-panel-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+  .ann-panel-w{ font-family:"Sora", sans-serif; font-weight:800; font-size:1.1rem; }
+  .ann-panel .ann-chip{ background:var(--surface); }
+  .ann-panel-info{ margin-top:4px; font-weight:700; }
+  .ann-panel-fr{ margin-top:4px; color:var(--ink); }
+  .ann-panel-tip{ margin-top:6px; color:var(--ink); }
+  .ann-panel .drill-say{ margin-top:0; padding:4px 10px; }
+  .ann-trbtn{ margin-top:8px; font-family:"Manrope", sans-serif; font-weight:700; font-size:.8rem; background:transparent; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:5px 12px; cursor:pointer; }
+  .ann-tr{ margin-top:6px; font-size:.9rem; color:var(--muted); font-style:italic; }
 </style>
 </head>
 <body>
@@ -468,23 +561,40 @@
 </div>
 
 <script src="js/data/lesson-images.js?v=20260924j"></script>
-<!-- Leçons B1.4-B1.12 et B2.1-B2.12 (window.LESSONS_EXT) et contenus « Musique & Ciné »
+<!-- Leçons B1.4-B1.12, B2.1-B2.12 et C1.0-C1.12 (window.LESSONS_EXT) et contenus « Musique & Ciné »
      (window.LESSONS_MEDIA) : fichiers de données séparés. Le moteur reste fonctionnel si l'un
      d'eux est absent (leçons correspondantes simplement non proposées). -->
 <script src="js/data/lessons-b1.js?v=20260925q"></script>
 <script src="js/data/lessons-b2.js?v=20260925q"></script>
+<script src="js/data/lessons-c1.js?v=20260925t"></script>
 <script src="js/data/lessons-media.js?v=20260925o"></script>
 <!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
      l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
 <script src="js/data/exams.js?v=20260925p"></script>
-<!-- Encarts « French Interference Lab » + « Survival English » des paliers B1/B2
-     (window.LESSONS_TRANSVERSAL). Fichier absent → leçons inchangées. -->
-<script src="js/data/transversal.js?v=20260925q"></script>
+<!-- Encarts « French Interference Lab » + « Survival English » des paliers A1/A2/B1/B2/C1
+     (window.LESSONS_TRANSVERSAL). Fichier absent, ou palier sans encart → leçon inchangée. -->
+<script src="js/data/transversal.js?v=20260925t"></script>
+<!-- Leçons d'ESPAGNOL (window.LESSONS_ES) : utilisées seulement en mode espagnol (lessons.html?lang=es).
+     Chapitre « Les blocages du francophone » = 301..308 (X1..X8) ; 200..212 réservés aux futurs paliers
+     A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
+<script src="js/data/lessons-es.js?v=20260926a"></script>
 <script>
 (function(){
 
   var STEPS = ["Accueil","Leçon","Prononciation","Jeu","Lecture","Contrôle","Bilan"];
-  var LESSON_KEY = "the_roots_lesson_en_gb";
+  // =====================================================================
+  // MODE ESPAGNOL (26/09) — lessons.html?lang=es
+  // Même moteur, mêmes écrans, mais : leçons = window.LESSONS_ES, progression gardée dans une clé
+  // SÉPARÉE (the_roots_lesson_es : l'anglais n'est jamais touché), voix et micro en espagnol,
+  // libellés « Blocage X1 · … », et tout ce qui est propre au parcours anglais masqué (images,
+  // Musique & Ciné, examens, encarts transversaux, renforts, positionnement, grands contrôles).
+  // Sans « ?lang=es », rien ne change : ES_MODE = false et toutes les branches ajoutées sont inertes.
+  // =====================================================================
+  var ES_MODE = /[?&]lang=es(?:&|$)/.test(location.search || "");
+  // Numéros des leçons espagnoles : 200..212 RÉSERVÉS aux futurs paliers A1.0-A1.12 (jouables le jour
+  // où LESSONS_ES[200..212] existera), 301..308 = chapitre « Les blocages du francophone » (X1..X8).
+  var ES_PALIER_START = 200, ES_PALIER_LAST = 212, ES_BLOCAGE_START = 301, ES_BLOCAGE_LAST = 308;
+  var LESSON_KEY = ES_MODE ? "the_roots_lesson_es" : "the_roots_lesson_en_gb";
   // lesson = -1 : module transversal Foundations (couleurs, nombres, jours, mois, saisons, dates, heure),
   // proposé avant la Leçon 1 pour les nouveaux arrivants (les 12 paliers A1.1-A1.12 restent 0-11).
   var state = { step:0, subStep:0, quizIndex:0, quizScore:0, quizLog:[], variant:null, lesson:-1, reviewDone:false, reviewLog:[], gcExprScore:0, gcExprLog:[] };
@@ -508,8 +618,13 @@
   // lesson = 39 : RÉSERVÉ au futur Grand Contrôle B1 (pas encore jouable : goNext saute de B1.12
   // directement à B2.0 / B2.1 en attendant).
   // lesson = 40..51 : les 12 paliers du niveau B2 (B2.1 à B2.12), fichier "js/data/lessons-b2.js"
-  // (window.LESSONS_EXT[40..51]). Après B2_LAST_LESSON : pas encore de suite, on revient réviser.
-  // Une leçon 30..51 dont le fichier de données n'est pas (encore) déposé n'est jamais proposée
+  // (window.LESSONS_EXT[40..51]). Après B2_LAST_LESSON : niveau C1 (C1.0 = 54 puis C1.1 = 55…) si
+  // son fichier est déposé, sinon on revient réviser.
+  // lesson = 55..66 : les 12 paliers du niveau C1 (C1.1 à C1.12), fichier "js/data/lessons-c1.js"
+  // (window.LESSONS_EXT[55..66], voir .staging/C1-PLAN.md). lesson = 67 : RÉSERVÉ au futur Grand
+  // Contrôle C1 (jamais jouable pour l'instant). Après C1_LAST_LESSON : pas encore de suite, on
+  // revient réviser (même repli qu'après B2.12 jusqu'ici).
+  // Une leçon 30..66 dont le fichier de données n'est pas (encore) déposé n'est jamais proposée
   // (voir isPlayableLesson) : la navigation s'arrête alors à la dernière leçon disponible.
   var B1_START_LESSON = 27;
   var B1_LAST_BUILTIN_LESSON = 29;
@@ -517,18 +632,26 @@
   var GRAND_CONTROLE_B1_LESSON = 39;
   var B2_START_LESSON = 40;
   var B2_LAST_LESSON = 51;
+  var C1_START_LESSON = 55;
+  var C1_LAST_LESSON = 66;
+  var GRAND_CONTROLE_C1_LESSON = 67;
   // lesson = 52 : B1.0 « Bases transversales B1 », joué juste AVANT B1.1 (27) ; lesson = 53 : B2.0,
   // joué juste AVANT B2.1 (40). Données au format habituel (window.LESSONS_EXT[52] / [53], fichiers
   // lessons-b1.js / lessons-b2.js). Leur numéro ne suit PAS l'ordre pédagogique : toute comparaison
   // de progression (« avant / après », « déjà faite », niveau…) passe donc par lessonRank() et
   // LESSON_ORDER ci-dessous, jamais par une comparaison directe des numéros. Si leur fichier manque,
   // ces deux modules sont simplement sautés (26 → 27 et 38 → 40, comme avant).
+  // lesson = 54 : C1.0 « Bases transversales C1 », joué juste AVANT C1.1 (55), fichier lessons-c1.js
+  // (window.LESSONS_EXT[54]) ; ici le numéro suit l'ordre, mais on passe quand même par lessonRank().
+  // Absent → sauté (51 → 55).
   var B1_ENTRY_MODULE = 52;
   var B2_ENTRY_MODULE = 53;
-  var LESSONS_EXT = window.LESSONS_EXT || {};
+  var C1_ENTRY_MODULE = 54;
+  // En mode espagnol, les leçons « externes » sont celles de js/data/lessons-es.js (window.LESSONS_ES).
+  var LESSONS_EXT = ES_MODE ? (window.LESSONS_ES || {}) : (window.LESSONS_EXT || {});
   // Ordre pédagogique explicite de TOUS les numéros de leçon (y compris les contrôles et la 39
-  // réservée) : Fondamentaux, A1.1-A1.12, Grand Contrôle A1, A2.0-A2.12 (25 = Grand Contrôle A2),
-  // Grand contrôle final, B1.0, B1.1-B1.12, (39), B2.0, B2.1-B2.12.
+  // réservées) : Fondamentaux, A1.1-A1.12, Grand Contrôle A1, A2.0-A2.12 (25 = Grand Contrôle A2),
+  // Grand contrôle final, B1.0, B1.1-B1.12, (39), B2.0, B2.1-B2.12, C1.0, C1.1-C1.12, (67).
   var LESSON_ORDER = (function(){
     var o = [], i;
     for(i = -1; i <= 26; i++) o.push(i);
@@ -536,6 +659,15 @@
     for(i = B1_START_LESSON; i <= GRAND_CONTROLE_B1_LESSON; i++) o.push(i);
     o.push(B2_ENTRY_MODULE);
     for(i = B2_START_LESSON; i <= B2_LAST_LESSON; i++) o.push(i);
+    o.push(C1_ENTRY_MODULE);
+    for(i = C1_START_LESSON; i <= GRAND_CONTROLE_C1_LESSON; i++) o.push(i);
+    // Mode espagnol : ordre propre — futurs paliers A1.0-A1.12 (200..212, réservés), puis le chapitre
+    // « Les blocages du francophone » (301..308).
+    if(ES_MODE){
+      o = [];
+      for(i = ES_PALIER_START; i <= ES_PALIER_LAST; i++) o.push(i);
+      for(i = ES_BLOCAGE_START; i <= ES_BLOCAGE_LAST; i++) o.push(i);
+    }
     return o;
   })();
   var LESSON_RANK = {};
@@ -543,52 +675,73 @@
   // Rang pédagogique d'un numéro de leçon (0 = Fondamentaux) ; -1 pour un numéro inconnu.
   function lessonRank(n){ return LESSON_RANK.hasOwnProperty(n) ? LESSON_RANK[n] : -1; }
   // Contenus « Musique & Ciné » (chanson / film) par numéro de leçon — sous-étape de la Lecture.
-  var LESSONS_MEDIA = window.LESSONS_MEDIA || {};
-  // Encarts « French Interference Lab » + « Survival English » par palier B1/B2 (js/data/transversal.js,
+  var LESSONS_MEDIA = ES_MODE ? {} : (window.LESSONS_MEDIA || {});
+  // Encarts « French Interference Lab » + « Survival English » par palier A1/A2/B1/B2/C1 (js/data/transversal.js,
   // format .staging/TRANSVERSAL-FORMAT.md) — sous-étape de la Leçon, voir renderTransversal.
-  var LESSONS_TRANSVERSAL = window.LESSONS_TRANSVERSAL || {};
+  var LESSONS_TRANSVERSAL = ES_MODE ? {} : (window.LESSONS_TRANSVERSAL || {});
   // Examens de fin de palier (js/data/exams.js) par numéro de leçon — voir « EXAMEN DE FIN DE PALIER ».
-  var LESSON_EXAMS = window.LESSON_EXAMS || {};
+  var LESSON_EXAMS = ES_MODE ? {} : (window.LESSON_EXAMS || {});
   var EXAM = null; // examen de la leçon en cours (ou null : contrôle QCM classique), fixé par loadLessonData
   // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html ; 30..38, 40..51,
-  // 52 (B1.0) et 53 (B2.0) seulement si leur fichier de données est chargé (39 réservé, jamais
-  // jouable pour l'instant).
+  // 52 (B1.0), 53 (B2.0), 54 (C1.0) et 55..66 seulement si leur fichier de données est chargé (39 et
+  // 67 réservés, jamais jouables pour l'instant).
+  function isReservedLesson(n){ return n === GRAND_CONTROLE_B1_LESSON || n === GRAND_CONTROLE_C1_LESSON; }
   function isPlayableLesson(n){
+    // Espagnol : seulement les numéros de l'ordre espagnol dont les données sont chargées.
+    if(ES_MODE) return lessonRank(n) >= 0 && isValidEsLesson(LESSONS_EXT[n]);
     if(n >= -1 && n <= B1_LAST_BUILTIN_LESSON) return true;
-    if(n === GRAND_CONTROLE_B1_LESSON || lessonRank(n) < 0) return false;
+    if(isReservedLesson(n) || lessonRank(n) < 0) return false;
     return !!LESSONS_EXT[n];
   }
-  // true pour B1.0 (52) / B2.0 (53) : modules d'entrée de niveau, facultatifs (sautés si absents).
-  function isEntryModule(n){ return n === B1_ENTRY_MODULE || n === B2_ENTRY_MODULE; }
-  // Première leçon du niveau B1 / B2 : B1.0 / B2.0 si leur fichier est chargé, sinon B1.1 / B2.1.
+  // true pour B1.0 (52) / B2.0 (53) / C1.0 (54) : modules d'entrée de niveau, facultatifs (sautés si absents).
+  function isEntryModule(n){ return n === B1_ENTRY_MODULE || n === B2_ENTRY_MODULE || n === C1_ENTRY_MODULE; }
+  // Première leçon du niveau B1 / B2 / C1 : B1.0 / B2.0 / C1.0 si leur fichier est chargé, sinon B1.1 / B2.1 / C1.1.
   function b1EntryLesson(){ return isPlayableLesson(B1_ENTRY_MODULE) ? B1_ENTRY_MODULE : B1_START_LESSON; }
   function b2EntryLesson(){ return isPlayableLesson(B2_ENTRY_MODULE) ? B2_ENTRY_MODULE : B2_START_LESSON; }
-  // Leçon suivante (dans l'ordre pédagogique) d'un palier B1/B2 ou de B1.0/B2.0 : saute la 39
-  // réservée et un module d'entrée absent (26 → 52 → 27, 38 → 53 → 40, ou 38 → 40 sans B2.0) ;
-  // null s'il n'y a pas (encore) de suite (après B2.12, ou fichier de la suite pas encore déposé).
+  function c1EntryLesson(){ return isPlayableLesson(C1_ENTRY_MODULE) ? C1_ENTRY_MODULE : C1_START_LESSON; }
+  // Leçon suivante (dans l'ordre pédagogique) d'un palier B1/B2/C1 ou de B1.0/B2.0/C1.0 : saute les
+  // 39 / 67 réservées et un module d'entrée absent (26 → 52 → 27, 38 → 53 → 40, 51 → 54 → 55, ou
+  // 38 → 40 sans B2.0, 51 → 55 sans C1.0) ; null s'il n'y a pas (encore) de suite (après C1.12, ou
+  // fichier de la suite pas encore déposé — ex. 51 sans lessons-c1.js).
   function nextPlayableLesson(n){
     var r = lessonRank(n);
     if(r < 0) return null;
+    // Espagnol : chapitre suivant présent dans le MÊME bloc (paliers 200..212 ou blocages 301..308),
+    // en sautant un chapitre dont le fichier manquerait ; null après le dernier (X8 → retour à l'appli).
+    if(ES_MODE){
+      for(var j = r + 1; j < LESSON_ORDER.length; j++){
+        var nx = LESSON_ORDER[j];
+        if(Math.floor(nx / 100) !== Math.floor(n / 100)) return null;
+        if(isPlayableLesson(nx)) return nx;
+      }
+      return null;
+    }
     for(var i = r + 1; i < LESSON_ORDER.length; i++){
       var next = LESSON_ORDER[i];
-      if(next === GRAND_CONTROLE_B1_LESSON) continue;
+      if(isReservedLesson(next)) continue;
       if(isEntryModule(next) && !isPlayableLesson(next)) continue;
       return isPlayableLesson(next) ? next : null;
     }
     return null;
   }
   // Niveau CECRL d'un numéro de leçon (puce de niveau, crédits IA…), d'après son rang : A1 jusqu'à
-  // 12, A2 13..26, B1 52 (B1.0) + 27..39, B2 53 (B2.0) + 40..51.
+  // 12, A2 13..26, B1 52 (B1.0) + 27..39, B2 53 (B2.0) + 40..51, C1 54 (C1.0) + 55..67.
   function levelOfLesson(n){
+    if(ES_MODE) return (LESSONS_EXT[n] && LESSONS_EXT[n].level) || "A1";
     var r = lessonRank(n);
-    return r >= lessonRank(B2_ENTRY_MODULE) ? "B2" : (r >= lessonRank(B1_ENTRY_MODULE) ? "B1" : (r >= lessonRank(13) ? "A2" : "A1"));
+    return r >= lessonRank(C1_ENTRY_MODULE) ? "C1" : (r >= lessonRank(B2_ENTRY_MODULE) ? "B2" : (r >= lessonRank(B1_ENTRY_MODULE) ? "B1" : (r >= lessonRank(13) ? "A2" : "A1")));
   }
-  // true pour un palier thématique B1/B2 jouable dans le parcours (B1.0-B1.12, B2.0-B2.12 — hors 39).
-  function isBLesson(n){ var l = levelOfLesson(n); return (l === "B1" || l === "B2") && n !== GRAND_CONTROLE_B1_LESSON; }
-  // Code court d'un palier B1/B2 : 52 → "B1.0", 27 → "B1.1", 38 → "B1.12", 53 → "B2.0", 40 → "B2.1", 51 → "B2.12".
+  // true pour un palier thématique « phase d'immersion » (B1 et au-delà) jouable dans le parcours :
+  // B1.0-B1.12, B2.0-B2.12, C1.0-C1.12 — hors 39 / 67 réservées. Le nom est historique (B1/B2) :
+  // C1 y est inclus volontairement, pour partager libellés, navigation, bilans et crédits IA.
+  function isBLesson(n){ if(ES_MODE) return false; var l = levelOfLesson(n); return (l === "B1" || l === "B2" || l === "C1") && !isReservedLesson(n); }
+  // Code court d'un palier B1/B2/C1 : 52 → "B1.0", 27 → "B1.1", 38 → "B1.12", 53 → "B2.0", 40 → "B2.1",
+  // 51 → "B2.12", 54 → "C1.0", 55 → "C1.1", 66 → "C1.12".
   function bCode(n){
     if(n === B1_ENTRY_MODULE) return "B1.0";
     if(n === B2_ENTRY_MODULE) return "B2.0";
+    if(n === C1_ENTRY_MODULE) return "C1.0";
+    if(n >= C1_START_LESSON) return "C1." + (n - C1_START_LESSON + 1);
     return n >= B2_START_LESSON ? "B2." + (n - B2_START_LESSON + 1) : "B1." + (n - B1_START_LESSON + 1);
   }
   // true pour n'importe lequel des deux grands contrôles (A1 ou A2) : évite de dupliquer
@@ -601,11 +754,11 @@
   var PASS_THRESHOLD_RATIO = 0.6;
   try {
     var savedLesson = parseInt(localStorage.getItem(LESSON_KEY), 10);
-    if(!isNaN(savedLesson) && lessonRank(savedLesson) >= 0){
-      // B1.0 / B2.0 enregistré mais son fichier manque : on se place sur le palier qui le suit
-      // (B1.1 / B2.1), comme si le module d'entrée n'existait pas.
-      if(isEntryModule(savedLesson) && !isPlayableLesson(savedLesson)) savedLesson = savedLesson === B1_ENTRY_MODULE ? B1_START_LESSON : B2_START_LESSON;
-      // Leçon enregistrée mais plus chargeable (fichier de données absent, ou 39 réservée) : on
+    if(!ES_MODE && !isNaN(savedLesson) && lessonRank(savedLesson) >= 0){
+      // B1.0 / B2.0 / C1.0 enregistré mais son fichier manque : on se place sur le palier qui le suit
+      // (B1.1 / B2.1 / C1.1), comme si le module d'entrée n'existait pas.
+      if(isEntryModule(savedLesson) && !isPlayableLesson(savedLesson)) savedLesson = savedLesson === B1_ENTRY_MODULE ? B1_START_LESSON : (savedLesson === B2_ENTRY_MODULE ? B2_START_LESSON : C1_START_LESSON);
+      // Leçon enregistrée mais plus chargeable (fichier de données absent, ou 39 / 67 réservées) : on
       // redescend (dans l'ordre pédagogique) à la dernière leçon disponible avant elle, plutôt que
       // de repartir à zéro. -1..29 étant toujours jouables, la boucle s'arrête au plus tard à 29.
       while(!isPlayableLesson(savedLesson) && lessonRank(savedLesson) > 0) savedLesson = LESSON_ORDER[lessonRank(savedLesson) - 1];
@@ -613,7 +766,8 @@
     }
   } catch(e){}
   // Positionnement (test de niveau) : un apprenant dont le niveau d'entrée en anglais est B1 commence
-  // à B1.0 (52, ou B1.1 = 27 si B1.0 n'est pas déposé), B2 à B2.0 (53, sinon B2.1 = 40) — au lieu des
+  // à B1.0 (52, ou B1.1 = 27 si B1.0 n'est pas déposé), B2 à B2.0 (53, sinon B2.1 = 40), C1 à C1.0
+  // (54, sinon C1.1 = 55 — si un jour le test de niveau propose C1) — au lieu des
   // Fondamentaux. Toutes les comparaisons se font dans l'ordre pédagogique (lessonRank). Appliqué UNE seule fois par résultat de
   // test (repère "the_roots_lesson_entry_en" = niveau|date du test) et seulement si la leçon
   // enregistrée est plus basse : on ne recule jamais quelqu'un, et il reste libre ensuite d'aller
@@ -626,7 +780,7 @@
     var __en0 = __st0 && __st0.settings && __st0.settings.langs &&
       __st0.settings.langs.filter(function(l){ return l.code === "en"; })[0];
     var __entry = __en0 && __en0.leveled ? (__en0.entryLevel || __en0.level) : null;
-    var __target = __entry === "B2" ? b2EntryLesson() : (__entry === "B1" ? b1EntryLesson() : null);
+    var __target = ES_MODE ? null : __entry === "C1" ? c1EntryLesson() : (__entry === "B2" ? b2EntryLesson() : (__entry === "B1" ? b1EntryLesson() : null));
     if(__target != null){
       var __mark = __entry + "|" + (__en0.entryDate || "");
       if(localStorage.getItem(ENTRY_KEY) !== __mark){
@@ -637,18 +791,80 @@
       }
     }
   } catch(e){}
+  // ---------- Mode espagnol : données, point de départ, variante ----------
+  // Une leçon espagnole n'est proposée que si ses champs indispensables sont là (fichier à moitié
+  // écrit → chapitre simplement ignoré, jamais de plantage).
+  function isValidEsLesson(X){
+    return !!(X && X.code && X.VOCAB && X.VOCAB.length && X.MINI_CHECKS && X.ROUNDS && X.ROUNDS.length &&
+      X.QUIZ && X.QUIZ.length && X.PRON_VERBS && X.MEM_WORDS && X.READING && X.GRAMMAR1 && X.GRAMMAR2);
+  }
+  function firstEsLesson(){
+    for(var i = 0; i < LESSON_ORDER.length; i++){ if(LESSON_ORDER[i] >= ES_BLOCAGE_START && isPlayableLesson(LESSON_ORDER[i])) return LESSON_ORDER[i]; }
+    for(var j = 0; j < LESSON_ORDER.length; j++){ if(isPlayableLesson(LESSON_ORDER[j])) return LESSON_ORDER[j]; }
+    return null;
+  }
+  // Code court d'un chapitre espagnol : « X1 » (champ code des données), sinon le numéro.
+  function esCode(n){ var X = LESSONS_EXT[n]; return (X && X.code) || String(n); }
+  // Titre d'un chapitre espagnol (META.vocabTitle) sans le code répété à la fin (« … (X1) »).
+  function esTitle(n){ var X = LESSONS_EXT[n]; return ((X && X.META && X.META.vocabTitle) || "").replace(/\s*\((?:X\d+|A1\.\d+)\)\s*$/, ""); }
+  // true pour le chapitre « Les blocages du francophone » (301..308).
+  function isEsBlocage(n){ return n >= ES_BLOCAGE_START && n <= ES_BLOCAGE_LAST; }
+  // Accès direct à un chapitre : lessons.html?lang=es#lesson=303 (accès LIBRE, sans verrou).
+  var ES_START_HASH = null;
+  if(ES_MODE){
+    try {
+      var __esSaved = parseInt(localStorage.getItem(LESSON_KEY), 10);
+      state.lesson = (!isNaN(__esSaved) && isPlayableLesson(__esSaved)) ? __esSaved : firstEsLesson();
+    } catch(e){ state.lesson = firstEsLesson(); }
+    var __esHash = /(?:^#|&)lesson=(\d+)/.exec(location.hash || "");
+    if(__esHash && isPlayableLesson(parseInt(__esHash[1], 10))){
+      ES_START_HASH = parseInt(__esHash[1], 10);
+      state.lesson = ES_START_HASH;
+      // On retire le « #lesson=… » de l'adresse (un rechargement reprend là où on en est), en gardant
+      // l'accès de test #rootstest s'il était demandé.
+      try { history.replaceState(null, "", location.pathname + location.search + (/rootstest/.test(location.hash) ? "#rootstest" : "")); } catch(e){}
+    }
+    // Variante suivie dans l'appli (Mes cours) : es-co → voix colombienne, sinon Espagne (défaut).
+    try {
+      var __esStore = JSON.parse(localStorage.getItem("the_roots_store_v1") || "null");
+      var __esLang = __esStore && __esStore.settings && __esStore.settings.langs &&
+        __esStore.settings.langs.filter(function(l){ return l.code === "es"; })[0];
+      state.variant = (__esLang && __esLang.selectedVariant === "es-co") ? "co" : "es";
+    } catch(e){ state.variant = "es"; }
+    state.reviewDone = false;
+    // Changement de chapitre sans rechargement (même page, seul le « #lesson=… » change) : on
+    // recharge pour repartir proprement sur le chapitre demandé.
+    window.addEventListener("hashchange", function(){
+      if(/(?:^#|&)lesson=\d+/.test(location.hash || "")) location.reload();
+    });
+  }
   var VOCAB, MINI_CHECKS, ROUNDS, QUIZ, PRON_VERBS, MEM_WORDS, READING, GLOSS, TEXTS, NEXT_PREVIEW, GRAMMAR1, GRAMMAR2, REVIEW, META, LECON_SUBSTEPS, LECTURE_SUBSTEPS, CULTURE_NOTE, MEDIA = null, TRANSV = null;
+  // Entraînement intensif (DRILLS) et texte légendé (ANNOTATED) : champs facultatifs des leçons de
+  // fichier (espagnol surtout, mais aussi une leçon anglaise qui en aurait) — voir renderDrills /
+  // screenAnnotated. null = pas de sous-étape en plus.
+  var DRILLS = null, ANNOTATED = null;
   function lessonLabel(){
+    if(ES_MODE) return (isEsBlocage(state.lesson) ? "Blocage " : "") + esCode(state.lesson);
     if(state.lesson === -1) return "Fondamentaux";
     if(state.lesson === GRAND_CONTROLE_LESSON) return "Grand Contrôle A1";
     if(state.lesson === GRAND_CONTROLE_A2_LESSON) return "Grand Contrôle A2";
     if(state.lesson === GRAND_CONTROLE_FINAL_LESSON) return "Grand contrôle final";
     if(state.lesson === GRAND_CONTROLE_B1_LESSON) return "Grand Contrôle B1";
+    if(state.lesson === GRAND_CONTROLE_C1_LESSON) return "Grand Contrôle C1";
     if(isBLesson(state.lesson)) return bCode(state.lesson);
     if(state.lesson >= 13) return "A2." + (state.lesson - 13);
     return "Leçon " + (state.lesson + 1);
   }
   function loadLessonData(){
+    DRILLS = null; ANNOTATED = null;
+    if(ES_MODE && !isPlayableLesson(state.lesson)){
+      // Aucune leçon espagnole chargée (fichier absent) : données vides, render() affiche un message.
+      VOCAB = []; MINI_CHECKS = []; ROUNDS = []; QUIZ = []; PRON_VERBS = []; MEM_WORDS = []; READING = []; GLOSS = [];
+      GRAMMAR1 = null; GRAMMAR2 = null; REVIEW = null; CULTURE_NOTE = null; NEXT_PREVIEW = "";
+      LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1; META = { vocabTitle:"", lectureTitle:"", bilanTitle:"", pronLabel:"", todayLede:"" };
+      IMG = null; MEDIA = null; TRANSV = null; EXAM = null;
+      return;
+    }
     if(state.lesson === -1){
       VOCAB = VOCAB_F0; MINI_CHECKS = MINI_CHECKS_F0; ROUNDS = ROUNDS_F0; QUIZ = QUIZ_F0;
       PRON_VERBS = PRON_VERBS_F0; MEM_WORDS = MEM_WORDS_F0; READING = READING_F0; GLOSS = GLOSS_F0;
@@ -884,19 +1100,21 @@
         : "Tu as terminé les 3 premiers paliers du niveau B1 de The Roots ! B1.4 (Everyday English) arrive bientôt — en attendant, reviens réviser tes paliers passés, ils restent ouverts.";
       META = { vocabTitle:"De vraies conversations (B1.3)", lectureTitle:"Une rencontre à une soirée", bilanTitle:"Bravo, tu sais maintenant gérer une vraie conversation en anglais !", pronLabel:"Questions indirectes et question tags", todayLede:"réagir, interrompre poliment, demander une précision, montrer ton intérêt et terminer une conversation naturellement — s'appuie sur B1.2 et A2.9 (au téléphone)" };
     // =====================================================================
-    // NIVEAUX B1 (B1.4-B1.12, lesson 30..38) et B2 (B2.1-B2.12, lesson 40..51) — données dans
-    // js/data/lessons-b1.js et js/data/lessons-b2.js (window.LESSONS_EXT[n], mêmes champs que les
+    // NIVEAUX B1 (B1.4-B1.12, lesson 30..38), B2 (B2.1-B2.12, lesson 40..51) et C1 (C1.0-C1.12,
+    // lesson 54..66) — données dans js/data/lessons-b1.js, lessons-b2.js et lessons-c1.js
+    // (window.LESSONS_EXT[n], mêmes champs que les
     // variables B1_1 ci-dessus). Branche générique : ne s'applique qu'aux leçons dont le fichier est
     // chargé (sinon, voir isPlayableLesson : ces leçons ne sont jamais proposées).
     // =====================================================================
-    } else if(LESSONS_EXT[state.lesson] && state.lesson !== GRAND_CONTROLE_B1_LESSON){
+    } else if(LESSONS_EXT[state.lesson] && !isReservedLesson(state.lesson)){
       var X = LESSONS_EXT[state.lesson];
       VOCAB = X.VOCAB; MINI_CHECKS = X.MINI_CHECKS; ROUNDS = X.ROUNDS; QUIZ = X.QUIZ;
       PRON_VERBS = X.PRON_VERBS; MEM_WORDS = X.MEM_WORDS; READING = X.READING; GLOSS = X.GLOSS || [];
       GRAMMAR1 = X.GRAMMAR1; GRAMMAR2 = X.GRAMMAR2; REVIEW = X.REVIEW || null; CULTURE_NOTE = X.CULTURE_NOTE || null;
       LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1;
       NEXT_PREVIEW = X.NEXT_PREVIEW || "";
-      META = X.META || { vocabTitle:bCode(state.lesson), lectureTitle:"Lecture", bilanTitle:"Bien joué !", pronLabel:"", todayLede:"" };
+      META = X.META || { vocabTitle:ES_MODE ? esCode(state.lesson) : bCode(state.lesson), lectureTitle:"Lecture", bilanTitle:"Bien joué !", pronLabel:"", todayLede:"" };
+      DRILLS = validDrills(X.DRILLS); ANNOTATED = validAnnotated(X.ANNOTATED);
     } else {
       // Repli défensif (ne devrait pas arriver, lesson borné aux leçons jouables ailleurs) : évite un plantage
       // si un état invalide est un jour restauré depuis localStorage.
@@ -909,20 +1127,26 @@
     }
     // Rappels intégrés (contrôle validé entre 80 et 92 %) : 2 questions des notions fragiles du
     // niveau précédent glissées dans le contrôle de chaque leçon du niveau suivant.
-    if(!isGrandControle() && QUIZ) QUIZ = withRappels(QUIZ);
-    IMG = (!isGrandControle() && window.LESSON_IMAGES) ? (window.LESSON_IMAGES[state.lesson] || null) : null;
+    if(!isGrandControle() && QUIZ && !ES_MODE) QUIZ = withRappels(QUIZ);
+    IMG = (!isGrandControle() && !ES_MODE && window.LESSON_IMAGES) ? (window.LESSON_IMAGES[state.lesson] || null) : null;
     if(IMG && IMG.scene) LECTURE_SUBSTEPS += 1;
     // « Musique & Ciné » (chanson ou film) : une sous-étape de plus dans la Lecture, entre le texte
     // et « Décris l'image » (voir screenLecture / screenMedia).
     MEDIA = !isGrandControle() ? (LESSONS_MEDIA[state.lesson] || null) : null;
     if(MEDIA) LECTURE_SUBSTEPS += 1;
-    // Encart transversal (paliers B1/B2, js/data/transversal.js) : une sous-étape de plus dans la
-    // Leçon, entre la grammaire 2 et la construction de phrase (voir renderTransversal). Fichier
-    // absent ou palier sans encart → rien ne change (5 sous-étapes comme avant).
-    TRANSV = (!isGrandControle() && isBLesson(state.lesson)) ? validTransversal(LESSONS_TRANSVERSAL[state.lesson]) : null;
+    // Encart transversal (js/data/transversal.js) : une sous-étape de plus dans la Leçon, entre la
+    // grammaire 2 et la construction de phrase (voir renderTransversal). Paliers concernés : A1.1-A1.12
+    // (0..11), A2.0-A2.11 (13..24), B1/B2/C1 (isBLesson) — PAS les Fondamentaux (-1) ni les grands
+    // contrôles (12, 25, 26). Fichier absent ou palier sans encart → rien ne change (5 sous-étapes).
+    TRANSV = (!isGrandControle() && hasTransversalSlot(state.lesson)) ? validTransversal(LESSONS_TRANSVERSAL[state.lesson]) : null;
     if(TRANSV) LECON_SUBSTEPS += 1;
     // Examen de fin de palier (s'il existe pour cette leçon) : remplace le QCM à l'étape Contrôle.
     EXAM = (!isGrandControle() && isValidExam(LESSON_EXAMS[state.lesson])) ? LESSON_EXAMS[state.lesson] : null;
+    // Entraînement intensif : une sous-étape de plus dans la Leçon, juste avant la construction de
+    // phrase (après la grammaire et l'éventuel encart transversal). Texte légendé : une sous-étape de
+    // plus dans la Lecture, après le texte (et après Musique & Ciné s'il y en a).
+    if(DRILLS) LECON_SUBSTEPS += 1;
+    if(ANNOTATED) LECTURE_SUBSTEPS += 1;
   }
 
   // =====================================================================
@@ -952,7 +1176,8 @@
   // Mes cours : lien direct, "Mission du jour" ou "J'ai 5 minutes" sur
   // l'Accueil, qui pointaient jusqu'ici droit vers lessons.html sans
   // vérifier le niveau. Mode créatrice = accès libre pour tester.
-  if(!CREATOR_MODE){
+  // (Mode espagnol : accès libre au chapitre des blocages, même sans test de niveau.)
+  if(!CREATOR_MODE && !ES_MODE){
     try {
       var __store = JSON.parse(localStorage.getItem("the_roots_store_v1") || "null");
       var __enLang = __store && __store.settings && __store.settings.langs &&
@@ -963,7 +1188,8 @@
 
   var K_SKILLS = "the_roots_skills_v1", K_CTRL = "the_roots_controls_v1", K_ERR = "the_roots_errors_v1",
       K_PASS = "the_roots_lesson_passes_v1", K_BOOST = "the_roots_boosts_v1";
-  var LANG = "en";
+  // Langue des données partagées (jauges, réussites…) : "es" en mode espagnol, jamais mélangé à l'anglais.
+  var LANG = ES_MODE ? "es" : "en";
   var DAY_MS = 86400000;
   function lsGet(k, d){ try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch(e){ return d; } }
   function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
@@ -978,10 +1204,21 @@
   // B1.0 (52) et B2.0 (53) en tête de leur niveau (ordre pédagogique).
   var B1_IDS = [52,27,28,29,30,31,32,33,34,35,36,37,38];
   var B2_IDS = [53,40,41,42,43,44,45,46,47,48,49,50,51];
+  // C1.0 (54) puis C1.1 à C1.12 (55..66) — 67 réservé au futur Grand Contrôle C1.
+  var C1_IDS = [54,55,56,57,58,59,60,61,62,63,64,65,66];
   function ctrlLevel(){ return state.lesson === GRAND_CONTROLE_LESSON ? "A1" : (state.lesson === GRAND_CONTROLE_A2_LESSON ? "A2" : "FINAL"); }
   function ctrlLabel(level){ return level === "FINAL" ? "grand contrôle final (A1 + A2)" : "contrôle " + level; }
-  function nextLevelOf(level){ return level === "A1" ? "A2" : "B1"; }
+  // Niveau qui reçoit les renforts / rappels d'un résultat : contrôle A1 → A2 ; contrôle A2 et grand
+  // contrôle final → B1 ; examen de palier (code "B1.4", "B2.3", "C1.2"…) → le niveau du palier
+  // lui-même (renfort/rappel dans les leçons suivantes du MÊME niveau). Avant le 25/09, tout code
+  // autre que "A1" donnait "B1" (un examen B2 rangeait donc ses rappels dans les leçons B1).
+  function nextLevelOf(level){
+    if(level === "A1") return "A2";
+    var m = /^(B1|B2|C1|C2)\./.exec(String(level || ""));
+    return m ? m[1] : "B1";
+  }
   function quizOf(id){
+    if(ES_MODE) return (isPlayableLesson(id) && LESSONS_EXT[id].QUIZ) || null;
     var m = { "-1":QUIZ_F0, 0:QUIZ_L1, 1:QUIZ_L2, 2:QUIZ_L3, 3:QUIZ_L4, 4:QUIZ_L5, 5:QUIZ_L6, 6:QUIZ_L7, 7:QUIZ_L8, 8:QUIZ_L9, 9:QUIZ_L10, 10:QUIZ_L11, 11:QUIZ_L12,
       13:QUIZ_A2_0, 14:QUIZ_A2_1, 15:QUIZ_A2_2, 16:QUIZ_A2_3, 17:QUIZ_A2_4, 18:QUIZ_A2_5, 19:QUIZ_A2_6, 20:QUIZ_A2_7, 21:QUIZ_A2_8, 22:QUIZ_A2_9, 23:QUIZ_A2_10, 24:QUIZ_A2_11,
       27:QUIZ_B1_1, 28:QUIZ_B1_2, 29:QUIZ_B1_3 };
@@ -990,6 +1227,7 @@
     return m[id] || null;
   }
   function roundsOf(id){
+    if(ES_MODE) return (isPlayableLesson(id) && LESSONS_EXT[id].ROUNDS) || null;
     var m = { "-1":ROUNDS_F0, 0:ROUNDS_L1, 1:ROUNDS_L2, 2:ROUNDS_L3, 3:ROUNDS_L4, 4:ROUNDS_L5, 5:ROUNDS_L6, 6:ROUNDS_L7, 7:ROUNDS_L8, 8:ROUNDS_L9, 9:ROUNDS_L10, 10:ROUNDS_L11, 11:ROUNDS_L12,
       13:ROUNDS_A2_0, 14:ROUNDS_A2_1, 15:ROUNDS_A2_2, 16:ROUNDS_A2_3, 17:ROUNDS_A2_4, 18:ROUNDS_A2_5, 19:ROUNDS_A2_6, 20:ROUNDS_A2_7, 21:ROUNDS_A2_8, 22:ROUNDS_A2_9, 23:ROUNDS_A2_10, 24:ROUNDS_A2_11,
       27:ROUNDS_B1_1, 28:ROUNDS_B1_2, 29:ROUNDS_B1_3 };
@@ -1047,6 +1285,8 @@
     s.at = Date.now(); m[skill] = s; all[LANG] = m; lsSet(K_SKILLS, all);
   }
   function recordError(lessonId){
+    // Espagnol : pas encore de missions de récupération (elles rouvriraient les leçons anglaises).
+    if(ES_MODE) return;
     if(lessonId == null || lessonId === GRAND_CONTROLE_LESSON || lessonId === GRAND_CONTROLE_A2_LESSON || lessonId === GRAND_CONTROLE_FINAL_LESSON || lessonId === GRAND_CONTROLE_B1_LESSON) return;
     var all = lsGet(K_ERR, {}), m = all[LANG] || {}, e = m[lessonId] || { count:0, stage:0, due:0 };
     e.count += 1; e.stage = 0; e.due = Date.now(); e.at = Date.now();
@@ -1079,7 +1319,7 @@
   function setBoost(level, data){ var all = lsGet(K_BOOST, {}), m = all[LANG] || {}; m[level] = data; all[LANG] = m; lsSet(K_BOOST, all); }
   var rappelCache = {};
   function withRappels(quiz){
-    // Niveau de la leçon en cours (B1.0/B2.0 compris) ; A2 = paliers 13..24 seulement (pas les contrôles).
+    // Niveau de la leçon en cours (B1.0/B2.0/C1.0 compris) ; A2 = paliers 13..24 seulement (pas les contrôles).
     var lvl = isBLesson(state.lesson) ? levelOfLesson(state.lesson) : (state.lesson >= 13 && state.lesson <= 24) ? "A2" : null;
     var b = lvl && getBoosts()[lvl];
     if(!b || !b.rappel || !b.rappel.length) return quiz;
@@ -1109,15 +1349,23 @@
   var LESSON_TITLES = {};
   function computeLessonTitles(){
     var keep = state.lesson, keepDraw = state.ctrlDraw;
-    A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).filter(isPlayableLesson).forEach(function(i){
+    if(ES_MODE){
+      // « Blocage X1 · Ser ou Estar ? » (code + META.vocabTitle).
+      LESSON_ORDER.filter(isPlayableLesson).forEach(function(i){
+        LESSON_TITLES[i] = (isEsBlocage(i) ? "Blocage " : "") + esCode(i) + (esTitle(i) ? " · " + esTitle(i) : "");
+      });
+      return;
+    }
+    A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).concat(C1_IDS).filter(isPlayableLesson).forEach(function(i){
       state.lesson = i; loadLessonData();
-      var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2|B1|B2)\.\d+\)\s*$/, "");
+      var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2|B1|B2|C1)\.\d+\)\s*$/, "");
       LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (isBLesson(i) ? bCode(i) : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1)))) + (t && i !== -1 ? " · " + t : "");
     });
     state.lesson = keep; state.ctrlDraw = keepDraw;
   }
   function lessonTitle(id){ return LESSON_TITLES[id] || ("Leçon " + id); }
-  function publishTitles(){ lsSet("the_roots_lesson_titles_v1", LESSON_TITLES); }
+  // (Mode espagnol : on ne publie pas — la liste partagée est celle des leçons anglaises.)
+  function publishTitles(){ if(ES_MODE) return; lsSet("the_roots_lesson_titles_v1", LESSON_TITLES); }
 
   // ---------- Évaluation d'un contrôle ----------
   function ctrlEvaluate(){
@@ -1185,9 +1433,10 @@
   // saveControlResult / nextLevelOf). Chaque leçon revue ramène ici (data-return = 1re leçon du niveau).
   function screenRenfortGate(todo, level){
     level = level || "A2";
-    var startId = level === "B1" ? b1EntryLesson() : 13;
+    var startId = level === "C1" ? c1EntryLesson() : (level === "B1" ? b1EntryLesson() : 13);
     var b = getBoosts()[level] || {};
-    var fromTxt = level === "B1"
+    var fromTxt = level === "C1" ? "Ton contrôle du niveau B2 est validé"
+      : level === "B1"
       ? (b.from === "A2" ? "Ton contrôle A2 est validé" : "Ton grand contrôle final est validé")
       : "Ton contrôle A1 est validé";
     postmark.innerHTML = "RENFORT";
@@ -1213,7 +1462,7 @@
   var PRACTICE = null;
   (function(){
     var m = /practice=([^&]+)/.exec(location.hash || "");
-    if(!m) return;
+    if(!m || ES_MODE) return;
     PRACTICE = { mode:decodeURIComponent(m[1]), idx:0, score:0, log:[], built:false };
   })();
   function buildPractice(){
@@ -1223,7 +1472,7 @@
       ids = Object.keys(errs).map(Number).filter(function(id){ return errs[id].count > 0 && errs[id].due <= Date.now(); })
         .sort(function(a, b){ return errs[b].count - errs[a].count; }).slice(0, 2);
     } else if(mode === "mix"){
-      var done = A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).filter(function(id){ return (lessonRank(id) < lessonRank(state.lesson) || (state.lesson === -1 && id === -1)) && quizOf(id); });
+      var done = A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).concat(C1_IDS).filter(function(id){ return (lessonRank(id) < lessonRank(state.lesson) || (state.lesson === -1 && id === -1)) && quizOf(id); });
       ids = shuffleArr(done.length ? done : [-1, 0]).slice(0, 3);
     } else {
       ids = mode.split(",").map(function(x){ return parseInt(x, 10); }).filter(function(x){ return !isNaN(x) && quizOf(x); });
@@ -1259,7 +1508,7 @@
       b.className = "opt"; b.textContent = opt;
       b.addEventListener("click", function(){
         if(resolved || b.disabled) return;
-        if(looksEnglish(opt)) speak(opt);
+        if(looksTarget(opt)) speak(opt);
         attempts++;
         if(i === Q.correct){
           markOption(b, "correct"); resolved = true;
@@ -1398,7 +1647,7 @@
       try {
         window.speechSynthesis && window.speechSynthesis.cancel();
         var rec = new SpeechRec();
-        rec.lang = state.variant === "us" ? "en-US" : "en-GB";
+        rec.lang = targetLang();
         rec.interimResults = false; rec.maxAlternatives = 1;
         mic.textContent = "🎙️ Je t'écoute…";
         rec.onresult = function(e){
@@ -3455,9 +3704,46 @@
       return (data && data.settings && data.settings.preferredVoiceURI) || null;
     }catch(e){ return null; }
   }
+  // Langue de la voix / du micro : anglais britannique ou américain (selon la version choisie), ou en
+  // mode espagnol es-ES (Espagne, défaut) / es-CO (Colombie).
+  function targetLang(){
+    if(ES_MODE) return state.variant === "co" ? "es-CO" : "es-ES";
+    return state.variant === "us" ? "en-US" : "en-GB";
+  }
+  // Mode espagnol : voix à essayer, dans l'ordre. Espagne → es-ES ; Colombie → es-CO, puis les
+  // accents d'Amérique les plus proches (es-MX, es-US, es-419), puis es-ES ; en dernier recours
+  // n'importe quelle voix espagnole. La voix choisie dans Paramètres n'est reprise que si elle est
+  // espagnole (c'est en général une voix anglaise).
+  var ES_VOICE_ORDER = { es:["es-ES"], co:["es-CO","es-MX","es-US","es-419","es-ES"] };
+  function pickEsVoice(){
+    var norm = function(l){ return String(l || "").replace("_", "-"); };
+    var key = preferredVoiceKey();
+    if(key){
+      var parts = key.split("|");
+      var pv = cachedVoices.find(function(v){ return v.name === parts[0] && v.lang === parts[1]; });
+      if(pv && norm(pv.lang).toLowerCase().indexOf("es") === 0) return pv;
+    }
+    var order = ES_VOICE_ORDER[state.variant === "co" ? "co" : "es"];
+    for(var i = 0; i < order.length; i++){
+      var want = order[i].toLowerCase();
+      var v = cachedVoices.find(function(x){ return norm(x.lang).toLowerCase() === want; }) ||
+              cachedVoices.find(function(x){ return norm(x.lang).toLowerCase().indexOf(want) === 0; });
+      if(v) return v;
+    }
+    return cachedVoices.find(function(x){ return norm(x.lang).toLowerCase().indexOf("es") === 0; }) || null;
+  }
   // Phrase prête à être lue (voix + accent), utilisée par speak() et par l'écoute des examens.
   function makeUtterance(text){
       var u = new SpeechSynthesisUtterance(text);
+      if(ES_MODE){
+        // Espagnol : voix de la variante (voir pickEsVoice) ; sans voix trouvée, on demande quand
+        // même la bonne langue au téléphone.
+        var esVoice = pickEsVoice();
+        u.lang = targetLang();
+        if(esVoice){ u.voice = esVoice; u.lang = String(esVoice.lang).replace("_", "-"); }
+        u.rate = 0.92;
+        return u;
+      }
       // Bug corrigé : cette fonction (utilisée pour QUASI tout l'audio de la
       // leçon — vocabulaire, quiz, exemples...) forçait toujours l'accent
       // britannique "en-GB", même quand l'apprenant suit le cours en anglais
@@ -3511,6 +3797,357 @@
     return !!ENGLISH_OPTION_WORDS[String(s).trim().toLowerCase()];
   }
 
+  // « Est-ce de la langue cible ? » — décide si une option de QCM est lue à voix haute. En anglais :
+  // liste blanche ci-dessus (inchangée). En espagnol : heuristique sur les mots des leçons chargées
+  // (voir looksSpanish) — une option en français n'est jamais lue avec la voix espagnole.
+  function looksTarget(s){ return ES_MODE ? looksSpanish(s) : looksEnglish(s); }
+  var ES_WORDS = null, FR_WORDS = null;
+  var FR_COMMON = ("le la les un une des de du d l et ou est je j tu il elle on nous vous ils elles suis es sommes êtes sont ai as a avons avez ont " +
+    "pas ne n que qu qui quoi en à au aux pour par sur sous dans avec sans mon ma mes ton ta tes son sa ses notre nos votre vos leur leurs ce c cet cette ces " +
+    "ça cela me m te t se s lui y oui non très bien aussi mais donc car comme plus moins tout tous toute toutes être avoir faire aller dire veut dit " +
+    "quand où comment pourquoi parce il y a c'est ici là voilà aujourd hier demain matin soir bonjour merci").split(" ");
+  function langWords(s){ return String(s == null ? "" : s).toLowerCase().replace(/<[^>]*>/g, " ").match(/[a-zà-ÿ]+/g) || []; }
+  function buildEsWordSets(){
+    ES_WORDS = {}; FR_WORDS = {};
+    var addEs = function(t){ langWords(t).forEach(function(w){ ES_WORDS[w] = true; }); };
+    var addFr = function(t){ langWords(t).forEach(function(w){ FR_WORDS[w] = true; }); };
+    FR_COMMON.forEach(addFr);
+    Object.keys(LESSONS_EXT).forEach(function(n){
+      var X = LESSONS_EXT[n]; if(!X) return;
+      (X.VOCAB || []).forEach(function(v){ addEs(v.en); addFr(v.fr); });
+      (X.PRON_VERBS || []).forEach(function(v){ addEs(v.en); addFr(v.fr); });
+      (X.GLOSS || []).forEach(function(v){ addEs(v.en); addFr(v.fr); });
+      (X.READING || []).forEach(addEs);
+      (X.ROUNDS || []).forEach(function(r){ addEs(r.answer); addFr(r.fr); });
+      [X.GRAMMAR1, X.GRAMMAR2].forEach(function(G){ if(G && G.dialogue) G.dialogue.forEach(function(d){ addEs(d.en); addFr(d.fr); }); });
+      if(X.GRAMMAR1 && X.GRAMMAR1.conj) X.GRAMMAR1.conj.forEach(function(r){ addEs(r[0]); addEs(r[1]); });
+      (X.QUIZ || []).forEach(function(q){ if(q.audio) addEs(q.audio); });
+      (X.DRILLS || []).forEach(function(d){ (d.answers || []).forEach(addEs); });
+      if(X.ANNOTATED && X.ANNOTATED.sentences) X.ANNOTATED.sentences.forEach(function(s2){ addFr(s2.fr); (s2.tokens || []).forEach(function(t){ addEs(t.w); addFr(t.fr); }); });
+    });
+  }
+  function looksSpanish(s){
+    s = String(s == null ? "" : s).trim();
+    if(!s) return false;
+    if(/[¿¡ñ]/i.test(s)) return true;                       // signes propres à l'espagnol
+    if(/[àâèêëîïôûùçœ]/i.test(s)) return false;              // accents propres au français
+    if(/[áíóú]/i.test(s)) return true;                       // accents aigus sur a/i/o/u : espagnol
+    if(!ES_WORDS) buildEsWordSets();
+    var w = langWords(s);
+    if(!w.length) return false;
+    // Au moins un mot espagnol déjà vu qui n'existe pas en français, et aucun mot seulement français
+    // (les mots inconnus des deux listes, ex. une forme conjuguée jamais vue, sont neutres).
+    var esOnly = w.some(function(x){ return ES_WORDS[x] && !FR_WORDS[x]; });
+    var frOnly = w.some(function(x){ return FR_WORDS[x] && !ES_WORDS[x]; });
+    return esOnly && !frOnly;
+  }
+
+  // ---------- Entraînement intensif (DRILLS) — 26/09 ----------
+  // Données : DRILLS = [ { type:"fill", text:"Yo ___ (levantarse)…", answers:["me levanto"], why:"…" },
+  //                      { type:"choice", q:"…", opts:[…], correct:0, why:"…" } ] (voir .staging/es/BRIEF-ES.md).
+  // Un exercice à la fois, compteur « 7/30 », score final et « refaire les ratés ». Entraînement :
+  // rien n'est compté dans la note du contrôle ni dans les jauges.
+  // (Résultat mis en cache par tableau source : le même objet est rendu à chaque render(), ce qui
+  // permet à l'écran de garder son avancement.)
+  var drillsCache = { raw:null, ok:null };
+  function validDrills(D){
+    if(!Array.isArray(D)) return null;
+    if(drillsCache.raw === D) return drillsCache.ok;
+    drillsCache.raw = D;
+    var ok = D.filter(function(d){
+      if(!d) return false;
+      if(d.type === "fill") return typeof d.text === "string" && d.text.indexOf("___") >= 0 && Array.isArray(d.answers) && d.answers.length > 0;
+      if(d.type === "choice") return d.q && Array.isArray(d.opts) && d.opts.length > 1 && d.correct >= 0 && d.correct < d.opts.length;
+      return false;
+    });
+    drillsCache.ok = ok.length ? ok : null;
+    return drillsCache.ok;
+  }
+  var FOLD_MAP = { "á":"a","à":"a","â":"a","ä":"a","é":"e","è":"e","ê":"e","ë":"e","í":"i","ì":"i","î":"i","ï":"i",
+    "ó":"o","ò":"o","ô":"o","ö":"o","ú":"u","ù":"u","û":"u","ü":"u","ñ":"n","ç":"c" };
+  // Sans les accents (á → a, ñ → n, ü → u…), sur un texte déjà en minuscules.
+  function drillFold(s){ return String(s).replace(/[áàâäéèêëíìîïóòôöúùûüñç]/g, function(c){ return FOLD_MAP[c]; }); }
+  // Comparaison souple : casse, espaces, apostrophes, ¿ ¡ et ponctuation de début / fin ignorés.
+  function drillNorm(s){
+    return String(s == null ? "" : s).toLowerCase()
+      .replace(/[’‘`´]/g, "'")
+      .replace(/[¿¡]/g, " ")
+      .replace(/\s+/g, " ").trim()
+      .replace(/^["«“\s]+/, "")
+      .replace(/[\s.!?…,;:"»”]+$/, "")
+      .replace(/\s+([,;:])/g, "$1");
+  }
+  // "ok" (juste), "accent" (juste en ignorant les accents) ou "ko".
+  function drillCheck(input, answers){
+    var n = drillNorm(input);
+    if(!n) return "ko";
+    var list = answers.map(drillNorm);
+    if(list.indexOf(n) >= 0) return "ok";
+    var f = drillFold(n);
+    return list.some(function(a){ return drillFold(a) === f; }) ? "accent" : "ko";
+  }
+  // Phrase complète à écouter : trou rempli, indications entre parenthèses retirées, et pour une
+  // consigne « Traduis « … » → ___ », seulement la partie après la flèche.
+  function drillSentence(D){
+    var t = D.text.replace("___", D.answers[0]);
+    if(t.indexOf("→") >= 0) t = t.slice(t.lastIndexOf("→") + 1);
+    return t.replace(/\s*\([^)]*\)/g, "").replace(/\s+/g, " ").replace(/\s+([.,!?;:])/g, "$1").trim();
+  }
+  function drillEsc(s){ return escAttr(s).replace(/>/g, "&gt;"); }
+  function drillsSubstep(){ return 4 + (TRANSV ? 1 : 0); }
+  var drillState = null;
+  // Nouvelle série : tous les exercices (retry = false), ou seulement les ratés (retry = true, on garde
+  // le score du premier passage).
+  function drillReset(order, retry){
+    var prev = retry ? drillState : null;
+    drillState = { lesson:state.lesson, src:DRILLS, order:order, pos:0, round:prev ? prev.round + 1 : 1,
+      first:prev ? prev.first : {}, last:prev ? prev.last : {}, answered:null, done:false };
+  }
+  var DRILL_ACCENTS = ["á","é","í","ó","ú","ñ","ü","¿","¡"];
+  function renderDrills(){
+    if(!drillState || drillState.src !== DRILLS || drillState.lesson !== state.lesson) drillReset(DRILLS.map(function(_, i){ return i; }), false);
+    var S = drillState;
+    backBtn.style.visibility = "visible";
+    postmark.innerHTML = "ENTRAÎ-<br>NEMENT";
+    hint.textContent = "";
+    var eyebrow = '<div class="eyebrow">'+lessonLabel()+' · Entraînement intensif · '+(drillsSubstep()+1)+'/'+LECON_SUBSTEPS+'</div>';
+    if(S.done) return renderDrillsEnd(eyebrow);
+    nextBtn.style.display = "none";
+    var idx = S.order[S.pos], D = DRILLS[idx], total = S.order.length;
+    var head = eyebrow +
+      '<div class="drill-top"><span class="drill-count" id="drillCount">'+(S.round > 1 ? "Ratés · " : "")+(S.pos+1)+'/'+total+'</span>' +
+        '<span class="q-cat '+(D.type === "fill" ? 'ecrit">✍️ À taper' : 'oral">☝️ À choisir')+'</span></div>' +
+      '<div class="drill-bar" aria-hidden="true"><div style="width:'+Math.round(S.pos / total * 100)+'%"></div></div>';
+    if(D.type === "fill"){
+      screen.innerHTML = head + '<div class="drill-card">' +
+        '<h2 class="screen-title">Complète</h2>' +
+        '<div class="drill-text">'+drillEsc(D.text).replace("___", '<span class="drill-blank" aria-label="trou à compléter">&nbsp;</span>')+'</div>' +
+        '<input class="drill-input" id="drillInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="Ta réponse" placeholder="Ta réponse">' +
+        '<div class="drill-accents" role="group" aria-label="Lettres espagnoles">' + DRILL_ACCENTS.map(function(c){ return '<button type="button" class="drill-acc" data-ch="'+c+'" aria-label="Insérer '+c+'">'+c+'</button>'; }).join("") + '</div>' +
+        '<div class="drill-actions"><button type="button" class="btn btn-primary" id="drillValidate">Valider</button></div>' +
+        '<div id="drillFb"></div></div>';
+      var input = document.getElementById("drillInput");
+      Array.prototype.forEach.call(screen.querySelectorAll(".drill-acc"), function(b){
+        var insert = function(){
+          if(input.disabled) return;
+          var ch = b.getAttribute("data-ch"), a = input.selectionStart, z = input.selectionEnd;
+          if(a == null){ a = z = input.value.length; }
+          input.value = input.value.slice(0, a) + ch + input.value.slice(z);
+          try { input.focus(); input.setSelectionRange(a + ch.length, a + ch.length); } catch(e){}
+        };
+        // pointerdown + preventDefault : le champ garde le focus (le clavier de l'iPhone reste ouvert).
+        b.addEventListener("pointerdown", function(e){ e.preventDefault(); insert(); });
+        b.addEventListener("click", function(e){ if(e.detail === 0) insert(); }); // clavier (Entrée / Espace)
+      });
+      var validate = function(){
+        if(S.answered) return;
+        var res = drillCheck(input.value, D.answers);
+        S.answered = res;
+        var ok = res !== "ko";
+        if(S.round === 1) S.first[idx] = ok;
+        S.last[idx] = ok;
+        input.disabled = true;
+        input.classList.add(res === "ok" ? "ok" : (res === "accent" ? "warn" : "ko"));
+        var good = drillEsc(D.answers[0]);
+        document.getElementById("drillFb").innerHTML =
+          '<div class="drill-fb '+(res === "ok" ? "ok" : (res === "accent" ? "warn" : "ko"))+'" role="status">' +
+            '<div class="drill-fb-head">'+(res === "ok" ? "✓ Correct !" : (res === "accent" ? "✓ Juste ! Attention aux accents : <b>"+good+"</b>" : "✕ La bonne réponse : <b>"+good+"</b>"))+'</div>' +
+            (D.why ? '<div class="drill-fb-why">💡 '+tvHtml(D.why)+'</div>' : "") +
+            '<button type="button" class="drill-say" data-say="'+escAttr(drillSentence(D))+'">🔊 Écouter la phrase</button>' +
+          '</div>';
+        var v = document.getElementById("drillValidate");
+        v.textContent = S.pos < total - 1 ? "Suivant" : "Voir mon score";
+        v.focus();
+      };
+      document.getElementById("drillValidate").addEventListener("click", function(){ if(S.answered) drillNext(); else validate(); });
+      input.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); if(!S.answered) validate(); } });
+      try { input.focus({ preventScroll:true }); } catch(e){}
+    } else {
+      screen.innerHTML = head + '<div class="drill-card">' +
+        '<div class="drill-text" style="margin-top:0">'+tvHtml(D.q)+'</div>' +
+        '<div class="options" id="drillOpts"></div>' +
+        '<div id="drillFb"></div></div>';
+      var opts = document.getElementById("drillOpts");
+      D.opts.forEach(function(opt, oi){
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "opt"; b.textContent = opt;
+        b.addEventListener("click", function(){
+          if(S.answered) return;
+          if(looksTarget(opt)) speak(opt);
+          var ok = oi === D.correct;
+          S.answered = ok ? "ok" : "ko";
+          if(S.round === 1) S.first[idx] = ok;
+          S.last[idx] = ok;
+          Array.prototype.forEach.call(opts.children, function(o, k){
+            o.disabled = true;
+            if(k === D.correct) markOption(o, "correct"); else if(k === oi) markOption(o, "incorrect");
+          });
+          document.getElementById("drillFb").innerHTML =
+            '<div class="drill-fb '+(ok ? "ok" : "ko")+'" role="status"><div class="drill-fb-head">'+(ok ? "✓ Bien vu !" : "✕ La bonne réponse : <b>"+drillEsc(D.opts[D.correct])+"</b>")+'</div>' +
+            (D.why ? '<div class="drill-fb-why">💡 '+tvHtml(D.why)+'</div>' : "") + '</div>' +
+            '<div class="drill-actions"><button type="button" class="btn btn-primary" id="drillValidate">'+(S.pos < total - 1 ? "Suivant" : "Voir mon score")+'</button></div>';
+          document.getElementById("drillValidate").addEventListener("click", drillNext);
+        });
+        opts.appendChild(b);
+      });
+    }
+  }
+  function drillNext(){
+    var S = drillState;
+    S.answered = null;
+    if(S.pos < S.order.length - 1) S.pos++; else S.done = true;
+    render();
+    window.scrollTo(0, 0);
+  }
+  function renderDrillsEnd(eyebrow){
+    var S = drillState, n = DRILLS.length, firstOk = 0, missed = [];
+    DRILLS.forEach(function(_, i){ if(S.first[i]) firstOk++; if(!S.last[i]) missed.push(i); });
+    var retryHtml = "";
+    if(S.round > 1){
+      var redone = S.order.filter(function(i){ return S.last[i]; }).length;
+      retryHtml = '<p class="lede"><b>Exercices ratés refaits :</b> '+redone+'/'+S.order.length+' justes cette fois.</p>';
+    }
+    screen.innerHTML = eyebrow +
+      '<h2 class="screen-title">'+(missed.length ? "Entraînement terminé" : "Entraînement terminé 🎉")+'</h2>' +
+      '<div class="drill-score">'+firstOk+'<small> / '+n+' du premier coup</small></div>' +
+      retryHtml +
+      (missed.length
+        ? '<p class="lede">Encore '+missed.length+' exercice'+(missed.length > 1 ? "s" : "")+' à retravailler. Tu peux les refaire tout de suite (c\'est de l\'entraînement : rien ne compte dans ta note).</p>'
+        : '<p class="lede">Tout est juste. Rien ne compte dans ta note : c\'était pour t\'entraîner.</p>') +
+      '<div class="drill-actions">' +
+        (missed.length ? '<button type="button" class="btn btn-primary" id="drillRetry">↺ Refaire les '+missed.length+' ratés</button>' : "") +
+        '<button type="button" class="btn btn-ghost" id="drillRestart">Tout recommencer</button>' +
+      '</div>';
+    var r = document.getElementById("drillRetry");
+    if(r) r.addEventListener("click", function(){ drillReset(missed, true); render(); window.scrollTo(0, 0); });
+    document.getElementById("drillRestart").addEventListener("click", function(){ drillState = null; render(); window.scrollTo(0, 0); });
+    nextBtn.style.display = "";
+    nextBtn.textContent = "Construire une phrase";
+  }
+
+  // ---------- Texte légendé (ANNOTATED) — 26/09 ----------
+  // Données : ANNOTATED = { title, intro, sentences:[ { fr, es?, tokens:[ { w, tag, info?, fr, tip? } ] } ],
+  // questions:[ { q, opts, correct, why } ] }. Chaque mot est une pastille colorée selon sa nature ;
+  // le toucher ouvre un encart sous la phrase (nature, genre/nombre ou infinitif·temps·personne,
+  // traduction, astuce). Questions = entraînement non noté.
+  var annCache = { raw:null, ok:null };
+  function validAnnotated(A){
+    if(!A || !Array.isArray(A.sentences)) return null;
+    if(annCache.raw === A) return annCache.ok;
+    annCache.raw = A;
+    var sents = A.sentences.filter(function(s2){ return s2 && Array.isArray(s2.tokens) && s2.tokens.some(function(t){ return t && t.w; }); });
+    if(!sents.length){ annCache.ok = null; return null; }
+    var qs = (A.questions || []).filter(function(q){ return q && q.q && Array.isArray(q.opts) && q.opts.length > 1 && q.correct >= 0 && q.correct < q.opts.length; });
+    annCache.ok = { title:A.title || "Texte légendé", intro:A.intro || "", sentences:sents, questions:qs };
+    return annCache.ok;
+  }
+  function annotatedSubstep(){ return 1 + (MEDIA ? 1 : 0); }
+  // Famille de couleur d'une nature de mot (les pronoms ensemble, les verbes ensemble…).
+  var TAG_FAMILY = { "nom":"nom", "nom propre":"nom", "article":"det", "déterminant":"det", "adjectif":"adj",
+    "pronom":"pro", "pronom sujet":"pro", "pronom réfléchi":"pro", "pronom cod":"pro", "pronom coi":"pro", "pronom tonique":"pro", "pronom relatif":"pro",
+    "verbe":"verbe", "verbe pronominal":"verbe", "auxiliaire":"verbe", "préposition":"lien", "conjonction":"lien", "adverbe":"adv", "interjection":"autre" };
+  var TAG_LEGEND = [["nom","Nom"],["det","Article · déterminant"],["adj","Adjectif"],["pro","Pronom"],["verbe","Verbe"],["adv","Adverbe"],["lien","Préposition · conjonction"],["autre","Autre"]];
+  function tagFamily(tag){ var t = String(tag || "").toLowerCase().trim(); return TAG_FAMILY[t] || (t.indexOf("pronom") === 0 ? "pro" : (t.indexOf("verbe") === 0 ? "verbe" : "autre")); }
+  function tagClasses(tag){ return "tg-" + tagFamily(tag) + (String(tag || "").toLowerCase().trim() === "verbe pronominal" ? " pronominal" : ""); }
+  function annSentenceText(s2){
+    if(s2.es) return s2.es;
+    var t = s2.tokens.map(function(x){ return x.w; }).join(" ");
+    return t.charAt(0).toUpperCase() + t.slice(1) + (/[.!?]$/.test(t) ? "" : ".");
+  }
+  var annState = null;
+  function screenAnnotated(){
+    var A = ANNOTATED;
+    if(!annState || annState.src !== A) annState = { src:A, open:{}, tr:{}, answers:{} };
+    backBtn.style.visibility = "visible";
+    postmark.innerHTML = "TEXTE<br>LÉGENDÉ";
+    nextBtn.textContent = (IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle";
+    hint.textContent = "Touche un mot pour voir ce que c'est, 🔊 pour écouter la phrase.";
+    var fams = {};
+    A.sentences.forEach(function(s2){ s2.tokens.forEach(function(t){ fams[tagFamily(t.tag)] = true; }); });
+    var legend = '<div class="ann-legend" aria-label="Légende des couleurs">' + TAG_LEGEND.filter(function(l){ return fams[l[0]]; }).map(function(l){
+      return '<span class="ann-chip tg-'+l[0]+'">'+l[1]+'</span>';
+    }).join("") + (A.sentences.some(function(s2){ return s2.tokens.some(function(t){ return String(t.tag).toLowerCase() === "verbe pronominal"; }); }) ? '<span class="ann-chip tg-verbe pronominal">Verbe pronominal</span>' : "") + '</div>';
+    screen.innerHTML =
+      '<div class="eyebrow">'+lessonLabel()+' · Lecture · Texte légendé</div>' +
+      '<h2 class="screen-title">📝 '+drillEsc(A.title)+'</h2>' +
+      (A.intro ? '<p class="lede">'+tvHtml(A.intro)+'</p>' : "") +
+      legend +
+      A.sentences.map(function(s2, si){
+        return '<div class="ann-sent" data-si="'+si+'">' +
+          '<div class="ann-row"><button type="button" class="ann-say" data-say="'+escAttr(annSentenceText(s2))+'" aria-label="Écouter la phrase">🔊</button>' +
+          '<div class="ann-words">' + s2.tokens.map(function(t, ti){
+            return '<button type="button" class="ann-w '+tagClasses(t.tag)+'" data-si="'+si+'" data-ti="'+ti+'" aria-expanded="false">'+drillEsc(t.w)+'</button>';
+          }).join("") + '</div></div>' +
+          '<div class="ann-slot" id="annSlot'+si+'"></div>' +
+          (s2.fr ? '<button type="button" class="ann-trbtn" data-tr="'+si+'" aria-expanded="false">Voir la traduction</button><div class="ann-tr" id="annTr'+si+'" hidden>'+drillEsc(s2.fr)+'</div>' : "") +
+        '</div>';
+      }).join("") +
+      (A.questions.length ? '<div class="sub-eyebrow">✏️ As-tu bien compris ? (non noté)</div><div id="annQs" class="ann-qs"></div>' : "");
+    function panelHtml(t){
+      return '<div class="ann-panel '+tagClasses(t.tag)+'" role="region" aria-label="'+escAttr(t.w)+'">' +
+        '<div class="ann-panel-head"><span class="ann-panel-w">'+drillEsc(t.w)+'</span><span class="ann-chip '+tagClasses(t.tag)+'">'+drillEsc(t.tag)+'</span>' +
+        '<button type="button" class="drill-say" data-say="'+escAttr(t.w)+'" aria-label="Écouter le mot">🔊</button></div>' +
+        (t.info ? '<div class="ann-panel-info">'+drillEsc(t.info)+'</div>' : "") +
+        (t.fr ? '<div class="ann-panel-fr">= '+drillEsc(t.fr)+'</div>' : "") +
+        (t.tip ? '<div class="ann-panel-tip">💡 '+tvHtml(t.tip)+'</div>' : "") +
+      '</div>';
+    }
+    function showPanel(si){
+      var slot = document.getElementById("annSlot" + si), ti = annState.open[si];
+      Array.prototype.forEach.call(screen.querySelectorAll('.ann-w[data-si="'+si+'"]'), function(b){
+        var on = ti != null && +b.getAttribute("data-ti") === ti;
+        b.classList.toggle("active", on); b.setAttribute("aria-expanded", on ? "true" : "false");
+      });
+      slot.innerHTML = ti == null ? "" : panelHtml(A.sentences[si].tokens[ti]);
+    }
+    Array.prototype.forEach.call(screen.querySelectorAll(".ann-w"), function(b){
+      b.addEventListener("click", function(){
+        var si = +b.getAttribute("data-si"), ti = +b.getAttribute("data-ti");
+        annState.open[si] = annState.open[si] === ti ? null : ti;
+        showPanel(si);
+      });
+    });
+    Array.prototype.forEach.call(screen.querySelectorAll(".ann-trbtn"), function(b){
+      var si = +b.getAttribute("data-tr");
+      var apply = function(){
+        var on = !!annState.tr[si];
+        document.getElementById("annTr" + si).hidden = !on;
+        b.textContent = on ? "Masquer la traduction" : "Voir la traduction";
+        b.setAttribute("aria-expanded", on ? "true" : "false");
+      };
+      b.addEventListener("click", function(){ annState.tr[si] = !annState.tr[si]; apply(); });
+      apply();
+    });
+    A.sentences.forEach(function(_, si){ if(annState.open[si] != null) showPanel(si); });
+    var wrap = document.getElementById("annQs");
+    if(wrap) A.questions.forEach(function(mc, qi){
+      var box = document.createElement("div");
+      box.className = "mini-check";
+      box.innerHTML = '<div class="mini-q">'+tvHtml(mc.q)+'</div><div class="mini-opts"></div><div class="mini-fb"></div>';
+      var opts = box.querySelector(".mini-opts"), fb = box.querySelector(".mini-fb");
+      function reveal(chosen){
+        Array.prototype.forEach.call(opts.children, function(o, oi){
+          o.disabled = true;
+          if(oi === mc.correct) markOption(o, "correct"); else if(oi === chosen) markOption(o, "incorrect");
+        });
+        fb.innerHTML = (chosen === mc.correct ? "✓ Bien vu ! " : "✕ ") + tvHtml(mc.why || "");
+      }
+      mc.opts.forEach(function(opt, oi){
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "mini-opt"; b.textContent = opt;
+        b.addEventListener("click", function(){
+          if(annState.answers[qi] != null) return;
+          annState.answers[qi] = oi;
+          if(looksTarget(opt)) speak(opt);
+          reveal(oi);
+        });
+        opts.appendChild(b);
+      });
+      wrap.appendChild(box);
+      if(annState.answers[qi] != null) reveal(annState.answers[qi]);
+    });
+  }
+
   // Marks an answer button as correct/incorrect with both a color class AND an
   // explicit ✓/✕ icon, so the feedback never relies on color alone.
   function markOption(btn, cls){
@@ -3544,6 +4181,10 @@
   function updateRouteChip(){
     var chip = document.getElementById("routeChip");
     if(!chip) return;
+    if(ES_MODE){
+      chip.innerHTML = '<span class="flags">🇫🇷→'+(state.variant === "co" ? "🇨🇴" : "🇪🇸")+'</span><span>Espagnol · <b>'+(isEsBlocage(state.lesson) ? "A1/A2" : levelOfLesson(state.lesson))+'</b></span>';
+      return;
+    }
     if(!state.variant){
       chip.innerHTML = '<span class="flags">🇫🇷→🌍</span><span>Choisis ta version</span>';
     } else if(state.variant === "us"){
@@ -3563,8 +4204,109 @@
     });
   }
 
+  // ---------- Mode espagnol : accueil, bilan, écran « pas encore de leçons » ----------
+  function esVariantLabel(){ return state.variant === "co" ? "espagnol de Colombie" : "espagnol d'Espagne"; }
+  function esPassed(){ return (lsGet(K_PASS, {})[LANG]) || {}; }
+  // Titre court d'un chapitre pour les boutons : « X2 · Les verbes pronominaux ».
+  function esShortTitle(n){ return esCode(n) + (esTitle(n) ? " · " + esTitle(n) : ""); }
+  function esGoApp(){
+    try { sessionStorage.setItem("the_roots_last_tab", "mes-cours"); } catch(err){}
+    window.location.href = "index.html";
+  }
+  function screenAccueilEs(){
+    postmark.innerHTML = "ROOTS<br>" + esCode(state.lesson);
+    backBtn.style.visibility = "hidden";
+    if(!state.reviewDone && REVIEW && REVIEW.length){
+      renderReviewBatch();
+      return;
+    }
+    var blocage = isEsBlocage(state.lesson);
+    var passed = esPassed();
+    var chapters = LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && Math.floor(n / 100) === Math.floor(state.lesson / 100); });
+    var navHtml = chapters.length > 1
+      ? '<div class="sub-eyebrow">Les chapitres (accès libre)</div><div class="mini-opts" id="esChapters">' + chapters.map(function(n){
+          return '<button type="button" class="mini-opt'+(n === state.lesson ? " correct" : "")+'" data-es-lesson="'+n+'"'+(n === state.lesson ? ' aria-current="true"' : "")+'>'+(passed[n] ? "✓ " : "")+esCode(n)+'</button>';
+        }).join("") + '</div>'
+      : "";
+    screen.innerHTML =
+      '<div class="eyebrow">Ouverture · '+lessonLabel()+' · '+esVariantLabel()+'</div>' +
+      '<h2 class="screen-title">'+(esTitle(state.lesson) ? drillEsc(esTitle(state.lesson)) : lessonLabel())+'</h2>' +
+      (blocage
+        ? '<p class="lede">Chapitre <b>« Les blocages du francophone »</b> : les points où l\'on « bugue » en espagnol, expliqués simplement — le pourquoi avant la règle, beaucoup d\'exercices et de prononciation. Même trajet à chaque fois : leçon (avec un entraînement intensif), prononciation, jeu, lecture (avec un texte légendé mot par mot), contrôle, bilan.</p>'
+        : '<p class="lede">Même trajet à chaque fois : leçon, prononciation, jeu, lecture, contrôle, bilan.</p>') +
+      (META.todayLede ? '<p class="lede"><b>Aujourd\'hui —</b> '+META.todayLede+'.</p>' : "") +
+      navHtml;
+    nextBtn.style.display = "";
+    nextBtn.textContent = "Commencer le chapitre";
+    hint.textContent = "";
+    Array.prototype.forEach.call(screen.querySelectorAll("[data-es-lesson]"), function(b){
+      b.addEventListener("click", function(){
+        var n = parseInt(b.getAttribute("data-es-lesson"), 10);
+        if(n === state.lesson || !isPlayableLesson(n)) return;
+        state.lesson = n; state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
+        memState = null; sbRound = 0; vocabBlockIdx = 0; state.reviewDone = false; state.reviewLog = [];
+        render(); window.scrollTo(0, 0);
+      });
+    });
+  }
+  function screenEsEmpty(){
+    itinerary.hidden = true;
+    postmark.innerHTML = "THE ROOTS<br>ESPAGNOL";
+    backBtn.style.visibility = "hidden";
+    screen.innerHTML =
+      '<div class="eyebrow">Espagnol</div>' +
+      '<h2 class="screen-title">Les leçons d\'espagnol arrivent bientôt</h2>' +
+      '<p class="lede">Le chapitre « Les blocages du francophone » est en cours de préparation. Reviens dans l\'appli en attendant : l\'Atelier espagnol est déjà ouvert.</p>';
+    nextBtn.style.display = "";
+    nextBtn.textContent = "Retour à l'appli";
+    hint.textContent = "";
+  }
+  function screenBilanEs(){
+    var nextId = nextPlayableLesson(state.lesson);
+    var passThreshold = Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
+    var passed = state.quizScore >= passThreshold;
+    postmark.innerHTML = "BILAN<br>" + esCode(state.lesson);
+    var recap = QUIZ.map(function(q, i){
+      var hit = state.quizLog[i];
+      return '<div class="recap-item '+(hit?"hit":"miss")+'"><span class="tick">'+(hit?"✓":"✕")+'</span><span>'+q.q+'</span></div>';
+    }).join("");
+    if(passed){ grantAiCredit(); recordPass(state.lesson); }
+    var aiHtml = passed
+      ? '<div class="bilan-ai" style="margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(27,60,57,.08);font-size:14px;line-height:1.45">💬 <b>Conversation IA débloquée</b> — entraîne-toi à parler de ce thème en espagnol avec l\'IA, à l\'écrit ou au micro. <button type="button" id="goAiChat" style="display:block;margin-top:8px;border:none;background:#1b3c39;color:#fff;font-weight:700;padding:9px 14px;border-radius:12px;cursor:pointer;font-family:inherit">Discuter maintenant</button></div>'
+      : '';
+    var nextStepHtml = passed
+      ? aiHtml + '<p class="lede" style="margin-top:14px"><b>'+(nextId != null ? "Prochaine étape —" : "Chapitre terminé 🎉")+'</b> '+NEXT_PREVIEW+'</p>'
+      : '<div class="bilan-retry"><b>Chapitre pas encore acquis</b> — il faut au moins '+passThreshold+'/'+QUIZ.length+' au contrôle (60%). Refais-le pour consolider les notions fragiles : l\'entraînement intensif est là pour ça.</div>';
+    screen.innerHTML =
+      '<div class="eyebrow">Bilan · '+lessonLabel()+'</div>' +
+      '<h2 class="screen-title">'+(passed ? META.bilanTitle : "Ce chapitre a besoin d\'être consolidé.")+'</h2>' +
+      '<div class="score-band"><span class="big">'+state.quizScore+'</span><span class="of">/ '+QUIZ.length+' au contrôle</span></div>' +
+      '<div class="stat-grid">' +
+        '<div class="stat"><div class="n">'+VOCAB.length+'</div><div class="l">Mots vus</div></div>' +
+        '<div class="stat"><div class="n">'+(memState ? memState.moves : 0)+'</div><div class="l">Coups au jeu</div></div>' +
+        '<div class="stat"><div class="n">'+esCode(state.lesson)+'</div><div class="l">Chapitre</div></div>' +
+      '</div>' +
+      lessonGaugesHtml() +
+      '<div class="recap">'+recap+'</div>' +
+      nextStepHtml;
+    nextBtn.textContent = passed ? (nextId != null ? "Passer à " + esShortTitle(nextId) : "Retour à l'appli") : "Revoir le chapitre";
+    backBtn.style.visibility = "hidden";
+    hint.textContent = passed ? "" : "Reprends le chapitre depuis le début pour retravailler les points fragiles.";
+    var goAi = document.getElementById("goAiChat");
+    if(goAi){ goAi.addEventListener("click", function(){
+      try { sessionStorage.setItem("the_roots_last_tab", "conversation"); } catch(e){}
+      window.location.href = "index.html";
+    }); }
+  }
+  // « ‹ Retour à l'app » (en haut) : en espagnol, on revient sur « Mes cours ».
+  if(ES_MODE){
+    var __backLink = document.querySelector('.masthead a[href="index.html"]');
+    if(__backLink) __backLink.addEventListener("click", function(e){ e.preventDefault(); esGoApp(); });
+  }
+
   // ---------- Screen 0 : Accueil ----------
   function screenAccueil(){
+    if(ES_MODE) return screenAccueilEs();
     postmark.innerHTML = state.lesson === -1 ? "ROOTS<br>FOND." : (isBLesson(state.lesson) ? "ROOTS<br>" + bCode(state.lesson) : (state.lesson >= 13 ? "ROOTS<br>A2." + (state.lesson-13) : "ROOTS<br>LEÇON&nbsp;" + String(state.lesson+1).padStart(2,"0")));
     backBtn.style.visibility = "hidden";
     if(!state.variant){
@@ -3664,7 +4406,7 @@
         b.textContent = opt;
         b.addEventListener("click", function(){
           if(resolved[qi] || b.disabled) return;
-          if(looksEnglish(opt)) speak(opt);
+          if(looksTarget(opt)) speak(opt);
           attempts++;
           var ok = oi === mc.correct;
           if(ok){
@@ -3702,6 +4444,7 @@
     else if(state.subStep === 2) renderMiniChecks();
     else if(state.subStep === 3) renderGrammar2();
     else if(TRANSV && state.subStep === 4) renderTransversal();
+    else if(DRILLS && state.subStep === drillsSubstep()) renderDrills();
     else renderSentenceBuilder();
   }
 
@@ -3832,6 +4575,8 @@
     var glossArrays = [GLOSS_L1,GLOSS_L2,GLOSS_L3,GLOSS_L4,GLOSS_L5,GLOSS_L6,GLOSS_L7,GLOSS_L8,GLOSS_L9,GLOSS_L10,GLOSS_L11,GLOSS_L12,GLOSS_COMMON,
       GLOSS_A2_0,GLOSS_A2_1,GLOSS_A2_2,GLOSS_A2_3,GLOSS_A2_4,GLOSS_A2_5,GLOSS_A2_6,GLOSS_A2_7,GLOSS_A2_8,GLOSS_A2_9,GLOSS_A2_10,GLOSS_A2_11,
       GLOSS_B1_1,GLOSS_B1_2,GLOSS_B1_3];
+    // Mode espagnol : uniquement le vocabulaire et les glossaires des leçons espagnoles (ci-dessous).
+    if(ES_MODE){ vocabArrays = []; glossArrays = []; }
     // B1.0, B1.4+ / B2 (fichiers de données) : ajoutés à la suite, dans l'ordre pédagogique (lessonRank).
     Object.keys(LESSONS_EXT).map(Number).sort(function(a, b){ return lessonRank(a) - lessonRank(b); }).forEach(function(n){
       if(!isPlayableLesson(n)) return;
@@ -3855,9 +4600,10 @@
   // pour ne jamais traduire un fragment d'une expression composée comme "meet up").
   function glossifySentence(s){
     var dict = buildGlossDict();
-    var tokens = s.match(/[A-Za-z'-]+|[^A-Za-z'-]+/g) || [s];
+    // (Espagnol : les lettres accentuées á é í ó ú ñ ü font partie des mots.)
+    var tokens = (ES_MODE ? s.match(/[A-Za-zÀ-ÿ'-]+|[^A-Za-zÀ-ÿ'-]+/g) : s.match(/[A-Za-z'-]+|[^A-Za-z'-]+/g)) || [s];
     var wordIdxs = [];
-    tokens.forEach(function(t, i){ if(/[A-Za-z]/.test(t)) wordIdxs.push(i); });
+    tokens.forEach(function(t, i){ if(ES_MODE ? /[A-Za-zÀ-ÿ]/.test(t) : /[A-Za-z]/.test(t)) wordIdxs.push(i); });
     var used = {};
     var htmlTokens = tokens.map(function(){ return null; });
     for(var wi = 0; wi < wordIdxs.length; wi++){
@@ -3911,15 +4657,16 @@
         // l'accent britannique/américain du cours en cours.
         var key = preferredVoiceKey();
         var chosen = null;
-        if(key){
+        if(key && !ES_MODE){
           var parts = key.split("|");
           chosen = cachedVoices.find(function(v){ return v.name === parts[0] && v.lang === parts[1]; });
         }
+        if(ES_MODE) chosen = pickEsVoice();
         function next(){
           if(i >= plainSentences.length) return;
           var u = new SpeechSynthesisUtterance(plainSentences[i]);
-          u.lang = state.variant === "us" ? "en-US" : "en-GB";
-          if(chosen){ u.voice = chosen; u.lang = chosen.lang; }
+          u.lang = targetLang();
+          if(chosen){ u.voice = chosen; u.lang = ES_MODE ? String(chosen.lang).replace("_", "-") : chosen.lang; }
           u.rate = 0.95;
           u.onend = function(){ i++; next(); };
           window.speechSynthesis.speak(u);
@@ -3980,7 +4727,7 @@
         b.textContent = opt;
         b.addEventListener("click", function(){
           if(resolved[qi] || b.disabled) return;
-          if(looksEnglish(opt)) speak(opt);
+          if(looksTarget(opt)) speak(opt);
           attempts++;
           var ok = oi === mc.correct;
           if(ok){
@@ -4016,14 +4763,17 @@
       '<div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>' +
       '<p class="lede">'+G.ruleHtml+'</p>';
     whyToggle(screen, G.whyLabel, G.whyText);
-    nextBtn.textContent = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : "Construire une phrase";
+    nextBtn.textContent = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : (DRILLS ? "🏋️ Entraînement intensif" : "Construire une phrase");
     nextBtn.disabled = false;
   }
 
-  // ---------- Encart transversal B1/B2 : French Interference Lab + Survival English (25/09) ----------
+  // ---------- Encart transversal A1/A2/B1/B2/C1 : French Interference Lab + Survival English (25/09) ----------
   // Données : window.LESSONS_TRANSVERSAL[n] = { interference:[{wrong,right,why}], survival:[{en,fr,when}] }
   // (js/data/transversal.js, format .staging/TRANSVERSAL-FORMAT.md). Seule la balise <b> est
   // autorisée dans les textes : tout le reste est échappé (tvHtml).
+  // Paliers qui peuvent recevoir un encart : A1.1-A1.12 (0..11), A2.0-A2.11 (13..24) et les paliers
+  // B1/B2/C1 (isBLesson). Numéros comparés directement ici : 0..11 et 13..24 suivent l'ordre.
+  function hasTransversalSlot(n){ return (n >= 0 && n <= 11) || (n >= 13 && n <= 24) || isBLesson(n); }
   function validTransversal(T){
     if(!T || typeof T !== "object") return null;
     var inter = (T.interference || []).filter(function(x){ return x && x.wrong && x.right; });
@@ -4067,7 +4817,7 @@
       '<p class="lede">Avant de construire tes phrases : les faux réflexes venus du français à éviter, et des phrases toutes faites pour ne jamais rester bloqué(e). Touche 🔊 pour écouter.</p>' +
       interHtml + survHtml;
     backBtn.style.visibility = "visible";
-    nextBtn.textContent = "Construire une phrase";
+    nextBtn.textContent = DRILLS ? "🏋️ Entraînement intensif" : "Construire une phrase";
     nextBtn.disabled = false;
   }
 
@@ -4124,7 +4874,8 @@
           }
         }
         fb.innerHTML = ok
-          ? '<div class="why-inline"><span class="icon">✓</span><div>« '+r.display+' » — sujet, verbe, puis l\'information : c\'est l\'ordre fixe de l\'anglais.</div></div>'
+          ? (ES_MODE ? '<div class="why-inline"><span class="icon">✓</span><div>« '+r.display+' » — ¡Muy bien! C\'est la bonne phrase.</div></div>'
+                     : '<div class="why-inline"><span class="icon">✓</span><div>« '+r.display+' » — sujet, verbe, puis l\'information : c\'est l\'ordre fixe de l\'anglais.</div></div>')
           : '<div class="why-inline"><span class="icon">💡</span><div>Presque — l\'ordre attendu est « '+r.display+' ». Touche un mot de ta phrase pour le remettre en jeu.</div></div>';
         nextBtn.disabled = !ok;
         if(ok){ pendingAutoAdvance = setTimeout(goNext, 900); }
@@ -4204,13 +4955,15 @@
 
     try{
       var rec = new SpeechRec();
-      rec.lang = state.variant === "us" ? "en-US" : "en-GB";
+      rec.lang = targetLang();
       rec.maxAlternatives = 3;
       var finished = false;
       rec.onresult = function(e){
         finished = true;
         var said = (e.results[0][0].transcript || "").toLowerCase().replace(/[.,!?]/g,"").trim();
         var exp = expected.toLowerCase().replace(/[.,!?]/g,"").trim();
+        // Espagnol : on ignore aussi ¿ ¡ et les accents (le micro ne les rend pas toujours).
+        if(ES_MODE){ said = drillFold(said.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); exp = drillFold(exp.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); }
         finish(said.indexOf(exp) !== -1 || exp.indexOf(said) !== -1);
       };
       rec.onerror = function(){ finished = true; finish(null); };
@@ -4302,7 +5055,7 @@
         b.textContent = opt;
         b.addEventListener("click", function(){
           if(resolved[qi] || b.disabled) return;
-          if(looksEnglish(opt)) speak(opt);
+          if(looksTarget(opt)) speak(opt);
           attempts++;
           var ok = oi === mc.correct;
           if(ok){
@@ -4347,7 +5100,7 @@
     screen.innerHTML =
       '<div class="eyebrow">Jeu · Mémoire</div>' +
       '<h2 class="screen-title">Retrouve les paires</h2>' +
-      '<p class="lede">Associe chaque mot anglais à sa traduction.</p>' +
+      '<p class="lede">Associe chaque mot '+(ES_MODE ? "espagnol" : "anglais")+' à sa traduction.</p>' +
       '<div class="memgrid" id="memgrid"></div>' +
       '<div class="game-stats"><span>Coups : <b id="movesN">0</b></span><span>Paires : <b id="matchN">0</b>/'+MEM_WORDS.length+'</span></div>';
     renderMemGrid();
@@ -4485,11 +5238,13 @@
   ];
   function screenLecture(){
     if(IMG && IMG.scene && state.subStep === LECTURE_SUBSTEPS-1) return screenDescribe();
-    // Sous-étapes de la Lecture : 0 texte · 1 Musique & Ciné (si MEDIA) · dernière = Décris l'image (si IMG.scene).
+    // Sous-étapes de la Lecture : 0 texte · 1 Musique & Ciné (si MEDIA) · puis Texte légendé (si
+    // ANNOTATED) · dernière = Décris l'image (si IMG.scene).
+    if(ANNOTATED && state.subStep === annotatedSubstep()) return screenAnnotated();
     if(MEDIA && state.subStep === 1) return screenMedia();
     backBtn.style.visibility = "visible";
     postmark.innerHTML = "LECTURE<br>+ AUDIO";
-    nextBtn.textContent = MEDIA ? (MEDIA.type === "film" ? "🎬 Le film de la leçon" : "🎵 La chanson de la leçon") : ((IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle");
+    nextBtn.textContent = MEDIA ? (MEDIA.type === "film" ? "🎬 Le film de la leçon" : "🎵 La chanson de la leçon") : (ANNOTATED ? "📝 Le texte légendé" : ((IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle"));
     hint.textContent = "Touche une phrase pour l'écouter. Les mots soulignés en pointillés se traduisent au clic.";
     var blockHtml = buildReadingBlockHtml(READING);
     var glossHtml = (GLOSS && GLOSS.length)
@@ -4574,7 +5329,7 @@
     if(mediaState.lesson !== state.lesson) mediaState = { lesson:state.lesson, version:0, answers:{} };
     backBtn.style.visibility = "visible";
     postmark.innerHTML = "MUSIQUE<br>& CINÉ";
-    nextBtn.textContent = (IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle";
+    nextBtn.textContent = ANNOTATED ? "📝 Le texte légendé" : ((IMG && IMG.scene) ? "Décris l'image" : "Passer au contrôle");
     hint.textContent = "Touche une ligne pour l'écouter. Les questions sont un entraînement : elles ne comptent pas dans ta note.";
     var html;
     if(M.type === "case"){
@@ -4685,7 +5440,7 @@
       b.textContent = opt;
       b.addEventListener("click", function(){
         if(resolved || b.disabled) return;
-        if(looksEnglish(opt)) speak(opt);
+        if(looksTarget(opt)) speak(opt);
         attempts++;
         var isCorrect = i === Q.correct;
         if(isCorrect){
@@ -5384,12 +6139,12 @@
       var KEY = "the_roots_ai_v1";
       var data = JSON.parse(localStorage.getItem(KEY) || "null") || { credits: [], active: null, welcomeGiven: false };
       if(!Array.isArray(data.credits)) data.credits = [];
-      var id = "en-" + state.lesson;
+      var id = (ES_MODE ? "es-" : "en-") + state.lesson;
       if(data.credits.some(function(c){ return c.id === id; })) return false;
       var d = new Date();
       var today = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
-      data.credits.push({ id: id, lang: "en", level: levelOfLesson(state.lesson),
-        topic: lessonLabel() + (META && META.vocabTitle ? " — " + META.vocabTitle : ""),
+      data.credits.push({ id: id, lang: LANG, level: levelOfLesson(state.lesson),
+        topic: lessonLabel() + (ES_MODE ? (esTitle(state.lesson) ? " — " + esTitle(state.lesson) : "") : (META && META.vocabTitle ? " — " + META.vocabTitle : "")),
         lede: (META && META.todayLede) || "", earnedAt: today, usedAt: null });
       localStorage.setItem(KEY, JSON.stringify(data));
       return true;
@@ -5398,16 +6153,16 @@
 
   // ---------- Screen 4 : Bilan ----------
   function screenBilan(){
+    if(ES_MODE) return screenBilanEs();
     // "isA2" : palier thématique A2 en cours (13..24, borne haute exclue puisque
     // GRAND_CONTROLE_A2_LESSON a son propre écran de bilan, screenGCBilan).
     var isA2 = lessonRank(state.lesson) >= lessonRank(13) && lessonRank(state.lesson) < lessonRank(GRAND_CONTROLE_A2_LESSON);
-    // "isB1" / "isB2" : palier B1 (B1.0 = 52, puis 27..38) ou B2 (B2.0 = 53, puis 40..51) en cours.
-    // Pas encore de Grand Contrôle B1/B2 : la suite est la leçon jouable suivante dans l'ordre
-    // pédagogique (B1.0 → B1.1, B1.12 → B2.0 → B2.1, 39 réservée), s'il y en a une (voir
-    // nextPlayableLesson) ; sinon, retour réviser ses leçons (voir goNext).
-    var isB1 = isBLesson(state.lesson) && levelOfLesson(state.lesson) === "B1";
-    var isB2 = isBLesson(state.lesson) && levelOfLesson(state.lesson) === "B2";
-    var isB = isB1 || isB2;
+    // "isB" : palier B1 (B1.0 = 52, puis 27..38), B2 (B2.0 = 53, puis 40..51) ou C1 (C1.0 = 54,
+    // puis 55..66) en cours. Pas encore de Grand Contrôle B1/B2/C1 : la suite est la leçon jouable
+    // suivante dans l'ordre pédagogique (B1.0 → B1.1, B1.12 → B2.0 → B2.1, B2.12 → C1.0 → C1.1,
+    // 39 / 67 réservées), s'il y en a une (voir nextPlayableLesson) ; sinon, retour réviser ses
+    // leçons (voir goNext).
+    var isB = isBLesson(state.lesson);
     var nextB = isB ? nextPlayableLesson(state.lesson) : null;
     var lastThematicOfBlock = isA2 ? (GRAND_CONTROLE_A2_LESSON - 1) : (GRAND_CONTROLE_LESSON - 1);
     var hasNext = isB ? nextB != null : lessonRank(state.lesson) < lessonRank(lastThematicOfBlock);
@@ -5438,7 +6193,7 @@
       gaugesHtml +
       '<div class="recap">'+recap+'</div>' +
       nextStepHtml;
-    nextBtn.textContent = (passed && state.returnTo != null) ? ((state.returnTo === 13 || state.returnTo === b1EntryLesson()) ? "Retour à mes renforts" : "Retour au contrôle") : passed
+    nextBtn.textContent = (passed && state.returnTo != null) ? ((state.returnTo === 13 || state.returnTo === b1EntryLesson() || state.returnTo === c1EntryLesson()) ? "Retour à mes renforts" : "Retour au contrôle") : passed
       ? (hasNext ? "Passer à " + (isB ? bCode(nextB) : (isA2 ? "A2." + (state.lesson+1-13) : "la leçon " + (state.lesson+2))) : (isB ? "Revoir mes leçons (la suite arrive bientôt)" : "Passer au grand contrôle " + (isA2 ? "A2" : "A1")))
       : "Revoir la leçon";
     backBtn.style.visibility = "hidden";
@@ -7779,6 +8534,7 @@
   function render(){
     if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
+    if(ES_MODE && !isPlayableLesson(state.lesson)){ updateRouteChip(); screenEsEmpty(); return; }
     // Pendant une leçon revue à la demande d'un contrôle/renfort, on ne déplace pas la progression.
     if(state.returnTo == null){ try { localStorage.setItem(LESSON_KEY, String(state.lesson)); } catch(e){} }
     if(state.variant){ document.documentElement.setAttribute("data-flag", state.variant); }
@@ -7798,6 +8554,16 @@
       // en B1 : ils se refont depuis Mes cours › Mes renforts. Tri dans l'ordre pédagogique.)
       var renfortTodoB1 = pendingRenforts("B1").filter(function(id){ return lessonRank(id) < lessonRank(b1EntryLesson()); });
       if(renfortTodoB1.length){ state.gateOpen = true; screenRenfortGate(renfortTodoB1, "B1"); return; }
+    }
+    // Porte de renforts à l'entrée du niveau C1 (C1.0 s'il est déposé, sinon C1.1), sur le modèle de la
+    // porte B1. AUJOURD'HUI ELLE NE S'OUVRE JAMAIS : aucun contrôle n'écrit de renforts « C1 » venant
+    // d'un niveau inférieur (pas de Grand Contrôle B2 ; les examens de palier B2 rangent leurs renforts
+    // en « B2 », voir nextLevelOf ; ceux des examens C1 visent des paliers C1, exclus par le filtre).
+    // Le jour où un Grand Contrôle B2 existera, il suffira que nextLevelOf() renvoie "C1" pour son code
+    // (saveControlResult range alors ses renforts sous « C1 ») pour que cette porte s'ouvre.
+    if(state.lesson === c1EntryLesson() && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
+      var renfortTodoC1 = pendingRenforts("C1").filter(function(id){ return lessonRank(id) < lessonRank(c1EntryLesson()); });
+      if(renfortTodoC1.length){ state.gateOpen = true; screenRenfortGate(renfortTodoC1, "C1"); return; }
     }
     if(isGrandControle()){
       itinerary.hidden = true;
@@ -7824,6 +8590,7 @@
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
     if(PRACTICE){ backToApp(); return; }
+    if(ES_MODE && !isPlayableLesson(state.lesson)){ esGoApp(); return; }
     if(state.gateOpen){ state.gateOpen = false; state.renfortSkipped = true; render(); return; }
     if(isGrandControle()){
       if(state.step === 0){
@@ -7890,7 +8657,15 @@
       var examDone = examActive() && state.examResult;
       var bilanPassed = examDone ? state.examResult.decision !== "fail" : state.quizScore >= Math.ceil(QUIZ.length * PASS_THRESHOLD_RATIO);
       if(examDone){ examClearDraft(); state.examResult = null; }
-      if(bilanPassed && state.returnTo != null){
+      if(ES_MODE){
+        // Espagnol : chapitre suivant (X1 → X2 …) ; après le dernier (X8), retour à l'appli (Mes cours).
+        // Pas réussi : on refait le même chapitre.
+        if(bilanPassed){
+          var esNext = nextPlayableLesson(state.lesson);
+          if(esNext == null){ esGoApp(); return; }
+          state.lesson = esNext; state.reviewDone = false; state.reviewLog = [];
+        }
+      } else if(bilanPassed && state.returnTo != null){
         // Leçon revue à la demande d'un contrôle ou d'un renfort : on y retourne.
         markRenfortDone(state.lesson);
         state.lesson = state.returnTo; state.returnTo = null; state.ctrlDraw = null;
@@ -7899,8 +8674,10 @@
         state.reviewDone = false; state.reviewLog = [];
         if(isGrandControle()){ state.gcExprScore = 0; state.gcExprLog = []; }
       } else if(bilanPassed && isBLesson(state.lesson)){
-        // B1 / B2 : leçon jouable suivante dans l'ordre pédagogique (B1.0 → B1.1 ; B1.12 → B2.0 → B2.1,
-        // ou B1.12 → B2.1 sans B2.0, la 39 étant réservée au futur Grand Contrôle B1). S'il n'y en a pas (fin de B2.12, ou fichier de la suite pas encore
+        // B1 / B2 / C1 : leçon jouable suivante dans l'ordre pédagogique (B1.0 → B1.1 ; B1.12 → B2.0 → B2.1,
+        // ou B1.12 → B2.1 sans B2.0, la 39 étant réservée au futur Grand Contrôle B1 ; B2.12 → C1.0 → C1.1,
+        // ou B2.12 → C1.1 sans C1.0 ; 67 réservée au futur Grand Contrôle C1). S'il n'y en a pas (fin de C1.12,
+        // fin de B2.12 sans lessons-c1.js, ou fichier de la suite pas encore
         // déposé) : retour aux leçons pour réviser en attendant — même repli qu'après B1.3 jusqu'ici.
         var nextId = nextPlayableLesson(state.lesson);
         if(nextId != null){
@@ -7957,7 +8734,7 @@
   // puis revenir à la leçon en cours ; la leçon réussie est cochée « renfort fait ».
   (function(){
     var m = /renfort=(-?\d+)/.exec(location.hash || "");
-    if(!m || PRACTICE) return;
+    if(!m || PRACTICE || ES_MODE) return;
     var id = parseInt(m[1], 10);
     if(!quizOf(id)) return;
     try { history.replaceState(null, "", location.pathname); } catch(e){}
@@ -7972,7 +8749,11 @@
       leconSubsteps:function(){ return LECON_SUBSTEPS; }, transversal:function(){ return TRANSV; }, rank:lessonRank, order:LESSON_ORDER, level:levelOfLesson, practice:function(){ return PRACTICE; },
       titles:function(){ return LESSON_TITLES; }, playable:isPlayableLesson,
       exam:function(){ return EXAM; }, examActive:examActive, examResult:function(){ return state.examResult; },
-      examNormalize:examNormalize, examBlankOk:examBlankOk };
+      examNormalize:examNormalize, examBlankOk:examBlankOk,
+      // (26/09) mode espagnol, entraînement intensif, texte légendé
+      esMode:ES_MODE, lessonKey:LESSON_KEY, targetLang:targetLang, makeUtterance:makeUtterance, looksTarget:looksTarget,
+      drills:function(){ return DRILLS; }, annotated:function(){ return ANNOTATED; }, drillCheck:drillCheck, drillSentence:drillSentence,
+      drillsSubstep:drillsSubstep, annotatedSubstep:annotatedSubstep, drillState:function(){ return drillState; }, nextPlayable:nextPlayableLesson };
   }
   render();
 
