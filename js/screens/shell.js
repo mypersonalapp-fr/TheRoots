@@ -3,21 +3,22 @@
 // 23/09) — Apprendre, Ressources, Explorer, Réglages —, bouton retour, et
 // routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260925q";
-import { renderSettings } from "./settings.js?v=20260924j";
-import { renderMesCours } from "./mes-cours.js?v=20260925s";
-import { renderMesArbres } from "./mes-arbres.js?v=20260925q";
-import { renderComprehension } from "./comprehension.js?v=20260925q";
-import { renderExpression } from "./expression.js?v=20260925q";
-import { renderTraduction } from "./traduction.js?v=20260924j";
-import { renderDictionnaire } from "./dictionnaire.js?v=20260924j";
-import { renderConversation } from "./conversation.js?v=20260925m";
-import { renderBibliotheque } from "./bibliotheque.js?v=20260924j";
-import { renderAideFaq } from "./aide-faq.js?v=20260924j";
-import { mountMyWorld } from "./my-world.js?v=20260924j";
-import { renderCountry } from "./country.js?v=20260925q";
-import { store } from "../data/store.js?v=20260924j";
-import { t } from "../data/i18n.js?v=20260924j";
+import { renderDashboard } from "./dashboard.js?v=20260930a";
+import { renderSettings } from "./settings.js?v=20260930a";
+import { renderMesCours } from "./mes-cours.js?v=20260930a";
+import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
+import { renderComprehension } from "./comprehension.js?v=20260930a";
+import { renderExpression } from "./expression.js?v=20260930a";
+import { renderTraduction } from "./traduction.js?v=20260930a";
+import { renderDictionnaire } from "./dictionnaire.js?v=20260930a";
+import { renderConversation } from "./conversation.js?v=20260930a";
+import { renderAtelierEs } from "./atelier-es.js?v=20260930a";
+import { renderBibliotheque } from "./bibliotheque.js?v=20260930a";
+import { renderAideFaq } from "./aide-faq.js?v=20260930a";
+import { mountMyWorld } from "./my-world.js?v=20260930a";
+import { renderCountry } from "./country.js?v=20260930a";
+import { store } from "../data/store.js?v=20260930a";
+import { t } from "../data/i18n.js?v=20260930a";
 
 // Structure du tiroir : "Accueil" seul en haut, puis 4 sections. Les noms
 // de "Conversation" (avant "Conversation IA") et de la section
@@ -32,6 +33,7 @@ function menuSections(lang) {
       { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
       { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
       { id: "conversation", label: t("menu_conversation", lang), icon: "💬" },
+      { id: "atelier-es", label: t("menu_atelier_es", lang), icon: "🇪🇸", badge: t("menu_badge_new", lang) },
     ] },
     { title: t("menu_section_ressources", lang), items: [
       { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },
@@ -56,6 +58,7 @@ function titles(lang) {
     "comprehension": t("title_comprehension", lang),
     "expression": t("title_expression", lang),
     "conversation": t("title_conversation", lang),
+    "atelier-es": t("title_atelier_es", lang),
     "dictionnaire": t("title_dictionnaire", lang),
     "traduction": t("title_traduction", lang),
     "bibliotheque": t("title_bibliotheque", lang),
@@ -169,6 +172,7 @@ export function renderShell(root) {
     else if (id === "comprehension") renderComprehension(body);
     else if (id === "expression") renderExpression(body);
     else if (id === "conversation") renderConversation(body);
+    else if (id === "atelier-es") renderAtelierEs(body);
     else if (id === "dictionnaire") renderDictionnaire(body);
     else if (id === "traduction") renderTraduction(body);
     else if (id === "bibliotheque") renderBibliotheque(body);

@@ -3,11 +3,11 @@
 // (remplacée par "J'ai 5 minutes" / "Mission du jour" juste après la
 // date). "Mes arbres" a déménagé dans le menu (voir mes-arbres.js).
 
-import { store } from "../data/store.js?v=20260924j";
-import { t } from "../data/i18n.js?v=20260924j";
-import { dueMissions } from "../data/progress.js?v=20260925q";
-import { aiCredits } from "../data/ai-credits.js?v=20260924l";
-import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260924j";
+import { store } from "../data/store.js?v=20260930a";
+import { t } from "../data/i18n.js?v=20260930a";
+import { dueMissions } from "../data/progress.js?v=20260930a";
+import { aiCredits } from "../data/ai-credits.js?v=20260930a";
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260930a";
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 

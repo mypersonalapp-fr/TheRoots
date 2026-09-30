@@ -8,19 +8,19 @@
 // progression), pour pouvoir se comparer dans le temps. "Mon livret"
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
-import { store } from "../data/store.js?v=20260924j";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
-import { renderLevelTest } from "./level-test.js?v=20260924j";
-import { t, formatDate } from "../data/i18n.js?v=20260924j";
-import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260925s";
-import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS, A2_EN_ENTRY_MODULE } from "../data/programme-a2-en.js?v=20260925s";
-import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260925s";
-import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260925r";
-import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260925t";
-import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260924j";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260925q";
-import { plantSvg } from "./plant.js?v=20260924j";
-import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260926a";
+import { store } from "../data/store.js?v=20260930a";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260930a";
+import { renderLevelTest } from "./level-test.js?v=20260930a";
+import { t, formatDate } from "../data/i18n.js?v=20260930a";
+import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
+import { A2_EN_GENERAL_OBJECTIVE, A2_EN_PALIERS, A2_EN_ENTRY_MODULE } from "../data/programme-a2-en.js?v=20260930a";
+import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../data/programme-b1-en.js?v=20260930a";
+import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260930a";
+import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
+import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260930a";
+import { plantSvg } from "./plant.js?v=20260930a";
+import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;

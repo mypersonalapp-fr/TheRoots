@@ -15,8 +15,8 @@
 // des petites cartes de l'Accueil (qu'Ashley voulait TOUJOURS visibles),
 // une FAQ est justement l'endroit où replier par défaut est l'usage
 // attendu — chaque question s'ouvre individuellement au clic.
-import { store } from "../data/store.js?v=20260924j";
-import { t } from "../data/i18n.js?v=20260924j";
+import { store } from "../data/store.js?v=20260930a";
+import { t } from "../data/i18n.js?v=20260930a";
 
 const FAQ_ITEMS = [
   {

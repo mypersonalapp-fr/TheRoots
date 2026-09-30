@@ -18,10 +18,10 @@
 //   cloudflare-worker-gemini.js, dont l'adresse se colle dans
 //   js/data/ai-config.js.
 
-import { store } from "../data/store.js?v=20260924j";
-import { aiCredits } from "../data/ai-credits.js?v=20260924l";
-import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260924k";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260924j";
+import { store } from "../data/store.js?v=20260930a";
+import { aiCredits } from "../data/ai-credits.js?v=20260930a";
+import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260930a";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20260930a";
 
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const SPEECH_BY_VARIANT = { "en-gb": "en-GB", "en-us": "en-US", "es-es": "es-ES", "es-co": "es-CO", "pt-pt": "pt-PT", "pt-br": "pt-BR" };
@@ -158,8 +158,10 @@ export function renderConversation(container) {
     // Verrou (25/09) : tant que test de niveau + première leçon ne sont pas
     // faits, l'apprenti ne voit que l'explication. En mode créatrice, la
     // conversation d'essai reste en plus accessible, pour tester l'IA.
-    if (!gate.ok && !CREATOR_MODE) { paintLocked(gate); return; }
     const available = aiCredits.available({ includeWelcome: CREATOR_MODE });
+    // Verrouillé : l'apprenti ne voit que le cadre 🔒. En mode créatrice,
+    // pareil dès que l'essai est utilisé (écran identique à un apprenti).
+    if (!gate.ok && (!CREATOR_MODE || !available.length)) { paintLocked(gate); return; }
     const remaining = aiCredits.remainingToday();
     const relayOk = isRelayConfigured();
     container.innerHTML = `

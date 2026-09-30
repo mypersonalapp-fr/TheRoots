@@ -2,10 +2,10 @@
 // passe). Connexion simulée en local tant qu'il n'y a pas de vrai backend —
 // voir js/data/store.js.
 
-import { store } from "../data/store.js?v=20260924j";
-import { webauthn } from "../data/webauthn.js?v=20260924j";
-import { t } from "../data/i18n.js?v=20260924j";
-import { greetingHtml } from "./greeting.js?v=20260924j";
+import { store } from "../data/store.js?v=20260930a";
+import { webauthn } from "../data/webauthn.js?v=20260930a";
+import { t } from "../data/i18n.js?v=20260930a";
+import { greetingHtml } from "./greeting.js?v=20260930a";
 
 // Petite carte qui propose d'activer Face ID / Touch ID juste après une
 // connexion réussie — seulement si le téléphone le permet et que ce n'est

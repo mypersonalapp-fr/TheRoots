@@ -10,8 +10,8 @@
 // langues en parallèle) — c'est juste la langue "principale" pour cette
 // personnalisation-là.
 
-import { store } from "../data/store.js?v=20260924j";
-import { t, langName } from "../data/i18n.js?v=20260924j";
+import { store } from "../data/store.js?v=20260930a";
+import { t, langName } from "../data/i18n.js?v=20260930a";
 
 const LANGS = ["en", "es", "pt"];
 const FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
