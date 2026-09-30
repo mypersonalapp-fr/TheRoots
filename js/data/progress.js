@@ -8,7 +8,7 @@
 // sa propre copie des petites fonctions d'écriture (voir le bloc
 // "CONTRÔLES A1 / A2 / FINAL" dans lessons.html).
 
-import { store } from "./store.js?v=20260924j";
+import { store } from "./store.js?v=20260930a";
 
 const K_SKILLS = "the_roots_skills_v1";
 const K_CTRL = "the_roots_controls_v1";
@@ -23,6 +23,7 @@ export const SKILLS = [
   ["eo", "Expression orale"],
   ["ee", "Expression écrite"],
   ["gr", "Grammaire"],
+  ["cj", "Conjugaison"],
   ["vo", "Vocabulaire"],
   ["pr", "Prononciation"],
 ];
@@ -79,6 +80,7 @@ export function profileSummary(lang) {
     eo: "Passer de « je comprends » à « je parle ».",
     ee: "Écrire tes propres phrases, sans modèle sous les yeux.",
     gr: "Consolider la grammaire des dernières leçons.",
+    cj: "Revoir tes conjugaisons : refais les séquences « Conjugaison » et leurs mini-tests.",
     vo: "Enrichir ton vocabulaire avec les missions de récupération.",
     pr: "Travailler la prononciation au micro dans Expression orale.",
   };
@@ -109,9 +111,10 @@ export function dueMissions(lang) { return missions(lang).filter((x) => x.due); 
 export function stageLabel(stage) { return STAGES[Math.max(0, Math.min(6, stage))]; }
 
 // Ordre pédagogique des leçons d'anglais par niveau (miroir de LESSON_ORDER dans lessons.html).
-// B1.0 (52) et B2.0 (53) ne comptent que si lessons.html les a publiés dans les titres de leçons
-// (the_roots_lesson_titles_v1 — c.-à-d. si leur fichier de données est déposé) : sans eux, les
-// pourcentages restent exactement ceux d'avant. "B2ctrl" = place d'un futur contrôle B2.
+// B1.0 (52), B2.0 (53) et C1.0 (54) ne comptent que si lessons.html les a publiés dans les titres de
+// leçons (the_roots_lesson_titles_v1 — c.-à-d. si leur fichier de données est déposé) : sans eux, les
+// pourcentages restent exactement ceux d'avant. 68 = Grand Contrôle final A1 → B2 (fin du B2) ; 67 = futur
+// Grand Contrôle C1 (réservé, comme 39 pour le B1).
 function levelLessons() {
   const titles = lessonTitles();
   const has = (n) => Object.prototype.hasOwnProperty.call(titles, String(n));
@@ -120,19 +123,20 @@ function levelLessons() {
     A1: range(-1, 12),
     A2: range(13, 26),
     B1: (has(52) ? [52] : []).concat(range(27, 39)),
-    B2: (has(53) ? [53] : []).concat(range(40, 51), ["B2ctrl"]),
+    B2: (has(53) ? [53] : []).concat(range(40, 51), [68]),
+    C1: (has(54) ? [54] : []).concat(range(55, 67)),
   };
 }
 // Niveau et pourcentage (position dans le niveau, 1re leçon = 1/N) d'un numéro de leçon, ou null.
 function lessonLevelPos(lesson) {
   if (lesson == null) return null;
   const lv = levelLessons();
-  for (const level of ["A1", "A2", "B1", "B2"]) {
+  for (const level of ["A1", "A2", "B1", "B2", "C1"]) {
     const i = lv[level].indexOf(lesson);
     if (i >= 0) return { level, pct: Math.round(((i + 1) / lv[level].length) * 100) };
   }
-  // Numéro inconnu au-delà du B2 (ne devrait pas arriver) : fin du B2, comme avant.
-  if (lesson > 53) return { level: "B2", pct: 100 };
+  // Numéro inconnu au-delà du C1 (ne devrait pas arriver) : fin du C1.
+  if (lesson > 68) return { level: "C1", pct: 100 };
   return null;
 }
 
@@ -155,10 +159,12 @@ export function langGrowth(code) {
     let level = "A1", pct = 0;
     // Numéros de leçon (voir lessons.html, LESSON_ORDER) : A1 -1..12 · A2 13..26 (26 = grand contrôle
     // final) · B1 52 (B1.0) puis 27..38 (+ 39 réservée au futur Grand Contrôle B1) · B2 53 (B2.0) puis
-    // 40..51 (+ une place pour un futur contrôle B2). 52 et 53 ne suivent pas l'ordre des numéros :
+    // 40..51 (+ une place pour un futur contrôle B2) · C1 54 (C1.0) puis 55..66 (+ 67 réservée au futur
+    // Grand Contrôle C1). 52 et 53 ne suivent pas l'ordre des numéros :
     // le niveau et le pourcentage se calculent d'après la POSITION dans l'ordre pédagogique.
     const r = lessonLevelPos(lesson);
-    if (r && r.level === "B2") { level = "B2"; pct = r.pct; }
+    if (r && r.level === "C1") { level = "C1"; pct = r.pct; }
+    else if (r && r.level === "B2") { level = "B2"; pct = r.pct; }
     else if ((c.FINAL && c.FINAL.passed) || (r && r.level === "B1")) { level = "B1"; pct = r && r.level === "B1" ? r.pct : 0; }
     else if ((c.A1 && c.A1.passed) || (r && r.level === "A2")) { level = "A2"; pct = r && r.level === "A2" ? r.pct : 0; }
     else { level = "A1"; pct = r && r.level === "A1" ? r.pct : 0; }
