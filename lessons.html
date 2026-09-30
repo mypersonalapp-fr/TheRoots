@@ -560,24 +560,24 @@
   <div class="hint" id="hint"></div>
 </div>
 
-<script src="js/data/lesson-images.js?v=20260924j"></script>
+<script src="js/data/lesson-images.js?v=20260930a"></script>
 <!-- Leçons B1.4-B1.12, B2.1-B2.12 et C1.0-C1.12 (window.LESSONS_EXT) et contenus « Musique & Ciné »
      (window.LESSONS_MEDIA) : fichiers de données séparés. Le moteur reste fonctionnel si l'un
      d'eux est absent (leçons correspondantes simplement non proposées). -->
-<script src="js/data/lessons-b1.js?v=20260925q"></script>
-<script src="js/data/lessons-b2.js?v=20260925q"></script>
-<script src="js/data/lessons-c1.js?v=20260925t"></script>
-<script src="js/data/lessons-media.js?v=20260925o"></script>
+<script src="js/data/lessons-b1.js?v=20260930a"></script>
+<script src="js/data/lessons-b2.js?v=20260930a"></script>
+<script src="js/data/lessons-c1.js?v=20260930a"></script>
+<script src="js/data/lessons-media.js?v=20260930a"></script>
 <!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
      l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
-<script src="js/data/exams.js?v=20260925p"></script>
+<script src="js/data/exams.js?v=20260930a"></script>
 <!-- Encarts « French Interference Lab » + « Survival English » des paliers A1/A2/B1/B2/C1
      (window.LESSONS_TRANSVERSAL). Fichier absent, ou palier sans encart → leçon inchangée. -->
-<script src="js/data/transversal.js?v=20260925t"></script>
+<script src="js/data/transversal.js?v=20260930a"></script>
 <!-- Leçons d'ESPAGNOL (window.LESSONS_ES) : utilisées seulement en mode espagnol (lessons.html?lang=es).
      Chapitre « Les blocages du francophone » = 301..308 (X1..X8) ; 200..212 réservés aux futurs paliers
      A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
-<script src="js/data/lessons-es.js?v=20260926a"></script>
+<script src="js/data/lessons-es.js?v=20260930a"></script>
 <script>
 (function(){
 
@@ -635,6 +635,10 @@
   var C1_START_LESSON = 55;
   var C1_LAST_LESSON = 66;
   var GRAND_CONTROLE_C1_LESSON = 67;
+  // lesson = 68 : Grand Contrôle FINAL A1 → B2 (« Global Synthesis Exam » d'Ashley, fin du B2, avant le
+  // C1) — examen seul (js/data/exams.js, E[68], standalone). 39 = Grand Contrôle B1 (E[39], standalone).
+  // Une leçon « examen seul » est jouable dès que son examen est déposé (voir standaloneExam).
+  var GRAND_CONTROLE_B2_LESSON = 68;
   // lesson = 52 : B1.0 « Bases transversales B1 », joué juste AVANT B1.1 (27) ; lesson = 53 : B2.0,
   // joué juste AVANT B2.1 (40). Données au format habituel (window.LESSONS_EXT[52] / [53], fichiers
   // lessons-b1.js / lessons-b2.js). Leur numéro ne suit PAS l'ordre pédagogique : toute comparaison
@@ -659,6 +663,7 @@
     for(i = B1_START_LESSON; i <= GRAND_CONTROLE_B1_LESSON; i++) o.push(i);
     o.push(B2_ENTRY_MODULE);
     for(i = B2_START_LESSON; i <= B2_LAST_LESSON; i++) o.push(i);
+    o.push(GRAND_CONTROLE_B2_LESSON);
     o.push(C1_ENTRY_MODULE);
     for(i = C1_START_LESSON; i <= GRAND_CONTROLE_C1_LESSON; i++) o.push(i);
     // Mode espagnol : ordre propre — futurs paliers A1.0-A1.12 (200..212, réservés), puis le chapitre
@@ -685,11 +690,15 @@
   // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html ; 30..38, 40..51,
   // 52 (B1.0), 53 (B2.0), 54 (C1.0) et 55..66 seulement si leur fichier de données est chargé (39 et
   // 67 réservés, jamais jouables pour l'instant).
-  function isReservedLesson(n){ return n === GRAND_CONTROLE_B1_LESSON || n === GRAND_CONTROLE_C1_LESSON; }
+  // Grand contrôle « examen seul » (39 = Grand Contrôle B1, 68 = Grand Contrôle final A1 → B2, 67 un
+  // jour pour le C1) : jouable si son examen (standalone: true) est déposé dans exams.js.
+  function standaloneExam(n){ var X = LESSON_EXAMS[n]; return !ES_MODE && !!(X && X.standalone && X.code && X.sections && X.sections.length); }
+  function isReservedLesson(n){ return (n === GRAND_CONTROLE_B1_LESSON || n === GRAND_CONTROLE_C1_LESSON || n === GRAND_CONTROLE_B2_LESSON) && !standaloneExam(n); }
   function isPlayableLesson(n){
     // Espagnol : seulement les numéros de l'ordre espagnol dont les données sont chargées.
     if(ES_MODE) return lessonRank(n) >= 0 && isValidEsLesson(LESSONS_EXT[n]);
     if(n >= -1 && n <= B1_LAST_BUILTIN_LESSON) return true;
+    if(standaloneExam(n)) return true;
     if(isReservedLesson(n) || lessonRank(n) < 0) return false;
     return !!LESSONS_EXT[n];
   }
@@ -738,6 +747,7 @@
   // Code court d'un palier B1/B2/C1 : 52 → "B1.0", 27 → "B1.1", 38 → "B1.12", 53 → "B2.0", 40 → "B2.1",
   // 51 → "B2.12", 54 → "C1.0", 55 → "C1.1", 66 → "C1.12".
   function bCode(n){
+    if(standaloneExam(n)) return LESSON_EXAMS[n].label || LESSON_EXAMS[n].code;
     if(n === B1_ENTRY_MODULE) return "B1.0";
     if(n === B2_ENTRY_MODULE) return "B2.0";
     if(n === C1_ENTRY_MODULE) return "C1.0";
@@ -843,6 +853,7 @@
   // fichier (espagnol surtout, mais aussi une leçon anglaise qui en aurait) — voir renderDrills /
   // screenAnnotated. null = pas de sous-étape en plus.
   var DRILLS = null, ANNOTATED = null;
+  var STANDALONE = false; // true pendant un grand contrôle « examen seul » (39, 68) : on va droit à l'examen
   function lessonLabel(){
     if(ES_MODE) return (isEsBlocage(state.lesson) ? "Blocage " : "") + esCode(state.lesson);
     if(state.lesson === -1) return "Fondamentaux";
@@ -851,12 +862,14 @@
     if(state.lesson === GRAND_CONTROLE_FINAL_LESSON) return "Grand contrôle final";
     if(state.lesson === GRAND_CONTROLE_B1_LESSON) return "Grand Contrôle B1";
     if(state.lesson === GRAND_CONTROLE_C1_LESSON) return "Grand Contrôle C1";
+    if(state.lesson === GRAND_CONTROLE_B2_LESSON) return "Grand Contrôle final B2";
     if(isBLesson(state.lesson)) return bCode(state.lesson);
     if(state.lesson >= 13) return "A2." + (state.lesson - 13);
     return "Leçon " + (state.lesson + 1);
   }
   function loadLessonData(){
     DRILLS = null; ANNOTATED = null;
+    STANDALONE = standaloneExam(state.lesson);
     if(ES_MODE && !isPlayableLesson(state.lesson)){
       // Aucune leçon espagnole chargée (fichier absent) : données vides, render() affiche un message.
       VOCAB = []; MINI_CHECKS = []; ROUNDS = []; QUIZ = []; PRON_VERBS = []; MEM_WORDS = []; READING = []; GLOSS = [];
@@ -1106,6 +1119,14 @@
     // variables B1_1 ci-dessus). Branche générique : ne s'applique qu'aux leçons dont le fichier est
     // chargé (sinon, voir isPlayableLesson : ces leçons ne sont jamais proposées).
     // =====================================================================
+    } else if(STANDALONE){
+      // Grand contrôle « examen seul » : pas de leçon, uniquement l'examen (étape 5) et son bilan (6).
+      var SX = LESSON_EXAMS[state.lesson];
+      VOCAB = []; MINI_CHECKS = []; ROUNDS = []; QUIZ = []; PRON_VERBS = []; MEM_WORDS = []; READING = []; GLOSS = [];
+      GRAMMAR1 = null; GRAMMAR2 = null; REVIEW = null; CULTURE_NOTE = null;
+      LECON_SUBSTEPS = 5; LECTURE_SUBSTEPS = 1;
+      NEXT_PREVIEW = SX.nextPreview || (state.lesson === GRAND_CONTROLE_B1_LESSON ? "Niveau B2 : B2.0 (bases transversales B2), puis B2.1 — argumenter et nuancer." : "Niveau C1 : maîtrise avancée, en immersion complète.");
+      META = { vocabTitle:SX.label || SX.code, lectureTitle:"", bilanTitle:"Bravo, grand contrôle validé !", pronLabel:"", todayLede:SX.objectiveFr || "" };
     } else if(LESSONS_EXT[state.lesson] && !isReservedLesson(state.lesson)){
       var X = LESSONS_EXT[state.lesson];
       VOCAB = X.VOCAB; MINI_CHECKS = X.MINI_CHECKS; ROUNDS = X.ROUNDS; QUIZ = X.QUIZ;
@@ -1142,6 +1163,16 @@
     if(TRANSV) LECON_SUBSTEPS += 1;
     // Examen de fin de palier (s'il existe pour cette leçon) : remplace le QCM à l'étape Contrôle.
     EXAM = (!isGrandControle() && isValidExam(LESSON_EXAMS[state.lesson])) ? LESSON_EXAMS[state.lesson] : null;
+    // Rattrapage (« Second Chance ») : après un échec, le nouveau passage se fait sur le sujet de secours,
+    // plus accessible (champ secondChance de l'examen), noté et enregistré sous le même code.
+    if(EXAM && EXAM.secondChance && isValidExam(Object.assign({ code:EXAM.code }, EXAM.secondChance))){
+      var scRec = controlRecord(EXAM.code);
+      // (Pas pendant le bilan du passage qui vient d'échouer : son corrigé s'appuie sur le premier sujet.)
+      var scBilan = state.step === 6 && state.examResult && state.examResult.variant !== "second";
+      if(scRec && !scRec.passed && scRec.last && scRec.last.decision === "fail" && !scBilan){
+        EXAM = Object.assign({}, EXAM.secondChance, { code:EXAM.code, label:EXAM.label, standalone:EXAM.standalone, variant:"second" });
+      }
+    }
     // Entraînement intensif : une sous-étape de plus dans la Leçon, juste avant la construction de
     // phrase (après la grammaire et l'éventuel encart transversal). Texte légendé : une sous-étape de
     // plus dans la Lecture, après le texte (et après Musique & Ciné s'il y en a).
@@ -1214,6 +1245,8 @@
   // autre que "A1" donnait "B1" (un examen B2 rangeait donc ses rappels dans les leçons B1).
   function nextLevelOf(level){
     if(level === "A1") return "A2";
+    if(level === "GC-B1") return "B2";
+    if(level === "GC-B2") return "C1";
     var m = /^(B1|B2|C1|C2)\./.exec(String(level || ""));
     return m ? m[1] : "B1";
   }
@@ -1271,7 +1304,7 @@
   }
 
   // ---------- Compétences (jauges) ----------
-  var SKILL_LABEL = { co:"Compréhension orale", ce:"Compréhension écrite", ee:"Expression écrite", eo:"Expression orale", gr:"Grammaire", vo:"Vocabulaire", pr:"Prononciation", gv:"Grammaire et vocabulaire" };
+  var SKILL_LABEL = { co:"Compréhension orale", ce:"Compréhension écrite", ee:"Expression écrite", eo:"Expression orale", gr:"Grammaire", cj:"Conjugaison", vo:"Vocabulaire", pr:"Prononciation", gv:"Grammaire et vocabulaire" };
   function skillOfQ(q){
     if(q.cat === "oral") return "co";
     if(q.cat === "comprehension") return "ce";
@@ -1356,9 +1389,10 @@
       });
       return;
     }
-    A1_IDS.concat(A2_IDS).concat(B1_IDS).concat(B2_IDS).concat(C1_IDS).filter(isPlayableLesson).forEach(function(i){
+    A1_IDS.concat(A2_IDS).concat(B1_IDS).concat([GRAND_CONTROLE_B1_LESSON]).concat(B2_IDS).concat([GRAND_CONTROLE_B2_LESSON]).concat(C1_IDS).filter(isPlayableLesson).forEach(function(i){
       state.lesson = i; loadLessonData();
       var t = ((META && META.vocabTitle) || "").replace(/\s*\((?:A1|A2|B1|B2|C1)\.\d+\)\s*$/, "");
+      if(STANDALONE){ LESSON_TITLES[i] = t; return; }
       LESSON_TITLES[i] = (i === -1 ? "Fondamentaux" : (isBLesson(i) ? bCode(i) : (i >= 13 ? "A2." + (i - 13) : "A1." + (i + 1)))) + (t && i !== -1 ? " · " + t : "");
     });
     state.lesson = keep; state.ctrlDraw = keepDraw;
@@ -5492,6 +5526,17 @@
   var examUi = null; // état d'écran (brouillon chargé, correction IA en cours, micro…)
 
   function isValidExam(X){ return !!(X && X.code && X.sections && X.sections.length); }
+  // Nom affiché : « Grand Contrôle B1 » (label) ou « Examen B1.3 ».
+  function examName(){ return EXAM.label ? EXAM.label : "Examen " + EXAM.code; }
+  function examVariant(){ return EXAM.variant || "main"; }
+  // Corrigé (bonnes réponses, explications, notes et retours de l'IA) : visible SEULEMENT une fois
+  // l'examen entièrement terminé et rendu (demande d'Ashley, 30/09) — pendant l'examen, une section
+  // validée est simplement « enregistrée ».
+  function examShowCorr(d){ return !!(d && d.done); }
+  var EXAM_SAVED_HTML = '<div class="exam-ok" style="color:var(--ink-soft,#555)">✓ Section enregistrée. Le corrigé détaillé et ta note s\'affichent à la fin de l\'examen.</div>';
+  function examPassageHtml(S){
+    return S.passage ? '<div class="q-passage exam-passage">' + String(S.passage).split(/\n\s*\n/).map(function(p){ return '<p>'+examEsc(p)+'</p>'; }).join("") + '</div>' : "";
+  }
   function examActive(){ return !!(EXAM && state.returnTo == null && !PRACTICE); }
   function examEsc(s){ return escAttr(s).replace(/>/g, "&gt;"); }
   function examFmt(n){ var r = Math.round(n * 10) / 10; return String(r).replace(".", ","); }
@@ -5540,15 +5585,15 @@
   function examPeekDraft(){
     if(!EXAM) return null;
     var d = examDraftAll()[state.lesson];
-    return (d && d.v === 1 && d.code === EXAM.code) ? d : null;
+    return (d && d.v === 1 && d.code === EXAM.code && (d.variant || "main") === examVariant()) ? d : null;
   }
   function examSaveDraft(){ if(!examUi) return; var all = examDraftAll(); all[examUi.lesson] = examUi.d; lsSet(EXAM_KEY, all); }
   function examClearDraft(){ var all = examDraftAll(); delete all[state.lesson]; lsSet(EXAM_KEY, all); examUi = null; }
   function examDraft(){
-    if(!examUi || examUi.lesson !== state.lesson || examUi.code !== EXAM.code){
+    if(!examUi || examUi.lesson !== state.lesson || examUi.code !== EXAM.code || examUi.variant !== examVariant()){
       examStopMic();
-      examUi = { lesson:state.lesson, code:EXAM.code, busy:false, error:"", confirm:false, rec:null,
-        d: examPeekDraft() || { v:1, code:EXAM.code, sec:-1, answers:{}, results:{}, done:false, startedAt:Date.now() } };
+      examUi = { lesson:state.lesson, code:EXAM.code, variant:examVariant(), busy:false, error:"", confirm:false, rec:null,
+        d: examPeekDraft() || { v:1, code:EXAM.code, variant:examVariant(), sec:-1, answers:{}, results:{}, done:false, startedAt:Date.now() } };
     }
     return examUi.d;
   }
@@ -5556,7 +5601,7 @@
   // ---------- Écran de l'examen (step 5) ----------
   function screenExam(){
     var d = examDraft();
-    postmark.innerHTML = "EXAMEN<br>" + examEsc(EXAM.code);
+    postmark.innerHTML = (EXAM.standalone ? "GRAND<br>CONTRÔLE" : "EXAMEN<br>" + examEsc(EXAM.code));
     backBtn.style.visibility = "hidden";
     nextBtn.style.display = "";
     nextBtn.disabled = false;
@@ -5579,7 +5624,8 @@
                     : (rs.ok ? 'Tu peux le repasser maintenant.' : 'Nouveau passage possible à partir du <b>'+fmtDate(rs.openAt)+'</b>. En attendant, revois la leçon.')) + '</div>';
     }
     screen.innerHTML =
-      '<div class="eyebrow">Contrôle de fin de palier · Examen '+examEsc(EXAM.code)+'</div>' +
+      '<div class="eyebrow">'+(EXAM.standalone ? "Grand contrôle de niveau" : 'Contrôle de fin de palier · Examen '+examEsc(EXAM.code))+'</div>' +
+      (EXAM.variant === "second" ? '<div class="exam-instr"><b>🔁 Second chance: this is your retake paper — same topics, a little more guided.</b><div class="exam-fr">Sujet de rattrapage : mêmes thèmes que le premier passage, avec une approche plus guidée.</div></div>' : "") +
       '<h2 class="screen-title">'+examEsc(EXAM.title)+'</h2>' +
       '<div class="exam-fr">'+examEsc(EXAM.titleFr)+'</div>' +
       '<div class="exam-instr"><b>🌍 Immersion phase: from B1 onwards, your tests are entirely in English.</b>' +
@@ -5591,7 +5637,8 @@
           '<span class="exam-sec-name"><b>'+examEsc(S.num)+'. '+examEsc(S.title)+'</b><span class="exam-fr">'+examEsc(S.titleFr)+'</span></span>' +
           '<span class="exam-pts">'+(r ? examFmt(r.score) + " / " : "")+S.points+' pts</span></div>';
       }).join("") + '</div>' +
-      '<p class="lede" style="font-size:.86rem">Total '+total+' points. Moins de 70 % : pas encore validé (nouvel essai une semaine plus tard). 70 à 79 % : validé avec renfort. 80 à 92 % : validé avec rappels. 93 % et plus : validé.</p>' +
+      '<p class="lede" style="font-size:.86rem">Total '+total+' points. Moins de 70 % : pas encore validé (nouvel essai une semaine plus tard'+(EXAM.secondChance && EXAM.variant !== "second" ? ", sur un sujet de rattrapage" : "")+'). 70 à 79 % : validé avec renfort. 80 à 92 % : validé avec rappels. 93 % et plus : validé.</p>' +
+      '<p class="lede" style="font-size:.86rem">📖 Le corrigé détaillé (bonnes réponses, explications, notes) s\'affiche à la fin, une fois l\'examen rendu.</p>' +
       (hasAi ? '<p class="lede" style="font-size:.86rem">📝🎤 Les parties d\'expression sont corrigées par l\'IA (connexion Internet nécessaire). Tes réponses sont enregistrées au fur et à mesure : tu peux t\'arrêter et reprendre plus tard.</p>' : "") +
       lockHtml;
     var canStart = started || rs.ok;
@@ -5611,19 +5658,19 @@
       : S.type === "mcq" ? examMcqHtml(S, d, res)
       : examAiHtml(S, d, res);
     screen.innerHTML =
-      '<div class="eyebrow">Examen '+examEsc(EXAM.code)+' · Section '+(i+1)+' / '+n+'</div>' +
+      '<div class="eyebrow">'+examEsc(examName())+' · Section '+(i+1)+' / '+n+'</div>' +
       examProgressHtml(d, i) +
       '<h2 class="screen-title exam-title">'+examEsc(S.num)+'. '+examEsc(S.title)+' <span class="exam-pts">'+S.points+' pts</span></h2>' +
       '<div class="exam-fr">'+examEsc(S.titleFr)+'</div>' +
       '<div class="exam-instr"><b>'+examEsc(S.instructions)+'</b><div class="exam-fr">'+examEsc(S.instructionsFr)+'</div></div>' +
       body +
-      (res ? '<div class="exam-score-line">Score : '+examFmt(res.score)+' / '+S.points+(res.skipped ? " (partie passée)" : "")+'</div>' : "") +
+      (res && examShowCorr(d) ? '<div class="exam-score-line">Score : '+examFmt(res.score)+' / '+S.points+(res.skipped ? " (partie passée)" : "")+'</div>' : "") +
       '<div id="examMsg"></div>';
     if(S.type === "fill") wireExamFill(S, d, res);
     else if(S.type === "mcq") wireExamMcq(S, d, res);
     else wireExamAi(S, d, res);
     var last = i === n - 1;
-    nextBtn.textContent = !res ? (examUi.confirm ? "Valider quand même" : "Valider la section") : (last ? "Voir mon résultat" : "Section suivante");
+    nextBtn.textContent = !res ? (examUi.confirm ? "Valider quand même" : "Valider la section") : (last ? "Rendre l'examen et voir mon résultat" : "Section suivante");
     nextBtn.disabled = !!examUi.busy;
     if(examUi.confirmMsg && !res) document.getElementById("examMsg").innerHTML = '<div class="why-inline"><span class="icon">⚠️</span><div>'+examUi.confirmMsg+'</div></div>';
     hint.textContent = res ? "" : (S.type === "mcq" ? "Un seul essai par question : choisis, puis valide la section." : "Tes réponses sont enregistrées au fur et à mesure.");
@@ -5640,17 +5687,17 @@
       ? '<div class="exam-bank" role="group" aria-label="Word bank">' + S.bank.map(function(w){ return '<button type="button" class="exam-chip" data-word="'+escAttr(w)+'"'+(res ? " disabled" : "")+'>'+examEsc(w)+'</button>'; }).join("") + '</div>'
       : "";
     return bank + S.items.map(function(it, k){
-      var parts = String(it.text).split("___"), a = ans[k] || [], det = res && res.detail ? res.detail[k] || [] : [];
+      var parts = String(it.text).split("___"), a = ans[k] || [], show = res && examShowCorr(d), det = show && res.detail ? res.detail[k] || [] : [];
       var html = "";
       for(var p = 0; p < parts.length; p++){
         html += examEsc(parts[p]);
         if(p < parts.length - 1){
-          var cls = res ? (det[p] ? " ok" : " ko") : "";
+          var cls = show ? (det[p] ? " ok" : " ko") : "";
           html += '<input type="text" class="exam-blank'+cls+'" data-k="'+k+'" data-b="'+p+'" value="'+escAttr(a[p] || "")+'" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Blank '+(p+1)+'"'+(res ? " disabled" : "")+'>';
         }
       }
       var corr = "";
-      if(res){
+      if(show){
         var allOk = det.length && det.every(function(x){ return x; });
         corr = allOk
           ? '<div class="exam-ok">✓ Correct</div>'
@@ -5658,7 +5705,7 @@
       }
       return (it.header ? '<div class="sub-eyebrow exam-sub">'+examEsc(it.header.en)+'</div><div class="exam-fr">'+examEsc(it.header.fr)+'</div>' : "") +
         '<div class="exam-item"><span class="exam-n">'+(k+1)+'.</span> '+html+'</div>' + corr;
-    }).join("");
+    }).join("") + (res && !examShowCorr(d) ? EXAM_SAVED_HTML : "");
   }
   function wireExamFill(S, d, res){
     if(res) return;
@@ -5712,34 +5759,32 @@
 
   // ----- Type "mcq" -----
   function examMcqHtml(S, d, res){
-    var ans = d.answers[S.id] || [];
-    var passage = S.passage
-      ? '<div class="q-passage exam-passage">' + String(S.passage).split(/\n\s*\n/).map(function(p){ return '<p>'+examEsc(p)+'</p>'; }).join("") + '</div>'
-      : "";
+    var ans = d.answers[S.id] || [], show = res && examShowCorr(d);
+    var passage = examPassageHtml(S);
     return passage + S.items.map(function(it, k){
       var audio = "";
       if(it.audio){
         var script = typeof it.audio === "string" ? examEsc(it.audio)
           : it.audio.map(function(l){ return '<b>'+examEsc(l.who)+':</b> '+examEsc(l.text); }).join("<br>");
-        audio = '<div class="q-audio"><button type="button" class="q-audio-btn exam-play" data-k="'+k+'" aria-label="Play recording '+(k+1)+'">🔊</button>' +
+        audio = '<div class="q-audio"><button type="button" class="q-audio-btn exam-play" data-s="'+escAttr(S.id)+'" data-k="'+k+'" aria-label="Play recording '+(k+1)+'">🔊</button>' +
           '<span class="q-audio-hint">Recording '+(k+1)+' — listen (again)<span class="exam-fr" style="margin:0">Enregistrement '+(k+1)+' — écouter (réécouter)</span></span></div>' +
-          (res ? '<details class="gc-recap-toggle exam-script"><summary>Voir le texte de l\'enregistrement</summary><div class="q-passage">'+script+'</div></details>' : "");
+          (show ? '<details class="gc-recap-toggle exam-script"><summary>Voir le texte de l\'enregistrement</summary><div class="q-passage">'+script+'</div></details>' : "");
       }
       var chosen = ans[k];
       var opts = it.opts.map(function(o, j){
         var cls = "opt exam-opt";
         var icon = "";
-        if(res){
+        if(show){
           if(j === it.correct){ cls += " correct"; icon = '<span class="opt-icon">✓ </span>'; }
           else if(j === chosen){ cls += " incorrect"; icon = '<span class="opt-icon">✕ </span>'; }
         } else if(j === chosen) cls += " selected";
         return '<button type="button" class="'+cls+'" data-k="'+k+'" data-o="'+j+'" aria-pressed="'+(j === chosen ? "true" : "false")+'"'+(res ? " disabled" : "")+'>'+icon+examEsc(o)+'</button>';
       }).join("");
-      var why = (res && chosen !== it.correct && it.why) ? '<div class="why-inline"><span class="icon">💡</span><div>'+(chosen == null ? "<b>Pas de réponse.</b> " : "")+examEsc(it.why)+'</div></div>' : "";
+      var why = (show && chosen !== it.correct && it.why) ? '<div class="why-inline"><span class="icon">💡</span><div>'+(chosen == null ? "<b>Pas de réponse.</b> " : "")+examEsc(it.why)+'</div></div>' : "";
       return '<div class="exam-item exam-mcq">' + audio +
         '<div class="exam-q"><b>'+(k+1)+'. '+examEsc(it.q)+'</b>'+(it.qFr ? '<div class="exam-fr">'+examEsc(it.qFr)+'</div>' : "")+'</div>' +
         '<div class="options" style="margin-top:8px">'+opts+'</div>' + why + '</div>';
-    }).join("");
+    }).join("") + (res && !examShowCorr(d) ? EXAM_SAVED_HTML : "");
   }
   function examPlay(audio){
     if(!audio) return;
@@ -5850,7 +5895,8 @@
         (CREATOR_MODE ? '<button type="button" class="btn btn-ghost" id="examSkip">Passer (mode créatrice)</button>' : "") + '</div>' +
         '<div style="margin-top:8px;font-size:.8rem">Tes réponses sont gardées sur ce téléphone : rien n\'est perdu.' + (CREATOR_MODE ? "" : " L'examen ne peut pas être terminé sans cette correction.") + '</div></div>';
     }
-    return quotes + prompt + mic + area + status + examAiResultHtml(res);
+    return examPassageHtml(S) + quotes + prompt + mic + area + status +
+      (res ? (examShowCorr(d) ? examAiResultHtml(res) : '<div class="exam-ok" style="color:var(--ink-soft,#555)">✓ Réponse envoyée et corrigée. Ta note et les commentaires de l\'IA s\'affichent à la fin de l\'examen.</div>') : "");
   }
   function wireExamAi(S, d, res){
     var ta = document.getElementById("examText");
@@ -5949,8 +5995,8 @@
     var body = {
       mode:"grade", lang:"en", variant: state.variant === "us" ? "en-us" : "en-gb", level: levelOfLesson(state.lesson),
       task:{
-        title: EXAM.code + " – " + S.num + ". " + S.title,
-        instructions: S.instructions + (S.quotes && S.quotes.length ? " " + S.quotes.join(" ") : "") + (S.prompt ? " Task: " + S.prompt : "") +
+        title: examName() + " – " + S.num + ". " + S.title,
+        instructions: (S.passage ? "Source text given to the learner: " + String(S.passage) + " — " : "") + S.instructions + (S.quotes && S.quotes.length ? " " + S.quotes.join(" ") : "") + (S.prompt ? " Task: " + S.prompt : "") +
           (S.minWords ? " Expected length: " + S.minWords + (S.maxWords ? "-" + S.maxWords : "+") + " words." : ""),
         rubric: S.rubric || "", maxPoints: S.points, reference: S.reference || "",
         kind: S.type === "ai-oral" ? "oral" : "text"
@@ -6071,14 +6117,38 @@
     var floor = Object.keys(skills).filter(function(k){ return skills[k] != null && skills[k] < 50; });
     // Le palier lui-même est la « leçon à consolider » (renfort / rappels vers les leçons B1 suivantes).
     // En cas d'échec, pas de leçon imposée (weak vide) : seul le délai d'une semaine s'applique.
+    // Grand contrôle « examen seul » : pas de leçon à refaire en renfort (il n'y a pas de leçon) ;
+    // les jauges par compétence gardent la trace des points faibles.
     var ev = { pct:pct, total:total, max:max, skills:skills, decision:decision, floor:floor,
-      weak: decision === "fail" ? [] : [state.lesson], floorLessons: floor.length ? [state.lesson] : [] };
+      weak: (decision === "fail" || STANDALONE) ? [] : [state.lesson], floorLessons: (floor.length && !STANDALONE) ? [state.lesson] : [] };
     saveControlResult(EXAM.code, ev);
     if(decision !== "fail"){ grantAiCredit(); recordPass(state.lesson); }
     d.done = true;
-    d.result = { code:EXAM.code, pct:pct, total:total, max:max, decision:decision, skills:skills, floor:floor, rows:rows, at:Date.now() };
+    d.result = { code:EXAM.code, label:EXAM.label || "", variant:examVariant(), pct:pct, total:total, max:max, decision:decision, skills:skills, floor:floor, rows:rows, at:Date.now() };
     examSaveDraft();
     state.examResult = d.result;
+  }
+
+  // Corrigé d'une section écrite/orale corrigée par l'IA (bilan) : sujet, réponse de l'apprenant,
+  // note et retour de l'IA, puis les éléments attendus / réponse type (champ reference).
+  function examAiReviewHtml(S, d, r){
+    var text = examAiText(S, d);
+    return '<div class="exam-prompt"><b>'+examEsc(S.prompt || "")+'</b><div class="exam-fr">'+examEsc(S.promptFr || "")+'</div></div>' +
+      '<div class="exam-ai-sub">Ta réponse</div><div class="q-passage">'+(text.trim() ? examEsc(text).replace(/\n/g, "<br>") : "<i>(pas de réponse)</i>")+'</div>' +
+      examAiResultHtml(r) +
+      (S.reference ? '<div class="exam-ai-sub">Éléments attendus / réponse type</div><div class="q-passage">'+examEsc(S.reference).replace(/\n/g, "<br>")+'</div>' : "");
+  }
+  function examCorrigeHtml(){
+    var dd = examPeekDraft();
+    if(!dd || !dd.done) return "";
+    return '<div class="card" style="padding:14px 16px;margin-top:12px"><div class="eyebrow" style="margin-bottom:6px">📖 Corrigé complet</div>' +
+      '<p class="lede" style="font-size:.84rem;margin:0 0 6px">Touche une section pour voir tes réponses, les bonnes réponses et les explications.</p>' +
+      EXAM.sections.map(function(S){
+        var r = dd.results[S.id] || { score:0, max:S.points, detail:[] };
+        var body = S.type === "fill" ? examFillHtml(S, dd, r) : (S.type === "mcq" ? examMcqHtml(S, dd, r) : examAiReviewHtml(S, dd, r));
+        return '<details class="gc-recap-toggle exam-corrige"><summary>'+(EXAM_TYPE_ICON[S.type] || "•")+' '+examEsc(S.num)+'. '+examEsc(S.title)+' — '+examFmt(r.score)+' / '+S.points+'</summary>' +
+          '<div class="exam-instr"><b>'+examEsc(S.instructions)+'</b><div class="exam-fr">'+examEsc(S.instructionsFr)+'</div></div>' + body + '</details>';
+      }).join("") + '</div>';
   }
 
   // ---------- Bilan de l'examen (step 6) ----------
@@ -6086,10 +6156,13 @@
     var R = state.examResult, passed = R.decision !== "fail";
     var isB = isBLesson(state.lesson);
     var nextB = isB ? nextPlayableLesson(state.lesson) : null;
-    postmark.innerHTML = "BILAN<br>" + examEsc(R.code);
+    postmark.innerHTML = "BILAN<br>" + examEsc(R.label ? "GRAND CTRL" : R.code);
+    var RN = R.label || ("l'examen " + R.code);
     var rs = passed ? null : retakeStatus(R.code);
     var DEC = {
-      fail:{ t:"Pas encore validé", c:"var(--pop)", d:"Il faut au moins 70 % pour valider le palier "+examEsc(R.code)+". Revois la leçon, surtout les parties où tu as perdu des points, puis repasse l'examen." },
+      fail:{ t:"Pas encore validé", c:"var(--pop)", d: STANDALONE
+        ? "Il faut au moins 70 % pour valider le "+examEsc(RN)+". Revois les paliers liés aux parties où tu as perdu des points (corrigé ci-dessous), puis repasse-le" + (EXAM.secondChance && R.variant !== "second" ? " : ce sera un sujet de rattrapage, plus guidé." : ".")
+        : "Il faut au moins 70 % pour valider le palier "+examEsc(R.code)+". Revois la leçon, surtout les parties où tu as perdu des points, puis repasse l'examen." },
       renfort:{ t:"Validé avec renfort", c:"#b8741a", d:"Tu passes à la suite. Le palier "+examEsc(R.code)+" est ajouté à tes renforts (Mes cours › Mes renforts) pour le consolider." },
       rappel:{ t:"Validé avec rappels", c:"var(--good)", d:"Tu passes à la suite. Quelques questions de "+examEsc(R.code)+" reviendront en rappel dans tes prochaines leçons." },
       net:{ t:"Validé", c:"var(--good)", d:"Excellent : tout est bien ancré." }
@@ -6111,18 +6184,25 @@
         (NEXT_PREVIEW ? '<p class="lede" style="margin-top:14px"><b>Prochaine étape —</b> '+NEXT_PREVIEW+'</p>' : "")
       : (rs && rs.creator ? '<p class="lede" style="font-size:.85rem">Mode créatrice : nouvel essai possible tout de suite.</p>' : '<p class="lede" style="font-size:.9rem">Nouvel examen possible à partir du <b>'+fmtDate(Date.now() + 7 * DAY_MS)+'</b>.</p>');
     screen.innerHTML =
-      '<div class="eyebrow">Bilan · Examen '+examEsc(R.code)+'</div>' +
+      '<div class="eyebrow">Bilan · '+examEsc(R.label || ("Examen " + R.code))+'</div>' +
       '<h2 class="screen-title" style="color:'+DEC.c+'">'+DEC.t+'</h2>' +
       (passed && META.bilanTitle ? '<p class="lede" style="margin-top:4px"><b>'+examEsc(META.bilanTitle)+'</b></p>' : "") +
-      '<div class="score-band exam-band"><span class="big">'+R.pct+'&nbsp;%</span><span class="of">'+examFmt(R.total)+' / '+R.max+' · examen '+examEsc(R.code)+'</span></div>' +
+      '<div class="score-band exam-band"><span class="big">'+R.pct+'&nbsp;%</span><span class="of">'+examFmt(R.total)+' / '+R.max+' · '+examEsc(R.label || ("examen " + R.code))+'</span></div>' +
       '<div class="card" style="padding:14px 16px;margin-top:12px"><div class="eyebrow" style="margin-bottom:4px">Détail par section</div>'+rowsHtml+'</div>' +
       '<p class="lede" style="margin-top:12px">'+DEC.d+'</p>' + floorHtml +
-      aiHtml + nextInfo;
+      (examCorrigeHtml() || aiHtml) + nextInfo;
     nextBtn.style.display = "";
     nextBtn.disabled = false;
-    nextBtn.textContent = passed ? (isB ? (nextB != null ? "Passer à " + bCode(nextB) : "Revoir mes leçons (la suite arrive bientôt)") : "Continuer") : "Revoir la leçon";
+    nextBtn.textContent = passed ? (isB ? (nextB != null ? "Passer à " + bCode(nextB) : "Revoir mes leçons (la suite arrive bientôt)") : "Continuer") : (STANDALONE ? "Terminer" : "Revoir la leçon");
     backBtn.style.visibility = "hidden";
-    hint.textContent = passed ? "" : "Reprends la leçon depuis le début pour retravailler les points fragiles.";
+    hint.textContent = passed ? "" : (STANDALONE ? "Tes paliers restent ouverts dans Mes cours pour réviser avant le prochain passage." : "Reprends la leçon depuis le début pour retravailler les points fragiles.");
+    // Réécoute des enregistrements dans le corrigé.
+    Array.prototype.forEach.call(screen.querySelectorAll(".exam-corrige .exam-play"), function(b){
+      b.addEventListener("click", function(){
+        var sid = b.getAttribute("data-s"), S = EXAM.sections.filter(function(x){ return x.id === sid; })[0];
+        if(S && S.items[+b.getAttribute("data-k")]) examPlay(S.items[+b.getAttribute("data-k")].audio);
+      });
+    });
     var goAi = document.getElementById("goAiChat");
     if(goAi){ goAi.addEventListener("click", function(){
       try { sessionStorage.setItem("the_roots_last_tab", "conversation"); } catch(e){}
@@ -8572,6 +8652,15 @@
       else if(state.step === 1) renderSentenceBuilder();
       else if(state.step === 2) screenControle();
       else screenGCBilan();
+      return;
+    }
+    if(STANDALONE){
+      // Grand contrôle « examen seul » : directement l'examen (intro, sections) puis son bilan.
+      itinerary.hidden = true;
+      if(state.step < 5) state.step = 5;
+      if(state.step === 5) screenExam();
+      else if(state.examResult) screenExamBilan();
+      else { state.step = 5; screenExam(); }
       return;
     }
     itinerary.hidden = state.step === 0;
