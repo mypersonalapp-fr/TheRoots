@@ -944,3 +944,145 @@
 .faq-item-q::after{ content: "+"; font-size: 18px; font-weight: 700; color: var(--ink-soft); flex-shrink: 0; }
 .faq-item[open] .faq-item-q::after{ content: "–"; }
 .faq-item-a{ font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-top: 8px; }
+
+/* --- Atelier de grammaire espagnole (25/09) — js/screens/atelier-es.js --- */
+.ates{ --ates-verb: #d2452f; --ates-noun: #2f6fd2; --ates-proper: #1d4f9c; --ates-pron: #8a3fc2; --ates-art: #6b7280;
+  --ates-adj: #2f9a57; --ates-adv: #0f8a8a; --ates-prep: #c77712; --ates-conj: #8b5a2b; --ates-interj: #c2327a; --ates-det: #4b6a8a;
+  --ates-ok-bg: #eaf6ef; --ates-warn-bg: #fff4d6; --ates-warn: #9a6a00; --ates-why-bg: #fff6e8;
+  min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+:root[data-theme="dark"] .ates{ --ates-verb: #ff8a78; --ates-noun: #7fb0ff; --ates-proper: #a9c8ff; --ates-pron: #cf9bff; --ates-art: #b0b6c2;
+  --ates-adj: #6fd695; --ates-adv: #5fd4d4; --ates-prep: #ffb65c; --ates-conj: #d9a878; --ates-interj: #ff86c0; --ates-det: #9fbbd9;
+  --ates-ok-bg: rgba(47,163,94,.18); --ates-warn-bg: rgba(224,165,47,.18); --ates-warn: #f3cf7a; --ates-why-bg: rgba(226,161,61,.14); }
+.ates .card{ padding: 16px; }
+.ates-wide{ width: 100%; margin-top: 12px; }
+.ates-back{ padding-top: 2px; }
+.ates-muted{ color: var(--ink-soft); font-size: 13px; }
+.ates-note{ color: var(--ink-soft); font-size: 12.5px; line-height: 1.45; margin-top: 6px; }
+.ates-text{ font-size: 14px; line-height: 1.55; }
+.ates-h2{ font-size: 20px; font-weight: 800; margin: 2px 0 12px; line-height: 1.25; }
+.ates-level{ display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: var(--brand-teal); color: #fff; vertical-align: middle; text-shadow: none; }
+.ates-hero{ margin-bottom: 12px; }
+.ates-hero-title{ font-weight: 800; font-size: 17px; margin-bottom: 6px; }
+.ates-hero-sub{ font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+.ates-hero-prog{ display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700; margin-top: 12px; }
+.ates-tools{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.ates-tool{ display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; font-family: var(--font-main); cursor: pointer; min-width: 0; }
+.ates-tool:disabled{ opacity: .5; cursor: default; }
+.ates-tool-icon{ font-size: 24px; filter: drop-shadow(0 3px 5px rgba(20,20,30,.25)); }
+.ates-tool-title{ font-weight: 800; font-size: 14px; color: var(--ink); }
+.ates-tool-sub{ font-size: 12px; color: var(--ink-soft); line-height: 1.35; }
+.ates-chlist, .ates-lessonlist{ display: flex; flex-direction: column; gap: 10px; }
+.ates-chcard, .ates-lessonrow{ display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font-family: var(--font-main); color: var(--ink); cursor: pointer; min-width: 0; }
+.ates-chicon{ font-size: 26px; flex: 0 0 auto; }
+.ates-chbody{ display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.ates-chtitle{ font-weight: 800; font-size: 14.5px; line-height: 1.3; }
+.ates-chmeta{ font-size: 12px; color: var(--ink-soft); }
+.ates-chbody .dash-progress-bar{ margin-top: 4px; }
+.ates-chev{ color: var(--ink-soft); font-size: 20px; flex: 0 0 auto; }
+.ates-lnum{ flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: var(--surface-soft); border: 1px solid var(--border); }
+.ates-lnum.done{ background: var(--success); border-color: var(--success); color: #fff; text-shadow: none; }
+.ates-why{ background: var(--ates-why-bg); border: 1px solid var(--accent); border-left-width: 5px; border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 12px; font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+.ates-why-label{ font-weight: 800; color: var(--accent); margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; }
+.ates-block{ margin-bottom: 12px; }
+.ates-block-title{ font-weight: 800; font-size: 13.5px; margin-bottom: 8px; }
+.ates b, .ates-table td b{ color: inherit; }
+.ates-table td b, .ates-form b{ color: var(--pop); }
+:root[data-theme="dark"] .ates-table td b{ color: #ff8a78; }
+.ates-timeline{ font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; line-height: 1.5; white-space: pre; overflow-x: auto; margin: 0; padding: 10px 12px; background: var(--surface-soft); border-radius: var(--radius-sm); color: var(--ink); max-width: 100%; }
+.ates-tablewrap{ overflow-x: auto; max-width: 100%; }
+.ates-table{ width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.ates-table caption{ text-align: left; font-weight: 800; font-size: 13px; padding-bottom: 6px; color: var(--ink-soft); }
+.ates-table th{ text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-soft); padding: 6px 8px; border-bottom: 1px solid var(--border); }
+.ates-table td{ padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.ates-table tr:last-child td{ border-bottom: none; }
+.ates-form{ font-weight: 700; white-space: nowrap; }
+.ates-example{ display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid var(--border); }
+.ates-example:first-of-type{ border-top: none; padding-top: 0; }
+.ates-ex-body{ min-width: 0; flex: 1; }
+.ates-es{ font-weight: 700; font-size: 14.5px; }
+.ates-fr{ font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+.ates-say{ flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 16px; box-shadow: 0 2px 6px rgba(20,20,30,0.10); }
+.ates-say-sm{ width: 30px; height: 30px; font-size: 13px; }
+.ates-say-right{ float: right; margin-top: -4px; }
+.ates-pitfall{ padding: 8px 0; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.45; }
+.ates-pitfall:first-of-type{ border-top: none; padding-top: 0; }
+.ates-wrong{ color: var(--pop); text-decoration: line-through; text-decoration-thickness: 1px; }
+.ates-right{ color: var(--success); font-weight: 700; margin-top: 2px; }
+.ates-pwhy{ color: var(--ink-soft); font-size: 12.5px; margin-top: 3px; }
+.ates-lesson-kicker{ font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.ates-exhead{ display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 800; margin-bottom: 6px; }
+.ates-review{ margin: 10px 0; }
+.ates-review > summary{ cursor: pointer; font-weight: 800; font-size: 13px; color: var(--brand-teal); padding: 6px 0; }
+:root[data-theme="dark"] .ates-review > summary{ color: var(--accent); }
+.ates-excard{ margin-top: 8px; }
+.ates-extype{ font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; color: var(--accent); margin-bottom: 8px; }
+.ates-q{ font-size: 16px; line-height: 1.4; margin-bottom: 12px; }
+.ates .lt-opt{ width: 100%; }
+:root[data-theme="dark"] .ates .lt-opt.correct{ background: var(--ates-ok-bg); }
+.ates-fill{ font-size: 17px; line-height: 2.1; font-weight: 600; }
+.ates-hole{ display: inline-block; width: 7ch; min-width: 4.5ch; max-width: 100%; padding: 4px 8px !important; margin: 0 2px; font-size: 16px !important; font-weight: 700; border-radius: 8px !important; border: 2px solid var(--accent) !important; background: var(--surface) !important; color: var(--ink); vertical-align: baseline; }
+.ates-hole-ok{ border-color: var(--success) !important; background: var(--ates-ok-bg) !important; }
+.ates-hole-accent{ border-color: var(--gold) !important; background: var(--ates-warn-bg) !important; }
+.ates-hole-bad{ border-color: var(--pop) !important; background: var(--pop-soft) !important; }
+.ates-accents{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.ates-acc{ min-width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-soft); color: var(--ink); font-family: var(--font-main); font-size: 17px; font-weight: 700; cursor: pointer; }
+.ates-fb{ margin-top: 12px; font-size: 14px; font-weight: 700; line-height: 1.45; padding: 10px 12px; border-radius: var(--radius-sm); }
+.ates-fb-ok{ background: var(--ates-ok-bg); color: var(--success); }
+.ates-fb-bad{ background: var(--pop-soft); color: var(--pop); }
+.ates-fb-accent{ background: var(--ates-warn-bg); color: var(--ates-warn); }
+.ates-exwhy{ margin-top: 8px; font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+.ates-speak-es{ font-size: 19px; font-weight: 800; line-height: 1.4; }
+.ates-speak-btns{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ates-sbtn{ flex: 1 1 auto; padding: 11px 14px; font-size: 14px; }
+.ates-w-ok{ color: var(--success); }
+.ates-w-miss{ color: var(--gold); text-decoration: underline dotted; }
+.ates-listening{ color: var(--pop); font-weight: 700; }
+.ates-heard{ margin-top: 12px; font-size: 14px; }
+.ates-simrow{ display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 14px; }
+.ates-simbar{ flex: 1; height: 10px; border-radius: 6px; background: var(--surface-soft); overflow: hidden; border: 1px solid var(--border); }
+.ates-simbar > div{ height: 100%; }
+.ates-simbar > .ok{ background: var(--success); }
+.ates-simbar > .ko{ background: var(--gold); }
+.ates-honest{ margin-top: 12px; font-size: 11.5px; }
+.ates-result{ margin-top: 4px; }
+.ates-decform{ display: flex; gap: 8px; margin-bottom: 10px; }
+.ates-decform input{ flex: 1; min-width: 0; }
+.ates-decform .btn{ flex: 0 0 auto; padding: 12px 16px; font-size: 15px; }
+.ates-chips{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.ates-decword{ margin-bottom: 12px; }
+.ates-decres{ padding: 10px 0; border-top: 1px solid var(--border); }
+.ates-decres:first-of-type{ border-top: none; padding-top: 0; }
+.ates-decform-big{ font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.ates-root{ color: var(--ink); }
+.ates-end, .ates-endc{ color: var(--pop); }
+.ates-explain{ font-size: 13.5px; line-height: 1.5; margin-bottom: 8px; }
+.ates-decgrid{ display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13.5px; line-height: 1.4; }
+.ates-decgrid > span{ color: var(--ink-soft); font-size: 12.5px; }
+.ates-decgrid > b{ min-width: 0; }
+.ates-legend{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ates-pos{ display: inline-block; font-size: 11.5px; font-weight: 800; padding: 3px 9px; border-radius: 999px; color: #fff; background: var(--ink-soft); text-shadow: none; }
+.ates-reader{ font-size: 17px; line-height: 1.9; }
+.ates-sent{ display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; border-top: 1px solid var(--border); }
+.ates-sent:first-child{ border-top: none; }
+.ates-sent > .ates-say{ margin-top: 4px; }
+.ates-sent-words{ flex: 1; min-width: 0; }
+.ates-word{ font: inherit; font-weight: 700; background: none; border: none; padding: 0 1px; margin: 0; cursor: pointer; border-bottom: 2px solid currentColor; border-radius: 3px; line-height: 1.5; }
+.ates-word.sel{ background: var(--accent); color: #fff !important; border-bottom-color: var(--accent); text-shadow: none; }
+.ates-punct{ color: var(--ink); }
+.ates-pos-verbe{ background: var(--ates-verb); } .ates-c-verbe{ color: var(--ates-verb); }
+.ates-pos-nom{ background: var(--ates-noun); } .ates-c-nom{ color: var(--ates-noun); }
+.ates-pos-nompropre{ background: var(--ates-proper); } .ates-c-nompropre{ color: var(--ates-proper); }
+.ates-pos-pronom{ background: var(--ates-pron); } .ates-c-pronom{ color: var(--ates-pron); }
+.ates-pos-article{ background: var(--ates-art); } .ates-c-article{ color: var(--ates-art); }
+.ates-pos-determinant{ background: var(--ates-det); } .ates-c-determinant{ color: var(--ates-det); }
+.ates-pos-adjectif{ background: var(--ates-adj); } .ates-c-adjectif{ color: var(--ates-adj); }
+.ates-pos-adverbe{ background: var(--ates-adv); } .ates-c-adverbe{ color: var(--ates-adv); }
+.ates-pos-preposition{ background: var(--ates-prep); } .ates-c-preposition{ color: var(--ates-prep); }
+.ates-pos-conjonction{ background: var(--ates-conj); } .ates-c-conjonction{ color: var(--ates-conj); }
+.ates-pos-interjection{ background: var(--ates-interj); } .ates-c-interjection{ color: var(--ates-interj); }
+:root[data-theme="dark"] .ates-pos{ color: #16181d; }
+.ates-wordpanel{ position: sticky; bottom: 0; z-index: 3; margin: 10px 0 0; padding: 12px 14px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-pop); min-height: 48px; }
+.ates-wp-head{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ates-wp-word{ font-size: 18px; }
+.ates-wp-fr{ font-size: 14.5px; font-weight: 700; margin-top: 4px; }
+@media (max-width: 360px){ .ates-tools{ grid-template-columns: 1fr; } }
