@@ -3068,7 +3068,7 @@ LESSONS_ES[203] = {
  ],
  CULTURE_NOTE: {icon:"🎉", title:"Culture, expression et fiche récap (A1.3)",
   html:"<b>🎉 Culture</b> En Espagne, l'amitié passe par les <b>quedadas</b> : on « queda » (on se donne rendez-vous) pour un café, des tapas ou une sortie. Bise entre amis (deux en Espagne, souvent une en Amérique latine), poignée de main au travail. Entre amis, on termine un message par « <b>un abrazo</b> » ; en contexte pro : « <b>Un saludo</b> » ou « <b>Cordialmente</b> ». « ¿Qué tal? » est une salutation : on répond « Bien, ¿y tú? ».<br><br><b>✍️ Expression écrite — parler de ses amis (6 lignes)</b> Modèle : « Tengo tres amigos muy buenos. Se llaman David, Elena y Marcos. Nos gusta mucho escuchar música y hablar de cine. David es muy simpático y Elena es muy inteligente. Siempre hablamos los fines de semana. » Vérifie : gusta / gustan · terminaisons en -AR · adverbes de fréquence.<br><br><b>🗣️ Expression orale — briser la glace</b> « ¡Hola! Me llamo Lucas, tengo un hermano y me gusta mucho viajar con mis amigos. ¿Y tú, cómo te llamas? » Puis en formel : « Buenas tardes. Encantado de conocerle. ¿Le gusta viajar? »<br><br><b>📄 Fiche récap</b> Verbes en -AR : -o, -as, -a, -amos, -áis, -an (hablar, escuchar, bailar, viajar) · gustar : me / te / le / nos / os / les + gusta (1 objet ou infinitif) ou gustan (plusieurs) · no me gusta · A mí también · fréquence : siempre, a menudo, a veces, casi nunca, nunca · conocido = connaissance · formel : encantado de conocerle, ¿le gusta…?"},
- NEXT_PREVIEW:"A1.4 (Transporte / Direcciones) : demander son chemin, nommer les moyens de transport et la ville, et utiliser ir (voy, vas, va…) pour dire où tu vas. Envoie-moi le cours A1.4 pour que je l'ajoute dans le même format !",
+ NEXT_PREVIEW:"A1.4 (Transporte / Direcciones) : demander ton chemin, nommer les moyens de transport et les lieux de la ville, donner des indications avec l'impératif (gira / gire, sigue / siga) et utiliser ir (voy, vas, va…) pour dire où tu vas.",
  META:{vocabTitle:"Amigos y relaciones sociales : qui sont tes amis, ce que tu aimes (A1.3)", lectureTitle:"Carlos et son meilleur ami Javier", bilanTitle:"Bravo, tu sais parler de tes amis et de tes goûts !", pronLabel:"Amigos : h muette, j, ñ, c/z, gu et rr", todayLede:"parler de tes amis, dire ce que tu aimes ou n'aimes pas avec gustar, conjuguer les premiers verbes en -AR (hablar, escuchar, bailar, viajar…) et dire à quelle fréquence tu fais les choses — avec la politesse formelle ET informelle"},
  DRILLS: [
   {type:"fill", text:"Yo ___ con mis amigos. (hablar)", answers:["hablo"], why:"yo → -o."},
@@ -3664,3 +3664,2902 @@ LESSONS_ES[200] = {
 };
 __esDeco(200, MAP);
 })();
+
+// A1.4 — Transporte / Direcciones : se déplacer, demander son chemin, IR, impératif tú ET usted, prépositions de lieu (leçon 204)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Les moyens de transport", [
+  ["el autobús","/el autoˈβus/","le bus","Accent écrit : mot terminé en -s mais accentué sur la dernière syllabe : au-to-BÚS. Pluriel : los autobuses (l'accent disparaît). Colombie : souvent « el bus » ; Mexique : « el camión » = le bus urbain.","🚌","Tomo el autobús en la plaza.","Je prends le bus sur la place."],
+  ["el tren","/el tɾen/","le train","Un seul r tapé, pas de voyelle nasale : tren. Pluriel : los trenes. On dit « ir en tren ».","🚆","El tren está en la estación.","Le train est à la gare."],
+  ["el coche","/el ˈkotʃe/","la voiture (Espagne)","ch = tch : KO-tche. Colombie et Amérique latine : « el carro » (Argentine, Chili : « el auto »). En voiture : en coche (Espagne), en carro (Colombie).","🚗","Mi padre tiene un coche rojo.","Mon père a une voiture rouge."],
+  ["la bici (bicicleta)","/la ˈbiθi/","le vélo","« bici » est la forme courte, très courante ; « bicicleta » = forme complète (bi-thi-KLÉ-ta). Féminin : la bici. À vélo : en bici.","🚲","Voy al parque en bici.","Je vais au parc à vélo."],
+  ["el taxi","/el ˈtaksi/","le taxi","Mot transparent, masculin ; pluriel : los taxis. On le prend à la « parada de taxis ».","🚕","Vamos en taxi al hotel.","Nous allons à l'hôtel en taxi."],
+  ["el avión","/el aˈβjon/","l'avion","Accent écrit sur la dernière syllabe : a-VIÓN. Pluriel : aviones (l'accent disparaît). v = b.","✈️","El avión está en el aeropuerto.","L'avion est à l'aéroport."],
+  ["a pie","/a ˈpje/","à pied","On dit « a pie » et jamais « en pie » : voy a pie. Tous les autres moyens de transport se construisent avec « en » (en tren, en coche).","🚶","Voy a pie a la estación.","Je vais à pied à la gare."],
+  ["el metro","/el ˈmetɾo/","le métro","ME-tro, masculin. On dit « ir en metro ». Madrid, Barcelone, Mexico et Medellín ont un métro ; la station = « la estación de metro ».","🚇","Tomo el metro en la estación Sol.","Je prends le métro à la station Sol."],
+  ["el tranvía","/el tɾamˈbia/","le tramway","Accent écrit sur la í : tram-BÍ-a. Le n devant b se prononce comme un m.","🚊","El tranvía va al centro.","Le tramway va au centre."],
+  ["la moto","/la ˈmoto/","la moto","Forme courte de « la motocicleta ». Féminin malgré le -o final. En moto : en moto.","🏍️","Mi hermano va en moto.","Mon frère va en moto."],
+  ["el barco","/el ˈbaɾko/","le bateau","Masculin. Le ferry = « el ferri ». En bateau : en barco.","🚢","El barco es grande.","Le bateau est grand."]
+ ]),
+ blk("La ville, la rue, la gare", [
+  ["la parada","/la paˈɾaða/","l'arrêt (de bus, de taxi)","pa-RA-da. L'arrêt de bus = « la parada de autobús ». Pour le métro, on dit plutôt « la estación ».","🚏","La parada está enfrente del banco.","L'arrêt est en face de la banque."],
+  ["la estación","/la estaˈθjon/","la gare, la station","es-ta-CIÓN (c = th en Espagne, s en Amérique latine). La estación de tren = la gare ; la estación de metro = la station de métro.","🚉","La estación está cerca de aquí.","La gare est près d'ici."],
+  ["la calle","/la ˈkaʝe/","la rue","ll = y : KA-ye. « en la calle » = dans la rue ; « por esta calle » = par cette rue.","🛣️","Sigue recto por esta calle.","Continue tout droit par cette rue."],
+  ["la esquina","/la esˈkina/","le coin, l'angle de la rue","qu = k : es-KI-na. « en la esquina » = au coin de la rue. Piège : ne se dit pas « el coin » : esquina est féminin.","📐","La farmacia está en la esquina.","La pharmacie est au coin de la rue."],
+  ["el semáforo","/el seˈmaforo/","le feu tricolore","se-MÁ-fo-ro : accent écrit sur le á (mot accentué sur l'antépénultième). Pluriel : los semáforos.","🚦","Gira a la izquierda en el semáforo.","Tourne à gauche au feu."],
+  ["el puente","/el ˈpwente/","le pont","ue = diphtongue : PWEN-te. Masculin ; pluriel : los puentes.","🌉","La estación está al lado del puente.","La gare est à côté du pont."],
+  ["la plaza","/la ˈplaθa/","la place","z = th (Espagne) ou s (Amérique latine). « La plaza mayor » = la place principale d'une ville espagnole.","⛲","Estoy en la plaza.","Je suis sur la place."],
+  ["la avenida","/la aβeˈniða/","l'avenue","a-ve-NI-da ; v = b. Une avenue est plus large qu'une « calle ».","🏙️","El museo está en la avenida.","Le musée est sur l'avenue."],
+  ["el cruce","/el ˈkɾuθe/","le carrefour, le croisement","KRU-the. Vient de « cruzar » (traverser). Ne pas confondre avec « la cruz » (la croix).","🔀","En el cruce, gira a la derecha.","Au carrefour, tourne à droite."],
+  ["el paso de peatones","/el ˈpaso ðe peaˈtones/","le passage piéton","On traverse la rue « por el paso de peatones ». « el peatón » = le piéton.","🚸","Cruza por el paso de peatones.","Traverse par le passage piéton."],
+  ["la acera","/la aˈθeɾa/","le trottoir (Espagne)","a-THE-ra. Colombie : « el andén » ; Mexique : « la banqueta » ; Argentine : « la vereda ». Piège : en Espagne, « el andén » = le quai de gare.","🚶‍♀️","Siempre camino por la acera.","Je marche toujours sur le trottoir."],
+  ["la cuadra / la manzana","/la ˈkwaðɾa · la manˈθana/","le pâté de maisons (unité de distance)","En Amérique latine on mesure la distance en « cuadras » : a dos cuadras = à deux rues d'ici. En Espagne : « la manzana » (c'est aussi la pomme !) : a dos manzanas.","🏘️","El banco está a dos cuadras.","La banque est à deux rues d'ici."],
+  ["el aeropuerto","/el aeɾoˈpweɾto/","l'aéroport","a-e-ro-PUER-to : masculin, en -o (pas de « -e » final comme en français).","🛫","Voy al aeropuerto en taxi.","Je vais à l'aéroport en taxi."],
+  ["el billete / el boleto","/el biˈʝete · el boˈleto/","le billet (de transport)","billete = Espagne ; boleto = Mexique et une bonne partie de l'Amérique latine ; Colombie : « el tiquete ». ll = y : bi-YE-te.","🎫","Tengo un billete de tren.","J'ai un billet de train."],
+  ["la salida","/la saˈliða/","la sortie","sa-LI-da. Contraire : « la entrada » (l'entrée). Sur les panneaux : SALIDA.","🚪","La salida está a la derecha.","La sortie est à droite."]
+ ]),
+ blk("Verbes pour guider : l'impératif (tú / usted)", [
+  ["gira / gire (girar)","/ˈxiɾa · ˈxiɾe/","tourne / tournez","Tú : gira. Usted : gire. Infinitif : girar (g = kh : khi-RAR). « Girar » = surtout l'Espagne, compris partout ; en Amérique latine on préfère « doblar ».","↪️","Gira a la izquierda. · Gire a la izquierda.","Tourne à gauche. · Tournez à gauche."],
+  ["dobla / doble (doblar)","/ˈdoβla · ˈdoβle/","tourne / tournez (Amérique latine)","« doblar » = tourner en Colombie, au Mexique et dans presque toute l'Amérique latine. En Espagne il évoque plutôt « plier, doubler ». Tú : dobla. Usted : doble.","↩️","Doble a la derecha en la esquina.","Tournez à droite au coin de la rue."],
+  ["sigue / siga (seguir)","/ˈsiɣe · ˈsiɣa/","continue / continuez, suis / suivez","Tú : sigue. Usted : siga. g dur : SI-ge, SI-ga (le u de « sigue » est muet). seguir est irrégulier (e devient i), mais ici on retient seulement ces deux formes.","➡️","Sigue recto. · Siga recto.","Continue tout droit. · Continuez tout droit."],
+  ["toma / tome (tomar)","/ˈtoma · ˈtome/","prends / prenez","Tú : toma. Usted : tome. Verbe neutre partout (Espagne et Amérique latine) : tomar el autobús, el metro, un taxi, la primera calle.","👆","Toma el metro. · Tome el metro.","Prends le métro. · Prenez le métro."],
+  ["coge / coja (coger)","/ˈkoxe · ˈkoxa/","prends / prenez (Espagne seulement)","ATTENTION : normal en Espagne (coger el autobús), mais dans une grande partie de l'Amérique latine (Mexique, Argentine, Colombie…) ce verbe a un sens vulgaire : à ÉVITER. Dis toujours « toma / tome ». Tú : coge. Usted : coja.","⚠️","Coge el autobús aquí, en Madrid.","Prends le bus ici, à Madrid."],
+  ["cruza / cruce (cruzar)","/ˈkɾuθa · ˈkɾuθe/","traverse / traversez","Tú : cruza. Usted : cruce (z devient c devant e). On cruza la calle, la plaza, el puente.","🚶","Cruza la calle. · Cruce la calle.","Traverse la rue. · Traversez la rue."],
+  ["baja / baje (bajar)","/ˈbaxa · ˈbaxe/","descends / descendez","j = kh : BA-kha. Bajar = descendre (du bus, du métro) : « bajar del autobús » ou « baja en la parada Sol ».","⬇️","Baja en la parada Sol. · Baje en la parada Sol.","Descends à l'arrêt Sol. · Descendez à l'arrêt Sol."],
+  ["sube / suba (subir)","/ˈsuβe · ˈsuβa/","monte / montez","Tú : sube. Usted : suba (verbe en -ir : la voyelle devient -a). Subir al autobús, al tren.","⬆️","Sube al tren. · Suba al tren.","Monte dans le train. · Montez dans le train."],
+  ["espera / espere (esperar)","/esˈpeɾa · esˈpeɾe/","attends / attendez","Piège : on dit « esperar el autobús » SANS « a » (le verbe contient déjà « attendre »). Esperar veut aussi dire « espérer ».","⏳","Espera el autobús aquí. · Espere el autobús aquí.","Attends le bus ici. · Attendez le bus ici."],
+  ["mira / mire (mirar)","/ˈmiɾa · ˈmiɾe/","regarde / regardez","Sert aussi à attirer l'attention avant d'expliquer : « Mira, es fácil… » / « Mire, es fácil… ».","👀","Mira, la estación está allí. · Mire, la estación está allí.","Regarde, la gare est là-bas. · Regardez, la gare est là-bas."],
+  ["llega / llegue (llegar)","/ˈʝeɣa · ˈʝeɣe/","arrive / arrivez","llegar a = arriver à. Au présent : llego, llegas, llega (comme hablar). Impératif usted : llegue (on ajoute « u » pour garder le g dur). ll = y : YE-ga.","🏁","Llega a la plaza y gira a la derecha. · Llegue a la plaza y gire a la derecha.","Arrive à la place et tourne à droite. · Arrivez à la place et tournez à droite."],
+  ["pregunta / pregunte (preguntar)","/pɾeˈɣunta · pɾeˈɣunte/","demande / demandez (une question)","preguntar = poser une question, demander une information : « Pregunta en la farmacia ». Pas de « a » inutile avant la chose demandée.","🗣️","Pregunta en el hotel. · Pregunte en el hotel.","Demande à l'hôtel. · Demandez à l'hôtel."],
+  ["disculpa / disculpe (disculpar)","/disˈkulpa · disˈkulpe/","excuse-moi / excusez-moi","Synonyme de perdona / perdone ; très courant en Amérique latine pour aborder quelqu'un dans la rue.","🙋","Disculpa, ¿dónde está el metro? · Disculpe, ¿dónde está el metro?","Excuse-moi, où est le métro ? · Excusez-moi, où est le métro ?"]
+ ]),
+ blk("Donner une direction", [
+  ["gira a la izquierda / gire a la izquierda","/ˈxiɾa a la iθˈkjeɾða/","tourne à gauche / tournez à gauche","« a la izquierda » : toujours avec « la ». izquierda = iθ-KIER-da (qu = k, z/c = th). Tú : gira. Usted : gire.","⬅️","Gira a la izquierda en el semáforo. · Gire a la izquierda en el semáforo.","Tourne à gauche au feu. · Tournez à gauche au feu."],
+  ["gira a la derecha / gire a la derecha","/ˈxiɾa a la deˈɾetʃa/","tourne à droite / tournez à droite","de-RE-cha (ch = tch). Ne confonds pas « la derecha » (la droite) et « derecho » (tout droit en Amérique latine). Tú : gira. Usted : gire.","➡️","Gira a la derecha en la esquina. · Gire a la derecha en la esquina.","Tourne à droite au coin. · Tournez à droite au coin."],
+  ["sigue recto / siga recto","/ˈsiɣe ˈrrekto/","continue tout droit / continuez tout droit","« recto » = tout droit (invariable). Pas de « a » après sigue : jamais « sigue a recto ». Tú : sigue. Usted : siga.","⬆️","Sigue recto por esta calle. · Siga recto por esta calle.","Continue tout droit par cette rue. · Continuez tout droit par cette rue."],
+  ["todo recto · derecho","/ˈtoðo ˈrrekto · deˈɾetʃo/","tout droit (Espagne · Amérique latine)","Espagne : « sigue todo recto ». Amérique latine : « siga derecho ». Les deux sont compris partout. « derecho » (adjectif masculin) ≠ « la derecha » (la droite).","🧭","Sigue todo recto. · Siga derecho, por favor.","Continue tout droit. · Continuez tout droit, s'il vous plaît."],
+  ["la primera calle a la derecha","/la pɾiˈmeɾa ˈkaʝe a la deˈɾetʃa/","la première rue à droite","primera est féminin comme calle. Autres : la segunda (2e), la tercera (3e) : à retenir tels quels pour l'instant. « Toma la segunda calle a la izquierda. »","1️⃣","Toma la primera calle a la derecha.","Prends la première rue à droite."],
+  ["hasta","/ˈasta/","jusqu'à","h muette : AS-ta. hasta la plaza, hasta el semáforo, hasta el puente. Piège : on n'ajoute jamais « a » après hasta.","🏁","Sigue recto hasta la plaza.","Continue tout droit jusqu'à la place."],
+  ["al final de la calle","/al fiˈnal ðe la ˈkaʝe/","au bout de la rue","fi-NAL. Après « final » vient « de + nom » : al final del puente (de + el = del).","🔚","La farmacia está al final de la calle.","La pharmacie est au bout de la rue."],
+  ["a la vuelta de la esquina","/a la ˈbwelta ðe la esˈkina/","juste au coin de la rue","Expression courante pour un lieu très proche. « vuelta » = le tour, le détour.","📍","El banco está a la vuelta de la esquina.","La banque est juste au coin de la rue."]
+ ]),
+ blk("Où est-ce ? Les prépositions de lieu", [
+  ["al lado de","/al ˈlaðo ðe/","à côté de","« de » + le = « del » : al lado del banco. Avec la : al lado de la farmacia.","↔️","La parada está al lado del banco.","L'arrêt est à côté de la banque."],
+  ["enfrente de","/enˈfɾente ðe/","en face de","Aussi « frente a » (même sens). enfrente de la plaza, enfrente del hotel. Un seul mot : enfrente.","🔛","El hotel está enfrente de la estación.","L'hôtel est en face de la gare."],
+  ["entre","/ˈentɾe/","entre","Invariable et sans « de » : entre el banco y el hotel (jamais « entre de »).","🔗","La farmacia está entre el banco y el hotel.","La pharmacie est entre la banque et l'hôtel."],
+  ["delante de","/deˈlante ðe/","devant","Contraire de « detrás de ». delante del hotel = devant l'hôtel.","🔼","El taxi está delante del hotel.","Le taxi est devant l'hôtel."],
+  ["detrás de","/deˈtɾas ðe/","derrière","Accent écrit sur le á : de-TRÁS (mot en -s accentué sur la dernière syllabe). detrás de la estación.","🔙","La parada está detrás de la estación.","L'arrêt est derrière la gare."],
+  ["cerca (de)","/ˈθeɾka ðe/","près (de)","Seul : « Está cerca » (c'est près). Avec un lieu : cerca de + lieu (cerca del parque). c = th (Espagne) ou s (Amérique latine).","📍","Mi casa está cerca de la plaza.","Ma maison est près de la place."],
+  ["lejos (de)","/ˈlexos ðe/","loin (de)","j = kh : LE-khos. Même emploi que « cerca » : lejos de + lieu (lejos del centro). Contraire de cerca.","🔭","El aeropuerto está lejos del centro.","L'aéroport est loin du centre."],
+  ["a la izquierda de / a la derecha de","/a la iθˈkjeɾða ðe/","à gauche de / à droite de","Se place avant le lieu : a la derecha del banco = à droite de la banque. Piège : « de + el » donne « del ».","🔀","El hotel está a la derecha del banco.","L'hôtel est à droite de la banque."],
+  ["aquí · ahí · allí","/aˈki · aˈi · aˈʝi/","ici · là (près de toi) · là-bas","aquí = près de moi ; ahí = près de toi ; allí = loin de nous deux. « cerca de aquí » = près d'ici. Accents écrits sur le í.","📌","Estoy aquí. El museo está allí.","Je suis ici. Le musée est là-bas."],
+  ["al y del","/al · del/","au (a + el) · du (de + el)","a + el = AL : voy al parque. de + el = DEL : cerca del parque. Pas de contraction avec la, las, los : a la plaza, de la estación, a los museos. Ne pas confondre avec « él » (pronom).","🔗","El hotel está cerca del parque, al lado del banco.","L'hôtel est près du parc, à côté de la banque."]
+ ]),
+ blk("Demander son chemin", [
+  ["¿Cómo llego a…?","/ˈkomo ˈʝeɣo a/","comment aller à… ? (comment j'arrive à… ?)","LA question clé. Littéralement « comment j'arrive à… ? ». Identique en tutoiement et en vouvoiement : seul le début change (Perdona / Perdone). a + el = al : ¿Cómo llego al museo ?","🗺️","¿Cómo llego a la estación?","Comment aller à la gare ?"],
+  ["¿Dónde está el/la… más cercano/a?","/ˈdonde esˈta el · la mas θeɾˈkano/","où est le/la… le/la plus proche ?","estar = lieu. Accord : el banco más cercano, la farmacia más cercana. « más cercano » est ici une formule à retenir (les comparatifs viennent plus tard).","🔎","¿Dónde está la farmacia más cercana?","Où est la pharmacie la plus proche ?"],
+  ["¿Está lejos? / ¿Está cerca?","/esˈta ˈlexos · esˈta ˈθeɾka/","c'est loin ? / c'est près ?","Réponses : Está cerca. · No, no está lejos. · Está a cinco minutos a pie. Pas de pronom « ça » en espagnol : le verbe seul suffit.","❓","¿Está lejos de aquí? — No, está cerca.","C'est loin d'ici ? — Non, c'est près."],
+  ["¿Adónde vas? / ¿Adónde va usted?","/aˈðonde ˈβas · aˈðonde ˈβa usˈteð/","où vas-tu ? / où allez-vous ?","adónde = vers où (mouvement, avec ir) ≠ dónde (lieu fixe, avec estar). Tú : vas. Usted : va. On écrit aussi « a dónde » en deux mots.","🧭","¿Adónde vas? — Voy al banco.","Où vas-tu ? — Je vais à la banque."],
+  ["¿Sabes dónde está…? / ¿Sabe usted dónde está…?","/ˈsaβes ˈdonde esˈta · ˈsaβe usˈteð/","sais-tu où est… ? / savez-vous où est… ?","Formule à retenir telle quelle (le verbe saber sera étudié plus tard). Tú : sabes. Usted : sabe. Très poli pour aborder quelqu'un.","🙋‍♂️","¿Sabe usted dónde está el museo?","Savez-vous où est le musée ?"],
+  ["Perdona, … / Perdone, …","/peɾˈðona · peɾˈðone/","excuse-moi, … / excusez-moi, …","On aborde quelqu'un AVANT de poser la question. Tú : perdona. Usted : perdone. Voir aussi disculpa / disculpe.","🙇","Perdone, ¿cómo llego al museo?","Excusez-moi, comment aller au musée ?"],
+  ["Un billete para…, por favor","/un biˈʝete ˈpaɾa poɾ faˈβoɾ/","un billet pour…, s'il vous plaît","Pour acheter un billet (« boleto » en Amérique latine). para + destination : un billete para Sevilla. « por favor » ne change pas entre tú et usted.","🎟️","Un billete para Madrid, por favor.","Un billet pour Madrid, s'il vous plaît."],
+  ["¿Cuánto cuesta el billete?","/ˈkwanto ˈkwesta el biˈʝete/","combien coûte le billet ?","Formule fixe pour demander un prix : cuesta (un objet) ; « cuestan » pour plusieurs (¿Cuánto cuestan los billetes?). Accent sur cuánto.","💶","¿Cuánto cuesta el billete de tren?","Combien coûte le billet de train ?"]
+ ]),
+ blk("Aller quelque part : IR", [
+  ["ir","/iɾ/","aller","Verbe très irrégulier : voy, vas, va, vamos, vais, van. Il s'emploie avec « a » + lieu : voy a la estación. Pas de pronom sujet nécessaire.","🏃","Voy a la estación.","Je vais à la gare."],
+  ["ir a + lugar","/iɾ a/","aller à + lieu","a + el = al : voy al banco, voy a la plaza, voy a casa. Attention : « ir a + verbe » (futur proche) se verra plus tard (A1.9) ; ici seulement « ir a + lieu ».","📍","Voy al banco y vas al museo.","Je vais à la banque et tu vas au musée."],
+  ["ir en + transporte","/iɾ en/","aller en / à + moyen de transport","en autobús, en tren, en coche, en taxi, en metro, en bici, en moto, en avión. Seule exception : a pie. Tú : ¿Vas en metro? Usted : ¿Va usted en metro?","🚌","Voy al museo en metro.","Je vais au musée en métro."]
+ ]),
+ blk("Les lieux de la ville", [
+  ["la farmacia","/la farˈmaθja/","la pharmacie","far-MA-thia (c = th). Beaucoup de pharmacies espagnoles ont une croix verte lumineuse.","💊","La farmacia está en la esquina.","La pharmacie est au coin de la rue."],
+  ["el supermercado","/el supeɾmeɾˈkaðo/","le supermarché","su-per-mer-KA-do. À l'oral on dit souvent « el súper ».","🛒","El supermercado está cerca.","Le supermarché est près d'ici."],
+  ["el banco","/el ˈbaŋko/","la banque","Aussi « le banc » : le contexte décide. Pluriel : los bancos.","🏦","El banco está al lado de la farmacia.","La banque est à côté de la pharmacie."],
+  ["el hotel","/el oˈtel/","l'hôtel","h muette : o-TEL, accent sur la dernière syllabe. Pluriel : los hoteles.","🏨","El hotel está enfrente de la plaza.","L'hôtel est en face de la place."],
+  ["el hospital","/el ospiˈtal/","l'hôpital","h muette : os-pi-TAL. Pluriel : los hospitales.","🏥","El hospital está lejos del centro.","L'hôpital est loin du centre."],
+  ["el museo","/el muˈseo/","le musée","mu-SE-o : « e » et « o » font deux syllabes séparées.","🏛️","El museo está detrás de la plaza.","Le musée est derrière la place."],
+  ["el parque","/el ˈpaɾke/","le parc","qu = k : PAR-ke.","🌳","El parque está cerca del hotel.","Le parc est près de l'hôtel."],
+  ["la biblioteca","/la biβljoˈteka/","la bibliothèque","Faux-ami : « la librería » = la librairie, PAS la bibliothèque.","📚","La biblioteca está en la avenida.","La bibliothèque est sur l'avenue."],
+  ["el centro","/el ˈθentɾo/","le centre-ville, le centre","« el centro » seul = le centre-ville. « el centro comercial » = le centre commercial.","🏙️","Voy al centro en tranvía.","Je vais au centre-ville en tramway."]
+ ]),
+ blk("Prononciation : g, z et c dans les directions", [
+  ["g : gira · gire ≠ sigue · siga","/ˈxiɾa · ˈsiɣe/","g = kh devant i / e ; g dur dans gue / ga","gira, gire : g devant i / e = kh (comme j). sigue : « gue » = g dur, le u est muet (SI-ge). siga : g devant a = g dur. Même lettre, deux sons.","🔤","Gire y siga.","Tournez et continuez."],
+  ["z / c : cruza · cruce","/ˈkɾuθa · ˈkɾuθe/","z devant a, c devant e","z devant a / o / u ; devant e on écrit c : cruza → cruce (même son : th en Espagne, s en Amérique latine). De même : llegar → llegue (gu devant e).","🔤","Cruce la calle y llegue a la plaza.","Traversez la rue et arrivez à la place."]
+ ]),
+ blk("Bonus : 10 expressions familières vérifiées", [
+  ["estar en las nubes","/esˈtaɾ en las ˈnuβes/","être dans la lune","Être distrait, rêveur. Familier, partout (Espagne et Amérique latine). Littéralement « être dans les nuages ».","☁️","Marta está en las nubes hoy.","Marta est dans la lune aujourd'hui."],
+  ["ir sobre ruedas","/iɾ ˈsoβɾe ˈrrweðas/","rouler comme sur des roulettes (tout va bien)","Courant, partout. Se dit d'un projet ou d'une situation qui avance sans problème. Image : rouler sur des roues.","🛞","Todo va sobre ruedas.","Tout roule comme sur des roulettes."],
+  ["poner los puntos sobre las íes","/poˈneɾ los ˈpuntos ˈsoβɾe las ˈies/","mettre les points sur les i","Exactement comme en français : clarifier les choses sans ambiguïté. Le pluriel de la lettre i est « las íes ».","✍️","Es mejor poner los puntos sobre las íes.","Il vaut mieux mettre les points sur les i."],
+  ["perder el norte","/peɾˈðeɾ el ˈnoɾte/","perdre le nord, perdre ses repères","On perd le nord quand on ne sait plus où on en est (au sens propre comme au figuré). Courant, partout.","🧭","Es fácil perder el norte en una ciudad grande.","C'est facile de perdre le nord dans une grande ville."],
+  ["estar a dos pasos","/esˈtaɾ a ðos ˈpasos/","être à deux pas","Être très proche. S'emploie avec de + lieu : a dos pasos de la plaza.","👣","El hotel está a dos pasos de la plaza.","L'hôtel est à deux pas de la place."],
+  ["ir a toda pastilla","/iɾ a ˈtoða pasˈtiʎa/","aller à toute vitesse","Familier, surtout en Espagne. REMPLACE l'expression « ir a piñón fijo » du cours source, qui ne veut PAS dire « foncer tout droit » (elle désigne quelqu'un de borné, qui revient toujours à la même idée).","💨","El tren va a toda pastilla.","Le train va à toute vitesse."],
+  ["estar hecho polvo","/esˈtaɾ ˈetʃo ˈpolβo/","être épuisé, être crevé","Familier. Pas lié aux trajets : on peut être « hecho polvo » après n'importe quel effort. « hecho » s'accorde : hecho (homme), hecha (femme).","😵","Hoy estoy hecha polvo.","Aujourd'hui je suis épuisée."],
+  ["coger el toro por los cuernos","/koˈxeɾ el ˈtoɾo poɾ los ˈkweɾnos/","prendre le taureau par les cornes","Affronter un problème directement. Espagne : coger. Amérique latine : on dit « agarrer el toro por los cuernos » (coger y est évité).","🐂","Es mejor coger el toro por los cuernos.","Il vaut mieux prendre le taureau par les cornes."],
+  ["tirar la casa por la ventana","/tiˈɾaɾ la ˈkasa poɾ la benˈtana/","jeter l'argent par les fenêtres, dépenser sans compter","Dépenser énormément, surtout pour une fête ou un événement. Courant, partout.","💸","Mi tío tira la casa por la ventana.","Mon oncle jette l'argent par les fenêtres."],
+  ["ir de punta en blanco","/iɾ ðe ˈpunta en ˈblanko/","être tiré à quatre épingles","Être très élégant, habillé avec soin. S'emploie avec ir ou estar. Courant, partout.","🎩","Hoy Ana va de punta en blanco.","Aujourd'hui Ana est tirée à quatre épingles."]
+ ])
+);
+LESSONS_ES[204] = {
+ code:"A1.4", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el semáforo","la esquina","gira a la izquierda / gire a la izquierda","sigue recto / siga recto","toma / tome (tomar)","al lado de","enfrente de","¿Cómo llego a…?","¿Dónde está el/la… más cercano/a?","al y del"]),
+ MINI_CHECKS: [
+  {q:"« Tourne à droite » (à un ami) :", opts:["Gira a la derecha.","Gira a la izquierda.","Sigue recto."], correct:0, fb:"derecha = droite, izquierda = gauche. Tutoiement : gira (terminaison -a)."},
+  {q:"« Tournez à gauche » (à une dame que tu vouvoies) :", opts:["Gira a la izquierda.","Gire a la izquierda."], correct:1, fb:"Au vouvoiement (usted), un verbe en -AR prend -e : gire. Au tutoiement : gira."},
+  {q:"« Prends le bus » (à un ami) :", opts:["Tome el autobús.","Toma el autobús."], correct:1, fb:"Tutoiement : toma. Vouvoiement : tome. Et « tomar » est neutre, contrairement à « coger » (Espagne seulement)."},
+  {q:"Pour demander la pharmacie la plus proche :", opts:["¿Dónde está la farmacia más cercana?","¿Cómo está la farmacia más cercana?"], correct:0, fb:"Pour un lieu : ¿Dónde está…? (estar). ¿Cómo está…? = comment va… ? Et cercana s'accorde avec farmacia (féminin)."},
+  {q:"« Je vais à la gare » :", opts:["Voy al estación.","Voy a la estación."], correct:1, fb:"estación est féminin : a la estación. « al » = a + el, seulement devant un nom masculin (voy al banco)."},
+  {q:"« À côté du parc » :", opts:["al lado de el parque","al lado del parque","al lado de la parque"], correct:1, fb:"de + el = del (obligatoire) : al lado del parque. parque est masculin."},
+  {q:"Comment dit-on « à pied » ?", opts:["en pie","a pie","por pie"], correct:1, fb:"« a pie » est la seule exception : tous les autres moyens de transport prennent « en » (en tren, en taxi)."},
+  {q:"« Ils vont en taxi » :", opts:["Van en taxi.","Vais en taxi.","Va en taxi."], correct:0, fb:"ir : voy, vas, va, vamos, vais, van. ellos → van. (vais = vosotros, va = él / usted.)"}
+ ],
+ ROUNDS: [
+  __esR("Gira a la izquierda en el semáforo.","Tourne à gauche au feu."),
+  __esR("Sigue recto por esta calle.","Continue tout droit par cette rue."),
+  __esR("Gire a la derecha, por favor.","Tournez à droite, s'il vous plaît."),
+  __esR("La parada está enfrente del banco.","L'arrêt est en face de la banque."),
+  __esR("¿Cómo llego a la estación?","Comment aller à la gare ?"),
+  __esR("¿Dónde está la farmacia más cercana?","Où est la pharmacie la plus proche ?"),
+  __esR("Voy al museo en metro.","Je vais au musée en métro."),
+  __esR("Vamos a pie al parque.","Nous allons à pied au parc."),
+  __esR("El supermercado está al lado del hotel.","Le supermarché est à côté de l'hôtel."),
+  __esR("Siga recto y cruce la plaza.","Continuez tout droit et traversez la place."),
+  __esR("Mi casa está cerca de la estación.","Ma maison est près de la gare."),
+  __esR("Tomo el autobús en la esquina.","Je prends le bus au coin de la rue."),
+  __esR("Perdone, ¿dónde está el banco más cercano?","Excusez-moi, où est la banque la plus proche ?")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"« Tourne à gauche » (tutoiement) :", opts:["Gira a la izquierda.","Gire a la izquierda.","Girar a la izquierda."], correct:0, why:"Tutoiement : gira. « Gire » = usted ; « girar » est l'infinitif, pas un ordre."},
+  {cat:"ecrit", q:"À une dame que tu vouvoies : « Tournez à droite. »", opts:["Gira a la derecha.","Gira a la izquierda.","Gire a la derecha."], correct:2, why:"Usted + verbe en -AR : on passe de -a à -e : gire. Et derecha = droite."},
+  {cat:"ecrit", q:"___ recto. (tú, seguir : « continue tout droit »)", opts:["Siga","Sigue","Seguir"], correct:1, why:"Impératif tú de seguir : sigue (g dur, u muet). « Siga » = usted."},
+  {cat:"ecrit", q:"___ recto por esta calle, señor. (usted, seguir)", opts:["Sigue","Siga","Sigo"], correct:1, why:"Usted + verbe en -ER / -IR : la terminaison devient -a : siga. « Sigo » = je continue."},
+  {cat:"ecrit", q:"___ el autobús, señora. (usted, tomar)", opts:["Toma","Tomo","Tome"], correct:2, why:"Usted + verbe en -AR : -e : tome. « Toma » = tú ; « tomo » = je prends."},
+  {cat:"ecrit", q:"Voy ___ metro. (a + el)", opts:["a el","al","del"], correct:1, why:"a + el se contracte obligatoirement en « al » : voy al metro."},
+  {cat:"ecrit", q:"La estación está cerca ___ parque. (de + el)", opts:["de el","del","al"], correct:1, why:"de + el = del : cerca del parque."},
+  {cat:"ecrit", q:"La parada está ___ de la plaza. (« en face »)", opts:["enfrente","lejos","detrás"], correct:0, why:"enfrente de = en face de. lejos = loin ; detrás de = derrière."},
+  {cat:"ecrit", q:"Nosotros ___ a pie al museo.", opts:["van","vamos","vais"], correct:1, why:"ir : nosotros → vamos. « van » = ellos / ustedes ; « vais » = vosotros."},
+  {cat:"ecrit", q:"Mis amigos ___ en taxi.", opts:["va","van","vamos"], correct:1, why:"ir : ellos / ellas → van. « va » = él / ella / usted."},
+  {cat:"ecrit", q:"« Comment j'arrive à la gare ? » se dit :", opts:["¿Cómo llegar la estación?","¿Cómo llego a la estación?","¿Cómo llegas a la estación?"], correct:1, why:"¿Cómo llego a…? (yo = llego) + a. « llegas » changerait le sens : comment arrives-tu… ?"},
+  {cat:"ecrit", q:"Pour demander « la pharmacie la plus proche » :", opts:["¿Dónde está la farmacia más cercana?","¿Dónde está el farmacia más cercano?","¿Dónde es la farmacia más cercana?"], correct:0, why:"farmacia est féminin : la farmacia más cercana (cercana s'accorde). Un lieu → estar, pas ser."},
+  {cat:"ecrit", q:"Quel verbe est le plus courant en Amérique latine pour « tourner » dans la rue ?", opts:["coger","girar","doblar"], correct:2, why:"« doblar » (doble a la derecha) est le verbe usuel en Amérique latine ; « girar » est surtout espagnol (mais compris). « coger » = prendre (Espagne)."},
+  {cat:"ecrit", q:"Pourquoi éviter « coger » avec un Latino-Américain ?", opts:["Il n'existe pas en espagnol","Il a un sens vulgaire dans une grande partie de l'Amérique latine","Il veut dire « tourner »"], correct:1, why:"Normal en Espagne (coger el autobús), mais vulgaire dans une grande partie de l'Amérique latine. Le verbe neutre partout : tomar."},
+  {cat:"oral", audio:"Gira a la izquierda y sigue recto.", q:"Écoute : que doit faire la personne ?", opts:["Tourner à gauche puis continuer tout droit","Tourner à droite puis s'arrêter","Prendre le métro"], correct:0, why:"gira a la izquierda = tourne à gauche ; sigue recto = continue tout droit."},
+  {cat:"oral", audio:"Gire a la derecha, por favor.", q:"Écoute : la phrase est…", opts:["au tutoiement","au vouvoiement"], correct:1, why:"« gire » (terminaison -e d'un verbe en -AR) = vouvoiement. Au tutoiement : gira."},
+  {cat:"oral", audio:"La estación está al lado del puente.", q:"Écoute : où est la gare ?", opts:["Devant le pont","À côté du pont","Loin du pont"], correct:1, why:"al lado del puente = à côté du pont (de + el = del)."},
+  {cat:"oral", audio:"Voy al banco en autobús.", q:"Écoute : comment la personne va-t-elle à la banque ?", opts:["À pied","En bus","En voiture"], correct:1, why:"« en autobús » = en bus. À pied se dirait « a pie » ; en voiture : « en coche »."},
+  {cat:"oral", audio:"Perdone, ¿dónde está la parada de taxis?", q:"Écoute : que cherche la personne ?", opts:["Une station de taxis","Une gare","Une pharmacie"], correct:0, why:"la parada de taxis = la station de taxis. « Perdone » : on s'adresse à quelqu'un avec usted."},
+  {cat:"comprehension", passage:"— Perdón, ¿dónde está la estación de metro más cercana? — Mira, es muy fácil. Sigue recto por esta calle, gira a la izquierda en el semáforo y la estación está al lado del puente, enfrente de la gran plaza.", q:"Où faut-il tourner ?", opts:["Au feu, à gauche","À la place, à droite","Au pont, à gauche"], correct:0, why:"« gira a la izquierda en el semáforo » : tourner à gauche au feu."},
+  {cat:"comprehension", passage:"— Perdón, ¿dónde está la estación de metro más cercana? — Mira, es muy fácil. Sigue recto por esta calle, gira a la izquierda en el semáforo y la estación está al lado del puente, enfrente de la gran plaza.", q:"Où est la station par rapport au pont ?", opts:["Derrière le pont","À côté du pont","Loin du pont"], correct:1, why:"« al lado del puente » = à côté du pont. Elle est aussi en face de la grande place (enfrente de)."},
+  {cat:"comprehension", passage:"— Buenos días, señora. ¿Cómo llego al museo? — Siga recto hasta la plaza, cruce la calle y tome la primera calle a la derecha. El museo está detrás del banco.", q:"Où est le musée ?", opts:["Derrière la banque","Devant la banque","À côté de la place"], correct:0, why:"« detrás del banco » = derrière la banque."},
+  {cat:"comprehension", passage:"— Buenos días, señora. ¿Cómo llego al museo? — Siga recto hasta la plaza, cruce la calle y tome la primera calle a la derecha. El museo está detrás del banco.", q:"Quelle rue faut-il prendre ?", opts:["La première à gauche","La première à droite","La deuxième à droite"], correct:1, why:"« tome la primera calle a la derecha » : la première rue à droite."},
+  {cat:"comprehension", passage:"— Buenos días, señora. ¿Cómo llego al museo? — Siga recto hasta la plaza, cruce la calle y tome la primera calle a la derecha. El museo está detrás del banco.", q:"Quel indice montre le vouvoiement ?", opts:["Les formes siga, cruce, tome","Le mot « museo »","Le mot « calle »"], correct:0, why:"siga, cruce, tome = impératif usted (-a pour seguir, -e pour cruzar et tomar). Au tutoiement : sigue, cruza, toma."}
+ ],
+ PRON_VERBS: [
+  {en:"Gira a la izquierda.", fr:"Tourne à gauche. (g = kh : KHI-ra ; izquierda : iz-KIER-da, qu = k)"},
+  {en:"Siga recto por esta calle.", fr:"Continuez tout droit par cette rue. (g dur : SI-ga ; rr roulé : RREK-to ; ll = y : KA-ye)"},
+  {en:"Gire a la derecha.", fr:"Tournez à droite. (gi = khi : KHI-re ; ch = tch : de-RE-tcha)"},
+  {en:"Cruce la calle.", fr:"Traversez la rue. (c devant e = th en Espagne, s en Amérique latine : KRU-the)"},
+  {en:"Sigue recto hasta el semáforo.", fr:"Continue tout droit jusqu'au feu. (gue = ghé, u muet : SI-ghe ; h muette : AS-ta ; se-MÁ-fo-ro)"},
+  {en:"La esquina está al lado del puente.", fr:"Le coin est à côté du pont. (qu = k : es-KI-na ; ue = pwe : PWEN-te)"},
+  {en:"¿Cómo llego a la estación?", fr:"Comment aller à la gare ? (ll = y : YE-go ; es-ta-THION, accent sur la dernière syllabe)"},
+  {en:"Voy en autobús.", fr:"Je vais en bus. (v = b : boy ; au-to-BÚS, accent écrit sur la dernière syllabe)"},
+  {en:"La plaza está enfrente del hotel.", fr:"La place est en face de l'hôtel. (z = th : PLA-tha ; h muette : o-TEL)"},
+  {en:"Perdone, ¿dónde está la farmacia?", fr:"Excusez-moi, où est la pharmacie ? (r simple : per-DO-ne ; far-MA-thia, c = th)"}
+ ],
+ READING: [
+  "Lucía llega a Madrid en tren y va a pie al hotel.",
+  "La estación está cerca del centro, pero Lucía necesita un mapa.",
+  "Pregunta a una señora: «Perdone, ¿dónde está el hotel?»",
+  "La señora explica: «Siga recto, cruce la plaza y gire a la derecha.»",
+  "El hotel está enfrente de un banco y al lado de una farmacia.",
+  "Después, Lucía va al museo en metro.",
+  "Su amigo Pablo explica: «Toma la línea uno y baja en la parada Sol.»",
+  "«Gira a la izquierda en el semáforo y sigue recto: el museo está detrás de la plaza.»",
+  "Lucía está muy contenta: ¡es fácil ir a pie!",
+  "Y tú, ¿cómo vas al trabajo: en autobús, en metro o a pie?"
+ ],
+ GLOSS: [
+  {en:"el centro", fr:"le centre-ville"},
+  {en:"necesita (necesitar)", fr:"elle a besoin de : verbe en -AR, comme hablar (necesito, necesitas, necesita…)"},
+  {en:"el mapa", fr:"la carte, le plan : masculin malgré le -a final"},
+  {en:"explica (explicar)", fr:"elle explique : verbe en -AR, 3e personne du singulier"},
+  {en:"después", fr:"ensuite, après (adverbe, accent écrit sur le é)"},
+  {en:"la línea", fr:"la ligne (de métro, de bus) ; accent écrit sur le í : LÍ-ne-a"},
+  {en:"la parada Sol", fr:"la station Sol : une des stations les plus connues du métro de Madrid"},
+  {en:"el trabajo", fr:"le travail, le lieu de travail : « voy al trabajo » = je vais au travail"}
+ ],
+ GRAMMAR1: {
+  heading:"IR : aller quelque part (voy, vas, va, vamos, vais, van)",
+  lede:"Pour parler de déplacements, tu as besoin d'un seul verbe : IR (aller). Il est irrégulier : il ne ressemble à aucun verbe en -AR du palier précédent. On l'apprend par cœur, une fois pour toutes, et il sert partout : aller à la gare, au travail, au musée, chez des amis.",
+  conj:[
+   ["yo →","voy","Voy a la estación."],
+   ["tú →","vas","¿Vas al metro en bici?"],
+   ["él, ella, usted →","va","Marta va al banco. · ¿Va usted en taxi, señor?"],
+   ["nosotros/as →","vamos","Vamos a pie al parque."],
+   ["vosotros/as →","vais","¿Vais en tren a Sevilla?"],
+   ["ellos, ellas, ustedes →","van","Mis amigos van en autobús. · ¿Cómo van ustedes?"]
+  ],
+  ruleHtml:"📖 <b>IR</b> = aller : <b>voy, vas, va, vamos, vais, van</b>. Sans accent écrit, sans pronom sujet (voy = je vais).<br><br>📍 <b>ir A + lieu</b> : <b>Voy a la estación. Vas a casa. Marta va a Madrid.</b> La petite préposition <b>a</b> marque la direction. Comparaison avec ESTAR (position) : <b>estoy EN Madrid</b> (je suis à Madrid) / <b>voy A Madrid</b> (je vais à Madrid). Le français dit « à » dans les deux cas ; l'espagnol, non.<br><br>🔗 <b>a + el = AL</b> (contraction obligatoire) : <b>Voy al metro. Vamos al museo. ¿Vas al banco?</b> Avec la, las, los : pas de contraction : <b>voy a la plaza, voy a los museos</b>. Même règle pour <b>de + el = DEL</b> : <b>la parada del autobús, cerca del parque, al lado del banco</b> ; mais <b>de la estación, de los hoteles</b>. Ne confonds pas avec le pronom « él » (a él, de él : jamais de contraction).<br><br>🚌 <b>ir EN + moyen de transport</b> : <b>en autobús, en tren, en coche, en taxi, en metro, en bici, en moto, en avión</b>. Une seule exception : <b>a pie</b>. Phrase complète : <b>Voy al metro en bici</b> (je vais au métro à vélo) ; <b>Voy a pie a la estación</b> (je vais à pied à la gare).<br><br>👥 <b>Tutoiement ET vouvoiement</b> : tú → <b>vas</b> : ¿Adónde vas? ¿Vas en metro? · usted → <b>va</b> : <b>¿Adónde va usted, señora? ¿Va usted en taxi, señor?</b> · ustedes → <b>van</b> : ¿Cómo van ustedes? · vosotros (Espagne) → <b>vais</b> : ¿Adónde vais? Réponse : <b>Voy al hotel.</b><br><br>🧭 <b>¿Adónde? ou ¿Dónde?</b> : <b>¿Adónde vas?</b> (vers où ? avec ir, un mouvement) / <b>¿Dónde estás?</b> (où ? avec estar, une position).<br><br>⚠️ <b>Pièges</b> : 1) « vais » et « voy » n'ont pas d'accent. 2) <b>vamos</b> = nous allons, mais aussi « allons-y ! » (¡Vamos!). 3) Ici on utilise seulement « ir a + LIEU » ; « ir a + verbe » (le futur proche) se verra bien plus tard, à partir de A1.9. 4) Avec « a pie », pas de « en » : jamais « en pie ».",
+  dialogueLede:"Deux amis se croisent dans la rue (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Pablo! ¿Adónde vas?", fr:"Salut, Pablo ! Où vas-tu ?"},
+   {who:"you", en:"Voy al supermercado. ¿Y tú?", fr:"Je vais au supermarché. Et toi ?"},
+   {who:"them", en:"Voy a la estación. Mis padres llegan hoy en tren.", fr:"Je vais à la gare. Mes parents arrivent aujourd'hui en train."},
+   {who:"you", en:"¿Vas en bici o en autobús?", fr:"Tu y vas à vélo ou en bus ?"},
+   {who:"them", en:"Voy a pie. La estación está cerca.", fr:"J'y vais à pied. La gare est près d'ici."},
+   {who:"you", en:"¡Vale! Hasta luego.", fr:"D'accord ! À tout à l'heure."}
+  ],
+  whyLabel:"Pourquoi « a » après ir, et pourquoi « al » ?",
+  whyText:"IR est l'un des verbes les plus irréguliers de toutes les langues : voy, vas, va, vamos… ne ressemblent pas à l'infinitif. Il n'y a pas de recette, seulement de la répétition : dis « voy, vas, va, vamos, vais, van » à voix haute plusieurs fois. En revanche, la construction est très simple : <b>ir + a + lieu</b>. La préposition « a » exprime le mouvement vers un endroit, alors que <b>estar + en</b> exprime la position. Voilà pourquoi on dit « voy A la plaza » mais « estoy EN la plaza ». Quant à <b>al</b> et <b>del</b>, ce sont de simples raccourcis de prononciation : « a el » est lourd à dire, donc on fusionne en <b>al</b> ; « de el » fusionne en <b>del</b>. Ils fonctionnent uniquement devant « el » (masculin singulier). Test rapide : le nom est masculin singulier ? → al / del. Féminin ou pluriel ? → a la / de la, a los / de los. Pour le moyen de transport, souviens-toi que le français « en train, en bus, à vélo » devient toujours <b>en</b> en espagnol (en tren, en autobús, en bici), sauf « à pied » = <b>a pie</b>."
+ },
+ GRAMMAR2: {
+  heading:"Guider quelqu'un : l'impératif (tú ET usted) et les prépositions de lieu",
+  dialogueLede:"Un touriste demande son chemin à une passante (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Perdone, ¿dónde está la farmacia más cercana?", fr:"Excusez-moi, où est la pharmacie la plus proche ?"},
+   {who:"you", en:"Mire, es muy fácil. Siga recto por esta calle y gire a la izquierda en el semáforo.", fr:"Regardez, c'est très facile. Continuez tout droit par cette rue et tournez à gauche au feu."},
+   {who:"them", en:"¿Está lejos?", fr:"C'est loin ?"},
+   {who:"you", en:"No, está cerca. La farmacia está al lado del banco, enfrente de la plaza.", fr:"Non, c'est près. La pharmacie est à côté de la banque, en face de la place."},
+   {who:"them", en:"Gracias, señora.", fr:"Merci, madame."},
+   {who:"you", en:"De nada. Y si necesita un taxi, la parada está allí.", fr:"De rien. Et si vous avez besoin d'un taxi, l'arrêt est là-bas."}
+  ],
+  ruleHtml:"💭 <b>1. L'impératif sert à donner un ordre, un conseil, une indication.</b> En espagnol, il change selon la politesse : on <b>tutoie</b> (tú) ou on <b>vouvoie</b> (usted).<br><br>💭 <b>2. Impératif tú = la forme « él / ella » du présent</b> : hablas → <b>habla</b> ; <b>gira, toma, cruza, baja, espera, mira, llega, pregunta</b> (verbes en -AR : ils se terminent en <b>-a</b>). Cas à retenir : <b>sigue</b> (seguir), <b>sube</b> (subir), <b>coge</b> (coger, Espagne). On ne met pas de pronom : <b>Gira a la izquierda.</b><br><br>💭 <b>3. Impératif usted = la voyelle s'inverse.</b> Verbes en <b>-AR</b> : -a devient <b>-e</b> : gira → <b>gire</b>, toma → <b>tome</b>, cruza → <b>cruce</b>, baja → <b>baje</b>, espera → <b>espere</b>, mira → <b>mire</b>, llega → <b>llegue</b>. Verbes en <b>-ER / -IR</b> : -e devient <b>-a</b> : sigue → <b>siga</b>, sube → <b>suba</b>, coge → <b>coja</b>. Pour plusieurs personnes (ustedes), on ajoute -n : <b>giren, tomen, sigan</b>. Spelling : cruzar → <b>cruce</b> (z → c devant e), llegar → <b>llegue</b> (g → gu pour garder le g dur).<br><br><table style='border-collapse:collapse'><tr><th>Verbe</th><th>tú</th><th>usted</th></tr><tr><td>girar</td><td>gira</td><td>gire</td></tr><tr><td>seguir</td><td>sigue</td><td>siga</td></tr><tr><td>tomar</td><td>toma</td><td>tome</td></tr><tr><td>cruzar</td><td>cruza</td><td>cruce</td></tr><tr><td>bajar</td><td>baja</td><td>baje</td></tr><tr><td>subir</td><td>sube</td><td>suba</td></tr></table><br>💭 <b>4. Les indications clés</b> : <b>gira a la izquierda / a la derecha</b> (usted : gire) · <b>sigue recto</b> (usted : siga recto ; Amérique latine : siga derecho) · <b>cruza la calle</b> · <b>toma la primera calle a la derecha</b> · <b>hasta la plaza</b> · <b>en el semáforo, en la esquina</b>. Pour aborder quelqu'un : <b>Perdona</b> (tú) / <b>Perdone</b> (usted). En fin de phrase : <b>por favor</b>.<br><br>💭 <b>5. Les prépositions de lieu</b> (avec ESTAR) : <b>al lado de</b> (à côté de), <b>enfrente de</b> (en face de), <b>entre</b> (entre, sans de), <b>delante de</b> (devant), <b>detrás de</b> (derrière), <b>cerca de</b> (près de), <b>lejos de</b> (loin de). Elles se terminent presque toutes par <b>de</b> ; avec un nom masculin, de + el = <b>del</b> : <b>al lado del banco, cerca del parque</b> ; féminin : <b>al lado de la farmacia</b>. Seul <b>entre</b> ne prend pas de de : <b>entre el banco y el hotel</b>.<br><br>💭 <b>6. Les deux questions du palier</b> : <b>¿Cómo llego a…?</b> (à la gare : ¿Cómo llego a la estación? ; au musée : ¿Cómo llego al museo?) et <b>¿Dónde está el/la… más cercano/a?</b> (el banco más cercano, la farmacia más cercana : cercano s'accorde avec le nom). <b>más cercano</b> = le plus proche : on en reparlera avec les comparatifs.<br><br>👥 <b>Tutoiement ET vouvoiement</b> : tú → <b>Perdona, ¿cómo llego a la estación? — Gira a la izquierda y sigue recto.</b> · usted → <b>Perdone, ¿cómo llego a la estación? — Gire a la izquierda y siga recto.</b><br><br>🌎 <b>Variantes</b> : « tourner » = girar (Espagne), <b>doblar</b> (Amérique latine). « prendre » = <b>tomar</b> partout ; <b>coger</b> = Espagne seulement, vulgaire dans une grande partie de l'Amérique latine : à éviter. « tout droit » = todo recto (Espagne) / derecho (Amérique latine). Distances : « a dos manzanas » (Espagne) / « a dos cuadras » (Amérique latine). « vosotros » n'existe qu'en Espagne : ailleurs, ustedes (giren, tomen).",
+  whyLabel:"Pourquoi gira / gire ? Une seule voyelle qui change tout",
+  whyText:"En français, « tourne » et « tournez » se distinguent aussi (tourne / tournez), mais en espagnol l'écart tient à une seule voyelle, et elle s'<b>inverse</b> : le verbe en -AR garde son <b>a</b> au tutoiement (gira) et prend un <b>e</b> au vouvoiement (gire) ; le verbe en -ER / -IR fait le contraire (sigue → siga). Retiens l'astuce : <b>tú = la voyelle du verbe, usted = la voyelle opposée</b>. Cela recroise la distinction tú / usted vue dès A1.1 : avec un inconnu âgé, un employé, un client, on utilise toujours usted (¡Perdone!), tandis qu'entre jeunes ou entre amis on tutoie (¡Perdona!). En Amérique latine, usted est même très répandu entre inconnus de tous âges. En cas de doute dans la rue, choisis usted : c'est toujours poli. Deux autres pièges de francophone : 1) le verbe « prendre » : <b>tomar</b> (neutre partout) et non « coger » ; 2) la préposition avec le lieu : <b>al lado DE</b> (pas « au lado ») et <b>del</b> à la place de « de el »."
+ },
+ REVIEW: [
+  {q:"Yo ___ con mis amigos. (hablar)", opts:["hablo","hablas","habla"], correct:0, fb:"Verbe en -AR : yo → -o (hablo). (rappel A1.3)"},
+  {q:"« Je ne parle jamais de football » :", opts:["Nunca hablo de fútbol.","Siempre hablo de fútbol."], correct:0, fb:"nunca = jamais, placé avant le verbe ; siempre = toujours. (rappel A1.3)"},
+  {q:"« J'aime les chiens » :", opts:["Me gusta los perros.","Me gustan los perros."], correct:1, fb:"Plusieurs objets → gustan (me gustan los perros). (rappel A1.3)"},
+  {q:"Pour demander à une dame âgée si elle aime voyager :", opts:["¿Le gusta viajar?","¿Te gusta viajar?"], correct:0, fb:"usted → le gusta ; tú → te gusta. (rappel A1.3)"},
+  {q:"« Vous parlez » (à plusieurs amis, Espagne) :", opts:["habláis","hablan","hablamos"], correct:0, fb:"vosotros → -áis (habláis, avec accent écrit). (rappel A1.3)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"___ a la izquierda. (tú, girar)", answers:["Gira","gira"], why:"Impératif tú : gira (terminaison -a)."},
+  {type:"fill", text:"___ a la derecha, por favor. (usted, girar)", answers:["Gire","gire"], why:"Impératif usted d'un verbe en -AR : -a devient -e : gire."},
+  {type:"fill", text:"___ recto. (tú, seguir)", answers:["Sigue","sigue"], why:"Impératif tú de seguir : sigue (g dur, u muet)."},
+  {type:"fill", text:"___ recto, por favor. (usted, seguir)", answers:["Siga","siga"], why:"Usted + verbe en -IR : -e devient -a : siga."},
+  {type:"fill", text:"___ el metro en la plaza. (tú, tomar)", answers:["Toma","toma"], why:"Impératif tú : toma. Neutre partout (contrairement à coger)."},
+  {type:"fill", text:"___ el taxi, señora. (usted, tomar)", answers:["Tome","tome"], why:"Impératif usted : tome."},
+  {type:"fill", text:"___ la calle. (tú, cruzar)", answers:["Cruza","cruza"], why:"Impératif tú : cruza."},
+  {type:"fill", text:"___ la calle, señor. (usted, cruzar)", answers:["Cruce","cruce"], why:"z devient c devant e : cruce (même son, orthographe différente)."},
+  {type:"fill", text:"Yo ___ al supermercado. (ir)", answers:["voy","Voy"], why:"ir : yo → voy."},
+  {type:"fill", text:"Tú ___ a la estación. (ir)", answers:["vas","Vas"], why:"ir : tú → vas."},
+  {type:"fill", text:"Marta ___ al banco. (ir)", answers:["va","Va"], why:"ir : ella → va."},
+  {type:"fill", text:"Nosotros ___ a pie. (ir)", answers:["vamos","Vamos"], why:"ir : nosotros → vamos."},
+  {type:"fill", text:"Vosotros ___ en tren. (ir)", answers:["vais","Vais"], why:"ir : vosotros → vais (Espagne), sans accent."},
+  {type:"fill", text:"Ustedes ___ en taxi. (ir)", answers:["van","Van"], why:"ustedes se conjugue comme ellos : van."},
+  {type:"fill", text:"Voy ___ museo. (a + el)", answers:["al"], why:"a + el = al (contraction obligatoire)."},
+  {type:"fill", text:"La parada está al lado ___ hotel. (de + el)", answers:["del"], why:"de + el = del : al lado del hotel."},
+  {type:"fill", text:"La farmacia está detrás ___ la estación.", answers:["de"], why:"Devant « la », pas de contraction : detrás de la estación."},
+  {type:"fill", text:"La farmacia está ___ el banco y el hotel. (« entre »)", answers:["entre"], why:"entre ne prend pas de « de » : entre el banco y el hotel."},
+  {type:"choice", q:"Corrige : « Voy a el parque. »", opts:["Voy al parque.","Voy a el parque."], correct:0, why:"a + el se contracte toujours en al."},
+  {type:"choice", q:"Corrige : « La parada está cerca de el banco. »", opts:["La parada está cerca del banco.","La parada está cerca de el banco."], correct:0, why:"de + el = del : cerca del banco."},
+  {type:"choice", q:"À un monsieur âgé, tu dis :", opts:["Perdona, ¿cómo llego al hotel?","Perdone, ¿cómo llego al hotel?"], correct:1, why:"Un monsieur âgé = usted : Perdone. Perdona est pour le tutoiement."},
+  {type:"choice", q:"« Continuez tout droit » en Amérique latine :", opts:["Siga derecho.","Siga detrás."], correct:0, why:"En Amérique latine on dit surtout « siga derecho » (en Espagne : siga todo recto). « detrás » = derrière."},
+  {type:"choice", q:"« La gare est loin de la place. »", opts:["La estación está lejos de la plaza.","La estación está cerca de la plaza."], correct:0, why:"lejos de = loin de ; cerca de = près de."},
+  {type:"choice", q:"Quel verbe pour « prendre le bus » est neutre dans tous les pays ?", opts:["coger","tomar"], correct:1, why:"tomar est neutre partout. « coger » est normal en Espagne mais vulgaire dans une grande partie de l'Amérique latine."}
+ ],
+ ANNOTATED: {
+  title:"Cómo llegar al museo",
+  intro:"Un petit dialogue pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction, et repère les impératifs : perdone, siga, gire, toma, baja.",
+  sentences:[
+   {fr:"Excusez-moi, comment aller au musée ?", tokens:[
+    {w:"Perdone", tag:"verbe", info:"perdonar · impératif · usted", fr:"excusez-moi", tip:"Impératif usted d'un verbe en -AR : -e. Tutoiement : perdona."},
+    {w:"¿cómo", tag:"adverbe", info:"interrogatif", fr:"comment", tip:"Accent écrit : cómo."},
+    {w:"llego", tag:"verbe", info:"llegar · présent · yo", fr:"j'arrive", tip:"¿Cómo llego a…? = comment aller à… ?"},
+    {w:"al", tag:"préposition", info:"a + el", fr:"au", tip:"a + el = al : museo est masculin."},
+    {w:"museo?", tag:"nom", info:"masc. sing.", fr:"musée", tip:"mu-SE-o : trois syllabes."}
+   ]},
+   {fr:"Continuez tout droit et tournez à gauche.", tokens:[
+    {w:"Siga", tag:"verbe", info:"seguir · impératif · usted", fr:"continuez", tip:"g dur ; tutoiement : sigue."},
+    {w:"recto", tag:"adverbe", fr:"tout droit", tip:"Invariable : pas de « a » devant."},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"gire", tag:"verbe", info:"girar · impératif · usted", fr:"tournez", tip:"g = kh ; tutoiement : gira."},
+    {w:"a", tag:"préposition", fr:"à"},
+    {w:"la", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"izquierda", tag:"nom", info:"fém. sing.", fr:"gauche", tip:"Contraire : la derecha."}
+   ]},
+   {fr:"La gare est à côté du pont.", tokens:[
+    {w:"La", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"estación", tag:"nom", info:"fém. sing.", fr:"gare", tip:"Accent écrit sur la dernière syllabe : es-ta-CIÓN."},
+    {w:"está", tag:"verbe", info:"estar · présent · ella", fr:"est", tip:"Un lieu se dit avec estar."},
+    {w:"al lado", tag:"locution", info:"al lado de", fr:"à côté", tip:"Se termine par « de » : al lado de."},
+    {w:"del", tag:"préposition", info:"de + el", fr:"du", tip:"de + el = del : puente est masculin."},
+    {w:"puente", tag:"nom", info:"masc. sing.", fr:"pont"}
+   ]},
+   {fr:"Prends le métro et descends à Sol.", tokens:[
+    {w:"Toma", tag:"verbe", info:"tomar · impératif · tú", fr:"prends", tip:"Usted : tome. « tomar » est neutre, contrairement à coger."},
+    {w:"el", tag:"déterminant", info:"article défini · masc. sing.", fr:"le"},
+    {w:"metro", tag:"nom", info:"masc. sing.", fr:"métro"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"baja", tag:"verbe", info:"bajar · impératif · tú", fr:"descends", tip:"Usted : baje. j = kh."},
+    {w:"en", tag:"préposition", fr:"à", tip:"On descend « en » une parada (à un arrêt)."},
+    {w:"Sol", tag:"nom propre", fr:"Sol", tip:"Station du centre de Madrid."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🚇", title:"Culture, 10 expressions et fiche récap (A1.4)",
+  html:"<b>🚇 Culture — demander son chemin</b> En Espagne, on tutoie facilement dans la rue entre jeunes : « Perdona, ¿cómo llego al metro? ». Avec une personne âgée, un employé ou un policier : « Perdone… ». En Amérique latine, <b>usted</b> est très courant même entre inconnus de tous âges. Mots à connaître : « la cuadra » (Amérique latine) = « la manzana » (Espagne), « el carro » = « el coche », « el boleto » = « el billete », « doblar » = « girar ». À Madrid, on achète un billet de métro dans la <b>estación</b> ; à Bogotá, le bus rapide s'appelle <b>TransMilenio</b>. Prends toujours <b>tomar</b> (neutre) : « coger » est vulgaire dans une grande partie de l'Amérique latine.<br><br><b>🧰 10 expressions familières (vérifiées)</b><br>1. <b>Estar en las nubes</b> = être dans la lune.<br>2. <b>Ir sobre ruedas</b> = rouler comme sur des roulettes, tout va bien.<br>3. <b>Poner los puntos sobre las íes</b> = mettre les points sur les i.<br>4. <b>Perder el norte</b> = perdre le nord, perdre ses repères.<br>5. <b>Estar a dos pasos</b> = être à deux pas.<br>6. <b>Ir a toda pastilla</b> = aller à toute vitesse (familier, Espagne). Elle REMPLACE « ir a piñón fijo » du cours source : cette expression ne veut pas dire « foncer tout droit », elle désigne quelqu'un de borné qui revient toujours à la même idée.<br>7. <b>Estar hecho polvo</b> = être épuisé (familier). Pas lié aux trajets : on peut l'être après n'importe quel effort.<br>8. <b>Coger el toro por los cuernos</b> = prendre le taureau par les cornes (Espagne ; Amérique latine : agarrar el toro por los cuernos).<br>9. <b>Tirar la casa por la ventana</b> = jeter l'argent par les fenêtres, dépenser sans compter.<br>10. <b>Ir de punta en blanco</b> = être tiré à quatre épingles.<br><br><b>✍️ Expression écrite — décrire un itinéraire (4 lignes)</b> Modèle (tú) : « Hola, Ana. Para llegar al supermercado, sigue recto por la calle Mayor, gira a la izquierda en el semáforo y cruza la plaza. El supermercado está al lado de la farmacia, enfrente del banco. » Version formelle (usted) : « Para llegar al supermercado, siga recto por la calle Mayor, gire a la izquierda en el semáforo y cruce la plaza. » Vérifie : impératif tú / usted · prépositions de lieu (de + el = del) · pas de « coger ».<br><br><b>🗣️ Expression orale — expliquer un trajet</b> Imagine un touriste perdu dans ta ville. Question : « Perdone, ¿cómo llego a la estación? » Réponse : « Mire, siga recto, gire a la derecha en la esquina y la estación está al lado del puente. » Entre amis : « Perdona, ¿dónde está la estación? — Mira, gira a la derecha y sigue recto. »<br><br><b>📄 Fiche récap</b> Transports : autobús, tren, coche, bici, taxi, avión, metro, a pie · ir : voy, vas, va, vamos, vais, van · ir a + lieu, ir en + transport · a + el = al, de + el = del · impératif tú / usted : gira / gire, sigue / siga, toma / tome, cruza / cruce, baja / baje, sube / suba · prépositions : al lado de, enfrente de, entre, delante de, detrás de, cerca de, lejos de · questions : ¿Cómo llego a…? ¿Dónde está el/la… más cercano/a? · variantes : girar / doblar, coger (Espagne) / tomar, recto / derecho."},
+ NEXT_PREVIEW:"A1.5 (Gustos y preferencias) : dire ce que tu aimes, adores, détestes ou préfères avec gustar, encantar, interesar, odiar et preferir (premier verbe à diphtongue e → ie), en tutoiement ET en vouvoiement.",
+ META:{vocabTitle:"Transporte / Direcciones : se déplacer et demander son chemin (A1.4)", lectureTitle:"Lucía arrive à Madrid et cherche son hôtel", bilanTitle:"Bravo, tu sais demander ton chemin et guider quelqu'un !", pronLabel:"Direcciones : g (gira / sigue), z / c (cruza / cruce), qu, ll et l'accent écrit", todayLede:"nommer les moyens de transport et les lieux de la ville, demander ton chemin (¿Cómo llego a…?), comprendre et donner une direction avec l'impératif (gira / gire, sigue / siga, toma / tome), situer avec les prépositions de lieu, et dire où tu vas avec ir (voy, vas, va, vamos, vais, van) — en tutoiement ET en vouvoiement"}
+};
+V.forEach(function(v){ var d = MAP[v.en]; if(!d) throw new Error("Pas d'illustration pour : " + v.en); v.emo = d[0]; v.ex = [d[1], d[2]]; });
+})();
+
+
+// A1.5 — Gustos y preferencias : gustar / encantar / interesar, odiar, preferir (e → ie), « favorito/a » (leçon 205)
+(function(){
+var MAP = {};
+function blk(name, rows){
+  rows.forEach(function(r){
+    MAP[r[0]] = [r[4], r[5], r[6]];
+    if(typeof __NATOUT !== "undefined") __NATOUT[r[0]] = {nat:r[7], reg:r[8] || null};
+  });
+  var out = __esB(name, rows);
+  out.forEach(function(v){ var d = MAP[v.en]; v.emo = d[0]; v.ex = [d[1], d[2]]; });
+  return out;
+}
+var RQ = function(inf, frm, fr){ return {inf:inf, frm:frm, fr:fr}; };
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR, nature, reg]
+var V = [].concat(
+ blk("Loisirs et passe-temps", [
+  ["el pasatiempo","/pasaˈtjempo/","le passe-temps, le loisir","S'écrit en un seul mot, avec -s- (pas « passatempo », qui est la graphie portugaise/italienne) : pa-sa-TIEM-po. Pluriel : los pasatiempos. Synonyme : la afición.","🎯","Mi pasatiempo favorito es cocinar.","Mon passe-temps favori est de cuisiner.","nom masculin"],
+  ["el tiempo libre","/ˈtjempo ˈliβɾe/","le temps libre","On dit « en mi tiempo libre » (pendant mon temps libre). TIEM-po LI-bre. « tiempo » = le temps qui passe, mais aussi la météo (A1.11).","🕒","En mi tiempo libre escucho música.","Pendant mon temps libre, j'écoute de la musique.","expression (nom + adjectif)"],
+  ["la afición","/afiˈθjon/","le hobby, la passion","a-fi-CIÓN (c = th en Espagne, s en Amérique latine). Féminin (-ción). Plus fort que pasatiempo : « Mi afición es el cine ».","🎨","Mi afición es la fotografía.","Ma passion, c'est la photographie.","nom féminin"],
+  ["el deporte","/deˈpoɾte/","le sport","de-POR-te. Masculin : el deporte, los deportes. Avec « me gusta », l'article est obligatoire : « Me gusta el deporte » (jamais « Me gusta deporte »).","⚽","Me gusta el deporte.","J'aime le sport.","nom masculin"],
+  ["la música","/ˈmusika/","la musique","MÚ-si-ca : accent écrit sur le ú. Féminin. « escuchar música » (écouter de la musique) se dit sans article.","🎵","Me encanta la música latina.","J'adore la musique latine.","nom féminin"],
+  ["viajar","/βjaˈxaɾ/","voyager","Verbe en -AR régulier (viajo, viajas, viaja…). j = kh : bia-KHAR. Le nom : el viaje (le voyage), avec un seul « j » aussi.","✈️","Me gusta viajar en tren.","J'aime voyager en train.","verbe (infinitif)"],
+  ["bailar","/baiˈlaɾ/","danser","Verbe en -AR régulier (bailo, bailas, baila…). bai-LAR. Le nom : el baile (la danse). « bailar salsa », sans article.","💃","A mi hermana le encanta bailar.","Ma sœur adore danser.","verbe (infinitif)"],
+  ["leer","/leˈeɾ/","lire","le-ER : deux « e » bien distincts. Verbe en -ER : sa conjugaison arrive en A1.6, ici on l'emploie seulement à l'infinitif après « me gusta ». Le nom : la lectura.","📖","Me gusta leer en casa.","J'aime lire à la maison.","verbe (infinitif)"],
+  ["cocinar","/koθiˈnaɾ/","cuisiner","Verbe en -AR régulier (cocino, cocinas…). c devant i = th (Espagne) ou s (Amérique latine) : ko-thi-NAR. On n'emploie ici que l'infinitif (la forme en -ando viendra en A1.8). La cocina = la cuisine (pièce ou art).","🍳","Mi madre cocina muy bien.","Ma mère cuisine très bien.","verbe (infinitif)"],
+  ["cantar","/kanˈtaɾ/","chanter","Verbe en -AR régulier (canto, cantas, canta…). La canción = la chanson ; el cantante / la cantante = le chanteur / la chanteuse.","🎤","Mi amiga canta muy bien.","Mon amie chante très bien.","verbe (infinitif)"],
+  ["pasear","/paseˈaɾ/","se promener","Verbe en -AR régulier et NON pronominal en espagnol : paseo, paseas, pasea… (« se promener » = pasear, sans « se »). El paseo = la promenade.","🚶","Me gusta pasear por la plaza.","J'aime me promener sur la place.","verbe (infinitif)"],
+  ["nadar","/naˈðaɾ/","nager","Verbe en -AR régulier (nado, nadas, nada…). La natación = la natation, la piscina = la piscine. d entre deux voyelles = « th » très doux de l'anglais « this ».","🏊","Mi hermano nada en la piscina.","Mon frère nage à la piscine.","verbe (infinitif)"],
+  ["dibujar","/diβuˈxaɾ/","dessiner","Verbe en -AR régulier (dibujo, dibujas…). j = kh : di-bu-KHAR. El dibujo = le dessin.","✏️","A mi hija le gusta dibujar.","Ma fille aime dessiner.","verbe (infinitif)"],
+  ["tocar la guitarra","/toˈkaɾ la ɡiˈtara/","jouer de la guitare","Pour un instrument, on dit TOCAR (littéralement « toucher »), jamais « jugar » : tocar el piano, tocar la guitarra. -AR régulier : toco, tocas, toca… gui = gi (u muet).","🎸","Mi primo toca la guitarra.","Mon cousin joue de la guitare.","expression (verbe + nom)"],
+  ["el cine","/ˈθine/","le cinéma","THI-ne (Espagne) ou SI-ne (Amérique latine). « Ir al cine » = aller au cinéma (a + el = al). La película = le film.","🎬","Hoy vamos al cine con mis amigos.","Aujourd'hui, nous allons au cinéma avec mes amis.","nom masculin"],
+  ["la película","/peˈlikula/","le film","pe-LÍ-cu-la : accent écrit sur le í. Toujours féminin (une película, des películas). Ne confonds pas avec « el cine » (le lieu).","🎞️","La película es muy divertida.","Le film est très amusant.","nom féminin"],
+  ["el fútbol","/ˈfutβol/","le football","FÚT-bol, accent écrit sur le ú. En Espagne comme en Amérique latine, el fútbol = notre football (le « soccer » nord-américain).","⚽","No me gusta el fútbol, pero a mi padre le encanta.","Je n'aime pas le football, mais mon père adore ça.","nom masculin"],
+  ["la novela","/noˈβela/","le roman","no-BE-la, v = b. Mot transparent. « Una novela histórica » = un roman historique. Le livre en général : el libro.","📚","Me interesan las novelas históricas.","Les romans historiques m'intéressent.","nom féminin"],
+  ["el teatro","/teˈatɾo/","le théâtre","te-A-tro : trois syllabes, les voyelles « e-a » sont séparées. Mot transparent.","🎭","Me gusta el teatro.","J'aime le théâtre.","nom masculin"],
+  ["los videojuegos","/biðeoˈxweɣos/","les jeux vidéo","bi-de-o-KHUE-gos : j = kh. Un seul mot, masculin pluriel (singulier : el videojuego).","🎮","A mi hermano le gustan los videojuegos.","Mon frère aime les jeux vidéo.","nom masculin (pluriel)"]
+ ]),
+ blk("Les verbes du goût : gustar, encantar, interesar, odiar, preferir", [
+  ["gustar","/ɡusˈtaɾ/","plaire (= aimer)","Verbe « à l'envers » : on ne dit pas « j'aime le sport » mais « le sport me plaît ». gus-TAR. Dans cette leçon, seulement deux formes : gusta (1 chose ou un infinitif) et gustan (plusieurs choses). Jamais « yo gusto ».","😍","Me gusta el deporte.","J'aime le sport.","verbe (infinitif)",RQ("te gusta","le gusta","tu aimes / vous aimez")],
+  ["me gusta + singulier","/me ˈɡusta/","j'aime (une seule chose, ou un verbe)","Après « me gusta » : un nom singulier (el café) OU un ou plusieurs infinitifs (viajar, bailar). Me gusta leer y bailar = deux verbes, mais gusta reste au singulier.","👍","Me gusta el café y me gusta leer.","J'aime le café et j'aime lire.","expression (verbe conjugué)"],
+  ["me gustan + pluriel","/me ˈɡustan/","j'aime (plusieurs choses)","Dès que ce qui plaît est pluriel, on ajoute -n : me gustan los gatos. Deux noms singuliers = pluriel aussi : « Me gustan la música y el cine ». Faute classique : « Me gusta los libros ».","👍👍","Me gustan los deportes y los videojuegos.","J'aime les sports et les jeux vidéo.","expression (verbe conjugué)"],
+  ["encantar","/eŋkanˈtaɾ/","adorer","Même mécanisme que gustar, en plus fort : me encanta viajar, me encantan los gatos. en-kan-TAR. On n'ajoute pas « muy » : « me encanta » suffit déjà.","🥰","Me encanta bailar.","J'adore danser.","verbe (infinitif)",RQ("te encanta","le encanta","tu adores / vous adorez")],
+  ["interesar","/inteɾeˈsaɾ/","intéresser","Même mécanisme que gustar : me interesa la música, me interesan los libros. in-te-re-SAR. Ne le confonds pas avec l'adjectif « interesante ».","🧐","Me interesa la historia.","L'histoire m'intéresse.","verbe (infinitif)",RQ("te interesa","le interesa","ça t'intéresse / ça vous intéresse")],
+  ["odiar","/oˈðjaɾ/","détester","Verbe RÉGULIER en -AR, avec la personne comme sujet, comme en français : odio, odias, odia, odiamos, odiáis, odian. o-DIAR : « io » = une seule syllabe.","😡","Odio el frío.","Je déteste le froid.","verbe (infinitif)",RQ("odias","odia","tu détestes / vous détestez")],
+  ["preferir","/pɾefeˈɾiɾ/","préférer","Verbe à diphtongue e → ie à toutes les personnes SAUF nosotros et vosotros : prefiero, prefieres, prefiere, preferimos, preferís, prefieren. Sujet = la personne, comme en français.","🤔","Prefiero el té.","Je préfère le thé.","verbe (infinitif)",RQ("prefieres","prefiere","tu préfères / vous préférez")],
+  ["no importar","/no impoɾˈtaɾ/","ne pas déranger, être égal","Se construit comme gustar : « No me importa cocinar » = ça ne me dérange pas. « ¿Te importa? » / « ¿Le importa? » = ça te / vous dérange ? Pluriel : no me importan los ruidos.","🤷","No me importa cocinar.","Cuisiner ne me dérange pas.","verbe (infinitif)",RQ("¿Te importa?","¿Le importa?","Ça te dérange ? / Ça vous dérange ?")],
+  ["me da igual","/me ða iˈɣwal/","ça m'est égal","Expression figée courante partout, réponse neutre à « ¿Qué prefieres? ». Variante : me da lo mismo. i-GUAL, g = g doux (entre voyelles).","🤷‍♀️","¿Té o café? — Me da igual.","Thé ou café ? — Ça m'est égal.","expression"]
+ ]),
+ blk("Dire à quel point : intensité et accord", [
+  ["mucho · muchísimo","/ˈmutʃo · muˈtʃisimo/","beaucoup · énormément","Après le verbe, invariable : me gusta mucho, me encanta muchísimo. ch = tch. Piège : jamais « mucho me gusta » ni « me gusta muy » (« muy » ne va pas après le verbe).","🔝","Me gusta mucho bailar.","J'aime beaucoup danser.","adverbe"],
+  ["bastante","/basˈtante/","assez, plutôt","Sens de « plutôt bien » : me gusta bastante = j'aime assez. bas-TAN-te. Ne dis pas « bastant ».","🙂","Me gusta bastante el teatro.","J'aime assez le théâtre.","adverbe"],
+  ["un poco","/un ˈpoko/","un peu","Invariable. « No me gusta mucho » = je n'aime pas trop ; « me gusta un poco » = j'aime un peu.","🤏","Me gusta un poco el jazz.","J'aime un peu le jazz.","adverbe (locution)"],
+  ["no… nada","/no … ˈnaða/","pas du tout","Double négation obligatoire : « No me gusta NADA » (pas « me gusta nada »). Avec « nada » en fin de phrase, le « no » devant le pronom reste obligatoire.","🙅","No me gusta nada el ruido.","Je n'aime pas du tout le bruit.","adverbe (locution négative)"],
+  ["también","/tamˈbjen/","aussi","Pour être d'accord avec une phrase POSITIVE : « Me encanta leer. — A mí también. » tam-BIEN. Faute fréquente : « también » après une négation.","➕","Me gusta cantar. — A mí también.","J'aime chanter. — Moi aussi.","adverbe"],
+  ["tampoco","/tamˈpoko/","non plus","Pour être d'accord avec une phrase NÉGATIVE : « No me gusta correr. — A mí tampoco. » tam-PO-ko. Jamais « a mí también » après une négation.","➖","No me gusta el frío. — A mí tampoco.","Je n'aime pas le froid. — Moi non plus.","adverbe"],
+  ["a mí también","/a mi tamˈbjen/","moi aussi","Réponse courte qui reprend « a mí » : Me encanta viajar. — A mí también. Au formel : « A mí también, señor ».","🤝","Me encanta viajar. — A mí también.","J'adore voyager. — Moi aussi.","expression"],
+  ["a mí tampoco","/a mi tamˈpoko/","moi non plus","Réponse courte à une phrase négative : No me gustan los museos. — A mí tampoco.","🤝","No me gusta nada leer. — A mí tampoco.","Je n'aime pas du tout lire. — Moi non plus.","expression"],
+  ["a mí sí · a mí no","/a mi si · a mi no/","moi si · moi non","Pour CONTREDIRE : « No me gusta el café. — A mí sí. » ; « Me gusta el café. — A mí no. » Accent écrit sur « sí » (= oui / si).","↔️","No me gusta bailar. — A mí sí.","Je n'aime pas danser. — Moi, si.","expression"]
+ ]),
+ blk("Les 6 pronoms de gustar : (a mí) me, (a ti) te, (a usted) le…", [
+  ["a mí me gusta","/a mi me ˈɡusta/","moi, j'aime","« A mí » est facultatif : il insiste ou compare. « Me gusta » suffit. Mais le petit pronom « me » est OBLIGATOIRE : on ne dit jamais « a mí gusta ».","🙋","A mí me gusta bailar, ¿y a ti?","Moi, j'aime danser, et toi ?","expression (pronom + verbe)"],
+  ["a ti te gusta","/a ti te ˈɡusta/","toi, tu aimes (tutoiement)","Tutoiement : (a ti) te gusta. Au vouvoiement on passera à « le ». ti = pronom après préposition (a ti).","👉","A ti te gusta mucho la música.","Toi, tu aimes beaucoup la musique.","expression (pronom + verbe)",RQ("a ti te gusta","a usted le gusta","toi, tu aimes / vous, vous aimez")],
+  ["a usted le gusta","/a usˈteð le ˈɡusta/","vous aimez (vouvoiement)","Formel : (a usted) le gusta. Même pronom « le » que pour él / ella : on voit la différence grâce à « a usted ». Mot de politesse : señor, señora.","🎩","A usted le gusta el teatro, señor.","Vous aimez le théâtre, monsieur.","expression (pronom + verbe)"],
+  ["a él, a ella le gusta","/a el, a ˈeʎa le ˈɡusta/","lui, elle aime","« Le » sert pour él, ella et usted. Si on ne précise pas la personne, on la nomme : « A mi hermano le gusta nadar ».","🧑","A mi hermana le gusta nadar.","Ma sœur aime nager.","expression (pronom + verbe)"],
+  ["a nosotros nos gusta","/a noˈsotɾos nos ˈɡusta/","nous aimons","« Nos » = à nous. Sujet « nosotros » facultatif : « Nos gusta pasear ». nos-O-tros.","👫","A nosotros nos gusta pasear.","Nous, nous aimons nous promener.","expression (pronom + verbe)"],
+  ["a vosotros os gusta","/a βoˈsotɾos os ˈɡusta/","vous aimez (Espagne, plusieurs amis)","« Os » = vosotros (Espagne seulement). En Amérique latine, on utilise ustedes pour TOUS les « vous » : a ustedes les gusta.","👥","¿Os gusta el cine, chicos?","Vous aimez le cinéma, les amis ?","expression (pronom + verbe)"],
+  ["a ellos, a ustedes les gusta","/a ˈeʎos, a usˈteðes les ˈɡusta/","eux, vous (ustedes) aiment","« Les » = à eux / à elles / à ustedes. Pluriel de « le ». ¡Attention : gusta / gustan dépend de la CHOSE, pas de « les » !","👥","A mis padres les gusta viajar.","Mes parents aiment voyager.","expression (pronom + verbe)"]
+ ]),
+ blk("Poser les questions : goûts, favori, choix", [
+  ["¿Te gusta…? · ¿Le gusta…?","/te ˈɡusta · le ˈɡusta/","tu aimes… ? · vous aimez… ?","Informel : ¿Te gusta viajar? Formel : ¿Le gusta viajar? On répond « Sí, me gusta » / « No, no me gusta ». Sur le même modèle : ¿Te gustan los gatos? / ¿Le gustan los gatos?","❓","¿Te gusta viajar? — Sí, me encanta.","Tu aimes voyager ? — Oui, j'adore.","question",RQ("¿Te gusta viajar?","¿Le gusta viajar?","Tu aimes voyager ? / Vous aimez voyager ?")],
+  ["¿Y a ti? · ¿Y a usted?","/i a ti · i a usˈteð/","et toi ? · et vous ?","Pour renvoyer la question. « ¿Y tú? » ne marche PAS avec gustar : il faut « a ti ».","🔁","Me gusta cantar. ¿Y a ti?","J'aime chanter. Et toi ?","question",RQ("¿Y a ti?","¿Y a usted?","Et toi ? / Et vous ?")],
+  ["¿Qué deporte te gusta?","/ke deˈpoɾte te ˈɡusta/","quel sport aimes-tu ?","« Qué » + nom = quel(le) : ¿Qué música te gusta? ¿Qué películas le gustan? Si ce qui plaît est pluriel, gustan : ¿Qué libros te gustan?","🏅","¿Qué deporte le gusta, señor?","Quel sport aimez-vous, monsieur ?","question",RQ("¿Qué deporte te gusta?","¿Qué deporte le gusta?","Quel sport aimes-tu ? / Quel sport aimez-vous ?")],
+  ["¿Cuál es tu… favorito/a?","/kwal es tu … faβoˈɾito/","quel est ton… favori(te) ?","Question type de la leçon. Tu → tu, usted → su : ¿Cuál es su deporte favorito? cuál = accent écrit. Pluriel : ¿Cuáles son tus libros favoritos?","⭐","¿Cuál es tu película favorita?","Quel est ton film préféré ?","question",RQ("¿Cuál es tu deporte favorito?","¿Cuál es su deporte favorito?","Quel est ton sport préféré ? / Quel est votre sport préféré ?")],
+  ["favorito / favorita","/faβoˈɾito · faβoˈɾita/","favori(te), préféré(e)","S'accorde en genre et en nombre : mi deporte favorito, mi música favorita, mis libros favoritos. fa-bo-RI-to : v = b. Se place après le nom.","🏆","Mi color favorito es el azul.","Ma couleur préférée est le bleu.","adjectif"],
+  ["¿Qué prefieres? · ¿Qué prefiere?","/ke pɾeˈfjeɾes · ke pɾeˈfjeɾe/","que préfères-tu ? · que préférez-vous ?","Pour proposer un choix : ¿Qué prefieres, el cine o el teatro? Au formel : ¿Qué prefiere usted? Le pronom sujet « tú / usted » est facultatif.","⚖️","¿Qué prefiere usted, el té o el café?","Que préférez-vous, le thé ou le café ?","question",RQ("¿Qué prefieres?","¿Qué prefiere?","Que préfères-tu ? / Que préférez-vous ?")],
+  ["¿Por qué? · porque","/poɾ ˈke · ˈpoɾke/","pourquoi ? · parce que","Deux mots avec accent pour la question (¿por qué?), un mot sans accent pour la réponse (porque). « Me encanta viajar porque es muy interesante. »","💬","Me gusta leer porque es relajante.","J'aime lire parce que c'est relaxant.","question / conjonction"]
+ ]),
+ blk("Qualifier : les adjectifs d'appréciation", [
+  ["interesante","/inteɾeˈsante/","intéressant(e)","Finit en -e : une seule forme au masculin et au féminin ; pluriel : interesantes. in-te-re-SAN-te. Ne confonds pas « me interesa » (le verbe) et « es interesante » (l'adjectif).","🧠","El libro es muy interesante.","Le livre est très intéressant.","adjectif"],
+  ["aburrido / aburrida","/aβuˈrriðo · aβuˈrriða/","ennuyeux / ennuyeuse","Piège : « es aburrido » = c'est ennuyeux ; « estoy aburrido » = je m'ennuie. a-bu-RRI-do : rr roulé.","😴","La película es aburrida.","Le film est ennuyeux.","adjectif"],
+  ["divertido / divertida","/diβeɾˈtiðo · diβeɾˈtiða/","amusant(e), drôle","di-ber-TI-do : v = b. S'emploie pour une activité (un juego divertido) comme pour une personne (un amigo divertido).","😄","Mi profesor es muy divertido.","Mon professeur est très amusant.","adjectif"],
+  ["difícil","/diˈfiθil/","difficile","Finit par une consonne : invariable en genre ; pluriel : difíciles. Accent écrit sur le í.","😓","El tenis es difícil.","Le tennis est difficile.","adjectif"],
+  ["fácil","/ˈfaθil/","facile","Même règle que difícil : invariable en genre, pluriel fáciles. FÁ-cil : c = th (Espagne) ou s (Amérique latine).","😌","Cantar es fácil para ella.","Chanter est facile pour elle.","adjectif"],
+  ["genial","/xeˈnjal/","génial(e), super","g devant e = kh : khe-NIAL. Invariable en genre ; pluriel : geniales. Très courant seul : « ¡Genial! » = super !","🌟","La música es genial.","La musique est géniale.","adjectif"],
+  ["terrible","/teˈrriβle/","terrible, horrible","Invariable en genre. Dans cette leçon, il a le sens « très mauvais, horrible » : le film est horrible. te-RRI-ble : rr roulé.","😱","El ruido es terrible.","Le bruit est horrible.","adjectif"],
+  ["maravilloso / maravillosa","/maɾaβiˈʎoso/","merveilleux / merveilleuse","ll = y (A1.0) : ma-ra-bi-YO-so. Plus soutenu que genial.","✨","El paseo es maravilloso.","La promenade est merveilleuse.","adjectif"],
+  ["bonito / bonita","/boˈnito/","joli(e), beau / belle","bo-NI-to. Pour un paysage, une chanson, un objet.","🌸","La canción es muy bonita.","La chanson est très jolie.","adjectif"],
+  ["relajante","/relaˈxante/","relaxant(e), reposant(e)","Finit en -e : invariable en genre. r initiale roulée : rre-la-KHAN-te.","🧘","Leer es muy relajante.","Lire est très reposant.","adjectif"],
+  ["malo / mala","/ˈmalo · ˈmala/","mauvais(e)","Devant un nom masculin singulier, « malo » perd son -o : un mal libro. Après « es » : es malo. Contraire de « bueno ».","👎","La película es mala.","Le film est mauvais.","adjectif"]
+ ]),
+ blk("Réagir et répondre", [
+  ["¡Qué divertido! · ¡Qué aburrido!","/ke diβeɾˈtiðo · ke aβuˈrriðo/","comme c'est amusant ! · comme c'est ennuyeux !","Exclamation : ¡Qué + adjectif! (¡Qué genial!, ¡Qué difícil!). Accent écrit sur « qué » et points d'exclamation ¡ ! des deux côtés.","🗣️","¡Qué divertido! Me encanta.","Comme c'est amusant ! J'adore.","exclamation"],
+  ["¡Me encanta!","/me eŋˈkanta/","j'adore !","Réponse courte et chaleureuse à « ¿Te gusta? ». Pluriel si on parle de plusieurs choses : ¡Me encantan!","💖","¿Te gusta bailar? — ¡Me encanta!","Tu aimes danser ? — J'adore !","exclamation"],
+  ["No mucho","/no ˈmutʃo/","pas trop","Réponse polie, moins directe que « no me gusta » : ¿Le gusta el fútbol? — No mucho, gracias.","😐","¿Te gusta el fútbol? — No mucho.","Tu aimes le football ? — Pas trop.","expression"],
+  ["Depende","/deˈpende/","ça dépend","Pour nuancer. de-PEN-de. Phrase-bloc : le verbe « depender » (-ER) sera vu en A1.6.","⚖️","¿Te gusta cocinar? — Depende.","Tu aimes cuisiner ? — Ça dépend.","expression"]
+ ]),
+ blk("Prononciation : ie, io, gu, cuál", [
+  ["ie : prefiero","/pɾeˈfjeɾo/","pre-FIE-ro (ie = « yé »)","« ie » est UNE syllabe : pre-FIE-ro (3 syllabes). Avec diphtongue, l'accent tonique tombe SUR le « ie » : pre-FIE-ro, pre-FIE-res, pre-FIE-re, pre-FIE-ren. Sans diphtongue (nosotros) : pre-fe-RI-mos.","🔈","Prefiero el cine.","Je préfère le cinéma.","note de prononciation"],
+  ["io : odio","/ˈoðjo/","O-dio (io = « yo »)","« io » forme une syllabe : O-dio (2 syllabes), pas o-di-o. Même chose dans odiar : o-DIAR.","🔈","Odio el ruido.","Je déteste le bruit.","note de prononciation"],
+  ["gu devant s : gusta","/ˈɡusta/","GUS-ta (u prononcé « ou »)","Dans « gusta » et « gustar », le u se prononce « ou » : on est devant a / s, pas devant e / i (où il serait muet : guitarra). g dur de « gare ».","🔈","Me gusta la guitarra.","J'aime la guitare.","note de prononciation"],
+  ["cuál : accent écrit","/kwal/","quel (accent sur le a)","« cual » avec l'accent = pronom interrogatif (¿Cuál es?). Sans accent, « cual » est un mot rare (« tal cual »). Se prononce en une seule syllabe : kwal.","🔈","¿Cuál es tu deporte favorito?","Quel est ton sport préféré ?","note de prononciation"]
+ ]),
+ blk("Variantes Espagne / Amérique latine", [
+  ["pasarlo bien · pasarla bien","/paˈsaɾlo ˈbjen · paˈsaɾla ˈbjen/","s'amuser, passer un bon moment","« Pasarlo bien » = Espagne ; « pasarla bien » = Amérique latine (Mexique, Colombie…). Se conjugue : lo paso bien, lo pasas bien, lo pasamos bien. Contraire : pasarlo mal. Le « lo » / « la » est une habitude figée.","🥳","Con mis amigos lo paso genial.","Avec mes amis, je m'éclate.","expression (verbe + pronom)"]
+ ]),
+ blk("Bonus : 10 expressions familières sur les passions", [
+  ["estar en su salsa","/esˈtaɾ en su ˈsalsa/","être dans son élément (littéralement : dans sa sauce)","Familier, comprise partout. Le possessif suit la personne : estoy en mi salsa, estás en tu salsa, está en su salsa (usted aussi).","🍅","Mi madre está en su salsa en la cocina.","Ma mère est dans son élément dans la cuisine.","expression familière",RQ("estás en tu salsa","está en su salsa","tu es dans ton élément / vous êtes dans votre élément")],
+  ["ser un as","/seɾ un as/","être un as, un champion","Familier. « as » reste invariable pour un homme ou une femme : ella es un as. « Un as de… » : un as del fútbol. Écrit en minuscule (ser un as), pas « As ».","🏅","Mi hermana es un as del baile.","Ma sœur est une championne de danse.","expression familière"],
+  ["pasarlo bien (Espagne)","/paˈsaɾlo ˈbjen/","bien s'amuser, s'éclater","Espagne : pasarlo bien. Amérique latine : pasarla bien. Avec « genial » (« lo paso genial ») ou « fenomenal », on insiste.","🎉","Los niños lo pasan muy bien en el parque.","Les enfants s'amusent beaucoup au parc.","expression familière"],
+  ["estar colgado por","/esˈtaɾ kolˈɡaðo poɾ/","être dingue de, accro à (quelqu'un)","Familier, surtout pour une personne qui plaît : « Está colgado por una chica de su clase ». Seul, « estar colgado » peut avoir d'autres sens selon les pays : reste sur « colgado por + personne ». Coup de foudre : « un flechazo » (Espagne) ou « amor a primera vista ».","💘","Está colgado por una chica de su clase.","Il est dingue d'une fille de sa classe.","expression familière"],
+  ["no ver la hora de","/no beɾ la ˈoɾa de/","avoir hâte de (+ infinitif)","Espagne, familier. « No ver el momento » n'existe pas. Amérique latine : « tener muchas ganas de + infinitif ». Phrase-bloc : « ver » sera conjugué en A1.6, ici on retient seulement « no veo la hora de… ».","⏳","No veo la hora de viajar a Madrid.","J'ai hâte de voyager à Madrid.","expression familière"],
+  ["estar chupado","/esˈtaɾ tʃuˈpaðo/","être archi-facile, du gâteau","Espagne, très familier : « El examen está chupado ». Attention : « chupado » peut aussi vouloir dire « maigre » ; ici, avec « estar » et un exercice, c'est « facile ».","🍰","El examen está chupado.","L'examen est du gâteau.","expression familière"],
+  ["tener madera de","/teˈneɾ maˈdeɾa de/","avoir l'étoffe de, avoir du talent pour","Littéralement « avoir du bois de… ». Suivi d'un métier ou d'un rôle : tener madera de cantante, de líder. Se conjugue avec tener (tienes, tiene…).","🪵","Tienes madera de cantante.","Tu as l'étoffe d'un chanteur.","expression familière",RQ("Tienes madera de cantante.","Usted tiene madera de cantante.","tu as l'étoffe / vous avez l'étoffe")],
+  ["estar pez (en)","/esˈtaɾ peθ en/","être nul (en), n'y rien connaître","Espagne, familier, toujours avec « en + domaine » : estar pez en matemáticas. Littéralement « être poisson ». pez : z final = th.","🐟","Estoy pez en deportes.","Je suis nul en sport.","expression familière"],
+  ["ir a tope","/iɾ a ˈtope/","y aller à fond","Espagne, familier. « tope » est un nom (la limite) : « a tope » = à fond. Ne le confonds pas avec « ir a + infinitif » (le futur proche, vu en A1.9). Ex : voy a tope, vas a tope.","🔥","Mi padre va a tope con el deporte.","Mon père est à fond dans le sport.","expression familière"],
+  ["estar en su elemento","/esˈtaɾ en su eleˈmento/","être comme un poisson dans l'eau","Plus neutre que « estar en su salsa », même sens. Le possessif suit la personne : estoy en mi elemento, está en su elemento.","🐠","Mi padre está en su elemento en la montaña.","Mon père est comme un poisson dans l'eau en montagne.","expression familière"]
+ ])
+);
+LESSONS_ES[205] = {
+ code:"A1.5", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el pasatiempo","gustar","encantar","preferir","odiar","¿Te gusta…? · ¿Le gusta…?","también","tampoco","favorito / favorita","aburrido / aburrida"]),
+ MINI_CHECKS: [
+  {q:"Quelle phrase est correcte ?", opts:["Me gusta los libros.","Me gustan los libros."], correct:1, fb:"« los libros » est pluriel : le verbe s'accorde avec la chose aimée, jamais avec la personne : gustan."},
+  {q:"« Je préfère » (preferir, yo) :", opts:["prefero","prefiero","prefiro"], correct:1, fb:"Verbe à diphtongue : e → ie à la 1re personne du singulier : prefiero."},
+  {q:"« Tu aimes le sport ? » (tutoiement)", opts:["¿Te gusta el deporte?","¿Tú gustas el deporte?","¿Gustas el deporte?"], correct:0, fb:"On met le petit pronom « te » (à toi) : ¿Te gusta el deporte? Le sujet de gusta est « el deporte »."},
+  {q:"« Je déteste le bruit. »", opts:["Me odia el ruido.","Odio el ruido."], correct:1, fb:"Odiar est un verbe régulier à sujet personne : yo odio. On ne l'utilise PAS à l'envers, contrairement à gustar."},
+  {q:"À un directeur, tu demandes :", opts:["¿Te gusta viajar?","¿Le gusta viajar, señor?"], correct:1, fb:"Vouvoiement : « le » et « señor ». Le tutoiement « te gusta » est réservé aux amis et à la famille."},
+  {q:"« Me encanta leer. — Moi aussi. »", opts:["A mí también.","A mí tampoco."], correct:0, fb:"Phrase positive → también. Tampoco = moi non plus, après une phrase négative."},
+  {q:"« Nous préférons » (preferir, nosotros) :", opts:["prefierimos","preferimos"], correct:1, fb:"Pas de diphtongue à nosotros et vosotros (preferimos, preferís), car l'accent tonique tombe sur la terminaison."},
+  {q:"« Mon sport favori » :", opts:["mi deporte favorito","mi favorito deporte","mi deporte favorita"], correct:0, fb:"favorito se place après le nom et s'accorde avec lui : deporte (masculin) → favorito."}
+ ],
+ ROUNDS: [
+  __esR("Me gusta mucho viajar.","J'aime beaucoup voyager."),
+  __esR("Me gustan los deportes.","J'aime les sports."),
+  __esR("A mí me encanta bailar.","Moi, j'adore danser."),
+  __esR("No me gustan nada los deportes violentos.","Je n'aime pas du tout les sports violents."),
+  __esR("¿Te gusta cocinar para tus amigos?","Tu aimes cuisiner pour tes amis ?"),
+  __esR("¿Le gusta la música, señora?","Aimez-vous la musique, madame ?"),
+  __esR("Mi hermano prefiere el cine.","Mon frère préfère le cinéma."),
+  __esR("¿Cuál es tu pasatiempo favorito?","Quel est ton passe-temps favori ?"),
+  __esR("Mi pasatiempo favorito es cocinar.","Mon passe-temps favori est de cuisiner."),
+  __esR("A nosotros nos gusta pasear.","Nous, nous aimons nous promener."),
+  __esR("Odio el frío, pero me gusta nadar.","Je déteste le froid, mais j'aime nager."),
+  __esR("A mis padres les gusta viajar.","Mes parents aiment voyager."),
+  __esR("¿Prefieres la música o el cine?","Tu préfères la musique ou le cinéma ?")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"« J'aime le sport. »", opts:["Me gusta el deporte.","Me gustan el deporte.","Yo gusto el deporte."], correct:0, why:"Le sport est singulier : me gusta. « Yo gusto » n'existe pas dans ce sens."},
+  {cat:"ecrit", q:"Me ___ los gatos.", opts:["gusta","gustan","gusto"], correct:1, why:"los gatos est pluriel : le verbe s'accorde avec la chose aimée → gustan."},
+  {cat:"ecrit", q:"« J'aime voyager et danser. »", opts:["Me gusta viajar y bailar.","Me gustan viajar y bailar.","Gusto viajar y bailar."], correct:0, why:"Un ou plusieurs infinitifs → gusta au singulier : Me gusta viajar y bailar."},
+  {cat:"ecrit", q:"A ti ___ la música.", opts:["me gusta","te gusta","le gusta"], correct:1, why:"Le pronom suit la personne : a ti → te. « La música » est singulier : gusta."},
+  {cat:"ecrit", q:"Pour vouvoyer une dame : « ¿___ el café, señora? »", opts:["Te gusta","Le gusta","Les gusta"], correct:1, why:"Usted et la 3e personne prennent « le » : ¿Le gusta el café, señora?"},
+  {cat:"ecrit", q:"A nosotros ___ cocinar.", opts:["nos gusta","nos gustan","os gusta"], correct:0, why:"nosotros → nos ; cocinar est un infinitif → gusta."},
+  {cat:"ecrit", q:"A mis padres ___ los museos.", opts:["le gustan","les gustan","les gusta"], correct:1, why:"mis padres → les (pluriel) ; los museos est pluriel → gustan. Deux marques de pluriel, deux raisons différentes."},
+  {cat:"ecrit", q:"Yo ___ el frío. (odiar)", opts:["odio","odia","odias"], correct:0, why:"Odiar est régulier : yo odio, tú odias, él odia. Ici yo → odio."},
+  {cat:"ecrit", q:"Tú ___ el té. (preferir)", opts:["preferes","prefieres","prefires"], correct:1, why:"Diphtongue e → ie à tú : prefieres."},
+  {cat:"ecrit", q:"Nosotros ___ cocinar en casa. (preferir)", opts:["preferimos","prefierimos","prefieremos"], correct:0, why:"Pas de diphtongue à nosotros : preferimos (pre-fe-RI-mos)."},
+  {cat:"ecrit", q:"Me gusta el cine. — A mí ___ .", opts:["también","tampoco","nada"], correct:0, why:"On approuve une phrase positive : también. Tampoco servirait après une négation."},
+  {cat:"ecrit", q:"« Moi non plus. » (réponse à « No me gusta correr »)", opts:["A mí también.","A mí tampoco.","A mí sí."], correct:1, why:"Phrase négative + accord = tampoco. « A mí sí » voudrait dire le contraire : moi, si, j'aime."},
+  {cat:"ecrit", q:"Comment demander à un ami son sport préféré ?", opts:["¿Cuál es tu deporte favorito?","¿Cuál es su deporte favorito?","¿Cuál eres tu deporte favorito?"], correct:0, why:"Tutoiement : tu. « su » est réservé à usted. Et on dit « es » (ser), pas « eres », car le sujet est « el deporte »."},
+  {cat:"ecrit", q:"« Je déteste cuisiner. »", opts:["Odio cocinar.","Me odia cocinar.","Odio cocino."], correct:0, why:"Odiar + infinitif : Odio cocinar. Pas de pronom « me » : odiar n'est pas un verbe à la gustar."},
+  {cat:"oral", audio:"Me gusta mucho bailar salsa.", q:"Écoute : qu'est-ce qui plaît à la personne ?", opts:["Danser la salsa","Cuisiner","Voyager"], correct:0, why:"« bailar » = danser. « me gusta mucho » = j'aime beaucoup."},
+  {cat:"oral", audio:"No me gustan nada los deportes violentos.", q:"Écoute : la personne…", opts:["adore les sports violents","n'aime pas du tout les sports violents","aime un peu les sports"], correct:1, why:"no… nada = pas du tout. « gustan » : les deportes sont pluriel."},
+  {cat:"oral", audio:"¿Le gusta viajar, señora?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« le gusta » et « señora » : vouvoiement. Au tutoiement : ¿Te gusta viajar?"},
+  {cat:"oral", audio:"Prefiero el té.", q:"Écoute : que préfère la personne ?", opts:["Le thé","Le café","L'eau"], correct:0, why:"prefiero = je préfère ; té = thé (accent écrit, il le distingue de « te », le pronom)."},
+  {cat:"oral", audio:"No me gusta correr, ¿y a ti?", q:"Écoute : que demande la personne à la fin ?", opts:["Si l'autre aime courir aussi","Où l'autre court","Quand l'autre court"], correct:0, why:"« ¿Y a ti? » = et toi ? (sous-entendu : tu aimes courir ?)."},
+  {cat:"comprehension", passage:"Hola, me llamo Sofía. En mi tiempo libre, me gusta mucho leer y escuchar música clásica. Sin embargo, no me gustan nada los deportes violentos. Mi pasatiempo favorito es cocinar para mis amigos.", q:"Que fait Sofía pendant son temps libre ?", opts:["Elle lit et écoute de la musique classique","Elle fait du sport","Elle voyage"], correct:0, why:"« leer y escuchar música clásica » : lire et écouter de la musique classique."},
+  {cat:"comprehension", passage:"Hola, me llamo Sofía. En mi tiempo libre, me gusta mucho leer y escuchar música clásica. Sin embargo, no me gustan nada los deportes violentos. Mi pasatiempo favorito es cocinar para mis amigos.", q:"Qu'est-ce que Sofía n'aime pas du tout ?", opts:["Les sports violents","Cuisiner","La musique"], correct:0, why:"« no me gustan nada los deportes violentos » : pas du tout les sports violents (gustan = pluriel)."},
+  {cat:"comprehension", passage:"Hola, me llamo Sofía. En mi tiempo libre, me gusta mucho leer y escuchar música clásica. Sin embargo, no me gustan nada los deportes violentos. Mi pasatiempo favorito es cocinar para mis amigos.", q:"Quel est le passe-temps favori de Sofía ?", opts:["Cuisiner pour ses amis","Lire","Danser"], correct:0, why:"« Mi pasatiempo favorito es cocinar para mis amigos »."},
+  {cat:"comprehension", passage:"Luis: Hola, Ana. ¿Te gusta viajar? — Ana: Sí, me encanta. Prefiero viajar con mis amigos. ¿Y a ti? — Luis: A mí también, pero no me gusta nada el avión. — Ana: ¡A mí tampoco!", q:"Que préfère Ana ?", opts:["Voyager avec ses amis","Voyager seule","Rester chez elle"], correct:0, why:"« Prefiero viajar con mis amigos » : elle préfère voyager avec ses amis."},
+  {cat:"comprehension", passage:"Luis: Hola, Ana. ¿Te gusta viajar? — Ana: Sí, me encanta. Prefiero viajar con mis amigos. ¿Y a ti? — Luis: A mí también, pero no me gusta nada el avión. — Ana: ¡A mí tampoco!", q:"Ana répond « A mí tampoco » : cela veut dire…", opts:["Elle n'aime pas l'avion non plus","Elle n'aime pas voyager","Elle aime l'avion"], correct:0, why:"Luis vient de dire une phrase négative (no me gusta nada el avión) : tampoco = moi non plus."}
+ ],
+ PRON_VERBS: [
+  {en:"Prefiero el té.", fr:"Je préfère le thé. (pre-FIE-ro : « ie » = une syllabe ; té : accent écrit)"},
+  {en:"Odio el frío.", fr:"Je déteste le froid. (O-dio : « io » = une syllabe ; FRÍ-o)"},
+  {en:"Me gusta mucho viajar.", fr:"J'aime beaucoup voyager. (GUS-ta ; MU-cho : ch = tch ; bia-KHAR : j = kh)"},
+  {en:"Me gustan los videojuegos.", fr:"J'aime les jeux vidéo. (GUS-tan ; bi-de-o-KHUE-gos : v = b, j = kh)"},
+  {en:"Me encanta cocinar.", fr:"J'adore cuisiner. (en-KAN-ta ; ko-thi-NAR en Espagne, ko-si-NAR en Amérique latine)"},
+  {en:"¿Cuál es tu deporte favorito?", fr:"Quel est ton sport préféré ? (kwal : une syllabe ; fa-bo-RI-to : v = b)"},
+  {en:"Me interesa la música.", fr:"La musique m'intéresse. (in-te-RE-sa ; MÚ-si-ca)"},
+  {en:"No me gusta nada leer.", fr:"Je n'aime pas du tout lire. (NA-da : d doux ; le-ER : deux « e »)"},
+  {en:"A mí también. A mí tampoco.", fr:"Moi aussi. Moi non plus. (tam-BIEN ; tam-PO-ko)"},
+  {en:"Es genial y muy divertido.", fr:"C'est génial et très amusant. (khe-NIAL : g = kh ; di-ber-TI-do)"}
+ ],
+ READING: [
+  "¡Hola! Me llamo Sofía y tengo veinticinco años.",
+  "En mi tiempo libre, me gusta mucho leer y escuchar música clásica.",
+  "Sin embargo, no me gustan nada los deportes violentos.",
+  "Mi pasatiempo favorito es cocinar para mis amigos.",
+  "Me encanta viajar porque es muy interesante.",
+  "A mi hermano le gusta el cine, pero a mí no.",
+  "Prefiero las películas divertidas.",
+  "Mi madre odia bailar, pero mi padre baila muy bien.",
+  "Y tú, ¿prefieres la música o el deporte?",
+  "Y usted, señor, ¿cuál es su pasatiempo favorito?"
+ ],
+ GLOSS: [
+  {en:"sin embargo", fr:"cependant, pourtant (connecteur d'opposition ; phrase-bloc)"},
+  {en:"clásica", fr:"classique (féminin, accordé avec « música »)"},
+  {en:"violentos", fr:"violents (masculin pluriel, accordé avec « deportes »)"},
+  {en:"no me gustan nada", fr:"je n'aime pas du tout (no + nada ; gustan car « los deportes » est pluriel)"},
+  {en:"para", fr:"pour (cocinar para mis amigos = cuisiner pour mes amis)"},
+  {en:"A mi hermano le gusta", fr:"mon frère aime (littéralement « à mon frère, ça plaît »)"},
+  {en:"pero a mí no", fr:"mais moi non (« a mí no » = moi non)"},
+  {en:"veinticinco", fr:"vingt-cinq (21-29 : un seul mot)"}
+ ],
+ GRAMMAR1: {
+  heading:"GUSTAR, ENCANTAR, INTERESAR : le verbe « à l'envers »",
+  lede:"En français, le sujet est la personne qui aime : « j'aime les chats ». En espagnol, le sujet est la CHOSE aimée : « les chats me plaisent » (me gustan los gatos). Une fois ce réflexe acquis, tu sauras dire que tu aimes, que tu adores, que quelque chose t'intéresse, et poser la même question à un ami (tú) ou à une personne âgée (usted).",
+  conj:[
+   ["a mí →","me gusta / me gustan","Me gusta bailar. Me gustan los deportes."],
+   ["a ti →","te gusta / te gustan","¿Te gusta cocinar? ¿Te gustan las películas?"],
+   ["a él, a ella, a usted →","le gusta / le gustan","A mi madre le gusta leer. ¿Le gusta viajar, señor?"],
+   ["a nosotros/as →","nos gusta / nos gustan","Nos gusta pasear. Nos gustan los museos."],
+   ["a vosotros/as →","os gusta / os gustan","¿Os gusta el cine? ¿Os gustan los videojuegos?"],
+   ["a ellos, ellas, ustedes →","les gusta / les gustan","A mis padres les gusta viajar. ¿Les gustan los museos?"]
+  ],
+  ruleHtml:"📖 <b>1. Le mécanisme.</b> Trois pièces : <b>pronom (à qui)</b> + <b>gusta / gustan</b> + <b>la chose qui plaît</b>. Me gusta el deporte = « le sport me plaît ». Le verbe s'accorde UNIQUEMENT avec la chose aimée, jamais avec la personne.<br><br>👥 <b>2. Les 6 pronoms</b> : <b>me</b> (a mí) · <b>te</b> (a ti) · <b>le</b> (a él, a ella, a usted) · <b>nos</b> (a nosotros) · <b>os</b> (a vosotros, Espagne) · <b>les</b> (a ellos, a ellas, a ustedes). Le pronom est OBLIGATOIRE ; « a mí, a ti, a usted… » est facultatif et sert à insister ou comparer : <b>A mí me gusta bailar, ¿y a ti?</b> On dit toujours « me gusta », jamais « a mí gusta ».<br><br>✅ <b>3. gusta ou gustan ?</b> <b>gusta</b> = UNE chose au singulier OU un/plusieurs infinitifs : <b>Me gusta el café. Me gusta viajar. Me gusta leer y bailar.</b> <b>gustan</b> = plusieurs choses : <b>Me gustan los gatos. Me gustan la música y el cine.</b> (deux noms = pluriel). L'adjectif s'accorde : <b>Me gustan los libros interesantes.</b> Mot-clé : l'article défini est obligatoire : <b>Me gusta el deporte</b>, jamais « Me gusta deporte ».<br><br>👥 <b>4. Informel ET formel.</b> Tutoiement : <b>¿Te gusta viajar? ¿Te gustan los gatos? ¿Y a ti?</b> Vouvoiement (usted, señor, señora) : <b>¿Le gusta viajar? ¿Le gustan los gatos? ¿Y a usted?</b> Entre amis en Espagne : <b>¿Os gusta viajar?</b> ; en Amérique latine : <b>¿Les gusta viajar?</b> (ustedes).<br><br>💪 <b>5. Les cousins.</b> <b>encantar</b> (adorer) et <b>interesar</b> (intéresser) fonctionnent EXACTEMENT pareil : <b>Me encanta viajar. Me encantan los gatos. Me interesa la historia. Me interesan las novelas.</b> Même chose pour <b>no importar</b> : <b>No me importa cocinar</b> (ça ne me dérange pas), <b>¿Te importa? / ¿Le importa?</b> (ça te / vous dérange ?). Odiar, lui, est un verbe normal (voir ci-dessous GRAMMAR2).<br><br>📊 <b>6. L'intensité</b> (toujours après le verbe) : me gusta <b>muchísimo</b> / <b>mucho</b> / <b>bastante</b> / <b>un poco</b> ; négation : <b>no me gusta nada</b> (pas du tout) ou <b>no me gusta mucho</b> (pas trop). « No » se place devant le pronom : <b>No me gusta el fútbol.</b><br><br>🤝 <b>7. Accord et désaccord.</b> <b>A mí también</b> (moi aussi) après une phrase POSITIVE ; <b>a mí tampoco</b> (moi non plus) après une phrase NÉGATIVE ; <b>a mí sí</b> / <b>a mí no</b> pour contredire. Exemples : Me encanta leer. — A mí también. · No me gusta correr. — A mí tampoco. · No me gusta el café. — A mí sí.<br><br>⚠️ <b>8. Pièges francophones</b> : « Me gusta los libros » (faux : gustan) · « Yo gusto el cine » (faux : on n'a pas de « yo gusto » dans ce sens ; et « Me gustas » veut dire « tu me plais ») · « También » après une négation (faux : tampoco) · « ¿Y tú? » pour renvoyer la question (il faut « ¿Y a ti? »).",
+  dialogueLede:"Deux amis se parlent de leurs loisirs (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Ana! ¿Qué tal? ¿Te gusta viajar?", fr:"Salut, Ana ! Ça va ? Tu aimes voyager ?"},
+   {who:"you", en:"Sí, me encanta viajar porque es muy interesante. ¿Y a ti?", fr:"Oui, j'adore voyager parce que c'est très intéressant. Et toi ?"},
+   {who:"them", en:"A mí también. Me gustan los museos y las novelas históricas.", fr:"Moi aussi. J'aime les musées et les romans historiques."},
+   {who:"you", en:"A mí me interesan los museos, pero no me gusta nada el ruido.", fr:"Les musées m'intéressent, mais je n'aime pas du tout le bruit."},
+   {who:"them", en:"A mí tampoco. ¡Es terrible!", fr:"Moi non plus. C'est horrible !"}
+  ],
+  whyLabel:"Pourquoi l'espagnol « renverse » la phrase ?",
+  whyText:"Dans « me gusta el café », le sujet grammatical est <b>le café</b> : c'est lui qui « plaît ». C'est pour cela que le verbe change (<b>gusta / gustan</b>) selon ce qui est aimé, et que <b>« yo gusto »</b> ou <b>« gustas »</b> ne servent pas à dire « j'aime ». Ce réflexe revient partout (encantar, interesar, doler, importar…), alors installe-le maintenant. <b>Méthode en 3 étapes</b> : 1) traduis MOT À MOT en français (« Les chats me plaisent »), 2) trouve ce qui plaît (les chats = pluriel → gustan), 3) choisis le pronom de la personne (à moi → me). Pour le vouvoiement, c'est la même phrase, seul le pronom change : <b>¿Le gusta el café, señora?</b>"
+ },
+ GRAMMAR2: {
+  heading:"PREFERIR (e → ie), ODIAR et « ¿Cuál es tu… favorito? »",
+  dialogueLede:"Dans une agence de voyage, un conseiller et une cliente (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, señora. ¿Qué prefiere usted, el mar o la montaña?", fr:"Bonjour, madame. Que préférez-vous, la mer ou la montagne ?"},
+   {who:"you", en:"Prefiero el mar, porque me gusta nadar. ¿Y usted?", fr:"Je préfère la mer, parce que j'aime nager. Et vous ?"},
+   {who:"them", en:"Yo prefiero la montaña. Odio el calor.", fr:"Moi, je préfère la montagne. Je déteste la chaleur."},
+   {who:"you", en:"¿Cuál es su pasatiempo favorito, señor?", fr:"Quel est votre passe-temps favori, monsieur ?"},
+   {who:"them", en:"Mi pasatiempo favorito es viajar. Me da igual el destino.", fr:"Mon passe-temps favori est de voyager. La destination m'est égale."}
+  ],
+  ruleHtml:"📖 <b>1. PREFERIR (préférer)</b> est un verbe à <b>diphtongue</b> : le <b>e</b> du radical devient <b>ie</b> aux personnes où ce radical porte l'accent tonique, c'est-à-dire <b>à toutes sauf nosotros et vosotros</b> :<br>• yo → <b>prefiero</b> · tú → <b>prefieres</b> · él, ella, usted → <b>prefiere</b><br>• nosotros → <b>preferimos</b> · vosotros → <b>preferís</b> · ellos, ustedes → <b>prefieren</b><br>Astuce : dessine une « botte » autour du tableau : les 4 formes qui portent le ie (yo, tú, él, ellos) sont dans la botte ; nosotros et vosotros restent dehors. Le sujet est la PERSONNE : c'est un verbe normal, comme en français.<br><br>✅ <b>2. Emploi</b> : <b>preferir + nom</b> (Prefiero el té) ou <b>+ infinitif</b> (Prefiero viajar en tren). Pour proposer un choix : <b>¿Qué prefieres, el cine o el teatro?</b> (tu) · <b>¿Qué prefiere usted, el té o el café?</b> (usted). Réponse : <b>Prefiero el cine.</b><br><br>😡 <b>3. ODIAR (détester)</b> : verbe RÉGULIER en -AR, sans diphtongue : <b>odio, odias, odia, odiamos, odiáis, odian</b>. Sujet = la personne : <b>Odio el ruido. Mi madre odia bailar.</b> À ne pas confondre avec « me gusta » : on n'écrit pas « me odio el ruido ». Pour dire « je n'aime pas », on peut aussi dire <b>no me gusta</b> (plus doux).<br><br>⭐ <b>4. La question « favori »</b> : <b>¿Cuál es tu… favorito/a?</b> (tu) · <b>¿Cuál es su… favorito/a?</b> (usted ; « su » = votre) · Pluriel : <b>¿Cuáles son tus libros favoritos?</b> Réponse : <b>Mi color favorito es el azul.</b> favorito s'accorde avec le nom : <b>mi deporte favorito</b> (masculin), <b>mi música favorita</b> (féminin), <b>mis libros favoritos</b> (masculin pluriel). On emploie « cuál » quand on choisit parmi un ensemble ; devant un nom on dit plutôt « qué » : ¿Qué deporte te gusta?<br><br>⚠️ <b>5. Pièges</b> : « prefero » (faux) · « prefierimos » (faux : la diphtongue disparaît à nosotros) · « Me prefiero el té » (faux : pas de pronom devant preferir) · « ¿Cuál deporte te gusta? » (faux : ¿Qué deporte te gusta?).",
+  whyLabel:"Pourquoi le e devient ie (prefiero) mais pas à nosotros ?",
+  whyText:"En espagnol, certaines voyelles du radical « grandissent » quand elles portent l'accent de la syllabe : <b>pre-FIE-ro</b>, <b>pre-FIE-res</b>. À nosotros et vosotros, l'accent tombe sur la terminaison (<b>pre-fe-RI-mos</b>, <b>pre-fe-RÍS</b>), donc le radical reste simple. Si tu entends l'accent sur le radical, tu ajoutes « i ». Cette règle de la « botte » sera la même pour d'autres verbes plus tard : apprends bien le schéma maintenant. Pour la politesse, rien ne change : usted se conjugue comme él (prefiere), ustedes comme ellos (prefieren). Et rappelle-toi : preferir et odiar ont la PERSONNE comme sujet, alors que gustar, encantar et interesar ont la CHOSE comme sujet."
+ },
+ REVIEW: [
+  {q:"Pour dire à un ami « tourne à gauche » :", opts:["Gira a la izquierda.","Gire a la izquierda."], correct:0, fb:"Impératif tú : gira. Pour un monsieur (usted) : gire. (rappel A1.4)"},
+  {q:"À un monsieur âgé, « suivez tout droit » :", opts:["Sigue recto.","Siga recto."], correct:1, fb:"Usted : siga. Tutoiement : sigue. (rappel A1.4)"},
+  {q:"« Enfrente de » signifie :", opts:["en face de","derrière"], correct:0, fb:"enfrente de = en face de ; detrás de = derrière. (rappel A1.4)"},
+  {q:"« Nous allons à la gare » :", opts:["Vamos a la estación.","Vais a la estación."], correct:0, fb:"ir au présent : voy, vas, va, vamos, vais, van. Nosotros → vamos ; « vais » est la forme de vosotros. (rappel A1.4)"},
+  {q:"En Amérique latine, pour « tourner à droite », on dit plutôt :", opts:["dobla a la derecha","coge a la derecha"], correct:0, fb:"« girar » (Espagne) / « doblar » (Amérique latine). « Coger » est vulgaire en Amérique latine : on emploie « tomar ». (rappel A1.4)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"Me ___ el cine. (gustar)", answers:["gusta","Gusta"], why:"Le cinéma est singulier : me gusta."},
+  {type:"fill", text:"Me ___ las películas. (gustar)", answers:["gustan","Gustan"], why:"las películas est pluriel : me gustan."},
+  {type:"fill", text:"A ti te ___ cocinar. (gustar)", answers:["gusta","Gusta"], why:"Un infinitif demande le singulier : te gusta cocinar."},
+  {type:"fill", text:"A él le ___ los videojuegos. (encantar)", answers:["encantan","Encantan"], why:"los videojuegos est pluriel : le encantan."},
+  {type:"fill", text:"A nosotros nos ___ viajar. (encantar)", answers:["encanta","Encanta"], why:"Un infinitif : encanta au singulier."},
+  {type:"fill", text:"A mí me ___ la música. (interesar)", answers:["interesa","Interesa"], why:"la música est singulier : me interesa."},
+  {type:"fill", text:"A mis amigos les ___ los museos. (interesar)", answers:["interesan","Interesan"], why:"los museos est pluriel : les interesan."},
+  {type:"fill", text:"Yo ___ el ruido. (odiar)", answers:["odio","Odio"], why:"Odiar est régulier : yo odio."},
+  {type:"fill", text:"Tú ___ la música clásica. (preferir)", answers:["prefieres","Prefieres"], why:"e → ie à tú : prefieres."},
+  {type:"fill", text:"Ella ___ el té. (preferir)", answers:["prefiere","Prefiere"], why:"e → ie à la 3e personne : prefiere."},
+  {type:"fill", text:"Nosotros ___ pasear. (preferir)", answers:["preferimos","Preferimos"], why:"Pas de diphtongue à nosotros : preferimos."},
+  {type:"fill", text:"Vosotros ___ el cine. (preferir)", answers:["preferís","Preferís"], why:"Pas de diphtongue à vosotros : preferís (accent écrit sur le í)."},
+  {type:"fill", text:"Ellos ___ viajar en tren. (preferir)", answers:["prefieren","Prefieren"], why:"e → ie à ellos : prefieren."},
+  {type:"fill", text:"¿A usted ___ gusta bailar?", answers:["le","Le"], why:"Usted prend le pronom « le » : ¿Le gusta bailar?"},
+  {type:"fill", text:"A vosotros ___ gusta cantar.", answers:["os","Os"], why:"vosotros → os (Espagne). En Amérique latine : a ustedes les gusta."},
+  {type:"fill", text:"A mis padres ___ gustan los viajes.", answers:["les","Les"], why:"mis padres = ellos → les ; gustan car « los viajes » est pluriel."},
+  {type:"fill", text:"No me gusta el fútbol. — A mí ___ .", answers:["tampoco","Tampoco"], why:"On approuve une phrase négative : tampoco."},
+  {type:"fill", text:"Me encanta bailar. — A mí ___ .", answers:["también","También"], why:"On approuve une phrase positive : también (accent écrit)."},
+  {type:"choice", q:"Comment dire « J'aime les chats » ?", opts:["Me gustan los gatos.","Me gusta los gatos.","Yo gusto los gatos."], correct:0, why:"Les chats = pluriel → gustan. Le pronom me est obligatoire."},
+  {type:"choice", q:"À un directeur, tu demandes :", opts:["¿Te gusta el café?","¿Le gusta el café?"], correct:1, why:"Un directeur → usted : ¿Le gusta el café?"},
+  {type:"choice", q:"« Mon livre préféré » :", opts:["mi libro favorito","mi favorito libro"], correct:0, why:"favorito se place après le nom et s'accorde : mi libro favorito."},
+  {type:"choice", q:"Quelle phrase est correcte ?", opts:["Odio el fútbol.","Me odio el fútbol."], correct:0, why:"Odiar est un verbe normal : sujet = yo (odio), pas de pronom « me »."},
+  {type:"choice", q:"Quelle forme de preferir est FAUSSE ?", opts:["prefieres","prefierimos","prefieren"], correct:1, why:"À nosotros, pas de diphtongue : la bonne forme est preferimos."},
+  {type:"choice", q:"« Ça m'est égal » se dit :", opts:["Me da igual.","Me gusta igual."], correct:0, why:"« Me da igual » (ou « me da lo mismo ») = ça m'est égal."}
+ ],
+ ANNOTATED: {
+  title:"Sofía et ses passe-temps",
+  intro:"Un petit texte pour t'entraîner. Touche chaque mot pour voir sa nature et sa traduction, et repère les structures « me gusta », « me gustan » et « favorito ».",
+  sentences:[
+   {fr:"Je m'appelle Sofía et j'aime beaucoup lire.", tokens:[
+    {w:"Me llamo", tag:"verbe pronominal", info:"llamarse · présent · yo", fr:"je m'appelle"},
+    {w:"Sofía", tag:"nom propre", fr:"Sofía"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"me", tag:"pronom", info:"complément indirect · à moi", fr:"à moi", tip:"Le pronom indique À QUI ça plaît."},
+    {w:"gusta", tag:"verbe", info:"gustar · présent · 3e pers. sing.", fr:"plaît", tip:"Singulier, car ce qui plaît est un verbe à l'infinitif (leer)."},
+    {w:"mucho", tag:"adverbe", fr:"beaucoup", tip:"Après le verbe, comme en français."},
+    {w:"leer", tag:"verbe", info:"infinitif · -ER", fr:"lire"}
+   ]},
+   {fr:"Je n'aime pas du tout les sports violents.", tokens:[
+    {w:"No", tag:"adverbe", info:"négation", fr:"ne… pas", tip:"« No » se place devant le pronom."},
+    {w:"me", tag:"pronom", info:"complément indirect", fr:"à moi"},
+    {w:"gustan", tag:"verbe", info:"gustar · présent · 3e pers. plur.", fr:"plaisent", tip:"Pluriel, car « los deportes » est pluriel."},
+    {w:"nada", tag:"adverbe", fr:"du tout", tip:"no… nada = pas du tout."},
+    {w:"los", tag:"déterminant", info:"article défini · masc. plur.", fr:"les"},
+    {w:"deportes", tag:"nom", info:"masc. plur.", fr:"sports"},
+    {w:"violentos", tag:"adjectif", info:"masc. plur.", fr:"violents", tip:"S'accorde avec « deportes »."}
+   ]},
+   {fr:"Mon passe-temps favori est de cuisiner pour mes amis.", tokens:[
+    {w:"Mi", tag:"déterminant", info:"possessif · masc. sing.", fr:"mon"},
+    {w:"pasatiempo", tag:"nom", info:"masc. sing.", fr:"passe-temps", tip:"Un seul mot, avec -s-."},
+    {w:"favorito", tag:"adjectif", info:"masc. sing.", fr:"favori", tip:"Après le nom ; s'accorde avec lui."},
+    {w:"es", tag:"verbe", info:"ser · présent · 3e pers.", fr:"est"},
+    {w:"cocinar", tag:"verbe", info:"infinitif · -AR", fr:"cuisiner"},
+    {w:"para", tag:"préposition", fr:"pour"},
+    {w:"mis", tag:"déterminant", info:"possessif · plur.", fr:"mes"},
+    {w:"amigos", tag:"nom", info:"masc. plur.", fr:"amis"}
+   ]},
+   {fr:"Et vous, monsieur, quel est votre passe-temps favori ?", tokens:[
+    {w:"Y", tag:"conjonction", fr:"et"},
+    {w:"usted", tag:"pronom sujet", info:"vouvoiement", fr:"vous (politesse)"},
+    {w:"señor", tag:"nom", info:"masc. sing.", fr:"monsieur"},
+    {w:"¿cuál", tag:"pronom interrogatif", fr:"quel", tip:"Accent écrit : cuál."},
+    {w:"es", tag:"verbe", info:"ser · présent · 3e pers.", fr:"est"},
+    {w:"su", tag:"déterminant", info:"possessif", fr:"votre", tip:"Avec usted, « su » = votre."},
+    {w:"pasatiempo", tag:"nom", info:"masc. sing.", fr:"passe-temps"},
+    {w:"favorito?", tag:"adjectif", info:"masc. sing.", fr:"favori"}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🎭", title:"Culture, 10 expressions familières et fiche récap (A1.5)",
+  html:"<b>🎭 Culture</b> En Espagne, le temps libre se passe souvent en groupe : <b>quedar</b> avec ses amis, faire un <b>paseo</b>, prendre des tapas, aller au cinéma. Poser la question « ¿Cuál es tu pasatiempo favorito? » est un classique pour briser la glace. Avec une personne âgée ou dans un cadre pro, on utilise <b>usted</b> : « ¿Le gusta viajar? » Variantes : Espagne = <b>vosotros / os gusta</b> ; Amérique latine = <b>ustedes / les gusta</b> ; <b>pasarlo bien</b> (Espagne) / <b>pasarla bien</b> (Amérique latine).<br><br><b>🧰 10 expressions familières sur les passions</b><br>1. <b>Estar en su salsa</b> = être dans son élément (littéralement « dans sa sauce »).<br>2. <b>Ser un as</b> = être un champion (« ser un as del fútbol »).<br>3. <b>Pasarlo bien</b> (Espagne) / <b>pasarla bien</b> (Amérique latine) = bien s'amuser, s'éclater.<br>4. <b>Estar colgado por</b> = être dingue de quelqu'un (familier). Pour « coup de foudre » : <b>un flechazo</b> (Espagne) ou <b>amor a primera vista</b>.<br>5. <b>No ver la hora de</b> + infinitif = avoir hâte de (Espagne). ⚠️ « No ver el momento » n'existe pas.<br>6. <b>Estar chupado</b> = être archi-facile, du gâteau (Espagne, très familier).<br>7. <b>Tener madera de</b> = avoir l'étoffe de (« Tienes madera de cantante »).<br>8. <b>Estar pez (en)</b> = être nul en, n'y rien connaître (Espagne, familier).<br>9. <b>Ir a tope</b> = y aller à fond (Espagne, familier).<br>10. <b>Estar en su elemento</b> = être comme un poisson dans l'eau.<br><br><b>✍️ Expression écrite — ta fiche de préférences (4 phrases)</b> Rédige 4 phrases avec me gusta, me gustan, me encanta et prefiero. Modèle : « Me gusta leer en casa. Me gustan las novelas históricas. Me encanta viajar con mis amigos. Prefiero el cine. » Vérifie : gusta ou gustan selon ce qui plaît ? Le pronom me est-il présent ? Accents écrits ?<br><br><b>🗣️ Expression orale — interroger un partenaire</b> Informel : « ¿Te gusta viajar? — Sí, me encanta viajar porque es muy interesante. ¿Y a ti? — A mí también. » Formel : « ¿Le gusta viajar, señora? — Sí, me gusta mucho. ¿Y a usted? » Puis : « ¿Cuál es tu deporte favorito? / ¿Cuál es su deporte favorito? »<br><br><b>📄 Fiche récap</b> gusta (1 chose ou infinitif) / gustan (plusieurs) · pronoms me, te, le, nos, os, les · encantar et interesar comme gustar · odio, odias, odia… (régulier) · prefiero, prefieres, prefiere, preferimos, preferís, prefieren · a mí también (+) / a mí tampoco (−) · ¿Cuál es tu… favorito/a? · ¿Te gusta…? / ¿Le gusta…? · no me importa · me da igual."},
+ NEXT_PREVIEW:"A1.6 (Comida y bebida) : parler de ce que tu manges et bois (pan, arroz, carne, pescado, agua, café, zumo…), dire les repas (desayuno, almuerzo, cena), exprimer la quantité (un poco de, mucho/a) et commander poliment avec la formule figée « Quería… » ; tu verras aussi le présent des verbes en -ER / -IR.",
+ META:{vocabTitle:"Gustos y preferencias : ce que tu aimes et ce que tu préfères (A1.5)", lectureTitle:"Sofía et ses passe-temps", bilanTitle:"Bravo, tu sais dire ce que tu aimes et ce que tu préfères !", pronLabel:"Gustos : ie de prefiero, io de odio, gu et cuál", todayLede:"dire ce que tu aimes, adores, détestes ou préfères avec gustar, encantar, interesar, odiar et preferir (e → ie), poser les questions ¿Te gusta? / ¿Le gusta? / ¿Cuál es tu… favorito? et réagir avec a mí también / a mí tampoco — en tutoiement ET en vouvoiement"}
+};
+})();
+
+
+// A1.6 — Comida y bebida : présent des verbes en -ER / -IR, dénombrable / indénombrable, « quería » (politesse), gustar (leçon 206)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Los alimentos : ce qu'on mange", [
+  ["el pan","/el pan/","le pain","Indénombrable : un poco de pan, mucho pan. Une baguette = una barra de pan ; une tranche = una rebanada.","🍞","Como un poco de pan con queso.","Je mange un peu de pain avec du fromage."],
+  ["el arroz","/el aˈroθ/","le riz","Masculin : el arroz (jamais « la »). Le z final = « th » (Espagne) ou « s » (Amérique latine). Pluriel rare : los arroces.","🍚","Hoy comemos arroz con pollo.","Aujourd'hui nous mangeons du riz au poulet."],
+  ["la carne","/la ˈkaɾne/","la viande","Féminin. Viande hachée : carne picada (Espagne) / carne molida (Amérique latine). Pour la volaille : el pollo ; pour le porc : el cerdo.","🥩","No como mucha carne.","Je ne mange pas beaucoup de viande."],
+  ["el pescado","/el pesˈkaðo/","le poisson (dans l'assiette)","Poisson cuisiné ou vendu : el pescado. Poisson vivant dans l'eau : el pez (pluriel : los peces). sc = s + k : pes-KA-do.","🐟","El pescado con arroz está muy rico.","Le poisson au riz est très bon."],
+  ["las verduras","/las beɾˈðuɾas/","les légumes","Presque toujours au pluriel pour dire « les légumes » en général. Faux ami visuel : verde = vert.","🥦","Me gustan las verduras.","J'aime les légumes."],
+  ["la fruta","/la ˈfɾuta/","le fruit, les fruits","Singulier collectif : « Como fruta » = je mange des fruits. Un fruit précis se dit par son nom : una manzana, un plátano.","🍇","Como fruta todos los días.","Je mange des fruits tous les jours."],
+  ["la manzana","/la manˈθana/","la pomme","Dénombrable : una manzana, dos manzanas. z = « th » (Espagne) / « s » (Amérique latine).","🍎","Quería una manzana, por favor.","Je voudrais une pomme, s'il vous plaît."],
+  ["el plátano","/el ˈplatano/","la banane","Espagne : el plátano. Colombie : el banano pour la banane, et el plátano est la banane plantain (cuisinée). Accent sur PLÁ.","🍌","Mi hijo come un plátano.","Mon fils mange une banane."],
+  ["la naranja","/la naˈɾaŋxa/","l'orange","Dénombrable. Le jus : el zumo de naranja (Espagne) / el jugo de naranja (Amérique latine). j = « kh » rauque.","🍊","Bebo zumo de naranja.","Je bois du jus d'orange."],
+  ["el huevo","/el ˈweβo/","l'œuf","h muette : WÉ-vo. Dénombrable : un huevo, dos huevos. Frit : huevo frito ; dur : huevo duro.","🥚","Comes dos huevos, ¿verdad?","Tu manges deux œufs, n'est-ce pas ?"],
+  ["el queso","/el ˈkeso/","le fromage","Masculin, indénombrable : un trozo de queso. Prononce KÉ-so (qu = k, jamais « kou »).","🧀","Un trozo de queso, por favor.","Un morceau de fromage, s'il vous plaît."],
+  ["el jamón","/xaˈmon/","le jambon","j = « kh ». Le jamón serrano (séché) est une star espagnole ; le jambon cuit : jamón York (Espagne).","🍖","El jamón con pan es muy rico.","Le jambon avec du pain est très bon."],
+  ["el pollo","/el ˈpoʝo/","le poulet","ll = « y » : PO-yo. Se mange rôti (pollo asado) ou frit (pollo frito).","🍗","Hoy comemos pollo con arroz.","Aujourd'hui nous mangeons du poulet au riz."],
+  ["la sopa","/la ˈsopa/","la soupe","Un classique en entrée : sopa de verduras. Féminin.","🍲","De primero, quería una sopa de verduras.","En entrée, je voudrais une soupe de légumes."],
+  ["la ensalada","/la ensaˈlaða/","la salade","Salade composée ou verte : ensalada mixta (Espagne). Le d entre voyelles est très doux.","🥗","Como una ensalada con tomate.","Je mange une salade avec de la tomate."],
+  ["las patatas","/las paˈtatas/","les pommes de terre","Espagne : las patatas. Amérique latine (dont la Colombie) : las papas. Frites : patatas fritas / papas fritas.","🥔","Me gustan las patatas fritas.","J'aime les frites."],
+  ["la pasta","/la ˈpasta/","les pâtes","Singulier en espagnol : la pasta. Spaghetti, macarrones : los espaguetis, los macarrones.","🍝","La pasta con tomate es muy fácil.","Les pâtes à la tomate sont très faciles."],
+  ["el tomate","/el toˈmate/","la tomate","Masculin en espagnol (el tomate), alors que « tomate » est féminin en français : piège ! Accent sur MA.","🍅","Quería ensalada sin tomate.","Je voudrais une salade sans tomate."]
+ ]),
+ blk("Las bebidas : ce qu'on boit", [
+  ["el agua","/el ˈaɣwa/","l'eau","NOM FÉMININ ! Devant un « a » tonique, on emploie « el » pour éviter « la a » : el agua, mais l'adjectif reste féminin : el agua fría (jamais « frío »). Pluriel : las aguas. Avec un autre mot : mucha agua, un poco de agua, esta agua.","💧","El agua está fría.","L'eau est froide."],
+  ["el café","/el kaˈfe/","le café","Accent sur la dernière syllabe. Un café solo = expresso ; con leche = au lait ; cortado = expresso avec un peu de lait (Espagne). Colombie : un tinto = un café noir.","☕","Bebo un café con leche.","Je bois un café au lait."],
+  ["el té","/el te/","le thé","L'accent écrit distingue « té » (le thé) de « te » (te, toi). Un té con limón, con leche.","🍵","Mi madre bebe té.","Ma mère boit du thé."],
+  ["el zumo","/el ˈθumo/","le jus de fruits","Espagne : el zumo. Amérique latine (Colombie) : el jugo. z = « th » en Espagne.","🧃","Quería un zumo de naranja.","Je voudrais un jus d'orange."],
+  ["la leche","/la ˈletʃe/","le lait","Féminin, indénombrable : un poco de leche. ch = « tch » : LÉ-tche. Un café con leche = un café au lait.","🥛","Los niños beben leche.","Les enfants boivent du lait."],
+  ["el vino","/el ˈbino/","le vin","v = b. Rouge : tinto ; blanc : blanco ; rosé : rosado.","🍷","Mi padre bebe vino tinto.","Mon père boit du vin rouge."],
+  ["la cerveza","/la θeɾˈβeθa/","la bière","c et z = « th » (Espagne) / « s » (Amérique latine). En Espagne, une petite bière pression : una caña.","🍺","Quería una cerveza, por favor.","Je voudrais une bière, s'il vous plaît."],
+  ["el refresco","/el reˈfɾesko/","la boisson gazeuse, le soda","Espagne et Mexique : un refresco. Colombie : una gaseosa. r initial = r roulé.","🥤","Mis hijos beben un refresco.","Mes enfants boivent un soda."]
+ ]),
+ blk("Los momentos del día : las comidas", [
+  ["el desayuno","/el desaˈʝuno/","le petit-déjeuner","Premier repas du jour. Le verbe : desayunar (desayuno, desayunas… comme un verbe en -AR). d entre voyelles très doux.","🥐","Mi desayuno es un café con leche.","Mon petit-déjeuner est un café au lait."],
+  ["el almuerzo","/el alˈmweɾθo/","le déjeuner (Amérique latine) · le repas ou la collation de la mi-journée","Amérique latine (Colombie) : el almuerzo = le déjeuner de midi. Espagne : « la comida » est le repas de 14 h-15 h ; « el almuerzo » est plutôt une collation en milieu de matinée.","🍽️","En Colombia, el almuerzo es el plato fuerte del día.","En Colombie, le déjeuner est le grand repas de la journée."],
+  ["la comida","/la koˈmiða/","la nourriture · le repas de midi (Espagne)","Deux sens : « la nourriture » (me gusta la comida española) et, en Espagne, le déjeuner (vers 14 h). Piège : « comida » n'est pas un diner.","🍝","La comida española me gusta mucho.","La cuisine espagnole me plaît beaucoup."],
+  ["la cena","/la ˈθena/","le dîner","Repas du soir, plus tardif en Espagne (vers 21 h-22 h). Le verbe : cenar. c devant e = « th » / « s ».","🌙","La cena es pequeña: un té y un poco de queso.","Le dîner est petit : un thé et un peu de fromage."],
+  ["la merienda","/la meˈɾjenda/","le goûter, la collation de l'après-midi","Vers 17 h en Espagne : un bocadillo, de la fruta, un zumo. Pour les enfants comme pour les adultes.","🍪","La merienda es un plátano y un zumo.","Le goûter, c'est une banane et un jus."]
+ ]),
+ blk("Las cantidades : un poco, mucho, un trozo", [
+  ["un poco de","/um ˈpoko ðe/","un peu de","INVARIABLE, suivi du nom sans article : un poco de agua, un poco de pan. Ne confonds pas avec « poco » (= peu, pas assez).","🤏","Quiero un poco de agua.","Je veux un peu d'eau."],
+  ["mucho / mucha","/ˈmutʃo · ˈmutʃa/","beaucoup de (singulier)","S'ACCORDE avec le nom : mucho pan, mucha fruta, mucha agua (agua est féminin !). Jamais « mucho de ». Avec un adjectif ou un adverbe, on dit « muy » : muy rico.","🥘","Bebo mucha agua y como mucho pan.","Je bois beaucoup d'eau et je mange beaucoup de pain."],
+  ["muchos / muchas","/ˈmutʃos · ˈmutʃas/","beaucoup de (pluriel), beaucoup","Pour les dénombrables au pluriel : muchos huevos, muchas verduras. L'accord se fait avec le genre du nom.","🥚","Comemos muchas verduras.","Nous mangeons beaucoup de légumes."],
+  ["un trozo de","/un ˈtɾoθo ðe/","un morceau de","Pour un morceau coupé : un trozo de pan, de queso, de tarta. z = « th » (Espagne).","🍰","Quería un trozo de queso.","Je voudrais un morceau de fromage."],
+  ["un vaso de","/um ˈbaso ðe/","un verre de (verre droit)","Pour l'eau, le lait, le jus : un vaso de agua. v = b. Faux ami : « vaso » n'est pas un vase (un vase = un jarrón).","🥛","Un vaso de agua, por favor.","Un verre d'eau, s'il vous plaît."],
+  ["una taza de","/ˈuna ˈtaθa ðe/","une tasse de","Pour le café, le thé, le chocolat chaud : una taza de té.","☕","Una taza de té con limón.","Une tasse de thé au citron."],
+  ["una botella de","/ˈuna boˈteʝa ðe/","une bouteille de","Pour l'eau, le vin, la bière : una botella de agua. ll = « y ».","🍾","Una botella de agua sin gas.","Une bouteille d'eau plate."],
+  ["una copa de","/ˈuna ˈkopa ðe/","un verre (à pied) de","Pour le vin ou le champagne : una copa de vino. Ne dis pas « un vaso de vino » au restaurant.","🍷","Una copa de vino tinto, por favor.","Un verre de vin rouge, s'il vous plaît."],
+  ["un plato de","/um ˈplato ðe/","une assiette de","Aussi : un plat. Un plato de sopa, de pasta. Faux ami : plato = assiette ET plat.","🍽️","Quería un plato de sopa.","Je voudrais une assiette de soupe."],
+  ["una ración de","/ˈuna raˈθjon ðe/","une portion de","Typique des bars à tapas en Espagne : una ración de jamón, de patatas. Plus grand qu'une tapa, à partager.","🧆","Una ración de jamón para dos.","Une portion de jambon pour deux."]
+ ]),
+ blk("El restaurante : à table", [
+  ["el camarero / la camarera","/el kamaˈɾeɾo · la kamaˈɾeɾa/","le serveur / la serveuse","Espagne : camarero. Colombie : el mesero / la mesera. Pour l'appeler : « ¡Perdone! » (usted), jamais en claquant des doigts.","🧑‍🍳","El camarero nos trae la carta.","Le serveur nous apporte la carte."],
+  ["una mesa para dos","/ˈuna ˈmesa ˈpaɾa dos/","une table pour deux","Pour plus : para tres, para cuatro… Le client demande : ¿Tienen una mesa para dos ? (ils = le restaurant). ATTENTION : « para » (pour, destination) ≠ « por ».","🪑","¿Tienen una mesa para dos?","Avez-vous une table pour deux ?"],
+  ["la carta","/la ˈkaɾta/","la carte, le menu","Espagne : la carta. Amérique latine (Colombie) : el menú. Faux ami : en Espagne, « el menú » est la formule complète.","📜","Aquí tienen la carta.","Voici la carte."],
+  ["el menú del día","/el meˈnu ðel ˈðia/","la formule du jour","Formule à prix fixe à midi, très courante en Espagne : un primero, un segundo, un postre et une boisson. En Colombie : el almuerzo corriente ou « corrientazo ».","🧾","El menú del día es barato.","La formule du jour n'est pas chère."],
+  ["de primero","/de pɾiˈmeɾo/","en entrée","Le plat d'entrée : sopa, ensalada. Pour commander : « De primero, quería una sopa. »","1️⃣","De primero, una ensalada mixta.","En entrée, une salade composée."],
+  ["de segundo","/de seˈɣundo/","en plat principal","Le plat principal : carne ou pescado. « De segundo, quería pescado con arroz. »","2️⃣","De segundo, pescado con patatas.","En plat principal, du poisson avec des pommes de terre."],
+  ["de postre","/de ˈpostɾe/","en dessert","El postre = le dessert : fruta, flan, helado. Pour commander : « De postre, fruta. »","🍮","De postre, una manzana.","En dessert, une pomme."],
+  ["Quería… / Queríamos…","/keˈɾia · keɾiˈamos/","je voudrais… / nous voudrions…","FORMULE DE POLITESSE FIGÉE. À la lettre c'est « je voulais » (comme en français : « je voulais un renseignement »). Apprends seulement ces deux blocs : « Quería » (moi seul) et « Queríamos » (nous). Ne conjugue pas ce temps à d'autres personnes : on ne l'étudie pas ici.","🙋","Quería un café con leche, por favor.","Je voudrais un café au lait, s'il vous plaît."],
+  ["¿Qué desea? / ¿Qué quieres tomar?","/ke deˈsea · ke ˈkjeɾes toˈmaɾ/","que désirez-vous ? / que veux-tu prendre ?","Le serveur dit « ¿Qué desea? » (à un client seul, usted) ou « ¿Qué desean? » (à plusieurs, ustedes). Entre amis : « ¿Qué quieres tomar? ».","💬","¿Qué desea tomar, señora?","Que désirez-vous boire, madame ?"],
+  ["¿Puedo tener…?","/ˈpweðo teˈneɾ/","puis-je avoir… ?","Bloc à retenir tel quel (poder se conjugue plus tard). Calque du français : on te comprend, mais l'espagnol dit plutôt « ¿Me pone…? » (Espagne). En Colombie on entend aussi « ¿Me regala…? ».","🙏","¿Puedo tener un vaso de agua?","Puis-je avoir un verre d'eau ?"],
+  ["¿Me trae…?","/me ˈtɾae/","pouvez-vous m'apporter… ?","Tú : ¿Me traes…? · usted : ¿Me trae…? Très naturel pour demander un objet ou un plat : ¿Me trae la cuenta, por favor?","🛎️","¿Me trae otro café, por favor?","Pouvez-vous m'apporter un autre café, s'il vous plaît ?"],
+  ["¿Qué recomienda?","/ke rekoˈmjenða/","que recommandez-vous ?","Au restaurant, tu demandes conseil au serveur (usted) : ¿Qué recomienda? Entre amis : ¿Qué recomiendas? Bloc à apprendre tel quel.","👍","¿Qué recomienda de segundo?","Que recommandez-vous en plat principal ?"],
+  ["¿Algo más?","/ˈalɣo mas/","autre chose ?","Le serveur te demande si tu veux autre chose. Réponse polie : « Nada más, gracias. » (rien d'autre, merci).","➕","— ¿Algo más? — Nada más, gracias.","— Autre chose ? — Rien d'autre, merci."],
+  ["con / sin","/kon · sin/","avec / sans","Le café con leche, sin azúcar, sin gas, sin carne. Très utile pour préciser une commande.","➖","Un café con leche sin azúcar.","Un café au lait sans sucre."],
+  ["vegetariano / vegetariana","/bexetaˈɾjano · bexetaˈɾjana/","végétarien / végétarienne","Avec SER : soy vegetariano (je suis végétarien). Pour refuser la viande : « No como carne ». g devant e = « kh ».","🥬","Mi hermana es vegetariana.","Ma sœur est végétarienne."],
+  ["el bocadillo","/el bokaˈðiʎo/","le sandwich (baguette)","Espagne : un bocadillo de jamón. Amérique latine : un sándwich. Le mot « tapa » désigne un petit plat servi au bar.","🥖","Quería un bocadillo de queso.","Je voudrais un sandwich au fromage."],
+  ["las tapas","/las ˈtapas/","les tapas (petits plats de bar)","Culture espagnole : un petit plat pour accompagner la boisson. Au pluriel, souvent « tapear » (aller manger des tapas). Une ración est plus grande.","🫒","Mis amigos y yo comemos tapas.","Mes amis et moi mangeons des tapas."],
+  ["la cuenta","/la ˈkwenta/","l'addition","« La cuenta, por favor. » Piège francophone : « la adición » n'existe pas pour l'addition d'un restaurant (c'est une addition de maths).","🧾","La cuenta, por favor.","L'addition, s'il vous plaît."],
+  ["¿Puedo pagar con tarjeta?","/ˈpweðo paˈɣaɾ kon taɾˈxeta/","puis-je payer par carte ?","Tarjeta = la carte (bancaire). Avec ¿Puedo… ? + infinitif, tu peux demander beaucoup de choses. Formule formelle utile : ¿Aceptan tarjeta? (acceptez-vous la carte ?)","💳","¿Puedo pagar con tarjeta?","Puis-je payer par carte ?"],
+  ["la propina","/la pɾoˈpina/","le pourboire","En Espagne, on arrondit ou on laisse quelques pièces. En Colombie, une « propina voluntaria » est souvent ajoutée à l'addition (environ 10 %) ; tu peux la refuser.","🪙","Dejamos una propina pequeña.","Nous laissons un petit pourboire."]
+ ]),
+ blk("Los verbos : présent régulier en -ER et -IR", [
+  ["comer","/koˈmeɾ/","manger","Verbe en -ER : como, comes, come, comemos, coméis, comen. En Espagne, « comer » = aussi prendre le repas de midi (¿Dónde comes?). Sans accent : « como » = je mange ; avec accent : « cómo » = comment.","🍽️","Como pescado con mi familia.","Je mange du poisson avec ma famille."],
+  ["beber","/beˈβeɾ/","boire","Verbe en -ER : bebo, bebes, bebe, bebemos, bebéis, beben. En Amérique latine, on dit souvent « tomar » : tomar agua, tomar un café.","🥤","Bebemos agua en casa.","Nous buvons de l'eau à la maison."],
+  ["vivir","/biˈβiɾ/","vivre, habiter","Verbe en -IR : vivo, vives, vive, vivimos, vivís, viven. Pour dire où on habite : « Vivo en… ».","🏠","Vivimos en Madrid.","Nous habitons à Madrid."],
+  ["escribir","/eskɾiˈβiɾ/","écrire","Verbe en -IR : escribo, escribes, escribe, escribimos, escribís, escriben. Prononce es-kri-BIR.","✍️","Escribo mi pedido en la carta.","J'écris ma commande sur la carte."],
+  ["leer","/leˈeɾ/","lire","Verbe en -ER : leo, lees, lee, leemos, leéis, leen. Deux « e » qui se suivent : le-ER.","📖","Leo la carta antes de pedir.","Je lis la carte avant de commander."],
+  ["aprender","/apɾenˈdeɾ/","apprendre","Verbe en -ER : aprendo, aprendes, aprende, aprendemos, aprendéis, aprenden. Aprender a + infinitif : aprender a cocinar.","🎓","Aprendemos español en clase.","Nous apprenons l'espagnol en classe."],
+  ["comprender","/kompɾenˈdeɾ/","comprendre","Verbe en -ER : comprendo, comprendes… Comprender ou entender, deux mots proches pour dire comprendre.","💡","¿Comprende usted la carta?","Comprenez-vous la carte ?"],
+  ["correr","/koˈreɾ/","courir","Verbe en -ER : corro, corres, corre, corremos, corréis, corren. rr = r roulé.","🏃","Corro los domingos.","Je cours le dimanche."],
+  ["abrir","/aˈβɾiɾ/","ouvrir","Verbe en -IR : abro, abres, abre, abrimos, abrís, abren.","🚪","El restaurante abre pronto.","Le restaurant ouvre bientôt."],
+  ["recibir","/reθiˈβiɾ/","recevoir","Verbe en -IR : recibo, recibes, recibe, recibimos, recibís, reciben.","📬","Recibimos a nuestros amigos con una cena.","Nous recevons nos amis avec un dîner."],
+  ["tomar","/toˈmaɾ/","prendre, boire, manger","Verbe en -AR (déjà vu). « Tomar un café » = prendre un café, en Espagne comme en Amérique latine.","☕","Tomo un té con leche.","Je prends un thé l'après-midi."],
+  ["querer","/keˈɾeɾ/","vouloir","Présent : quiero, quieres, quiere, queremos, queréis, quieren (e→ie, comme preferir en A1.5, sauf nous et vous). Direct mais courant et poli avec « por favor ».","❤️","Quiero un vaso de agua, por favor.","Je veux un verre d'eau, s'il vous plaît."],
+  ["pedir","/peˈðiɾ/","demander, commander","Irrégulier (e→i), à apprendre en bloc : pido, pides, pide, pedimos, pedís, piden. « Pido la cuenta » = je demande l'addition.","🙋","Pido un café con leche.","Je commande un café au lait."]
+ ]),
+ blk("Los gustos : réemploi de gustar", [
+  ["me gusta / me gustan","/me ˈɣusta · me ˈɣustan/","j'aime (ça me plaît)","Rappel A1.5 : gusta + un objet ou un infinitif, gustan + plusieurs objets. Usted : le gusta / le gustan. Amis : te gusta / te gustan.","❤️","Me gusta la comida española.","J'aime la cuisine espagnole."],
+  ["me encanta / me encantan","/me eŋˈkanta · me eŋˈkantan/","j'adore","Même mécanisme que gustar, en plus fort : me encanta el queso, me encantan las patatas.","😍","Me encantan las verduras.","J'adore les légumes."],
+  ["rico / rica","/ˈriko · ˈrika/","bon, savoureux","Avec ESTAR pour un plat qui est bon : está rico / está rica. Très courant en Espagne et en Amérique latine.","😋","El pescado está muy rico.","Le poisson est très bon."],
+  ["dulce","/ˈdulθe/","sucré, doux","Invariable au féminin (une tarta dulce). « Un dulce » = une friandise.","🍬","Me gusta el café dulce.","J'aime le café sucré."],
+  ["salado / salada","/saˈlaðo · saˈlaða/","salé","Accord avec le nom : el queso salado, la sopa salada.","🧂","La sopa está muy salada.","La soupe est très salée."],
+  ["picante","/piˈkante/","épicé, piquant","Invariable au féminin. Très courant en Amérique latine : la comida picante.","🌶️","La salsa es picante.","La sauce est épicée."],
+  ["caliente","/kaˈljente/","chaud (au toucher, au goût)","Pour un plat ou une boisson : un café caliente. Pour la météo ou la sensation : tener calor (pas tener caliente).","🔥","La sopa está caliente.","La soupe est chaude."]
+ ]),
+ blk("Bonus : 10 expressions de la table (toutes réelles)", [
+  ["Estar como un queso","/esˈtaɾ ˈkomo un ˈkeso/","être très beau / très belle","Familier, Espagne. À la lettre : être comme un fromage. Entre amis, à l'oral ; en Amérique latine on ne le comprend pas toujours.","😍","¡Tu hermano está como un queso!","Ton frère est superbe !"],
+  ["Ser pan comido","/seɾ pan koˈmiðo/","c'est du gâteau, c'est très facile","Mot à mot : être du pain mangé. Fréquent dans toute l'Amérique latine et en Espagne.","🍰","El examen es pan comido.","L'examen, c'est du gâteau."],
+  ["Pedir peras al olmo","/peˈðiɾ ˈpeɾas al ˈolmo/","demander l'impossible","Un olmo (un orme) ne donne pas de poires : on demande l'impossible.","🍐","¿Un coche gratis? Es pedir peras al olmo.","Une voiture gratuite ? C'est demander l'impossible."],
+  ["A otro perro con ese hueso","/a ˈotɾo ˈpero kon ˈese ˈweso/","à d'autres ! je ne te crois pas","Familier : on refuse de croire un mensonge. À la lettre : à un autre chien avec cet os. h muette dans hueso.","🐕","¿Tú, campeón de ajedrez? ¡A otro perro con ese hueso!","Toi, champion d'échecs ? À d'autres !"],
+  ["Ponerse como un tomate","/poˈneɾse ˈkomo un toˈmate/","devenir rouge comme une tomate","Rougir de honte ou de gêne. On dit « se pone » (il/elle), « me pongo » (je), « te pones » (tu).","🍅","Mi hermana se pone como un tomate.","Ma sœur devient rouge comme une tomate."],
+  ["Me importa un pepino","/me imˈpoɾta um peˈpino/","je m'en moque complètement","Familier. Le pepino (le concombre) ne vaut rien. Même mécanisme que gustar : te importa, le importa.","🥒","Su opinión me importa un pepino.","Son opinion, je m'en moque complètement."],
+  ["Ser el pan de cada día","/seɾ el pan de ˈkaða ˈðia/","être monnaie courante, arriver tous les jours","Une chose banale, de tous les jours. Vient de la prière du « Notre Père » (« el pan nuestro de cada día »).","🍞","Las prisas son el pan de cada día.","La précipitation est monnaie courante."],
+  ["Contigo pan y cebolla","/konˈtiɣo pan i θeˈβoʝa/","avec toi, même du pain et des oignons","Proverbe romantique : je te suivrais même dans la pauvreté. contigo = avec toi (déjà vu en A1.5).","💕","Él dice: «Contigo, pan y cebolla».","Il dit : « Avec toi, du pain et des oignons suffisent »."],
+  ["A buen hambre no hay pan duro","/a ˈbwen ˈambɾe no ˈai pan ˈduɾo/","à bon appétit il n'y a pas de pain dur","Proverbe : quand on a faim, tout est bon. « hay » = il y a (retiens-le tel quel, il est très utile).","🥖","Con tanta hambre todo está rico.","Avec si faim, tout est bon."],
+  ["Tener mala leche","/teˈneɾ ˈmala ˈletʃe/","avoir mauvais caractère, être de mauvaise humeur","Familier, surtout en Espagne. À la lettre : avoir mauvais lait. Ne dis pas « mala leche » à un inconnu : c'est impoli.","😠","Pablo tiene mala leche hoy.","Pablo est d'une humeur massacrante aujourd'hui."]
+ ])
+);
+LESSONS_ES[206] = {
+ code:"A1.6", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el agua","un poco de","mucho / mucha","un trozo de","Quería… / Queríamos…","la cuenta","comer","beber","vivir","el desayuno"]),
+ MINI_CHECKS: [
+  {q:"« Tu bois du thé. » (tutoiement)", opts:["Bebes té.","Bebas té.","Beves té."], correct:0, fb:"beber est un verbe en -ER : yo bebo, tú bebes. Le « v » n'est pas dans la terminaison."},
+  {q:"« L'eau fraîche » :", opts:["El agua fría","El agua frío","La agua fría"], correct:0, fb:"agua est féminin, mais devant le « a » tonique on met « el » ; l'adjectif reste féminin : fría."},
+  {q:"Quelle formule est la plus polie pour commander ?", opts:["Quiero un café.","Quería un café, por favor."], correct:1, fb:"« Quería » est la formule douce du restaurant. « Quiero » n'est pas faux (surtout avec « por favor »), mais plus direct."},
+  {q:"« Bebo ___ agua. »", opts:["mucho","mucha","muchas"], correct:1, fb:"mucho s'accorde avec le nom. agua est féminin singulier : mucha agua."},
+  {q:"« Un morceau de fromage » :", opts:["un trozo de queso","un vaso de queso","una taza de queso"], correct:0, fb:"Un trozo de = un morceau. Un vaso et una taza sont des récipients pour les boissons."},
+  {q:"« Nous habitons à Madrid. »", opts:["Vivimos en Madrid.","Vivemos en Madrid.","Vivamos en Madrid."], correct:0, fb:"Les verbes en -IR font nosotros → -imos : vivimos. Les verbes en -ER font -emos : comemos."},
+  {q:"« L'addition, s'il vous plaît » :", opts:["La cuenta, por favor.","La adición, por favor.","La suma, por favor."], correct:0, fb:"On demande « la cuenta ». « Adición » est un faux ami (c'est l'addition de mathématiques)."},
+  {q:"« Me ___ las patatas. »", opts:["gusta","gustan"], correct:1, fb:"« las patatas » est pluriel : gustan. (rappel A1.5)"}
+ ],
+ ROUNDS: [
+  __esR("Quería un café con leche, por favor.","Je voudrais un café au lait, s'il vous plaît."),
+  __esR("Comemos pescado con arroz.","Nous mangeons du poisson avec du riz."),
+  __esR("Mi hermano bebe mucha agua.","Mon frère boit beaucoup d'eau."),
+  __esR("¿Tienen una mesa para dos?","Avez-vous une table pour deux ?"),
+  __esR("La cuenta, por favor.","L'addition, s'il vous plaît."),
+  __esR("Me gustan las verduras y la fruta.","J'aime les légumes et les fruits."),
+  __esR("De primero quería una sopa de verduras.","En entrée, je voudrais une soupe de légumes."),
+  __esR("¿Puedo pagar con tarjeta?","Puis-je payer par carte ?"),
+  __esR("Vivimos en Madrid y comemos pescado.","Nous habitons à Madrid et nous mangeons du poisson."),
+  __esR("¿Qué desea tomar, señor?","Que désirez-vous boire, monsieur ?"),
+  __esR("Beben un vaso de agua fría.","Ils boivent un verre d'eau fraîche."),
+  __esR("No como carne, pero como mucho pescado.","Je ne mange pas de viande, mais je mange beaucoup de poisson."),
+  __esR("Queríamos un trozo de queso, por favor.","Nous voudrions un morceau de fromage, s'il vous plaît.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Tú ___ mucha fruta. (comer)", opts:["comes","come","comas"], correct:0, why:"tú → -es : comes. (Un verbe en -ER : la voyelle de la terminaison est e.)"},
+  {cat:"ecrit", q:"Mis padres ___ café en casa. (beber)", opts:["bebe","beben","bebemos"], correct:1, why:"ellos → -en : beben."},
+  {cat:"ecrit", q:"Nosotros ___ en Bogotá. (vivir)", opts:["vivemos","vivimos","vivís"], correct:1, why:"nosotros d'un verbe en -IR → -imos : vivimos."},
+  {cat:"ecrit", q:"Vosotros ___ una carta. (escribir)", opts:["escribís","escribáis","escribéis"], correct:0, why:"vosotros d'un verbe en -IR → -ís avec accent écrit : escribís."},
+  {cat:"ecrit", q:"Usted ___ pescado, ¿verdad? (comer)", opts:["comes","come","coméis"], correct:1, why:"usted se conjugue comme él / ella : come."},
+  {cat:"ecrit", q:"Au serveur (usted), tu demandes l'addition :", opts:["La cuenta, por favor.","La adición, por favor.","El recibo, por favor."], correct:0, why:"« la cuenta » est le mot normal pour l'addition. « Adición » est un faux ami."},
+  {cat:"ecrit", q:"El agua ___ fría.", opts:["está","están","es"], correct:0, why:"agua est singulier (el agua) : está. On dit « el agua fría », au féminin, malgré le « el »."},
+  {cat:"ecrit", q:"Me gustan ___ verduras.", opts:["las","los","la"], correct:0, why:"verduras est féminin pluriel : las verduras. gustan = pluriel."},
+  {cat:"ecrit", q:"Comemos ___ huevos. (beaucoup d')", opts:["muchos","mucha","muchas"], correct:0, why:"huevo est masculin : muchos huevos."},
+  {cat:"ecrit", q:"Quería ___ vaso de agua, por favor.", opts:["un","uno","una"], correct:0, why:"vaso est masculin : un vaso. « Uno » ne s'emploie pas devant un nom."},
+  {cat:"ecrit", q:"Entre amis, tu demandes : « Que veux-tu prendre ? »", opts:["¿Qué quieres tomar?","¿Qué desea tomar?"], correct:0, why:"tú → quieres. « ¿Qué desea? » est la forme formelle (usted), utilisée par le serveur."},
+  {cat:"ecrit", q:"« Un peu de pain » :", opts:["un poco de pan","un poco pan","un poco el pan"], correct:0, why:"un poco de + nom, sans article, et invariable."},
+  {cat:"ecrit", q:"Quelle phrase est correcte ?", opts:["Quiero un poco de agua.","Quiero un poco agua.","Quiero poco del agua."], correct:0, why:"un poco DE + nom : un poco de agua. Pas de « el » ni « del »."},
+  {cat:"ecrit", q:"« Ser pan comido » signifie :", opts:["C'est très facile","C'est très cher","C'est très bon"], correct:0, why:"C'est du gâteau : l'expression dit qu'une chose est très facile."},
+  {cat:"oral", audio:"Quería un café con leche, por favor.", q:"Écoute : que commande la personne ?", opts:["Un café au lait","Un thé","Un jus d'orange"], correct:0, why:"« café con leche » = café au lait. « Quería… » = je voudrais…"},
+  {cat:"oral", audio:"¿Qué desea tomar, señora?", q:"Écoute : le registre est…", opts:["informel (tutoiement)","formel (vouvoiement)"], correct:1, why:"« desea » + « señora » : vouvoiement (usted). Entre amis : ¿Qué quieres tomar?"},
+  {cat:"oral", audio:"Mis amigos beben mucha agua.", q:"Écoute : que boivent les amis ?", opts:["Beaucoup d'eau","Un peu d'eau","Du vin"], correct:0, why:"beben = ils boivent ; mucha agua = beaucoup d'eau (mucha, car agua est féminin)."},
+  {cat:"oral", audio:"De primero, sopa de verduras. De segundo, pescado con arroz.", q:"Écoute : quel est le plat principal ?", opts:["Du poisson avec du riz","De la soupe de légumes","De la viande avec des pommes de terre"], correct:0, why:"« De segundo » = en plat principal : pescado con arroz."},
+  {cat:"oral", audio:"La cuenta, por favor. ¿Puedo pagar con tarjeta?", q:"Écoute : que demande la personne ?", opts:["L'addition, et payer par carte","Une table pour deux","Un verre d'eau"], correct:0, why:"« La cuenta » = l'addition, « pagar con tarjeta » = payer par carte."},
+  {cat:"comprehension", passage:"— Buenas tardes. — Buenas tardes. ¿Tienen una mesa para dos? — Sí, por favor, síganme. Aquí tienen la carta. — Gracias. De primero, quería una sopa de verduras, y de segundo, un poco de pescado con arroz. — ¿Y para beber? — Un vaso de agua y un café, por favor.", q:"Pour combien de personnes est la table ?", opts:["Une","Deux","Trois"], correct:1, why:"« una mesa para dos » = une table pour deux personnes."},
+  {cat:"comprehension", passage:"— Buenas tardes. — Buenas tardes. ¿Tienen una mesa para dos? — Sí, por favor, síganme. Aquí tienen la carta. — Gracias. De primero, quería una sopa de verduras, y de segundo, un poco de pescado con arroz. — ¿Y para beber? — Un vaso de agua y un café, por favor.", q:"Que commande le client en plat principal ?", opts:["De la soupe","Un peu de poisson avec du riz","De la viande"], correct:1, why:"« De segundo, un poco de pescado con arroz » : du poisson avec du riz, en petite quantité."},
+  {cat:"comprehension", passage:"— Buenas tardes. — Buenas tardes. ¿Tienen una mesa para dos? — Sí, por favor, síganme. Aquí tienen la carta. — Gracias. De primero, quería una sopa de verduras, y de segundo, un poco de pescado con arroz. — ¿Y para beber? — Un vaso de agua y un café, por favor.", q:"Quel mot du client est une formule de politesse pour commander ?", opts:["Quería","Síganme","Aquí tienen"], correct:0, why:"« Quería » adoucit la demande. « Síganme » (suivez-moi) et « Aquí tienen » (voici) sont dits par le serveur."},
+  {cat:"comprehension", passage:"Hola, soy Marta. Vivo en Madrid. Mi desayuno es un café con leche y un trozo de pan. Mi comida es grande: como sopa, carne con patatas y fruta. Mi cena es pequeña: bebo un té y como un poco de queso. No me gusta el pescado, pero me encantan las verduras.", q:"Comment est la cena de Marta ?", opts:["Grande","Petite","Elle ne dîne pas"], correct:1, why:"« Mi cena es pequeña » : petite, avec un thé et un peu de fromage."},
+  {cat:"comprehension", passage:"Hola, soy Marta. Vivo en Madrid. Mi desayuno es un café con leche y un trozo de pan. Mi comida es grande: como sopa, carne con patatas y fruta. Mi cena es pequeña: bebo un té y como un poco de queso. No me gusta el pescado, pero me encantan las verduras.", q:"Qu'est-ce que Marta n'aime pas ?", opts:["Le poisson","Les légumes","Le fromage"], correct:0, why:"« No me gusta el pescado » : elle n'aime pas le poisson. Elle adore les légumes (me encantan)."}
+ ],
+ PRON_VERBS: [
+  {en:"Quería un vaso de agua.", fr:"Je voudrais un verre d'eau. (v = b : BA-so ; d entre voyelles très doux : A-gwa)"},
+  {en:"El huevo es muy rico.", fr:"L'œuf est très bon. (h muette : WÉ-bo ; v = b)"},
+  {en:"La cerveza y el zumo.", fr:"La bière et le jus. (c et z = th en Espagne : ther-BE-tha, THOU-mo ; s en Amérique latine)"},
+  {en:"Bebo un vaso de vino.", fr:"Je bois un verre de vin. (b/v = b doux : BE-bo, BI-no)"},
+  {en:"Una mesa para dos, por favor.", fr:"Une table pour deux, s'il vous plaît. (s = s toujours sourd : ME-sa, jamais « mè-za »)"},
+  {en:"La cuenta, por favor.", fr:"L'addition, s'il vous plaît. (cuen = kwen : KWEN-ta)"},
+  {en:"Como un bocadillo de jamón.", fr:"Je mange un sandwich au jambon. (ll = y : bo-ka-DI-yo ; j = kh : kha-MON)"},
+  {en:"Escribo la comida en la carta.", fr:"J'écris le repas sur la carte. (es-kri-BO ; c devant o = k : KO-mi-da)"},
+  {en:"Mañana comemos pescado.", fr:"Demain nous mangeons du poisson. (ñ = gn : ma-GNA-na ; sc = s + k : pes-KA-do)"},
+  {en:"¿Puedo pagar con tarjeta?", fr:"Puis-je payer par carte ? (j = kh : tar-KHE-ta ; r doux entre voyelles)"}
+ ],
+ READING: [
+  "Me llamo Marta y vivo en Madrid con mi familia.",
+  "Mi desayuno es un café con leche y un trozo de pan.",
+  "Mi comida es grande: como sopa, carne con patatas y fruta.",
+  "Mi cena es pequeña: bebo un té y como un poco de queso.",
+  "No me gusta el pescado, pero me encantan las verduras.",
+  "Mi hermano bebe mucha agua y come mucho pan.",
+  "Hoy mis padres y yo comemos en un restaurante.",
+  "Quería una mesa para tres, por favor.",
+  "El camarero es muy simpático: nos trae la carta.",
+  "Al final, pido la cuenta y pago con tarjeta."
+ ],
+ GLOSS: [
+  {en:"mi comida", fr:"mon repas de midi (Espagne) ; « la comida » peut aussi vouloir dire « la nourriture »"},
+  {en:"pequeña", fr:"petite (féminin : la cena est féminin)"},
+  {en:"mucha agua", fr:"beaucoup d'eau : mucha, car agua est féminin"},
+  {en:"nos trae", fr:"il nous apporte (traer, 3e personne ; « nos » vu en A1.3)"},
+  {en:"pido", fr:"je demande, je commande (pedir : irrégulier, à apprendre en bloc)"},
+  {en:"pago", fr:"je paie (pagar, verbe en -AR)"},
+  {en:"al final", fr:"à la fin, finalement"},
+  {en:"con mi familia", fr:"avec ma famille (con = avec)"}
+ ],
+ GRAMMAR1: {
+  heading:"Conjugaison : le présent des verbes en -ER et -IR",
+  lede:"Après les verbes en -AR (hablar) de A1.3, voici les deux autres familles : -ER (comer, beber, leer, aprender, comprender, correr) et -IR (vivir, escribir, abrir, recibir). Bonne nouvelle : elles sont presque identiques entre elles.",
+  conj:[
+   ["yo →","como · bebo · vivo","Como pan. Bebo agua. Vivo en Madrid."],
+   ["tú →","comes · bebes · vives","¿Comes carne? ¿Bebes café? ¿Vives aquí?"],
+   ["él, ella, usted →","come · bebe · vive","Marta come fruta. ¿Bebe usted té? ¿Dónde vive usted?"],
+   ["nosotros →","comemos · bebemos · vivimos","Comemos tarde. Bebemos agua. Vivimos en Bogotá."],
+   ["vosotros →","coméis · bebéis · vivís","¿Coméis aquí? ¿Bebéis zumo? ¿Vivís cerca?"],
+   ["ellos, ustedes →","comen · beben · viven","Mis padres comen pescado. ¿Beben ustedes vino?"]
+  ],
+  ruleHtml:"📖 <b>Recette :</b> on enlève <b>-er</b> ou <b>-ir</b> et on ajoute la terminaison. <b>-ER</b> : <b>-o, -es, -e, -emos, -éis, -en</b> (com-o, com-es, com-e, com-emos, com-éis, com-en). <b>-IR</b> : <b>-o, -es, -e, -imos, -ís, -en</b> (viv-o, viv-es, viv-e, viv-imos, viv-ís, viv-en). <b>Seules différences entre -ER et -IR : nosotros (-emos / -imos) et vosotros (-éis / -ís).</b> Tous les autres sont identiques.<br><br><b>Comparaison avec -AR</b> (A1.3) : -AR a la voyelle <b>a</b> (habl-as, habl-a, habl-an) ; -ER et -IR ont la voyelle <b>e</b> (com-es, com-e, com-en). Pour t'en souvenir : les verbes en -AR disent « a », les deux autres disent « e ».<br><br><b>Verbes du jour</b> (tous réguliers) : comer (como…), beber (bebo…), leer (leo, lees, lee, leemos, leéis, leen), aprender, comprender, correr, vivir (vivo…), escribir (escribo…), abrir, recibir.<br><br><b>Querer (vouloir)</b> change son radical, comme preferir en A1.5 : <b>quiero, quieres, quiere</b>, mais <b>queremos, queréis</b>, puis <b>quieren</b>. ATTENTION : <b>quiero</b> (je veux) est le présent ; <b>quería</b> est autre chose (voir GRAMMAR2). <b>Pedir</b> change aussi : pido, pides, pide, pedimos, pedís, piden (à apprendre en bloc).<br><br><b>Accents écrits :</b> coméis, bebéis, vivís, escribís (vosotros). Sans accent : <b>como</b> = je mange ; avec accent : <b>cómo</b> = comment. <br><br><b>Informel / formel :</b> amis → tú (¿Comes pescado? ¿Qué bebes?) ; inconnu, âgé, supérieur → usted, avec la forme de él/ella (¿Come usted pescado? ¿Qué bebe usted?). Plusieurs personnes en Espagne : vosotros (coméis, bebéis) ; en Amérique latine on utilise ustedes pour TOUS les « vous » (comen, beben).<br><br><b>Les repas :</b> desayunar, comer et cenar sont aussi des verbes : « desayuno » (je prends le petit-déjeuner), « como » (je déjeune, je mange), « ceno » (je dîne). Desayunar et cenar sont en -AR (desayuno, desayunas… ; ceno, cenas…).<br><br><b>Pièges francophones :</b> (1) « Je mange du pain » = Como pan (pas d'article, le sens est partitif). (2) « Comer » et « beber » n'ont pas de « tu »/« vous » à ajouter : le pronom sujet est presque toujours omis. (3) « Vivir » = habiter ET vivre.",
+  dialogueLede:"Deux amis se retrouvent à midi (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"Hola, Luis. ¿Dónde comes hoy?", fr:"Salut, Luis. Où manges-tu aujourd'hui ?"},
+   {who:"you", en:"Como en casa de mi madre. Ella vive cerca de aquí.", fr:"Je mange chez ma mère. Elle habite près d'ici."},
+   {who:"them", en:"¡Qué bien! ¿Y qué coméis?", fr:"Super ! Et que mangez-vous ?"},
+   {who:"you", en:"Pescado con arroz. Siempre bebemos agua con la comida.", fr:"Du poisson avec du riz. Nous buvons toujours de l'eau pendant le repas."},
+   {who:"them", en:"¿Y tus hermanos? ¿Comen con ustedes?", fr:"Et tes frères ? Ils mangent avec vous ?"},
+   {who:"you", en:"A veces. Mi hermano vive en Sevilla y escribe mucho.", fr:"Parfois. Mon frère habite à Séville et écrit beaucoup."}
+  ],
+  whyLabel:"Pourquoi -ER et -IR sont-ils presque jumeaux ?",
+  whyText:"En espagnol, les deux familles partagent presque les mêmes terminaisons parce que leur histoire est commune : seules deux personnes (nosotros et vosotros) gardent la voyelle de l'infinitif (-emos / -imos, -éis / -ís). Concrètement : apprends UN modèle, <b>comer</b>, et tu sais conjuguer les verbes en -ER ET -IR, avec juste deux formes à ajuster. Pour t'en souvenir : <b>-es, -e, -en</b> pour tu / il / ils (la voyelle e), et ensuite <b>-emos / -imos</b> pour « nous ». Et comme en A1.3 chaque personne a sa terminaison : on peut donc omettre le pronom sujet (Como pan, pas « Yo como pan », sauf pour insister)."
+ },
+ GRAMMAR2: {
+  heading:"Commander poliment : quería, quiero, ¿Qué desea ? · dénombrable ou non · gustar",
+  dialogueLede:"Au restaurant, une cliente et un serveur (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenas tardes, señora. ¿Qué desea tomar?", fr:"Bonsoir, madame. Que désirez-vous boire ?"},
+   {who:"you", en:"Quería un vaso de agua, por favor.", fr:"Je voudrais un verre d'eau, s'il vous plaît."},
+   {who:"them", en:"Sí, señora. ¿Y de primero?", fr:"Oui, madame. Et en entrée ?"},
+   {who:"you", en:"Una sopa de verduras. De segundo, un poco de pescado con arroz.", fr:"Une soupe de légumes. En plat principal, un peu de poisson avec du riz."},
+   {who:"them", en:"¿Algo más?", fr:"Autre chose ?"},
+   {who:"you", en:"Nada más, gracias. Y la cuenta, por favor. ¿Puedo pagar con tarjeta?", fr:"Rien d'autre, merci. Et l'addition, s'il vous plaît. Puis-je payer par carte ?"}
+  ],
+  ruleHtml:"🍽️ <b>1. Commander poliment</b><br><b>Quiero un café</b> : présent de querer (je veux). Correct, direct, normal entre amis ou dans un café rapide, surtout avec « por favor ». <b>Quería un café, por favor</b> : formule plus douce, très courante au restaurant et dans les magasins. <b>Queríamos una mesa para dos</b> : même formule pour « nous ».<br>👥 <b>Informel / formel :</b> le serveur demande à un client (usted) <b>¿Qué desea? ¿Qué desea tomar?</b> ; à plusieurs clients (ustedes) <b>¿Qué desean?</b> ; entre amis <b>¿Qué quieres tomar?</b>. Pour appeler le serveur : <b>¡Perdone!</b> (usted). Pour demander un objet : <b>¿Me trae…?</b> (usted) / <b>¿Me traes…?</b> (tú). <b>¿Puedo tener…?</b> se comprend, mais l'espagnol dit plus naturellement <b>¿Me pone…?</b> (Espagne).<br>🔎 Le serveur te dit « <b>Síganme</b> » : à plusieurs clients (ustedes, impératif de seguir, vu en A1.4, + me). À un client seul : <b>Sígame</b>. Entre amis (tú) : <b>Sígueme</b>. L'accent écrit sur <b>SÍ-ga-me</b> garde la syllabe tonique.<br><br>🥖 <b>2. Dénombrable / indénombrable</b><br><b>Dénombrable</b> (on compte un par un) : una manzana, dos huevos, muchos huevos, muchas verduras → <b>muchos / muchas + nom pluriel</b>. <b>Indénombrable</b> (masse, liquide) : el pan, el arroz, el agua, la carne, la fruta, la leche → <b>un poco de</b> ou <b>mucho / mucha</b> au singulier.<br><b>Un poco de</b> est invariable, sans article : un poco de pan, un poco de agua. <b>Mucho</b> s'accorde : mucho pan, mucha fruta, mucha agua (agua est féminin, donc « mucha »), muchos huevos, muchas verduras. ⚠️ Ne dis jamais « mucho de ». Avec un adjectif, c'est <b>muy</b> : muy rico, pas « mucho rico ».<br>Pour une quantité concrète : un trozo de queso, un vaso de agua, una taza de té, una copa de vino, una botella de agua, un plato de sopa, una ración de jamón.<br>☕ En commande, on peut aussi dénombrer une boisson : « dos cafés » = deux tasses de café.<br><br>❤️ <b>3. Réemploi de gustar (A1.5)</b><br><b>Me gusta la comida española.</b> <b>Me gustan las verduras.</b> <b>No me gusta el pescado.</b> Pour insister : <b>Me encanta el queso. Me encantan las patatas.</b> Pour comparer : <b>Prefiero el té al café</b> (preferir = e→ie : prefiero, prefieres, prefiere). Avec usted : <b>¿Le gusta el pescado, señor?</b> Entre amis : <b>¿Te gustan las verduras?</b> « A mí también » = moi aussi ; « A mí no » = moi non.",
+  whyLabel:"Pourquoi « quería » (je voulais) pour dire « je voudrais » ?",
+  whyText:"Le français fait pareil : on dit « Je voulais un renseignement » ou « Je voudrais… » pour être poli. L'espagnol utilise le passé pour <b>reculer</b> la demande : ce n'est plus un ordre immédiat (« je veux »), c'est une envie qu'on exprime avec délicatesse. <b>Quería</b> est donc une formule figée de politesse : on l'apprend comme un bloc (Quería un café, por favor) et on ne la conjugue pas ici (l'imparfait n'est pas au programme). <b>Quiero</b> (présent) n'est pas impoli : en Espagne, beaucoup disent « Un café, por favor » ou « Quiero un café, por favor » sans problème, avec un ton aimable. Pour le tutoiement entre amis, <b>quiero</b> suffit ; pour un inconnu ou un serveur, <b>quería</b> ou <b>¿Qué desea?</b> sonnent plus soignés. Retiens : <b>le ton et « por favor » comptent autant que le temps du verbe</b>."
+ },
+ REVIEW: [
+  {q:"« Me ___ los libros. »", opts:["gusta","gustan"], correct:1, fb:"Plusieurs objets (los libros) → gustan. (rappel A1.5)"},
+  {q:"À un inconnu âgé : « Aimez-vous la musique ? »", opts:["¿Te gusta la música?","¿Le gusta la música?"], correct:1, fb:"usted → le gusta. (rappel A1.5)"},
+  {q:"« J'adore danser. »", opts:["Me encanta bailar.","Me encantan bailar."], correct:0, fb:"Un verbe à l'infinitif → singulier : encanta. (rappel A1.5)"},
+  {q:"« Tu préfères le thé. » (tutoiement)", opts:["Prefieres el té.","Preferes el té."], correct:0, fb:"preferir change e→ie à tú : prefieres. (rappel A1.5)"},
+  {q:"« Me ___ los libros interesantes. »", opts:["interesa","interesan"], correct:1, fb:"interesar fonctionne comme gustar : plusieurs objets → interesan. (rappel A1.5)"}
+ ],
+ CULTURE_NOTE: {icon:"🍽️", title:"Culture, expressions et fiche récap (A1.6)",
+  html:"<b>🍽️ Culture</b> En Espagne, on mange tard : <b>el desayuno</b> léger (café, tostada), <b>la comida</b> vers 14 h-15 h (souvent <b>el menú del día</b> : primero, segundo, postre, boisson), <b>la merienda</b> vers 17 h et <b>la cena</b> vers 21 h-22 h. Les <b>tapas</b> se prennent au bar avec la boisson. En Colombie et dans beaucoup de pays d'Amérique latine, <b>el almuerzo</b> (le déjeuner) est le plus gros repas, et le café s'appelle <b>un tinto</b>. La tradition espagnole des « doce uvas » (12 raisins à Nochevieja, le 31 décembre) est réelle, mais « dar las uvas » n'est pas une expression fiable : on ne la retient pas.<br><br><b>✍️ Expression écrite — ta commande idéale (4 lignes)</b> Modèle : « Buenas tardes. Quería una mesa para dos. De primero, quería una sopa de verduras y de segundo, un poco de pescado con arroz. Para beber, un vaso de agua y un café con leche. La cuenta, por favor. » Vérifie : quería · un poco de / un trozo de · mucho(s) / mucha(s) · -ER et -IR.<br><br><b>🗣️ Expression orale — jeu de rôle</b> Camarero (usted) : « ¿Qué desea tomar? » Cliente : « Quería un café con leche y un trozo de queso, por favor. » Camarero : « ¿Algo más? » Cliente : « Nada más, gracias. La cuenta, por favor. ¿Puedo pagar con tarjeta? » Puis entre amis (tutoiement) : « ¿Qué quieres tomar? — Quiero un zumo. »<br><br><b>📄 Fiche récap</b> -ER : como, comes, come, comemos, coméis, comen · -IR : vivo, vives, vive, vivimos, vivís, viven · querer : quiero, quieres, quiere, queremos, queréis, quieren · el agua (féminin, el agua fría, mucha agua) · un poco de (invariable) · mucho / mucha / muchos / muchas · un trozo / vaso / taza / copa / botella / plato de · de primero / de segundo / de postre · formel : ¿Qué desea? ¿Me trae…? ¿Qué recomienda? · informel : ¿Qué quieres tomar? ¿Me traes…? · la cuenta, por favor · ¿Puedo pagar con tarjeta?"},
+ NEXT_PREVIEW:"A1.7 (De compras) : les vêtements (camisa, pantalones, zapatos…), les tailles, les couleurs et les prix, demander ¿Cuánto cuesta?, comparer (más barato, más caro, mejor, peor), les démonstratifs este / esta / estos / estas et essayer un vêtement avec « probarse » (¿Puedo probármelo?).",
+ META:{vocabTitle:"Comida y bebida : ce qu'on mange, ce qu'on boit, au restaurant (A1.6)", lectureTitle:"Marta et ses repas à Madrid", bilanTitle:"Bravo, tu sais commander et parler de ce que tu manges !", pronLabel:"Comida : b/v, h muette, ll, z/c et ñ", todayLede:"parler de ce que tu manges et bois, conjuguer les verbes en -ER et -IR (comer, beber, vivir…), commander poliment avec « quería » et ¿Qué desea ?, utiliser un poco de / mucho / un trozo de, et réutiliser gustar — avec la politesse formelle ET informelle"},
+ DRILLS: [
+  {type:"fill", text:"Yo ___ pan con queso. (comer)", answers:["como"], why:"yo → -o : como."},
+  {type:"fill", text:"Tú ___ mucha agua. (beber)", answers:["bebes"], why:"tú → -es : bebes."},
+  {type:"fill", text:"Marta ___ en Madrid. (vivir)", answers:["vive"], why:"ella → -e : vive."},
+  {type:"fill", text:"Nosotros ___ una carta. (escribir)", answers:["escribimos"], why:"nosotros d'un verbe en -IR → -imos : escribimos."},
+  {type:"fill", text:"Vosotros ___ en un restaurante. (comer)", answers:["coméis"], why:"vosotros d'un verbe en -ER → -éis : coméis (accent écrit)."},
+  {type:"fill", text:"Ellos ___ té con leche. (beber)", answers:["beben"], why:"ellos → -en : beben."},
+  {type:"fill", text:"¿___ usted pescado? (comer)", answers:["Come","come"], why:"usted se conjugue comme él / ella : come."},
+  {type:"fill", text:"Él ___ un libro. (leer)", answers:["lee"], why:"él → -e : lee."},
+  {type:"fill", text:"Yo ___ un café. (querer, présent)", answers:["quiero"], why:"querer fait e→ie : quiero."},
+  {type:"fill", text:"Nosotros ___ una mesa para dos. (querer, présent)", answers:["queremos"], why:"À nosotros, pas de diphtongue : queremos."},
+  {type:"fill", text:"Un ___ de agua. (verre)", answers:["vaso"], why:"un vaso de agua : verre droit pour l'eau."},
+  {type:"fill", text:"Quiero un ___ de queso. (morceau)", answers:["trozo"], why:"un trozo de queso : un morceau."},
+  {type:"fill", text:"Me ___ las patatas. (gustar)", answers:["gustan"], why:"Plusieurs objets → gustan."},
+  {type:"fill", text:"Bebo ___ agua. (beaucoup d')", answers:["mucha"], why:"agua est féminin : mucha agua."},
+  {type:"choice", q:"« Les légumes » :", opts:["las verduras","los verduras","las verdes"], correct:0, why:"verdura est féminin : las verduras. « Verdes » = verts."},
+  {type:"choice", q:"Le serveur demande à un client seul (usted) :", opts:["¿Qué desea?","¿Qué quieres?"], correct:0, why:"usted → desea. « ¿Qué quieres? » est informel."},
+  {type:"choice", q:"« Un peu de riz » :", opts:["un poco de arroz","un poco arroz","unos pocos de arroz"], correct:0, why:"un poco DE + nom."},
+  {type:"choice", q:"« Beaucoup de fruits » (fruta, indénombrable) :", opts:["mucha fruta","muchas fruta","mucho fruta"], correct:0, why:"fruta est féminin singulier : mucha fruta."},
+  {type:"choice", q:"« Beaucoup d'œufs » :", opts:["muchos huevos","mucho huevos","muchas huevos"], correct:0, why:"huevo est masculin pluriel : muchos huevos."},
+  {type:"choice", q:"Quelle formule commande le plus poliment ?", opts:["Quiero una cerveza.","Quería una cerveza, por favor."], correct:1, why:"« Quería… por favor » est la formule douce. « Quiero » reste correct, mais plus direct."},
+  {type:"choice", q:"« L'eau est froide » :", opts:["El agua está fría.","El agua está frío.","La agua está fría."], correct:0, why:"el agua (devant a tonique), mais adjectif féminin : fría."},
+  {type:"choice", q:"« Ser pan comido » :", opts:["Être du pain mangé = c'est facile","Avoir faim","Aimer le pain"], correct:0, why:"Expression pour « c'est très facile »."},
+  {type:"choice", q:"Entre amis, tu demandes : « Que veux-tu manger ? »", opts:["¿Qué quieres comer?","¿Qué desea comer?"], correct:0, why:"tú → quieres. « Desea » est la forme formelle."},
+  {type:"choice", q:"« L'addition » au restaurant :", opts:["la cuenta","la adición","la factura de pan"], correct:0, why:"On demande « la cuenta, por favor »."}
+ ],
+ ANNOTATED: {
+  title:"Au restaurant et à la maison",
+  intro:"Un petit texte pour lire un peu plus vite. Touche chaque mot pour voir sa nature et sa traduction. Repère les verbes en -ER / -IR et « quería ».",
+  sentences:[
+   {fr:"Je voudrais une table pour deux, s'il vous plaît.", tokens:[
+    {w:"Quería", tag:"formule de politesse", info:"quería · formule figée", fr:"je voudrais", tip:"À la lettre « je voulais » : on le retient en bloc."},
+    {w:"una", tag:"déterminant", info:"fém. sing.", fr:"une"},
+    {w:"mesa", tag:"nom", info:"fém. sing.", fr:"table"},
+    {w:"para", tag:"préposition", fr:"pour"},
+    {w:"dos", tag:"nombre", fr:"deux"},
+    {w:"por favor", tag:"expression", fr:"s'il vous plaît"}
+   ]},
+   {fr:"Je mange du poisson et je bois beaucoup d'eau.", tokens:[
+    {w:"Como", tag:"verbe", info:"comer · présent · yo", fr:"je mange", tip:"com + -o. Sans accent : je mange."},
+    {w:"pescado", tag:"nom", info:"masc. sing.", fr:"poisson"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"bebo", tag:"verbe", info:"beber · présent · yo", fr:"je bois"},
+    {w:"mucha", tag:"adjectif", info:"fém. sing.", fr:"beaucoup de", tip:"mucha car agua est féminin."},
+    {w:"agua", tag:"nom", info:"fém. sing.", fr:"eau", tip:"Féminin, mais on dit « el agua »."}
+   ]},
+   {fr:"J'aime les légumes, mais je ne mange pas beaucoup de viande.", tokens:[
+    {w:"Me gustan", tag:"verbe", info:"gustar · présent · 3e plur.", fr:"j'aime", tip:"Pluriel : las verduras."},
+    {w:"las", tag:"article", info:"fém. plur.", fr:"les"},
+    {w:"verduras", tag:"nom", info:"fém. plur.", fr:"légumes"},
+    {w:"pero", tag:"conjonction", fr:"mais"},
+    {w:"no", tag:"adverbe", fr:"ne… pas"},
+    {w:"como", tag:"verbe", info:"comer · présent · yo", fr:"je mange"},
+    {w:"mucha", tag:"adjectif", info:"fém. sing.", fr:"beaucoup de"},
+    {w:"carne", tag:"nom", info:"fém. sing.", fr:"viande"}
+   ]},
+   {fr:"Que désirez-vous boire, monsieur ? — Un café et un morceau de fromage.", tokens:[
+    {w:"¿Qué desea tomar,", tag:"question", info:"formel · usted", fr:"que désirez-vous boire", tip:"Forme formelle du serveur ; entre amis : ¿Qué quieres tomar?"},
+    {w:"señor?", tag:"nom", info:"masc. sing.", fr:"monsieur"},
+    {w:"Un café", tag:"nom", info:"masc. sing.", fr:"un café"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"un trozo de", tag:"expression de quantité", fr:"un morceau de"},
+    {w:"queso", tag:"nom", info:"masc. sing.", fr:"fromage"}
+   ]}
+  ]
+ }
+};
+(function(){ // illustrations : emoji + exemple (même rôle que __esDeco)
+  var V2 = LESSONS_ES[206].VOCAB, used = {};
+  V2.forEach(function(v){ var d = MAP[v.en]; if(!d) throw new Error("Pas d'illustration pour : " + v.en); v.emo = d[0]; v.ex = [d[1], d[2]]; used[v.en] = 1; });
+  Object.keys(MAP).forEach(function(k){ if(!used[k]) throw new Error("Terme inconnu dans la carte : " + k); });
+})();
+})();
+
+
+// A1.7 — De compras : vêtements, tailles, prix, comparatifs, démonstratifs, probarse et pronoms collés (leçon 207)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Les vêtements et accessoires", [
+  ["la camisa","/la kaˈmisa/","la chemise","Piège : camisa = chemise (boutonnée) ; la camiseta = le t-shirt. Pluriel : camisas.","👔","La camisa blanca es nueva.","La chemise blanche est neuve."],
+  ["los pantalones","/los pantaˈlones/","le pantalon","Toujours au pluriel en espagnol, même pour UN pantalon : los pantalones son largos. Le singulier el pantalón existe aussi, surtout en Amérique latine.","👖","Los pantalones son azules.","Le pantalon est bleu."],
+  ["los zapatos","/los θaˈpatos/","les chaussures","z = « th » en Espagne (tha-PA-tos), « s » en Amérique latine. Un seul soulier : el zapato.","👞","Los zapatos negros son cómodos.","Les chaussures noires sont confortables."],
+  ["el vestido","/el besˈtiðo/","la robe","Masculin malgré le sens ! v = b : bes-TI-do.","👗","El vestido rojo es bonito.","La robe rouge est jolie."],
+  ["la chaqueta","/la tʃaˈketa/","la veste","ch = « tch » : tcha-KE-ta. Mexique : la chamarra ; Argentine : la campera.","🧥","La chaqueta es de color rojo.","La veste est de couleur rouge."],
+  ["el bolso","/el ˈbolso/","le sac à main","Espagne et Colombie : bolso. Mexique : la bolsa. Ailleurs : la cartera. Attention : « la bolsa » en Espagne = le sac en plastique ou en papier du magasin.","👜","El bolso es muy elegante.","Le sac est très élégant."],
+  ["la falda","/la ˈfalda/","la jupe","Mot facile pour un francophone : f-a-l-d-a.","🩱","La falda es corta.","La jupe est courte."],
+  ["la camiseta","/la kamiˈseta/","le t-shirt","Ne la confonds pas avec camisa (chemise). Argentine : la remera ; Chili : la polera.","👕","La camiseta blanca es barata.","Le t-shirt blanc est bon marché."],
+  ["los vaqueros","/los baˈkeɾos/","le jean","Espagne : los vaqueros. Amérique latine : los jeans (prononcé « yins »). Pluriel, comme los pantalones.","👖","Los vaqueros azules son nuevos.","Le jean bleu est neuf."],
+  ["el jersey","/el xerˈsej/","le pull","j = kh : kher-SEI. Amérique latine : el suéter.","🧶","El jersey gris es cómodo.","Le pull gris est confortable."],
+  ["el abrigo","/el aˈβɾiɣo/","le manteau","Le b entre voyelles est très doux : a-BRI-go.","🧥","El abrigo negro es caro.","Le manteau noir est cher."],
+  ["los calcetines","/los kalθeˈtines/","les chaussettes","Pluriel le plus souvent : un par de calcetines = une paire de chaussettes.","🧦","Los calcetines blancos son baratos.","Les chaussettes blanches sont bon marché."],
+  ["las zapatillas","/las θapaˈtiʎas/","les baskets","Espagne : las zapatillas (de deporte). Amérique latine : los tenis. Au sens de « chaussons » : zapatillas de casa.","👟","Las zapatillas son cómodas.","Les baskets sont confortables."],
+  ["el cinturón","/el θintuˈɾon/","la ceinture","Accent écrit : cin-tu-RÓN (finit par n, mais le mot est accentué sur la dernière syllabe).","🪢","El cinturón negro es bonito.","La ceinture noire est jolie."],
+  ["la ropa","/la ˈrropa/","les vêtements (l'habillement)","Singulier et indénombrable (comme en A1.6) : la ropa es barata, jamais « las ropas ». Pour UN article : una prenda.","👚","La ropa de esta tienda es bonita.","Les vêtements de cette boutique sont jolis."]
+ ]),
+ blk("Taille, couleur et ajustement", [
+  ["la talla","/la ˈtaʎa/","la taille (vêtements)","Pour les vêtements : la talla. Tailles : S, M, L ou un numéro (38, 40…). ll = y : TA-ya.","📏","Mi talla es la 38.","Ma taille est le 38."],
+  ["el número","/el ˈnumeɾo/","la pointure","Pour les chaussures, on dit surtout el número en Espagne : mi número es el 41. En Amérique latine, talla et número s'emploient tous les deux.","👣","Mi número es el 40.","Ma pointure est le 40."],
+  ["el color","/el koˈloɾ/","la couleur","Pluriel : los colores. Les couleurs de A1.0 servent ici : una chaqueta roja, unos zapatos negros.","🎨","¿Qué color prefieres?","Quelle couleur préfères-tu ?"],
+  ["¿Qué talla usas? / ¿Qué talla usa?","/ke ˈtaʎa ˈusas · ke ˈtaʎa ˈusa/","quelle taille fais-tu ? / faites-vous ?","usar = utiliser, porter (une taille). Tú : usas. Usted : usa. Réponse : « Uso la talla 38 ».","❓","¿Qué talla usa usted, señora?","Quelle taille faites-vous, madame ?"],
+  ["Me queda bien / mal","/me ˈkeða βjen · mal/","ça me va bien / mal","quedar fonctionne comme gustar : me queda (1 article), me quedan (plusieurs). Los pantalones me quedan bien. Avec grande / pequeño : me queda grande = c'est trop grand pour moi.","😍","Esta chaqueta me queda bien.","Cette veste me va bien."],
+  ["Es demasiado grande / pequeño","/es demaˈsjaðo ˈɡɾande · peˈkeɲo/","c'est trop grand / trop petit","demasiado = trop, devant un adjectif, il ne change jamais ; l'adjectif, lui, s'accorde : los zapatos son demasiado pequeños. Piège : « muy » = très, pas « trop ».","📐","La chaqueta es demasiado grande.","La veste est trop grande."],
+  ["una talla más / menos","/ˈuna ˈtaʎa mas · ˈmenos/","une taille de plus / de moins","¿Tiene una talla más grande ? = Avez-vous la taille au-dessus ? Una talla menos = la taille en dessous.","🔄","¿Tiene una talla más grande?","Avez-vous une taille au-dessus ?"],
+  ["¿Lo tiene en otro color?","/lo ˈtjene en ˈotɾo koˈloɾ/","l'avez-vous dans une autre couleur ?","lo = l'article masculin ; pour un article féminin : ¿La tiene en otro color ? Tú : ¿Lo tienes en otro color ?","🌈","¿La tiene en azul, por favor?","L'avez-vous en bleu, s'il vous plaît ?"],
+  ["¿Dónde están los probadores?","/ˈdonde esˈtan los pɾoβaˈðoɾes/","où sont les cabines d'essayage ?","el probador (une cabine) vient de probar : « le lieu pour essayer ». Poli avec tout le monde : ¿Dónde está el probador, por favor ?","🚪","¿Dónde está el probador, por favor?","Où est la cabine d'essayage, s'il vous plaît ?"]
+ ]),
+ blk("Prix, argent et paiement", [
+  ["el precio","/el ˈpɾeθjo/","le prix","c devant i = th (Espagne) : PRE-thio. À ne pas confondre avec « preciso ».","🏷️","El precio es bueno.","Le prix est bon."],
+  ["¿Cuánto cuesta? / ¿Cuánto cuestan?","/ˈkwanto ˈkwesta · ˈkwestan/","combien ça coûte ? (un article / plusieurs)","costar change son o en ue : cuesta (1 article), cuestan (plusieurs). Jamais « costa ». Le même mot sert avec tú ET usted, car on parle de l'objet.","💶","¿Cuánto cuestan estos zapatos?","Combien coûtent ces chaussures ?"],
+  ["el euro · el céntimo","/el ˈewɾo · el ˈθentimo/","l'euro · le centime","Cuesta 45,50 € = cuarenta y cinco euros con cincuenta. Amérique latine : monnaie locale (el peso en Colombie, au Mexique…), souvent « plata » dans la langue courante.","💶","La falda cuesta veinte euros.","La jupe coûte vingt euros."],
+  ["barato / barata","/baˈɾato · baˈɾata/","bon marché","S'accorde : un bolso barato, una falda barata. Contraire de caro. Attention : on dit « es barato », pas « es bon marché ».","🪙","El jersey es muy barato.","Le pull est très bon marché."],
+  ["caro / cara","/ˈkaɾo · ˈkaɾa/","cher / chère","Adjectif de prix : el abrigo es caro. Piège : « la cara » (nom) = le visage ; la chaqueta es cara = la veste est chère.","💸","La chaqueta es cara.","La veste est chère."],
+  ["pagar","/paˈɣaɾ/","payer","Verbe en -AR régulier : pago, pagas, paga, pagamos, pagáis, pagan. Tú : ¿Cómo pagas ? Usted : ¿Cómo paga ?","💳","Pago con tarjeta.","Je paie par carte."],
+  ["en efectivo","/en efekˈtiβo/","en espèces","Se dit après pagar : pagar en efectivo. Amérique latine : aussi « en efectivo » ; on entend « en cash » dans la langue familière.","💵","¿Paga en efectivo o con tarjeta?","Payez-vous en espèces ou par carte ?"],
+  ["con tarjeta","/kon tarˈxeta/","par carte","« con » (avec) et non « par » : pagar con tarjeta. j = kh : tar-KHE-ta. Una tarjeta = une carte.","💳","Pago con tarjeta, por favor.","Je paie par carte, s'il vous plaît."],
+  ["el recibo","/el reˈθiβo/","le ticket de caisse, le reçu","Espagne : on dit aussi el ticket pour un achat en magasin. Le recibo est le reçu (aussi celui des factures d'électricité). La factura = la facture officielle.","🧾","¿Quiere el recibo, señor?","Voulez-vous le ticket, monsieur ?"],
+  ["la tienda","/la ˈtjenda/","le magasin, la boutique","Mot déjà utile en ville (A1.8). Una tienda de ropa = une boutique de vêtements.","🏬","La tienda está a la derecha.","La boutique est à droite."],
+  ["el dependiente / la dependienta","/el depenˈdjente · la depenˈdjenta/","le vendeur / la vendeuse","Espagne : dependiente/a. Amérique latine : el vendedor / la vendedora. On les vouvoie : usted.","🧑‍💼","La dependienta es muy simpática.","La vendeuse est très sympathique."],
+  ["el cliente / la clienta","/el ˈkljente · la ˈkljenta/","le client / la cliente","Au féminin, on entend clienta ; l'article seul suffit aussi : la cliente.","🙋","La clienta paga con tarjeta.","La cliente paie par carte."],
+  ["la caja","/la ˈkaxa/","la caisse","j = kh : KA-kha. Pague en la caja, por favor = payez à la caisse (impératif usted, vu en A1.4).","🏧","Pague en la caja, por favor.","Payez à la caisse, s'il vous plaît."],
+  ["el cambio","/el ˈkambjo/","la monnaie (rendue)","Aquí tiene su cambio = voici votre monnaie. Aussi : le changement.","🪙","Aquí tiene su cambio, señora.","Voici votre monnaie, madame."],
+  ["las rebajas","/las reˈβaxas/","les soldes","Espagne : las rebajas (janvier et juillet). Amérique latine : las ofertas, la liquidación.","🔖","Las rebajas son en enero.","Les soldes sont en janvier."],
+  ["el descuento","/el desˈkwento/","la réduction","Mot transparent pour un francophone ; con el descuento = avec la réduction.","🏷️","Con el descuento, cuesta veinte euros.","Avec la réduction, ça coûte vingt euros."],
+  ["comprar","/komˈpɾaɾ/","acheter","Verbe en -AR régulier : compro, compras, compra, compramos, compráis, compran.","🛍️","Compro unos zapatos negros.","J'achète des chaussures noires."],
+  ["vender","/benˈdeɾ/","vendre","Verbe en -ER régulier : vendo, vendes, vende, vendemos, vendéis, venden. v = b.","🏪","Aquí venden ropa barata.","Ici on vend des vêtements bon marché."],
+  ["costar","/kosˈtaɾ/","coûter","o → ue : cuesta, cuestan (comme probarse et poder). Quasi toujours à la 3e personne.","💰","El bolso cuesta treinta euros.","Le sac coûte trente euros."],
+  ["llevar / llevarse","/ʝeˈβaɾ · ʝeˈβaɾse/","porter ; emporter, prendre","llevar = porter (un vêtement) ou emmener. llevarse = emporter pour soi : c'est le verbe de « je le prends ». ll = y.","🛒","Llevo una chaqueta roja.","Je porte une veste rouge."],
+  ["cambiar","/kamˈbjaɾ/","échanger, changer","¿Puedo cambiarlo ? = puis-je l'échanger ? Même construction que probármelo : verbe + pronom collé.","🔁","¿Puedo cambiarlo por otra talla?","Puis-je l'échanger contre une autre taille ?"]
+ ]),
+ blk("Phrases clés du client et du vendeur", [
+  ["¿Puedo ayudarle? / ¿Te ayudo?","/ˈpweðo aʝuˈðaɾle · te aˈʝuðo/","puis-je vous aider ? / je t'aide ?","Vendeur → client inconnu ou âgé (usted) : ¿Puedo ayudarle ? Entre jeunes (tú) : ¿Te ayudo ? Amérique latine : ¿En qué le puedo ayudar ?","🙋‍♀️","Buenos días, ¿puedo ayudarle?","Bonjour, puis-je vous aider ?"],
+  ["Solo quería mirar, gracias.","/ˈsolo keˈɾia miˈɾaɾ ˈɣɾaθjas/","je voulais juste regarder, merci","quería = formule de politesse vue en A1.6. Réponse polie à ¿Puedo ayudarle ? quand on ne veut rien encore.","👀","Solo quería mirar, gracias.","Je voulais juste regarder, merci."],
+  ["Quería una camisa blanca, por favor.","/keˈɾia ˈuna kaˈmisa ˈβlanka poɾ faˈβoɾ/","je voudrais une chemise blanche, s'il vous plaît","Même formule de politesse qu'en A1.6 (au café). Elle est correcte avec tú comme avec usted.","🙏","Quería una falda negra, por favor.","Je voudrais une jupe noire, s'il vous plaît."],
+  ["¿Puedo probármelo?","/ˈpweðo pɾoˈβaɾmelo/","puis-je l'essayer ? (article masculin)","probármelo = probar + me + lo. Pour un article féminin : ¿Puedo probármela ? Pluriel : probármelos / probármelas.","🪞","¿Puedo probármelo?","Puis-je l'essayer ?"],
+  ["¿Puedo probármela?","/ˈpweðo pɾoˈβaɾmela/","puis-je l'essayer ? (article féminin)","la = la chaqueta, la falda, la camisa. Le pronom s'accorde avec l'OBJET, pas avec toi.","🪞","La chaqueta es bonita. ¿Puedo probármela?","La veste est jolie. Puis-je l'essayer ?"],
+  ["¿Quieres probártelo? / ¿Quiere probárselo?","/ˈkjeɾes pɾoˈβaɾtelo · ˈkjeɾe pɾoˈβaɾselo/","veux-tu l'essayer ? / voulez-vous l'essayer ?","Tú : probártelo (te + lo). Usted : probárselo (se + lo). querer : e → ie comme preferir (A1.5) : quiero, quieres, quiere.","🤝","¿Quiere probárselo, señor?","Voulez-vous l'essayer, monsieur ?"],
+  ["Me lo llevo / Me la llevo","/me lo ˈʝeβo · me la ˈʝeβo/","je le prends / je la prends","Décision d'achat. lo = article masculin, la = féminin ; me los llevo / me las llevo au pluriel : me los llevo = je prends les chaussures.","✅","La chaqueta me queda perfecta. Me la llevo.","La veste me va parfaitement. Je la prends."],
+  ["¿Aceptan tarjeta?","/aθepˈtan taɾˈxeta/","acceptez-vous la carte ?","aceptan = ils acceptent (on = le magasin). La phrase marche avec tout le monde. Réponse : Sí, claro / Solo efectivo.","❓","Perdone, ¿aceptan tarjeta?","Excusez-moi, acceptez-vous la carte ?"],
+  ["¿Cuánto es?","/ˈkwanto es/","ça fait combien ? (total)","On demande le TOTAL à payer. Réponse : « Son 45 euros ». Pour le prix d'un article : ¿Cuánto cuesta ?","🧮","¿Cuánto es todo, por favor?","Ça fait combien en tout, s'il vous plaît ?"],
+  ["Son 45 euros.","/son kwaˈɾenta i ˈθinko ˈewɾos/","ça fait 45 euros","Pour un total : son + montant. Pour un seul article : cuesta + montant. Cuarenta y cinco : 31 à 99 = dizaine + y + unité.","💬","Son cuarenta y cinco euros.","Ça fait quarante-cinq euros."],
+  ["Aquí tienes / Aquí tiene","/aˈki ˈtjenes · aˈki ˈtjene/","tiens, voici / tenez, voici","Tú : aquí tienes. Usted : aquí tiene. On le dit en tendant un article ou la monnaie.","🎁","Aquí tiene su recibo, señora.","Voici votre ticket, madame."]
+ ]),
+ blk("Les comparatifs", [
+  ["más… que","/mas ke/","plus… que","más + adjectif + que : esta camisa es más barata que esa. L'adjectif s'accorde avec le PREMIER élément comparé. Jamais « de » à la place de que.","➕","Esta camisa es más barata que esa.","Cette chemise est moins chère que celle-là."],
+  ["menos… que","/ˈmenos ke/","moins… que","menos + adjectif + que : los zapatos son menos caros que las zapatillas.","➖","Este bolso es menos caro que ese.","Ce sac est moins cher que celui-là."],
+  ["tan… como","/tan ˈkomo/","aussi… que","tan + adjectif + como (égalité). Piège : on ne dit pas « tan… que » : esta chaqueta es tan cara como ese abrigo.","🟰","Esta chaqueta es tan cara como ese abrigo.","Cette veste est aussi chère que ce manteau."],
+  ["más barato / más caro","/mas baˈɾato · mas ˈkaɾo/","plus bon marché / plus cher","Le duo du shopping : ¿Tiene algo más barato ? = avez-vous quelque chose de moins cher ? Accord : más barata, más caros…","⚖️","¿Tiene algo más barato, por favor?","Avez-vous quelque chose de moins cher, s'il vous plaît ?"],
+  ["más grande / más pequeño","/mas ˈɡɾande · mas peˈkeɲo/","plus grand / plus petit","grande ne change pas au féminin : más grande. pequeño : más pequeña, más pequeños. Pour la taille de vêtement : una talla más grande.","↕️","Este vestido es más pequeño que ese.","Cette robe est plus petite que celle-là."],
+  ["mejor / peor","/meˈxoɾ · peˈoɾ/","meilleur / pire","Déjà comparatifs : on ne dit JAMAIS « más mejor ». Invariables au féminin, pluriel mejores / peores : este abrigo es mejor que ese.","🏅","Este abrigo es mejor que ese.","Ce manteau est meilleur que celui-là."]
+ ]),
+ blk("Montrer : este, ese, aquí, ahí", [
+  ["este / esta","/ˈeste · ˈesta/","ce, cet / cette (proche de moi)","Devant un nom ou seul : esta chaqueta ; Me gusta esta. Le masculin finit en -e, le féminin en -a. Sans accent écrit aujourd'hui. Piège : esta ≠ está (estar).","👈","Esta camisa es azul.","Cette chemise est bleue."],
+  ["estos / estas","/ˈestos · ˈestas/","ces (proches de moi)","Pluriel : estos zapatos (masc.), estas camisas (fém.). Il suit le nom : un seul accord, pas deux marques de genre.","👈","Me gustan estos zapatos.","J'aime ces chaussures."],
+  ["ese / esa","/ˈese · ˈesa/","ce… -là / cette… -là (plus loin)","Pour montrer un objet plus loin de toi ou près de l'autre personne. Pluriel : esos, esas. Un troisième degré, aquel, existe : on le verra plus tard.","👉","Ese bolso es más bonito.","Ce sac-là est plus joli."],
+  ["aquí / ahí","/aˈki · aˈi/","ici / là (près de toi)","Accompagnent este (de aquí) et ese (de ahí). Ex. : este de aquí = celui-ci, ici.","📍","Este de aquí es barato; ese de ahí es caro.","Celui-ci est bon marché ; celui-là est cher."],
+  ["¿Cuál prefieres? / ¿Cuál prefiere?","/ˈkwal pɾeˈfjeɾes · pɾeˈfjeɾe/","lequel préfères-tu ? / préférez-vous ?","cuál = lequel / laquelle (un choix parmi plusieurs). preferir : e → ie (A1.5). Réponse : « Prefiero este / esta ».","🤔","¿Cuál prefiere usted, esta o esa?","Laquelle préférez-vous, celle-ci ou celle-là ?"]
+ ]),
+ blk("Probarse et les pronoms collés", [
+  ["probarse","/pɾoˈβaɾse/","s'essayer (un vêtement)","Verbe pronominal (se = sur soi) et à radical o → ue : me pruebo, te pruebas, se prueba, nos probamos, os probáis, se prueban. Sans « se », probar = essayer, goûter.","🪞","Me pruebo la chaqueta.","J'essaie la veste."],
+  ["probar","/pɾoˈβaɾ/","essayer, goûter","Au restaurant : probar la paella = goûter. Au magasin, on utilise probarse pour le vêtement porté sur soi. Même radical : prueba (tú : « prueba ! »).","🍴","Prueba esta falda, es muy bonita.","Essaie cette jupe, elle est très jolie."],
+  ["probármelo / probármela","/pɾoˈβaɾmelo · pɾoˈβaɾmela/","l'essayer (masc. / fém.)","Trois pièces : probar (essayer) + me (sur moi) + lo / la (l'article). Accent écrit sur la syllabe BÁR : l'accent ne bouge pas. Pluriel : probármelos / probármelas.","🧩","¿Puedo probármelo?","Puis-je l'essayer ?"]
+ ]),
+ blk("Nombres : centaines et mille", [
+  ["cien · ciento","/θjen · ˈθjento/","100 · cent (devant un autre nombre)","cien = exactement 100 (ou devant un nom) : cien euros. ciento = quand on ajoute : ciento diez = 110. Jamais « cientos euros ».","💯","Cuesta cien euros.","Ça coûte cent euros."],
+  ["doscientos · trescientos · cuatrocientos","/dosˈθjentos tɾesˈθjentos kwatɾoˈθjentos/","200 · 300 · 400","On forme : chiffre + cientos. S'accordent au féminin : doscientas camisas. Un seul mot, pas de « y » entre centaine et dizaine, mais « y » avant l'unité : trescientos veinte, trescientos treinta y cinco.","📈","Tenemos trescientas camisas.","Il y a trois cents chemises."],
+  ["quinientos · setecientos · novecientos","/kiˈnjentos seteˈθjentos noβeˈθjentos/","500 · 700 · 900","Trois irréguliers : 500 = quinientos (pas cincocientos), 700 = setecientos (pas sietecientos), 900 = novecientos (pas nuevecientos).","⚠️","El abrigo cuesta quinientos euros.","Le manteau coûte cinq cents euros."],
+  ["seiscientos · ochocientos","/sejsˈθjentos otʃoˈθjentos/","600 · 800","Réguliers : seis + cientos, ocho + cientos. ch = tch : o-tcho-THIEN-tos.","📊","Los zapatos cuestan ochocientos euros.","Les chaussures coûtent huit cents euros."],
+  ["mil","/mil/","1000","Invariable : mil euros, dos mil euros. Amérique latine : « mil pesos » est un prix courant.","🔝","El bolso cuesta mil euros.","Le sac coûte mille euros."],
+  ["cuarenta y cinco con cincuenta","/kwaˈɾenta i ˈθinko kon θinˈkwenta/","45,50 (quarante-cinq euros cinquante)","En Espagne, la virgule décimale s'écrit « , » : 45,50 €. On lit « con » : cuarenta y cinco con cincuenta. Amérique latine : selon les pays, virgule ou point.","🔢","Cuesta cuarenta y cinco con cincuenta.","Ça coûte quarante-cinq euros cinquante."]
+ ]),
+ blk("Juger un article", [
+  ["bonito / bonita","/boˈnito · boˈnita/","joli(e)","L'adjectif qui sert à complimenter : un vestido bonito. Accord : bonitos, bonitas.","😍","El vestido es muy bonito.","La robe est très jolie."],
+  ["feo / fea","/ˈfeo · ˈfea/","laid(e)","Contraire de bonito. Poli en boutique : « no me gusta mucho » est plus doux que « es feo ».","👎","Los zapatos no son feos.","Les chaussures ne sont pas laides."],
+  ["elegante","/eleˈɣante/","élégant(e)","Finit en -e : une seule forme. Pluriel : elegantes.","🎩","El abrigo negro es elegante.","Le manteau noir est élégant."],
+  ["largo / corto","/ˈlaɾɣo · ˈkoɾto/","long / court","Largo ne signifie pas « large » : large = ancho. La falda es corta = la jupe est courte.","📏","Los pantalones son largos.","Le pantalon est long."],
+  ["perfecto / perfecta","/peɾˈfekto · peɾˈfekta/","parfait(e)","Me queda perfecta = ça me va parfaitement (la chaqueta est féminine, donc perfecta).","💯","La chaqueta me queda perfecta.","La veste me va parfaitement."]
+ ]),
+ blk("Bonus : 10 expressions du shopping et de l'argent", [
+  ["Costar un ojo de la cara","/kosˈtaɾ un ˈoxo de la ˈkaɾa/","coûter les yeux de la tête","Très cher. Expression courante partout en espagnol. Ici « cara » est un nom (le visage).","👁️","Ese bolso cuesta un ojo de la cara.","Ce sac coûte les yeux de la tête."],
+  ["Irse por las ramas","/ˈiɾse poɾ las ˈrramas/","tourner autour du pot","Parler de tout sauf de l'essentiel (littéralement : s'en aller par les branches). Pas lié aux achats : un vendeur qui n'arrive pas au fait.","🌿","El vendedor se va por las ramas y no dice el precio.","Le vendeur tourne autour du pot et ne dit pas le prix."],
+  ["Estar sin blanca","/esˈtaɾ sin ˈβlanka/","être fauché(e)","Familier, surtout en Espagne. Amérique latine : estar sin plata.","🫙","Hoy estoy sin blanca.","Aujourd'hui, je suis fauché."],
+  ["Estar forrado","/esˈtaɾ foˈrraðo/","être plein aux as","Familier, surtout en Espagne. L'adjectif s'accorde : ella está forrada. Contraire : estar sin blanca.","🤑","Mi tío está forrado.","Mon oncle est plein aux as."],
+  ["Vender humo","/benˈdeɾ ˈumo/","vendre du vent","Promettre des choses qui n'existent pas. Se dit d'un vendeur ou d'une publicité.","🌫️","Ese vendedor vende humo.","Ce vendeur vend du vent."],
+  ["A precio de saldo","/a ˈpɾeθjo de ˈsaldo/","à prix bradé","Littéralement : au prix des soldes. Très bon marché, souvent un déstockage.","🏷️","Venden la ropa a precio de saldo.","Ils vendent les vêtements à prix bradé."],
+  ["Pagar los platos rotos","/paˈɣaɾ los ˈplatos ˈrrotos/","payer les pots cassés","Subir les conséquences d'une faute commise par un autre. Pas lié aux achats, mais très courant.","🍽️","Ana rompe un vaso y Luis paga los platos rotos.","Ana casse un verre et Luis paie les pots cassés."],
+  ["Estar al caer","/esˈtaɾ al kaˈeɾ/","être imminent, être sur le point d'arriver","Quelque chose va arriver très bientôt. Surtout en Espagne. Ex. : las rebajas están al caer.","⏳","Las rebajas están al caer.","Les soldes arrivent d'une minute à l'autre."],
+  ["Estar tirado de precio","/esˈtaɾ tiˈɾaðo de ˈpɾeθjo/","être donné, très bon marché","Familier, Espagne. S'accorde : los vaqueros están tirados de precio.","🎉","Estos vaqueros están tirados de precio.","Ce jean est donné."],
+  ["A caballo regalado no le mires el diente","/a kaˈβaʎo reɣaˈlaðo no le ˈmiɾes el ˈdjente/","à cheval donné, on ne regarde pas les dents","Proverbe figé : on ne fait pas la fine bouche devant un cadeau. À retenir tel quel, sans le décomposer.","🐴","Es un regalo: a caballo regalado no le mires el diente.","C'est un cadeau : à cheval donné, on ne regarde pas les dents."]
+ ])
+);
+LESSONS_ES[207] = {
+ code:"A1.7", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["los pantalones","la talla","¿Cuánto cuesta? / ¿Cuánto cuestan?","en efectivo","¿Puedo probármelo?","Me lo llevo / Me la llevo","probarse","más… que","este / esta","Es demasiado grande / pequeño"]),
+ MINI_CHECKS: [
+  {q:"« C'est trop petit. » (à propos de la veste : la chaqueta)", opts:["Es demasiado pequeña.","Es muy pequeño.","Es demasiado pequeño."], correct:0, fb:"chaqueta est féminin : pequeña. demasiado = trop, et il ne change pas. « muy » veut dire très, pas trop."},
+  {q:"« Combien coûtent les chaussures ? »", opts:["¿Cuánto cuesta los zapatos?","¿Cuánto cuestan los zapatos?","¿Cuántos cuesta los zapatos?"], correct:1, fb:"Plusieurs articles : cuestan (o → ue, 3e personne du pluriel). Un seul article : cuesta."},
+  {q:"« Je prends cette veste. » (la chaqueta)", opts:["Me lo llevo.","Me la llevo.","Me las llevo."], correct:1, fb:"chaqueta est féminin singulier : la. Le pronom s'accorde avec l'objet acheté, pas avec la personne qui parle."},
+  {q:"« Puis-je les essayer ? » (les pantalons : unos pantalones)", opts:["¿Puedo probármelo?","¿Puedo probármelos?","¿Puedo probármela?"], correct:1, fb:"pantalones est masculin pluriel : probar + me + los = probármelos."},
+  {q:"« Cette chemise est moins chère que celle-là. »", opts:["Esta camisa es menos cara que esa.","Esta camisa es menos caro que esa.","Esta camisa es menos cara como esa."], correct:0, fb:"menos + adjectif accordé (cara) + que. « como » s'emploie seulement avec tan : tan cara como."},
+  {q:"« Ce manteau est meilleur que celui-là. »", opts:["Este abrigo es más mejor que ese.","Este abrigo es mejor que ese.","Este abrigo es más bueno como ese."], correct:1, fb:"mejor est déjà un comparatif : jamais « más mejor »."},
+  {q:"« Ces chaussures » (proches de toi) :", opts:["este zapatos","estos zapatos","estas zapatos"], correct:1, fb:"zapatos est masculin pluriel : estos. Le démonstratif suit le genre et le nombre du nom."},
+  {q:"À une cliente âgée que vous ne connaissez pas, la vendeuse dit :", opts:["¿Te ayudo?","¿Puedo ayudarle?"], correct:1, fb:"Cliente inconnue ou âgée = usted : ¿Puedo ayudarle? (le pronom le = vous). ¿Te ayudo? est le tutoiement, entre jeunes ou amis."}
+ ],
+ ROUNDS: [
+  __esR("¿Cuánto cuesta esta chaqueta roja?","Combien coûte cette veste rouge ?"),
+  __esR("Me la llevo, gracias.","Je la prends, merci."),
+  __esR("Los pantalones son demasiado pequeños.","Le pantalon est trop petit."),
+  __esR("¿Puedo probarme estos zapatos?","Puis-je essayer ces chaussures ?"),
+  __esR("¿Quiere probarse esta camisa, señora?","Voulez-vous essayer cette chemise, madame ?"),
+  __esR("Esta camisa es más barata que esa.","Cette chemise est moins chère que celle-là."),
+  __esR("Estos zapatos son tan cómodos como esos.","Ces chaussures sont aussi confortables que celles-là."),
+  __esR("Buenos días, ¿puedo ayudarle?","Bonjour, puis-je vous aider ?"),
+  __esR("Quería una falda negra, por favor.","Je voudrais une jupe noire, s'il vous plaît."),
+  __esR("¿Lo tienes en otro color?","L'as-tu dans une autre couleur ?"),
+  __esR("¿Puedo pagar con tarjeta?","Puis-je payer par carte ?"),
+  __esR("Cuesta cuarenta y cinco euros.","Ça coûte quarante-cinq euros."),
+  __esR("Este bolso es mejor que ese.","Ce sac est meilleur que celui-là.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Tu veux connaître le prix d'une veste. Tu demandes :", opts:["¿Cuánto cuesta esta chaqueta?","¿Cuántos cuesta esta chaqueta?","¿Cuánto es costa esta chaqueta?"], correct:0, why:"¿Cuánto cuesta? pour un article. cuánto reste invariable ici (c'est « combien » en tant qu'adverbe), et costar donne cuesta (o → ue)."},
+  {cat:"ecrit", q:"« Les pantalons sont trop grands. »", opts:["Los pantalones son demasiado grandes.","Los pantalones es demasiado grande.","Los pantalones son demasiados grandes."], correct:0, why:"Sujet pluriel : son. demasiado (trop) devant un adjectif ne change jamais ; grande prend -s : grandes."},
+  {cat:"ecrit", q:"« Je prends ce sac. » (el bolso)", opts:["Me lo llevo.","Me la llevo.","Se lo llevo."], correct:0, why:"bolso est masculin : lo. Avec « yo », le premier pronom est me : me lo llevo."},
+  {cat:"ecrit", q:"Tu veux essayer la jupe (la falda). ¿Puedo ___ ?", opts:["probármelo","probármela","probarmela"], correct:1, why:"falda est féminin : la. L'accent écrit est obligatoire : probármela (la syllabe BÁR reste accentuée)."},
+  {cat:"ecrit", q:"Le vendeur (usted) : « ¿Quiere ___ , señor ? » (les chaussures : los zapatos)", opts:["probárselos","probártelos","probármelos"], correct:0, why:"usted → se (se prueba) ; los zapatos → los : probárselos. Avec tú ce serait probártelos."},
+  {cat:"ecrit", q:"Este vestido es ___ barato ___ ese.", opts:["más … que","más … como","tan … que"], correct:0, why:"Supériorité : más + adjectif + que. « como » appartient à tan… como."},
+  {cat:"ecrit", q:"Esta chaqueta es ___ cara como ese abrigo. (aussi chère)", opts:["tan","más","muy"], correct:0, why:"L'égalité se dit tan + adjectif + como : tan cara como."},
+  {cat:"ecrit", q:"Este abrigo es ___ que ese. (meilleur)", opts:["mejor","más mejor","más bueno"], correct:0, why:"mejor = meilleur et c'est déjà un comparatif : il se construit avec que, sans más."},
+  {cat:"ecrit", q:"___ pantalones son azules. (proches de toi)", opts:["Esta","Estos","Estas"], correct:1, why:"pantalones est masculin pluriel : estos."},
+  {cat:"ecrit", q:"¿Cuál prefieres: ___ falda o esa? (proche de toi)", opts:["esta","este","estas"], correct:0, why:"falda est féminin singulier : esta. Esa désigne la falda plus loin."},
+  {cat:"ecrit", q:"Quelle phrase est correcte ?", opts:["Los zapatos cuestan cincuenta euros.","Los zapatos cuesta cincuenta euros.","Los zapatos costan cincuenta euros."], correct:0, why:"Sujet pluriel : cuestan. Le radical change o → ue : jamais costan."},
+  {cat:"ecrit", q:"À un client âgé, la vendeuse dit :", opts:["¿Puedo ayudarle?","¿Te ayudo?"], correct:0, why:"Client inconnu ou âgé : usted, donc ayudarle (le = vous). ¿Te ayudo? est informel."},
+  {cat:"ecrit", q:"« 300 euros »", opts:["trescientos euros","tres cientos euros","trecientos euros"], correct:0, why:"Les centaines s'écrivent en un seul mot : tres + cientos = trescientos."},
+  {cat:"ecrit", q:"« Je m'essaie la veste. » Yo ___ la chaqueta.", opts:["me probo","me pruebo","me prueba"], correct:1, why:"probarse : o → ue à la forme yo. Me pruebo (« me probo » n'existe pas)."},
+  {cat:"oral", audio:"¿Cuánto cuestan estos zapatos? Cuestan sesenta euros.", q:"Écoute : quel est le prix ?", opts:["60 euros","16 euros","70 euros"], correct:0, why:"sesenta = 60. Ne confonds pas avec setenta (70) ni dieciséis (16)."},
+  {cat:"oral", audio:"Me la llevo, gracias.", q:"Écoute : que dit le client ?", opts:["Il achète un article féminin","Il achète un article masculin","Il refuse l'article"], correct:0, why:"« la » désigne un article féminin (la chaqueta, la falda…). Me la llevo = je la prends."},
+  {cat:"oral", audio:"Esta camisa es demasiado pequeña. ¿Tiene una talla más grande?", q:"Écoute : quel est le problème ?", opts:["La chemise est trop petite","La chemise est trop chère","La chemise est trop grande"], correct:0, why:"demasiado pequeña = trop petite. Une talla más grande = une taille au-dessus."},
+  {cat:"oral", audio:"Perdone, aquí solo aceptamos efectivo.", q:"Écoute : comment peut-on payer ?", opts:["En espèces","Par carte","Par chèque"], correct:0, why:"efectivo = espèces. solo aceptamos = nous n'acceptons que."},
+  {cat:"oral", audio:"Buenos días, señora. ¿Puedo ayudarle?", q:"Écoute : le vendeur s'adresse à la cliente avec…", opts:["le tutoiement (tú)","le vouvoiement (usted)"], correct:1, why:"ayudarle (le = vous) et « señora » : vouvoiement. Au tutoiement : ¿Te ayudo?"},
+  {cat:"comprehension", passage:"Dependienta: Buenos días, ¿puedo ayudarle? — Clienta: Sí, por favor. ¿Cuánto cuesta esta chaqueta roja? — Dependienta: Cuesta cuarenta y cinco euros. ¿Quiere probársela? — Clienta: Sí, por favor... Me queda perfecta. Me la llevo. — Dependienta: ¿Cómo paga, en efectivo o con tarjeta? — Clienta: Con tarjeta.", q:"Combien coûte la veste ?", opts:["45 euros","54 euros","40 euros"], correct:0, why:"« Cuesta cuarenta y cinco euros » : 45 euros."},
+  {cat:"comprehension", passage:"Dependienta: Buenos días, ¿puedo ayudarle? — Clienta: Sí, por favor. ¿Cuánto cuesta esta chaqueta roja? — Dependienta: Cuesta cuarenta y cinco euros. ¿Quiere probársela? — Clienta: Sí, por favor... Me queda perfecta. Me la llevo. — Dependienta: ¿Cómo paga, en efectivo o con tarjeta? — Clienta: Con tarjeta.", q:"Pourquoi la cliente achète-t-elle la veste ?", opts:["Elle lui va parfaitement","Elle est très bon marché","Elle est trop petite"], correct:0, why:"« Me queda perfecta » : elle lui va parfaitement. Puis « Me la llevo » : je la prends."},
+  {cat:"comprehension", passage:"Dependienta: Buenos días, ¿puedo ayudarle? — Clienta: Sí, por favor. ¿Cuánto cuesta esta chaqueta roja? — Dependienta: Cuesta cuarenta y cinco euros. ¿Quiere probársela? — Clienta: Sí, por favor... Me queda perfecta. Me la llevo. — Dependienta: ¿Cómo paga, en efectivo o con tarjeta? — Clienta: Con tarjeta.", q:"Comment la cliente paie-t-elle ?", opts:["Par carte","En espèces"], correct:0, why:"« Con tarjeta » : par carte. (en efectivo = en espèces)."},
+  {cat:"comprehension", passage:"Hola, soy Pablo. Hoy compro ropa nueva. Los zapatos negros cuestan ochenta euros, pero estas zapatillas blancas cuestan sesenta euros. Las zapatillas son más baratas que los zapatos, pero los zapatos son más elegantes. Me llevo los zapatos.", q:"Qu'est-ce qui est le moins cher ?", opts:["Les baskets blanches","Les chaussures noires"], correct:0, why:"60 euros contre 80 : las zapatillas son más baratas que los zapatos."},
+  {cat:"comprehension", passage:"Hola, soy Pablo. Hoy compro ropa nueva. Los zapatos negros cuestan ochenta euros, pero estas zapatillas blancas cuestan sesenta euros. Las zapatillas son más baratas que los zapatos, pero los zapatos son más elegantes. Me llevo los zapatos.", q:"Que prend Pablo ?", opts:["Les chaussures noires","Les baskets blanches","Les deux"], correct:0, why:"« Me llevo los zapatos » : il prend les chaussures (plus élégantes, mais plus chères)."}
+ ],
+ PRON_VERBS: [
+  {en:"Me pruebo la chaqueta.", fr:"Je m'essaie la veste. (ue = diphtongue : PRUE-bo ; ch = tch : tcha-KE-ta)"},
+  {en:"¿Cuánto cuestan los zapatos?", fr:"Combien coûtent les chaussures ? (CUÁN-to ; cues-TAN ; z = th : tha-PA-tos)"},
+  {en:"¿Puedo probármelo?", fr:"Puis-je l'essayer ? (accent écrit : pro-BÁR-me-lo ; ue de PUE-do = diphtongue)"},
+  {en:"Me llevo la camisa blanca.", fr:"Je prends la chemise blanche. (ll = y : YE-vo ; ca-MI-sa)"},
+  {en:"Los pantalones son demasiado largos.", fr:"Le pantalon est trop long. (de-ma-SIA-do ; z/c = th ou s)"},
+  {en:"¿Quiere probárselo?", fr:"Voulez-vous l'essayer ? (pro-BÁR-se-lo ; accent sur BÁR)"},
+  {en:"Pago con tarjeta.", fr:"Je paie par carte. (j = kh : tar-KHE-ta ; la tarjeta)"},
+  {en:"Los zapatos son más caros que las zapatillas.", fr:"Les chaussures sont plus chères que les baskets. (z = th ; ll = y : tha-pa-TI-yas)"},
+  {en:"Esta camisa es más barata que esa.", fr:"Cette chemise est moins chère que celle-là. (v/b = b ; ba-RA-ta)"},
+  {en:"Cuesta cuarenta y cinco euros.", fr:"Ça coûte quarante-cinq euros. (kwa-REN-ta ; c devant i = th : THIN-ko ; EU-ros)"}
+ ],
+ READING: [
+  "Hoy Marta está en una tienda de ropa.",
+  "Quiere una chaqueta roja y unos zapatos negros.",
+  "La dependienta es muy simpática: « Buenos días, ¿puedo ayudarle? ».",
+  "Marta pregunta: « ¿Cuánto cuesta esta chaqueta? ».",
+  "La chaqueta cuesta cuarenta y cinco euros, pero es demasiado grande.",
+  "Marta se prueba una talla más pequeña y le queda perfecta.",
+  "Estos zapatos cuestan ochenta euros y esos cuestan setenta.",
+  "Estos son más bonitos, pero esos son más cómodos.",
+  "Marta se lleva la chaqueta y paga con tarjeta.",
+  "¡Qué bien! Hoy Marta está contenta: la chaqueta es bonita y el precio es bueno."
+ ],
+ GLOSS: [
+  {en:"la dependienta", fr:"la vendeuse (Amérique latine : la vendedora)"},
+  {en:"pregunta", fr:"elle demande (preguntar : verbe en -AR, 3e personne)"},
+  {en:"quiere", fr:"elle veut (querer : e → ie, comme preferir)"},
+  {en:"se prueba", fr:"elle essaie (probarse : o → ue, 3e personne)"},
+  {en:"le queda perfecta", fr:"elle lui va parfaitement (quedar fonctionne comme gustar)"},
+  {en:"se lleva", fr:"elle emporte, elle prend (llevarse, 3e personne)"},
+  {en:"esos", fr:"ceux-là (pluriel de ese, un peu plus loin)"},
+  {en:"el precio es bueno", fr:"le prix est bon (bueno = bon ; devant un nom masculin : buen precio)"}
+ ],
+ GRAMMAR1: {
+  heading:"Probarse et les pronoms collés : probármelo, me lo llevo",
+  lede:"Pour essayer un vêtement, l'espagnol utilise le verbe pronominal probarse (« s'essayer »). Quand on le met à l'infinitif, les pronoms se collent à sa FIN, comme dans « ¿Puedo probármelo? ». Ça ressemble à un mot-valise effrayant, mais ce sont seulement trois pièces empilées : probar + me + lo. Une fois la mécanique comprise, elle marche pour tous les verbes : probármelo, cambiarlo, llevármelo…",
+  conj:[
+   ["yo →","me pruebo","Me pruebo la chaqueta."],
+   ["tú →","te pruebas","¿Te pruebas estos zapatos?"],
+   ["él, ella, usted →","se prueba","¿Se prueba usted la camisa, señora?"],
+   ["nosotros/as →","nos probamos","Nos probamos los vaqueros."],
+   ["vosotros/as →","os probáis","¿Os probáis las zapatillas?"],
+   ["ellos, ellas, ustedes →","se prueban","Se prueban los abrigos."]
+  ],
+  ruleHtml:"📖 <b>1. Probarse = s'essayer.</b> Le pronom (me, te, se, nos, os, se) se place AVANT le verbe conjugué : <b>me pruebo, te pruebas, se prueba, nos probamos, os probáis, se prueban</b>. Le pronom dit que l'action retombe sur la personne qui porte le vêtement. <b>probar</b> tout seul = essayer, goûter (probar la paella).<br><br>🔤 <b>2. Le radical change : o → ue</b> à yo, tú, él/ella/usted, ellos/ustedes (pruebo, pruebas, prueba, prueban), mais PAS à nosotros ni vosotros (probamos, probáis). C'est exactement la logique de <b>preferir</b> (e → ie, vu en A1.5). Même schéma pour <b>poder</b> (puedo, puede), <b>costar</b> (cuesta, cuestan) et <b>querer</b> (quiero, quiere).<br><br>🧩 <b>3. L'infinitif colle les pronoms.</b> En espagnol, on soude les pronoms à la FIN de l'infinitif. Décomposition de <b>probármelo</b> : <b>probar</b> (essayer) + <b>me</b> (sur moi) + <b>lo</b> (le vêtement, masculin). Littéralement : « s'essayer-me-le ». Règles : (a) d'abord le pronom de PERSONNE (me, te, se, nos, os), puis celui de l'OBJET (lo, la, los, las) ; (b) <b>lo / la / los / las</b> s'accordent avec l'objet : probármelo (el vestido), probármela (la chaqueta), probármelos (los pantalones), probármelas (las zapatillas) ; (c) l'accent écrit garde la voix sur la syllabe BÁR : pro-BÁR-me-lo.<br><br>👥 <b>4. Tutoiement ET vouvoiement.</b> Le client dit toujours <b>¿Puedo probármelo?</b> (c'est lui qui essaie). Le vendeur change : tú → <b>¿Quieres probártelo?</b> (te + lo) ; usted → <b>¿Quiere probárselo?</b> (se + lo, car le pronom réfléchi de usted est se). Formule d'accueil : tú → <b>¿Te ayudo?</b> ; usted → <b>¿Puedo ayudarle?</b> (ayudar + le, « vous »).<br><br>🛒 <b>5. « Me lo llevo ».</b> Même mécanique, mais avec un verbe conjugué : le pronom se place AVANT. <b>me</b> (pour moi) + <b>lo</b> (l'article) + <b>llevo</b> (llevar, yo). Résultat : « je le prends ». Féminin : <b>me la llevo</b> ; pluriel : <b>me los llevo</b>, <b>me las llevo</b>. Avec poder, tu as deux choix équivalents : <b>¿Puedo probármelo?</b> ou <b>¿Me lo puedo probar?</b> (en tant que débutant, retiens le premier).<br><br>⚠️ <b>Pièges francophones</b> : (1) en français « essayer » n'a pas de « se » : en espagnol, probarse oui. (2) <b>lo / la</b> s'accordent avec l'objet, pas avec toi : une femme qui essaie un pantalon dit probármelos. (3) l'accent écrit oublié : « probarmelo » est une faute. (4) <b>me</b> n'est pas « à moi » ici : c'est le « sur moi » du pronominal. (5) « Me queda bien/mal » (ça me va bien/mal) suit gustar : me queda (1 article), me quedan (plusieurs).",
+  dialogueLede:"Dans une boutique, une vendeuse et un client (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, ¿puedo ayudarle?", fr:"Bonjour, puis-je vous aider ?"},
+   {who:"you", en:"Buenos días. Quería unos vaqueros azules, por favor.", fr:"Bonjour. Je voudrais un jean bleu, s'il vous plaît."},
+   {who:"them", en:"Claro. ¿Qué talla usa?", fr:"Bien sûr. Quelle taille faites-vous ?"},
+   {who:"you", en:"Uso la talla 40. ¿Puedo probármelos?", fr:"Je fais du 40. Puis-je les essayer ?"},
+   {who:"them", en:"Sí, claro. El probador está aquí, a la derecha.", fr:"Oui, bien sûr. La cabine est ici, à droite."},
+   {who:"you", en:"Me quedan un poco grandes. ¿Los tiene en una talla menos?", fr:"Ils me vont un peu grands. Les avez-vous en une taille de moins ?"},
+   {who:"them", en:"Sí, aquí tiene.", fr:"Oui, tenez."},
+   {who:"you", en:"Perfectos. Me los llevo.", fr:"Parfaits. Je les prends."}
+  ],
+  whyLabel:"Pourquoi les pronoms se collent-ils au verbe ? Probarse en trois pièces",
+  whyText:"En français, « je veux l'essayer » place le pronom devant l'infinitif (« l'essayer »). L'espagnol, lui, <b>construit un seul bloc</b> : verbe + pronoms. Ce n'est pas une série de mots à apprendre par cœur, c'est une machine à emboîter. Prends <b>probármelo</b> : <b>probar</b> (essayer) + <b>me</b> (sur moi) + <b>lo</b> (le vêtement). Change une pièce et le sens suit : ¿Quieres probártelo? (te : sur toi), ¿Quiere probárselo? (se : sur vous), probármela (une chose féminine). Pour lire un mot-valise, découpe-le toujours de la fin : 1) le dernier pronom (lo/la/los/las) = l'objet ; 2) le pronom avant lui (me/te/se/nos/os) = qui ; 3) ce qui reste = le verbe à l'infinitif. Avec un verbe conjugué, les mêmes pièces passent devant : me lo llevo."
+ },
+ GRAMMAR2: {
+  heading:"Comparer et montrer : más… que, mejor, este / ese, et compter les prix",
+  dialogueLede:"Deux amis dans un magasin (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"Mira, ¿te gusta esta camisa?", fr:"Regarde, tu aimes cette chemise ?"},
+   {who:"you", en:"Sí, pero ese jersey es más bonito.", fr:"Oui, mais ce pull-là est plus joli."},
+   {who:"them", en:"Es verdad, pero es más caro. Cuesta ochenta euros.", fr:"C'est vrai, mais il est plus cher. Il coûte quatre-vingts euros."},
+   {who:"you", en:"Esta camisa es más barata y es tan cómoda como el jersey.", fr:"Cette chemise est moins chère et aussi confortable que le pull."},
+   {who:"them", en:"Tienes razón. ¿Cuál prefieres?", fr:"Tu as raison. Laquelle préfères-tu ?"},
+   {who:"you", en:"Prefiero la camisa. Me la llevo.", fr:"Je préfère la chemise. Je la prends."}
+  ],
+  ruleHtml:"⚖️ <b>1. Les comparatifs.</b> Supériorité : <b>más + adjectif + que</b> (esta camisa es <b>más barata que</b> esa). Infériorité : <b>menos + adjectif + que</b> (menos caro que). Égalité : <b>tan + adjectif + como</b> (tan cómoda <b>como</b> el jersey). L'adjectif s'accorde avec le PREMIER élément : la camisa es más barata, los zapatos son más caros. Valeurs utiles : <b>más barato / más caro</b>, <b>más grande / más pequeño</b>. Deux comparatifs spéciaux : <b>mejor</b> (meilleur) et <b>peor</b> (pire, moins bien) : invariables en genre, pluriel mejores / peores, jamais précédés de más (« más mejor » n'existe pas). Pour comparer, on dit toujours <b>que</b> : « este abrigo es mejor <b>que</b> ese ».<br><br>👉 <b>2. Les démonstratifs (montrer du doigt).</b> Proche de moi : <b>este</b> (masc.), <b>esta</b> (fém.), <b>estos</b> (masc. pl.), <b>estas</b> (fém. pl.) : este vestido, esta falda, estos zapatos, estas camisas. Un peu plus loin (ou près de l'autre personne) : <b>ese</b>, <b>esa</b> (pluriel : esos, esas). Ils s'accordent avec le nom et se placent devant. On peut aussi les utiliser seuls : « Me gusta este ». Précision : <b>este vestido</b> = « cette robe » ; sans nom, <b>este</b> = « celui-ci » (on évite de répéter le nom). Un troisième degré, <b>aquel</b>, existe pour ce qui est très éloigné : à ce niveau, retiens este (ici) et ese (là). Piège : <b>esta</b> (ce, cette) ≠ <b>está</b> (il est), l'accent change tout.<br><br>💶 <b>3. Les prix : centaines et mille.</b> Tu connais déjà 0 à 100. Ajoute : <b>cien</b> (100 exactement) / <b>ciento</b> (devant un autre nombre : ciento veinte = 120), <b>doscientos</b> (200), <b>trescientos</b> (300), <b>cuatrocientos</b> (400), <b>quinientos</b> (500), <b>seiscientos</b> (600), <b>setecientos</b> (700), <b>ochocientos</b> (800), <b>novecientos</b> (900), <b>mil</b> (1000). Trois irréguliers à retenir : quinientos (pas cincocientos), setecientos (pas sietecientos), novecientos (pas nuevecientos). Les centaines s'accordent au féminin : doscientas camisas. Le « y » ne sépare que dizaine et unité : trescientos cuarenta y cinco. Prix décimaux : 45,50 € = cuarenta y cinco euros con cincuenta.<br><br>👥 <b>4. Informel et formel.</b> Tú : <b>¿Cuál prefieres?</b> / <b>¿Te ayudo?</b> / <b>¿Quieres probártelo?</b> Usted : <b>¿Cuál prefiere usted?</b> / <b>¿Puedo ayudarle?</b> / <b>¿Quiere probárselo?</b> Pour quitter la boutique sans acheter, la formule polie marche avec tous : « Lo pienso, gracias » (je réfléchis, merci) ou « Solo quería mirar, gracias ».",
+  whyLabel:"Pourquoi « que » et « como » pour comparer, jamais « de » ?",
+  whyText:"En français on compare avec « que » (plus grand <b>que</b>) et « aussi… que ». En espagnol, la structure est la même, mais l'égalité demande <b>como</b> : tan caro <b>como</b>, jamais « tan caro que ». Astuce : <b>más / menos → que</b> ; <b>tan → como</b>. Le piège le plus fréquent des francophones est de dire « más mejor » parce que meilleur = plus bon : mejor contient déjà « plus », comme en français on ne dit pas « plus meilleur ». Pour les démonstratifs, retiens deux gestes : le doigt tendu vers ce que tu tiens (este, esta, estos, estas) et le doigt vers ce qui est plus loin (ese, esa). Les prix, eux, se disent comme les nombres : une fois les centaines apprises (cien, doscientos, trescientos…), il suffit de les assembler : cuesta ciento veinte euros."
+ },
+ REVIEW: [
+  {q:"Formule polie pour commander :", opts:["Quería un café, por favor.","Quiero un café, ya."], correct:0, fb:"quería adoucit la demande, comme « je voudrais » en français. (rappel A1.6)"},
+  {q:"« Je mange du pain » : yo ___ pan. (comer)", opts:["como","comes","come"], correct:0, fb:"Verbe en -ER, yo → -o : como. (rappel A1.6)"},
+  {q:"Tú, beber au présent :", opts:["bebes","bebas","bebe"], correct:0, fb:"-ER : tú → -es : bebes. (rappel A1.6)"},
+  {q:"« Un peu d'eau » :", opts:["un poco de agua","un poca de agua"], correct:0, fb:"un poco de + indénombrable : poco reste invariable. (rappel A1.6)"},
+  {q:"Demander l'addition au restaurant :", opts:["La cuenta, por favor.","El recibo, por favor."], correct:0, fb:"Au restaurant : la cuenta. Le recibo est le ticket d'un achat en magasin. (rappel A1.6)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"Yo ___ la chaqueta. (probarse)", answers:["me pruebo","Me pruebo"], why:"yo : pronom me + o → ue : me pruebo."},
+  {type:"fill", text:"Tú ___ los zapatos. (probarse)", answers:["te pruebas","Te pruebas"], why:"tú : te + pruebas (o → ue)."},
+  {type:"fill", text:"Ella ___ el vestido. (probarse)", answers:["se prueba","Se prueba"], why:"3e personne : se prueba (o → ue)."},
+  {type:"fill", text:"Nosotros ___ las camisas. (probarse)", answers:["nos probamos","Nos probamos"], why:"nosotros : pas de diphtongue : nos probamos."},
+  {type:"fill", text:"Vosotros ___ las zapatillas. (probarse)", answers:["os probáis","Os probáis"], why:"vosotros : os probáis, accent écrit (pas de diphtongue)."},
+  {type:"fill", text:"Ellos ___ los abrigos. (probarse)", answers:["se prueban","Se prueban"], why:"ellos : se prueban (o → ue)."},
+  {type:"fill", text:"¿Puedo probárme___ ? (la falda)", answers:["la"], why:"falda est féminin singulier : probármela."},
+  {type:"fill", text:"¿Puedo probárme___ ? (los zapatos)", answers:["los"], why:"zapatos est masculin pluriel : probármelos."},
+  {type:"fill", text:"Me gusta esta camisa. Me ___ llevo.", answers:["la"], why:"camisa est féminin : me la llevo."},
+  {type:"fill", text:"Me gustan estos pantalones. Me ___ llevo.", answers:["los"], why:"pantalones est masculin pluriel : me los llevo."},
+  {type:"fill", text:"Los zapatos ___ sesenta euros. (costar)", answers:["cuestan"], why:"Sujet pluriel : cuestan (o → ue)."},
+  {type:"fill", text:"El bolso ___ treinta euros. (costar)", answers:["cuesta"], why:"Sujet singulier : cuesta (o → ue)."},
+  {type:"fill", text:"Esta camisa es ___ barata que esa. (plus)", answers:["más"], why:"Supériorité : más + adjectif + que."},
+  {type:"fill", text:"Este bolso es tan bonito ___ ese.", answers:["como"], why:"Égalité : tan + adjectif + como."},
+  {type:"fill", text:"Esta chaqueta es ___ que esa. (meilleure)", answers:["mejor"], why:"mejor = meilleur ; jamais « más mejor »."},
+  {type:"fill", text:"700 euros = ___ euros", answers:["setecientos"], why:"700 est irrégulier : setecientos (pas sietecientos)."},
+  {type:"fill", text:"500 euros = ___ euros", answers:["quinientos"], why:"500 est irrégulier : quinientos (pas cincocientos)."},
+  {type:"fill", text:"___ falda es larga. (proche de toi)", answers:["Esta","esta"], why:"falda est féminin singulier : esta."},
+  {type:"choice", q:"Corrige : « Esta camisa es más mejor que esa. »", opts:["Esta camisa es mejor que esa.","Esta camisa es más buena que esa."], correct:0, why:"mejor est déjà un comparatif : mejor que."},
+  {type:"choice", q:"« Le sac coûte quarante euros. »", opts:["El bolso cuesta cuarenta euros.","El bolso costa cuarenta euros."], correct:0, why:"costar → cuesta : le radical change en ue."},
+  {type:"choice", q:"À une cliente âgée (usted), le vendeur dit :", opts:["¿Quiere probárselo?","¿Quieres probártelo?"], correct:0, why:"usted → se : probárselo. Tú → te : probártelo."},
+  {type:"choice", q:"À ton ami (tú), tu dis :", opts:["¿Quieres probártelo?","¿Quiere probárselo?"], correct:0, why:"tú → te : probártelo. Le vouvoiement demande probárselo."},
+  {type:"choice", q:"Pour demander à essayer un pantalon (unos pantalones) :", opts:["¿Puedo probármelos?","¿Puedo probármelo?"], correct:0, why:"pantalones est pluriel : probármelos."},
+  {type:"choice", q:"« Les chaussures sont trop petites. »", opts:["Los zapatos son demasiado pequeños.","Los zapatos son demasiado pequeño."], correct:0, why:"demasiado ne change pas ; pequeño s'accorde avec zapatos : pequeños."}
+ ],
+ ANNOTATED: {
+  title:"Marta en la tienda",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction — et repère les pronoms collés (probármelo) et les comparatifs.",
+  sentences:[
+   {fr:"Combien coûte cette veste rouge ?", tokens:[
+    {w:"¿Cuánto", tag:"adverbe", info:"interrogatif", fr:"combien", tip:"Accent écrit : cuánto (question)."},
+    {w:"cuesta", tag:"verbe", info:"costar · présent · 3e pers. sing.", fr:"coûte", tip:"o → ue : cuesta, jamais « costa »."},
+    {w:"esta", tag:"déterminant", info:"démonstratif · fém. sing.", fr:"cette", tip:"proche de moi ; ne se confond pas avec está."},
+    {w:"chaqueta", tag:"nom", info:"fém. sing.", fr:"veste", tip:"ch = tch : tcha-KE-ta."},
+    {w:"roja?", tag:"adjectif", info:"fém. sing.", fr:"rouge", tip:"s'accorde avec chaqueta (féminin) ; r initiale roulée."}
+   ]},
+   {fr:"Elle me va parfaitement, je la prends.", tokens:[
+    {w:"Me", tag:"pronom", info:"complément indirect", fr:"à moi", tip:"avec quedar, comme avec gustar."},
+    {w:"queda", tag:"verbe", info:"quedar · présent · 3e pers. sing.", fr:"va (en parlant d'un vêtement)", tip:"ça me va : me queda bien / me queda perfecta."},
+    {w:"perfecta,", tag:"adjectif", info:"fém. sing.", fr:"parfaite", tip:"s'accorde avec chaqueta."},
+    {w:"me", tag:"pronom", info:"réfléchi", fr:"pour moi", tip:"llevarse : emporter pour soi."},
+    {w:"la", tag:"pronom", info:"complément direct · fém.", fr:"la (la veste)", tip:"s'accorde avec l'objet, pas avec la personne."},
+    {w:"llevo", tag:"verbe", info:"llevar · présent · yo", fr:"prends", tip:"ll = y : YE-vo."}
+   ]},
+   {fr:"Voulez-vous l'essayer, madame ?", tokens:[
+    {w:"¿Quiere", tag:"verbe", info:"querer · présent · usted", fr:"voulez-vous", tip:"e → ie, comme preferir ; usted : quiere."},
+    {w:"probárselo,", tag:"verbe + pronoms", info:"probar + se + lo", fr:"l'essayer", tip:"pro-BÁR-se-lo : probar (essayer) + se (sur vous) + lo (l'article). L'accent écrit garde la voix sur BÁR."},
+    {w:"señora?", tag:"nom", info:"fém. sing.", fr:"madame", tip:"ñ = gn ; titre de politesse avec usted."}
+   ]},
+   {fr:"Ce sac est moins cher que celui-là.", tokens:[
+    {w:"Este", tag:"déterminant", info:"démonstratif · masc. sing.", fr:"ce", tip:"proche de moi."},
+    {w:"bolso", tag:"nom", info:"masc. sing.", fr:"sac", tip:"Mexique : bolsa."},
+    {w:"es", tag:"verbe", info:"ser · présent · él", fr:"est"},
+    {w:"más", tag:"adverbe", info:"comparatif de supériorité", fr:"plus", tip:"más + adjectif + que."},
+    {w:"barato", tag:"adjectif", info:"masc. sing.", fr:"bon marché", tip:"s'accorde avec bolso."},
+    {w:"que", tag:"conjonction", info:"de comparaison", fr:"que"},
+    {w:"ese.", tag:"pronom", info:"démonstratif · masc. sing.", fr:"celui-là", tip:"un peu plus loin ; on ne répète pas le nom."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🛍️", title:"Culture, 10 expressions et fiche récap (A1.7)",
+  html:"<b>🛍️ Culture — faire ses achats</b> En Espagne, les grandes enseignes restent ouvertes toute la journée, mais beaucoup de petites boutiques ferment un moment à midi (la pausa del mediodía). Les <b>rebajas</b> (soldes) ont lieu en janvier et en juillet. En Amérique latine, on entend plutôt les <b>ofertas</b> ou la <b>liquidación</b>. Sur les marchés (rastros, mercadillos), on peut marchander (<i>regatear</i>) ; en boutique, non. Garde ton <b>recibo</b> (Espagne : <i>el ticket</i>) pour échanger un article (<i>cambiar</i>). Tutoiement ou vouvoiement ? Entre jeunes en boutique (ou dans une enseigne de mode), ¿Te ayudo? est courant ; ailleurs, ¿Puedo ayudarle? est plus sûr. Variantes : <b>bolso</b> (Espagne, Colombie) / <b>bolsa</b> (Mexique), <b>chaqueta</b> / <b>chamarra</b> (Mexique) / <b>campera</b> (Argentine), <b>zapatillas</b> / <b>tenis</b>, <b>vaqueros</b> / <b>jeans</b>, <b>jersey</b> / <b>suéter</b>, <b>dependiente</b> / <b>vendedor</b>, <b>ordenador</b> / <b>computadora</b>. Prononciation : en Espagne c et z = « th » (zapatos, precio), en Amérique latine = « s ».<br><br><b>🧰 Bonus — 10 expressions du shopping et de l'argent</b><br>1. <b>Costar un ojo de la cara</b> = coûter les yeux de la tête (très cher).<br>2. <b>Irse por las ramas</b> = tourner autour du pot (ne pas aller à l'essentiel). Attention : ce n'est PAS « nager en plein flou ».<br>3. <b>Estar sin blanca</b> = être fauché(e) (familier, Espagne ; Amérique latine : estar sin plata).<br>4. <b>Estar forrado</b> = être plein aux as (familier, Espagne).<br>5. <b>Vender humo</b> = vendre du vent (promettre sans rien donner).<br>6. <b>A precio de saldo</b> = à prix bradé (déstockage, soldes).<br>7. <b>Pagar los platos rotos</b> = payer les pots cassés (subir la faute d'un autre ; sens courant, pas lié aux achats).<br>8. <b>Estar al caer</b> = être imminent (« las rebajas están al caer » = les soldes arrivent). Pas lié à l'argent : il parle du temps ; surtout employé en Espagne.<br>9. <b>Estar tirado de precio</b> = être donné, très bon marché (familier, Espagne).<br>10. <b>A caballo regalado no le mires el diente</b> = à cheval donné, on ne regarde pas les dents (on ne fait pas la fine bouche devant un cadeau). Proverbe figé : à retenir tel quel.<br><br><b>✍️ Expression écrite — ta liste d'achats (4 lignes)</b> Modèle : « Quiero comprar una chaqueta azul. Es más barata que la chaqueta negra, pero es menos elegante. Cuesta cincuenta euros y me queda perfecta. Me la llevo y pago con tarjeta. » Vérifie : comparatif (más… que) · accord de l'adjectif · pronom lo/la · prix en toutes lettres. Version formelle (demande à une vendeuse) : « Buenos días, ¿puede mostrarme esta chaqueta? ».<br><br><b>🗣️ Expression orale — jeu de rôle en boutique</b> Joue le client exigeant. Toi : « Buenos días. Quería unos pantalones negros. ¿Puedo probármelos? — Sí, claro. ¿Qué talla usa? — La 40. — Me quedan pequeños. ¿Los tiene en una talla más? — Aquí tiene. — Perfectos. ¿Cuánto cuestan? — Cuestan sesenta euros. — Me los llevo. — ¿Cómo paga? — Con tarjeta. ». Version tú : « ¿Te ayudo ? / ¿Cuál prefieres ? / Aquí tienes. ».<br><br><b>📝 Mini-contrôle flash</b> « C'est trop cher » → <b>Es demasiado caro / cara</b> (selon le genre de l'objet). « Je le prends » → <b>Me lo llevo</b> (féminin : me la llevo).<br><br><b>📄 Fiche récap</b> Vêtements : camisa · pantalones · zapatos · vestido · chaqueta · bolso · falda · jersey · talla · color. Phrases : ¿Cuánto cuesta ? / cuestan · ¿Puedo probármelo ? · Es demasiado grande/pequeño · Me lo llevo · en efectivo / con tarjeta · recibo. Probarse : me pruebo, te pruebas, se prueba, nos probamos, os probáis, se prueban. Pronoms collés : probar + me + lo = probármelo ; tú : probártelo ; usted : probárselo. Comparatifs : más… que · menos… que · tan… como · mejor / peor. Démonstratifs : este, esta, estos, estas · ese, esa. Nombres : cien · doscientos · quinientos · setecientos · novecientos · mil. Politesse : ¿Puedo ayudarle ? (usted) / ¿Te ayudo ? (tú)."},
+ NEXT_PREVIEW:"A1.8 (Moverse por la ciudad) : se repérer en ville, demander et comprendre un chemin (¿Está lejos ?, a la izquierda / a la derecha), nommer les lieux (tienda, banco, farmacia, supermercado…), parler des transports (cambiar de autobús, bajarse, subirse) et découvrir « estar + gérondif » pour dire ce qu'on est en train de faire.",
+ META:{vocabTitle:"De compras : vêtements, tailles, prix, comparatifs et probarse (A1.7)", lectureTitle:"Marta va de compras", bilanTitle:"Bravo, tu sais faire tes achats en espagnol !", pronLabel:"De compras : ch, ll, z/c, la diphtongue ue (pruebo, cuesta) et l'accent de probármelo", todayLede:"demander un prix et une taille, essayer un vêtement avec probarse et probármelo, comparer deux articles (más… que, mejor, tan… como), montrer avec este / ese, compter jusqu'à 1000 et payer — en tutoiement ET en vouvoiement"}
+};
+(typeof __esDeco==="function" ? __esDeco : function(n,map){ LESSONS_ES[n].VOCAB.forEach(function(v){ var d=map[v.en]; if(!d) throw new Error("Pas d'illustration pour : "+v.en); v.emo=d[0]; v.ex=[d[1],d[2]]; }); })(207, MAP);
+})();
+
+
+// A1.8 — Moverse por la ciudad : lieux de la ville, itinéraires, présent continu (ESTAR + gérondif) (leçon 208)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Les lieux de la ville", [
+  ["la tienda","/la ˈtjenda/","le magasin, la boutique","ie = diphtongue : TYEN-da. Pluriel : las tiendas. Ne confonds pas avec « la tienda de campaña » (la tente).","🏪","Hay una tienda en la esquina.","Il y a un magasin au coin de la rue."],
+  ["el parque","/el ˈpaɾke/","le parc","qu = k : PAR-ke. Masculin. Pluriel : los parques.","🌳","El parque está cerca de mi casa.","Le parc est près de ma maison."],
+  ["la biblioteca","/la biβljoˈteka/","la bibliothèque","Faux ami : « la librería » = la librairie (on y achète des livres) ; la biblioteca = on y emprunte.","📚","La biblioteca está al lado del parque.","La bibliothèque est à côté du parc."],
+  ["el hospital","/el ospiˈtal/","l'hôpital","h muette : os-pi-TAL, accent sur la dernière syllabe. Pluriel : los hospitales.","🏥","El hospital está cerca de la estación.","L'hôpital est près de la gare."],
+  ["la farmacia","/la faɾˈmaθja/","la pharmacie","S'écrit avec f (pas « ph »). c = th (Espagne) ou s (Amérique latine). En Colombie, on dit aussi « la droguería ».","💊","La farmacia está al lado del banco.","La pharmacie est à côté de la banque."],
+  ["el banco","/el ˈbaŋko/","la banque","n devant k se prononce « ng » : BANG-ko. Attention : « el banco » est aussi le banc où l'on s'assoit ; le contexte tranche.","🏦","El banco está enfrente del parque.","La banque est en face du parc."],
+  ["la oficina de correos","/la ofiˈθina de koˈrreos/","le bureau de poste","On dit aussi « Correos » (la poste espagnole). Amérique latine : « el correo ». rr = r roulé.","📮","Estoy en la oficina de correos.","Je suis au bureau de poste."],
+  ["el supermercado","/el supeɾmeɾˈkaðo/","le supermarché","Accent sur la dernière syllabe de « mercado » : ka-DO. À l'oral, on dit souvent « el súper ».","🛒","El supermercado está lejos.","Le supermarché est loin."],
+  ["el gimnasio","/el xinˈnasjo/","la salle de sport","g devant i = kh : khim-NA-syo. À l'oral, on entend aussi « el gym ».","🏋️","El gimnasio está cerca de mi casa.","La salle de sport est près de chez moi."],
+  ["el ayuntamiento","/el ajuntaˈmjento/","la mairie","y = « y » : a-yun-ta-MYEN-to. Amérique latine : « la alcaldía » (Mexique, Colombie) ou « la municipalidad » (Argentine, Chili, Pérou).","🏛️","El ayuntamiento está en la plaza.","La mairie est sur la place."],
+  ["la panadería","/la panaðeˈɾia/","la boulangerie","Le suffixe -ería désigne le lieu où l'on vend : panadería, librería, frutería. Accent écrit sur í : pa-na-de-RÍ-a.","🥖","La panadería está en la esquina.","La boulangerie est au coin."],
+  ["el museo","/el muˈseo/","le musée","mu-SE-o : le o final se prononce nettement. Pluriel : los museos.","🖼️","El museo está enfrente de la iglesia.","Le musée est en face de l'église."],
+  ["la iglesia","/la iˈɣlesja/","l'église","Le g est très doux : i-GLE-sya. Féminin.","⛪","La iglesia está en la plaza.","L'église est sur la place."],
+  ["la comisaría","/la komisaˈɾia/","le commissariat","Accent écrit sur í : co-mi-sa-RÍ-a. Pour demander de l'aide, on s'adresse à « un policía ».","🚓","La comisaría está al lado del ayuntamiento.","Le commissariat est à côté de la mairie."],
+  ["el cajero automático","/el kaˈxeɾo autoˈmatiko/","le distributeur de billets","À l'oral : « el cajero ». j = kh : ka-KHE-ro. Il est souvent dans la rue, devant la banque.","🏧","Hay un cajero automático en el banco.","Il y a un distributeur dans la banque."],
+  ["el buzón","/el buˈθon/","la boîte aux lettres","z = th (Espagne) / s (Amérique latine). Accent écrit : bu-ZÓN. Pluriel : los buzones.","📫","El buzón está en la esquina.","La boîte aux lettres est au coin."],
+  ["el mercado","/el meɾˈkaðo/","le marché","Se dit pour le marché de quartier comme pour le marché couvert. Le d entre voyelles est très doux.","🧺","El mercado está cerca de la plaza.","Le marché est près de la place."],
+  ["la cafetería","/la kafeteˈɾia/","le café (lieu où l'on prend un café)","Accent écrit sur í : ca-fe-te-RÍ-a. En Espagne, le bar joue le même rôle.","☕","Estamos en la cafetería.","Nous sommes au café."],
+  ["el cine","/el ˈθine/","le cinéma","c devant i = th (Espagne) / s (Amérique latine) : THI-ne.","🎬","El cine está al lado del museo.","Le cinéma est à côté du musée."]
+ ]),
+ blk("Situer un lieu : Está en… / Hay…", [
+  ["está en · están en","/esˈta en · esˈtan en/","il/elle est à, dans · ils/elles sont à, dans","ESTAR sert à situer une chose précise que l'on connaît : « La farmacia está en la calle Mayor ». Sujet pluriel : están. Accents écrits obligatoires.","📍","El banco está en la plaza.","La banque est sur la place."],
+  ["hay · no hay","/aj · no aj/","il y a · il n'y a pas","Une seule forme pour le singulier ET le pluriel : hay una farmacia, hay dos bancos. Sert à dire qu'une chose EXISTE, sans la connaître d'avance.","❓","¿Hay una farmacia por aquí?","Y a-t-il une pharmacie par ici ?"],
+  ["¿Dónde está…? · ¿Hay … cerca?","/ˈdonde esˈta · aj ˈθeɾka/","où est… ? · y a-t-il … près d'ici ?","¿Dónde ESTÁ la farmacia ? = tu sais qu'elle existe et tu la cherches. ¿HAY una farmacia cerca ? = tu ne sais même pas s'il y en a une. Réponse : « Está en… » ou « Hay una en… ».","🔎","¿Dónde está el hospital?","Où est l'hôpital ?"],
+  ["a la izquierda · a la derecha","/a la iθˈkjeɾða · a la deˈɾetʃa/","à gauche · à droite","z = th (Espagne) / s (Amérique latine). On dit toujours « a la » : gira a la izquierda. Jamais « en la izquierda ».","↔️","La farmacia está a la derecha.","La pharmacie est à droite."],
+  ["al lado de · enfrente de","/al ˈlaðo de · enˈfɾente de/","à côté de · en face de","Vus en A1.4. de + el = del : al lado del banco, enfrente del parque. À l'écrit, la contraction est obligatoire.","🧭","La farmacia está al lado del banco.","La pharmacie est à côté de la banque."],
+  ["cerca · lejos","/ˈθeɾka · ˈlexos/","près · loin","Vus en A1.4. Avec « de » : cerca de la plaza, lejos del hospital. lejos : j = kh.","📏","La biblioteca está cerca de la estación.","La bibliothèque est près de la gare."],
+  ["¿Está lejos? · ¿Está cerca?","/esˈta ˈlexos · esˈta ˈθeɾka/","c'est loin ? · c'est près ?","Question de survie n°1. Le lieu dont on parle est sous-entendu. Même forme au tutoiement et au vouvoiement : « ¿Está lejos, señora? ». Réponse : « No, está a cinco minutos a pie. ».","🚶","Perdone, ¿está lejos el hospital?","Excusez-moi, l'hôpital est-il loin ?"],
+  ["a cinco minutos a pie","/a ˈθiŋko miˈnutos a pje/","à cinq minutes à pied","« a + durée » = à X minutes d'ici. Tu peux changer : a diez minutos en autobús. mi-NU-tos.","⏱️","El museo está a diez minutos a pie.","Le musée est à dix minutes à pied."],
+  ["todo recto","/ˈtoðo ˈrrekto/","tout droit","On dit aussi « recto » seul : siga recto. En Amérique latine, on entend souvent « derecho » : siga derecho. r initiale roulée.","⬆️","Siga todo recto por esta calle.","Continuez tout droit dans cette rue."],
+  ["en la esquina","/en la esˈkina/","au coin (de la rue)","Vu en A1.4. « en la esquina de la plaza » = au coin de la place. qu = k : es-KI-na.","📐","La panadería está en la esquina.","La boulangerie est au coin."],
+  ["aquí · por aquí · allí","/aˈki · poɾ aˈki · aˈʝi/","ici · par ici · là-bas","« por aquí » = dans les environs, par ici (¿Hay un banco por aquí ?). allí : ll = y.","👉","La farmacia está allí.","La pharmacie est là-bas."]
+ ]),
+ blk("Survie en ville : se faire comprendre", [
+  ["Perdón, ¿puede repetir? · ¿Puedes repetir?","/peɾˈðon ˈpwede repeˈtiɾ · ˈpwedes repeˈtiɾ/","Pardon, pouvez-vous répéter ? · Peux-tu répéter ?","Usted : ¿puede ? Tú : ¿puedes ? (poder : puedo, puedes, puede ; o → ue). Après « puede », un infinitif. Piège : « ¿Puedo repetir? » veut dire « puis-je répéter (moi) ? ».","🔁","Perdón, ¿puede repetir, por favor?","Pardon, pouvez-vous répéter, s'il vous plaît ?"],
+  ["Más despacio, por favor","/mas desˈpaθjo poɾ faˈβoɾ/","plus lentement, s'il vous plaît","« despacio » = lentement (adverbe invariable). Pour être complet : « ¿Puede hablar más despacio? » (usted) / « ¿Puedes hablar más despacio? » (tú).","🐢","Más despacio, por favor.","Plus lentement, s'il vous plaît."],
+  ["No entiendo","/no enˈtjendo/","je ne comprends pas","entender : e → ie (entiendo, entiendes, entiende), comme preferir. « no » avant le verbe. Version polie : « Perdón, no entiendo ».","🤷","Perdón, no entiendo.","Pardon, je ne comprends pas."],
+  ["¿Puede ayudarme? · ¿Puedes ayudarme?","/ˈpwede aʝuˈðaɾme · ˈpwedes aʝuˈðaɾme/","Pouvez-vous m'aider ? · Peux-tu m'aider ?","Le pronom « me » se colle à l'infinitif (comme dans probármelo, A1.7). ayudar : y = « y » : a-yu-DAR-me.","🙋","Perdone, ¿puede ayudarme?","Excusez-moi, pouvez-vous m'aider ?"],
+  ["perdido / perdida","/peɾˈðiðo · peɾˈðiða/","perdu(e)","S'accorde avec la personne qui parle : un homme dit « estoy perdido », une femme « estoy perdida ». État passager : ESTAR.","😕","Estoy perdida: busco la biblioteca.","Je suis perdue : je cherche la bibliothèque."],
+  ["perder el autobús","/peɾˈðeɾ el autoˈβus/","rater le bus","perder : e → ie (pierdo, pierdes, pierde), comme preferir. « perder el autobús / el tren » = le manquer. Ne confonds pas avec « estar perdido » (être perdu).","⏰","Siempre pierdo el autobús.","Je rate toujours le bus."],
+  ["No te preocupes · No se preocupe","/no te pɾeoˈkupes · no se pɾeoˈkupe/","ne t'inquiète pas · ne vous inquiétez pas","Formule de réassurance à retenir telle quelle : tú → te preocupes ; usted → se preocupe. Très courante pour rassurer un touriste perdu.","😌","No se preocupe, señora: la farmacia está cerca.","Ne vous inquiétez pas, madame : la pharmacie est près."],
+  ["la dirección","/la diɾekˈθjon/","l'adresse ; la direction","Deux sens : l'adresse (la dirección de la farmacia) et la direction. Pluriel : las direcciones (l'accent disparaît). Les noms en -ción sont féminins.","🗺️","Tengo la dirección de la biblioteca.","J'ai l'adresse de la bibliothèque."],
+  ["el mapa","/el ˈmapa/","la carte, le plan","Masculin malgré le -a (vu en A1.0). Pluriel : los mapas.","📍","Tengo un mapa en la mochila.","J'ai un plan dans mon sac à dos."],
+  ["el turista / la turista","/el tuˈɾista · la tuˈɾista/","le touriste / la touriste","Mot en -ista : même forme au masculin et au féminin ; seul l'article change.","🧳","Soy turista y estoy perdido.","Je suis touriste et je suis perdu."],
+  ["¿Cómo llego a…?","/ˈkomo ˈʝeɣo a/","comment j'arrive à… ?","Vu en A1.4. llego = présent de llegar. ll = y : YE-go. Ne traduis pas « aller » par ir ici : on demande comment ARRIVER.","🧭","¿Cómo llego a la plaza?","Comment j'arrive à la place ?"]
+ ]),
+ blk("Transports et rues : réemploi de A1.4 et nouveautés", [
+  ["el autobús · el metro · el tren · el taxi","/el autoˈβus · el ˈmetɾo · el tɾen · el ˈtaksi/","le bus · le métro · le train · le taxi","Vocabulaire vu en A1.4. Variantes pour le bus : « el camión » (Mexique), « el colectivo » (Argentine), « la guagua » (Caraïbes). « autobús » est compris partout. Métro de Buenos Aires : « el subte ».","🚌","Estoy esperando el autobús.","Je suis en train d'attendre le bus."],
+  ["la parada · la estación","/la paˈɾaða · la estaˈθjon/","l'arrêt · la gare, la station","parada = arrêt de bus ou de tram ; estación = gare ou station de métro. Pluriel : paradas, estaciones.","🚏","La parada está enfrente del banco.","L'arrêt est en face de la banque."],
+  ["la línea","/la ˈlinea/","la ligne (bus, métro)","« la línea tres », « la línea roja ». Accent écrit sur le í : LÍ-ne-a.","🚇","Tome la línea tres.","Prenez la ligne trois."],
+  ["el transbordo","/el tɾansˈβoɾðo/","la correspondance","« cambiar de línea » se dit aussi. Masculin. Dans le métro : « el transbordo está en Sol ».","🔄","Hay un transbordo en la estación Central.","Il y a une correspondance à la gare Centrale."],
+  ["cambiar de tren · cambiar de autobús","/kamˈbjaɾ de tɾen · kamˈbjaɾ de autoˈβus/","changer de train · de bus","Toujours « cambiar DE + moyen de transport » (cambiar de línea aussi). Présent : cambio, cambias, cambia, cambiamos, cambiáis, cambian.","🔀","Cambio de tren en la estación Central.","Je change de train à la gare Centrale."],
+  ["bajarse","/baˈxaɾse/","descendre (d'un transport)","Verbe pronominal : me bajo, te bajas, se baja, nos bajamos, os bajáis, se bajan. On dit « bajarse DEL autobús » (de + el) ou « bajarse EN la próxima parada ». j = kh.","⬇️","Me bajo en la próxima parada.","Je descends au prochain arrêt."],
+  ["subirse","/suˈβiɾse/","monter (dans un transport)","Verbe pronominal : me subo, te subes, se sube, nos subimos, os subís, se suben. On dit « subirse AL autobús » (a + el).","⬆️","Nos subimos al metro en Sol.","Nous montons dans le métro à Sol."],
+  ["la próxima parada","/la ˈpɾoksima paˈɾaða/","le prochain arrêt","Accent écrit : PRÓ-xi-ma ; x = ks. Accord : la próxima parada, la próxima estación, mais el próximo tren.","⏭️","La próxima parada es la plaza.","Le prochain arrêt est la place."],
+  ["la avenida · la calle","/la aβeˈniða · la ˈkaʝe/","l'avenue · la rue","avenida = grande rue. Amérique latine : « la cuadra » = le pâté de maisons (« a dos cuadras » = à deux rues d'ici) ; Espagne : « la manzana ».","🛣️","Siga recto por esta avenida.","Continuez tout droit sur cette avenue."],
+  ["el semáforo · la esquina","/el seˈmaforo · la esˈkina/","le feu · le coin de rue","Vus en A1.4. Accent écrit : se-MÁ-fo-ro. « en el semáforo » = au feu.","🚦","Gire a la izquierda en el semáforo.","Tournez à gauche au feu."],
+  ["el puente · la plaza","/el ˈpwente · la ˈplaθa/","le pont · la place","Vus en A1.4. ue = diphtongue : PWEN-te. plaza : z = th / s.","🌉","La plaza está después del puente.","La place est après le pont."],
+  ["el paso de peatones","/el ˈpaso de peaˈtones/","le passage piéton","Aussi « el paso de cebra » en Espagne. On y traverse : « cruzar por el paso de peatones ».","🚸","Cruce por el paso de peatones.","Traversez au passage piéton."],
+  ["la rotonda","/la roˈtonda/","le rond-point","Espagne : aussi « la glorieta ». Amérique latine : « la rotonda » ou « el redondel » selon les pays.","⭕","Hay una rotonda después del puente.","Il y a un rond-point après le pont."],
+  ["la acera","/la aˈθeɾa/","le trottoir","Amérique latine : « la vereda » (Argentine, Pérou, Chili) ou « la banqueta » (Mexique). Féminin.","👣","Estamos caminando por la acera.","Nous marchons sur le trottoir."]
+ ]),
+ blk("Estar + gérondif : les verbes de la leçon (tous réguliers)", [
+  ["buscar → buscando","/busˈkaɾ · busˈkando/","chercher → en train de chercher","Radical busc- + -ando. Se construit SANS préposition : « buscar la farmacia » (on ne dit pas « buscar por »).","🔍","Estoy buscando la farmacia.","Je suis en train de chercher la pharmacie."],
+  ["hablar → hablando","/aˈβlaɾ · aˈβlando/","parler → en train de parler","h muette : a-BLAN-do. Verbe en -AR : -ando.","🗣️","Ana está hablando con un señor.","Ana est en train de parler avec un monsieur."],
+  ["esperar → esperando","/espeˈɾaɾ · espeˈɾando/","attendre → en train d'attendre","Se construit sans préposition : esperar el autobús. esperar veut aussi dire « espérer ».","⏳","Estamos esperando el autobús.","Nous sommes en train d'attendre le bus."],
+  ["caminar → caminando","/kamiˈnaɾ · kamiˈnando/","marcher → en train de marcher","Verbe en -AR régulier. « caminar por la acera » = marcher sur le trottoir.","🚶","Estás caminando muy rápido.","Tu marches très vite."],
+  ["cruzar → cruzando","/kɾuˈθaɾ · kɾuˈθando/","traverser → en train de traverser","Le gérondif garde le z : cruzando (le z devient c seulement devant e : cruce). Se construit sans préposition : cruzar la calle.","↔️","Los niños están cruzando la calle.","Les enfants sont en train de traverser la rue."],
+  ["preguntar → preguntando","/pɾeɣunˈtaɾ · pɾeɣunˈtando/","demander (une question) → en train de demander","gu devant u se prononce « g » dur : pre-gun-TAR. « preguntar por » = demander où est… (preguntar por la estación).","❓","Estoy preguntando por la estación.","Je demande où est la gare."],
+  ["mirar → mirando","/miˈɾaɾ · miˈɾando/","regarder → en train de regarder","Se construit sans préposition : mirar el mapa. r simple entre voyelles = r « tapé ».","👀","Estoy mirando el mapa.","Je suis en train de regarder le plan."],
+  ["llegar → llegando","/ʝeˈɣaɾ · ʝeˈɣando/","arriver → en train d'arriver","ll = y : ye-GAN-do. « llegar a + lieu » : llegar a la plaza.","📍","Estamos llegando a la plaza.","Nous arrivons à la place."],
+  ["bajar → bajando","/baˈxaɾ · baˈxando/","descendre → en train de descendre","j = kh : ba-KHAN-do. « bajar del metro », « bajar del autobús ».","⬇️","Estáis bajando del metro.","Vous êtes en train de descendre du métro."],
+  ["subir → subiendo","/suˈβiɾ · suˈβjendo/","monter → en train de monter","Verbe en -IR : -iendo. « subir al tren ». ie = diphtongue : su-BYEN-do.","⬆️","Están subiendo al tren.","Ils sont en train de monter dans le train."],
+  ["comer → comiendo","/koˈmeɾ · koˈmjendo/","manger → en train de manger","Verbe en -ER : -iendo. ie = diphtongue : ko-MYEN-do (une seule syllabe « yen »).","🍽️","Estás comiendo en la cafetería.","Tu es en train de manger au café."],
+  ["vivir → viviendo","/biˈβiɾ · biˈβjendo/","vivre, habiter → en train de vivre","Verbe en -IR : -iendo. v = b. « Está viviendo en Madrid » = elle habite à Madrid en ce moment (situation provisoire).","🏠","Mi tía está viviendo en Madrid.","Ma tante vit à Madrid en ce moment."],
+  ["beber → bebiendo","/beˈβeɾ · beˈβjendo/","boire → en train de boire","Verbe en -ER : -iendo. Les deux b se prononcent de façon douce.","🥤","Estoy bebiendo un café.","Je suis en train de boire un café."],
+  ["escribir → escribiendo","/eskɾiˈβiɾ · eskɾiˈβjendo/","écrire → en train d'écrire","Verbe en -IR : -iendo. Se construit sans préposition : escribir la dirección.","✍️","Estoy escribiendo la dirección.","Je suis en train d'écrire l'adresse."],
+  ["aprender → aprendiendo","/apɾenˈdeɾ · apɾenˈdjendo/","apprendre → en train d'apprendre","Verbe en -ER : -iendo. Se construit sans préposition : aprender español.","🎓","Estamos aprendiendo español.","Nous sommes en train d'apprendre l'espagnol."],
+  ["ahora · ahora mismo · en este momento","/aˈoɾa · aˈoɾa ˈmismo · en ˈeste moˈmento/","maintenant · tout de suite, à l'instant · en ce moment","Les trois mots-clés du présent continu. h muette : a-O-ra. « ahora mismo » insiste : exactement maintenant.","⏱️","Ahora estoy en la plaza.","Maintenant je suis sur la place."]
+ ]),
+ blk("Consignes échelonnées : Primero, luego, después, por último", [
+  ["primero","/pɾiˈmeɾo/","d'abord, premièrement","Premier mot d'un itinéraire. Comme adverbe, il ne change jamais : « Primero, siga recto ». Comme adjectif, il s'accorde : la primera calle.","1️⃣","Primero, siga recto por esta avenida.","D'abord, continuez tout droit sur cette avenue."],
+  ["luego","/ˈlwego/","ensuite, puis","ue = diphtongue : LWE-go. Aussi dans « hasta luego » (à tout à l'heure). Synonyme proche de « después ».","2️⃣","Luego, gire a la izquierda.","Ensuite, tournez à gauche."],
+  ["después","/desˈpwes/","après, puis","Accent écrit sur le é. Avec un nom : « después de » + nom (después del semáforo = après le feu).","3️⃣","Después, la farmacia está al lado del banco.","Ensuite, la pharmacie est à côté de la banque."],
+  ["por último","/poɾ ˈultimo/","pour finir, en dernier lieu","Accent écrit sur ÚL-ti-mo. Synonymes : « al final », « finalmente ». Marque la dernière étape.","🏁","Por último, la biblioteca está enfrente del parque.","Pour finir, la bibliothèque est en face du parc."],
+  ["Sigue recto · Siga recto","/ˈsiɣe ˈrrekto · ˈsiɣa ˈrrekto/","continue tout droit · continuez tout droit","Impératif vu en A1.4 : tú → sigue ; usted → siga. En Amérique latine, on entend aussi « siga derecho ».","➡️","Siga recto hasta el semáforo.","Continuez tout droit jusqu'au feu."],
+  ["Gira a la izquierda · Gire a la izquierda","/ˈxiɾa a la iθˈkjeɾða · ˈxiɾe a la iθˈkjeɾða/","tourne à gauche · tournez à gauche","tú → gira ; usted → gire (g devant i/e = kh). Espagne : girar. Amérique latine : « dobla / doble a la izquierda » (doblar).","⬅️","Gire a la izquierda en la plaza.","Tournez à gauche sur la place."],
+  ["Cruza la calle · Cruce la calle","/ˈkɾuθa la ˈkaʝe · ˈkɾuθe la ˈkaʝe/","traverse la rue · traversez la rue","tú → cruza ; usted → cruce : le z devient c devant -e (orthographe). Même schéma que gira / gire.","🚸","Cruce la calle por el paso de peatones.","Traversez la rue au passage piéton."],
+  ["Toma la primera calle · Tome la primera calle","/ˈtoma la pɾiˈmeɾa ˈkaʝe · ˈtome la pɾiˈmeɾa ˈkaʝe/","prends la première rue · prenez la première rue","tú → toma ; usted → tome. En Espagne, on entend « coge » ; en Amérique latine « coger » est grossier : « tomar » est le choix neutre partout.","1️⃣","Tome la segunda calle a la derecha.","Prenez la deuxième rue à droite."],
+  ["hasta","/ˈasta/","jusqu'à","h muette : AS-ta. « hasta el semáforo » = jusqu'au feu ; « hasta la plaza » = jusqu'à la place.","🎯","Siga recto hasta la plaza.","Continuez tout droit jusqu'à la place."],
+  ["la primera calle · la segunda calle","/la pɾiˈmeɾa ˈkaʝe · la seˈɣunda ˈkaʝe/","la première rue · la deuxième rue","Les ordinaux s'accordent : primero / primera, segundo / segunda, tercero / tercera. Devant un nom masculin singulier : el primer semáforo.","🔢","Es la segunda calle a la izquierda.","C'est la deuxième rue à gauche."],
+  ["al final de la calle","/al fiˈnal de la ˈkaʝe/","au bout de la rue","« al final de » = au bout de. Accent sur la dernière syllabe : fi-NAL.","🏁","El banco está al final de la calle.","La banque est au bout de la rue."],
+  ["Estoy buscando…","/esˈtoj busˈkando/","je cherche… (en ce moment)","Phrase clé pour demander de l'aide. « Busco… » existe aussi ; « estoy buscando » insiste sur la recherche en cours, là, maintenant.","🙋","Perdone, estoy buscando la farmacia.","Excusez-moi, je cherche la pharmacie."]
+ ])
+);
+LESSONS_ES[208] = {
+ code:"A1.8", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["la farmacia","la oficina de correos","perdido / perdida","bajarse","subirse","buscar → buscando","comer → comiendo","vivir → viviendo","Perdón, ¿puede repetir? · ¿Puedes repetir?","Sigue recto · Siga recto"]),
+ MINI_CHECKS: [
+  {q:"« Je suis en train de chercher la banque. »", opts:["Estoy buscando el banco.","Estoy buscar el banco.","Soy buscando el banco."], correct:0, fb:"Présent continu = ESTAR conjugué + gérondif (radical + -ando). On n'utilise jamais l'infinitif après estar, et SER ne convient pas."},
+  {q:"Gérondif de « vivir » :", opts:["viviendo","vivando","vivindo"], correct:0, fb:"Les verbes en -ER et -IR prennent -iendo : vivir → viviendo, comer → comiendo."},
+  {q:"Une femme perdue dit :", opts:["Estoy perdido.","Estoy perdida."], correct:1, fb:"perdido s'accorde avec la personne qui parle : une femme dit perdida. Avec ESTAR, car c'est un état passager."},
+  {q:"« Siga recto » s'adresse à quelqu'un que l'on…", opts:["tutoie (tú)","vouvoie (usted)"], correct:1, fb:"siga = impératif d'usted ; au tutoiement on dit « sigue recto »."},
+  {q:"« Nous descendons à la prochaine station. »", opts:["Nos bajamos en la próxima parada.","Bajamos nos en la próxima parada.","Nosotros bajamos se en la próxima parada."], correct:0, fb:"bajarse est pronominal : le pronom (nos) se place avant le verbe conjugué : nos bajamos."},
+  {q:"Pour dire « ensuite » dans un itinéraire :", opts:["luego","primero","por último"], correct:0, fb:"primero = d'abord, luego / después = ensuite, por último = pour finir."},
+  {q:"Pour retirer de l'argent liquide, tu vas…", opts:["al banco","a la farmacia","al gimnasio"], correct:0, fb:"El banco (ou el cajero automático) : on retire de l'argent. a + el = al."},
+  {q:"Les verbes en -ER / -IR forment leur gérondif en…", opts:["-ando","-iendo"], correct:1, fb:"-AR → -ando (buscando) ; -ER / -IR → -iendo (comiendo, viviendo)."}
+ ],
+ ROUNDS: [
+  __esR("Estoy buscando la farmacia.","Je suis en train de chercher la pharmacie."),
+  __esR("¿Estás comiendo en la cafetería?","Es-tu en train de manger au café ?"),
+  __esR("Está viviendo cerca del parque.","Il vit près du parc en ce moment."),
+  __esR("Estamos esperando el autobús.","Nous attendons le bus."),
+  __esR("Primero, siga recto por esta avenida.","D'abord, continuez tout droit sur cette avenue."),
+  __esR("Luego, gire a la izquierda.","Ensuite, tournez à gauche."),
+  __esR("Después, la farmacia está al lado del banco.","Ensuite, la pharmacie est à côté de la banque."),
+  __esR("Perdón, ¿puede repetir, por favor?","Pardon, pouvez-vous répéter, s'il vous plaît ?"),
+  __esR("No entiendo, ¿puedes repetir?","Je ne comprends pas, peux-tu répéter ?"),
+  __esR("Me bajo en la próxima parada.","Je descends au prochain arrêt."),
+  __esR("Los turistas están subiendo al tren.","Les touristes sont en train de monter dans le train."),
+  __esR("Por último, cruce la calle.","Pour finir, traversez la rue."),
+  __esR("¿Está lejos la oficina de correos?","Le bureau de poste est-il loin ?")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"« Je suis en train de chercher la banque. »", opts:["Estoy buscando el banco.","Estoy buscar el banco.","Soy buscando el banco."], correct:0, why:"estar + gérondif : estoy + buscando. Jamais d'infinitif après estar, et jamais ser."},
+  {cat:"ecrit", q:"Gérondif de « hablar » :", opts:["hablando","hablendo","hablaindo"], correct:0, why:"Verbe en -AR : radical habl- + -ando = hablando (h muette)."},
+  {cat:"ecrit", q:"Gérondif de « comer » :", opts:["comiendo","comando","comendo"], correct:0, why:"Verbe en -ER : radical com- + -iendo = comiendo."},
+  {cat:"ecrit", q:"Gérondif de « vivir » :", opts:["viviendo","vivando","vivindo"], correct:0, why:"Verbe en -IR : radical viv- + -iendo = viviendo."},
+  {cat:"ecrit", q:"Tú ___ comiendo en el parque.", opts:["eres","estás","tienes"], correct:1, why:"Le présent continu se forme avec ESTAR : tú estás (accent écrit) + gérondif."},
+  {cat:"ecrit", q:"« Nous sommes en train de chercher. »", opts:["Estamos buscando.","Estamos buscamos.","Estamos buscado."], correct:0, why:"estamos (nosotros) + buscando. Le gérondif ne change jamais de forme."},
+  {cat:"ecrit", q:"Vosotros ___ bajando del metro. (Espagne)", opts:["sois","estáis","están"], correct:1, why:"vosotros → estáis (accent écrit). « están » irait avec ellos / ustedes."},
+  {cat:"ecrit", q:"Une femme perdue dit : « Estoy ___ . »", opts:["perdido","perdida","perdidas"], correct:1, why:"perdida : accord au féminin singulier avec la personne qui parle."},
+  {cat:"ecrit", q:"Vous devez envoyer une lettre importante. Vous allez à…", opts:["la oficina de correos","la farmacia","el gimnasio"], correct:0, why:"La oficina de correos : le bureau de poste (en Amérique latine : el correo)."},
+  {cat:"ecrit", q:"Quel mot ouvre un itinéraire ?", opts:["Primero","Por último","Luego"], correct:0, why:"Primero = d'abord ; luego / después = ensuite ; por último = pour finir."},
+  {cat:"ecrit", q:"Tú : « Sigue recto. » Usted : « ___ recto. »", opts:["Siga","Sigues","Seguir"], correct:0, why:"L'impératif d'usted de seguir est siga (comme gire pour girar)."},
+  {cat:"ecrit", q:"Tú : « Gira a la izquierda. » Usted : « ___ a la izquierda. »", opts:["Gire","Giras","Girad"], correct:0, why:"usted → gire : le -a de gira devient -e."},
+  {cat:"ecrit", q:"« Pardon, pouvez-vous répéter ? » (à une dame âgée)", opts:["Perdón, ¿puede repetir?","Perdón, ¿puedes repetir?","Perdón, ¿puedo repetir?"], correct:0, why:"Dame âgée = usted : puede. « puedes » = tú ; « puedo » = je peux (moi)."},
+  {cat:"ecrit", q:"« Je descends au prochain arrêt. »", opts:["Me bajo en la próxima parada.","Bajo me en la próxima parada.","Se bajo en la próxima parada."], correct:0, why:"bajarse est pronominal : yo → me bajo. Le pronom précède le verbe."},
+  {cat:"oral", audio:"Estoy buscando el banco.", q:"Écoute : que fait la personne ?", opts:["Elle cherche la banque","Elle cherche la pharmacie","Elle est à la banque"], correct:0, why:"estoy buscando = je suis en train de chercher ; el banco = la banque."},
+  {cat:"oral", audio:"Perdón, ¿puede repetir?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« puede » = vouvoiement. Au tutoiement : ¿puedes repetir?"},
+  {cat:"oral", audio:"Primero, siga recto. Luego, gire a la derecha.", q:"Écoute : où faut-il tourner ?", opts:["À gauche","À droite","Il ne faut pas tourner"], correct:1, why:"« gire a la derecha » : tournez à droite, après avoir continué tout droit."},
+  {cat:"oral", audio:"Estamos esperando el autobús en la parada.", q:"Écoute : que font-ils ?", opts:["Ils attendent le bus","Ils montent dans le bus","Ils descendent du bus"], correct:0, why:"estamos esperando = nous sommes en train d'attendre."},
+  {cat:"oral", audio:"La farmacia está enfrente del supermercado.", q:"Écoute : où est la pharmacie ?", opts:["À côté du supermarché","En face du supermarché","Loin du supermarché"], correct:1, why:"enfrente del = en face du (de + el = del)."},
+  {cat:"comprehension", passage:"— ¡Hola! Estoy perdido. Estoy buscando la farmacia.\n— No se preocupe. Primero, siga recto por esta avenida. Luego, en el semáforo, gire a la izquierda. Después, la farmacia está al lado del banco.", q:"Que cherche la personne ?", opts:["La banque","La pharmacie","Le feu"], correct:1, why:"« Estoy buscando la farmacia » : elle cherche la pharmacie."},
+  {cat:"comprehension", passage:"— ¡Hola! Estoy perdido. Estoy buscando la farmacia.\n— No se preocupe. Primero, siga recto por esta avenida. Luego, en el semáforo, gire a la izquierda. Después, la farmacia está al lado del banco.", q:"Où est la pharmacie ?", opts:["En face du feu","À côté de la banque","Au bout de l'avenue"], correct:1, why:"« al lado del banco » : à côté de la banque. Le feu sert seulement à tourner à gauche."},
+  {cat:"comprehension", passage:"Marta: Hola, Pedro. Estoy en la parada y estoy esperando el autobús. ¿Está lejos el parque?\nPedro: No, está a cinco minutos a pie. Primero, cruza la calle. Luego, sigue recto hasta la plaza. Por último, gira a la derecha. El parque está enfrente del hospital.", q:"Que fait Marta en ce moment ?", opts:["Elle attend le bus","Elle traverse la rue","Elle est au parc"], correct:0, why:"« estoy esperando el autobús » : elle attend le bus à l'arrêt."},
+  {cat:"comprehension", passage:"Marta: Hola, Pedro. Estoy en la parada y estoy esperando el autobús. ¿Está lejos el parque?\nPedro: No, está a cinco minutos a pie. Primero, cruza la calle. Luego, sigue recto hasta la plaza. Por último, gira a la derecha. El parque está enfrente del hospital.", q:"Que doit-elle faire en dernier ?", opts:["Traverser la rue","Continuer jusqu'à la place","Tourner à droite"], correct:2, why:"« Por último, gira a la derecha » : la dernière étape est de tourner à droite."},
+  {cat:"comprehension", passage:"Turista: Perdón, ¿puede repetir? No entiendo.\nEmpleada: Claro, señor. Primero, cambie de tren en la estación Central. Después, baje en la tercera parada. La biblioteca está a dos minutos.", q:"Que doit faire le touriste d'abord ?", opts:["Changer de train à la gare Centrale","Descendre à la troisième station","Marcher deux minutes"], correct:0, why:"« Primero, cambie de tren en la estación Central » : c'est la première étape."}
+ ],
+ REVIEW: [
+  {q:"« Más barato » signifie :", opts:["moins cher","plus cher"], correct:0, fb:"barato = bon marché ; más barato = moins cher. (rappel A1.7)"},
+  {q:"« Ce sac » (masculin, près de moi) :", opts:["este bolso","esta bolso","estos bolso"], correct:0, fb:"bolso est masculin singulier : este bolso. (rappel A1.7)"},
+  {q:"« Puis-je l'essayer ? » (une veste = la chaqueta)", opts:["¿Puedo probármela?","¿Puedo probármelo?"], correct:0, fb:"Le pronom suit le genre de la veste (féminin) : la → probármela. (rappel A1.7)"},
+  {q:"« Me lo llevo » signifie :", opts:["Je le prends (je l'achète).","Je le porte."], correct:0, fb:"« Me lo llevo » conclut un achat : je le prends. (rappel A1.7)"},
+  {q:"Esta chaqueta es ___ que esa. (meilleure)", opts:["mejor","más buena"], correct:0, fb:"Le comparatif de bueno est irrégulier : mejor. (rappel A1.7)"}
+ ],
+ PRON_VERBS: [
+  {en:"Estoy buscando la farmacia.", fr:"Je suis en train de chercher la pharmacie. (bus-KAN-do ; far-MA-thia : c = th en Espagne)"},
+  {en:"Estás comiendo en el parque.", fr:"Tu manges dans le parc. (co-MIEN-do : ie = une seule syllabe « yen »)"},
+  {en:"Está viviendo en Madrid.", fr:"Il vit à Madrid en ce moment. (v = b : bi-BIEN-do)"},
+  {en:"Estamos esperando el autobús.", fr:"Nous attendons le bus. (es-pe-RAN-do ; au-to-BUS : accent sur la fin)"},
+  {en:"Estáis bajando del metro.", fr:"Vous descendez du métro. (j = kh : ba-KHAN-do)"},
+  {en:"Están subiendo al tren.", fr:"Ils montent dans le train. (su-BIEN-do ; v/b doux)"},
+  {en:"Gire a la izquierda.", fr:"Tournez à gauche. (g devant i = kh : KHI-re ; iz-KIER-da : z = th)"},
+  {en:"Siga recto hasta la plaza.", fr:"Continuez tout droit jusqu'à la place. (r roulée : RREK-to ; h muette : AS-ta)"},
+  {en:"Perdón, ¿puede repetir?", fr:"Pardon, pouvez-vous répéter ? (per-DON ; PWE-de ; re-pe-TIR : accent sur la fin)"},
+  {en:"La oficina de correos está al lado del ayuntamiento.", fr:"Le bureau de poste est à côté de la mairie. (o-fi-THI-na ; ko-RRE-os ; a-yun-ta-MYEN-to)"}
+ ],
+ READING: [
+  "Tomás está en una ciudad nueva y está perdido.",
+  "Está buscando la biblioteca, pero no tiene mapa.",
+  "Pregunta a una señora: «Perdone, ¿está lejos la biblioteca?»",
+  "La señora está esperando el autobús en la parada.",
+  "—Primero, siga recto por esta avenida. Luego, gire a la izquierda en el semáforo.",
+  "—Después, cruce la plaza. Por último, la biblioteca está enfrente del parque.",
+  "Tomás no entiende todo y pregunta: «Perdón, ¿puede repetir?»",
+  "La señora habla más despacio y Tomás está escribiendo las indicaciones.",
+  "Veinte minutos después, Tomás está en la biblioteca.",
+  "Está muy contento porque ahora no está perdido."
+ ],
+ GLOSS: [
+  {en:"las indicaciones", fr:"les indications, les consignes d'itinéraire"},
+  {en:"despacio", fr:"lentement (adverbe invariable)"},
+  {en:"por esta avenida", fr:"sur cette avenue : « por » = par, le long de"},
+  {en:"enfrente del parque", fr:"en face du parc : de + el = del"},
+  {en:"no entiende todo", fr:"il ne comprend pas tout (entender : e → ie)"},
+  {en:"Perdone", fr:"excusez-moi (usted) ; au tutoiement : « perdona »"},
+  {en:"está esperando", fr:"est en train d'attendre : estar + gérondif"},
+  {en:"veinte minutos después", fr:"vingt minutes plus tard"}
+ ],
+ GRAMMAR1: {
+  heading:"Le présent continu : ESTAR + gérondif (estoy buscando)",
+  lede:"Tu connais déjà ESTAR (le lieu, les émotions, l'état du moment, vus en A1.0). Il a un deuxième rôle : accompagné d'un verbe terminé en -ando ou -iendo (le gérondif), il dit qu'une action est EN TRAIN de se dérouler, là, maintenant. C'est l'outil parfait pour t'expliquer quand tu es perdu : « Estoy buscando la farmacia. ».",
+  conj:[
+   ["yo →","estoy buscando","Estoy buscando la farmacia. Estoy perdido."],
+   ["tú →","estás comiendo","¿Estás comiendo en la cafetería? ¿Estás esperando el autobús?"],
+   ["él, ella, usted →","está viviendo","Mi tía está viviendo en Madrid. ¿Está usted buscando la estación?"],
+   ["nosotros/as →","estamos buscando","Estamos buscando el banco. Estamos llegando a la plaza."],
+   ["vosotros/as →","estáis bajando","¿Estáis bajando del metro? ¿Estáis hablando con el señor?"],
+   ["ellos, ellas, ustedes →","están subiendo","Los turistas están subiendo al autobús. ¿Están ustedes esperando aquí?"]
+  ],
+  ruleHtml:"📖 <b>1. Formation.</b> <b>ESTAR au présent</b> (estoy, estás, está, estamos, estáis, están) + le <b>gérondif</b>, qui ne change JAMAIS de forme (pas d'accord, pas de féminin, pas de pluriel). Le gérondif se fabrique avec le radical de l'infinitif :<br>• verbes en <b>-AR</b> → radical + <b>-ando</b> : buscar → <b>buscando</b>, hablar → <b>hablando</b>, esperar → <b>esperando</b>, bajar → <b>bajando</b><br>• verbes en <b>-ER / -IR</b> → radical + <b>-iendo</b> : comer → <b>comiendo</b>, vivir → <b>viviendo</b>, subir → <b>subiendo</b>, beber → <b>bebiendo</b><br>Les verbes de cette leçon sont tous réguliers : applique la règle sans exception.<br><br>📖 <b>2. Quand l'employer.</b> Pour une action <b>en cours</b>, que l'on voit ou que l'on fait en ce moment : Estoy buscando la farmacia (là, maintenant). Mots-clés : <b>ahora, ahora mismo, en este momento</b>. Il traduit « être en train de… ». Nuance utile : l'espagnol utilise aussi le présent simple pour « en ce moment » (« Busco la farmacia » est correct) ; estar + gérondif <b>insiste</b> sur l'action qui se déroule sous les yeux.<br><br>👥 <b>Tutoiement ET vouvoiement</b> : tú → <b>¿Estás buscando la estación?</b> · usted → <b>¿Está buscando la estación?</b> (usted se conjugue comme él/ella, ustedes comme ellos/ellas). Pluriel amical : <b>vosotros estáis</b> (Espagne) ; <b>ustedes están</b> (Amérique latine et vouvoiement du pluriel).<br><br>⚠️ <b>Pièges de francophone.</b> (1) Jamais d'infinitif après estar : « estoy buscar » est faux, on dit <b>estoy buscando</b>. (2) « Je suis en train de » ne se traduit PAS par « estoy en tren de » : estar + gérondif suffit. (3) Pas de ser : « soy buscando » est faux. (4) Les accents écrits sur <b>estás, está, estáis, están</b> sont obligatoires. (5) Le complément se met après le gérondif, sans préposition en plus : buscar la farmacia (pas « buscar por »). (6) On n'emploie pas ce temps pour le futur : « demain je voyage » ne se dit pas avec estar.<br><br>⚠️ <b>« Estoy yendo a… » : à éviter.</b> Le verbe ir a bien un gérondif (yendo), mais « estoy yendo a la farmacia » sonne peu naturel : l'espagnol dit tout simplement <b>voy a la farmacia</b> (je vais à la pharmacie, je suis en route). Pour les verbes de déplacement, préfère donc le présent simple : voy, vas, va (vus en A1.4). Garde estar + gérondif pour les actions qui durent : buscar, esperar, caminar, comer, hablar, bajar, subir…<br><br>🔤 <b>Orthographe et prononciation.</b> -iendo se prononce « yen-do » en une seule syllabe : co-MIEN-do, vi-VIEN-do. L'accent tonique tombe toujours juste avant -do : bus-KAN-do, su-BIEN-do. Le z de cruzar reste z : cruzando.",
+  dialogueLede:"Deux jeunes se parlent dans la rue (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola! ¿Qué estás buscando?", fr:"Salut ! Que cherches-tu ?"},
+   {who:"you", en:"Estoy buscando la biblioteca. Estoy perdida.", fr:"Je cherche la bibliothèque. Je suis perdue."},
+   {who:"them", en:"No te preocupes. Estoy esperando el autobús aquí, pero la biblioteca está cerca.", fr:"Ne t'inquiète pas. J'attends le bus ici, mais la bibliothèque est près."},
+   {who:"you", en:"¿Está lejos?", fr:"C'est loin ?"},
+   {who:"them", en:"No, está a cinco minutos a pie, al lado del parque.", fr:"Non, c'est à cinq minutes à pied, à côté du parc."},
+   {who:"you", en:"Perfecto, ¡gracias!", fr:"Parfait, merci !"}
+  ],
+  whyLabel:"Pourquoi ESTAR (et pas SER) pour une action en cours ?",
+  whyText:"C'est le même ESTAR que pour les émotions et la position (vu en A1.0). La logique est identique : une action en cours est <b>temporaire</b> par nature (« en ce moment »), alors que SER décrit ce qui est permanent. <b>Estoy buscando</b> = je suis dans l'état « en train de chercher » ; demain, ce ne sera plus vrai. D'où le test pratique : si tu peux ajouter « en ce moment / ahora mismo » (« Estoy buscando la farmacia ahora mismo »), tu es dans le bon cas. Et comme tu connais déjà estar (estoy, estás, está…), tu n'as presque rien de nouveau à mémoriser : juste la terminaison <b>-ando / -iendo</b>. Un seul verbe déjà maîtrisé te donne soudain mille nouvelles phrases."
+ },
+ GRAMMAR2: {
+  heading:"Donner et comprendre un itinéraire : primero, luego, después, por último + impératif",
+  dialogueLede:"Dans la rue, un touriste perdu et une passante (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, señor. ¿Está perdido?", fr:"Bonjour, monsieur. Vous êtes perdu ?"},
+   {who:"you", en:"Sí, estoy buscando el hospital. ¿Está lejos?", fr:"Oui, je cherche l'hôpital. C'est loin ?"},
+   {who:"them", en:"No, está a diez minutos. Primero, siga recto por esta avenida. Luego, gire a la derecha en el semáforo.", fr:"Non, c'est à dix minutes. D'abord, continuez tout droit sur cette avenue. Ensuite, tournez à droite au feu."},
+   {who:"you", en:"Perdón, ¿puede repetir? No entiendo.", fr:"Pardon, pouvez-vous répéter ? Je ne comprends pas."},
+   {who:"them", en:"Claro. Primero, siga recto. Después, gire a la derecha. Por último, el hospital está enfrente del parque.", fr:"Bien sûr. D'abord, continuez tout droit. Ensuite, tournez à droite. Pour finir, l'hôpital est en face du parc."},
+   {who:"you", en:"Muchas gracias, señora.", fr:"Merci beaucoup, madame."}
+  ],
+  ruleHtml:"💭 <b>1. Enchaîner les étapes.</b> Pour un itinéraire, on aligne les consignes dans l'ordre : <b>Primero</b> (d'abord) → <b>Luego</b> (ensuite) → <b>Después</b> (puis, après) → <b>Por último</b> (pour finir). Chaque connecteur est suivi d'une virgule et d'une consigne. Exemple complet : <b>Primero, siga recto. Luego, gire a la izquierda. Después, cruce la calle. Por último, el banco está al lado de la farmacia.</b> La dernière étape décrit souvent l'arrivée avec « está… » (al lado de, enfrente de, entre…).<br><br>💭 <b>2. Les consignes à l'impératif, en tú ET en usted.</b> Tu connais déjà sigue / siga et gira / gire (A1.4). Même schéma pour d'autres verbes :<br>• seguir : <b>sigue</b> (tú) / <b>siga</b> (usted)<br>• girar : <b>gira</b> / <b>gire</b> (Amérique latine : doblar → dobla / doble)<br>• cruzar : <b>cruza</b> / <b>cruce</b> (z → c devant e)<br>• tomar : <b>toma</b> / <b>tome</b> (prendre ; en Espagne on entend aussi « coge », mais « coger » est grossier en Amérique latine : « tomar » est neutre partout)<br>• bajar : <b>baja</b> / <b>baje</b> (descendre)<br>Astuce : tú → terminaison en -a (verbes en -ar) ; usted → terminaison en -e. Au touriste âgé ou à un inconnu : usted (siga, gire). Entre jeunes : tú (sigue, gira).<br><br>💭 <b>3. Les verbes pronominaux bajarse et subirse.</b> Pour les transports, l'espagnol utilise des verbes avec un pronom : <b>me bajo, te bajas, se baja, nos bajamos, os bajáis, se bajan</b> et <b>me subo, te subes, se sube, nos subimos, os subís, se suben</b>. Le pronom (me, te, se, nos, os, se) se place AVANT le verbe conjugué. Constructions : <b>bajarse del autobús</b> (de + el = del), <b>bajarse en la próxima parada</b>, <b>subirse al metro</b> (a + el = al). Piège : en français « descendre / monter » n'est pas pronominal ; en espagnol, on dit « me bajo », pas « bajo ».<br><br>💭 <b>4. Questions de clarification.</b> Quand tu ne comprends pas : <b>Perdón, ¿puede repetir?</b> (usted) / <b>¿Puedes repetir?</b> (tú) · <b>No entiendo</b> · <b>Más despacio, por favor</b> · <b>¿Puede ayudarme?</b> (usted) / <b>¿Puedes ayudarme?</b> (tú) · <b>¿Está lejos?</b> · <b>¿Cómo?</b> (pardon ? comment ?). Pour rassurer : <b>No te preocupes</b> (tú) / <b>No se preocupe</b> (usted). Pour attirer l'attention : <b>Perdona / Perdone</b> ; en Amérique latine, on entend beaucoup <b>Disculpa / Disculpe</b>.<br><br>💭 <b>5. Está en… ou Hay… ?</b> Pour situer : <b>La farmacia está al lado del banco</b> (je connais cette pharmacie) ; pour demander si elle existe : <b>¿Hay una farmacia por aquí?</b> — réponse : <b>Sí, hay una en la esquina.</b> « hay » est invariable : hay una tienda, hay dos bancos.<br><br>💭 <b>6. Mélanger le présent continu et les consignes.</b> Le premier dit où tu es ou ce que tu fais, les secondes guident l'autre : « Estoy buscando la farmacia. » — « Primero, siga recto… ». Variantes régionales utiles : <b>cuadra</b> (Amérique latine) = <b>manzana</b> / « calle » (Espagne) ; <b>vereda</b> ou <b>banqueta</b> = <b>acera</b> ; <b>doblar</b> = <b>girar</b>.",
+  whyLabel:"Pourquoi des consignes en plusieurs étapes ?",
+  whyText:"Un itinéraire se dit mieux en petites étapes qu'en une seule longue phrase : les connecteurs <b>primero, luego, después, por último</b> servent de repères, comme les numéros d'une liste. Avantage pour toi : tu as seulement trois ou quatre petits verbes à l'impératif (sigue / siga, gira / gire, cruza / cruce) et des connecteurs qui ne changent jamais. Le piège est le choix de la forme : <b>tú</b> pour un ami ou un jeune, <b>usted</b> pour un inconnu plus âgé, un employé, un client. En cas de doute, usted est toujours poli. Et si tu ne comprends pas, ne fais pas semblant : « Perdón, ¿puede repetir? » est une phrase normale, que les Espagnols et les Latino-américains entendent tous les jours."
+ },
+ DRILLS: [
+  {type:"fill", text:"Yo estoy ___ la farmacia. (buscar)", answers:["buscando"], why:"-AR : radical busc- + -ando = buscando."},
+  {type:"fill", text:"Tú estás ___ en el parque. (comer)", answers:["comiendo"], why:"-ER : radical com- + -iendo = comiendo."},
+  {type:"fill", text:"Ella está ___ aquí. (vivir)", answers:["viviendo"], why:"-IR : radical viv- + -iendo = viviendo."},
+  {type:"fill", text:"Nosotros estamos ___ el autobús. (esperar)", answers:["esperando"], why:"-AR : esperar → esperando."},
+  {type:"fill", text:"Vosotros estáis ___ del metro. (bajar)", answers:["bajando"], why:"-AR : bajar → bajando (j = kh)."},
+  {type:"fill", text:"Ellos están ___ al tren. (subir)", answers:["subiendo"], why:"-IR : subir → subiendo."},
+  {type:"fill", text:"Usted está ___ por la avenida. (caminar)", answers:["caminando"], why:"usted → está ; caminar → caminando."},
+  {type:"fill", text:"Estoy ___ la calle. (cruzar)", answers:["cruzando"], why:"cruzar → cruzando : le z reste z."},
+  {type:"fill", text:"¿Estás ___ español? (hablar)", answers:["hablando"], why:"hablar → hablando. On dit « hablar español » : pas de préposition."},
+  {type:"fill", text:"Ana y Luis están ___ un café. (beber)", answers:["bebiendo"], why:"-ER : beber → bebiendo."},
+  {type:"fill", text:"___ , siga recto por la avenida. (d'abord)", answers:["Primero","primero"], why:"Primero ouvre l'itinéraire."},
+  {type:"fill", text:"Siga recto y ___ gire a la izquierda. (ensuite)", answers:["luego","Luego","después","Después"], why:"luego et después veulent tous les deux dire « ensuite » : on les enchaîne."},
+  {type:"fill", text:"___ último, la farmacia está a la derecha.", answers:["Por","por"], why:"« Por último » = pour finir, en dernier lieu."},
+  {type:"fill", text:"Tú : Gira a la izquierda. Usted : ___ a la izquierda.", answers:["Gire","gire"], why:"Impératif d'usted : gire."},
+  {type:"fill", text:"Tú : Sigue recto. Usted : ___ recto.", answers:["Siga","siga"], why:"Impératif d'usted : siga."},
+  {type:"fill", text:"Tú : Cruza la calle. Usted : ___ la calle.", answers:["Cruce","cruce"], why:"Impératif d'usted : cruce (z → c devant e)."},
+  {type:"fill", text:"Yo ___ bajo en la próxima parada. (bajarse)", answers:["me","Me"], why:"Pronominal : yo → me bajo."},
+  {type:"fill", text:"Ellos ___ suben al autobús. (subirse)", answers:["se","Se"], why:"Pronominal : ellos → se suben."},
+  {type:"fill", text:"Nosotros ___ bajamos en la plaza. (bajarse)", answers:["nos","Nos"], why:"Pronominal : nosotros → nos bajamos."},
+  {type:"choice", q:"La panadería está en la esquina, a cinco minutos. Est-ce près ou loin ?", opts:["Cerca","Lejos"], correct:0, why:"Cinq minutes, au coin : c'est près (cerca)."},
+  {type:"choice", q:"Une femme perdue dit :", opts:["Estoy perdido.","Estoy perdida."], correct:1, why:"perdida : accord avec la personne qui parle."},
+  {type:"choice", q:"Pour demander à une dame âgée de répéter :", opts:["Perdón, ¿puedes repetir?","Perdón, ¿puede repetir?"], correct:1, why:"Dame âgée = usted : puede."},
+  {type:"choice", q:"Vous devez acheter des médicaments. Vous allez à…", opts:["la farmacia","la biblioteca"], correct:0, why:"La pharmacie : médicaments. La bibliothèque : livres."},
+  {type:"choice", q:"Quelle phrase est correcte ?", opts:["Estoy buscando la biblioteca.","Estoy buscar la biblioteca."], correct:0, why:"Après estar, toujours un gérondif (-ando / -iendo), jamais l'infinitif."}
+ ],
+ ANNOTATED: {
+  title:"Estoy perdido : un itinéraire pas à pas",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction — et repère le présent continu (estoy buscando) et les consignes (siga, gire).",
+  sentences:[
+   {fr:"Je suis en train de chercher la pharmacie.", tokens:[
+    {w:"Estoy", tag:"verbe", info:"estar · présent · yo", fr:"je suis", tip:"Première partie du présent continu : estar conjugué."},
+    {w:"buscando", tag:"verbe", info:"gérondif de buscar", fr:"en train de chercher", tip:"Verbe en -AR : radical busc- + -ando. Il ne change jamais."},
+    {w:"la", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"farmacia", tag:"nom", info:"fém. sing.", fr:"pharmacie", tip:"c = th (Espagne) ou s (Amérique latine) : far-MA-thia."}
+   ]},
+   {fr:"D'abord, continuez tout droit sur cette avenue.", tokens:[
+    {w:"Primero", tag:"adverbe", fr:"d'abord", tip:"Ouvre un itinéraire."},
+    {w:"siga", tag:"verbe", info:"seguir · impératif · usted", fr:"continuez", tip:"Au tutoiement : sigue."},
+    {w:"recto", tag:"adverbe", fr:"tout droit"},
+    {w:"por", tag:"préposition", fr:"par, sur", tip:"« por esta avenida » = le long de cette avenue."},
+    {w:"esta", tag:"déterminant", info:"démonstratif · fém. sing.", fr:"cette", tip:"Démonstratif vu en A1.7 : este / esta."},
+    {w:"avenida", tag:"nom", info:"fém. sing.", fr:"avenue"}
+   ]},
+   {fr:"Ensuite, tournez à gauche au feu.", tokens:[
+    {w:"Luego", tag:"adverbe", fr:"ensuite"},
+    {w:"gire", tag:"verbe", info:"girar · impératif · usted", fr:"tournez", tip:"Au tutoiement : gira. Amérique latine : doble (doblar)."},
+    {w:"a", tag:"préposition", fr:"à"},
+    {w:"la", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"izquierda", tag:"nom", info:"fém. sing.", fr:"gauche", tip:"z = th (Espagne) ou s (Amérique latine)."},
+    {w:"en", tag:"préposition", fr:"à, au"},
+    {w:"el", tag:"déterminant", info:"article défini · masc. sing.", fr:"le"},
+    {w:"semáforo", tag:"nom", info:"masc. sing.", fr:"feu", tip:"Accent écrit sur le á : se-MÁ-fo-ro."}
+   ]},
+   {fr:"La pharmacie est à côté de la banque.", tokens:[
+    {w:"La", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"farmacia", tag:"nom", info:"fém. sing.", fr:"pharmacie"},
+    {w:"está", tag:"verbe", info:"estar · présent · ella", fr:"est", tip:"ESTAR situe un lieu connu."},
+    {w:"al lado", tag:"locution", fr:"à côté", tip:"« al lado de » : à côté de. Le « de » fusionne avec l'article : del."},
+    {w:"del", tag:"contraction", info:"de + el", fr:"du, de la banque", tip:"de + el = del (obligatoire)."},
+    {w:"banco", tag:"nom", info:"masc. sing.", fr:"banque"}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🏙️", title:"Culture, 10 expressions et fiche récap (A1.8)",
+  html:"<b>🏙️ Culture — demander son chemin</b> En Espagne comme en Amérique latine, on peut aborder un inconnu avec « Perdona / Perdone » (en Amérique latine on entend souvent « Disculpa / Disculpe »). Avec une personne âgée, un commerçant ou un policier : <b>usted</b> (siga, gire, ¿puede repetir?). Entre jeunes : <b>tú</b> (sigue, gira, ¿puedes repetir?). Les distances se disent en minutes : « a cinco minutos a pie ». Dans beaucoup de villes d'Amérique latine, on compte en <b>cuadras</b> (pâtés de maisons) : « a dos cuadras ». En Espagne : « la segunda calle ». Transports : « bus » se dit autobús (Espagne), camión (Mexique), colectivo (Argentine), guagua (Caraïbes). Pour « tourner », l'Espagne dit girar, l'Amérique latine doblar ; pour « prendre », tomar est neutre partout, alors que « coger » est grossier en Amérique latine.<br><br><b>🧰 Les 10 expressions familières de la ville et du déplacement</b><br>1. <b>Perder el hilo</b> = perdre le fil (d'une conversation, d'un récit). « Hablas muy rápido y pierdo el hilo. »<br>2. <b>Estar en la higuera</b> = être distrait, ne pas faire attention (familier). Ce n'est pas « déconnecté de la réalité » : c'est simplement ne pas écouter. « Te hablo y estás en la higuera. »<br>3. <b>Ir a paso de tortuga</b> = avancer à pas de tortue, très lentement. « El tráfico va a paso de tortuga. »<br>4. <b>Estar a tiro de piedra</b> = être à un jet de pierre, tout près. « El banco está a tiro de piedra. »<br>5. <b>Tomar las de Villadiego</b> = filer, décamper vite (familier). Pas nécessairement discret : on s'enfuit. « Al ver al jefe, Pedro toma las de Villadiego. »<br>6. <b>Estar en Babia</b> = être dans la lune, distrait (familier). Babia est une région de León (Espagne). « Marta está en Babia: no escucha nada. »<br>7. <b>Ir contra corriente</b> = aller à contre-courant (on dit aussi « ir a contracorriente »). « Marta siempre va contra corriente. »<br>8. <b>Pasarse de la raya</b> = dépasser les bornes, aller trop loin. « Tu jefe se pasa de la raya. »<br>9. <b>Estar liado</b> = être très occupé (Espagne, courant). Attention : « estar hecho un lío » = être tout embrouillé, confus. « Hoy estoy muy liado con el trabajo. » · « Estoy hecho un lío con este mapa. » (Estar liado ne veut donc pas dire « embrouillé » à lui seul.)<br>10. <b>Estar en el quinto pino</b> = être au diable vauvert, très loin (familier). « Mi casa está en el quinto pino. »<br><br><b>✍️ Expression écrite — de la station de bus à la bibliothèque (4 lignes)</b> Modèle (tutoiement) : « Primero, cruza la calle. Luego, sigue recto hasta el semáforo. Después, gira a la derecha. Por último, la biblioteca está al lado del parque. » Version formelle : « Primero, cruce la calle. Luego, siga recto hasta el semáforo. Después, gire a la derecha. Por último, la biblioteca está al lado del parque. » Ajoute le présent continu si besoin : « Estoy esperando en la parada. » Vérifie : primero / luego / después / por último · sigue / siga · gira / gire · cruza / cruce.<br><br><b>🗣️ Expression orale — guider un touriste</b> « Perdón, ¿está lejos el museo? » → « No, está a cinco minutos a pie. Primero, siga recto. Luego, gire a la izquierda. Por último, el museo está enfrente del parque. » Pour le métro : « Cambie de línea en la estación Central y bájese en la tercera parada. » Si le touriste ne comprend pas : « ¿Puede repetir? » est sa phrase, et « Más despacio » la tienne.<br><br><b>📄 Fiche récap</b> Présent continu : estoy / estás / está / estamos / estáis / están + -ando (verbes en -AR) ou -iendo (-ER / -IR) : buscando, hablando, comiendo, viviendo, bajando, subiendo. Jamais d'infinitif, jamais ser. « Estoy yendo a… » est peu naturel : on dit « voy a… ». Itinéraire : primero · luego · después · por último + sigue / siga · gira / gire · cruza / cruce · toma / tome. Lieux : farmacia, banco, oficina de correos, supermercado, gimnasio, tienda, parque, biblioteca, hospital. Situer : está en · hay · al lado de · enfrente de · cerca · lejos. Transports : bajarse (me bajo) · subirse (me subo) · cambiar de tren / autobús · perder el autobús. Survie : Perdón, ¿puede repetir? (usted) · ¿Puedes repetir? (tú) · No entiendo · Más despacio · ¿Está lejos? · Estoy perdido / perdida."},
+ NEXT_PREVIEW:"A1.9 (Viajar) : réserver un billet (billete, ida y vuelta), te repérer à l'aéroport et à l'hôtel (maleta, pasaporte, habitación, llave), parler de tes projets avec ir a + infinitif (le futur proche) et réutiliser « quería » pour réserver poliment.",
+ META:{vocabTitle:"Moverse por la ciudad : lieux, itinéraires et présent continu (A1.8)", lectureTitle:"Tomás, perdu en ville", bilanTitle:"Bravo, tu sais te repérer et guider quelqu'un en espagnol !", pronLabel:"Les gérondifs : -ando / -iendo, la diphtongue ie et la j de bajando", todayLede:"nommer les lieux de la ville, dire ce que tu es en train de faire avec ESTAR + gérondif (estoy buscando, estás comiendo…), donner et comprendre un itinéraire (primero, luego, después, por último) et te faire répéter poliment — en tutoiement ET en vouvoiement"}
+};
+LESSONS_ES[208].VOCAB.forEach(function(v){ var d = MAP[v.en]; if(!d) throw new Error("Pas d'illustration pour : " + v.en); v.emo = d[0]; v.ex = [d[1], d[2]]; });
+})();
+
+
+// A1.9 — Viajar : billets, aéroport, hôtel, futur proche (IR A + infinitif), « quería » de politesse (leçon 209)
+(function(){
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR, nature (ignorée ici), registre (ignoré ici)]
+function blk(name, rows){
+  var out = __esB(name, rows);
+  out.forEach(function(v, i){ v.emo = rows[i][4]; v.ex = [rows[i][5], rows[i][6]]; });
+  return out;
+}
+var V = [].concat(
+ blk("Réserver et acheter son billet", [
+  ["reservar","/reseɾˈβaɾ/","réserver","Verbe en -AR régulier (reservo, reservas, reserva…). Pas de préposition : reservar una habitación, reservar un billete. s entre deux voyelles = s, jamais z.","📝","Voy a reservar un hotel esta noche.","Je vais réserver un hôtel ce soir.","verbe (infinitif)"],
+  ["la reserva","/la reˈseɾβa/","la réservation","Féminin. À l'hôtel : « Tengo una reserva para dos noches. » Aussi : la réserve (naturelle). Le v se prononce b.","📋","Tengo una reserva para dos noches.","J'ai une réservation pour deux nuits.","nom féminin"],
+  ["el billete · el boleto","/el biˈʎete · el boˈleto/","le billet (Espagne · Amérique latine)","« billete » en Espagne ; « boleto » au Mexique et dans plusieurs pays d'Amérique latine (« pasaje » ailleurs). ll = y : bi-YE-te. « billete » = aussi le billet de banque.","🎫","Voy a comprar un billete de tren.","Je vais acheter un billet de train.","nom masculin"],
+  ["solo ida","/ˈsolo ˈiða/","aller simple","« un billete de solo ida » (ou « de ida »). ida = l'aller (de ir). Le d entre voyelles est très doux : I-da.","➡️","Quiero un billete de solo ida.","Je veux un billet aller simple.","expression"],
+  ["ida y vuelta","/ˈiða i ˈbwelta/","aller-retour","vuelta = le retour (ue = diphtongue : BWEL-ta). « Un billete de ida y vuelta » : un billet aller-retour. Le « y » se dit « i ».","🔄","Voy a reservar un billete de ida y vuelta.","Je vais réserver un billet aller-retour.","expression"],
+  ["el asiento","/el aˈsjento/","le siège, la place","La place assise dans l'avion ou le train. Piège : rien à voir avec « assiette » (= el plato).","💺","Mi asiento está al lado de la ventana.","Ma place est à côté de la fenêtre.","nom masculin"],
+  ["la salida · la llegada","/la saˈliða · la ʝeˈɣaða/","le départ · l'arrivée","salida vient de « salir » (partir, sortir), llegada de « llegar » (arriver). Aussi : la salida = la sortie. ll = y.","🛫","La llegada es en la terminal dos.","L'arrivée est au terminal deux.","nom féminin"],
+  ["el vuelo","/el ˈbwelo/","le vol","ue = diphtongue : BWE-lo (v = b). Ne confonds pas avec « la vuelta » (le retour).","✈️","El vuelo es directo.","Le vol est direct.","nom masculin"],
+  ["viajar","/bjaˈxaɾ/","voyager","-AR régulier. v = b, j = kh : bia-KHAR. Le voyage : « el viaje ». Pour souhaiter bon voyage : « ¡Buen viaje! ».","🧳","Me gusta viajar con mis amigos.","J'aime voyager avec mes amis.","verbe (infinitif)"],
+  ["el viaje","/el ˈbjaxe/","le voyage","Masculin : el viaje (comme el equipaje, el pasaje). Pluriel : los viajes.","🗺️","El viaje es muy cómodo.","Le voyage est très confortable.","nom masculin"],
+  ["el destino","/el desˈtino/","la destination","Mot transparent, mais en français on dit « destination » : un faux ami utile ! (aussi : le destin).","📍","¿Cuál es el destino del vuelo?","Quelle est la destination du vol ?","nom masculin"],
+  ["el pasajero · la pasajera","/el pasaˈxeɾo · la pasaˈxeɾa/","le passager · la passagère","j = kh : pa-sa-KHE-ro. -o → -a pour le féminin.","🧍","La pasajera tiene un billete de ida y vuelta.","La passagère a un billet aller-retour.","nom masculin / féminin"],
+  ["pagar","/paˈɣaɾ/","payer","-AR régulier. « Pagar con tarjeta » = par carte, « pagar en efectivo » = en espèces. Se construit sans préposition : pagar el billete.","💳","Voy a pagar con tarjeta.","Je vais payer par carte.","verbe (infinitif)"],
+  ["la tarjeta de crédito","/la taɾˈxeta de ˈkɾeðito/","la carte de crédit","« tarjeta » = carte (de crédit, d'embarque…). Pour une carte à jouer ou au restaurant : « carta ». j = kh.","💳","¿Aceptan tarjeta de crédito?","Acceptez-vous les cartes de crédit ?","nom féminin"],
+  ["el precio","/el ˈpɾeθjo/","le prix","c = th en Espagne (s en Amérique latine). Pour demander : « ¿Cuál es el precio? ».","🏷️","El precio del billete es bajo.","Le prix du billet est bas.","nom masculin"]
+ ]),
+ blk("À l'aéroport et à la gare", [
+  ["el aeropuerto","/el aeɾoˈpweɾto/","l'aéroport","a-e-ro-PUER-to : 4 syllabes, les deux premiers a et e se prononcent séparément. Pour y aller : voy AL aeropuerto (a + el = al).","🛬","Vamos al aeropuerto en taxi.","Nous allons à l'aéroport en taxi.","nom masculin"],
+  ["la puerta de embarque","/la ˈpweɾta de emˈbaɾke/","la porte d'embarquement","On dit souvent juste « la puerta » + numéro : la puerta doce. Embarque : qu = k.","🚪","¿Dónde está la puerta de embarque?","Où est la porte d'embarquement ?","nom féminin"],
+  ["el equipaje","/el ekiˈpaxe/","les bagages (collectif)","Singulier en espagnol ! « el equipaje » = l'ensemble des bagages. qu = k, j = kh : e-ki-PA-khe.","🧳","Mi equipaje es pequeño.","Mes bagages sont petits.","nom masculin"],
+  ["la maleta","/la maˈleta/","la valise","Une valise = una maleta. Pluriel : las maletas. Faire sa valise : « hacer la maleta » ou « hacer las maletas ».","🧳","La maleta es azul.","La valise est bleue.","nom féminin"],
+  ["el equipaje de mano","/el ekiˈpaxe de ˈmano/","le bagage à main","mano est féminin (la mano) mais « de mano » ne change pas.","👜","Mi equipaje de mano es una mochila.","Mon bagage à main est un sac à dos.","nom masculin"],
+  ["el pasaporte","/el pasaˈpoɾte/","le passeport","Le document indispensable pour passer une frontière. pa-sa-POR-te.","🛂","Aquí tiene mi pasaporte, señora.","Voici mon passeport, madame.","nom masculin"],
+  ["la tarjeta de embarque","/la taɾˈxeta de emˈbaɾke/","la carte d'embarquement","Au Mexique on dit aussi « el pase de abordar ». Elle indique la porte et la place (el asiento). Souvent sur le téléphone : « el móvil » (Espagne), « el celular » (Amérique latine).","🎟️","Mi tarjeta de embarque está en el móvil.","Ma carte d'embarquement est sur mon portable.","nom féminin"],
+  ["facturar","/fakˈtuɾaɾ/","enregistrer (les bagages) ; facturer","« facturar el equipaje » = l'enregistrer au comptoir. Aussi : facturer. En Amérique latine on dit souvent « despachar el equipaje » ou « hacer el check-in ».","🛄","Vamos a facturar las maletas.","Nous allons enregistrer les valises.","verbe (infinitif)"],
+  ["el mostrador","/el mosˈtɾaðoɾ/","le comptoir","Le comptoir d'enregistrement : « el mostrador de facturación ». Aussi le comptoir d'un bar.","🛎️","El mostrador está a la derecha.","Le comptoir est à droite.","nom masculin"],
+  ["el control de seguridad","/el konˈtɾol de seɣuɾiˈðað/","le contrôle de sécurité","« seguridad » : mot en -dad, donc féminin. Accent sur la dernière syllabe : se-gu-ri-DAD.","🔍","Vamos a pasar el control de seguridad.","Nous allons passer le contrôle de sécurité.","nom masculin"],
+  ["la frontera","/la fɾonˈteɾa/","la frontière","Pour passer une frontière, on montre le pasaporte (et parfois un visado).","🛃","Vamos a pasar la frontera en tren.","Nous allons passer la frontière en train.","nom féminin"],
+  ["el visado","/el biˈsaðo/","le visa","« el visado » en Espagne, souvent « la visa » en Amérique latine. v = b, un seul s.","📄","Para este país, voy a necesitar un visado.","Pour ce pays, je vais avoir besoin d'un visa.","nom masculin"],
+  ["la aduana","/la aˈðwana/","la douane","d très doux, ua = diphtongue : a-DUA-na. On dit « pasar por la aduana ».","🛃","La aduana está al lado de la salida.","La douane est à côté de la sortie.","nom féminin"],
+  ["la terminal","/la teɾmiˈnal/","le terminal","Féminin en espagnol : la terminal dos. Accent sur la dernière syllabe : ter-mi-NAL.","🏢","Mi vuelo sale de la terminal dos.","Mon vol part du terminal deux.","nom féminin"],
+  ["la estación","/la estaˈθjon/","la gare (la station)","« estación de tren », « de autobuses » (gare routière), « de metro ». Pluriel : estaciones (l'accent disparaît).","🚉","La estación está cerca del hotel.","La gare est près de l'hôtel.","nom féminin"],
+  ["el retraso","/el reˈtɾaso/","le retard","« El vuelo tiene retraso » (avec tener). En Amérique latine, on entend aussi « la demora ».","⏳","El vuelo tiene retraso.","Le vol a du retard.","nom masculin"],
+  ["tomar el avión · el tren","/toˈmaɾ el aˈβjon · el tɾen/","prendre l'avion · le train","« Tomar » est neutre et passe partout. « Coger » est très courant en Espagne mais grossier dans une grande partie de l'Amérique latine : retiens « tomar ».","🚆","Vamos a tomar el tren esta tarde.","Nous allons prendre le train cet après-midi.","expression"]
+ ]),
+ blk("À l'hôtel", [
+  ["el hotel","/el oˈtel/","l'hôtel","h muette : o-TEL, accent sur la dernière syllabe (mot en -l). Pluriel : los hoteles.","🏨","El hotel es pequeño, pero es muy cómodo.","L'hôtel est petit, mais il est très confortable.","nom masculin"],
+  ["la habitación","/la aβitaˈθjon/","la chambre","h muette. ción : « thion » (Espagne) ou « sion » (Amérique latine). Au Mexique on dit aussi « el cuarto ». Pluriel : habitaciones.","🛏️","La habitación es muy grande.","La chambre est très grande.","nom féminin"],
+  ["una habitación individual","/ˈuna aβitaˈθjon indiβiˈðwal/","une chambre simple","« individual » = pour une personne (un lit). Invariable en genre ; pluriel : individuales.","🧍","Quería una habitación individual, por favor.","Je souhaiterais une chambre simple, s'il vous plaît.","groupe nominal"],
+  ["una habitación doble","/ˈuna aβitaˈθjon ˈdoβle/","une chambre double","« doble » = pour deux personnes : un grand lit (« cama de matrimonio ») ou deux lits. Invariable en genre.","👫","Voy a reservar una habitación doble.","Je vais réserver une chambre double.","groupe nominal"],
+  ["la entrada (check-in)","/la enˈtɾaða/","l'arrivée à l'hôtel (check-in)","« la entrada » = l'entrée, donc aussi le moment où on arrive à l'hôtel et reçoit sa chambre. Beaucoup de gens disent « el check-in ».","🔑","La entrada es por la tarde.","L'arrivée à l'hôtel est l'après-midi.","nom féminin"],
+  ["la salida (check-out)","/la saˈliða/","le départ de l'hôtel (check-out)","Le jour du départ, on rend la chambre avant une certaine heure (souvent vers midi). On dit aussi « el check-out ».","🧳","La salida es antes del mediodía.","Le départ de l'hôtel est avant midi.","nom féminin"],
+  ["la llave","/la ˈʝaβe/","la clé","Déjà vue en A1.0. À l'hôtel, c'est souvent une carte : « la tarjeta llave ». ll = y.","🗝️","¿Dónde está la llave de la habitación?","Où est la clé de la chambre ?","nom féminin"],
+  ["la recepción","/la rreθepˈθjon/","la réception","r initiale roulée ; c = th ; accent sur la dernière syllabe : rre-thep-THION. Pluriel : recepciones.","🛎️","La recepción está a la izquierda.","La réception est à gauche.","nom féminin"],
+  ["el recepcionista · la recepcionista","/el rreθepθjoˈnista/","le réceptionniste · la réceptionniste","Finit en -a mais s'emploie pour un homme comme pour une femme : seul l'article change.","🧑‍💼","La recepcionista es muy simpática.","La réceptionniste est très sympathique.","nom masculin / féminin"],
+  ["el desayuno incluido","/el desaˈʝuno inkluˈiðo/","le petit-déjeuner inclus","« incluido » s'accorde comme un adjectif : el desayuno incluido, las toallas incluidas. des-a-YU-no.","🥐","La habitación tiene desayuno incluido.","La chambre a le petit-déjeuner inclus.","groupe nominal"],
+  ["el wifi","/el ˈwifi/","le wifi","Masculin, se prononce « ouifi ». « La contraseña del wifi » = le mot de passe.","📶","El wifi es gratis.","Le wifi est gratuit.","nom masculin"],
+  ["la contraseña","/la kontɾaˈseɲa/","le mot de passe","ñ = gn. Féminin. Pour le wifi : « la contraseña del wifi ».","🔐","La contraseña está en la recepción.","Le mot de passe est à la réception.","nom féminin"],
+  ["la cama","/la ˈkama/","le lit","« cama doble » ou « de matrimonio » = grand lit ; « dos camas » = lits jumeaux.","🛌","La habitación tiene dos camas.","La chambre a deux lits.","nom féminin"],
+  ["el baño","/el ˈbaɲo/","la salle de bains, les toilettes","ñ = gn. Désigne aussi les toilettes : « ¿Dónde está el baño? ». Une douche : « la ducha » (ch = tch).","🚿","El baño es muy moderno.","La salle de bains est très moderne.","nom masculin"],
+  ["el ascensor","/el asθenˈsoɾ/","l'ascenseur","Accent sur la dernière syllabe : as-then-SOR. Au Mexique on dit aussi « el elevador ».","🛗","El ascensor está a la derecha.","L'ascenseur est à droite.","nom masculin"],
+  ["la noche","/la ˈnotʃe/","la nuit","ch = tch. « Una habitación para dos noches ». Aussi dans « Buenas noches » (bonsoir / bonne nuit).","🌙","Quiero una habitación para tres noches.","Je veux une chambre pour trois nuits.","nom féminin"]
+ ]),
+ blk("Le futur proche : IR A + infinitif", [
+  ["ir : voy, vas, va, vamos, vais, van","/boj bas ba ˈbamos bajs ban/","aller (présent)","Rappel de A1.4. C'est le seul verbe à connaître pour le futur proche. vais = vosotros (Espagne) ; ustedes = van.","🔁","Voy a viajar. ¿Vas a viajar?","Je vais voyager. Vas-tu voyager ?","verbe conjugué"],
+  ["ir a + infinitif","/iɾ a/","aller + infinitif (futur proche)","Voy A + verbe. Le « a » est OBLIGATOIRE : jamais « voy reservar ». Sert pour un projet, une intention, un événement proche.","🔜","Voy a reservar una habitación.","Je vais réserver une chambre.","expression"],
+  ["voy a reservar","/boj a reseɾˈβaɾ/","je vais réserver","yo → voy. Le pronom « yo » est inutile. Négation : « no voy a reservar ».","🙋","Voy a reservar el hotel esta noche.","Je vais réserver l'hôtel ce soir.","verbe conjugué"],
+  ["vas a viajar","/bas a bjaˈxaɾ/","tu vas voyager","tú → vas. Avec usted : « va a viajar ».","🧑","¿Vas a viajar este verano?","Vas-tu voyager cet été ?","verbe conjugué"],
+  ["va a salir","/ba a saˈliɾ/","il / elle / vous allez partir","él, ella, usted → va. Piège : « va a » se prononce presque « ba-a » : écoute bien les deux a.","🚶","El vuelo va a salir pronto.","Le vol va partir bientôt.","verbe conjugué"],
+  ["vamos a facturar","/ˈbamos a fakˈtuɾaɾ/","nous allons enregistrer (les bagages)","nosotros → vamos. « Vamos a + verbe » sert aussi à proposer : « ¡Vamos a facturar! » = allons enregistrer !","👥","Vamos a facturar las maletas.","Nous allons enregistrer les valises.","verbe conjugué"],
+  ["vais a llegar","/bajs a ʝeˈɣaɾ/","vous allez arriver (amis, Espagne)","vosotros → vais (Espagne). En Amérique latine : « ustedes van a llegar ».","👫","¿Vais a llegar pronto?","Allez-vous arriver bientôt ? (à des amis)","verbe conjugué"],
+  ["van a pagar","/ban a paˈɣaɾ/","ils / elles / vous vont payer","ellos, ellas, ustedes → van. Un seul verbe pour « eux » et pour « vous » pluriel formel.","👨‍👩‍👧","Van a pagar con tarjeta.","Ils vont payer par carte.","verbe conjugué"],
+  ["va a costar","/ba a kosˈtaɾ/","ça va coûter","Pour parler d'un prix à venir : « ¿Cuánto va a costar? ». Infinitif : costar.","💶","¿Cuánto va a costar el billete?","Combien va coûter le billet ?","verbe conjugué"],
+  ["vamos a descansar","/ˈbamos a deskanˈsaɾ/","nous allons nous reposer","descansar = se reposer, sans « se » en espagnol. s + c : des-kan-SAR.","😌","Esta noche vamos a descansar.","Ce soir nous allons nous reposer.","verbe conjugué"],
+  ["salir","/saˈliɾ/","partir, sortir","On retient d'abord : sale (il/elle part, vous partez). Après « voy a », on garde l'infinitif : voy a salir.","🚪","¿A qué hora vas a salir?","À quelle heure vas-tu partir ?","verbe (infinitif)"],
+  ["llegar","/ʝeˈɣaɾ/","arriver","-AR régulier. « Llegar a + lieu » : llegar al aeropuerto. Contraire de salir.","🛬","Vamos a llegar pronto al hotel.","Nous allons arriver tôt à l'hôtel.","verbe (infinitif)"],
+  ["comprar","/komˈpɾaɾ/","acheter","-AR régulier. « Comprar un billete ».","🛒","Voy a comprar los billetes hoy.","Je vais acheter les billets aujourd'hui.","verbe (infinitif)"],
+  ["visitar","/bisiˈtaɾ/","visiter","-AR régulier. On visite un lieu ou une ville : visitar Sevilla (sans préposition).","🏛️","Vamos a visitar la ciudad.","Nous allons visiter la ville.","verbe (infinitif)"],
+  ["esta noche · este verano","/ˈesta ˈnotʃe · ˈeste beˈɾano/","ce soir · cet été","esta (fém.) + noche, este (masc.) + verano. Marqueurs du futur proche : ahora, pronto, esta noche, este verano.","🌙","Este verano voy a viajar a Sevilla.","Cet été je vais voyager à Séville.","expression"],
+  ["ahora · pronto","/aˈoɾa · ˈpɾonto/","maintenant · bientôt","« Ahora voy a… » = je vais le faire tout de suite. « Pronto » = bientôt (ou tôt).","⏰","Ahora voy a descansar.","Maintenant je vais me reposer.","adverbe"],
+  ["las vacaciones","/las bakaˈθjones/","les vacances","Toujours au pluriel. « De vacaciones » = en vacances. v = b, c = th.","🏖️","En las vacaciones vamos a viajar.","Pendant les vacances nous allons voyager.","nom féminin pluriel"]
+ ]),
+ blk("Phrases clés du voyageur (tú et usted)", [
+  ["Quería reservar una habitación doble, por favor.","/keˈɾia reseɾˈβaɾ ˈuna aβitaˈθjon ˈdoβle poɾ faˈβoɾ/","Je souhaiterais réserver une chambre double, s'il vous plaît.","Formule de politesse figée vue en A1.6 : on la réemploie telle quelle, sans la conjuguer. Elle adoucit la demande, comme « je voulais réserver » en français. Idéale avec usted.","🏨","Buenas tardes, quería reservar una habitación individual, por favor.","Bonsoir, je souhaiterais réserver une chambre simple, s'il vous plaît.","formule de politesse",["Quiero reservar una habitación doble, por favor.","Quería reservar una habitación doble, por favor.","Je voudrais / je souhaiterais réserver une chambre double, s'il vous plaît."]],
+  ["Quiero reservar…","/ˈkjeɾo reseɾˈβaɾ/","Je veux réserver… (informel)","Version directe, entre amis ou par message : « Quiero reservar una habitación ». Avec un inconnu ou à l'hôtel, préfère « Quería reservar… ». quiero = querer e → ie.","💬","Quiero reservar dos billetes, por favor.","Je veux réserver deux billets, s'il te plaît.","expression"],
+  ["¿A qué hora sale el vuelo?","/a ke ˈoɾa ˈsale el ˈbwelo/","À quelle heure part le vol ?","« ¿A qué hora + verbe + sujet ? » : le verbe vient avant le sujet. qué porte un accent. Réponse : « A las nueve » (a las + heure, voir A1.10).","⏰","¿A qué hora sale tu vuelo?","À quelle heure part ton vol ?","question",["¿A qué hora sale tu vuelo?","¿A qué hora sale su vuelo?","À quelle heure part ton / votre vol ?"]],
+  ["¿Está incluido el desayuno?","/esˈta inkluˈiðo el desaˈʝuno/","Le petit-déjeuner est-il inclus ?","On peut aussi dire « ¿El desayuno está incluido? ». « Incluido » s'accorde : ¿Está incluida la cena ? Réponse : « Sí, está incluido ».","🥐","¿Está incluido el wifi?","Le wifi est-il inclus ?","question"],
+  ["¿Me das la llave? / ¿Me da la llave?","/me das la ˈʝaβe · me da la ˈʝaβe/","Tu me donnes la clé ? / Vous me donnez la clé ?","Tú : das ; usted : da. Ajoute « por favor » pour être poli. À l'hôtel, avec le personnel, on dit « ¿Me da la llave, por favor? ».","🔑","¿Me da la llave de la habitación, por favor?","Pouvez-vous me donner la clé de la chambre, s'il vous plaît ?","question",["¿Me das la llave, por favor?","¿Me da la llave, por favor?","Tu me donnes / Vous me donnez la clé, s'il te / vous plaît ?"]],
+  ["Aquí tienes / Aquí tiene","/aˈki ˈtjenes · aˈki ˈtjene/","Tiens, voici / Tenez, voici","Quand on tend quelque chose (passeport, carte). Tú : tienes ; usted : tiene. Verbe tener (A1.0).","🤲","Aquí tiene mi pasaporte.","Voici mon passeport.","formule de politesse",["Aquí tienes","Aquí tiene","Tiens, voici / Tenez, voici"]],
+  ["¿Dónde está la puerta de embarque?","/ˈdonde esˈta la ˈpweɾta de emˈbaɾke/","Où est la porte d'embarquement ?","Avec ESTAR (lieu). Réponse type : « A la derecha / a la izquierda » (rappel A1.8). Pour poliment attirer l'attention : « Perdone, ¿dónde…? ».","🧭","Perdone, ¿dónde está el mostrador?","Excusez-moi, où est le comptoir ?","question"],
+  ["¿A qué hora es el desayuno?","/a ke ˈoɾa es el desaˈʝuno/","À quelle heure est le petit-déjeuner ?","Avec un événement, on emploie ES (ser) : ¿A qué hora es…? Avec un départ ou une arrivée : sale / llega.","🕖","¿A qué hora es el desayuno?","À quelle heure est le petit-déjeuner ?","question"],
+  ["¿Tiene wifi la habitación?","/ˈtjene ˈwifi la aβitaˈθjon/","La chambre a-t-elle le wifi ?","Le sujet vient à la fin : « ¿Tiene wifi la habitación? ». Tú : « ¿Tienes wifi? » ; usted : « ¿Tiene wifi? ».","📶","¿Tiene wifi el hotel?","L'hôtel a-t-il le wifi ?","question",["¿Tienes wifi?","¿Tiene wifi?","As-tu / Avez-vous le wifi ?"]],
+  ["¿Cuántas noches va a estar usted?","/ˈkwantas ˈnotʃes ba a esˈtaɾ usˈteð/","Combien de nuits allez-vous rester ?","Question typique de l'hôtel. Avec tú : « ¿Cuántas noches vas a estar? ». cuántas s'accorde avec noches (féminin pluriel).","🌙","¿Cuántas noches vas a estar en Madrid?","Combien de nuits vas-tu rester à Madrid ?","question",["¿Cuántas noches vas a estar?","¿Cuántas noches va a estar usted?","Combien de nuits vas-tu rester / allez-vous rester ?"]],
+  ["¡Buen viaje!","/bwem ˈbjaxe/","Bon voyage !","On peut dire aussi « ¡Buen vuelo! » (bon vol). Identique en tutoiement et en vouvoiement.","👋","¡Buen viaje, Marta!","Bon voyage, Marta !","formule de politesse"],
+  ["¡Bienvenido! · ¡Bienvenida!","/bjembeˈniðo · bjembeˈniða/","Bienvenue ! (à un homme · à une femme)","Accord avec la personne accueillie : bienvenido (lui), bienvenida (elle), bienvenidos (plusieurs). À la réception : « ¡Bienvenido, señor! ».","🤗","¡Bienvenida al hotel, señora!","Bienvenue à l'hôtel, madame !","formule de politesse"]
+ ]),
+ blk("Bonus : 10 expressions réelles du voyage et du départ", [
+  ["hacer las maletas","/aˈθeɾ las maˈletas/","faire ses valises (et partir)","Sens propre : préparer ses bagages. Sens figuré : partir, souvent pour de bon. Neutre, utilisé partout.","🧳","Esta noche voy a hacer las maletas.","Ce soir je vais faire mes valises.","expression"],
+  ["tomar el fresco","/toˈmaɾ el ˈfɾesko/","prendre le frais","Sortir respirer l'air frais, souvent le soir quand il fait chaud. Courante en Espagne, comprise ailleurs.","🌬️","Esta noche vamos a salir a tomar el fresco.","Ce soir nous allons sortir prendre le frais.","expression"],
+  ["buscar tres pies al gato","/busˈkaɾ tɾes ˈpjes al ˈɣato/","chercher midi à quatorze heures","Compliquer les choses sans raison. Familier ; on dit aussi « buscarle tres pies al gato ».","🐱","El viaje es fácil: no vamos a buscar tres pies al gato.","Le voyage est simple : on ne va pas chercher midi à quatorze heures.","expression"],
+  ["tener cuerda para rato","/teˈneɾ ˈkweɾða ˈpaɾa ˈrrato/","en avoir encore pour longtemps","Pour une personne : avoir de la ressource, de l'énergie (ou parler longtemps). Pour une chose : ça va durer. Familier.","🔋","Mi abuelo tiene ochenta años, pero tiene cuerda para rato.","Mon grand-père a quatre-vingts ans, mais il en a encore pour longtemps.","expression"],
+  ["salir pitando","/saˈliɾ piˈtando/","partir en trombe, filer","Partir très vite, sans perdre une seconde. Familier ; très courant en Espagne, compris en Amérique latine.","💨","Si el tren sale ya, vamos a salir pitando.","Si le train part maintenant, on va filer en vitesse.","expression"],
+  ["llegar a buen puerto","/ʝeˈɣaɾ a bwem ˈpweɾto/","arriver à bon port","Aboutir, réussir après des difficultés. Neutre ; au sens propre pour un bateau, au figuré pour un projet.","⚓","El proyecto va a llegar a buen puerto.","Le projet va arriver à bon port.","expression"],
+  ["perder el tren","/peɾˈðeɾ el tɾen/","rater le train (laisser passer une occasion)","Sens propre : rater son train. Sens figuré : laisser passer une chance. Neutre.","🚉","¡Corre! Vas a perder el tren.","Cours ! Tu vas rater le train.","expression"],
+  ["coger el tren en marcha","/koˈxeɾ el tɾen en ˈmaɾtʃa/","prendre le train en marche","Rejoindre un projet déjà commencé. « Coger » = Espagne ; en Amérique latine, on évite « coger » (vulgaire) et on dit « subirse al tren en marcha ».","🚂","El equipo ya trabaja, pero Ana va a coger el tren en marcha.","L'équipe travaille déjà, mais Ana va prendre le train en marche.","expression"],
+  ["empezar con buen pie","/empeˈθaɾ kon bwem ˈpje/","commencer du bon pied","Bien démarrer. Contraire : « empezar con mal pie ». Neutre.","🦶","El viaje va a empezar con buen pie.","Le voyage va commencer du bon pied.","expression"],
+  ["ir de Herodes a Pilatos","/iɾ de eˈɾoðes a piˈlatos/","aller de Charybde en Scylla (d'un guichet à l'autre)","Passer d'un problème ou d'un guichet à un autre sans rien résoudre. Un peu littéraire, mais bien comprise.","🔄","Sin información, vamos a ir de Herodes a Pilatos en el aeropuerto.","Sans information, nous allons courir d'un guichet à l'autre à l'aéroport.","expression"]
+ ])
+);
+LESSONS_ES[209] = {
+ code:"A1.9", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["reservar","ida y vuelta","el equipaje","facturar","el pasaporte","la llave","ir a + infinitif","vamos a facturar","Quería reservar una habitación doble, por favor.","¿A qué hora sale el vuelo?"]),
+ MINI_CHECKS: [
+  {q:"« Je vais réserver une chambre. »", opts:["Voy a reservar una habitación.","Voy reservar una habitación.","Estoy a reservar una habitación."], correct:0, fb:"Futur proche = ir conjugué + A + infinitif : voy a reservar. Le « a » ne peut pas être oublié."},
+  {q:"« Tu vas voyager. »", opts:["Vas a viajar.","Va a viajar.","Vais a viajar."], correct:0, fb:"tú → vas. « Va » = él, ella ou usted ; « vais » = vosotros."},
+  {q:"Vous vouvoyez un client : « Allez-vous payer par carte, monsieur ? »", opts:["¿Va a pagar con tarjeta, señor?","¿Vas a pagar con tarjeta, señor?"], correct:0, fb:"Avec usted, on conjugue à la 3e personne : va a pagar. (« Vas a pagar » est le tutoiement.)"},
+  {q:"Comment demande-t-on un billet aller-retour ?", opts:["un billete de ida y vuelta","un billete de solo ida","un billete de salida y llegada"], correct:0, fb:"ida = l'aller, vuelta = le retour. « Solo ida » = aller simple."},
+  {q:"Dans « Voy a viajar », le « a » sert à…", opts:["introduire l'infinitif (futur proche)","dire « à » un lieu","dire « avec »"], correct:0, fb:"Après ir, « a » + infinitif forme le futur proche. Devant un lieu, ir a + lieu veut dire « aller à » : voy al aeropuerto."},
+  {q:"Document officiel indispensable pour passer une frontière : El…", opts:["pasaporte","asiento","desayuno"], correct:0, fb:"El pasaporte. C'est lui qu'on montre à la frontière et à l'aéroport."},
+  {q:"À une réceptionniste que tu vouvoies, la formule la plus polie est…", opts:["Quería reservar una habitación, por favor.","Quiero reservar una habitación."], correct:0, fb:"« Quería » est la formule figée de politesse (vue en A1.6). « Quiero » est direct : OK entre amis."},
+  {q:"« ¿A qué hora sale el vuelo? » signifie…", opts:["À quelle heure part le vol ?","Où part le vol ?","Combien coûte le vol ?"], correct:0, fb:"¿A qué hora…? = À quelle heure… ? ; sale = part (salir) ; el vuelo = le vol."}
+ ],
+ ROUNDS: [
+  __esR("Voy a reservar un billete de ida y vuelta.","Je vais réserver un billet aller-retour."),
+  __esR("Vamos a facturar las maletas.","Nous allons enregistrer les valises."),
+  __esR("¿A qué hora sale el vuelo?","À quelle heure part le vol ?"),
+  __esR("¿Está incluido el desayuno?","Le petit-déjeuner est-il inclus ?"),
+  __esR("Quería reservar una habitación doble, por favor.","Je souhaiterais réserver une chambre double, s'il vous plaît."),
+  __esR("Vas a llegar al aeropuerto esta noche.","Tu vas arriver à l'aéroport ce soir."),
+  __esR("Van a pagar con tarjeta de crédito.","Ils vont payer par carte de crédit."),
+  __esR("¿Va a viajar usted este verano?","Allez-vous voyager cet été ?"),
+  __esR("Mi pasaporte está en la maleta.","Mon passeport est dans la valise."),
+  __esR("Voy a descansar en el hotel.","Je vais me reposer à l'hôtel."),
+  __esR("¿Me da la llave de la habitación, por favor?","Pouvez-vous me donner la clé de la chambre, s'il vous plaît ?"),
+  __esR("¿Tiene wifi la habitación?","La chambre a-t-elle le wifi ?"),
+  __esR("Vais a tomar el tren esta tarde.","Vous allez prendre le train cet après-midi.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Yo ___ a viajar este verano.", opts:["voy","estoy","soy"], correct:0, why:"Futur proche : ir + a + infinitif. yo → voy (jamais estoy ou soy)."},
+  {cat:"ecrit", q:"Nosotros ___ a facturar las maletas.", opts:["vamos","van","vais"], correct:0, why:"nosotros → vamos. « Vais » = vosotros ; « van » = ellos / ustedes."},
+  {cat:"ecrit", q:"Tú ___ a llegar pronto.", opts:["vas","va","voy"], correct:0, why:"tú → vas. « Va » serait él, ella ou usted."},
+  {cat:"ecrit", q:"Ana ___ a descansar en el hotel.", opts:["va","vas","van"], correct:0, why:"Ana = elle → va. Le « a » devant l'infinitif reste invariable."},
+  {cat:"ecrit", q:"Ellos ___ a pagar con tarjeta.", opts:["van","vais","va"], correct:0, why:"ellos → van. « Vais » ne s'emploie qu'avec vosotros."},
+  {cat:"ecrit", q:"« Je vais réserver un billet. »", opts:["Voy a reservar un billete.","Voy reservar un billete.","Voy de reservar un billete."], correct:0, why:"ir + A + infinitif. Sans « a » ou avec « de », la phrase est incorrecte."},
+  {cat:"ecrit", q:"Un billet aller simple se dit…", opts:["un billete de solo ida","un billete de ida y vuelta","un billete doble"], correct:0, why:"« Solo ida » = aller simple ; « ida y vuelta » = aller-retour."},
+  {cat:"ecrit", q:"Le moment où l'on prend possession de sa chambre d'hôtel :", opts:["la entrada (check-in)","la salida (check-out)","la reserva"], correct:0, why:"La entrada = le check-in ; la salida = le check-out, quand on quitte l'hôtel."},
+  {cat:"ecrit", q:"L'action d'enregistrer sa valise au comptoir de l'aéroport :", opts:["facturar","reservar","pagar"], correct:0, why:"Facturar el equipaje = enregistrer les bagages."},
+  {cat:"ecrit", q:"Avec usted : ¿___ a pagar con tarjeta, señora?", opts:["Va","Vas","Voy"], correct:0, why:"usted se conjugue comme él/ella : va a pagar. (« Vas » = tutoiement.)"},
+  {cat:"ecrit", q:"Voy ___ aeropuerto. (aller à l'aéroport)", opts:["al","a el","a"], correct:0, why:"a + el se contracte en « al » quand il s'agit d'un lieu : voy al aeropuerto. (Devant un infinitif : voy a viajar.)"},
+  {cat:"ecrit", q:"Voy ___ viajar este verano.", opts:["a","al","en"], correct:0, why:"Devant un infinitif, on met « a » seul : voy a viajar. « Al » est réservé aux noms masculins."},
+  {cat:"ecrit", q:"Pour réserver poliment une chambre à l'hôtel :", opts:["Quería reservar una habitación, por favor.","Habitación, reserva.","Quiero habitación."], correct:0, why:"« Quería reservar… » est la formule polie figée (A1.6) : idéale à la réception."},
+  {cat:"ecrit", q:"¿A qué hora ___ el vuelo?", opts:["sale","salir","sales"], correct:0, why:"Le sujet est « el vuelo » (3e personne) : sale. « Salir » est l'infinitif et « sales » serait tú."},
+  {cat:"oral", audio:"Voy a reservar una habitación doble para dos noches.", q:"Écoute : que va faire la personne ?", opts:["Réserver une chambre double","Annuler un vol","Payer son hôtel"], correct:0, why:"« Voy a reservar una habitación doble » = je vais réserver une chambre double (pour deux noches)."},
+  {cat:"oral", audio:"¿A qué hora sale el vuelo?", q:"Écoute : que demande la personne ?", opts:["L'heure de départ du vol","Le prix du billet","Le numéro de la porte"], correct:0, why:"¿A qué hora…? = à quelle heure ; sale el vuelo = part le vol."},
+  {cat:"oral", audio:"Vamos a facturar las maletas.", q:"Écoute : que vont faire les voyageurs ?", opts:["Enregistrer leurs valises","Acheter des valises","Perdre leurs valises"], correct:0, why:"Facturar las maletas = enregistrer les valises ; vamos a = nous allons."},
+  {cat:"oral", audio:"El desayuno está incluido y el wifi también.", q:"Écoute : qu'est-ce qui est inclus ?", opts:["Le petit-déjeuner et le wifi","Seulement le wifi","Seulement le petit-déjeuner"], correct:0, why:"« El desayuno está incluido y el wifi también » : les deux sont inclus (también = aussi)."},
+  {cat:"oral", audio:"¿Va a pagar con tarjeta, señor?", q:"Écoute : la question est…", opts:["formelle (usted)","informelle (tú)"], correct:0, why:"« Va a pagar » = vouvoiement. Au tutoiement : ¿Vas a pagar con tarjeta?"},
+  {cat:"comprehension", passage:"Buenas tardes, quería reservar una habitación individual para hoy. — Muy bien, señor. ¿Cuántas noches va a estar usted? — Dos noches. ¿Está incluido el desayuno? — Sí, está incluido. — Perfecto. Voy a pagar con tarjeta de crédito.", q:"Quel type de chambre le client veut-il ?", opts:["Une chambre simple","Une chambre double","Une suite"], correct:0, why:"« una habitación individual » = une chambre simple (pour une personne)."},
+  {cat:"comprehension", passage:"Buenas tardes, quería reservar una habitación individual para hoy. — Muy bien, señor. ¿Cuántas noches va a estar usted? — Dos noches. ¿Está incluido el desayuno? — Sí, está incluido. — Perfecto. Voy a pagar con tarjeta de crédito.", q:"Combien de nuits va-t-il rester ?", opts:["Deux","Une","Trois"], correct:0, why:"« Dos noches » : deux nuits. Le réceptionniste emploie usted (va a estar)."},
+  {cat:"comprehension", passage:"Buenas tardes, quería reservar una habitación individual para hoy. — Muy bien, señor. ¿Cuántas noches va a estar usted? — Dos noches. ¿Está incluido el desayuno? — Sí, está incluido. — Perfecto. Voy a pagar con tarjeta de crédito.", q:"Comment le client va-t-il payer ?", opts:["Par carte de crédit","En espèces","Il ne paie pas"], correct:0, why:"« Voy a pagar con tarjeta de crédito » : futur proche + par carte."},
+  {cat:"comprehension", passage:"Hola, soy Marta. Este verano voy a viajar con mi hermano Pablo. Vamos a tomar el avión y vamos a visitar Sevilla. Pablo va a reservar el hotel. Yo voy a comprar los billetes.", q:"Comment Marta et Pablo vont-ils voyager ?", opts:["En avion","En train","En voiture"], correct:0, why:"« Vamos a tomar el avión » : ils vont prendre l'avion."},
+  {cat:"comprehension", passage:"Hola, soy Marta. Este verano voy a viajar con mi hermano Pablo. Vamos a tomar el avión y vamos a visitar Sevilla. Pablo va a reservar el hotel. Yo voy a comprar los billetes.", q:"Qui va réserver l'hôtel ?", opts:["Pablo","Marta","Un ami"], correct:0, why:"« Pablo va a reservar el hotel » ; Marta, elle, va acheter les billets (voy a comprar)."}
+ ],
+ PRON_VERBS: [
+  {en:"El aeropuerto está en la ciudad.", fr:"L'aéroport est dans la ville. (a-e-ro-PUER-to : 4 syllabes ; c = th : thiu-DAD)"},
+  {en:"Voy a viajar con mi equipaje.", fr:"Je vais voyager avec mes bagages. (v = b ; j = kh : bia-KHAR ; qu = k : e-ki-PA-khe)"},
+  {en:"El billete es amarillo.", fr:"Le billet est jaune. (ll = y : bi-YE-te ; en Argentine, un « ch » doux)"},
+  {en:"La habitación tiene una llave.", fr:"La chambre a une clé. (h muette ; ción = thion en Espagne, sion en Amérique latine ; ll = y)"},
+  {en:"¿Está incluido el desayuno?", fr:"Le petit-déjeuner est-il inclus ? (in-KLUI-do ; des-a-YU-no)"},
+  {en:"Vamos a facturar las maletas.", fr:"Nous allons enregistrer les valises. (v = b : BA-mos ; fak-tu-RAR)"},
+  {en:"La recepción está a la izquierda.", fr:"La réception est à gauche. (rre-thep-THION ; z = th : ith-KIER-da)"},
+  {en:"El pasaporte es azul.", fr:"Le passeport est bleu. (pa-sa-POR-te ; z = th : a-THUL)"},
+  {en:"¿A qué hora sale el vuelo?", fr:"À quelle heure part le vol ? (h muette : O-ra ; ue = BWE-lo)"},
+  {en:"Quería reservar una habitación doble.", fr:"Je souhaiterais réserver une chambre double. (qu = k : ke-RI-a ; re-ser-BAR)"}
+ ],
+ READING: [
+  "Hola, soy Marta y voy a viajar este verano.",
+  "Voy a ir a Sevilla con mi hermano Pablo.",
+  "Vamos a tomar el avión en el aeropuerto de París.",
+  "Primero vamos a facturar las maletas y luego vamos a pasar el control de seguridad.",
+  "Yo voy a comprar los billetes de ida y vuelta.",
+  "Pablo va a reservar una habitación doble en un hotel pequeño.",
+  "En el hotel, Pablo va a preguntar: «¿Está incluido el desayuno?».",
+  "Después vamos a descansar un poco.",
+  "Y usted, señora, ¿adónde va a viajar este verano?",
+  "Y tú, ¿vas a viajar también?"
+ ],
+ GLOSS: [
+  {en:"voy a ir a", fr:"je vais aller à : le premier « a » introduit l'infinitif ir ; le second est le « à » du lieu"},
+  {en:"tomar el avión", fr:"prendre l'avion : « tomar » est neutre, « coger » reste réservé à l'Espagne"},
+  {en:"el control de seguridad", fr:"le contrôle de sécurité de l'aéroport"},
+  {en:"primero… luego…", fr:"d'abord… ensuite… : mots d'enchaînement vus en A1.8"},
+  {en:"preguntar", fr:"poser une question (verbe en -ar) ; ne pas confondre avec « pedir » (demander une chose)"},
+  {en:"un poco", fr:"un peu"},
+  {en:"adónde", fr:"vers où, où (avec ir) : ¿Adónde vas ? / ¿Adónde va usted ?"},
+  {en:"también", fr:"aussi : « ¿Vas a viajar también? »"}
+ ],
+ GRAMMAR1: {
+  heading:"Le futur proche : IR A + infinitif (voy a reservar)",
+  lede:"Tu connais déjà IR (aller) depuis A1.4. Bonne nouvelle : il suffit d'ajouter « a » + un infinitif pour parler de ce que tu vas faire. C'est LE futur du quotidien en espagnol, très employé à l'oral. Le principe est le même qu'en français : « je vais réserver » = voy a reservar.",
+  conj:[
+   ["yo →","voy a + infinitif","Voy a reservar un billete. · No voy a pagar con tarjeta."],
+   ["tú →","vas a + infinitif","¿Vas a viajar este verano? · Vas a llegar pronto."],
+   ["él, ella, usted →","va a + infinitif","Va a salir pronto. · ¿Va a pagar con tarjeta, señor?"],
+   ["nosotros/as →","vamos a + infinitif","Vamos a facturar las maletas. · ¡Vamos a descansar!"],
+   ["vosotros/as →","vais a + infinitif","¿Vais a llegar pronto? · Vais a tomar el tren."],
+   ["ellos, ellas, ustedes →","van a + infinitif","Van a pagar con tarjeta. · ¿Van a viajar ustedes?"]
+  ],
+  ruleHtml:"📖 <b>1. La structure.</b> <b>IR (conjugué) + a + verbe à l'infinitif</b>. Seul IR change selon la personne : <b>voy, vas, va, vamos, vais, van</b>. Le second verbe reste TOUJOURS à l'infinitif (reservar, viajar, salir, llegar, pagar, descansar, costar). On n'écrit jamais « voy reservo » ni « voy reservar ».<br><br>⚠️ <b>2. Le petit « a » est obligatoire.</b> Le français dit « je vais réserver » sans préposition ; l'espagnol ajoute <b>a</b> : <b>voy a reservar</b>. Oublier ce « a » (voy reservar) est l'erreur n°1 des francophones. Astuce : traduis « je vais » par « voy a ».<br><br>🔀 <b>3. Ne confonds pas deux « ir a ».</b> <b>ir a + lieu</b> = aller quelque part (<b>voy al aeropuerto</b>, voy a Sevilla, vamos a la estación) ; avec un nom masculin, a + el devient <b>al</b>. <b>ir a + infinitif</b> = futur proche (<b>voy a viajar</b>, vamos a facturar) : jamais « al » devant un verbe. Les deux peuvent même se suivre : <b>voy a ir a Sevilla</b> (je vais aller à Séville).<br><br>❌ <b>4. La négation</b> se place devant IR : <b>no voy a viajar</b>, no vamos a facturar, no va a costar mucho.<br><br>❓ <b>5. La question</b> : ¿Vas a viajar? · ¿Adónde vas a viajar? · ¿Cuándo vas a… ? Avec usted : ¿<b>Va a</b> viajar usted? · ¿Adónde <b>va a</b> viajar?<br><br>⏰ <b>6. Marqueurs de temps</b> utiles : <b>ahora</b> (maintenant), <b>pronto</b> (bientôt), <b>esta noche</b> (ce soir), <b>este verano</b> (cet été), <b>hoy</b>, <b>en las vacaciones</b>.<br><br>👥 <b>7. Tutoiement ET vouvoiement</b> : tú → <b>¿Vas a pagar con tarjeta? Voy a reservar tu billete.</b> · usted → <b>¿Va a pagar con tarjeta, señor? ¿Va a viajar usted?</b> Pluriel amical (Espagne) : <b>vais a</b> ; pluriel formel et Amérique latine : <b>van a</b>.<br><br>🗣️ <b>8. Proposer :</b> <b>¡Vamos a + infinitif!</b> signifie aussi « allons + verbe ! » : ¡Vamos a facturar las maletas! = allons enregistrer les valises !<br><br>🌎 <b>Variantes</b> : « el billete » (Espagne) / « el boleto » (Mexique) ; « facturar » / « despachar el equipaje » (Amérique latine) ; « tomar el avión » est neutre partout, « coger » est courant en Espagne mais vulgaire dans une grande partie de l'Amérique latine. Les formes IR A restent exactement les mêmes en Espagne et en Colombie.",
+  dialogueLede:"Deux amies préparent leurs vacances (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Marta! ¿Vas a viajar este verano?", fr:"Salut, Marta ! Tu vas voyager cet été ?"},
+   {who:"you", en:"Sí, voy a viajar a Sevilla con mi hermano.", fr:"Oui, je vais voyager à Séville avec mon frère."},
+   {who:"them", en:"¡Qué bien! ¿Vais a tomar el tren?", fr:"Super ! Vous allez prendre le train ?"},
+   {who:"you", en:"No, vamos a tomar el avión. Voy a reservar los billetes esta noche.", fr:"Non, nous allons prendre l'avion. Je vais réserver les billets ce soir."},
+   {who:"them", en:"¿Y el hotel?", fr:"Et l'hôtel ?"},
+   {who:"you", en:"Mi hermano va a reservar una habitación doble. ¡Va a ser un buen viaje!", fr:"Mon frère va réserver une chambre double. Ça va être un bon voyage !"}
+  ],
+  whyLabel:"Pourquoi IR A + infinitif est-il LE futur de l'oral ?",
+  whyText:"Un seul verbe que tu maîtrises déjà, IR, te donne accès à tous tes projets : voy a reservar, vas a viajar, vamos a descansar. Pas de nouvelles terminaisons à apprendre : tu conjugues IR (6 formes) et tu ajoutes <b>a</b> + l'infinitif. C'est exactement la logique du français « je vais + infinitif », et de l'anglais « going to ». À l'oral, les hispanophones l'emploient bien plus que les autres formes de futur, qui viendront à un niveau plus avancé. Pour ne pas oublier le « a », répète la formule comme un seul bloc : <b>voy-a-reservar</b>. Autre piège : « va a » se prononce presque comme « ba-a » ; écoute les deux a. Et rappelle-toi la différence : <b>voy al aeropuerto</b> (je vais à l'aéroport) ≠ <b>voy a viajar</b> (je vais voyager)."
+ },
+ GRAMMAR2: {
+  heading:"Réserver poliment et poser les bonnes questions : quería / quiero, ¿a qué hora…?, ¿está incluido…?",
+  dialogueLede:"À la réception d'un hôtel (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenas tardes, señor. ¡Bienvenido!", fr:"Bonsoir, monsieur. Bienvenue !"},
+   {who:"you", en:"Buenas tardes. Quería reservar una habitación doble, por favor.", fr:"Bonsoir. Je souhaiterais réserver une chambre double, s'il vous plaît."},
+   {who:"them", en:"Muy bien. ¿Cuántas noches va a estar usted?", fr:"Très bien. Combien de nuits allez-vous rester ?"},
+   {who:"you", en:"Dos noches. ¿Está incluido el desayuno?", fr:"Deux nuits. Le petit-déjeuner est-il inclus ?"},
+   {who:"them", en:"Sí, está incluido. ¿Va a pagar con tarjeta?", fr:"Oui, il est inclus. Allez-vous payer par carte ?"},
+   {who:"you", en:"Sí, voy a pagar con tarjeta. ¿Me da la llave, por favor?", fr:"Oui, je vais payer par carte. Pouvez-vous me donner la clé, s'il vous plaît ?"},
+   {who:"them", en:"Aquí tiene, señor. ¡Buen viaje!", fr:"Voici, monsieur. Bon voyage !"}
+  ],
+  ruleHtml:"💭 <b>1. Demander poliment : « Quería reservar… ».</b> Tu as rencontré « quería » en A1.6 : c'est une <b>formule de politesse figée</b>, que l'on réemploie en bloc, sans la conjuguer. Elle adoucit la demande, comme le français « je voulais réserver… ». <b>Quería reservar una habitación doble, por favor.</b> · <b>Quería reservar dos billetes de ida y vuelta.</b> À utiliser avec usted, à la réception, au comptoir, par écrit.<br><br>💭 <b>2. Entre amis : « Quiero reservar… ».</b> Forme directe et naturelle avec des proches ou par message : <b>Quiero reservar una habitación para los dos.</b> À l'hôtel avec le personnel, préfère « quería » : « quiero » peut paraître sec.<br><br>👥 <b>Formel / informel :</b> tú → <b>Quiero reservar…</b> · <b>¿Me das la llave, por favor?</b> · <b>Aquí tienes.</b> · <b>¿Tienes wifi?</b> · usted → <b>Quería reservar…</b> · <b>¿Me da la llave, por favor?</b> · <b>Aquí tiene.</b> · <b>¿Tiene wifi?</b><br><br>💭 <b>3. Demander l'heure d'un départ ou d'une arrivée.</b> <b>¿A qué hora + verbe + sujet ?</b> Le verbe passe devant le sujet : <b>¿A qué hora sale el vuelo?</b> · ¿A qué hora llega el tren? · ¿A qué hora es el desayuno? Avec tú / usted : ¿A qué hora sale <b>tu</b> vuelo? / ¿A qué hora sale <b>su</b> vuelo? Pour répondre : <b>a las</b> + heure (on le détaille en A1.10) : « A las nueve. »<br><br>💭 <b>4. « ¿Está incluido el desayuno? »</b> On peut aussi dire ¿El desayuno está incluido? ; la première forme est très naturelle. « Incluido » s'accorde comme un adjectif : <b>el desayuno está incluido</b>, <b>la comida está incluida</b>, <b>los billetes están incluidos</b>. Réponses : « Sí, está incluido » / « No, no está incluido ».<br><br>💭 <b>5. Autres questions utiles :</b> ¿Dónde está la puerta de embarque? · ¿Tiene wifi la habitación? · ¿Cuántas noches va a estar? · ¿Aceptan tarjeta? Pour attirer l'attention poliment : <b>Perdone</b> (usted) / <b>Perdona</b> (tú).<br><br>🌎 <b>Variantes</b> : habitación (Espagne) / cuarto (Mexique) ; el billete / el boleto ; el móvil / el celular ; facturar / despachar el equipaje ; vosotros (Espagne) / ustedes (Amérique latine).",
+  whyLabel:"Pourquoi dire « quería » et pas « quiero » à l'hôtel ?",
+  whyText:"En français aussi, on adoucit une demande avec « je voulais réserver une chambre » ou « je souhaiterais ». L'espagnol fait la même chose avec <b>quería</b>. Tu n'as pas besoin d'apprendre ici le temps qui se cache derrière : retiens-le comme un bloc de politesse, au même titre que « por favor ». <b>Quiero reservar</b> n'est pas incorrect ; c'est seulement plus direct, parfait entre amis. Règle simple : <b>personnel d'un hôtel, d'un restaurant ou d'une compagnie → quería + usted</b> ; <b>amis, famille → quiero + tú</b>. Pour les questions, retiens que l'espagnol place le verbe avant le sujet : <b>¿A qué hora sale el vuelo?</b> (et pas « ¿A qué hora el vuelo sale? »)."
+ },
+ REVIEW: [
+  {q:"« Je suis en train de chercher la gare. » (rappel A1.8)", opts:["Estoy buscando la estación.","Estoy buscar la estación."], correct:0, fb:"ESTAR + gérondif (-ando pour les verbes en -ar) : estoy buscando. (rappel A1.8)"},
+  {q:"Gérondif de « comer » :", opts:["comiendo","comando"], correct:0, fb:"Verbes en -er / -ir : on remplace la fin par -iendo (comer → comiendo). (rappel A1.8)"},
+  {q:"À un inconnu âgé qui parle trop vite, tu dis :", opts:["¿Puede repetir, por favor?","¿Puedes repetir, por favor?"], correct:0, fb:"Inconnu âgé = usted : puede. (rappel A1.8)"},
+  {q:"Une femme dit « Je suis perdue » :", opts:["Estoy perdida.","Estoy perdido."], correct:0, fb:"« perdido » s'accorde avec celle qui parle : perdida pour une femme. (rappel A1.8)"},
+  {q:"« À gauche » se dit :", opts:["a la izquierda","a la derecha"], correct:0, fb:"izquierda = gauche ; derecha = droite. (rappel A1.8)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"Yo ___ a reservar una habitación. (ir)", answers:["voy","Voy"], why:"yo → voy : voy a reservar."},
+  {type:"fill", text:"Tú ___ a viajar este verano. (ir)", answers:["vas","Vas"], why:"tú → vas : vas a viajar."},
+  {type:"fill", text:"Ella ___ a salir pronto. (ir)", answers:["va","Va"], why:"ella → va : va a salir."},
+  {type:"fill", text:"Nosotros ___ a facturar las maletas. (ir)", answers:["vamos","Vamos"], why:"nosotros → vamos."},
+  {type:"fill", text:"Vosotros ___ a llegar pronto. (ir, Espagne)", answers:["vais","Vais"], why:"vosotros → vais (Espagne). En Amérique latine : ustedes van."},
+  {type:"fill", text:"Ustedes ___ a pagar con tarjeta. (ir)", answers:["van","Van"], why:"ustedes se conjugue comme ellos : van."},
+  {type:"fill", text:"Usted ___ a viajar, ¿verdad? (ir)", answers:["va","Va"], why:"usted se conjugue comme él/ella : va a viajar."},
+  {type:"fill", text:"Vamos a ___ las maletas. (facturar)", answers:["facturar"], why:"Après « vamos a », l'infinitif ne change jamais : facturar."},
+  {type:"fill", text:"Voy a ___ un billete. (reservar)", answers:["reservar"], why:"ir a + infinitif : voy a reservar un billete."},
+  {type:"fill", text:"Vas a ___ en el hotel. (descansar)", answers:["descansar"], why:"L'infinitif reste invariable : vas a descansar."},
+  {type:"fill", text:"Quería ___ una habitación doble, por favor. (reservar)", answers:["reservar"], why:"« Quería » est suivi d'un infinitif : quería reservar."},
+  {type:"fill", text:"Voy ___ aeropuerto. (a + el, lieu)", answers:["al"], why:"a + el devant un lieu masculin devient al : voy al aeropuerto."},
+  {type:"fill", text:"Un billete de ___ y vuelta. (l'aller)", answers:["ida"], why:"ida = l'aller : un billete de ida y vuelta."},
+  {type:"fill", text:"¿A qué hora ___ el vuelo? (salir, 3e personne)", answers:["sale","Sale"], why:"él / el vuelo → sale : ¿A qué hora sale el vuelo?"},
+  {type:"fill", text:"No ___ a viajar este verano. (ir, yo)", answers:["voy","Voy"], why:"La négation se place devant IR : no voy a viajar."},
+  {type:"fill", text:"Una habitación ___ para dos personas. (double)", answers:["doble"], why:"doble : chambre pour deux personnes, invariable en genre."},
+  {type:"fill", text:"La ___ de embarque. (la porte)", answers:["puerta","Puerta"], why:"la puerta de embarque : la porte d'embarquement."},
+  {type:"choice", q:"Corrige : « Voy reservar un hotel. »", opts:["Voy a reservar un hotel.","Voy de reservar un hotel."], correct:0, why:"Il manque le « a » : voy A reservar."},
+  {type:"choice", q:"« Ils vont arriver. »", opts:["Van a llegar.","Vais a llegar."], correct:0, why:"ellos → van. « Vais » = vosotros uniquement."},
+  {type:"choice", q:"Au vouvoiement : « Allez-vous partir, monsieur ? »", opts:["¿Va a salir usted, señor?","¿Vas a salir usted, señor?"], correct:0, why:"usted se conjugue à la 3e personne : va a salir."},
+  {type:"choice", q:"Face à une réceptionniste que tu vouvoies, le plus poli est :", opts:["Quería reservar una habitación, por favor.","Quiero reservar una habitación."], correct:0, why:"« Quería » est la formule de politesse figée ; « quiero » est plus direct."},
+  {type:"choice", q:"« Le petit-déjeuner est inclus. »", opts:["El desayuno está incluido.","El desayuno es incluido."], correct:0, why:"« Incluido » décrit un état : on emploie estar et l'adjectif s'accorde."},
+  {type:"choice", q:"Au Mexique et dans beaucoup de pays d'Amérique latine, un billet se dit plutôt :", opts:["el boleto","el billeto"], correct:0, why:"« boleto » ; « billete » est la forme d'Espagne (« billeto » n'existe pas)."},
+  {type:"choice", q:"Pour demander ta clé de chambre, tu t'adresses à…", opts:["la recepción","el aeropuerto"], correct:0, why:"La clé de la chambre se demande à la réception : « ¿Me da la llave, por favor? »"}
+ ],
+ ANNOTATED: {
+  title:"Marta réserve son voyage",
+  intro:"Quatre phrases pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction, et repère le futur proche : IR + a + infinitif.",
+  sentences:[
+   {fr:"Je vais réserver une chambre double.", tokens:[
+    {w:"Voy", tag:"verbe", info:"ir · présent · yo", fr:"je vais", tip:"Seul IR se conjugue : yo → voy."},
+    {w:"a", tag:"préposition", fr:"(ne se traduit pas)", tip:"Obligatoire entre ir et l'infinitif : voy A reservar."},
+    {w:"reservar", tag:"verbe", info:"infinitif · -ar", fr:"réserver", tip:"L'infinitif ne change jamais."},
+    {w:"una", tag:"déterminant", info:"article indéfini · fém. sing.", fr:"une"},
+    {w:"habitación", tag:"nom", info:"fém. sing.", fr:"chambre", tip:"h muette ; ción = thion (Espagne)."},
+    {w:"doble", tag:"adjectif", info:"invariable en genre", fr:"double"}
+   ]},
+   {fr:"Nous allons enregistrer les valises.", tokens:[
+    {w:"Vamos", tag:"verbe", info:"ir · présent · nosotros", fr:"nous allons", tip:"v = b : BA-mos."},
+    {w:"a", tag:"préposition", fr:"(ne se traduit pas)", tip:"Comme toujours : ir + a + infinitif."},
+    {w:"facturar", tag:"verbe", info:"infinitif · -ar", fr:"enregistrer (les bagages)", tip:"Aussi : facturer."},
+    {w:"las", tag:"déterminant", info:"article défini · fém. plur.", fr:"les"},
+    {w:"maletas", tag:"nom", info:"fém. plur.", fr:"valises"}
+   ]},
+   {fr:"À quelle heure part le vol ?", tokens:[
+    {w:"¿A", tag:"préposition", fr:"à"},
+    {w:"qué", tag:"adjectif interrogatif", fr:"quelle", tip:"Accent écrit sur qué dans une question."},
+    {w:"hora", tag:"nom", info:"fém. sing.", fr:"heure", tip:"h muette : O-ra."},
+    {w:"sale", tag:"verbe", info:"salir · présent · él", fr:"part", tip:"Le verbe passe avant le sujet dans la question."},
+    {w:"el", tag:"déterminant", info:"article défini · masc. sing.", fr:"le"},
+    {w:"vuelo?", tag:"nom", info:"masc. sing.", fr:"vol", tip:"ue = BWE-lo."}
+   ]},
+   {fr:"Allez-vous payer par carte, monsieur ?", tokens:[
+    {w:"¿Va", tag:"verbe", info:"ir · présent · usted", fr:"allez-vous", tip:"usted se conjugue comme él/ella : va (tutoiement : vas)."},
+    {w:"a", tag:"préposition", fr:"(ne se traduit pas)", tip:"Introduit l'infinitif."},
+    {w:"pagar", tag:"verbe", info:"infinitif · -ar", fr:"payer"},
+    {w:"con", tag:"préposition", fr:"avec, par", tip:"Pagar con tarjeta = payer par carte."},
+    {w:"tarjeta", tag:"nom", info:"fém. sing.", fr:"carte", tip:"j = kh : tar-KHE-ta."},
+    {w:"señor?", tag:"nom", info:"masc. sing.", fr:"monsieur", tip:"ñ = gn. Titre de politesse."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🧳", title:"Culture, 10 expressions et fiche récap (A1.9)",
+  html:"<b>🧳 Culture — voyager dans le monde hispanophone</b> En Espagne, le train à grande vitesse s'appelle l'<b>AVE</b> et se réserve en ligne ; en Amérique latine, l'autocar longue distance est souvent le moyen de transport principal. À l'hôtel, le <b>desayuno</b> est parfois inclus, parfois à payer en plus : demande « ¿Está incluido el desayuno? ». Le jour du <b>check-out</b>, on rend généralement la chambre avant midi. Pour la politesse : « Quería reservar… » avec le personnel, « Quiero reservar… » entre amis. Variantes : billete / boleto, habitación / cuarto, móvil / celular, facturar / despachar el equipaje, vosotros (Espagne) / ustedes (Amérique latine). Dis « tomar el tren / el avión » : « coger » est courant en Espagne mais grossier en Amérique latine.<br><br><b>🎁 10 expressions réelles du voyage et du départ</b><br>1. <b>Hacer las maletas</b> = faire ses valises (et partir).<br>2. <b>Tomar el fresco</b> = prendre le frais, sortir respirer l'air du soir.<br>3. <b>Buscar tres pies al gato</b> = chercher midi à quatorze heures (familier).<br>4. <b>Tener cuerda para rato</b> = en avoir encore pour longtemps (énergie, durée ; familier).<br>5. <b>Salir pitando</b> = partir en trombe, filer (familier).<br>6. <b>Llegar a buen puerto</b> = arriver à bon port, aboutir.<br>7. <b>Perder el tren</b> = rater le train, laisser passer l'occasion.<br>8. <b>Coger el tren en marcha</b> = prendre le train en marche (Espagne ; en Amérique latine : « subirse al tren en marcha »).<br>9. <b>Empezar con buen pie</b> = commencer du bon pied.<br>10. <b>Ir de Herodes a Pilatos</b> = passer d'un problème ou d'un guichet à un autre sans rien résoudre.<br><br><b>✍️ Expression écrite — ton projet de voyage (4 lignes)</b> Utilise au moins deux fois le futur proche. Modèle : « Este verano voy a viajar a Sevilla con mi hermano. Vamos a tomar el avión y vamos a visitar la ciudad. Voy a reservar una habitación doble en un hotel pequeño. ¡Va a ser un buen viaje! » Version formelle (à un directeur) : « Este verano voy a viajar a Sevilla. ¿Va a viajar usted también, señor? » Vérifie : voy / vas / va / vamos / vais / van · le « a » devant l'infinitif · infinitifs invariables.<br><br><b>🗣️ Expression orale — arrivée à l'hôtel</b> Entraîne-toi à voix haute. Formel : « Buenas tardes. Tengo una reserva. Aquí tiene mi pasaporte. ¿Me da la llave, por favor? ¿A qué hora es el desayuno? ¿Tiene wifi la habitación? » Informel (à un ami qui travaille à l'accueil) : « Hola. Tengo una reserva. Aquí tienes mi pasaporte. ¿Me das la llave? ¿A qué hora es el desayuno? »<br><br><b>⚡ Mini-contrôle</b> 1. « Je vais réserver un billet aller-retour » → <b>Voy a reservar un billete de ida y vuelta.</b> 2. Heure de départ du vol → <b>¿A qué hora sale el vuelo?</b><br><br><b>📄 Fiche récap</b> Futur proche : voy / vas / va / vamos / vais / van + <b>a</b> + infinitif · voy al aeropuerto (lieu) ≠ voy a viajar (verbe) · no voy a viajar · ¡Vamos a…! Voyage : reservar, el billete (solo ida / ida y vuelta), el asiento, la salida / la llegada, el aeropuerto, la puerta de embarque, el equipaje, la maleta, el pasaporte, la tarjeta de embarque, facturar. Hôtel : la habitación (individual / doble), la entrada (check-in), la salida (check-out), la llave, la recepción, el desayuno incluido, el wifi. Politesse : Quería reservar… (usted) / Quiero reservar… (tú) · ¿Me da la llave? / ¿Me das la llave? · Aquí tiene / Aquí tienes. Questions : ¿A qué hora sale el vuelo? · ¿Está incluido el desayuno?"},
+ NEXT_PREVIEW:"A1.10 (Trabajo y estudios) : parler de ton travail et de tes études — trabajo, profesor, médico, oficina, colegio, universidad —, poser « ¿A qué te dedicas? » (tú) / « ¿A qué se dedica usted? » (usted), conjuguer les verbes réguliers en -ar, -er, -ir et situer ta journée avec « a las… » et « por la mañana ».",
+ META:{vocabTitle:"Viajar : billets, aéroport, hôtel et futur proche (A1.9)", lectureTitle:"Marta et Pablo partent en voyage", bilanTitle:"Bravo, tu sais voyager en espagnol !", pronLabel:"Viajar : j = kh, ll = y, aeropuerto, ción, v = b", todayLede:"réserver un billet et une chambre, te débrouiller à l'aéroport et à l'hôtel, et parler de tes projets avec le futur proche (voy a viajar, vas a llegar, vamos a facturar), avec la politesse formelle ET informelle"}
+};
+})();
+
+
+// A1.10 — Trabajo y estudios : métiers, études, présent régulier -AR / -ER / -IR, ¿A qué te dedicas?, a las / por la mañana (leçon 210)
+(function(){
+function blk(name, rows){
+ return __esB(name, rows).map(function(v, i){ v.emo = rows[i][4]; v.ex = [rows[i][5], rows[i][6]]; return v; });
+}
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Les métiers et les personnes au travail", [
+  ["el trabajo","/el tɾaˈβaxo/","le travail, l'emploi","j = kh : tra-BA-kho. Nom masculin ; à ne pas confondre avec le verbe trabajar. Pluriel : los trabajos (les emplois, les travaux).","💼","Mi trabajo es interesante.","Mon travail est intéressant."],
+  ["el profesor / la profesora","/pɾofeˈsoɾ · pɾofeˈsoɾa/","le professeur / la professeure","Mot terminé par une consonne : on AJOUTE -a au féminin. Syllabe tonique : pro-fe-SOR. Pour dire son métier, pas d'article : « Soy profesora ».","👩‍🏫","Mi hermana es profesora.","Ma sœur est professeure."],
+  ["el médico / la médica","/ˈmeðiko · ˈmeðika/","le médecin","Accent écrit : MÉ-di-co (jamais « medico »). -o → -a au féminin. « Doctor / doctora » est un titre qu'on met devant le nom : la doctora López.","🩺","Mi padre es médico.","Mon père est médecin."],
+  ["el ingeniero / la ingeniera","/iŋxeˈnjeɾo · iŋxeˈnjeɾa/","l'ingénieur(e)","g devant e = kh : in-khe-NIE-ro. Pas de « -eur » : -o / -a. ie = diphtongue (une seule syllabe).","📐","Ana es ingeniera.","Ana est ingénieure."],
+  ["el estudiante / la estudiante","/estuˈðjante/","l'étudiant(e)","Finit en -e : INVARIABLE, seul l'article change. Se dit aussi pour un collégien ou un lycéen. Variante : « el alumno / la alumna » (l'élève).","🎓","Soy estudiante de informática.","Je suis étudiant(e) en informatique."],
+  ["el jefe / la jefa","/ˈxefe · ˈxefa/","le chef / la cheffe, le patron / la patronne","EXCEPTION : -e → -a au féminin (el jefe, la jefa). j = kh : KHE-fe. Au vouvoiement : « señor Ruiz », « señora Pérez ».","👔","Mi jefa es muy simpática.","Ma cheffe est très sympathique."],
+  ["el compañero / la compañera","/komˈpaɲeɾo · komˈpaɲeɾa/","le collègue, le camarade","ñ = gn : com-pa-GNÉ-ro. « Compañero de trabajo » = collègue ; « compañero de clase » = camarade de classe. Pas « compagnon ».","🤝","Mis compañeros son simpáticos.","Mes collègues sont sympathiques."],
+  ["el enfermero / la enfermera","/enfeɾˈmeɾo · enfeɾˈmeɾa/","l'infirmier / l'infirmière","Dérivé de « enfermo » (malade). Se prononce en-fer-MÉ-ro. -o → -a.","💉","La enfermera trabaja en un hospital.","L'infirmière travaille dans un hôpital."],
+  ["el abogado / la abogada","/aβoˈɣaðo · aβoˈɣaða/","l'avocat(e)","b doux, g doux : a-bo-GA-do. -o → -a. Pas de « avocat » (avocado = le fruit).","⚖️","Mi tía es abogada.","Ma tante est avocate."],
+  ["el camarero / la camarera","/kamaˈɾeɾo · kamaˈɾeɾa/","le serveur / la serveuse","Métier de la restauration (Espagne). En Amérique latine : « el mesero / la mesera » (Mexique, Colombie). Pour appeler : « ¡Perdone! » (usted).","🍽️","Soy camarero en un restaurante.","Je suis serveur dans un restaurant."],
+  ["el contable / la contable","/konˈtaβle/","le comptable / la comptable","Finit en -e : invariable. En Amérique latine : aussi « el contador / la contadora ». Syllabe tonique : con-TA-ble.","🧮","Mi madre es contable.","Ma mère est comptable."],
+  ["el vendedor / la vendedora","/bendeˈðoɾ · bendeˈðoɾa/","le vendeur / la vendeuse","Consonne finale : on ajoute -a au féminin. v = b : ben-de-DOR.","🛍️","La vendedora trabaja en una tienda.","La vendeuse travaille dans un magasin."],
+  ["el director / la directora","/diɾekˈtoɾ · diɾekˈtoɾa/","le directeur / la directrice","Consonne finale : -a au féminin. Aussi le chef d'un service ou d'un établissement : el director del colegio.","🧑‍💼","La directora es muy amable.","La directrice est très aimable."],
+  ["el empleado / la empleada","/empleˈaðo · empleˈaða/","l'employé(e)","-o → -a. « Empleado de oficina » = employé de bureau. d entre voyelles très doux.","🧑‍💻","Soy empleado de banco.","Je suis employé de banque."]
+ ]),
+ blk("Les lieux de travail", [
+  ["la oficina","/la ofiˈθina/","le bureau, l'entreprise","Féminin. c devant i = th (Espagne) ou s (Amérique latine) : o-fi-THI-na. Désigne la pièce ET le lieu de travail en général.","🏢","Trabajo en una oficina grande.","Je travaille dans un grand bureau."],
+  ["la fábrica","/la ˈfaβɾika/","l'usine","Accent écrit sur la 1re syllabe : FÁ-bri-ca. Féminin.","🏭","Mi padre trabaja en una fábrica.","Mon père travaille dans une usine."],
+  ["la empresa","/la emˈpɾesa/","l'entreprise, la société","Féminin. Plus large que « oficina » : toute l'entreprise. « Mi empresa es pequeña. »","🏬","Mi empresa está en Madrid.","Mon entreprise est à Madrid."],
+  ["el hospital","/el ospiˈtal/","l'hôpital","h muette : os-pi-TAL. Pluriel : los hospitales. On dit « en el hospital » (en + lieu).","🏥","La médica trabaja en el hospital.","La médecin travaille à l'hôpital."],
+  ["la tienda","/la ˈtjenda/","le magasin, la boutique","ie = diphtongue : TIEN-da. En Amérique latine, « el negocio » ou « la tienda » selon les pays.","🏪","Mi hermano trabaja en una tienda.","Mon frère travaille dans un magasin."],
+  ["el teletrabajo","/el teleˈtɾaβaxo/","le télétravail","Mot courant depuis quelques années. « Trabajar desde casa » = travailler depuis chez soi ; en Amérique latine, on entend aussi « home office ».","🏠","Hoy trabajo desde casa.","Aujourd'hui je travaille depuis chez moi."]
+ ]),
+ blk("L'école et les études", [
+  ["el colegio","/el koˈlexjo/","l'école","g devant i = kh : ko-LE-khio. Ce n'est PAS le « collège » français : le sens varie (en Espagne surtout l'école primaire ; en Colombie, souvent toute l'école). Le lycée public espagnol = « el instituto ».","🏫","Mi hijo está en el colegio.","Mon fils est à l'école."],
+  ["la universidad","/la unibeɾsiˈðað/","l'université, la fac","Accent sur la dernière syllabe (consonne finale) : u-ni-ver-si-DAD. Les mots en -dad sont féminins. Familier : « la uni ».","🎓","Estudio en la universidad.","J'étudie à l'université."],
+  ["la asignatura","/la asiɣnaˈtuɾa/","la matière (scolaire)","Féminin. Aussi : « la materia » (très courant en Amérique latine). Mot à retenir : on dit « mi asignatura favorita ».","📖","Mi asignatura favorita es la historia.","Ma matière préférée est l'histoire."],
+  ["la clase","/la ˈklase/","le cours, la classe","Désigne le cours (« tengo clase ») ET la salle ou le groupe. Pas d'article après « tener » : « tengo clase a las nueve ».","🧑‍🏫","Tengo clase a las nueve.","J'ai cours à neuf heures."],
+  ["los deberes","/los deˈβeɾes/","les devoirs","Toujours au pluriel avec ce sens. « Hacer los deberes » = faire ses devoirs. Variante : « la tarea » (Amérique latine).","📝","Hago los deberes por la noche.","Je fais mes devoirs le soir."],
+  ["el examen","/el ekˈsamen/","l'examen","x = « ks » : ek-SA-men. Pluriel : los exámenes (l'accent apparaît !).","📋","Hoy tengo un examen difícil.","Aujourd'hui j'ai un examen difficile."],
+  ["el título","/el ˈtitulo/","le diplôme, le titre","Accent écrit : TÍ-tu-lo. « Tener un título » = avoir un diplôme.","📜","Tengo un título de ingeniero.","J'ai un diplôme d'ingénieur."],
+  ["la carrera","/la kaˈrrera/","le cursus universitaire, les études supérieures","rr roulé. « Estudiar una carrera » = faire des études supérieures. Dans le sport, « la carrera » = la course.","🎒","Mi hermana estudia una carrera.","Ma sœur fait des études supérieures."],
+  ["la nota","/la ˈnota/","la note (scolaire)","Féminin : « una nota buena ». Aussi : un mot écrit, une note de musique.","💯","Tengo una nota buena.","J'ai une bonne note."],
+  ["los estudios","/los esˈtuðjos/","les études","Toujours au pluriel : « terminar los estudios », « mis estudios ». Ne pas confondre avec « el estudio » (le studio, l'étude).","📚","Termino mis estudios este año.","Je termine mes études cette année."]
+ ]),
+ blk("La journée de travail", [
+  ["empezar","/empeˈθaɾ/","commencer","Verbe à diphtongue e → ie (comme preferir) : empiezo, empiezas, empieza, empezamos, empezáis, empiezan. Se construit avec a : « empezar a trabajar ».","▶️","Empiezo a trabajar a las ocho.","Je commence à travailler à huit heures."],
+  ["terminar","/teɾmiˈnaɾ/","finir, terminer","Verbe régulier en -AR : termino, terminas, termina, terminamos, termináis, terminan. Se construit avec de : « terminar de trabajar ».","⏹️","Termino a las cinco de la tarde.","Je termine à cinq heures de l'après-midi."],
+  ["la reunión","/la reuˈnjon/","la réunion","« reu » = DEUX syllabes (re-u-NIÓN), accent écrit sur le ó. Pluriel : las reuniones (l'accent disparaît).","👥","Tengo una reunión por la tarde.","J'ai une réunion l'après-midi."],
+  ["el descanso","/el desˈkanso/","la pause","Aussi « el descanso » du milieu de la journée. Le verbe « descansar » = se reposer.","☕","Tenemos un descanso a las once.","Nous avons une pause à onze heures."],
+  ["el horario","/el oˈɾaɾjo/","l'horaire, l'emploi du temps","h muette : o-RA-rio. « Mi horario es de nueve a cinco. »","🗓️","Mi horario es de ocho a cuatro.","Mon horaire est de huit heures à quatre heures."],
+  ["la jornada","/la xoɾˈnaða/","la journée de travail","j = kh : khor-NA-da. « Jornada completa » = temps plein ; « media jornada » = mi-temps. En Espagne : « jornada partida » (pause longue le midi) ou « jornada intensiva » (journée continue).","⏱️","Trabajo media jornada.","Je travaille à mi-temps."]
+ ]),
+ blk("Les verbes de la vie active : -AR, -ER, -IR", [
+  ["trabajar","/tɾaβaˈxaɾ/","travailler","Verbe -AR régulier : trabajo, trabajas, trabaja, trabajamos, trabajáis, trabajan. j = kh. Avec en (lieu) : « trabajo en una oficina ».","👷","Trabajo en una oficina.","Je travaille dans un bureau."],
+  ["estudiar","/estuˈðjaɾ/","étudier","Verbe -AR régulier : estudio, estudias, estudia, estudiamos, estudiáis, estudian. Pas de préposition devant la matière : « estudio medicina ».","✏️","Estudio español por la noche.","J'étudie l'espagnol le soir."],
+  ["enseñar","/enseˈɲaɾ/","enseigner","-AR régulier : enseño, enseñas… ñ = gn : en-se-GNAR. Un professeur « enseña » ; un élève « aprende ».","🧑‍🏫","La profesora enseña matemáticas.","La professeure enseigne les mathématiques."],
+  ["ayudar","/aʝuˈðaɾ/","aider","-AR régulier : ayudo, ayudas, ayuda… y = « y » : a-yu-DAR. Se construit sans préposition devant la personne : « ayudo a mi jefe ».","🤲","Ayudo a mis compañeros.","J'aide mes collègues."],
+  ["llegar","/ʝeˈɣaɾ/","arriver","-AR régulier : llego, llegas, llega… ll = y : ye-GAR. « Llegar a las ocho » = arriver à huit heures.","🚪","Llego a la oficina a las ocho.","J'arrive au bureau à huit heures."],
+  ["preparar","/pɾepaˈɾaɾ/","préparer","-AR régulier : preparo, preparas, prepara… « Preparar una clase / una reunión ».","🗂️","Preparo la reunión por la mañana.","Je prépare la réunion le matin."],
+  ["necesitar","/neθesiˈtaɾ/","avoir besoin de","-AR régulier : necesito, necesitas… c = th (Espagne) ou s : ne-the-si-TAR. Se construit sans préposition : « necesito un título ».","🔧","Necesito un descanso.","J'ai besoin d'une pause."],
+  ["aprender","/apɾenˈdeɾ/","apprendre","Verbe -ER régulier : aprendo, aprendes, aprende, aprendemos, aprendéis, aprenden. Faux ami à éviter : « apprendre » = aprender, mais « enseigner » = enseñar.","🧠","Aprendo mucho en clase.","J'apprends beaucoup en cours."],
+  ["comer","/koˈmeɾ/","manger, déjeuner","-ER régulier : como, comes, come, comemos, coméis, comen. En Espagne, « comer » veut aussi dire « déjeuner » (le repas de 14 h).","🍽️","Como en la oficina a las dos.","Je déjeune au bureau à deux heures."],
+  ["comprender","/kompɾenˈdeɾ/","comprendre","-ER régulier : comprendo, comprendes, comprende… Synonyme très courant : « entender ». Ne pas confondre avec « incluir » (comprendre = inclure).","💡","No comprendo la lección.","Je ne comprends pas la leçon."],
+  ["vivir","/biˈβiɾ/","vivre, habiter","Verbe -IR régulier : vivo, vives, vive, vivimos, vivís, viven. Pour l'adresse : « vivir en + ville ». Les deux terminaisons de nosotros / vosotros : -imos, -ís.","🏡","Vivo cerca de la oficina.","J'habite près du bureau."],
+  ["escribir","/eskɾiˈβiɾ/","écrire","Verbe -IR régulier : escribo, escribes, escribe, escribimos, escribís, escriben. Le participe irrégulier n'est pas au programme.","✍️","Escribo muchas cartas.","J'écris beaucoup de lettres."],
+  ["abrir","/aˈβɾiɾ/","ouvrir","-IR régulier : abro, abres, abre, abrimos, abrís, abren. « Abrir la oficina » = ouvrir le bureau.","🔓","Abro la tienda a las nueve.","J'ouvre le magasin à neuf heures."],
+  ["recibir","/reθiˈβiɾ/","recevoir","-IR régulier : recibo, recibes, recibe… « Recibir un título / un sueldo ».","📥","Recibo a los clientes por la mañana.","Je reçois les clients le matin."],
+  ["hacer","/aˈθeɾ/","faire","IRRÉGULIER seulement à la 1re personne : hago (comme tengo). Les autres : haces, hace, hacemos, hacéis, hacen. h muette. Reviendra en A1.11 pour la météo.","🔨","Hago los deberes por la noche.","Je fais mes devoirs le soir."]
+ ]),
+ blk("Les questions clés (tú / usted)", [
+  ["¿A qué te dedicas? / ¿A qué se dedica usted?","/a ke te deˈðikas · a ke se deˈðika usˈteð/","que fais-tu dans la vie ? / que faites-vous dans la vie ?","« Dedicarse a » = se consacrer à. Question NATURELLE sur le métier, plus que « ¿Cuál es tu trabajo? ». Réponse : « Soy ingeniero. » / « Trabajo en… » / « Estudio… ».","💬","¿A qué se dedica usted? — Soy médica.","Que faites-vous dans la vie ? — Je suis médecin."],
+  ["¿Dónde trabajas? / ¿Dónde trabaja usted?","/ˈdonde tɾaˈβaxas · ˈdonde tɾaˈβaxa usˈteð/","où travailles-tu ? / où travaillez-vous ?","dónde avec accent écrit (question). Tú : trabajas ; usted : trabaja (comme él/ella).","📍","¿Dónde trabaja usted? — En un hospital.","Où travaillez-vous ? — Dans un hôpital."],
+  ["¿Qué estudias? / ¿Qué estudia usted?","/ke esˈtuðjas · ke esˈtuðja usˈteð/","qu'étudies-tu ? / qu'étudiez-vous ?","qué avec accent écrit. Réponse : « Estudio medicina / español / informática ». Devant la matière, pas de préposition.","🎓","¿Qué estudias? — Estudio informática.","Qu'étudies-tu ? — J'étudie l'informatique."],
+  ["¿En qué trabajas? / ¿En qué trabaja usted?","/en ke tɾaˈβaxas · en ke tɾaˈβaxa usˈteð/","dans quel domaine travailles-tu ? / dans quel domaine travaillez-vous ?","Autre façon courante de demander le métier ou le secteur. Réponse : « Trabajo en educación / en un banco ».","🔍","¿En qué trabaja usted? — En un banco.","Dans quoi travaillez-vous ? — Dans une banque."],
+  ["¿A qué hora empiezas? / ¿A qué hora empieza usted?","/a ke ˈoɾa emˈpjesas · a ke ˈoɾa emˈpjesa usˈteð/","à quelle heure commences-tu ? / à quelle heure commencez-vous ?","e → ie à tú et usted (empiezas, empieza). Réponse : « Empiezo a las ocho ».","⏰","¿A qué hora empiezas? — A las nueve.","À quelle heure commences-tu ? — À neuf heures."],
+  ["¿Qué haces? / ¿Qué hace usted?","/ke ˈaθes · ke ˈaθe usˈteð/","que fais-tu ? / que faites-vous ?","Piège : s'emploie surtout pour « que fais-tu là, maintenant ? ». Pour le métier, préfère « ¿A qué te dedicas? ».","🤔","¿Qué hace usted? — Trabajo.","Que faites-vous ? — Je travaille."],
+  ["Soy + métier","/soj/","je suis + métier","SANS article : « Soy ingeniero », « Soy profesora » (pas « soy un ingeniero »). Avec un adjectif, l'article revient : « Soy una profesora excelente ».","🪪","Soy contable y trabajo en una empresa.","Je suis comptable et je travaille dans une entreprise."],
+  ["trabajar en / de / como","/tɾaβaˈxaɾ en · de · ˈkomo/","travailler dans / en tant que","« Trabajo en una oficina » (lieu), « trabajo de camarero » / « trabajo como camarero » (fonction).","🧭","Trabajo de camarero en un restaurante.","Je travaille comme serveur dans un restaurant."],
+  ["dedicarse a","/deðiˈkaɾse a/","se consacrer à, faire comme métier","Verbe pronominal comme llamarse : me dedico, te dedicas, se dedica, nos dedicamos, os dedicáis, se dedican.","🎯","Me dedico a la enseñanza.","Je suis dans l'enseignement."]
+ ]),
+ blk("L'heure et les moments : a las, por la mañana", [
+  ["a las ocho","/a las ˈotʃo/","à huit heures","Structure : a + las + nombre (a las dos, a las nueve, a las doce). Le nombre suffit : l'heure complète vient en A1.11. ch = tch.","🕗","Empiezo a las ocho.","Je commence à huit heures."],
+  ["a la una","/a la ˈuna/","à une heure","EXCEPTION : pour 1 h on dit « la » (singulier) : a la una. Pour toutes les autres, « las ».","🕐","Termino a la una.","Je termine à une heure."],
+  ["por la mañana","/poɾ la maˈɲana/","le matin","Moment général de la journée. ñ = gn : ma-GNA-na. En Amérique latine : aussi « en la mañana ».","🌅","Trabajo por la mañana.","Je travaille le matin."],
+  ["por la tarde","/poɾ la ˈtaɾde/","l'après-midi","De midi jusqu'au début de la nuit. Attention : « tarde » seul veut dire aussi « tard ».","🌇","Tengo clase por la tarde.","J'ai cours l'après-midi."],
+  ["por la noche","/poɾ la ˈnotʃe/","le soir, la nuit","Couvre le soir ET la nuit. Aucune différence entre « soir » et « nuit » : por la noche.","🌙","Estudio por la noche.","J'étudie le soir."],
+  ["de la mañana / de la tarde / de la noche","/de la maˈɲana · de la ˈtaɾde · de la ˈnotʃe/","du matin / de l'après-midi / du soir","Après une heure précise : « a las ocho de la mañana », « a las cinco de la tarde ». Sans heure : « por la mañana ».","🔔","Empiezo a las ocho de la mañana.","Je commence à huit heures du matin."],
+  ["de lunes a viernes","/de ˈlunes a ˈbjeɾnes/","du lundi au vendredi","de… a… = de… à… Pas d'article. Les 7 jours viennent complets en A1.11. viernes : ie = diphtongue.","📅","Trabajo de lunes a viernes.","Je travaille du lundi au vendredi."],
+  ["de ocho a cinco","/de ˈotʃo a ˈθiŋko/","de huit heures à cinq heures","Pour une plage d'horaire : de + heure + a + heure. « Mi horario es de nueve a cinco ».","↔️","Mi horario es de nueve a cinco.","Mon horaire est de neuf heures à cinq heures."],
+  ["todos los días","/ˈtoðos los ˈdias/","tous les jours","Pluriel pour « tous » : todos + los + días. « Día » est masculin (el día) malgré le -a final.","🔁","Trabajo todos los días.","Je travaille tous les jours."],
+  ["el mediodía","/el meðjoˈðia/","midi, le déjeuner","« Al mediodía » = à midi. Mot composé : medio + día.","☀️","Como al mediodía.","Je mange à midi."],
+  ["los fines de semana","/los ˈfines de seˈmana/","les week-ends","Pluriel : fin se met au pluriel (fines). « Los fines de semana no trabajo ».","🏖️","Los fines de semana descanso.","Le week-end, je me repose."]
+ ]),
+ blk("Bonus : 10 expressions du travail et des études", [
+  ["Estar hasta arriba de trabajo","/esˈtaɾ ˈasta aˈrriβa de tɾaˈβaxo/","être submergé(e) de travail, être débordé(e)","Familier, très courant en Espagne : hasta arriba = jusqu'en haut (comme de l'eau). Se conjugue avec estar : estoy, estás, está usted…","🌊","Esta semana estoy hasta arriba de trabajo.","Cette semaine je suis débordé de travail."],
+  ["Hacer la rosca","/aˈθeɾ la ˈrroska/","passer la pommade, faire de la lèche","Familier, surtout Amérique latine. En Espagne, on dit « hacer la pelota » (faire la balle). Sens négatif : flatter son chef.","🍞","Pedro siempre hace la rosca al jefe.","Pedro fait toujours de la lèche au chef."],
+  ["Estar al pie del cañón","/esˈtaɾ al pje del kaˈɲon/","être au poste, rester fidèle au poste","Image d'un soldat au pied du canon : on ne lâche pas. Bien vu, neutre.","💪","La directora está al pie del cañón.","La directrice est fidèle au poste."],
+  ["Cruzarse de brazos","/kɾuˈθaɾse de ˈβɾaθos/","rester les bras croisés, ne rien faire","Pronominal : me cruzo, te cruzas, se cruza… Souvent négatif : on reproche de ne pas agir.","🙅","El jefe no trabaja: se cruza de brazos.","Le chef ne travaille pas : il reste les bras croisés."],
+  ["Estar quemado / quemada","/esˈtaɾ keˈmaðo/","être en burn-out, être cramé(e)","Familier. Le verbe « quemarse » = s'épuiser à force de travailler. Ne se dit pas pour un objet brûlé dans ce sens.","🔥","Mi compañera está quemada.","Ma collègue est en burn-out."],
+  ["Ser un empollón / una empollona","/seɾ un empoˈʎon/","être un intello, un bûcheur","Familier, un peu moqueur, Espagne. En Amérique latine : « ser un ñoño » (Mexique, Chili). Avec ser (caractère).","🤓","Mi hermano es un empollón.","Mon frère est un intello."],
+  ["Dar el do de pecho","/daɾ el do de ˈpetʃo/","se surpasser, donner le meilleur de soi","Image : le « do de poitrine » du chanteur d'opéra. Neutre, positive. dar = to give.","🎤","Marta da el do de pecho en el examen.","Marta se surpasse à l'examen."],
+  ["Echar horas extras","/eˈtʃaɾ ˈoɾas ˈekstɾas/","faire des heures supplémentaires","Espagne : « echar horas ». Partout : « hacer horas extra(s) ». ch = tch.","⏳","Esta semana echo horas extras.","Cette semaine je fais des heures sup."],
+  ["Ponerse las pilas","/poˈneɾse las ˈpilas/","se mettre au boulot, s'activer","Familier, très courant en Amérique latine. Littéralement : se mettre les piles. Pronominal : me pongo las pilas.","🔋","Tengo un examen: me pongo las pilas.","J'ai un examen : je m'y mets sérieusement."],
+  ["Trabajar como un burro","/tɾaβaˈxaɾ ˈkomo um ˈburo/","travailler comme une bête, trimer","Familier, partout. Le burro est l'âne, symbole de l'effort. Se conjugue : trabajo como un burro.","🫏","Mi padre trabaja como un burro.","Mon père trime comme une bête."]
+ ]),
+ blk("Études et emploi : quelques mots utiles", [
+  ["aprender de memoria","/apɾenˈdeɾ de meˈmoɾja/","apprendre par cœur","Piège : « de memoria » (de mémoire), JAMAIS « de corazón » (qui veut dire « sincèrement »).","🧠","Aprendo los verbos de memoria.","J'apprends les verbes par cœur."],
+  ["las prácticas","/las ˈpɾaktikas/","le stage","Toujours au pluriel. « Estar de prácticas » = être en stage. En Amérique latine : aussi « la pasantía » (Argentine, Colombie). Expression simple, sans image.","🧑‍🎓","Hago prácticas en una empresa.","Je fais un stage dans une entreprise."],
+  ["el sueldo","/el ˈsweldo/","le salaire","Masculin. Synonyme : « el salario ». ue = diphtongue : SUEL-do.","💶","Mi sueldo es bueno.","Mon salaire est bon."],
+  ["la nómina","/la ˈnomina/","la fiche de paie, la paie","Accent écrit : NÓ-mi-na. Courant aussi en Amérique latine. « Recibo la nómina el día 30 ».","🧾","Recibo la nómina cada mes.","Je reçois ma fiche de paie chaque mois."],
+  ["el contrato","/el konˈtɾato/","le contrat de travail","Masculin. « Contrato fijo » = CDI ; « contrato temporal » = CDD.","📑","Tengo un contrato fijo.","J'ai un CDI."],
+  ["el currículum","/el kuˈrikulum/","le CV","Accent écrit sur la 2e syllabe : cu-RRÍ-cu-lum. Se dit aussi « el CV ». En Colombie : « la hoja de vida ».","📄","Escribo mi currículum.","J'écris mon CV."]
+ ])
+);
+LESSONS_ES[210] = {
+ code:"A1.10", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el jefe / la jefa","la reunión","empezar","¿A qué te dedicas? / ¿A qué se dedica usted?","a las ocho","por la mañana","de lunes a viernes","hacer","aprender de memoria","los deberes"]),
+ MINI_CHECKS: [
+  {q:"« Que fais-tu dans la vie ? » (tutoiement)", opts:["¿A qué te dedicas?","¿Cómo te dedicas?","¿Dónde te dedicas?"], correct:0, fb:"Dedicarse a = se consacrer à. La question naturelle du métier : ¿A qué te dedicas? (au vouvoiement : ¿A qué se dedica usted?)."},
+  {q:"« Le matin » se dit…", opts:["por la mañana","para la mañana","con la mañana"], correct:0, fb:"Moment général de la journée : por la mañana (por la tarde, por la noche)."},
+  {q:"« À huit heures »", opts:["a las ocho","en las ocho","por ocho"], correct:0, fb:"Heure précise : a + las + nombre. (Exception pour 1 h : a la una.)"},
+  {q:"« Je commence à neuf heures. »", opts:["Empezo a las nueve.","Empiezo a las nueve.","Empeso a las nueve."], correct:1, fb:"Empezar fait e → ie : empiezo, empiezas, empieza (comme preferir). Seuls nosotros et vosotros gardent le e."},
+  {q:"Vosotros (Espagne), verbe « vivir » :", opts:["vivís","vives","vivimos"], correct:0, fb:"Pour vosotros : -ER → -éis, -IR → -ís. vivís (avec accent écrit)."},
+  {q:"« Elle est médecin. »", opts:["Es médica.","Es médico.","Es médicas."], correct:0, fb:"-o → -a au féminin : médica. Et pas d'article avec le métier : « Es médica »."},
+  {q:"« Je fais mes devoirs. »", opts:["Hago los deberes.","Hacio los deberes.","Hace los deberes."], correct:0, fb:"Hacer est irrégulier à la 1re personne : hago. (hace = il / elle / usted.)"},
+  {q:"À une cheffe inconnue : « Où travaillez-vous ? »", opts:["¿Dónde trabaja usted?","¿Dónde trabajas?"], correct:0, fb:"Usted + 3e personne : trabaja. ¿Dónde trabajas? est le tutoiement."}
+ ],
+ ROUNDS: [
+  __esR("Trabajo en una oficina grande.","Je travaille dans un grand bureau."),
+  __esR("¿A qué te dedicas?","Que fais-tu dans la vie ?"),
+  __esR("¿A qué se dedica usted?","Que faites-vous dans la vie ?"),
+  __esR("Empiezo a trabajar a las ocho.","Je commence à travailler à huit heures."),
+  __esR("Soy ingeniera y trabajo en una fábrica.","Je suis ingénieure et je travaille dans une usine."),
+  __esR("¿Dónde trabaja usted, señor?","Où travaillez-vous, monsieur ?"),
+  __esR("Por la tarde tenemos una reunión importante.","L'après-midi, nous avons une réunion importante."),
+  __esR("Mi hermano estudia en la universidad.","Mon frère étudie à l'université."),
+  __esR("Trabajamos de lunes a viernes.","Nous travaillons du lundi au vendredi."),
+  __esR("¿Qué estudia usted en la universidad?","Qu'étudiez-vous à l'université ?"),
+  __esR("Los estudiantes aprenden mucho en clase.","Les étudiants apprennent beaucoup en cours."),
+  __esR("Hago los deberes por la noche.","Je fais mes devoirs le soir."),
+  __esR("Mi jefa vive y trabaja en Madrid.","Ma cheffe vit et travaille à Madrid.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Yo ___ en una fábrica. (trabajar)", opts:["trabajo","trabajas","trabaja"], correct:0, why:"yo → -o : trabajo. (tú trabajas, él trabaja.)"},
+  {cat:"ecrit", q:"Ella ___ español en la universidad. (aprender)", opts:["aprende","aprendo","aprenden"], correct:0, why:"ella → -e pour un verbe en -ER : aprende. (yo aprendo, ellas aprenden.)"},
+  {cat:"ecrit", q:"Vosotros ___ una carta. (escribir)", opts:["escribís","escribimos","escribes"], correct:0, why:"vosotros + verbe en -IR → -ís : escribís (accent écrit). nosotros = escribimos."},
+  {cat:"ecrit", q:"Pour demander son métier à un directeur :", opts:["¿A qué te dedicas?","¿A qué se dedica usted?","¿Dónde estás?"], correct:1, why:"Un directeur = usted : ¿A qué se dedica usted? « Dedicarse » est pronominal : se dedica."},
+  {cat:"ecrit", q:"Marta es ___ . (médecin)", opts:["médica","médico","una médicas"], correct:0, why:"Féminin de médico : médica. Pas d'article quand on donne simplement son métier."},
+  {cat:"ecrit", q:"Empiezo a trabajar ___ ocho.", opts:["a las","por las","en la"], correct:0, why:"Une heure précise se dit a + las + nombre : a las ocho."},
+  {cat:"ecrit", q:"Quel verbe a la diphtongue e → ie ?", opts:["trabajar","empezar","vivir"], correct:1, why:"Empezar : empiezo, empiezas, empieza… (trabajar et vivir sont réguliers)."},
+  {cat:"ecrit", q:"Nosotros ___ a las nueve. (empezar)", opts:["empezamos","empiezamos","empiezan"], correct:0, why:"À nosotros, le e ne change pas : empezamos (comme preferimos). Piège classique : « empiezamos » n'existe pas."},
+  {cat:"ecrit", q:"Yo ___ los deberes por la noche. (hacer)", opts:["hago","hazo","hace"], correct:0, why:"Hacer est irrégulier uniquement à yo : hago (comme tengo)."},
+  {cat:"ecrit", q:"Trabajo ___ la mañana, de lunes a viernes.", opts:["por","a","para"], correct:0, why:"Moment général de la journée : por la mañana / tarde / noche."},
+  {cat:"ecrit", q:"« Elle est professeure. »", opts:["Es profesora.","Es profesor.","Es profesorea."], correct:0, why:"Mot en consonne : on ajoute -a au féminin : profesor → profesora."},
+  {cat:"ecrit", q:"Ana es una ___ . (étudiante)", opts:["estudianta","estudiante","estudianto"], correct:1, why:"estudiante est invariable : seul l'article change (el / la)."},
+  {cat:"ecrit", q:"¿Dónde ___ usted? (trabajar)", opts:["trabaja","trabajas","trabajan"], correct:0, why:"Usted se conjugue comme él / ella : trabaja. (trabajas = tú.)"},
+  {cat:"ecrit", q:"« Les étudiants apprennent. »", opts:["Los estudiantes aprenden.","Los estudiante aprende.","Los estudiantes aprende."], correct:0, why:"Le pluriel se marque sur l'article, le nom ET le verbe : los estudiantes aprenden."},
+  {cat:"oral", audio:"Trabajo en una oficina grande, de lunes a viernes.", q:"Écoute : où et quand la personne travaille-t-elle ?", opts:["Dans un grand bureau, du lundi au vendredi","Dans une usine, du lundi au vendredi","Dans un grand bureau, le week-end"], correct:0, why:"« oficina grande » = grand bureau ; « de lunes a viernes » = du lundi au vendredi."},
+  {cat:"oral", audio:"Empiezo a las ocho y termino a las cinco.", q:"Écoute : à quelle heure la personne commence-t-elle ?", opts:["À 8 h","À 5 h","À 9 h"], correct:0, why:"« Empiezo a las ocho » : elle commence à huit heures et termine à cinq heures."},
+  {cat:"oral", audio:"¿A qué se dedica usted?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« se dedica usted » = vouvoiement. Au tutoiement : ¿A qué te dedicas?"},
+  {cat:"oral", audio:"Mi hermana es médica y trabaja en un hospital.", q:"Écoute : quel est le métier de la sœur ?", opts:["Médecin","Infirmière","Professeure"], correct:0, why:"« médica » = médecin (une femme). Infirmière se dirait « enfermera »."},
+  {cat:"oral", audio:"Estudio en la universidad por la tarde.", q:"Écoute : quand la personne étudie-t-elle ?", opts:["Le matin","L'après-midi","Le soir"], correct:1, why:"« por la tarde » = l'après-midi. Le matin : por la mañana ; le soir : por la noche."},
+  {cat:"comprehension", passage:"Carlos: Hola, soy Carlos. ¿A qué te dedicas? — Elena: Soy ingeniera. Trabajo en una oficina grande. Empiezo a trabajar a las ocho de la mañana y por la tarde tengo una reunión importante.", q:"Quel est le métier d'Elena ?", opts:["Ingénieure","Médecin","Professeure"], correct:0, why:"« Soy ingeniera » : elle répond à la question ¿A qué te dedicas?"},
+  {cat:"comprehension", passage:"Carlos: Hola, soy Carlos. ¿A qué te dedicas? — Elena: Soy ingeniera. Trabajo en una oficina grande. Empiezo a trabajar a las ocho de la mañana y por la tarde tengo una reunión importante.", q:"Que fait Elena l'après-midi ?", opts:["Elle a une réunion importante","Elle étudie à la fac","Elle fait une pause"], correct:0, why:"« por la tarde tengo una reunión importante » : l'après-midi, elle a une réunion."},
+  {cat:"comprehension", passage:"Señor Ruiz: Buenos días, señora Pérez. ¿Dónde trabaja usted? — Señora Pérez: Trabajo en un hospital. Soy enfermera. — Señor Ruiz: ¿A qué hora empieza usted? — Señora Pérez: Empiezo a las siete de la mañana y termino a las tres de la tarde, de lunes a viernes.", q:"Où travaille la señora Pérez ?", opts:["Dans un hôpital","Dans une école","Dans un bureau"], correct:0, why:"« Trabajo en un hospital » : elle est infirmière (enfermera)."},
+  {cat:"comprehension", passage:"Señor Ruiz: Buenos días, señora Pérez. ¿Dónde trabaja usted? — Señora Pérez: Trabajo en un hospital. Soy enfermera. — Señor Ruiz: ¿A qué hora empieza usted? — Señora Pérez: Empiezo a las siete de la mañana y termino a las tres de la tarde, de lunes a viernes.", q:"À quelle heure la señora Pérez termine-t-elle ?", opts:["À trois heures de l'après-midi","À sept heures du matin","À huit heures du soir"], correct:0, why:"« termino a las tres de la tarde » : elle finit à 15 h. Elle commence à sept heures du matin."},
+  {cat:"comprehension", passage:"Señor Ruiz: Buenos días, señora Pérez. ¿Dónde trabaja usted? — Señora Pérez: Trabajo en un hospital. Soy enfermera. — Señor Ruiz: ¿A qué hora empieza usted? — Señora Pérez: Empiezo a las siete de la mañana y termino a las tres de la tarde, de lunes a viernes.", q:"Quel indice montre que la conversation est formelle ?", opts:["usted avec trabaja / empieza","l'heure du rendez-vous","le mot « hospital »"], correct:0, why:"usted + verbe à la 3e personne (trabaja, empieza) + « señora » : vouvoiement."}
+ ],
+ PRON_VERBS: [
+  {en:"Trabajo en una oficina.", fr:"Je travaille dans un bureau. (j = kh : tra-BA-kho ; c = th : o-fi-THI-na)"},
+  {en:"Soy ingeniera.", fr:"Je suis ingénieure. (g + e = kh : in-khe-NIE-ra ; ie = une seule syllabe)"},
+  {en:"Empiezo a las ocho.", fr:"Je commence à huit heures. (ie : em-PIE-tho, z = th ; ch = tch : O-tcho)"},
+  {en:"Aprendemos en la universidad.", fr:"Nous apprenons à l'université. (u-ni-ver-si-DAD : d final très doux)"},
+  {en:"Tengo una reunión por la tarde.", fr:"J'ai une réunion l'après-midi. (re-u-NIÓN : « eu » = 2 syllabes ; accent sur ó)"},
+  {en:"Mi jefe es muy simpático.", fr:"Mon chef est très sympathique. (j = kh : KHE-fe)"},
+  {en:"Los estudiantes escriben mucho.", fr:"Les étudiants écrivent beaucoup. (es-tu-DIAN-tes ; ch = tch : MU-tcho)"},
+  {en:"¿A qué se dedica usted?", fr:"Que faites-vous dans la vie ? (de-DI-ca ; us-TED : d final doux)"},
+  {en:"Mi compañera trabaja por la mañana.", fr:"Ma collègue travaille le matin. (ñ = gn : com-pa-GNÉ-ra, ma-GNA-na)"},
+  {en:"Los deberes son difíciles.", fr:"Les devoirs sont difficiles. (d entre voyelles très doux : de-BE-res ; accent écrit sur di-FÍ-ci-les)"}
+ ],
+ READING: [
+  "Hola, soy Elena y soy ingeniera.",
+  "Trabajo en una oficina grande, en Madrid.",
+  "Empiezo a trabajar a las ocho de la mañana.",
+  "Por la tarde tengo una reunión con mi jefe.",
+  "Mis compañeros son muy simpáticos y trabajamos mucho.",
+  "Mi hermano Pablo es estudiante: estudia en la universidad.",
+  "Pablo aprende mucho, pero hoy tiene un examen difícil.",
+  "Por la noche, Pablo hace los deberes y yo estoy cansada.",
+  "Y usted, señor, ¿a qué se dedica?",
+  "Y tú, ¿dónde trabajas y a qué hora terminas?"
+ ],
+ GLOSS: [
+  {en:"empiezo", fr:"je commence (empezar : e → ie, comme preferir)"},
+  {en:"a las ocho de la mañana", fr:"à huit heures du matin : heure précise = a las + nombre + de la mañana"},
+  {en:"mi jefe", fr:"mon chef (au féminin : mi jefa)"},
+  {en:"los compañeros", fr:"les collègues (compañero de trabajo)"},
+  {en:"tiene un examen", fr:"il a un examen : tener + nom (ne pas dire « es un examen »)"},
+  {en:"hace los deberes", fr:"il fait ses devoirs (hacer : hago, haces, hace…)"},
+  {en:"se dedica", fr:"(vous) faites comme métier : dedicarse, usted → se dedica"},
+  {en:"terminas", fr:"tu termines (terminar : verbe -AR régulier, tú → -as)"}
+ ],
+ GRAMMAR1: {
+  heading:"Le présent régulier complet : -AR, -ER, -IR (trabajar, aprender, vivir)",
+  lede:"Tu connais déjà les verbes en -AR (A1.3) et en -ER / -IR (A1.6). Cette leçon les réunit : trois familles, UN seul système. Avec le radical (trabaj-, aprend-, viv-) et la bonne terminaison, tu dis ce que tu fais, où tu travailles et quand. Seules les terminaisons de tú, nosotros et vosotros changent d'une famille à l'autre.",
+  conj:[
+   ["yo →","trabajo · aprendo · vivo","Trabajo en una oficina. Aprendo español. Vivo en París."],
+   ["tú →","trabajas · aprendes · vives","¿Dónde trabajas? ¿Aprendes inglés? ¿Vives en Madrid?"],
+   ["él, ella, usted →","trabaja · aprende · vive","¿Dónde trabaja usted? Aprende rápido. Vive en Bogotá."],
+   ["nosotros/as →","trabajamos · aprendemos · vivimos","Trabajamos de lunes a viernes. Aprendemos mucho. Vivimos aquí."],
+   ["vosotros/as →","trabajáis · aprendéis · vivís","¿Trabajáis por la tarde? ¿Aprendéis en clase? ¿Vivís cerca?"],
+   ["ellos, ellas, ustedes →","trabajan · aprenden · viven","Trabajan en una fábrica. ¿Aprenden ustedes español? Viven en Lima."]
+  ],
+  ruleHtml:"📖 <b>1. Le système : radical + terminaison.</b> On enlève -ar / -er / -ir et on ajoute :<br>• <b>-AR</b> : -o · -as · -a · -amos · -áis · -an (trabajar → trabajo, trabajas…)<br>• <b>-ER</b> : -o · -es · -e · -emos · -éis · -en (aprender → aprendo, aprendes…)<br>• <b>-IR</b> : -o · -es · -e · -imos · -ís · -en (vivir, escribir → vivo, vives… escribo, escribes…)<br>Ce qu'il faut retenir : <b>yo = -o pour les trois</b> ; entre -ER et -IR, seules les formes <b>nosotros</b> (-emos / -imos) et <b>vosotros</b> (-éis / -ís) diffèrent ; entre -AR et les deux autres, les voyelles s'inversent (<b>-a- → -e-</b> : trabajas / aprendes, trabaja / aprende).<br><br>👥 <b>2. Tutoiement ET vouvoiement.</b> tú → <b>¿Dónde trabajas? ¿Qué estudias? ¿Dónde vives?</b> · usted → <b>¿Dónde trabaja usted? ¿Qué estudia usted? ¿Dónde vive usted?</b> (usted = forme de él/ella ; ustedes = forme de ellos/ellas). Pluriel amical : <b>vosotros</b> (Espagne : trabajáis, aprendéis, vivís) ; en Amérique latine, on dit <b>ustedes</b> pour tous les « vous » : trabajan, aprenden, viven.<br><br>🧰 <b>3. Les verbes réguliers de la vie active.</b> -AR : trabajar, estudiar, enseñar, ayudar, llegar, preparar, necesitar, terminar. -ER : aprender, comer, comprender. -IR : vivir, escribir, abrir, recibir. Exemples : <b>Abro la tienda a las nueve. Recibo a los clientes. Escribo mi currículum.</b><br><br>⚠️ <b>4. EMPEZAR : e → ie</b> (comme <b>preferir</b>, A1.5). Les formes qui portent l'accent tonique sur le radical prennent ie : <b>empiezo, empiezas, empieza, empiezan</b>. Nosotros et vosotros gardent le e : <b>empezamos, empezáis</b>. Phrase clé : <b>Empiezo a trabajar a las ocho.</b> Avec usted : <b>¿A qué hora empieza usted?</b> (Le dialogue source disait « Empecé » : c'est une forme de passé, qu'on étudiera plus tard. En A1, on dit toujours <b>empiezo</b>.)<br><br>⚠️ <b>5. HACER : un seul irrégulier, yo.</b> <b>hago</b> (comme tengo : -go !), puis régulier : haces, hace, hacemos, hacéis, hacen. <b>Hago los deberes. ¿Qué haces? ¿Qué hace usted?</b> Il reviendra en A1.11 (la météo).<br><br>🔁 <b>6. Les irréguliers déjà vus.</b> <b>ser</b> : soy, eres, es, somos, sois, son · <b>estar</b> : estoy, estás, está, estamos, estáis, están · <b>tener</b> : tengo, tienes, tiene, tenemos, tenéis, tienen · <b>ir</b> : voy, vas, va, vamos, vais, van. Exemple : <b>Soy ingeniera, estoy en la oficina, tengo una reunión y voy a trabajar.</b><br><br>✅ <b>7. Mots utiles.</b> Pronom sujet presque toujours omis ; négation avant le verbe (<b>no trabajo</b>) ; <b>trabajar EN</b> + lieu (trabajo en un hospital), <b>estudiar</b> + matière sans préposition (estudio medicina), <b>estudiar EN</b> + lieu (estudio en la universidad).",
+  dialogueLede:"Deux collègues se rencontrent (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"Hola, soy Carlos. ¿A qué te dedicas?", fr:"Salut, je suis Carlos. Que fais-tu dans la vie ?"},
+   {who:"you", en:"Soy ingeniera. Trabajo en una oficina grande.", fr:"Je suis ingénieure. Je travaille dans un grand bureau."},
+   {who:"them", en:"¿A qué hora empiezas?", fr:"À quelle heure commences-tu ?"},
+   {who:"you", en:"Empiezo a las ocho de la mañana y termino a las cinco. ¿Y tú?", fr:"Je commence à huit heures du matin et je termine à cinq heures. Et toi ?"},
+   {who:"them", en:"Yo soy estudiante. Estudio por la mañana y trabajo por la tarde.", fr:"Moi, je suis étudiant. J'étudie le matin et je travaille l'après-midi."},
+   {who:"you", en:"¡Qué bien! ¿Dónde vives?", fr:"Super ! Où habites-tu ?"},
+   {who:"them", en:"Vivo en Madrid, cerca de la universidad.", fr:"J'habite à Madrid, près de l'université."}
+  ],
+  whyLabel:"Pourquoi trois familles, et pourquoi empezar change-t-il ?",
+  whyText:"En espagnol, l'infinitif se termine toujours par <b>-ar, -er ou -ir</b>. C'est ce qui te dit, avant même de conjuguer, quel jeu de terminaisons utiliser. Bonne nouvelle : <b>-ER et -IR sont presque jumeaux</b> (deux formes seulement diffèrent), et les terminaisons sont toujours les mêmes pour un verbe régulier : trabajar, estudiar et enseñar se conjuguent exactement comme hablar. Les verbes comme <b>empezar</b> sont réguliers dans leurs terminaisons, mais le <b>e du radical devient ie</b> quand la voix appuie dessus (empIEzo, empIEzas, empIEza), et reste e quand l'accent est sur la terminaison (empezAmos, empezÁis). Même mécanisme que <b>preferir</b> (prefiero / preferimos). Piège francophone : on dit « je commence à travailler » avec « à » : <b>empiezo A trabajar</b>, mais « je finis de travailler » avec « de » : <b>termino DE trabajar</b>. Et attention à ne pas dire « soy un ingeniero » : pour le métier, <b>pas d'article</b>."
+ },
+ GRAMMAR2: {
+  heading:"Parler de son métier : ¿A qué te dedicas?, métiers au féminin, a las / por la mañana",
+  dialogueLede:"Une professeure et un directeur se parlent (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, señora. ¿A qué se dedica usted?", fr:"Bonjour, madame. Que faites-vous dans la vie ?"},
+   {who:"you", en:"Soy profesora. Trabajo en un colegio.", fr:"Je suis professeure. Je travaille dans une école."},
+   {who:"them", en:"¿A qué hora empieza usted?", fr:"À quelle heure commencez-vous ?"},
+   {who:"you", en:"Empiezo a las ocho de la mañana, de lunes a viernes.", fr:"Je commence à huit heures du matin, du lundi au vendredi."},
+   {who:"them", en:"¿Y por la tarde?", fr:"Et l'après-midi ?"},
+   {who:"you", en:"Por la tarde preparo las clases y ayudo a mis alumnos.", fr:"L'après-midi, je prépare les cours et j'aide mes élèves."}
+  ],
+  ruleHtml:"💬 <b>1. La question naturelle.</b> Pour demander le métier, l'espagnol courant dit <b>¿A qué te dedicas?</b> (tú) / <b>¿A qué se dedica usted?</b> (usted). Littéralement : « À quoi te consacres-tu ? ». Le verbe <b>dedicarse</b> est pronominal, comme <b>llamarse</b> : me dedico, te dedicas, se dedica, nos dedicamos, os dedicáis, se dedican. Réponses : <b>Soy ingeniera.</b> · <b>Trabajo en un hospital.</b> · <b>Me dedico a la enseñanza.</b> · <b>Estudio medicina.</b><br>D'autres questions utiles : <b>¿Dónde trabajas? / ¿Dónde trabaja usted?</b> · <b>¿Qué estudias? / ¿Qué estudia usted?</b> · <b>¿En qué trabajas? / ¿En qué trabaja usted?</b> · <b>¿A qué hora empiezas? / ¿A qué hora empieza usted?</b><br><br>👩‍⚕️ <b>2. Les métiers au féminin.</b> -o → -a : médico/médica, ingeniero/ingeniera, abogado/abogada, camarero/camarera. Consonne finale : on ajoute -a : profesor/profesora, director/directora, vendedor/vendedora. Mot en -e ou -ista : INVARIABLE (seul l'article change) : <b>el/la estudiante, el/la contable</b>. Exception : <b>el jefe / la jefa</b>. Avec le métier seul : <b>pas d'article</b> (Soy médica) ; avec un adjectif ou un lieu, l'article réapparaît : <b>Soy una médica excelente</b>.<br><br>🕗 <b>3. L'heure : a las + nombre.</b> <b>A las ocho, a las nueve, a las doce</b>… Pour 1 h : <b>a la una</b> (singulier). L'heure complète (y media, y cuarto) vient en A1.11 ; ici, le nombre rond suffit. Pour une plage : <b>de ocho a cinco</b>. Pour préciser : <b>a las ocho de la mañana</b>.<br><br>🌅 <b>4. Les moments de la journée.</b> <b>por la mañana</b> (le matin) · <b>por la tarde</b> (l'après-midi) · <b>por la noche</b> (le soir / la nuit). Après une heure précise, on emploie <b>de</b> : <i>a las cinco de la tarde</i>. En Amérique latine, on entend aussi <b>en la mañana / en la tarde / en la noche</b>. Pour les jours : <b>de lunes a viernes</b> (du lundi au vendredi), <b>todos los días</b>, <b>los fines de semana</b> ; les 7 jours, les mois et les dates viennent en A1.11.<br><br>👥 <b>5. Formel et informel.</b> Avec un client, un directeur ou un inconnu : <b>usted</b> + 3e personne : <b>¿Dónde trabaja usted? ¿A qué se dedica usted? ¿A qué hora empieza usted?</b> Entre collègues ou amis : <b>tú</b>. Et selon le pays : <b>vosotros</b> en Espagne, <b>ustedes</b> en Amérique latine ; en Colombie, le « usted » est parfois utilisé même entre proches.<br><br>⚠️ <b>6. Pièges francophones.</b> « Je suis ingénieur » = <b>Soy ingeniero</b> (jamais « soy un ingeniero »). « Je travaille dans un hôpital » = <b>trabajo EN un hospital</b>. « Le matin » = <b>por la mañana</b>, pas « en la matina ». « Apprendre » = <b>aprender</b> ; « enseigner » = <b>enseñar</b> (pas « aprender »). « Faire ses devoirs » = <b>hacer los deberes</b>.",
+  whyLabel:"Pourquoi « ¿A qué te dedicas? » plutôt que « ¿Cuál es tu trabajo? »",
+  whyText:"« ¿Cuál es tu trabajo? » est compréhensible, mais ça ressemble à une traduction littérale du français et ça sonne un peu artificiel, presque comme un formulaire. Un hispanophone dit <b>¿A qué te dedicas?</b> : la question est ouverte, et la réponse peut être un métier (<i>soy abogada</i>), un lieu (<i>trabajo en un banco</i>) ou des études (<i>estudio medicina</i>). Autre avantage : cette formule marche aussi bien en Espagne qu'en Amérique latine. Au vouvoiement, tu ajoutes simplement <b>usted</b> et tu mets <b>se dedica</b> : <b>¿A qué se dedica usted?</b>"
+ },
+ REVIEW: [
+  {q:"« Je vais réserver une chambre. »", opts:["Voy a reservar una habitación.","Voy reservar una habitación.","Reservo a voy una habitación."], correct:0, fb:"Futur proche : ir (voy, vas, va…) + a + infinitif. (rappel A1.9)"},
+  {q:"À la réception, pour demander poliment une chambre :", opts:["Quería una habitación, por favor.","Querer una habitación, por favor."], correct:0, fb:"« Quería… » est la formule de politesse figée pour demander. (rappel A1.9 / A1.6)"},
+  {q:"« Un billete solo ida » signifie :", opts:["un billet aller simple","un billet aller-retour"], correct:0, fb:"solo ida = aller simple ; ida y vuelta = aller-retour. (rappel A1.9)"},
+  {q:"« ¿A qué hora sale el vuelo? » signifie :", opts:["À quelle heure part le vol ?","À quelle heure arrive le vol ?"], correct:0, fb:"salida = le départ ; llegada = l'arrivée. (rappel A1.9)"},
+  {q:"Mi hermana ___ a facturar la maleta.", opts:["va","voy","vas"], correct:0, fb:"Mi hermana = ella : ir → va. Structure : va + a + infinitif. (rappel A1.9)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"Yo ___ en una oficina. (trabajar)", answers:["trabajo","Trabajo"], why:"yo → -o : trabajo."},
+  {type:"fill", text:"Tú ___ español en clase. (aprender)", answers:["aprendes","Aprendes"], why:"tú + verbe en -ER → -es : aprendes."},
+  {type:"fill", text:"Ella ___ en París. (vivir)", answers:["vive","Vive"], why:"ella + verbe en -IR → -e : vive."},
+  {type:"fill", text:"Nosotros ___ a las ocho. (empezar)", answers:["empezamos","Empezamos"], why:"À nosotros, pas de diphtongue : empezamos."},
+  {type:"fill", text:"Yo ___ a trabajar a las nueve. (empezar)", answers:["empiezo","Empiezo"], why:"À yo, e → ie : empiezo."},
+  {type:"fill", text:"Vosotros ___ en una fábrica. (trabajar)", answers:["trabajáis","Trabajáis"], why:"vosotros + -AR → -áis : trabajáis (accent écrit)."},
+  {type:"fill", text:"Usted ___ muchas cartas. (escribir)", answers:["escribe","Escribe"], why:"usted se conjugue comme él/ella : escribe."},
+  {type:"fill", text:"Ellos ___ en el hospital. (trabajar)", answers:["trabajan","Trabajan"], why:"ellos → -an : trabajan."},
+  {type:"fill", text:"Yo ___ los deberes por la tarde. (hacer)", answers:["hago","Hago"], why:"Hacer est irrégulier à yo : hago."},
+  {type:"fill", text:"¿Qué ___ usted? (hacer)", answers:["hace","Hace"], why:"usted → hace (forme de él/ella, régulière)."},
+  {type:"fill", text:"¿A qué ___ usted? (dedicarse)", answers:["se dedica","Se dedica"], why:"Verbe pronominal : usted → se dedica."},
+  {type:"fill", text:"¿A qué te ___ ? (tú, dedicarse)", answers:["dedicas","Dedicas"], why:"tú → te dedicas : verbe en -AR, tú → -as."},
+  {type:"fill", text:"Ana es profesor___ .", answers:["a"], why:"Consonne finale : on ajoute -a au féminin : profesora."},
+  {type:"fill", text:"Ellas ___ a las ocho de la mañana. (empezar)", answers:["empiezan","Empiezan"], why:"ellas → empiezan : e → ie, terminaison -an."},
+  {type:"fill", text:"Nosotros ___ español por la noche. (aprender)", answers:["aprendemos","Aprendemos"], why:"nosotros + -ER → -emos : aprendemos."},
+  {type:"fill", text:"Yo ___ la tienda a las nueve. (abrir)", answers:["abro","Abro"], why:"yo → -o : abro (-IR régulier)."},
+  {type:"choice", q:"À un inconnu âgé : « Que faites-vous dans la vie ? »", opts:["¿A qué te dedicas?","¿A qué se dedica usted?"], correct:1, why:"Inconnu âgé = usted : ¿A qué se dedica usted?"},
+  {type:"choice", q:"« Je travaille le matin. »", opts:["Trabajo por la mañana.","Trabajo para la mañana."], correct:0, why:"Moment général de la journée : por la mañana / tarde / noche."},
+  {type:"choice", q:"« À huit heures »", opts:["a las ocho","en las ocho"], correct:0, why:"Heure précise : a + las + nombre."},
+  {type:"choice", q:"Marta est avocate.", opts:["Marta es abogada.","Marta es abogado."], correct:0, why:"Féminin : abogado → abogada. Pas d'article devant le métier."},
+  {type:"choice", q:"« Je commence à huit heures. »", opts:["Empiezo a las ocho.","Empezo a las ocho."], correct:0, why:"e → ie à la 1re personne : empiezo."},
+  {type:"choice", q:"« Je suis ingénieure. »", opts:["Soy ingeniera.","Soy una ingeniera."], correct:0, why:"Le métier se dit sans article : Soy ingeniera."},
+  {type:"choice", q:"« Apprendre par cœur » :", opts:["aprender de memoria","aprender de corazón"], correct:0, why:"« de corazón » veut dire « sincèrement » : pour apprendre par cœur, on dit de memoria."},
+  {type:"choice", q:"Pour dire à quelqu'un qu'il est submergé de travail : « Estoy… »", opts:["hasta arriba de trabajo","por arriba de trabajo"], correct:0, why:"Expression figée : estar hasta arriba de trabajo (être débordé)."},
+  {type:"choice", q:"Pour 1 h : « à une heure » :", opts:["a la una","a las una"], correct:0, why:"Pour 1 h seulement : singulier, a la una. Pour les autres : a las dos, a las tres…"}
+ ],
+ ANNOTATED: {
+  title:"Elena et son travail",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction — et repère les verbes au présent (-AR, -ER, -IR) et les expressions de temps.",
+  sentences:[
+   {fr:"Je suis ingénieure et je travaille dans un grand bureau.", tokens:[
+    {w:"Soy", tag:"verbe", info:"ser · présent · yo", fr:"je suis", tip:"Le métier s'annonce sans article : soy ingeniera."},
+    {w:"ingeniera", tag:"nom", info:"fém. sing.", fr:"ingénieure", tip:"-a car Elena est une femme ; g devant e = kh."},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"trabajo", tag:"verbe", info:"trabajar · présent · yo", fr:"je travaille", tip:"Verbe en -AR : yo → -o ; j = kh."},
+    {w:"en", tag:"préposition", fr:"dans", tip:"Lieu de travail : trabajar en."},
+    {w:"una", tag:"déterminant", info:"article indéfini · fém. sing.", fr:"un / une"},
+    {w:"oficina", tag:"nom", info:"fém. sing.", fr:"bureau", tip:"c devant i = th (Espagne) ou s (Amérique latine)."},
+    {w:"grande", tag:"adjectif", info:"invariable en genre", fr:"grand(e)", tip:"Finit en -e : une seule forme."}
+   ]},
+   {fr:"Je commence à travailler à huit heures du matin.", tokens:[
+    {w:"Empiezo", tag:"verbe", info:"empezar · présent · yo", fr:"je commence", tip:"e → ie à la 1re personne (comme preferir)."},
+    {w:"a", tag:"préposition", fr:"à", tip:"empezar + a + infinitif."},
+    {w:"trabajar", tag:"verbe", info:"infinitif", fr:"travailler"},
+    {w:"a las", tag:"locution", fr:"à", tip:"Heure précise : a + las + nombre."},
+    {w:"ocho", tag:"adjectif", info:"nombre", fr:"huit"},
+    {w:"de la mañana", tag:"locution", fr:"du matin", tip:"Après une heure précise, on emploie de la mañana."}
+   ]},
+   {fr:"Que faites-vous dans la vie ?", tokens:[
+    {w:"¿A", tag:"préposition", fr:"à", tip:"Dedicarse a : se consacrer à."},
+    {w:"qué", tag:"pronom interrogatif", fr:"quoi", tip:"Accent écrit : qué."},
+    {w:"se", tag:"pronom réfléchi", fr:"se", tip:"Verbe pronominal, comme llamarse (se llama)."},
+    {w:"dedica", tag:"verbe", info:"dedicarse · présent · usted", fr:"consacre", tip:"usted se conjugue comme él/ella : dedica."},
+    {w:"usted?", tag:"pronom sujet", info:"vouvoiement", fr:"vous (politesse)"}
+   ]},
+   {fr:"Ma cheffe travaille du lundi au vendredi.", tokens:[
+    {w:"Mi", tag:"déterminant", info:"possessif", fr:"ma / mon", tip:"mi ne change pas au féminin."},
+    {w:"jefa", tag:"nom", info:"fém. sing.", fr:"cheffe", tip:"Exception : el jefe / la jefa ; j = kh."},
+    {w:"trabaja", tag:"verbe", info:"trabajar · présent · ella", fr:"travaille", tip:"3e personne : -a."},
+    {w:"de lunes a viernes", tag:"locution", fr:"du lundi au vendredi", tip:"de… a… = de… à…, sans article."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"💼", title:"Culture, 10 expressions et fiche récap (A1.10)",
+  html:"<b>💼 Culture — le travail en pays hispanophone</b> En Espagne, beaucoup de journées sont en <b>jornada partida</b> : une longue pause le midi (on « come » vers 14 h), puis le travail reprend jusqu'à 18 ou 19 h ; la <b>jornada intensiva</b> (continue, sans longue pause) est fréquente l'été ou le vendredi. Entre collègues, on se tutoie vite (<b>tú</b>) ; avec un client ou un supérieur qu'on ne connaît pas, on dit <b>usted</b>. En Colombie, le « usted » est employé plus largement, parfois même entre proches. Pour demander le métier : <b>¿A qué te dedicas?</b> (tú) / <b>¿A qué se dedica usted?</b> (usted). Au bureau, on parle de <b>el jefe / la jefa</b>, de <b>los compañeros</b>, de <b>la reunión</b>, du <b>descanso</b>. Mots à varier : « la nómina » (la fiche de paie), « el currículum » (en Colombie : « la hoja de vida »).<br><br><b>🧰 Bonus : 10 expressions du travail et des études</b><br>1. <b>Estar hasta arriba de trabajo</b> = être débordé(e) (familier, Espagne).<br>2. <b>Hacer la rosca</b> = passer la pommade, faire de la lèche (Amérique latine ; en Espagne : <i>hacer la pelota</i>).<br>3. <b>Estar al pie del cañón</b> = être au poste, rester fidèle au poste.<br>4. <b>Cruzarse de brazos</b> = rester les bras croisés, ne rien faire.<br>5. <b>Estar quemado / quemada</b> = être en burn-out, être cramé(e) (familier).<br>6. <b>Ser un empollón / una empollona</b> = être un intello, un bûcheur (Espagne, familier ; en Mexique et au Chili : <i>ser un ñoño</i>).<br>7. <b>Dar el do de pecho</b> = se surpasser, donner le meilleur de soi.<br>8. <b>Echar horas extras</b> = faire des heures supplémentaires (aussi : <i>hacer horas extra</i>).<br>9. <b>Ponerse las pilas</b> = se mettre au boulot, s'activer (familier, courant en Amérique latine).<br>10. <b>Trabajar como un burro</b> = trimer, travailler comme une bête (familier).<br>À part : <b>aprender de memoria</b> = apprendre par cœur (pas « de corazón ») ; <b>estar de prácticas</b> = être en stage (expression simple, sans image).<br><br><b>✍️ Expression écrite — ta journée type (4 lignes)</b> Utilise : <b>trabajo en…, estudio…, empiezo a las…, termino a las…, por la mañana / tarde / noche</b>. Modèle : « Me llamo Thomas y soy estudiante. Estudio en la universidad por la mañana. Por la tarde trabajo en una tienda y empiezo a las tres. Termino a las ocho de la noche. » Version formelle (présentation à un directeur) : « Buenos días, señor. Soy Thomas Dubois y soy estudiante. Trabajo en una tienda por la tarde. » Vérifie : terminaisons -AR / -ER / -IR · empiezo (e → ie) · a las + nombre · pas d'article devant le métier.<br><br><b>🗣️ Expression orale — présentation pro</b> Question : « ¿A qué te dedicas? » → « Soy …, trabajo en …, empiezo a las … y termino a las … de lunes a viernes. » En formel : « ¿A qué se dedica usted? » → « Me dedico a … Trabajo en … por la mañana. »<br><br><b>📄 Fiche récap</b> -AR : -o, -as, -a, -amos, -áis, -an · -ER : -o, -es, -e, -emos, -éis, -en · -IR : -o, -es, -e, -imos, -ís, -en · empezar : empiezo, empiezas, empieza, empezamos, empezáis, empiezan · hacer : hago, haces, hace, hacemos, hacéis, hacen · ¿A qué te dedicas? / ¿A qué se dedica usted? · ¿Dónde trabajas? / ¿Dónde trabaja usted? · ¿Qué estudias? / ¿Qué estudia usted? · a las ocho · a la una · por la mañana / tarde / noche · de lunes a viernes · métiers : -o/-a, + a, -e invariable, el jefe / la jefa."},
+ NEXT_PREVIEW:"A1.11 (La hora y el tiempo) : dire l'heure complète (¿Qué hora es? Son las tres), les jours de la semaine, les mois et les dates, et décrire la météo avec hacer (hace calor), estar (está nublado) et les verbes llover / nevar (llueve, nieva).",
+ META:{vocabTitle:"Trabajo y estudios : métiers, études et journée de travail (A1.10)", lectureTitle:"Elena, ingénieure à Madrid", bilanTitle:"Bravo, tu sais parler de ton travail et de tes études !", pronLabel:"Trabajo : j = kh, g + e = kh, ie, « reu » et la ñ", todayLede:"dire ce que tu fais, demander le métier avec ¿A qué te dedicas? (tutoiement ET vouvoiement), conjuguer les trois familles de verbes -AR, -ER, -IR, utiliser empezar et hacer, et donner tes horaires avec a las, por la mañana et de lunes a viernes"}
+};
+})();
+
+
+// A1.11 — La hora y el tiempo : météo (hacer / estar / llover-nevar), heure avec SER, jours, mois, saisons, date (leçon 211)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Météo : les mots du ciel", [
+  ["el tiempo","/el ˈtjempo/","le temps qu'il fait ; le temps qui passe","Piège : un seul mot pour la météo ET pour la durée. ¿Qué tiempo hace? = quel temps fait-il ? ; No tengo tiempo = je n'ai pas le temps. En Amérique latine on dit souvent « el clima » pour la météo. TIEM-po.","🌦️","¿Qué tiempo hace hoy?","Quel temps fait-il aujourd'hui ?"],
+  ["el clima","/el ˈklima/","le climat ; la météo (Amérique latine)","Plus large que « el tiempo » : le climat d'une région. En Colombie et au Mexique, on demande souvent « ¿Qué clima hace? ». KLI-ma.","🌍","El clima de Bogotá es templado.","Le climat de Bogotá est tempéré."],
+  ["el sol","/el sol/","le soleil","Nom masculin. « Hace sol » = il fait soleil / il y a du soleil. Le o est un « o » fermé, le l est net comme en français.","☀️","El sol es amarillo.","Le soleil est jaune."],
+  ["la lluvia","/la ˈʝuβja/","la pluie","Nom féminin. ll = « y » : YU-bia. Ne dis pas « hace lluvia » : on dit « llueve ».","🌧️","La lluvia es fría.","La pluie est froide."],
+  ["la nieve","/la ˈnjeβe/","la neige","Nom féminin. v = b : NIE-be. Le verbe correspondant est « nevar » (nieva).","❄️","La nieve es blanca.","La neige est blanche."],
+  ["el viento","/el ˈbjento/","le vent","Nom masculin. v = b : BIEN-to. « Hace viento » = il y a du vent.","💨","El viento es frío.","Le vent est froid."],
+  ["la nube","/la ˈnuβe/","le nuage","Nom FÉMININ (comme « la nuit »). Le contraire d'un ciel « despejado » (dégagé). NU-be.","☁️","La nube es gris.","Le nuage est gris."],
+  ["el cielo","/el ˈθjelo/","le ciel","c devant e = th en Espagne (THIE-lo), s en Amérique latine (SIE-lo). Pluriel : los cielos.","🌌","El cielo es azul.","Le ciel est bleu."],
+  ["la temperatura","/la tempeɾaˈtuɾa/","la température","Féminin, mot transparent. Accent sur TU : tem-pe-ra-TU-ra.","🌡️","La temperatura es de veinte grados.","La température est de vingt degrés."],
+  ["los grados","/los ˈɡɾaðos/","les degrés (°C)","Toujours au pluriel avec un nombre : treinta grados. L'Espagne et l'Amérique latine utilisent les degrés Celsius, comme la France. GRA-dos.","🔢","Estamos a treinta grados.","Il fait trente degrés (littéralement : nous sommes à trente degrés)."],
+  ["bajo cero","/ˈbaxo ˈθeɾo/","sous zéro","« cinco grados bajo cero » ou « menos cinco grados » = -5 °C. j = kh : BA-kho. Deux façons équivalentes de dire une température négative.","🧊","Hace cinco grados bajo cero.","Il fait moins cinq degrés."]
+ ]),
+ blk("Météo famille 1 : HACER + nom (« ça fait… »)", [
+  ["hace sol","/ˈaθe sol/","il fait soleil, il y a du soleil","HACER impersonnel + nom : on traduit « il fait / il y a ». h muette ; c = th en Espagne (A-the), s en Amérique latine (A-se). Toujours « hace », jamais « hacen ».","🌞","Hoy hace sol en Madrid.","Aujourd'hui il y a du soleil à Madrid."],
+  ["hace frío","/ˈaθe ˈfɾio/","il fait froid","Accent écrit sur le í : FRÍ-o. Le froid de l'air, pas ta sensation (« tengo frío »).","🥶","En invierno hace frío.","En hiver il fait froid."],
+  ["hace calor","/ˈaθe kaˈloɾ/","il fait chaud","Le r final est doux. Ne dis pas « es calor » : un nom météo prend hacer, pas ser.","🥵","En Colombia hace calor.","En Colombie il fait chaud."],
+  ["hace viento","/ˈaθe ˈbjento/","il y a du vent","Pour le vent, on dit « hace viento », pas « está ventoso » (qui est possible mais moins courant).","🌬️","Hoy hace viento.","Aujourd'hui il y a du vent."],
+  ["hace fresco","/ˈaθe ˈfɾesko/","il fait frais","Entre « frío » et « templado » : une fraîcheur agréable, par exemple le soir. FRES-ko.","🍃","Por la noche hace fresco.","Le soir il fait frais."],
+  ["hace buen tiempo","/ˈaθe ˈbwen ˈtjempo/","il fait beau","bueno devient « buen » devant un nom masculin singulier : buen tiempo.","😎","Mañana hace buen tiempo.","Demain il fait beau."],
+  ["hace mal tiempo","/ˈaθe mal ˈtjempo/","il fait mauvais","malo devient « mal » devant un nom masculin singulier : mal tiempo. Le contraire de « buen tiempo ».","⛈️","Hoy hace mal tiempo.","Aujourd'hui il fait mauvais."],
+  ["hace mucho calor · frío","/ˈaθe ˈmutʃo/","il fait très chaud / très froid","Devant un NOM on met « mucho » (invariable), jamais « muy » : hace mucho calor, hace mucho frío, hace mucho sol, hace mucho viento. « Hace muy calor » est une faute.","🔥","En agosto hace mucho calor.","En août il fait très chaud."],
+  ["hace treinta grados","/ˈaθe ˈtɾeinta ˈɡɾaðos/","il fait 30 degrés","On donne la température avec « hace + nombre + grados ». treinta = 30 (accent sur TREIN). Un nombre de 0 à 100 suffit.","🌡️","Hace treinta grados en Valencia.","Il fait trente degrés à Valence."],
+  ["¿Qué tiempo hace?","/ke ˈtjempo ˈaθe/","quel temps fait-il ?","La question qui ouvre toute conversation météo. Neutre : elle convient à un ami comme à un inconnu (tú ET usted). Amérique latine : « ¿Qué clima hace? ».","❓","¿Qué tiempo hace en Sevilla?","Quel temps fait-il à Séville ?"],
+  ["tengo frío · tengo calor","/ˈtenɡo ˈfɾio/","j'ai froid · j'ai chaud","Ta sensation à toi : TENER (vu en A1.0), comme « tengo hambre ». ≠ « hace frío » (le temps dehors). Tutoiement : ¿Tienes frío? Vouvoiement : ¿Tiene frío, señora?","🧣","Tengo frío, pero hace sol.","J'ai froid, mais il y a du soleil."]
+ ]),
+ blk("Météo famille 2 : ESTAR + adjectif ou gérondif", [
+  ["está nublado","/esˈta nuˈβlaðo/","le ciel est couvert, il y a des nuages","ESTAR + adjectif : l'état du ciel en ce moment. Ici l'adjectif reste au masculin (le « il » est vide). Accent écrit sur está.","☁️","Hoy está nublado.","Aujourd'hui le ciel est couvert."],
+  ["está despejado","/esˈta despeˈxaðo/","le ciel est dégagé","Le contraire de « está nublado ». j = kh : des-pe-KHA-do. Très utilisé dans les bulletins météo.","🌤️","Mañana está despejado.","Demain le ciel est dégagé."],
+  ["soleado","/soleˈaðo/","ensoleillé","Adjectif : un día soleado, una tarde soleada (il s'accorde avec le nom). « Está soleado » = « hace sol ».","🌞","Hoy es un día soleado.","Aujourd'hui est une journée ensoleillée."],
+  ["lluvioso","/ʝuˈβjoso/","pluvieux","Adjectif : un día lluvioso, una semana lluviosa. Plus fréquent avec « día / mes / semana » que seul. ll = y.","🌦️","Octubre es un mes lluvioso.","Octobre est un mois pluvieux."],
+  ["nublado","/nuˈβlaðo/","nuageux","Adjectif issu de « nube ». un cielo nublado, una mañana nublada. d entre voyelles très doux : nu-BLA-do.","🌥️","Es una mañana nublada.","C'est une matinée nuageuse."],
+  ["ventoso","/benˈtoso/","venteux","Adjectif issu de « viento » : un día ventoso, una tarde ventosa. ven-TO-so.","🌪️","Hoy es un día ventoso.","Aujourd'hui est une journée venteuse."],
+  ["nevado","/neˈβaðo/","enneigé, neigeux","Souvent avec « estar » pour un lieu : las montañas están nevadas (accord au pluriel féminin).","🏔️","Las montañas están nevadas.","Les montagnes sont enneigées."],
+  ["templado","/temˈplaðo/","tempéré, doux","Ni chaud ni froid : un clima templado, un día templado. Temps agréable de 15 à 22 degrés environ.","🌤️","El clima es templado en primavera.","Le climat est doux au printemps."],
+  ["el calor · el frío","/el kaˈloɾ/ · /el ˈfɾio/","la chaleur · le froid","Noms masculins. Ne les confonds pas avec « hace calor / hace frío » (verbe + nom). On les emploie avec gustar : no me gusta el calor.","🌡️","No me gusta el calor, pero me gusta el frío.","Je n'aime pas la chaleur, mais j'aime le froid."],
+  ["está lloviendo","/esˈta ʝoˈβjendo/","il pleut (en ce moment)","ESTAR + gérondif (A1.8) : llover → lloviendo. Action en cours : tu la vois par la fenêtre. Pour le fait général : « llueve ».","☔","Ahora está lloviendo en Bogotá.","En ce moment il pleut à Bogotá."],
+  ["está nevando","/esˈta neˈβando/","il neige (en ce moment)","ESTAR + gérondif : nevar → nevando (régulier). Même nuance : « nieva » = en général, « está nevando » = maintenant.","🌨️","Está nevando en la montaña.","Il neige sur la montagne."]
+ ]),
+ blk("Météo famille 3 : verbes autonomes", [
+  ["llover","/ʝoˈβeɾ/","pleuvoir","Verbe en -er, radical o → ue : il pleut = LLUEVE. Seule la 3e personne du singulier existe pour la météo (pas de « il »). ll = y.","🌧️","En Bilbao llueve mucho.","À Bilbao il pleut beaucoup."],
+  ["nevar","/neˈβaɾ/","neiger","Verbe en -ar, radical e → ie : il neige = NIEVA (comme preferir → prefiero, A1.5). Seulement à la 3e personne du singulier.","🌨️","En los Pirineos nieva en invierno.","Dans les Pyrénées il neige en hiver."]
+ ]),
+ blk("L'heure avec SER", [
+  ["la hora","/la ˈoɾa/","l'heure","Féminin ; h muette : O-ra. « la hora » = l'heure qu'il est ; « el tiempo » = la durée. Pluriel : las horas.","⏰","La hora es importante.","L'heure est importante."],
+  ["¿Qué hora es?","/ke ˈoɾa es/","quelle heure est-il ?","La question standard avec SER (singulier : « es »). Poli : « Perdone, ¿qué hora es? » (usted) ; amical : « Perdona, ¿qué hora es? » (tú).","🕒","Perdone, ¿qué hora es?","Excusez-moi, quelle heure est-il ?"],
+  ["¿Tienes hora? · ¿Tiene hora?","/ˈtjenes ˈoɾa/","as-tu l'heure ? · auriez-vous l'heure ?","Tutoiement : ¿Tienes hora? Vouvoiement : ¿Tiene hora, por favor? En Amérique latine, on entend souvent « ¿Qué hora tiene? ».","⌚","¿Tiene hora, por favor?","Auriez-vous l'heure, s'il vous plaît ?"],
+  ["es la una","/es la ˈuna/","il est une heure","SINGULIER : « es » car il n'y a qu'une heure. Aussi : es la una y media, es la una menos cuarto.","1️⃣","Es la una y media.","Il est une heure et demie."],
+  ["son las tres","/son las ˈtɾes/","il est trois heures","PLURIEL pour toutes les autres heures : son las dos, son las tres… son las doce. L'article est « las » (sous-entendu : las horas).","3️⃣","Son las tres de la tarde.","Il est trois heures de l'après-midi."],
+  ["y cuarto","/i ˈkwaɾto/","et quart","Jusqu'à la demie on AJOUTE avec « y » : y cuarto (+15), y media (+30), y diez, y veinte… cuarto = quart (un quart d'heure).","🕒","Son las cuatro y cuarto.","Il est quatre heures et quart."],
+  ["y media","/i ˈmeðja/","et demie","media est féminin (la hora). Jamais « y medio ». Exemple : 12 h 30 = « son las doce y media » ; 1 h 30 = « es la una y media ».","🕟","Son las ocho y media.","Il est huit heures et demie."],
+  ["menos cuarto","/ˈmenos ˈkwaɾto/","moins le quart","Après la demie, on prend l'heure SUIVANTE et on RETRANCHE avec « menos » : 2 h 45 = « las tres menos cuarto ». Pas d'article devant cuarto.","🕞","Son las tres menos cuarto.","Il est trois heures moins le quart (2 h 45)."],
+  ["y diez · y veinte · y veinticinco","/i ˈdjeθ/","et dix · et vingt · et vingt-cinq","Minutes jusqu'à la demie : on dit simplement le nombre. 5 = y cinco, 10 = y diez, 20 = y veinte, 25 = y veinticinco. Pas de mot pour « minutes ».","🔟","Son las nueve y veinte.","Il est neuf heures vingt."],
+  ["menos diez · menos veinte · menos veinticinco","/ˈmenos ˈdjeθ/","moins dix · moins vingt · moins vingt-cinq","Après la demie : 3 h 35 = « las cuatro menos veinticinco » ; 3 h 50 = « las cuatro menos diez ». Toujours l'heure qui vient.","🕢","Son las cinco menos diez.","Il est cinq heures moins dix (4 h 50)."],
+  ["en punto","/en ˈpunto/","pile, précises","Se place APRÈS l'heure : son las ocho en punto = huit heures pile. Pour l'heure d'un rendez-vous.","🎯","La reunión es a las nueve en punto.","La réunion est à neuf heures précises."],
+  ["mediodía · medianoche","/meðjoˈðia/ · /meðjaˈnotʃe/","midi · minuit","Sans « las » ni « la » : es mediodía, es medianoche. mediodía : accent sur DÍ. Spain : on déjeune vers 14 h.","🌗","Es mediodía y tengo hambre.","Il est midi et j'ai faim."],
+  ["de la mañana · de la tarde · de la noche","/de la maˈɲana/","du matin · de l'après-midi · du soir","Avec une HEURE PRÉCISE : son las ocho de la mañana, las tres de la tarde, las diez de la noche. Sans heure précise, on utilise « por la ».","🌅","Son las diez de la noche.","Il est dix heures du soir."],
+  ["a las ocho · a la una","/a las ˈotʃo/","à huit heures · à une heure","« À + heure » : a las ocho, a las tres, mais a LA una (singulier). Déjà vu en A1.10 avec les horaires de travail.","📅","Empiezo a las ocho.","Je commence à huit heures."],
+  ["¿A qué hora…?","/a ke ˈoɾa/","à quelle heure… ?","On répond avec « a las… ». Tutoiement : ¿A qué hora empiezas? Vouvoiement : ¿A qué hora empieza usted? (empezar : e → ie).","❓","¿A qué hora empieza la clase?","À quelle heure commence le cours ?"],
+  ["las quince treinta (15:30)","/las ˈkinθe ˈtɾeinta/","quinze heures trente","Horaires officiels (trains, avions, cinéma) : on lit les nombres tels quels, sans « y media ». Utile à connaître pour un billet.","🚆","El tren es a las quince treinta.","Le train est à quinze heures trente."],
+  ["el reloj","/el reˈlox/","la montre, l'horloge","r initial roulé ; j final = kh doux. Pluriel : los relojes. « ¿Tienes reloj? » = as-tu une montre ?","⌚","El reloj es nuevo.","La montre est neuve."],
+  ["el minuto","/el miˈnuto/","la minute","Masculin. Rarement dit dans l'heure : on dit « y diez » plutôt que « diez minutos ». mi-NU-to.","⏱️","Tengo cinco minutos.","J'ai cinq minutes."]
+ ]),
+ blk("Moments de la journée", [
+  ["por la mañana","/poɾ la maˈɲana/","le matin","Sans heure précise : Trabajo por la mañana. Avec heure : « las ocho de la mañana ». ñ = gn : ma-GNA-na.","🌅","Trabajo por la mañana.","Je travaille le matin."],
+  ["por la tarde","/poɾ la ˈtaɾðe/","l'après-midi (jusqu'au soir)","En Espagne la tarde commence après le déjeuner (vers 14-15 h) et dure jusqu'à la nuit. Ne la confonds pas avec l'adverbe « tarde » (tard).","🌇","Estudio por la tarde.","J'étudie l'après-midi."],
+  ["por la noche","/poɾ la ˈnotʃe/","le soir, la nuit","« noche » couvre le soir ET la nuit (on dit « buenas noches » dès le soir). ch = tch : NO-tche.","🌙","Por la noche hace fresco.","Le soir il fait frais."],
+  ["temprano","/temˈpɾano/","tôt","Adverbe invariable : « Es temprano » = il est tôt. Contraire : « tarde » (tard).","🐓","Es temprano: son las seis.","Il est tôt : il est six heures."],
+  ["tarde","/ˈtaɾðe/","tard (adverbe) ; l'après-midi (nom)","Piège : adverbe invariable « Es tarde » (il est tard) ET nom féminin « la tarde » (l'après-midi). Le contexte (la / es) te dit lequel.","🌆","Es tarde: son las once.","Il est tard : il est onze heures."],
+  ["pronto","/ˈpɾonto/","bientôt ; tôt (Espagne)","Utile dans « ¡Hasta pronto! » (à bientôt). En Espagne aussi : « llegar pronto » = arriver tôt. Amérique latine : on préfère « temprano ».","🔜","¡Hasta pronto!","À bientôt !"],
+  ["de madrugada","/de maðɾuˈɣaða/","au petit matin (de 1 h à 6 h)","« madrugada » = la partie de la nuit juste avant l'aube. Avec une heure : « las cuatro de la madrugada ». ma-dru-GA-da.","🌌","Son las cuatro de la madrugada.","Il est quatre heures du matin."]
+ ]),
+ blk("Repères de temps : hier, aujourd'hui, demain", [
+  ["ayer","/aˈʝeɾ/","hier","Mot repère à connaître tel quel. Pour raconter ce qu'on a FAIT hier, l'espagnol utilise des temps du passé qui viennent plus tard : ici on emploie « ayer » seulement sans verbe conjugué.","⏪","Hoy es martes; ayer, lunes.","Aujourd'hui c'est mardi ; hier, lundi."],
+  ["hoy","/oi/","aujourd'hui","h muette : « oi ». Un des mots les plus fréquents : hoy hace sol, hoy es lunes. Aussi : « hoy en día » = de nos jours.","📍","Hoy hace sol.","Aujourd'hui il fait soleil."],
+  ["mañana","/maˈɲana/","demain ; le matin","Piège : « mañana » = demain ET matin (la mañana). « Mañana por la mañana » = demain matin. ñ = gn.","⏩","Mañana hace buen tiempo.","Demain il fait beau."],
+  ["pasado mañana","/paˈsaðo maˈɲana/","après-demain","Littéralement « demain passé ». Se dit en bloc : pasado mañana, viernes.","⏭️","Hoy es miércoles; pasado mañana es viernes.","Aujourd'hui c'est mercredi ; après-demain c'est vendredi."],
+  ["esta noche","/ˈesta ˈnotʃe/","ce soir, cette nuit","« esta » (ce/cette, A1.7) devant noche. esta noche = la nuit qui vient (ce soir).","🌃","Esta noche hace fresco.","Ce soir il fait frais."],
+  ["la semana que viene","/la seˈmana ke ˈbjene/","la semaine prochaine","Littéralement « la semaine qui vient ». Variante équivalente : « la próxima semana ». Avec le futur proche : « La semana que viene vamos a viajar » (ir a + infinitif, A1.9).","📆","La semana que viene vamos a viajar.","La semaine prochaine nous allons voyager."],
+  ["la semana pasada","/la seˈmana paˈsaða/","la semaine dernière","Littéralement « la semaine passée ». Adjectif accordé : pasada (féminin) avec semana. Ici, à employer sans verbe conjugué.","📅","La semana pasada, mucha lluvia en Bilbao.","La semaine dernière, beaucoup de pluie à Bilbao."],
+  ["el mes pasado","/el mes paˈsaðo/","le mois dernier","Mois = masculin : pasado (et non « pasada »). Mot repère à retenir en bloc, sans conjuguer au passé pour l'instant.","🗓️","El mes pasado, septiembre; este mes, octubre.","Le mois dernier, septembre ; ce mois-ci, octobre."],
+  ["el mes que viene","/el mes ke ˈbjene/","le mois prochain","Même structure que « la semana que viene ». Parfait avec « voy a » : El mes que viene voy a trabajar en Madrid.","➡️","El mes que viene voy a trabajar en Madrid.","Le mois prochain je vais travailler à Madrid."],
+  ["el año que viene","/el ˈaɲo ke ˈbjene/","l'année prochaine","año : ñ = gn (A-gno) ; attention, sans le tilde « ano » a un autre sens (vulgaire). Ne l'oublie jamais.","🎆","El año que viene vamos a viajar a Colombia.","L'année prochaine nous allons voyager en Colombie."]
+ ]),
+ blk("Jours, mois, saisons et date", [
+  ["lunes · martes · miércoles · jueves","/ˈlunes ˈmaɾtes ˈmjeɾkoles ˈxweβes/","lundi · mardi · mercredi · jeudi","Jamais de majuscule. Masculins. Accent écrit sur MIÉRcoles. j = kh : KHUE-bes. Le lundi est le premier jour de la semaine.","📅","El lunes, el martes y el miércoles trabajo.","Lundi, mardi et mercredi je travaille."],
+  ["viernes · sábado · domingo","/ˈbjeɾnes ˈsaβaðo doˈmiŋɡo/","vendredi · samedi · dimanche","Accent écrit sur SÁbado. Pluriel : los viernes (invariable) mais los sábados, los domingos.","🎉","El sábado y el domingo no trabajo.","Le samedi et le dimanche je ne travaille pas."],
+  ["el lunes · los lunes","/el ˈlunes/ · /los ˈlunes/","lundi (ce lundi) · tous les lundis","« el lunes » = ce lundi précis (le prochain). « los lunes » = chaque lundi (habitude). Il n'y a pas de « en » devant : on dit « el lunes », pas « en lunes ».","🔁","El lunes voy a la oficina; los lunes empiezo a las nueve.","Lundi je vais au bureau ; les lundis je commence à neuf heures."],
+  ["el fin de semana","/el fin de seˈmana/","le week-end","Invariable. « este fin de semana » = ce week-end. « de lunes a viernes » = du lundi au vendredi.","🏖️","El fin de semana hace buen tiempo.","Le week-end il fait beau."],
+  ["el día","/el ˈdia/","le jour, la journée","Nom MASCULIN malgré le -a final (el día, comme el mapa). Pluriel : los días. Buenos días.","☀️","Es un día soleado.","C'est une journée ensoleillée."],
+  ["la semana","/la seˈmana/","la semaine","Féminin. Une semaine = siete días. « esta semana » = cette semaine.","🗓️","Esta semana hace frío.","Cette semaine il fait froid."],
+  ["el mes","/el mes/","le mois","Masculin, pluriel : los meses (le -es de la consonne finale). « este mes » = ce mois-ci.","📆","Este mes llueve mucho.","Ce mois-ci il pleut beaucoup."],
+  ["el año","/el ˈaɲo/","l'année, l'an","ñ = gn. « tengo veinte años » = j'ai vingt ans (âge avec tener, A1.0). L'année se lit en entier : 2026 = dos mil veintiséis.","🎂","Tengo treinta años.","J'ai trente ans."],
+  ["¿Qué día es hoy?","/ke ˈdia es oi/","quel jour sommes-nous ? (quel jour de la semaine)","Réponse : « Hoy es jueves. » Verbe SER, singulier. Neutre : convient en tú ET en usted.","❓","¿Qué día es hoy? — Hoy es jueves.","Quel jour sommes-nous ? — Aujourd'hui c'est jeudi."],
+  ["Hoy es lunes 3 de octubre","/oi es ˈlunes tɾes de okˈtuβɾe/","aujourd'hui c'est lundi 3 octobre","Structure : Hoy es + jour + nombre + DE + mois. Nombres cardinaux (sauf le 1er : « el primero de mayo », ou « el uno de mayo »). Écriture 03/10 = jour/mois.","📌","Hoy es jueves 1 de octubre.","Aujourd'hui c'est jeudi 1er octobre."],
+  ["la fecha","/la ˈfetʃa/","la date","« ¿Qué fecha es hoy? » ou « ¿Cuál es la fecha de hoy? » (demande le jour du mois). En Espagne : « ¿A cuántos estamos? » → « Estamos a tres de octubre ».","🗒️","La fecha de hoy es el 1 de octubre.","La date d'aujourd'hui est le 1er octobre."],
+  ["enero · febrero · marzo","/eˈneɾo feˈβɾeɾo ˈmaɾθo/","janvier · février · mars","Pas de majuscule, masculins. En marzo : « en » devant un mois (en enero). marzo : z = th (Espagne) / s (Amérique latine).","❄️","En enero hace frío.","En janvier il fait froid."],
+  ["abril · mayo · junio","/aˈβɾil ˈmajo ˈxunjo/","avril · mai · juin","mayo : y = « ill » : MA-yo. junio : j = kh : KHU-nio. Printemps espagnol : températures agréables.","🌸","En mayo hace buen tiempo.","En mai il fait beau."],
+  ["julio · agosto · septiembre","/ˈxuljo aˈɣosto sepˈtjembɾe/","juillet · août · septembre","septiembre se prononce avec le p : sep-TIEM-bre (aussi écrit « setiembre » en Amérique latine). En agosto, forte chaleur en Espagne.","🏖️","En agosto hace mucho calor.","En août il fait très chaud."],
+  ["octubre · noviembre · diciembre","/okˈtuβɾe noˈβjembɾe diˈθjembɾe/","octobre · novembre · décembre","En diciembre : c devant i = th (Espagne). Même base que « octobre » en français, mais « -bre ».","🍂","En noviembre llueve mucho.","En novembre il pleut beaucoup."],
+  ["la primavera · el verano","/la pɾimaˈβeɾa/ · /el beˈɾano/","le printemps · l'été","On dit « en primavera », « en verano » (sans article). Sauf précision, ces saisons suivent l'hémisphère nord (Espagne, Colombie : dépend de l'altitude).","🌷","En verano hace mucho calor.","En été il fait très chaud."],
+  ["el otoño · el invierno","/el oˈtoɲo/ · /el imˈbjeɾno/","l'automne · l'hiver","En otoño, en invierno. otoño : ñ = gn. En Colombie, « invierno » désigne la saison des pluies, pas forcément le froid ; en Argentine, c'est de juin à août.","🍁","En invierno nieva en los Pirineos.","En hiver il neige dans les Pyrénées."]
+ ])
+);
+
+LESSONS_ES[211] = {
+ code:"A1.11", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el tiempo","hace calor","hace mucho calor · frío","está nublado","llover","¿Tienes hora? · ¿Tiene hora?","menos cuarto","de la mañana · de la tarde · de la noche","mañana","Hoy es lunes 3 de octubre"]),
+ MINI_CHECKS: [
+  {q:"« Il fait chaud. »", opts:["Hace calor.","Es calor.","Tiene calor."], correct:0, fb:"HACER impersonnel + nom : hace calor. « Tiene calor » = une PERSONNE a chaud ; « es calor » n'existe pas."},
+  {q:"« J'ai froid. » (c'est ce que je ressens)", opts:["Hace frío.","Tengo frío."], correct:1, fb:"Une sensation personnelle se dit avec TENER (comme tengo hambre). « Hace frío » décrit la météo dehors."},
+  {q:"« Il pleut. »", opts:["Llueve.","Hace llueve.","Está llueve."], correct:0, fb:"llover est un verbe autonome (o → ue) : llueve. Pas de « il » ni de hacer."},
+  {q:"« Il est en train de neiger. »", opts:["Está nevando.","Está nieva.","Hace nieve."], correct:0, fb:"ESTAR + gérondif : nevar → nevando. « Está nieva » est impossible : après estar il faut le gérondif."},
+  {q:"« Il est une heure. »", opts:["Es la una.","Son las una."], correct:0, fb:"Il n'y a qu'UNE heure : singulier « es la una ». Pluriel à partir de deux : son las dos."},
+  {q:"« Il est huit heures. »", opts:["Es las ocho.","Son las ocho."], correct:1, fb:"huit heures = pluriel : son las ocho. « Es » s'emploie seulement avec la una, mediodía, medianoche."},
+  {q:"Pour demander l'heure à un client que tu vouvoies :", opts:["¿Tienes hora?","¿Tiene hora, por favor?"], correct:1, fb:"Vouvoiement = usted + tiene. « Tienes » est le tutoiement."},
+  {q:"« Hier » en espagnol :", opts:["ayer","mañana","hoy"], correct:0, fb:"ayer = hier, hoy = aujourd'hui, mañana = demain (mais aussi « matin », attention au contexte)."}
+ ],
+ ROUNDS: [
+  __esR("Hoy hace mucho calor.","Aujourd'hui il fait très chaud."),
+  __esR("¿Qué tiempo hace en Madrid?","Quel temps fait-il à Madrid ?"),
+  __esR("Está lloviendo y hace viento.","Il pleut et il y a du vent."),
+  __esR("Mañana hace buen tiempo en Sevilla.","Demain il fait beau à Séville."),
+  __esR("En los Pirineos nieva mucho en invierno.","Dans les Pyrénées il neige beaucoup en hiver."),
+  __esR("Son las tres y media de la tarde.","Il est trois heures et demie de l'après-midi."),
+  __esR("Es la una menos cuarto.","Il est une heure moins le quart."),
+  __esR("¿Tiene hora, por favor?","Auriez-vous l'heure, s'il vous plaît ?"),
+  __esR("¿A qué hora empieza la clase?","À quelle heure commence le cours ?"),
+  __esR("Hoy es lunes tres de octubre.","Aujourd'hui c'est lundi trois octobre."),
+  __esR("La semana que viene vamos a viajar.","La semaine prochaine nous allons voyager."),
+  __esR("Trabajo a las nueve por la mañana.","Je travaille à neuf heures le matin."),
+  __esR("Hace treinta grados en Valencia.","Il fait trente degrés à Valence.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"« Il fait froid. »", opts:["Hace frío.","Es frío.","Está frío."], correct:0, why:"Le froid de l'air = HACER + nom : hace frío. « Está frío » se dit d'un objet (la sopa está fría)."},
+  {cat:"ecrit", q:"En Valencia ___ calor en agosto.", opts:["hace","es","tiene"], correct:0, why:"Chaleur d'un lieu = HACER impersonnel, 3e personne du singulier : hace calor."},
+  {cat:"ecrit", q:"Hoy ___ nublado.", opts:["hace","está","llueve"], correct:1, why:"nublado est un adjectif : ESTAR + adjectif (está nublado). Avec un nom on aurait hacer : hace sol."},
+  {cat:"ecrit", q:"« Il pleut beaucoup à Bilbao. »", opts:["Llueve mucho en Bilbao.","Llove mucho en Bilbao.","Hace lluvia mucho en Bilbao."], correct:0, why:"llover : o → ue (llueve). « Llove » oublie la diphtongue ; « hace lluvia » n'existe pas."},
+  {cat:"ecrit", q:"Hace ___ calor en agosto. (très)", opts:["muy","mucho","mucha"], correct:1, why:"Devant un NOM on emploie « mucho », invariable : hace mucho calor. « Muy » se met devant un adjectif ou un adverbe."},
+  {cat:"ecrit", q:"« Il neige. »", opts:["Nieva.","Nevea.","Hace nieve."], correct:0, why:"nevar : e → ie. Il neige = nieva. Comme pour llover, pas de hacer ni de sujet."},
+  {cat:"ecrit", q:"« Il est une heure. »", opts:["Son la una.","Es la una.","Es las una."], correct:1, why:"Une seule heure : « es la una », singulier avec « la ». Dès deux heures : son las dos."},
+  {cat:"ecrit", q:"« Il est trois heures et demie. »", opts:["Son las tres y media.","Es las tres y media.","Son las tres media."], correct:0, why:"Pluriel (las tres) + « y media » (media est féminin et précédé de y)."},
+  {cat:"ecrit", q:"Quelle phrase dit 1 h 45 ?", opts:["Son las dos menos cuarto.","Son las dos y cuarto.","Son las tres menos cuarto."], correct:0, why:"Après la demie : heure SUIVANTE (las dos) + menos cuarto = 1 h 45. « Y cuarto » = 2 h 15 ; « las tres menos cuarto » = 2 h 45."},
+  {cat:"ecrit", q:"Pour demander l'heure à un inconnu âgé :", opts:["¿Tienes hora?","¿Tiene hora, por favor?"], correct:1, why:"Inconnu âgé = usted : tiene. « Tienes » est réservé au tutoiement."},
+  {cat:"ecrit", q:"Hoy ___ lunes 3 de octubre.", opts:["es","está","tiene"], correct:0, why:"Le jour et la date se disent avec SER : Hoy es lunes. Pas d'estar ni de tener."},
+  {cat:"ecrit", q:"« Septembre » en espagnol :", opts:["septiembre","setembre","septembro"], correct:0, why:"septiembre garde le p et prend ie : sep-TIEM-bre. Pas de majuscule en espagnol."},
+  {cat:"ecrit", q:"« Je travaille tous les lundis. »", opts:["Trabajo los lunes.","Trabajo el lunes.","Trabajo en lunes."], correct:0, why:"« los lunes » = chaque lundi (habitude). « El lunes » = ce lundi précis. « En lunes » n'existe pas."},
+  {cat:"ecrit", q:"« À huit heures du matin. »", opts:["a las ocho de la mañana","a las ocho por la mañana","en las ocho de la mañana"], correct:0, why:"Avec une heure précise on dit « de la mañana » ; « por la mañana » s'emploie sans heure. Et « a las » (pas « en »)."},
+  {cat:"oral", audio:"Hoy hace mucho frío en Madrid.", q:"Écoute : quel temps fait-il à Madrid ?", opts:["Très froid","Très chaud","Il pleut"], correct:0, why:"« hace mucho frío » = il fait très froid. « mucho » devant frío (nom)."},
+  {cat:"oral", audio:"Son las cuatro y media.", q:"Écoute : quelle heure est-il ?", opts:["4 h 30","3 h 30","4 h 15"], correct:0, why:"las cuatro y media = 4 h 30. Ne confonds pas avec cuarto (= 15 minutes)."},
+  {cat:"oral", audio:"Está lloviendo y hace viento.", q:"Écoute : que se passe-t-il dehors ?", opts:["Il pleut et il y a du vent","Il neige et il fait froid","Il fait soleil et chaud"], correct:0, why:"está lloviendo = il pleut (en ce moment) ; hace viento = il y a du vent."},
+  {cat:"oral", audio:"¿Tiene hora, por favor?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« tiene » + « por favor » = vouvoiement (usted). Au tutoiement : ¿Tienes hora?"},
+  {cat:"oral", audio:"Hoy es martes doce de noviembre.", q:"Écoute : quelle est la date ?", opts:["Mardi 12 novembre","Mardi 12 octobre","Mercredi 12 novembre"], correct:0, why:"martes = mardi ; doce = 12 ; noviembre = novembre. octubre = octobre (autre mot)."},
+  {cat:"comprehension", passage:"¿Qué hora es? Son las tres y media. Hoy en Madrid hace sol, pero hace frío. La semana que viene vamos a viajar a Sevilla. Allí hace calor y hace treinta grados.", q:"Quelle heure est-il ?", opts:["3 h 30","3 h 15","4 h 30"], correct:0, why:"« Son las tres y media » = 3 h 30. « y media » = et demie ; cuarto serait 15 minutes."},
+  {cat:"comprehension", passage:"¿Qué hora es? Son las tres y media. Hoy en Madrid hace sol, pero hace frío. La semana que viene vamos a viajar a Sevilla. Allí hace calor y hace treinta grados.", q:"Quel temps fait-il aujourd'hui à Madrid ?", opts:["Il y a du soleil, mais il fait froid","Le ciel est couvert et il fait chaud","Il pleut"], correct:0, why:"« hace sol, pero hace frío » : deux phrases avec hacer reliées par « pero »."},
+  {cat:"comprehension", passage:"¿Qué hora es? Son las tres y media. Hoy en Madrid hace sol, pero hace frío. La semana que viene vamos a viajar a Sevilla. Allí hace calor y hace treinta grados.", q:"Que vont-ils faire la semaine prochaine ?", opts:["Voyager à Séville","Rester à Madrid","Travailler à Madrid"], correct:0, why:"« La semana que viene vamos a viajar a Sevilla » : futur proche (ir a + infinitif, A1.9)."},
+  {cat:"comprehension", passage:"— Perdone, señora, ¿tiene hora? — Sí, son las nueve menos cuarto. — ¿A qué hora empieza la reunión? — A las nueve en punto. Hoy es jueves 5 de noviembre.", q:"Quelle heure est-il ?", opts:["8 h 45","9 h 15","9 h 45"], correct:0, why:"Après la demie : l'heure suivante (nueve) + menos cuarto = 8 h 45."},
+  {cat:"comprehension", passage:"— Perdone, señora, ¿tiene hora? — Sí, son las nueve menos cuarto. — ¿A qué hora empieza la reunión? — A las nueve en punto. Hoy es jueves 5 de noviembre.", q:"À quelle heure commence la réunion ?", opts:["À 9 h pile","À 8 h 45","À 9 h 15"], correct:0, why:"« A las nueve en punto » = à neuf heures précises. Le vouvoiement (perdone, tiene) montre un contexte formel."}
+ ],
+ PRON_VERBS: [
+  {en:"Hace calor.", fr:"Il fait chaud. (h muette ; c = th en Espagne : A-the ka-LOR ; s en Amérique latine)"},
+  {en:"La lluvia es fría.", fr:"La pluie est froide. (ll = y : YU-bia ; accent écrit sur FRÍ-a)"},
+  {en:"Llueve en Bilbao.", fr:"Il pleut à Bilbao. (diphtongue ue : YUE-be ; v = b)"},
+  {en:"Nieva en invierno.", fr:"Il neige en hiver. (diphtongue ie : NIE-ba ; im-BIER-no)"},
+  {en:"El viento es frío.", fr:"Le vent est froid. (v = b : BIEN-to ; ie = « yé »)"},
+  {en:"Son las doce y media.", fr:"Il est midi et demi. (do-the en Espagne ; s en Amérique latine ; ME-dia)"},
+  {en:"Hoy es miércoles.", fr:"Aujourd'hui c'est mercredi. (h muette ; accent écrit : MIÉR-co-les, tonique sur MIÉR)"},
+  {en:"Hoy es sábado.", fr:"Aujourd'hui c'est samedi. (accent écrit : SÁ-ba-do, tonique sur la 1re syllabe ; b doux)"},
+  {en:"En septiembre y noviembre llueve.", fr:"En septembre et novembre il pleut. (sep-TIEM-bre, no-BIEM-bre ; le p de septiembre se prononce)"},
+  {en:"El cielo está despejado.", fr:"Le ciel est dégagé. (c = th : THIE-lo ; j = kh : des-pe-KHA-do)"},
+  {en:"Hace treinta grados.", fr:"Il fait trente degrés. (h muette ; TREIN-ta ; gr- : le g est doux devant r)"}
+ ],
+ READING: [
+  "Son las siete y media de la mañana y hace frío en Madrid.",
+  "Hoy está nublado y está lloviendo.",
+  "Lucía trabaja de lunes a viernes y empieza a las nueve en punto.",
+  "Por la tarde, a las cinco y cuarto, termina el trabajo.",
+  "Hoy es jueves 1 de octubre.",
+  "En otoño llueve mucho, pero en verano hace mucho calor.",
+  "Mañana hace buen tiempo: hace sol y hace veinte grados.",
+  "El fin de semana vamos a viajar a Sevilla.",
+  "Allí hace calor: ¡hace treinta grados!",
+  "Perdone, señor, ¿tiene hora? — Sí, son las tres menos cuarto."
+ ],
+ GLOSS: [
+  {en:"de lunes a viernes", fr:"du lundi au vendredi : « de… a… », sans article, sans majuscule"},
+  {en:"el fin de semana", fr:"le week-end : invariable, masculin (« el fin », le bout de la semaine)"},
+  {en:"allí", fr:"là-bas : adverbe de lieu, accent écrit sur la í"},
+  {en:"otoño", fr:"automne : ñ = gn ; on dit « en otoño », sans article"},
+  {en:"empieza", fr:"il/elle commence : empezar (e → ie), 3e personne du singulier (A1.10)"},
+  {en:"termina", fr:"il/elle termine : terminar, verbe régulier en -ar"},
+  {en:"mucho", fr:"beaucoup / très devant un nom : hace mucho calor ; invariable, jamais « muy calor »"},
+  {en:"buen tiempo", fr:"beau temps : bueno devient « buen » devant un nom masculin singulier"}
+ ],
+ GRAMMAR1: {
+  heading:"La météo : trois familles (hacer, estar, llover / nevar)",
+  lede:"Le français ramène presque tout à « il fait » ou « il pleut ». L'espagnol demande de choisir parmi TROIS familles selon la nature du mot : un NOM → hacer, un ADJECTIF (ou une action en cours) → estar, un phénomène qui a son propre VERBE → llover, nevar.",
+  conj:[
+   ["yo →","hago","Hago los deberes. (jamais « hago frío » : la météo n'a pas de « je »)"],
+   ["tú →","haces","¿Haces los deberes? (pour la météo, on ne dit pas « haces »)"],
+   ["él, ella, usted →","hace","Hace calor. / Ella hace los deberes. / ¿Hace usted los deberes?"],
+   ["nosotros/as →","hacemos","Hacemos los deberes. (pas de « hacemos frío »)"],
+   ["vosotros/as →","hacéis","¿Hacéis los deberes? (Espagne)"],
+   ["ellos, ellas, ustedes →","hacen","Hacen los deberes. (la météo ne se met jamais au pluriel)"]
+  ],
+  ruleHtml:"🌦️ <b>Famille 1 : HACER + nom</b> (« ça fait… »). <b>hace sol · hace frío · hace calor · hace viento · hace fresco · hace buen tiempo · hace mal tiempo</b>. Pour insister : <b>hace mucho</b> calor / frío / sol / viento (devant un nom : mucho, jamais « muy »). Les degrés : <b>hace treinta grados</b>, <b>hace cinco grados bajo cero</b>. Le verbe reste toujours à la 3e personne du singulier : <b>hace</b>, jamais « hacen », « hago ». Le tableau ci-dessus montre toute la conjugaison de hacer, mais pour la météo tu n'utilises qu'une seule forme : <b>hace</b>.<br><br>☁️ <b>Famille 2 : ESTAR + adjectif ou gérondif</b> (l'état du ciel à un moment donné). <b>está nublado · está despejado · está soleado · está lluvioso · está ventoso</b>. L'adjectif reste au masculin (le sujet « il » est vide). Pour une action en cours : <b>está lloviendo · está nevando</b> (gérondif vu en A1.8 : llover → lloviendo, nevar → nevando). Pour décrire un jour entier, l'adjectif s'accorde normalement : <b>un día soleado, una mañana nublada, un mes lluvioso</b>.<br><br>🌧️ <b>Famille 3 : verbes autonomes.</b> <b>llover</b> (o → ue) et <b>nevar</b> (e → ie) se conjuguent seuls, sans sujet : <b>llueve</b> = il pleut, <b>nieva</b> = il neige. Même diphtongue que preferir → prefiero (A1.5) : la voyelle du radical devient ue / ie quand l'accent tombe dessus ; l'infinitif garde o / e. Ces verbes s'emploient seulement à la 3e personne du singulier.<br><br>🔎 <b>« llueve » ou « está lloviendo » ?</b> <b>Llueve</b> = fait général ou habituel (« En Bilbao llueve mucho »). <b>Está lloviendo</b> = en ce moment même (« Mira, está lloviendo »).<br><br>👥 <b>Tutoiement ET vouvoiement.</b> La météo n'a pas de « tu / vous », mais tu l'emploies pour interroger : <b>¿Tienes frío, Ana?</b> (tú) / <b>¿Tiene frío, señora?</b> (usted). <b>¿Qué tiempo hace?</b> est neutre : il s'adresse à un ami comme à un inconnu.<br><br>⚠️ <b>Pièges francophones.</b> <b>hace frío</b> (il fait froid dehors) ≠ <b>tengo frío</b> (moi, j'ai froid) ≠ <b>está frío</b> (la soupe est froide, un objet). <b>« Hace muy calor »</b> est faux : <b>hace mucho calor</b>. <b>« Hace lluvia »</b> n'existe pas : <b>llueve</b>. <b>El tiempo</b> = la météo ET la durée (¿Qué tiempo hace? / No tengo tiempo). Variantes : Espagne = <b>el tiempo</b> ; Amérique latine = souvent <b>el clima</b> (« ¿Qué clima hace? »).",
+  dialogueLede:"Deux amies parlent de la météo (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Marta! ¿Qué tiempo hace en Sevilla?", fr:"Salut, Marta ! Quel temps fait-il à Séville ?"},
+   {who:"you", en:"Hace mucho calor: hace treinta grados.", fr:"Il fait très chaud : il fait trente degrés."},
+   {who:"them", en:"¿Está nublado?", fr:"Il y a des nuages ?"},
+   {who:"you", en:"No, está despejado. Pero mañana llueve.", fr:"Non, le ciel est dégagé. Mais demain il pleut."},
+   {who:"them", en:"¡Qué pena! Aquí en Madrid está lloviendo y hace frío.", fr:"Quel dommage ! Ici à Madrid il pleut et il fait froid."},
+   {who:"you", en:"¿Tienes frío? Hace fresco por la noche en Madrid.", fr:"Tu as froid ? Il fait frais le soir à Madrid."}
+  ],
+  whyLabel:"Pourquoi trois familles ? Hace sol, está nublado, llueve",
+  whyText:"En français, « il fait » et « il pleut » recouvrent tout, donc on ne choisit pas. L'espagnol classe les phénomènes selon la <b>nature du mot</b>. Si c'est un <b>nom</b> (sol, frío, calor, viento) : <b>hace</b> (« ça fait du soleil »). Si c'est un <b>adjectif</b> qui décrit le ciel (nublado, despejado) : <b>está</b> + adjectif, comme l'état passager vu en A1.0. Si le phénomène a son <b>propre verbe</b> (llover, nevar) : on le conjugue directement. <b>Test pratique</b> : peux-tu mettre « mucho » devant ? <i>mucho calor, mucho viento</i> → hacer ; <i>muy nublado, muy despejado</i> (muy marche avec un adjectif) → estar ; sinon cherche si le verbe existe (llueve, nieva). Ce test t'évite d'apprendre chaque expression par cœur. Enfin, la différence « llueve » / « está lloviendo » ressemble à celle du français « il pleut souvent » / « il est en train de pleuvoir » : l'une dit l'habitude, l'autre le moment présent."
+ },
+ GRAMMAR2: {
+  heading:"L'heure avec SER, puis les jours, les mois et la date",
+  dialogueLede:"Dans un hall de gare, un voyageur et une employée (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Perdone, señora, ¿tiene hora, por favor?", fr:"Excusez-moi, madame, auriez-vous l'heure, s'il vous plaît ?"},
+   {who:"you", en:"Sí, claro. Son las nueve menos cuarto.", fr:"Oui, bien sûr. Il est neuf heures moins le quart."},
+   {who:"them", en:"Gracias. ¿A qué hora empieza la reunión?", fr:"Merci. À quelle heure commence la réunion ?"},
+   {who:"you", en:"A las nueve en punto. Hoy es jueves 5 de noviembre.", fr:"À neuf heures pile. Aujourd'hui c'est jeudi 5 novembre."},
+   {who:"them", en:"Perfecto. Muchas gracias.", fr:"Parfait. Merci beaucoup."},
+   {who:"you", en:"De nada, señor.", fr:"De rien, monsieur."}
+  ],
+  ruleHtml:"⏰ <b>1. Demander l'heure.</b> Neutre : <b>¿Qué hora es?</b> Tutoiement : <b>Perdona, ¿qué hora es?</b> / <b>¿Tienes hora?</b> Vouvoiement : <b>Perdone, ¿qué hora es?</b> / <b>¿Tiene hora, por favor?</b> (Amérique latine : on entend souvent <b>¿Qué hora tiene?</b>).<br><br>⏰ <b>2. Dire l'heure : SER + la / las.</b> <b>Es la una</b> (singulier : une seule heure) mais <b>Son las dos, son las tres… son las doce</b> (pluriel). On sous-entend « la hora / las horas », d'où l'article féminin.<br><br>⏰ <b>3. Les minutes.</b> Jusqu'à la demie, on AJOUTE avec <b>y</b> : 3 h 15 = <b>Son las tres y cuarto</b> ; 3 h 30 = <b>Son las tres y media</b> ; 3 h 10 = <b>Son las tres y diez</b>. Après la demie, on prend l'heure SUIVANTE et on RETRANCHE avec <b>menos</b> : 3 h 45 = <b>Son las cuatro menos cuarto</b> ; 3 h 50 = <b>Son las cuatro menos diez</b> ; 12 h 45 = <b>Es la una menos cuarto</b> (singulier !). Les nombres sont ceux de 0 à 100 : y veinte, y veinticinco, menos veinticinco.<br><br>⏰ <b>4. Pile, midi, minuit.</b> <b>En punto</b> après l'heure : son las ocho en punto. <b>Es mediodía</b> / <b>es medianoche</b> (pas de « las »).<br><br>⏰ <b>5. Matin, après-midi, soir.</b> Avec une heure précise : <b>de la mañana / de la tarde / de la noche</b> (Son las ocho de la mañana). Sans heure : <b>por la mañana / por la tarde / por la noche</b> (Trabajo por la mañana). De 1 h à 6 h : <b>de la madrugada</b>.<br><br>⏰ <b>6. À quelle heure ?</b> <b>¿A qué hora…?</b> → <b>a las nueve</b> (mais a LA una). Tu : ¿A qué hora empiezas? Usted : ¿A qué hora empieza usted?<br><br>⏰ <b>7. 24 heures et variantes.</b> Horaires officiels (trains, cinéma) : <b>las quince treinta</b> (15 h 30). En Amérique latine : <b>un cuarto para las tres</b>, <b>faltan diez para las tres</b> (Mexique, Colombie) et « a. m. / p. m. » à l'écrit ; l'Espagne dit plutôt « las tres menos diez ».<br><br>📅 <b>8. Les jours.</b> <b>lunes, martes, miércoles, jueves, viernes, sábado, domingo</b> : sans majuscule, masculins. <b>El lunes</b> = ce lundi ; <b>los lunes</b> = chaque lundi (viernes, lunes… sont invariables au pluriel : los martes ; mais los sábados, los domingos). <b>De lunes a viernes</b> = du lundi au vendredi.<br><br>📅 <b>9. Les mois et les saisons.</b> enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre : sans majuscule. On dit <b>en octubre</b>, <b>en otoño</b>, <b>en verano</b> (en + mois ou saison, sans article). Saisons : la primavera, el verano, el otoño, el invierno.<br><br>📅 <b>10. La date.</b> <b>¿Qué día es hoy?</b> → <b>Hoy es jueves.</b> <b>¿Qué fecha es hoy?</b> → <b>Hoy es 1 de octubre</b> / <b>Hoy es jueves 1 de octubre.</b> Structure : (jour) + nombre + <b>de</b> + mois (+ de + année). Nombres cardinaux, sauf le 1er : <b>el primero de mayo</b> ou <b>el uno de mayo</b>. Espagne : <b>¿A cuántos estamos?</b> → <b>Estamos a tres de octubre</b>. Écriture 03/10 = 3 octobre (jour/mois, comme en France).",
+  whyLabel:"Pourquoi SER pour l'heure, et pourquoi « son las » au pluriel ?",
+  whyText:"On dit « Es la una » parce que le sujet sous-entendu est « la hora » (singulier) ; dès deux heures, le sujet devient « las horas » (pluriel) : <b>son las dos</b>. C'est un sujet réel qui s'accorde : un seul mot à retenir, le nombre. Pour les minutes, l'espagnol additionne jusqu'à la demie (<b>y</b>) puis soustrait de l'heure suivante (<b>menos</b>) : c'est la même logique que « trois heures moins dix » en français, mais utilisée beaucoup plus tôt. <b>Piège</b> : « Es las tres » est faux, « Son la una » aussi : regarde le chiffre. Autre piège : « por la mañana » (sans heure) ≠ « de la mañana » (avec une heure) : « Son las ocho de la mañana » mais « Trabajo por la mañana ». Enfin, la date se dit avec SER (<b>hoy es jueves</b>), comme l'heure : on parle d'une identité, pas d'un lieu ni d'un état passager."
+ },
+ REVIEW: [
+  {q:"Pour demander à un directeur : « Que faites-vous dans la vie ? »", opts:["¿A qué te dedicas?","¿A qué se dedica usted?"], correct:1, fb:"usted = 3e personne : se dedica. « Te dedicas » est le tutoiement. (rappel A1.10)"},
+  {q:"« Je travaille à neuf heures. »", opts:["Trabajo a las nueve.","Trabajo en las nueve."], correct:0, fb:"« À + heure » = a las nueve. (rappel A1.10)"},
+  {q:"« Nous écrivons un courriel. » (escribir)", opts:["Escribimos un correo.","Escribemos un correo.","Escribamos un correo."], correct:0, fb:"-ir : nosotros → -imos : escribimos. (rappel A1.10)"},
+  {q:"« Elle étudie le matin. »", opts:["Estudia por la mañana.","Estudia a la mañana."], correct:0, fb:"Moment de la journée sans heure précise : por la mañana. (rappel A1.10)"},
+  {q:"« ¿Dónde ___ usted ? » (trabajar)", opts:["trabaja","trabajas","trabajo"], correct:0, fb:"usted se conjugue comme él/ella : trabaja. « Trabajas » = tú. (rappel A1.10)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"Hoy ___ sol. (hacer)", answers:["hace","Hace"], why:"Un nom (sol) → HACER impersonnel, 3e personne du singulier : hace sol."},
+  {type:"fill", text:"Hace treinta ___. (degrés)", answers:["grados"], why:"grados = degrés, au pluriel après un nombre : hace treinta grados."},
+  {type:"fill", text:"¿Qué tiempo ___ en Bogotá? (hacer)", answers:["hace","Hace"], why:"La question météo se construit avec hacer : ¿Qué tiempo hace?"},
+  {type:"fill", text:"Hoy está ___ . (couvert, avec des nuages)", answers:["nublado"], why:"estar + adjectif : está nublado (de nube = nuage)."},
+  {type:"fill", text:"En Bilbao ___ mucho. (llover)", answers:["llueve","Llueve"], why:"llover : o → ue. Verbe autonome : llueve (3e personne du singulier)."},
+  {type:"fill", text:"En los Pirineos ___ en invierno. (nevar)", answers:["nieva","Nieva"], why:"nevar : e → ie. Il neige = nieva."},
+  {type:"fill", text:"Ahora ___ lloviendo. (estar)", answers:["está","Está"], why:"Action en cours : estar + gérondif (lloviendo). Accent écrit sur está."},
+  {type:"fill", text:"Hace ___ calor en agosto. (très)", answers:["mucho","Mucho"], why:"Devant un NOM on emploie « mucho » : hace mucho calor, jamais « muy calor »."},
+  {type:"fill", text:"___ las tres y cuarto. (ser)", answers:["Son","son"], why:"3 heures = pluriel : son las tres. Singulier seulement pour « la una »."},
+  {type:"fill", text:"___ la una y media. (ser)", answers:["Es","es"], why:"« la una » est singulier : es la una y media."},
+  {type:"fill", text:"¿Qué ___ es ?", answers:["hora"], why:"¿Qué hora es? : la question standard pour demander l'heure. hora = heure."},
+  {type:"fill", text:"Son las ocho ___ punto.", answers:["en"], why:"« en punto » = pile, précises : se place après l'heure."},
+  {type:"fill", text:"Son las cinco ___ cuarto. (4 h 45)", answers:["menos"], why:"4 h 45 : heure suivante (cinco) + menos cuarto. Après la demie, on retranche."},
+  {type:"fill", text:"Hoy es lunes 3 ___ octubre.", answers:["de"], why:"Date : jour + nombre + DE + mois : lunes 3 de octubre."},
+  {type:"fill", text:"Son las diez ___ la noche.", answers:["de"], why:"Avec une heure précise : « de la noche » (et non « por la noche »)."},
+  {type:"fill", text:"Trabajo ___ la mañana. (sans heure précise)", answers:["por"], why:"Sans heure précise : por la mañana. Avec une heure, on dirait « las ocho de la mañana »."},
+  {type:"fill", text:"Hoy, martes. ___, lunes. (hier)", answers:["Ayer","ayer"], why:"ayer = hier. À employer ici sans verbe conjugué (les temps du passé viennent plus tard)."},
+  {type:"choice", q:"Quelle forme est INCORRECTE ?", opts:["Hace lluvia.","Llueve.","Está lloviendo."], correct:0, why:"« Hace lluvia » n'existe pas : la pluie a son propre verbe (llueve, está lloviendo)."},
+  {type:"choice", q:"« Il y a du vent. »", opts:["Hace viento.","Está viento."], correct:0, why:"viento est un nom : HACER + nom → hace viento. « Está ventoso » serait possible, mais « está viento » ne l'est pas."},
+  {type:"choice", q:"« Il est une heure. »", opts:["Es la una.","Son la una."], correct:0, why:"Singulier : es la una. « Son la una » mélange pluriel et singulier."},
+  {type:"choice", q:"« La semaine prochaine » :", opts:["la semana que viene","la semana pasada"], correct:0, why:"« que viene » = qui vient (prochaine) ; « pasada » = passée (dernière)."},
+  {type:"choice", q:"« Le mois dernier » :", opts:["el mes pasado","el mes que viene"], correct:0, why:"el mes pasado = le mois dernier ; el mes que viene = le mois prochain."},
+  {type:"choice", q:"Pour demander l'heure à un ami :", opts:["¿Tienes hora?","¿Tiene hora?"], correct:0, why:"Ami = tú : tienes. « ¿Tiene hora? » est le vouvoiement (usted)."},
+  {type:"choice", q:"« J'ai froid » (ma sensation) :", opts:["Tengo frío.","Hace frío."], correct:0, why:"Sensation personnelle : tener (tengo frío). Hace frío = il fait froid dehors."}
+ ],
+ ANNOTATED: {
+  title:"Un día en Madrid",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction, et repère les trois familles de la météo (hace…, está…, llueve) ainsi que l'heure avec SER.",
+  sentences:[
+   {fr:"Aujourd'hui il fait soleil, mais il fait froid.", tokens:[
+    {w:"Hoy", tag:"adverbe", fr:"aujourd'hui", tip:"h muette : « oi »."},
+    {w:"hace", tag:"verbe", info:"hacer · présent · impersonnel", fr:"il fait", tip:"Famille 1 : hacer + nom."},
+    {w:"sol", tag:"nom", info:"masc. sing.", fr:"soleil"},
+    {w:"pero", tag:"conjonction", fr:"mais"},
+    {w:"hace", tag:"verbe", info:"hacer · présent · impersonnel", fr:"il fait"},
+    {w:"frío", tag:"nom", info:"masc. sing.", fr:"froid", tip:"Accent écrit sur le í : FRÍ-o."}
+   ]},
+   {fr:"Il est trois heures et demie de l'après-midi.", tokens:[
+    {w:"Son", tag:"verbe", info:"ser · présent · 3e pers. plur.", fr:"il est", tip:"Pluriel car « las tres » : plusieurs heures."},
+    {w:"las", tag:"déterminant", info:"article défini · fém. plur.", fr:"les", tip:"Sous-entendu : las horas."},
+    {w:"tres", tag:"adjectif", info:"nombre", fr:"trois"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"media", tag:"adjectif", info:"fém. sing.", fr:"demie", tip:"Jusqu'à la demie, on ajoute avec « y »."},
+    {w:"de", tag:"préposition", fr:"de", tip:"« de la tarde » quand l'heure est précise."},
+    {w:"la", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"tarde", tag:"nom", info:"fém. sing.", fr:"après-midi", tip:"Aussi adverbe : « es tarde » = il est tard."}
+   ]},
+   {fr:"La semaine prochaine nous allons voyager à Séville.", tokens:[
+    {w:"La", tag:"déterminant", info:"article défini · fém. sing.", fr:"la"},
+    {w:"semana", tag:"nom", info:"fém. sing.", fr:"semaine"},
+    {w:"que", tag:"pronom relatif", fr:"qui"},
+    {w:"viene", tag:"verbe", info:"venir · présent · 3e pers. sing.", fr:"vient", tip:"Expression en bloc : « qui vient » = prochaine."},
+    {w:"vamos", tag:"verbe", info:"ir · présent · nosotros", fr:"nous allons", tip:"Futur proche (A1.9) : vamos a + infinitif."},
+    {w:"a", tag:"préposition", fr:"à / de"},
+    {w:"viajar", tag:"verbe", info:"infinitif · -ar", fr:"voyager"},
+    {w:"a", tag:"préposition", fr:"à"},
+    {w:"Sevilla", tag:"nom propre", fr:"Séville", tip:"ll = y : se-BI-ya."}
+   ]},
+   {fr:"Là-bas il fait chaud : il fait trente degrés.", tokens:[
+    {w:"Allí", tag:"adverbe", fr:"là-bas", tip:"Accent écrit sur le í."},
+    {w:"hace", tag:"verbe", info:"hacer · présent · impersonnel", fr:"il fait"},
+    {w:"calor", tag:"nom", info:"masc. sing.", fr:"chaleur", tip:"hace calor = il fait chaud."},
+    {w:"hace", tag:"verbe", info:"hacer · présent · impersonnel", fr:"il fait"},
+    {w:"treinta", tag:"adjectif", info:"nombre", fr:"trente"},
+    {w:"grados", tag:"nom", info:"masc. plur.", fr:"degrés"}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🌦️", title:"Culture, 11 expressions et fiche récap (A1.11)",
+  html:"<b>🌍 Culture — le temps, l'heure et les rythmes.</b> En <b>Espagne</b>, l'été est chaud et sec (Madrid, Séville : plus de 35 °C en août) ; le nord (Bilbao, Saint-Jacques-de-Compostelle) est vert et pluvieux. En <b>Colombie</b>, le climat dépend de l'altitude plutôt que de la saison : Bogotá (2 600 m) est « tierra fría » (autour de 14 °C toute l'année), Medellín « tierra templada », la côte « tierra caliente ». Là-bas, <b>invierno</b> désigne la saison des pluies, pas forcément le froid. Dans l'hémisphère sud (Argentine, Chili), les saisons sont inversées. Côté horaires, l'Espagne déjeune vers 14 h et dîne vers 21 h–22 h : « por la tarde » commence donc après le déjeuner. À l'écrit, les dates se notent jour/mois (03/10 = 3 octobre) et les mois n'ont jamais de majuscule.<br><br><b>🧰 11 expressions du temps et de la météo</b><br>1. <b>Hacer un tiempo de perros</b> = avoir un temps de chien. « Hoy hace un tiempo de perros. »<br>2. <b>Llover a cántaros</b> = pleuvoir des cordes (cántaro = cruche). « Llueve a cántaros. »<br>3. <b>Llover sobre mojado</b> = un malheur de plus quand ça va déjà mal (« mojado » = mouillé). Attention : ce n'est PAS « déjà vu ».<br>4. <b>Ahogarse en un vaso de agua</b> = se noyer dans un verre d'eau : se faire une montagne d'un rien.<br>5. <b>Matar el tiempo</b> = tuer le temps : faire quelque chose pour passer le temps.<br>6. <b>Al mal tiempo, buena cara</b> = à mauvaise fortune, bon cœur : garder le sourire malgré les difficultés.<br>7. <b>Tiempo es oro</b> = le temps, c'est de l'argent (littéralement : « c'est de l'or »).<br>8. <b>Pasar el tiempo volando</b> = le temps passe à toute vitesse.<br>9. <b>Estar al caer</b> = être imminent, arriver d'une minute à l'autre. « El autobús está al caer. »<br>10. <b>Estar en las nubes</b> = être dans la lune (littéralement : « dans les nuages »).<br>11. <b>Hacer un frío que pela</b> = il fait un froid de canard (familier, surtout en Espagne ; « pelar » = écorcher).<br><br><b>✍️ Expression écrite — la météo du jour et tes projets (4 lignes)</b> Utilise au moins deux familles de la météo (hace… / está… / llueve). Modèle : « Hoy es jueves 1 de octubre. Son las nueve de la mañana. Hace frío y está nublado. Mañana hace buen tiempo: la semana que viene vamos a viajar. » Version formelle (un message à un client) : « Buenos días, señora. Hoy hace buen tiempo en Madrid. ¿Tiene frío? » Vérifie : hace + NOM · está + ADJECTIF · mucho (pas muy) devant un nom · son / es la una pour l'heure.<br><br><b>🗣️ Expression orale — le bulletin météo</b> Joue le présentateur radio et annonce plusieurs villes : « Buenos días. Hoy en Madrid hace sol, pero hace frío. En Sevilla hace mucho calor: hace treinta grados. En Bilbao llueve y está nublado. En los Pirineos nieva. ¡Hasta mañana! » Puis au vouvoiement, à un auditeur : « Señor, ¿tiene hora? Son las nueve en punto. »<br><br><b>📄 Fiche récap</b> Météo : <b>hace</b> + sol / frío / calor / viento / fresco / buen tiempo / mal tiempo (mucho + nom, jamais muy) · <b>está</b> + nublado / despejado / soleado / lluvioso / ventoso / nevado ou + gérondif (está lloviendo, está nevando) · <b>llueve / nieva</b> (o → ue, e → ie, 3e pers. sing.) · <b>hace treinta grados</b> · hace frío ≠ tengo frío ≠ está frío. Heure : <b>¿Qué hora es?</b> / <b>¿Tienes hora?</b> (tú) / <b>¿Tiene hora, por favor?</b> (usted) · <b>es la una</b>, <b>son las dos, tres…</b> · y cuarto / y media / menos cuarto · en punto · de la mañana / tarde / noche (avec heure) ≠ por la mañana / tarde / noche (sans heure). Temps : ayer · hoy · mañana (= demain ET matin) · pasado mañana · la semana que viene · el mes pasado. Calendrier : lunes à domingo, enero à diciembre, primavera · verano · otoño · invierno · <b>Hoy es lunes 3 de octubre</b> (sans majuscule, avec « de »)."},
+ NEXT_PREVIEW:"A1.12 (Español social, synthèse du niveau A1) : saluer, répondre, remercier, s'excuser, poser des questions et demander poliment avec « ¿Podría…? » et « ¿Puedo…? » (formules figées), relier tes idées avec y / pero / así que / porque, en tutoiement ET en vouvoiement.",
+ META:{vocabTitle:"La hora y el tiempo : météo, heure, jours, mois et date (A1.11)", lectureTitle:"Un jueves de otoño en Madrid", bilanTitle:"Bravo, tu sais dire l'heure et parler du temps !", pronLabel:"h muette, ll, diphtongues ie / ue : hace, lluvia, nieva, llueve", todayLede:"dire le temps qu'il fait (hacer, estar, llover / nevar), dire l'heure avec ser, donner le jour, le mois et la date, en tutoiement ET en vouvoiement"}
+};
+LESSONS_ES[211].VOCAB.forEach(function(v){ var d = MAP[v.en]; if(!d) throw new Error("Pas d'illustration pour : " + v.en); v.emo = d[0]; v.ex = [d[1], d[2]]; });
+})();
+
+
+// A1.12 — Español social (síntesis) : dernier palier du niveau A1 (leçon 212)
+(function(){
+function blk(name, rows){
+  var v = __esB(name, rows);
+  v.forEach(function(o, i){ o.emo = rows[i][4]; o.ex = [rows[i][5], rows[i][6]]; });
+  return v;
+}
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Saluer et prendre des nouvelles", [
+  ["Hola","/ˈola/","salut, bonjour","Neutre : tu peux le dire à un ami comme à un inconnu. La h est muette : O-la. Avec un inconnu ou en contexte pro, ajoute (ou préfère) buenos días / buenas tardes.","👋","¡Hola, Marta! ¿Qué tal?","Salut, Marta ! Ça va ?"],
+  ["Buenos días","/ˈbwenos ˈdias/","bonjour (le matin)","On le dit le matin, jusque vers midi (en Espagne, souvent jusqu'au déjeuner). Toujours au pluriel : « buenos días », pas « buen día » en Espagne (en Argentine et dans quelques pays, « buen día » existe aussi). Poli avec tú comme avec usted.","🌅","Buenos días, señora.","Bonjour, madame."],
+  ["Buenas tardes","/ˈbwenas ˈtaɾdes/","bonjour (l'après-midi), bonsoir","« La tarde » couvre l'après-midi ET le début de soirée : en Espagne on dit « buenas tardes » jusqu'à 20-21 h environ. Piège : le français dit « bonsoir » beaucoup plus tôt.","🌤️","Buenas tardes, señor López.","Bonjour, monsieur López."],
+  ["Buenas noches","/ˈbwenas ˈnotʃes/","bonsoir (tard) / bonne nuit","Sert à saluer tard le soir ET à dire « bonne nuit » avant d'aller dormir. Toujours au pluriel. ch = tch : NO-tches.","🌙","Buenas noches, mamá.","Bonne nuit, maman."],
+  ["Buenas","/ˈbwenas/","salut, bonjour (version courte)","Raccourci familier de buenos días / buenas tardes / buenas noches, très courant en entrant dans un commerce ou un bar. Avec un supérieur ou une personne âgée, dis plutôt la forme complète.","😉","¡Buenas! ¿Qué tal?","Salut ! Ça va ?"],
+  ["¿Qué tal?","/ke tal/","ça va ? comment ça va ?","INFORMEL (tú) : à un ami, un collègue de ton âge, un voisin sympathique. Réponses : bien, muy bien, regular, mal. Piège : « ¿Qué tal está usted? » est rare et peu naturel ; à un inconnu ou à un supérieur, dis « ¿Cómo está usted? ».","🙂","¿Qué tal, Luis? — Bien, ¿y tú?","Ça va, Luis ? — Bien, et toi ?"],
+  ["¿Qué tal todo?","/ke tal ˈtoðo/","comment ça va, tout va bien ?","Variante chaleureuse de ¿Qué tal? : « todo » = tout (travail, famille, vie…). Entre amis, collègues proches.","🌈","¡Hola, Ana! ¿Qué tal todo?","Salut, Ana ! Tout va bien ?"],
+  ["¿Cómo estás? / ¿Cómo está usted?","/ˈkomo esˈtas · ˈkomo esˈta usˈteð/","comment vas-tu ? / comment allez-vous ?","Tú : estás ; usted : está (accents écrits). Version neutre, correcte partout, indispensable avec un inconnu, un client, une personne âgée ou ton directeur. Réponse : « Muy bien, gracias. ¿Y tú? / ¿Y usted? ».","🎩","¿Cómo está usted, señora Ruiz?","Comment allez-vous, madame Ruiz ?"],
+  ["¿Cómo te va?","/ˈkomo te ba/","comment ça se passe, ça va ?","Informel (tú). Forme usted : « ¿Cómo le va? » (« le » est un petit mot à retenir tel quel pour l'instant). Interroge sur la vie en général : « ¿Cómo te va en el trabajo? ».","💬","¿Cómo te va en el trabajo?","Comment ça se passe au travail ?"],
+  ["¿Qué hay de nuevo?","/ke aj ðe ˈnweβo/","quoi de neuf ?","Informel : « hay » = il y a (h muette, ay = aï). Réponses possibles : « Nada nuevo » (rien de neuf), « Todo bien ».","🆕","¿Qué hay de nuevo? — Nada, ¿y tú?","Quoi de neuf ? — Rien, et toi ?"],
+  ["¡Cuánto tiempo sin verte!","/ˈkwanto ˈtjempo sim ˈβeɾte/","ça fait longtemps qu'on ne s'est pas vu !","Tú : « verte ». Usted : « ¡Cuánto tiempo sin verle! » (verlo / verla en Amérique latine). « sin » + infinitif = sans + verbe. Exclamation : ¡ ! et accent sur cuánto. ua = wa, ie = ié : KWAN-to TYEM-po.","🤗","¡Hola, María! ¡Cuánto tiempo sin verte!","Salut, María ! Ça fait longtemps !"],
+  ["Muy bien, gracias. ¿Y tú? / ¿Y usted?","/mwi ˈβjen ˈɡɾaθjas i tu · i usˈteð/","très bien, merci. Et toi ? / Et vous ?","Réponse standard : renvoie toujours la question à l'autre (« ¿Y tú? » entre amis, « ¿Y usted? » en formel). Sans ça, la conversation s'arrête.","🔁","Muy bien, gracias. ¿Y usted?","Très bien, merci. Et vous ?"],
+  ["Regular / Así, así","/reɣuˈlaɾ · aˈsi aˈsi/","moyen, comme ci comme ça","Faux-ami : « regular » ne veut pas dire « régulier » mais « moyen, couci-couça ». La r initiale est roulée. Invariable pour tout le monde.","😐","¿Qué tal? — Regular, estoy un poco cansado.","Ça va ? — Moyen, je suis un peu fatigué."]
+ ]),
+ blk("Remercier", [
+  ["Gracias","/ˈɡɾaθjas/","merci","Toujours au pluriel. c devant i = th (Espagne) ou s (Amérique latine). Identique avec tú et usted.","🙏","Gracias, Ana.","Merci, Ana."],
+  ["Muchas gracias","/ˈmutʃas ˈɡɾaθjas/","merci beaucoup","« gracias » est féminin pluriel, donc « muchas » (jamais « mucho gracias »). Plus fort : « Mil gracias » (mille mercis). Même forme en tú et en usted.","💐","¡Muchas gracias, señor!","Merci beaucoup, monsieur !"],
+  ["Gracias por tu / su ayuda","/ˈɡɾaθjas poɾ tu · su aˈʝuða/","merci pour ton / votre aide","Tú : « tu ayuda ». Usted : « su ayuda ». « por » (et non « para ») + le nom pour dire « merci pour ». Ayuda est féminin : la ayuda.","🤝","Gracias por su ayuda, señora.","Merci pour votre aide, madame."],
+  ["De nada","/de ˈnaða/","de rien","Réponse standard à gracias. d entre voyelles très doux. Identique en tutoiement et vouvoiement.","😊","Gracias. — De nada.","Merci. — De rien."],
+  ["No hay de qué","/no aj ðe ke/","il n'y a pas de quoi","Réponse un peu plus soignée que « de nada ». « hay » = il y a. Même forme avec tú et usted.","🌷","Muchas gracias. — No hay de qué.","Merci beaucoup. — Il n'y a pas de quoi."],
+  ["Por favor","/poɾ faˈβoɾ/","s'il te plaît / s'il vous plaît","Une seule forme pour tú et usted : le français distingue « s'il te plaît » et « s'il vous plaît », pas l'espagnol. Se place au début ou à la fin : « Un café, por favor ».","🥺","Un café, por favor.","Un café, s'il vous plaît."]
+ ]),
+ blk("S'excuser", [
+  ["Lo siento","/lo ˈsjento/","je suis désolé(e), je regrette","Excuse réelle, pour un désagrément ou une mauvaise nouvelle. Invariable : un homme comme une femme. Renforcé : « Lo siento mucho ». Même forme avec tú et usted.","😔","Lo siento, no entiendo.","Je suis désolé, je ne comprends pas."],
+  ["Perdón","/peɾˈðon/","pardon","Excuse immédiate pour un petit accroc (marcher sur un pied) ou pour attirer l'attention. Accent écrit : peR-DÓN (dernière syllabe). Même mot pour tous.","🙇","Perdón, ¿está libre esta silla?","Pardon, cette chaise est-elle libre ?"],
+  ["Perdona / Perdone","/peɾˈðona · peɾˈðone/","excuse-moi / excusez-moi","Tú : perdona. Usted : perdone (même logique que gira / gire en A1.4). Idéal pour interpeller quelqu'un : « Perdone, ¿dónde está la estación? ». C'est AUSSI la forme à utiliser pour s'excuser poliment.","🖐️","Perdone, señora, ¿tiene hora?","Excusez-moi, madame, avez-vous l'heure ?"],
+  ["Disculpa / Disculpe","/disˈkulpa · disˈkulpe/","excuse-moi / excusez-moi","Synonyme de perdona / perdone. Très répandu en Amérique latine (Mexique, Colombie) ; en Espagne, perdona / perdone est plus courant. Tú : disculpa. Usted : disculpe.","🙋","Disculpe, ¿dónde está el baño?","Excusez-moi, où sont les toilettes ?"],
+  ["No pasa nada","/no ˈpasa ˈnaða/","ce n'est pas grave","Réponse à une excuse. Littéralement « il ne se passe rien ». Variante : « No importa ». Même forme avec tú et usted.","😌","Lo siento. — No pasa nada.","Je suis désolé. — Ce n'est pas grave."],
+  ["Con permiso","/kom peɾˈmiso/","pardon (pour passer), avec votre permission","Pour passer dans un couloir ou un bus bondé, ou pour entrer. Très courant en Amérique latine ; en Espagne, « perdón » ou « perdone » est plus fréquent.","🚶","Con permiso, señor.","Pardon, monsieur (pour passer)."]
+ ]),
+ blk("Demander poliment", [
+  ["¿Puedes ayudarme? / ¿Podría ayudarme?","/ˈpweðes aʝuˈðaɾme · poˈðɾia aʝuˈðaɾme/","peux-tu m'aider ? / pourriez-vous m'aider ?","« ¿Puedes ayudarme? » = informel (tú). « ¿Puede ayudarme? » = poli (usted). « ¿Podría ayudarme? » = la plus polie : apprends-la comme une FORMULE toute faite, sans chercher à la conjuguer (inconnu, client, supérieur). Le « me » se colle à l'infinitif : ayudarme.","🆘","¿Podría ayudarme, por favor?","Pourriez-vous m'aider, s'il vous plaît ?"],
+  ["¿Puedo…?","/ˈpweðo/","puis-je… ? est-ce que je peux… ?","Pour demander la permission : ¿Puedo pasar? ¿Puedo sentarme? À apprendre tel quel (puedo = je peux). Même forme avec tú ou usted, puisque c'est « je » qui parle. Réponses : « Sí, claro » / « Por supuesto ».","🙋‍♂️","¿Puedo entrar, señora?","Puis-je entrer, madame ?"],
+  ["¿Podría repetir, por favor?","/poˈðɾia reˈpetiɾ poɾ faˈβoɾ/","pourriez-vous répéter, s'il vous plaît ?","Formule figée très polie. Entre amis : « ¿Puedes repetir, por favor? ». Pour un public ou un client : toujours « ¿Podría…? ».","🔁","No entiendo. ¿Podría repetir, por favor?","Je ne comprends pas. Pourriez-vous répéter, s'il vous plaît ?"],
+  ["Más despacio, por favor","/mas desˈpaθjo poɾ faˈβoɾ/","plus lentement, s'il vous plaît","Le meilleur ami du débutant. Invariable : pas de forme tú / usted. despacio : c devant i = th (Espagne) ; DES-PA-thio.","🐢","Más despacio, por favor.","Plus lentement, s'il vous plaît."],
+  ["No entiendo","/no enˈtjendo/","je ne comprends pas","« entiendo » = je comprends (e → ie, comme preferir en A1.5). « No comprendo » existe aussi mais est un peu plus formel. Accompagne-le de « Más despacio, por favor ».","❓","Lo siento, no entiendo.","Je suis désolé, je ne comprends pas."],
+  ["Oye / Oiga","/ˈoʝe · ˈojɣa/","écoute, dis donc / excusez-moi, monsieur","Pour attirer l'attention : « oye » (tú), « oiga » (usted), impératifs du verbe oír. « Oye » ouvre aussi une question entre amis : « Oye, ¿dónde está…? ». À un inconnu, « perdone » est plus doux.","📣","Oye, ¿dónde está la estación?","Dis, où est la gare ?"],
+  ["¿Me ayudas? / ¿Me ayuda?","/me aˈʝuðas · me aˈʝuða/","tu m'aides ? / vous m'aidez ?","Demande très naturelle au présent : tú ayudas, usted ayuda. Le « me » se place AVANT le verbe conjugué.","🤲","¿Me ayuda, por favor?","Vous m'aidez, s'il vous plaît ?"],
+  ["Claro / Por supuesto","/ˈklaɾo · poɾ suˈpwesto/","bien sûr","Réponses courantes à une demande. « Claro » est plus familier ; « Por supuesto » est plus soigné. « Claro que sí » = mais oui.","✅","¿Puede ayudarme? — Sí, claro.","Pouvez-vous m'aider ? — Oui, bien sûr."]
+ ]),
+ blk("Prendre congé", [
+  ["Adiós","/aˈðjos/","au revoir","Neutre, quand on se quitte, même pour peu de temps. Ce n'est pas le « adieu » définitif du français. Accent écrit : a-DIÓS.","👋","¡Adiós, Pablo!","Au revoir, Pablo !"],
+  ["Hasta luego","/ˈasta ˈlweɣo/","à plus tard, à tout à l'heure","On pense se revoir bientôt (aujourd'hui ou dans les jours qui viennent). h muette. Neutre : tú comme usted.","🕐","Hasta luego, señora.","À tout à l'heure, madame."],
+  ["Hasta pronto","/ˈasta ˈpɾonto/","à bientôt","Un peu plus chaleureux : on espère se revoir sans date précise. Neutre.","🤝","¡Hasta pronto, Ana!","À bientôt, Ana !"],
+  ["Hasta mañana","/ˈasta maˈɲana/","à demain","Pour les collègues, les voisins, les camarades de classe que l'on retrouve le lendemain. ñ = gn.","📆","Hasta mañana, profesor.","À demain, professeur."],
+  ["Nos vemos","/nos ˈβemos/","à plus, on se voit","Informel, très courant entre amis. Littéralement « nous nous voyons ».","🙌","Nos vemos, Luis.","À plus, Luis."],
+  ["Que tengas un buen día / Que tenga un buen día","/ke ˈteŋɡas um bwen ˈdia · ke ˈteŋɡa um bwen ˈdia/","passe une bonne journée / passez une bonne journée","Souhait FIGÉ à retenir en bloc (ne cherche pas à le conjuguer) : « que tengas » = tú, « que tenga » = usted. On le dit en partant. Réponse : « Igualmente » ou « Gracias, igualmente ».","☀️","Gracias, señora. Que tenga un buen día.","Merci, madame. Passez une bonne journée."],
+  ["Igualmente","/iɣwalˈmente/","de même, à toi aussi","Réponse à un souhait ou à « mucho gusto ». Invariable : tú comme usted.","🔄","Que tengas un buen día. — Igualmente.","Passe une bonne journée. — À toi aussi."],
+  ["Buen fin de semana","/bwem fin de seˈmana/","bon week-end","Souhait figé, sans verbe. Même forme avec tú et usted. Proches : « Buen viaje » (bon voyage), « Buen provecho » (bon appétit).","🎉","Buen fin de semana, Pedro.","Bon week-end, Pedro."],
+  ["Un abrazo / Un saludo","/un aˈβɾaθo · un saˈluðo/","je t'embrasse / cordialement","Pour finir un message. « Un abrazo » (littéralement une accolade) : entre amis. « Un saludo » : neutre, plus poli. Formel : « Un cordial saludo ». Pas de « bisous » à la française.","✉️","Un abrazo, Ana.","Je t'embrasse, Ana."]
+ ]),
+ blk("Les mots interrogatifs (accent obligatoire)", [
+  ["¿Quién? / ¿Quiénes?","/kjen · ˈkjenes/","qui ?","quién pour une personne, quiénes pour plusieurs. Accent écrit : ¿Quién es? ¿Quiénes son? ie = « yé ».","👤","¿Quién es ese chico?","Qui est ce garçon ?"],
+  ["¿Qué?","/ke/","quoi ? que ? quel ?","Accent écrit dans une question ou une exclamation (¿Qué es esto? ¡Qué bien!). Sans accent, « que » est une conjonction (« que »).","❔","¿Qué hora es?","Quelle heure est-il ?"],
+  ["¿Dónde? / ¿De dónde?","/ˈdonde · de ˈdonde/","où ? / d'où ?","¿Dónde está…? = lieu (estar). ¿De dónde eres? = origine (ser). Accent sur dónde. Pour « vers où », ¿Adónde? : ¿Adónde vas?","📍","¿Dónde está la estación?","Où est la gare ?"],
+  ["¿Cuándo?","/ˈkwando/","quand ?","Accent écrit pour le distinguer de « cuando » (conjonction, sans question). ua = wa.","🕒","¿Cuándo es la fiesta?","Quand est la fête ?"],
+  ["¿Cómo?","/ˈkomo/","comment ?","¿Cómo te llamas? ¿Cómo estás? Employé seul, « ¿Cómo? » = pardon ? comment ? (pour faire répéter).","🤔","¿Cómo se llama usted?","Comment vous appelez-vous ?"],
+  ["¿Cuánto? / ¿Cuánta? / ¿Cuántos? / ¿Cuántas?","/ˈkwanto ˈkwanta ˈkwantos ˈkwantas/","combien ?","S'accorde avec le nom : ¿Cuántos años tienes? ¿Cuánta gente? Devant un verbe (¿Cuánto cuesta?), il reste invariable : cuánto.","🔢","¿Cuántos años tienes?","Quel âge as-tu ?"],
+  ["¿Cuál? / ¿Cuáles?","/kwal · ˈkwales/","quel ? lequel ? (choix, donnée)","On l'emploie devant « es / son » pour demander une donnée précise : ¿Cuál es tu teléfono? Piège : le français dit « quel » dans tous les cas ; l'espagnol choisit entre « qué » (+ nom) et « cuál » (devant es).","🎯","¿Cuál es tu número de teléfono?","Quel est ton numéro de téléphone ?"],
+  ["¿Por qué?","/poɾ ˈke/","pourquoi ?","Deux mots, accent sur qué. La réponse s'écrit en UN mot, sans accent : « porque » (parce que).","🧐","¿Por qué estás triste?","Pourquoi es-tu triste ?"]
+ ]),
+ blk("Relier ses phrases : connecteurs", [
+  ["y / e","/i · e/","et","y = « i ». Devant un mot qui commence par le son i (i-, hi-), il devient « e » : padres e hijos, Marta e Isabel. Relie deux idées ou deux éléments.","➕","Estoy cansada y tengo hambre.","Je suis fatiguée et j'ai faim."],
+  ["pero","/ˈpeɾo/","mais","Oppose deux idées. Un seul r tapé : pero (mais) ≠ perro (chien).","↔️","Es pequeño, pero muy rápido.","Il est petit, mais très rapide."],
+  ["así que","/aˈsi ke/","donc, alors","Introduit la CONSÉQUENCE : cause d'abord, conséquence ensuite. À ne pas confondre avec « porque », qui introduit la cause.","➡️","Tengo hambre, así que voy a comer.","J'ai faim, donc je vais manger."],
+  ["porque","/ˈpoɾke/","parce que","Un seul mot, sans accent ; introduit la cause. Réponse à ¿Por qué…?","💬","Estoy contento porque tengo un libro nuevo.","Je suis content parce que j'ai un livre neuf."],
+  ["también","/tamˈbjen/","aussi","Accent sur BIÉN : tam-BIÉN. « Yo también » = moi aussi. Pour « moi non plus », on dit « yo tampoco ».","✨","Yo también tengo hambre.","Moi aussi, j'ai faim."]
+ ]),
+ blk("Tú ou usted : choisir le bon registre", [
+  ["tutear / tratar de usted","/tuteˈaɾ/","tutoyer / vouvoyer","« tutear » = utiliser tú. En Espagne on tutoie vite (collègues, voisins, jeunes). Avec un inconnu âgé, un client ou un supérieur, usted. En Colombie, on emploie souvent usted même entre proches : en cas de doute, usted est toujours poli.","🔀","En España, tuteamos rápido.","En Espagne, on se tutoie vite."],
+  ["don / doña","/don · ˈdoɲa/","Monsieur / Madame (devant le prénom)","Marque de respect devant le PRÉNOM d'une personne âgée ou respectée : don Pedro, doña Carmen. Pas d'équivalent français. À distinguer de señor / señora (devant le nom de famille).","🎩","Buenos días, doña Carmen.","Bonjour, madame Carmen."],
+  ["vosotros · ustedes","/boˈsotɾos · usˈteðes/","vous (amis, Espagne) · vous (partout)","Pour plusieurs personnes : vosotros = amis, famille (Espagne seulement) ; ustedes = tous les « vous » en Amérique latine, et le vouvoiement pluriel en Espagne. ¿Qué tal estáis? / ¿Cómo están ustedes?","👥","¿Cómo están ustedes?","Comment allez-vous (tous) ?"]
+ ]),
+ blk("Les cinq verbes piliers de A1", [
+  ["ser","/seɾ/","être (identité, origine, caractère)","soy, eres, es, somos, sois, son. Pour dire qui on est, d'où on vient, comment on est de nature.","🪪","Soy Ana y soy de Lyon.","Je suis Ana et je suis de Lyon."],
+  ["estar","/esˈtaɾ/","être (lieu, état du moment)","estoy, estás, está, estamos, estáis, están. Pour dire où on est et comment on va.","📍","Estoy en la estación.","Je suis à la gare."],
+  ["tener","/teˈneɾ/","avoir","tengo, tienes, tiene, tenemos, tenéis, tienen. Âge, possession, sensations (hambre, sed, sueño…).","🎒","Tengo veinte años.","J'ai vingt ans."],
+  ["ir","/iɾ/","aller","voy, vas, va, vamos, vais, van. Toujours « a » après : voy a casa. « ¿Adónde vas? » = où vas-tu ?","🚶","Voy a la plaza.","Je vais à la place."],
+  ["hacer","/aˈθeɾ/","faire","hago, haces, hace, hacemos, hacéis, hacen. Seul le « yo » est irrégulier : hago. Pour la météo : hace calor. « ¿Qué haces? » = que fais-tu ?","🛠️","¿Qué haces hoy?","Que fais-tu aujourd'hui ?"],
+  ["ir a + infinitif / estar + gérondif","/iɾ a · esˈtaɾ/","aller + verbe / être en train de","Voy a comer = je vais manger (futur proche, A1.9). Estoy comiendo = je suis en train de manger (A1.8). Les deux structures se complètent : « ¿Qué estás haciendo? — Estoy comiendo. ¿Qué vas a hacer? — Voy a dormir. »","⏳","Estoy comiendo y voy a descansar.","Je suis en train de manger et je vais me reposer."]
+ ]),
+ blk("Une conversation dans la rue", [
+  ["la estación","/la estaˈθjon/","la gare, la station","Tous les noms en -ción / -sión sont féminins. Pluriel : las estaciones (l'accent disparaît). Estación de tren = la gare ferroviaire.","🚉","La estación está en la plaza.","La gare est sur la place."],
+  ["la plaza","/la ˈplaθa/","la place","z = th (Espagne), s (Amérique latine). Les places sont le cœur de la vie sociale espagnole.","⛲","La plaza es muy grande.","La place est très grande."],
+  ["al lado de","/al ˈlaðo ðe/","à côté de","Expression de lieu vue en A1.4. « de + el » = « del » : al lado del banco.","↔️","Está al lado de la plaza.","C'est à côté de la place."]
+ ]),
+ blk("Expressions familières de la conversation (bonus : 10)", [
+  ["hablar por los codos","/aˈβlaɾ poɾ los ˈkoðos/","parler sans arrêt, être bavard","Littéralement « parler par les coudes ». Très courant et familier, en Espagne comme en Amérique latine. Se dit surtout de quelqu'un qui ne s'arrête jamais de parler.","🗣️","Mi tía habla por los codos.","Ma tante parle sans arrêt."],
+  ["dar la lata","/daɾ la ˈlata/","embêter, casser les pieds","Familier. Littéralement « donner la boîte de conserve ». Se dit de quelqu'un qui insiste. Avec une personne : « dar la lata a alguien ».","😩","Mi hermano me da la lata.","Mon frère me casse les pieds."],
+  ["estar de mala leche","/esˈtaɾ ðe ˈmala ˈletʃe/","être de mauvaise humeur","FAMILIER, surtout en Espagne, un peu vulgaire (« leche » = lait). À éviter au travail ou devant des inconnus. En contexte neutre : « estar de mal humor ».","😡","Hoy Pedro está de mala leche.","Aujourd'hui Pedro est d'une humeur de chien."],
+  ["tener la sartén por el mango","/teˈneɾ la sarˈten poɾ el ˈmaŋɡo/","tenir les rênes, avoir la situation en main","Littéralement « tenir la poêle par le manche » : celui qui a la poêle par le manche a le contrôle. Se dit de celui qui décide.","🍳","En esta empresa, la directora tiene la sartén por el mango.","Dans cette entreprise, la directrice tient les rênes."],
+  ["echar una mano","/eˈtʃaɾ ˈuna ˈmano/","donner un coup de main","Très courant, neutre et sympathique. « ¿Te echo una mano? » = je te donne un coup de main ? Avec tú / usted : « te echo una mano » / « le echo una mano ».","🤲","¿Me echas una mano, por favor?","Tu me donnes un coup de main, s'il te plaît ?"],
+  ["tomar el pelo","/toˈmaɾ el ˈpelo/","faire marcher, se moquer de","Se moquer de quelqu'un, le faire marcher (pas forcément méchant). Souvent en : « ¿Me estás tomando el pelo? » = tu me fais marcher ?","😜","Me estás tomando el pelo.","Tu me fais marcher."],
+  ["valer la pena","/baˈleɾ la ˈpena/","valoir la peine","Presque toujours à la 3e personne : « vale la pena », « no vale la pena ». « Pena » = la peine, l'effort.","💎","Este libro vale la pena.","Ce livre vaut la peine."],
+  ["no tener pelos en la lengua","/no teˈneɾ ˈpelos en la ˈleŋɡwa/","ne pas avoir la langue dans sa poche, dire ce qu'on pense","Littéralement « ne pas avoir de poils sur la langue ». Se dit d'une personne très franche, qui dit tout sans filtre.","💬","Mi abuela no tiene pelos en la lengua.","Ma grand-mère n'a pas la langue dans sa poche."],
+  ["dar calabazas","/daɾ kalaˈβasas/","éconduire, refuser les avances de quelqu'un","Littéralement « donner des courges ». Surtout en Espagne, dans le contexte amoureux : refuser quelqu'un qui te fait la cour (en français familier : « mettre un râteau »). On dit : « dar calabazas a alguien ».","🎃","Pedro invita a Ana, pero ella le da calabazas.","Pedro invite Ana, mais elle l'éconduit."],
+  ["quedarse con la boca abierta","/keˈðaɾse kon la ˈβoka aˈβjeɾta/","rester bouche bée","Littéralement « rester avec la bouche ouverte » : surpris au point de ne rien dire. Verbe pronominal : me quedo, te quedas, se queda… (comme llamarse).","😮","Me quedo con la boca abierta.","Je reste bouche bée."]
+ ]),
+ blk("Prononciation : ¿ ? ¡ ! et accents", [
+  ["¿ ? et ¡ ! : les signes doubles","/inteɾoɣaˈθjon · eksklamaˈθjon/","signes d'interrogation et d'exclamation","En espagnol, on met un signe AU DÉBUT (¿ ou ¡) ET un à la fin (? ou !). Ils encadrent seulement la question ou l'exclamation : « Hola, ¿qué tal? ». Sur un clavier : Alt Gr + ? ou appui long sur ?.","❗","¡Hola! ¿Qué tal?","Salut ! Ça va ?"],
+  ["qué / que","/ke/","quoi ? / que","Même prononciation. AVEC accent : question ou exclamation (¿Qué?, ¡Qué bien!). SANS accent : conjonction (« que »). Test : on peut le remplacer par « quoi » ou « quel » ? → qué.","✍️","¿Qué hora es? Dice que son las tres.","Quelle heure est-il ? Il dit qu'il est trois heures."],
+  ["L'intonation de la question","/intonaˈθjon/","la voix monte à la fin","Contrairement au français, l'ordre des mots ne change pas : « Tienes hambre. » devient « ¿Tienes hambre? » grâce à la mélodie (la voix monte) et aux signes ¿ ?. Dans les questions avec mot interrogatif (¿Dónde estás?), la voix redescend.","🎶","¿Tienes hambre? Sí, tengo hambre.","Tu as faim ? Oui, j'ai faim."],
+  ["cuánto tiempo : ua et ie","/ˈkwanto ˈtjempo/","diphtongues ua et ie","ua se lit « wa », ie se lit « yé » : KWAN-to TYEM-po, KYEN. Chaque diphtongue = UNE seule syllabe : ne la sépare pas.","🔊","¿Cuánto tiempo tienes?","Combien de temps as-tu ?"]
+ ])
+);
+LESSONS_ES[212] = {
+ code:"A1.12", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["¡Cuánto tiempo sin verte!","¿Cómo estás? / ¿Cómo está usted?","¿Puedes ayudarme? / ¿Podría ayudarme?","Perdona / Perdone","Que tengas un buen día / Que tenga un buen día","¿Por qué?","así que","hablar por los codos","echar una mano","valer la pena"]),
+ MINI_CHECKS: [
+  {q:"Comment dit-on « ça fait longtemps qu'on ne s'est pas vu » à un ami ?", opts:["¡Cuánto tiempo sin verte!","¡Hasta luego, amigo!","¡Qué bien, gracias!"], correct:0, fb:"« ¡Cuánto tiempo sin verte! » : exclamation avec ¡ ! et accent sur cuánto. À un inconnu ou en contexte formel : « sin verle »."},
+  {q:"Quelle est la forme la plus polie pour demander « Pourriez-vous m'aider ? »", opts:["¿Me ayudas?","¿Puedes ayudarme?","¿Podría ayudarme?"], correct:2, fb:"« ¿Podría…? » est la formule la plus polie (à apprendre telle quelle). « ¿Puedes…? » reste informel (tú)."},
+  {q:"À un inconnu âgé, quelle salutation est la plus naturelle ?", opts:["¿Qué tal?","¿Cómo está usted?"], correct:1, fb:"Inconnu âgé = usted : « ¿Cómo está usted? ». « ¿Qué tal? » est réservé aux amis ; « ¿Qué tal está usted? » est rare."},
+  {q:"« Parce que » se dit…", opts:["porque","por qué"], correct:0, fb:"« porque » = parce que (un mot, sans accent). « ¿Por qué? » = pourquoi ? (deux mots, accent sur qué)."},
+  {q:"Tu marches sur le pied de quelqu'un dans le bus. Tu dis tout de suite :", opts:["¡Perdón!","¡De nada!"], correct:0, fb:"« ¡Perdón! » (ou « ¡Lo siento! ») s'excuse immédiatement. « De nada » est la réponse à « gracias »."},
+  {q:"En partant, tu souhaites une bonne journée à ta cliente (formel) :", opts:["Que tengas un buen día.","Que tenga un buen día."], correct:1, fb:"Usted → « que tenga ». Tú → « que tengas ». C'est un souhait figé, appris en bloc."},
+  {q:"Complète : « Yo ___ a la estación. »", opts:["voy","soy","estoy"], correct:0, fb:"ir : voy, vas, va, vamos, vais, van. Pour aller quelque part, on utilise ir + a."},
+  {q:"Devant quel type de mot « y » devient-il « e » ?", opts:["devant un mot qui commence par le son i (padres e hijos)","devant un mot qui commence par o"], correct:0, fb:"y + i- / hi- → e, pour éviter « y i » : padres e hijos, Marta e Isabel."}
+ ],
+ ROUNDS: [
+  __esR("¡Hola, María! ¿Qué tal todo?","Salut, María ! Tout va bien ?"),
+  __esR("¡Cuánto tiempo sin verte!","Ça fait longtemps qu'on ne s'est pas vu !"),
+  __esR("¿Podría ayudarme, por favor?","Pourriez-vous m'aider, s'il vous plaît ?"),
+  __esR("Perdona, ¿puedes ayudarme, por favor?","Excuse-moi, peux-tu m'aider, s'il te plaît ?"),
+  __esR("¿Dónde está la estación?","Où est la gare ?"),
+  __esR("Está al lado de la plaza.","C'est à côté de la place."),
+  __esR("Que tengas un buen día.","Passe une bonne journée."),
+  __esR("Buenos días, señor. ¿Cómo está usted?","Bonjour, monsieur. Comment allez-vous ?"),
+  __esR("Tengo hambre, así que voy a comer.","J'ai faim, donc je vais manger."),
+  __esR("Estoy contenta porque tengo un libro nuevo.","Je suis contente parce que j'ai un livre neuf."),
+  __esR("¿Por qué estás cansado? Porque tengo sueño.","Pourquoi es-tu fatigué ? Parce que j'ai sommeil."),
+  __esR("No entiendo, ¿podría repetir, por favor?","Je ne comprends pas, pourriez-vous répéter, s'il vous plaît ?"),
+  __esR("¿Adónde vas? Voy a la estación.","Où vas-tu ? Je vais à la gare.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Tu retrouves un ami que tu n'as pas vu depuis des mois. Tu lui dis :", opts:["¡Cuánto tiempo sin verte!","¡Buenas noches!","¡De nada!"], correct:0, why:"« ¡Cuánto tiempo sin verte! » = ça fait longtemps qu'on ne s'est pas vu. Les deux autres ne correspondent pas à la situation."},
+  {cat:"ecrit", q:"Tu marches sur le pied de quelqu'un dans le bus. Tu dis :", opts:["¡Perdón!","¡De nada!","¡Hasta luego!"], correct:0, why:"« ¡Perdón! » (ou « ¡Lo siento! ») s'excuse tout de suite. « De nada » répond à un merci."},
+  {cat:"ecrit", q:"Quelqu'un t'aide à porter ta valise. Tu dis « ¡Gracias! ». Il te répond :", opts:["De nada.","Lo siento.","Que tengas un buen día."], correct:0, why:"« De nada » = de rien, la réponse standard à « gracias »."},
+  {cat:"ecrit", q:"Forme la plus polie pour demander un service à un inconnu :", opts:["¿Podría ayudarme, por favor?","¿Puedes ayudarme?","¿Me ayudas?"], correct:0, why:"« ¿Podría…? » est le niveau le plus poli (formule figée). « ¿Puedes…? » et « ¿Me ayudas? » sont informels (tú)."},
+  {cat:"ecrit", q:"Quel mot interrogatif pour demander un lieu ?", opts:["¿Cuándo?","¿Dónde?","¿Quién?"], correct:1, why:"¿Dónde? = où ? ; ¿Cuándo? = quand ? ; ¿Quién? = qui ?"},
+  {cat:"ecrit", q:"Quelle réponse est correcte ?", opts:["¿Por qué estás triste? — Porque estoy cansado.","¿Porque estás triste? — Por qué estoy cansado.","¿Por qué estás triste? — Por qué estoy cansado."], correct:0, why:"Question : « ¿Por qué? » en deux mots avec accent ; réponse : « porque » en un mot, sans accent."},
+  {cat:"ecrit", q:"Comment demander « Quel est ton numéro de téléphone ? »", opts:["¿Cuál es tu número de teléfono?","¿Qué es tu número de teléfono?","¿Quién es tu número de teléfono?"], correct:0, why:"Pour demander une donnée précise devant « es », on emploie « cuál ». « Qué es… » demande une définition."},
+  {cat:"ecrit", q:"Tengo sueño, ___ voy a dormir.", opts:["pero","así que","porque"], correct:1, why:"« así que » introduit la conséquence : j'ai sommeil, donc je vais dormir. « porque » donnerait la cause."},
+  {cat:"ecrit", q:"Estoy contenta ___ tengo un libro nuevo.", opts:["porque","pero","así que"], correct:0, why:"La phrase donne la cause de la joie : porque = parce que."},
+  {cat:"ecrit", q:"Transforme en vouvoiement : « ¿Cómo estás? »", opts:["¿Cómo está usted?","¿Cómo estás usted?","¿Cómo estáis?"], correct:0, why:"usted se conjugue comme él/ella : está (avec accent). « estáis » = vosotros (plusieurs amis, Espagne)."},
+  {cat:"ecrit", q:"Au revoir à un client (formel) :", opts:["Que tenga un buen día.","Que tengas un buen día.","Hasta pronto, tío."], correct:0, why:"Client = usted : « que tenga ». « tío » et « que tengas » sont informels."},
+  {cat:"ecrit", q:"Yo ___ de Madrid, pero ahora ___ en Lyon.", opts:["soy / estoy","estoy / soy","tengo / voy"], correct:0, why:"Origine = ser (soy de Madrid) ; lieu actuel = estar (estoy en Lyon)."},
+  {cat:"ecrit", q:"¿Adónde ___ tú? — Voy al cine.", opts:["vas","va","van"], correct:0, why:"tú → vas (ir). « va » = él / usted ; « van » = ellos / ustedes."},
+  {cat:"ecrit", q:"À un ami qui te demande « ¿Qué tal? », tu réponds :", opts:["Bien, ¿y tú?","Bien, ¿y usted?","De nada."], correct:0, why:"Entre amis : tú → « ¿Y tú? ». « ¿Y usted? » est pour le vouvoiement. « De nada » ne répond pas à une question de salutation."},
+  {cat:"oral", audio:"¡Hola, Marta! ¡Cuánto tiempo sin verte!", q:"Écoute : que se passe-t-il ?", opts:["Deux amis se retrouvent après longtemps","Deux inconnus se saluent","Quelqu'un s'excuse"], correct:0, why:"« ¡Cuánto tiempo sin verte! » = ça fait longtemps ! On retrouve un(e) ami(e) (tutoiement)."},
+  {cat:"oral", audio:"Perdone, ¿dónde está la estación?", q:"Écoute : la question est…", opts:["formelle (usted) et demande un lieu","informelle et demande l'heure","formelle et demande un prix"], correct:0, why:"« Perdone » (usted) + « ¿dónde? » = on demande poliment un lieu : la gare."},
+  {cat:"oral", audio:"¿Podría ayudarme, por favor?", q:"Écoute : de quel type de phrase s'agit-il ?", opts:["Une demande très polie","Un remerciement","Un au revoir"], correct:0, why:"« ¿Podría…, por favor? » = pourriez-vous… ? : demande très polie."},
+  {cat:"oral", audio:"Muchas gracias. Que tenga un buen día.", q:"Écoute : que souhaite la personne ?", opts:["Une bonne journée","Un bon voyage","Un bon appétit"], correct:0, why:"« Que tenga un buen día » = passez une bonne journée (formel, usted)."},
+  {cat:"oral", audio:"Tengo hambre, así que voy a comer.", q:"Écoute : pourquoi la personne va-t-elle manger ?", opts:["Elle a faim","Elle est fatiguée","Elle est contente"], correct:0, why:"« Tengo hambre » = j'ai faim ; « así que » = donc : la faim explique qu'elle va manger."},
+  {cat:"comprehension", passage:"María: ¡Hola, Pablo! ¡Cuánto tiempo sin verte! ¿Qué tal todo? — Pablo: ¡Hola! Todo muy bien, gracias. Oye, ¿podría hacerte una pregunta? ¿Dónde está la estación? — María: Sí, claro. Está al lado de la plaza. — Pablo: ¡Muchas gracias! Que tengas un buen día.", q:"Où est la gare ?", opts:["À côté de la place","Devant la mairie","Loin de la place"], correct:0, why:"« Está al lado de la plaza » : al lado de = à côté de."},
+  {cat:"comprehension", passage:"María: ¡Hola, Pablo! ¡Cuánto tiempo sin verte! ¿Qué tal todo? — Pablo: ¡Hola! Todo muy bien, gracias. Oye, ¿podría hacerte una pregunta? ¿Dónde está la estación? — María: Sí, claro. Está al lado de la plaza. — Pablo: ¡Muchas gracias! Que tengas un buen día.", q:"Que souhaite Pablo à María en partant ?", opts:["Une bonne journée","Un bon week-end","Un bon voyage"], correct:0, why:"« Que tengas un buen día » = passe une bonne journée."},
+  {cat:"comprehension", passage:"María: ¡Hola, Pablo! ¡Cuánto tiempo sin verte! ¿Qué tal todo? — Pablo: ¡Hola! Todo muy bien, gracias. Oye, ¿podría hacerte una pregunta? ¿Dónde está la estación? — María: Sí, claro. Está al lado de la plaza. — Pablo: ¡Muchas gracias! Que tengas un buen día.", q:"Comment voit-on que María et Pablo se tutoient ?", opts:["Par « verte » et « que tengas » (formes tú)","Par « usted »","Par « señor »"], correct:0, why:"« verte » et « tengas » sont des formes de tutoiement ; il n'y a ni « usted », ni « señor »."},
+  {cat:"comprehension", passage:"Señor Díaz: Buenos días, señora Vega. ¿Cómo está usted? — Señora Vega: Muy bien, gracias. ¿Y usted? — Señor Díaz: Bien, gracias. Perdone, ¿podría ayudarme, por favor? No entiendo este mensaje. — Señora Vega: Sí, claro. Un momento. — Señor Díaz: Muchas gracias, señora.", q:"Que demande le señor Díaz à la señora Vega ?", opts:["De l'aide pour comprendre un message","Où est la gare","Quelle heure il est"], correct:0, why:"« ¿Podría ayudarme? » + « No entiendo este mensaje » = il demande de l'aide pour comprendre le message."},
+  {cat:"comprehension", passage:"Señor Díaz: Buenos días, señora Vega. ¿Cómo está usted? — Señora Vega: Muy bien, gracias. ¿Y usted? — Señor Díaz: Bien, gracias. Perdone, ¿podría ayudarme, por favor? No entiendo este mensaje. — Señora Vega: Sí, claro. Un momento. — Señor Díaz: Muchas gracias, señora.", q:"Quels indices montrent que la conversation est formelle ?", opts:["« usted », « señor / señora » et « perdone »","« tío » et « tú »","Seulement « Buenos días »"], correct:0, why:"usted + señor / señora + perdone = vouvoiement. Il n'y a ni « tú » ni « tío » dans le texte."}
+ ],
+ PRON_VERBS: [
+  {en:"Hola, ¿qué tal todo?", fr:"Salut, tout va bien ? (h muette : O-la ; qué = KÉ ; la voix monte à la fin)"},
+  {en:"¡Cuánto tiempo sin verte!", fr:"Ça fait longtemps ! (ua = wa : KWAN-to ; ie = yé : TYEM-po)"},
+  {en:"¿Cómo está usted?", fr:"Comment allez-vous ? (accent sur CÓ-mo et sur es-TÁ ; la voix redescend)"},
+  {en:"Perdone, ¿podría ayudarme?", fr:"Excusez-moi, pourriez-vous m'aider ? (r tapé : per-DO-ne ; ayudarme : a-yu-DAR-me)"},
+  {en:"¿Dónde está la estación?", fr:"Où est la gare ? (DÓN-de ; es-ta-THION en Espagne, es-ta-SION en Amérique latine)"},
+  {en:"Muchas gracias, señora.", fr:"Merci beaucoup, madame. (ch = tch : MU-tchas ; c = th : GRA-thias ; ñ = gn : se-GNO-ra)"},
+  {en:"Que tengas un buen día.", fr:"Passe une bonne journée. (que = ké, le u est muet ; ng : TEN-gas)"},
+  {en:"¿Por qué estás cansado?", fr:"Pourquoi es-tu fatigué ? (por-KÉ avec accent sur qué ; es-TÁS)"},
+  {en:"Tengo hambre, así que voy a comer.", fr:"J'ai faim, donc je vais manger. (h muette : AM-bre ; a-SÍ ke ; v = b : boy)"},
+  {en:"Hasta pronto, hasta luego.", fr:"À bientôt, à tout à l'heure. (h muette : AS-ta ; r tapé : PRON-to)"}
+ ],
+ READING: [
+  "Hoy es sábado y hace buen tiempo.",
+  "Pablo está en la calle con su amiga María.",
+  "—¡Hola, María! ¡Cuánto tiempo sin verte! ¿Qué tal todo?",
+  "—¡Hola, Pablo! Todo muy bien, gracias. ¿Y tú?",
+  "—Bien, pero tengo una pregunta. Perdona, ¿puedes ayudarme?",
+  "—Sí, claro. ¿Qué necesitas?",
+  "—¿Dónde está la estación? Hoy voy a Madrid.",
+  "—Está al lado de la plaza, a la derecha.",
+  "—¡Muchas gracias, María! Que tengas un buen día.",
+  "—De nada, Pablo. Igualmente. ¡Hasta pronto!"
+ ],
+ GLOSS: [
+  {en:"hace buen tiempo", fr:"il fait beau (météo, HACER impersonnel, A1.11)"},
+  {en:"la calle", fr:"la rue (féminin)"},
+  {en:"su amiga", fr:"son amie (su = son / sa / leur ; amiga au féminin car María est une femme)"},
+  {en:"necesitas", fr:"tu as besoin de, tu veux (verbe en -ar : necesitar)"},
+  {en:"a la derecha", fr:"à droite"},
+  {en:"hoy voy a Madrid", fr:"aujourd'hui je vais à Madrid (ir + a + lieu)"},
+  {en:"igualmente", fr:"de même, à toi aussi"},
+  {en:"¡Hasta pronto!", fr:"à bientôt !"}
+ ],
+ GRAMMAR1: {
+  heading:"Poser toutes les questions de A1 et conjuguer les cinq verbes piliers",
+  lede:"Une vraie conversation, c'est une suite de questions et de réponses. Tu connais déjà tous les mots interrogatifs : ici, on les met côte à côte avec leurs accents obligatoires, puis on les associe aux cinq verbes que tu as le plus croisés en A1 : ser, estar, tener, ir et hacer.",
+  conj:[
+   ["yo →","soy · estoy · tengo · voy · hago","Soy Ana. Estoy en Lyon. Tengo veinte años. Voy a la plaza. Hago una pregunta."],
+   ["tú →","eres · estás · tienes · vas · haces","¿Eres de Lyon? ¿Cómo estás? ¿Tienes hambre? ¿Adónde vas? ¿Qué haces?"],
+   ["él, ella, usted →","es · está · tiene · va · hace","¿Es usted de Lyon? ¿Cómo está usted? ¿Tiene usted hambre? ¿Adónde va usted? ¿Qué hace usted?"],
+   ["nosotros/as →","somos · estamos · tenemos · vamos · hacemos","Somos amigos. Estamos bien. Tenemos hambre. Vamos a la plaza. Hacemos una pregunta."],
+   ["vosotros/as →","sois · estáis · tenéis · vais · hacéis","¿Sois amigos? ¿Cómo estáis? ¿Tenéis hambre? ¿Adónde vais? ¿Qué hacéis?"],
+   ["ellos, ellas, ustedes →","son · están · tienen · van · hacen","Son amigos. ¿Cómo están ustedes? Tienen sueño. Van a la plaza. Hacen una fiesta."]
+  ],
+  ruleHtml:"📖 <b>1. Les mots interrogatifs : toujours avec accent écrit, toujours entre ¿ ?</b><br>• <b>¿Quién? / ¿Quiénes?</b> = qui ? → <i>¿Quién es ese chico?</i><br>• <b>¿Qué?</b> = quoi ? / quel ? → <i>¿Qué hora es?</i> <i>¿Qué haces?</i><br>• <b>¿Dónde?</b> = où ? → <i>¿Dónde está la estación?</i> · <b>¿De dónde?</b> = d'où ? → <i>¿De dónde eres?</i> · <b>¿Adónde?</b> = vers où ? → <i>¿Adónde vas?</i><br>• <b>¿Cuándo?</b> = quand ? → <i>¿Cuándo es la fiesta?</i><br>• <b>¿Cómo?</b> = comment ? → <i>¿Cómo te llamas?</i> <i>¿Cómo estás?</i><br>• <b>¿Cuánto / cuánta / cuántos / cuántas?</b> = combien ? → <i>¿Cuántos años tienes?</i><br>• <b>¿Cuál / cuáles?</b> = quel ? (choix, donnée) → <i>¿Cuál es tu teléfono?</i><br>• <b>¿Por qué?</b> = pourquoi ? → réponse : <b>porque</b> = parce que.<br><br>✍️ <b>Pas d'inversion comme en français</b> : on garde l'ordre normal et la voix monte. « Tienes hambre » → « ¿Tienes hambre? ». Avec un mot interrogatif : mot interrogatif + verbe (+ sujet) : ¿Dónde vive Ana? ¿Cómo está usted?<br><br>👥 <b>Tutoiement ET vouvoiement</b> : tú → <b>¿Cómo estás? ¿De dónde eres? ¿Cuántos años tienes? ¿Qué haces?</b> · usted → <b>¿Cómo está usted? ¿De dónde es usted? ¿Cuántos años tiene usted? ¿Qué hace usted?</b> usted se conjugue comme él/ella (está, es, tiene, hace) ; ustedes comme ellos/ellas.<br><br>🧭 <b>Qué ou cuál ?</b> Devant un nom : <b>qué</b> (¿Qué libro?) ; devant « es / son » pour demander une donnée (numéro, adresse, couleur choisie) : <b>cuál</b> (¿Cuál es tu dirección?). Pour demander une définition : <b>qué</b> (¿Qué es esto?).<br><br>🔧 <b>2. Les cinq verbes piliers</b> (tableau ci-dessus) : <b>ser</b> = identité, origine, caractère ; <b>estar</b> = lieu, état du moment ; <b>tener</b> = âge, possession, sensations ; <b>ir</b> = aller (toujours avec <b>a</b>) ; <b>hacer</b> = faire (seul « yo » irrégulier : <b>hago</b>).<br><br>⏳ <b>3. Deux structures de synthèse</b> : <b>ir a + infinitif</b> = futur proche (<i>Voy a comer. ¿Qué vas a hacer?</i>) ; <b>estar + gérondif</b> = action en cours (<i>Estoy comiendo. ¿Qué estás haciendo?</i>).<br><br>⚠️ <b>Pièges de francophone</b> : « ¿Qué tal está usted? » est rare : dis « ¿Cómo está usted? » ; « Tengo 20 años », pas « soy 20 años » ; « porque » (parce que) ≠ « por qué » (pourquoi) ; le ¿ d'ouverture est obligatoire à l'écrit.",
+  dialogueLede:"Deux amis se croisent dans la rue (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Luis! ¡Cuánto tiempo sin verte! ¿Qué tal?", fr:"Salut, Luis ! Ça fait longtemps ! Ça va ?"},
+   {who:"you", en:"¡Hola, Ana! Muy bien, gracias. ¿Y tú? ¿Cómo estás?", fr:"Salut, Ana ! Très bien, merci. Et toi ? Comment vas-tu ?"},
+   {who:"them", en:"Estoy bien, pero estoy cansada porque tengo mucho trabajo.", fr:"Je vais bien, mais je suis fatiguée parce que j'ai beaucoup de travail."},
+   {who:"you", en:"¡Qué pena! ¿Adónde vas ahora?", fr:"Quel dommage ! Où vas-tu maintenant ?"},
+   {who:"them", en:"Voy a la estación porque hoy voy a Madrid. ¿Qué hora es?", fr:"Je vais à la gare parce qu'aujourd'hui je vais à Madrid. Quelle heure est-il ?"},
+   {who:"you", en:"Son las tres. ¡Hasta pronto! Que tengas un buen día.", fr:"Il est trois heures. À bientôt ! Passe une bonne journée."}
+  ],
+  whyLabel:"Pourquoi ce palier réutilise-t-il tout ce que tu connais ?",
+  whyText:"Ce palier n'apprend presque rien de nouveau, et c'est voulu : le but n'est pas d'accumuler des règles isolées, mais de les faire <b>vivre ensemble</b> dans une vraie conversation (salutation, question, réponse, remerciement, au revoir). Chaque mot interrogatif cache une réponse attendue : <b>¿Quién?</b> → une personne ; <b>¿Dónde?</b> → un lieu avec estar ; <b>¿Cuándo?</b> → un moment ; <b>¿Cuánto?</b> → un nombre ; <b>¿Por qué?</b> → porque… Si tu reconnais la réponse attendue, tu comprends la question même quand tu ne connais pas tous les mots. Si ce palier te semble facile, c'est le signe que tout le niveau A1 est bien acquis. Dernier conseil : ne traduis pas mot à mot depuis le français ; apprends des phrases entières (« ¿Cómo está usted? », « Que tenga un buen día ») : elles servent partout."
+ },
+ GRAMMAR2: {
+  heading:"Politesse, tú ou usted, connecteurs : parler comme dans la vraie vie",
+  dialogueLede:"Au bureau, un employé et sa directrice (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, señor Ruiz. ¿Cómo está usted?", fr:"Bonjour, monsieur Ruiz. Comment allez-vous ?"},
+   {who:"you", en:"Buenos días, señora. Muy bien, gracias. ¿Y usted?", fr:"Bonjour, madame. Très bien, merci. Et vous ?"},
+   {who:"them", en:"Bien, gracias. ¿Podría ayudarme, por favor? No entiendo este mensaje.", fr:"Bien, merci. Pourriez-vous m'aider, s'il vous plaît ? Je ne comprends pas ce message."},
+   {who:"you", en:"Sí, claro. Un momento. Perdone, ¿puedo sentarme aquí?", fr:"Oui, bien sûr. Un instant. Excusez-moi, puis-je m'asseoir ici ?"},
+   {who:"them", en:"Por supuesto. Muchas gracias por su ayuda.", fr:"Bien sûr. Merci beaucoup pour votre aide."},
+   {who:"you", en:"De nada. Que tenga un buen día, señora.", fr:"De rien. Passez une bonne journée, madame."}
+  ],
+  ruleHtml:"🎩 <b>1. Tú ou usted : choisir selon le contexte</b><br>• <b>tú</b> = amis, famille, collègues de ton âge, enfants, jeunes ; en Espagne, on tutoie vite.<br>• <b>usted</b> = inconnus, personnes âgées, clients, supérieurs, administration, médecin. En cas de doute : usted, toujours poli.<br>• Colombie : on emploie souvent usted même dans des contextes amicaux ou familiaux ; en Espagne, c'est plus rare.<br>• Pluriel : <b>vosotros</b> (Espagne, amis) ; <b>ustedes</b> (Amérique latine, et le vouvoiement pluriel en Espagne).<br><br>🔁 <b>2. Les formules sociales, en tú ET en usted</b><br>• Saluer : <b>Hola</b> (tous) · <b>Buenos días / buenas tardes / buenas noches</b> (à un inconnu) · <b>¿Qué tal?</b> (ami) · <b>¿Cómo está usted?</b> (formel).<br>• Remercier : <b>Gracias · Muchas gracias</b> · réponse : <b>De nada · No hay de qué</b> (mêmes mots avec tú et usted).<br>• S'excuser : <b>Lo siento</b> (regret) · <b>Perdón</b> (petit accroc) · <b>Perdona</b> (tú) / <b>Perdone</b> (usted) · <b>Disculpa / Disculpe</b>. Réponse : <b>No pasa nada</b>.<br>• Prendre congé : <b>Adiós · Hasta luego · Hasta pronto · Hasta mañana</b> · <b>Que tengas un buen día</b> (tú) / <b>Que tenga un buen día</b> (usted) · réponse <b>Igualmente</b>.<br><br>🪜 <b>3. Les trois niveaux de politesse pour demander</b> : <b>¿Me ayudas?</b> / <b>¿Puedes ayudarme?</b> (tú, informel) → <b>¿Puede ayudarme?</b> (usted, poli) → <b>¿Podría ayudarme, por favor?</b> (la plus polie). « ¿Podría…? » est une <b>formule de politesse</b> à apprendre telle quelle : inconnu, client, supérieur. Tu n'as pas à la conjuguer. « ¿Puedo…? » (puis-je ?) sert à demander la permission : <b>¿Puedo pasar?</b> Le « me » se colle à l'infinitif : <b>ayudarme</b>.<br><br>🔗 <b>4. Les connecteurs</b> : <b>y</b> (et ; devant i- : <b>e</b>) → <i>Estoy bien y tengo hambre.</i> · <b>pero</b> (mais) → <i>Es pequeño, pero muy rápido.</i> · <b>así que</b> (donc, conséquence) → <i>Tengo hambre, así que voy a comer.</i> · <b>porque</b> (parce que, cause) → <i>Estoy contenta porque tengo un libro.</i> · <b>también</b> (aussi) → <i>Yo también tengo hambre.</i> Retiens : <b>porque</b> donne la cause ; <b>así que</b> donne la conséquence.<br><br>🌍 <b>5. Variantes utiles</b> : « Buenos días / buen día » (Argentine) ; perdona / perdone (Espagne), disculpa / disculpe (très courant en Amérique latine) ; con permiso (pour passer, surtout Amérique latine) ; « ordenador » (Espagne) / « computador » ; « móvil » / « celular » ; « zumo » / « jugo » ; « vosotros » (Espagne seulement).",
+  whyLabel:"Pourquoi la politesse compte-t-elle autant ?",
+  whyText:"En français, « tu / vous » est une règle sociale ; en espagnol, elle l'est aussi, mais les <b>formules toutes faites</b> la portent à ta place : « ¿Cómo está usted? », « Perdone », « Que tenga un buen día » suffisent pour être poli sans réfléchir. Si tu apprends ces formules en bloc, tu n'as pas à conjuguer à chaque phrase. Piège : le « tu / vous » espagnol est plus souple que le français (on tutoie plus vite en Espagne, moins vite dans certains pays d'Amérique latine). Écoute comment l'autre s'adresse à toi, puis fais pareil. Pour demander un service, plus le contexte est formel, plus on ajoute de politesse : <b>por favor</b>, <b>¿Podría…?</b>, <b>muchas gracias</b>. Une demande polie + un remerciement + un souhait en partant : voilà une conversation A1 parfaite."
+ },
+ REVIEW: [
+  {q:"« Il fait chaud » (météo) :", opts:["Hace calor.","Está calor."], correct:0, fb:"La météo avec « chaud / froid / soleil » se dit avec HACER impersonnel : hace calor, hace frío, hace sol. (rappel A1.11)"},
+  {q:"« Il pleut » :", opts:["Llueve.","Hace lluvia."], correct:0, fb:"« Llover » et « nevar » sont des verbes à eux seuls : llueve, nieva. (rappel A1.11)"},
+  {q:"« Il est trois heures. »", opts:["Son las tres.","Es las tres."], correct:0, fb:"Pluriel pour 2 h et plus : son las… (rappel A1.11)"},
+  {q:"« Il est une heure. »", opts:["Es la una.","Son la una."], correct:0, fb:"Pour 1 h : es la una (singulier). (rappel A1.11)"},
+  {q:"« Hoy es lunes. » Demain, c'est…", opts:["Mañana es martes.","Mañana es domingo."], correct:0, fb:"lunes → martes ; domingo vient avant lunes. Les jours de la semaine sont masculins et sans majuscule. (rappel A1.11)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"¿___ estás? — Muy bien, gracias.", answers:["Cómo","cómo"], why:"¿Cómo estás? = comment vas-tu ? Accent écrit sur cómo."},
+  {type:"fill", text:"¿___ es tu mejor amigo? — Es Pedro.", answers:["Quién","quién"], why:"On demande qui est la personne : ¿Quién? (accent écrit)."},
+  {type:"fill", text:"¿___ está la estación? — Al lado de la plaza.", answers:["Dónde","dónde"], why:"On demande un lieu : ¿Dónde? (accent écrit)."},
+  {type:"fill", text:"¿___ años tienes? — Tengo veinte.", answers:["Cuántos","cuántos"], why:"años est masculin pluriel : cuántos (accord avec le nom)."},
+  {type:"fill", text:"¿___ es la fiesta? — El sábado.", answers:["Cuándo","cuándo"], why:"On demande un moment : ¿Cuándo? (accent écrit)."},
+  {type:"fill", text:"¿___ estás cansado? — Porque tengo sueño.", answers:["Por qué","por qué"], why:"Question : « por qué » en deux mots avec accent ; réponse : « porque »."},
+  {type:"fill", text:"Tengo hambre, ___ voy a comer.", answers:["así que","Así que"], why:"« así que » exprime la conséquence : j'ai faim, donc je vais manger."},
+  {type:"fill", text:"Estoy bien, gracias. ¿___ usted?", answers:["Y","y"], why:"« ¿Y usted? » = et vous ? On renvoie la question avec « y »."},
+  {type:"fill", text:"Tú ___ a la plaza. (ir)", answers:["vas","Vas"], why:"ir : yo voy, tú vas, él va."},
+  {type:"fill", text:"Nosotros ___ una pregunta. (hacer)", answers:["hacemos","Hacemos"], why:"hacer : hago, haces, hace, hacemos, hacéis, hacen."},
+  {type:"fill", text:"Yo ___ la cena. (hacer)", answers:["hago","Hago"], why:"hacer : le « yo » est irrégulier : hago."},
+  {type:"fill", text:"Usted ___ muy simpático. (ser)", answers:["es","Es"], why:"usted se conjugue comme él / ella : es."},
+  {type:"fill", text:"Ellos ___ en la estación. (estar)", answers:["están","Están"], why:"Un lieu → estar. Ellos → están (accent écrit)."},
+  {type:"fill", text:"¿Tú ___ hermanos? (tener)", answers:["tienes","Tienes"], why:"tener : tú tienes (e → ie)."},
+  {type:"fill", text:"Vosotros ___ a casa. (ir)", answers:["vais","Vais"], why:"vosotros → vais (ir). Espagne seulement ; en Amérique latine : ustedes van."},
+  {type:"fill", text:"¡Que ___ un buen día, señora! (souhait formel : tener)", answers:["tenga","Tenga"], why:"Souhait figé : « que tengas » (tú), « que tenga » (usted). À retenir en bloc."},
+  {type:"fill", text:"Este libro ___ la pena. (valer)", answers:["vale","Vale"], why:"valer la pena : on dit « vale la pena » (3e personne)."},
+  {type:"choice", q:"Pour demander poliment son aide à un inconnu :", opts:["¿Podría ayudarme, por favor?","¿Puedes ayudarme?"], correct:0, why:"Inconnu = niveau le plus poli : « ¿Podría…? » (formule figée)."},
+  {type:"choice", q:"Pour attirer l'attention d'un directeur :", opts:["Perdone, señor.","Perdona, tío."], correct:0, why:"Directeur = usted : « perdone, señor ». « Perdona, tío » est informel."},
+  {type:"choice", q:"Quelle expression signifie « parler sans arrêt » ?", opts:["Hablar por los codos","Dar la lata","Echar una mano"], correct:0, why:"« Hablar por los codos » = bavarder sans s'arrêter. « Dar la lata » = embêter ; « echar una mano » = aider."},
+  {type:"choice", q:"« Echar una mano » veut dire…", opts:["donner un coup de main","serrer la main","jeter sa main"], correct:0, why:"Expression neutre et très courante : « ¿Me echas una mano? » = tu me donnes un coup de main ?"},
+  {type:"choice", q:"Quelle expression familière veut dire « être de mauvaise humeur » ?", opts:["Estar de mala leche","Tener la sartén por el mango","Dar calabazas"], correct:0, why:"« Estar de mala leche » : familier, surtout Espagne. « Tener la sartén por el mango » = avoir la situation en main ; « dar calabazas » = éconduire."},
+  {type:"choice", q:"Quelle écriture est correcte pour « Ça va ? »", opts:["¿Qué tal?","¿Que tal?"], correct:0, why:"Dans une question, « qué » porte un accent écrit."},
+  {type:"choice", q:"« Tomar el pelo » signifie…", opts:["faire marcher, se moquer de","prendre les cheveux","prendre un coup de chaud"], correct:0, why:"« Me estás tomando el pelo » = tu me fais marcher. Expression imagée, pas à traduire mot à mot."}
+ ],
+ ANNOTATED: {
+  title:"Un échange au quotidien",
+  intro:"Quatre phrases de conversation sociale pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction.",
+  sentences:[
+   {fr:"Salut, Pablo. Tout va bien ?", tokens:[
+    {w:"Hola", tag:"interjection", fr:"salut", tip:"h muette : O-la."},
+    {w:"Pablo", tag:"nom propre", fr:"Pablo"},
+    {w:"¿Qué", tag:"adverbe", info:"interrogatif", fr:"comment", tip:"« ¿Qué tal? » = comment ça va ? Accent sur qué."},
+    {w:"tal", tag:"adverbe", fr:"tal (dans « qué tal »)", tip:"Toujours dans la formule : ¿Qué tal?"},
+    {w:"todo?", tag:"pronom", info:"indéfini", fr:"tout", tip:"« ¿Qué tal todo? » = tout va bien ?"}
+   ]},
+   {fr:"Excusez-moi, pourriez-vous m'aider, s'il vous plaît ?", tokens:[
+    {w:"Perdone", tag:"verbe", info:"perdonar · impératif · usted", fr:"excusez-moi", tip:"Impératif usted : perdone. Tú : perdona."},
+    {w:"¿podría", tag:"verbe", info:"formule de politesse figée", fr:"pourriez-vous", tip:"À apprendre en bloc : la formule la plus polie."},
+    {w:"ayudarme", tag:"verbe", info:"infinitif + me", fr:"m'aider", tip:"« me » collé à l'infinitif : ayudar + me."},
+    {w:"por favor?", tag:"expression", fr:"s'il vous plaît", tip:"Même forme avec tú et usted."}
+   ]},
+   {fr:"J'ai faim, donc je vais manger.", tokens:[
+    {w:"Tengo", tag:"verbe", info:"tener · présent · yo", fr:"j'ai", tip:"Tener pour les sensations : tengo hambre."},
+    {w:"hambre", tag:"nom", info:"fém. sing.", fr:"faim", tip:"h muette : AM-bre."},
+    {w:"así que", tag:"conjonction", fr:"donc", tip:"Introduit la conséquence."},
+    {w:"voy", tag:"verbe", info:"ir · présent · yo", fr:"je vais", tip:"ir : voy, vas, va…"},
+    {w:"a", tag:"préposition", fr:"à", tip:"ir + a + infinitif = futur proche."},
+    {w:"comer", tag:"verbe", info:"infinitif", fr:"manger", tip:"-er : comer."}
+   ]},
+   {fr:"Merci beaucoup. Passez une bonne journée.", tokens:[
+    {w:"Muchas", tag:"déterminant", info:"fém. plur.", fr:"beaucoup de", tip:"S'accorde avec gracias (féminin pluriel)."},
+    {w:"gracias", tag:"nom", info:"fém. plur.", fr:"merci", tip:"c = th (Espagne), s (Amérique latine)."},
+    {w:"Que", tag:"conjonction", fr:"que (début du souhait)", tip:"Souhait figé : « que tenga un buen día »."},
+    {w:"tenga", tag:"verbe", info:"souhait figé · usted", fr:"passez (littéralement : ayez)", tip:"Tú : que tengas. À apprendre en bloc."},
+    {w:"un", tag:"déterminant", info:"article indéfini · masc.", fr:"une"},
+    {w:"buen", tag:"adjectif", info:"masc. sing. (devant le nom)", fr:"bonne", tip:"« bueno » devient « buen » devant un nom masculin : un buen día."},
+    {w:"día", tag:"nom", info:"masc. sing.", fr:"journée", tip:"Masculin malgré le -a : el día."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🤝", title:"Culture, 10 expressions et fiche récap de A1 (A1.12)",
+  html:"<b>🤝 Culture : saluer et prendre congé</b> En Espagne, on se fait la bise (deux, une sur chaque joue) entre amis ; au travail et avec un inconnu, la poignée de main. En Amérique latine, une seule bise ou une accolade selon les pays. Entrer dans un commerce ou un bar sans dire « ¡Buenas! » est mal vu. Finir un message : « un abrazo » (amis), « un saludo » (neutre), « un cordial saludo » (formel).<br><br><b>🧰 10 expressions familières de la conversation</b><br>1. <b>Hablar por los codos</b> = parler sans arrêt, être bavard.<br>2. <b>Dar la lata</b> = embêter, casser les pieds.<br>3. <b>Estar de mala leche</b> = être de mauvaise humeur (très familier, surtout en Espagne).<br>4. <b>Tener la sartén por el mango</b> = avoir la situation en main, tenir les rênes.<br>5. <b>Echar una mano</b> = donner un coup de main.<br>6. <b>Tomar el pelo</b> = faire marcher, se moquer de quelqu'un.<br>7. <b>Valer la pena</b> = valoir la peine.<br>8. <b>No tener pelos en la lengua</b> = ne pas avoir la langue dans sa poche.<br>9. <b>Dar calabazas</b> = éconduire quelqu'un qui te fait la cour.<br>10. <b>Quedarse con la boca abierta</b> = rester bouche bée.<br><br><b>✍️ Expression écrite : message informel de 4 lignes</b> Intègre : une salutation, une question, un remerciement et « Que tengas un buen día ». Modèle : « ¡Hola, Ana! ¿Qué tal todo? Gracias por tu ayuda, eres muy simpática. Que tengas un buen día. Un abrazo, Luis. » Version formelle : « Buenos días, señora Vega. ¿Cómo está usted? Muchas gracias por su ayuda. Que tenga un buen día. Un saludo, Luis Ruiz. »<br><br><b>🗣️ Expression orale : une conversation complète</b> Joue (ou enregistre) cette scène de bout en bout : 1. Salutation : « ¡Hola! ¡Cuánto tiempo sin verte! ¿Qué tal todo? » 2. Réponse : « Muy bien, gracias. ¿Y tú? » 3. Question : « Perdona, ¿puedes ayudarme? ¿Dónde está la estación? » 4. Réponse : « Está al lado de la plaza. » 5. Remerciement : « ¡Muchas gracias! » / « De nada. » 6. Au revoir : « Que tengas un buen día. Hasta pronto. » Refais-la en formel : « Buenos días. ¿Cómo está usted? Perdone, ¿podría ayudarme? … Que tenga un buen día. »<br><br><b>📄 Fiche récap de A1</b> Phonétique : h muette · j / ge, gi = kh · qu = k · c(e,i), z = th (Espagne) ou s (Amérique latine) · ll = y · ñ = gn · rr roulé · v = b · accent écrit sur qué, cómo, dónde, cuándo, cuánto, quién, cuál. Questions : ¿ ? obligatoires. Formules : Hola · Buenos días / tardes / noches · ¿Qué tal? (tú) / ¿Cómo está usted? (usted) · Gracias · De nada · Lo siento · Perdón · Perdona / Perdone · Hasta luego / pronto · Que tengas / tenga un buen día. Politesse : ¿Puedes ayudarme? (tú) → ¿Podría ayudarme? (très poli). Connecteurs : y, pero, así que, porque, también. Verbes : soy, estoy, tengo, voy, hago, et les structures voy a + infinitif, estoy + gérondif. Tu as maintenant tout le socle du niveau A1.<br><br><b>🏁 Mini-contrôle flash de fin de niveau</b> 1. Comment dit-on « ça fait longtemps qu'on ne s'est pas vu » ? → <b>¡Cuánto tiempo sin verte!</b> 2. Forme la plus polie pour « Pourriez-vous… » ? → <b>¿Podría…?</b>"},
+ NEXT_PREVIEW:"Félicitations : tu viens de terminer le dernier palier du niveau A1 ! La suite : le grand contrôle de fin de niveau A1 (test de niveau final), puis le niveau A2. Avant de te lancer, relis tes fiches récapitulatives et refais les points qui t'ont paru plus difficiles.",
+ META:{vocabTitle:"Español social : saluer, remercier, s'excuser, prendre congé (A1.12)", lectureTitle:"Pablo et María : une rencontre dans la rue", bilanTitle:"Bravo, tu as terminé le niveau A1 !", pronLabel:"Les accents des mots interrogatifs, ¿ ? ¡ ! et l'intonation", todayLede:"mener une conversation sociale de bout en bout : saluer, demander poliment, remercier, s'excuser et prendre congé, en tutoiement ET en vouvoiement, tout en réutilisant ser, estar, tener, ir et hacer"}
+};
+})();
+
