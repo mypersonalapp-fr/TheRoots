@@ -414,13 +414,13 @@ export function renderMesCours(container, shellRoot) {
     if (atBtn) atBtn.addEventListener("click", () => { openAteliers = "home"; paint(); });
 
     const previewBtn = container.querySelector("#mcPreviewOpen");
-    if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=201" : "lessons.html"; });
+    if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=200" : "lessons.html"; });
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { if (code === "es") {
         // Premier lancement (aucune progression espagnole) : on ouvre le premier palier, A1.1.
         let saved = null;
         try { saved = localStorage.getItem("the_roots_lesson_es"); } catch (e) {}
-        window.location.href = saved ? "lessons.html?lang=es" : "lessons.html?lang=es#lesson=201";
+        window.location.href = saved ? "lessons.html?lang=es" : "lessons.html?lang=es#lesson=200";
       } else { window.location.href = "lessons.html"; } });
 
     const changeBtn = container.querySelector("#mcChangeVariant");
