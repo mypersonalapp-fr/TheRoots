@@ -610,6 +610,9 @@
   .les-st{ position:absolute; top:8px; right:8px; font-size:.64rem; font-weight:800; background:var(--accent-soft); color:var(--ink); border-radius:9px; padding:2px 7px; }
   .hub-back{ background:none; border:0; font:700 .84rem "Manrope",sans-serif; color:var(--ink); padding:0; margin:0 0 8px; cursor:pointer; }
   .hub-tile:focus-visible, .hub-step:focus-visible, .hub-m:focus-visible, .hub-l:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+  .les-tile.has-img, .hub-step.has-img{ background-image:linear-gradient(rgba(255,255,255,.60),rgba(255,255,255,.80)), var(--bg-img); background-size:cover; background-position:center; }
+  .les-tile.has-img .les-code{ text-shadow:0 0 6px #fff, 0 0 2px #fff; }
+  .les-tile.has-img small, .hub-step.has-img b, .hub-step.has-img small{ text-shadow:0 0 5px #fff, 0 0 2px #fff; }
   .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .vm-card.on{ border-color:var(--accent); background:var(--accent-soft); }
   .vm-card b{ display:block; font-family:"Sora",sans-serif; font-size:1rem; margin-bottom:2px; }
@@ -13622,6 +13625,14 @@
 
   // ---------- Page des leçons : une case par leçon (A1.0, A1.1…), ouvertes au fur et à mesure ----------
   var MAX_KEY = LESSON_KEY + "_max";
+  // Photo de fond d'une case de leçon : la 1re photo de découverte de la leçon (même numéro en anglais ;
+  // en espagnol A1.k reprend le thème de l'anglais A1.k, donc la clé k-1).
+  function pickImg(n){
+    var key = ES_MODE ? ((n >= 201 && n <= 212) ? n - 201 : null) : n;
+    var I = (window.LESSON_IMAGES && key != null) ? window.LESSON_IMAGES[key] : null;
+    return (I && I.discover && I.discover[0]) ? pxUrl(I.discover[0].id, 400) : null;
+  }
+  function pickBg(n){ var u = pickImg(n); return u ? ' has-img" style="--bg-img:url(\''+u+'\')' : ''; }
   function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
   function pickMax(){
     var v = null; try { v = parseInt(localStorage.getItem(MAX_KEY), 10); } catch(e){}
@@ -13690,10 +13701,10 @@
     function badge(x){ return x.passed ? "✓ fait" : (cur && x === cur ? "en cours" : (x.exempt ? "dispensé" : (x.open ? "" : "🔒"))); }
     if(layout === "chemin"){
       html += '<div class="hub-path">' + show.map(function(x){ var b = badge(x);
-        return '<button type="button" class="hub-step'+(x.passed ? " seen" : "")+(cur && x === cur ? " first" : "")+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'><span class="hub-dot">'+(x.passed ? "✓" : (x.open ? "▶" : "🔒"))+'</span><span class="hub-sc"><span><b>'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+(b && !x.passed && x.open ? " · "+b : "")+'</small></span><span class="hub-chev">›</span></span></button>'; }).join("") + '</div>';
+        return '<button type="button" class="hub-step'+(x.passed ? " seen" : "")+(cur && x === cur ? " first" : "")+pickBg(x.n)+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'><span class="hub-dot">'+(x.passed ? "✓" : (x.open ? "▶" : "🔒"))+'</span><span class="hub-sc"><span><b>'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+(b && !x.passed && x.open ? " · "+b : "")+'</small></span><span class="hub-chev">›</span></span></button>'; }).join("") + '</div>';
     } else {
       html += '<div class="hub-grid">' + show.map(function(x){ var b = badge(x);
-        return '<button type="button" class="hub-tile les-tile'+(cur && x === cur ? " first" : "")+(x.passed ? " seen" : "")+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'>'+(b ? '<span class="les-st">'+b+'</span>' : '')+'<b class="les-code">'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+'</small></button>'; }).join("") + '</div>';
+        return '<button type="button" class="hub-tile les-tile'+(cur && x === cur ? " first" : "")+(x.passed ? " seen" : "")+pickBg(x.n)+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'>'+(b ? '<span class="les-st">'+b+'</span>' : '')+'<b class="les-code">'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+'</small></button>'; }).join("") + '</div>';
     }
     html += '<div class="hub-lay"><span>Présentation :</span>' +
       '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
@@ -13789,7 +13800,7 @@
       });
     });
   }
-  somOpen.addEventListener("click", function(){ if(FICHE() && state.ficheRun){ state.ficheRun = false; if(state.step < 1) state.step = 1; state.subStep = 0; render(); return; } state.hub = true; render(); });
+  somOpen.addEventListener("click", function(){ if(FICHE() && state.ficheRun){ state.ficheRun = false; if(state.step < 1) state.step = 1; state.subStep = 0; render(); return; } state.pick = false; state.hub = true; render(); });
 
 
   // ---------- Modes d'affichage : « sommaire » (défaut) et « guide » (parcours en 13 étapes) ----------
@@ -13798,10 +13809,10 @@
   function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide" || v === "cartes" || v === "fiche") ? v : "sommaire"; }
   function GUIDED(){ return (viewMode() === "guide" || viewMode() === "cartes") && !PRACTICE && !STANDALONE && !isGrandControle(); }
   var VIEW_MODES = [
-    {id:"sommaire", t:"Le sommaire", sub:"Je choisis moi-même", who:"Tu veux décider par où commencer, ou revoir un point précis.", pro:"Tu vois toute la leçon et tu sautes à l'étape que tu veux.", con:"Rien ne te guide : c'est toi qui avances."},
-    {id:"guide", t:"Le parcours guidé", sub:"On me guide pas à pas", tag:"Conseillé pour débuter", who:"Tu débutes, ou tu veux suivre la leçon dans l'ordre sans te poser de question.", pro:"Une étape à la fois, une barre qui montre où tu en es, un seul bouton « Continuer ».", con:"Pour revenir à une étape, il faut reculer ou ouvrir le Sommaire."},
-    {id:"cartes", t:"Les cartes", sub:"J'apprends les mots en cartes", who:"Le vocabulaire est ce qui te demande le plus d'effort.", pro:"Un mot par grande carte avec son image : tu le vois, tu l'écoutes, tu retournes pour la traduction. « À revoir » le fait revenir plus tard.", con:"C'est le parcours guidé, avec seulement le vocabulaire en cartes."},
-    {id:"fiche", t:"La fiche", sub:"Tout sur une page", who:"Tu veux relire, réviser, ou garder une trace.", pro:"Vocabulaire, grammaire et texte sur une seule page, que tu peux imprimer ou enregistrer en PDF.", con:"Les jeux et le contrôle se lancent à part, depuis la fiche."}
+    {id:"sommaire", t:"Le sommaire", desc:"Toutes les étapes de la leçon sur une page. Tu touches celle que tu veux.", ideal:"tu sais déjà ce que tu veux travailler."},
+    {id:"guide", t:"Le parcours guidé", tag:"Le plus simple pour débuter", desc:"On te montre une étape à la fois. Tu appuies sur « Continuer » pour avancer.", ideal:"tu débutes ou tu préfères être guidé(e)."},
+    {id:"cartes", t:"Les cartes", desc:"Comme le parcours guidé, mais les mots s'affichent un par un sur de grandes cartes avec image.", ideal:"tu veux surtout apprendre le vocabulaire."},
+    {id:"fiche", t:"La fiche", desc:"Toute la leçon sur une seule page à lire, sans jeux. Les jeux se lancent ensuite à part.", ideal:"tu veux relire ou garder une trace."}
   ];
   function screenViewModes(){
     backBtn.style.visibility = "hidden";
@@ -13809,12 +13820,12 @@
     hint.textContent = "Tu peux changer quand tu veux. Ta progression ne change pas.";
     postmark.innerHTML = "AFFICHAGE";
     var cur = viewMode();
-    screen.innerHTML = '<div class="eyebrow">Réglage</div><h2 class="screen-title">Comment veux-tu apprendre ?</h2><p class="lede">Les 4 choix donnent exactement la même leçon, les mêmes mots, les mêmes jeux. Seule la façon de l\'afficher change. Touche celui qui te ressemble.</p>' +
+    screen.innerHTML = '<div class="eyebrow">Réglage</div><h2 class="screen-title">Comment veux-tu voir ta leçon ?</h2><p class="lede">C\'est toujours la même leçon, les mêmes mots, les mêmes jeux. Tu choisis seulement comment elle s\'affiche. Touche une carte pour la choisir ; tu pourras changer à tout moment avec « ⚙️ Affichage ».</p>' +
       VIEW_MODES.map(function(m){
-        return '<button type="button" class="vm-card'+(m.id === cur ? " on" : "")+'" data-m="'+m.id+'"><b>'+m.t+' — '+m.sub+(m.id === cur ? " ✓" : "")+'</b>' +
+        return '<button type="button" class="vm-card'+(m.id === cur ? " on" : "")+'" data-m="'+m.id+'"><b>'+m.t+(m.id === cur ? " ✓ (choisi)" : "")+'</b>' +
           (m.tag ? '<span class="vm-tag">⭐ '+m.tag+'</span>' : '') +
-          '<span><u>Pour toi si :</u> '+m.who+'</span><span>✅ '+m.pro+'</span><span>ℹ️ '+m.con+'</span></button>';
-      }).join("");
+          '<span>'+m.desc+'</span><span>👍 Idéal si '+m.ideal+'</span></button>';
+      }).join("") + '<p class="lede" style="margin-top:6px">Besoin de la liste des étapes ? Touche « ☰ Plan de la leçon » en haut de l\'écran.</p>';
     Array.prototype.forEach.call(screen.querySelectorAll(".vm-card"), function(b){
       b.addEventListener("click", function(){
         try { localStorage.setItem(VIEW_KEY, b.getAttribute("data-m")); } catch(e){}
