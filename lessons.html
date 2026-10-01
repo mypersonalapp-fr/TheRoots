@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script>try{var __t=(JSON.parse(localStorage.getItem("the_roots_store_v1")||"null")||{}).settings;document.documentElement.setAttribute("data-theme",__t&&__t.theme==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
 <style>
   :root{
     --bg:#FFFFFF;
@@ -616,6 +617,14 @@
   @media (prefers-reduced-motion: reduce){ .les-emo{ animation:none; } }
   .les-g0{ background-image:linear-gradient(135deg,rgba(232,131,42,.28),rgba(255,255,255,.7)); } .les-g1{ background-image:linear-gradient(135deg,rgba(42,122,184,.26),rgba(255,255,255,.7)); }
   .les-g2{ background-image:linear-gradient(135deg,rgba(120,100,200,.26),rgba(255,255,255,.7)); } .les-g3{ background-image:linear-gradient(135deg,rgba(214,84,120,.24),rgba(255,255,255,.7)); }
+  /* Thème sombre : même décor de nuit que le reste de l'application. */
+  :root[data-theme="dark"] body::before, :root[data-theme="dark"] body::after{ background-image:url('assets/img/shell-bg-dark.jpg'); }
+  :root[data-theme="dark"] body::before{ filter:blur(46px) saturate(1.1) brightness(.8); }
+  :root[data-theme="dark"] .card{ background:rgba(14,23,29,.62); border-color:rgba(255,255,255,.12); box-shadow:0 8px 20px rgba(0,0,0,.35); text-shadow:none; }
+  :root[data-theme="dark"] .les-g0{ background-image:linear-gradient(135deg,rgba(232,131,42,.30),rgba(22,34,42,.78)); }
+  :root[data-theme="dark"] .les-g1{ background-image:linear-gradient(135deg,rgba(42,122,184,.34),rgba(22,34,42,.78)); }
+  :root[data-theme="dark"] .les-g2{ background-image:linear-gradient(135deg,rgba(120,100,200,.34),rgba(22,34,42,.78)); }
+  :root[data-theme="dark"] .les-g3{ background-image:linear-gradient(135deg,rgba(214,84,120,.30),rgba(22,34,42,.78)); }
   .les-tile.has-img, .hub-step.has-img{ background-image:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.80)), var(--bg-img); background-size:cover; background-position:center; }
   .les-tile.has-img .les-code{ text-shadow:0 0 6px #fff, 0 0 2px #fff; }
   .les-tile.has-img small, .hub-step.has-img b, .hub-step.has-img small{ text-shadow:0 0 5px #fff, 0 0 2px #fff; }
