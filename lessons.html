@@ -575,7 +575,8 @@
   .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .vm-card.on{ border-color:var(--accent); background:var(--accent-soft); }
   .vm-card b{ display:block; font-family:"Sora",sans-serif; font-size:1rem; margin-bottom:2px; }
-  .vm-card span{ font-weight:500; font-size:.84rem; color:var(--muted); }
+  .vm-card span{ display:block; font-weight:500; font-size:.84rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .vm-card .vm-tag{ display:inline-block; font-weight:700; color:var(--ink); background:var(--accent-soft); border-radius:999px; padding:2px 10px; margin-top:6px; }
 
   /* Mode « Cartes » : un mot par carte */
   .fc-wrap{ display:flex; flex-direction:column; align-items:center; gap:12px; }
@@ -13450,6 +13451,7 @@
       else { state.step = 5; screenExam(); }
       return;
     }
+    if(ES_MODE && state.step === 0 && esNoAntecedent()){ state.step = 1; state.subStep = 0; vocabBlockIdx = 0; }
     somOpen.hidden = false; viewOpen.hidden = false;
     if(state.pick){ itinerary.hidden = true; screenViewModes(); return; }
     if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
@@ -13528,10 +13530,10 @@
   function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide" || v === "cartes" || v === "fiche") ? v : "sommaire"; }
   function GUIDED(){ return (viewMode() === "guide" || viewMode() === "cartes") && !PRACTICE && !STANDALONE && !isGrandControle(); }
   var VIEW_MODES = [
-    {id:"sommaire", t:"Le sommaire", d:"La liste des 13 étapes : tu choisis par où commencer et tu peux sauter d'une étape à l'autre."},
-    {id:"guide", t:"Le parcours guidé", d:"Une étape à la fois, dans l'ordre du déroulé, avec une barre de progression et un seul bouton Continuer."},
-    {id:"cartes", t:"Les cartes", d:"Comme le parcours guidé, mais le vocabulaire se révise mot par mot, en grandes cartes illustrées à retourner."},
-    {id:"fiche", t:"La fiche", d:"Toute la leçon sur une seule page : vocabulaire, grammaire et texte à relire, en sections qui s'ouvrent. Les jeux se lancent depuis la fiche, et tu peux l'imprimer en PDF."}
+    {id:"sommaire", t:"Le sommaire", sub:"Je choisis moi-même", who:"Tu veux décider par où commencer, ou revoir un point précis.", pro:"Tu vois toute la leçon et tu sautes à l'étape que tu veux.", con:"Rien ne te guide : c'est toi qui avances."},
+    {id:"guide", t:"Le parcours guidé", sub:"On me guide pas à pas", tag:"Conseillé pour débuter", who:"Tu débutes, ou tu veux suivre la leçon dans l'ordre sans te poser de question.", pro:"Une étape à la fois, une barre qui montre où tu en es, un seul bouton « Continuer ».", con:"Pour revenir à une étape, il faut reculer ou ouvrir le Sommaire."},
+    {id:"cartes", t:"Les cartes", sub:"J'apprends les mots en cartes", who:"Le vocabulaire est ce qui te demande le plus d'effort.", pro:"Un mot par grande carte avec son image : tu le vois, tu l'écoutes, tu retournes pour la traduction. « À revoir » le fait revenir plus tard.", con:"C'est le parcours guidé, avec seulement le vocabulaire en cartes."},
+    {id:"fiche", t:"La fiche", sub:"Tout sur une page", who:"Tu veux relire, réviser, ou garder une trace.", pro:"Vocabulaire, grammaire et texte sur une seule page, que tu peux imprimer ou enregistrer en PDF.", con:"Les jeux et le contrôle se lancent à part, depuis la fiche."}
   ];
   function screenViewModes(){
     backBtn.style.visibility = "hidden";
@@ -13539,8 +13541,12 @@
     hint.textContent = "Tu peux changer quand tu veux. Ta progression ne change pas.";
     postmark.innerHTML = "AFFICHAGE";
     var cur = viewMode();
-    screen.innerHTML = '<div class="eyebrow">Réglage</div><h2 class="screen-title">Comment veux-tu apprendre ?</h2><p class="lede">Même leçon, même contenu : seule la présentation change.</p>' +
-      VIEW_MODES.map(function(m){ return '<button type="button" class="vm-card'+(m.id === cur ? " on" : "")+'" data-m="'+m.id+'"><b>'+m.t+(m.id === cur ? " ✓" : "")+'</b><span>'+m.d+'</span></button>'; }).join("");
+    screen.innerHTML = '<div class="eyebrow">Réglage</div><h2 class="screen-title">Comment veux-tu apprendre ?</h2><p class="lede">Les 4 choix donnent exactement la même leçon, les mêmes mots, les mêmes jeux. Seule la façon de l\'afficher change. Touche celui qui te ressemble.</p>' +
+      VIEW_MODES.map(function(m){
+        return '<button type="button" class="vm-card'+(m.id === cur ? " on" : "")+'" data-m="'+m.id+'"><b>'+m.t+' — '+m.sub+(m.id === cur ? " ✓" : "")+'</b>' +
+          (m.tag ? '<span class="vm-tag">⭐ '+m.tag+'</span>' : '') +
+          '<span><u>Pour toi si :</u> '+m.who+'</span><span>✅ '+m.pro+'</span><span>ℹ️ '+m.con+'</span></button>';
+      }).join("");
     Array.prototype.forEach.call(screen.querySelectorAll(".vm-card"), function(b){
       b.addEventListener("click", function(){
         try { localStorage.setItem(VIEW_KEY, b.getAttribute("data-m")); } catch(e){}
@@ -13744,6 +13750,12 @@
     return function(){ if(ficheShown()){ ficheRunTo(5, 0); return; } return fn(); };
   }
 
+  // Espagnol : la première leçon d'un chapitre n'a pas d'antécédent -> pas de « petit rappel » à l'ouverture.
+  function esNoAntecedent(){
+    var grp = Math.floor(state.lesson / 100), r = lessonRank(state.lesson);
+    return !LESSON_ORDER.some(function(n){ return isPlayableLesson(n) && Math.floor(n / 100) === grp && lessonRank(n) < r; });
+  }
+
   var pendingAutoAdvance = null;
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
@@ -13857,6 +13869,7 @@
 
   function goBack(){
     if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
+    if(ES_MODE && !isGrandControle() && state.step === 1 && state.subStep === 0 && vocabBlockIdx === 0 && !discoverPending() && esNoAntecedent()){ esGoApp(); return; }
     if(isGrandControle()){
       if(state.step === 1 && sbRound > 0){ sbRound--; render(); return; }
       if(state.step === 1 && sbRound === 0){ state.step = 0; render(); return; }
