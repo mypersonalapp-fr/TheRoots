@@ -572,6 +572,35 @@
   .view-open[hidden]{ display:none; }
   .top-actions{ display:flex; justify-content:space-between; gap:8px; }
   .top-actions .som-open{ margin:0 0 10px 0; }
+
+  .hub-q{ font-weight:800; font-size:.95rem; margin:10px 2px 8px; } .hub-q small{ display:block; font-weight:500; color:var(--muted); font-size:.78rem; margin-top:2px; }
+  .hub-modes{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .hub-mode{ display:flex; flex-direction:column; gap:2px; text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:9px 11px; font:inherit; color:var(--ink); cursor:pointer; min-width:0; }
+  .hub-mode b{ font-size:.86rem; } .hub-mode span{ font-size:.72rem; color:var(--muted); }
+  .hub-mode[aria-pressed="true"]{ border-color:var(--accent); background:var(--accent-soft); }
+  .hub-seg{ display:flex; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:4px; gap:2px; }
+  .hub-seg button{ flex:1; border:0; background:transparent; border-radius:11px; padding:9px 2px; font:700 .76rem "Manrope",sans-serif; color:var(--muted); cursor:pointer; min-width:0; }
+  .hub-seg button[aria-pressed="true"]{ background:var(--accent-soft); color:var(--ink); box-shadow:0 0 0 1.5px var(--accent) inset; }
+  .hub-hint{ font-size:.8rem; color:var(--muted); margin:8px 4px 10px; line-height:1.4; }
+  .hub-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .hub-tile{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; text-align:center; background:var(--surface); border:1.5px solid var(--line); border-radius:18px; padding:16px 8px 12px; min-height:112px; font:inherit; color:var(--ink); cursor:pointer; min-width:0; }
+  .hub-tile .hub-e{ font-size:1.8rem; line-height:1; } .hub-tile b{ font-size:.86rem; } .hub-tile small{ font-size:.7rem; color:var(--muted); }
+  .hub-tile.first{ border-color:var(--accent); border-width:2px; }
+  .hub-n{ position:absolute; top:8px; left:8px; min-width:22px; height:22px; border-radius:11px; background:var(--accent); color:var(--accent-ink); font-weight:800; font-size:.72rem; display:flex; align-items:center; justify-content:center; padding:0 4px; }
+  .hub-tile.seen .hub-n, .hub-step.seen .hub-dot{ background:var(--accent); color:var(--accent-ink); }
+  .hub-tile:disabled, .hub-step:disabled{ opacity:.55; cursor:not-allowed; }
+  .hub-path{ display:flex; flex-direction:column; }
+  .hub-step{ position:relative; display:flex; align-items:center; gap:12px; background:transparent; border:0; padding:5px 0; font:inherit; color:var(--ink); cursor:pointer; text-align:left; width:100%; min-width:0; }
+  .hub-step:not(:last-child)::before{ content:""; position:absolute; left:19px; top:44px; bottom:-5px; width:3px; background:var(--line); border-radius:3px; }
+  .hub-dot{ flex:none; width:40px; height:40px; border-radius:50%; background:var(--surface); border:3px solid var(--accent); display:flex; align-items:center; justify-content:center; font-weight:800; color:var(--ink); z-index:1; }
+  .hub-step.first .hub-dot{ background:var(--accent); color:var(--accent-ink); }
+  .hub-sc{ flex:1; display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:9px 12px; min-width:0; }
+  .hub-sc .hub-e{ font-size:1.4rem; } .hub-sc b{ font-size:.9rem; display:block; } .hub-sc small{ font-size:.72rem; color:var(--muted); }
+  .hub-chev{ margin-left:auto; color:var(--muted); }
+  .hub-lay{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:14px; font-size:.78rem; color:var(--muted); }
+  .hub-l{ border:1.5px solid var(--line); background:var(--surface); border-radius:999px; padding:6px 12px; font:700 .76rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .hub-l[aria-pressed="true"]{ border-color:var(--accent); background:var(--accent-soft); }
+  .hub-tile:focus-visible, .hub-step:focus-visible, .hub-m:focus-visible, .hub-l:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
   .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .vm-card.on{ border-color:var(--accent); background:var(--accent-soft); }
   .vm-card b{ display:block; font-family:"Sora",sans-serif; font-size:1rem; margin-bottom:2px; }
@@ -664,7 +693,7 @@
     <div class="route-chip" id="routeChip"></div>
   </div>
 
-  <div class="top-actions"><button class="view-open" id="viewOpen" type="button" hidden>⚙️ Affichage</button><button class="som-open" id="somOpen" type="button" hidden>☰ Sommaire de la leçon</button></div>
+  <div class="top-actions"><button class="view-open" id="viewOpen" type="button" hidden>⚙️ Affichage</button><button class="som-open" id="somOpen" type="button" hidden>☰ Plan de la leçon</button></div>
   <div class="itinerary" id="itinerary" hidden></div>
 
   <div class="card" id="card">
@@ -13482,7 +13511,7 @@
     if(state.pick){ itinerary.hidden = true; screenViewModes(); return; }
     if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
     if(state.step === 0 || state.step >= 6) state.ficheRun = false;
-    somOpen.textContent = (FICHE() && state.ficheRun) ? "📄 Retour à la fiche" : "☰ Sommaire de la leçon";
+    somOpen.textContent = (FICHE() && state.ficheRun) ? "📄 Retour à la fiche" : "☰ Plan de la leçon";
     if(ficheShown()){ itinerary.hidden = true; screenFiche(); return; }
     itinerary.hidden = state.step === 0;
     if(GUIDED() && state.step >= 1) renderGuidedBar(); else { whichBarReset(); renderItinerary(); }
@@ -13518,29 +13547,68 @@
     ];
   }
   function somPos(st, sub){ return st*100 + sub; }
+  // ---------- Page d'accueil de la leçon : cases (Mosaïque ou Chemin) rangées dans l'ordre choisi ----------
+  var HUB_LAYOUT_KEY = "the_roots_hub_layout", HUB_ORDER_KEY = "the_roots_hub_order", HUB_SEEN_KEY = "the_roots_hub_seen_v1";
+  var HUB_TILES = {
+    voc:{e:"📖", t:"Vocabulaire", s:"Mots illustrés", row:1},
+    jeu:{e:"🎮", t:"Jeux", s:"S'entraîner", row:2},
+    gra:{e:"🧩", t:"Grammaire", s:"Les règles", row:3},
+    con:{e:"🔁", t:"Conjugaison", s:"Les verbes", row:5},
+    ecou:{e:"🎧", t:"Compréhension orale", s:"Écouter", row:7},
+    lire:{e:"📰", t:"Compréhension écrite", s:"Lire", row:8},
+    ecri:{e:"✍️", t:"Expression écrite", s:"Écrire", row:9},
+    parl:{e:"🎤", t:"Expression orale", s:"Prononcer et parler", row:10},
+    ctl:{e:"🏁", t:"Contrôle", s:"Vérifier", row:11},
+    bonus:{e:"⭐", t:"Bonus et fiche", s:"10 expressions, PDF", row:12}
+  };
+  var HUB_MODES = [
+    {id:"cls", t:"Dans l'ordre du cours", s:"Comme un manuel", h:"L'ordre classique de la leçon, du vocabulaire au contrôle.", o:["voc","jeu","gra","con","ecou","lire","ecri","parl","ctl","bonus"]},
+    {id:"par", t:"Parler d'abord", s:"Oral avant tout", h:"Tu prononces et tu écoutes en premier, la grammaire vient après.", o:["parl","voc","ecou","jeu","gra","con","lire","ecri","ctl","bonus"]},
+    {id:"gra", t:"Les règles d'abord", s:"Je veux comprendre", h:"Grammaire et conjugaison en premier, puis le vocabulaire.", o:["gra","con","voc","jeu","ecou","lire","ecri","parl","ctl","bonus"]},
+    {id:"jeu", t:"Par le jeu", s:"Je veux m'amuser", h:"Jeux et vocabulaire en premier, les règles ensuite.", o:["jeu","voc","parl","ecou","gra","con","lire","ecri","ctl","bonus"]}
+  ];
+  function hubGet(k, ok, def){ var v = null; try { v = localStorage.getItem(k); } catch(e){} return ok.indexOf(v) >= 0 ? v : def; }
+  function hubSeen(){ var o = {}; try { o = JSON.parse(localStorage.getItem(HUB_SEEN_KEY) || "{}") || {}; } catch(e){} return o; }
+  function hubMarkSeen(key){ var o = hubSeen(), id = LESSON_KEY + ":" + state.lesson; o[id] = o[id] || []; if(o[id].indexOf(key) < 0) o[id].push(key); try { localStorage.setItem(HUB_SEEN_KEY, JSON.stringify(o)); } catch(e){} }
   function screenSommaire(){
     backBtn.style.visibility = "hidden";
-    hint.textContent = "Touche une étape pour y aller. « Reprendre » te ramène là où tu en étais.";
+    hint.textContent = "Touche une case pour commencer par là. « Reprendre » te ramène là où tu en étais.";
     nextBtn.textContent = "Reprendre";
-    postmark.innerHTML = "SOMMAIRE";
-    var rows = somMap(), cur = somPos(state.step, state.subStep), doneN = 0, curSet = false;
-    rows.forEach(function(r){ r.pos = somPos(r.step, r.sub); r.done = r.pos < cur; if(r.done) doneN++; });
-    // Étape « en cours » = la première ligne (dans l'ordre du déroulé) située à la position actuelle ou après elle.
-    var curRow = null;
-    rows.forEach(function(r){ if(!curRow && !r.done && r.ok) curRow = r; });
-    var pct = Math.round(doneN/rows.length*100), circ = 2*Math.PI*22, off = circ*(1-pct/100);
-    var html = '<div class="som-head"><svg class="som-ring" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="22" fill="none" stroke="var(--line)" stroke-width="6"/><circle cx="30" cy="30" r="22" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 30 30)"/></svg>' +
-      '<div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Sommaire de la leçon")+'</div></div></div>';
-    var lastG = "";
-    rows.forEach(function(r){
-      if(r.g !== lastG){ html += '<div class="som-grp">'+r.g+'</div>'; lastG = r.g; }
-      html += '<button type="button" class="som-row'+(r.done ? " done" : (r === curRow ? " cur" : ""))+'" data-n="'+r.n+'"'+(r.ok ? "" : " disabled")+'><span class="num">'+(r.done ? "✓" : (r.ok ? r.n : "🔒"))+'</span><span class="lbl">'+r.t+'</span><span class="go">›</span></button>';
-    });
+    postmark.innerHTML = "PLAN";
+    var layout = hubGet(HUB_LAYOUT_KEY, ["mosaique","chemin"], "mosaique");
+    var mode = HUB_MODES.filter(function(m){ return m.id === hubGet(HUB_ORDER_KEY, HUB_MODES.map(function(x){ return x.id; }), "cls"); })[0];
+    var rows = somMap(), seen = hubSeen()[LESSON_KEY + ":" + state.lesson] || [];
+    var html = '<div class="som-head"><div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Plan de la leçon")+'</div></div></div>' +
+      '<div class="hub-q">Comment veux-tu apprendre ?<small>Les cases se rangent dans l\'ordre choisi.</small></div>';
+    if(layout === "chemin"){
+      html += '<div class="hub-seg">' + HUB_MODES.map(function(m){ return '<button type="button" class="hub-m" data-m="'+m.id+'" aria-pressed="'+(m.id === mode.id)+'">'+({cls:"Classique",par:"Parler",gra:"Règles",jeu:"Jeu"})[m.id]+'</button>'; }).join("") + '</div>';
+    } else {
+      html += '<div class="hub-modes">' + HUB_MODES.map(function(m){ return '<button type="button" class="hub-mode hub-m" data-m="'+m.id+'" aria-pressed="'+(m.id === mode.id)+'"><b>'+m.t+'</b><span>'+m.s+'</span></button>'; }).join("") + '</div>';
+    }
+    html += '<p class="hub-hint">'+mode.h+'</p>';
+    function tileOk(k){ var r = rows.filter(function(x){ return x.n === HUB_TILES[k].row; })[0]; return r && r.ok; }
+    if(layout === "chemin"){
+      html += '<div class="hub-path">' + mode.o.map(function(k, i){ var d = HUB_TILES[k], ok = tileOk(k), sn = seen.indexOf(k) >= 0;
+        return '<button type="button" class="hub-step'+(i === 0 ? " first" : "")+(sn ? " seen" : "")+'" data-k="'+k+'"'+(ok ? "" : " disabled")+'><span class="hub-dot">'+(sn ? "✓" : (ok ? i+1 : "🔒"))+'</span><span class="hub-sc"><span class="hub-e">'+d.e+'</span><span><b>'+d.t+'</b><small>'+d.s+'</small></span><span class="hub-chev">›</span></span></button>'; }).join("") + '</div>';
+    } else {
+      html += '<div class="hub-grid">' + mode.o.map(function(k, i){ var d = HUB_TILES[k], ok = tileOk(k), sn = seen.indexOf(k) >= 0;
+        return '<button type="button" class="hub-tile'+(i === 0 ? " first" : "")+(sn ? " seen" : "")+'" data-k="'+k+'"'+(ok ? "" : " disabled")+'><span class="hub-n">'+(sn ? "✓" : (ok ? i+1 : "🔒"))+'</span><span class="hub-e">'+d.e+'</span><b>'+d.t+'</b><small>'+d.s+'</small></button>'; }).join("") + '</div>';
+    }
+    html += '<div class="hub-lay"><span>Présentation :</span>' +
+      '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
+      '<button type="button" class="hub-l" data-l="chemin" aria-pressed="'+(layout === "chemin")+'">☰ Chemin</button></div>';
     screen.innerHTML = html;
-    Array.prototype.forEach.call(screen.querySelectorAll(".som-row"), function(b){
+    Array.prototype.forEach.call(screen.querySelectorAll(".hub-m"), function(b){
+      b.addEventListener("click", function(){ try { localStorage.setItem(HUB_ORDER_KEY, b.getAttribute("data-m")); } catch(e){} screenSommaire(); });
+    });
+    Array.prototype.forEach.call(screen.querySelectorAll(".hub-l"), function(b){
+      b.addEventListener("click", function(){ try { localStorage.setItem(HUB_LAYOUT_KEY, b.getAttribute("data-l")); } catch(e){} screenSommaire(); });
+    });
+    Array.prototype.forEach.call(screen.querySelectorAll("[data-k]"), function(b){
       b.addEventListener("click", function(){
-        var r = rows.filter(function(x){ return String(x.n) === b.getAttribute("data-n"); })[0];
+        var k = b.getAttribute("data-k"), r = rows.filter(function(x){ return x.n === HUB_TILES[k].row; })[0];
         if(!r || !r.ok) return;
+        hubMarkSeen(k);
         state.hub = false; state.step = r.step; state.subStep = r.sub; if(FICHE()) state.ficheRun = true;
         vocabBlockIdx = 0; sbRound = 0; memState = null; state.quizIndex = 0; if(typeof cardsReset === "function") cardsReset();
         render();
@@ -13951,6 +14019,9 @@
       drills:function(){ return DRILLS; }, annotated:function(){ return ANNOTATED; }, drillCheck:drillCheck, drillSentence:drillSentence,
       drillsSubstep:drillsSubstep, annotatedSubstep:annotatedSubstep, drillState:function(){ return drillState; }, nextPlayable:nextPlayableLesson };
   }
+  // Entrée dans une leçon normale : on arrive d'abord sur le plan (cases + choix de l'ordre).
+  loadLessonData();
+  if(!PRACTICE && !STANDALONE && !isGrandControle() && state.returnTo == null && !/rootstest/.test(location.hash || "") && !(ES_MODE && !isPlayableLesson(state.lesson))) state.hub = true;
   render();
 
 })();
