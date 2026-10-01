@@ -593,6 +593,30 @@
   .fc-actions{ display:flex; gap:10px; width:100%; }
   .fc-actions button{ flex:1; padding:12px; border-radius:14px; border:1px solid var(--line); background:var(--surface); font:700 .92rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .fc-actions button.ok{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+
+  /* Mode « Fiche » : toute la leçon sur une page, sections repliables */
+  .fiche-chips{ position:sticky; top:0; z-index:5; display:flex; gap:6px; overflow-x:auto; padding:8px 0; margin:0 -4px 8px; background:color-mix(in srgb, var(--surface) 92%, transparent); -webkit-overflow-scrolling:touch; }
+  .fiche-chip{ flex:0 0 auto; border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:6px 12px; font:700 .78rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .fiche-sec{ background:var(--surface); border:1px solid var(--line); border-radius:14px; margin-bottom:8px; overflow:hidden; }
+  .fiche-sec.open{ border-color:var(--accent); }
+  .fiche-head{ display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:transparent; border:0; padding:12px; font:700 .95rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .fiche-head .num{ flex:0 0 auto; width:28px; height:28px; border-radius:50%; background:var(--accent-soft); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:.82rem; }
+  .fiche-sec.open .fiche-head .num{ background:var(--accent); color:var(--accent-ink); }
+  .fiche-head .lbl{ flex:1 1 auto; }
+  .fiche-head .meta{ font-weight:600; font-size:.74rem; color:var(--muted); }
+  .fiche-head .chev{ transition:transform .15s; color:var(--muted); }
+  .fiche-sec.open .chev{ transform:rotate(90deg); }
+  .fiche-body{ padding:0 12px 14px; }
+  .fiche-body[hidden]{ display:none; }
+  .fiche-body .eyebrow, .fiche-body .screen-title{ display:none; }
+  .fiche-run{ width:100%; padding:12px; border-radius:12px; border:0; background:var(--accent); color:var(--accent-ink); font:700 .92rem "Manrope",sans-serif; cursor:pointer; }
+  @media print{
+    body::before, body::after, .masthead, .controls, .hint, .itinerary, .top-actions, .fiche-chips, .postmark, .fiche-run, .say, .ex-say{ display:none !important; }
+    body{ background:#fff !important; padding:0 !important; }
+    .card{ box-shadow:none !important; border:0 !important; background:#fff !important; }
+    .fiche-body[hidden]{ display:block !important; }
+    .fiche-sec{ break-inside:avoid-page; }
+  }
 </style>
 </head>
 <body>
@@ -13427,6 +13451,9 @@
     somOpen.hidden = false; viewOpen.hidden = false;
     if(state.pick){ itinerary.hidden = true; screenViewModes(); return; }
     if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
+    if(state.step === 0 || state.step >= 6) state.ficheRun = false;
+    somOpen.textContent = (FICHE() && state.ficheRun) ? "📄 Retour à la fiche" : "☰ Sommaire de la leçon";
+    if(ficheShown()){ itinerary.hidden = true; screenFiche(); return; }
     itinerary.hidden = state.step === 0;
     if(GUIDED() && state.step >= 1) renderGuidedBar(); else { whichBarReset(); renderItinerary(); }
     if(state.step === 0) screenAccueil();
@@ -13484,24 +13511,25 @@
       b.addEventListener("click", function(){
         var r = rows.filter(function(x){ return String(x.n) === b.getAttribute("data-n"); })[0];
         if(!r || !r.ok) return;
-        state.hub = false; state.step = r.step; state.subStep = r.sub;
+        state.hub = false; state.step = r.step; state.subStep = r.sub; if(FICHE()) state.ficheRun = true;
         vocabBlockIdx = 0; sbRound = 0; memState = null; state.quizIndex = 0; if(typeof cardsReset === "function") cardsReset();
         render();
       });
     });
   }
-  somOpen.addEventListener("click", function(){ state.hub = true; render(); });
+  somOpen.addEventListener("click", function(){ if(FICHE() && state.ficheRun){ state.ficheRun = false; if(state.step < 1) state.step = 1; state.subStep = 0; render(); return; } state.hub = true; render(); });
 
 
   // ---------- Modes d'affichage : « sommaire » (défaut) et « guide » (parcours en 13 étapes) ----------
   var VIEW_KEY = "the_roots_view_mode";
   var viewOpen = document.getElementById("viewOpen");
-  function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide" || v === "cartes") ? v : "sommaire"; }
-  function GUIDED(){ return viewMode() !== "sommaire" && !PRACTICE && !STANDALONE && !isGrandControle(); }
+  function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide" || v === "cartes" || v === "fiche") ? v : "sommaire"; }
+  function GUIDED(){ return (viewMode() === "guide" || viewMode() === "cartes") && !PRACTICE && !STANDALONE && !isGrandControle(); }
   var VIEW_MODES = [
     {id:"sommaire", t:"Le sommaire", d:"La liste des 13 étapes : tu choisis par où commencer et tu peux sauter d'une étape à l'autre."},
     {id:"guide", t:"Le parcours guidé", d:"Une étape à la fois, dans l'ordre du déroulé, avec une barre de progression et un seul bouton Continuer."},
-    {id:"cartes", t:"Les cartes", d:"Comme le parcours guidé, mais le vocabulaire se révise mot par mot, en grandes cartes illustrées à retourner."}
+    {id:"cartes", t:"Les cartes", d:"Comme le parcours guidé, mais le vocabulaire se révise mot par mot, en grandes cartes illustrées à retourner."},
+    {id:"fiche", t:"La fiche", d:"Toute la leçon sur une seule page : vocabulaire, grammaire et texte à relire, en sections qui s'ouvrent. Les jeux se lancent depuis la fiche, et tu peux l'imprimer en PDF."}
   ];
   function screenViewModes(){
     backBtn.style.visibility = "hidden";
@@ -13626,6 +13654,94 @@
   }
   function whichBarReset(){ itinerary.className = "itinerary"; }
 
+
+  // ---------- Mode « Fiche » ----------
+  function FICHE(){ return viewMode() === "fiche" && !PRACTICE && !STANDALONE && !isGrandControle(); }
+  function ficheShown(){ return FICHE() && state.step >= 1 && state.step < 6 && !state.ficheRun && !state.hub && !state.pick; }
+  function ficheCapture(fn){
+    var tmp = document.createElement("div"); tmp.style.display = "none"; document.body.appendChild(tmp);
+    var old = screen, ks = state.step, ku = state.subStep, kd = state.discoverSeen, kv = vocabBlockIdx;
+    screen = tmp; state.discoverSeen = state.lesson;
+    try { fn(); } catch(e){}
+    screen = old; state.step = ks; state.subStep = ku; state.discoverSeen = kd; vocabBlockIdx = kv;
+    document.body.removeChild(tmp);
+    Array.prototype.forEach.call(tmp.querySelectorAll("[id]"), function(n){ n.removeAttribute("id"); });
+    return tmp;
+  }
+  function ficheRunTo(st, sub){
+    state.ficheRun = true; state.step = st; state.subStep = sub;
+    vocabBlockIdx = 0; sbRound = 0; memState = null; state.quizIndex = 0; if(typeof cardsReset === "function") cardsReset();
+    render();
+  }
+  var ficheOpenSecs = null;
+  function screenFiche(){
+    backBtn.style.visibility = "hidden";
+    nextBtn.textContent = "Passer au contrôle";
+    hint.textContent = "Ouvre les sections pour relire. Les jeux et le contrôle se lancent depuis la fiche.";
+    postmark.innerHTML = "FICHE";
+    var hasLecon = LECON_SUBSTEPS > 3, lastSub = LECON_SUBSTEPS-1;
+    var secs = [];
+    secs.push({n:1, t:"Vocabulaire", meta:VOCAB.length+" mots", inline:function(box){
+      var blocks = vocabBlocks();
+      blocks.forEach(function(_, i){
+        vocabBlockIdx = i;
+        var tmp = ficheCapture(renderVocab);
+        Array.prototype.forEach.call(tmp.querySelectorAll(".eyebrow,.screen-title,.lede,.vocab-dots"), function(n){ n.parentNode.removeChild(n); });
+        while(tmp.firstChild) box.appendChild(tmp.firstChild);
+      });
+      vocabBlockIdx = 0;
+    }});
+    secs.push({n:2, t:"Jeux de vocabulaire", run:[3,0]});
+    if(hasLecon && GRAMMAR1) secs.push({n:3, t:"Grammaire", inline:function(box){ var tmp = ficheCapture(renderGrammar1); while(tmp.firstChild) box.appendChild(tmp.firstChild); }});
+    if(hasLecon) secs.push({n:4, t:"Jeux de grammaire", run:[1,2]});
+    if(hasLecon && GRAMMAR2) secs.push({n:5, t:"Conjugaison", inline:function(box){ var tmp = ficheCapture(renderGrammar2); while(tmp.firstChild) box.appendChild(tmp.firstChild); }});
+    if(hasLecon) secs.push({n:6, t:"Jeux de conjugaison", run:[1, DRILLS ? drillsSubstep() : lastSub]});
+    var lectureInline = !(IMG && IMG.scene && LECTURE_SUBSTEPS === 1) && !(MEDIA && false);
+    if(lectureInline) secs.push({n:7, t:"Compréhension orale et écrite", meta:"étapes 7-8", inline:function(box){
+      var ks = state.subStep; state.subStep = 0;
+      var tmp = ficheCapture(screenLecture); state.subStep = ks;
+      Array.prototype.forEach.call(tmp.querySelectorAll(".eyebrow,.screen-title,.lede"), function(n){ n.parentNode.removeChild(n); });
+      while(tmp.firstChild) box.appendChild(tmp.firstChild);
+    }});
+    else secs.push({n:7, t:"Compréhension orale et écrite", run:[4,0]});
+    if(hasLecon) secs.push({n:9, t:"Expression écrite", run:[1,lastSub]});
+    secs.push({n:10, t:"Expression orale", run:[2,0]});
+    secs.push({n:11, t:"Contrôle de niveau", run:[5,0]});
+    secs.push({n:12, t:"Bonus : à retenir", inline:function(box){ box.innerHTML = cultureNoteHtml() || '<p class="lede">Pas de note pour cette leçon.</p>'; }});
+    secs.push({n:13, t:"Fiche PDF", pdf:true});
+    if(!ficheOpenSecs || ficheOpenSecs.lesson !== state.lesson){ ficheOpenSecs = {lesson:state.lesson, open:{1:true}}; }
+    var head = '<div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title" style="margin-bottom:8px">'+(META.vocabTitle || "Fiche de la leçon")+'</div>';
+    var chips = '<div class="fiche-chips">' + secs.map(function(x){ return '<button type="button" class="fiche-chip" data-n="'+x.n+'">'+x.n+' · '+x.t.replace(/ et écrite/, "").replace("Compréhension orale","Comprendre")+'</button>'; }).join("") + '</div>';
+    screen.innerHTML = head + chips + '<div id="ficheList"></div>';
+    var list = document.getElementById("ficheList");
+    secs.forEach(function(x){
+      var open = !!ficheOpenSecs.open[x.n];
+      var sec = document.createElement("div"); sec.className = "fiche-sec"+(open ? " open" : ""); sec.id = "fs"+x.n;
+      sec.innerHTML = '<button type="button" class="fiche-head" aria-expanded="'+(open ? "true" : "false")+'"><span class="num">'+x.n+'</span><span class="lbl">'+x.t+'</span><span class="meta">'+(x.meta || (x.run ? "jeu" : ""))+'</span><span class="chev">›</span></button><div class="fiche-body"'+(open ? "" : " hidden")+'></div>';
+      var body = sec.querySelector(".fiche-body"), filled = false;
+      function fill(){
+        if(filled) return; filled = true;
+        if(x.inline) x.inline(body);
+        else if(x.run){ body.innerHTML = '<button type="button" class="fiche-run">Lancer : '+x.t+'</button>'; body.querySelector(".fiche-run").addEventListener("click", function(){ ficheRunTo(x.run[0], x.run[1]); }); }
+        else if(x.pdf){ body.innerHTML = '<p class="lede">Imprime la fiche ou enregistre-la en PDF : toutes les sections s\'ouvrent pour l\'impression.</p><button type="button" class="fiche-run">🖨️ Imprimer / enregistrer en PDF</button>'; body.querySelector(".fiche-run").addEventListener("click", function(){ Array.prototype.forEach.call(list.querySelectorAll(".fiche-body"), function(b){ b.hidden = false; }); window.print(); }); }
+      }
+      if(open) fill();
+      sec.querySelector(".fiche-head").addEventListener("click", function(){
+        var nowOpen = body.hidden; fill();
+        body.hidden = !nowOpen; sec.classList.toggle("open", nowOpen); ficheOpenSecs.open[x.n] = nowOpen;
+        sec.querySelector(".fiche-head").setAttribute("aria-expanded", nowOpen ? "true" : "false");
+      });
+      sec._open = function(){ if(body.hidden) sec.querySelector(".fiche-head").click(); };
+      list.appendChild(sec);
+    });
+    Array.prototype.forEach.call(screen.querySelectorAll(".fiche-chip"), function(c){
+      c.addEventListener("click", function(){ var sec = document.getElementById("fs"+c.getAttribute("data-n")); if(sec){ sec._open(); sec.scrollIntoView({behavior:"smooth", block:"start"}); } });
+    });
+  }
+  function ficheNextWrap(fn){
+    return function(){ if(ficheShown()){ ficheRunTo(5, 0); return; } return fn(); };
+  }
+
   var pendingAutoAdvance = null;
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
@@ -13735,7 +13851,7 @@
     }
     render();
   }
-  nextBtn.addEventListener("click", guidedWrap(goNext, 1));
+  nextBtn.addEventListener("click", ficheNextWrap(guidedWrap(goNext, 1)));
 
   function goBack(){
     if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
