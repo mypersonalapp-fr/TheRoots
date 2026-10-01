@@ -1086,3 +1086,34 @@
 .ates-wp-word{ font-size: 18px; }
 .ates-wp-fr{ font-size: 14.5px; font-weight: 700; margin-top: 4px; }
 @media (max-width: 360px){ .ates-tools{ grid-template-columns: 1fr; } }
+
+/* ---------- Compréhension : mosaïque de cases, cartes, dialogues ---------- */
+.comp-hint{ font-size: 12.5px; color: var(--ink-soft); margin: 4px 0 10px; }
+.comp-mos{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+.comp-tile{ border: 0; border-radius: 18px; padding: 12px 8px; min-height: 96px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; font: inherit; color: var(--ink); }
+.comp-tile b{ font-size: 19px; }
+.comp-tile span{ font-size: 11.5px; line-height: 1.3; color: var(--ink-soft); }
+.comp-tile.done{ outline: 2px solid var(--accent); }
+.comp-t0{ background: rgba(232,131,42,.20); }
+.comp-t1{ background: rgba(42,122,184,.20); }
+.comp-t2{ background: rgba(120,100,200,.20); }
+.comp-t3{ background: rgba(214,84,120,.18); }
+.comp-top{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.comp-back{ background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 8px 14px; font: inherit; font-weight: 800; cursor: pointer; }
+.comp-bar{ height: 8px; background: rgba(0,0,0,.1); border-radius: 9px; overflow: hidden; margin-bottom: 10px; }
+.comp-bar i{ display: block; height: 100%; background: var(--accent); }
+.comp-sheet{ border-radius: 22px; padding: 16px; }
+.comp-sheet h3{ margin: 0 0 8px; }
+.comp-nav{ display: flex; gap: 10px; margin-top: 12px; }
+.comp-nav .btn{ flex: 1; }
+.comp-subs{ display: flex; gap: 8px; align-items: center; font-size: 13px; margin-bottom: 6px; }
+.dlg-chat{ display: flex; flex-direction: column; }
+.dlg-bub{ max-width: 86%; padding: 10px 14px; border-radius: 18px; border-bottom-left-radius: 4px; margin-block: 5px; background: rgba(255,255,255,.85); }
+.dlg-bub.me{ margin-left: auto; border-bottom-left-radius: 18px; border-bottom-right-radius: 4px; background: rgba(23,61,74,.92); color: #fff; }
+.dlg-who{ font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.dlg-say{ background: none; border: 0; color: inherit; font: inherit; font-size: 13px; padding: 4px 0; cursor: pointer; text-decoration: underline; }
+.dlg-txt{ margin-top: 4px; }
+.dlg-opt{ display: block; width: 100%; text-align: left; margin-top: 8px; padding: 11px 13px; border-radius: 14px; border: 1px solid rgba(0,0,0,.15); background: rgba(255,255,255,.9); color: var(--ink); font: inherit; cursor: pointer; }
+.dlg-opt.ok{ background: rgba(42,122,184,.2); border-color: #2a7ab8; }
+.dlg-opt.no{ background: rgba(214,84,60,.15); border-color: #b4472f; }
+.dlg-why{ font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
