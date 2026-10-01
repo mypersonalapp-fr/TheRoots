@@ -33,7 +33,6 @@ function menuSections(lang) {
       { id: "comprehension", label: t("menu_comprehension", lang), icon: "🎧" },
       { id: "expression", label: t("menu_expression", lang), icon: "🗣️" },
       { id: "conversation", label: t("menu_conversation", lang), icon: "💬" },
-      { id: "atelier-es", label: t("menu_atelier_es", lang), icon: "🇪🇸", badge: t("menu_badge_new", lang) },
     ] },
     { title: t("menu_section_ressources", lang), items: [
       { id: "dictionnaire", label: t("menu_dictionnaire", lang), icon: "📕" },

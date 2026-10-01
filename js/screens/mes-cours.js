@@ -21,6 +21,7 @@ import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260930a";
 import { plantSvg } from "./plant.js?v=20260930a";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
+import { renderAtelierEs } from "./atelier-es.js?v=20260930a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;
@@ -179,14 +180,44 @@ export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
   let openProgram = null; // { code, level, palier: string|null } — null = fermé
+  let openAteliers = null; // espagnol : null = fermé, "home" = rubrique Mes ateliers, "blocages" ou "atelier" = un des deux ateliers
 
   paint();
 
   function paint() {
+    if (openAteliers) return paintAteliers();
     if (openProgram) return paintProgram();
     if (openLivret) return paintLivret();
     if (openCode) return paintLangDetail(openCode);
     return paintList();
+  }
+
+  // --- Espagnol : rubrique « Mes ateliers » = Atelier des blocages du francophone + Atelier de grammaire espagnole ---
+  function paintAteliers() {
+    if (openAteliers === "atelier") {
+      container.innerHTML = `<button class="settings-back" id="atBack">← Mes ateliers</button><div id="atBody"></div>`;
+      container.querySelector("#atBack").addEventListener("click", () => { openAteliers = "home"; paint(); });
+      renderAtelierEs(container.querySelector("#atBody"));
+      return;
+    }
+    if (openAteliers === "blocages") {
+      container.innerHTML = `<button class="settings-back" id="atBack">← Mes ateliers</button>${blocagesHtml()}`;
+      container.querySelector("#atBack").addEventListener("click", () => { openAteliers = "home"; paint(); });
+      container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
+      return;
+    }
+    container.innerHTML = `
+      <button class="settings-back" id="atBack">← Espagnol</button>
+      <div class="dash-box">
+        <h3>🧠 Mes ateliers</h3>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="lt-opt" id="atBlocages" style="text-align:left"><strong>Atelier des blocages du francophone</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">X1 à X8 : les 8 points où l'on « bugue » en espagnol</span></button>
+          <button class="lt-opt" id="atGrammaire" style="text-align:left"><strong>Atelier espagnol</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">Tous les temps, les verbes clés, les structures, la prononciation et l'espagnol de la rue</span></button>
+        </div>
+      </div>`;
+    container.querySelector("#atBack").addEventListener("click", () => { openAteliers = null; paint(); });
+    container.querySelector("#atBlocages").addEventListener("click", () => { openAteliers = "blocages"; paint(); });
+    container.querySelector("#atGrammaire").addEventListener("click", () => { openAteliers = "atelier"; paint(); });
   }
 
   function paintList() {
@@ -323,7 +354,14 @@ export function renderMesCours(container, shellRoot) {
         <div class="dash-box"><h3>Contrôles A1 · A2 · final</h3><div class="card">${controlsHtml(code)}</div></div>
       ` : ""}
 
-      ${code === "es" ? blocagesHtml() : ""}
+      ${code === "es" ? `
+        <div class="dash-box">
+          <h3>🧠 Mes ateliers</h3>
+          <button class="lt-opt" id="mcOpenAteliers" style="width:100%;text-align:left;display:flex;align-items:center;gap:8px">
+            <span style="flex-grow:1"><strong>Mes ateliers</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">Les blocages du francophone · L'atelier de grammaire espagnole</span></span>
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>` : ""}
 
       ${needsVariantChoice ? `
         <div class="dash-box">
@@ -370,9 +408,11 @@ export function renderMesCours(container, shellRoot) {
     container.querySelector("#mcBack").addEventListener("click", () => { openCode = null; paint(); });
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
     container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, level: "A1", palier: null }; paint(); });
+    const atBtn = container.querySelector("#mcOpenAteliers");
+    if (atBtn) atBtn.addEventListener("click", () => { openAteliers = "home"; paint(); });
 
     const continueBtn = container.querySelector("#mcContinue");
-    if (continueBtn) continueBtn.addEventListener("click", () => { window.location.href = "lessons.html"; });
+    if (continueBtn) continueBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es" : "lessons.html"; });
 
     const changeBtn = container.querySelector("#mcChangeVariant");
     if (changeBtn) changeBtn.addEventListener("click", () => {
