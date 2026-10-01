@@ -3,7 +3,7 @@
 // 23/09) — Apprendre, Ressources, Explorer, Réglages —, bouton retour, et
 // routage entre les onglets.
 
-import { renderDashboard } from "./dashboard.js?v=20260930a";
+import { renderDashboard } from "./dashboard.js?v=20261001a";
 import { renderSettings } from "./settings.js?v=20260930a";
 import { renderMesCours } from "./mes-cours.js?v=20260930a";
 import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
@@ -13,8 +13,8 @@ import { renderTraduction } from "./traduction.js?v=20260930a";
 import { renderDictionnaire } from "./dictionnaire.js?v=20260930a";
 import { renderConversation } from "./conversation.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20260930a";
-import { renderBibliotheque } from "./bibliotheque.js?v=20260930a";
-import { renderAideFaq } from "./aide-faq.js?v=20260930a";
+import { renderBibliotheque } from "./bibliotheque.js?v=20261001a";
+import { renderAideFaq } from "./aide-faq.js?v=20261001a";
 import { mountMyWorld } from "./my-world.js?v=20260930a";
 import { renderCountry } from "./country.js?v=20260930a";
 import { store } from "../data/store.js?v=20260930a";

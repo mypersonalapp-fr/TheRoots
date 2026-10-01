@@ -23,6 +23,10 @@ import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=2026
 import { COMPREHENSION_ORALE_A2_EN } from "../data/comprehension-orale-a2-en.js?v=20260930a";
 import { COMPREHENSION_ECRITE_B1_EN } from "../data/comprehension-ecrite-b1-en.js?v=20261001a";
 import { COMPREHENSION_ECRITE_B2_EN } from "../data/comprehension-ecrite-b2-en.js?v=20261001a";
+import { COMPREHENSION_ECRITE_A1_ES } from "../data/comprehension-ecrite-a1-es.js?v=20261001a";
+import { COMPREHENSION_ECRITE_A2_ES } from "../data/comprehension-ecrite-a2-es.js?v=20261001a";
+import { COMPREHENSION_ECRITE_B1_ES } from "../data/comprehension-ecrite-b1-es.js?v=20261001a";
+import { COMPREHENSION_ECRITE_B2_ES } from "../data/comprehension-ecrite-b2-es.js?v=20261001a";
 import { COMPREHENSION_ORALE_B1_EN } from "../data/comprehension-orale-dialogues-b1-en.js?v=20261001a";
 import { COMPREHENSION_ORALE_B2_EN } from "../data/comprehension-orale-dialogues-b2-en.js?v=20261001a";
 
@@ -43,6 +47,7 @@ const ORAL_BY_LANG = {
 };
 const ECRITE_BY_LANG = {
   en: { A1: COMPREHENSION_ECRITE_EN, A2: COMPREHENSION_ECRITE_A2_EN, B1: COMPREHENSION_ECRITE_B1_EN, B2: COMPREHENSION_ECRITE_B2_EN },
+  es: { A1: COMPREHENSION_ECRITE_A1_ES, A2: COMPREHENSION_ECRITE_A2_ES, B1: COMPREHENSION_ECRITE_B1_ES, B2: COMPREHENSION_ECRITE_B2_ES },
 };
 const DIALOGS_BY_LANG = {
   en: { B1: COMPREHENSION_ORALE_B1_EN, B2: COMPREHENSION_ORALE_B2_EN },
@@ -78,7 +83,7 @@ function normalizeAnswer(s) {
 // Mots-outils ignorés quand on compare la réponse au mot-à-mot du texte —
 // volontairement SANS les mots de nombre (twenty, one, two…), qui sont
 // souvent la réponse elle-même (âge, heure, quantité...).
-const STOPWORDS = new Set(["the", "a", "an", "is", "are", "was", "were", "am", "be", "been", "being", "in", "on", "at", "to", "of", "and", "or", "but", "so", "because", "i", "we", "they", "he", "she", "it", "you", "my", "his", "her", "their", "our", "your", "do", "does", "did", "has", "have", "had", "with", "for", "this", "that", "these", "those", "from", "by", "as", "not", "there", "here", "also", "very", "some", "any"]);
+const STOPWORDS = new Set(["the", "a", "an", "is", "are", "was", "were", "am", "be", "been", "being", "in", "on", "at", "to", "of", "and", "or", "but", "so", "because", "i", "we", "they", "he", "she", "it", "you", "my", "his", "her", "their", "our", "your", "do", "does", "did", "has", "have", "had", "with", "for", "this", "that", "these", "those", "from", "by", "as", "not", "there", "here", "also", "very", "some", "any", "el", "la", "los", "las", "un", "una", "unos", "unas", "de", "del", "al", "en", "y", "o", "que", "es", "son", "por", "para", "con", "se", "su", "sus", "lo", "le", "les", "me", "mi", "mis", "te", "tu", "como", "muy", "mas", "ser", "esta", "este", "esto", "hay", "tiene", "tienen"]);
 function significantWords(s) {
   return normalizeAnswer(s).split(" ").filter((w) => w.length >= 3 && !STOPWORDS.has(w));
 }
@@ -114,19 +119,16 @@ async function checkSpelling(text, ltLang) {
 // ---------- Contenu : cases (mosaïque) ----------
 // Lecture : A1/A2 = séries de 5 textes ; B1/B2 = un palier (6 textes) par case.
 function writtenGroups(texts) {
-  if (texts[0] && texts[0].palier) {
-    const out = [];
-    texts.forEach((x) => {
-      let g = out.find((o) => o.code === x.palier);
-      if (!g) { g = { code: x.palier, title: x.palierTitle, items: [] }; out.push(g); }
-      g.items.push(x);
-    });
-    return out;
-  }
+  // Même présentation partout (anglais, espagnol, tous niveaux) : « Série N » + un petit résumé
+  // (les titres des premiers textes). B1/B2 : une série = un palier (6 textes) ; A1/A2 : 5 textes.
   const out = [];
-  for (let i = 0; i < texts.length; i += 5) {
-    const items = texts.slice(i, i + 5);
-    out.push({ code: `Série ${out.length + 1}`, title: items.slice(0, 3).map((x) => x.title).join(" · "), items });
+  const add = (items) => out.push({ code: `Série ${out.length + 1}`, title: items.slice(0, 3).map((x) => x.title).join(" · "), items });
+  if (texts[0] && texts[0].palier) {
+    const keys = [];
+    texts.forEach((x) => { if (keys.indexOf(x.palier) < 0) keys.push(x.palier); });
+    keys.forEach((k) => add(texts.filter((x) => x.palier === k)));
+  } else {
+    for (let i = 0; i < texts.length; i += 5) add(texts.slice(i, i + 5));
   }
   return out;
 }

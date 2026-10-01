@@ -7,7 +7,9 @@ import { store } from "../data/store.js?v=20260930a";
 import { t } from "../data/i18n.js?v=20260930a";
 import { dueMissions } from "../data/progress.js?v=20260930a";
 import { aiCredits } from "../data/ai-credits.js?v=20260930a";
-import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays } from "../data/daily-content.js?v=20260930a";
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays, pickEveryThreeDays } from "../data/daily-content.js?v=20261001a";
+// Titres des deux cartes (sans « du jour » : le contenu reste 3 jours).
+const CARD_TITLES = { expr: { fr: "Expression", en: "Expression", es: "Expresión", pt: "Expressão" }, quote: { fr: "Citation", en: "Quote", es: "Cita", pt: "Citação" } };
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
 
@@ -193,8 +195,8 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
     const { date, time } = localizedDateTime(settings.primaryLearningLang || lang);
     const learnLang = EXPRESSIONS[settings.primaryLearningLang] ? settings.primaryLearningLang : "en";
     const learnLabel = (settings.langs.find((l) => l.code === learnLang) || {}).label || "";
-    const expr = pickDaily(EXPRESSIONS[learnLang]);
-    const quote = pickDaily(QUOTES);
+    const expr = pickEveryThreeDays(EXPRESSIONS[learnLang]);
+    const quote = pickEveryThreeDays(QUOTES);
     const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
     const leveledLangs = settings.langs.filter((l) => l.leveled);
     const quoteLang = leveledLangs.find((l) => l.code === learnLang) || leveledLangs[0] || settings.langs.find((l) => l.code === learnLang);
@@ -248,14 +250,14 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
 
     const exprCardHtml = `
       <div class="card dash-expr-card">
-        <h3 class="dash-card-h3">${t("dash_expression_title", lang)} · ${learnLabel}</h3>
+        <h3 class="dash-card-h3">${CARD_TITLES.expr[lang] || CARD_TITLES.expr.fr} · ${learnLabel}</h3>
         <div class="dash-expr-text">${esc(expr.text)}</div>
         <div class="dash-expr-fr">${esc(expr.fr)}</div>
       </div>`;
 
     const quoteCardHtml = `
       <div class="card dash-quote-card">
-        <h3 class="dash-card-h3">${t("dash_quote_title", lang)}</h3>
+        <h3 class="dash-card-h3">${CARD_TITLES.quote[lang] || CARD_TITLES.quote.fr}</h3>
         <div class="dash-quote">« ${esc(quote.fr)} »</div>
         ${quoteLang && quote.byLang[quoteLang.code] ? `<div class="dash-quote-equiv">“${esc(quote.byLang[quoteLang.code])}”</div>` : ""}
       </div>`;
