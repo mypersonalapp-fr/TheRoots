@@ -2318,3 +2318,823 @@ LESSONS_ES[308] = {
 
   META: { vocabTitle: "Les petits mots qui remplacent (X8)", lectureTitle: "Le secret de l'anniversaire", bilanTitle: "Bravo, tu as vaincu les blocages du francophone !", pronLabel: "Pronoms collés et sons piège (ñ, ll, jota, c espagnol)", todayLede: "remplacer un mot par lo, la, le, te lo ou se lo sans hésiter, savoir où les placer (dímelo, voy a comprarlo), utiliser lo que, et déjouer les derniers pièges d'Ashley (este problema, demasiada gente, ¡No hables!, embarazada…) — avec une révision finale de tout l'atelier X1-X8" }
 };
+
+// ====================================================================================================
+// PALIERS A1.1 · A1.2 · A1.3 (leçons 201 à 203) — format identique aux leçons d'anglais, joués par
+// lessons.html?lang=es. Sources : les cours d'Ashley (A1.1 Identidad, A1.2 Familia, A1.3 Amigos y
+// relaciones sociales), approfondis et corrigés. Règle : aucune notion avant son heure ; informel ET
+// formel dans chaque leçon. Phonétique : syllabe tonique en MAJUSCULES, é = « blé », th = « think »
+// (c/z en Espagne), kh = « r » rauque (j).
+// ====================================================================================================
+function __esB(block, rows){ return rows.map(function(r){ return {block:block, en:r[0], ipa:r[1], fr:r[2], note:r[3]||""}; }); }
+function __esIdx(V, terms){ return terms.map(function(t){ for(var i=0;i<V.length;i++){ if(V[i].en===t) return i; } throw new Error("MEM_WORDS introuvable : "+t); }); }
+function __esR(display, fr){
+  var toks = display.replace(/([¿¡?!.])/g, " $1 ").replace(/,/g, "").split(/\s+/).filter(Boolean);
+  var answer = toks.join(" ").toLowerCase();
+  var bank = toks.slice(), s = display.length * 7 + 3;
+  for(var i = bank.length - 1; i > 0; i--){ s = (s * 1103515245 + 12345) & 0x7fffffff; var j = s % (i + 1); var t = bank[i]; bank[i] = bank[j]; bank[j] = t; }
+  return {bank: bank, answer: answer, display: display, fr: fr};
+}
+
+// A1.1 — Identidad : te présenter, dire qui tu es (tutoiement ET vouvoiement)
+(function(){
+var V = [].concat(
+ __esB("L'état civil", [
+  ["el nombre","/ˈnombɾe/","le prénom","Accent sur NOM-bre. Piège : « nombre » n'est PAS le nom de famille."],
+  ["el apellido","/apeˈʝiðo/","le nom de famille","En Espagne et en Amérique latine on porte DEUX apellidos : celui du père, puis celui de la mère. Sur un formulaire : « Apellidos » (pluriel)."],
+  ["el apodo","/aˈpoðo/","le surnom","Ce que tes amis t'appellent, pas ce qui est sur ta carte d'identité."],
+  ["la edad","/eˈðað/","l'âge","Le d final est très doux, presque muet."],
+  ["la fecha de nacimiento","/ˈfetʃa ðe naθiˈmjento/","la date de naissance","nacer = naître : « Nací en Sevilla » = je suis né(e) à Séville."],
+  ["el estado civil","/esˈtaðo θiˈβil/","la situation familiale","soltero/a (célibataire), casado/a (marié·e)… Voir le bonus."],
+  ["la profesión","/pɾofeˈsjon/","la profession","Informel : « ¿A qué te dedicas? » = tu fais quoi dans la vie ?"],
+  ["el teléfono","/teˈlefono/","le téléphone","Accent écrit sur le premier é : on dit te-LÉ-fo-no."],
+  ["el correo electrónico","/koˈrreo elekˈtɾoniko/","l'adresse e-mail","Le « @ » se dit « arroba »."],
+  ["la dirección","/diɾekˈθjon/","l'adresse postale","Le même mot veut aussi dire « direction »."]
+ ]),
+ __esB("Origine et résidence", [
+  ["el país","/paˈis/","le pays","Deux syllabes : pa-ÍS. L'accent écrit sur le í les sépare."],
+  ["la ciudad","/θjuˈðað/","la ville","c devant i = « th » anglais en Espagne (en Amérique latine : « s »)."],
+  ["la nacionalidad","/naθjonaliˈðað/","la nationalité","Mot long mais régulier : tous les mots en -dad sont féminins."],
+  ["vivir","/biˈβiɾ/","habiter, vivre","Le b et le v se prononcent exactement pareil en espagnol."],
+  ["ser de","/seɾ ðe/","être de (origine)","« Soy de Lyon » = je viens de Lyon. L'origine se dit avec « de »."],
+  ["vivir en","/biˈβiɾ en/","habiter à / en","L'habitation se dit avec « en » : « Vivo en París »."]
+ ]),
+ __esB("Les nationalités (masc. / fém.)", [
+  ["francés / francesa","/fɾanˈθes · fɾanˈθesa/","français / française","Le masculin perd son accent écrit au féminin."],
+  ["español / española","/espaˈɲol · espaˈɲola/","espagnol / espagnole","ñ = « gn » de « agneau »."],
+  ["italiano / italiana","/itaˈljano · itaˈljana/","italien / italienne","Régulier : -o → -a."],
+  ["alemán / alemana","/aleˈman · aleˈmana/","allemand / allemande",""],
+  ["portugués / portuguesa","/poɾtuˈɣes · poɾtuˈɣesa/","portugais / portugaise",""],
+  ["inglés / inglesa","/iŋˈgles · iŋˈglesa/","anglais / anglaise",""],
+  ["argentino / argentina","/axenˈtino · axenˈtina/","argentin / argentine","j et g devant e/i = « kh » rauque."],
+  ["mexicano / mexicana","/mexiˈkano · mexiˈkana/","mexicain / mexicaine","Le x de México se prononce comme la jota."],
+  ["colombiano / colombiana","/kolomˈbjano · kolomˈbjana/","colombien / colombienne",""],
+  ["marroquí","/maroˈki/","marocain·e","Finit en -í : identique au masculin et au féminin."],
+  ["estadounidense","/estaðouniˈðense/","américain·e (des États-Unis)","Finit en -e : identique au masculin et au féminin."]
+ ]),
+ __esB("Le corps et l'apparence", [
+  ["la altura","/alˈtuɾa/","la taille","On dit « Mido 1,70 » (je mesure 1,70 m) : à retenir tel quel."],
+  ["el peso","/ˈpeso/","le poids","« peso » est aussi la monnaie du Mexique, de l'Argentine…"],
+  ["el pelo","/ˈpelo/","les cheveux","Singulier en espagnol : « el pelo negro »."],
+  ["los ojos","/los ˈoxos/","les yeux","« ojos azules, verdes, marrones, negros »."],
+  ["la cara","/ˈkaɾa/","le visage",""],
+  ["la cabeza","/kaˈβeθa/","la tête","z = « th » anglais en Espagne."],
+  ["el brazo","/ˈbɾaθo/","le bras",""],
+  ["la mano","/ˈmano/","la main","PIÈGE : finit en -o mais est FÉMININ (la mano, las manos)."],
+  ["la pierna","/ˈpjeɾna/","la jambe",""],
+  ["el pie","/ˈpje/","le pied",""]
+ ]),
+ __esB("Tutoyer ou vouvoyer ?", [
+  ["tú","/tu/","tu","Amis, famille, jeunes, collègues. Avec accent = pronom. Sans accent « tu » = ton/ta."],
+  ["usted","/usˈteð/","vous (politesse, 1 personne)","Inconnu plus âgé, client, supérieur. Écrit « Ud. ». Se conjugue comme « él/ella » !"],
+  ["vosotros / vosotras","/boˈsotɾos · boˈsotɾas/","vous (pluriel amical)","ESPAGNE uniquement. « vosotras » = que des femmes."],
+  ["ustedes","/usˈteðes/","vous (pluriel)","Amérique latine : remplace TOUJOURS vosotros. En Espagne : pluriel de politesse."]
+ ]),
+ __esB("Les questions", [
+  ["¿cómo?","/ˈkomo/","comment ?","Les mots interrogatifs portent un accent écrit : cómo, dónde, cuántos…"],
+  ["¿cuántos años?","/ˈkwantos ˈaɲos/","combien d'années ? (quel âge ?)","On demande l'âge avec « años » : ¿Cuántos años tienes?"],
+  ["¿de dónde?","/de ˈdonde/","d'où ?","Pour l'origine : ¿De dónde eres?"],
+  ["¿dónde?","/ˈdonde/","où ?","Pour l'habitation : ¿Dónde vives?"],
+  ["¿cuál?","/kwal/","quel / lequel ?","¿Cuál es tu apellido? = quel est ton nom de famille ?"]
+ ]),
+ __esB("Politesse et petites phrases utiles", [
+  ["mucho gusto","/ˈmutʃo ˈɣusto/","enchanté(e)","Neutre : un homme comme une femme peut le dire."],
+  ["encantado / encantada","/enkanˈtaðo · enkanˈtaða/","ravi(e)","S'accorde avec celui ou celle qui parle."],
+  ["igualmente","/iɣwalˈmente/","pareillement","La réponse standard à « mucho gusto »."],
+  ["el gusto es mío","/el ˈɣusto es ˈmio/","le plaisir est pour moi","Un peu plus soutenu."],
+  ["¿cómo se escribe?","/ˈkomo se esˈkɾiβe/","comment ça s'écrit ?","Indispensable pour épeler un nom."],
+  ["no comprendo","/no komˈpɾendo/","je ne comprends pas","Aussi : « no entiendo »."],
+  ["más despacio, por favor","/mas desˈpaθjo poɾ faˈβoɾ/","plus lentement, s'il vous plaît","Très utile pour un débutant !"],
+  ["¿puede repetir?","/ˈpweðe repeˈtiɾ/","pouvez-vous répéter ?","Informel : « ¿Puedes repetir? »"],
+  ["estoy soltero / soltera","/esˈtoi solˈteɾo/","je suis célibataire","Avec ESTAR : l'état civil est vu comme un état."],
+  ["estoy casado / casada","/esˈtoi kaˈsaðo/","je suis marié(e)","Idem avec estar."]
+ ])
+);
+LESSONS_ES[201] = {
+ code:"A1.1", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el nombre","el apellido","la edad","vivir","ser de","vivir en","usted","mucho gusto"]),
+ MINI_CHECKS: [
+  {q:"Comment dit-on « mon prénom » ?", opts:["mi apellido","mi nombre","mi edad"], correct:1, fb:"« nombre » = prénom. « apellido » = nom de famille. Piège classique : nombre ≠ nom."},
+  {q:"« Je viens de Lyon. »", opts:["Soy en Lyon.","Soy de Lyon.","Vivo de Lyon."], correct:1, fb:"Origine = « de » : « Soy de Lyon ». L'habitation, elle, prend « en » : « Vivo en Lyon »."},
+  {q:"« J'habite à Madrid. »", opts:["Vivo de Madrid.","Soy en Madrid.","Vivo en Madrid."], correct:2, fb:"Habiter = vivir + en : « Vivo en Madrid »."},
+  {q:"À un directeur que tu ne connais pas, tu dis…", opts:["¿Cómo te llamas?","¿Cómo se llama usted?","¿Cómo me llamo?"], correct:1, fb:"Inconnu + position = usted. Et usted se conjugue avec la forme de « él/ella » : se llama."},
+  {q:"Quel est le féminin de « francés » ?", opts:["francés","franceso","francesa"], correct:2, fb:"On ajoute -a et on perd l'accent écrit : francés → francesa."},
+  {q:"« la mano » est…", opts:["masculin","féminin"], correct:1, fb:"Féminin malgré le -o : la mano, las manos."},
+  {q:"Pourquoi dit-on « Soy Ana » et pas « Yo soy Ana » ?", opts:["« yo » est interdit","La terminaison -oy dit déjà « je »","C'est de l'argot"], correct:1, fb:"La terminaison du verbe porte l'information : soy ne peut vouloir dire que « je suis ». On ajoute « yo » seulement pour insister."},
+  {q:"Comment écrit-on la nationalité d'une Française ?", opts:["Francesa","francesa","FRANCESA"], correct:1, fb:"En espagnol, les nationalités s'écrivent sans majuscule : francesa, española."}
+ ],
+ ROUNDS: [
+  __esR("Me llamo Ana.","Je m'appelle Ana."),
+  __esR("¿Cómo te llamas?","Comment tu t'appelles ?"),
+  __esR("Tengo veinte años.","J'ai vingt ans."),
+  __esR("Soy de Madrid.","Je suis de Madrid."),
+  __esR("Vivo en París.","J'habite à Paris."),
+  __esR("¿De dónde eres?","D'où es-tu ?"),
+  __esR("¿Cómo se llama usted?","Comment vous appelez-vous ?"),
+  __esR("Mi apellido es García.","Mon nom de famille est García."),
+  __esR("¿Cuántos años tiene usted?","Quel âge avez-vous ?"),
+  __esR("Mucho gusto, soy francesa.","Enchantée, je suis française."),
+  __esR("Tengo veintiún años.","J'ai vingt et un ans."),
+  __esR("¿Dónde vives?","Où habites-tu ?")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Me ___ Sofía.", opts:["llamo","llamas","llama"], correct:0, why:"« yo » → me llamo. Le petit pronom me se place AVANT le verbe."},
+  {cat:"ecrit", q:"¿Cómo ___ llamas? (tutoiement)", opts:["me","te","se"], correct:1, why:"tú → te llamas. La forme du pronom suit la personne : me, te, se…"},
+  {cat:"ecrit", q:"Elle a trente et un ans.", opts:["Tiene treinta y uno años.","Tiene treinta y un años.","Es treinta y un años."], correct:1, why:"Devant un nom masculin, « uno » devient « un » : treinta y un años. Et l'âge se dit avec TENER."},
+  {cat:"ecrit", q:"Nous habitons à Paris.", opts:["Vivimos en París.","Vivimos de París.","Somos en París."], correct:0, why:"vivir (nosotros) = vivimos ; habiter à = vivir en."},
+  {cat:"ecrit", q:"¿De dónde ___ usted?", opts:["eres","es","soy"], correct:1, why:"usted se conjugue comme él/ella : « es »."},
+  {cat:"ecrit", q:"___ apellidos son López García. (mes)", opts:["Mi","Mis","Tus"], correct:1, why:"Le possessif s'accorde avec la chose possédée : plusieurs apellidos → mis."},
+  {cat:"ecrit", q:"¿___ eres de Madrid? (tu = pronom)", opts:["Tu","Tú"], correct:1, why:"« tú » avec accent = le pronom « tu ». « tu » sans accent = ton/ta."},
+  {cat:"ecrit", q:"Il s'appelle Pablo.", opts:["Se llama Pablo.","Se llamas Pablo.","Me llama Pablo."], correct:0, why:"él → se llama (trois lettres pour l'ensemble él / ella / usted)."},
+  {cat:"ecrit", q:"Quelle phrase est la plus naturelle ?", opts:["Yo soy español y yo vivo en Lyon.","Soy español y vivo en Lyon."], correct:1, why:"On omet le pronom sujet : les terminaisons -oy et -o disent déjà « je »."},
+  {cat:"ecrit", q:"Féminin de « español » :", opts:["españolo","española","espanola"], correct:1, why:"Nationalité en consonne : on ajoute -a (español → española). Le ñ reste !"},
+  {cat:"oral", audio:"Me llamo Carlos y soy de Buenos Aires.", q:"Écoute : d'où vient Carlos ?", opts:["De Madrid","De Buenos Aires","De Barcelone"], correct:1, why:"« soy de Buenos Aires » : origine avec ser + de."},
+  {cat:"oral", audio:"Tengo veintiún años.", q:"Écoute : quel âge a la personne ?", opts:["20 ans","21 ans","31 ans"], correct:1, why:"veintiún = 21 (veinte + un). Pas « treinta » qui serait 30."},
+  {cat:"oral", audio:"¿Cómo se llama usted?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« se llama usted » : vouvoiement. Au tutoiement : ¿Cómo te llamas?"},
+  {cat:"oral", audio:"Vivo en Valencia, pero soy de Sevilla.", q:"Écoute : où habite la personne ?", opts:["À Séville","À Valence","À Madrid"], correct:1, why:"« vivo en Valencia » : elle habite à Valence. « soy de Sevilla » = elle en vient."},
+  {cat:"oral", audio:"Mi apellido es Ruiz. R, U, I, Z.", q:"Écoute : quel est le nom de famille ?", opts:["Ruiz","Ruiz Martín","Rubio"], correct:0, why:"La personne épelle R-U-I-Z : Ruiz."},
+  {cat:"oral", audio:"Mucho gusto. — Igualmente.", q:"Écoute : que se disent-ils ?", opts:["Au revoir","Enchanté — pareillement","Merci — de rien"], correct:1, why:"« mucho gusto » (enchanté) → « igualmente » (pareillement)."},
+  {cat:"comprehension", passage:"Me llamo Elena, tengo 28 años y soy médica. Nací en Sevilla, pero ahora vivo en Valencia. Mi apellido es Gómez.", q:"Quel est le métier d'Elena ?", opts:["Professeure","Médecin","Étudiante"], correct:1, why:"« médica » = médecin (féminin de médico)."},
+  {cat:"comprehension", passage:"Me llamo Elena, tengo 28 años y soy médica. Nací en Sevilla, pero ahora vivo en Valencia. Mi apellido es Gómez.", q:"Où habite Elena aujourd'hui ?", opts:["À Séville","À Valence","À Madrid"], correct:1, why:"« ahora vivo en Valencia ». Elle est née à Séville (« nací en Sevilla »)."},
+  {cat:"comprehension", passage:"FICHA — Nombre: Daniel. Apellidos: Ruiz Martín. Edad: 34 años. Nacionalidad: colombiano. Ciudad: Medellín. Profesión: ingeniero.", q:"Quel est le premier apellido de Daniel (celui du père) ?", opts:["Ruiz","Martín","Daniel"], correct:0, why:"Le premier apellido vient du père, le second de la mère."},
+  {cat:"comprehension", passage:"FICHA — Nombre: Daniel. Apellidos: Ruiz Martín. Edad: 34 años. Nacionalidad: colombiano. Ciudad: Medellín. Profesión: ingeniero.", q:"Quelle est la nationalité de Daniel ?", opts:["Espagnol","Colombien","Mexicain"], correct:1, why:"« colombiano » : sans majuscule en espagnol."},
+  {cat:"comprehension", passage:"Recepcionista: Buenos días. ¿Cómo se llama usted? — Señora: Me llamo Ana Ruiz. — Recepcionista: ¿Cómo se escribe su apellido? — Señora: R, U, I, Z.", q:"Quel indice montre que la conversation est formelle ?", opts:["« Buenos días »","« usted » et « su apellido »","« se escribe »"], correct:1, why:"usted / su = vouvoiement."},
+  {cat:"comprehension", passage:"Sofía: Hola, ¿cómo te llamas? — Carlos: Me llamo Carlos. ¿Y tú? — Sofía: Soy Sofía. ¿De dónde eres? — Carlos: Soy de Buenos Aires, pero vivo en Barcelona.", q:"Pourquoi Carlos dit-il « pero » ?", opts:["Il vient d'une ville mais habite ailleurs","Il refuse de répondre","Il est en colère"], correct:0, why:"« pero » = mais : origine (Buenos Aires) ≠ lieu d'habitation (Barcelone)."}
+ ],
+ PRON_VERBS: [
+  {en:"Me llamo Ana.", fr:"Je m'appelle Ana. (ll = « y » de yeux : me YA-mo)"},
+  {en:"¿Cómo te llamas?", fr:"Comment tu t'appelles ? (accent sur CÓ-mo)"},
+  {en:"Tengo veinte años.", fr:"J'ai vingt ans. (ñ = « gn » : A-gnos)"},
+  {en:"Soy de Madrid.", fr:"Je suis de Madrid. (d final très doux : ma-DRID)"},
+  {en:"Vivo en Barcelona.", fr:"J'habite à Barcelone. (v = b ; c = « th » : bar-the-LO-na)"},
+  {en:"¿De dónde eres?", fr:"D'où es-tu ? (DÓN-de)"},
+  {en:"Mucho gusto.", fr:"Enchanté. (ch comme dans « tchèque » ; g devant u = « g » dur)"},
+  {en:"Mi apellido es Jiménez.", fr:"Mon nom est Jiménez. (j = « kh » rauque : khi-MÉ-néth)"},
+  {en:"¿Cómo se escribe?", fr:"Comment ça s'écrit ? (es-KRI-be)"},
+  {en:"Soy francesa y vivo en Zaragoza.", fr:"Je suis française et j'habite à Saragosse. (z/c = « th »)"}
+ ],
+ READING: [
+  "Me llamo Elena Gómez y tengo veintiocho años.",
+  "Soy médica en un hospital grande.",
+  "Nací en Sevilla, pero ahora vivo en Valencia.",
+  "Mi nombre es Elena, pero mis amigos me llaman Ele.",
+  "Mi padre se llama Antonio y mi madre se llama Rosa.",
+  "Mis apellidos son Gómez Ruiz.",
+  "Soy española, pero mi abuela es argentina.",
+  "Mi correo electrónico es elena.gomez@correo.es.",
+  "Estoy soltera y vivo sola en un piso pequeño.",
+  "Mucho gusto: ¿y usted, cómo se llama?"
+ ],
+ GLOSS: [
+  {en:"grande", fr:"grand(e) : un hospital grande → un hospital GRANDE (invariable au féminin)"},
+  {en:"el hospital", fr:"l'hôpital"},
+  {en:"mis amigos me llaman", fr:"mes amis m'appellent"},
+  {en:"el abuelo / la abuela", fr:"le grand-père / la grand-mère"},
+  {en:"solo / sola", fr:"seul / seule"},
+  {en:"el piso", fr:"l'appartement (Espagne) — en Amérique latine : el departamento"},
+  {en:"pequeño", fr:"petit"},
+  {en:"nací", fr:"je suis né(e) (verbe nacer, passé : phrase-bloc)"}
+ ],
+ GRAMMAR1: {
+  heading:"Se présenter : llamarse, ser, tener… et ne PAS dire « yo »",
+  lede:"Le grand réflexe espagnol : la terminaison du verbe dit déjà QUI parle. Voilà pourquoi on dit « Me llamo Ana » et non « Yo me llamo Ana ». Un seul nouveau verbe aujourd'hui : llamarse.",
+  conj:[
+   ["yo →","me llamo","Me llamo Ana."],
+   ["tú →","te llamas","¿Cómo te llamas?"],
+   ["él, ella, usted →","se llama","Se llama Pablo. · ¿Cómo se llama usted?"],
+   ["nosotros →","nos llamamos","Nos llamamos Ana y Luis."],
+   ["vosotros →","os llamáis","¿Cómo os llamáis?"],
+   ["ellos, ustedes →","se llaman","Se llaman Ana y Luis."]
+  ],
+  ruleHtml:"📖 <b>llamarse</b> est <b>pronominal</b> comme « s'appeler » : le petit pronom (<b>me, te, se, nos, os, se</b>) se place <b>AVANT</b> le verbe. Autour de lui, trois verbes que tu connais déjà (A1.0) : <b>ser</b> (soy, eres, es…) pour l'identité, <b>tener</b> (tengo, tienes, tiene…) pour l'âge, <b>vivir</b> (vivo, vives, vive…) pour l'habitation. Modèle en 4 phrases : <b>Me llamo Ana. Tengo veinte años. Soy de Madrid. Vivo en Lyon.</b> Et attention : <b>usted</b> et <b>ustedes</b> sont des « vous » de politesse mais se conjuguent à la 3e personne : <b>se llama usted</b>, <b>se llaman ustedes</b>.",
+  dialogueLede:"Deux jeunes se rencontrent à une fête (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola! ¿Cómo te llamas?", fr:"Salut ! Comment tu t'appelles ?"},
+   {who:"you", en:"Me llamo Carlos. ¿Y tú?", fr:"Je m'appelle Carlos. Et toi ?"},
+   {who:"them", en:"Soy Sofía. ¿De dónde eres?", fr:"Moi c'est Sofía. Tu viens d'où ?"},
+   {who:"you", en:"Soy de Buenos Aires, pero vivo en Barcelona.", fr:"Je suis de Buenos Aires, mais j'habite à Barcelone."}
+  ],
+  whyLabel:"Pourquoi l'espagnol « oublie » le pronom sujet",
+  whyText:"En français, « mange » peut vouloir dire je, il ou elle : le pronom est donc OBLIGATOIRE. En espagnol, chaque personne a SA terminaison (-o, -as, -a, -amos, -áis, -an) : <b>soy</b> ne peut signifier que « je suis ». Le pronom devient inutile… et lourd. Tu ne l'ajoutes que pour <b>insister ou opposer</b> (« Yo soy francés, ¿y tú? ») ou quand la phrase est ambiguë (« es » = il, elle ou vous : « Él es médico, ella es profesora »). Réflexe à acquérir : <b>commence directement par le verbe</b>."
+ },
+ GRAMMAR2: {
+  heading:"Les 4 questions d'identité, mi/tu/su, l'âge et de / en",
+  dialogueLede:"À la réception d'un hôtel (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días. ¿Cómo se llama usted?", fr:"Bonjour. Comment vous appelez-vous ?"},
+   {who:"you", en:"Me llamo Ana Ruiz.", fr:"Je m'appelle Ana Ruiz."},
+   {who:"them", en:"¿Cómo se escribe su apellido?", fr:"Comment s'écrit votre nom de famille ?"},
+   {who:"you", en:"R, U, I, Z. Soy de Valencia, pero vivo en Madrid.", fr:"R, U, I, Z. Je suis de Valence, mais j'habite à Madrid."}
+  ],
+  ruleHtml:"💭 <b>Les 4 questions</b> — informel (tú) / formel (usted) : <b>¿Cómo te llamas?</b> / <b>¿Cómo se llama usted?</b> · <b>¿Cuántos años tienes?</b> / <b>¿Cuántos años tiene usted?</b> · <b>¿De dónde eres?</b> / <b>¿De dónde es usted?</b> · <b>¿Dónde vives?</b> / <b>¿Dónde vive usted?</b>. Ponctuation : l'espagnol ouvre <b>ET</b> ferme (¿…? ¡…!). Les mots interrogatifs prennent un accent écrit (cómo, dónde, cuántos).<br><br><b>mi / tu / su</b> : mi nombre → mis apellidos · tu nombre → tus apellidos · su nombre → sus apellidos. Ils s'accordent avec la chose possédée (singulier ou pluriel), jamais avec le genre : <b>mi madre, mi padre</b>. « su » = son, sa, ses, <b>votre, vos</b> (usted), leur(s).<br><br><b>L'âge</b> : TENER, comme en français « avoir » : <b>Tengo 25 años</b>, jamais « Soy 25 años ». Devant « años », uno devient un : <b>veintiún años, treinta y un años</b>.<br><br><b>de / en</b> : origine = <b>de</b> (Soy de Lyon), habitation = <b>en</b> (Vivo en Lyon).",
+  whyLabel:"Pourquoi l'âge avec « tener » et pas « ser » ?",
+  whyText:"L'espagnol pense l'âge comme quelque chose que tu <b>possèdes</b> (tener = avoir) — exactement comme le français « j'ai 25 ans ». L'anglais, lui, dit « I am 25 ». Donc aucun piège pour toi : traduis mot à mot « j'ai » → tengo. Autre détail : <b>tú</b> (avec accent) est le pronom « tu » ; <b>tu</b> (sans accent) est le possessif « ton/ta ». L'accent sert uniquement à les distinguer : « ¿Tú tienes tu libro? » = toi, tu as ton livre ?"
+ },
+ REVIEW: [
+  {q:"« Je suis fatiguée (en ce moment). »", opts:["Soy cansada.","Estoy cansada."], correct:1, fb:"Un état du moment → ESTAR. (rappel A1.0)"},
+  {q:"Comment se prononce la lettre « j » dans « jamón » ?", opts:["comme le j français","comme un « r » rauque (kh)"], correct:1, fb:"j = son rauque au fond de la gorge : kha-MON. (rappel A1.0)"},
+  {q:"Comment dit-on 15 ?", opts:["quince","cinco","quinze"], correct:0, fb:"quince. Rappel : 11 once, 12 doce, 13 trece, 14 catorce, 15 quince. (rappel A1.0)"},
+  {q:"« la casa » : l'article est…", opts:["masculin","féminin"], correct:1, fb:"Les noms en -a sont en général féminins : la casa. (rappel A1.0)"},
+  {q:"« Tú tienes » : le verbe est…", opts:["ser","estar","tener"], correct:2, fb:"tener : tengo, tienes, tiene… (rappel A1.0)"}
+ ],
+ CULTURE_NOTE: {icon:"🤝", title:"Note culturelle — la première rencontre : tú ou usted ?",
+  html:"En Espagne on tutoie très vite : collègues, voisins, même des inconnus jeunes. Avec un inconnu âgé, un client ou un supérieur, on dit <b>usted</b>. Dans certaines régions d'Amérique latine (Colombie par exemple), <b>usted</b> s'emploie même entre amis proches ou en famille. En cas de doute : usted, c'est toujours poli, et la personne te proposera de la « tutoyer » si elle le souhaite (« puedes tutearme »). Pour se saluer en Espagne : la bise (une sur chaque joue) entre amis ou entre femmes, poignée de main dans un contexte professionnel. En Amérique latine, la bise est souvent unique. Enfin : tu porteras (et verras) <b>deux apellidos</b> — celui du père puis celui de la mère."},
+ NEXT_PREVIEW:"A1.2 (Familia) : parler de ta famille — padre, madre, hermanos, abuelos, primos —, accorder au féminin (hermano → hermana), le pluriel (los padres, los hermanos) et décrire quelqu'un avec ser et tener.",
+ META:{vocabTitle:"Identidad : se présenter, tu ou usted (A1.1)", lectureTitle:"Elena, médecin à Valence", bilanTitle:"Bravo, tu sais te présenter en espagnol !", pronLabel:"Se présenter : ll, ñ, j, z/c et d final", todayLede:"te présenter, dire ton nom, ton âge, ton origine et où tu habites, épeler ton nom, et savoir quand tutoyer ou vouvoyer"},
+ DRILLS: [
+  {type:"fill", text:"___ llamo Ana. (je)", answers:["me","Me"], why:"yo → me llamo : le pronom me se place avant le verbe."},
+  {type:"fill", text:"¿Cómo te ___? (tu)", answers:["llamas"], why:"tú → te llamas : terminaison -as."},
+  {type:"fill", text:"Él se ___ Pablo.", answers:["llama"], why:"él / ella / usted → se llama."},
+  {type:"fill", text:"Nosotros nos ___ Ana y Luis.", answers:["llamamos"], why:"nosotros → -amos : nos llamamos."},
+  {type:"fill", text:"Ellos se ___ Pablo y Marta.", answers:["llaman"], why:"ellos / ustedes → se llaman."},
+  {type:"fill", text:"Yo ___ veinte años. (avoir)", answers:["tengo"], why:"L'âge se dit avec TENER : tengo."},
+  {type:"fill", text:"¿Cuántos años ___ usted? (avoir)", answers:["tiene"], why:"usted se conjugue comme él/ella : tiene."},
+  {type:"fill", text:"___ de Madrid. (je suis)", answers:["Soy","soy"], why:"L'origine = ser + de : soy de Madrid."},
+  {type:"fill", text:"¿De dónde ___ tú?", answers:["eres"], why:"tú → eres."},
+  {type:"fill", text:"___ en Barcelona. (j'habite)", answers:["Vivo","vivo"], why:"vivir : vivo. Habiter à = vivir en."},
+  {type:"fill", text:"Tengo veintiún ___ .", answers:["años","anos"], why:"« años » : le ñ compte (sans lui, « anos » veut dire autre chose !)."},
+  {type:"fill", text:"Señora Pérez, ¿cuál es ___ dirección? (votre)", answers:["su"], why:"Avec usted, le possessif est « su »."},
+  {type:"choice", q:"Pour demander son nom à un enfant de 10 ans :", opts:["¿Cómo te llamas?","¿Cómo se llama usted?"], correct:0, why:"Enfant → tú : te llamas."},
+  {type:"choice", q:"Pour demander son âge à un client âgé :", opts:["¿Cuántos años tienes?","¿Cuántos años tiene usted?"], correct:1, why:"Client âgé → usted : tiene."},
+  {type:"choice", q:"Il a 31 ans.", opts:["Tiene treinta y uno años.","Tiene treinta y un años."], correct:1, why:"Devant le nom masculin « años », uno → un."},
+  {type:"choice", q:"Je viens de Lyon.", opts:["Soy de Lyon.","Soy en Lyon."], correct:0, why:"Origine = de."},
+  {type:"choice", q:"Mes noms de famille :", opts:["mi apellidos","mis apellidos"], correct:1, why:"Plusieurs choses possédées → mis."},
+  {type:"choice", q:"Quelle phrase évite le pronom superflu ?", opts:["Yo tengo veinte años.","Tengo veinte años."], correct:1, why:"Le verbe dit déjà « je »."}
+ ],
+ ANNOTATED: {
+  title:"Elena se presenta",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction — et repère ce qui manque : aucun « yo » !",
+  sentences:[
+   {fr:"Je m'appelle Elena et j'ai vingt-huit ans.", tokens:[
+    {w:"Me llamo", tag:"verbe pronominal", info:"llamarse · présent · yo", fr:"je m'appelle", tip:"Pas de « yo » : me llamo suffit."},
+    {w:"Elena", tag:"nom propre", fr:"Elena"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"tengo", tag:"verbe", info:"tener · présent · yo", fr:"j'ai", tip:"L'âge se dit avec tener, comme en français avec « avoir »."},
+    {w:"veintiocho", tag:"adjectif", info:"nombre", fr:"vingt-huit"},
+    {w:"años", tag:"nom", info:"masc. plur.", fr:"ans", tip:"Le ñ se prononce « gn »."}
+   ]},
+   {fr:"Je suis médecin et j'habite à Valence.", tokens:[
+    {w:"Soy", tag:"verbe", info:"ser · présent · yo", fr:"je suis", tip:"Ser pour la profession : c'est ton identité."},
+    {w:"médica", tag:"nom", info:"fém. sing.", fr:"médecin (femme)", tip:"Le métier s'accorde : médico / médica."},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"vivo", tag:"verbe", info:"vivir · présent · yo", fr:"j'habite"},
+    {w:"en", tag:"préposition", fr:"à", tip:"Habitation = en."},
+    {w:"Valencia", tag:"nom propre", fr:"Valence"}
+   ]},
+   {fr:"Je suis née à Séville, mon nom de famille est Gómez.", tokens:[
+    {w:"Nací", tag:"verbe", info:"nacer · passé · yo", fr:"je suis née", tip:"Phrase-bloc : le passé viendra plus tard. Retiens « nací en ______ »."},
+    {w:"en", tag:"préposition", fr:"à"},
+    {w:"Sevilla", tag:"nom propre", fr:"Séville"},
+    {w:"mi", tag:"déterminant", info:"possessif · sing.", fr:"mon", tip:"mi : un seul mot pour mon, ma."},
+    {w:"apellido", tag:"nom", info:"masc. sing.", fr:"nom de famille"},
+    {w:"es", tag:"verbe", info:"ser · présent · él/ella", fr:"est"},
+    {w:"Gómez", tag:"nom propre", fr:"Gómez"}
+   ]},
+   {fr:"Comment vous appelez-vous, monsieur ?", tokens:[
+    {w:"¿Cómo", tag:"adverbe", info:"interrogatif", fr:"comment", tip:"Accent écrit : cómo."},
+    {w:"se llama", tag:"verbe pronominal", info:"llamarse · présent · usted", fr:"vous appelez-vous", tip:"usted = forme de la 3e personne."},
+    {w:"usted", tag:"pronom sujet", info:"vouvoiement", fr:"vous (politesse)"},
+    {w:"señor", tag:"nom", info:"masc. sing.", fr:"monsieur"}
+   ]}
+  ]
+ }
+};
+})();
+
+// A1.2 — Familia : parler de ta famille (tener, accords o→a, pluriel générique, ser pour décrire)
+(function(){
+var V = [].concat(
+ __esB("Le noyau familial", [
+  ["la familia","/iaˈfamilja/".replace("ia","la"),"la famille","Singulier en espagnol : « mi familia es grande ». Se prononce fa-MI-lia."],
+  ["la madre","/ˈmaðɾe/","la mère","Familier : « mamá ». Le d entre voyelles est doux."],
+  ["el padre","/ˈpaðɾe/","le père","Familier : « papá »."],
+  ["los padres","/los ˈpaðɾes/","les parents (père et mère)","PIÈGE : « los padres » = LES PARENTS, pas seulement « les pères »."],
+  ["el hermano / la hermana","/eɾˈmano · eɾˈmana/","le frère / la sœur","Le h ne se prononce jamais : er-MA-no."],
+  ["los hermanos","/los eɾˈmanos/","les frères et sœurs (la fratrie)","Masculin pluriel générique : un frère + une sœur = « hermanos »."],
+  ["el hijo / la hija","/el ˈixo · la ˈixa/","le fils / la fille","j = « kh » rauque : I-kho."],
+  ["los hijos","/los ˈixos/","les enfants (fils et filles)","Même règle : « los hijos » = les enfants."],
+  ["el marido / el esposo","/maˈɾiðo · esˈposo/","le mari / l'époux","« esposo » est un peu plus soutenu."],
+  ["la mujer / la esposa","/muˈxeɾ · esˈposa/","la femme / l'épouse","« mujer » = femme ET épouse selon le contexte."]
+ ]),
+ __esB("La famille élargie", [
+  ["el abuelo / la abuela","/aˈβwelo · aˈβwela/","le grand-père / la grand-mère","Familier : « yayo / yaya » (Espagne)."],
+  ["los abuelos","/los aˈβwelos/","les grands-parents","Masculin pluriel générique."],
+  ["el tío / la tía","/ˈtio · ˈtia/","l'oncle / la tante","Le í accentué se prononce en deux syllabes : TÍ-o."],
+  ["el primo / la prima","/ˈpɾimo · ˈpɾima/","le cousin / la cousine",""],
+  ["el sobrino / la sobrina","/soˈβɾino · soˈβɾina/","le neveu / la nièce",""],
+  ["el nieto / la nieta","/ˈnjeto · ˈnjeta/","le petit-fils / la petite-fille",""]
+ ]),
+ __esB("La belle-famille", [
+  ["el suegro / la suegra","/ˈsweɣɾo · ˈsweɣɾa/","le beau-père / la belle-mère","Les parents du conjoint."],
+  ["el cuñado / la cuñada","/kuˈɲaðo · kuˈɲaða/","le beau-frère / la belle-sœur","Le ñ se prononce « gn »."],
+  ["la familia política","/la faˈmilja poˈlitika/","la belle-famille","« política » = par alliance (et aussi « politique »)."],
+  ["los parientes","/los ˈpaɾjentes/","les proches parents, la parenté","FAUX-AMI : « los parientes » ≠ « les parents » (père et mère = los padres)."]
+ ]),
+ __esB("Décrire un proche : adjectifs", [
+  ["joven","/ˈxoβen/","jeune","Invariable au féminin : un chico joven, una chica joven. Pluriel : jóvenes (l'accent écrit apparaît)."],
+  ["mayor","/maˈʝoɾ/","âgé(e) ; plus âgé(e)","Aussi « mi hermano mayor » = mon grand frère."],
+  ["menor","/meˈnoɾ/","plus jeune","« mi hermana menor » = ma petite sœur."],
+  ["alto / alta","/ˈalto · ˈalta/","grand(e) (de taille)",""],
+  ["bajo / baja","/ˈbaxo · ˈbaxa/","petit(e) (de taille)","Attention : « pequeño » (petit) ne se dit pas d'une personne adulte pour sa taille."],
+  ["simpático / simpática","/simˈpatiko · simˈpatika/","sympathique","Accent sur PÁ : sim-PÁ-ti-ko."],
+  ["gracioso / graciosa","/ɣɾaˈθjoso · ɣɾaˈθjosa/","drôle, amusant(e)",""],
+  ["cariñoso / cariñosa","/kaɾiˈɲoso · kaɾiˈɲosa/","affectueux(se)",""],
+  ["casado / casada","/kaˈsaðo · kaˈsaða/","marié(e)","Avec « estar » : estar casado."],
+  ["soltero / soltera","/solˈteɾo · solˈteɾa/","célibataire","Avec « estar » : estar soltero."],
+  ["pequeño / pequeña","/peˈkeɲo · peˈkeɲa/","petit(e) (famille, maison…)","« una familia pequeña » ; contraire : « grande »."],
+  ["grande","/ˈgɾande/","grand(e) (taille d'une chose, d'une famille)","Invariable au féminin : una familia grande."]
+ ]),
+ __esB("Phrases utiles pour parler de sa famille", [
+  ["tener un hermano","/teˈneɾ un eɾˈmano/","avoir un frère","Même construction qu'en français : tengo un hermano."],
+  ["¿tienes hermanos?","/ˈtjenes eɾˈmanos/","tu as des frères et sœurs ?","Formel : « ¿tiene usted hermanos? »"],
+  ["¿cuántos hermanos tienes?","/ˈkwantos eɾˈmanos ˈtjenes/","combien de frères et sœurs as-tu ?",""],
+  ["hijo único / hija única","/ˈixo ˈuniko · ˈixa ˈunika/","fils unique / fille unique","« Soy hijo único » = je suis fils unique."],
+  ["tener hijos","/teˈneɾ ˈixos/","avoir des enfants","« No tengo hijos » = je n'ai pas d'enfants."],
+  ["vivir con","/biˈβiɾ kon/","habiter avec","« Vivo con mis padres » : phrase très naturelle."],
+  ["¿cómo es tu madre?","/ˈkomo es tu ˈmaðɾe/","comment est ta mère ?","« ¿Cómo es? » demande la description (ser)."],
+  ["te quiero mucho","/te ˈkjeɾo ˈmutʃo/","je t'aime beaucoup","Dit à la famille et aux amis proches. Voir note culturelle."]
+ ])
+);
+V[0].ipa = "/faˈmilja/";
+LESSONS_ES[202] = {
+ code:"A1.2", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["la madre","el padre","los padres","el hermano / la hermana","los hermanos","el abuelo / la abuela","tener un hermano","joven"]),
+ MINI_CHECKS: [
+  {q:"« Los padres » signifie…", opts:["les pères","les parents (père et mère)","les grands-parents"], correct:1, fb:"Le masculin pluriel regroupe les deux genres : los padres = le père ET la mère."},
+  {q:"Féminin de « tío » :", opts:["tíoa","tía","tiá"], correct:1, fb:"o → a : tío → tía, primo → prima, abuelo → abuela."},
+  {q:"« J'ai un frère. »", opts:["Soy un hermano.","Tengo un hermano.","Hay un hermano."], correct:1, fb:"Comme en français : avoir → TENER. « Tengo un hermano »."},
+  {q:"« Los hermanos » peut désigner…", opts:["seulement des garçons","une sœur et un frère","seulement des sœurs"], correct:1, fb:"Un frère + une sœur = « los hermanos » (masculin générique)."},
+  {q:"« Ma mère est grande. »", opts:["Mi madre tiene alta.","Mi madre es alta.","Mi madre está alta."], correct:1, fb:"Décrire la taille d'un proche → SER : « es alta » (et alta s'accorde au féminin)."},
+  {q:"« Los parientes » = …", opts:["les parents (père et mère)","la parenté, les proches","les grands-parents"], correct:1, fb:"Faux-ami : les parents (père et mère) = los padres."},
+  {q:"« Mi hermano es joven » → au pluriel : « Mis hermanos son… »", opts:["jovens","jóvenes","jovenes"], correct:1, fb:"Pluriel des mots en consonne : +es, et l'accent écrit apparaît pour garder la même syllabe forte : jóvenes."},
+  {q:"Pour dire « je suis fils unique »…", opts:["Soy hijo único.","Tengo hijo único.","Soy único hijo."], correct:0, fb:"« hijo único » : soy hijo único / soy hija única."}
+ ],
+ ROUNDS: [
+  __esR("Tengo dos hermanos.","J'ai deux frères et sœurs."),
+  __esR("Mi madre es alta.","Ma mère est grande."),
+  __esR("Mis padres se llaman Antonio y Carmen.","Mes parents s'appellent Antonio et Carmen."),
+  __esR("¿Tienes hermanos?","Tu as des frères et sœurs ?"),
+  __esR("Mi hermano es joven y gracioso.","Mon frère est jeune et drôle."),
+  __esR("Vivo con mis padres.","J'habite avec mes parents."),
+  __esR("Mis hermanos son simpáticos.","Mes frères et sœurs sont sympathiques."),
+  __esR("No tengo hijos.","Je n'ai pas d'enfants."),
+  __esR("¿Tiene usted hijos?","Avez-vous des enfants ?"),
+  __esR("Mi tía es muy cariñosa.","Ma tante est très affectueuse."),
+  __esR("Mis abuelos tienen setenta años.","Mes grands-parents ont soixante-dix ans."),
+  __esR("Mi hermana menor tiene quince años.","Ma petite sœur a quinze ans."),
+  __esR("Mi familia es pequeña.","Ma famille est petite.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Tengo dos ___. (frère et sœur)", opts:["hermanos","hermanas","hermano"], correct:0, why:"Un frère + une sœur → masculin pluriel générique : hermanos."},
+  {cat:"ecrit", q:"Mi tío es alto y mi ___ es baja.", opts:["tía","tío","tiá"], correct:0, why:"Féminin de tío : tía."},
+  {cat:"ecrit", q:"Nosotros ___ un perro. (avoir)", opts:["tenemos","tienen","tenéis"], correct:0, why:"nosotros → tenemos."},
+  {cat:"ecrit", q:"Vosotros ___ dos primos. (avoir)", opts:["tienen","tenéis","tienes"], correct:1, why:"vosotros → tenéis (se prononce te-NÉISS)."},
+  {cat:"ecrit", q:"Mis padres ___ muy simpáticos.", opts:["tienen","son","están"], correct:1, why:"Le caractère d'une personne → SER : son simpáticos."},
+  {cat:"ecrit", q:"Mi madre ___ cuarenta y cinco años.", opts:["es","tiene","está"], correct:1, why:"L'âge = tener : tiene cuarenta y cinco años."},
+  {cat:"ecrit", q:"Mi hermana ___ casada.", opts:["tiene","está","hay"], correct:1, why:"L'état civil se dit avec estar : está casada."},
+  {cat:"ecrit", q:"Quelle phrase est la plus naturelle pour « J'habite avec mes parents » ?", opts:["Vivo con mis padres.","Tengo mis padres."], correct:0, why:"« Tener mis padres » existe mais sonne étrange : on dit « vivo con mis padres » ou « tengo padres y hermanos »."},
+  {cat:"ecrit", q:"Mon petit frère est très drôle.", opts:["Mi hermano menor es muy gracioso.","Mi hermano menor tiene muy gracioso.","Mi hermano menor está muy gracioso."], correct:0, why:"hermano menor = frère cadet ; le caractère (gracioso) se dit avec SER. Pas tener, pas estar."},
+  {cat:"ecrit", q:"Mes cousines sont jeunes.", opts:["Mis primas son jóvenes.","Mis primas son jovenes.","Mis primos son joven."], correct:0, why:"joven → jóvenes (accent écrit au pluriel)."},
+  {cat:"oral", audio:"Tengo un hermano y una hermana.", q:"Écoute : combien de frères et sœurs ?", opts:["Un frère seulement","Un frère et une sœur","Deux sœurs"], correct:1, why:"« un hermano y una hermana » : deux enfants en plus de la personne."},
+  {cat:"oral", audio:"Mi madre se llama Carmen y es profesora.", q:"Écoute : que fait la mère ?", opts:["Médecin","Professeure","Étudiante"], correct:1, why:"« es profesora » : professeure."},
+  {cat:"oral", audio:"Mis abuelos viven en Sevilla.", q:"Écoute : qui habite à Séville ?", opts:["Les oncles","Les grands-parents","Les parents"], correct:1, why:"abuelos = grands-parents. Ne confonds pas avec « padres »."},
+  {cat:"oral", audio:"No tengo hermanos, soy hija única.", q:"Écoute : la personne…", opts:["a une sœur","est fille unique","a deux frères"], correct:1, why:"« hija única » = fille unique ; « no tengo hermanos » le confirme."},
+  {cat:"oral", audio:"¿Tiene usted hijos? — Sí, tengo dos hijas.", q:"Écoute : la réponse est…", opts:["Deux filles","Deux fils","Pas d'enfants"], correct:0, why:"hijas = filles (hijos = enfants ou fils). Ici « dos hijas » : deux filles."},
+  {cat:"oral", audio:"Mi tío es muy gracioso.", q:"Écoute : comment est l'oncle ?", opts:["Sérieux","Drôle","Grand"], correct:1, why:"gracioso = drôle."},
+  {cat:"comprehension", passage:"Mi familia es pequeña. Vivo con mis padres y mi hermana menor. Mi padre se llama Antonio, es médico y es muy cariñoso. Mi madre se llama Carmen, es profesora. Mi hermana tiene 15 años y es estudiante.", q:"La famille est…", opts:["grande","petite","énorme"], correct:1, why:"« Mi familia es pequeña »."},
+  {cat:"comprehension", passage:"Mi familia es pequeña. Vivo con mis padres y mi hermana menor. Mi padre se llama Antonio, es médico y es muy cariñoso. Mi madre se llama Carmen, es profesora. Mi hermana tiene 15 años y es estudiante.", q:"Quelle est la profession de la mère ?", opts:["Médecin","Professeure","Étudiante"], correct:1, why:"« Mi madre… es profesora »."},
+  {cat:"comprehension", passage:"Mi familia es pequeña. Vivo con mis padres y mi hermana menor. Mi padre se llama Antonio, es médico y es muy cariñoso. Mi madre se llama Carmen, es profesora. Mi hermana tiene 15 años y es estudiante.", q:"Comment est le père ?", opts:["Affectueux","Timide","Jeune"], correct:0, why:"« muy cariñoso » = très affectueux."},
+  {cat:"comprehension", passage:"— Hola Marta, ¿tienes hermanos? — Sí, tengo un hermano y una hermana. Mi hermano se llama Pablo, es alto y tiene 20 años. Mi hermana se llama Lucía y es muy simpática.", q:"Quel âge a Pablo ?", opts:["15 ans","20 ans","25 ans"], correct:1, why:"« tiene 20 años » : tener pour l'âge."},
+  {cat:"comprehension", passage:"— Hola Marta, ¿tienes hermanos? — Sí, tengo un hermano y una hermana. Mi hermano se llama Pablo, es alto y tiene 20 años. Mi hermana se llama Lucía y es muy simpática.", q:"Comment est Lucía ?", opts:["Grande","Très sympathique","Jeune"], correct:1, why:"« es muy simpática »."},
+  {cat:"comprehension", passage:"Trabajadora social: Buenos días, señora. ¿Está usted casada? — Señora: Sí, estoy casada y tengo tres hijos. Mi marido se llama Luis.", q:"Combien d'enfants a la dame ?", opts:["Deux","Trois","Quatre"], correct:1, why:"« tengo tres hijos ». « Mi marido » = son mari."}
+ ],
+ PRON_VERBS: [
+  {en:"Tengo dos hermanos.", fr:"J'ai deux frères et sœurs. (h muette : er-MA-nos)"},
+  {en:"Mi madre es muy simpática.", fr:"Ma mère est très sympathique. (sim-PÁ-ti-ka)"},
+  {en:"Mis padres viven en Sevilla.", fr:"Mes parents habitent à Séville. (v = b ; ll de « Sevilla » = y)"},
+  {en:"Mi hermana menor tiene quince años.", fr:"Ma petite sœur a quinze ans. (kin-the : c devant e = th)"},
+  {en:"Mi tío es alto y gracioso.", fr:"Mon oncle est grand et drôle. (gra-THIO-so)"},
+  {en:"¿Cuántos hermanos tienes?", fr:"Combien de frères et sœurs as-tu ? (KUÁN-tos)"},
+  {en:"Mi abuela es muy cariñosa.", fr:"Ma grand-mère est très affectueuse. (a-BUÉ-la ; ñ = gn)"},
+  {en:"Los jóvenes son simpáticos.", fr:"Les jeunes sont sympathiques. (KHÓ-be-ness)"},
+  {en:"Mi cuñada es de Granada.", fr:"Ma belle-sœur est de Grenade. (ku-GNA-da)"},
+  {en:"Te quiero mucho, mamá.", fr:"Je t'aime beaucoup, maman. (KIÉ-ro)"}
+ ],
+ READING: [
+  "Mi familia es pequeña.",
+  "Vivo con mis padres y mi hermana menor.",
+  "Mi padre se llama Antonio, es médico y es muy cariñoso.",
+  "Mi madre se llama Carmen y es profesora.",
+  "Mi hermana tiene quince años y es estudiante.",
+  "Mis abuelos son mayores, pero son muy graciosos.",
+  "Tengo un tío en Madrid y una tía en Valencia.",
+  "Mis primos son jóvenes y simpáticos.",
+  "Mi hermano está casado y tiene dos hijos.",
+  "Te quiero mucho, familia."
+ ],
+ GLOSS: [
+  {en:"el médico / la médica", fr:"le médecin / la femme médecin"},
+  {en:"el estudiante / la estudiante", fr:"l'étudiant(e) : invariable (même mot au masculin et au féminin)"},
+  {en:"muy", fr:"très : invariable, il ne s'accorde pas (muy simpática, muy simpáticos)"},
+  {en:"mayores", fr:"âgés (pluriel de mayor)"},
+  {en:"pero", fr:"mais"},
+  {en:"el perro / el gato", fr:"le chien / le chat"}
+ ],
+ GRAMMAR1: {
+  heading:"TENER pour la famille, et SER pour la décrire",
+  lede:"Pour dire quels proches tu as, l'espagnol fait comme le français : « j'ai un frère » → tengo un hermano. Et pour décrire ce proche (grand, drôle, sympathique), tu retrouves SER, déjà vu.",
+  conj:[
+   ["yo →","tengo","Tengo un hermano."],
+   ["tú →","tienes","¿Tienes hermanos?"],
+   ["él, ella, usted →","tiene","Mi madre tiene 45 años. · ¿Tiene usted hijos?"],
+   ["nosotros →","tenemos","Tenemos una familia grande."],
+   ["vosotros →","tenéis","¿Tenéis primos?"],
+   ["ellos, ustedes →","tienen","Mis abuelos tienen tres hijos."]
+  ],
+  ruleHtml:"📖 <b>TENER</b> est irrégulier : <b>yo tengo</b> (un -g- apparaît), puis <b>tienes, tiene, tienen</b> (le e devient <b>ie</b> quand l'accent tombe sur le radical), mais <b>tenemos, tenéis</b> gardent le e. Il sert à trois choses dans cette leçon : <b>les liens</b> (tengo dos hermanos), <b>l'âge</b> (tiene 45 años), <b>avoir des enfants</b> (tengo hijos / no tengo hijos). Pour <b>décrire</b> un proche : <b>SER + adjectif accordé</b> → <b>Mi madre es alta y simpática. Mi hermano es joven y gracioso. Mis padres son cariñosos.</b> Le « modèle en 3 temps » pour présenter quelqu'un : <b>Se llama Pablo</b> (llamarse) · <b>Tiene 20 años</b> (tener) · <b>Es alto y simpático</b> (ser).",
+  dialogueLede:"Deux amies bavardent (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"Hola, Marta. ¿Tienes hermanos?", fr:"Salut, Marta. Tu as des frères et sœurs ?"},
+   {who:"you", en:"Sí, tengo un hermano y una hermana. Mi hermano se llama Pablo, es alto y tiene veinte años.", fr:"Oui, j'ai un frère et une sœur. Mon frère s'appelle Pablo, il est grand et il a vingt ans."},
+   {who:"them", en:"¿Y tu hermana?", fr:"Et ta sœur ?"},
+   {who:"you", en:"Se llama Lucía y es muy simpática.", fr:"Elle s'appelle Lucía et elle est très sympathique."}
+  ],
+  whyLabel:"Pourquoi « tener » pour les liens… et « ser » pour la description ?",
+  whyText:"Pense à la <b>possession</b> : tes frères, ce sont des personnes que tu <b>as</b> dans ta vie → tener, comme en français. La <b>description</b>, elle, dit CE QU'EST la personne (grande, drôle…) : c'est son identité → ser. Cette distinction t'évite deux erreurs fréquentes : « soy un hermano » (qui voudrait dire « je suis un frère ») et « tiene alto » (au lieu de « es alto »). Test rapide : peux-tu traduire par « avoir » en français ? tener. Par « être » ? ser."
+ },
+ GRAMMAR2: {
+  heading:"Masculin / féminin, pluriel et le « masculin générique »",
+  dialogueLede:"À la réception d'un centre médical (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"¿Está usted casada, señora?", fr:"Êtes-vous mariée, madame ?"},
+   {who:"you", en:"Sí, estoy casada y tengo tres hijos.", fr:"Oui, je suis mariée et j'ai trois enfants."},
+   {who:"them", en:"¿Cuántos años tienen sus hijos?", fr:"Quel âge ont vos enfants ?"},
+   {who:"you", en:"Tienen cinco, ocho y once años.", fr:"Ils ont cinq, huit et onze ans."}
+  ],
+  ruleHtml:"💭 <b>1. Masculin → féminin</b> : presque tous les mots de famille passent de <b>-o</b> à <b>-a</b> : hermano → <b>hermana</b>, tío → <b>tía</b>, primo → <b>prima</b>, abuelo → <b>abuela</b>, hijo → <b>hija</b>, sobrino → <b>sobrina</b>. Les adjectifs font pareil (alto → alta, simpático → simpática). Ceux en <b>-e</b> ou en consonne ne changent pas (joven, mayor, grande, estudiante).<br><br><b>2. Pluriel</b> : voyelle + <b>-s</b> (hermano → hermanos), consonne + <b>-es</b> (mayor → mayores, joven → <b>jóvenes</b>, avec l'accent écrit qui apparaît).<br><br><b>3. Le masculin générique</b> : au pluriel, le masculin regroupe les deux genres : <b>los padres</b> = père + mère, <b>los hermanos</b> = frères et sœurs, <b>los hijos</b> = enfants, <b>los abuelos</b> = grands-parents, <b>los tíos</b> = oncle(s) et tante(s). Pour préciser « seulement des filles » : las hermanas, las hijas.<br><br><b>4. Piège de traduction</b> : « J'ai mes parents et mes frères » se comprend en espagnol (« Tengo mis padres y mis hermanos ») mais sonne peu naturel. On dit plutôt <b>Tengo padres y hermanos</b> ou <b>Vivo con mis padres y mis hermanos</b>.",
+  whyLabel:"Pourquoi ce masculin « pluriel pour tous » ?",
+  whyText:"En espagnol (comme en français : « les étudiants » pour un groupe mixte), le masculin pluriel est la forme <b>neutre</b> d'un groupe mixte. Un seul garçon dans un groupe de dix filles suffit pour dire « los hermanos ». Tu retrouves la même logique dans « los padres », « los abuelos », « los tíos ». Conséquence pratique : ne traduis jamais « los padres » par « les pères » et ne confonds pas avec « los parientes » (la parenté). Et quand tu veux insister sur les filles, tu emploies le féminin : <b>mis hermanas</b>."
+ },
+ REVIEW: [
+  {q:"Pour demander son nom à une personne âgée que tu ne connais pas :", opts:["¿Cómo te llamas?","¿Cómo se llama usted?"], correct:1, fb:"Inconnu âgé → usted : se llama. (rappel A1.1)"},
+  {q:"« J'habite à Lyon. »", opts:["Vivo de Lyon.","Vivo en Lyon."], correct:1, fb:"Habitation = en ; origine = de. (rappel A1.1)"},
+  {q:"« Elle a 31 ans. »", opts:["Tiene treinta y un años.","Tiene treinta y uno años."], correct:0, fb:"uno → un devant « años ». (rappel A1.1)"},
+  {q:"« Mes noms de famille » :", opts:["mi apellidos","mis apellidos"], correct:1, fb:"Possessif accordé avec la chose possédée. (rappel A1.1)"},
+  {q:"Pourquoi dit-on « Tengo veinte años » sans « yo » ?", opts:["Le verbe dit déjà « je »","Parce que « yo » est impoli"], correct:0, fb:"La terminaison -o suffit. (rappel A1.1)"}
+ ],
+ CULTURE_NOTE: {icon:"👨‍👩‍👧", title:"Note culturelle — la famille, au cœur de la vie espagnole",
+  html:"En Espagne et en Amérique latine, la famille est très présente : on déjeune souvent chez les grands-parents le dimanche, on vit souvent chez ses parents jusqu'à la fin des études ou au-delà, et on garde le contact avec <b>tíos</b> et <b>primos</b>. Les bébés héritent de <b>deux apellidos</b>. On dit « mamá » et « papá » ; les grands-parents sont <b>abuelo/abuela</b> ou affectueusement <b>yayo/yaya</b> (Espagne). <b>Te quiero</b> (je t'aime bien / je t'aime) se dit facilement à sa famille et à ses amis proches : c'est moins fort que « te amo », réservé à l'amour romantique. Avec usted (formel), on demandera plutôt : « ¿Tiene usted familia? » ou « ¿Está usted casado? » — en privé, on évite de poser ces questions à un inconnu."},
+ NEXT_PREVIEW:"A1.3 (Amigos y relaciones sociales) : parler de tes amis, dire ce que tu aimes avec « gustar » (me gusta, me gustan), conjuguer les premiers verbes en -AR (hablar, escuchar, bailar, viajar) et dire à quelle fréquence tu fais les choses (siempre, a veces, nunca).",
+ META:{vocabTitle:"Familia : parler de ses proches (A1.2)", lectureTitle:"La familia de Antonio y Carmen", bilanTitle:"Bravo, tu sais présenter ta famille en espagnol !", pronLabel:"Familia : h muette, j, ñ, z/c et diphtongues", todayLede:"nommer les membres de ta famille, dire combien de frères et sœurs tu as, accorder au féminin et au pluriel, comprendre pourquoi « los padres » = les parents, et décrire un proche avec ser et tener"},
+ DRILLS: [
+  {type:"fill", text:"Yo ___ un hermano. (avoir)", answers:["tengo"], why:"yo → tengo (le -g- est irrégulier)."},
+  {type:"fill", text:"¿___ hermanos? (tú, avoir)", answers:["Tienes","tienes"], why:"tú → tienes (e → ie)."},
+  {type:"fill", text:"Mi madre ___ cuarenta años. (avoir)", answers:["tiene"], why:"L'âge : tener → tiene."},
+  {type:"fill", text:"Nosotros ___ una familia grande. (avoir)", answers:["tenemos"], why:"nosotros → tenemos (le e reste)."},
+  {type:"fill", text:"Vosotros ___ dos primos. (avoir)", answers:["tenéis"], why:"vosotros → tenéis."},
+  {type:"fill", text:"Mis abuelos ___ tres hijos. (avoir)", answers:["tienen"], why:"ellos → tienen."},
+  {type:"fill", text:"Mi padre ___ alto. (être)", answers:["es"], why:"Description → SER : es alto."},
+  {type:"fill", text:"Mis hermanos ___ simpáticos. (être)", answers:["son"], why:"ellos → son."},
+  {type:"fill", text:"Mi tío es alto y mi ___ es baja. (tante)", answers:["tía"], why:"tío → tía."},
+  {type:"fill", text:"Mi hermano mayor y mi hermana ___ son jóvenes. (la plus jeune)", answers:["menor"], why:"« menor » = plus jeune."},
+  {type:"fill", text:"Mis padres y mis ___ viven en Francia. (frères et sœurs)", answers:["hermanos"], why:"Masculin pluriel générique."},
+  {type:"fill", text:"No tengo ___. (enfants)", answers:["hijos"], why:"« hijos » : les enfants."},
+  {type:"choice", q:"« Los padres » =", opts:["les pères","les parents"], correct:1, why:"Masculin pluriel générique : père + mère."},
+  {type:"choice", q:"Un frère + une sœur :", opts:["hermanas","hermanos"], correct:1, why:"Groupe mixte → masculin pluriel."},
+  {type:"choice", q:"Pluriel de « joven » :", opts:["jovenes","jóvenes"], correct:1, why:"+es et accent écrit pour garder la syllabe forte."},
+  {type:"choice", q:"Mon père est grand :", opts:["Mi padre tiene alto.","Mi padre es alto."], correct:1, why:"Description = ser."},
+  {type:"choice", q:"Ma sœur est mariée :", opts:["Mi hermana es casada.","Mi hermana está casada."], correct:1, why:"État civil = estar."},
+  {type:"choice", q:"Les parents (au sens large : cousins, oncles…) :", opts:["los padres","los parientes"], correct:1, why:"Faux-ami : parientes = parenté ; los padres = père et mère."}
+ ],
+ ANNOTATED: {
+  title:"La familia de Antonio y Carmen",
+  intro:"Un texte sur une petite famille. Touche chaque mot pour voir sa nature et sa traduction. Repère les verbes TENER et SER, et les accords au féminin.",
+  sentences:[
+   {fr:"Ma famille est petite.", tokens:[
+    {w:"Mi", tag:"déterminant", info:"possessif · sing.", fr:"ma", tip:"mi : même mot pour mon et ma."},
+    {w:"familia", tag:"nom", info:"fém. sing.", fr:"famille"},
+    {w:"es", tag:"verbe", info:"ser · présent · ella", fr:"est", tip:"SER : une description."},
+    {w:"pequeña", tag:"adjectif", info:"fém. sing.", fr:"petite", tip:"Accord au féminin : pequeño → pequeña."}
+   ]},
+   {fr:"J'habite avec mes parents et ma sœur cadette.", tokens:[
+    {w:"Vivo", tag:"verbe", info:"vivir · présent · yo", fr:"j'habite"},
+    {w:"con", tag:"préposition", fr:"avec"},
+    {w:"mis", tag:"déterminant", info:"possessif · plur.", fr:"mes"},
+    {w:"padres", tag:"nom", info:"masc. plur.", fr:"parents", tip:"los padres = père et mère."},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"mi", tag:"déterminant", info:"possessif · sing.", fr:"ma"},
+    {w:"hermana", tag:"nom", info:"fém. sing.", fr:"sœur"},
+    {w:"menor", tag:"adjectif", info:"invariable", fr:"cadette", tip:"menor ne change pas au féminin."}
+   ]},
+   {fr:"Mon père s'appelle Antonio, il est médecin et très affectueux.", tokens:[
+    {w:"Mi", tag:"déterminant", fr:"mon"},
+    {w:"padre", tag:"nom", info:"masc. sing.", fr:"père"},
+    {w:"se llama", tag:"verbe pronominal", info:"llamarse · présent · él", fr:"s'appelle"},
+    {w:"Antonio", tag:"nom propre", fr:"Antonio"},
+    {w:"es", tag:"verbe", info:"ser · présent · él", fr:"est"},
+    {w:"médico", tag:"nom", info:"masc. sing.", fr:"médecin"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"es", tag:"verbe", info:"ser · présent · él", fr:"il est"},
+    {w:"muy", tag:"adverbe", fr:"très"},
+    {w:"cariñoso", tag:"adjectif", info:"masc. sing.", fr:"affectueux"}
+   ]},
+   {fr:"Ma sœur a quinze ans et elle est étudiante.", tokens:[
+    {w:"Mi", tag:"déterminant", fr:"ma"},
+    {w:"hermana", tag:"nom", info:"fém. sing.", fr:"sœur"},
+    {w:"tiene", tag:"verbe", info:"tener · présent · ella", fr:"a", tip:"L'âge : tener."},
+    {w:"quince", tag:"adjectif", info:"nombre", fr:"quinze"},
+    {w:"años", tag:"nom", info:"masc. plur.", fr:"ans"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"es", tag:"verbe", info:"ser · présent · ella", fr:"est"},
+    {w:"estudiante", tag:"nom", info:"invariable", fr:"étudiante", tip:"estudiante : même forme au masculin et au féminin."}
+   ]}
+  ]
+ }
+};
+})();
+
+// A1.3 — Amigos y relaciones sociales : verbes en -AR, fréquence, gustar, formel / informel
+(function(){
+var V = [].concat(
+ __esB("Le cercle amical", [
+  ["el amigo / la amiga","/aˈmiɣo · aˈmiɣa/","l'ami / l'amie","Accent sur MI : a-MI-go."],
+  ["el mejor amigo / la mejor amiga","/el meˈxoɾ aˈmiɣo/","le meilleur ami / la meilleure amie","« mejor » ne change pas au féminin. j = « kh » rauque."],
+  ["el conocido / la conocida","/koŋoˈθiðo/","la connaissance","Quelqu'un que tu connais sans être ami proche. Faux-ami de « connu »."],
+  ["el compañero / la compañera","/kompaˈɲeɾo/","le camarade, le collègue","Compañero de clase / de trabajo."],
+  ["el vecino / la vecina","/beˈθino · beˈθina/","le voisin / la voisine","v = b ; c devant i = « th »."],
+  ["la pandilla","/panˈdiʝa/","la bande d'amis","Aussi : « el grupo de amigos »."],
+  ["la relación","/relaˈθjon/","la relation",""],
+  ["la confianza","/konˈfjanθa/","la confiance","« tener confianza » = être à l'aise, avoir confiance."]
+ ]),
+ __esB("Décrire ses amis", [
+  ["simpático / simpática","/simˈpatiko/","sympathique","Rappel A1.2."],
+  ["antipático / antipática","/antiˈpatiko/","antipathique","Le contraire de simpático."],
+  ["agradable","/aɣɾaˈðaβle/","agréable","Invariable au féminin : una persona agradable."],
+  ["divertido / divertida","/diβeɾˈtiðo/","amusant(e), drôle","« ¡Qué divertido! » = comme c'est amusant !"],
+  ["aburrido / aburrida","/aβuˈrriðo/","ennuyeux(se)","rr = r roulé fort."],
+  ["inteligente","/inteliˈxente/","intelligent(e)","Invariable au féminin."],
+  ["tímido / tímida","/ˈtimiðo/","timide","Accent sur TÍ : TÍ-mi-do."],
+  ["generoso / generosa","/xeneˈɾoso/","généreux(se)","g devant e = « kh » rauque."],
+  ["fiel","/fjel/","fidèle, loyal(e)","Une seule syllabe, invariable."],
+  ["alegre","/aˈleɣɾe/","joyeux(se), gai(e)","« con mis amigos soy muy alegre »."]
+ ]),
+ __esB("Saluer : informel et formel", [
+  ["hola, ¿qué tal?","/ˈola ke tal/","salut, ça va ?","Informel. Réponse : « Bien, ¿y tú? »"],
+  ["¿qué pasa?","/ke ˈpasa/","quoi de neuf ?","Très familier, entre amis."],
+  ["buenos días / buenas tardes / buenas noches","/ˈbwenos ˈðias · ˈbwenas ˈtaɾðes · ˈbwenas ˈnotʃes/","bonjour / bon après-midi / bonsoir","Poli : convient partout, surtout au vouvoiement. « Buenas noches » = aussi bonne nuit."],
+  ["¿cómo está usted?","/ˈkomo esˈta usˈteð/","comment allez-vous ?","Formel. Informel : « ¿Cómo estás? »"],
+  ["mucho gusto en conocerte","/ˈmutʃo ˈɣusto en konoˈθeɾte/","ravi de faire ta connaissance","Informel (tutoiement)."],
+  ["encantado de conocerle","/enkanˈtaðo ðe konoˈθeɾle/","enchanté de faire votre connaissance","Formel (vouvoiement). Une femme dit « encantada »."],
+  ["hasta luego / hasta mañana","/ˈasta ˈlweɣo · ˈasta maˈɲana/","à tout à l'heure / à demain","« adiós » = au revoir (plus définitif)."]
+ ]),
+ __esB("Les goûts et les activités", [
+  ["gustar","/gusˈtaɾ/","plaire","« Me gusta » = ça me plaît = j'aime. Voir la grammaire."],
+  ["me gusta mucho","/me ˈɣusta ˈmutʃo/","j'aime beaucoup","« mucho » reste invariable."],
+  ["no me gusta","/no me ˈɣusta/","je n'aime pas","no devant le pronom."],
+  ["a mí también","/a mi tamˈbjen/","moi aussi","Pour répondre à « me gusta » : « A mí también ». Contraire : « A mí no »."],
+  ["la música","/la ˈmusika/","la musique",""],
+  ["el cine","/el ˈθine/","le cinéma","c devant i = « th »."],
+  ["el fútbol","/el ˈfutβol/","le football","Accent sur FÚT : FÚT-bol."],
+  ["los libros","/los ˈliβɾos/","les livres",""],
+  ["el verano","/el beˈɾano/","l'été",""],
+  ["el fin de semana","/el fin ðe seˈmana/","le week-end","« los fines de semana » = les week-ends / chaque week-end."],
+  ["juntos / juntas","/ˈxuntos/","ensemble","S'accorde : juntos (masc. ou mixte), juntas (féminin)."]
+ ]),
+ __esB("Les premiers verbes en -AR", [
+  ["hablar","/aˈβlaɾ/","parler","Modèle de tous les verbes réguliers en -AR. h muet."],
+  ["escuchar","/eskuˈtʃaɾ/","écouter","« escuchar música »."],
+  ["bailar","/baiˈlaɾ/","danser","« bailar salsa »."],
+  ["viajar","/biaˈxaɾ/","voyager","j = « kh » rauque : bia-KHAR."],
+  ["pasear","/paseˈaɾ/","se promener","« pasear por la ciudad » = se promener en ville."],
+  ["cantar","/kanˈtaɾ/","chanter",""],
+  ["estudiar","/estuˈðjaɾ/","étudier",""],
+  ["cocinar","/koθiˈnaɾ/","cuisiner","c devant i = « th »."],
+  ["trabajar","/tɾaβaˈxaɾ/","travailler",""]
+ ]),
+ __esB("La fréquence", [
+  ["siempre","/ˈsjempɾe/","toujours",""],
+  ["a menudo","/a meˈnuðo/","souvent",""],
+  ["a veces","/a ˈβeθes/","parfois","z/c = « th »."],
+  ["casi nunca","/ˈkasi ˈnuŋka/","presque jamais",""],
+  ["nunca","/ˈnuŋka/","jamais","Avant le verbe : sans « no ». Après le verbe : avec « no »."],
+  ["conmigo / contigo","/komˈmiɣo · komˈtiɣo/","avec moi / avec toi","« con + mí/ti » devient un mot : conmigo, contigo."]
+ ]),
+ __esB("Bonus : 10 expressions des relations sociales", [
+  ["llevarse bien con alguien","/ʝeˈβaɾse ˈβjen kon ˈalɣjen/","s'entendre bien avec quelqu'un","« Me llevo bien con mis vecinos »."],
+  ["hacer nuevos amigos","/aˈθeɾ ˈnweβos aˈmiɣos/","se faire de nouveaux amis","À retenir en bloc."],
+  ["pasarlo bien","/paˈsaɾlo ˈβjen/","passer un bon moment, s'amuser","« ¡Que lo pases bien! » = amuse-toi bien !"],
+  ["estar de buen humor","/esˈtaɾ de bwen uˈmoɾ/","être de bonne humeur","h muet. Contraire : estar de mal humor."],
+  ["estar harto / harta","/esˈtaɾ ˈaɾto/","en avoir assez, en avoir marre","h muet : AR-to."],
+  ["caer bien / caer mal","/kaˈeɾ ˈβjen · kaˈeɾ mal/","plaire / déplaire (à quelqu'un)","« Me cae bien » = il/elle me plaît, je l'aime bien (en parlant d'une personne)."],
+  ["tener confianza en","/teˈneɾ konˈfjanθa en/","avoir confiance en","« Tengo confianza en ti »."],
+  ["salir de fiesta","/saˈliɾ de ˈfjesta/","sortir faire la fête","Phrase-bloc."],
+  ["estar en contacto","/esˈtaɾ en konˈtakto/","rester en contact","« Estamos en contacto »."],
+  ["un abrazo fuerte","/un aˈβɾaθo ˈfweɾte/","une grosse accolade","Formule de fin de message entre amis."]
+ ])
+);
+LESSONS_ES[203] = {
+ code:"A1.3", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["el amigo / la amiga","el conocido / la conocida","el vecino / la vecina","gustar","hablar","viajar","siempre","nunca"]),
+ MINI_CHECKS: [
+  {q:"« J'aime le café. »", opts:["Me gusta el café.","Me gustan el café.","Gusto el café."], correct:0, fb:"Ce qui plaît (le café) est le sujet, au singulier → gusta. Littéralement : « le café me plaît »."},
+  {q:"« J'aime les chiens. »", opts:["Me gusta los perros.","Me gustan los perros.","Me gusto los perros."], correct:1, fb:"Plusieurs choses qui plaisent → gustan (pluriel)."},
+  {q:"« Tu aimes voyager ? »", opts:["¿Te gusta viajar?","¿Te gustan viajar?","¿Tú gustas viajar?"], correct:0, fb:"Après gustar, un verbe à l'infinitif → toujours gusta (singulier)."},
+  {q:"« Je n'aime pas le football. »", opts:["Me no gusta el fútbol.","No me gusta el fútbol.","No gusto el fútbol."], correct:1, fb:"no se place AVANT le petit pronom : « No me gusta ». "},
+  {q:"« Nous parlons » (hablar) :", opts:["hablamos","hablan","hablemos"], correct:0, fb:"nosotros → -amos : hablamos."},
+  {q:"« Una conocida » est…", opts:["une amie proche","une connaissance","une voisine"], correct:1, fb:"conocido/a = quelqu'un que tu connais sans être ami proche."},
+  {q:"« Je ne voyage jamais » — quelle forme est correcte ?", opts:["Nunca viajo.","Nunca no viajo.","Viajo siempre nunca."], correct:0, fb:"« nunca » devant le verbe n'a pas besoin de « no » : Nunca viajo. (Après le verbe : No viajo nunca.)"},
+  {q:"À un monsieur que tu ne connais pas : « Enchanté de faire votre connaissance »", opts:["Mucho gusto en conocerte.","Encantado de conocerle."], correct:1, fb:"Formel (usted) : conocerle. Informel (tú) : conocerte."}
+ ],
+ ROUNDS: [
+  __esR("Me gusta el café.","J'aime le café."),
+  __esR("Me gustan los perros.","J'aime les chiens."),
+  __esR("¿Te gusta viajar?","Tu aimes voyager ?"),
+  __esR("No me gusta el fútbol.","Je n'aime pas le football."),
+  __esR("Hablo con mis amigos.","Je parle avec mes amis."),
+  __esR("Siempre escuchamos música.","Nous écoutons toujours de la musique."),
+  __esR("A mí también me gusta bailar.","Moi aussi, j'aime danser."),
+  __esR("Mi mejor amigo es muy divertido.","Mon meilleur ami est très drôle."),
+  __esR("Nos gusta pasear por la ciudad.","Nous aimons nous promener en ville."),
+  __esR("Nunca hablo de fútbol.","Je ne parle jamais de football."),
+  __esR("¿Le gusta viajar, señor?","Aimez-vous voyager, monsieur ?"),
+  __esR("Encantado de conocerle.","Enchanté de faire votre connaissance."),
+  __esR("A veces bailamos juntos.","Parfois nous dansons ensemble.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Yo ___ con mis amigos. (hablar)", opts:["hablo","hablas","habla"], correct:0, why:"yo → -o : hablo."},
+  {cat:"ecrit", q:"Mi amiga ___ mucho. (bailar)", opts:["baila","bailas","bailan"], correct:0, why:"ella → -a : baila."},
+  {cat:"ecrit", q:"Vosotros ___ música. (escuchar)", opts:["escucháis","escuchamos","escuchan"], correct:0, why:"vosotros → -áis : escucháis."},
+  {cat:"ecrit", q:"Me ___ los libros interesantes.", opts:["gusta","gustan"], correct:1, why:"« los libros » est pluriel → gustan. Et l'adjectif s'accorde : interesantes."},
+  {cat:"ecrit", q:"A Pablo ___ gusta la música.", opts:["me","te","le"], correct:2, why:"A él / A Pablo → le gusta."},
+  {cat:"ecrit", q:"A nosotros ___ gusta viajar.", opts:["nos","les","os"], correct:0, why:"nosotros → nos."},
+  {cat:"ecrit", q:"Ellos ___ en Madrid. (viajar : ils voyagent)", opts:["viajan","viaja","viajamos"], correct:0, why:"ellos → -an : viajan."},
+  {cat:"ecrit", q:"Je ne danse presque jamais.", opts:["Casi nunca bailo.","Casi siempre bailo.","Bailo casi no."], correct:0, why:"casi nunca = presque jamais."},
+  {cat:"ecrit", q:"Quelle phrase est correcte ?", opts:["Me gusta viajar y bailar.","Me gustan viajar y bailar."], correct:0, why:"Des verbes à l'infinitif → toujours gusta (singulier), même s'il y en a plusieurs."},
+  {cat:"ecrit", q:"« Ma voisine est agréable » :", opts:["Mi vecina es agradable.","Mi vecina es agradabla."], correct:0, why:"agradable finit en -e : invariable."},
+  {cat:"ecrit", q:"Pour un inconnu âgé, tu demandes : « Aimez-vous voyager ? »", opts:["¿Te gusta viajar?","¿Le gusta viajar?"], correct:1, why:"usted → le gusta."},
+  {cat:"oral", audio:"Me gusta mucho la música.", q:"Écoute : qu'est-ce que la personne aime ?", opts:["Le cinéma","La musique","Les livres"], correct:1, why:"« la música »."},
+  {cat:"oral", audio:"Nunca hablo de fútbol.", q:"Écoute : la personne parle de football…", opts:["toujours","parfois","jamais"], correct:2, why:"« nunca » = jamais."},
+  {cat:"oral", audio:"Siempre escuchamos música los fines de semana.", q:"Écoute : quand écoutent-ils de la musique ?", opts:["Le week-end, toujours","Le soir, parfois","Jamais"], correct:0, why:"siempre = toujours ; los fines de semana = le week-end."},
+  {cat:"oral", audio:"Mi mejor amigo se llama Javier y es muy divertido.", q:"Écoute : comment est Javier ?", opts:["Timide","Drôle","Antipathique"], correct:1, why:"divertido = drôle, amusant."},
+  {cat:"oral", audio:"Buenas tardes, mucho gusto en conocerle.", q:"Écoute : le registre est…", opts:["informel","formel"], correct:1, why:"« conocerle » = vouvoiement (usted)."},
+  {cat:"oral", audio:"A mí no me gusta bailar, pero me gusta cantar.", q:"Écoute : qu'est-ce que la personne aime ?", opts:["Danser","Chanter","Les deux"], correct:1, why:"« no me gusta bailar » = elle n'aime pas danser ; « me gusta cantar » = elle aime chanter."},
+  {cat:"comprehension", passage:"Hola, me llamo Carlos. Tengo muchos amigos en Madrid. Mi mejor amigo se llama Javier. Es un chico muy simpático, inteligente y divertido. Siempre hablamos de fútbol y nos gusta viajar juntos en verano. Con mi familia soy un poco tímido, pero con mis amigos soy muy alegre.", q:"Comment s'appelle le meilleur ami de Carlos ?", opts:["Pablo","Javier","Daniel"], correct:1, why:"« Mi mejor amigo se llama Javier »."},
+  {cat:"comprehension", passage:"Hola, me llamo Carlos. Tengo muchos amigos en Madrid. Mi mejor amigo se llama Javier. Es un chico muy simpático, inteligente y divertido. Siempre hablamos de fútbol y nos gusta viajar juntos en verano. Con mi familia soy un poco tímido, pero con mis amigos soy muy alegre.", q:"Comment est Carlos avec sa famille ?", opts:["Joyeux","Un peu timide","Antipathique"], correct:1, why:"« Con mi familia soy un poco tímido ». Avec ses amis : « muy alegre »."},
+  {cat:"comprehension", passage:"Hola, me llamo Carlos. Tengo muchos amigos en Madrid. Mi mejor amigo se llama Javier. Es un chico muy simpático, inteligente y divertido. Siempre hablamos de fútbol y nos gusta viajar juntos en verano. Con mi familia soy un poco tímido, pero con mis amigos soy muy alegre.", q:"Que font Carlos et Javier en été ?", opts:["Ils voyagent ensemble","Ils étudient","Ils travaillent"], correct:0, why:"« nos gusta viajar juntos en verano »."},
+  {cat:"comprehension", passage:"Querida Sofía: Te escribo desde Barcelona. Aquí tengo nuevos amigos. Mi vecina se llama Laura, es muy agradable y simpática. Nos gusta pasear por la ciudad y hablar por las tardes. ¿Y tú? ¿Cómo están tus amigos? Un abrazo, Marta.", q:"Qui est Laura ?", opts:["La sœur de Marta","La voisine de Marta","La professeure de Marta"], correct:1, why:"« Mi vecina se llama Laura »."},
+  {cat:"comprehension", passage:"Querida Sofía: Te escribo desde Barcelona. Aquí tengo nuevos amigos. Mi vecina se llama Laura, es muy agradable y simpática. Nos gusta pasear por la ciudad y hablar por las tardes. ¿Y tú? ¿Cómo están tus amigos? Un abrazo, Marta.", q:"Qu'aiment faire Marta et Laura ?", opts:["Se promener en ville et parler l'après-midi","Danser et chanter","Voyager et cuisiner"], correct:0, why:"« pasear por la ciudad y hablar por las tardes »."},
+  {cat:"comprehension", passage:"Querida Sofía: Te escribo desde Barcelona. Aquí tengo nuevos amigos. Mi vecina se llama Laura, es muy agradable y simpática. Nos gusta pasear por la ciudad y hablar por las tardes. ¿Y tú? ¿Cómo están tus amigos? Un abrazo, Marta.", q:"« Un abrazo » à la fin du message est…", opts:["une formule amicale","une insulte","une adresse"], correct:0, why:"Formule de fin entre amis : « un abrazo » (une accolade)."}
+ ],
+ PRON_VERBS: [
+  {en:"Hablo con mi mejor amigo.", fr:"Je parle avec mon meilleur ami. (h muet : A-blo ; j = « kh »)"},
+  {en:"Me gustan los libros interesantes.", fr:"J'aime les livres intéressants. (GOUS-tan)"},
+  {en:"¿Te gusta viajar en verano?", fr:"Tu aimes voyager en été ? (bia-KHAR ; v = b)"},
+  {en:"Siempre escuchamos música juntos.", fr:"Nous écoutons toujours de la musique ensemble. (KHOUN-toss)"},
+  {en:"Mi vecina es muy agradable.", fr:"Ma voisine est très agréable. (be-THI-na)"},
+  {en:"Nunca bailo, soy muy tímido.", fr:"Je ne danse jamais, je suis très timide. (NOUN-ka)"},
+  {en:"Nos gusta pasear por la ciudad.", fr:"Nous aimons nous promener en ville. (thiou-DAD)"},
+  {en:"Encantado de conocerle, señor.", fr:"Enchanté de faire votre connaissance, monsieur. (ko-no-THER-le)"},
+  {en:"A veces cocino con mi amiga.", fr:"Parfois je cuisine avec mon amie. (a BÉ-thes)"},
+  {en:"Un abrazo fuerte.", fr:"Une grosse accolade. (a-BRA-tho FOUER-te)"}
+ ],
+ READING: [
+  "Me llamo Carlos y tengo muchos amigos en Madrid.",
+  "Mi mejor amigo se llama Javier.",
+  "Es un chico muy simpático, inteligente y divertido.",
+  "Siempre hablamos de fútbol los fines de semana.",
+  "Nos gusta viajar juntos en verano.",
+  "Con mi familia soy un poco tímido, pero con mis amigos soy muy alegre.",
+  "Mi vecina Laura es muy agradable y a mí me cae muy bien.",
+  "A veces escuchamos música y bailamos en casa.",
+  "No me gusta cocinar, pero me gusta comer con mis amigos.",
+  "Estamos en contacto: un abrazo fuerte."
+ ],
+ GLOSS: [
+  {en:"te escribo", fr:"je t'écris (phrase-bloc d'une lettre : « Querida Sofía: te escribo… »)"},
+  {en:"Querida Sofía", fr:"Chère Sofía (début d'une lettre amicale)"},
+  {en:"un chico / una chica", fr:"un garçon / une fille (jeune)"},
+  {en:"por las tardes", fr:"l'après-midi, les après-midis"},
+  {en:"un poco", fr:"un peu (invariable)"},
+  {en:"comer", fr:"manger (verbe en -ER : tu le verras plus tard ; ici, phrase-bloc)"},
+  {en:"me cae bien", fr:"il/elle me plaît, je l'aime bien (voir bonus)"},
+  {en:"estamos en contacto", fr:"on reste en contact"}
+ ],
+ GRAMMAR1: {
+  heading:"Les verbes en -AR au présent, et dire à quelle fréquence",
+  lede:"Plus de 80 % des verbes espagnols de ton quotidien finissent par -AR, et tous se conjuguent de la même façon. Apprends le modèle HABLAR : tu sauras en conjuguer des centaines (escuchar, bailar, viajar, pasear, cantar, estudiar…).",
+  conj:[
+   ["yo →","hablo","Hablo con mis amigos."],
+   ["tú →","hablas","¿Hablas con tu vecina?"],
+   ["él, ella, usted →","habla","Javier habla mucho. · ¿Habla usted español?"],
+   ["nosotros →","hablamos","Siempre hablamos de fútbol."],
+   ["vosotros →","habláis","¿Habláis con vuestros amigos?"],
+   ["ellos, ustedes →","hablan","Mis amigos hablan francés."]
+  ],
+  ruleHtml:"📖 <b>Recette :</b> radical (hablar → <b>habl-</b>) + terminaison : <b>-o, -as, -a, -amos, -áis, -an</b>. Même schéma pour <b>escuchar</b> (escucho, escuchas…), <b>bailar</b> (bailo…), <b>viajar</b> (viajo, viajas, viaja, viajamos, viajáis, viajan), <b>pasear</b>, <b>cantar</b>, <b>estudiar</b>, <b>cocinar</b>, <b>trabajar</b>. Pas de pronom sujet : <b>Hablo, hablas, habla…</b><br><br><b>La fréquence</b> : <b>siempre</b> (toujours) · <b>a menudo</b> (souvent) · <b>a veces</b> (parfois) · <b>casi nunca</b> (presque jamais) · <b>nunca</b> (jamais). Exemple : <b>Siempre hablo con mis amigos.</b><br><br><b>Piège de « nunca »</b> : placé AVANT le verbe, il se suffit à lui-même (<b>Nunca bailo</b>) ; placé APRÈS, il demande « no » (<b>No bailo nunca</b>). C'est l'inverse du français où « ne » est toujours là.<br><br><b>Informel / formel</b> : amis → tú (¿Hablas inglés?) ; inconnu ou supérieur → usted, avec la forme « -a » (¿Habla usted inglés?). Salutations : « ¿Qué tal? » entre amis, « Buenos días / Buenas tardes » en situation formelle.",
+  dialogueLede:"Deux amis se retrouvent (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"Hola, Carlos. ¿Qué tal? ¿Hablas mucho con Javier?", fr:"Salut, Carlos. Ça va ? Tu parles beaucoup avec Javier ?"},
+   {who:"you", en:"Sí, siempre hablamos de fútbol y a veces escuchamos música.", fr:"Oui, on parle toujours de football et parfois on écoute de la musique."},
+   {who:"them", en:"¿Bailáis también?", fr:"Vous dansez aussi ?"},
+   {who:"you", en:"Yo casi nunca bailo, soy un poco tímido.", fr:"Moi, je ne danse presque jamais, je suis un peu timide."}
+  ],
+  whyLabel:"Pourquoi toutes ces terminaisons différentes ?",
+  whyText:"Chaque personne a SA terminaison : c'est ce qui permet de supprimer le pronom sujet (comme tu l'as vu en A1.1). Pour tes verbes en -AR, retiens la petite chanson <b>o – as – a – amos – áis – an</b>. Piège de prononciation : l'accent tonique reste sur le radical sauf à nosotros (ha-BLA-mos) et vosotros (ha-BLÁIS). Et à l'écrit, <b>habla</b> peut vouloir dire « il parle », « elle parle » ou « vous parlez » (usted) : c'est le contexte qui décide."
+ },
+ GRAMMAR2: {
+  heading:"GUSTAR : j'aime, ça me plaît",
+  dialogueLede:"Dans un café avec un collègue (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenas tardes. ¿Le gusta viajar?", fr:"Bon après-midi. Aimez-vous voyager ?"},
+   {who:"you", en:"Sí, me gusta mucho. ¿Y a usted?", fr:"Oui, j'aime beaucoup. Et vous ?"},
+   {who:"them", en:"A mí también. Me gustan los viajes largos.", fr:"Moi aussi. J'aime les longs voyages."},
+   {who:"you", en:"Encantado de conocerle. Nunca hablo de trabajo con los conocidos, ¡pero hoy me gusta!", fr:"Enchanté de faire votre connaissance. Je ne parle jamais de travail avec des connaissances, mais aujourd'hui j'aime ça !"}
+  ],
+  ruleHtml:"💭 <b>Le mécanisme</b> : en espagnol on ne dit pas « j'aime le café » mais « le café me plaît ». Ce qui plaît est le <b>sujet</b> ; la personne qui aime est un petit pronom.<br><br><b>Les pronoms</b> : <b>(a mí) me</b> · <b>(a ti) te</b> · <b>(a él, a ella, a usted) le</b> · <b>(a nosotros) nos</b> · <b>(a vosotros) os</b> · <b>(a ellos, a ustedes) les</b>.<br><br><b>gusta</b> (singulier) quand ce qui plaît est UN seul objet <i>ou un verbe à l'infinitif</i> : <b>Me gusta el café. Me gusta viajar. Me gusta viajar y bailar.</b><br><b>gustan</b> (pluriel) quand ce sont PLUSIEURS objets : <b>Me gustan los perros. Me gustan la música y el cine.</b> L'adjectif s'accorde : <b>Me gustan los libros interesantes.</b><br><br><b>Négation</b> : « no » devant le pronom : <b>No me gusta el fútbol.</b><br><b>« A mí… » = insister ou comparer</b> : <b>A mí me gusta bailar, ¿y a ti?</b> Réponses courtes : <b>A mí también</b> (moi aussi) · <b>A mí no</b> (moi non). Pour « avec moi / avec toi » : <b>conmigo, contigo</b>.<br><br><b>Une personne qui plaît</b> : <b>caer bien</b> : « Me cae bien Laura » = Laura me plaît, je l'aime bien (voir bonus).",
+  whyLabel:"Pourquoi l'espagnol « renverse » la phrase ?",
+  whyText:"Dans « me gusta el café », le verbe s'accorde avec <b>le café</b> (la chose), pas avec toi. Voilà pourquoi on a <b>gusta / gustan</b> et jamais « gusto » ou « gustas » pour dire « j'aime » : <b>gustas</b> voudrait dire « tu plais » (« Me gustas » = tu me plais). Pour t'en souvenir, traduis toujours <b>mot à mot en français</b> : « Me gustan los perros » = « Les chiens me plaisent ». Le pronom (me, te, le…) indique À QUI ça plaît ; <b>gusta / gustan</b> se règle sur CE QUI plaît. Avec le vouvoiement, le pronom est <b>le / les</b> : « ¿Le gusta el café, señora? »."
+ },
+ REVIEW: [
+  {q:"« Los padres » signifie :", opts:["les pères","les parents (père et mère)"], correct:1, fb:"Masculin pluriel générique. (rappel A1.2)"},
+  {q:"« Tu as des frères et sœurs ? »", opts:["¿Tienes hermanos?","¿Eres hermanos?"], correct:0, fb:"TENER pour les liens familiaux. (rappel A1.2)"},
+  {q:"Féminin de « abuelo » :", opts:["abuela","abuelea"], correct:0, fb:"o → a. (rappel A1.2)"},
+  {q:"« Mi madre est grande » :", opts:["Mi madre es alta.","Mi madre tiene alta."], correct:0, fb:"Description → SER, adjectif accordé. (rappel A1.2)"},
+  {q:"Pour demander son nom à un inconnu âgé :", opts:["¿Cómo te llamas?","¿Cómo se llama usted?"], correct:1, fb:"usted → se llama. (rappel A1.1)"}
+ ],
+ CULTURE_NOTE: {icon:"🎉", title:"Note culturelle — l'amitié, la bise et « quedar »",
+  html:"En Espagne, l'amitié passe beaucoup par les <b>quedadas</b> : on « <b>queda</b> » (on se donne rendez-vous) pour prendre un café, des <b>tapas</b> ou sortir le soir. Les gens sont tactiles : <b>la bise</b> (deux, une sur chaque joue, entre amis ou entre femmes ; poignée de main dans un cadre pro). En Amérique latine : souvent une seule bise, plus d'<b>abrazos</b>. Entre amis, on écrit « <b>un abrazo</b> » ou « <b>un abrazo fuerte</b> » en fin de message ; dans un mail professionnel, on préfère « <b>Un saludo</b> » ou « <b>Cordialmente</b> ». Dernier point : « ¿Qué tal? » est une salutation, pas une vraie question : la réponse attendue est « Bien, ¿y tú? »."},
+ NEXT_PREVIEW:"A1.4 (Transporte / Direcciones) : demander son chemin, nommer les moyens de transport et la ville, et utiliser ir (voy, vas, va…) pour dire où tu vas. Envoie-moi le cours A1.4 pour que je l'ajoute dans le même format !",
+ META:{vocabTitle:"Amigos y relaciones sociales : qui sont tes amis, ce que tu aimes (A1.3)", lectureTitle:"Carlos et son meilleur ami Javier", bilanTitle:"Bravo, tu sais parler de tes amis et de tes goûts !", pronLabel:"Amigos : h muette, j, ñ, c/z, gu et rr", todayLede:"parler de tes amis, dire ce que tu aimes ou n'aimes pas avec gustar, conjuguer les premiers verbes en -AR (hablar, escuchar, bailar, viajar…) et dire à quelle fréquence tu fais les choses — avec la politesse formelle ET informelle"},
+ DRILLS: [
+  {type:"fill", text:"Yo ___ con mis amigos. (hablar)", answers:["hablo"], why:"yo → -o."},
+  {type:"fill", text:"Tú ___ música. (escuchar)", answers:["escuchas"], why:"tú → -as."},
+  {type:"fill", text:"Él ___ muy bien. (bailar)", answers:["baila"], why:"él → -a."},
+  {type:"fill", text:"Nosotros ___ en verano. (viajar)", answers:["viajamos"], why:"nosotros → -amos."},
+  {type:"fill", text:"Vosotros ___ por la ciudad. (pasear)", answers:["paseáis"], why:"vosotros → -áis (accent écrit)."},
+  {type:"fill", text:"Ellos ___ mucho. (cantar)", answers:["cantan"], why:"ellos → -an."},
+  {type:"fill", text:"¿___ usted español? (hablar)", answers:["Habla","habla"], why:"usted → -a : habla."},
+  {type:"fill", text:"Me ___ el café.", answers:["gusta"], why:"Un seul objet → gusta."},
+  {type:"fill", text:"Me ___ los perros.", answers:["gustan"], why:"Plusieurs objets → gustan."},
+  {type:"fill", text:"¿Te ___ viajar?", answers:["gusta"], why:"Après gustar, un infinitif → gusta."},
+  {type:"fill", text:"A mí ___ gusta la música. (me)", answers:["me"], why:"A mí → me."},
+  {type:"fill", text:"A ella ___ gustan los libros. (lui/elle)", answers:["le"], why:"A ella → le."},
+  {type:"fill", text:"No ___ gusta el fútbol. (me)", answers:["me"], why:"« No » AVANT le pronom : No me gusta."},
+  {type:"fill", text:"___ hablo de trabajo. (jamais)", answers:["Nunca","nunca"], why:"Nunca avant le verbe : pas besoin de « no »."},
+  {type:"choice", q:"« Les amis » (garçons et filles) :", opts:["los amigos","las amigas"], correct:0, why:"Groupe mixte → masculin pluriel."},
+  {type:"choice", q:"« J'aime la musique et le cinéma. » (2 éléments)", opts:["Me gusta la música y el cine.","Me gustan la música y el cine."], correct:1, why:"Deux éléments → gustan. (Un seul verbe/objet → gusta.)"},
+  {type:"choice", q:"« Te gustas » signifie :", opts:["tu aimes","tu te plais (à toi-même)","tu me plais"], correct:1, why:"Évite de dire « me gusto/gustas » pour « j'aime » : le verbe suit ce qui plaît."},
+  {type:"choice", q:"Au vouvoiement (usted), tu dis :", opts:["¿Le gusta viajar?","¿Te gusta viajar?"], correct:0, why:"usted → le."},
+  {type:"choice", q:"« Presque jamais » :", opts:["casi siempre","casi nunca"], correct:1, why:"casi nunca."},
+  {type:"choice", q:"« Une connaissance » :", opts:["una amiga","una conocida","una vecina"], correct:1, why:"conocida = connaissance (pas une amie proche)."}
+ ],
+ ANNOTATED: {
+  title:"Carlos et ses amis",
+  intro:"Un petit texte pour lire un peu plus vite. Touche chaque mot pour voir sa nature et sa traduction. Repère les verbes en -AR et les « nos gusta ».",
+  sentences:[
+   {fr:"Je m'appelle Carlos et j'ai beaucoup d'amis à Madrid.", tokens:[
+    {w:"Me llamo", tag:"verbe pronominal", info:"llamarse · présent · yo", fr:"je m'appelle"},
+    {w:"Carlos", tag:"nom propre", fr:"Carlos"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"tengo", tag:"verbe", info:"tener · présent · yo", fr:"j'ai"},
+    {w:"muchos", tag:"adjectif", info:"masc. plur.", fr:"beaucoup de", tip:"mucho s'accorde : muchos amigos, muchas amigas."},
+    {w:"amigos", tag:"nom", info:"masc. plur.", fr:"amis"},
+    {w:"en", tag:"préposition", fr:"à"},
+    {w:"Madrid", tag:"nom propre", fr:"Madrid"}
+   ]},
+   {fr:"Mon meilleur ami s'appelle Javier ; il est très drôle.", tokens:[
+    {w:"Mi", tag:"déterminant", fr:"mon"},
+    {w:"mejor", tag:"adjectif", info:"invariable", fr:"meilleur"},
+    {w:"amigo", tag:"nom", info:"masc. sing.", fr:"ami"},
+    {w:"se llama", tag:"verbe pronominal", info:"llamarse · présent · él", fr:"s'appelle"},
+    {w:"Javier", tag:"nom propre", fr:"Javier"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"es", tag:"verbe", info:"ser · présent · él", fr:"est"},
+    {w:"muy", tag:"adverbe", fr:"très"},
+    {w:"divertido", tag:"adjectif", info:"masc. sing.", fr:"drôle"}
+   ]},
+   {fr:"Nous parlons toujours de football et nous aimons voyager ensemble.", tokens:[
+    {w:"Siempre", tag:"adverbe", fr:"toujours", tip:"Adverbe de fréquence, avant le verbe."},
+    {w:"hablamos", tag:"verbe", info:"hablar · présent · nosotros", fr:"nous parlons", tip:"habl + -amos."},
+    {w:"de", tag:"préposition", fr:"de"},
+    {w:"fútbol", tag:"nom", info:"masc. sing.", fr:"football"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"nos", tag:"pronom COI", info:"nosotros", fr:"à nous", tip:"Le pronom de « nos gusta » : à nous, ça plaît."},
+    {w:"gusta", tag:"verbe", info:"gustar · présent · 3e sing.", fr:"plaît", tip:"Singulier : ce qui plaît est un verbe (viajar)."},
+    {w:"viajar", tag:"verbe", info:"infinitif", fr:"voyager"},
+    {w:"juntos", tag:"adverbe", fr:"ensemble"}
+   ]},
+   {fr:"Avec mes amis, je suis très joyeux.", tokens:[
+    {w:"Con", tag:"préposition", fr:"avec"},
+    {w:"mis", tag:"déterminant", info:"possessif · plur.", fr:"mes"},
+    {w:"amigos", tag:"nom", info:"masc. plur.", fr:"amis"},
+    {w:"soy", tag:"verbe", info:"ser · présent · yo", fr:"je suis", tip:"Ser : une façon d'être."},
+    {w:"muy", tag:"adverbe", fr:"très"},
+    {w:"alegre", tag:"adjectif", info:"masc. sing.", fr:"joyeux"}
+   ]}
+  ]
+ }
+};
+})();
