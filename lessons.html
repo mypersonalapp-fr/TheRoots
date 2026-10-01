@@ -618,6 +618,35 @@
     .fiche-body[hidden]{ display:block !important; }
     .fiche-sec{ break-inside:avoid-page; }
   }
+
+  /* Fiche d'un mot (une fiche par page) */
+  .wc{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+  .wc-meta{ display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:.74rem; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); margin:6px 0 6px; }
+  .wc-meta b{ color:var(--ink); white-space:nowrap; }
+  .wc-bar{ height:5px; border-radius:3px; background:var(--line); margin-bottom:14px; }
+  .wc-bar i{ display:block; height:100%; border-radius:3px; background:var(--accent); }
+  .wc-vis .vis{ width:150px; height:150px; border-radius:30px; background:var(--accent-soft); border:0; display:flex; align-items:center; justify-content:center; font-size:5rem; line-height:1; }
+  .wc-vis .vis-clock svg{ width:110px; height:110px; }
+  .wc-word{ font-family:"Sora",sans-serif; font-weight:700; font-size:1.9rem; line-height:1.15; }
+  .wc-ipa{ display:flex; align-items:center; gap:10px; color:var(--muted); font-size:1rem; }
+  .wc-ipa .say{ width:44px; height:44px; border-radius:50%; border:0; background:var(--accent); color:var(--accent-ink); font-size:1.1rem; cursor:pointer; }
+  .wc-fr{ font-family:"Sora",sans-serif; font-weight:700; font-size:1.35rem; color:var(--accent); }
+  .wc-chips{ display:flex; justify-content:center; }
+  .wc-chip{ background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:4px 12px; font-weight:700; font-size:.78rem; color:var(--ink); }
+  .wc-sec{ width:100%; text-align:left; background:var(--surface-2); border-radius:14px; padding:12px 14px; }
+  .wc-sec-t{ font-weight:700; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:4px; }
+  .wc-sec-b{ font-size:.92rem; line-height:1.45; }
+  .wc-sec-s{ font-size:.82rem; color:var(--muted); margin-top:6px; }
+  .wc-sec .vocab-ex{ margin-top:0; background:transparent; padding:0; }
+  .wc-reg{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .wc-reg div{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 10px; }
+  .wc-reg b{ display:block; font-size:.72rem; color:var(--muted); margin-bottom:2px; }
+  .wc-reg span{ font-weight:700; font-size:.95rem; }
+  .fv-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .fv-tile{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:10px; display:flex; align-items:center; gap:8px; min-width:0; }
+  .fv-tile .vis{ width:36px; height:36px; font-size:1.3rem; border-radius:10px; }
+  .fv-tile b{ display:block; font-size:.86rem; }
+  .fv-tile span.f{ display:block; font-size:.76rem; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -669,6 +698,7 @@
      A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
 <script src="js/data/lessons-es.js?v=20260930a"></script>
 <script src="js/data/vocab-deco-ext.js?v=20261001a"></script>
+<script src="js/data/vocab-nature-es.js?v=20261001a"></script>
 <script>
 (function(){
 
@@ -4574,7 +4604,7 @@
   }
 
   var vocabBlockIdx = 0;
-  var MAX_VOCAB_PER_PAGE = 5;
+  var MAX_VOCAB_PER_PAGE = 1; // une fiche (un mot) par page
   // Une "page" = un bloc thématique, ou un morceau de bloc si celui-ci dépasse MAX_VOCAB_PER_PAGE
   // mots (ex : Leçon 9 "Réservation et billets" a 8 mots -> 2 pages), pour ne jamais faire défiler
   // trop longtemps sur mobile même quand un seul thème est chargé.
@@ -9283,58 +9313,54 @@
     return '<div class="vocab-ex"><button class="ex-say" aria-label="Écouter la phrase">🔊</button><span class="ex-body"><span class="ex-t">'+ex[0]+'</span>'+(ex[1] ? '<span class="ex-f">'+ex[1]+'</span>' : '')+'</span></div>';
   }
 
+  // ---------- Fiche d'un mot : image, mot, traduction, prononciation, emploi, nature, informel / formel ----------
+  function natRegHtml(v){
+    var d = (ES_MODE && window.ES_NATURE && window.ES_NATURE[v.en]) || null;
+    if(!d) return "";
+    var h = '';
+    if(d.nat) h += '<div class="wc-chips"><span class="wc-chip">'+d.nat+'</span></div>';
+    return h;
+  }
+  function regHtml(v){
+    var d = (ES_MODE && window.ES_NATURE && window.ES_NATURE[v.en]) || null;
+    if(!d || !d.reg) return "";
+    return '<div class="wc-sec"><div class="wc-sec-t">Informel et formel</div>' +
+      '<div class="wc-reg"><div><b>Informel (tú)</b><span>'+d.reg.inf+'</span></div><div><b>Formel (usted)</b><span>'+d.reg.frm+'</span></div></div>' +
+      '<div class="wc-sec-s">'+d.reg.fr+'</div></div>';
+  }
+  function wordCardHtml(v){
+    var vis = vocabVisual(v) || '<span class="vis">🔤</span>';
+    var exHtml = vocabExample(v);
+    return '<div class="wc">' +
+      '<div class="wc-vis">'+vis+'</div>' +
+      '<div class="wc-word">'+v.en+'</div>' +
+      '<div class="wc-ipa"><span>'+v.ipa+'</span><button class="say" aria-label="Écouter '+v.en+'">🔊</button></div>' +
+      '<div class="wc-fr">'+v.fr+'</div>' +
+      natRegHtml(v) +
+      (v.note ? '<div class="wc-sec"><div class="wc-sec-t">Comment l\'employer</div><div class="wc-sec-b">'+v.note+'</div></div>' : '') +
+      (exHtml ? '<div class="wc-sec"><div class="wc-sec-t">Exemple</div>'+exHtml+'</div>' : '') +
+      regHtml(v) +
+      '</div>';
+  }
+  function wireWordCard(root, v){
+    var say = root.querySelector(".say"); if(say) say.addEventListener("click", function(){ speak(v.en); });
+    var exSay = root.querySelector(".ex-say"), exTxt = root.querySelector(".ex-t");
+    if(exSay && exTxt) exSay.addEventListener("click", function(){ speak(exTxt.textContent); });
+  }
   function renderVocab(){
     if(discoverPending()) return renderDiscover();
-    if(CARDS()) return renderVocabCards();
     var blocks = vocabBlocks();
     if(vocabBlockIdx > blocks.length-1) vocabBlockIdx = blocks.length-1;
     if(vocabBlockIdx < 0) vocabBlockIdx = 0;
-    var page = blocks[vocabBlockIdx];
-    var currentBlock = page.block;
-    var items = page.items;
-    var dots = blocks.map(function(_, i){ return '<span class="vocab-dot'+(i===vocabBlockIdx?' active':'')+'"></span>'; }).join("");
-    var headingLabel = currentBlock
-      ? currentBlock + (page.partTotal > 1 ? ' ('+(page.partIdx+1)+'/'+page.partTotal+')' : '') + ' · ' + (vocabBlockIdx+1) + '/' + blocks.length
-      : "";
+    var page = blocks[vocabBlockIdx], v = page.items[0];
+    var pct = Math.round((vocabBlockIdx+1)/blocks.length*100);
     screen.innerHTML =
       '<div class="eyebrow">'+lessonLabel()+' · Vocabulaire · 1/'+LECON_SUBSTEPS+'</div>' +
-      '<h2 class="screen-title">'+META.vocabTitle+'</h2>' +
-      (blocks.length > 1 ? '<div class="vocab-dots">'+dots+'</div>' : '') +
-      (currentBlock ? '<div class="vocab-block-heading">'+headingLabel+'</div>' : '') +
-      '<p class="lede">🔊 pour écouter, 💡 pour l\'usage du mot.</p>' +
-      '<div class="vocab-list" id="vlist"></div>';
-    var vlist = document.getElementById("vlist");
-    items.forEach(function(v){
-      var row = document.createElement("div");
-      row.className = "vocab-row";
-      row.innerHTML =
-        '<div class="vocab-main'+(vocabVisual(v) ? ' has-vis' : '')+'">' +
-          vocabVisual(v) +
-          '<button class="say" aria-label="Écouter '+v.en+'">🔊</button>' +
-          '<div class="words"><span class="en">'+v.en+'</span><span class="ipa">'+v.ipa+'</span></div>' +
-          '<span class="fr">'+v.fr+'</span>' +
-          (v.note ? '<button class="note-toggle" aria-expanded="false" aria-label="Usage de '+v.en+'">💡</button>' : '') +
-        '</div>';
-      var exHtml = vocabExample(v);
-      if(exHtml){
-        var exWrap = document.createElement("div"); exWrap.innerHTML = exHtml; var exEl = exWrap.firstChild; row.appendChild(exEl);
-        var exSay = exEl.querySelector(".ex-say"), exTxt = exEl.querySelector(".ex-t");
-        if(exSay) exSay.addEventListener("click", function(){ speak(exTxt.textContent); });
-      }
-      var notePanel = document.createElement("div");
-      notePanel.className = "note-panel";
-      notePanel.innerHTML = "<b>Usage — </b>" + (v.note || "");
-      notePanel.hidden = !!(exHtml || !v.note);
-      row.appendChild(notePanel);
-      row.querySelector(".say").addEventListener("click", function(){ speak(v.en); });
-      var nt = row.querySelector(".note-toggle");
-      if(nt) nt.addEventListener("click", function(){
-        notePanel.hidden = !notePanel.hidden;
-        nt.setAttribute("aria-expanded", notePanel.hidden ? "false" : "true");
-      });
-      vlist.appendChild(row);
-    });
-    nextBtn.textContent = (vocabBlockIdx < blocks.length-1) ? "Suivant" : "Voir la grammaire";
+      '<div class="wc-meta"><span>'+(page.block || META.vocabTitle)+'</span><b>Mot '+(vocabBlockIdx+1)+' / '+blocks.length+'</b></div>' +
+      '<div class="wc-bar"><i style="width:'+pct+'%"></i></div>' +
+      wordCardHtml(v);
+    wireWordCard(screen, v);
+    nextBtn.textContent = (vocabBlockIdx < blocks.length-1) ? "Mot suivant" : "Voir la grammaire";
   }
 
   function cultureNoteHtml(){
@@ -13596,7 +13622,7 @@
       '<div class="fc-card" id="fcCard">' + vis +
       '<div class="fc-word">'+v.en+'</div><div class="fc-ipa">'+v.ipa+'</div>' +
       '<button class="fc-say" id="fcSay" aria-label="Écouter '+v.en+'">🔊</button>' +
-      (cardFlip ? '<div class="fc-fr">'+v.fr+'</div>' + (exHtml || '') + (v.note && !exHtml ? '<div class="note-panel"><b>Usage — </b>'+v.note+'</div>' : '') : '<div class="fc-tap">Touche la carte pour voir la traduction</div>') +
+      (cardFlip ? '<div class="fc-fr">'+v.fr+'</div>' + natRegHtml(v) + (exHtml || '') + regHtml(v) + (v.note && !exHtml ? '<div class="note-panel"><b>Usage — </b>'+v.note+'</div>' : '') : '<div class="fc-tap">Touche la carte pour voir la traduction</div>') +
       '</div>' +
       (cardFlip ? '<div class="fc-actions"><button type="button" id="fcAgain">À revoir</button><button type="button" class="ok" id="fcOk">Je connais</button></div>' : '');
     screen.innerHTML = '<div class="eyebrow">'+lessonLabel()+' · Vocabulaire</div><div class="fc-wrap">'+front+'</div>';
@@ -13690,14 +13716,13 @@
     var hasLecon = LECON_SUBSTEPS > 3, lastSub = LECON_SUBSTEPS-1;
     var secs = [];
     secs.push({n:1, t:"Vocabulaire", meta:VOCAB.length+" mots", inline:function(box){
-      var blocks = vocabBlocks();
-      blocks.forEach(function(_, i){
-        vocabBlockIdx = i;
-        var tmp = ficheCapture(renderVocab);
-        Array.prototype.forEach.call(tmp.querySelectorAll(".eyebrow,.screen-title,.lede,.vocab-dots"), function(n){ n.parentNode.removeChild(n); });
-        while(tmp.firstChild) box.appendChild(tmp.firstChild);
+      var g = document.createElement("div"); g.className = "fv-grid";
+      VOCAB.forEach(function(v){
+        var t = document.createElement("div"); t.className = "fv-tile";
+        t.innerHTML = (vocabVisual(v) || '<span class="vis">🔤</span>') + '<div><b>'+v.en+'</b><span class="f">'+v.fr+'</span></div>';
+        g.appendChild(t);
       });
-      vocabBlockIdx = 0;
+      box.appendChild(g);
     }});
     secs.push({n:2, t:"Jeux de vocabulaire", run:[3,0]});
     if(hasLecon && GRAMMAR1) secs.push({n:3, t:"Grammaire", inline:function(box){ var tmp = ficheCapture(renderGrammar1); while(tmp.firstChild) box.appendChild(tmp.firstChild); }});
@@ -13719,7 +13744,7 @@
     secs.push({n:13, t:"Fiche PDF", pdf:true});
     if(!ficheOpenSecs || ficheOpenSecs.lesson !== state.lesson){ ficheOpenSecs = {lesson:state.lesson, open:{1:true}}; }
     var head = '<div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title" style="margin-bottom:8px">'+(META.vocabTitle || "Fiche de la leçon")+'</div>';
-    var chips = '<div class="fiche-chips">' + secs.map(function(x){ return '<button type="button" class="fiche-chip" data-n="'+x.n+'">'+x.n+' · '+x.t.replace(/ et écrite/, "").replace("Compréhension orale","Comprendre")+'</button>'; }).join("") + '</div>';
+    var chips = '';
     screen.innerHTML = head + chips + '<div id="ficheList"></div>';
     var list = document.getElementById("ficheList");
     secs.forEach(function(x){
@@ -13741,9 +13766,6 @@
       });
       sec._open = function(){ if(body.hidden) sec.querySelector(".fiche-head").click(); };
       list.appendChild(sec);
-    });
-    Array.prototype.forEach.call(screen.querySelectorAll(".fiche-chip"), function(c){
-      c.addEventListener("click", function(){ var sec = document.getElementById("fs"+c.getAttribute("data-n")); if(sec){ sec._open(); sec.scrollIntoView({behavior:"smooth", block:"start"}); } });
     });
   }
   function ficheNextWrap(fn){
