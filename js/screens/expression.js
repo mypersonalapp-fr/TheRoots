@@ -25,6 +25,14 @@ import { EXPRESSION_ORALE_PROMPTS_B1_EN } from "../data/expression-orale-prompts
 import { EXPRESSION_ECRITE_PROMPTS_B1_EN } from "../data/expression-ecrite-prompts-b1-en.js?v=20260930a";
 import { EXPRESSION_ORALE_PROMPTS_B2_EN } from "../data/expression-orale-prompts-b2-en.js?v=20260930a";
 import { EXPRESSION_ECRITE_PROMPTS_B2_EN } from "../data/expression-ecrite-prompts-b2-en.js?v=20260930a";
+import { EXPRESSION_ORALE_PROMPTS_A1_ES } from "../data/expression-orale-prompts-a1-es.js?v=20261001d";
+import { EXPRESSION_ECRITE_PROMPTS_A1_ES } from "../data/expression-ecrite-prompts-a1-es.js?v=20261001d";
+import { EXPRESSION_ORALE_PROMPTS_A2_ES } from "../data/expression-orale-prompts-a2-es.js?v=20261001d";
+import { EXPRESSION_ECRITE_PROMPTS_A2_ES } from "../data/expression-ecrite-prompts-a2-es.js?v=20261001d";
+import { EXPRESSION_ORALE_PROMPTS_B1_ES } from "../data/expression-orale-prompts-b1-es.js?v=20261001d";
+import { EXPRESSION_ECRITE_PROMPTS_B1_ES } from "../data/expression-ecrite-prompts-b1-es.js?v=20261001d";
+import { EXPRESSION_ORALE_PROMPTS_B2_ES } from "../data/expression-orale-prompts-b2-es.js?v=20261001d";
+import { EXPRESSION_ECRITE_PROMPTS_B2_ES } from "../data/expression-ecrite-prompts-b2-es.js?v=20261001d";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
@@ -40,9 +48,11 @@ const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 // affiche simplement "bientôt disponible", sans cas particulier.
 const ORAL_BY_LANG = {
   en: { A1: EXPRESSION_ORALE_PROMPTS_EN, A2: EXPRESSION_ORALE_PROMPTS_A2_EN, B1: EXPRESSION_ORALE_PROMPTS_B1_EN, B2: EXPRESSION_ORALE_PROMPTS_B2_EN },
+  es: { A1: EXPRESSION_ORALE_PROMPTS_A1_ES, A2: EXPRESSION_ORALE_PROMPTS_A2_ES, B1: EXPRESSION_ORALE_PROMPTS_B1_ES, B2: EXPRESSION_ORALE_PROMPTS_B2_ES },
 };
 const ECRITE_BY_LANG = {
   en: { A1: EXPRESSION_ECRITE_PROMPTS_EN, A2: EXPRESSION_ECRITE_PROMPTS_A2_EN, B1: EXPRESSION_ECRITE_PROMPTS_B1_EN, B2: EXPRESSION_ECRITE_PROMPTS_B2_EN },
+  es: { A1: EXPRESSION_ECRITE_PROMPTS_A1_ES, A2: EXPRESSION_ECRITE_PROMPTS_A2_ES, B1: EXPRESSION_ECRITE_PROMPTS_B1_ES, B2: EXPRESSION_ECRITE_PROMPTS_B2_ES },
 };
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const LANGUAGETOOL_LANG = { en: "en-US", es: "es", pt: "pt-PT" };

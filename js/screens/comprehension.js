@@ -29,6 +29,10 @@ import { COMPREHENSION_ECRITE_B1_ES } from "../data/comprehension-ecrite-b1-es.j
 import { COMPREHENSION_ECRITE_B2_ES } from "../data/comprehension-ecrite-b2-es.js?v=20261001a";
 import { COMPREHENSION_ORALE_B1_EN } from "../data/comprehension-orale-dialogues-b1-en.js?v=20261001a";
 import { COMPREHENSION_ORALE_B2_EN } from "../data/comprehension-orale-dialogues-b2-en.js?v=20261001a";
+import { COMPREHENSION_ORALE_A1_ES } from "../data/comprehension-orale-dialogues-a1-es.js?v=20261001d";
+import { COMPREHENSION_ORALE_A2_ES } from "../data/comprehension-orale-dialogues-a2-es.js?v=20261001d";
+import { COMPREHENSION_ORALE_B1_ES } from "../data/comprehension-orale-dialogues-b1-es.js?v=20261001d";
+import { COMPREHENSION_ORALE_B2_ES } from "../data/comprehension-orale-dialogues-b2-es.js?v=20261001d";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
@@ -51,6 +55,7 @@ const ECRITE_BY_LANG = {
 };
 const DIALOGS_BY_LANG = {
   en: { B1: COMPREHENSION_ORALE_B1_EN, B2: COMPREHENSION_ORALE_B2_EN },
+  es: { A1: COMPREHENSION_ORALE_A1_ES, A2: COMPREHENSION_ORALE_A2_ES, B1: COMPREHENSION_ORALE_B1_ES, B2: COMPREHENSION_ORALE_B2_ES },
 };
 
 // Clé de sauvegarde de la progression en compréhension écrite, PAR LANGUE ET
@@ -136,10 +141,12 @@ function writtenGroups(texts) {
 const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 // ---------- Voix de synthèse (dialogues) ----------
-const FEM = /female|samantha|karen|serena|moira|tessa|fiona|victoria|susan|kate|zira|hazel|libby|sonia|jenny|aria|martha|allison|ava|nicky/i;
+const FEM = /female|samantha|karen|serena|moira|tessa|fiona|victoria|susan|kate|zira|hazel|libby|sonia|jenny|aria|martha|allison|ava|nicky|monica|mónica|paulina|marisol|helena|laura|elvira|lucia|lucía|sabina|angelica|esperanza|rosa|carmen/i;
+let SAY_LANG = "en";
 function pickVoice(speakers, idx) {
   if (!("speechSynthesis" in window)) return null;
-  const vs = speechSynthesis.getVoices().filter((v) => /^en/i.test(v.lang));
+  let vs = speechSynthesis.getVoices().filter((v) => new RegExp("^" + SAY_LANG, "i").test(v.lang));
+  if (SAY_LANG === "es") vs = vs.filter((v) => /es[-_]ES/i.test(v.lang)).concat(vs.filter((v) => !/es[-_]ES/i.test(v.lang)));
   if (!vs.length) return null;
   const sp = speakers[idx];
   const sameGender = speakers.map((s, i) => [s, i]).filter(([s]) => s.voice === sp.voice).map(([, i]) => i);
@@ -155,7 +162,7 @@ function say(speakers, idx, text, rate) {
     const u = new SpeechSynthesisUtterance(text);
     const v = pickVoice(speakers, idx);
     if (v) u.voice = v;
-    u.lang = (v && v.lang) || "en-GB";
+    u.lang = (v && v.lang) || (SAY_LANG === "es" ? "es-ES" : "en-GB");
     u.rate = rate || 0.95;
     u.pitch = speakers[idx].voice === "f" ? 1.12 : 0.88;
     speechSynthesis.speak(u);
@@ -359,6 +366,7 @@ export function renderComprehension(container) {
   function speakLine(k) {
     const line = dl.d.lines[k];
     if (!line) return;
+    SAY_LANG = selectedLang === "es" ? "es" : "en";
     if (line.choice) {
       if (dl.chosen[k] != null) say(dl.d.speakers, line.choice.s, line.choice.options[dl.chosen[k]].t, rate());
     } else say(dl.d.speakers, line.s, line.t, rate());
@@ -417,7 +425,7 @@ export function renderComprehension(container) {
     // fin
     return `${top}<div class="card"><div style="font-weight:800;font-size:17px">Résultat : ${dl.score} / ${d.questions.length}</div>
       <div style="font-weight:700;margin-top:12px">Expressions à retenir</div>
-      <ul style="margin:6px 0 0;padding-left:18px;font-size:13.5px">${d.expressions.map((e) => `<li><strong>${esc(e.en)}</strong> — ${esc(e.fr)}</li>`).join("")}</ul>
+      <ul style="margin:6px 0 0;padding-left:18px;font-size:13.5px">${d.expressions.map((e) => `<li><strong>${esc(e.en || e.es)}</strong> — ${esc(e.fr)}</li>`).join("")}</ul>
       <details style="margin-top:12px"><summary style="font-weight:700;cursor:pointer">Transcription complète</summary>
         <div style="margin-top:8px;font-size:13px">${d.lines.map((l, k) => { const s = l.choice ? l.choice.s : l.s; const tx = l.choice ? (l.choice.options.find((o) => o.ok) || l.choice.options[0]).t : l.t; return `<p style="margin:0 0 6px"><strong>${esc(d.speakers[s].name)} :</strong> ${esc(tx)}</p>`; }).join("")}</div></details>
       <button class="btn btn-primary" data-act="dlg-again" style="width:100%;margin-top:12px">Refaire ce dialogue</button></div>`;
