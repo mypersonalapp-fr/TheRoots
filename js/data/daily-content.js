@@ -28,6 +28,12 @@ export function pickDaily(list, d) {
   return list[dayNumber(d) % list.length];
 }
 
+// Expression et citation : la même pendant 3 jours, puis elle change (demande d'Ashley le 01/10).
+export function pickEveryThreeDays(list, d) {
+  if (!list || !list.length) return null;
+  return list[Math.floor(dayNumber(d) / 3) % list.length];
+}
+
 export function pickEveryTwoDays(list, d) {
   if (!list || !list.length) return null;
   return list[Math.floor(dayNumber(d) / 2) % list.length];
