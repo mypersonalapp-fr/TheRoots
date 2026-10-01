@@ -610,7 +610,13 @@
   .les-st{ position:absolute; top:8px; right:8px; font-size:.64rem; font-weight:800; background:var(--accent-soft); color:var(--ink); border-radius:9px; padding:2px 7px; }
   .hub-back{ background:none; border:0; font:700 .84rem "Manrope",sans-serif; color:var(--ink); padding:0; margin:0 0 8px; cursor:pointer; }
   .hub-tile:focus-visible, .hub-step:focus-visible, .hub-m:focus-visible, .hub-l:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
-  .les-tile.has-img, .hub-step.has-img{ background-image:linear-gradient(rgba(255,255,255,.60),rgba(255,255,255,.80)), var(--bg-img); background-size:cover; background-position:center; }
+  .les-emo{ font-size:2.3rem; line-height:1; display:inline-block; animation:lesFloat 3.2s ease-in-out infinite; filter:drop-shadow(0 3px 3px rgba(0,0,0,.18)); }
+  .les-tile:nth-child(2n) .les-emo{ animation-delay:-1.1s; } .les-tile:nth-child(3n) .les-emo{ animation-delay:-2.1s; }
+  @keyframes lesFloat{ 0%,100%{ transform:translateY(0) rotate(-4deg); } 50%{ transform:translateY(-6px) rotate(4deg); } }
+  @media (prefers-reduced-motion: reduce){ .les-emo{ animation:none; } }
+  .les-g0{ background-image:linear-gradient(135deg,rgba(232,131,42,.28),rgba(255,255,255,.7)); } .les-g1{ background-image:linear-gradient(135deg,rgba(42,122,184,.26),rgba(255,255,255,.7)); }
+  .les-g2{ background-image:linear-gradient(135deg,rgba(120,100,200,.26),rgba(255,255,255,.7)); } .les-g3{ background-image:linear-gradient(135deg,rgba(214,84,120,.24),rgba(255,255,255,.7)); }
+  .les-tile.has-img, .hub-step.has-img{ background-image:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.80)), var(--bg-img); background-size:cover; background-position:center; }
   .les-tile.has-img .les-code{ text-shadow:0 0 6px #fff, 0 0 2px #fff; }
   .les-tile.has-img small, .hub-step.has-img b, .hub-step.has-img small{ text-shadow:0 0 5px #fff, 0 0 2px #fff; }
   .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
@@ -13538,7 +13544,7 @@
       return;
     }
     if(ES_MODE && state.step === 0 && esNoAntecedent()){ state.step = 1; state.subStep = 0; vocabBlockIdx = 0; }
-    somOpen.hidden = false; viewOpen.hidden = false;
+    somOpen.hidden = !!state.hub; viewOpen.hidden = true;
     if(state.pick){ itinerary.hidden = true; screenViewModes(); return; }
     if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
     if(state.step === 0 || state.step >= 6) state.ficheRun = false;
@@ -13632,7 +13638,12 @@
     var I = (window.LESSON_IMAGES && key != null) ? window.LESSON_IMAGES[key] : null;
     return (I && I.discover && I.discover[0]) ? pxUrl(I.discover[0].id, 400) : null;
   }
-  function pickBg(n){ var u = pickImg(n); return u ? ' has-img" style="--bg-img:url(\''+u+'\')' : ''; }
+  var LES_EMO = {"Fond.":"🔤","A1.0":"🔤","A1.1":"🙋","A1.2":"👨‍👩‍👧","A1.3":"🤝","A1.4":"🚌","A1.5":"❤️","A1.6":"🍽️","A1.7":"🛍️","A1.8":"🏙️","A1.9":"✈️","A1.10":"💼","A1.11":"⛅","A1.12":"👋",
+    "A2.0":"🧭","A2.1":"⏰","A2.2":"🕰️","A2.3":"🎞️","A2.4":"🎯","A2.5":"⚖️","A2.6":"🩺","A2.7":"🌦️","A2.8":"🏠","A2.9":"📞","A2.10":"🎟️","A2.11":"💭","A2.12":"🌍",
+    "B1.0":"🧭","B1.1":"🪪","B1.2":"🕰️","B1.3":"💬","B1.4":"🏠","B1.5":"💼","B1.6":"🧳","B1.7":"🗣️","B1.8":"😊","B1.9":"📱","B1.10":"🧩","B1.11":"🎬","B1.12":"🌍",
+    "B2.0":"🧭","B2.1":"⚖️","B2.2":"🔍","B2.3":"🎭","B2.4":"🧩","B2.5":"🎧","B2.6":"🌐","B2.7":"🤡","B2.8":"📖","B2.9":"💻","B2.10":"🧠","B2.11":"☀️","B2.12":"🌍"};
+  function pickEmo(n){ return LES_EMO[pickCode(n)] || "✅"; }
+  function pickBg(n){ return ' les-g'+(((n % 4) + 4) % 4); } // plus de photos réalistes : pictogramme animé sur fond coloré
   function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
   function pickMax(){
     var v = null; try { v = parseInt(localStorage.getItem(MAX_KEY), 10); } catch(e){}
@@ -13704,7 +13715,7 @@
         return '<button type="button" class="hub-step'+(x.passed ? " seen" : "")+(cur && x === cur ? " first" : "")+pickBg(x.n)+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'><span class="hub-dot">'+(x.passed ? "✓" : (x.open ? "▶" : "🔒"))+'</span><span class="hub-sc"><span><b>'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+(b && !x.passed && x.open ? " · "+b : "")+'</small></span><span class="hub-chev">›</span></span></button>'; }).join("") + '</div>';
     } else {
       html += '<div class="hub-grid">' + show.map(function(x){ var b = badge(x);
-        return '<button type="button" class="hub-tile les-tile'+(cur && x === cur ? " first" : "")+(x.passed ? " seen" : "")+pickBg(x.n)+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'>'+(b ? '<span class="les-st">'+b+'</span>' : '')+'<b class="les-code">'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+'</small></button>'; }).join("") + '</div>';
+        return '<button type="button" class="hub-tile les-tile'+(cur && x === cur ? " first" : "")+(x.passed ? " seen" : "")+pickBg(x.n)+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'>'+(b ? '<span class="les-st">'+b+'</span>' : '')+'<span class="les-emo">'+pickEmo(x.n)+'</span><b class="les-code">'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+'</small></button>'; }).join("") + '</div>';
     }
     html += '<div class="hub-lay"><span>Présentation :</span>' +
       '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
@@ -13760,8 +13771,8 @@
     var layout = hubGet(HUB_LAYOUT_KEY, ["mosaique","chemin"], "mosaique");
     var mode = HUB_MODES.filter(function(m){ return m.id === hubGet(HUB_ORDER_KEY, HUB_MODES.map(function(x){ return x.id; }), "cls"); })[0];
     var rows = somMap(), seen = hubSeen()[LESSON_KEY + ":" + state.lesson] || [];
-    var html = '<button type="button" class="hub-back" id="hubBack">‹ Les leçons</button><div class="som-head"><div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Plan de la leçon")+'</div></div></div>' +
-      '<div class="hub-q">Comment veux-tu apprendre ?<small>Les cases se rangent dans l\'ordre choisi.</small></div>';
+    var html = '<div class="som-head"><div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Plan de la leçon")+'</div></div></div>' +
+      '<div class="hub-q">Par quoi veux-tu commencer ?<small>Choisis un ordre : les cases se rangent en conséquence. Puis touche la case que tu veux ouvrir.</small></div>';
     if(layout === "chemin"){
       html += '<div class="hub-seg">' + HUB_MODES.map(function(m){ return '<button type="button" class="hub-m" data-m="'+m.id+'" aria-pressed="'+(m.id === mode.id)+'">'+({cls:"Classique",par:"Parler",gra:"Règles",jeu:"Jeu"})[m.id]+'</button>'; }).join("") + '</div>';
     } else {
@@ -13782,7 +13793,7 @@
     html += '<button type="button" class="rs-link" id="openRestart2">↻ Recommencer…</button>';
     screen.innerHTML = html;
     var orb2 = document.getElementById("openRestart2"); if(orb2) orb2.addEventListener("click", function(){ restartAsk = null; state.restartPage = true; render(); });
-    var hb = document.getElementById("hubBack"); if(hb) hb.addEventListener("click", function(){ state.hub = false; state.lessonsPage = true; render(); });
+    
     Array.prototype.forEach.call(screen.querySelectorAll(".hub-m"), function(b){
       b.addEventListener("click", function(){ try { localStorage.setItem(HUB_ORDER_KEY, b.getAttribute("data-m")); } catch(e){} screenSommaire(); });
     });
@@ -13806,7 +13817,7 @@
   // ---------- Modes d'affichage : « sommaire » (défaut) et « guide » (parcours en 13 étapes) ----------
   var VIEW_KEY = "the_roots_view_mode";
   var viewOpen = document.getElementById("viewOpen");
-  function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide" || v === "cartes" || v === "fiche") ? v : "sommaire"; }
+  function viewMode(){ return "sommaire"; } // « Affichage » supprimé : le plan de la leçon fait office de choix
   function GUIDED(){ return (viewMode() === "guide" || viewMode() === "cartes") && !PRACTICE && !STANDALONE && !isGrandControle(); }
   var VIEW_MODES = [
     {id:"sommaire", t:"Le sommaire", desc:"Toutes les étapes de la leçon sur une page. Tu touches celle que tu veux.", ideal:"tu sais déjà ce que tu veux travailler."},
@@ -14212,7 +14223,7 @@
   // Entrée dans une leçon normale : on arrive d'abord sur le plan (cases + choix de l'ordre).
   loadLessonData();
   if(!PRACTICE && !STANDALONE && !isGrandControle() && state.returnTo == null && !/rootstest/.test(location.hash || "") && !(ES_MODE && !isPlayableLesson(state.lesson))){
-    if(ES_MODE && ES_START_HASH != null) state.hub = true; else state.lessonsPage = true;
+    state.lessonsPage = true;
   }
   render();
 
