@@ -545,6 +545,12 @@
   .ann-tr{ margin-top:6px; font-size:.9rem; color:var(--muted); font-style:italic; }
 
   /* ---------- Mode d'affichage « Sommaire » (déroulé en 13 étapes) ---------- */
+  .top-back{ display:inline-flex; align-items:center; gap:6px; background:var(--accent); color:var(--accent-ink); border:0; border-radius:999px; padding:10px 18px; font:800 .92rem "Manrope",sans-serif; cursor:pointer; box-shadow:var(--shadow); }
+  .top-back:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+  .rs-btn{ display:block; width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:700 .92rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .rs-btn span{ display:block; font-weight:500; font-size:.78rem; color:var(--muted); margin-top:3px; line-height:1.35; }
+  .rs-btn.warn{ border-color:var(--accent); background:var(--accent-soft); }
+  .rs-link{ background:none; border:0; font:700 .8rem "Manrope",sans-serif; color:var(--muted); text-decoration:underline; cursor:pointer; padding:6px 0; }
   .som-open{ display:flex; align-items:center; gap:8px; margin:0 0 10px auto; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:700 .84rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; box-shadow:var(--shadow); }
   .som-open[hidden]{ display:none; }
   .som-head{ display:flex; align-items:center; gap:14px; margin-bottom:6px; }
@@ -686,7 +692,7 @@
 <div class="wrap">
 
   <div class="masthead">
-    <a href="index.html" style="text-decoration:none;color:var(--muted);font-weight:700;font-size:.8rem;display:flex;align-items:center;gap:4px">‹ Retour à l'app</a>
+    <button type="button" id="topBack" class="top-back">‹ Retour à l'app</button>
   </div>
   <div class="masthead">
     <div class="brand">
@@ -4486,10 +4492,26 @@
     }); }
   }
   // « ‹ Retour à l'app » (en haut) : en espagnol, on revient sur « Mes cours ».
-  if(ES_MODE){
-    var __backLink = document.querySelector('.masthead a[href="index.html"]');
-    if(__backLink) __backLink.addEventListener("click", function(e){ e.preventDefault(); esGoApp(); });
+  // Bouton « Retour » du haut : revient d'un cran (leçon → plan → leçons → appli).
+  var topBack = document.getElementById("topBack");
+  function updateTopBack(){
+    if(!topBack) return;
+    var t = "‹ Retour à l'app";
+    if(state.restartPage) t = "‹ Retour";
+    else if(state.lessonsPage) t = "‹ Retour à l'app";
+    else if(state.hub || state.pick) t = "‹ Retour aux leçons";
+    else if(state.step >= 1 && !isGrandControle() && !STANDALONE && !PRACTICE) t = "‹ Retour au plan";
+    topBack.textContent = t;
   }
+  if(topBack) topBack.addEventListener("click", function(){
+    if(PRACTICE){ backToApp(); return; }
+    if(state.restartPage){ state.restartPage = false; render(); return; }
+    if(state.pick){ state.pick = false; render(); return; }
+    if(state.lessonsPage){ if(ES_MODE) esGoApp(); else backToApp(); return; }
+    if(state.hub){ state.hub = false; state.lessonsPage = true; render(); return; }
+    if(state.step >= 1 && !isGrandControle() && !STANDALONE){ state.hub = true; state.ficheRun = false; render(); return; }
+    state.lessonsPage = true; render();
+  });
 
   // ---------- Screen 0 : Accueil ----------
   function screenAccueil(){
@@ -13458,6 +13480,7 @@
 
   function render(){
     if(typeof somOpen !== "undefined" && somOpen){ somOpen.hidden = true; viewOpen.hidden = true; }
+    if(typeof updateTopBack === "function") updateTopBack();
     if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
     if(ES_MODE && !isPlayableLesson(state.lesson)){ updateRouteChip(); screenEsEmpty(); return; }
@@ -13469,6 +13492,7 @@
     nextBtn.style.display = "";
     nextBtn.disabled = false;
     state.gateOpen = false;
+    if(state.restartPage){ itinerary.hidden = true; screenRestart(); return; }
     if(state.lessonsPage && !STANDALONE){ itinerary.hidden = true; screenLessons(); return; }
     if(state.lesson === 13 && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
       var renfortTodo = pendingRenforts("A2");
@@ -13551,6 +13575,51 @@
     ];
   }
   function somPos(st, sub){ return st*100 + sub; }
+  // ---------- Recommencer : une leçon, ou tout (leçons + test de positionnement) ----------
+  var restartAsk = null;
+  function resetLessonData(n){
+    var all = lsGet(K_PASS, {}), m = all[LANG] || {}; delete m[n]; all[LANG] = m; lsSet(K_PASS, all);
+    var seen = hubSeen(); delete seen[LESSON_KEY + ":" + n]; try { localStorage.setItem(HUB_SEEN_KEY, JSON.stringify(seen)); } catch(e){}
+    try { var rec = lsGet(K_ERR, {}); if(rec[LANG]){ delete rec[LANG][n]; lsSet(K_ERR, rec); } } catch(e){}
+  }
+  function resetEverything(){
+    [K_PASS, K_ERR, K_CTRL, K_SKILLS, K_BOOST].forEach(function(k){ var all = lsGet(k, {}); delete all[LANG]; lsSet(k, all); });
+    var seen = hubSeen(); Object.keys(seen).forEach(function(k){ if(k.indexOf(LESSON_KEY + ":") === 0) delete seen[k]; }); try { localStorage.setItem(HUB_SEEN_KEY, JSON.stringify(seen)); } catch(e){}
+    try { localStorage.removeItem(LESSON_KEY); localStorage.removeItem(MAX_KEY); localStorage.removeItem("the_roots_lesson_entry_en"); } catch(e){}
+    try {
+      var st = JSON.parse(localStorage.getItem("the_roots_store_v1") || "null");
+      if(st && st.settings && st.settings.langs){
+        st.settings.langs = st.settings.langs.map(function(l){ return l.code === LANG ? Object.assign({}, l, {leveled:false, level:null, progress:0, entryLevel:null, entryDate:null}) : l; });
+        localStorage.setItem("the_roots_store_v1", JSON.stringify(st));
+      }
+    } catch(e){}
+  }
+  function screenRestart(){
+    backBtn.style.visibility = "hidden"; nextBtn.style.display = "none"; hint.textContent = ""; postmark.innerHTML = "RECOMMENCER";
+    var L = pickList(), startN = pickStart(L), canLesson = L.indexOf(state.lesson) >= 0;
+    var html = '<div class="eyebrow">'+(ES_MODE ? "Espagnol" : "Anglais")+'</div><h2 class="screen-title">Recommencer</h2><p class="lede">Choisis ce que tu veux effacer. Rien n\'est supprimé avant ta confirmation.</p>';
+    if(canLesson){
+      html += restartAsk === "lesson"
+        ? '<div class="rs-btn warn"><b>Effacer ma réussite de la leçon '+pickCode(state.lesson)+' ?</b><span>Tu repartiras du début de cette leçon. Les autres leçons ne changent pas.</span></div><button type="button" class="rs-btn warn" id="rsGo1">Oui, recommencer la leçon '+pickCode(state.lesson)+'</button>'
+        : '<button type="button" class="rs-btn" id="rs1"><b>↻ Recommencer cette leçon ('+pickCode(state.lesson)+')</b><span>Repartir du début de la leçon : réussite, étapes vues et erreurs de cette leçon effacées.</span></button>';
+    }
+    html += restartAsk === "all"
+      ? '<div class="rs-btn warn"><b>Tout effacer et repartir du test de positionnement ?</b><span>Toutes tes leçons réussies, tes jauges, tes contrôles et ton niveau de départ en '+(ES_MODE ? "espagnol" : "anglais")+' seront effacés. Les autres langues ne changent pas.</span></div><button type="button" class="rs-btn warn" id="rsGo2">Oui, tout recommencer depuis le test</button>'
+      : '<button type="button" class="rs-btn" id="rs2"><b>⟲ Tout recommencer depuis le test de positionnement</b><span>Efface ta progression '+(ES_MODE ? "en espagnol" : "en anglais")+' et te ramène au test de niveau.</span></button>';
+    html += '<button type="button" class="rs-link" id="rsCancel">Annuler</button>';
+    screen.innerHTML = html;
+    function on(id, f){ var e = document.getElementById(id); if(e) e.addEventListener("click", f); }
+    on("rs1", function(){ restartAsk = "lesson"; screenRestart(); });
+    on("rs2", function(){ restartAsk = "all"; screenRestart(); });
+    on("rsCancel", function(){ restartAsk = null; state.restartPage = false; render(); });
+    on("rsGo1", function(){
+      var n = state.lesson; resetLessonData(n); restartAsk = null; state.restartPage = false;
+      state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = []; state.reviewDone = false; state.reviewLog = []; state.ctrlDraw = null; memState = null; sbRound = 0; vocabBlockIdx = 0; cardsReset();
+      state.hub = true; render();
+    });
+    on("rsGo2", function(){ resetEverything(); restartAsk = null; try { sessionStorage.setItem("the_roots_last_tab", "mes-cours"); } catch(e){} window.location.href = "index.html"; });
+  }
+
   // ---------- Page des leçons : une case par leçon (A1.0, A1.1…), ouvertes au fur et à mesure ----------
   var MAX_KEY = LESSON_KEY + "_max";
   function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
@@ -13629,7 +13698,9 @@
     html += '<div class="hub-lay"><span>Présentation :</span>' +
       '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
       '<button type="button" class="hub-l" data-l="chemin" aria-pressed="'+(layout === "chemin")+'">☰ Chemin</button></div>';
+    html += '<button type="button" class="rs-link" id="openRestart">↻ Recommencer…</button>';
     screen.innerHTML = html;
+    var orb = document.getElementById("openRestart"); if(orb) orb.addEventListener("click", function(){ restartAsk = null; state.restartPage = true; render(); });
     Array.prototype.forEach.call(screen.querySelectorAll(".les-tab"), function(b){ b.addEventListener("click", function(){ lvTab = b.getAttribute("data-l"); screenLessons(); }); });
     Array.prototype.forEach.call(screen.querySelectorAll(".hub-l"), function(b){ b.addEventListener("click", function(){ try { localStorage.setItem(HUB_LAYOUT_KEY, b.getAttribute("data-l")); } catch(e){} screenLessons(); }); });
     Array.prototype.forEach.call(screen.querySelectorAll("[data-n]"), function(b){
@@ -13697,7 +13768,9 @@
     html += '<div class="hub-lay"><span>Présentation :</span>' +
       '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
       '<button type="button" class="hub-l" data-l="chemin" aria-pressed="'+(layout === "chemin")+'">☰ Chemin</button></div>';
+    html += '<button type="button" class="rs-link" id="openRestart2">↻ Recommencer…</button>';
     screen.innerHTML = html;
+    var orb2 = document.getElementById("openRestart2"); if(orb2) orb2.addEventListener("click", function(){ restartAsk = null; state.restartPage = true; render(); });
     var hb = document.getElementById("hubBack"); if(hb) hb.addEventListener("click", function(){ state.hub = false; state.lessonsPage = true; render(); });
     Array.prototype.forEach.call(screen.querySelectorAll(".hub-m"), function(b){
       b.addEventListener("click", function(){ try { localStorage.setItem(HUB_ORDER_KEY, b.getAttribute("data-m")); } catch(e){} screenSommaire(); });
