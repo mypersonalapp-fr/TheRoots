@@ -1,0 +1,118 @@
+// The Roots — Expression orale (Espagnol, niveau B1).
+// L'appli lit le texte à voix haute ; l'apprenant répond à l'oral ;
+// checklist expectedPoints par mots-clés ; `model` = réponse type B1.
+
+export const EXPRESSION_ORALE_PROMPTS_B1_ES = [
+  {
+    id: 1,
+    from: "Lucía",
+    callText: "¡Hola! Soy Lucía. Oye, el fin de semana quiero hacer algo diferente, pero no sé qué. ¿Qué planes tienes tú? ¿Y qué me recomiendas que hagamos juntas?",
+    task: "Cuéntale a Lucía tus planes del fin de semana y recomiéndale una actividad para hacer juntas.",
+    fr: "Salut ! Ici Lucía. Dis, ce week-end je veux faire quelque chose de différent, mais je ne sais pas quoi. Qu'est-ce que tu as prévu, toi ? Et que me recommandes-tu de faire ensemble ?",
+    expectedPoints: [
+      { label: "Parler de tes plans", keywords: ["voy a", "pienso", "tengo planes", "el sábado", "el sabado", "el domingo", "este fin de semana", "tengo previsto"] },
+      { label: "Recommander une activité", keywords: ["te recomiendo", "podríamos", "podriamos", "qué tal si", "que tal si", "te propongo", "deberíamos", "deberiamos", "sería buena idea", "seria buena idea"] },
+      { label: "Justifier ta proposition", keywords: ["porque", "ya que", "así", "asi", "es divertido", "me encanta", "te gustará", "te gustara", "hace buen tiempo"] },
+      { label: "Fixer un moment ou un lieu", keywords: ["a las", "por la tarde", "por la mañana", "por la manana", "en el parque", "en el centro", "quedamos", "nos vemos", "dónde", "donde"] },
+    ],
+    model: "¡Hola, Lucía! Este fin de semana voy a descansar un poco; el sábado por la mañana tengo que hacer la compra, pero por la tarde estoy libre. Te recomiendo que vayamos al museo nuevo del centro, porque dicen que la exposición es muy buena. También podríamos comer algo después, en una terraza. ¿Qué te parece si quedamos a las cuatro delante del museo? Seguro que te gustará.",
+  },
+  {
+    id: 2,
+    from: "Clínica Dental Sonrisa",
+    callText: "Buenos días, le llamamos de la Clínica Dental Sonrisa. Tiene cita mañana a las nueve y media, pero el doctor tiene una urgencia. ¿Le vendría bien venir a las doce o prefiere cambiar el día?",
+    task: "Responde a la clínica: di si te va bien la hora propuesta, explica tu situación y propón una solución.",
+    fr: "Bonjour, nous vous appelons de la Clinique Dentaire Sonrisa. Vous avez rendez-vous demain à 9 h 30, mais le docteur a une urgence. Est-ce que 12 h vous conviendrait, ou préférez-vous changer de jour ?",
+    expectedPoints: [
+      { label: "Saluer et répondre à la proposition", keywords: ["buenos días", "buenos dias", "gracias por llamar", "me viene bien", "me va bien", "no me viene bien", "no puedo", "prefiero"] },
+      { label: "Expliquer ta contrainte", keywords: ["trabajo", "reunión", "reunion", "tengo que", "mi hijo", "recoger", "a esa hora", "a las doce", "mediodía", "mediodia"] },
+      { label: "Proposer une solution", keywords: ["podría", "podria", "podríamos", "podriamos", "otro día", "otro dia", "por la tarde", "pasado mañana", "pasado manana", "sería posible", "seria posible"] },
+      { label: "Confirmer et remercier", keywords: ["entonces", "de acuerdo", "perfecto", "quedamos", "confirmo", "gracias", "hasta mañana", "hasta manana", "adiós", "adios"] },
+    ],
+    model: "Buenos días. Gracias por llamar. Lo siento, pero a las doce no me viene bien, porque tengo que recoger a mi hijo del colegio. ¿Sería posible cambiar la cita para pasado mañana por la tarde? Me iría bien a partir de las cuatro. Si no hay hueco ese día, podríamos mirar la semana que viene. De acuerdo, entonces quedamos así. Muchas gracias por avisarme. Hasta pronto.",
+  },
+  {
+    id: 3,
+    from: "Sr. Ramírez (jefe)",
+    callText: "Buenos días, soy Ramírez. Necesito que alguien venga el sábado para terminar el informe de ventas. Usted conoce bien el proyecto. ¿Podría venir unas horas? ¿Qué opina?",
+    task: "Responde a tu jefe: explica tu situación, negocia una condición y propón una solución razonable.",
+    fr: "Bonjour, ici Ramírez. J'ai besoin que quelqu'un vienne samedi pour terminer le rapport de ventes. Vous connaissez bien le projet. Pourriez-vous venir quelques heures ? Qu'en pensez-vous ?",
+    expectedPoints: [
+      { label: "Réagir à la demande avec politesse (usted)", keywords: ["buenos días", "buenos dias", "entiendo", "comprendo", "claro", "señor ramírez", "senor ramirez", "gracias por confiar", "me parece"] },
+      { label: "Expliquer tes contraintes", keywords: ["tengo", "compromiso", "familia", "mi hijo", "el sábado", "el sabado", "no suelo", "normalmente", "ya tenía", "ya tenia"] },
+      { label: "Négocier une condition", keywords: ["a cambio", "si pudiera", "si me", "día libre", "dia libre", "compensar", "horas extra", "el lunes", "libre", "siempre que", "con la condición", "con la condicion"] },
+      { label: "Proposer une solution concrète", keywords: ["podría", "podria", "puedo", "podríamos", "podriamos", "solo", "unas horas", "hasta las", "desde casa", "por la mañana", "por la manana"] },
+    ],
+    model: "Buenos días, señor Ramírez. Entiendo que el informe es urgente, pero el sábado tengo un compromiso familiar. Podría venir solo por la mañana, hasta las doce, si le parece bien. A cambio, me gustaría librar el lunes por la tarde, para compensar las horas. Además, si prefiere, puedo terminar la parte final desde casa el domingo. Creo que así podemos entregar el informe a tiempo.",
+  },
+  {
+    id: 4,
+    from: "Javier (tu hermano)",
+    callText: "¡Hola! Soy Javier. Mamá cumple sesenta años el mes que viene y quiero invitarla a cenar. Tú conoces mejor los sitios de tu barrio. ¿Qué restaurante me recomiendas y por qué?",
+    task: "Recomienda un restaurante a Javier: descríbelo, explica por qué es bueno para esa ocasión y da consejos prácticos.",
+    fr: "Salut ! Ici Javier. Maman fête ses soixante ans le mois prochain et je veux l'inviter à dîner. Tu connais mieux les endroits de ton quartier. Quel restaurant me recommandes-tu et pourquoi ?",
+    expectedPoints: [
+      { label: "Recommander un restaurant", keywords: ["te recomiendo", "deberías", "deberias", "tienes que ir", "el mejor", "se llama", "hay un restaurante", "cerca de", "mi favorito"] },
+      { label: "Décrire le lieu ou la cuisine", keywords: ["comida", "cocina", "platos", "ambiente", "terraza", "tranquilo", "elegante", "acogedor", "carne", "pescado", "postres", "carta", "menú", "menu"] },
+      { label: "Justifier pour la fête de maman", keywords: ["porque", "a mamá", "a mama", "le encantará", "le encantara", "especial", "cumpleaños", "cumpleanos", "sesenta", "celebrar"] },
+      { label: "Donner un conseil pratique", keywords: ["reservar", "reserva", "con antelación", "con antelacion", "precio", "euros", "mejor que", "pide", "es mejor", "llama antes"] },
+    ],
+    model: "¡Hola, Javier! Te recomiendo un restaurante que se llama La Higuera, muy cerca de mi casa. La cocina es tradicional, con platos de carne y pescado muy buenos, y el ambiente es tranquilo y acogedor. Creo que a mamá le encantará, porque es un sitio especial para celebrar un cumpleaños. Es mejor que reserves con antelación, sobre todo si vais a ir un sábado. No es muy caro: unos treinta euros por persona. ¡Pide el postre de la casa!",
+  },
+  {
+    id: 5,
+    from: "Inmobiliaria Duero",
+    callText: "Buenas tardes, le llamo de Inmobiliaria Duero. Hemos recibido su interés por el piso de la calle Alcalá. Tiene dos habitaciones y está reformado. ¿Le gustaría visitarlo? ¿Qué le interesa saber?",
+    task: "Responde a la inmobiliaria: muestra interés, haz preguntas sobre el piso y concierta una visita.",
+    fr: "Bonsoir, je vous appelle de l'agence Duero. Nous avons reçu votre intérêt pour l'appartement de la rue Alcalá. Il a deux chambres et il est rénové. Aimeriez-vous le visiter ? Qu'aimeriez-vous savoir ?",
+    expectedPoints: [
+      { label: "Montrer ton intérêt", keywords: ["me interesa", "me gustaría", "me gustaria", "sí", "si,", "claro", "estoy interesada", "estoy interesado", "encantada", "encantado"] },
+      { label: "Poser des questions sur le prix ou les charges", keywords: ["precio", "alquiler", "cuánto", "cuanto", "gastos", "comunidad", "fianza", "euros", "incluye", "incluidos"] },
+      { label: "Poser des questions sur le logement ou le quartier", keywords: ["ascensor", "planta", "luz", "luminoso", "ruido", "transporte", "metro", "calefacción", "calefaccion", "amueblado", "mascotas", "barrio", "cuándo está disponible", "disponible"] },
+      { label: "Fixer une visite", keywords: ["visitarlo", "visita", "ver el piso", "el jueves", "el viernes", "el sábado", "el sabado", "por la tarde", "a las", "cuándo", "cuando podría", "cuando podria"] },
+    ],
+    model: "Buenas tardes. Sí, me interesa mucho el piso. ¿Podría decirme cuánto es el alquiler y si los gastos de comunidad están incluidos? También me gustaría saber si el edificio tiene ascensor y si hay metro cerca. Y, por último, ¿desde cuándo está disponible? Me gustaría visitarlo lo antes posible. ¿Podría ser el jueves por la tarde, a las seis? Muchas gracias.",
+  },
+  {
+    id: 6,
+    from: "Carmen (amiga)",
+    callText: "¡Hola! ¡Cuánto tiempo! Me han dicho que has estado de viaje. Cuéntame, ¿adónde fuiste? ¿Qué es lo que más te gustó? ¿Y hubo algún problema?",
+    task: "Cuenta a Carmen tu último viaje: dónde fuiste, qué hiciste, qué te gustó y qué problema tuviste.",
+    fr: "Salut ! Ça fait longtemps ! On m'a dit que tu étais partie en voyage. Raconte, où es-tu allée ? Qu'est-ce que tu as le plus aimé ? Et y a-t-il eu un problème ?",
+    expectedPoints: [
+      { label: "Dire où tu es allée et quand", keywords: ["fui a", "fuimos a", "viajé", "viaje a", "viajamos", "estuve en", "estuvimos en", "el mes pasado", "el verano pasado", "hace dos semanas", "durante"] },
+      { label: "Raconter ce que tu as fait (passé)", keywords: ["visité", "visite", "visitamos", "comí", "comi", "comimos", "paseé", "pasee", "paseamos", "vimos", "hicimos", "hice", "probé", "probe"] },
+      { label: "Dire ce que tu as le plus aimé", keywords: ["lo que más me gustó", "lo que mas me gusto", "me encantó", "me encanto", "me gustó", "me gusto", "lo mejor", "increíble", "increible", "precioso", "maravilloso"] },
+      { label: "Parler d'un problème", keywords: ["problema", "perdí", "perdi", "se perdió", "se perdio", "retraso", "llovía", "llovia", "llovió", "llovio", "maleta", "cancelaron", "por desgracia", "lamentablemente", "desafortunadamente"] },
+    ],
+    model: "¡Hola, Carmen! Sí, el mes pasado fui a Lisboa con una amiga. Estuvimos cuatro días: visitamos el barrio de Alfama, paseamos en tranvía y probamos muchos pasteles de nata. Lo que más me gustó fue el atardecer desde el mirador, fue precioso. Lamentablemente, tuvimos un problema: el vuelo de vuelta tuvo un retraso de cuatro horas y llegamos muy cansadas. Pero, en general, fue un viaje inolvidable. ¡Tienes que ir!",
+  },
+  {
+    id: 7,
+    from: "Servicio técnico de Fibranet",
+    callText: "Buenas tardes, le habla Andrés, del servicio técnico de Fibranet. Tengo aquí su incidencia por la conexión a internet. ¿Puede explicarme qué ocurre exactamente y desde cuándo?",
+    task: "Explica el problema de internet al técnico: qué pasa, desde cuándo, qué has probado ya y qué esperas que haga.",
+    fr: "Bonsoir, Andrés du service technique de Fibranet à l'appareil. J'ai ici votre déclaration d'incident concernant la connexion internet. Pouvez-vous m'expliquer ce qui se passe exactamente et depuis quand ?",
+    expectedPoints: [
+      { label: "Décrire le problème", keywords: ["no funciona", "se corta", "se cae", "va lento", "muy lento", "sin conexión", "sin conexion", "wifi", "router", "internet", "falla", "se desconecta"] },
+      { label: "Préciser depuis quand", keywords: ["desde hace", "desde el", "desde ayer", "desde el lunes", "hace tres días", "hace tres dias", "días", "dias", "una semana"] },
+      { label: "Dire ce que tu as déjà essayé", keywords: ["he probado", "he reiniciado", "reinicié", "reinicie", "apagado", "desenchufado", "cables", "ya he", "ya intenté", "ya intente", "ya probé", "ya probe"] },
+      { label: "Dire ce que tu attends de lui", keywords: ["necesito que", "quiero que", "espero que", "puede enviar", "pueden enviar", "técnico", "tecnico", "solucionar", "arreglar", "lo antes posible", "visita"] },
+    ],
+    model: "Buenas tardes, Andrés. El problema es que internet se corta constantemente y el wifi va muy lento. Empezó hace tres días, después de una tormenta. Ya he reiniciado el router varias veces y he comprobado los cables, pero sigue igual. Necesito que lo solucionen lo antes posible, porque trabajo desde casa. Si no se puede arreglar por teléfono, ¿podrían enviar a un técnico mañana por la tarde? Muchas gracias.",
+  },
+  {
+    id: 8,
+    from: "Daniel (compañero)",
+    callText: "Oye, te llamo porque en la empresa quieren que trabajemos tres días en casa y dos en la oficina. ¿Tú qué piensas del teletrabajo? ¿Crees que es mejor o peor que ir siempre a la oficina?",
+    task: "Da tu opinión sobre el teletrabajo: ventajas, inconvenientes y qué sistema prefieres.",
+    fr: "Dis, je t'appelle parce que dans l'entreprise ils veulent que nous travaillions trois jours chez nous et deux au bureau. Toi, que penses-tu du télétravail ? Tu crois que c'est mieux ou moins bien que d'aller toujours au bureau ?",
+    expectedPoints: [
+      { label: "Donner ton opinion", keywords: ["creo que", "pienso que", "en mi opinión", "en mi opinion", "me parece", "para mí", "para mi", "personalmente", "desde mi punto de vista"] },
+      { label: "Citer des avantages", keywords: ["ventaja", "ahorro", "ahorras", "tiempo", "transporte", "comodidad", "flexibilidad", "tranquilidad", "concentrar", "familia", "conciliar"] },
+      { label: "Citer des inconvénients", keywords: ["inconveniente", "desventaja", "sin embargo", "pero", "aislado", "aislamiento", "soledad", "contacto", "compañeros", "companeros", "falta de", "difícil", "dificil", "desconectar"] },
+      { label: "Dire ce que tu préfères", keywords: ["prefiero", "me gustaría", "me gustaria", "lo ideal", "lo mejor sería", "lo mejor seria", "el equilibrio", "combinar", "mezcla", "tres días", "tres dias", "dos días", "dos dias"] },
+    ],
+    model: "Pues creo que el teletrabajo tiene muchas ventajas: ahorras tiempo y dinero en transporte, y puedes organizarte con más flexibilidad. Sin embargo, también hay inconvenientes; por ejemplo, a veces te sientes aislado y hay menos contacto con los compañeros. Además, es difícil desconectar al terminar el día. Personalmente, prefiero combinar las dos cosas, así que el sistema de tres días en casa y dos en la oficina me parece muy equilibrado. ¿Y tú qué opinas?",
+  },
+];
