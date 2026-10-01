@@ -2397,7 +2397,7 @@ var V = [].concat(
   ["¿dónde?","/ˈdonde/","où ?","Pour l'habitation : ¿Dónde vives?"],
   ["¿cuál?","/kwal/","quel / lequel ?","¿Cuál es tu apellido? = quel est ton nom de famille ?"]
  ]),
- __esB("Politesse et petites phrases utiles", [
+ __esB("Bonus : 10 expressions clés de l'identité", [
   ["mucho gusto","/ˈmutʃo ˈɣusto/","enchanté(e)","Neutre : un homme comme une femme peut le dire."],
   ["encantado / encantada","/enkanˈtaðo · enkanˈtaða/","ravi(e)","S'accorde avec celui ou celle qui parle."],
   ["igualmente","/iɣwalˈmente/","pareillement","La réponse standard à « mucho gusto »."],
@@ -2497,7 +2497,7 @@ LESSONS_ES[201] = {
   {en:"nací", fr:"je suis né(e) (verbe nacer, passé : phrase-bloc)"}
  ],
  GRAMMAR1: {
-  heading:"Se présenter : llamarse, ser, tener… et ne PAS dire « yo »",
+  heading:"Conjugaison : llamarse, ser, tener… et ne PAS dire « yo »",
   lede:"Le grand réflexe espagnol : la terminaison du verbe dit déjà QUI parle. Voilà pourquoi on dit « Me llamo Ana » et non « Yo me llamo Ana ». Un seul nouveau verbe aujourd'hui : llamarse.",
   conj:[
    ["yo →","me llamo","Me llamo Ana."],
@@ -2538,8 +2538,8 @@ LESSONS_ES[201] = {
   {q:"« la casa » : l'article est…", opts:["masculin","féminin"], correct:1, fb:"Les noms en -a sont en général féminins : la casa. (rappel A1.0)"},
   {q:"« Tú tienes » : le verbe est…", opts:["ser","estar","tener"], correct:2, fb:"tener : tengo, tienes, tiene… (rappel A1.0)"}
  ],
- CULTURE_NOTE: {icon:"🤝", title:"Note culturelle — la première rencontre : tú ou usted ?",
-  html:"En Espagne on tutoie très vite : collègues, voisins, même des inconnus jeunes. Avec un inconnu âgé, un client ou un supérieur, on dit <b>usted</b>. Dans certaines régions d'Amérique latine (Colombie par exemple), <b>usted</b> s'emploie même entre amis proches ou en famille. En cas de doute : usted, c'est toujours poli, et la personne te proposera de la « tutoyer » si elle le souhaite (« puedes tutearme »). Pour se saluer en Espagne : la bise (une sur chaque joue) entre amis ou entre femmes, poignée de main dans un contexte professionnel. En Amérique latine, la bise est souvent unique. Enfin : tu porteras (et verras) <b>deux apellidos</b> — celui du père puis celui de la mère."},
+ CULTURE_NOTE: {icon:"🤝", title:"Culture, expression et fiche récap (A1.1)",
+  html:"<b>🤝 Culture — tú ou usted ?</b> En Espagne on tutoie très vite : collègues, voisins, même des inconnus jeunes. Avec un inconnu âgé, un client ou un supérieur, on dit <b>usted</b>. Dans certaines régions d'Amérique latine (Colombie par exemple), <b>usted</b> s'emploie même entre amis proches. En cas de doute : usted, c'est toujours poli. Pour se saluer : la bise (une sur chaque joue) en Espagne entre amis ou entre femmes, poignée de main dans un cadre pro ; une seule bise en Amérique latine. Et tu porteras <b>deux apellidos</b> : celui du père puis celui de la mère.<br><br><b>✍️ Expression écrite — ta présentation (6 phrases)</b> Modèle : « Me llamo Thomas. Mi apellido es Dubois. Tengo treinta años. Soy francés, de París, y vivo en Lyon. Soy ingeniero. Mucho gusto. » Version formelle : « Buenos días. Me llamo Thomas Dubois. Vivo en Lyon. Mi correo electrónico es … ». Vérifie : aucun « yo » inutile · tengo + años · de (origine) / en (habitation) · nationalité sans majuscule.<br><br><b>🗣️ Expression orale — se présenter</b> Dis à voix haute : « ¡Hola! Me llamo …, tengo … años, soy … y vivo en … ¿Y tú? », puis en formel : « Buenos días. Me llamo … Mucho gusto. ¿Cómo se llama usted? »<br><br><b>📄 Fiche récap</b> 4 questions : ¿Cómo te llamas? · ¿Cuántos años tienes? · ¿De dónde eres? · ¿Dónde vives? (+ usted : se llama, tiene, es, vive) · Verbes : llamarse (me llamo…), ser, tener, vivir · mi/tu/su (mis/tus/sus) · tú ≠ tu · veintiún años · la mano est féminin · de ≠ en · pas de pronom sujet inutile."},
  NEXT_PREVIEW:"A1.2 (Familia) : parler de ta famille — padre, madre, hermanos, abuelos, primos —, accorder au féminin (hermano → hermana), le pluriel (los padres, los hermanos) et décrire quelqu'un avec ser et tener.",
  META:{vocabTitle:"Identidad : se présenter, tu ou usted (A1.1)", lectureTitle:"Elena, médecin à Valence", bilanTitle:"Bravo, tu sais te présenter en espagnol !", pronLabel:"Se présenter : ll, ñ, j, z/c et d final", todayLede:"te présenter, dire ton nom, ton âge, ton origine et où tu habites, épeler ton nom, et savoir quand tutoyer ou vouvoyer"},
  DRILLS: [
@@ -2619,17 +2619,10 @@ var V = [].concat(
  ]),
  __esB("La famille élargie", [
   ["el abuelo / la abuela","/aˈβwelo · aˈβwela/","le grand-père / la grand-mère","Familier : « yayo / yaya » (Espagne)."],
-  ["los abuelos","/los aˈβwelos/","les grands-parents","Masculin pluriel générique."],
   ["el tío / la tía","/ˈtio · ˈtia/","l'oncle / la tante","Le í accentué se prononce en deux syllabes : TÍ-o."],
   ["el primo / la prima","/ˈpɾimo · ˈpɾima/","le cousin / la cousine",""],
   ["el sobrino / la sobrina","/soˈβɾino · soˈβɾina/","le neveu / la nièce",""],
   ["el nieto / la nieta","/ˈnjeto · ˈnjeta/","le petit-fils / la petite-fille",""]
- ]),
- __esB("La belle-famille", [
-  ["el suegro / la suegra","/ˈsweɣɾo · ˈsweɣɾa/","le beau-père / la belle-mère","Les parents du conjoint."],
-  ["el cuñado / la cuñada","/kuˈɲaðo · kuˈɲaða/","le beau-frère / la belle-sœur","Le ñ se prononce « gn »."],
-  ["la familia política","/la faˈmilja poˈlitika/","la belle-famille","« política » = par alliance (et aussi « politique »)."],
-  ["los parientes","/los ˈpaɾjentes/","les proches parents, la parenté","FAUX-AMI : « los parientes » ≠ « les parents » (père et mère = los padres)."]
  ]),
  __esB("Décrire un proche : adjectifs", [
   ["joven","/ˈxoβen/","jeune","Invariable au féminin : un chico joven, una chica joven. Pluriel : jóvenes (l'accent écrit apparaît)."],
@@ -2645,15 +2638,24 @@ var V = [].concat(
   ["pequeño / pequeña","/peˈkeɲo · peˈkeɲa/","petit(e) (famille, maison…)","« una familia pequeña » ; contraire : « grande »."],
   ["grande","/ˈgɾande/","grand(e) (taille d'une chose, d'une famille)","Invariable au féminin : una familia grande."]
  ]),
+ __esB("Bonus : 10 expressions clés de la famille", [
+  ["hijo único / hija única","/ˈixo ˈuniko · ˈixa ˈunika/","fils unique / fille unique","« Soy hijo único » = je suis fils unique."],
+  ["los abuelos","/los aˈβwelos/","les grands-parents","Masculin pluriel générique : grand-père + grand-mère."],
+  ["los parientes","/los ˈpaɾjentes/","la parenté, les proches parents","FAUX-AMI : ce ne sont PAS le père et la mère (= los padres)."],
+  ["estar casado / casada","/esˈtaɾ kaˈsaðo/","être marié(e)","Avec estar : l'état civil est un état."],
+  ["estar soltero / soltera","/esˈtaɾ solˈteɾo/","être célibataire","Avec estar aussi."],
+  ["tener hijos","/teˈneɾ ˈixos/","avoir des enfants","« No tengo hijos » = je n'ai pas d'enfants."],
+  ["la familia política","/la faˈmilja poˈlitika/","la belle-famille","« política » = par alliance."],
+  ["el suegro / la suegra","/ˈsweɣɾo · ˈsweɣɾa/","le beau-père / la belle-mère","Les parents du conjoint."],
+  ["el cuñado / la cuñada","/kuˈɲaðo · kuˈɲaða/","le beau-frère / la belle-sœur","ñ = « gn »."],
+  ["te quiero mucho","/te ˈkjeɾo ˈmutʃo/","je t'aime beaucoup","Dit à la famille et aux amis proches."]
+ ]),
  __esB("Phrases utiles pour parler de sa famille", [
   ["tener un hermano","/teˈneɾ un eɾˈmano/","avoir un frère","Même construction qu'en français : tengo un hermano."],
   ["¿tienes hermanos?","/ˈtjenes eɾˈmanos/","tu as des frères et sœurs ?","Formel : « ¿tiene usted hermanos? »"],
   ["¿cuántos hermanos tienes?","/ˈkwantos eɾˈmanos ˈtjenes/","combien de frères et sœurs as-tu ?",""],
-  ["hijo único / hija única","/ˈixo ˈuniko · ˈixa ˈunika/","fils unique / fille unique","« Soy hijo único » = je suis fils unique."],
-  ["tener hijos","/teˈneɾ ˈixos/","avoir des enfants","« No tengo hijos » = je n'ai pas d'enfants."],
   ["vivir con","/biˈβiɾ kon/","habiter avec","« Vivo con mis padres » : phrase très naturelle."],
-  ["¿cómo es tu madre?","/ˈkomo es tu ˈmaðɾe/","comment est ta mère ?","« ¿Cómo es? » demande la description (ser)."],
-  ["te quiero mucho","/te ˈkjeɾo ˈmutʃo/","je t'aime beaucoup","Dit à la famille et aux amis proches. Voir note culturelle."]
+  ["¿cómo es tu madre?","/ˈkomo es tu ˈmaðɾe/","comment est ta mère ?","« ¿Cómo es? » demande la description (ser)."]
  ])
 );
 V[0].ipa = "/faˈmilja/";
@@ -2743,7 +2745,7 @@ LESSONS_ES[202] = {
   {en:"el perro / el gato", fr:"le chien / le chat"}
  ],
  GRAMMAR1: {
-  heading:"TENER pour la famille, et SER pour la décrire",
+  heading:"Conjugaison : TENER pour la famille, SER pour la décrire",
   lede:"Pour dire quels proches tu as, l'espagnol fait comme le français : « j'ai un frère » → tengo un hermano. Et pour décrire ce proche (grand, drôle, sympathique), tu retrouves SER, déjà vu.",
   conj:[
    ["yo →","tengo","Tengo un hermano."],
@@ -2784,8 +2786,8 @@ LESSONS_ES[202] = {
   {q:"« Mes noms de famille » :", opts:["mi apellidos","mis apellidos"], correct:1, fb:"Possessif accordé avec la chose possédée. (rappel A1.1)"},
   {q:"Pourquoi dit-on « Tengo veinte años » sans « yo » ?", opts:["Le verbe dit déjà « je »","Parce que « yo » est impoli"], correct:0, fb:"La terminaison -o suffit. (rappel A1.1)"}
  ],
- CULTURE_NOTE: {icon:"👨‍👩‍👧", title:"Note culturelle — la famille, au cœur de la vie espagnole",
-  html:"En Espagne et en Amérique latine, la famille est très présente : on déjeune souvent chez les grands-parents le dimanche, on vit souvent chez ses parents jusqu'à la fin des études ou au-delà, et on garde le contact avec <b>tíos</b> et <b>primos</b>. Les bébés héritent de <b>deux apellidos</b>. On dit « mamá » et « papá » ; les grands-parents sont <b>abuelo/abuela</b> ou affectueusement <b>yayo/yaya</b> (Espagne). <b>Te quiero</b> (je t'aime bien / je t'aime) se dit facilement à sa famille et à ses amis proches : c'est moins fort que « te amo », réservé à l'amour romantique. Avec usted (formel), on demandera plutôt : « ¿Tiene usted familia? » ou « ¿Está usted casado? » — en privé, on évite de poser ces questions à un inconnu."},
+ CULTURE_NOTE: {icon:"👨‍👩‍👧", title:"Culture, expression et fiche récap (A1.2)",
+  html:"<b>👨‍👩‍👧 Culture</b> En Espagne et en Amérique latine, la famille est très présente : déjeuner chez les grands-parents le dimanche, contact avec <b>tíos</b> et <b>primos</b>. On dit « mamá » et « papá » ; les grands-parents sont <b>abuelo/abuela</b> ou <b>yayo/yaya</b> (Espagne). <b>Te quiero</b> se dit facilement à sa famille et à ses amis ; « te amo » est réservé à l'amour romantique. Au vouvoiement, on demande poliment : « ¿Tiene usted hijos? ».<br><br><b>✍️ Expression écrite — présenter sa famille (5 lignes)</b> Modèle : « Mi familia es grande. Tengo un hermano y una hermana. Mis padres se llaman … Mi hermano es alto y mi madre es muy simpática. » Vérifie : tener pour les liens et l'âge · ser + adjectif accordé · los padres / los hermanos (masculin générique).<br><br><b>🗣️ Expression orale — présenter un proche en 2 phrases</b> « Mi madre se llama …, es baja y muy simpática. » Puis en formel : « Mi esposa se llama …, tiene … años. »<br><br><b>📄 Fiche récap</b> TENER : tengo, tienes, tiene, tenemos, tenéis, tienen · o → a (hermano → hermana) · pluriel : +s / +es (jóvenes) · los padres = père + mère · los hermanos = frères et sœurs · ser pour décrire (es alta, son simpáticos), estar pour casado / soltero · los parientes ≠ les parents."},
  NEXT_PREVIEW:"A1.3 (Amigos y relaciones sociales) : parler de tes amis, dire ce que tu aimes avec « gustar » (me gusta, me gustan), conjuguer les premiers verbes en -AR (hablar, escuchar, bailar, viajar) et dire à quelle fréquence tu fais les choses (siempre, a veces, nunca).",
  META:{vocabTitle:"Familia : parler de ses proches (A1.2)", lectureTitle:"La familia de Antonio y Carmen", bilanTitle:"Bravo, tu sais présenter ta famille en espagnol !", pronLabel:"Familia : h muette, j, ñ, z/c et diphtongues", todayLede:"nommer les membres de ta famille, dire combien de frères et sœurs tu as, accorder au féminin et au pluriel, comprendre pourquoi « los padres » = les parents, et décrire un proche avec ser et tener"},
  DRILLS: [
@@ -3023,7 +3025,7 @@ LESSONS_ES[203] = {
   {en:"estamos en contacto", fr:"on reste en contact"}
  ],
  GRAMMAR1: {
-  heading:"Les verbes en -AR au présent, et dire à quelle fréquence",
+  heading:"Conjugaison : les verbes en -AR au présent, et la fréquence",
   lede:"Plus de 80 % des verbes espagnols de ton quotidien finissent par -AR, et tous se conjuguent de la même façon. Apprends le modèle HABLAR : tu sauras en conjuguer des centaines (escuchar, bailar, viajar, pasear, cantar, estudiar…).",
   conj:[
    ["yo →","hablo","Hablo con mis amigos."],
@@ -3064,8 +3066,8 @@ LESSONS_ES[203] = {
   {q:"« Mi madre est grande » :", opts:["Mi madre es alta.","Mi madre tiene alta."], correct:0, fb:"Description → SER, adjectif accordé. (rappel A1.2)"},
   {q:"Pour demander son nom à un inconnu âgé :", opts:["¿Cómo te llamas?","¿Cómo se llama usted?"], correct:1, fb:"usted → se llama. (rappel A1.1)"}
  ],
- CULTURE_NOTE: {icon:"🎉", title:"Note culturelle — l'amitié, la bise et « quedar »",
-  html:"En Espagne, l'amitié passe beaucoup par les <b>quedadas</b> : on « <b>queda</b> » (on se donne rendez-vous) pour prendre un café, des <b>tapas</b> ou sortir le soir. Les gens sont tactiles : <b>la bise</b> (deux, une sur chaque joue, entre amis ou entre femmes ; poignée de main dans un cadre pro). En Amérique latine : souvent une seule bise, plus d'<b>abrazos</b>. Entre amis, on écrit « <b>un abrazo</b> » ou « <b>un abrazo fuerte</b> » en fin de message ; dans un mail professionnel, on préfère « <b>Un saludo</b> » ou « <b>Cordialmente</b> ». Dernier point : « ¿Qué tal? » est une salutation, pas une vraie question : la réponse attendue est « Bien, ¿y tú? »."},
+ CULTURE_NOTE: {icon:"🎉", title:"Culture, expression et fiche récap (A1.3)",
+  html:"<b>🎉 Culture</b> En Espagne, l'amitié passe par les <b>quedadas</b> : on « queda » (on se donne rendez-vous) pour un café, des tapas ou une sortie. Bise entre amis (deux en Espagne, souvent une en Amérique latine), poignée de main au travail. Entre amis, on termine un message par « <b>un abrazo</b> » ; en contexte pro : « <b>Un saludo</b> » ou « <b>Cordialmente</b> ». « ¿Qué tal? » est une salutation : on répond « Bien, ¿y tú? ».<br><br><b>✍️ Expression écrite — parler de ses amis (6 lignes)</b> Modèle : « Tengo tres amigos muy buenos. Se llaman David, Elena y Marcos. Nos gusta mucho escuchar música y hablar de cine. David es muy simpático y Elena es muy inteligente. Siempre hablamos los fines de semana. » Vérifie : gusta / gustan · terminaisons en -AR · adverbes de fréquence.<br><br><b>🗣️ Expression orale — briser la glace</b> « ¡Hola! Me llamo Lucas, tengo un hermano y me gusta mucho viajar con mis amigos. ¿Y tú, cómo te llamas? » Puis en formel : « Buenas tardes. Encantado de conocerle. ¿Le gusta viajar? »<br><br><b>📄 Fiche récap</b> Verbes en -AR : -o, -as, -a, -amos, -áis, -an (hablar, escuchar, bailar, viajar) · gustar : me / te / le / nos / os / les + gusta (1 objet ou infinitif) ou gustan (plusieurs) · no me gusta · A mí también · fréquence : siempre, a menudo, a veces, casi nunca, nunca · conocido = connaissance · formel : encantado de conocerle, ¿le gusta…?"},
  NEXT_PREVIEW:"A1.4 (Transporte / Direcciones) : demander son chemin, nommer les moyens de transport et la ville, et utiliser ir (voy, vas, va…) pour dire où tu vas. Envoie-moi le cours A1.4 pour que je l'ajoute dans le même format !",
  META:{vocabTitle:"Amigos y relaciones sociales : qui sont tes amis, ce que tu aimes (A1.3)", lectureTitle:"Carlos et son meilleur ami Javier", bilanTitle:"Bravo, tu sais parler de tes amis et de tes goûts !", pronLabel:"Amigos : h muette, j, ñ, c/z, gu et rr", todayLede:"parler de tes amis, dire ce que tu aimes ou n'aimes pas avec gustar, conjuguer les premiers verbes en -AR (hablar, escuchar, bailar, viajar…) et dire à quelle fréquence tu fais les choses — avec la politesse formelle ET informelle"},
  DRILLS: [
