@@ -126,7 +126,7 @@ function writtenGroups(texts) {
   const out = [];
   for (let i = 0; i < texts.length; i += 5) {
     const items = texts.slice(i, i + 5);
-    out.push({ code: `${i + 1}–${i + items.length}`, title: `Série ${out.length + 1}`, items });
+    out.push({ code: `Série ${out.length + 1}`, title: items.slice(0, 3).map((x) => x.title).join(" · "), items });
   }
   return out;
 }
@@ -242,7 +242,7 @@ export function renderComprehension(container) {
     if (vids) {
       return `
         <div class="comp-hint">${t("comp_oral_desc", lang)}</div>
-        <div class="comp-mos">${vids.map((v, i) => tileHtml(i, "▶", esc(v.title), !!saved[v.videoId], "open-video", `data-video="${v.videoId}"`)).join("")}</div>`;
+        <div class="comp-mos">${vids.map((v, i) => tileHtml(i, "▶", `Extrait de film<br>${esc(v.title.replace(/^Vidéo /, ""))}`, !!saved[v.videoId], "open-video", `data-video="${v.videoId}"`)).join("")}</div>`;
     }
     return notReady;
   }
