@@ -1,149 +1,145 @@
-// The Roots — "Aide & FAQ" (nouveau, validé sur maquette le 23/09). Deux
-// parties : "comment naviguer" et "questions fréquentes". La FAQ était
-// volontairement vide au début ("pour l'instant il n'y a pas besoin de
-// questions, on va les créer plus tard avec les réponses") — remplie le
-// 24/09 sur demande explicite d'Ashley ("Créer des questions auquel les
-// apprentis vont se poser s'il ne comprenne pas les notes. Mes test. Les
-// cours ect et tu apporte une réponse.").
-//
-// Comme le reste du contenu pédagogique/informatif de l'appli (programme,
-// leçons), ces questions/réponses restent en français quelle que soit la
-// langue de l'interface — elles décrivent le fonctionnement de l'appli,
-// elles ne sont pas à traduire (même logique que programme-a1-en.js etc.).
-// Affichées en accordéon (<details>/<summary>) : replié par défaut pour ne
-// pas surcharger l'écran vu le nombre de questions, mais à la différence
-// des petites cartes de l'Accueil (qu'Ashley voulait TOUJOURS visibles),
-// une FAQ est justement l'endroit où replier par défaut est l'usage
-// attendu — chaque question s'ouvre individuellement au clic.
+// The Roots — "Aide & FAQ", en deux onglets (demande d'Ashley, 01/10) :
+//  - AIDE : à quoi sert chaque partie de l'appli (carrés → explications) ;
+//  - QUESTIONS FRÉQUENTES : les questions qu'un(e) apprenant(e) se pose au
+//    quotidien (carrés par thème → questions/réponses).
+// Une barre de recherche filtre l'onglet affiché. Contenu en français quelle
+// que soit la langue de l'interface (il décrit le fonctionnement de l'appli).
 import { store } from "../data/store.js?v=20260930a";
-import { t } from "../data/i18n.js?v=20260930a";
 
-const FAQ_ITEMS = [
-  {
-    th: "start",
-    q: "Comment fonctionne le test de niveau ?",
-    a: "Le test de niveau se lance depuis « Mes cours » en touchant la langue pas encore testée. Il détermine ton niveau CECRL de départ (A1, A2, B1...). Ce résultat devient ton « niveau d'entrée » : il reste gardé pour toujours, même si ton niveau actuel évolue ensuite avec tes leçons — c'est ce qui te permet de te comparer dans le temps (voir ton livret dans « Mes cours »).",
-  },
-  {
-    th: "start",
-    q: "Je peux repasser le test de niveau si je ne suis pas d'accord avec le résultat ?",
-    a: "Pas encore depuis Paramètres pour l'instant — cette fonctionnalité arrive. En attendant, ton niveau actuel n'est de toute façon pas figé : il évolue avec tes leçons et tes contrôles, palier après palier, même après le test initial.",
-  },
-  {
-    th: "prog",
-    q: "À quoi correspondent mes notes et mes jauges (compréhension, expression...) ?",
-    a: "Chaque compétence a sa propre jauge : compréhension orale (co), compréhension écrite (ce), expression orale (eo), expression écrite (ee), grammaire (gr), vocabulaire (vo), prononciation (pr). Elles se remplissent au fur et à mesure de tes leçons, contrôles, et des espaces Compréhension/Expression — une jauge reste vide tant qu'il n'y a pas encore assez de données pour être fiable.",
-  },
-  {
-    th: "prog",
-    q: "Que représente « Mes arbres » ?",
-    a: "Une plante par langue apprise, qui grandit avec ton niveau réel : graine (test à faire), pousse (A1), jeune arbre (A2), arbuste (B1), arbre (B2), grand arbre (C1), arbre centenaire (C2). Toucher un arbre t'emmène directement vers le test de niveau (s'il reste à faire) ou vers la suite de tes leçons.",
-  },
-  {
-    th: "cours",
-    q: "Comment progresser dans « Mes cours » ?",
-    a: "Chaque niveau (A1, A2, B1, B2...) est découpé en paliers (ex. A1.1, A1.2...). Un palier se termine toujours par un contrôle noté ; une fois validé, le palier suivant se débloque. Le détail d'un palier (vocabulaire, grammaire, objectif) est consultable à l'avance depuis « Voir le programme ».",
-  },
-  {
-    th: "cours",
-    q: "Que se passe-t-il si je rate un contrôle de fin de palier ?",
-    a: "En dessous de 70/100, le palier n'est pas validé : tu es renvoyé(e) vers les leçons du palier pendant 7 jours avant de pouvoir retenter le contrôle. Entre 70 et 79, le palier est validé mais des renforts te sont proposés. Au-dessus, le palier est validé normalement (avec des rappels ponctuels si le score est entre 80 et 92).",
-  },
-  {
-    th: "cours",
-    q: "Quelle est la différence entre « Mes cours » et les espaces « Compréhension »/« Expression » du menu ?",
-    a: "« Mes cours » suit un parcours structuré, palier par palier, avec un contrôle à la fin de chacun. « Compréhension » et « Expression » (dans le menu) sont des espaces libres et indépendants : ils te proposent du contenu à ton niveau pour garder le contact avec la langue en dehors du parcours, sans obligation ni contrôle.",
-  },
-  {
-    th: "biblio",
-    q: "C'est quoi la Bibliothèque ?",
-    a: "Une sélection de 12 livres à lire en anglais (niveaux A1 et A2) : jeunesse, aventure, policier, classiques. Touche un livre pour voir sa fiche et le marquer « lu ». Les niveaux sont indicatifs : cherche de préférence une édition simplifiée (« graded reader ») si le texte original est trop difficile.",
-  },
-  {
-    th: "compte",
-    q: "Comment activer ou désactiver Face ID / Touch ID ?",
-    a: "Depuis Paramètres > Sécurité, en bas de la fiche « Face ID ». Une fois activé, l'appli demande ton visage/empreinte au lieu du mot de passe à chaque vraie réouverture. Tu peux le désactiver à tout moment depuis le même endroit.",
-  },
-  {
-    th: "compte",
-    q: "C'est quoi « Rester connecté(e) sans mot de passe » ?",
-    a: "Un réglage dans Paramètres > Sécurité, indépendant de Face ID : une fois activé, l'appli ne redemande plus ton mot de passe à la réouverture pendant 30 jours. Passé ce délai, une reconnexion normale est de nouveau demandée automatiquement.",
-  },
-  {
-    th: "conv",
-    q: "Comment fonctionne la Conversation (avec l'IA) ?",
-    a: "Chaque leçon réussie te donne un crédit de conversation (refaire la même leçon n'en redonne pas). Ces crédits se cumulent et sont utilisables depuis le menu, avec une limite de 3 conversations utilisées par jour.",
-  },
-  {
-    th: "start",
-    q: "Je peux changer la langue que j'apprends en priorité ?",
-    a: "La langue apprise principale se choisit une seule fois, à la toute première connexion. Elle sert notamment à déterminer l'état de l'Accueil. Tu peux tout de même apprendre plusieurs langues en parallèle (anglais, espagnol, portugais) — chacune a son propre niveau, sa propre progression et son propre test.",
-  },
+const AIDE = [
+  { id: "accueil", e: "🏠", n: "Accueil", d: "Ta page de départ", c: 1, items: [
+    { q: "À quoi sert l'Accueil ?", a: "C'est ta page de départ. Tant que le test de niveau n'est pas fait, tu y trouves le test à passer. Ensuite : ta mission du jour, « J'ai 5 minutes », la question culture, l'expression, la citation et la vidéo." },
+    { q: "Les petites cartes changent-elles ?", a: "Oui. L'expression et la citation changent tous les 3 jours, la question culture et la vidéo changent régulièrement." },
+  ] },
+  { id: "menu", e: "☰", n: "Le menu", d: "Pour aller partout", c: 2, items: [
+    { q: "Comment ouvrir le menu ?", a: "Touche l'icône en haut à gauche, ou glisse depuis le bord gauche de l'écran." },
+    { q: "Comment est-il rangé ?", a: "En 4 parties. Apprendre : Mes arbres, Mes cours, Compréhension, Expression, Conversation. Ressources : Dictionnaire, Traduction, Bibliothèque. Explorer : My World. Réglages : Paramètres et Aide & FAQ." },
+  ] },
+  { id: "arbres", e: "🌳", n: "Mes arbres", d: "Ton niveau en image", c: 6, items: [
+    { q: "À quoi servent les arbres ?", a: "Une plante par langue apprise, qui grandit avec ton niveau réel : graine (test à faire), pousse (A1), jeune arbre (A2), arbuste (B1), arbre (B2), grand arbre (C1), arbre centenaire (C2)." },
+    { q: "Que se passe-t-il si je touche un arbre ?", a: "Tu arrives sur le test de niveau s'il reste à faire, sinon sur la suite de tes leçons." },
+  ] },
+  { id: "cours", e: "📚", n: "Mes cours", d: "Ton parcours", c: 3, items: [
+    { q: "Comment est organisé le parcours ?", a: "Chaque niveau (A1, A2, B1, B2…) est découpé en paliers (A1.1, A1.2…). Chaque palier a ses leçons et se termine par un contrôle noté. Une fois validé, le palier suivant s'ouvre." },
+    { q: "Qu'y a-t-il dans une leçon ?", a: "Quand tu touches une case, tu vois d'abord le plan de la leçon : vocabulaire, jeux, grammaire, conjugaison, compréhension, expression, contrôle. Tu peux choisir de commencer par l'ordre du cours, par parler d'abord, par les règles ou par le jeu." },
+    { q: "Où voir ce qui m'attend ?", a: "Le bouton « Voir le programme » montre le détail de chaque palier à l'avance : vocabulaire, grammaire, objectif." },
+  ] },
+  { id: "compr", e: "🎧", n: "Compréhension", d: "Lire et écouter", c: 4, items: [
+    { q: "Lecture (compréhension écrite)", a: "Choisis ta langue et ton niveau, puis une « Série » de textes. Tu lis, tu réponds aux questions, et l'appli corrige ta réponse." },
+    { q: "Écoute (compréhension orale)", a: "Des vidéos à regarder en A1 et A2, et des dialogues interactifs sur des sujets du quotidien en B1 et B2 (anglais). Tu écoutes, tu choisis tes réponses, puis tu vois les expressions utiles." },
+    { q: "Est-ce que ça compte pour mes notes ?", a: "Oui, ces exercices remplissent tes jauges de compréhension écrite et orale. Ils n'ont pas de contrôle obligatoire." },
+  ] },
+  { id: "expr", e: "✍️", n: "Expression", d: "Écrire et parler", c: 5, items: [
+    { q: "Expression écrite", a: "Tu reçois un message ou un e-mail et tu écris ta réponse. L'appli corrige l'orthographe et la grammaire, puis vérifie que tu as bien traité les points attendus." },
+    { q: "Expression orale", a: "Un appel est lu à voix haute, tu réponds au micro. L'appli vérifie ensuite ce qu'elle a compris de ta réponse. Autorise le micro quand ton téléphone te le demande." },
+  ] },
+  { id: "conv", e: "💬", n: "Conversation", d: "Parler avec l'IA", c: 2, items: [
+    { q: "Comment ça marche ?", a: "Chaque leçon réussie te donne un crédit de conversation (refaire la même leçon n'en redonne pas). Les crédits se cumulent, avec 3 conversations maximum par jour." },
+  ] },
+  { id: "dico", e: "🔤", n: "Dico & Traduction", d: "Chercher un mot", c: 3, items: [
+    { q: "Dictionnaire", a: "Cherche un mot ou une expression et retrouve son sens." },
+    { q: "Traduction", a: "Traduis un mot ou une phrase entre le français et la langue que tu apprends." },
+  ] },
+  { id: "biblio", e: "📖", n: "Bibliothèque", d: "12 livres conseillés", c: 5, items: [
+    { q: "À quoi sert la Bibliothèque ?", a: "Une sélection de 12 livres en anglais pour les niveaux A1 et A2 : jeunesse, aventure, policier, classiques. Touche un livre pour voir sa fiche et le marquer comme lu. Les niveaux sont indicatifs : cherche de préférence une édition simplifiée." },
+  ] },
+  { id: "world", e: "🌍", n: "My World", d: "La partie voyage", c: 6, items: [
+    { q: "Qu'est-ce que My World ?", a: "Un globe lumineux que tu fais tourner du doigt. Chaque point est un pays où l'on parle l'une de tes langues : touche-le pour ouvrir sa fiche. Tu peux passer du jour à la nuit avec l'interrupteur ☀️ / 🌙." },
+  ] },
+  { id: "five", e: "⏱️", n: "J'ai 5 minutes", d: "Petite activité", c: 1, items: [
+    { q: "Quand l'utiliser ?", a: "Les jours sans grande leçon : une petite activité (erreurs à revoir, grammaire express, conversation ou surprise) pour garder le rythme." },
+  ] },
+  { id: "params", e: "⚙️", n: "Paramètres", d: "Réglages", c: 4, items: [
+    { q: "Que puis-je régler ?", a: "Le thème clair ou sombre, la sécurité (Face ID / Touch ID, rester connecté(e)) et ton compte." },
+  ] },
 ];
 
-const THEMES = [
-  { id: "start", e: "🚀", n: "Démarrer", d: "Test de niveau, langue", c: 1 },
-  { id: "cours", e: "📚", n: "Mes cours", d: "Paliers, contrôles", c: 2 },
-  { id: "prog", e: "🌳", n: "Progression", d: "Arbres, notes, jauges", c: 6 },
-  { id: "biblio", e: "📖", n: "Bibliothèque", d: "12 livres conseillés", c: 5 },
-  { id: "conv", e: "💬", n: "Conversation", d: "Avec l'IA, crédits", c: 3 },
-  { id: "compte", e: "🔐", n: "Mon compte", d: "Face ID, connexion", c: 4 },
-  { id: "app", e: "🧭", n: "Naviguer", d: "Accueil, menu, 5 minutes", c: 3 },
+const FAQ = [
+  { id: "niveau", e: "🎯", n: "Niveau & test", d: "Où j'en suis", c: 1, items: [
+    { q: "Comment fonctionne le test de niveau ?", a: "Il se lance depuis « Mes cours » ou « Mes arbres », en touchant la langue pas encore testée. Il détermine ton niveau de départ (A1, A2, B1…). Ce « niveau d'entrée » est gardé pour toujours : tu peux ainsi te comparer dans le temps." },
+    { q: "Puis-je repasser le test de niveau ?", a: "Pas encore directement depuis les Paramètres, cette fonction arrive. En attendant, ton niveau n'est pas figé : il évolue avec tes leçons et tes contrôles." },
+    { q: "Mon niveau peut-il changer ?", a: "Oui. Il monte palier après palier, à chaque contrôle validé." },
+  ] },
+  { id: "notes", e: "📝", n: "Notes & jauges", d: "Comment c'est noté", c: 2, items: [
+    { q: "Comment suis-je noté(e) ?", a: "Chaque palier se termine par un contrôle noté sur 100. Sous 70, le palier n'est pas validé. De 70 à 79, il est validé avec des renforts proposés. À partir de 80, il est validé, avec des rappels ponctuels jusqu'à 92." },
+    { q: "À quoi correspondent mes jauges ?", a: "Une jauge par compétence : compréhension orale, compréhension écrite, expression orale, expression écrite, grammaire, vocabulaire, prononciation. Elles se remplissent avec tes leçons, tes contrôles et les espaces Compréhension et Expression." },
+    { q: "Pourquoi une jauge est-elle vide ?", a: "Elle reste vide tant qu'il n'y a pas assez de données pour être fiable. Fais quelques exercices de cette compétence." },
+  ] },
+  { id: "recom", e: "🔁", n: "Recommencer", d: "Repartir à zéro", c: 3, items: [
+    { q: "Puis-je recommencer depuis le début ?", a: "Oui. Dans « Mes leçons », touche « ↻ Recommencer… ». Tu choisis entre recommencer une seule leçon, ou tout (leçons et test de positionnement). Rien n'est effacé avant ta confirmation." },
+    { q: "Que se passe-t-il si je rate un contrôle ?", a: "Sous 70/100, le palier n'est pas validé : tu retournes aux leçons du palier pendant 7 jours avant de retenter le contrôle." },
+    { q: "Une leçon est verrouillée, pourquoi ?", a: "Les leçons s'ouvrent dans l'ordre : il faut avoir fini la précédente. Le contrôle de fin de palier ouvre le palier suivant." },
+  ] },
+  { id: "cours", e: "📚", n: "Cours & langues", d: "Mon parcours", c: 4, items: [
+    { q: "Mes cours, Compréhension, Expression : quelle différence ?", a: "« Mes cours » est un parcours structuré, palier par palier, avec un contrôle à la fin. « Compréhension » et « Expression » sont des espaces libres, sans obligation ni contrôle, pour t'entraîner à ton niveau." },
+    { q: "Puis-je apprendre plusieurs langues ?", a: "Oui : anglais, espagnol, portugais. Chacune a son niveau, sa progression et son test." },
+    { q: "Puis-je changer ma langue principale ?", a: "Elle se choisit une seule fois, à la première connexion, et sert à l'état de l'Accueil. Les autres langues restent accessibles." },
+  ] },
+  { id: "world", e: "🌍", n: "My World", d: "Le globe", c: 6, items: [
+    { q: "Comment mettre à jour My World ?", a: "Le contenu de My World vient avec l'appli et se met à jour quand une nouvelle version est installée. Ferme complètement l'appli puis rouvre-la pour voir les nouveautés." },
+    { q: "Le globe ne s'affiche pas", a: "Il a besoin d'internet pour charger la carte. Vérifie ta connexion, puis rouvre My World." },
+  ] },
+  { id: "conv", e: "💬", n: "Conversation", d: "Crédits IA", c: 5, items: [
+    { q: "Comment gagner des crédits de conversation ?", a: "Chaque leçon réussie en donne un. Refaire la même leçon n'en redonne pas. Tu peux utiliser jusqu'à 3 conversations par jour." },
+  ] },
+  { id: "lire", e: "📖", n: "Lectures", d: "Livres", c: 3, items: [
+    { q: "Comment choisir un livre ?", a: "Dans la Bibliothèque, choisis ton niveau (A1 ou A2) puis touche un livre. Cherche si possible une édition simplifiée (« graded reader »). Marque-le « lu » quand tu l'as fini." },
+  ] },
+  { id: "compte", e: "🔐", n: "Compte", d: "Sécurité, thème", c: 4, items: [
+    { q: "Comment activer Face ID / Touch ID ?", a: "Dans Paramètres > Sécurité, en bas de la fiche « Face ID ». L'appli demande alors ton visage ou ton empreinte au lieu du mot de passe. Tu peux le désactiver au même endroit." },
+    { q: "C'est quoi « Rester connecté(e) sans mot de passe » ?", a: "Un réglage indépendant de Face ID : l'appli ne redemande pas ton mot de passe pendant 30 jours, puis une reconnexion normale est demandée." },
+    { q: "Comment passer en mode sombre ou clair ?", a: "Dans Paramètres, bouton du thème. Le choix s'applique partout, y compris dans les leçons." },
+  ] },
 ];
-
-function allItems(lang) {
-  const nav = ["accueil", "menu", "arbres", "five"].map((k) => ({
-    th: "app",
-    q: t("aide_nav_" + k + "_title", lang),
-    a: t("aide_nav_" + k + "_desc", lang),
-  }));
-  return FAQ_ITEMS.concat(nav);
-}
 
 function norm(x) {
-  return String(x).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function itemsHtml(list) {
-  if (!list.length) return '<p class="aide-empty">Aucune question trouvée. Essaie un autre mot (ex. « Face ID », « notes », « test »).</p>';
-  return list.map((item) => `
-    <details class="faq-item">
-      <summary class="faq-item-q">${item.q}</summary>
-      <div class="faq-item-a">${item.a}</div>
-    </details>`).join("");
+  return String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 
 export function renderAideFaq(container) {
-  const { settings } = store.get();
-  const lang = settings.interfaceLang;
-  const items = allItems(lang);
-  let theme = "";
+  store.get();
+  let tab = "aide";
+  let sel = "";
   let query = "";
   container.innerHTML = `
     <div class="dash-box aide-box">
-      <input id="aide-search" class="aide-search" type="search" autocomplete="off" placeholder="🔎 Chercher : Face ID, notes, test de niveau…">
-      <div class="aide-grid">
-        ${THEMES.map((th) => `<button type="button" class="aide-sq aide-c${th.c}" data-th="${th.id}"><span class="aide-e">${th.e}</span><b>${th.n}</b><small>${th.d}</small></button>`).join("")}
+      <div class="aide-tabs" role="tablist">
+        <button type="button" class="aide-tab on" data-tab="aide">Aide</button>
+        <button type="button" class="aide-tab" data-tab="faq">Questions fréquentes</button>
       </div>
+      <p id="aide-intro" class="aide-intro"></p>
+      <input id="aide-search" class="aide-search" type="search" autocomplete="off">
+      <div id="aide-grid" class="aide-grid"></div>
       <h3 id="aide-title" class="aide-title"></h3>
       <div id="aide-list" class="faq-list"></div>
     </div>`;
-  const list = container.querySelector("#aide-list");
-  const title = container.querySelector("#aide-title");
+  const $ = (s) => container.querySelector(s);
+  function groups() { return tab === "aide" ? AIDE : FAQ; }
   function refresh() {
+    const gs = groups();
+    $("#aide-intro").textContent = tab === "aide"
+      ? "À quoi sert chaque partie de l'application. Touche un carré."
+      : "Les questions que l'on se pose le plus souvent. Touche un carré.";
+    $("#aide-search").placeholder = tab === "aide" ? "🔎 Chercher une rubrique…" : "🔎 Chercher : Face ID, notes, test…";
+    $("#aide-grid").innerHTML = gs.map((g) => `<button type="button" class="aide-sq aide-c${g.c}${g.id === sel ? " on" : ""}" data-g="${g.id}"><span class="aide-e">${g.e}</span><b>${g.n}</b><small>${g.d}</small></button>`).join("");
     const q = norm(query.trim());
-    let res = items;
-    if (theme) res = res.filter((i) => i.th === theme);
-    if (q) res = res.filter((i) => norm(i.q + " " + i.a).indexOf(q) !== -1);
-    const th = THEMES.filter((x) => x.id === theme)[0];
-    title.textContent = q ? "Résultats (" + res.length + ")" : th ? th.e + " " + th.n : t("aide_faq_title", lang);
-    list.innerHTML = itemsHtml(res);
-    container.querySelectorAll(".aide-sq").forEach((b) => b.classList.toggle("on", b.dataset.th === theme));
+    let rows = [];
+    gs.forEach((g) => { if (q || !sel || g.id === sel) g.items.forEach((i) => rows.push({ g, i })); });
+    if (q) rows = rows.filter((r) => norm(r.i.q + " " + r.i.a + " " + r.g.n).indexOf(q) !== -1);
+    const g0 = gs.filter((g) => g.id === sel)[0];
+    $("#aide-title").textContent = q ? "Résultats (" + rows.length + ")" : g0 ? g0.e + " " + g0.n : "";
+    const open = sel && rows.length <= 3;
+    $("#aide-list").innerHTML = !q && !sel ? "" : rows.length
+      ? rows.map((r) => `<details class="faq-item"${open ? " open" : ""}><summary class="faq-item-q">${r.i.q}</summary><div class="faq-item-a">${r.i.a}</div></details>`).join("")
+      : '<p class="aide-empty">Rien trouvé. Essaie un autre mot.</p>';
+    container.querySelectorAll(".aide-tab").forEach((b) => b.classList.toggle("on", b.dataset.tab === tab));
   }
-  container.querySelector("#aide-search").addEventListener("input", (e) => { query = e.target.value; refresh(); });
-  container.querySelectorAll(".aide-sq").forEach((b) => b.addEventListener("click", () => {
-    theme = theme === b.dataset.th ? "" : b.dataset.th;
-    refresh();
-  }));
+  container.addEventListener("click", (e) => {
+    const tb = e.target.closest(".aide-tab");
+    if (tb) { tab = tb.dataset.tab; sel = ""; query = ""; $("#aide-search").value = ""; refresh(); return; }
+    const sq = e.target.closest(".aide-sq");
+    if (sq) { sel = sel === sq.dataset.g ? "" : sq.dataset.g; refresh(); }
+  });
+  $("#aide-search").addEventListener("input", (e) => { query = e.target.value; refresh(); });
   refresh();
 }
