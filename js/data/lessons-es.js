@@ -3316,3 +3316,351 @@ __esDeco(203, {
  "estar en contacto":["📲","Estamos en contacto.","On reste en contact."],
  "un abrazo fuerte":["🤗","Un abrazo fuerte, Marta.","Une grosse accolade, Marta."]
 });
+// A1.0 — Les bases : prononciation, genre et accords, SER / ESTAR / TENER (module d'entrée, leçon 200)
+(function(){
+var MAP = {};
+function blk(name, rows){ rows.forEach(function(r){ MAP[r[0]] = [r[4], r[5], r[6]]; }); return __esB(name, rows); }
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Phonétique : l'alphabet lettre par lettre", [
+  ["las vocales : a, e, i, o, u","/a e i o u/","les 5 voyelles","Toujours pures et courtes, jamais nasales : a = « a », e = « é » (blé), i = « i », o = « o » fermé, u = « ou ». Mots-test : MA-no, ME-sa, FO-to, U-no.","🔤","La mesa es azul.","La table est bleue."],
+  ["la h : hola","/ˈola/","salut (h muette)","La h ne se prononce JAMAIS : O-la. Seule exception d'aspect : « ch » (voir plus bas).","👋","Hola, ¿cómo estás?","Salut, comment vas-tu ?"],
+  ["la j : jamón","/xaˈmon/","jambon (j = kh)","j = « r » rauque au fond de la gorge (kh), comme « Bach » en allemand. Jamais le « j » français. kha-MÓN.","🍖","El jamón es rosa.","Le jambon est rose."],
+  ["g devant e, i : gente","/ˈxente/","les gens (g = kh)","ge, gi = kh comme la jota : KHEN-te, kho-KHE. Même son que « j ».","👥","La gente está contenta.","Les gens sont contents."],
+  ["g devant a, o, u : gato","/ˈɡato/","chat (g dur)","ga, go, gu = « g » dur de gare, gomme, gourde : GA-to.","🐱","El gato es negro.","Le chat est noir."],
+  ["gue, gui : guitarra","/ɡiˈtara/","guitare (u muet)","Dans gue / gui, le u est MUET et sert à garder le « g » dur : gi-TA-rra, comme en français « guitare ».","🎸","La guitarra es roja.","La guitare est rouge."],
+  ["güe, güi : pingüino","/piŋˈɡwino/","pingouin (ü se prononce)","Le tréma ¨ « réveille » le u : güe = gwé, güi = gwi. pin-GWI-no. Seul cas où le ü existe.","🐧","El pingüino es simpático.","Le pingouin est sympathique."],
+  ["qu : queso","/ˈkeso/","fromage (qu = k)","qu = « k » et le u est muet (toujours devant e ou i) : KE-so, a-KI. Pas de « kw » !","🧀","El queso es amarillo.","Le fromage est jaune."],
+  ["c devant a, o, u : casa","/ˈkasa/","maison (c = k)","ca, co, cu = ka, ko, ku : KA-sa.","🏠","La casa es grande.","La maison est grande."],
+  ["c devant e, i : cero","/ˈθeɾo/","zéro (c = th)","Espagne : « th » anglais de think : THÉ-ro. Amérique latine et Andalousie : « s » (le seseo : SÉ-ro). Les deux sont corrects ; garde-en un et reste cohérent.","0️⃣","Cero es un número.","Zéro est un nombre."],
+  ["z : zapato","/θaˈpato/","chaussure (z = th)","z = « th » en Espagne (tha-PA-to), « s » en Amérique latine. On écrit z devant a, o, u ; c devant e, i : zapato mais cero.","👟","El zapato es blanco.","La chaussure est blanche."],
+  ["ll : llave","/ˈʝaβe/","clé (ll = « y »)","ll = « y » de yeux : YA-ve. En Argentine, un « ch » doux (comme le j anglais). Piège : ce n'est pas « l-l ».","🔑","La llave es pequeña.","La clé est petite."],
+  ["ñ : niño, año","/ˈniɲo · ˈaɲo/","enfant, an (ñ = gn)","ñ = « gn » de agneau. Lettre à part entière : sans la ~, le mot change complètement (año ≠ ano).","👦","El niño está contento.","L'enfant est content."],
+  ["rr et r : perro / pero","/ˈpero · ˈpeɾo/","chien / mais (r roulé)","rr = r roulé fort : PE-rro (chien). r au début d'un mot (rojo) = aussi roulé. Une seule r entre voyelles = petit r « tapé » : PE-ro (mais). perro ≠ pero !","🐕","El perro es grande, pero es simpático.","Le chien est grand, mais il est sympathique."],
+  ["ch : chico","/ˈtʃiko/","garçon (ch = tch)","ch = « tch » comme dans tchèque : TCHI-ko. Jamais le « ch » français de chat.","🧑","El chico es alto.","Le garçon est grand."],
+  ["v et b : vaso, bajo","/ˈbaso · ˈbaxo/","verre, bas (v = b)","v et b = EXACTEMENT le même son, un « b » doux (lèvres qui se touchent à peine entre deux voyelles). BA-so, BA-kho. Seule l'orthographe les distingue.","🥛","El vaso es grande.","Le verre est grand."],
+  ["y : yo et y","/ʝo · i/","je ; et","y consonne = « y » : YO. Le mot « y » seul = « i » = « et » : Ana y Luis.","➕","Ana y Luis son simpáticos.","Ana et Luis sont sympathiques."],
+  ["el alfabeto","/alfaˈβeto/","l'alphabet (27 lettres)","a, be, ce, de, e, efe, ge, hache, i, jota, ka, ele, eme, ene, EÑE, o, pe, cu, erre, ese, te, u, uve, uve doble, equis, i griega, zeta. « ch » et « ll » : 2 lettres, 1 son. Pour épeler : « R, U, I, Z » = erre, u, i, zeta.","🔠","La eñe es una letra.","Le ñ est une lettre."],
+  ["la sílaba tónica","/la ˈsilaβa ˈtonika/","la syllabe accentuée","Règle : mot terminé par voyelle, -n ou -s → on insiste sur l'AVANT-dernière syllabe (CA-sa, MU-chos). Terminé par une autre consonne → sur la DERNIÈRE (pa-PEL, ciu-DAD).","🥁","El papel es blanco.","Le papier est blanc."],
+  ["la tilde : l'accent écrit","/la ˈtilde/","l'accent écrit (´)","Il apparaît quand le mot ne suit PAS la règle : te-LÉ-fo-no, LÁ-piz, ca-MIÓN. Il distingue aussi : tú (toi) / tu (ton), él (il) / el (le), sí (oui) / si (si).","✍️","El lápiz es amarillo.","Le crayon est jaune."]
+ ]),
+ blk("Les couleurs", [
+  ["rojo / roja","/ˈroxo · ˈroxa/","rouge","r initiale roulée ; j = kh. Quatre formes : rojo, roja, rojos, rojas.","🔴","El libro es rojo.","Le livre est rouge."],
+  ["azul","/aˈθul/","bleu","Finit par une consonne : invariable au féminin (la mesa azul) ; pluriel : azules.","🔵","La mochila es azul.","Le sac à dos est bleu."],
+  ["verde","/ˈbeɾðe/","vert","Finit en -e : invariable au féminin. Le v se prononce b.","🟢","La silla es verde.","La chaise est verte."],
+  ["amarillo / amarilla","/amaˈɾiʝo · amaˈɾiʝa/","jaune","ll = « y » : a-ma-RI-yo. Pluriel : amarillos, amarillas (deux l !).","🟡","La flor es amarilla.","La fleur est jaune."],
+  ["blanco / blanca","/ˈblanko · ˈblanka/","blanc / blanche","Le féminin se prononce bien -a, jamais -che.","⚪","La pared es blanca.","Le mur est blanc."],
+  ["negro / negra","/ˈneɣɾo · ˈneɣɾa/","noir / noire","Le g se prononce très doux (neɣro).","⚫","El gato es negro.","Le chat est noir."],
+  ["naranja","/naˈɾaŋxa/","orange","Invariable en genre ; le fruit aussi s'appelle « la naranja ». Pluriel : naranjas.","🟠","La bolsa es naranja.","Le sac est orange."],
+  ["gris","/ɡɾis/","gris","Finit par une consonne : invariable. Pluriel : grises.","🩶","El lápiz es gris.","Le crayon est gris."],
+  ["marrón","/maˈrron/","marron","Accent écrit sur le ó : ma-RRÓN. Invariable en genre. Pluriel : marrones.","🟤","El zapato es marrón.","La chaussure est marron."],
+  ["rosa","/ˈrosa/","rose","Invariable en genre ; « la rosa » = la rose (fleur).","🌸","La flor es rosa.","La fleur est rose."]
+ ]),
+ blk("Les nombres : 0 à 100", [
+  ["cero · uno · dos · tres · cuatro · cinco","/ˈθeɾo ˈuno dos tɾes ˈkwatɾo ˈθiŋko/","0 · 1 · 2 · 3 · 4 · 5","uno devient un / una devant un nom : un libro, una mesa. cinco : c = th.","🔢","Tengo un libro y dos cuadernos.","J'ai un livre et deux cahiers."],
+  ["seis · siete · ocho · nueve · diez","/sejs ˈsjete ˈotʃo ˈnweβe djeθ/","6 · 7 · 8 · 9 · 10","diez finit par z = « th » : DYETH.","🔟","Tenemos diez bolígrafos.","Nous avons dix stylos."],
+  ["once · doce · trece · catorce · quince","/ˈonθe ˈdoθe ˈtɾeθe kaˈtoɾθe ˈkinθe/","11 · 12 · 13 · 14 · 15","Tous finissent en -ce (« the » en Espagne). Ils sont à apprendre par cœur.","🎯","Tengo quince años.","J'ai quinze ans."],
+  ["dieciséis · diecisiete · dieciocho · diecinueve · veinte","/djeθiˈsejs djeθiˈsjete djeθiˈotʃo djeθiˈnweβe ˈbejnte/","16 · 17 · 18 · 19 · 20","16 à 19 = « diez + y + chiffre » soudés en UN mot (dieci-). dieciséis prend un accent écrit.","📈","Ana tiene dieciocho años.","Ana a dix-huit ans."],
+  ["veintiuno · veintidós … veintinueve","/bejntiˈuno bejntiˈðos … bejntiˈnweβe/","21 · 22 … 29","De 21 à 29 : un seul mot. veintiuno devient veintiún devant un nom masculin : veintiún años. Accents : veintidós, veintitrés, veintiséis.","🔢","Tengo veintiún años.","J'ai vingt et un ans."],
+  ["treinta · cuarenta · cincuenta · sesenta · setenta · ochenta · noventa · cien","/ˈtɾejnta kwaˈɾenta θinˈkwenta seˈsenta seˈtenta oˈtʃenta noˈβenta θjen/","30 · 40 · 50 · 60 · 70 · 80 · 90 · 100","À partir de 31 : deux mots reliés par « y » : treinta y uno, cuarenta y cinco. cien = 100.","💯","Tengo treinta y cinco años.","J'ai trente-cinq ans."]
+ ]),
+ blk("Émotions et états (avec ESTAR)", [
+  ["cansado / cansada","/kanˈsaðo · kanˈsaða/","fatigué(e)","Accord avec la personne : un homme « cansado », une femme « cansada ».","😴","Hoy estoy cansada.","Aujourd'hui je suis fatiguée."],
+  ["contento / contenta","/konˈtento · konˈtenta/","content(e)","État du moment (estoy contento).","😊","Estás contento hoy.","Tu es content aujourd'hui."],
+  ["triste","/ˈtɾiste/","triste","Finit en -e : une seule forme pour lui et elle ; pluriel : tristes.","😢","Marta está triste.","Marta est triste."],
+  ["enfermo / enferma","/enˈfeɾmo · enˈfeɾma/","malade","On est malade « en ce moment » : toujours estar.","🤒","Carlos está enfermo.","Carlos est malade."],
+  ["nervioso / nerviosa","/neɾˈβjoso · neɾˈβjosa/","nerveux / nerveuse","Estoy nervioso = je le suis maintenant ; soy nervioso = c'est mon caractère.","😬","Estoy nervioso hoy.","Je suis nerveux aujourd'hui."],
+  ["feliz","/feˈliθ/","heureux / heureuse","Invariable au féminin ; pluriel : felices (z → ces). Soy feliz = heureux de nature ; estoy feliz = heureux en ce moment.","😄","Somos felices.","Nous sommes heureux."],
+  ["ocupado / ocupada","/okuˈpaðo · okuˈpaða/","occupé(e)","Estar ocupado = être occupé en ce moment.","📞","Estoy ocupada hoy.","Je suis occupée aujourd'hui."],
+  ["enfadado / enfadada","/enfaˈðaðo · enfaˈðaða/","fâché(e)","Le d entre voyelles est très doux.","😠","Ana está enfadada.","Ana est fâchée."],
+  ["tranquilo / tranquila","/tɾanˈkilo · tɾanˈkila/","calme, tranquille","Aussi pour rassurer : « Tranquilo / tranquila » = pas de panique.","😌","Estoy tranquilo.","Je suis tranquille."],
+  ["aburrido / aburrida","/aβuˈrriðo · aβuˈrriða/","ennuyé(e) / ennuyeux(se)","Estoy aburrido = je m'ennuie ; soy aburrido = je suis ennuyeux. Avec ser ou estar, le sens change !","🥱","Estoy aburrido.","Je m'ennuie."],
+  ["bien / mal","/bjen · mal/","bien / mal","Invariables : estoy bien, estoy mal. Réponse à ¿Cómo estás?","👍","Estoy bien, gracias.","Je vais bien, merci."]
+ ]),
+ blk("TENER : l'âge, la possession, les sensations", [
+  ["tener … años","/teˈneɾ ˈaɲos/","avoir … ans","Comme en français : tengo veinte años. Jamais « soy veinte años ».","🎂","Tengo veinte años.","J'ai vingt ans."],
+  ["tener hambre","/teˈneɾ ˈambɾe/","avoir faim","h muette : AM-bre. Pas de « soy hambre ».","🍽️","Tengo hambre.","J'ai faim."],
+  ["tener sed","/teˈneɾ seð/","avoir soif","Le d final est presque muet.","🥤","Tengo sed.","J'ai soif."],
+  ["tener frío","/teˈneɾ ˈfɾio/","avoir froid","frío porte un accent écrit : FRÍ-o.","🥶","Tengo frío.","J'ai froid."],
+  ["tener calor","/teˈneɾ kaˈloɾ/","avoir chaud","Accent sur la dernière syllabe : ca-LOR.","🥵","Tengo calor.","J'ai chaud."],
+  ["tener sueño","/teˈneɾ ˈsweɲo/","avoir sommeil","ñ = gn : SWÉ-gno.","💤","Tengo sueño.","J'ai sommeil."],
+  ["tener miedo","/teˈneɾ ˈmjeðo/","avoir peur","miedo = la peur.","😨","Tengo miedo.","J'ai peur."]
+ ]),
+ blk("La classe et les objets", [
+  ["el libro","/el ˈliβɾo/","le livre","Masculin en -o.","📕","El libro es rojo.","Le livre est rouge."],
+  ["el cuaderno","/el kwaˈðeɾno/","le cahier","ua = diphtongue : kwa-DER-no.","📓","El cuaderno es azul.","Le cahier est bleu."],
+  ["el bolígrafo","/el boˈliɣɾafo/","le stylo","Accent écrit : bo-LÍ-gra-fo.","🖊️","El bolígrafo es negro.","Le stylo est noir."],
+  ["el lápiz","/el ˈlapiθ/","le crayon","Pluriel : los lápices (z → ces).","✏️","El lápiz es verde.","Le crayon est vert."],
+  ["la mesa","/la ˈmesa/","la table","Féminin en -a.","🪑","La mesa es blanca.","La table est blanche."],
+  ["la silla","/la ˈsiʝa/","la chaise","ll = y : SI-ya.","💺","La silla es cómoda.","La chaise est confortable."],
+  ["la pizarra","/la piˈθarra/","le tableau","z = th ; rr roulé.","🧑‍🏫","La pizarra es grande.","Le tableau est grand."],
+  ["la mochila","/la moˈtʃila/","le sac à dos","ch = tch.","🎒","La mochila es nueva.","Le sac à dos est neuf."],
+  ["el ordenador","/el oɾðenaˈðoɾ/","l'ordinateur (Espagne)","En Amérique latine : « la computadora ».","💻","El ordenador es moderno.","L'ordinateur est moderne."],
+  ["la puerta","/la ˈpweɾta/","la porte","ue = diphtongue : PWER-ta.","🚪","La puerta es marrón.","La porte est marron."],
+  ["la ventana","/la benˈtana/","la fenêtre","v = b.","🪟","La ventana es grande.","La fenêtre est grande."],
+  ["el papel","/el paˈpel/","le papier","Finit par une consonne : pluriel en -es : los papeles.","📄","El papel es blanco.","Le papier est blanc."],
+  ["la pared","/la paˈɾeð/","le mur","Pluriel : las paredes. Féminin malgré la consonne finale.","🧱","La pared es blanca.","Le mur est blanc."],
+  ["la llave","/la ˈʝaβe/","la clé","Pluriel : las llaves (et ll = y).","🗝️","¿Dónde está la llave?","Où est la clé ?"],
+  ["la lección","/la lekˈθjon/","la leçon","Pluriel : las lecciones (l'accent disparaît). Tous les noms en -ción sont féminins.","📚","La lección es fácil.","La leçon est facile."],
+  ["el coche","/el ˈkotʃe/","la voiture","ch = tch. Pluriel : los coches.","🚗","El coche es rápido.","La voiture est rapide."],
+  ["la flor","/la floɾ/","la fleur","Pluriel : las flores.","🌼","La flor es amarilla.","La fleur est jaune."]
+ ]),
+ blk("Les personnes", [
+  ["el alumno / la alumna","/el aˈlumno · la aˈlumna/","l'élève (garçon / fille)","-o → -a pour passer au féminin.","🧑‍🎓","La alumna es inteligente.","L'élève est intelligente."],
+  ["el profesor / la profesora","/pɾofeˈsoɾ · pɾofeˈsoɾa/","le professeur / la professeure","Mot en consonne : on AJOUTE -a au féminin.","👩‍🏫","El profesor es alto.","Le professeur est grand."],
+  ["el estudiante / la estudiante","/estuˈðjante/","l'étudiant / l'étudiante","Finit en -e : seul l'article change.","🎓","La estudiante está contenta.","L'étudiante est contente."],
+  ["el chico / la chica","/el ˈtʃiko · la ˈtʃika/","le garçon / la fille","chico / chica s'emploie pour un jeune. ch = tch.","🧑","La chica es simpática.","La fille est sympathique."],
+  ["el amigo / la amiga","/el aˈmiɣo · la aˈmiɣa/","l'ami / l'amie","g doux entre voyelles.","🫂","Ana es una amiga.","Ana est une amie."],
+  ["el señor / la señora","/seˈɲoɾ · seˈɲoɾa/","monsieur / madame","Titres de politesse : on les emploie avec usted. ñ = gn.","🎩","Buenos días, señora.","Bonjour, madame."]
+ ]),
+ blk("Décrire une personne ou une chose", [
+  ["alto / alta","/ˈalto · ˈalta/","grand(e) (taille)","Pour une personne : alto. Pour une chose, grande.","📏","Marta es alta.","Marta est grande."],
+  ["bajo / baja","/ˈbaxo · ˈbaxa/","petit(e) (taille), bas","Contraire de alto. j = kh : BA-kho.","🔽","El chico es bajo.","Le garçon est petit."],
+  ["grande","/ˈɡɾande/","grand(e), gros(se)","Finit en -e : un coche grande, una casa grande. Pluriel : grandes.","⬆️","La casa es grande.","La maison est grande."],
+  ["pequeño / pequeña","/peˈkeɲo · peˈkeɲa/","petit(e)","pe-KE-gno : ñ = gn.","🐜","La silla es pequeña.","La chaise est petite."],
+  ["inteligente","/inteliˈxente/","intelligent(e)","Finit en -e : invariable au féminin. g devant e = kh.","🧠","La chica es inteligente.","La fille est intelligente."],
+  ["simpático / simpática","/simˈpatiko · simˈpatika/","sympathique","Accent écrit : sim-PÁ-ti-ko. Attention : « simpatique » n'existe pas.","😀","El profesor es simpático.","Le professeur est sympathique."],
+  ["joven","/ˈxoβen/","jeune","Finit par une consonne : invariable ; pluriel : jóvenes (accent écrit ajouté).","🧒","La profesora es joven.","La professeure est jeune."],
+  ["guapo / guapa","/ˈɡwapo · ˈɡwapa/","beau / belle, mignon(ne)","gua = gwa : GWA-po.","✨","La chica es guapa.","La fille est jolie."],
+  ["nuevo / nueva","/ˈnweβo · ˈnweβa/","neuf / neuve, nouveau","Se place après le nom : un libro nuevo.","🆕","El cuaderno es nuevo.","Le cahier est neuf."],
+  ["fácil · difícil","/ˈfaθil · diˈfiθil/","facile · difficile","Finissent par une consonne : invariables en genre ; pluriel : fáciles, difíciles. Accents écrits.","🧩","La lección es difícil.","La leçon est difficile."],
+  ["rápido / rápida","/ˈrrapiðo · ˈrrapiða/","rapide","Accent écrit : RÁ-pi-do. r initiale roulée.","⚡","El coche es rápido.","La voiture est rapide."],
+  ["cómodo / cómoda","/ˈkomoðo · ˈkomoða/","confortable","Accent écrit : CÓ-mo-do (jamais « comodo »).","🛋️","La silla es cómoda.","La chaise est confortable."],
+  ["moderno / moderna","/moˈðeɾno · moˈðeɾna/","moderne","Mot transparent pour un francophone.","🏢","La ciudad es moderna.","La ville est moderne."]
+ ]),
+ blk("Articles, pronoms et verbes clés", [
+  ["el, la, los, las","/el la los las/","le, la, les (articles définis)","el + nom masc. sing. ; la + fém. sing. ; los + masc. plur. ; las + fém. plur.","🔖","El libro y la mesa.","Le livre et la table."],
+  ["un, una, unos, unas","/un ˈuna ˈunos ˈunas/","un, une, des (articles indéfinis)","Contrairement au français, « des » a deux formes : unos / unas. unos = quelques, des.","🔖","Tengo unas sillas nuevas.","J'ai des chaises neuves."],
+  ["yo · tú · él · ella","/ʝo tu el ˈeʝa/","je · tu · il · elle","Les pronoms sujets sont presque toujours omis : la terminaison suffit. tú (accent) = toi.","👤","Yo soy alta y tú eres alto.","Moi je suis grande et toi tu es grand."],
+  ["usted · ustedes","/usˈteð · usˈteðes/","vous (politesse, 1 pers. · plusieurs)","Se conjuguent comme él/ella et ellos/ellas : usted es / está / tiene ; ustedes son / están / tienen.","🎩","¿Cómo está usted?","Comment allez-vous ?"],
+  ["nosotros/as · vosotros/as · ellos/ellas","/noˈsotɾos boˈsotɾos ˈeʝos/","nous · vous (amical, Espagne) · ils/elles","vosotros = Espagne uniquement (amis, famille). Amérique latine : ustedes pour tous les « vous ».","👥","Nosotros somos amigos.","Nous sommes amis."],
+  ["ser","/seɾ/","être (identité, origine, caractère)","soy, eres, es, somos, sois, son.","🪪","Soy Ana.","Je suis Ana."],
+  ["estar","/esˈtaɾ/","être (lieu, état du moment)","estoy, estás, está, estamos, estáis, están.","📍","Estoy en Madrid.","Je suis à Madrid."],
+  ["tener","/teˈneɾ/","avoir","tengo, tienes, tiene, tenemos, tenéis, tienen.","🎒","Tengo un cuaderno.","J'ai un cahier."]
+ ]),
+ blk("Petits mots utiles", [
+  ["muy","/mwi/","très","Devant un adjectif, sans accord : muy alta, muy altos.","➕","Soy muy feliz.","Je suis très heureux."],
+  ["pero","/ˈpeɾo/","mais","Un seul r tapé (≠ perro, le chien).","↔️","Soy bajo, pero soy rápido.","Je suis petit, mais je suis rapide."],
+  ["porque","/ˈpoɾke/","parce que","qu = k : POR-ke.","💬","Estoy contento porque tengo un libro.","Je suis content parce que j'ai un livre."],
+  ["hoy","/oj/","aujourd'hui","h muette. Mot-clé de estar : hoy estoy…","📆","Hoy estoy cansado.","Aujourd'hui je suis fatigué."],
+  ["sí / no","/si · no/","oui / non","sí avec accent = oui ; si sans accent = si. « no » se place avant le verbe : no soy, no estoy, no tengo.","✅","No, no estoy cansado.","Non, je ne suis pas fatigué."],
+  ["gracias","/ˈɡɾaθjas/","merci","c ici = th devant i : GRA-thias (Espagne).","🙏","Estoy bien, gracias.","Je vais bien, merci."]
+ ]),
+ blk("Bonus : 10 expressions utiles et neutres", [
+  ["¡Vale!","/ˈbale/","d'accord ! ok !","Très courant en Espagne, poli avec tout le monde. En Amérique latine : « ¡De acuerdo! ».","👌","¿Tienes un lápiz? — Sí. — ¡Vale!","Tu as un crayon ? — Oui. — D'accord !"],
+  ["¡Qué bien!","/ke ˈβjen/","super ! c'est bien !","¡Qué + adjectif ou adverbe! = exclamation : ¡Qué bien! ¡Qué difícil! ¡Qué grande!","🎉","Tengo un libro nuevo. — ¡Qué bien!","J'ai un livre neuf. — Super !"],
+  ["¡Mucho gusto!","/ˈmutʃo ˈɣusto/","enchanté(e) !","Formule à retenir, neutre : un homme comme une femme peut la dire.","🤝","Hola, soy Ana. — ¡Mucho gusto!","Salut, je suis Ana. — Enchanté !"],
+  ["¡Encantado! / ¡Encantada!","/enkanˈtaðo · enkanˈtaða/","ravi(e) !","S'accorde avec celui qui parle : un homme dit encantado, une femme encantada.","😊","Soy Pedro. — ¡Encantada!","Je suis Pedro. — Enchantée !"],
+  ["De nada","/de ˈnaða/","de rien","Réponse à « gracias ». Identique en tutoiement et en vouvoiement.","💐","Gracias. — De nada.","Merci. — De rien."],
+  ["¿Cómo estás? / ¿Cómo está usted?","/ˈkomo esˈtas · ˈkomo esˈta usˈteð/","comment vas-tu ? / comment allez-vous ?","Tú : estás. Usted : está. Réponse : « Estoy bien, gracias. ¿Y tú ? / ¿Y usted ? ».","💬","¿Cómo está usted? — Muy bien, gracias.","Comment allez-vous ? — Très bien, merci."],
+  ["¡Perdona! / ¡Perdone!","/peɾˈðona · peɾˈðone/","pardon ! / excusez-moi !","Tú : perdona. Usted : perdone. On s'en sert pour s'excuser ou pour attirer l'attention poliment.","🙇","¡Perdone, señora!","Excusez-moi, madame !"],
+  ["¡Claro!","/ˈklaɾo/","bien sûr !","Neutre et très fréquent. « ¡Claro que sí! » = mais oui !","💯","¿Estás bien? — ¡Claro!","Tu vas bien ? — Bien sûr !"],
+  ["¡Qué pena!","/ke ˈpena/","quel dommage !","Réaction compatissante : « pena » = la peine. Autre : « ¡Qué lástima! ».","😔","Estoy enfermo. — ¡Qué pena!","Je suis malade. — Quel dommage !"],
+  ["¡Buen provecho!","/bwem pɾoˈβetʃo/","bon appétit !","Se dit à celui qui mange, entre amis comme à un inconnu. Pas de différence tú / usted.","🍽️","¡Buen provecho, señor!","Bon appétit, monsieur !"]
+ ])
+);
+LESSONS_ES[200] = {
+ code:"A1.0", level:"A1",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["la j : jamón","c devant e, i : cero","rr et r : perro / pero","cansado / cansada","tener hambre","fácil · difícil","ser","estar","tener","usted · ustedes"]),
+ MINI_CHECKS: [
+  {q:"« Je suis fatiguée aujourd'hui. »", opts:["Soy cansada hoy.","Estoy cansada hoy.","Tengo cansada hoy."], correct:1, fb:"La fatigue du jour est un état passager : ESTAR (estoy), et cansada s'accorde avec une femme."},
+  {q:"« J'ai faim. »", opts:["Soy hambre.","Estoy hambre.","Tengo hambre."], correct:2, fb:"Les sensations (faim, soif, froid, chaud, sommeil, peur) se disent avec TENER : tengo hambre."},
+  {q:"« Le chat est noir. »", opts:["El gato es negro.","El gato es negra.","La gato es negro."], correct:0, fb:"gato est masculin : el gato, et l'adjectif s'accorde : negro. Couleur = caractéristique de l'objet : ser."},
+  {q:"Pluriel de « el papel » :", opts:["los papeles","los papels","las papeles"], correct:0, fb:"Mot terminé par une consonne : on ajoute -es (papel → papeles) et l'article passe à « los »."},
+  {q:"Comment se prononce la lettre j dans « jamón » ?", opts:["comme le j français","comme un r rauque (kh)","comme un y"], correct:1, fb:"j = kh, un son rauque au fond de la gorge : kha-MÓN."},
+  {q:"À un inconnu plus âgé, tu dis…", opts:["¿Cómo estás?","¿Cómo está usted?","¿Cómo estáis?"], correct:1, fb:"Inconnu âgé = usted, qui se conjugue comme él/ella : está. (estáis = vosotros, plusieurs amis en Espagne.)"},
+  {q:"Féminin de « grande » :", opts:["una casa grande","una casa granda","una casa grando"], correct:0, fb:"Les adjectifs en -e ne changent pas au féminin : un coche grande, una casa grande."},
+  {q:"« Soy aburrido » signifie…", opts:["Je m'ennuie.","Je suis ennuyeux."], correct:1, fb:"Avec SER, c'est le caractère : je suis quelqu'un d'ennuyeux. Pour dire « je m'ennuie », on dit « estoy aburrido »."}
+ ],
+ ROUNDS: [
+  __esR("Estoy cansada hoy.","Je suis fatiguée aujourd'hui."),
+  __esR("Tengo un libro rojo.","J'ai un livre rouge."),
+  __esR("La mesa es blanca.","La table est blanche."),
+  __esR("¿Cómo estás?","Comment vas-tu ?"),
+  __esR("¿Cómo está usted?","Comment allez-vous ?"),
+  __esR("Los alumnos están contentos.","Les élèves sont contents."),
+  __esR("Las sillas son cómodas.","Les chaises sont confortables."),
+  __esR("Tengo hambre y tengo sed.","J'ai faim et j'ai soif."),
+  __esR("¿Es usted de Madrid?","Êtes-vous de Madrid ?"),
+  __esR("Marta es alta y muy simpática.","Marta est grande et très sympathique."),
+  __esR("¿Dónde está la llave?","Où est la clé ?"),
+  __esR("El perro es grande, pero es simpático.","Le chien est grand, mais il est sympathique."),
+  __esR("Tenemos dos mochilas azules.","Nous avons deux sacs à dos bleus.")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"Marta ___ alta. (caractéristique stable)", opts:["son","es","está"], correct:1, why:"La taille est une caractéristique stable : SER. Marta = 3e personne du singulier : es."},
+  {cat:"ecrit", q:"Hoy Marta ___ cansada.", opts:["es","está","tiene"], correct:1, why:"« hoy » + fatigue = état passager : ESTAR → está."},
+  {cat:"ecrit", q:"Nosotros ___ veinte años.", opts:["somos","estamos","tenemos"], correct:2, why:"L'âge se dit avec TENER : tenemos veinte años."},
+  {cat:"ecrit", q:"¿Dónde ___ las llaves?", opts:["son","están","tienen"], correct:1, why:"Un lieu se dit avec ESTAR. Sujet pluriel (las llaves) → están."},
+  {cat:"ecrit", q:"Les chaises sont confortables.", opts:["Las sillas son cómodas.","Los sillas son cómodos.","Las sillas es cómodas."], correct:0, why:"silla est féminin : las sillas ; l'adjectif s'accorde : cómodas ; sujet pluriel : son."},
+  {cat:"ecrit", q:"Pluriel de « una flor amarilla » :", opts:["unas flores amarillas","unas flors amarillas","unos flores amarillos"], correct:0, why:"una → unas ; flor (consonne) → flores ; amarilla → amarillas. Tout s'accorde."},
+  {cat:"ecrit", q:"Quelle phrase est correcte ?", opts:["Los perros son pequeños.","Los perro son pequeño.","Los perros son pequeño."], correct:0, why:"Le pluriel doit apparaître sur l'article, sur le nom ET sur l'adjectif."},
+  {cat:"ecrit", q:"Marta es una chica ___ . (alto)", opts:["alto","alta","altas"], correct:1, why:"alto se rapporte à « chica » (féminin singulier) : alta."},
+  {cat:"ecrit", q:"Pedro y Ana están ___ .", opts:["cansada","cansados","cansadas"], correct:1, why:"Un groupe mixte s'accorde au masculin pluriel : cansados."},
+  {cat:"ecrit", q:"Las chicas son ___ . (inteligente)", opts:["inteligente","inteligentes","inteligentas"], correct:1, why:"Un adjectif en -e ne change pas au féminin, mais prend -s au pluriel : inteligentes."},
+  {cat:"ecrit", q:"¿Ustedes ___ colombianos ?", opts:["son","sois","eres"], correct:0, why:"ustedes se conjugue comme ellos : son. « Sois » va avec vosotros."},
+  {cat:"ecrit", q:"« Je suis nerveux de nature. »", opts:["Soy nervioso.","Estoy nervioso."], correct:0, why:"Caractère permanent : SER. « Estoy nervioso » = je suis nerveux en ce moment."},
+  {cat:"ecrit", q:"Elle a faim.", opts:["Tiene hambre.","Es hambre.","Está hambre."], correct:0, why:"Les sensations se disent avec TENER : tiene hambre."},
+  {cat:"ecrit", q:"Comment se dit « 15 » ?", opts:["quince","cinco","cincuenta"], correct:0, why:"quince = 15 ; cinco = 5 ; cincuenta = 50."},
+  {cat:"oral", audio:"Hoy estoy muy cansado.", q:"Écoute : comment va la personne ?", opts:["Fatiguée","Contente","Malade"], correct:0, why:"« cansado » = fatigué. Le verbe estoy dit que c'est un état du jour."},
+  {cat:"oral", audio:"Tengo quince años.", q:"Écoute : quel âge a la personne ?", opts:["15 ans","50 ans","14 ans"], correct:0, why:"quince = 15. Ne confonds pas avec cincuenta (50), qui est plus long."},
+  {cat:"oral", audio:"¿Cómo está usted?", q:"Écoute : la question est…", opts:["informelle (tutoiement)","formelle (vouvoiement)"], correct:1, why:"« está usted » = vouvoiement. Au tutoiement : ¿Cómo estás?"},
+  {cat:"oral", audio:"El perro es negro, pero el gato es blanco.", q:"Écoute : de quelle couleur est le chat ?", opts:["Noir","Blanc","Rouge"], correct:1, why:"« el perro es negro » : le chien est noir ; « el gato es blanco » : le chat est blanc."},
+  {cat:"oral", audio:"Nosotros somos de Colombia, pero estamos en Madrid.", q:"Écoute : où sont-ils en ce moment ?", opts:["En Colombie","À Madrid","À Barcelone"], correct:1, why:"Origine = somos de Colombia (ser) ; lieu actuel = estamos en Madrid (estar)."},
+  {cat:"oral", audio:"Tengo hambre y tengo sed.", q:"Écoute : que ressent la personne ?", opts:["Faim et soif","Froid et chaud","Fatigue et maladie"], correct:0, why:"hambre = faim, sed = soif ; les sensations se disent avec tener."},
+  {cat:"comprehension", passage:"Hola, soy Lucía. Soy mexicana, pero estoy en Barcelona. Tengo veintidós años. Hoy estoy muy contenta porque tengo una clase fácil.", q:"Quelle est la nationalité de Lucía ?", opts:["Espagnole","Mexicaine","Française"], correct:1, why:"« Soy mexicana » : nationalité = identité, donc ser. Elle est à Barcelone seulement pour le moment."},
+  {cat:"comprehension", passage:"Hola, soy Lucía. Soy mexicana, pero estoy en Barcelona. Tengo veintidós años. Hoy estoy muy contenta porque tengo una clase fácil.", q:"Pourquoi Lucía est-elle contente aujourd'hui ?", opts:["Elle a une classe facile","Elle est fatiguée","Elle est malade"], correct:0, why:"« porque tengo una clase fácil » : parce qu'elle a une classe facile."},
+  {cat:"comprehension", passage:"Marta es una chica alta y simpática. Hoy está cansada porque tiene dos clases difíciles.", q:"Quel verbe montre que la fatigue de Marta est passagère ?", opts:["es","está","tiene"], correct:1, why:"« está cansada » : ESTAR pour un état du jour. « es alta » = caractéristique stable."},
+  {cat:"comprehension", passage:"Marta es una chica alta y simpática. Hoy está cansada porque tiene dos clases difíciles.", q:"Pourquoi Marta est-elle fatiguée ?", opts:["Elle a deux classes difficiles","Elle est malade","Elle a faim"], correct:0, why:"« porque tiene dos clases difíciles » : tener + possession."},
+  {cat:"comprehension", passage:"Señor Ruiz: Buenos días, señora. ¿Cómo está usted? — Señora López: Estoy bien, gracias. ¿Y usted? — Señor Ruiz: Muy bien, gracias. ¿Tiene usted un cuaderno azul? — Señora López: Sí, claro.", q:"Quel indice montre que la conversation est formelle ?", opts:["« Buenos días » seulement","« usted » avec está / tiene","« gracias »"], correct:1, why:"usted + verbe à la 3e personne (está, tiene) = vouvoiement."},
+  {cat:"comprehension", passage:"Señor Ruiz: Buenos días, señora. ¿Cómo está usted? — Señora López: Estoy bien, gracias. ¿Y usted? — Señor Ruiz: Muy bien, gracias. ¿Tiene usted un cuaderno azul? — Señora López: Sí, claro.", q:"De quelle couleur est le cahier demandé ?", opts:["Rouge","Bleu","Vert"], correct:1, why:"« un cuaderno azul » : azul = bleu."}
+ ],
+ PRON_VERBS: [
+  {en:"Hola, ¿cómo estás?", fr:"Salut, comment vas-tu ? (h muette : O-la ; accent sur CÓ-mo)"},
+  {en:"El jamón es rosa.", fr:"Le jambon est rose. (j = kh : kha-MÓN)"},
+  {en:"La ciudad es grande.", fr:"La ville est grande. (c = th : thiu-DAD ; d final très doux)"},
+  {en:"El zapato es blanco.", fr:"La chaussure est blanche. (z = th : tha-PA-to)"},
+  {en:"La llave es pequeña.", fr:"La clé est petite. (ll = y : YA-ve ; ñ = gn : pe-KE-gna)"},
+  {en:"El perro es negro, pero es simpático.", fr:"Le chien est noir, mais il est sympathique. (rr roulé : PE-rro ≠ PE-ro)"},
+  {en:"La guitarra es roja.", fr:"La guitare est rouge. (gui : u muet ; r roulé au début de roja)"},
+  {en:"El pingüino es simpático.", fr:"Le pingouin est sympathique. (güi = gwi : pin-GWI-no)"},
+  {en:"Tengo hambre y tengo sed.", fr:"J'ai faim et j'ai soif. (h muette : AM-bre)"},
+  {en:"La ventana es verde y el vaso es azul.", fr:"La fenêtre est verte et le verre est bleu. (v = b : ben-TA-na, BA-so)"}
+ ],
+ READING: [
+  "¡Hola! Soy Lucía y tengo veintidós años.",
+  "Soy mexicana, pero estoy en Barcelona.",
+  "Soy estudiante y tengo una mochila azul y un cuaderno rojo.",
+  "El piso es pequeño, pero es muy luminoso.",
+  "Hoy estoy muy contenta porque tengo una clase fácil.",
+  "El profesor es alto y la profesora es joven.",
+  "Los alumnos son simpáticos, pero hoy están cansados.",
+  "Yo no estoy cansada, pero tengo hambre y tengo sed.",
+  "Y tú, ¿cómo estás hoy?",
+  "Y usted, señor, ¿cómo está?"
+ ],
+ GLOSS: [
+  {en:"el piso", fr:"l'appartement (Espagne) — en Amérique latine : el departamento"},
+  {en:"luminoso", fr:"lumineux, clair (mot transparent)"},
+  {en:"porque", fr:"parce que"},
+  {en:"estudiante", fr:"étudiant(e) : un mot en -e, identique au masculin et au féminin"},
+  {en:"muy", fr:"très (invariable)"},
+  {en:"hoy", fr:"aujourd'hui"},
+  {en:"el señor", fr:"monsieur : la politesse va avec usted"},
+  {en:"no estoy cansada", fr:"je ne suis pas fatiguée : « no » se place avant le verbe"}
+ ],
+ GRAMMAR1: {
+  heading:"SER, ESTAR, TENER : les trois verbes pour dire « je suis » et « j'ai »",
+  lede:"Le français n'a qu'un seul verbe « être ». L'espagnol en a deux : SER (ce que c'est : identité, origine, caractère) et ESTAR (où et comment on est en ce moment). À côté, TENER (avoir) sert pour l'âge, la possession et les sensations. Ce sont trois verbes irréguliers : on les apprend par cœur, une fois pour toutes.",
+  conj:[
+   ["yo →","soy · estoy · tengo","Soy Ana. Estoy cansada. Tengo un libro."],
+   ["tú →","eres · estás · tienes","¿Eres de Madrid? ¿Cómo estás? ¿Tienes un lápiz?"],
+   ["él, ella, usted →","es · está · tiene","Es alto. ¿Cómo está usted? ¿Tiene usted un lápiz?"],
+   ["nosotros/as →","somos · estamos · tenemos","Somos amigos. Estamos contentos. Tenemos sed."],
+   ["vosotros/as →","sois · estáis · tenéis","¿Sois de Sevilla? ¿Estáis bien? ¿Tenéis hambre?"],
+   ["ellos, ellas, ustedes →","son · están · tienen","Son jóvenes. ¿Cómo están ustedes? Tienen frío."]
+  ],
+  ruleHtml:"📖 <b>SER</b> = ce que c'est : <b>identité</b> (Soy Ana), <b>origine</b> (Soy de Lyon), <b>profession</b> (Es profesor), <b>caractère et physique stable</b> (Soy alto, es simpático), <b>couleur, taille, qualité</b> d'un objet (El libro es rojo). <b>ESTAR</b> = comment et où : <b>lieu</b> (Estoy en Madrid. La llave está en la mesa), <b>état du moment, santé, émotion</b> (Estoy cansado, está enfermo, estamos contentos). <b>TENER</b> = <b>âge</b> (Tengo veinte años), <b>possession</b> (Tengo un libro), <b>sensations</b> (tengo hambre, sed, frío, calor, sueño, miedo).<br><br>👥 <b>Tutoiement ET vouvoiement</b> : tú → <b>¿Cómo estás? ¿Eres de Madrid? ¿Tienes un lápiz?</b> · usted → <b>¿Cómo está usted? ¿Es usted de Madrid? ¿Tiene usted un lápiz?</b> usted se conjugue comme él/ella, ustedes comme ellos/ellas. Pluriel amical : <b>vosotros</b> (Espagne : sois, estáis, tenéis) ; <b>ustedes</b> (Amérique latine pour tous les « vous » : son, están, tienen).<br><br>⚠️ Tiens compte des détails : accents écrits sur <b>estás, está, estáis, están</b> (ils les distinguent de « esta », ce/cette) ; <b>tener</b> change : tengo, <b>tienes, tiene, tienen</b> mais tenemos, tenéis ; le pronom sujet est presque toujours omis ; la négation se place avant le verbe : <b>no soy, no estoy, no tengo</b>. Les phrases de la leçon s'enchaînent ainsi : <b>Soy Lucía, soy mexicana, estoy en Barcelona, tengo veintidós años.</b>",
+  dialogueLede:"Deux amis se retrouvent (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Luis! ¿Cómo estás?", fr:"Salut, Luis ! Comment vas-tu ?"},
+   {who:"you", en:"Estoy bien, gracias, pero estoy cansado. ¿Y tú?", fr:"Je vais bien, merci, mais je suis fatigué. Et toi ?"},
+   {who:"them", en:"Estoy contenta porque tengo un libro nuevo.", fr:"Je suis contente parce que j'ai un livre neuf."},
+   {who:"you", en:"¡Qué bien! ¿Eres de Madrid?", fr:"Super ! Tu es de Madrid ?"},
+   {who:"them", en:"No, soy de Sevilla. ¿Tienes hambre?", fr:"Non, je suis de Séville. Tu as faim ?"},
+   {who:"you", en:"Sí, tengo hambre. ¡Vale!", fr:"Oui, j'ai faim. D'accord !"}
+  ],
+  whyLabel:"Pourquoi deux verbes « être » ? Soy feliz ≠ estoy feliz",
+  whyText:"Le français dit « je suis nerveux » pour deux situations très différentes. L'espagnol t'oblige à choisir. <b>SER</b> décrit ce qui définit la personne (« c'est comme ça »), <b>ESTAR</b> décrit comment elle se trouve maintenant (« en ce moment »). Exemples : <b>soy feliz</b> = je suis quelqu'un d'heureux, de nature ; <b>estoy feliz</b> = je suis heureux en ce moment, après une bonne nouvelle. <b>Soy nervioso</b> = je suis de nature nerveux ; <b>estoy nervioso</b> = je suis nerveux aujourd'hui, avant un examen. Et le cas qui change le SENS : <b>soy aburrido</b> = je suis ennuyeux ; <b>estoy aburrido</b> = je m'ennuie. <b>Test pratique</b> : ajoute « aujourd'hui / en ce moment » : si la phrase reste logique → estar ; si elle sonne bizarre → ser. Pour la faim, la soif, le froid ou l'âge, oublie les deux : c'est tener (tengo hambre, tengo veinte años), comme le français « avoir faim, avoir vingt ans »."
+ },
+ GRAMMAR2: {
+  heading:"Genre, articles, pluriel et accords : tout s'accorde",
+  dialogueLede:"Dans un bureau, un directeur et une nouvelle employée (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días. ¿Cómo está usted? ¿Está nerviosa?", fr:"Bonjour. Comment allez-vous ? Vous êtes nerveuse ?"},
+   {who:"you", en:"Buenos días. Estoy bien, gracias, pero estoy nerviosa.", fr:"Bonjour. Je vais bien, merci, mais je suis nerveuse."},
+   {who:"them", en:"Tranquila. La mesa es nueva y las sillas son cómodas.", fr:"Du calme. La table est neuve et les chaises sont confortables."},
+   {who:"you", en:"¡Qué bien! ¿Tiene usted un bolígrafo azul?", fr:"Super ! Avez-vous un stylo bleu ?"},
+   {who:"them", en:"Sí, claro. Tengo dos.", fr:"Oui, bien sûr. J'en ai deux."}
+  ],
+  ruleHtml:"💭 <b>1. Le genre.</b> Les noms en <b>-o</b> sont en général masculins (el libro), ceux en <b>-a</b> féminins (la mesa). Aussi féminins : les noms en <b>-dad / -ción</b> (la ciudad, la lección). Exceptions à retenir : <b>la mano</b>, el día, el mapa. Pour les personnes : el alumno / la alumna, el profesor / la profesora (on ajoute -a), el/la estudiante (seul l'article change). Apprends toujours le nom <b>avec</b> son article.<br><br>💭 <b>2. Les articles.</b> Définis : <b>el, la, los, las</b>. Indéfinis : <b>un, una, unos, unas</b> (« des » a un masculin ET un féminin, contrairement au français).<br><br>💭 <b>3. Le pluriel.</b> Voyelle non accentuée → <b>-s</b> (casa → casas). Consonne → <b>-es</b> (papel → papeles, ciudad → ciudades). -z → <b>-ces</b> (lápiz → lápices). -ción perd l'accent (lección → lecciones). Adjectifs : même règle (fácil → fáciles, azul → azules, feliz → felices).<br><br>💭 <b>4. L'adjectif.</b> Il se place <b>après</b> le nom et s'accorde en genre ET en nombre : <b>un libro rojo, unos libros rojos, una mesa roja, unas mesas rojas</b>. Les adjectifs en <b>-e</b> ou en consonne n'ont qu'une forme au féminin : un coche grande / una casa grande, un chico inteligente / una chica inteligente, azul, joven, feliz, fácil. Avec ser/estar, il s'accorde avec le sujet : <b>Marta es alta, Marta está cansada, los chicos están cansados</b>. Groupe mixte : le masculin l'emporte (Pedro y Ana están cansados).<br><br>👥 <b>Formel et informel</b> : l'accord suit la personne qui parle ou dont on parle, pas le tutoiement : « Estoy cansado » (homme) / « Estoy cansada » (femme), que ce soit avec tú ou avec usted : <b>¿Está usted cansada, señora?</b> / <b>¿Estás cansada, Ana?</b>",
+  whyLabel:"Pourquoi tout s'accorde-t-il en espagnol ?",
+  whyText:"En français, l'accord existe, mais à l'oral il est souvent invisible : « rouge / rouges » se prononcent pareil. En espagnol, la terminaison <b>s'entend</b> : -o, -a, -os, -as. L'accord devient un fil qui relie tous les mots de la phrase : <b>las mesas rojas</b> porte quatre fois la même marque (-as). C'est aussi ce qui permet d'omettre les pronoms et d'avoir des phrases courtes. Méthode : 1) trouve le nom, 2) note son genre et son nombre, 3) donne la même terminaison à l'article et à l'adjectif. Deux pièges classiques : un adjectif oublié au singulier (« los perros son pequeño ») et un adjectif qui ne s'accorde pas avec la bonne personne (« Marta es una chica alto »)."
+ },
+ DRILLS: [
+  {type:"fill", text:"Yo ___ feliz. (de nature : ser)", answers:["soy","Soy"], why:"Caractère → ser : yo soy."},
+  {type:"fill", text:"Tú ___ cansado hoy. (état du moment)", answers:["estás","Estás"], why:"État du jour → estar : tú estás. L'accent écrit est obligatoire."},
+  {type:"fill", text:"Ella ___ veinte años. (tener)", answers:["tiene","Tiene"], why:"L'âge → tener : ella tiene (e → ie)."},
+  {type:"fill", text:"Nosotros ___ contentos hoy. (estar)", answers:["estamos","Estamos"], why:"nosotros → estamos : état du moment."},
+  {type:"fill", text:"Vosotros ___ de Madrid. (ser, origine)", answers:["sois","Sois"], why:"vosotros → sois (Espagne)."},
+  {type:"fill", text:"Ustedes ___ alumnos. (ser)", answers:["son","Son"], why:"ustedes se conjugue comme ellos : son."},
+  {type:"fill", text:"Usted ___ un libro azul. (tener)", answers:["tiene","Tiene"], why:"usted se conjugue comme él/ella : tiene."},
+  {type:"fill", text:"Ellos ___ en la clase. (lieu : estar)", answers:["están","Están"], why:"Un lieu → estar. Ellos → están, avec accent écrit."},
+  {type:"fill", text:"Yo ___ hambre. (tener)", answers:["tengo","Tengo"], why:"Les sensations → tener : tengo hambre."},
+  {type:"fill", text:"Madrid ___ la capital de España. (ser)", answers:["es","Es"], why:"Une identité géographique fixe → ser : Madrid es la capital."},
+  {type:"fill", text:"El libro ___ en la mesa. (lieu : estar)", answers:["está","Está"], why:"La position d'un objet → estar : el libro está en la mesa."},
+  {type:"fill", text:"María ___ alta. (ser)", answers:["es","Es"], why:"Caractéristique physique stable → ser : es alta."},
+  {type:"fill", text:"Una mesa roj___ .", answers:["a"], why:"mesa est féminin : roja."},
+  {type:"fill", text:"Los coches rápid___ .", answers:["os"], why:"Masculin pluriel : rápidos."},
+  {type:"fill", text:"Unas flores amarill___ .", answers:["as"], why:"Féminin pluriel : amarillas (et non « amarijas » : ce mot n'existe pas)."},
+  {type:"fill", text:"La lección difícil → Las ___ difíciles.", answers:["lecciones"], why:"-ción → -ciones : lección → lecciones (l'accent disparaît)."},
+  {type:"fill", text:"El coche rápido → Los ___ rápidos.", answers:["coches"], why:"coche finit par une voyelle : coches ; l'article passe à « los »."},
+  {type:"fill", text:"El papel blanco → Dos ___ blancos.", answers:["papeles"], why:"papel finit par une consonne : papeles."},
+  {type:"choice", q:"Corrige : « Tengo un blusas azul. » (la blusa = le chemisier)", opts:["Tengo una blusa azul.","Tengo un blusa azul."], correct:0, why:"blusa est féminin : una blusa azul (azul est invariable en genre)."},
+  {type:"choice", q:"Quelle phrase corrige « Los perro son pequeño » ?", opts:["Los perros son pequeños.","Los perros son pequeño."], correct:0, why:"Le pluriel se marque sur l'article, le nom et l'adjectif."},
+  {type:"choice", q:"Marta es una chica muy ___ . (alto)", opts:["alto","alta"], correct:1, why:"alto se rapporte à chica : alta. (Dans le texte source, la deuxième erreur est « cansado » : Marta est cansada.)"},
+  {type:"choice", q:"« Je suis heureux ce matin, après une bonne nouvelle. »", opts:["Soy feliz.","Estoy feliz."], correct:1, why:"État passager lié à un moment précis : estar."},
+  {type:"choice", q:"« J'ai peur. »", opts:["Tengo miedo.","Soy miedo."], correct:0, why:"Les sensations et émotions-sensations se disent avec tener : tengo miedo."},
+  {type:"choice", q:"Pour demander à un directeur « Comment allez-vous ? » :", opts:["¿Cómo estás?","¿Cómo está usted?"], correct:1, why:"Un directeur = usted : está usted."},
+  {type:"choice", q:"Pour une étudiante, on dit :", opts:["la estudiante","la estudianta"], correct:0, why:"estudiante finit en -e : une seule forme ; seul l'article change."},
+  {type:"choice", q:"Carlos ___ enfermo hoy.", opts:["es","está"], correct:1, why:"La maladie est un état passager : está enfermo."}
+ ],
+ ANNOTATED: {
+  title:"Lucía se presenta",
+  intro:"Un petit texte pour t'entraîner à lire. Touche chaque mot pour voir sa nature et sa traduction — et repère les trois verbes de la leçon : soy, estoy, tengo.",
+  sentences:[
+   {fr:"Salut, je suis Lucía et j'ai vingt-deux ans.", tokens:[
+    {w:"Hola", tag:"interjection", fr:"salut", tip:"La h est muette : O-la."},
+    {w:"soy", tag:"verbe", info:"ser · présent · yo", fr:"je suis", tip:"Ser pour l'identité : pas besoin de « yo »."},
+    {w:"Lucía", tag:"nom propre", fr:"Lucía"},
+    {w:"y", tag:"conjonction", fr:"et"},
+    {w:"tengo", tag:"verbe", info:"tener · présent · yo", fr:"j'ai", tip:"L'âge se dit avec tener."},
+    {w:"veintidós", tag:"adjectif", info:"nombre", fr:"vingt-deux", tip:"21-29 en un seul mot ; accent écrit sur le ó."},
+    {w:"años", tag:"nom", info:"masc. plur.", fr:"ans"}
+   ]},
+   {fr:"Je suis mexicaine, mais je suis à Barcelone.", tokens:[
+    {w:"Soy", tag:"verbe", info:"ser · présent · yo", fr:"je suis"},
+    {w:"mexicana", tag:"adjectif", info:"fém. sing.", fr:"mexicaine", tip:"Nationalité = identité : ser. -a car Lucía est une femme."},
+    {w:"pero", tag:"conjonction", fr:"mais"},
+    {w:"estoy", tag:"verbe", info:"estar · présent · yo", fr:"je suis", tip:"Estar pour le lieu."},
+    {w:"en", tag:"préposition", fr:"à"},
+    {w:"Barcelona", tag:"nom propre", fr:"Barcelone", tip:"c = th : bar-the-LO-na (Espagne)."}
+   ]},
+   {fr:"Aujourd'hui je suis très contente parce que j'ai une classe facile.", tokens:[
+    {w:"Hoy", tag:"adverbe", fr:"aujourd'hui", tip:"Mot-clé de estar : état du jour."},
+    {w:"estoy", tag:"verbe", info:"estar · présent · yo", fr:"je suis"},
+    {w:"muy", tag:"adverbe", fr:"très"},
+    {w:"contenta", tag:"adjectif", info:"fém. sing.", fr:"contente", tip:"-a : Lucía est une femme."},
+    {w:"porque", tag:"conjonction", fr:"parce que"},
+    {w:"tengo", tag:"verbe", info:"tener · présent · yo", fr:"j'ai"},
+    {w:"una", tag:"déterminant", info:"article indéfini · fém. sing.", fr:"une"},
+    {w:"clase", tag:"nom", info:"fém. sing.", fr:"classe"},
+    {w:"fácil", tag:"adjectif", info:"invariable en genre", fr:"facile", tip:"Finit par une consonne : une seule forme pour le masculin et le féminin."}
+   ]},
+   {fr:"Et vous, monsieur, comment allez-vous ?", tokens:[
+    {w:"Y", tag:"conjonction", fr:"et"},
+    {w:"usted", tag:"pronom sujet", info:"vouvoiement", fr:"vous (politesse)"},
+    {w:"señor", tag:"nom", info:"masc. sing.", fr:"monsieur"},
+    {w:"¿cómo", tag:"adverbe", info:"interrogatif", fr:"comment", tip:"Accent écrit : cómo."},
+    {w:"está?", tag:"verbe", info:"estar · présent · usted", fr:"allez-vous", tip:"usted se conjugue comme él/ella : está (avec accent)."}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🤝", title:"Culture, 10 expressions utiles et fiche récap (A1.0)",
+  html:"<b>🤝 Culture — tú ou usted ?</b> En Espagne on tutoie vite (collègues, voisins, jeunes). Avec un inconnu âgé, un client, un directeur : <b>usted</b>. En cas de doute, usted est toujours poli. Pour saluer : la bise en Espagne entre amis, la poignée de main dans un cadre pro. Prononciation : en Espagne, c et z = « th » ; en Amérique latine, c et z = « s » (<i>seseo</i>). Les deux sont corrects.<br><br><b>🧰 10 expressions utiles et neutres</b><br>1. <b>¡Vale!</b> = d'accord (Espagne).<br>2. <b>¡Qué bien!</b> = super ! (¡Qué difícil!, ¡Qué grande!)<br>3. <b>¡Mucho gusto!</b> = enchanté(e), neutre.<br>4. <b>¡Encantado! / ¡Encantada!</b> = ravi(e) : l'homme dit -ado, la femme -ada.<br>5. <b>De nada</b> = de rien (réponse à « gracias »).<br>6. <b>¿Cómo estás?</b> (tú) / <b>¿Cómo está usted?</b> (usted) = comment vas-tu ? / comment allez-vous ? Réponse : « Estoy bien, gracias. ¿Y tú? / ¿Y usted? ».<br>7. <b>¡Perdona!</b> (tú) / <b>¡Perdone!</b> (usted) = pardon, excuse-moi / excusez-moi.<br>8. <b>¡Claro!</b> = bien sûr !<br>9. <b>¡Qué pena!</b> = quel dommage ! (aussi : ¡Qué lástima!)<br>10. <b>¡Buen provecho!</b> = bon appétit, à tout le monde.<br><br><b>✍️ Expression écrite — ta présentation (4 à 5 phrases)</b> Intègre : SER (nationalité ou métier), ESTAR (où tu es), TENER (âge, objets). Modèle : « Hola, soy Thomas. Soy francés y soy estudiante. Estoy en Lyon. Tengo veintiocho años y tengo un coche rojo. Hoy estoy contento. » Version formelle : « Buenos días, señora. Soy Thomas Dubois. Estoy en Lyon. ¿Cómo está usted? » Vérifie : accord des adjectifs · pas de « yo » inutile · soy / estoy / tengo bien choisis.<br><br><b>🗣️ Expression orale</b> — Question : « ¡Hola! ¿Cómo estás? » → « Hola, soy …, estoy bien, gracias, y tengo … años. ¿Y tú? » En formel : « Buenos días. ¿Cómo está usted? » → « Estoy bien, gracias. ¿Y usted? ».<br><br><b>📄 Fiche récap</b> Phonétique : h muette · j/g(e,i) = kh · qu = k · gue/gui (u muet) / güe (gwé) · c(e,i)/z = th (Espagne) · ll = y · ñ = gn · rr roulé · v = b · accent sur l'avant-dernière syllabe (voyelle, n, s) ou la dernière (autre consonne), la tilde casse la règle. Genre et accord : el/la/los/las, un/una/unos/unas, -s / -es / -ces, adjectif après le nom et accordé, -e invariable. Verbes : soy/eres/es/somos/sois/son · estoy/estás/está/estamos/estáis/están · tengo/tienes/tiene/tenemos/tenéis/tienen. Soy feliz ≠ estoy feliz ; soy aburrido ≠ estoy aburrido."},
+ NEXT_PREVIEW:"A1.1 (Identidad) : te présenter — nom, âge, origine, lieu de résidence —, apprendre les nationalités (francés / francesa), épeler ton nom, poser les 4 questions d'identité et choisir entre tú et usted.",
+ META:{vocabTitle:"Les bases : sons, couleurs, nombres, SER / ESTAR / TENER (A1.0)", lectureTitle:"Lucía, étudiante à Barcelone", bilanTitle:"Bravo, tu as les bases de l'espagnol !", pronLabel:"L'alphabet : h muette, j, g, qu, c/z, ll, ñ, rr, v/b", todayLede:"lire et prononcer l'espagnol, compter jusqu'à 100, dire les couleurs et les émotions, accorder noms et adjectifs, et conjuguer ser, estar et tener (tutoiement ET vouvoiement)"}
+};
+__esDeco(200, MAP);
+})();
