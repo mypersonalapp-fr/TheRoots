@@ -543,6 +543,22 @@
   .ann-panel .drill-say{ margin-top:0; padding:4px 10px; }
   .ann-trbtn{ margin-top:8px; font-family:"Manrope", sans-serif; font-weight:700; font-size:.8rem; background:transparent; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:5px 12px; cursor:pointer; }
   .ann-tr{ margin-top:6px; font-size:.9rem; color:var(--muted); font-style:italic; }
+
+  /* ---------- Mode d'affichage « Sommaire » (déroulé en 13 étapes) ---------- */
+  .som-open{ display:flex; align-items:center; gap:8px; margin:0 0 10px auto; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:700 .84rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; box-shadow:var(--shadow); }
+  .som-open[hidden]{ display:none; }
+  .som-head{ display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+  .som-ring{ flex:0 0 auto; }
+  .som-title{ font-family:"Sora",sans-serif; font-weight:700; font-size:1.15rem; line-height:1.2; }
+  .som-grp{ font-weight:700; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin:14px 0 6px; }
+  .som-row{ display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:9px 12px; margin-bottom:6px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .som-row .num{ flex:0 0 auto; width:28px; height:28px; border-radius:50%; border:1.5px solid var(--line); color:var(--muted); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.82rem; }
+  .som-row.done .num{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .som-row.cur{ background:var(--accent-soft); border-color:var(--accent); }
+  .som-row.cur .num{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .som-row .lbl{ flex:1 1 auto; }
+  .som-row .go{ color:var(--muted); font-size:1.1rem; }
+  .som-row:disabled{ opacity:.55; cursor:not-allowed; }
 </style>
 </head>
 <body>
@@ -560,6 +576,7 @@
     <div class="route-chip" id="routeChip"></div>
   </div>
 
+  <button class="som-open" id="somOpen" type="button" hidden>☰ Sommaire de la leçon</button>
   <div class="itinerary" id="itinerary" hidden></div>
 
   <div class="card" id="card">
@@ -13320,6 +13337,7 @@
   };
 
   function render(){
+    if(typeof somOpen !== "undefined" && somOpen) somOpen.hidden = true;
     if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
     if(ES_MODE && !isPlayableLesson(state.lesson)){ updateRouteChip(); screenEsEmpty(); return; }
@@ -13371,6 +13389,8 @@
       else { state.step = 5; screenExam(); }
       return;
     }
+    somOpen.hidden = false;
+    if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
     itinerary.hidden = state.step === 0;
     renderItinerary();
     if(state.step === 0) screenAccueil();
@@ -13383,10 +13403,64 @@
     else screenBilan();
   }
 
+
+  // ---------- Sommaire : le déroulé en 13 étapes, chaque ligne mène à l'écran correspondant du moteur ----------
+  var somOpen = document.getElementById("somOpen");
+  function somMap(){
+    var lastSub = LECON_SUBSTEPS-1, hasLecon = LECON_SUBSTEPS > 3;
+    return [
+      {g:"Apprendre", n:1, t:"Vocabulaire", step:1, sub:0, ok:true},
+      {g:"Apprendre", n:2, t:"Jeux de vocabulaire", step:3, sub:0, ok:true},
+      {g:"Apprendre", n:3, t:"Grammaire", step:1, sub:1, ok:hasLecon},
+      {g:"Apprendre", n:4, t:"Jeux de grammaire", step:1, sub:2, ok:hasLecon},
+      {g:"Apprendre", n:5, t:"Conjugaison", step:1, sub:3, ok:hasLecon},
+      {g:"Apprendre", n:6, t:"Jeux de conjugaison", step:1, sub:(DRILLS ? drillsSubstep() : lastSub), ok:hasLecon},
+      {g:"Pratiquer", n:7, t:"Compréhension orale", step:4, sub:0, ok:true},
+      {g:"Pratiquer", n:8, t:"Compréhension écrite", step:4, sub:0, ok:true},
+      {g:"Pratiquer", n:9, t:"Expression écrite", step:1, sub:lastSub, ok:hasLecon},
+      {g:"Pratiquer", n:10, t:"Expression orale", step:2, sub:0, ok:true},
+      {g:"Valider", n:11, t:"Contrôle de niveau", step:5, sub:0, ok:true},
+      {g:"Valider", n:12, t:"Bonus : 10 expressions", step:6, sub:0, ok:state.step === 6},
+      {g:"Valider", n:13, t:"Fiche PDF", step:6, sub:0, ok:state.step === 6}
+    ];
+  }
+  function somPos(st, sub){ return st*100 + sub; }
+  function screenSommaire(){
+    backBtn.style.visibility = "hidden";
+    hint.textContent = "Touche une étape pour y aller. « Reprendre » te ramène là où tu en étais.";
+    nextBtn.textContent = "Reprendre";
+    postmark.innerHTML = "SOMMAIRE";
+    var rows = somMap(), cur = somPos(state.step, state.subStep), doneN = 0, curSet = false;
+    rows.forEach(function(r){ r.pos = somPos(r.step, r.sub); r.done = r.pos < cur; if(r.done) doneN++; });
+    // Étape « en cours » = la première ligne (dans l'ordre du déroulé) située à la position actuelle ou après elle.
+    var curRow = null;
+    rows.forEach(function(r){ if(!curRow && !r.done && r.ok) curRow = r; });
+    var pct = Math.round(doneN/rows.length*100), circ = 2*Math.PI*22, off = circ*(1-pct/100);
+    var html = '<div class="som-head"><svg class="som-ring" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="22" fill="none" stroke="var(--line)" stroke-width="6"/><circle cx="30" cy="30" r="22" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 30 30)"/></svg>' +
+      '<div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Sommaire de la leçon")+'</div></div></div>';
+    var lastG = "";
+    rows.forEach(function(r){
+      if(r.g !== lastG){ html += '<div class="som-grp">'+r.g+'</div>'; lastG = r.g; }
+      html += '<button type="button" class="som-row'+(r.done ? " done" : (r === curRow ? " cur" : ""))+'" data-n="'+r.n+'"'+(r.ok ? "" : " disabled")+'><span class="num">'+(r.done ? "✓" : (r.ok ? r.n : "🔒"))+'</span><span class="lbl">'+r.t+'</span><span class="go">›</span></button>';
+    });
+    screen.innerHTML = html;
+    Array.prototype.forEach.call(screen.querySelectorAll(".som-row"), function(b){
+      b.addEventListener("click", function(){
+        var r = rows.filter(function(x){ return String(x.n) === b.getAttribute("data-n"); })[0];
+        if(!r || !r.ok) return;
+        state.hub = false; state.step = r.step; state.subStep = r.sub;
+        vocabBlockIdx = 0; sbRound = 0; memState = null; state.quizIndex = 0;
+        render();
+      });
+    });
+  }
+  somOpen.addEventListener("click", function(){ state.hub = true; render(); });
+
   var pendingAutoAdvance = null;
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
     if(PRACTICE){ backToApp(); return; }
+    if(state.hub){ state.hub = false; render(); return; }
     if(ES_MODE && !isPlayableLesson(state.lesson)){ esGoApp(); return; }
     if(state.gateOpen){ state.gateOpen = false; state.renfortSkipped = true; render(); return; }
     if(isGrandControle()){
@@ -13494,6 +13568,7 @@
   nextBtn.addEventListener("click", goNext);
 
   backBtn.addEventListener("click", function(){
+    if(state.hub){ state.hub = false; render(); return; }
     if(isGrandControle()){
       if(state.step === 1 && sbRound > 0){ sbRound--; render(); return; }
       if(state.step === 1 && sbRound === 0){ state.step = 0; render(); return; }
