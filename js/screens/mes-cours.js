@@ -9,7 +9,7 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20260930a";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20260930a";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -345,6 +345,8 @@ export function renderMesCours(container, shellRoot) {
               </div>
             </div>
             <button class="btn btn-primary" id="mcStartTest" style="width:100%;margin-top:12px">${t("mc_start_test", lang)}</button>
+            ${UNLOCK_COURSES_PREVIEW ? `<button class="btn btn-ghost" id="mcPreviewOpen" style="width:100%;margin-top:10px">🔓 Ouvrir les cours (mode vérification)</button>
+            <div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;text-align:center">Accès temporaire pendant l'installation : à verrouiller ensuite (UNLOCK_COURSES_PREVIEW dans dev-config.js).</div>` : ""}
           `}
         </div>
       </div>
@@ -411,6 +413,8 @@ export function renderMesCours(container, shellRoot) {
     const atBtn = container.querySelector("#mcOpenAteliers");
     if (atBtn) atBtn.addEventListener("click", () => { openAteliers = "home"; paint(); });
 
+    const previewBtn = container.querySelector("#mcPreviewOpen");
+    if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=201" : "lessons.html"; });
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { if (code === "es") {
         // Premier lancement (aucune progression espagnole) : on ouvre le premier palier, A1.1.
