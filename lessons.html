@@ -559,6 +559,23 @@
   .som-row .lbl{ flex:1 1 auto; }
   .som-row .go{ color:var(--muted); font-size:1.1rem; }
   .som-row:disabled{ opacity:.55; cursor:not-allowed; }
+
+  /* Mode « Parcours guidé » : barre à 13 segments */
+  .itinerary.guided{ display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:10px 12px; margin-bottom:10px; }
+  .gd-bar{ display:flex; gap:3px; }
+  .gd-seg{ flex:1 1 0; height:6px; border-radius:3px; background:var(--line); }
+  .gd-seg.done{ background:var(--accent); }
+  .gd-seg.cur{ background:var(--pop); }
+  .gd-label{ display:flex; justify-content:space-between; margin-top:8px; font-weight:700; font-size:.74rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+  .gd-label b{ color:var(--ink); }
+  .view-open{ display:flex; align-items:center; gap:8px; margin:0 0 10px 0; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:700 .84rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; box-shadow:var(--shadow); }
+  .view-open[hidden]{ display:none; }
+  .top-actions{ display:flex; justify-content:space-between; gap:8px; }
+  .top-actions .som-open{ margin:0 0 10px 0; }
+  .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
+  .vm-card.on{ border-color:var(--accent); background:var(--accent-soft); }
+  .vm-card b{ display:block; font-family:"Sora",sans-serif; font-size:1rem; margin-bottom:2px; }
+  .vm-card span{ font-weight:500; font-size:.84rem; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -576,7 +593,7 @@
     <div class="route-chip" id="routeChip"></div>
   </div>
 
-  <button class="som-open" id="somOpen" type="button" hidden>☰ Sommaire de la leçon</button>
+  <div class="top-actions"><button class="view-open" id="viewOpen" type="button" hidden>⚙️ Affichage</button><button class="som-open" id="somOpen" type="button" hidden>☰ Sommaire de la leçon</button></div>
   <div class="itinerary" id="itinerary" hidden></div>
 
   <div class="card" id="card">
@@ -13337,7 +13354,7 @@
   };
 
   function render(){
-    if(typeof somOpen !== "undefined" && somOpen) somOpen.hidden = true;
+    if(typeof somOpen !== "undefined" && somOpen){ somOpen.hidden = true; viewOpen.hidden = true; }
     if(PRACTICE){ renderPractice(); return; }
     loadLessonData();
     if(ES_MODE && !isPlayableLesson(state.lesson)){ updateRouteChip(); screenEsEmpty(); return; }
@@ -13389,10 +13406,11 @@
       else { state.step = 5; screenExam(); }
       return;
     }
-    somOpen.hidden = false;
+    somOpen.hidden = false; viewOpen.hidden = false;
+    if(state.pick){ itinerary.hidden = true; screenViewModes(); return; }
     if(state.hub){ itinerary.hidden = true; screenSommaire(); return; }
     itinerary.hidden = state.step === 0;
-    renderItinerary();
+    if(GUIDED() && state.step >= 1) renderGuidedBar(); else { whichBarReset(); renderItinerary(); }
     if(state.step === 0) screenAccueil();
     else if(state.step === 1) screenLecon();
     else if(state.step === 2) screenPrononciation();
@@ -13456,11 +13474,92 @@
   }
   somOpen.addEventListener("click", function(){ state.hub = true; render(); });
 
+
+  // ---------- Modes d'affichage : « sommaire » (défaut) et « guide » (parcours en 13 étapes) ----------
+  var VIEW_KEY = "the_roots_view_mode";
+  var viewOpen = document.getElementById("viewOpen");
+  function viewMode(){ var v = null; try { v = localStorage.getItem(VIEW_KEY); } catch(e){} return (v === "guide") ? "guide" : "sommaire"; }
+  function GUIDED(){ return viewMode() === "guide" && !PRACTICE && !STANDALONE && !isGrandControle(); }
+  var VIEW_MODES = [
+    {id:"sommaire", t:"Le sommaire", d:"La liste des 13 étapes : tu choisis par où commencer et tu peux sauter d'une étape à l'autre."},
+    {id:"guide", t:"Le parcours guidé", d:"Une étape à la fois, dans l'ordre du déroulé, avec une barre de progression et un seul bouton Continuer."}
+  ];
+  function screenViewModes(){
+    backBtn.style.visibility = "hidden";
+    nextBtn.textContent = "Fermer";
+    hint.textContent = "Tu peux changer quand tu veux. Ta progression ne change pas.";
+    postmark.innerHTML = "AFFICHAGE";
+    var cur = viewMode();
+    screen.innerHTML = '<div class="eyebrow">Réglage</div><h2 class="screen-title">Comment veux-tu apprendre ?</h2><p class="lede">Même leçon, même contenu : seule la présentation change.</p>' +
+      VIEW_MODES.map(function(m){ return '<button type="button" class="vm-card'+(m.id === cur ? " on" : "")+'" data-m="'+m.id+'"><b>'+m.t+(m.id === cur ? " ✓" : "")+'</b><span>'+m.d+'</span></button>'; }).join("");
+    Array.prototype.forEach.call(screen.querySelectorAll(".vm-card"), function(b){
+      b.addEventListener("click", function(){
+        try { localStorage.setItem(VIEW_KEY, b.getAttribute("data-m")); } catch(e){}
+        state.pick = false; render();
+      });
+    });
+  }
+  viewOpen.addEventListener("click", function(){ state.pick = true; state.hub = false; render(); });
+
+  // Unités de l'ordre du déroulé (écran du moteur + étapes du déroulé qu'il couvre).
+  function guidedUnits(){
+    var hasLecon = LECON_SUBSTEPS > 3, lastSub = LECON_SUBSTEPS-1, U = [];
+    U.push({step:1, sub:0, rows:[1]});
+    U.push({step:3, sub:0, rows:[2]});
+    if(hasLecon){
+      U.push({step:1, sub:1, rows:[3]});
+      U.push({step:1, sub:2, rows:[4]});
+      U.push({step:1, sub:3, rows:[5]});
+      if(TRANSV) U.push({step:1, sub:4, rows:[5]});
+      if(DRILLS) U.push({step:1, sub:drillsSubstep(), rows:[6]});
+    }
+    for(var k = 0; k < LECTURE_SUBSTEPS; k++) U.push({step:4, sub:k, rows:[7,8]});
+    if(hasLecon) U.push({step:1, sub:lastSub, rows:[9]});
+    U.push({step:2, sub:0, rows:[10]});
+    U.push({step:5, sub:0, rows:[11]});
+    U.push({step:6, sub:0, rows:[12,13]});
+    return U;
+  }
+  function guidedIndex(U, st, sub){ for(var i = 0; i < U.length; i++){ if(U[i].step === st && U[i].sub === sub) return i; } return -1; }
+  function guidedGo(u){
+    state.step = u.step; state.subStep = u.sub;
+    vocabBlockIdx = 0; sbRound = 0; memState = null; state.quizIndex = 0;
+    render();
+  }
+  function guidedWrap(fn, dir){
+    return function(){
+      if(!GUIDED() || state.hub || state.pick || state.gateOpen){ return fn(); }
+      var b0 = state.step, b1 = state.subStep;
+      fn();
+      if(state.step === b0 && state.subStep === b1) return;      // simple défilement interne (pages, questions…)
+      if(b0 === 0 || b0 >= 6) return;
+      var U = guidedUnits(), i = guidedIndex(U, b0, b1);
+      if(i < 0) return;
+      var j = i + dir;
+      if(j < 0 || j >= U.length) return;
+      if(U[j].step === state.step && U[j].sub === state.subStep) return;
+      guidedGo(U[j]);
+    };
+  }
+  function renderGuidedBar(){
+    var U = guidedUnits(), i = guidedIndex(U, state.step, state.subStep);
+    var rows = i >= 0 ? U[i].rows : (state.step >= 6 ? [12,13] : []);
+    var first = rows.length ? rows[0] : 0, last = rows.length ? rows[rows.length-1] : 0;
+    var titles = ["","Vocabulaire","Jeux de vocabulaire","Grammaire","Jeux de grammaire","Conjugaison","Jeux de conjugaison","Compréhension orale","Compréhension écrite","Expression écrite","Expression orale","Contrôle de niveau","Bonus : 10 expressions","Fiche PDF"];
+    var segs = "";
+    for(var n = 1; n <= 13; n++) segs += '<div class="gd-seg'+(n < first ? " done" : (n >= first && n <= last ? " cur" : ""))+'"></div>';
+    var lab = first === last ? "Étape "+first : "Étapes "+first+"–"+last;
+    var title = rows.length === 2 ? titles[first]+" · "+titles[last] : (titles[first] || "");
+    itinerary.className = "itinerary guided";
+    itinerary.innerHTML = '<div class="gd-bar">'+segs+'</div><div class="gd-label"><span>'+lab+' sur 13</span><b>'+title+'</b></div>';
+  }
+  function whichBarReset(){ itinerary.className = "itinerary"; }
+
   var pendingAutoAdvance = null;
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
     if(PRACTICE){ backToApp(); return; }
-    if(state.hub){ state.hub = false; render(); return; }
+    if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
     if(ES_MODE && !isPlayableLesson(state.lesson)){ esGoApp(); return; }
     if(state.gateOpen){ state.gateOpen = false; state.renfortSkipped = true; render(); return; }
     if(isGrandControle()){
@@ -13565,10 +13664,10 @@
     }
     render();
   }
-  nextBtn.addEventListener("click", goNext);
+  nextBtn.addEventListener("click", guidedWrap(goNext, 1));
 
-  backBtn.addEventListener("click", function(){
-    if(state.hub){ state.hub = false; render(); return; }
+  function goBack(){
+    if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
     if(isGrandControle()){
       if(state.step === 1 && sbRound > 0){ sbRound--; render(); return; }
       if(state.step === 1 && sbRound === 0){ state.step = 0; render(); return; }
@@ -13598,7 +13697,8 @@
       vocabBlockIdx = 0;
     }
     render();
-  });
+  }
+  backBtn.addEventListener("click", guidedWrap(goBack, -1));
 
   computeLessonTitles();
   publishTitles();
