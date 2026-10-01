@@ -600,6 +600,9 @@
   .hub-lay{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:14px; font-size:.78rem; color:var(--muted); }
   .hub-l{ border:1.5px solid var(--line); background:var(--surface); border-radius:999px; padding:6px 12px; font:700 .76rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .hub-l[aria-pressed="true"]{ border-color:var(--accent); background:var(--accent-soft); }
+  .les-tile{ min-height:128px; } .les-code{ font-size:1.35rem !important; color:var(--accent); } .les-tile small{ font-size:.74rem !important; line-height:1.25; color:var(--ink) !important; }
+  .les-st{ position:absolute; top:8px; right:8px; font-size:.64rem; font-weight:800; background:var(--accent-soft); color:var(--ink); border-radius:9px; padding:2px 7px; }
+  .hub-back{ background:none; border:0; font:700 .84rem "Manrope",sans-serif; color:var(--ink); padding:0; margin:0 0 8px; cursor:pointer; }
   .hub-tile:focus-visible, .hub-step:focus-visible, .hub-m:focus-visible, .hub-l:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
   .vm-card{ display:block; width:100%; text-align:left; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; font:600 .93rem "Manrope",sans-serif; color:var(--ink); cursor:pointer; }
   .vm-card.on{ border-color:var(--accent); background:var(--accent-soft); }
@@ -13459,13 +13462,14 @@
     loadLessonData();
     if(ES_MODE && !isPlayableLesson(state.lesson)){ updateRouteChip(); screenEsEmpty(); return; }
     // Pendant une leçon revue à la demande d'un contrôle/renfort, on ne déplace pas la progression.
-    if(state.returnTo == null){ try { localStorage.setItem(LESSON_KEY, String(state.lesson)); } catch(e){} }
+    if(state.returnTo == null){ try { var __sv = parseInt(localStorage.getItem(LESSON_KEY), 10); if(isNaN(__sv) || lessonRank(state.lesson) >= lessonRank(__sv) || isEsBlocage(state.lesson)) localStorage.setItem(LESSON_KEY, String(state.lesson)); } catch(e){} pickMaxSave(); }
     if(state.variant){ document.documentElement.setAttribute("data-flag", state.variant); }
     else { document.documentElement.removeAttribute("data-flag"); }
     updateRouteChip();
     nextBtn.style.display = "";
     nextBtn.disabled = false;
     state.gateOpen = false;
+    if(state.lessonsPage && !STANDALONE){ itinerary.hidden = true; screenLessons(); return; }
     if(state.lesson === 13 && state.step === 0 && !state.renfortSkipped && state.returnTo == null){
       var renfortTodo = pendingRenforts("A2");
       if(renfortTodo.length){ state.gateOpen = true; screenRenfortGate(renfortTodo, "A2"); return; }
@@ -13547,6 +13551,102 @@
     ];
   }
   function somPos(st, sub){ return st*100 + sub; }
+  // ---------- Page des leçons : une case par leçon (A1.0, A1.1…), ouvertes au fur et à mesure ----------
+  var MAX_KEY = LESSON_KEY + "_max";
+  function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
+  function pickMax(){
+    var v = null; try { v = parseInt(localStorage.getItem(MAX_KEY), 10); } catch(e){}
+    if(isNaN(v) || v == null || pickList().indexOf(v) < 0){
+      try { v = parseInt(localStorage.getItem(LESSON_KEY), 10); } catch(e){}
+      if(isNaN(v) || pickList().indexOf(v) < 0) v = null;
+    }
+    return v;
+  }
+  function pickMaxSave(){
+    var L = pickList(); if(L.indexOf(state.lesson) < 0 || state.returnTo != null) return;
+    var m = pickMax();
+    if(m == null || lessonRank(state.lesson) > lessonRank(m)){ try { localStorage.setItem(MAX_KEY, String(state.lesson)); } catch(e){} }
+  }
+  // Leçon de départ : le A1.0 d'office, ou le X.0 du niveau où le test de positionnement a placé l'apprenant.
+  function pickStart(L){
+    var lvl = null;
+    try {
+      var st = JSON.parse(localStorage.getItem("the_roots_store_v1") || "null");
+      var lg = st && st.settings && st.settings.langs && st.settings.langs.filter(function(l){ return l.code === (ES_MODE ? "es" : "en"); })[0];
+      lvl = lg && lg.leveled ? (lg.entryLevel || lg.level) : null;
+    } catch(e){}
+    var t = null;
+    if(lvl && lvl !== "A1"){
+      if(ES_MODE){ L.forEach(function(n){ if(t == null && levelOfLesson(n) === lvl) t = n; }); }
+      else t = lvl === "A2" ? 13 : (lvl === "B1" ? b1EntryLesson() : (lvl === "B2" ? b2EntryLesson() : (lvl === "C1" ? c1EntryLesson() : null)));
+    }
+    return (t != null && L.indexOf(t) >= 0) ? t : L[0];
+  }
+  function pickCode(n){
+    if(ES_MODE) return esCode(n);
+    if(n === -1) return "Fond.";
+    if(n === GRAND_CONTROLE_LESSON) return "Contrôle A1";
+    if(n === GRAND_CONTROLE_A2_LESSON) return "Contrôle A2";
+    if(n === GRAND_CONTROLE_FINAL_LESSON) return "Contrôle final";
+    if(isBLesson(n)) return bCode(n);
+    return n >= 13 ? "A2." + (n - 13) : "A1." + (n + 1);
+  }
+  function pickTitle(n){
+    if(ES_MODE) return esTitle(n);
+    if(n === -1) return "Fondamentaux";
+    var t = LESSON_TITLES[n] || ""; var i = t.indexOf(" · ");
+    if(i >= 0) return t.slice(i+3);
+    return isGrandControleId(n) ? "Grand contrôle" : "";
+  }
+  function isGrandControleId(n){ return n === GRAND_CONTROLE_LESSON || n === GRAND_CONTROLE_A2_LESSON || n === GRAND_CONTROLE_FINAL_LESSON; }
+  var lvTab = null;
+  function screenLessons(){
+    backBtn.style.visibility = "hidden";
+    nextBtn.textContent = "Reprendre";
+    hint.textContent = "Touche une leçon pour l'ouvrir. Chaque leçon s'ouvre quand la précédente est réussie.";
+    postmark.innerHTML = "LEÇONS";
+    var L = pickList(), startN = pickStart(L), startR = lessonRank(startN), maxN = pickMax(), maxR = maxN == null ? -1 : lessonRank(maxN);
+    var passed = (lsGet(K_PASS, {})[LANG]) || {}, layout = hubGet(HUB_LAYOUT_KEY, ["mosaique","chemin"], "mosaique");
+    var info = L.map(function(n, i){
+      var r = lessonRank(n), prev = i > 0 ? L[i-1] : null, ps = !!passed[n];
+      var exempt = r < startR && !ps, open = r <= startR || ps || (prev != null && !!passed[prev]) || r <= maxR;
+      return {n:n, i:i, level:levelOfLesson(n), passed:ps, exempt:exempt, open:open};
+    });
+    var cur = null; info.forEach(function(x){ if(cur == null && x.open && !x.passed && lessonRank(x.n) >= startR) cur = x; });
+    var levels = []; info.forEach(function(x){ if(levels.indexOf(x.level) < 0) levels.push(x.level); });
+    if(!lvTab || levels.indexOf(lvTab) < 0) lvTab = cur ? cur.level : levels[0];
+    var html = '<div class="som-head"><div><div class="eyebrow">'+(ES_MODE ? "Espagnol" : "Anglais")+'</div><div class="som-title">Mes leçons</div></div></div>';
+    if(levels.length > 1) html += '<div class="hub-seg" style="margin:8px 0">' + levels.map(function(l){ return '<button type="button" class="les-tab" data-l="'+l+'" aria-pressed="'+(l === lvTab)+'">'+l+'</button>'; }).join("") + '</div>';
+    var show = info.filter(function(x){ return x.level === lvTab; });
+    function badge(x){ return x.passed ? "✓ fait" : (cur && x === cur ? "en cours" : (x.exempt ? "dispensé" : (x.open ? "" : "🔒"))); }
+    if(layout === "chemin"){
+      html += '<div class="hub-path">' + show.map(function(x){ var b = badge(x);
+        return '<button type="button" class="hub-step'+(x.passed ? " seen" : "")+(cur && x === cur ? " first" : "")+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'><span class="hub-dot">'+(x.passed ? "✓" : (x.open ? "▶" : "🔒"))+'</span><span class="hub-sc"><span><b>'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+(b && !x.passed && x.open ? " · "+b : "")+'</small></span><span class="hub-chev">›</span></span></button>'; }).join("") + '</div>';
+    } else {
+      html += '<div class="hub-grid">' + show.map(function(x){ var b = badge(x);
+        return '<button type="button" class="hub-tile les-tile'+(cur && x === cur ? " first" : "")+(x.passed ? " seen" : "")+'" data-n="'+x.n+'"'+(x.open ? "" : " disabled")+'>'+(b ? '<span class="les-st">'+b+'</span>' : '')+'<b class="les-code">'+pickCode(x.n)+'</b><small>'+pickTitle(x.n)+'</small></button>'; }).join("") + '</div>';
+    }
+    html += '<div class="hub-lay"><span>Présentation :</span>' +
+      '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
+      '<button type="button" class="hub-l" data-l="chemin" aria-pressed="'+(layout === "chemin")+'">☰ Chemin</button></div>';
+    screen.innerHTML = html;
+    Array.prototype.forEach.call(screen.querySelectorAll(".les-tab"), function(b){ b.addEventListener("click", function(){ lvTab = b.getAttribute("data-l"); screenLessons(); }); });
+    Array.prototype.forEach.call(screen.querySelectorAll(".hub-l"), function(b){ b.addEventListener("click", function(){ try { localStorage.setItem(HUB_LAYOUT_KEY, b.getAttribute("data-l")); } catch(e){} screenLessons(); }); });
+    Array.prototype.forEach.call(screen.querySelectorAll("[data-n]"), function(b){
+      b.addEventListener("click", function(){
+        var n = parseInt(b.getAttribute("data-n"), 10);
+        state.lessonsPage = false; state.pick = false;
+        if(n !== state.lesson){
+          state.lesson = n; state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
+          state.reviewDone = false; state.reviewLog = []; state.ctrlDraw = null; state.renfortSkipped = false; memState = null; sbRound = 0; vocabBlockIdx = 0; cardsReset();
+        }
+        loadLessonData();
+        state.hub = !(isGrandControle() || STANDALONE);
+        render();
+      });
+    });
+  }
+
   // ---------- Page d'accueil de la leçon : cases (Mosaïque ou Chemin) rangées dans l'ordre choisi ----------
   var HUB_LAYOUT_KEY = "the_roots_hub_layout", HUB_ORDER_KEY = "the_roots_hub_order", HUB_SEEN_KEY = "the_roots_hub_seen_v1";
   var HUB_TILES = {
@@ -13578,7 +13678,7 @@
     var layout = hubGet(HUB_LAYOUT_KEY, ["mosaique","chemin"], "mosaique");
     var mode = HUB_MODES.filter(function(m){ return m.id === hubGet(HUB_ORDER_KEY, HUB_MODES.map(function(x){ return x.id; }), "cls"); })[0];
     var rows = somMap(), seen = hubSeen()[LESSON_KEY + ":" + state.lesson] || [];
-    var html = '<div class="som-head"><div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Plan de la leçon")+'</div></div></div>' +
+    var html = '<button type="button" class="hub-back" id="hubBack">‹ Les leçons</button><div class="som-head"><div><div class="eyebrow">Leçon '+lessonLabel(state.lesson)+'</div><div class="som-title">'+(META.vocabTitle || "Plan de la leçon")+'</div></div></div>' +
       '<div class="hub-q">Comment veux-tu apprendre ?<small>Les cases se rangent dans l\'ordre choisi.</small></div>';
     if(layout === "chemin"){
       html += '<div class="hub-seg">' + HUB_MODES.map(function(m){ return '<button type="button" class="hub-m" data-m="'+m.id+'" aria-pressed="'+(m.id === mode.id)+'">'+({cls:"Classique",par:"Parler",gra:"Règles",jeu:"Jeu"})[m.id]+'</button>'; }).join("") + '</div>';
@@ -13598,6 +13698,7 @@
       '<button type="button" class="hub-l" data-l="mosaique" aria-pressed="'+(layout === "mosaique")+'">▦ Mosaïque</button>' +
       '<button type="button" class="hub-l" data-l="chemin" aria-pressed="'+(layout === "chemin")+'">☰ Chemin</button></div>';
     screen.innerHTML = html;
+    var hb = document.getElementById("hubBack"); if(hb) hb.addEventListener("click", function(){ state.hub = false; state.lessonsPage = true; render(); });
     Array.prototype.forEach.call(screen.querySelectorAll(".hub-m"), function(b){
       b.addEventListener("click", function(){ try { localStorage.setItem(HUB_ORDER_KEY, b.getAttribute("data-m")); } catch(e){} screenSommaire(); });
     });
@@ -13850,6 +13951,7 @@
   function goNext(){
     if(pendingAutoAdvance){ clearTimeout(pendingAutoAdvance); pendingAutoAdvance = null; }
     if(PRACTICE){ backToApp(); return; }
+    if(state.lessonsPage){ state.lessonsPage = false; state.hub = true; render(); return; }
     if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
     if(ES_MODE && !isPlayableLesson(state.lesson)){ esGoApp(); return; }
     if(state.gateOpen){ state.gateOpen = false; state.renfortSkipped = true; render(); return; }
@@ -13883,6 +13985,7 @@
             // des renforts éventuels (comme A1 → A2 ci-dessus — voir b1EntryLesson).
             state.lesson = b1EntryLesson(); state.step = 0; state.reviewDone = false; state.reviewLog = []; state.renfortSkipped = false;
           }
+          state.lessonsPage = true;
         } else {
           // Pas validé : retour à l'accueil du contrôle (leçons à revoir + délai d'une semaine).
           state.step = 0;
@@ -13913,6 +14016,7 @@
     } else if(state.step === 5 && state.quizIndex < QUIZ.length-1){
       state.quizIndex++;
     } else if(state.step === 6){
+      var __lessonBefore6 = state.lesson;
       // Examen de fin de palier : réussite = décision ≠ "fail" (grille 70/80/93, voir examFinalize) ;
       // le brouillon est effacé (un nouveau passage repartira de zéro).
       var examDone = examActive() && state.examResult;
@@ -13949,6 +14053,7 @@
       }
       state.step = 0; state.subStep = 0; state.quizIndex = 0; state.quizScore = 0; state.quizLog = [];
       memState = null; sbRound = 0; vocabBlockIdx = 0;
+      if(state.lesson !== __lessonBefore6) state.lessonsPage = true;
     } else {
       state.step = Math.min(state.step+1, 6);
       state.subStep = 0;
@@ -13958,6 +14063,7 @@
   nextBtn.addEventListener("click", ficheNextWrap(guidedWrap(goNext, 1)));
 
   function goBack(){
+    if(state.lessonsPage){ return; }
     if(state.hub || state.pick){ state.hub = false; state.pick = false; render(); return; }
     if(ES_MODE && !isGrandControle() && state.step === 1 && state.subStep === 0 && vocabBlockIdx === 0 && !discoverPending() && esNoAntecedent()){ esGoApp(); return; }
     if(isGrandControle()){
@@ -14021,7 +14127,9 @@
   }
   // Entrée dans une leçon normale : on arrive d'abord sur le plan (cases + choix de l'ordre).
   loadLessonData();
-  if(!PRACTICE && !STANDALONE && !isGrandControle() && state.returnTo == null && !/rootstest/.test(location.hash || "") && !(ES_MODE && !isPlayableLesson(state.lesson))) state.hub = true;
+  if(!PRACTICE && !STANDALONE && !isGrandControle() && state.returnTo == null && !/rootstest/.test(location.hash || "") && !(ES_MODE && !isPlayableLesson(state.lesson))){
+    if(ES_MODE && ES_START_HASH != null) state.hub = true; else state.lessonsPage = true;
+  }
   render();
 
 })();
