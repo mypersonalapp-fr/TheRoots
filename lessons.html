@@ -667,6 +667,7 @@
      Chapitre « Les blocages du francophone » = 301..308 (X1..X8) ; 200..212 réservés aux futurs paliers
      A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
 <script src="js/data/lessons-es.js?v=20260930a"></script>
+<script src="js/data/vocab-deco-ext.js?v=20261001a"></script>
 <script>
 (function(){
 
@@ -9245,6 +9246,7 @@
   "On se refait un point bientôt autour d'un café."
  ]
 };
+  if(window.EN_DECO_EXT){ for(var __k in window.EN_DECO_EXT){ if(!EN_DECO[__k]) EN_DECO[__k] = window.EN_DECO_EXT[__k]; } }
   var CLOCK_WORDS = { "o'clock":[3,0], "half past":[3,30], "quarter past":[3,15], "quarter to":[2,45] };
   var EX_MAP = {
     "red":["The apple is red.","La pomme est rouge."],"blue":["The sky is blue.","Le ciel est bleu."],"green":["The tree is green.","L'arbre est vert."],"yellow":["The sun is yellow.","Le soleil est jaune."],"black":["My cat is black.","Mon chat est noir."],"white":["The snow is white.","La neige est blanche."],"orange":["I like orange juice.","J'aime le jus d'orange."],"pink":["She has a pink bag.","Elle a un sac rose."],
