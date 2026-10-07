@@ -22,7 +22,7 @@ import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260930a";
 import { plantSvg } from "./plant.js?v=20260930a";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
-import { renderAtelierEs } from "./atelier-es.js?v=20261007c";
+import { renderAtelierEs } from "./atelier-es.js?v=20261007d";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;

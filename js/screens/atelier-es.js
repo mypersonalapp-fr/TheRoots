@@ -23,7 +23,7 @@
 // (clé the_roots_atelier_es_v1), pas de backend. Chaque réponse alimente
 // aussi les jauges Grammaire / Prononciation de l'espagnol (recordSkill).
 
-import { ATELIER_ES } from "../data/atelier-es.js?v=20261007b";
+import { ATELIER_ES } from "../data/atelier-es.js?v=20261007d";
 import { recordSkill } from "../data/progress.js?v=20260930a";
 
 const PROGRESS_KEY = "the_roots_atelier_es_v1";
