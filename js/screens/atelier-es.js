@@ -23,7 +23,7 @@
 // (clé the_roots_atelier_es_v1), pas de backend. Chaque réponse alimente
 // aussi les jauges Grammaire / Prononciation de l'espagnol (recordSkill).
 
-import { ATELIER_ES } from "../data/atelier-es.js?v=20260930a";
+import { ATELIER_ES } from "../data/atelier-es.js?v=20261007b";
 import { recordSkill } from "../data/progress.js?v=20260930a";
 
 const PROGRESS_KEY = "the_roots_atelier_es_v1";
@@ -181,7 +181,13 @@ function decodeWord(raw, decoder) {
     const fixed = loose ? stem + e.ending : null;
     merged.set(key, { e, stem, end: loose ? e.ending : end, infinitives, onInf, loose, fixed });
   });
-  out.regular = Array.from(merged.values())
+  // Filtre anti-bruit : une racine ne finit jamais par une voyelle accentuée (comí-an), et si un futur /
+  // conditionnel colle à l'infinitif, on écarte les lectures « hablar-er » d'un présent.
+  const cands = Array.from(merged.values());
+  const hasInf = cands.some((c) => c.onInf);
+  out.regular = cands.filter((c) => !/[áéíóú]$/.test(c.stem))
+    .filter((c) => !(hasInf && !c.onInf && /(ar|er|ir)$/.test(stripAcc(c.stem))));
+  out.regular = out.regular
     .sort((a, b) => (a.loose - b.loose) || (cleanWord(b.e.ending).length - cleanWord(a.e.ending).length))
     .slice(0, 6);
   return out;
