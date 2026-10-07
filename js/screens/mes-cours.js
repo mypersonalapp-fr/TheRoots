@@ -18,6 +18,7 @@ import { B1_EN_GENERAL_OBJECTIVE, B1_EN_PALIERS, B1_EN_ENTRY_MODULE } from "../d
 import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../data/programme-b2-en.js?v=20260930a";
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
+import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260930a";
 import { plantSvg } from "./plant.js?v=20260930a";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
@@ -55,7 +56,7 @@ function profileHtml(code) {
 
 const CTRL_DEF = [
   ["A1", "Contrôle A1", "après la leçon A1.12"],
-  ["A2", "Contrôle A2", "après la leçon A2.11"],
+  ["A2", "Contrôle A2", "après la leçon A2.12"],
   ["FINAL", "Grand contrôle final A1 + A2", "ouvre le niveau B1"],
 ];
 const DECISION_NOTE = {
@@ -63,10 +64,15 @@ const DECISION_NOTE = {
   rappel: "rappels glissés dans les leçons suivantes",
   renfort: "leçons de renfort ajoutées",
 };
+const CTRL_DEF_ES = [
+  ["GC-A1", "Grand Contrôle A1", "après la leçon A1.12 · ouvre le niveau A2"],
+  ["GC-A2", "Grand Contrôle A2", "après la leçon A2.12"],
+  ["GC-A1A2", "Grand Contrôle A1 + A2", "ouvre le niveau B1"],
+];
 function controlsHtml(code) {
-  if (code !== "en") return `<p style="font-size:12.5px;color:var(--ink-soft);margin:0">Les contrôles arrivent avec les leçons de cette langue.</p>`;
+  if (code !== "en" && code !== "es") return `<p style="font-size:12.5px;color:var(--ink-soft);margin:0">Les contrôles arrivent avec les leçons de cette langue.</p>`;
   const c = controls(code);
-  return CTRL_DEF.map(([lvl, name, when]) => {
+  return (code === "es" ? CTRL_DEF_ES : CTRL_DEF).map(([lvl, name, when]) => {
     const r = c[lvl];
     let tag, note;
     if (r && r.passed) {
@@ -77,7 +83,7 @@ function controlsHtml(code) {
       note = CREATOR_MODE ? "mode créatrice : nouvel essai possible tout de suite"
         : `nouvel essai à partir du ${shortDate(r.last.at + 7 * DAY)}, après avoir refait les leçons à revoir`;
     } else {
-      const locked = lvl === "FINAL" && !(c.A2 && c.A2.passed);
+      const locked = (lvl === "FINAL" && !(c.A2 && c.A2.passed)) || (lvl === "GC-A2" && !(c["A2.12"] && c["A2.12"].passed)) || (lvl === "GC-A1A2" && !(c["GC-A2"] && c["GC-A2"].passed));
       tag = `<span class="mc-tag mute">${locked ? "Verrouillé" : "À venir"}</span>`;
       note = when;
     }
@@ -151,6 +157,7 @@ const PROGRAMS_BY_LANG = {
   },
   es: {
     A1: { objective: A1_ES_GENERAL_OBJECTIVE, paliers: A1_ES_PALIERS },
+    A2: { objective: A2_ES_GENERAL_OBJECTIVE, paliers: A2_ES_PALIERS },
   },
 };
 
