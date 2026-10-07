@@ -289,7 +289,7 @@ E[201] = {
       instructionsFr: "Appuie sur le micro et parle environ 45 secondes. Tu peux recommencer. Si le micro ne fonctionne pas, écris ce que tu dirais.",
       prompt: "Estás en una fiesta y hablas con una persona nueva (tuteo). Salúdala y preséntate: nombre, edad, origen y ciudad donde vives. Después hazle dos preguntas con tú: cómo se llama y de dónde es.",
       promptFr: "Tu es à une fête et tu parles à une personne nouvelle (tutoiement). Salue-la et présente-toi : prénom, âge, origine et ville où tu habites. Puis pose-lui deux questions avec tú : comment elle s'appelle et d'où elle est.",
-      minWords: 30, targetSeconds: 45,
+      minWords: 25, targetSeconds: 45,
       rubric: "Total 15 points. Level A1.1: pronunciation cannot be judged finely from a microphone transcript; judge content, forms and apparent fluency. Content (6 pts): greeting and introduction with \"me llamo / soy\" (1 pt); age with TENER (1 pt); origin with \"soy de\" (1 pt); residence with \"vivo en\" (1 pt); two questions to the other person (2 pts): ¿Cómo te llamas? and ¿De dónde eres? (or ¿Dónde vives? / ¿Cuántos años tienes?), 1 pt each. Grammar (5 pts): correct me llamo / soy / tengo / vivo forms (3 pts); correct tú forms in the questions (te llamas, eres, vives, tienes) and no mixing with usted (2 pts). Vocabulary (2 pts): taught identity words and politeness (mucho gusto, encantado/a…). Fluency (2 pts): from the transcript — complete sentences, about 30-60 words, few recognition errors suggesting mispronunciation. Do not penalise accents or punctuation.",
       reference: "¡Hola! Me llamo Carlos y tengo veintitrés años. Soy de Lyon, pero vivo en Madrid. Mucho gusto. ¿Cómo te llamas? ¿De dónde eres? ¿Y dónde vives?"
     }
@@ -4116,7 +4116,6 @@ E[226] = {
           why: "Impératif usted des verbes en -AR : la voyelle s'inverse (-a → -e) : gira → « gire »." },
         { text: "Yo ___ (dormir, imperfecto) cuando ___ (sonar, pretérito indefinido) el teléfono.",
           blanks: [["dormía"], ["sonó"]],
-          points: 4,
           why: "Décor en cours = imparfait (« dormía »). Événement qui l'interrompt = passé simple (« sonó », 3e personne : -ó)." }
       ]
     },
@@ -4597,7 +4596,7 @@ E[227] = {
       instructionsFr: "Écris un texte d'au moins 90 mots.",
       prompt: "Escribe sobre tu vida en tres tiempos. 1) Presente: tu rutina y lo que te gusta. 2) Pasado: un viaje o un recuerdo (usa el pasado simple y el imperfecto para describir). 3) Futuro: tus proyectos para el año que viene (futuro o ir a) y una cosa que te gustaría hacer algún día (condicional).",
       promptFr: "Écris sur ta vie en trois temps. 1) Présent : ta routine et ce que tu aimes. 2) Passé : un voyage ou un souvenir (utilise le passé simple et l'imparfait pour décrire). 3) Futur : tes projets pour l'année prochaine (futur ou ir a) et une chose que tu aimerais faire un jour (conditionnel).",
-      minWords: 90, maxWords: 180,
+      minWords: 80, maxWords: 180,
       rubric: "Total 15 points. Task (3 pts): the three parts are present (routine and likes; a trip or memory; projects and a wish); 1 pt per part. Present (3 pts): correct present for routine and likes, regular and irregular verbs (trabajo, vivo, soy, estoy, tengo, voy, prefiero), gustar with correct agreement; deduct 1 pt per recurring error type. Past (4 pts): correct pretérito indefinido for events (fui, visité, comimos, hice) AND correct imperfecto for background or description (hacía sol, era, había, estaba); choice between the two tenses is right; 2 pts each. Future and conditional (3 pts): correct future simple or ir a + infinitive (viajaré, voy a estudiar) and one correct conditional (me gustaría, querría, podría); 1.5 pts each. Vocabulary, connectors and coherence (2 pts): time markers (todos los días, el año pasado, de repente, el año que viene), connectors (porque, pero, después, por eso), clear organisation. Missing accents cost at most 1 pt in total; ¿ ¡ not penalised. Under 90 words: cap the total at 9.",
       reference: "Trabajo en una oficina y vivo en Lyon con mi hermana. Todos los días me levanto a las siete y voy al trabajo en tren. Me gusta cocinar y me gustan las películas. El verano pasado viajé a Portugal con mis amigos. Llegamos a Lisboa de noche y hacía calor. Visitamos los museos y comimos pescado en la playa; fue un viaje inolvidable. El año que viene voy a estudiar español dos horas por semana y viajaré a Perú en agosto. Algún día me gustaría vivir en Madrid."
     },

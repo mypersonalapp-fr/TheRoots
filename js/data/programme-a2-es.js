@@ -8,6 +8,15 @@ export const A2_ES_GENERAL_OBJECTIVE =
 
 export const A2_ES_PALIERS = [
   {
+    code: "A2.0", title: "Bases transversales A2",
+    objective: "Poser, avant les temps du passé et du futur, les briques qui servent dans tous les paliers A2 : marqueurs de temps, connecteurs de récit, interrogatifs accentués, carte d'ensemble des temps.",
+    vocab: ["marqueurs du passé et du futur : ayer, anoche, hace…, mañana, dentro de…", "connecteurs de récit : primero, luego, después, entonces, por eso, mientras", "interrogatifs accentués : qué, quién, cuándo, dónde, cómo, por qué, cuánto"],
+    grammar: ["Carte des temps A2 : à quoi sert chaque temps, en un coup d'œil", "Former une question au passé ou au futur (¿Qué hiciste ayer ? ¿Adónde vas a ir ?)", "Rappel tú / usted"],
+    conjugation: "Repérage seulement des participes et passés irréguliers fréquents (hecho, dicho, visto, fui, hice, tuve) : ils sont enseignés en détail en A2.1–A2.3.",
+    whyHow: "Avant d'apprendre trois passés, il faut savoir REPÉRER lequel employer : le marqueur de temps (ayer, hoy, siempre) décide du temps. Ce palier installe ce réflexe.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Contrôle de niveau", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
     code: "A2.1", title: "Indefinido regular",
     objective: "Raconter une action terminée dans le passé (hier, la semaine dernière) avec le pretérito indefinido des verbes réguliers.",
     vocab: ["marqueurs de temps : ayer, anoche, anteayer, la semana pasada, el año pasado, hace dos días", "verbes d'action courants : hablar, comer, vivir, trabajar, comprar, salir, escribir"],

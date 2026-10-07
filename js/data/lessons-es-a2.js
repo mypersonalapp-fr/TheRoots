@@ -3221,3 +3221,268 @@ LESSONS_ES[224] = {
 };
 })();
 
+
+// A2.0 — Bases transversales A2 : marqueurs de temps, connecteurs, carte des temps, questions — leçon 228
+(function(){
+function blk(name, rows){
+  var v = __esB(name, rows);
+  v.forEach(function(o, i){ o.emo = rows[i][4]; o.ex = [rows[i][5], rows[i][6]]; });
+  return v;
+}
+// ligne = [terme, API, français, note, emoji, exemple ES, exemple FR]
+var V = [].concat(
+ blk("Marqueurs de temps : passé", [
+  ["ayer","/aˈʝeɾ/","hier","Ferme la journée : l'action est finie. y = « yé » : a-YER.","⏪","Ayer trabajé mucho.","Hier, j'ai beaucoup travaillé."],
+  ["anoche","/aˈnotʃe/","hier soir, cette nuit","Un seul mot pour « hier soir ». ch = tch : a-NO-tche.","🌙","Anoche dormí bien.","Hier soir, j'ai bien dormi."],
+  ["la semana pasada","/la seˈmana paˈsaða/","la semaine dernière","« pasada » s'accorde : el mes pasado, el año pasado.","📅","La semana pasada viajé.","La semaine dernière, j'ai voyagé."],
+  ["hace dos días","/ˈaθe ðos ˈðias/","il y a deux jours","hace + durée = il y a. Le verbe reste au passé.","⏳","Llegué hace dos días.","Je suis arrivé il y a deux jours."],
+  ["ya","/ʝa/","déjà","« Ya he comido » = j'ai déjà mangé. Dans une question : « ¿Ya comiste? » = tu as déjà mangé ?","✅","Ya terminé el trabajo.","J'ai déjà terminé le travail."],
+  ["todavía no","/toðaˈβia no/","pas encore","« Todavía no llegó » = il n'est pas encore arrivé. Sans « no », todavía = encore, toujours.","⌛","Todavía no comí.","Je n'ai pas encore mangé."]
+ ]),
+ blk("Marqueurs de temps : futur et fréquence", [
+  ["mañana","/maˈɲana/","demain","Attention : « la mañana » (fém.) = le matin ; « mañana » seul = demain.","🌅","Mañana voy a trabajar.","Demain, je vais travailler."],
+  ["pasado mañana","/paˈsaðo maˈɲana/","après-demain","Littéralement « passé demain ». Bloc fixe.","⏭️","Pasado mañana viajo a Lyon.","Après-demain, je voyage à Lyon."],
+  ["el próximo mes","/el ˈpɾoksimo mes/","le mois prochain","« próximo » s'accorde : la próxima semana, el próximo año. Accent écrit sur pró.","🗓️","El próximo mes viajo.","Le mois prochain, je voyage."],
+  ["dentro de una semana","/ˈdentɾo ðe ˈuna seˈmana/","dans une semaine","dentro de + durée = « dans » + durée (à partir de maintenant). Pas « en ».","⏩","Llego dentro de una hora.","J'arrive dans une heure."],
+  ["siempre","/ˈsjempɾe/","toujours","Fréquence maximale : 100 %. ie = « yé ».","♾️","Siempre cenamos tarde.","Nous dînons toujours tard."],
+  ["a veces","/a ˈβeθes/","parfois","Deux mots : « a veces ». Piège : pas « aveces ».","🔀","A veces salgo a correr.","Parfois, je sors courir."],
+  ["nunca","/ˈnunka/","jamais","Avant le verbe : « Nunca viajo ». Après : « No viajo nunca ». Pas de double sens.","🚫","Nunca bebo café.","Je ne bois jamais de café."]
+ ]),
+ blk("Connecteurs de récit", [
+  ["primero","/pɾiˈmeɾo/","d'abord","Ouvre un récit. Invariable.","1️⃣","Primero abro la puerta.","D'abord, j'ouvre la porte."],
+  ["luego","/ˈlweɣo/","ensuite, puis","ue = « oué » : LOUÉ-go.","2️⃣","Luego salgo de casa.","Ensuite, je sors de la maison."],
+  ["después","/desˈpwes/","après","Accent sur la fin : des-PUÉS.","➡️","Después cenamos.","Après, nous dînons."],
+  ["entonces","/enˈtonθes/","alors, à ce moment-là","Enchaîne une conséquence ou un moment du récit.","⚡","Llovía y entonces entré.","Il pleuvait et alors je suis entré."],
+  ["por eso","/poɾ ˈeso/","c'est pourquoi","Donne la conséquence : « Estoy cansado, por eso me voy ».","🔗","Tengo prisa, por eso me voy.","Je suis pressé, c'est pourquoi je pars."],
+  ["pero","/ˈpeɾo/","mais","Oppose deux idées.","↔️","Quiero ir, pero no puedo.","Je veux y aller, mais je ne peux pas."],
+  ["porque","/ˈpoɾke/","parce que","Un mot, sans accent : réponse à « ¿Por qué? ».","💡","Me quedo porque llueve.","Je reste parce qu'il pleut."],
+  ["cuando","/ˈkwando/","quand (conjonction)","Sans accent dans une phrase ; avec accent (¿cuándo?) dans une question.","🕒","Cuando llego, cocino.","Quand j'arrive, je cuisine."],
+  ["mientras","/ˈmjentɾas/","pendant que","Deux actions en même temps.","🔄","Canto mientras cocino.","Je chante pendant que je cuisine."],
+  ["al final","/al fiˈnal/","à la fin, finalement","Conclut un récit.","🏁","Al final compré el libro.","Finalement, j'ai acheté le livre."]
+ ]),
+ blk("Interrogatifs accentués", [
+  ["¿qué?","/ke/","quoi ? que ?","Accent écrit dans une question : ¿Qué haces? Sans accent, « que » relie deux idées.","❓","¿Qué haces mañana?","Que fais-tu demain ?"],
+  ["¿quién?","/kjen/","qui ?","Pluriel : ¿quiénes? « ¿Con quién hablas? »","👤","¿Quién llamó?","Qui a appelé ?"],
+  ["¿cuándo?","/ˈkwando/","quand ?","Question sur le moment.","⏰","¿Cuándo llegas?","Quand arrives-tu ?"],
+  ["¿dónde? · ¿adónde?","/ˈdonde · aˈðonde/","où ? · vers où ?","¿Dónde estás? (lieu) · ¿Adónde vas? (direction).","📍","¿Adónde vas mañana?","Où vas-tu demain ?"],
+  ["¿cómo?","/ˈkomo/","comment ?","Manière ou état : ¿Cómo estás?","🤔","¿Cómo vienes?","Comment viens-tu ?"],
+  ["¿por qué?","/poɾ ˈke/","pourquoi ?","Deux mots avec accent. Réponse : porque (un mot).","🙋","¿Por qué no vienes?","Pourquoi ne viens-tu pas ?"],
+  ["¿cuánto? · ¿cuántos?","/ˈkwanto · ˈkwantos/","combien ?","S'accorde : ¿cuántas horas? ¿cuánta gente?","🔢","¿Cuántos días te quedas?","Combien de jours restes-tu ?"]
+ ]),
+ blk("Participes et formes irrégulières à reconnaître", [
+  ["hecho","/ˈetʃo/","fait (hacer)","Participe passé irrégulier de hacer. h muet.","🛠️","He hecho la cena.","J'ai fait le dîner."],
+  ["dicho","/ˈditʃo/","dit (decir)","Participe de decir.","💬","Me ha dicho la verdad.","Il m'a dit la vérité."],
+  ["visto","/ˈbisto/","vu (ver)","Participe de ver. v = b.","👀","¿Has visto la película?","As-tu vu le film ?"],
+  ["escrito","/eskɾiˈto/","écrit (escribir)","Participe irrégulier de escribir.","✍️","He escrito un mensaje.","J'ai écrit un message."],
+  ["fui","/fwi/","je suis allé / je fus","Même forme pour ir et ser au passé. Le contexte décide : « Fui al cine ».","🎬","Ayer fui al mercado.","Hier, je suis allé au marché."],
+  ["hice","/ˈiθe/","j'ai fait","Passé de hacer (yo). Repérage seulement.","🧰","Ayer hice la compra.","Hier, j'ai fait les courses."],
+  ["tuve","/ˈtuβe/","j'ai eu","Passé de tener (yo).","🖐️","Tuve mucho trabajo.","J'ai eu beaucoup de travail."],
+  ["estuve","/esˈtuβe/","j'ai été (lieu, état)","Passé de estar (yo).","🏠","Estuve en casa.","J'ai été à la maison."]
+ ]),
+ blk("Poser une question : tú et usted", [
+  ["¿Qué hiciste ayer? / ¿Qué hizo usted ayer?","/ke iˈθiste aˈʝeɾ · ke ˈiθo usˈteð aˈʝeɾ/","Qu'as-tu fait hier ? / Qu'avez-vous fait hier ?","Tú → hiciste ; usted → hizo. Repérage de la forme : le détail vient en A2.2.","📝","¿Qué hizo usted anoche?","Qu'avez-vous fait hier soir ?"],
+  ["¿Adónde vas a ir? / ¿Adónde va a ir usted?","/aˈðonde bas a iɾ · aˈðonde ba a iɾ usˈteð/","Où vas-tu aller ? / Où allez-vous aller ?","voy a + infinitif = futur proche : vas a ir (tú), va a ir (usted).","🧭","¿Adónde va a ir usted?","Où allez-vous aller ?"],
+  ["¿Cuándo llegaste? / ¿Cuándo llegó usted?","/ˈkwando ʝeˈɣaste · ˈkwando ʝeˈɣo usˈteð/","Quand es-tu arrivé ? / Quand êtes-vous arrivé ?","Question au passé : même ordre qu'au présent.","🛬","¿Cuándo llegó usted?","Quand êtes-vous arrivé ?"]
+ ])
+);
+
+LESSONS_ES[228] = {
+ code:"A2.0", level:"A2",
+ VOCAB: V,
+ MEM_WORDS: __esIdx(V, ["ayer","anoche","hace dos días","dentro de una semana","siempre","por eso","mientras","¿por qué?","hecho","¿Cuándo llegaste? / ¿Cuándo llegó usted?"]),
+ MINI_CHECKS: [
+  {q:"Quel mot place l'action dans le passé ?", opts:["mañana","anoche","siempre"], correct:1, fb:"« Anoche » = hier soir : période terminée. « Mañana » est le futur ; « siempre » exprime l'habitude."},
+  {q:"« Dans une semaine » se dit…", opts:["hace una semana","dentro de una semana"], correct:1, fb:"« dentro de » = dans (futur). « hace » = il y a (passé)."},
+  {q:"« Pourquoi ? » (question) :", opts:["¿Por qué?","¿Porque?","¿Por que?"], correct:0, fb:"Question : « por qué », deux mots, accent sur qué. Réponse : « porque » en un mot."},
+  {q:"Quel connecteur ouvre un récit ?", opts:["al final","primero","mientras"], correct:1, fb:"« Primero » = d'abord. « Al final » conclut ; « mientras » = pendant que."},
+  {q:"Pour demander à un client où il va :", opts:["¿Adónde vas?","¿Adónde va usted?"], correct:1, fb:"Client = usted : « ¿Adónde va usted? ». « ¿Adónde vas? » = tutoiement."},
+  {q:"Quelle phrase annonce un projet proche ?", opts:["Voy a viajar mañana.","Viajé ayer."], correct:0, fb:"« voy a + infinitif » = futur proche. « Viajé » = passé."},
+  {q:"« Je n'ai pas encore mangé » :", opts:["Todavía no comí.","Ya comí."], correct:0, fb:"« todavía no » = pas encore. « ya » = déjà."},
+  {q:"« Hecho » est le participe de…", opts:["hacer","decir","ver"], correct:0, fb:"hacer → hecho ; decir → dicho ; ver → visto."}
+ ],
+ ROUNDS: [
+  __esR("Ayer trabajé mucho.","Hier, j'ai beaucoup travaillé."),
+  __esR("Anoche dormí bien.","Hier soir, j'ai bien dormi."),
+  __esR("Mañana voy a viajar.","Demain, je vais voyager."),
+  __esR("Llego dentro de una hora.","J'arrive dans une heure."),
+  __esR("Llegué hace dos días.","Je suis arrivé il y a deux jours."),
+  __esR("¿Qué hiciste ayer?","Qu'as-tu fait hier ?"),
+  __esR("¿Adónde vas a ir?","Où vas-tu aller ?"),
+  __esR("¿Cuándo llegó usted?","Quand êtes-vous arrivé ?"),
+  __esR("Primero abro la puerta y luego salgo.","D'abord j'ouvre la porte, puis je sors."),
+  __esR("Tengo prisa, por eso me voy.","Je suis pressé, c'est pourquoi je pars."),
+  __esR("Canto mientras cocino.","Je chante pendant que je cuisine."),
+  __esR("Todavía no comí.","Je n'ai pas encore mangé."),
+  __esR("¿Por qué no vienes?","Pourquoi ne viens-tu pas ?")
+ ],
+ QUIZ: [
+  {cat:"ecrit", q:"« Hier, j'ai travaillé. »", opts:["Mañana trabajo.","Ayer trabajé.","Siempre trabajo."], correct:1, why:"« Ayer » demande un verbe au passé : trabajé. « Mañana » = futur ; « siempre » = habitude."},
+  {cat:"ecrit", q:"« Dans deux jours, je pars. »", opts:["Hace dos días salgo.","Dentro de dos días salgo.","Ayer salgo."], correct:1, why:"« dentro de dos días » = dans deux jours. « hace » regarde vers le passé."},
+  {cat:"ecrit", q:"¿ ___ vas mañana ? (direction)", opts:["Dónde","Adónde","Cuándo"], correct:1, why:"Direction (aller vers) : ¿adónde? Lieu fixe : ¿dónde estás?"},
+  {cat:"ecrit", q:"— ¿ ___ no vienes ? — ___ estoy cansado.", opts:["Porque / Por qué","Por qué / Porque","Por qué / Por qué"], correct:1, why:"Question : por qué (deux mots, accent). Réponse : porque (un mot)."},
+  {cat:"ecrit", q:"À une cliente : « ¿ ___ llegó ___ ? »", opts:["Cuando / tú", "Cuándo / usted", "Cuándo / vosotros"], correct:1, why:"Question = cuándo avec accent ; cliente = usted."},
+  {cat:"ecrit", q:"Quelle phrase est un futur proche ?", opts:["Voy a comer.","Comí.","Como siempre."], correct:0, why:"voy a + infinitif = futur proche. « Comí » = passé, « como » = présent."},
+  {cat:"ecrit", q:"Pour dire « jamais » avant le verbe :", opts:["Nunca viajo.","No nunca viajo.","Nunca no viajo."], correct:0, why:"« Nunca » avant le verbe : pas de « no ». Après : « No viajo nunca »."},
+  {cat:"ecrit", q:"« Ensuite » dans un récit :", opts:["luego","pero","porque"], correct:0, why:"« luego » = ensuite. « pero » oppose, « porque » donne la cause."},
+  {cat:"ecrit", q:"Quelle forme est un participe irrégulier ?", opts:["hablado","hecho","comido"], correct:1, why:"hacer → hecho (irrégulier). hablado et comido suivent la règle."},
+  {cat:"ecrit", q:"« Qui a appelé ? »", opts:["¿Quién llamó?","¿Qué llamó?","¿Cuándo llamó?"], correct:0, why:"« quién » = qui (personne). « qué » = quoi."},
+  {cat:"ecrit", q:"Je veux rester, ___ je dois partir.", opts:["porque","pero","mientras"], correct:1, why:"« pero » oppose deux idées : je veux rester, mais je dois partir."},
+  {cat:"ecrit", q:"« Je n'ai pas encore terminé » :", opts:["Ya terminé.","Todavía no terminé.","Nunca terminé."], correct:1, why:"« todavía no » = pas encore."},
+  {cat:"ecrit", q:"À un ami : « Combien de jours restes-tu ? »", opts:["¿Cuántos días te quedas?","¿Cuántas días te quedas?","¿Cuánto días te quedas?"], correct:0, why:"« día » est masculin : ¿cuántos días? Le mot s'accorde avec le nom."},
+  {cat:"ecrit", q:"« Hace tres días » regarde vers…", opts:["le futur","le passé"], correct:1, why:"« hace » + durée = il y a : passé. Futur = dentro de."},
+  {cat:"oral", audio:"Ayer fui al mercado.", q:"Écoute : quand a lieu l'action ?", opts:["Demain","Maintenant","Hier"], correct:2, why:"« Ayer » = hier."},
+  {cat:"oral", audio:"Mañana voy a viajar a Madrid.", q:"Écoute : que va faire la personne ?", opts:["Voyager à Madrid","Rentrer chez elle","Appeler Madrid"], correct:0, why:"« voy a viajar » = je vais voyager : futur proche."},
+  {cat:"oral", audio:"¿Cuándo llegó usted?", q:"Écoute : on s'adresse à quelqu'un en…", opts:["tutoiement","vouvoiement"], correct:1, why:"« llegó usted » : vouvoiement (usted)."},
+  {cat:"oral", audio:"Llego dentro de una hora.", q:"Écoute : quand arrive la personne ?", opts:["Il y a une heure","Dans une heure","Demain"], correct:1, why:"« dentro de una hora » = dans une heure."},
+  {cat:"oral", audio:"Primero abro la puerta y luego salgo.", q:"Écoute : que fait la personne en premier ?", opts:["Elle sort","Elle ouvre la porte","Elle part en voyage"], correct:1, why:"« Primero abro la puerta » : d'abord elle ouvre la porte."},
+  {cat:"comprehension", passage:"Ana: ¿Qué hiciste ayer, Luis? — Luis: Ayer trabajé por la mañana y por la tarde fui al cine. — Ana: ¿Y mañana? — Luis: Mañana voy a viajar a Sevilla. Llego dentro de tres horas.", q:"Que fait Luis hier après-midi ?", opts:["Il va au cinéma","Il travaille","Il voyage"], correct:0, why:"« Por la tarde fui al cine » : hier après-midi, il est allé au cinéma."},
+  {cat:"comprehension", passage:"Ana: ¿Qué hiciste ayer, Luis? — Luis: Ayer trabajé por la mañana y por la tarde fui al cine. — Ana: ¿Y mañana? — Luis: Mañana voy a viajar a Sevilla. Llego dentro de tres horas.", q:"Où va Luis demain ?", opts:["À Séville","Au cinéma","À Madrid"], correct:0, why:"« Voy a viajar a Sevilla »."},
+  {cat:"comprehension", passage:"Ana: ¿Qué hiciste ayer, Luis? — Luis: Ayer trabajé por la mañana y por la tarde fui al cine. — Ana: ¿Y mañana? — Luis: Mañana voy a viajar a Sevilla. Llego dentro de tres horas.", q:"Quand arrive-t-il ?", opts:["Il y a trois heures","Dans trois heures","Hier"], correct:1, why:"« dentro de tres horas » = dans trois heures."},
+  {cat:"comprehension", passage:"Señora Vega: ¿Adónde va a ir usted este fin de semana? — Señor Díaz: Voy a ir a Toledo, pero todavía no compré el billete. — Señora Vega: ¿Por qué no lo compra hoy? — Señor Díaz: Porque hoy trabajo hasta tarde.", q:"Où va M. Díaz ?", opts:["À Tolède","À Séville","Chez lui"], correct:0, why:"« Voy a ir a Toledo »."},
+  {cat:"comprehension", passage:"Señora Vega: ¿Adónde va a ir usted este fin de semana? — Señor Díaz: Voy a ir a Toledo, pero todavía no compré el billete. — Señora Vega: ¿Por qué no lo compra hoy? — Señor Díaz: Porque hoy trabajo hasta tarde.", q:"Pourquoi n'a-t-il pas acheté son billet ?", opts:["Il travaille tard aujourd'hui","Il est malade","Il n'a pas d'argent"], correct:0, why:"« Porque hoy trabajo hasta tarde » : réponse en « porque » à « ¿Por qué? »."}
+ ],
+ PRON_VERBS: [
+  {en:"ayer · hoy · mañana", fr:"hier · aujourd'hui · demain (a-YER, OY, ma-ÑA-na)"},
+  {en:"anoche", fr:"hier soir (a-NO-tche : ch = tch)"},
+  {en:"dentro de una semana", fr:"dans une semaine (DEN-tro ; se-MA-na)"},
+  {en:"¿Qué hiciste ayer?", fr:"Qu'as-tu fait hier ? (ke i-THIS-te a-YER)"},
+  {en:"¿Adónde vas a ir?", fr:"Où vas-tu aller ? (a-DON-de ; accent sur DON)"},
+  {en:"¿Cuándo llegaste?", fr:"Quand es-tu arrivé ? (KUAN-do ; ye-GAS-te)"},
+  {en:"¿Cuánto cuesta?", fr:"Combien ça coûte ? (KUAN-to KUES-ta)"},
+  {en:"¿Por qué no vienes?", fr:"Pourquoi ne viens-tu pas ? (por KÉ no BIÉ-nes)"},
+  {en:"Porque estoy cansado.", fr:"Parce que je suis fatigué. (POR-ke : un mot, accent sur POR)"},
+  {en:"Primero, luego, después", fr:"d'abord, ensuite, après (pri-ME-ro, LUÉ-go, des-PUÉS)"}
+ ],
+ READING: [
+  "Hoy es lunes y hago planes para la semana.",
+  "Ayer descansé en casa y anoche cené con mi madre.",
+  "Mañana voy a trabajar y pasado mañana voy a viajar a Sevilla.",
+  "Siempre viajo en tren porque es cómodo.",
+  "Primero compro el billete y luego preparo la maleta.",
+  "A veces llamo a mi hermana mientras espero el tren.",
+  "—Perdone, señor, ¿adónde va usted? —preguntó la empleada.",
+  "—Voy a Sevilla. ¿Cuándo sale el tren? —contestó el señor.",
+  "—Sale dentro de una hora, pero todavía no abrió la puerta.",
+  "Al final, el señor entró al tren y escribió un mensaje a su familia."
+ ],
+ GLOSS: [
+  {en:"hacer planes", fr:"faire des projets"},
+  {en:"descansar", fr:"se reposer (descansé = je me suis reposé)"},
+  {en:"la maleta", fr:"la valise (féminin)"},
+  {en:"cómodo", fr:"confortable, pratique"},
+  {en:"esperar", fr:"attendre (aussi : espérer)"},
+  {en:"la empleada", fr:"l'employée (féminin ; l'employé = el empleado)"},
+  {en:"el billete", fr:"le billet (de transport)"},
+  {en:"salir", fr:"sortir, partir (le train sale = le train part)"}
+ ],
+ GRAMMAR1: {
+  heading:"La carte des temps A2 : à quoi sert chaque temps",
+  lede:"Avant de les apprendre un par un, regarde la carte d'ensemble. En A2 tu rencontres huit façons de parler du temps. Aujourd'hui, on ne les conjugue pas : on apprend à choisir le bon selon le message. Le détail de chaque temps arrive dans les paliers A2.1 et suivants.",
+  conj:[
+   ["présent →","trabajo · como · vivo","Hoy trabajo. Siempre como a las dos. Vivo en París."],
+   ["estoy + gérondif →","estoy trabajando · estás comiendo","Ahora estoy trabajando. ¿Qué estás haciendo? Usted está comiendo."],
+   ["voy a + infinitif →","voy a trabajar · vas a comer","Mañana voy a viajar. ¿Adónde vas a ir? ¿Va a venir usted?"],
+   ["passé daté →","trabajé · comiste · vivió","Ayer trabajé. ¿Qué comiste anoche? ¿Cuándo llegó usted?"],
+   ["passé du lien avec maintenant / décor →","he trabajado · trabajaba","Hoy he trabajado mucho. Antes trabajaba en un banco."],
+   ["futur et conditionnel →","trabajaré · trabajaría","Mañana trabajaré. ¿Podría ayudarme, por favor?"]
+  ],
+  ruleHtml:"🗺️ <b>1. La carte des temps A2.</b> Chaque temps répond à une question : <i>quand ? combien de temps ? avec quel lien au présent ?</i><br>• <b>Présent</b> : habitudes et vérités (« Trabajo en París »).<br>• <b>estoy + gérondif</b> : ce qui se passe en ce moment (« Estoy comiendo »).<br>• <b>voy a + infinitif</b> : projet proche (« Voy a viajar »).<br>• <b>Indefinido</b> : action finie et datée (« Ayer trabajé »).<br>• <b>Perfecto</b> : action passée liée à aujourd'hui (« Hoy he trabajado »).<br>• <b>Imperfecto</b> : décor, habitude passée, description (« Antes trabajaba en un banco »).<br>• <b>Futur</b> : prévision, promesse (« Mañana trabajaré »).<br>• <b>Conditionnel</b> : politesse, hypothèse (« ¿Podría ayudarme? »).<br>Rassure-toi : tu connais déjà le présent, estar + gérondif et ir a. Les cinq autres arrivent un par un, avec le pourquoi de chaque règle.<br><br>⏱️ <b>2. Le mot de temps choisit le temps.</b> Réflexe : repère d'abord le marqueur. <b>ayer, anoche, hace dos días, la semana pasada</b> → passé daté. <b>mañana, el próximo mes, dentro de una semana</b> → futur. <b>siempre, a veces, nunca</b> → présent d'habitude. <b>ya, todavía no</b> → lien avec maintenant. Piège : « hace » regarde en arrière (hace dos días = il y a deux jours) ; « dentro de » regarde en avant (dans deux jours).<br><br>🔗 <b>3. Les connecteurs de récit.</b> <b>Primero</b> (d'abord), <b>luego / después</b> (ensuite), <b>entonces</b> (alors), <b>por eso</b> (c'est pourquoi), <b>pero</b> (mais), <b>porque</b> (parce que), <b>cuando</b> (quand), <b>mientras</b> (pendant que), <b>al final</b> (à la fin). Exemple : <b>Primero abro la puerta, luego salgo y al final cierro con llave.</b> Pourquoi les apprendre maintenant ? Parce que tous les textes de A2 enchaînent des idées : sans connecteurs, tu parles par phrases isolées.<br><br>🔤 <b>4. Participes et passés irréguliers : simple repérage.</b> Certains verbes très fréquents ont une forme à part : <b>hacer → hecho / hice</b>, <b>decir → dicho</b>, <b>ver → visto</b>, <b>escribir → escrito</b>, <b>ir → fui</b>, <b>tener → tuve</b>, <b>estar → estuve</b>. Aujourd'hui, tu dois seulement les reconnaître à l'oreille et à l'écrit. Pas de conjugaison complète : elle viendra en A2.2.<br><br>👥 <b>5. Tú ET usted.</b> tú → <b>¿Qué hiciste? ¿Cuándo llegaste? ¿Adónde vas?</b> · usted → <b>¿Qué hizo usted? ¿Cuándo llegó usted? ¿Adónde va usted?</b> Avec un client, un supérieur ou un inconnu âgé, choisis usted. Pluriel : ustedes partout en Amérique latine ; vosotros en Espagne entre amis.",
+  dialogueLede:"Deux amis parlent de leurs projets (tutoiement) :",
+  dialogue:[
+   {who:"them", en:"¡Hola, Marta! ¿Qué hiciste ayer?", fr:"Salut, Marta ! Qu'as-tu fait hier ?"},
+   {who:"you", en:"Ayer trabajé y anoche cené con mi madre. ¿Y tú?", fr:"Hier, j'ai travaillé et hier soir, j'ai dîné avec ma mère. Et toi ?"},
+   {who:"them", en:"Yo descansé. Mañana voy a viajar a Sevilla.", fr:"Moi, je me suis reposé. Demain, je vais voyager à Séville."},
+   {who:"you", en:"¿Adónde vas a ir exactamente?", fr:"Où vas-tu aller exactement ?"},
+   {who:"them", en:"Voy a Sevilla, pero todavía no compré el billete.", fr:"Je vais à Séville, mais je n'ai pas encore acheté le billet."},
+   {who:"you", en:"¿Por qué no lo compras hoy?", fr:"Pourquoi ne l'achètes-tu pas aujourd'hui ?"},
+   {who:"them", en:"Porque hoy trabajo hasta tarde. Pero lo compro luego.", fr:"Parce qu'aujourd'hui je travaille tard. Mais je l'achète ensuite."}
+  ],
+  whyLabel:"Pourquoi regarder la carte avant d'apprendre chaque temps ?",
+  whyText:"En français, tu as déjà un passé composé, un imparfait, un futur, un conditionnel : tu connais l'idée de ces temps. Ce qui change en espagnol, ce sont les formes et quelques emplois. En voyant la carte d'abord, tu sais <b>pourquoi</b> chaque temps existe avant d'apprendre <b>comment</b> le former. C'est plus rapide : tu ne te demandes plus « quel temps ? » à chaque phrase, tu te demandes « quel message ? ». Dans les paliers suivants, chaque temps aura sa place sur cette carte."
+ },
+ GRAMMAR2: {
+  heading:"Poser une question : accents, ordre des mots, tú ET usted",
+  dialogueLede:"À la gare, une employée et un client (vouvoiement) :",
+  dialogue:[
+   {who:"them", en:"Buenos días, señor. ¿Adónde va usted?", fr:"Bonjour, monsieur. Où allez-vous ?"},
+   {who:"you", en:"Voy a Sevilla. ¿Cuándo sale el tren?", fr:"Je vais à Séville. Quand part le train ?"},
+   {who:"them", en:"Sale dentro de una hora. ¿Cuándo compró usted el billete?", fr:"Il part dans une heure. Quand avez-vous acheté le billet ?"},
+   {who:"you", en:"Ayer. Pero todavía no sé el número del tren.", fr:"Hier. Mais je ne sais pas encore le numéro du train."},
+   {who:"them", en:"Es el tren veinte. ¿Cuántas maletas lleva usted?", fr:"C'est le train vingt. Combien de valises avez-vous ?"},
+   {who:"you", en:"Dos. Muchas gracias, señora.", fr:"Deux. Merci beaucoup, madame."}
+  ],
+  ruleHtml:"❓ <b>1. Les interrogatifs portent un accent écrit.</b> <b>qué, quién, cuándo, dónde / adónde, cómo, cuánto, por qué</b>. Dans une phrase affirmative, les mêmes mots perdent l'accent : <i>cuando llego, cocino</i> ; <i>donde vivo</i>. L'accent signale la question. Pour « pourquoi » : <b>¿Por qué?</b> (question) et <b>porque</b> (réponse).<br><br>🔀 <b>2. L'ordre des mots.</b> Interrogatif + verbe + sujet, avec ¿ au début et ? à la fin : <b>¿Qué hiciste ayer? ¿Adónde vas a ir? ¿Cuándo llegaste?</b> Le sujet, s'il est exprimé, vient après le verbe : <b>¿Cuándo llegó usted?</b> Pourquoi ? En espagnol, on n'a pas de « est-ce que » : l'ordre et l'intonation suffisent.<br><br>🕰️ <b>3. Le même schéma pour le passé et le futur.</b> Passé : <b>¿Qué hiciste ayer?</b> (tu as fait) · Futur proche : <b>¿Qué vas a hacer mañana?</b> · Présent : <b>¿Qué haces hoy?</b> Seul le verbe change ; l'interrogatif et l'ordre restent identiques. Aujourd'hui, repère les formes ; elles seront détaillées dans les paliers suivants.<br><br>👥 <b>4. Tú ET usted.</b> tú → <b>¿Qué hiciste? ¿Adónde vas a ir? ¿Cuándo llegaste?</b> · usted → <b>¿Qué hizo usted? ¿Adónde va a ir usted? ¿Cuándo llegó usted?</b> Le verbe de usted a la forme de él / ella. Au pluriel, ustedes (forme de ellos).<br><br>🔢 <b>5. « Combien » s'accorde.</b> <b>¿Cuánto? ¿Cuánta? ¿Cuántos? ¿Cuántas?</b> suivent le nom : ¿cuántas horas? ¿cuántos días? Sans nom, ¿cuánto? seul : ¿cuánto cuesta?<br><br>🚫 <b>6. Nier et répondre.</b> <b>Nunca viajo / No viajo nunca.</b> <b>Todavía no llegué.</b> <b>Ya llegué.</b> Avec « no » après le verbe, on met « no » avant : double négation.<br><br>🧭 <b>7. Habitudes.</b> <b>siempre</b> (toujours) · <b>a veces</b> (parfois) · <b>nunca</b> (jamais) se placent souvent avant le verbe : <b>Siempre cenamos tarde.</b>",
+  whyLabel:"Pourquoi l'accent change-t-il le sens ?",
+  whyText:"L'espagnol écrit l'accent pour distinguer des mots qui se prononcent presque pareil : <b>que / qué</b>, <b>cuando / cuándo</b>, <b>porque / por qué</b>. Dans une question, le mot porte une intensité vocale plus forte ; l'accent écrit la rend visible. Une astuce : si tu peux traduire par « quoi / quand / où », mets l'accent. Si le mot relie deux idées (« je reste parce que… »), pas d'accent. Ce petit réflexe te sauvera dans tous les paliers suivants."
+ },
+ REVIEW: [
+  {q:"« Parce que » :", opts:["porque","por qué"], correct:0, fb:"« porque » = parce que : un mot, sans accent. (rappel A1.12)"},
+  {q:"Au revoir à un client (formel) :", opts:["Que tengas un buen día.","Que tenga un buen día."], correct:1, fb:"Usted → « que tenga ». Tú → « que tengas ». (rappel A1.12)"},
+  {q:"Pour demander poliment son aide à un inconnu :", opts:["¿Me ayudas?","¿Podría ayudarme?"], correct:1, fb:"« ¿Podría…? » est la formule la plus polie. (rappel A1.12)"},
+  {q:"Tu marches sur le pied de quelqu'un :", opts:["¡De nada!","¡Perdón!"], correct:1, fb:"« ¡Perdón! » s'excuse immédiatement. (rappel A1.12)"},
+  {q:"« Je vais à la gare » :", opts:["Yo voy a la estación.","Yo soy a la estación."], correct:0, fb:"ir : voy, vas, va… Pour aller quelque part : ir + a. (rappel A1.12)"}
+ ],
+ DRILLS: [
+  {type:"fill", text:"¿ ___ vas a ir mañana? (où, direction)", answers:["Adónde","adónde"], why:"Direction : adónde, avec accent."},
+  {type:"fill", text:"¿ ___ llegaste? (quand)", answers:["Cuándo","cuándo"], why:"Quand en question : cuándo, avec accent."},
+  {type:"fill", text:"¿ ___ hiciste ayer? (quoi)", answers:["Qué","qué"], why:"qué avec accent : question."},
+  {type:"fill", text:"¿ ___ llamó? (qui)", answers:["Quién","quién"], why:"quién = qui."},
+  {type:"fill", text:"¿ ___ estás? (comment)", answers:["Cómo","cómo"], why:"cómo avec accent."},
+  {type:"fill", text:"— ¿Por qué no vienes? — ___ estoy cansado.", answers:["Porque","porque"], why:"Réponse : porque, un mot sans accent."},
+  {type:"fill", text:"___ dos días llegué a Madrid. (il y a)", answers:["Hace","hace"], why:"hace + durée = il y a."},
+  {type:"fill", text:"Llego ___ de una hora. (dans)", answers:["dentro","Dentro"], why:"dentro de + durée = dans (futur)."},
+  {type:"fill", text:"___ abro la puerta y luego salgo. (d'abord)", answers:["Primero","primero"], why:"primero = d'abord."},
+  {type:"fill", text:"Canto ___ cocino. (pendant que)", answers:["mientras","Mientras"], why:"mientras = pendant que."},
+  {type:"fill", text:"Tengo prisa, ___ me voy. (c'est pourquoi)", answers:["por eso","Por eso"], why:"por eso = c'est pourquoi."},
+  {type:"fill", text:"Quiero ir, ___ no puedo. (mais)", answers:["pero","Pero"], why:"pero oppose deux idées."},
+  {type:"fill", text:"Mañana ___ a viajar. (yo, aller)", answers:["voy","Voy"], why:"voy a + infinitif."},
+  {type:"fill", text:"¿Adónde ___ usted? (ir, vouvoiement)", answers:["va","Va"], why:"usted → forme de él / ella : va."},
+  {type:"fill", text:"Ya ___ el trabajo. (déjà fini, yo, terminar au passé)", answers:["terminé","Terminé"], why:"Repérage : terminé = j'ai terminé."},
+  {type:"fill", text:"Todavía ___ llegó el tren. (pas encore)", answers:["no"], why:"todavía no = pas encore."},
+  {type:"fill", text:"___ viajo en tren. (toujours)", answers:["Siempre","siempre"], why:"siempre = toujours."},
+  {type:"fill", text:"___ salgo a correr. (parfois)", answers:["A veces","a veces"], why:"a veces = parfois."},
+  {type:"fill", text:"___ bebo café. (jamais)", answers:["Nunca","nunca"], why:"nunca avant le verbe : pas de no."},
+  {type:"fill", text:"¿ ___ días te quedas? (combien)", answers:["Cuántos","cuántos"], why:"días = masculin pluriel : cuántos."},
+  {type:"choice", q:"Quel mot est du futur ?", opts:["ayer","mañana","anoche"], correct:1, why:"mañana = demain."},
+  {type:"choice", q:"« Il y a trois jours » :", opts:["dentro de tres días","hace tres días"], correct:1, why:"hace = passé ; dentro de = futur."},
+  {type:"choice", q:"Quel interrogatif correct ?", opts:["¿Cuando llegaste?","¿Cuándo llegaste?"], correct:1, why:"Question : accent sur cuándo."},
+  {type:"choice", q:"À un client :", opts:["¿Adónde vas?","¿Adónde va usted?"], correct:1, why:"Client = usted."},
+  {type:"choice", q:"Participe de hacer :", opts:["hacido","hecho"], correct:1, why:"hacer → hecho (irrégulier)."},
+  {type:"choice", q:"« Ensuite » dans un récit :", opts:["luego","pero"], correct:0, why:"luego = ensuite."}
+ ],
+ ANNOTATED: {
+  title:"Quatre phrases de la carte des temps",
+  intro:"Quatre phrases pour t'entraîner à repérer le marqueur de temps et l'interrogatif. Touche chaque mot pour voir sa nature et sa traduction.",
+  sentences:[
+   {fr:"Qu'as-tu fait hier ?", tokens:[
+    {w:"¿Qué", tag:"pronom interrogatif", info:"interrogatif", fr:"que", tip:"Accent écrit : question."},
+    {w:"hiciste", tag:"verbe", info:"hacer · passé · tú", fr:"as fait", tip:"Forme de tú, simple repérage."},
+    {w:"ayer?", tag:"adverbe", info:"marqueur de temps", fr:"hier", tip:"Il place l'action dans le passé."}
+   ]},
+   {fr:"Où vas-tu aller demain ?", tokens:[
+    {w:"¿Adónde", tag:"adverbe", info:"interrogatif · direction", fr:"vers où", tip:"Direction : adónde."},
+    {w:"vas", tag:"verbe", info:"ir · présent · tú", fr:"vas", tip:"voy a + infinitif = futur proche."},
+    {w:"a", tag:"préposition", fr:"à"},
+    {w:"ir", tag:"verbe", info:"infinitif", fr:"aller"},
+    {w:"mañana?", tag:"adverbe", info:"marqueur de temps", fr:"demain"}
+   ]},
+   {fr:"Quand êtes-vous arrivé ?", tokens:[
+    {w:"¿Cuándo", tag:"adverbe", info:"interrogatif", fr:"quand", tip:"Accent écrit."},
+    {w:"llegó", tag:"verbe", info:"llegar · passé · usted", fr:"êtes arrivé", tip:"usted = forme de él / ella."},
+    {w:"usted?", tag:"pronom sujet", info:"politesse", fr:"vous"}
+   ]},
+   {fr:"Je reste parce qu'il pleut.", tokens:[
+    {w:"Me", tag:"pronom réfléchi", fr:"me"},
+    {w:"quedo", tag:"verbe", info:"quedarse · présent · yo", fr:"reste"},
+    {w:"porque", tag:"conjonction", fr:"parce que", tip:"Un mot, sans accent."},
+    {w:"llueve", tag:"verbe", info:"llover · présent", fr:"il pleut"}
+   ]}
+  ]
+ },
+ CULTURE_NOTE: {icon:"🗣️", title:"Culture, expressions informelles et fiche récap de A2.0",
+  html:"<b>🗣️ Culture : on parle de ses projets avec des petits mots</b> En Espagne comme en Amérique latine, personne ne dit « dans trois jours » de façon rigide : on dit « un día de estos » (un de ces jours), « a ver » (on verra), « luego te llamo » (je t'appelle tout à l'heure). Ces expressions sont informelles : avec un client, passe à une formule plus claire (« Le llamaré mañana »).<br><br><b>🧰 Dix expressions informelles</b><br>1. <b>¡Qué va!</b> = mais non ! (démenti)<br>2. <b>¡Ni hablar!</b> = pas question !<br>3. <b>¿Qué tal?</b> = ça va ?<br>4. <b>¡Venga!</b> = allez !<br>5. <b>Vale.</b> = d'accord, OK.<br>6. <b>Un rato</b> = un moment (« espera un rato »).<br>7. <b>Hace poco</b> = il y a peu.<br>8. <b>De repente</b> = tout à coup.<br>9. <b>A ver</b> = voyons.<br>10. <b>Ahora mismo</b> = tout de suite.<br><br><b>📋 Fiche récap A2.0</b><br>• Marqueurs passé : ayer, anoche, hace dos días, la semana pasada.<br>• Marqueurs futur : mañana, el próximo mes, dentro de una semana.<br>• Fréquence : siempre, a veces, nunca.<br>• Connecteurs : primero, luego, después, entonces, por eso, pero, porque, cuando, mientras, al final.<br>• Interrogatifs : qué, quién, cuándo, dónde / adónde, cómo, cuánto, por qué.<br>• Carte des temps : présent · estoy + gérondif · voy a · indefinido · perfecto · imperfecto · futur · conditionnel.<br>• Tú ET usted : ¿Cuándo llegaste? / ¿Cuándo llegó usted?"},
+ NEXT_PREVIEW:"A2.1 (Pretérito indefinido régulier) : tu vas apprendre à raconter ce qui est fini et daté — « Ayer hablé con mi madre », « Comimos paella », « Viví dos años en Lyon » — avec les terminaisons -AR, -ER et -IR.",
+ META:{vocabTitle:"Bases transversales A2 : temps, connecteurs, questions (A2.0)", lectureTitle:"Un voyage à Séville", bilanTitle:"Bravo, tu as la carte des temps A2 !", pronLabel:"Accents des interrogatifs (qué, cuándo, adónde) et sons ch, ll, ñ", todayLede:"placer une action dans le temps (ayer, hace dos días, dentro de una semana), relier des idées avec les connecteurs de récit, repérer la carte des temps A2 et poser des questions en tutoiement ET en vouvoiement"}
+};
+})();
+
