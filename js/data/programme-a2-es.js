@@ -1,0 +1,118 @@
+// The Roots — Programme du niveau A2 (Espagnol), palier par palier.
+//
+// Même structure que programme-a1-es.js. Les 12 paliers A2.1–A2.12 correspondent
+// aux leçons 213–224 (lessons-es-a2.js). Contrôles : un examen par palier, puis
+// Grand Contrôle A2 ; le Grand Contrôle A1 + A2 ouvre le niveau B1.
+export const A2_ES_GENERAL_OBJECTIVE =
+  "À la fin du niveau A2, l'apprenant doit pouvoir raconter des événements passés (indefinido, perfecto, imperfecto), parler de projets (futur, ir a), comparer, utiliser les pronoms COD/COI, donner des instructions (impératif), parler de santé, faire une demande polie (conditionnel) et se débrouiller dans des situations courantes de voyage et de vie quotidienne. Chaque palier se termine par un examen noté sur 100 ; le Grand Contrôle A2 puis le Grand Contrôle A1 + A2 ouvrent la voie au niveau B1.";
+
+export const A2_ES_PALIERS = [
+  {
+    code: "A2.1", title: "Indefinido regular",
+    objective: "Raconter une action terminée dans le passé (hier, la semaine dernière) avec le pretérito indefinido des verbes réguliers.",
+    vocab: ["marqueurs de temps : ayer, anoche, anteayer, la semana pasada, el año pasado, hace dos días", "verbes d'action courants : hablar, comer, vivir, trabajar, comprar, salir, escribir"],
+    grammar: ["Terminaisons -AR : -é, -aste, -ó, -amos, -asteis, -aron", "Terminaisons -ER/-IR : -í, -iste, -ió, -imos, -isteis, -ieron", "L'accent écrit (hablé, habló) change le sens : hablo ≠ habló"],
+    conjugation: "Pretérito indefinido régulier : tú ET usted (comiste / comió).",
+    whyHow: "Le français « j'ai mangé » se traduit ici par « comí » : le temps espagnol dit « c'est fini et daté ». Les accents ne sont pas décoratifs : ils distinguent le présent du passé.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.2", title: "Indefinido irregular",
+    objective: "Raconter le passé avec les verbes les plus fréquents, qui sont irréguliers.",
+    vocab: ["ser/ir, hacer, tener, estar, poder, poner, venir, decir, dar, ver", "expressions de narration : primero, luego, después, al final"],
+    grammar: ["Ser et ir ont la même forme (fui, fuiste, fue…) : le contexte tranche", "Radicaux irréguliers (tuv-, estuv-, hic-, vin-, dij-) + terminaisons sans accent", "Verbes en -ir à changement e→i / o→u à la 3e personne (pidió, durmió)"],
+    conjugation: "Indefinido irrégulier : fui, hice, tuve, estuve, pude, puse, vine, dije, di, vi.",
+    whyHow: "Ces verbes sont ceux qu'on utilise le plus : mieux vaut les apprendre en phrases d'abord. Astuce : les terminaisons irrégulières n'ont jamais d'accent.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.3", title: "Pretérito perfecto",
+    objective: "Parler d'un passé récent ou qui touche encore le présent : « esta semana he… », « ya he… », « todavía no he… ».",
+    vocab: ["marqueurs : hoy, esta mañana, esta semana, este año, ya, todavía no, alguna vez, nunca", "participes passés réguliers et irréguliers : hecho, dicho, visto, puesto, escrito, abierto, vuelto"],
+    grammar: ["haber (he, has, ha, hemos, habéis, han) + participe passé", "Le participe est invariable après haber", "Perfecto ou indefinido ? Période non terminée → perfecto ; période terminée → indefinido"],
+    conjugation: "Pretérito perfecto : haber + participe.",
+    whyHow: "En Espagne, « he comido » s'emploie pour toute période « encore ouverte » (aujourd'hui, cette semaine). Choisis le temps selon le marqueur de temps.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.4", title: "Futuro e ir a",
+    objective: "Parler de projets, de prévisions et de promesses : ir a + infinitif, futur simple, ojalá, si + présent.",
+    vocab: ["marqueurs : mañana, el próximo mes, dentro de…, la semana que viene", "voyage et projets : quedarse, el vuelo, reservar, prometer"],
+    grammar: ["ir a + infinitif (futur proche, plans décidés)", "Futur simple : infinitif + é, ás, á, emos, éis, án", "Futurs irréguliers : tendré, haré, diré, podré, saldré, vendré, pondré", "si + présent → futur ; ojalá, si Dios quiere"],
+    conjugation: "Futuro simple et ir a + infinitivo.",
+    whyHow: "Pour un plan déjà décidé, « voy a… » ; pour une promesse ou une prévision, le futur simple. Le futur sert aussi à faire une hypothèse sur le présent.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.5", title: "Imperfecto",
+    objective: "Décrire le passé qui dure ou se répète : enfance, habitudes, décors.",
+    vocab: ["avant / souvent : antes, de pequeño/a, siempre, normalmente, cada día, todos los veranos", "décrire une époque : la escuela, el barrio, los abuelos"],
+    grammar: ["-AR : -aba, -abas, -aba, -ábamos, -aban", "-ER/-IR : -ía, -ías, -ía, -íamos, -ían", "Seulement 3 irréguliers : ser (era), ir (iba), ver (veía)"],
+    conjugation: "Imperfecto : le passé « décor » et « habitude ».",
+    whyHow: "L'imparfait n'a presque aucun irrégulier : c'est le temps le plus facile du passé. Il répond à la question « comment c'était ? ».",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.6", title: "Imperfecto vs indefinido",
+    objective: "Choisir entre imparfait et indefinido dans un même récit ; raconter ce qui était en cours (estaba + gérondif).",
+    vocab: ["connecteurs de récit : mientras, de repente, entonces, cuando, en ese momento", "estaba + gérondif : estaba comiendo, estaba leyendo"],
+    grammar: ["Indefinido = l'événement qui se produit ; imperfecto = le décor et l'action en cours", "Phrase type : Estaba cenando cuando sonó el teléfono", "Gérondif : -ando / -iendo (durmiendo, leyendo)"],
+    conjugation: "Opposition imperfecto / indefinido.",
+    whyHow: "Imagine un film : l'imparfait est le décor, l'indefinido est l'action qui coupe la scène. Cette distinction n'existe pas en français avec le passé composé : c'est le point à travailler.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.7", title: "Comparar y superlativos",
+    objective: "Comparer personnes, lieux et objets ; dire le meilleur, le plus grand, le moins cher.",
+    vocab: ["adjectifs de comparaison : alto, barato, caro, rápido, lento, cómodo, grande, pequeño", "bueno/malo/mejor/peor, mayor/menor"],
+    grammar: ["más / menos + adjectif + que ; tan + adjectif + como ; tanto/a(s) + nom + como", "Superlatif : el / la más + adjectif + de", "Irréguliers : mejor, peor, mayor, menor ; -ísimo (carísimo)"],
+    conjugation: "Comparatifs et superlatifs (révision du présent en contexte).",
+    whyHow: "« que » après más/menos, « como » pour l'égalité, « de » après le superlatif : trois petits mots qui évitent la plupart des fautes.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.8", title: "Pronombres COD/COI y gustar",
+    objective: "Remplacer les noms par des pronoms (lo, la, le, se lo…) et parler de ses goûts avec gustar.",
+    vocab: ["verbes de transmission : dar, decir, enviar, prestar, comprar, traer, mostrar", "verbes comme gustar : encantar, interesar, molestar, importar"],
+    grammar: ["COD : lo, la, los, las ; COI : le, les", "Deux pronoms : le + lo → se lo (se lo doy)", "Place : avant le verbe conjugué, ou collé à l'infinitif/gérondif", "gustar : me gusta(n), te gusta(n), le gusta(n)"],
+    conjugation: "Pronoms COD / COI et verbes du type gustar.",
+    whyHow: "« Le lo » n'existe pas en espagnol : on le remplace toujours par « se lo ». Retiens cette règle : c'est la faute n°1 des francophones.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.9", title: "Ciudad y viaje",
+    objective: "Se déplacer, demander son chemin, réserver, donner des instructions : l'impératif.",
+    vocab: ["transports : el tren, el autobús, el metro, la estación, la parada, el billete, el equipaje", "la ville : la plaza, la calle, la esquina, el semáforo, el cruce"],
+    grammar: ["Impératif affirmatif tú (habla, come, escribe) et usted (hable, coma, escriba)", "Impératif négatif (no hables / no hable)", "Impératifs irréguliers tú : ten, haz, ve, ven, pon, sal, di, sé"],
+    conjugation: "Impératif tú et usted.",
+    whyHow: "On choisit tú ou usted selon la relation : avec un inconnu, un client, une personne âgée, c'est usted. Les impératifs irréguliers sont à apprendre comme des mots courts.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.10", title: "Salud y bienestar",
+    objective: "Dire où tu as mal, aller chez le médecin, à la pharmacie ; exprimer depuis combien de temps.",
+    vocab: ["le corps et les symptômes : la cabeza, la garganta, la fiebre, la tos, el dolor", "pharmacie : la receta, la pastilla, el jarabe, la cita"],
+    grammar: ["doler (o→ue) : me duele la cabeza, me duelen los pies", "desde hace + durée (desde hace tres días) / desde + date", "tener + nom (tengo fiebre) ; estar + adjectif (estoy resfriado/a)"],
+    conjugation: "Doler et desde hace.",
+    whyHow: "En espagnol, c'est la douleur qui « fait mal à » toi : me duele(n) fonctionne comme gustar. « Desde hace » remplace le présent + « depuis ».",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.11", title: "Condicional",
+    objective: "Faire une demande polie, donner un conseil, imaginer une situation : le conditionnel.",
+    vocab: ["politesse : ¿Podría…? ¿Le importaría…? Me gustaría…", "conseils : yo que tú, deberías, sería mejor"],
+    grammar: ["Conditionnel : infinitif + ía, ías, ía, íamos, íais, ían", "Mêmes radicaux irréguliers qu'au futur (tendría, haría, diría, podría, saldría)", "Emplois : politesse, conseil, rêve, hypothèse"],
+    conjugation: "Condicional simple.",
+    whyHow: "Si tu connais le futur, tu connais le conditionnel : même base, autres terminaisons (celles de l'imparfait). C'est le temps de la politesse.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+  {
+    code: "A2.12", title: "Balance A2",
+    objective: "Raconter, planifier, conseiller et décrire en mélangeant tous les temps du niveau.",
+    vocab: ["révision du vocabulaire A2 : voyage, santé, ville, souvenirs, projets", "connecteurs : primero, luego, sin embargo, por eso, mientras tanto"],
+    grammar: ["Choisir le bon temps : présent, perfecto, indefinido, imperfecto, futur, conditionnel", "Pronoms et comparatifs dans un texte suivi", "Registre : tú / usted selon la situation"],
+    conjugation: "Révision des temps A2.",
+    whyHow: "Le but n'est plus d'apprendre un temps de plus, mais de choisir le bon automatiquement. C'est ce que mesure le grand contrôle A2.",
+    activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Examen de palier", "Bonus : 10 expressions", "Fiche PDF récapitulative"],
+  },
+];
