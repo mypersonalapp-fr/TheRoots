@@ -29,9 +29,9 @@ E[200] = {
           why: "« la pared » est féminin : blanco → blanca. Piège : jamais « blanche »." },
         { text: "Tengo ___ años. (15)", blanks: [["quince"]],
           why: "15 = quince. Les nombres 11 à 15 finissent en -ce et s'apprennent par cœur." },
-        { text: "Mi tío tiene ___ años. (21)", blanks: [["veintiún", "veintiun"]],
+        { text: "Mi amigo tiene ___ años. (21)", blanks: [["veintiún", "veintiun"]],
           why: "21 devant un nom masculin : veintiuno devient veintiún (veintiún años). « veintiuno años » est faux." },
-        { text: "Tengo ___ y quiero comer. (faim)", blanks: [["hambre"]],
+        { text: "Tengo ___ y tú tienes sed. (faim)", blanks: [["hambre"]],
           why: "« avoir faim » = tener hambre. « Hambre » est le nom : on dit « tengo hambre », pas « estoy hambriento »." },
         { text: "Hoy estoy ___ porque tengo sueño. (fatigué)", blanks: [["cansado", "cansada"]],
           why: "« fatigué » = cansado (cansada pour une femme). L'état du moment se dit avec estar." }
@@ -53,7 +53,7 @@ E[200] = {
           why: "L'âge se dit avec TENER : ella tiene (e → ie)." },
         { text: "Nosotros ___ amigos. (ser)", blanks: [["somos"]],
           why: "Identité / relation → SER : nosotros somos." },
-        { text: "Mis padres ___ en casa. (estar)", blanks: [["están", "estan"]],
+        { text: "Mis amigos ___ en casa. (estar)", blanks: [["están", "estan"]],
           why: "Le lieu se dit avec ESTAR : ellos están (accent écrit)." },
         { text: "Vosotros ___ simpáticos. (ser)", blanks: [["sois"]],
           why: "Caractère → SER : vosotros sois (sans accent)." },
@@ -74,7 +74,7 @@ E[200] = {
       points: 15, skill: "ce", type: "mcq",
       instructions: "Lee el texto y elige la respuesta correcta.",
       instructionsFr: "Lis le texte et choisis la bonne réponse.",
-      passage: "¡Hola! Soy Pablo y tengo diecinueve años. Soy de Sevilla, pero estoy en Madrid. Soy estudiante. Tengo una mochila verde y un cuaderno azul.\n\nHoy estoy cansado porque tengo mucho trabajo. Mi profesora se llama Elena. Es joven y muy simpática. Tiene treinta y cinco años.\n\nMi clase es grande y los alumnos son simpáticos. Hoy están contentos, pero yo tengo hambre y sed. Mi amiga Lucía tiene un coche rojo. Y tú, ¿cómo estás hoy?",
+      passage: "¡Hola! Soy Pablo y tengo diecinueve años. Soy de Sevilla, pero estoy en Madrid. Soy estudiante. Tengo una mochila verde y un cuaderno azul.\n\nHoy estoy cansado porque tengo sueño. Mi profesora es Elena. Es joven y muy simpática. Tiene treinta y cinco años.\n\nMi clase es grande y los alumnos son simpáticos. Hoy están contentos, pero yo tengo hambre y sed. Mi amiga Lucía tiene un coche rojo. Y tú, ¿cómo estás hoy?",
       items: [
         { q: "¿De dónde es Pablo?", qFr: "D'où est Pablo ?",
           opts: ["De Madrid", "De Sevilla", "De Barcelona"], correct: 1,
@@ -176,7 +176,7 @@ E[201] = {
           why: "« el correo electrónico » = l'adresse e-mail." },
         { text: "Tengo el pelo negro y los ___ verdes.", blanks: [["ojos"]],
           why: "« los ojos » = les yeux ; pluriel car « verdes » et « los »." },
-        { text: "Mi ___ es 25: tengo veinticinco años.", blanks: [["edad"]],
+        { text: "Mi ___ es 25: tengo veinticinco años. (âge)", blanks: [["edad"]],
           why: "« la edad » = l'âge. L'âge se dit ensuite avec tener : tengo 25 años." },
         { text: "Soy de Lyon, pero ___ en París. (j'habite)", blanks: [["vivo"]],
           why: "« habiter » = vivir : yo vivo. Habiter à = vivir en." },
@@ -231,7 +231,7 @@ E[201] = {
           why: "« Soy médica en un hospital grande »." },
         { q: "¿Cuál es la nacionalidad de la madre de Julia?", qFr: "Quelle est la nationalité de la mère de Julia ?",
           opts: ["Argentina", "Francesa", "Española"], correct: 0,
-          why: "« Mi madre es argentina ». Francesa est la nationalité de Julia ; son père est français." },
+          why: "« Mi madre es argentina ». Francesa est la nationalité de son père (« mi padre es francés »)." },
         { q: "¿Qué es verdad?", qFr: "Qu'est-ce qui est vrai ?",
           opts: ["Julia está casada.", "Julia vive sola.", "Julia tiene treinta años.", "Julia es italiana."], correct: 1,
           why: "« Estoy soltera y vivo sola ». Elle a 31 ans (pas 30) et elle est de Lyon." },
@@ -323,11 +323,11 @@ E[202] = {
           why: "Les enfants de mon oncle = mes cousins : primos (pluriel, car « los hijos » et « mis »). « sobrino » est un intrus." },
         { text: "Mi padre y mi madre son mis ___.", blanks: [["padres"]],
           why: "Piège classique : « los padres » = les parents (père et mère), pas « les pères »." },
-        { text: "Mi hermana tiene quince años y yo tengo veinte: mi hermana es la ___.", blanks: [["menor"]],
+        { text: "Mi hermana tiene quince años y yo tengo veinte: mi hermana es la ___. (plus jeune)", blanks: [["menor"]],
           why: "« menor » = plus jeune (mayor = plus âgé, un intrus ici). Menor ne change pas au féminin." },
         { text: "Mi tío no está casado: está ___.", blanks: [["soltero"]],
           why: "« célibataire » = soltero. Tío est masculin : soltero (soltera pour une femme). « casada » est un intrus." },
-        { text: "Mi abuela es muy ___. Me quiere mucho. (affectueuse)", blanks: [["cariñosa", "carinosa"]],
+        { text: "Mi abuela es muy ___. (affectueuse)", blanks: [["cariñosa", "carinosa"]],
           why: "« affectueuse » = cariñosa. Accord féminin avec « mi abuela » : cariñoso → cariñosa. Le ñ compte !" }
       ]
     },
@@ -383,7 +383,7 @@ E[202] = {
           opts: ["El tío Pablo está casado.", "El tío Pablo vive en Sevilla.", "La tía Elena tiene dos hijos.", "Los abuelos son jóvenes."], correct: 2,
           why: "« Mi tía Elena… tiene dos hijos ». Pablo est soltero et vit à Madrid ; les abuelos sont mayores." },
         { q: "¿Cómo son los primos de Mario?", qFr: "Comment sont les cousins de Mario ?",
-          opts: ["Mayores y antipáticos", "Graciosos y bajos", "Tímidos y mayores", "Jóvenes y simpáticos"], correct: 3,
+          opts: ["Mayores y aburridos", "Graciosos y bajos", "Tímidos y mayores", "Jóvenes y simpáticos"], correct: 3,
           why: "« Son jóvenes y simpáticos ». Les abuelos, eux, sont mayores." }
       ]
     },
@@ -400,8 +400,8 @@ E[202] = {
           why: "Un hermano + dos hermanas = trois hermanos au total. Piège : « dos » ne compte que les sœurs." },
         { audio: "Mi abuela se llama Carmen. Tiene setenta años y es muy cariñosa. Vive con mi tío Luis, que está soltero.",
           q: "¿Cómo es la abuela?", qFr: "Comment est la grand-mère ?",
-          opts: ["Antipática", "Graciosa", "Cariñosa"], correct: 2,
-          why: "« Es muy cariñosa » : affectueuse. Rien ne dit qu'elle est drôle ou antipathique." },
+          opts: ["Aburrida", "Graciosa", "Cariñosa"], correct: 2,
+          why: "« Es muy cariñosa » : affectueuse. Rien ne dit qu'elle est drôle ou ennuyeuse." },
         { audio: [{ who: "A", text: "Señora, ¿tiene usted hijos?" }, { who: "B", text: "Sí, tengo una hija y dos hijos." }],
           q: "¿Cuántos hijos tiene la señora en total?", qFr: "Combien d'enfants la dame a-t-elle en tout ?",
           opts: ["Tres", "Dos", "Cuatro"], correct: 0,
@@ -412,7 +412,7 @@ E[202] = {
           why: "« Su hermana mayor es médica ». Javier, lui, est estudiante." },
         { audio: [{ who: "A", text: "¿Cómo es tu madre?" }, { who: "B", text: "Es alta y muy simpática. Mi padre es bajo y gracioso." }],
           q: "¿Cómo es el padre?", qFr: "Comment est le père ?",
-          opts: ["Alto y simpático", "Bajo y gracioso", "Bajo y antipático"], correct: 1,
+          opts: ["Alto y simpático", "Bajo y gracioso", "Bajo y aburrido"], correct: 1,
           why: "« Mi padre es bajo y gracioso ». « Alto y simpático » décrit la madre." }
       ]
     },
@@ -426,7 +426,7 @@ E[202] = {
       promptFr: "Présente ta famille à un ami espagnol. Dis combien de frères et sœurs tu as et comment s'appellent tes parents. Décris deux membres de ta famille : leur âge, leur profession et leur caractère.",
       minWords: 45, maxWords: 80,
       rubric: "Total 20 points. Level A1.2: DO NOT penalise missing accents or missing ¿ ¡. A real or imaginary family is fine. Task achievement (6 pts): says how many brothers/sisters they have (1 pt); gives the names of the parents with \"se llama / se llaman\" (1 pt); describes TWO relatives, each with age + profession/situation (1 pt each) and character/physical adjectives (1 pt each). Grammar (8 pts): correct forms of TENER (tengo, tiene, tienen, tenemos), including age with tener (3 pts); SER + adjective with correct gender and number agreement, e.g. \"mi madre es alta\", \"mis abuelos son cariñosos\" (3 pts); llamarse with the pronoun before the verb (\"se llama\", \"se llaman\"; 2 pts). Lose 1 pt per error within each criterion. Vocabulary (3 pts): family words (padre, madre, hermano/a, abuelo/a, tío/a, primo/a, hijo/a…) and adjectives (simpático, gracioso, cariñoso, alto, joven, mayor…). Coherence (3 pts): clear order, simple linking (y, pero), a short opening and closing. Length: deduct 1 pt if under 35 words.",
-      reference: "Mi familia es pequeña. Tengo una hermana y no tengo hermanos. Mi padre se llama Antonio y mi madre se llama Rosa. Mi padre tiene cincuenta años, es médico y es muy simpático. Mi abuela tiene setenta y cinco años y es muy cariñosa. Mi hermana tiene quince años, es estudiante y es muy graciosa. ¡Te quiero mucho, familia!"
+      reference: "Mi familia es pequeña. Tengo solo una hermana. Mi padre se llama Antonio y mi madre se llama Rosa. Mi padre tiene cincuenta años, es médico y es muy simpático. Mi abuela tiene setenta y cinco años y es muy cariñosa. Mi hermana tiene quince años, es estudiante y es muy graciosa. ¡Te quiero mucho, familia!"
     },
     // ----------------------------------------------------------- VI
     {
@@ -460,19 +460,19 @@ E[203] = {
       instructionsFr: "Complète les phrases avec un mot de la liste. Attention : certains mots ne servent pas.",
       bank: ["amigo", "vecino", "divertida", "tímido", "siempre", "casi nunca", "bailar", "escuchar", "nunca", "cantar", "conocida"],
       items: [
-        { text: "Javier es mi mejor ___; hablamos todos los días.", blanks: [["amigo"]],
+        { text: "Javier es mi mejor ___. (ami)", blanks: [["amigo"]],
           why: "« mi mejor amigo » = mon meilleur ami. Javier est un homme : amigo (amiga pour une femme)." },
-        { text: "La persona que vive en el piso de al lado es mi ___. (voisin)", blanks: [["vecino"]],
+        { text: "El señor Pérez vive en mi calle: es mi ___. (voisin)", blanks: [["vecino"]],
           why: "« voisin » = vecino (vecina au féminin). Ne pas confondre avec « conocida » (une connaissance), un intrus." },
         { text: "Mi amiga es muy ___. (amusante)", blanks: [["divertida", "graciosa"]],
           why: "« amusante » = divertida (aussi graciosa, vu en A1.2). Accord au féminin : divertido → divertida." },
-        { text: "No hablo mucho con extraños porque soy ___. (timide)", blanks: [["tímido", "tímida", "timido", "timida"]],
+        { text: "No hablo mucho con personas nuevas porque soy ___. (timide)", blanks: [["tímido", "tímida", "timido", "timida"]],
           why: "« timide » = tímido / tímida (accent écrit sur le í, selon le sexe de la personne)." },
         { text: "___ hablamos de fútbol los fines de semana. (toujours)", blanks: [["siempre"]],
           why: "« toujours » = siempre. Adverbe de fréquence placé avant le verbe." },
-        { text: "Voy al cine una vez al año: ___ voy al cine. (presque jamais)", blanks: [["casi nunca"]],
+        { text: "No me gusta el cine: ___ voy al cine. (presque jamais)", blanks: [["casi nunca"]],
           why: "« presque jamais » = casi nunca. « nunca » seul serait trop fort (jamais) ; il reste intrus." },
-        { text: "A mis amigos les gusta ___ en la discoteca. (danser)", blanks: [["bailar"]],
+        { text: "A mis amigos les gusta ___ en las fiestas. (danser)", blanks: [["bailar"]],
           why: "« danser » = bailar. Après « gusta », on met l'infinitif." },
         { text: "Me gusta ___ música en casa. (écouter)", blanks: [["escuchar"]],
           why: "« écouter » = escuchar. Piège : « cantar » (chanter) n'a pas le même sens." }
@@ -523,16 +523,16 @@ E[203] = {
           why: "« Mi mejor amiga se llama Laura ». Le vecino est Pablo." },
         { q: "¿Qué hacen Carlos y Laura a veces?", qFr: "Que font Carlos et Laura parfois ?",
           opts: ["Cantan", "Estudian", "Bailan en casa"], correct: 2,
-          why: "« A veces bailamos en casa ». Ils parlent toujours de música (siempre), mais ne chantent pas." },
+          why: "« A veces bailamos en casa ». Ils parlent toujours de música (siempre), mais le chant n'est pas mentionné." },
         { q: "¿Cuándo les gusta viajar?", qFr: "Quand aiment-ils voyager ?",
-          opts: ["En verano", "Los lunes", "Nunca"], correct: 0,
+          opts: ["En verano", "Siempre", "Nunca"], correct: 0,
           why: "« Nos gusta viajar en verano »." },
         { q: "¿Cómo es Pablo, el vecino?", qFr: "Comment est Pablo, le voisin ?",
           opts: ["Simpático", "Antipático", "Divertido", "Alegre"], correct: 1,
           why: "« Mi vecino Pablo es antipático » ; il « casi nunca habla con nosotros ». Alegre décrit Carlos avec ses amis." },
         { q: "¿Qué no le gusta a Carlos?", qFr: "Qu'est-ce que Carlos n'aime pas ?",
           opts: ["Cocinar", "Viajar", "El fútbol", "Bailar"], correct: 2,
-          why: "« No me gusta el fútbol, pero me gusta cocinar ». Cocinar, viajar et bailar lui plaisent." }
+          why: "« No me gusta el fútbol, pero me gusta cocinar ». Cocinar et viajar lui plaisent ; bailar n'est pas présenté comme un déplaisir (il danse parfois)." }
       ]
     },
     // ----------------------------------------------------------- IV
@@ -586,7 +586,7 @@ E[203] = {
       promptFr: "Tu parles à un voisin âgé (usted). Salue-le poliment, demande-lui s'il aime voyager et s'il danse. Puis dis ce que tu aimes faire avec tes amis et à quelle fréquence.",
       minWords: 30, targetSeconds: 45,
       rubric: "Total 15 points. Level A1.3: pronunciation cannot be judged finely from a microphone transcript; judge content, forms and apparent fluency. Content (6 pts): polite greeting with usted (Buenos días / Buenas tardes, ¿cómo está usted?) (1 pt); asks if he likes to travel (¿Le gusta viajar?) (1 pt); asks if he dances (¿Baila usted?) (1 pt); says at least two things they like to do with friends (2 pts); uses a frequency adverb (1 pt). Grammar (5 pts): usted forms (le gusta, baila, habla — not te gusta / bailas) (2 pts); correct -AR verb forms for yo / nosotros (hablo, escuchamos, bailamos…) (2 pts); gusta/gustan correct (1 pt). Vocabulary (2 pts): taught words (amigos, bailar, viajar, siempre, a veces…) and politeness. Fluency (2 pts): from the transcript — complete sentences, about 30-60 words, few recognition errors suggesting mispronunciation. Do not penalise accents or punctuation. Lose 1 pt if the learner uses tú instead of usted throughout.",
-      reference: "Buenas tardes, señor. ¿Cómo está usted? ¿Le gusta viajar? ¿Baila usted a veces? A mí me gusta mucho bailar y escuchar música con mis amigos. Siempre hablamos de música y a veces cocinamos juntos. Nunca viajo en invierno, pero en verano viajo con mis amigos."
+      reference: "Buenas tardes, señor. ¿Cómo está usted? ¿Le gusta viajar? ¿Baila usted a veces? A mí me gusta mucho bailar y escuchar música con mis amigos. Siempre hablamos de música y a veces cocinamos juntos. Nunca viajo solo, pero en verano viajo con mis amigos."
     }
   ]
 };
@@ -610,7 +610,7 @@ E[204] = {
       items: [
         { text: "Voy al aeropuerto y tomo el ___ para viajar a otro país.", blanks: [["avión", "avion"]],
           why: "On va à l'aeropuerto pour prendre el avión (accent écrit). On dit « en avión »." },
-        { text: "En el ___, la luz está roja: espero. (feu tricolore)", blanks: [["semáforo", "semaforo"]],
+        { text: "Gira a la derecha en el ___. (feu tricolore)", blanks: [["semáforo", "semaforo"]],
           why: "« feu tricolore » = el semáforo (accent sur le á : se-MÁ-fo-ro)." },
         { text: "Camino por la ___, no por la calle. (trottoir)", blanks: [["acera"]],
           why: "« trottoir » = la acera (Espagne). Piège : « esquina » = le coin de la rue." },
@@ -620,7 +620,7 @@ E[204] = {
           why: "« le coin de la rue » = la esquina." },
         { text: "El hotel está ___ de aquí: está a cinco minutos. (près)", blanks: [["cerca"]],
           why: "« près » = cerca (de). Son contraire est « lejos »." },
-        { text: "El aeropuerto está ___ del centro: está a treinta kilómetros. (loin)", blanks: [["lejos"]],
+        { text: "El aeropuerto está ___ del centro: voy en taxi. (loin)", blanks: [["lejos"]],
           why: "« loin » = lejos (de). Même construction que cerca de." },
         { text: "Voy al trabajo a ___. (à pied)", blanks: [["pie"]],
           why: "« à pied » = a pie. Seule expression de transport qui n'utilise pas « en »." }
@@ -760,15 +760,15 @@ E[205] = {
           why: "« passe-temps » = el pasatiempo (masculin : mi pasatiempo favorito). « favorita » serait féminin, c'est un intrus." },
         { text: "Hoy vamos al ___ a ver una película. (cinéma)", blanks: [["cine"]],
           why: "« cinéma » = el cine. Après « ir a + el » → al cine." },
-        { text: "Mi hermano toca la ___ en un grupo de música.", blanks: [["guitarra"]],
+        { text: "Mi hermano toca la ___ en un grupo de música. (guitare)", blanks: [["guitarra"]],
           why: "« tocar la guitarra » = jouer de la guitare. Le u de gui- est muet." },
         { text: "___ el ruido. (je déteste)", blanks: [["odio", "Odio"]],
           why: "« je déteste » = odio (odiar est régulier : odio, odias, odia…). Le sujet est la personne : « odio », pas « me odio »." },
-        { text: "Me ___ bailar: es mi pasión. (j'adore)", blanks: [["encanta"]],
+        { text: "Me ___ bailar. (j'adore)", blanks: [["encanta"]],
           why: "« adorer » = encantar, qui fonctionne comme gustar : « me encanta » + infinitif (singulier)." },
         { text: "No me importa: me da ___. (ça m'est égal)", blanks: [["igual"]],
           why: "« ça m'est égal » = me da igual. Expression figée." },
-        { text: "El libro es muy ___: aprendo muchas cosas. (intéressant)", blanks: [["interesante"]],
+        { text: "Me gusta mucho este libro: es muy ___. (intéressant)", blanks: [["interesante"]],
           why: "« intéressant » = interesante (même forme au féminin et au masculin)." },
         { text: "Leer es muy ___ para mí. (relaxant)", blanks: [["relajante"]],
           why: "« relaxant » = relajante (j = kh). Invariable en genre." }
@@ -856,7 +856,7 @@ E[205] = {
           why: "« A mí tampoco » = moi non plus : B n'aime pas le bruit non plus." },
         { audio: "Me gusta leer. Me interesan las novelas históricas y me encantan los libros de viajes. Mi madre prefiere el cine.",
           q: "¿Qué le interesa a la persona que habla?", qFr: "Qu'est-ce qui intéresse la personne qui parle ?",
-          opts: ["Las novelas históricas", "El cine", "Los libros de ciencia"], correct: 0,
+          opts: ["Las novelas históricas", "El cine", "El deporte"], correct: 0,
           why: "« Me interesan las novelas históricas ». Le cine, c'est ce que préfère sa mère." }
       ]
     },
@@ -866,8 +866,8 @@ E[205] = {
       points: 20, skill: "ee", type: "ai-text",
       instructions: "Escribe un texto de 50 a 90 palabras.",
       instructionsFr: "Écris un texte de 50 à 90 mots.",
-      prompt: "Escribe a un amigo de intercambio. Di tres cosas que te gustan o te encantan, una cosa que odias y cuál es tu pasatiempo favorito. Explica también qué prefieres entre el cine y el teatro (o entre otras dos cosas) y por qué (porque…).",
-      promptFr: "Écris à un ami d'échange. Dis trois choses que tu aimes ou adores, une chose que tu détestes et quel est ton passe-temps favori. Explique aussi ce que tu préfères entre le cinéma et le théâtre (ou entre deux autres choses) et pourquoi (porque…).",
+      prompt: "Escribe a un amigo nuevo. Di tres cosas que te gustan o te encantan, una cosa que odias y cuál es tu pasatiempo favorito. Explica también qué prefieres entre el cine y el teatro (o entre otras dos cosas) y por qué (porque…).",
+      promptFr: "Écris à un nouvel ami. Dis trois choses que tu aimes ou adores, une chose que tu détestes et quel est ton passe-temps favori. Explique aussi ce que tu préfères entre le cinéma et le théâtre (ou entre deux autres choses) et pourquoi (porque…).",
       minWords: 50, maxWords: 90,
       rubric: "Total 20 points. Level A1.5: DO NOT penalise missing accents or missing ¿ ¡. Task achievement (6 pts): at least three likes with gustar / encantar / interesar (3 pts, 1 each); one thing they hate or dislike with odiar / no me gusta (1 pt); says what their favourite hobby is (mi pasatiempo favorito es…) (1 pt); states a preference between two options with preferir AND gives a reason with \"porque\" (1 pt). Grammar (8 pts): correct gusta / gustan agreement with the thing liked (singular or infinitive → gusta, plural → gustan), with the right pronoun (me, te, le…) (3 pts); correct encantar / interesar construction (me encanta, me interesan) (2 pts); correct PREFERIR with e → ie (prefiero, prefieres, prefiere; preferimos without ie) (2 pts); correct ODIAR (odio) (1 pt). Lose 1 pt per error within each criterion; \"gusto\" used to mean \"I like\" or \"me odio el…\" counts as an error. Vocabulary (3 pts): taught words (pasatiempo, tiempo libre, cine, teatro, música, leer, viajar, interesante, relajante, divertido…). Coherence (3 pts): clear organisation, connectors (y, pero, porque), greeting and closing. Length: deduct 1 pt if under 40 words.",
       reference: "¡Hola! En mi tiempo libre me gusta mucho leer y escuchar música. Me encantan los viajes y me interesan las novelas históricas. Odio el ruido. Mi pasatiempo favorito es cocinar para mis amigos. Prefiero el teatro porque es muy divertido, pero a mi hermano le gusta más el cine. Y tú, ¿qué te gusta? Un abrazo."
@@ -906,17 +906,17 @@ E[206] = {
           why: "« el desayuno » = le petit-déjeuner, le repas du matin. « la cena » est le repas du soir." },
         { text: "Por la noche, en casa, tomamos la ___ con la familia.", blanks: [["cena"]], points: 2,
           why: "« la cena » = le dîner, repas du soir (« por la noche »). Attention au genre : la cena (féminin)." },
-        { text: "Quería un ___ de agua, por favor.", blanks: [["vaso"]], points: 2,
+        { text: "Quería un ___ de agua, por favor. (verre)", blanks: [["vaso"]], points: 2,
           why: "« un vaso de agua » = un verre d'eau. « un trozo » se dit pour un solide (un trozo de queso), pas pour un liquide." },
         { text: "El ___ nos trae la carta y pregunta: «¿Qué desean?».", blanks: [["camarero"]], points: 2,
           why: "« el camarero » = le serveur, c'est lui qui apporte la carte et prend la commande." },
         { text: "Por favor, la ___. ¿Puedo pagar con tarjeta?", blanks: [["cuenta"]], points: 2,
           why: "« la cuenta » = l'addition. On la demande à la fin du repas, puis on paie." },
-        { text: "Quiero un ___ de queso con el pan.", blanks: [["trozo"]], points: 2,
+        { text: "Quiero un ___ de queso con el pan. (morceau)", blanks: [["trozo"]], points: 2,
           why: "« un trozo de queso » = un morceau de fromage : « trozo » s'emploie pour un aliment solide." },
-        { text: "Mi bebida favorita es el café con ___.", blanks: [["leche"]], points: 2,
+        { text: "Mi bebida favorita es el café con ___. (lait)", blanks: [["leche"]], points: 2,
           why: "« café con leche » = café au lait. « leche » est féminin : la leche." },
-        { text: "No me gusta la comida muy ___; prefiero la comida sin pimienta.", blanks: [["picante"]], points: 1,
+        { text: "No me gusta la comida muy ___. (épicé)", blanks: [["picante"]], points: 1,
           why: "« picante » = épicé, piquant. L'adjectif ne change pas au féminin : comida picante." }
       ]
     },
@@ -933,7 +933,7 @@ E[206] = {
           why: "ella + verbe en -IR → terminaison -e : vive. Ne confonds pas avec « viven » (ils)." },
         { text: "Nosotros ___ una carta a nuestros amigos. (escribir)", blanks: [["escribimos"]],
           why: "nosotros + verbe en -IR → -imos : escribimos. (En -ER ce serait -emos : comemos.)" },
-        { text: "Vosotros ___ pescado los viernes. (comer)", blanks: [["coméis", "comeis"]],
+        { text: "Vosotros ___ pescado los domingos. (comer)", blanks: [["coméis", "comeis"]],
           why: "vosotros + verbe en -ER → -éis : coméis, avec accent écrit sur le « e »." },
         { text: "Yo ___ la cuenta al camarero. (pedir)", blanks: [["pido"]],
           why: "« pedir » change son radical : e → i. yo pido, tú pides, él pide, mais nosotros pedimos. Forme à apprendre en bloc." },
@@ -943,7 +943,7 @@ E[206] = {
           why: "Rappel A1.3 : verbe en -AR, ellos → -an : hablan. Ici la voyelle de la terminaison est « a », pas « e »." },
         { text: "Me ___ las verduras. (gustar)", blanks: [["gustan"]],
           why: "Rappel A1.5 : on accorde gustar avec ce qu'on aime. « las verduras » est pluriel → me gustan." },
-        { text: "Comemos ___ huevos los domingos.", blanks: [["muchos"]],
+        { text: "Comemos ___ huevos los domingos. (beaucoup de)", blanks: [["muchos"]],
           why: "« huevos » est masculin pluriel et dénombrable → muchos. Pour un nom indénombrable on dirait « mucho pan », « mucha agua »." }
       ]
     },
@@ -951,19 +951,19 @@ E[206] = {
       id: "reading", num: "III", title: "Comprensión escrita", titleFr: "Compréhension écrite", points: 15, skill: "ce", type: "mcq",
       instructions: "Lee el texto y elige la respuesta correcta.",
       instructionsFr: "Lis le texte et choisis la bonne réponse.",
-      passage: "Me llamo Lucas y vivo en Valencia. Mi desayuno es pequeño: bebo un zumo de naranja y como un trozo de pan con jamón. Mi comida es grande: mi madre prepara arroz con pollo y yo como también una ensalada. Por la tarde tomo la merienda con mi hermana: ella bebe leche y yo como una manzana.\n\nLos sábados, mis amigos y yo cenamos en un restaurante. Yo pido pescado, pero no como queso. Mi amigo Tomás pide una pizza picante y bebe una cerveza. Al final, siempre pedimos la cuenta.",
+      passage: "Me llamo Lucas y vivo en Valencia. Mi desayuno es pequeño: bebo un zumo de naranja y como un trozo de pan con jamón. Mi comida es grande: mi madre cocina arroz con pollo y yo como también una ensalada. Por la tarde tomo la merienda con mi hermana: ella bebe leche y yo como una manzana.\n\nLos domingos, mis amigos y yo cenamos en un restaurante. Yo pido pescado, pero no como queso. Mi amigo Tomás pide una pizza picante y bebe una cerveza. Al final, siempre pedimos la cuenta.",
       items: [
         { q: "¿Qué bebe Lucas en el desayuno?", qFr: "Que boit Lucas au petit-déjeuner ?",
           opts: ["Un café con leche", "Un zumo de naranja", "Una cerveza"], correct: 1,
           why: "« bebo un zumo de naranja » : un jus d'orange. Le café au lait n'est pas mentionné ; la bière est pour Tomás." },
-        { q: "¿Quién prepara el arroz con pollo?", qFr: "Qui prépare le riz au poulet ?",
+        { q: "¿Quién cocina el arroz con pollo?", qFr: "Qui prépare le riz au poulet ?",
           opts: ["Lucas", "Su hermana", "Su madre"], correct: 2,
-          why: "« mi madre prepara arroz con pollo » : c'est sa mère. Lucas, lui, mange aussi une salade." },
+          why: "« mi madre cocina arroz con pollo » : c'est sa mère. Lucas, lui, mange aussi une salade." },
         { q: "¿Con quién toma Lucas la merienda?", qFr: "Avec qui Lucas prend-il le goûter ?",
           opts: ["Con su hermana", "Con sus amigos", "Con su madre"], correct: 0,
-          why: "« Por la tarde tomo la merienda con mi hermana ». Les amis apparaissent seulement pour le dîner du samedi." },
+          why: "« Por la tarde tomo la merienda con mi hermana ». Les amis apparaissent seulement pour le dîner du dimanche." },
         { q: "¿Qué frase es verdadera?", qFr: "Quelle phrase est vraie ?",
-          opts: ["Lucas pide pizza en el restaurante.", "Lucas no come queso.", "Lucas bebe cerveza los sábados."], correct: 1,
+          opts: ["Lucas pide pizza en el restaurante.", "Lucas no come queso.", "Lucas bebe cerveza los domingos."], correct: 1,
           why: "« pero no como queso » : Lucas ne mange pas de fromage. Il pide du poisson ; la pizza et la bière sont pour son ami Tomás." },
         { q: "¿Qué hacen los amigos al final de la cena?", qFr: "Que font les amis à la fin du dîner ?",
           opts: ["Beben leche.", "Escriben una carta.", "Piden la cuenta."], correct: 2,
@@ -1001,11 +1001,11 @@ E[206] = {
       id: "writing", num: "V", title: "Expresión escrita", titleFr: "Expression écrite", points: 20, skill: "ee", type: "ai-text",
       instructions: "Escribe un texto de 50 a 90 palabras.",
       instructionsFr: "Écris un texte de 50 à 90 mots.",
-      prompt: "Estás en un restaurante en España con un amigo. Habla con el camarero (usted): saluda, pide una mesa para dos y pide tu comida (de primero, de segundo y una bebida) con «Quería…». Después explica qué comes y bebes normalmente en un día, di una cosa que te gusta y una cosa que no te gusta. Termina pidiendo la cuenta.",
+      prompt: "Estás en un restaurante en España con un amigo. Habla con el camarero (usted): saluda, pide una mesa para dos y pide tu comida (de primero, de segundo y una bebida) con «Quería…». Después explica qué comes y bebes todos los días, di una cosa que te gusta y una cosa que no te gusta. Termina pidiendo la cuenta.",
       promptFr: "Tu es dans un restaurant en Espagne avec un ami. Parle au serveur (vouvoiement) : salue, demande une table pour deux et commande ton repas (entrée, plat, boisson) avec « Quería… ». Puis explique ce que tu manges et bois normalement dans une journée, dis une chose que tu aimes et une que tu n'aimes pas. Termine en demandant l'addition.",
       minWords: 50, maxWords: 90,
       rubric: "Total 20 points. Task achievement (6 pts, 1 pt each): (a) greeting and request for a table for two; (b) an order with a starter, a main course AND a drink using \"Quería\"/\"Queríamos\"; (c) what the learner usually eats and drinks (at least two meals or items); (d) one thing they like; (e) one thing they do not like; (f) a request for the bill (la cuenta). Grammar (7 pts): correct present of regular -ER/-IR verbs (comer, beber, vivir, escribir...) with the right endings (3 pts; -1 per wrong ending, max -3); polite \"Quería\" or \"Quiero\" used correctly (1 pt); correct use of \"un poco de\" / \"mucho-mucha-muchos-muchas\" / a container (\"un vaso de\", \"un trozo de\") (2 pts); correct \"me gusta / me gustan\" agreement (1 pt). Vocabulary (4 pts): range and accuracy of food, drink and restaurant words taught in A1.6 (4 = at least 8 relevant words used correctly). Coherence and register (3 pts): logical order, consistent \"usted\" with the waiter (no \"tú\" forms addressed to him), simple connectors (y, pero, también). Do NOT penalise missing accents or missing ¿ ¡ (A1 level). Do not penalise a text slightly outside 50-90 words unless it is under 35 words (then cap Task achievement at 3). Give the final mark /20 with a short justification per criterion.",
-      reference: "Buenos días. Quería una mesa para dos, por favor. De primero, quería una sopa de verduras y de segundo, un poco de pescado con arroz. Para beber, un vaso de agua y un café con leche. Normalmente desayuno pan con queso y bebo un té. Como mucha fruta y bebo mucha agua. Me gustan las verduras, pero no me gusta la carne. Mi amigo come pescado y bebe zumo. La cuenta, por favor. ¿Puedo pagar con tarjeta?"
+      reference: "Buenos días. Quería una mesa para dos, por favor. De primero, quería una sopa de verduras y de segundo, un poco de pescado con arroz. Para beber, un vaso de agua y un café con leche. Todos los días desayuno pan con queso y bebo un té. Como mucha fruta y bebo mucha agua. Me gustan las verduras, pero no me gusta la carne. Mi amigo come pescado y bebe zumo. La cuenta, por favor. ¿Puedo pagar con tarjeta?"
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale", points: 15, skill: "eo", type: "ai-oral",
@@ -1014,8 +1014,8 @@ E[206] = {
       prompt: "Habla de tus comidas. Di qué comes y qué bebes en el desayuno, en la comida y en la cena. Di una cosa que te gusta y una cosa que no te gusta. Después, imagina que estás en un restaurante: pide una bebida y un plato con «Quería…».",
       promptFr: "Parle de tes repas. Dis ce que tu manges et bois au petit-déjeuner, au déjeuner et au dîner. Dis une chose que tu aimes et une que tu n'aimes pas. Puis imagine que tu es au restaurant : commande une boisson et un plat avec « Quería… ».",
       targetSeconds: 40, minWords: 30,
-      rubric: "Total 15 points. Content (5 pts): the learner talks about the three meals (what they eat and drink), says one thing they like and one they dislike, and orders a drink and a dish politely (1 pt per element, 1 pt for overall completeness). Grammar (5 pts): correct present of regular -ER/-IR verbs (como, bebo, comes, comemos...), correct \"Quería\" in the order, correct \"me gusta / me gustan\", \"mucho/un poco de\" used properly; deduct 1 pt per recurring error type. Vocabulary (3 pts): food, drink and restaurant words from A1.6. Fluency (2 pts): judged from the transcript only (about 40 seconds, roughly 50-90 words, connected sentences, few hesitations); pronunciation cannot be judged finely, so do not penalise recognition quirks. Do not penalise missing accents or punctuation in the transcript.",
-      reference: "Por la mañana desayuno pan con queso y bebo un café con leche. En la comida como arroz con pollo y una ensalada, y bebo agua. Por la noche ceno sopa y un poco de fruta. Me gustan las verduras, pero no me gusta el pescado. En un restaurante digo: Buenas tardes. Quería un zumo de naranja y un plato de pasta, por favor. Muchas gracias."
+      rubric: "Total 15 points. Content (5 pts): the learner talks about the three meals (what they eat and drink), says one thing they like and one they dislike, and orders a drink and a dish politely (1 pt per element, 1 pt for overall completeness). Grammar (5 pts): correct present of regular -ER/-IR verbs (como, bebo, comes, comemos...), correct \"Quería\" in the order, correct \"me gusta / me gustan\", \"mucho/un poco de\" used properly; deduct 1 pt per recurring error type. Vocabulary (3 pts): food, drink and restaurant words from A1.6. Fluency (2 pts): judged from the transcript only (about 40 seconds, roughly 30-90 words, connected sentences, few hesitations); pronunciation cannot be judged finely, so do not penalise recognition quirks. Do not penalise missing accents or punctuation in the transcript.",
+      reference: "Por la mañana desayuno pan con queso y bebo un café con leche. En la comida como arroz con pollo y una ensalada, y bebo agua. Por la noche ceno sopa y un poco de fruta, y bebo té. Me gustan las verduras, pero no me gusta el pescado. En un restaurante digo: Buenas tardes. Quería un zumo de naranja y un plato de pasta, por favor. Muchas gracias."
     }
   ]
 };
@@ -1200,7 +1200,7 @@ E[208] = {
         { text: "Los turistas ___ al autobús. (estar + subir)", blanks: [["están subiendo", "estan subiendo"]],
           why: "ellos → están + subiendo (subir est en -IR : radical + -iendo)." },
         { text: "Señor, ___ recto por esta avenida. (seguir, usted)", blanks: [["siga"]],
-          why: "Impératif poli (usted) d'un verbe en -ER/-IR/-AR : forme en -e/-a. seguir → siga (tú : sigue)." },
+          why: "Impératif poli (usted) : les verbes en -AR prennent -e (gire), ceux en -ER/-IR prennent -a. seguir → siga (tú : sigue), avec le changement e → i du radical." },
         { text: "Ana, ___ a la izquierda en el semáforo. (girar, tú)", blanks: [["gira"]],
           why: "Impératif en tú d'un verbe en -AR : terminaison -a → gira (usted : gire)." },
         { text: "Señora, ___ la calle y tome la segunda a la derecha. (cruzar, usted)", blanks: [["cruce"]],
@@ -1404,7 +1404,7 @@ E[209] = {
       promptFr: "Écris un message à un hôtel en Espagne (vouvoiement). Dis que tu veux réserver une chambre (type et nombre de nuits) avec « Quería reservar… » et demande si le petit-déjeuner est inclus. Puis explique ton voyage avec « voy a + infinitif » ou « vamos a + infinitif » : où tu vas voyager, comment, et trois choses que tu vas faire (par exemple : enregistrer, acheter, te reposer).",
       minWords: 50, maxWords: 90,
       rubric: "Total 20 points. Task achievement (6 pts, 1 pt each): (a) a polite request to book a room with the room type; (b) the number of nights; (c) a question about whether breakfast is included; (d) the destination and means of transport; (e) at least three planned actions expressed with ir a + infinitive; (f) a greeting and a closing line. Grammar (7 pts): correct ir a + infinitive with the right form of ir and the obligatory \"a\" (voy a, vamos a, va a…) (4 pts; -1 per error, max -4, e.g. \"voy viajar\" or \"voy a viajo\"); \"Quería reservar\" or \"Quiero reservar\" used correctly (1 pt); correct \"al\" vs \"a\" (voy al aeropuerto vs voy a viajar) (1 pt); question \"¿Está incluido el desayuno?\" correctly formed (1 pt). Vocabulary (4 pts): travel, airport and hotel words from A1.9 (4 = at least 8 relevant words used correctly). Coherence and register (3 pts): logical order, consistent \"usted\" with the hotel, simple connectors (y, pero, después, primero). Do NOT penalise missing accents or missing ¿ ¡ (A1 level). Cap Task achievement at 3 if the text is under 35 words. Give the final mark /20 with a short justification per criterion.",
-      reference: "Buenos días. Quería reservar una habitación doble para tres noches, por favor. ¿Está incluido el desayuno? Este verano voy a viajar a Sevilla con mi hermana. Vamos a tomar el avión en París. Primero vamos a facturar las maletas, luego voy a comprar los billetes y después vamos a descansar en el hotel. Muchas gracias. Un saludo."
+      reference: "Buenos días. Quería reservar una habitación doble para tres noches, por favor. ¿Está incluido el desayuno? Este verano voy a viajar a Sevilla con mi hermana. Vamos al aeropuerto en taxi y vamos a tomar el avión en París. Primero vamos a facturar las maletas, luego voy a comprar los billetes y después vamos a descansar en el hotel. Muchas gracias. Un saludo."
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale", points: 15, skill: "eo", type: "ai-oral",
@@ -1436,8 +1436,8 @@ E[210] = {
       items: [
         { text: "Mi madre es ___: enseña español en un colegio.", blanks: [["profesora"]], points: 2,
           why: "« la profesora » = la professeure. Elle « enseña » (enseigne) : c'est le métier de professeur(e). Féminin en -a." },
-        { text: "El ___ trabaja en un hospital con las enfermeras.", blanks: [["médico"]], points: 2,
-          why: "« el médico » = le médecin. Le déterminant « El » demande le masculin (médica au féminin)." },
+        { text: "Estoy enfermo: hoy no voy a la oficina, voy al ___.", blanks: [["médico", "medico"]], points: 2,
+          why: "« el médico » = le médecin : quand on est malade (« enfermo »), on va chez le médecin. « al » = a + el, donc un nom masculin (médica au féminin)." },
         { text: "Escribo mis correos en la ___ con mis compañeros.", blanks: [["oficina"]], points: 2,
           why: "« la oficina » = le bureau, le lieu de travail. Mot féminin (la oficina)." },
         { text: "Mi ___ se llama Pedro y dirige el equipo.", blanks: [["jefe"]], points: 2,
@@ -1469,7 +1469,7 @@ E[210] = {
           why: "yo : le radical porte l'accent tonique, donc e → ie : empiezo." },
         { text: "Por la noche yo ___ los deberes. (hacer)", blanks: [["hago"]],
           why: "hacer est irrégulier à « yo » : hago (hacer los deberes = faire les devoirs)." },
-        { text: "Marta es ___. (elle est médecin)", blanks: [["médica", "medica"]],
+        { text: "Marta es ___. (elle est médecin ; forme féminine)", blanks: [["médica", "medica"]],
           why: "Un métier en -o fait son féminin en -a : médico → médica. Sans adjectif, on ne met pas d'article (Es médica)." },
         { text: "Trabajo ___ la mañana, de lunes a viernes.", blanks: [["por"]],
           why: "« por la mañana » = le matin (par la tarde, por la noche). Avec une heure précise, on dirait « de la mañana »." },
@@ -1569,17 +1569,17 @@ E[211] = {
       items: [
         { text: "En agosto hace mucho ___ en Sevilla: hay 40 grados.", blanks: [["calor"]], points: 2,
           why: "« hace calor » = il fait chaud. 40 degrés = beaucoup de chaleur. Après « hace mucho », on met un nom (mucho calor), jamais « muy »." },
-        { text: "En invierno hace ___ y a veces nieva.", blanks: [["frío", "frio"]], points: 2,
-          why: "« hace frío » = il fait froid. La neige apparaît quand il fait froid, donc pas « calor »." },
+        { text: "En invierno hace ___ y la temperatura baja a cero grados.", blanks: [["frío", "frio"]], points: 2,
+          why: "« hace frío » = il fait froid. Zéro degré en hiver : froid, donc pas « calor ». (« viento » est un mot en trop de la liste.)" },
         { text: "Hoy está ___: no hay sol, hay muchas nubes.", blanks: [["nublado"]], points: 2,
           why: "« está nublado » = le ciel est couvert (estar + adjectif). Le contraire, « despejado », signifie dégagé, sans nuages." },
         { text: "Ahora mismo está ___: cae la lluvia.", blanks: [["lloviendo"]], points: 2,
           why: "« está lloviendo » = il pleut en ce moment (estar + gérondif, llover → lloviendo)." },
         { text: "Hoy es lunes: empieza una nueva ___.", blanks: [["semana"]], points: 2,
           why: "« la semana » = la semaine. Elle commence le lundi. Mot féminin." },
-        { text: "Octubre es el décimo ___ del año.", blanks: [["mes"]], points: 2,
-          why: "« el mes » = le mois. Octubre est le dixième mois : « el décimo mes ». Les mois s'écrivent sans majuscule." },
-        { text: "La estación después del verano es el ___.", blanks: [["otoño", "otono"]], points: 1,
+        { text: "Octubre es un ___ del año.", blanks: [["mes"]], points: 2,
+          why: "« el mes » = le mois. Octubre est l'un des douze mois de l'année (la semaine, elle, n'a que sept jours). Les mois s'écrivent sans majuscule." },
+        { text: "La estación después del verano es el ___.", blanks: [["otoño"]], points: 1,
           why: "« el otoño » = l'automne, saison après l'été (verano). Attention au « ñ », qui se prononce « gn »." },
         { text: "Son las doce del día: es ___.", blanks: [["mediodía", "mediodia"]], points: 2,
           why: "« es mediodía » = il est midi. Pas d'article « las » : on dit « es mediodía » (comme « es medianoche »)." }
@@ -1714,7 +1714,7 @@ E[212] = {
           why: "« así que » = donc, alors : il introduit la conséquence (j'ai sommeil → je vais dormir). « porque » donnerait la cause." },
         { text: "No voy al cine ___ estoy cansado.", blanks: [["porque"]], points: 2,
           why: "« porque » = parce que : il donne la cause (je suis fatigué). Écrit en un mot, sans accent (≠ « ¿por qué? » = pourquoi ?)." },
-        { text: "Mi coche es pequeño, ___ muy rápido.", blanks: [["pero"]], points: 1,
+        { text: "Mi coche es pequeño, ___ es muy rápido.", blanks: [["pero"]], points: 1,
           why: "« pero » = mais : il oppose deux idées (petit / rapide)." }
       ]
     },
@@ -1749,7 +1749,7 @@ E[212] = {
       id: "reading", num: "III", title: "Comprensión escrita", titleFr: "Compréhension écrite", points: 15, skill: "ce", type: "mcq",
       instructions: "Lee el texto y elige la respuesta correcta.",
       instructionsFr: "Lis le texte et choisis la bonne réponse.",
-      passage: "Hoy es sábado y hace buen tiempo. Pablo está en la calle con su amiga María. Se saludan: «¡Hola, María! ¡Cuánto tiempo sin verte! ¿Qué tal todo?». María responde que todo va muy bien.\n\nPablo tiene una pregunta: «Perdona, ¿puedes ayudarme? ¿Dónde está la estación? Hoy voy a Madrid». María explica: «Está al lado de la plaza, a la derecha». Pablo le da las gracias y dice: «Que tengas un buen día». María contesta: «Igualmente. ¡Hasta pronto!».",
+      passage: "Hoy es sábado y hace buen tiempo. Pablo está en la calle con su amiga María. Pablo saluda: «¡Hola, María! ¡Cuánto tiempo sin verte! ¿Qué tal todo?». María responde que todo va muy bien.\n\nPablo tiene una pregunta: «Perdona, ¿puedes ayudarme? ¿Dónde está la estación? Hoy voy a Madrid». María explica: «Está al lado de la plaza, a la derecha». Pablo le da las gracias y dice: «Que tengas un buen día». María contesta: «Igualmente. ¡Hasta pronto!».",
       items: [
         { q: "¿Qué tiempo hace hoy?", qFr: "Quel temps fait-il aujourd'hui ?",
           opts: ["Hace mal tiempo.", "Hace buen tiempo.", "Está lloviendo."], correct: 1,
@@ -1762,7 +1762,7 @@ E[212] = {
           why: "« Está al lado de la plaza, a la derecha » : à côté de la place (et à droite, pas à gauche)." },
         { q: "¿Adónde va Pablo hoy?", qFr: "Où va Pablo aujourd'hui ?",
           opts: ["A Sevilla", "A Valencia", "A Madrid"], correct: 2,
-          why: "« Hoy voy a Madrid » : ir a + lieu. Il va à Madrid en train." },
+          why: "« Hoy voy a Madrid » : ir a + lieu. Il va à Madrid (le passage ne précise pas le moyen de transport)." },
         { q: "¿Cómo se ve que Pablo y María se tutean?", qFr: "Comment voit-on que Pablo et María se tutoient ?",
           opts: ["Dicen «Perdona» y «Que tengas un buen día».", "Dicen «señor» y «señora».", "Usan la forma «usted»."], correct: 0,
           why: "« Perdona », « puedes » et « Que tengas » sont des formes de tú. « Perdone » ou « Que tenga » seraient des formes de usted." }
@@ -1775,7 +1775,7 @@ E[212] = {
       items: [
         { audio: [{ who: "A", text: "¡Hola, Luis! ¡Cuánto tiempo sin verte! ¿Qué tal todo?" }, { who: "B", text: "¡Hola, Ana! Todo muy bien, gracias. ¿Y tú?" }],
           q: "¿Qué pasa en esta conversación?", qFr: "Que se passe-t-il dans cette conversation ?",
-          opts: ["Dos amigos se encuentran después de mucho tiempo.", "Dos desconocidos hablan en el trabajo.", "Una clienta pide la cuenta."], correct: 0,
+          opts: ["Dos amigos se encuentran después de mucho tiempo.", "Un cliente habla con un camarero en un restaurante.", "Una clienta pide la cuenta."], correct: 0,
           why: "« ¡Cuánto tiempo sin verte! » = ça fait longtemps ! Ils se tutoient (« tú », « verte ») : ce sont deux amis." },
         { audio: [{ who: "A", text: "Perdone, ¿podría ayudarme, por favor? No encuentro la estación." }, { who: "B", text: "Claro, señor. Está al lado de la plaza." }],
           q: "¿Cómo es la petición «¿Podría ayudarme?»?", qFr: "Comment est la demande « ¿Podría ayudarme? » ?",
@@ -1803,7 +1803,7 @@ E[212] = {
       promptFr: "Écris un e-mail à ta future famille d'accueil en Espagne (vouvoiement : « Señora García »). Salue, présente-toi (nom, âge, origine, lieu de vie, profession), dis comment tu vas voyager et quand tu arrives (voy a…), explique quel temps il fait dans ta ville et pose deux questions avec « ¿Cómo…? », « ¿Dónde…? » ou « ¿Cuándo…? ». Remercie et termine par une formule polie.",
       minWords: 60, maxWords: 100,
       rubric: "Total 20 points. Task achievement (6 pts, 1 pt each): (a) polite greeting to Señora García; (b) self-introduction with at least four items (name, age, origin, residence, job); (c) how and when the learner arrives, using ir a + infinitive; (d) the weather in the learner's city; (e) two questions with interrogative words (¿Cómo…? ¿Dónde…? ¿Cuándo…? ¿Qué…?); (f) thanks and a polite closing formula (Muchas gracias, Un saludo, Hasta pronto...). Grammar (7 pts): correct SER / ESTAR / TENER (soy de…, vivo en…, tengo veinte años — age with TENER, never SER) (3 pts, -1 per error type); correct ir a + infinitive with the obligatory \"a\" (1 pt); correct present of regular verbs (vivo, trabajo, escribo...) (1 pt); correct weather expression (hace frío, está nublado, llueve) (1 pt); correct questions with accented interrogative words (1 pt). Vocabulary (4 pts): range of A1 vocabulary (family, work, travel, weather, social formulas); 4 = at least 8 relevant words used correctly. Coherence and register (3 pts): logical order, consistent \"usted\" with the host (¿Cómo está usted? ¿Podría…?), simple connectors (y, pero, porque, así que). Do NOT penalise missing accents or missing ¿ ¡ (A1 level). Cap Task achievement at 3 if the text is under 40 words. Give the final mark /20 with a short justification per criterion.",
-      reference: "Estimada señora García: Buenos días. Me llamo Sofía, tengo veinticinco años y soy de Lyon, pero vivo en París. Soy enfermera y trabajo en un hospital. Voy a viajar en avión y voy a llegar a Madrid el sábado. En mi ciudad hace frío y está nublado, pero estoy muy contenta. ¿Cómo está usted? ¿Dónde está la estación de su pueblo? Muchas gracias por su ayuda. Un saludo."
+      reference: "Buenos días, señora García. Me llamo Sofía, tengo veinticinco años y soy de Lyon, pero vivo en París. Soy enfermera y trabajo en un hospital. Voy a viajar en avión y voy a llegar a Madrid el sábado. En mi ciudad hace frío y está nublado, pero estoy muy contenta. ¿Cómo está usted? ¿Dónde está la estación de su ciudad? Muchas gracias por su ayuda. Un saludo."
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale", points: 15, skill: "eo", type: "ai-oral",
@@ -1813,7 +1813,7 @@ E[212] = {
       promptFr: "Tu rencontres un ami espagnol dans la rue (tutoiement). Salue-le, demande-lui comment il va, présente-toi en deux phrases (origine, profession) et pose trois questions avec des mots interrogatifs (¿Dónde…? ¿Cuándo…? ¿Qué…?). Puis demande de l'aide à un inconnu (vouvoiement) avec « Perdone, ¿podría…? », remercie et dis au revoir.",
       targetSeconds: 45, minWords: 30,
       rubric: "Total 15 points. Content (5 pts): greeting and question about how the friend is; two-sentence self-introduction; three questions with interrogative words; a polite request to a stranger with usted; thanks and goodbye (1 pt per element). Grammar (5 pts): correct tú questions (¿Cómo estás? ¿Dónde vives?) and usted request (Perdone, ¿podría ayudarme?); correct SER / ESTAR / TENER and regular present; deduct 1 pt per recurring error type, and 1 pt if tú and usted are mixed with the same person. Vocabulary (3 pts): social formulas and interrogative words from A1.12. Fluency (2 pts): judged from the transcript only (about 45 seconds, roughly 55-100 words, connected sentences); pronunciation cannot be judged finely, so do not penalise recognition quirks. Do not penalise missing accents or punctuation.",
-      reference: "¡Hola, Carlos! ¡Cuánto tiempo sin verte! ¿Qué tal todo? Yo estoy muy bien. Soy de Lyon y trabajo en una oficina. ¿Dónde vives ahora? ¿Cuándo vas a viajar? ¿Qué haces este fin de semana? Perdone, señora, ¿podría ayudarme, por favor? No encuentro la estación. Muchas gracias. Que tenga un buen día. ¡Hasta pronto!"
+      reference: "¡Hola, Carlos! ¡Cuánto tiempo sin verte! ¿Qué tal todo? Yo estoy muy bien, gracias. ¿Y tú? Soy de Lyon y trabajo en una oficina. ¿Dónde vives ahora? ¿Cuándo vas a viajar? ¿Qué haces este fin de semana? Perdone, señora, ¿podría ayudarme, por favor? No encuentro la estación. Muchas gracias. Que tenga un buen día. ¡Hasta pronto!"
     }
   ]
 };
@@ -1850,9 +1850,9 @@ E[213] = {
           blanks: [["luego", "después", "entonces"]],
           why: "« luego » (ou « después ») enchaîne deux actions successives dans un récit : d'abord… puis…" },
         { text: "Esperé el tren una hora y ___ llegó.",
-          blanks: [["por fin"]],
-          why: "« por fin » = enfin, après une longue attente. « al final » = finalement (à la fin d'un récit), moins naturel ici." },
-        { text: "Quería comprar un libro, pero ___ no compré nada.",
+          blanks: [["por fin","al final"]],
+          why: "« por fin » = enfin, après une longue attente (le plus naturel ici) ; « al final » = finalement est aussi accepté. Dans la phrase suivante, seul « al final » convient." },
+        { text: "Entré en la librería, pero ___ no compré nada.",
           blanks: [["al final"]],
           why: "« al final » = finalement, à la fin d'une suite d'événements. « por fin » exprime le soulagement après l'attente, ce qui ne convient pas à « no compré nada »." },
         { text: "Para el cumpleaños de mi madre compré un ___ muy bonito: un libro.",
@@ -1945,11 +1945,11 @@ E[213] = {
       points: 20, skill: "ee", type: "ai-text",
       instructions: "Escribe un mensaje de 60 a 90 palabras.",
       instructionsFr: "Écris un message de 60 à 90 mots.",
-      prompt: "Un amigo español te pregunta: «¿Qué hiciste el fin de semana pasado?». Escribe tu respuesta. Cuenta qué hiciste el sábado y el domingo, con quién estuviste y dónde. Usa verbos en pasado y marcadores de tiempo (el sábado, por la tarde, luego, al final…).",
-      promptFr: "Un ami espagnol te demande : « Qu'as-tu fait le week-end dernier ? ». Écris ta réponse. Raconte ce que tu as fait samedi et dimanche, avec qui tu étais et où. Utilise des verbes au passé et des marqueurs de temps (el sábado, por la tarde, luego, al final…).",
+      prompt: "Un amigo español te pregunta: «¿Qué hiciste el fin de semana pasado?». Escribe tu respuesta. Cuenta qué hiciste el sábado y el domingo, con quién y dónde. Usa verbos en pasado y marcadores de tiempo (el sábado, por la tarde, luego, al final…).",
+      promptFr: "Un ami espagnol te demande : « Qu'as-tu fait le week-end dernier ? ». Écris ta réponse. Raconte ce que tu as fait samedi et dimanche, avec qui et où. Utilise des verbes au passé et des marqueurs de temps (el sábado, por la tarde, luego, al final…).",
       minWords: 60, maxWords: 90,
       rubric: "Total 20 points. Task achievement (6 pts): the learner tells what they did on Saturday AND on Sunday, says with whom and where (about 2 pts each for: Saturday, Sunday, who/where; deduct proportionally for a missing element). Grammar (7 pts): correct pretérito indefinido of REGULAR verbs (-ar: -é, -aste, -ó, -amos, -aron; -er/-ir: -í, -iste, -ió, -imos, -ieron). Deduct about 1 pt for every 2 wrong or missing forms (e.g. present tense instead of past, 'comió' for 'comí', 'llegé' for 'llegué', 'empezé' for 'empecé'). Irregular verbs (fui, tuve, hice…) are not required at this level: do not penalise their absence; use of ser/ir forms is a bonus, not a requirement. Vocabulary and time markers (4 pts): at least 3 different time markers or connectors (el sábado, por la mañana, luego, después, al final, hace…) and varied regular verbs. Coherence and register (3 pts): clear order of events, simple connectors, natural message to a friend (tú). Accents: missing accents are only lightly penalised (max −1 in total); do not penalise ¿ ¡ typing. Length: deduct up to 2 pts if clearly under 45 words or over 120 words.",
-      reference: "Hola, Pedro. El sábado por la mañana visité el museo con mi hermana y después comimos en un restaurante pequeño. Por la tarde llamé a mi madre y hablé una hora con ella. Luego cené con mis amigos y bailamos toda la noche. El domingo trabajé en casa: escribí tres correos y preparé la comida. Al final, escuché música y cené con mi hermano. ¿Y tú, qué hiciste?"
+      reference: "Hola, Pedro. El sábado por la mañana visité el museo con mi hermana y después comimos en un restaurante pequeño. Por la tarde llamé a mi madre y hablé una hora con ella. Luego cené con mis amigos y bailamos toda la noche. El domingo trabajé en casa: escribí tres correos y preparé la comida. Al final, escuché música y cené con mi hermano. ¿Y tú, cómo pasaste el fin de semana?"
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
@@ -2021,13 +2021,13 @@ E[214] = {
           why: "tener → tuv- + ieron : tuvieron. « tenieron » mélange le radical du présent et la terminaison du passé." },
         { text: "Anoche nosotros ___ (hacer) la cena.", blanks: [["hicimos"]],
           why: "hacer → hic- + imos : hicimos. Seule la 3e personne du singulier prend z : hizo." },
-        { text: "Mi jefe ___ (decir) que no.", blanks: [["dijo"]],
+        { text: "Ayer mi jefe ___ (decir) que no.", blanks: [["dijo"]],
           why: "decir → dij- + o : dijo (él). Sans accent écrit : la voix tombe sur le radical." },
         { text: "La fiesta de anoche ___ (ser) genial.", blanks: [["fue"]],
           why: "ser et ir ont la même forme au passé simple : fue. Ici c'est un jugement (ser) : « la fiesta fue genial »." },
-        { text: "Mi madre ___ (pedir) pescado en el restaurante.", blanks: [["pidió"]],
+        { text: "Anoche mi madre ___ (pedir) pescado en el restaurante.", blanks: [["pidió"]],
           why: "pedir (-ir) : e → i à la 3e personne (pidió, pidieron). « pedió » n'existe pas." },
-        { text: "¿___ usted (poder) hablar con el jefe?", blanks: [["pudo"]],
+        { text: "Ayer, ¿___ usted (poder) hablar con el jefe?", blanks: [["pudo"]],
           why: "usted se conjugue comme él / ella : poder → pud- + o = pudo. « pudiste » serait pour tú." },
         { text: "El año pasado yo ___ (viajar) a Perú.", blanks: [["viajé"]],
           why: "Rappel A2.1 : verbe régulier en -ar, yo → -é : viajé." },
@@ -2129,16 +2129,16 @@ E[215] = {
       bank: ["hoy", "todavía", "ya", "alguna vez", "maleta", "pasaporte", "reunión", "mensaje", "ayer", "anoche", "nunca"],
       items: [
         { text: "Son las ocho de la mañana y ___ he desayunado fruta y café.",
-          blanks: [["hoy", "esta mañana"]],
+          blanks: [["hoy", "esta mañana", "ya"]],
           why: "« hoy » (aujourd'hui) est un marqueur de temps encore ouvert : il appelle le perfecto (he desayunado). « ayer » et « anoche » appellent l'indefinido (desayuné)." },
         { text: "—¿Has comido? —No, no he comido ___.",
-          blanks: [["todavía", "aún"]],
+          blanks: [["todavía", "aún", "hoy"]],
           why: "« todavía no » / « no… todavía » = pas encore. « ya » signifie déjà : on ne peut pas l'employer ici dans une réponse négative." },
         { text: "—¿Has terminado el informe? —Sí, ___ lo he terminado.",
           blanks: [["ya"]],
           why: "« ya » = déjà : « ya lo he terminado ». Le pronom « lo » se place avant « he »." },
         { text: "¿Has estado ___ en Perú? —No, nunca he estado.",
-          blanks: [["alguna vez"]],
+          blanks: [["alguna vez", "ya"]],
           why: "« ¿Has estado alguna vez…? » = as-tu déjà été… ? Question sur une expérience de vie, sans date. « nunca » est la réponse négative, pas la question." },
         { text: "Mañana viajo a Madrid, pero todavía no he hecho la ___.",
           blanks: [["maleta"]],
@@ -2243,7 +2243,7 @@ E[215] = {
       promptFr: "Un ami t'écrit : « Comment va ta semaine ? ». Réponds par un message. Raconte ce que tu as fait aujourd'hui et cette semaine, ce que tu n'as pas encore fait et une expérience que tu as déjà vécue ou jamais vécue (par exemple un voyage, un plat, un sport).",
       minWords: 70, maxWords: 110,
       rubric: "Total 20 points. Task achievement (6 pts): the message covers (a) what the learner has done today, (b) what they have done this week, (c) something they have not done yet (todavía no / aún no), (d) one life experience with alguna vez or nunca (about 1.5 pt each). Grammar (7 pts): correct pretérito perfecto = he/has/ha/hemos/han + participle, with at least four different participles including at least two irregular ones (hecho, escrito, visto, puesto, abierto, dicho, vuelto, roto). Deduct about 1 pt per 2 errors (wrong auxiliary, 'hacido', 'escribido', participle agreeing with the subject, a word placed between haber and the participle, 'no nunca'). One correct use of the indefinido with ayer or a past date is accepted and shown as a bonus, not required; but using the indefinido with hoy/esta semana is an error. Vocabulary and markers (4 pts): hoy, esta mañana/semana, ya, todavía no, alguna vez, nunca, últimamente, plus everyday vocabulary. Coherence (3 pts): clear organisation, greeting and closing, natural tone to a friend. Accents: missing accents are only lightly penalised (max −1 in total). Length: deduct up to 2 pts if clearly under 50 words or over 140 words.",
-      reference: "Hola, Sara. Mi semana ha sido muy larga. Hoy me he levantado temprano y he desayunado con mi hijo. Esta semana he trabajado mucho: he tenido dos reuniones y he escrito muchos correos. Todavía no he hecho la compra y tampoco he llamado a mi madre. Ya he visto la película de la que me hablaste y me ha gustado mucho. ¿Has estado alguna vez en Perú? Yo nunca he viajado allí, pero he leído un libro sobre ese país. ¡Hablamos pronto!"
+      reference: "Hola, Sara. Mi semana ha sido muy larga. Hoy me he levantado temprano y he desayunado con mi hijo. Esta semana he trabajado mucho: he tenido dos reuniones y he escrito muchos correos. Todavía no he hecho la compra y no he llamado a mi madre. Ya he visto la película nueva y ha sido muy buena. ¿Has estado alguna vez en Perú? Yo nunca he viajado allí, pero he leído un libro sobre ese país. ¡Hablamos pronto!"
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
@@ -2254,7 +2254,7 @@ E[215] = {
       promptFr: "Réponds à ces questions : Qu'as-tu fait aujourd'hui ? Qu'est-ce que tu n'as pas encore fait ? As-tu déjà été en Espagne ou dans un autre pays hispanophone ? Qu'as-tu mangé ou bu aujourd'hui ?",
       targetSeconds: 45,
       rubric: "Total 15 points. Content (5 pts): answers the four questions (what they have done today, what they have not done yet, whether they have ever been to a Spanish-speaking country, what they have eaten or drunk today); about 1.25 pt each. Grammar (5 pts): correct pretérito perfecto (he/has/ha + participle) with at least three different verbs, including at least one irregular participle (hecho, escrito, visto, puesto, abierto, dicho…). Deduct about 1 pt per 2 errors (wrong auxiliary, 'hacido', wrong word order such as 'no todavía he'). Markers (3 pts): uses hoy / esta mañana, todavía no, alguna vez / nunca, ya. Fluency (2 pts): understandable, reasonably continuous speech. Pronunciation cannot be judged precisely from a transcript: judge content, forms and apparent fluency only; ignore missing accents and transcription artefacts.",
-      reference: "Hoy me he levantado a las siete y he desayunado café con pan. Después he trabajado en casa: he escrito tres correos y he hablado con un cliente. Todavía no he comido ni he hecho la compra. Nunca he estado en México, pero he estado en España dos veces. Hoy he bebido mucha agua y ya he puesto la mesa para la cena."
+      reference: "Hoy me he levantado a las siete y he desayunado café con pan. Después he trabajado en casa: he escrito tres correos y he hablado con un cliente. Todavía no he comido y no he hecho la compra. Nunca he estado en México, pero he estado en España dos veces. Hoy he bebido mucha agua y ya he puesto la mesa para la cena."
     }
   ]
 };
@@ -2304,8 +2304,8 @@ E[216] = {
     {
       id: "grammar", num: "II", title: "Gramática y conjugación", titleFr: "Grammaire et conjugaison",
       points: 20, skill: "cj", type: "fill",
-      instructions: "Escribe el verbo entre paréntesis en la forma correcta. Escribe solo la palabra que falta.",
-      instructionsFr: "Écris le verbe entre parenthèses à la forme correcte. Tape seulement le mot manquant.",
+      instructions: "Escribe el verbo entre paréntesis en la forma correcta: futuro simple, salvo si la frase pide otro tiempo. Escribe solo las palabras que faltan.",
+      instructionsFr: "Écris le verbe entre parenthèses à la forme correcte : futur simple, sauf si la phrase demande un autre temps. Tape seulement les mots manquants.",
       items: [
         { text: "Mañana yo ___ (hablar) con el jefe.", blanks: [["hablaré"]],
           why: "Futur simple : infinitif + é. hablar → hablaré (accent écrit sur le é final)." },
@@ -2390,7 +2390,7 @@ E[216] = {
       promptFr: "Écris un e-mail à un ami sur tes projets pour le mois prochain ou les prochaines vacances. Dis où tu iras, avec qui, ce que tu feras, quand tu partiras et ce que tu feras s'il pleut (ou s'il fait beau). Utilise le futur simple et, si tu veux, aussi « ir a ».",
       minWords: 70, maxWords: 110,
       rubric: "Total 20 points. Task achievement (6 pts): the email states where the learner will go, with whom, what they will do, when they will leave, and what they will do in a conditional situation (si llueve / si hace sol); about 1.2 pt per element; deduct proportionally for missing ones. Grammar (7 pts): correct futuro simple (infinitive + é, ás, á, emos, éis, án) with at least four different verbs, including at least two irregular ones (iré, haré, tendré, saldré, vendré, podré, diré, habrá, pondré). One correct 'si + present, future' sentence is expected (e.g. 'Si llueve, nos quedaremos…'). Deduct about 1 pt per 2 errors (e.g. 'hacerá', 'tenerá', 'si lloverá', a wrong radical counts as an error). Ir a + infinitive is accepted as an alternative for at most two verbs. Vocabulary and markers (4 pts): mañana, la semana que viene, el próximo mes, dentro de…, seguramente, quizás, ya veremos, etc. Coherence (3 pts): clear organisation, greeting and closing, natural tone. Accents: missing accents are only lightly penalised (max −1 in total). Length: deduct up to 2 pts if clearly under 50 words or over 140 words.",
-      reference: "Hola, Miguel. El próximo mes iré a Granada con mi hermana. Saldremos el viernes por la mañana en tren y llegaremos por la tarde. Haremos muchas cosas: visitaremos la Alhambra, comeremos en un restaurante típico y pasearemos por la ciudad. Si llueve, nos quedaremos en el hotel y leeremos. Seguramente tendré mucho calor, pero será un viaje genial. Dentro de unos días te enviaré fotos. ¿Vendrás con nosotros? Ya veremos. Un abrazo."
+      reference: "Hola, Miguel. El próximo mes iré a Granada con mi hermana. Saldremos el viernes por la mañana en tren y llegaremos por la tarde. Haremos muchas cosas: visitaremos la Alhambra, comeremos en un restaurante típico y pasearemos por la ciudad. Si llueve, nos quedaremos en el hotel y leeremos. Seguramente tendré mucho calor, pero será un viaje genial. Dentro de unos días te enviaré fotos y te escribiré cada noche. ¿Vendrás con nosotros? Un abrazo."
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
@@ -2401,7 +2401,7 @@ E[216] = {
       promptFr: "Parle de tes projets pour le prochain week-end et pour les prochaines vacances. Dis ce que tu feras, où tu iras, avec qui et ce que tu feras s'il pleut. Utilise mañana, la semana que viene ou dentro de…",
       targetSeconds: 45,
       rubric: "Total 15 points. Content (5 pts): talks about the next weekend AND the next holidays; says what they will do, where they will go, with whom, and what they will do if it rains (1 pt each). Grammar (5 pts): correct futuro simple with at least four different verbs, including at least two irregular ones (iré, haré, tendré, saldré, vendré, podré…); one 'si + present, future' sentence. Deduct about 1 pt per 2 errors (wrong radical, 'si lloverá'). Ir a + infinitive is accepted for at most two verbs. Markers (3 pts): uses at least two of mañana, la semana que viene, el próximo mes, dentro de…, seguramente, quizás. Fluency (2 pts): understandable, reasonably continuous speech. Pronunciation cannot be judged precisely from a transcript: judge content, forms and apparent fluency only; ignore missing accents and transcription artefacts.",
-      reference: "El sábado iré al mercado con mi hijo y haremos la compra. Por la tarde veremos una película en casa. El domingo saldré a correr y después comeremos con mis padres. Si llueve, nos quedaremos en casa y jugaremos a las cartas. Las próximas vacaciones viajaré a Portugal. Tendré una semana libre y visitaré Lisboa. Seguramente haré mucho calor, pero lo pasaré muy bien."
+      reference: "El sábado iré al mercado con mi hijo y haremos la compra. Por la tarde veremos una película en casa. El domingo saldré a correr y después comeremos con mis padres. Si llueve, nos quedaremos en casa y jugaremos a las cartas. Las próximas vacaciones viajaré a Portugal. Tendré una semana libre y visitaré Lisboa. Seguramente hará mucho calor, pero lo pasaré muy bien."
     }
   ]
 };
@@ -2466,7 +2466,7 @@ E[217] = {
           why: "tú → -ías : vivías. « de niño » = quand tu étais enfant → imparfait." },
         { text: "De niños, cada verano nosotros ___ (ir) a la playa.", blanks: [["íbamos"]],
           why: "ir est irrégulier à l'imparfait : iba, ibas, iba, íbamos, ibais, iban. Pas de « ir + abamos »." },
-        { text: "Cada noche ellos ___ (ver) la tele juntos.", blanks: [["veían"]],
+        { text: "Antes, cada noche ellos ___ (ver) la tele juntos.", blanks: [["veían"]],
           why: "ver est irrégulier à l'imparfait : veía, veías, veía, veíamos, veíais, veían. Le radical garde la e : « ve- »." },
         { text: "¿Qué ___ usted (hacer) los domingos cuando era niño?", blanks: [["hacía"]],
           why: "usted se conjugue comme él / ella : hacía. Aucune irrégularité de radical à l'imparfait (≠ « hizo », indefinido)." },
@@ -2521,7 +2521,7 @@ E[217] = {
         { audio: "Eran las ocho de la noche y llovía mucho. Yo estaba en casa con mi hermana. Veíamos una película y comíamos pizza.",
           q: "¿Qué tiempo hacía?", qFr: "Quel temps faisait-il ?",
           opts: ["Hacía calor.", "Hacía mucho sol.", "Llovía mucho."], correct: 2,
-          why: "« llovía mucho » (imparfait de llover). Il était 20 h : ce n'est pas la météo du jour." },
+          why: "« llovía mucho » (imparfait de llover). Ni « hacía calor » ni « hacía mucho sol » ne sont dits dans l'audio." },
         { audio: [{ who: "A", text: "Antes todo era más fácil, ¿no?" }, { who: "B", text: "Sí, no teníamos móvil y jugábamos en la calle todos los días." }],
           q: "¿Qué piensa B?", qFr: "Que pense B ?",
           opts: ["Que hoy la vida es más fácil.", "Que antes la vida era más fácil.", "Que antes no jugaban en la calle."], correct: 1,
@@ -2537,7 +2537,7 @@ E[217] = {
       promptFr: "Décris ton enfance. Dis où tu vivais, comment était ta maison ou ton quartier, ce que tu faisais tous les jours et le week-end, et comment était une personne importante pour toi (ta grand-mère, ton père, un ami…). Utilise l'imparfait.",
       minWords: 80, maxWords: 120,
       rubric: "Total 20 points. Task achievement (6 pts): the text says where the learner lived, describes the house or neighbourhood, describes daily habits, describes weekend habits, and describes one person (about 1.2 pt per element; deduct proportionally for missing ones). Grammar (7 pts): correct pretérito imperfecto: -aba / -ía endings (hablaba, comía, vivía, jugaba, hacía, tenía), irregular era/eras/éramos, iba/íbamos, veía; at least five different verbs including at least one of ser/ir/ver. Deduct about 1 pt per 2 errors (e.g. 'juegaba', 'comíba', 'fui' where 'iba' is needed for a habit, present tense instead of imperfect). Use of hay/había: había is a bonus. Vocabulary and markers (4 pts): antes, de niño/a, cuando era niño/a, todos los días, siempre, los domingos, mientras, normalmente + vocabulary of family, house, school, village. Coherence (3 pts): clear organisation in short paragraphs, natural flow, simple connectors. Accents: missing accents are only lightly penalised (max −1 in total). Length: deduct up to 2 pts if clearly under 60 words or over 160 words.",
-      reference: "Cuando yo era niña, vivía en un pueblo pequeño cerca del mar. Mi casa era grande y tenía un jardín con muchas flores. Todos los días iba al colegio andando con mi hermano. Por la tarde jugábamos en el jardín mientras mi madre cocinaba. Los domingos comíamos en casa de mis abuelos. Mi abuela era muy simpática y siempre nos preparaba pastel. En verano hacía mucho calor y íbamos a la playa. Veíamos la tele juntos por la noche. ¡Qué tiempos aquellos!"
+      reference: "Cuando yo era niña, vivía en un pueblo pequeño cerca del mar. Mi casa era grande y tenía un jardín con muchas flores. Todos los días iba al colegio andando con mi hermano. Por la tarde jugábamos en el jardín mientras mi madre cocinaba. Los domingos comíamos en casa de mis abuelos. Mi abuela era muy simpática y siempre preparaba pasteles. En verano hacía mucho calor y íbamos a la playa. Veíamos la tele juntos por la noche. ¡Qué tiempos aquellos!"
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
@@ -2585,30 +2585,30 @@ E[218] = {
           blanks: [["suelo"]],
           why: "« al suelo » = par terre (a + el = al : masculin). Piège : « ventana » est féminin." },
         { text: "¡Qué ___! Pensé que había un ladrón, pero era solo el viento.",
-          blanks: [["susto"]],
-          why: "« ¡Qué susto! » = quelle frayeur ! Exclamation fréquente après une histoire (« ¡Qué susto! »)." },
+          blanks: [["susto", "ruido"]],
+          why: "« ¡Qué susto! » = quelle frayeur ! (réponse attendue, la plus naturelle après avoir cru à un cambrioleur) ; « ¡Qué ruido! » est aussi accepté." },
         { text: "Primero comí, después salí y ___ volví a casa.",
           blanks: [["por último", "al final", "por fin"]],
           why: "« por último » (ou « al final ») = enfin, pour terminer la suite : primero, después, por último. « ayer » ne marque pas un ordre." },
         { text: "___ día llovía mucho y no salimos de casa.",
-          blanks: [["ese", "Ese"]],
+          blanks: [["ese", "Ese", "aquel", "un"]],
           why: "« ese día » = ce jour-là : il ouvre un récit dont le décor est à l'imparfait (llovía). « nadie » est un pronom, il ne peut pas précéder « día »." }
       ]
     },
     {
       id: "grammar", num: "II", title: "Gramática y conjugación", titleFr: "Grammaire et conjugaison",
       points: 20, skill: "cj", type: "fill",
-      instructions: "Escribe el verbo entre paréntesis en la forma correcta (imperfecto o indefinido, según el sentido). Escribe solo la palabra que falta.",
-      instructionsFr: "Écris le verbe entre parenthèses à la forme correcte (imparfait ou passé simple, selon le sens). Tape seulement le mot manquant.",
+      instructions: "Escribe el verbo entre paréntesis en la forma correcta (imperfecto, indefinido, perfecto o futuro, según el sentido). Escribe solo las palabras que faltan.",
+      instructionsFr: "Écris le verbe entre parenthèses à la forme correcte (imparfait, passé simple, parfait ou futur, selon le sens). Tape seulement les mots manquants.",
       items: [
         { text: "Dormía cuando ___ (sonar) el teléfono.", blanks: [["sonó"]],
           why: "L'événement qui interrompt une action en cours → indefinido : sonó (-ar, él → -ó)." },
-        { text: "Cuando yo ___ (llegar) a casa, llovía mucho.", blanks: [["llegué"]],
+        { text: "Ayer, cuando yo ___ (llegar) a casa, llovía mucho.", blanks: [["llegué"]],
           why: "« llegar » est l'événement (indefinido) ; « llovía » est le décor. yo + -gar → -gué." },
         { text: "Mientras mi madre ___ (preparar) la cena, yo veía la tele.", blanks: [["preparaba"]],
           why: "« mientras » = deux actions parallèles → deux imparfaits : preparaba / veía." },
-        { text: "Ese día ___ (hacer) mucho frío.", blanks: [["hacía"]],
-          why: "La météo est le décor → imparfait : hacía. « hizo » serait un fait ponctuel." },
+        { text: "Cuando salí de casa, ___ (hacer) mucho frío.", blanks: [["hacía"]],
+          why: "La météo au moment d'une action (salí) est le décor → imparfait : hacía. « hizo » présenterait le froid comme un fait ponctuel." },
         { text: "De repente, nosotros ___ (oír) un ruido.", blanks: [["oímos"]],
           why: "« de repente » → événement → indefinido : oímos (avec accent sur le í). L'imparfait serait « oíamos »." },
         { text: "Había mucha gente cuando Ana ___ (entrar) en la tienda.", blanks: [["entró"]],
@@ -2617,7 +2617,7 @@ E[218] = {
           why: "estaba + gérondif = j'étais en train de… ; -ar → -ando : cocinando. Pas « cocinado » (participe)." },
         { text: "Ayer, de repente, yo ___ (saber) la noticia por mi hermana.", blanks: [["supe"]],
           why: "saber : « sabía » = je savais ; « supe » = j'ai appris, à un moment précis. Ici « de repente » → supe." },
-        { text: "Nunca ___ (estar) yo en Perú.", blanks: [["he estado"]],
+        { text: "Hasta ahora, nunca ___ (estar) yo en Perú.", blanks: [["he estado"]],
           why: "Rappel A2.3 : expérience de vie (« nunca ») → pretérito perfecto : he estado. Piège : « estuve » demanderait une date." },
         { text: "La semana que viene nosotros ___ (viajar) a Sevilla.", blanks: [["viajaremos"]],
           why: "Rappel A2.4 : futur simple, infinitif + emos : viajaremos (sans accent écrit à nosotros). « La semana que viene » = futur." }
@@ -2661,15 +2661,15 @@ E[218] = {
           q: "¿Por qué no contestó B?", qFr: "Pourquoi B n'a-t-elle pas répondu ?",
           opts: ["Porque dormía.", "Porque estaba en la calle.", "Porque no tenía móvil."], correct: 0,
           why: "« Dormía cuando llamaste » : elle dormait (imparfait) au moment de l'appel. Elle était fatiguée." },
-        { audio: [{ who: "A", text: "¿Qué hacía usted cuando llegó la policía?" }, { who: "B", text: "Estaba en la cocina. Oí un golpe y salí al pasillo." }],
-          q: "¿Dónde estaba B cuando llegó la policía?", qFr: "Où était B quand la police est arrivée ?",
+        { audio: [{ who: "A", text: "¿Dónde estaba usted cuando oyó el golpe?" }, { who: "B", text: "Estaba en la cocina. Oí un golpe y salí al pasillo." }],
+          q: "¿Dónde estaba B cuando oyó el golpe?", qFr: "Où était B quand elle a entendu le coup ?",
           opts: ["En el pasillo", "En la cocina", "En la calle"], correct: 1,
-          why: "« Estaba en la cocina » (décor). Elle est sortie dans le couloir ensuite, après avoir entendu un coup (« oí un golpe y salí »)." },
+          why: "« Estaba en la cocina » (décor). Elle est sortie dans le couloir ensuite, après avoir entendu le coup (« oí un golpe y salí »)." },
         { audio: "Un día, cuando yo tenía diez años, perdí el tren. Llovía y no había nadie en la estación. Mi padre llegó a las ocho y volvimos a casa.",
           q: "¿Quién llegó a las ocho?", qFr: "Qui est arrivé à huit heures ?",
           opts: ["El tren", "Su madre", "Su padre"], correct: 2,
           why: "« Mi padre llegó a las ocho ». Le train, il l'avait perdu (« perdí el tren »)." },
-        { audio: [{ who: "A", text: "¡Qué fuerte! ¿Y tú pudiste hablar con él?" }, { who: "B", text: "No, no pude. Hablé con su secretaria y me dijo que no estaba." }],
+        { audio: [{ who: "A", text: "¡Qué fuerte! ¿Y tú pudiste hablar con él?" }, { who: "B", text: "No, no pude. Hablé con su secretaria y ella dijo que no estaba." }],
           q: "¿Pudo B hablar con él?", qFr: "B a-t-il pu lui parler ?",
           opts: ["Sí, habló con él.", "No, habló con su secretaria.", "Sí, pero solo un momento."], correct: 1,
           why: "« no pude » = je n'y suis pas arrivé (pude = j'ai réussi ; no pude = j'ai échoué). Il a parlé à la secrétaire." }
@@ -2684,7 +2684,7 @@ E[218] = {
       promptFr: "Raconte une histoire où il s'est passé quelque chose d'inattendu (un bruit, un appel, un petit accident…). Décris d'abord le décor (temps, lieu, ce que tu faisais) à l'imparfait, puis raconte les événements au passé simple. Utilise « de repente », « entonces » et « al final ».",
       minWords: 80, maxWords: 120,
       rubric: "Total 20 points. Task achievement (6 pts): the story has a clear setting (weather, place, what the learner was doing), at least two events, and an ending (about 2 pts each). Grammar (8 pts): correct contrast imperfecto / indefinido. At least three imperfect forms for the setting (era, estaba, llovía, hacía, había, tenía, leía, dormía…) AND at least three indefinido forms for the events (sonó, oí, abrí, entré, llegó, vi, fui…). The 'estaba + gerundio' structure is a bonus, not required. Deduct about 1 pt per 2 errors: wrong tense choice (e.g. 'sonaba el teléfono' for a sudden event, 'dormí cuando sonó' for an ongoing action), wrong forms ('hací', 'tuvió', 'oyé'), or 'hubo' / 'había' confusion. Vocabulary and connectors (3 pts): de repente, entonces, cuando, mientras, un día, al final, por último, ese día + story vocabulary (ruido, llamada, susto, ventana…). Coherence (3 pts): logical order, clear paragraphs, natural storytelling. Accents: missing accents are only lightly penalised (max −1 in total). Length: deduct up to 2 pts if clearly under 60 words or over 160 words.",
-      reference: "Ese sábado hacía mucho frío y llovía en toda la ciudad. Yo estaba sola en casa y veía una película cuando, de repente, sonó el teléfono. Era mi hermana, que estaba muy nerviosa. Había un accidente en su calle y no podía salir de casa. Entonces cogí el abrigo y salí corriendo. Cuando llegué, había mucha gente y la policía ya estaba allí. Mi hermana lloraba, pero no tenía nada grave. La abracé y entramos en casa. Al final, cenamos juntas y hablamos hasta las once. ¡Qué susto!"
+      reference: "Ese sábado hacía mucho frío y llovía en toda la ciudad. Yo estaba sola en casa y veía una película cuando, de repente, sonó el teléfono. Era mi hermana, que estaba muy nerviosa. Había un accidente en su calle y no podía salir de casa. Entonces cogí el abrigo y salí corriendo. Cuando llegué, había mucha gente y la policía ya estaba allí. Mi hermana lloraba, pero no tenía nada grave. Abracé a mi hermana y entramos en casa. Al final, cenamos juntas y hablamos hasta las once. ¡Qué susto!"
     },
     {
       id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
@@ -2695,7 +2695,7 @@ E[218] = {
       promptFr: "Raconte un souvenir : un jour où il s'est passé quelque chose d'important ou de drôle. Décris comment était la journée (temps, lieu, ce que tu faisais) et ce qui s'est passé. Utilise « de repente », « entonces » et « al final ».",
       targetSeconds: 45,
       rubric: "Total 15 points. Content (5 pts): clear setting (weather, place, what the learner was doing), at least two events, and an ending (about 1.5 pt each for setting, events, ending, plus 0.5 pt for a personal reaction such as '¡Qué susto!'). Grammar (5 pts): correct contrast imperfecto / indefinido, with at least three imperfect forms for the setting and three indefinido forms for the events. Deduct about 1 pt per 2 errors (wrong tense choice, wrong forms). 'Estaba + gerundio' is a bonus. Connectors (3 pts): uses at least three of de repente, entonces, cuando, mientras, un día, al final, por último, ese día. Fluency (2 pts): understandable, reasonably continuous speech. Pronunciation cannot be judged precisely from a transcript: judge content, forms and apparent fluency only; ignore missing accents and transcription artefacts.",
-      reference: "Un día, cuando tenía diez años, estaba en la playa con mis primos. Hacía mucho sol y jugábamos con la pelota. De repente, la pelota cayó en el mar. Entonces mi primo entró en el agua y la buscó, pero no la encontró. Al final, un hombre nos dio otra pelota y todos estuvimos muy contentos. ¡Fue un día genial!"
+      reference: "Un día, cuando tenía diez años, estaba en la playa con mis primos. Hacía mucho sol y jugábamos con la pelota. De repente, la pelota cayó en el mar. Entonces mi primo entró en el agua y buscó la pelota, pero no encontró nada. Al final, un hombre trajo otra pelota y todos estuvimos muy contentos. ¡Fue un día genial!"
     }
   ]
 };
@@ -2884,25 +2884,25 @@ E[220] = {
           blanks: [["regalo"]],
           why: "« un regalo » = un cadeau (masculin). Un anniversaire → on cherche un cadeau." },
         { text: "Me ___ el chocolate: ¡lo adoro!",
-          blanks: [["encanta"]],
+          blanks: [["encanta","gusta"]],
           why: "« encantar » fonctionne comme gustar : la chose qui plaît est le sujet singulier (el chocolate) → « me encanta »." },
         { text: "La paella es la ___ de la casa.",
           blanks: [["especialidad"]],
           why: "« la especialidad de la casa » = la spécialité de la maison (nom féminin, d'où « la »)." },
         { text: "¿Me ___ tu libro? Lo necesito para el examen.",
-          blanks: [["prestas"]],
+          blanks: [["prestas","dejas"]],
           why: "« prestar » = prêter ; avec « tu libro » on tutoie → « prestas » (tú). « Me » est le COI : à moi." },
         { text: "Mañana te ___ el documento por correo electrónico.",
-          blanks: [["envío"]],
+          blanks: [["envío","enviaré","mando","mandaré"]],
           why: "« enviar » → « envío » (yo) : l'accent sur le í. « Te » est le COI : je t'envoie." },
         { text: "Mi profesor nos ___ la lección con muchos ejemplos.",
-          blanks: [["explica"]],
+          blanks: [["explica","enseña"]],
           why: "« explicar » à la 3e personne du singulier : « explica ». « Nos » = à nous (COI)." },
         { text: "Me ___ la historia: leo muchos libros sobre Roma.",
-          blanks: [["interesa"]],
+          blanks: [["interesa","encanta","gusta"]],
           why: "« interesar » fonctionne comme gustar : « la historia » est singulier → « me interesa »." },
         { text: "Voy a ___ una carta a mi abuela.",
-          blanks: [["escribir", "enviar"]],
+          blanks: [["escribir", "enviar", "mandar"]],
           why: "Après « voy a » on met l'infinitif : « escribir » (écrire) ou « enviar » (envoyer) conviennent tous les deux pour une lettre." }
       ]
     },
@@ -2940,7 +2940,7 @@ E[220] = {
         { text: "Cuando ___ (vivir, yo) en Madrid, comía siempre en casa.",
           blanks: [["vivía"]],
           why: "Rappel A2.5 : une habitude du passé → imparfait : vivir → « vivía »." },
-        { text: "Hoy ___ (llamar, yo) a mi médico.",
+        { text: "Hoy ya ___ (llamar, yo) a mi médico.",
           blanks: [["he llamado"]],
           why: "Rappel A2.3 : « hoy » → pretérito perfecto : he + participe (llamar → llamado)." }
       ]
@@ -2951,7 +2951,7 @@ E[220] = {
       points: 15, skill: "ce", type: "mcq",
       instructions: "Lee el texto y elige la respuesta correcta.",
       instructionsFr: "Lis le texte et choisis la bonne réponse.",
-      passage: "Es el cumpleaños de Lucía y su amigo Carlos busca un regalo. Entra en una librería y habla con la dependienta.\n\n—Buenos días. ¿En qué puedo ayudarle? —pregunta ella.\n—Busco un libro para una amiga. Le encanta la historia, pero no le gustan las novelas largas.\n—Le recomiendo este libro sobre Roma. Es corto y muy interesante.\n—Perfecto, me lo llevo. ¿Me lo puede envolver?\n—Claro. Se lo envuelvo ahora mismo.\n\nCarlos paga y sale contento. Por la noche, en la fiesta, le da el libro a Lucía. Ella lo abre y dice: «¡Me encanta! Gracias».",
+      passage: "Es el cumpleaños de Lucía y su amigo Carlos busca un regalo. Entra en una librería y habla con la dependienta.\n\n—Buenos días. ¿En qué puedo ayudarle? —pregunta ella.\n—Busco un libro para una amiga. Le encanta la historia, pero no le gustan las novelas largas.\n—Le recomiendo este libro sobre Roma. Es corto y muy interesante.\n—¿Me lo puede enseñar?\n—Claro. Se lo enseño ahora mismo.\n—Perfecto, me lo llevo.\n\nCarlos paga y sale contento. Por la noche, en la fiesta, le da el libro a Lucía. Ella lo abre y dice: «¡Me encanta! Gracias».",
       items: [
         { q: "¿Qué busca Carlos en la librería?", qFr: "Que cherche Carlos à la librairie ?",
           opts: ["Un libro para él", "Un regalo para Lucía", "Una novela larga", "Un libro de cocina"], correct: 1,
@@ -2962,9 +2962,9 @@ E[220] = {
         { q: "¿Qué le recomienda la dependienta?", qFr: "Que lui recommande la vendeuse ?",
           opts: ["Un libro corto sobre Roma", "Una novela larga", "Un libro de historia de España", "Un bolso"], correct: 0,
           why: "« Le recomiendo este libro sobre Roma. Es corto y muy interesante. »" },
-        { q: "En «Se lo envuelvo ahora mismo», ¿qué es «lo»?", qFr: "Dans « Se lo envuelvo ahora mismo », que représente « lo » ?",
+        { q: "En «Se lo enseño ahora mismo», ¿qué es «lo»?", qFr: "Dans « Se lo enseño ahora mismo », que représente « lo » ?",
           opts: ["La dependienta", "Carlos", "El libro"], correct: 2,
-          why: "« lo » est le COD : le livre (« ¿Me lo puede envolver? »). « Se » remplace « le » = à Carlos (le + lo → se lo)." },
+          why: "« lo » est le COD : le livre (« ¿Me lo puede enseñar? »). « Se » remplace « le » = à Carlos (le + lo → se lo)." },
         { q: "¿Cuándo le da Carlos el libro a Lucía?", qFr: "Quand Carlos donne-t-il le livre à Lucía ?",
           opts: ["En la librería", "Por la mañana", "No se lo da", "Por la noche, en la fiesta"], correct: 3,
           why: "« Por la noche, en la fiesta, le da el libro a Lucía ». Piège : à la librairie il paie seulement." }
@@ -3073,8 +3073,8 @@ E[221] = {
     {
       id: "grammar", num: "II", title: "Gramática: el imperativo", titleFr: "Grammaire : l'impératif",
       points: 20, skill: "cj", type: "fill",
-      instructions: "Escribe cada verbo en imperativo (usted o tú, según la frase). En las dos últimas frases, usa el tiempo que necesitas.",
-      instructionsFr: "Écris chaque verbe à l'impératif (usted ou tú, selon la phrase). Dans les deux dernières phrases, utilise le temps qu'il faut.",
+      instructions: "Escribe cada verbo en imperativo (usted o tú, según la frase). En las dos últimas frases, escribe lo que necesitas (pronombres o tiempo verbal).",
+      instructionsFr: "Écris chaque verbe à l'impératif (usted ou tú, selon la phrase). Dans les deux dernières phrases, écris ce qu'il faut (pronoms ou temps verbal).",
       items: [
         { text: "Perdone, ¿cómo llego al museo? —(Girar, usted) ___ a la derecha en el semáforo.",
           blanks: [["gire"]],
@@ -3184,7 +3184,7 @@ E[221] = {
       promptFr: "Un touriste te demande : « Excusez-moi, comment aller à la gare d'ici ? ». Explique-lui le chemin avec l'impératif de « usted » (gire, siga, cruce, tome…). Utilise au moins cinq instructions, dis où est la gare (al lado de, enfrente de…) et combien de temps il faut à pied.",
       targetSeconds: 60,
       rubric: "Total 15 points. Task achievement (4 pts): gives a coherent route with at least five instructions, says where the station is, and gives the walking time. Grammar (5 pts): correct imperative with usted (-AR → -e: gire, cruce, tome; -ER/-IR → -a; irregulars siga, salga, vaya if used) (3 pts); correct location expressions and prepositions (a la derecha, al lado del…) (1 pt); no mixing of tú forms such as 'gira', 'sigue' (1 pt). Vocabulary (3 pts): relevant and varied (calle, esquina, semáforo, plaza, derecha, izquierda, todo recto, minutos, estación). Fluency and coherence (3 pts): continuous speech, logical order (primero, luego, al final), polite register (por favor, de nada). The text is an automatic transcription of the microphone: do NOT judge pronunciation finely and do not penalise missing accents or punctuation. If under about 40 words, cap the total at 8 pts.",
-      reference: "Claro, con mucho gusto. Salga de aquí y gire a la derecha. Siga todo recto hasta el semáforo. Allí cruce la plaza y tome la segunda calle a la izquierda. Suba por esa calle hasta la esquina. La estación está al lado de un banco, enfrente de un parque. Está a diez minutos andando. No se preocupe, es muy fácil. Que tenga un buen día."
+      reference: "Claro, con mucho gusto. Salga de aquí y gire a la derecha. Siga todo recto hasta el semáforo. Allí cruce la plaza y tome la segunda calle a la izquierda. Suba por esa calle hasta la esquina. La estación está al lado de un banco, enfrente de un parque. Está a diez minutos andando. No se preocupe, es muy fácil. Hasta luego y buen día."
     }
   ]
 };
@@ -3258,12 +3258,12 @@ E[222] = {
           blanks: [["descanse"]],
           why: "Impératif usted d'un verbe en -AR : -ar → -e : descansar → « descanse »." },
         { text: "___ ir al médico: me duele mucho el estómago. (je dois)",
-          blanks: [["tengo que"]],
+          blanks: [["tengo que","debo"]],
           why: "« tener que + infinitif » exprime une nécessité personnelle : « tengo que ir al médico »." },
         { text: "Hay ___ beber mucha agua cuando hace calor. (il faut)",
           blanks: [["que"]],
           why: "« hay que + infinitif » = il faut (obligation générale). Ne pas confondre avec « tener que » (personnel)." },
-        { text: "Esta semana ___ (estar, yo) enfermo.",
+        { text: "Esta semana ___ (estar, yo) enfermo dos veces.",
           blanks: [["he estado"]],
           why: "Rappel A2.3 : « esta semana » (période non terminée) → pretérito perfecto : he estado." },
         { text: "De niño, ___ (tener, yo) mucha tos en invierno.",
@@ -3277,7 +3277,7 @@ E[222] = {
       points: 15, skill: "ce", type: "mcq",
       instructions: "Lee el texto y elige la respuesta correcta.",
       instructionsFr: "Lis le texte et choisis la bonne réponse.",
-      passage: "Pablo tiene un fuerte dolor de espalda desde hace una semana. Trabaja muchas horas sentado y por la noche no puede dormir bien. Hoy pide una cita con el médico y va al centro de salud.\n\n—Buenos días, Pablo. ¿Qué le pasa? —pregunta la médica.\n—Me duele mucho la espalda y estoy muy cansado.\n—Debe descansar y hacer un poco de ejercicio. Tome una pastilla dos veces al día, después de comer.\n—¿Necesito una receta?\n—Sí, aquí la tiene. No se preocupe, no es grave.",
+      passage: "Pablo tiene un fuerte dolor de espalda desde hace una semana. Trabaja muchas horas en la oficina, no hace deporte y por la noche no puede dormir bien. Hoy pide una cita con el médico y va al centro de salud.\n\n—Buenos días, Pablo. ¿Qué le pasa? —pregunta la médica.\n—Me duele mucho la espalda y estoy muy cansado.\n—Debe descansar y hacer un poco de deporte. Tome una pastilla dos veces al día, después de comer.\n—¿Necesito una receta?\n—Sí, aquí la tiene. No se preocupe, no es grave.",
       items: [
         { q: "¿Desde cuándo le duele la espalda a Pablo?", qFr: "Depuis quand Pablo a-t-il mal au dos ?",
           opts: ["Desde hace una semana", "Desde hoy", "Desde hace dos días", "Desde ayer"], correct: 0,
@@ -3292,8 +3292,8 @@ E[222] = {
           opts: ["Que es muy grave", "Que no es grave", "Que Pablo debe ir a urgencias"], correct: 1,
           why: "« No se preocupe, no es grave » : ce n'est pas grave. Elle vouvoie le patient (« no se preocupe », impératif négatif usted)." },
         { q: "Según el texto, ¿qué puede causar el dolor de Pablo?", qFr: "Selon le texte, qu'est-ce qui peut causer la douleur de Pablo ?",
-          opts: ["Trabajar muchas horas sentado", "Hacer demasiado ejercicio", "Dormir demasiado"], correct: 0,
-          why: "Déduction : « trabaja muchas horas sentado » et la médecin conseille « un poco de ejercicio ». Pablo ne fait donc pas trop d'exercice." }
+          opts: ["Trabajar muchas horas y no hacer deporte", "Hacer demasiado deporte", "Dormir demasiado"], correct: 0,
+          why: "Déduction : « trabaja muchas horas en la oficina, no hace deporte » et la médecin conseille « un poco de deporte ». Pablo ne fait donc pas trop de sport." }
       ]
     },
     // --------------------------------------------------------------- IV
@@ -3373,7 +3373,7 @@ E[223] = {
           blanks: [["gusto"]],
           why: "« Con mucho gusto » = avec grand plaisir, formule de service pour accepter poliment." },
         { text: "Gracias por la invitación: sería un ___ ir con vosotros.",
-          blanks: [["placer"]],
+          blanks: [["placer","gusto"]],
           why: "« sería un placer » = ce serait un plaisir (conditionnel de ser + un nom masculin)." },
         { text: "Tienes ___: es mejor salir temprano.",
           blanks: [["razón"]],
@@ -3382,7 +3382,7 @@ E[223] = {
           blanks: [["nada"]],
           why: "« Para nada » = pas du tout. Réponse polie à « ¿Le importa…? » : cela ne me dérange pas." },
         { text: "El café está listo: ___ se lo traigo.",
-          blanks: [["enseguida"]],
+          blanks: [["enseguida","ahora","ya"]],
           why: "« enseguida » = tout de suite, mot du service (restaurant, hôtel)." },
         { text: "Yo que ___, descansaría un poco.",
           blanks: [["tú"]],
@@ -3429,7 +3429,7 @@ E[223] = {
         { text: "—Perdone, ¿dónde está la estación? —(Seguir, usted) ___ todo recto.",
           blanks: [["siga"]],
           why: "Rappel A2.9 : impératif usted de seguir → « siga »." },
-        { text: "Esta mañana ___ (hablar, yo) con el jefe.",
+        { text: "Esta mañana ya ___ (hablar, yo) con el jefe.",
           blanks: [["he hablado"]],
           why: "Rappel A2.3 : « esta mañana » (période encore en cours) → pretérito perfecto : he hablado." }
       ]
@@ -3568,11 +3568,11 @@ E[224] = {
         { text: "El año pasado ___ (ir, nosotros) a Perú.",
           blanks: [["fuimos"]],
           why: "A2.2 : « el año pasado » → passé simple. Irrégulier : ir → fui, fuiste, fue, « fuimos »." },
-        { text: "Hoy ___ (trabajar, yo) mucho.",
+        { text: "Hoy ya ___ (trabajar, yo) mucho y estoy cansada.",
           blanks: [["he trabajado"]],
           why: "A2.3 : « hoy » (journée non terminée) → pretérito perfecto : he + participe." },
         { text: "El lunes que viene ___ (viajar, yo) a Lima.",
-          blanks: [["viajaré", "voy a viajar"]],
+          blanks: [["viajaré", "voy a viajar", "viajo"]],
           why: "A2.4 : « el lunes que viene » → futur : viajar → « viajaré » (ou « voy a viajar »)." },
         { text: "Cuando era niña, ___ (vivir, yo) en un pueblo.",
           blanks: [["vivía"]],
@@ -3592,7 +3592,7 @@ E[224] = {
         { text: "Estoy enfermo ___ hace tres días.",
           blanks: [["desde"]],
           why: "A2.10 : « desde hace + durée » = depuis ; le verbe reste au présent." },
-        { text: "¿(Poder, usted) ___ enviarme el billete, por favor?",
+        { text: "¿(Poder, usted) ___ enviarme el billete, por favor? (très poli)",
           blanks: [["podría"]],
           why: "A2.11 : demande polie → conditionnel : poder → « podría » (irrégulier, même radical que le futur)." }
       ]
@@ -3714,13 +3714,13 @@ E[225] = {
           blanks: [["hermanos"]],
           why: "Un frère + une sœur = « los hermanos » : le masculin pluriel est générique pour un groupe mixte." },
         { text: "La farmacia y el banco están juntos: la farmacia está ___ del banco.",
-          blanks: [["al lado"]],
+          blanks: [["al lado", "cerca"]],
           why: "« al lado de » = à côté de. « lejos de » (loin de) serait faux puisqu'ils sont juntos (ensemble)." },
         { text: "Los lunes, los martes y los miércoles son días de la ___.",
           blanks: [["semana"]],
           why: "Les jours forment une « semana » (semaine). Un « mes » (mois) compte environ 30 jours." },
         { text: "Mi padre trabaja en un hospital y cura a los enfermos: es ___.",
-          blanks: [["médico", "médica", "enfermero"]],
+          blanks: [["médico", "enfermero"]],
           why: "« el médico » = le médecin. Après « es », le métier s'emploie sans article." },
         { text: "Esta camisa cuesta 200 euros: es muy ___.",
           blanks: [["cara"]],
@@ -3884,8 +3884,8 @@ E[225] = {
       prompt: "Preséntate: tu nombre, tu edad, de dónde eres y dónde vives, tu trabajo o tus estudios, una persona de tu familia (cómo se llama y cómo es) y una cosa que te gusta.",
       promptFr: "Présente-toi : ton prénom, ton âge, d'où tu viens et où tu habites, ton travail ou tes études, une personne de ta famille (son prénom et comment elle est) et une chose que tu aimes.",
       minWords: 40, maxWords: 100,
-      rubric: "Total 10 points. Task (3 pts): the learner gives name, age, origin AND residence, job or studies, one family member (name + a description) and one thing they like; 0.5 pt per element covered. Verb forms (4 pts): correct present tense of llamarse (me llamo), ser (soy / es), tener for age (tengo … años), vivir (vivo), trabajar or estudiar, gustar (me gusta + singular/infinitive, me gustan + plural); choice of SER for identity/description and TENER for age; deduct 1 pt per recurring error type (e.g. 'soy 30 años', 'yo tengo' is fine, 'me gusta los libros'). Agreement and vocabulary (2 pts): gender/number agreement (mi madre es simpática, mis hermanos son altos), relevant A1 vocabulary. Coherence (1 pt): short connected sentences (y, pero, porque). Missing accents and ¿ ¡ are NOT penalised at A1. Under 40 words: cap the total at 6.",
-      reference: "Me llamo Sara, tengo treinta años y soy de Lyon, pero ahora vivo en Madrid. Trabajo en una oficina de lunes a viernes. Mi hermano se llama Pablo, tiene veinte años y es muy simpático. Me gusta cocinar y me gustan los libros."
+      rubric: "Total 10 points. Task (3 pts): the learner covers six elements, 0.5 pt each: (1) name, (2) age, (3) origin AND residence, (4) job or studies, (5) one family member with name AND a description, (6) one thing they like. Verb forms (4 pts): correct present tense of llamarse (me llamo), ser (soy / es), tener for age (tengo … años), vivir (vivo), trabajar or estudiar, gustar (me gusta + singular/infinitive, me gustan + plural); choice of SER for identity/description and TENER for age; deduct 1 pt per recurring error type (e.g. 'soy 30 años', 'yo tengo' is fine, 'me gusta los libros'). Agreement and vocabulary (2 pts): gender/number agreement (mi madre es simpática, mis hermanos son altos), relevant A1 vocabulary. Coherence (1 pt): short connected sentences (y, pero, porque). Missing accents and ¿ ¡ are NOT penalised at A1. Under 40 words: cap the total at 6.",
+      reference: "Me llamo Sara y tengo treinta años. Soy de Lyon, pero ahora vivo en Madrid. Trabajo en una oficina de lunes a viernes. Mi hermano se llama Pablo y tiene veinte años. Es muy simpático. Me gusta cocinar y me gustan los libros."
     },
     // ------------------------------------------------------------ VII
     {
@@ -3896,7 +3896,7 @@ E[225] = {
       prompt: "Cuenta un día normal de tu semana y tus planes del fin de semana. Incluye: la hora a la que empiezas y terminas, lo que comes, dos cosas que te gustan, qué tiempo hace hoy y qué vas a hacer el sábado.",
       promptFr: "Raconte une journée normale de ta semaine et tes projets du week-end. Inclus : l'heure à laquelle tu commences et tu termines, ce que tu manges, deux choses que tu aimes, le temps qu'il fait aujourd'hui et ce que tu vas faire samedi.",
       minWords: 70, maxWords: 150,
-      rubric: "Total 15 points. Task (4 pts): daily routine with at least two clock times (a las ocho, a las cinco y media), what the learner eats, two likes, today's weather, and one weekend plan; 0.5 pt per element, max 4. Present tense (4 pts): consistently correct regular -AR/-ER/-IR forms (trabajo, comes, vivimos) and irregular verbs (soy, estoy, tengo, hago, voy, prefiero); deduct 1 pt per recurring error type. Structures of the level (4 pts): at least three of these used correctly: ir a + infinitive (voy a ir…), gustar (me gusta / me gustan, correct agreement), weather with hacer (hace sol, hace frío), estar + gerund (estoy comiendo), a frequency adverb (siempre, a veces, nunca), time expression (por la mañana, a las ocho); about 1.3 pts each. Vocabulary, connectors and coherence (3 pts): relevant A1 words, connectors (y, pero, después, luego), clear order. No past or future simple tenses are expected; do not penalise accents or ¿ ¡ missing at A1. Under 70 words: cap the total at 9.",
+      rubric: "Total 15 points. Task (4 pts): seven elements: start time and end time (clock times such as a las ocho, a las cinco y media), what the learner eats, two likes (counted separately), today's weather, and one weekend plan; about 0.6 pt per element, 4 pts if all seven are covered. Present tense (4 pts): consistently correct regular -AR/-ER/-IR forms (trabajo, comes, vivimos) and irregular verbs (soy, estoy, tengo, hago, voy, prefiero); deduct 1 pt per recurring error type. Structures of the level (4 pts): at least three of these used correctly: ir a + infinitive (voy a ir…), gustar (me gusta / me gustan, correct agreement), weather with hacer (hace sol, hace frío), estar + gerund (estoy comiendo), a frequency adverb (siempre, a veces, nunca), time expression (por la mañana, a las ocho); about 1.3 pts each. Vocabulary, connectors and coherence (3 pts): relevant A1 words, connectors (y, pero, después, luego), clear order. No past or future simple tenses are expected; do not penalise accents or ¿ ¡ missing at A1. Under 70 words: cap the total at 9.",
       reference: "Los lunes me levanto a las siete y empiezo a trabajar a las ocho. Trabajo en una oficina y termino a las cinco y media. Como en casa: normalmente como pasta o ensalada y bebo agua. Me gusta cocinar y me gustan las películas. Hoy hace sol, pero hace un poco de frío. El sábado voy a ir al parque con mi hermana y después vamos a comer en un restaurante. Siempre estoy muy contenta los fines de semana."
     },
     // ------------------------------------------------------------ VIII
@@ -3932,8 +3932,8 @@ E[225] = {
             opts: ["tío", "primo", "abuelo"], correct: 0,
             why: "Le frère de ta mère = ton oncle : el tío. Le primo est le fils de l'oncle ; el abuelo est le grand-père." },
           { q: "Hoy hace mucho sol y mucho ___.", qFr: "Aujourd'hui il y a beaucoup de soleil et il fait très ___.",
-            opts: ["frío", "calor", "viento"], correct: 1,
-            why: "Avec beaucoup de soleil, on dit « hace calor » (il fait chaud). Après « mucho », on met un nom : mucho calor." },
+            opts: ["frío", "calor", "lluvia"], correct: 1,
+            why: "Avec beaucoup de soleil, on dit « hace calor » (il fait chaud). Après « mucho », on met un nom : mucho calor. « hace frío » est le contraire, et pour la pluie on dit « llueve » (pas « hace lluvia »)." },
           { q: "Quiero una ___ de agua, por favor.", qFr: "Je voudrais une ___ d'eau, s'il vous plaît.",
             opts: ["botella", "plato", "camisa"], correct: 0,
             why: "« una botella de agua » = une bouteille d'eau. Un plato contient de la nourriture et une camisa est un vêtement." },
@@ -3960,7 +3960,7 @@ E[225] = {
           { q: "Nosotros ___ en una oficina.", qFr: "Nous travaillons dans un bureau.",
             opts: ["trabajo", "trabajan", "trabajamos"], correct: 2,
             why: "Verbe en -AR, nosotros → « trabajamos »." },
-          { q: "Mañana ___ al cine con mis amigos.", qFr: "Demain je vais au cinéma avec mes amis.",
+          { q: "Mañana yo ___ al cine con mis amigos.", qFr: "Demain, moi, je vais au cinéma avec mes amis.",
             opts: ["voy", "vas", "va"], correct: 0,
             why: "IR avec yo → « voy ». « vas » est pour tú, « va » pour él / ella / usted." },
           { q: "Me ___ la música.", qFr: "J'aime la musique.",
@@ -4064,8 +4064,8 @@ E[226] = {
           blanks: [["receta"]],
           why: "« la receta » = l'ordonnance (aussi la recette de cuisine). Chez le médecin, c'est l'ordonnance." },
         { text: "Me duele una ___ y voy al dentista.",
-          blanks: [["muela", "diente"]],
-          why: "« la muela » = la molaire (la dent de derrière) ; « el diente » = la dent. Le dentiste soigne les dents." },
+          blanks: [["muela"]],
+          why: "« una muela » = une molaire (la dent de derrière). « diente » est masculin : « un diente » irait avec « un », pas avec « una »." },
         { text: "El tren llega con una hora de ___: no es puntual.",
           blanks: [["retraso"]],
           why: "« el retraso » = le retard. « un retraso de una hora » = une heure de retard." },
@@ -4079,7 +4079,7 @@ E[226] = {
           blanks: [["piscina"]],
           why: "« la piscina » = la piscine. On nage dans une piscine, pas dans un « andén » (quai de gare)." },
         { text: "Mi hermano gana mucho dinero: su ___ es muy alto.",
-          blanks: [["sueldo"]],
+          blanks: [["sueldo", "salario"]],
           why: "« el sueldo » = le salaire. « un regalo » est un cadeau et « un mensaje » un message." }
       ]
     },
@@ -4136,8 +4136,8 @@ E[226] = {
           opts: ["le", "se", "las"], correct: 1,
           why: "Deux pronoms : le COI « le » devient « se » devant lo / la / los / las → « se las doy » (jamais « le las »)." },
         { q: "Este es el ___ restaurante de la ciudad.", qFr: "C'est le meilleur restaurant de la ville.",
-          opts: ["más bueno", "buenísimo", "mejor"], correct: 2,
-          why: "Superlatif de bueno : el mejor (bueno → mejor). On ne dit pas « más bueno » et « buenísimo » n'accompagne pas « el »." },
+          opts: ["más bueno", "muy bueno", "mejor"], correct: 2,
+          why: "Superlatif de bueno : el mejor (bueno → mejor). On ne dit pas « el más bueno restaurante » et « muy bueno » n'est pas un superlatif relatif (il ne se combine pas avec « el … de la ciudad »)." },
         { q: "Esta mañana yo ___ un café en el bar.", qFr: "Ce matin j'ai pris un café au bar.",
           opts: ["he tomado", "tomé", "tomaba"], correct: 0,
           why: "« Esta mañana » : période encore ouverte (on est dans la matinée ou dans la journée) → perfecto : he tomado." },
@@ -4249,7 +4249,7 @@ E[226] = {
       promptFr: "1) Décris comment était ta vie quand tu étais enfant (où tu habitais, ce que tu faisais). 2) Raconte un jour spécial : ce qui s'est passé (utilise le passé simple et l'imparfait). 3) Dis ce que tu feras l'année prochaine. 4) Termine par un conseil à un ami fatigué (avec le conditionnel : yo que tú…, deberías…).",
       minWords: 80, maxWords: 170,
       rubric: "Total 15 points. Task (3 pts): the four parts are present (childhood, special day, next year, advice); 0.75 pt per part. Imperfecto (3 pts): correct imperfect for habits and description (vivía, jugaba, era, iba, había, hacía), irregulars ser/ir/ver handled. Imperfecto vs indefinido (3 pts): in the special-day story the imperfect gives the setting (hacía sol, estaba cansado) and the indefinido the events (llegué, sonó, fui, hice); deduct 1 pt per recurring confusion. Future and conditional (3 pts): correct future simple (iré, tendré, viajaré) and at least one correct conditional (deberías descansar, yo que tú me iría, podrías…); 1.5 pts each. Vocabulary, connectors and coherence (3 pts): time markers (de niño, un día, de repente, el año que viene), connectors (porque, pero, además, por eso), clear organisation. Missing accents cost at most 1 pt in total; do not penalise ¿ ¡. Under 80 words: cap the total at 9.",
-      reference: "Cuando era niña, vivía en un pueblo pequeño con mis abuelos. Jugaba en el jardín todos los días y nadaba en la piscina en verano. Un día especial fue mi cumpleaños de los diez años: hacía mucho sol y mis amigos estaban en casa cuando mi abuela llegó con una tarta enorme. Cantamos, comimos y bailamos hasta la noche. El año que viene viajaré a Perú con mi hermana y visitaré Machu Picchu. A mi amigo, que está muy cansado, le diría: yo que tú descansaría un fin de semana y deberías dormir más."
+      reference: "Cuando era niña, vivía en un pueblo pequeño con mis abuelos. Jugaba en el jardín todos los días y nadaba en la piscina en verano. Un día especial fue cuando cumplí diez años: hacía mucho sol y mis amigos estaban en casa cuando mi abuela llegó con una tarta enorme. Cantamos, comimos y bailamos hasta la noche. El año que viene viajaré a Perú con mi hermana y visitaré Machu Picchu. A mi amigo, que está muy cansado, le diría: yo que tú descansaría un fin de semana y deberías dormir más."
     },
     // ------------------------------------------------------------ VIII
     {
@@ -4413,7 +4413,7 @@ E[227] = {
           blanks: [["vaso"]],
           why: "« un vaso de agua » = un verre d'eau. L'article « un » demande un nom masculin." },
         { text: "El supermercado está ___ de mi casa: voy a pie en cinco minutos.",
-          blanks: [["cerca"]],
+          blanks: [["cerca", "al lado"]],
           why: "« cerca de » = près de. À cinq minutes à pied, ce n'est pas « lejos »." },
         { text: "Hoy hace sol y no hay ninguna nube: el cielo está ___.",
           blanks: [["despejado"]],
@@ -4428,7 +4428,7 @@ E[227] = {
           blanks: [["pueblo"]],
           why: "« el pueblo » = le village. Vocabulaire des souvenirs d'enfance (imparfait)." },
         { text: "Mi hermano gana mucho dinero: su ___ es muy alto.",
-          blanks: [["sueldo"]],
+          blanks: [["sueldo", "salario"]],
           why: "« el sueldo » = le salaire. Un « regalo » est un cadeau, mot qui ne convient pas ici." }
       ]
     },
@@ -4585,7 +4585,7 @@ E[227] = {
       prompt: "Escribe un correo a un compañero nuevo. Preséntate (tu nombre, tu trabajo o tus estudios, dónde vives, dos cosas que te gustan) y cuéntale qué hiciste el fin de semana pasado (dos o tres acciones).",
       promptFr: "Écris un e-mail à un nouveau collègue. Présente-toi (ton prénom, ton travail ou tes études, où tu habites, deux choses que tu aimes) et raconte-lui ce que tu as fait le week-end dernier (deux ou trois actions).",
       minWords: 50, maxWords: 110,
-      rubric: "Total 10 points. Task (3 pts): the learner gives name, job or studies, residence, two likes, and two or three actions of last weekend, in an e-mail frame (greeting and closing); 0.4 pt per element, max 3. Present tense (3 pts): correct presents of llamarse / ser, trabajar or estudiar, vivir, and gustar (me gusta + singular or infinitive, me gustan + plural); deduct 1 pt per recurring error type. Pretérito indefinido (3 pts): correct indefinido for the weekend, with regular forms (comí, hablé, visitamos) AND at least one irregular (fui, hice, estuve, tuve); deduct 1 pt per recurring error type; wrong tense choice (present or imperfect for a finished past action) counts as an error. Vocabulary and coherence (1 pt): time markers (el sábado, el domingo, ayer), connectors (y, luego, después). Missing accents cost at most 0.5 pt in total; ¿ ¡ not penalised. Under 50 words: cap the total at 6.",
+      rubric: "Total 10 points. Task (3 pts): the learner gives name, job or studies, residence, two likes, and two or three actions of last weekend, in an e-mail frame; six elements, 0.5 pt each: name; job or studies; residence; two likes (counted together); two or three actions of last weekend; greeting and closing. Present tense (3 pts): correct presents of llamarse / ser, trabajar or estudiar, vivir, and gustar (me gusta + singular or infinitive, me gustan + plural); deduct 1 pt per recurring error type. Pretérito indefinido (3 pts): correct indefinido for the weekend, with regular forms (comí, hablé, visitamos) AND at least one irregular (fui, hice, estuve, tuve); deduct 1 pt per recurring error type; wrong tense choice (present or imperfect for a finished past action) counts as an error. Vocabulary and coherence (1 pt): time markers (el sábado, el domingo, ayer), connectors (y, luego, después). Missing accents cost at most 0.5 pt in total; ¿ ¡ not penalised. Under 50 words: cap the total at 6.",
       reference: "Hola Pedro: Me llamo Lucía y trabajo en una oficina de Madrid, donde vivo desde hace dos años. Me gusta cocinar y me gustan las películas españolas. El sábado fui al cine con una amiga y después cenamos en un restaurante pequeño. El domingo hice ejercicio y estuve en casa por la tarde. Hasta el lunes. Un saludo, Lucía."
     },
     // ------------------------------------------------------------ VII
@@ -4596,9 +4596,9 @@ E[227] = {
       instructionsFr: "Écris un texte d'au moins 90 mots.",
       prompt: "Escribe sobre tu vida en tres tiempos. 1) Presente: tu rutina y lo que te gusta. 2) Pasado: un viaje o un recuerdo (usa el pasado simple y el imperfecto para describir). 3) Futuro: tus proyectos para el año que viene (futuro o ir a) y una cosa que te gustaría hacer algún día (condicional).",
       promptFr: "Écris sur ta vie en trois temps. 1) Présent : ta routine et ce que tu aimes. 2) Passé : un voyage ou un souvenir (utilise le passé simple et l'imparfait pour décrire). 3) Futur : tes projets pour l'année prochaine (futur ou ir a) et une chose que tu aimerais faire un jour (conditionnel).",
-      minWords: 80, maxWords: 180,
+      minWords: 90, maxWords: 180,
       rubric: "Total 15 points. Task (3 pts): the three parts are present (routine and likes; a trip or memory; projects and a wish); 1 pt per part. Present (3 pts): correct present for routine and likes, regular and irregular verbs (trabajo, vivo, soy, estoy, tengo, voy, prefiero), gustar with correct agreement; deduct 1 pt per recurring error type. Past (4 pts): correct pretérito indefinido for events (fui, visité, comimos, hice) AND correct imperfecto for background or description (hacía sol, era, había, estaba); choice between the two tenses is right; 2 pts each. Future and conditional (3 pts): correct future simple or ir a + infinitive (viajaré, voy a estudiar) and one correct conditional (me gustaría, querría, podría); 1.5 pts each. Vocabulary, connectors and coherence (2 pts): time markers (todos los días, el año pasado, de repente, el año que viene), connectors (porque, pero, después, por eso), clear organisation. Missing accents cost at most 1 pt in total; ¿ ¡ not penalised. Under 90 words: cap the total at 9.",
-      reference: "Trabajo en una oficina y vivo en Lyon con mi hermana. Todos los días me levanto a las siete y voy al trabajo en tren. Me gusta cocinar y me gustan las películas. El verano pasado viajé a Portugal con mis amigos. Llegamos a Lisboa de noche y hacía calor. Visitamos los museos y comimos pescado en la playa; fue un viaje inolvidable. El año que viene voy a estudiar español dos horas por semana y viajaré a Perú en agosto. Algún día me gustaría vivir en Madrid."
+      reference: "Trabajo en una oficina y vivo en Lyon con mi hermana. Todos los días me levanto a las siete y voy al trabajo en tren. Me gusta cocinar y me gustan las películas. El verano pasado viajé a Portugal con mis amigos. Llegamos a Lisboa de noche y hacía calor. Visitamos los museos y comimos pescado en la playa; fue un viaje inolvidable. El año que viene voy a estudiar español dos horas por semana y viajaré a Perú en agosto. Los fines de semana descanso en casa y paseo con mis amigos. Algún día me gustaría vivir en Madrid."
     },
     // ------------------------------------------------------------ VIII
     {
@@ -4609,7 +4609,7 @@ E[227] = {
       prompt: "Estás en la recepción de un hotel en Sevilla (habla de usted). Saluda, di tu nombre y pide una habitación doble para tres noches con educación. Pregunta si el desayuno está incluido. Explica por qué llegas tarde: ayer el tren llegó con retraso. Pregunta cómo llegar al centro y qué tiempo hará mañana.",
       promptFr: "Tu es à la réception d'un hôtel à Séville (vouvoie). Salue, dis ton nom et demande poliment une chambre double pour trois nuits. Demande si le petit-déjeuner est inclus. Explique pourquoi tu arrives tard : hier le train est arrivé avec du retard. Demande comment aller au centre et quel temps il fera demain.",
       minWords: 35, targetSeconds: 60,
-      rubric: "Total 10 points. Task (4 pts): greeting and name; polite request for a double room for three nights; asks if breakfast is included; explains yesterday's delay (past); asks for directions or tomorrow's weather; 0.8 pt per element. Forms (4 pts): politeness (quería / me gustaría / ¿podría…?), usted forms (¿está incluido el desayuno?, ¿puede decirme…?), correct past for yesterday (el tren llegó con retraso / llegué tarde), correct future or ir a for tomorrow (¿qué tiempo hará? / va a hacer); present tense forms (me llamo, tengo) correct. Fluency and vocabulary (2 pts): hotel and travel vocabulary (habitación, noches, desayuno, retraso), short connected sentences. Pronunciation cannot be judged finely from a transcript: judge content, forms and apparent fluency. Under 35 words: cap the total at 5.",
+      rubric: "Total 10 points. Task (4 pts): greeting and name; polite request for a double room for three nights; asks if breakfast is included; explains yesterday's delay (past); asks how to get to the centre AND asks about tomorrow's weather (0.4 pt each); 0.8 pt per element otherwise. Forms (4 pts): politeness (quería / me gustaría / ¿podría…?), usted forms (¿está incluido el desayuno?, ¿puede decirme…?), correct past for yesterday (el tren llegó con retraso / llegué tarde), correct future or ir a for tomorrow (¿qué tiempo hará? / va a hacer); present tense forms (me llamo, tengo) correct. Fluency and vocabulary (2 pts): hotel and travel vocabulary (habitación, noches, desayuno, retraso), short connected sentences. Pronunciation cannot be judged finely from a transcript: judge content, forms and apparent fluency. Under 35 words: cap the total at 5.",
       reference: "Buenas tardes. Me llamo Ana Ruiz y quería una habitación doble para tres noches, por favor. ¿Está incluido el desayuno? Perdone, llego tarde porque ayer el tren llegó con una hora de retraso. ¿Podría decirme cómo llego al centro? Y una última pregunta: ¿qué tiempo hará mañana? Muchas gracias."
     }
   ],

@@ -75,6 +75,32 @@ ATELIER.chapters.push({
 });
 
 
+ATELIER.texts.push({
+  id: "rutina-carlos", title: "Mi rutina diaria", level: "A1",
+  intro: "Carlos raconte sa journée. Touche chaque mot pour voir ce que c'est.",
+  sentences: [
+    [ { w: "Me", pos: "pronom", info: "pronom réfléchi, 1re pers. sing.", fr: "me" },
+      { w: "llamo", pos: "verbe", info: "llamarse, présent, yo", fr: "(je m')appelle" },
+      { w: "Carlos", pos: "nom propre", info: "", fr: "Carlos" }, { w: ".", pos: "ponct" } ],
+    [ { w: "Me", pos: "pronom", info: "pronom réfléchi, 1re pers. sing.", fr: "me" },
+      { w: "levanto", pos: "verbe", info: "levantarse, présent, yo", fr: "(je me) lève" },
+      { w: "a", pos: "préposition", info: "", fr: "à" },
+      { w: "las", pos: "article", info: "article défini, féminin pluriel", fr: "les" },
+      { w: "siete", pos: "déterminant", info: "nombre", fr: "sept" },
+      { w: "y", pos: "conjonction", info: "", fr: "et" },
+      { w: "desayuno", pos: "verbe", info: "desayunar, présent, yo", fr: "je prends le petit-déjeuner" },
+      { w: "café", pos: "nom", info: "masculin singulier", fr: "café" },
+      { w: "muy", pos: "adverbe", info: "", fr: "très" },
+      { w: "caliente", pos: "adjectif", info: "masculin/féminin singulier", fr: "chaud" }, { w: ".", pos: "ponct" } ],
+    [ { w: "¡", pos: "ponct" }, { w: "Vaya", pos: "interjection", info: "", fr: "Eh bien" }, { w: "!", pos: "ponct" } ]
+  ],
+  translation: "Je m'appelle Carlos. Je me lève à sept heures et je prends un café très chaud au petit-déjeuner. Eh bien !",
+  questions: [
+    { q: "À quelle heure se lève Carlos ?", opts: ["À six heures", "À sept heures", "À huit heures"], correct: 1, why: "« a las siete » = à sept heures." },
+    { q: "« levanto » est…", opts: ["un nom", "un verbe", "un adjectif"], correct: 1, why: "levantarse, présent, yo." }
+  ]
+});
+
 ATELIER.chapters.push({
   id: "temps-present", group: "temps", icon: "🕐", title: "Le présent", level: "A1",
   intro: "Le présent sert à parler de ce qui est <b>vrai maintenant</b>, de ce qu'on <b>fait d'habitude</b> et de ce qui se passe <b>en ce moment</b>. En espagnol, la <b>terminaison</b> du verbe en dit beaucoup : c'est la clé de tout.",
@@ -97,7 +123,7 @@ ATELIER.chapters.push({
       { es: "Mi hermana vive en Madrid.", fr: "Ma sœur vit à Madrid." },
       { es: "Trabajamos en una oficina.", fr: "Nous travaillons dans un bureau." },
       { es: "Ellos beben agua.", fr: "Ils boivent de l'eau." },
-      { es: "¿Vivís aquí?", fr: "Vous habitez ici ? (vosotros)" }
+      { es: "¿Vivís aquí?", fr: "Vous habitez ici ? (vosotros)", note: "vosotros = Espagne ; en Amérique latine : ¿Viven aquí? (ustedes)" }
     ],
     pitfalls: [
       { wrong: "Yo hablo, tú hablas, él habla… (toujours le sujet)", right: "Hablo, hablas, habla…", why: "Le sujet ne se répète pas : la terminaison l'indique déjà. L'ajouter partout sonne lourd." },
@@ -147,8 +173,8 @@ ATELIER.chapters.push({
       { es: "¿Quieres venir con nosotros?", fr: "Tu veux venir avec nous ?" }
     ],
     pitfalls: [
-      { wrong: "Yo tenigo / yo hago → « hacigo »", right: "Tengo / hago", why: "La finale -go se colle à la racine : ten-go, ha-go. On ne garde pas le -er/-ir." },
-      { wrong: "Nosotros tienemos, queremos → « quieremos »", right: "Tenemos, queremos", why: "Le changement de voyelle n'existe pas à nosotros/vosotros : la botte « stoppe »." },
+      { wrong: "Yo tenigo / yo hacigo", right: "Tengo / hago", why: "La finale -go se colle à la racine : ten-go, ha-go. On ne garde pas le -er/-ir." },
+      { wrong: "Nosotros tienemos, quieremos", right: "Tenemos, queremos", why: "Le changement de voyelle n'existe pas à nosotros/vosotros : la voyelle du radical n'est pas accentuée à nosotros/vosotros, donc elle ne change pas." },
       { wrong: "Yo sabo", right: "Yo sé", why: "Saber est le seul à faire <b>sé</b> à yo (avec accent, pour le distinguer de « se »)." },
       { wrong: "Yo estoy de Francia", right: "Soy de Francia", why: "L'origine est une identité : on utilise ser, pas estar." }
     ],
@@ -193,7 +219,7 @@ ATELIER.chapters.push({
     pitfalls: [
       { wrong: "Estoy hablo / Estoy hablar", right: "Estoy hablando", why: "Après estar, toujours le gérondif (-ando / -iendo)." },
       { wrong: "Estoy leiendo", right: "Estoy leyendo", why: "Entre deux voyelles, le « i » devient « y »." },
-      { wrong: "Estoy dormiendo → « durmando »", right: "Estoy durmiendo", why: "dormir est en -ir : -iendo, et la voyelle change (o→u)." },
+      { wrong: "Estoy dormendo / durmando", right: "Estoy durmiendo", why: "dormir est en -ir : -iendo, et la voyelle change (o→u)." },
       { wrong: "Estamos trabajandos", right: "Estamos trabajando", why: "Le gérondif est invariable : jamais de -s." }
     ],
     exercises: [
@@ -262,7 +288,7 @@ ATELIER.chapters.push({
   },
   {
     id: "ir-a-plans", title: "Parler de ses plans",
-    why: "Pour parler de l'avenir, on a plusieurs « outils » qui nuancent le degré de certitude. <b>Voy a</b> = c'est décidé, c'est prévu. <b>Pienso</b> = j'ai l'intention (« je compte »). <b>Quiero</b> = j'ai envie. <b>Tengo que</b> = obligation. Les trois se construisent avec l'infinitif : tu ne conjugues qu'un seul verbe. Ajoute un <b>marqueur de temps</b> (mañana, esta tarde…) et la phrase est sans ambiguïté.",
+    why: "Pour parler de l'avenir, on a plusieurs « outils » qui nuancent le degré de certitude. <b>Voy a</b> = c'est décidé, c'est prévu. <b>Pienso</b> = j'ai l'intention (« je compte »). <b>Quiero</b> = j'ai envie. <b>Tengo que</b> = obligation. Toutes ces structures se construisent avec l'infinitif : tu ne conjugues qu'un seul verbe. Ajoute un <b>marqueur de temps</b> (mañana, esta tarde…) et la phrase est sans ambiguïté.",
     rule: "1. <b>ir a</b> + infinitif : plan certain.<br>2. <b>pensar</b> + infinitif (sans « a ») : intention. pensar est e→ie : pienso, piensas, piensa, pensamos, piensan.<br>3. <b>querer</b> + infinitif : envie. <b>tener que</b> + infinitif : obligation (« que » obligatoire).<br>4. Marqueurs : <b>mañana</b>, <b>esta tarde</b>, <b>esta noche</b>, <b>el fin de semana</b>, <b>la semana que viene</b>, <b>pasado mañana</b>.",
     table: { caption: "Quatre façons de dire un plan", headers: ["Structure", "Exemple", "Sens"], rows: [
       ["<b>ir a</b> + inf.", "Voy a salir.", "c'est prévu"],
@@ -306,7 +332,7 @@ ATELIER.chapters.push({
   lessons: [
   {
     id: "indefinido-reguliers", title: "L'indefinido régulier",
-    why: "En français, on forme le passé composé avec avoir/être + participe (« j'ai parlé »). En espagnol, l'indefinido est un temps <b>simple</b> : une seule forme (hablé). Les terminaisons de yo et de él portent un <b>accent écrit</b> (hablé, habló) : c'est ce qui les distingue du présent (habló ≠ hablo) et du futur. Attention : à <b>nosotros</b>, les verbes en <b>-ar</b> sont <b>identiques au présent</b> (hablamos), seul le contexte dit « hier » ou « maintenant ».",
+    why: "En français, on forme le passé composé avec avoir/être + participe (« j'ai parlé »). En espagnol, l'indefinido est un temps <b>simple</b> : une seule forme (hablé). Les terminaisons de yo et de él portent un <b>accent écrit</b> (hablé, habló) : c'est ce qui les distingue du présent (habló ≠ hablo). Attention : à <b>nosotros</b>, les verbes en <b>-ar</b> (et en <b>-ir</b> : vivimos) sont <b>identiques au présent</b> (hablamos), seul le contexte dit « hier » ou « maintenant ».",
     rule: "1. Enlève -ar / -er / -ir.<br>2. -ar : <b>-é, -aste, -ó, -amos, -asteis, -aron</b>.<br>3. -er et -ir (identiques) : <b>-í, -iste, -ió, -imos, -isteis, -ieron</b>.<br>4. Accent obligatoire à yo et él/ella.<br>5. Marqueurs : <b>ayer</b>, <b>anoche</b>, <b>el lunes pasado</b>, <b>la semana pasada</b>, <b>hace dos días</b>.",
     timeline: "● ayer (comí) ─────────── maintenant ───▶ demain",
     table: { caption: "hablar · comer · vivir", headers: ["Personne", "-ar", "-er", "-ir"], rows: [
@@ -327,7 +353,7 @@ ATELIER.chapters.push({
     pitfalls: [
       { wrong: "Ayer hablo con mi jefe (présent)", right: "Ayer hablé con mi jefe", why: "Avec « ayer », il faut le passé. L'accent sur é distingue hablé / hablo." },
       { wrong: "Ella hablo / Ella hablio", right: "Ella habló", why: "-ar à él/ella : <b>-ó</b> (pas -io, pas de -o sans accent)." },
-      { wrong: "Nosotros comemos ayer", right: "Nosotros comimos ayer", why: "À nosotros en -er, le passé est -imos (≠ présent -emos). Seuls les -ar sont identiques." },
+      { wrong: "Nosotros comemos ayer", right: "Nosotros comimos ayer", why: "À nosotros en -er, le passé est -imos (≠ présent -emos). Seuls les -ar et les -ir sont identiques au présent." },
       { wrong: "Ellos comeron", right: "Ellos comieron", why: "-er / -ir → <b>-ieron</b> (pas -eron)." }
     ],
     exercises: [
@@ -349,7 +375,7 @@ ATELIER.chapters.push({
   },
   {
     id: "indefinido-irreguliers", title: "Les irréguliers très fréquents",
-    why: "Comme au présent, les verbes les plus fréquents sont irréguliers. La bonne nouvelle : ils suivent <b>un même schéma</b>. Racine spéciale (tuv-, hic-, pud-, estuv-, vin-, dij-) + terminaisons <b>sans accent</b> : <b>-e, -iste, -o, -imos, -isteis, -ieron</b> (et <b>-eron</b> après j : dijeron). L'absence d'accent n'est pas un oubli : ces formes sont tellement « courtes » que l'accent ne sert plus. Deux verbes sont particuliers : <b>ser et ir</b> ont exactement la même forme (<b>fui, fuiste, fue…</b>) : le contexte les distingue.",
+    why: "Comme au présent, les verbes les plus fréquents sont irréguliers. La bonne nouvelle : ils suivent <b>un même schéma</b>. Racine spéciale (tuv-, hic-, pud-, estuv-, vin-, dij-) + terminaisons <b>sans accent</b> : <b>-e, -iste, -o, -imos, -isteis, -ieron</b> (et <b>-eron</b> après j : dijeron). L'absence d'accent n'est pas un oubli : l'accent tonique tombe sur la racine (TUve, HIce), pas sur la terminaison, donc aucun accent écrit n'est nécessaire. Deux verbes sont particuliers : <b>ser et ir</b> ont exactement la même forme (<b>fui, fuiste, fue…</b>) : le contexte les distingue.",
     rule: "1. Apprends les racines : tener → <b>tuv-</b>, estar → <b>estuv-</b>, poder → <b>pud-</b>, hacer → <b>hic-</b>, venir → <b>vin-</b>, decir → <b>dij-</b>.<br>2. Ajoute <b>-e, -iste, -o, -imos, -isteis, -ieron</b> (decir : <b>-eron</b>).<br>3. Pas d'accent sur ces formes.<br>4. hacer : 3e sing. <b>hizo</b> (c→z pour garder le son).<br>5. <b>ser / ir</b> : fui, fuiste, fue, fuimos, fuisteis, fueron ; <b>dar / ver</b> : di, diste, dio… / vi, viste, vio… (sans accent).",
     table: { caption: "Indefinido irrégulier (vosotros omis)", headers: ["Verbe", "yo", "tú", "él / ella", "nosotros", "ellos"], rows: [
       ["ser / ir", "<b>fui</b>", "<b>fuiste</b>", "<b>fue</b>", "<b>fuimos</b>", "<b>fueron</b>"],
@@ -420,7 +446,7 @@ ATELIER.chapters.push({
       { wrong: "Yo pidí", right: "Yo pedí", why: "Le changement e→i ne touche pas yo, tú, nosotros." },
       { wrong: "Yo buscé / llegé / empezé", right: "Yo busqué / llegué / empecé", why: "L'orthographe garde le son : c→qu, g→gu, z→c devant é." },
       { wrong: "Ella leió / ellos leieron", right: "Ella leyó / ellos leyeron", why: "Un « i » entre deux voyelles → « y »." },
-      { wrong: "Ellos durmieron → « dormieron »", right: "Ellos durmieron", why: "o→u aussi aux 3es personnes du pluriel." }
+      { wrong: "Ellos dormieron", right: "Ellos durmieron", why: "o→u aussi aux 3es personnes du pluriel." }
     ],
     exercises: [
       { type: "mcq", q: "Passé de « pedir » à la 3e personne du singulier ?", opts: ["pedió", "pidió", "pidí"], correct: 1, why: "pedir → él <b>pidió</b>." },
@@ -507,7 +533,7 @@ ATELIER.chapters.push({
       { wrong: "Ayer he comido con mi hermana.", right: "Ayer comí con mi hermana.", why: "« Ayer » est une période fermée : indefinido. C'est LE piège du francophone qui traduit « j'ai mangé » mot à mot." },
       { wrong: "Anoche he cenado fuera.", right: "Anoche cené fuera.", why: "« Anoche » (hier soir) est terminé : indefinido." },
       { wrong: "Todavía no comí.", right: "Todavía no he comido.", why: "« Todavía no » = pas encore, ça peut encore arriver : la période est ouverte, donc perfecto (en Espagne)." },
-      { wrong: "Este año fui a Japón (l'année n'est pas terminée).", right: "Este año he ido a Japón.", why: "« Este año » est une période encore ouverte : perfecto." }
+      { wrong: "Este año fui a Japón (l'année n'est pas terminée).", right: "Este año he ido a Japón.", why: "« Este año » est une période encore ouverte : perfecto (en Espagne ; en Amérique latine, l'indefinido est aussi courant)." }
     ],
     exercises: [
       { type: "mcq", q: "Hoy ___ mucho.", opts: ["trabajé", "he trabajado", "trabajaba"], correct: 1, why: "« Hoy » = période ouverte → <b>perfecto</b>." },
@@ -572,7 +598,7 @@ ATELIER.chapters.push({
     ]
   }, {
     id: "imperfecto-usos", title: "Quand l'employer ? Décor, habitude, « Estaba… cuando… »",
-    why: "Pense à un <b>film</b> : l'imperfecto, c'est l'<b>arrière-plan</b> (le décor, ce qui durait). L'indefinido, c'est l'<b>événement</b> qui arrive et « coupe » l'action, comme une photo. C'est le même contraste qu'en français : « Je <b>mangeais</b> (décor) quand il <b>a téléphoné</b> (événement) ». Piège : le français dit « il a téléphoné » avec le passé composé, mais l'espagnol met ici l'<b>indefinido</b> (sonó).",
+    why: "Pense à un <b>film</b> : l'imperfecto, c'est l'<b>arrière-plan</b> (le décor, ce qui durait). L'indefinido, c'est l'<b>événement</b> qui arrive et « coupe » l'action, comme une photo. C'est le même contraste qu'en français : « Je <b>mangeais</b> (décor) quand il <b>a téléphoné</b> (événement) ». Piège : le français dit « il a téléphoné » avec le passé composé, mais l'espagnol met ici l'<b>indefinido</b> (llamó).",
     rule: "1. <b>Habitude</b> : siempre, todos los días, cada verano, de niño → imperfecto.<br>2. <b>Description</b> (âge, heure, météo, personne) : tenía diez años, eran las ocho, hacía frío → imperfecto.<br>3. <b>Action en cours</b> : estaba + gérondif (estaba cenando), mientras → imperfecto.<br>4. <b>Événement ponctuel</b> qui interrompt : <b>Estaba</b> en casa <b>cuando llegó</b> Pablo → imperfecto (décor) + indefinido (événement).",
     timeline: "décor : ~~~~~~~~~~ estaba cenando ~~~~~~~~~~<br>événement :                 ● sonó el teléfono",
     table: { caption: "Imperfecto : quatre emplois", headers: ["Emploi", "Mots-clés", "Exemple"], rows: [
@@ -591,7 +617,7 @@ ATELIER.chapters.push({
       { wrong: "Estaba en casa cuando Pablo llegaba.", right: "Estaba en casa cuando llegó Pablo.", why: "L'arrivée est un événement ponctuel : indefinido." },
       { wrong: "Cuando tuve diez años, vivía en Madrid.", right: "Cuando tenía diez años, vivía en Madrid.", why: "L'âge est une description (décor) : imperfecto." },
       { wrong: "Hizo frío y llovió (pour décrire la météo d'un souvenir).", right: "Hacía frío y llovía.", why: "Pour planter le décor, on décrit la météo à l'imperfecto." },
-      { wrong: "Cada verano fuimos a la playa.", right: "Cada verano íbamos a la playa.", why: "« Cada verano » = habitude répétée : imperfecto." }
+      { wrong: "Cada verano fuimos a la playa. (pour une habitude)", right: "Cada verano íbamos a la playa.", why: "« Cada verano » = habitude répétée : imperfecto." }
     ],
     exercises: [
       { type: "mcq", q: "Todos los veranos ___ a la playa.", opts: ["fuimos", "íbamos", "hemos ido"], correct: 1, why: "Habitude (todos los veranos) → <b>imperfecto</b>." },
@@ -655,7 +681,7 @@ ATELIER.chapters.push({
   }, {
     id: "condicional-usos", title: "Politesse, conseil, rêve (et le piège futur / conditionnel)",
     why: "Le conditionnel « adoucit » ou « imagine ». <b>Poli</b> : « Quiero un café » est direct ; « Me gustaría un café » est plus délicat (comme « je voudrais » en français). <b>Conseil</b> : « deberías » est plus doux que « debes ». <b>Rêve</b> : on parle de ce qui n'est pas réel. Attention à ne pas confondre avec le futur : <b>hablará</b> (il parlera, ce sera vrai) et <b>hablaría</b> (il parlerait, c'est imaginé).",
-    rule: "1. <b>Politesse</b> : ¿Podría…? ¿Podrías…? Me gustaría… Querría…<br>2. <b>Conseil</b> : Deberías + infinitif ; <b>Yo que tú</b> + conditionnel (« à ta place »).<br>3. <b>Rêve / hypothèse</b> : Con más dinero, viajaría… ; ¿Qué harías con un millón ?<br>4. <b>Futur ou conditionnel ?</b> La seule différence : -á (futur) / -ía (conditionnel) : hablar<b>á</b> ≠ hablar<b>ía</b>.",
+    rule: "1. <b>Politesse</b> : ¿Podría…? ¿Podrías…? Me gustaría… Querría…<br>2. <b>Conseil</b> : Deberías + infinitif ; <b>Yo que tú</b> + conditionnel (« à ta place »).<br>3. <b>Rêve / hypothèse</b> : Con más dinero, viajaría… ; ¿Qué harías con un millón?<br>4. <b>Futur ou conditionnel ?</b> À la 3e personne du singulier : -á (futur) / -ía (conditionnel) : hablar<b>á</b> ≠ hablar<b>ía</b>.",
     timeline: "futur (réel) : maintenant ──▶ ● mañana hablaré<br>conditionnel (imaginé) : maintenant ──▶ ○ hablaría",
     table: { caption: "Trois emplois du condicional", headers: ["Emploi", "Structure", "Exemple"], rows: [
       ["Politesse", "¿Podría…? / Me gustaría…", "<b>¿Podría</b> ayudarme, por favor?"],
@@ -743,8 +769,8 @@ ATELIER.chapters.push({
     ]
   }, {
     id: "imperativo-negativo", title: "Le négatif (no hables) et la place des pronoms (dímelo)",
-    why: "Le négatif <b>n'a pas les mêmes formes</b> que l'affirmatif : on prend la forme du présent et on <b>inverse la voyelle</b> (-ar → <b>-es</b>, -er / -ir → <b>-as</b>). Ce procédé marche aussi pour les « irréguliers » : on part du <b>yo</b> (tengo → no tengas, hago → no hagas). Pour les pronoms, la logique est simple : à l'<b>affirmatif</b>, ils se collent <b>après</b> le verbe (comme « dis-le-moi ») ; au <b>négatif</b>, ils restent <b>avant</b> (comme « ne me le dis pas »).",
-    rule: "1. <b>tú négatif</b> : no + forme inversée : -ar → <b>-es</b> (no hables) ; -er / -ir → <b>-as</b> (no comas, no escribas).<br>2. <b>usted négatif</b> : no + même forme que l'affirmatif (no hable, no coma).<br>3. Irréguliers : no <b>hagas</b>, no <b>digas</b>, no <b>vayas</b>, no <b>tengas</b>, no <b>vengas</b>, no <b>pongas</b>, no <b>salgas</b>, no <b>seas</b> (radical du yo).<br>4. <b>Pronoms</b> : affirmatif → collés après (dímelo, cómpralo) ; négatif → avant (no me lo digas, no lo compres).<br>5. Ordre : <b>me / te / nos</b> avant <b>lo / la</b> (me lo). On ajoute un <b>accent</b> à l'écrit : di + me + lo = <b>dímelo</b>.",
+    why: "Le négatif <b>n'a pas les mêmes formes</b> que l'affirmatif : on prend la forme <b>yo</b> du présent, on enlève le -o et on <b>inverse la voyelle</b> (-ar → <b>-es</b>, -er / -ir → <b>-as</b>). Ce procédé marche aussi pour les « irréguliers » (tengo → no tengas, hago → no hagas), sauf ir et ser (no vayas, no seas). Pour les pronoms, la logique est simple : à l'<b>affirmatif</b>, ils se collent <b>après</b> le verbe (comme « dis-le-moi ») ; au <b>négatif</b>, ils restent <b>avant</b> (comme « ne me le dis pas »).",
+    rule: "1. <b>tú négatif</b> : no + forme inversée : -ar → <b>-es</b> (no hables) ; -er / -ir → <b>-as</b> (no comas, no escribas).<br>2. <b>usted négatif</b> : no + même forme que l'affirmatif (no hable, no coma).<br>3. Irréguliers : no <b>hagas</b>, no <b>digas</b>, no <b>vayas</b>, no <b>tengas</b>, no <b>vengas</b>, no <b>pongas</b>, no <b>salgas</b>, no <b>seas</b> (radical du yo, sauf vayas et seas).<br>4. <b>Pronoms</b> : affirmatif → collés après (dímelo, cómpralo) ; négatif → avant (no me lo digas, no lo compres).<br>5. Ordre : <b>me / te / nos</b> avant <b>lo / la</b> (me lo). Quand le mot s'allonge, un <b>accent</b> écrit garde la syllabe accentuée : di + me + lo = <b>dímelo</b>, compra + lo = <b>cómpralo</b> (mais dime, sans accent).",
     timeline: "affirmatif : ¡Dímelo! (pronoms après)<br>négatif : ¡No me lo digas! (pronoms avant)",
     table: { caption: "Affirmatif / négatif (tú)", headers: ["Affirmatif", "Négatif", "Français"], rows: [
       ["habla", "no habl<b>es</b>", "parle / ne parle pas"],
@@ -767,7 +793,7 @@ ATELIER.chapters.push({
       { wrong: "No habla tan rápido. (comme ordre, tú)", right: "No hables tan rápido.", why: "Au négatif tú, on inverse : -ar → -es." },
       { wrong: "No haz ruido.", right: "No hagas ruido.", why: "Haz n'existe qu'à l'affirmatif. Au négatif : no hagas." },
       { wrong: "No dímelo.", right: "No me lo digas.", why: "Au négatif, les pronoms vont avant le verbe, jamais collés après." },
-      { wrong: "Me lo di.", right: "Dímelo.", why: "À l'affirmatif, les pronoms se collent après le verbe (« Me lo di » = je te l'ai donné, autre temps !)." }
+      { wrong: "Me lo di.", right: "Dímelo.", why: "À l'affirmatif, les pronoms se collent après le verbe (« Me lo di » = je me le suis donné, indefinido de dar : autre temps !)." }
     ],
     exercises: [
       { type: "mcq", q: "« Ne parle pas ! » (tu)", opts: ["No habla", "No hables", "No hable"], correct: 1, why: "-ar → <b>-es</b> : no hables." },
@@ -932,8 +958,8 @@ ATELIER.chapters.push({
     ]
   }, {
     id: "diphtongue-o-ue", title: "o → ue (puedo, duermo) et u → ue (juego)",
-    why: "Même mécanisme que e → ie : la voyelle <b>accentuée</b> du radical se casse, ici o → <b>ue</b>. Même botte : <b>puEdo</b> mais <b>podEmos</b>. <b>Jugar</b> est le seul verbe en u → ue (juego) : l'espagnol n'aime pas commencer ou finir sur un « u » seul accentué, il l'habille en « ue » comme pour les autres.",
-    rule: "1. Trouve le « o » du radical (p<b>o</b>der, d<b>o</b>rmir).<br>2. À yo, tú, él et ellos : o → <b>ue</b> (puedo, puedes, puede, pueden).<br>3. À nosotros et vosotros : le « o » reste (podemos, podéis).<br>4. Jugar : u → ue (juego, juegas, juega, juegan ; jugamos, jugáis). On dit <b>jugar a</b> + sport (juego al tenis).<br>5. Costar ne s'emploie qu'à la 3e personne : cuesta (1 prix) / cuestan (plusieurs).",
+    why: "Même mécanisme que e → ie : la voyelle <b>accentuée</b> du radical se casse, ici o → <b>ue</b>. Même botte : <b>puEdo</b> mais <b>podEmos</b>. <b>Jugar</b> est le seul verbe courant en u → ue (juego) : c'est un héritage de l'histoire de la langue, apprends-le tel quel ; il suit la même botte.",
+    rule: "1. Trouve le « o » du radical (p<b>o</b>der, d<b>o</b>rmir).<br>2. À yo, tú, él et ellos : o → <b>ue</b> (puedo, puedes, puede, pueden).<br>3. À nosotros et vosotros : le « o » reste (podemos, podéis).<br>4. Jugar : u → ue (juego, juegas, juega, juegan ; jugamos, jugáis). On dit <b>jugar a</b> + sport (juego al tenis).<br>5. Costar s'emploie surtout à la 3e personne : cuesta (1 prix) / cuestan (plusieurs).",
     table: { caption: "La botte : poder (pouvoir) et dormir (dormir)", headers: ["Personne", "poder", "dormir"], rows: [
       ["yo", "p<b>ue</b>do", "d<b>ue</b>rmo"],
       ["tú", "p<b>ue</b>des", "d<b>ue</b>rmes"],
@@ -1060,7 +1086,7 @@ ATELIER.chapters.push({
     exercises: [
       { type: "mcq", q: "Combien de syllabes dans « bueno » ?", opts: ["1", "2", "3"], correct: 1, why: "bue-no : la diphtongue ue = une syllabe." },
       { type: "fill", text: "Coupe en syllabes : bueno → ___-no", answers: ["bue"], why: "bue-no." },
-      { type: "mcq", q: "Laquelle est une diphtongue ?", opts: ["ie dans « tiene »", "ea dans « oreja »", "eo dans « leo »"], correct: 0, why: "i (faible) + e (forte) = diphtongue. Pour ea et eo, deux voyelles fortes : hiatus." },
+      { type: "mcq", q: "Laquelle est une diphtongue ?", opts: ["ie dans « tiene »", "ea dans « idea »", "eo dans « leo »"], correct: 0, why: "i (faible) + e (forte) = diphtongue. Pour ea et eo, deux voyelles fortes : hiatus." },
       { type: "fill", text: "Coupe en syllabes : cuidado → ___-da-do", answers: ["cui"], why: "cui-da-do : ui = diphtongue." },
       { type: "speak", es: "¿Tienes tiempo?", fr: "Tu as le temps ?" },
       { type: "mcq", q: "Combien de syllabes dans « ciudad » ?", opts: ["1", "3", "2"], correct: 2, why: "ciu-dad : iu est une diphtongue." },
@@ -1076,7 +1102,7 @@ ATELIER.chapters.push({
   }, {
     id: "hiatus", title: "Les hiatus et l'accent écrit (país, día, río)",
     why: "Parfois deux voyelles côte à côte ne fusionnent pas : elles se <b>séparent</b>, c'est un hiatus. Deux cas : (1) deux voyelles <b>fortes</b> (a, e, o) : <b>te-a-tro, le-er, po-e-ta</b>, aucun accent nécessaire ; (2) une voyelle <b>faible accentuée</b> près d'une forte : le son se casse. L'espagnol le marque avec un <b>accent écrit sur le i ou le u</b> : <b>pa-ís, dí-a, rí-o</b>. Sans l'accent, on lirait une diphtongue (« dia » = une syllabe).",
-    rule: "1. Deux voyelles fortes (a, e, o) côte à côte = <b>hiatus</b> : le-er, te-a-tro, po-e-ta (pas d'accent).<br>2. Voyelle <b>faible tonique</b> + forte (ou l'inverse) = hiatus avec accent écrit sur le <b>í</b> ou le <b>ú</b> : <b>día, río, tío, país, maíz, baúl, feúcho</b>.<br>3. L'accent écrit sur í/ú s'écrit toujours, même si la règle générale ne le demande pas (maíz finit par z, mais garde son accent).<br>4. Terminaisons en <b>-ía</b> : tenía, comía, vivía (imparfait) et -ía du conditionnel : toujours avec accent.",
+    rule: "1. Deux voyelles fortes (a, e, o) côte à côte = <b>hiatus</b> : le-er, te-a-tro, po-e-ta (pas d'accent).<br>2. Voyelle <b>faible tonique</b> + forte (ou l'inverse) = hiatus avec accent écrit sur le <b>í</b> ou le <b>ú</b> : <b>día, río, tío, país, maíz, baúl, ataúd</b>.<br>3. L'accent écrit sur í/ú s'écrit toujours, même si la règle générale ne le demande pas (maíz finit par z, mais garde son accent).<br>4. Terminaisons en <b>-ía</b> : tenía, comía, vivía (imparfait) et -ía du conditionnel : toujours avec accent.",
     table: { caption: "Hiatus : coupe et raison", headers: ["Mot", "Coupe", "Pourquoi"], rows: [
       ["país", "pa-ís", "i faible tonique, accent écrit"],
       ["día", "dí-a", "i faible tonique, accent écrit"],
@@ -1084,7 +1110,7 @@ ATELIER.chapters.push({
       ["tío", "tí-o", "i faible tonique, accent écrit"],
       ["maíz", "ma-íz", "i faible tonique, accent écrit"],
       ["baúl", "ba-úl", "u faible tonique, accent écrit"],
-      ["feúcho", "fe-ú-cho", "u faible tonique, accent écrit"],
+      ["ataúd", "a-ta-úd", "u faible tonique, accent écrit"],
       ["poeta", "po-e-ta", "deux fortes : hiatus, pas d'accent"],
       ["leer", "le-er", "deux fortes : hiatus, pas d'accent"],
       ["tenía", "te-ní-a", "-ía = hiatus avec accent"]] },
@@ -1094,7 +1120,7 @@ ATELIER.chapters.push({
       { es: "río", fr: "fleuve", note: "rí-o (2 syllabes)" },
       { es: "tío", fr: "oncle", note: "tí-o (2 syllabes)" },
       { es: "maíz", fr: "maïs", note: "ma-íz (2 syllabes)" },
-      { es: "feúcho", fr: "moche", note: "fe-ú-cho (3 syllabes)" },
+      { es: "ataúd", fr: "cercueil", note: "a-ta-úd (3 syllabes)" },
       { es: "poeta", fr: "poète", note: "po-e-ta (3 syllabes, deux fortes)" },
       { es: "tenía", fr: "j'avais / il avait", note: "te-ní-a (3 syllabes)" }
     ],
@@ -1115,7 +1141,7 @@ ATELIER.chapters.push({
       { type: "speak", es: "¿Qué día es hoy?", fr: "Quel jour sommes-nous aujourd'hui ?" },
       { type: "fill", text: "Ajoute l'accent : rio (le fleuve) → ___", answers: ["río"], why: "rí-o." },
       { type: "mcq", q: "Combien de syllabes dans « leer » ?", opts: ["2", "1", "3"], correct: 0, why: "le-er : deux voyelles fortes, hiatus." },
-      { type: "fill", text: "Ajoute l'accent : feucho → ___", answers: ["feúcho"], why: "fe-ú-cho : u faible tonique." },
+      { type: "fill", text: "Ajoute l'accent : ataud → ___", answers: ["ataúd"], why: "a-ta-úd : u faible tonique." },
       { type: "mcq", q: "Quel mot est un hiatus SANS accent écrit ?", opts: ["país", "teatro", "día"], correct: 1, why: "te-a-tro : deux voyelles fortes (e, a)." },
       { type: "speak", es: "Cada día leo un poco.", fr: "Chaque jour je lis un peu." },
       { type: "fill", text: "Ajoute l'accent : baul → ___", answers: ["baúl"], why: "ba-úl : u faible tonique." }
@@ -1158,7 +1184,7 @@ ATELIER.chapters.push({
       { type: "mcq", q: "On te dit « ¿Cómo estás? ». Tu réponds…", opts: ["Bien, ¿y tú?", "Me llamo Ana", "De nada"], correct: 0, why: "Réponse réflexe : Bien, ¿y tú?" },
       { type: "mcq", q: "On te dit « Gracias ». Tu réponds…", opts: ["Perdón", "De nada", "Hola"], correct: 1, why: "Gracias → de nada." },
       { type: "fill", text: "¿Cómo ___ (estar, tú)? —Bien, ¿y tú?", answers: ["estás"], why: "tú → estás." },
-      { type: "fill", text: "¿Cómo ___ (estar, usted)? —Bien, gracias.", answers: ["está"], why: "usted → est 3e personne : está." },
+      { type: "fill", text: "¿Cómo ___ (estar, usted)? —Bien, gracias.", answers: ["está"], why: "usted → 3e personne : está." },
       { type: "mcq", q: "Tu bouscules quelqu'un dans le métro. Tu dis…", opts: ["De nada", "Mucho gusto", "Perdón"], correct: 2, why: "Perdón pour s'excuser d'un geste." },
       { type: "speak", es: "Buenos días, ¿cómo está usted?", fr: "Bonjour, comment allez-vous ?" },
       { type: "fill", text: "Muchas ___.", answers: ["gracias"], why: "Muchas gracias." },
@@ -1183,7 +1209,7 @@ ATELIER.chapters.push({
       ["ellos/ustedes", "habl<b>an</b>", "com<b>en</b>", "viv<b>en</b>"]] },
     examples: [
       { es: "Hablo español y como en casa.", fr: "Je parle espagnol et je mange à la maison." },
-      { es: "Tengo dos hermanos.", fr: "J'ai deux frères/soeurs." },
+      { es: "Tengo dos hermanos.", fr: "J'ai deux frères ou sœurs." },
       { es: "Hago deporte los lunes.", fr: "Je fais du sport le lundi." },
       { es: "Salgo a las ocho.", fr: "Je sors à huit heures." },
       { es: "No sé la respuesta.", fr: "Je ne sais pas la réponse." },
@@ -1204,7 +1230,7 @@ ATELIER.chapters.push({
       { type: "speak", es: "Hago deporte los lunes.", fr: "Je fais du sport le lundi." },
       { type: "fill", text: "Nosotros ___ (poder) venir.", answers: ["podemos"], why: "nosotros : hors de la botte, podemos." },
       { type: "fill", text: "Yo ___ (ir) al trabajo.", answers: ["voy"], why: "ir, yo : voy." },
-      { type: "mcq", q: "Vosotros ___ amigos.", opts: ["sois", "somos", "son"], correct: 0, why: "ser, vosotros : sois." },
+      { type: "mcq", q: "Vosotros ___ amigos.", opts: ["somos", "sois", "son"], correct: 1, why: "ser, vosotros : sois." },
       { type: "fill", text: "Tú ___ (dormir) poco.", answers: ["duermes"], why: "dormir, tú : duermes." },
       { type: "fill", text: "Yo ___ (saber) la respuesta.", answers: ["sé"], why: "saber, yo : sé." },
       { type: "fill", text: "Yo ___ (salir) y tú ___ (volver).", answers: [["salgo"], ["vuelves"]], why: "salir, yo : salgo ; volver, tú : vuelves." },
@@ -1213,7 +1239,7 @@ ATELIER.chapters.push({
   }, {
     id: "reflejo-3", title: "Réflexe 3 : ser, estar, tener, hay",
     why: "Quatre verbes pour « être / avoir / il y a » ; chaque <b>question</b> appelle le bon verbe. Qui es-tu, d'où viens-tu, comment es-tu ? → <b>ser</b>. Où es-tu, comment vas-tu (état) ? → <b>estar</b>. Âge, faim, soif, froid ? → <b>tener</b> (en français aussi : « j'ai faim »). Existence (« il y a ») ? → <b>hay</b>.",
-    rule: "1. <b>ser</b> = identité, profession, origine, caractère : ¿Quién es ? ¿De dónde eres ? ¿Cómo es ?<br>2. <b>estar</b> = lieu et état : ¿Dónde está ? ¿Cómo estás ? Estoy cansado.<br>3. <b>tener</b> = âge et sensations : tengo 20 años, tengo hambre / sed / frío / calor / sueño.<br>4. <b>hay</b> = « il y a » + quelque chose d'indéfini (un, dos, sans article). Avec <b>el, la, mi, un nom propre</b> → <b>está</b>.",
+    rule: "1. <b>ser</b> = identité, profession, origine, caractère : ¿Quién es? ¿De dónde eres? ¿Cómo es?<br>2. <b>estar</b> = lieu et état : ¿Dónde está? ¿Cómo estás? Estoy cansado.<br>3. <b>tener</b> = âge et sensations : tengo 20 años, tengo hambre / sed / frío / calor / sueño.<br>4. <b>hay</b> = « il y a » + quelque chose d'indéfini (un, dos, sans article). Avec <b>el, la, mi, un nom propre</b> → <b>está</b>.",
     table: { caption: "La question te donne le verbe", headers: ["Question", "Verbe", "Réponse type"], rows: [
       ["¿Quién eres? ¿De dónde eres? ¿Cómo eres?", "<b>ser</b>", "Soy profesora. Soy de Lyon. Es simpática."],
       ["¿Dónde estás? ¿Cómo estás?", "<b>estar</b>", "Estoy en casa. Estoy cansado."],
@@ -1234,7 +1260,7 @@ ATELIER.chapters.push({
       { wrong: "Estoy hambre.", right: "Tengo hambre.", why: "Hambre, sed, frío, calor, sueño : toujours avec tener." }
     ],
     exercises: [
-      { type: "mcq", q: "¿Dónde ___ el baño ?", opts: ["es", "está", "hay"], correct: 1, why: "Lieu d'une chose précise (el baño) : estar." },
+      { type: "mcq", q: "¿Dónde ___ el baño?", opts: ["es", "está", "hay"], correct: 1, why: "Lieu d'une chose précise (el baño) : estar." },
       { type: "fill", text: "Yo ___ (ser) profesora.", answers: ["soy"], why: "profession : ser, yo → soy." },
       { type: "fill", text: "Ella ___ (estar) cansada.", answers: ["está"], why: "état : estar, ella → está." },
       { type: "fill", text: "Mi hermano ___ (tener) veinte años.", answers: ["tiene"], why: "âge : tener, él → tiene." },
@@ -1242,7 +1268,7 @@ ATELIER.chapters.push({
       { type: "speak", es: "¿Dónde está el baño?", fr: "Où sont les toilettes ?" },
       { type: "fill", text: "___ (haber) dos bancos en esta calle.", answers: ["Hay", "hay"], why: "Existence d'éléments indéfinis : hay (même forme au singulier et au pluriel)." },
       { type: "fill", text: "Nosotros ___ (tener) hambre y ___ (estar) en casa.", answers: [["tenemos"], ["estamos"]], why: "faim : tener (tenemos) ; lieu : estar (estamos)." },
-      { type: "mcq", q: "¿Cómo ___ tu madre ? —Es muy simpática.", opts: ["es", "está", "tiene"], correct: 0, why: "Cómo es = comment est-elle (caractère) → ser." },
+      { type: "mcq", q: "¿Cómo ___ tu madre? —Es muy simpática.", opts: ["es", "está", "tiene"], correct: 0, why: "Cómo es = comment est-elle (caractère) → ser." },
       { type: "fill", text: "El libro ___ (estar) sobre la mesa.", answers: ["está"], why: "Lieu d'un objet précis (el libro) : está." },
       { type: "speak", es: "Tengo sed y tengo frío.", fr: "J'ai soif et j'ai froid." },
       { type: "fill", text: "¿Cuántos años ___ (tener) tú?", answers: ["tienes"], why: "âge : tener, tú → tienes." },
@@ -1374,7 +1400,7 @@ ATELIER.chapters.push({
       { type: "mcq", q: "Dans « Pues, no sé… », <b>pues</b> sert à…", opts: ["dire « ensuite »", "dire « car »", "hésiter, comme « ben… » en français"], correct: 2, why: "<b>pues</b> est un remplissage : il laisse le temps de réfléchir, comme « ben… »." },
       { type: "fill", text: "Hola, ¿qué ___? —Muy bien, gracias.", answers: ["tal"], why: "La salutation passe-partout est <b>¿Qué tal?</b>" },
       { type: "speak", es: "¿Qué tal? ¿Todo bien?", fr: "Ça va ? Tout va bien ?" },
-      { type: "mcq", q: "Avec ton chef, le matin, quelle salutation est la plus sûre ?", opts: ["¡Qué pasa, tío!", "Buenos días, ¿cómo está?", "¡Eh, venga!"], correct: 1, why: "Avec un chef : salutation neutre et <b>usted</b> (¿cómo está?). <b>¿Qué pasa, tío?</b> est réservé aux amis." },
+      { type: "mcq", q: "Avec ton chef, le matin, quelle salutation est la plus sûre ?", opts: ["¿Qué pasa, tío?", "Buenos días, ¿cómo está?", "¡Eh, venga!"], correct: 1, why: "Avec un chef : salutation neutre et <b>usted</b> (¿cómo está?). <b>¿Qué pasa, tío?</b> est réservé aux amis." },
       { type: "fill", text: "Estoy muy cansado, ___ que me voy a casa. (= du coup, c'est-à-dire)", answers: ["o sea"], why: "<b>o sea que…</b> introduit une conséquence : « du coup je rentre »." },
       { type: "speak", es: "Vale, nos vemos luego. ¡Venga!", fr: "D'accord, on se voit plus tard. Allez, salut !" },
       { type: "mcq", q: "À la fin d'une phrase, <b>¿sabes?</b> sert à…", opts: ["vérifier que l'autre suit, comme « tu vois ? »", "demander un renseignement précis", "dire au revoir"], correct: 0, why: "C'est un mot d'appui oral : « Es tarde, ¿sabes? » = « Il est tard, tu vois ? »." },
@@ -1414,7 +1440,7 @@ ATELIER.chapters.push({
     exercises: [
       { type: "mcq", q: "Tu apprends une bonne nouvelle. Quelle réaction est sûre avec tout le monde ?", opts: ["¡Qué bien!", "¡Qué rollo!", "¡Ni de broma!"], correct: 0, why: "<b>¡Qué bien!</b> est positif et neutre." },
       { type: "mcq", q: "« ¡Ni de broma! » veut dire…", opts: ["sans plaisanter", "pas question", "peut-être"], correct: 1, why: "<b>ni de broma</b> = « même pas en rêve, pas question »." },
-      { type: "fill", text: "¡Qué ___! Mañana no hay clase. (= super)", answers: ["bien", "guay"], why: "<b>¡Qué bien!</b> ou <b>¡Qué guay!</b>" },
+      { type: "fill", text: "¡Qué ___! Mañana no hay clase. (= super)", answers: ["bien", "guay", "genial", "bueno", "chulo"], why: "<b>¡Qué bien!</b> ou <b>¡Qué guay!</b>" },
       { type: "mcq", q: "Tu rates le bus. Quelle réaction est la plus naturelle ?", opts: ["¡Qué guay!", "¡Ojalá!", "¡Vaya!"], correct: 2, why: "<b>¡Vaya!</b> exprime la contrariété (« zut »). <b>¡Qué guay!</b> serait de la joie." },
       { type: "speak", es: "¡Madre mía, qué calor!", fr: "Oh là là, quelle chaleur !" },
       { type: "fill", text: "—¿Vas a trabajar el domingo? —¡___ de broma!", answers: ["ni"], why: "<b>¡Ni de broma!</b> = pas question." },
@@ -1422,7 +1448,7 @@ ATELIER.chapters.push({
       { type: "fill", text: "—¿Va a llover mañana? —¡___ no!", answers: ["ojalá"], why: "<b>¡Ojalá no!</b> = « pourvu que non »." },
       { type: "speak", es: "¡Anda! No sabía que vivías aquí.", fr: "Tiens ! Je ne savais pas que tu habitais ici." },
       { type: "mcq", q: "Quelle réaction est trop familière pour répondre à ton chef ?", opts: ["¡Vaya!", "¡Madre mía!", "¡Qué rollo!"], correct: 2, why: "<b>¡Qué rollo!</b> est familier. <b>¡Vaya!</b> et <b>¡Madre mía!</b> passent partout." },
-      { type: "fill", text: "¡Qué ___! Otra reunión de tres horas. (= quelle barbe)", answers: ["rollo"], why: "<b>¡Qué rollo!</b> = quelle barbe, quel ennui." },
+      { type: "fill", text: "¡Qué ___! Otra reunión de tres horas. (= quelle barbe)", answers: ["rollo", "lata", "palo"], why: "<b>¡Qué rollo!</b> = quelle barbe, quel ennui." },
       { type: "speak", es: "¡Qué guay! Vamos a la playa.", fr: "Trop bien ! On va à la plage." },
       { type: "mcq", q: "Comment dit-on « Quelle jolie maison ! » ?", opts: ["¡Qué bonita casa!", "¡Qué es bonita casa!", "¡Qué casa es bonita!"], correct: 0, why: "<b>¡Qué + adjectif + nom!</b>, sans verbe : ¡Qué bonita casa!" }
     ]
@@ -1445,12 +1471,12 @@ ATELIER.chapters.push({
     examples: [
       { es: "Oye, tío, ¿me prestas diez euros?", fr: "Dis, mec, tu me prêtes dix euros ?", note: "En Colombie : « parce » ou « parcero » (très courant entre amis)." },
       { es: "Es un chaval muy majo.", fr: "C'est un gamin très sympa.", note: "En Colombie : « pelado / pelada » (jeune)." },
-      { es: "Me mola tu camisa. Es muy guay.", fr: "J'aime ta chemise. Elle est super.", note: "En Colombie : « chévere » (cool, très courant et sûr). « Qué chimba » = très familier, à éviter sauf entre amis proches." },
+      { es: "Me mola tu camisa. Es muy guay.", fr: "J'aime ta chemise. Elle est super.", note: "En Colombie : « chévere » (cool, très courant et sûr). « Qué chimba » = très familier, voire vulgaire à l'origine : à éviter sauf entre amis proches." },
       { es: "Esta semana curro un montón.", fr: "Cette semaine je bosse énormément.", note: "En Colombie : « camellar » (travailler) et « el camello » (le boulot)." },
       { es: "No tengo pasta para el cine.", fr: "Je n'ai pas de fric pour le cinéma.", note: "En Colombie et en Amérique latine : « plata » (argent)." },
       { es: "Quedamos a las ocho en la plaza.", fr: "On se retrouve à huit heures sur la place.", note: "« quedar » est compris partout ; en Colombie on dit aussi « parchar » pour traîner entre amis." },
       { es: "Estoy hecho polvo: he currado diez horas.", fr: "Je suis crevé : j'ai bossé dix heures.", note: "« hecho polvo » se comprend partout ; en Colombie aussi « estar molido »." },
-      { es: "¡Qué pasada! Flipo con este sitio.", fr: "C'est dingue ! Je suis bluffé par cet endroit.", note: "En Colombie : « qué bacano » (positif). « Qué chimba » = très familier, à signaler : réservé aux amis proches." }
+      { es: "¡Qué pasada! Flipo con este sitio.", fr: "C'est dingue ! Je suis bluffé par cet endroit.", note: "En Colombie : « qué bacano » (positif). « Qué chimba » = très familier, voire vulgaire à l'origine : réservé aux amis proches." }
     ],
     pitfalls: [
       { wrong: "Me mola las películas.", right: "Me molan las películas.", why: "<b>molar</b> se construit comme <i>gustar</i> : le verbe s'accorde avec ce qui plaît (películas = pluriel → molan)." },
@@ -1472,12 +1498,12 @@ ATELIER.chapters.push({
       { type: "mcq", q: "En Colombie, quel mot dit couramment « cool, super » ?", opts: ["pasta", "parce", "chévere"], correct: 2, why: "<b>chévere</b> = cool en Colombie. <b>parce</b> = mec, <b>pasta</b> = fric (Espagne)." },
       { type: "fill", text: "Es un ___ muy majo. (= gamin, jeune)", answers: ["chaval"], why: "<b>chaval</b> = garçon, jeune (chavala au féminin)." },
       { type: "speak", es: "Estoy hecho polvo, he currado un montón.", fr: "Je suis crevé, j'ai énormément bossé." },
-      { type: "mcq", q: "« Qué chimba » (Colombie)…", opts: ["veut dire « quelle tristesse »", "est la formule polie pour un client", "est très familier : à réserver à des amis proches"], correct: 2, why: "<b>qué chimba</b> est très familier et peut choquer : entre amis proches seulement." }
+      { type: "mcq", q: "« Qué chimba » (Colombie)…", opts: ["veut dire « quelle tristesse »", "est la formule polie pour un client", "est très familier : à réserver à des amis proches"], correct: 2, why: "<b>qué chimba</b> est très familier, voire vulgaire à l'origine, et peut choquer : entre amis proches seulement." }
     ]
   }, {
     id: "informel-registre", title: "Tú ou usted, WhatsApp, niveaux de langue",
     why: "Une même idée se dit de 3 façons : <b>formelle</b> (usted, e-mail pro), <b>courante</b> (tú, quotidien), <b>familière</b> (amis, messages). Le choix dépend de <b>qui</b> tu parles. <b>Risque principal :</b> être <b>trop familier</b> avec un chef, un client ou une personne âgée passe pour du manque de respect ; être <b>trop formel</b> avec des amis crée de la distance, mais ça ne choque jamais. Dans le doute : commence en <b>usted</b> et laisse l'autre proposer le « tú ».",
-    rule: "1. <b>usted</b> : chef, client, inconnu âgé, administration. Il se conjugue comme <b>él/ella</b> : ¿Usted habla inglés?<br>2. <b>tú</b> : amis, famille, collègues du même âge. Plus facile et rapide en Espagne ; en Colombie, <b>usted</b> s'emploie même en famille ou entre amis proches.<br>3. WhatsApp : <b>xq</b> = porque / por qué · <b>tb</b> = también · <b>q</b> = que / qué · <b>finde</b> = fin de semana · <b>cumple</b> = cumpleaños · <b>tkm</b> = te quiero mucho · <b>jaja</b> = haha · <b>xfa</b> = por favor.<br>4. Les abréviations restent pour les <b>messages entre proches</b>, jamais dans un e-mail professionnel.",
+    rule: "1. <b>usted</b> : chef, client, inconnu âgé, administration. Il se conjugue comme <b>él/ella</b> : ¿Usted habla inglés?<br>2. <b>tú</b> : amis, famille, collègues du même âge. Plus facile et rapide en Espagne ; dans une grande partie de la Colombie, <b>usted</b> s'emploie même en famille ou entre amis proches.<br>3. WhatsApp : <b>xq</b> = porque / por qué · <b>tb</b> = también · <b>q</b> = que / qué · <b>finde</b> = fin de semana · <b>cumple</b> = cumpleaños · <b>tkm</b> = te quiero mucho · <b>jaja</b> = haha · <b>xfa</b> = por favor.<br>4. Les abréviations restent pour les <b>messages entre proches</b>, jamais dans un e-mail professionnel.",
     table: { caption: "La même idée, 3 niveaux", headers: ["Idée", "Formel", "Courant", "Familier"], rows: [
       ["Demander de l'aide", "¿Podría ayudarme, por favor?", "¿Me ayudas, por favor?", "¿Me echas una mano?"],
       ["Remercier", "Le agradezco su ayuda.", "Gracias por tu ayuda.", "¡Mil gracias, eres un crack!"],
@@ -3119,32 +3145,6 @@ ATELIER.decoder = {
   ]
 };
 
-ATELIER.texts.push({
-  id: "rutina-carlos", title: "Mi rutina diaria", level: "A1",
-  intro: "Carlos raconte sa journée. Touche chaque mot pour voir ce que c'est.",
-  sentences: [
-    [ { w: "Me", pos: "pronom", info: "pronom réfléchi, 1re pers. sing.", fr: "me" },
-      { w: "llamo", pos: "verbe", info: "llamarse, présent, yo", fr: "(je m')appelle" },
-      { w: "Carlos", pos: "nom propre", info: "", fr: "Carlos" }, { w: ".", pos: "ponct" } ],
-    [ { w: "Me", pos: "pronom", info: "pronom réfléchi, 1re pers. sing.", fr: "me" },
-      { w: "levanto", pos: "verbe", info: "levantarse, présent, yo", fr: "(je me) lève" },
-      { w: "a", pos: "préposition", info: "", fr: "à" },
-      { w: "las", pos: "article", info: "article défini, féminin pluriel", fr: "les" },
-      { w: "siete", pos: "déterminant", info: "nombre", fr: "sept" },
-      { w: "y", pos: "conjonction", info: "", fr: "et" },
-      { w: "desayuno", pos: "verbe", info: "desayunar, présent, yo", fr: "je prends le petit-déjeuner" },
-      { w: "café", pos: "nom", info: "masculin singulier", fr: "café" },
-      { w: "muy", pos: "adverbe", info: "", fr: "très" },
-      { w: "caliente", pos: "adjectif", info: "masculin/féminin singulier", fr: "chaud" }, { w: ".", pos: "ponct" } ],
-    [ { w: "¡", pos: "ponct" }, { w: "Vaya", pos: "interjection", info: "", fr: "Eh bien" }, { w: "!", pos: "ponct" } ]
-  ],
-  translation: "Je m'appelle Carlos. Je me lève à sept heures et je prends un café très chaud au petit-déjeuner. Eh bien !",
-  questions: [
-    { q: "À quelle heure se lève Carlos ?", opts: ["À six heures", "À sept heures", "À huit heures"], correct: 1, why: "« a las siete » = à sept heures." },
-    { q: "« levanto » est…", opts: ["un nom", "un verbe", "un adjectif"], correct: 1, why: "levantarse, présent, yo." }
-  ]
-});
-
 // Atelier de grammaire espagnole — 8 textes annotés A1
 ATELIER.texts.push({ id:"me-presento", title:"Me presento", level:"A1", intro:"Sofía se présente : nom, âge, pays, métier et famille. Touche chaque mot pour voir ce que c’est.",
  sentences:[
@@ -3156,7 +3156,7 @@ ATELIER.texts.push({ id:"me-presento", title:"Me presento", level:"A1", intro:"S
   [ {"w":"Estoy","pos":"verbe","info":"estar, présent, yo — l'état civil se dit avec estar","fr":"je suis"}, {"w":"casada","pos":"adjectif","info":"féminin singulier","fr":"mariée"}, {"w":"y","pos":"conjonction","fr":"et"}, {"w":"tengo","pos":"verbe","info":"tener, présent, yo","fr":"j'ai"}, {"w":"un","pos":"article","info":"article indéfini, masculin singulier","fr":"un"}, {"w":"hijo","pos":"nom","info":"masculin singulier","fr":"fils"}, {"w":".","pos":"ponct"} ],
   [ {"w":"Mi","pos":"déterminant","info":"possessif, singulier","fr":"mon / ma"}, {"w":"hijo","pos":"nom","info":"masculin singulier","fr":"fils"}, {"w":"se","pos":"pronom","info":"pronom réfléchi, 3e pers.","fr":"se"}, {"w":"llama","pos":"verbe","info":"llamarse, présent, él","fr":"s'appelle"}, {"w":"Pablo","pos":"nom propre","fr":"Pablo"}, {"w":"y","pos":"conjonction","fr":"et"}, {"w":"tiene","pos":"verbe","info":"tener, présent, él","fr":"il a"}, {"w":"tres","pos":"déterminant","info":"nombre","fr":"trois"}, {"w":"años","pos":"nom","info":"masculin pluriel","fr":"ans"}, {"w":".","pos":"ponct"} ],
   [ {"w":"Me","pos":"pronom","info":"pronom objet indirect, 1re pers. sing. — me gusta = « ça me plaît »","fr":"me / à moi"}, {"w":"gusta","pos":"verbe","info":"gustar, présent, él/ella — le sujet est ce qui plaît (ici : bailar y cocinar)","fr":"plaît"}, {"w":"bailar","pos":"verbe","info":"bailar, infinitif","fr":"danser"}, {"w":"y","pos":"conjonction","fr":"et"}, {"w":"cocinar","pos":"verbe","info":"cocinar, infinitif","fr":"cuisiner"}, {"w":".","pos":"ponct"} ],
-  [ {"w":"¡","pos":"ponct"}, {"w":"Mucho","pos":"déterminant","info":"quantité, masculin singulier — « mucho gusto » = enchanté(e)","fr":"grand"}, {"w":"gusto","pos":"nom","info":"masculin singulier","fr":"plaisir"}, {"w":"!","pos":"ponct"} ]
+  [ {"w":"¡","pos":"ponct"}, {"w":"Mucho","pos":"déterminant","info":"quantité, masculin singulier — « mucho gusto » = enchanté(e)","fr":"beaucoup de"}, {"w":"gusto","pos":"nom","info":"masculin singulier","fr":"plaisir"}, {"w":"!","pos":"ponct"} ]
  ],
  translation:"Bonjour, je m'appelle Sofía. J'ai vingt-cinq ans. Je suis de Colombie et j'habite à Madrid. Je suis infirmière et je travaille dans un hôpital. Ma mère est mexicaine et mon père est français. Je suis mariée et j'ai un fils. Mon fils s'appelle Pablo et il a trois ans. J'aime danser et cuisiner. Enchantée !",
  questions:[{"q":"De quel pays est Sofía ?","opts":["De Colombie","Du Mexique","De France"],"correct":0,"why":"« Soy de Colombia » : ser de + pays pour l'origine. Sa mère est mexicaine, son père français."},{"q":"Quel est le métier de Sofía ?","opts":["Professeure","Infirmière","Serveuse"],"correct":1,"why":"« Soy enfermera en un hospital » = je suis infirmière dans un hôpital."},{"q":"Quel âge a son fils Pablo ?","opts":["Deux ans","Cinq ans","Trois ans"],"correct":2,"why":"« tiene tres años » : tener + nombre + años pour dire l'âge."}]
@@ -5933,7 +5933,7 @@ ATELIER.texts.push({
 "w": "una",
 "pos": "article",
 "info": "article indéfini, féminin singulier",
-"fr": "un"
+"fr": "une"
 },
 {
 "w": "película",
