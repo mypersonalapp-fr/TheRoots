@@ -854,7 +854,7 @@
       // → Grand Contrôle A1+A2 (227, débloque le B1) → blocages X1-X8 (301..308).
       o = [];
       for(i = ES_PALIER_START; i <= 212; i++) o.push(i);
-      o.push(225);
+      o.push(225); o.push(228); // 228 = A2.0 (bases transversales A2)
       for(i = 213; i <= ES_PALIER_LAST; i++) o.push(i);
       o.push(226); o.push(227);
       for(i = ES_BLOCAGE_START; i <= ES_BLOCAGE_LAST; i++) o.push(i);
