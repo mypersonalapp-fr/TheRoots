@@ -746,6 +746,7 @@
 <!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
      l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
 <script src="js/data/exams.js?v=20260930a"></script>
+<script src="js/data/exams-es.js?v=20261007a"></script>
 <!-- Encarts « French Interference Lab » + « Survival English » des paliers A1/A2/B1/B2/C1
      (window.LESSONS_TRANSVERSAL). Fichier absent, ou palier sans encart → leçon inchangée. -->
 <script src="js/data/transversal.js?v=20260930a"></script>
@@ -849,8 +850,13 @@
     // Mode espagnol : ordre propre — futurs paliers A1.0-A1.12 (200..212, réservés), puis le chapitre
     // « Les blocages du francophone » (301..308).
     if(ES_MODE){
+      // A1.0-A1.12 (200..212) → Grand Contrôle A1 (225) → A2.1-A2.12 (213..224) → Grand Contrôle A2 (226)
+      // → Grand Contrôle A1+A2 (227, débloque le B1) → blocages X1-X8 (301..308).
       o = [];
-      for(i = ES_PALIER_START; i <= ES_PALIER_LAST; i++) o.push(i);
+      for(i = ES_PALIER_START; i <= 212; i++) o.push(i);
+      o.push(225);
+      for(i = 213; i <= ES_PALIER_LAST; i++) o.push(i);
+      o.push(226); o.push(227);
       for(i = ES_BLOCAGE_START; i <= ES_BLOCAGE_LAST; i++) o.push(i);
     }
     return o;
@@ -865,18 +871,18 @@
   // format .staging/TRANSVERSAL-FORMAT.md) — sous-étape de la Leçon, voir renderTransversal.
   var LESSONS_TRANSVERSAL = ES_MODE ? {} : (window.LESSONS_TRANSVERSAL || {});
   // Examens de fin de palier (js/data/exams.js) par numéro de leçon — voir « EXAMEN DE FIN DE PALIER ».
-  var LESSON_EXAMS = ES_MODE ? {} : (window.LESSON_EXAMS || {});
+  var LESSON_EXAMS = ES_MODE ? (window.LESSON_EXAMS_ES || {}) : (window.LESSON_EXAMS || {});
   var EXAM = null; // examen de la leçon en cours (ou null : contrôle QCM classique), fixé par loadLessonData
   // true si la leçon n peut être chargée : -1..29 sont écrites dans lessons.html ; 30..38, 40..51,
   // 52 (B1.0), 53 (B2.0), 54 (C1.0) et 55..66 seulement si leur fichier de données est chargé (39 et
   // 67 réservés, jamais jouables pour l'instant).
   // Grand contrôle « examen seul » (39 = Grand Contrôle B1, 68 = Grand Contrôle final A1 → B2, 67 un
   // jour pour le C1) : jouable si son examen (standalone: true) est déposé dans exams.js.
-  function standaloneExam(n){ var X = LESSON_EXAMS[n]; return !ES_MODE && !!(X && X.standalone && X.code && X.sections && X.sections.length); }
+  function standaloneExam(n){ var X = LESSON_EXAMS[n]; return !!(X && X.standalone && X.code && X.sections && X.sections.length); }
   function isReservedLesson(n){ return (n === GRAND_CONTROLE_B1_LESSON || n === GRAND_CONTROLE_C1_LESSON || n === GRAND_CONTROLE_B2_LESSON) && !standaloneExam(n); }
   function isPlayableLesson(n){
     // Espagnol : seulement les numéros de l'ordre espagnol dont les données sont chargées.
-    if(ES_MODE) return lessonRank(n) >= 0 && isValidEsLesson(LESSONS_EXT[n]);
+    if(ES_MODE) return lessonRank(n) >= 0 && (isValidEsLesson(LESSONS_EXT[n]) || standaloneExam(n));
     if(n >= -1 && n <= B1_LAST_BUILTIN_LESSON) return true;
     if(standaloneExam(n)) return true;
     if(isReservedLesson(n) || lessonRank(n) < 0) return false;
@@ -916,7 +922,7 @@
   // Niveau CECRL d'un numéro de leçon (puce de niveau, crédits IA…), d'après son rang : A1 jusqu'à
   // 12, A2 13..26, B1 52 (B1.0) + 27..39, B2 53 (B2.0) + 40..51, C1 54 (C1.0) + 55..67.
   function levelOfLesson(n){
-    if(ES_MODE) return (LESSONS_EXT[n] && LESSONS_EXT[n].level) || "A1";
+    if(ES_MODE) return (standaloneExam(n) && LESSON_EXAMS[n].level) || (LESSONS_EXT[n] && LESSONS_EXT[n].level) || "A1";
     var r = lessonRank(n);
     return r >= lessonRank(C1_ENTRY_MODULE) ? "C1" : (r >= lessonRank(B2_ENTRY_MODULE) ? "B2" : (r >= lessonRank(B1_ENTRY_MODULE) ? "B1" : (r >= lessonRank(13) ? "A2" : "A1")));
   }
@@ -994,9 +1000,9 @@
     return null;
   }
   // Code court d'un chapitre espagnol : « X1 » (champ code des données), sinon le numéro.
-  function esCode(n){ var X = LESSONS_EXT[n]; return (X && X.code) || String(n); }
+  function esCode(n){ if(standaloneExam(n)) return LESSON_EXAMS[n].pickCode || LESSON_EXAMS[n].label || LESSON_EXAMS[n].code; var X = LESSONS_EXT[n]; return (X && X.code) || String(n); }
   // Titre d'un chapitre espagnol (META.vocabTitle) sans le code répété à la fin (« … (X1) »).
-  function esTitle(n){ var X = LESSONS_EXT[n]; return ((X && X.META && X.META.vocabTitle) || "").replace(/\s*\((?:X\d+|A[12]\.\d+)\)\s*$/, ""); }
+  function esTitle(n){ if(standaloneExam(n)) return LESSON_EXAMS[n].pickTitle || "Grand contrôle"; var X = LESSONS_EXT[n]; return ((X && X.META && X.META.vocabTitle) || "").replace(/\s*\((?:X\d+|A[12]\.\d+)\)\s*$/, ""); }
   // true pour le chapitre « Les blocages du francophone » (301..308).
   function isEsBlocage(n){ return n >= ES_BLOCAGE_START && n <= ES_BLOCAGE_LAST; }
   // Accès direct à un chapitre : lessons.html?lang=es#lesson=303 (accès LIBRE, sans verrou).
@@ -1035,7 +1041,7 @@
   var DRILLS = null, ANNOTATED = null;
   var STANDALONE = false; // true pendant un grand contrôle « examen seul » (39, 68) : on va droit à l'examen
   function lessonLabel(){
-    if(ES_MODE) return (isEsBlocage(state.lesson) ? "Blocage " : "") + esCode(state.lesson);
+    if(ES_MODE) return standaloneExam(state.lesson) ? (LESSON_EXAMS[state.lesson].label || esCode(state.lesson)) : (isEsBlocage(state.lesson) ? "Blocage " : "") + esCode(state.lesson);
     if(state.lesson === -1) return "Fondamentaux";
     if(state.lesson === GRAND_CONTROLE_LESSON) return "Grand Contrôle A1";
     if(state.lesson === GRAND_CONTROLE_A2_LESSON) return "Grand Contrôle A2";
@@ -1424,7 +1430,8 @@
   // lui-même (renfort/rappel dans les leçons suivantes du MÊME niveau). Avant le 25/09, tout code
   // autre que "A1" donnait "B1" (un examen B2 rangeait donc ses rappels dans les leçons B1).
   function nextLevelOf(level){
-    if(level === "A1") return "A2";
+    if(level === "A1" || level === "GC-A1") return "A2";
+    if(level === "GC-A2" || level === "GC-A1A2") return "B1";
     if(level === "GC-B1") return "B2";
     if(level === "GC-B2") return "C1";
     var m = /^(B1|B2|C1|C2)\./.exec(String(level || ""));
@@ -10437,6 +10444,12 @@
   var EXAM_UKUS_RE = /\b(travel|cancel|label|model|level|fuel|signal|dial|marvel|quarrel|total|counsel|jewel|channel|tunnel|equal|panel|rival|shovel)l(ed|ing|er|ers)\b/g;
   function examNormalize(s){
     s = String(s == null ? "" : s).toLowerCase();
+    if(ES_MODE){
+      // Espagnol : on ignore ¿ ¡ et les accents (sauf ñ) — le corrigé montre l'orthographe exacte.
+      s = s.replace(/ñ/g, "\u0001").replace(/[¿¡]/g, " ").replace(/[‘’‚‛ʼ`´]/g, "'").replace(/[“”„"«»]/g, " ").replace(/[.,!?;:…()\[\]\-–—]+/g, " ");
+      try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch(e){}
+      return s.replace(/\u0001/g, "ñ").replace(/\s+/g, " ").trim();
+    }
     s = s.replace(/[‘’‚‛ʼ`´]/g, "'");
     s = s.replace(/[“”„"«»]/g, " ");
     s = s.replace(/[.,!?;:…()\[\]]+/g, " ");
@@ -10516,8 +10529,9 @@
       (EXAM.variant === "second" ? '<div class="exam-instr"><b>🔁 Second chance: this is your retake paper — same topics, a little more guided.</b><div class="exam-fr">Sujet de rattrapage : mêmes thèmes que le premier passage, avec une approche plus guidée.</div></div>' : "") +
       '<h2 class="screen-title">'+examEsc(EXAM.title)+'</h2>' +
       '<div class="exam-fr">'+examEsc(EXAM.titleFr)+'</div>' +
-      '<div class="exam-instr"><b>🌍 Immersion phase: from B1 onwards, your tests are entirely in English.</b>' +
-        '<div class="exam-fr">Phase d\'immersion : à partir du B1, les contrôles sont entièrement en anglais. La traduction de chaque consigne est écrite en petit, juste en dessous.</div></div>' +
+      (ES_MODE ? '<div class="exam-instr"><b>🇪🇸 Examen en español: las consignas están en español.</b><div class="exam-fr">Examen en espagnol : les consignes sont en espagnol, avec leur traduction française écrite en petit, juste en dessous. Les accents et les ¿ ¡ ne sont pas pénalisés dans les trous ; la note sur 100 suit la grille habituelle.</div></div>'
+        : '<div class="exam-instr"><b>🌍 Immersion phase: from B1 onwards, your tests are entirely in English.</b>' +
+        '<div class="exam-fr">Phase d\'immersion : à partir du B1, les contrôles sont entièrement en anglais. La traduction de chaque consigne est écrite en petit, juste en dessous.</div></div>') +
       '<p class="lede"><b>'+examEsc(EXAM.objective)+'</b></p><div class="exam-fr">'+examEsc(EXAM.objectiveFr)+'</div>' +
       '<div class="exam-sec-list">' + EXAM.sections.map(function(S, i){
         var r = d.results[S.id];
@@ -10688,7 +10702,7 @@
           // 2e personne : une autre voix de la même langue si le téléphone en a une, et une voix plus aiguë.
           var lang = (u.lang || "").slice(0, 2);
           var other = cachedVoices.filter(function(v){ return (v.lang || "").slice(0, 2) === lang && v !== voiceA; })[0];
-          if(other && (other.lang || "").replace("_", "-").indexOf(state.variant === "us" ? "en-US" : "en-GB") === 0){ u.voice = other; u.lang = other.lang; }
+          if(other && (other.lang || "").replace("_", "-").indexOf(targetLang()) === 0){ u.voice = other; u.lang = other.lang; }
           u.pitch = 1.25;
         } else { u.pitch = 0.95; }
         window.speechSynthesis.speak(u);
@@ -10848,7 +10862,7 @@
       window.speechSynthesis && window.speechSynthesis.cancel();
       var rec = new SpeechRec();
       r.obj = rec;
-      rec.lang = state.variant === "us" ? "en-US" : "en-GB";
+      rec.lang = targetLang();
       rec.continuous = true;
       rec.interimResults = true;
       rec.maxAlternatives = 1;
@@ -10881,7 +10895,7 @@
   // Appel au relais IA (mode "grade") — voir cloudflare-worker-gemini.js.
   function examGradeAi(S, answer, mic){
     var body = {
-      mode:"grade", lang:"en", variant: state.variant === "us" ? "en-us" : "en-gb", level: levelOfLesson(state.lesson),
+      mode:"grade", lang: ES_MODE ? "es" : "en", variant: ES_MODE ? (state.variant === "co" ? "es-co" : "es-es") : (state.variant === "us" ? "en-us" : "en-gb"), level: levelOfLesson(state.lesson),
       task:{
         title: examName() + " – " + S.num + ". " + S.title,
         instructions: (S.passage ? "Source text given to the learner: " + String(S.passage) + " — " : "") + S.instructions + (S.quotes && S.quotes.length ? " " + S.quotes.join(" ") : "") + (S.prompt ? " Task: " + S.prompt : "") +
@@ -13655,7 +13669,7 @@
     "B1.0":"🧭","B1.1":"🪪","B1.2":"🕰️","B1.3":"💬","B1.4":"🏠","B1.5":"💼","B1.6":"🧳","B1.7":"🗣️","B1.8":"😊","B1.9":"📱","B1.10":"🧩","B1.11":"🎬","B1.12":"🌍",
     "B2.0":"🧭","B2.1":"⚖️","B2.2":"🔍","B2.3":"🎭","B2.4":"🧩","B2.5":"🎧","B2.6":"🌐","B2.7":"🤡","B2.8":"📖","B2.9":"💻","B2.10":"🧠","B2.11":"☀️","B2.12":"🌍"};
   // Espagnol A2 : pictogrammes propres (les thèmes diffèrent de l'anglais : temps du passé, futur, etc.).
-  var ES_LES_EMO = {"A2.1":"🕰️","A2.2":"⏮️","A2.3":"🧾","A2.4":"🔮","A2.5":"🎞️","A2.6":"⚖️","A2.7":"📏","A2.8":"🔗","A2.9":"🗺️","A2.10":"🩺","A2.11":"💭","A2.12":"🌍"};
+  var ES_LES_EMO = {"Contrôle A1":"🏁","Contrôle A2":"🏆","Contrôle A1+A2":"🎓","A2.1":"🕰️","A2.2":"⏮️","A2.3":"🧾","A2.4":"🔮","A2.5":"🎞️","A2.6":"⚖️","A2.7":"📏","A2.8":"🔗","A2.9":"🗺️","A2.10":"🩺","A2.11":"💭","A2.12":"🌍"};
   function pickEmo(n){ if(ES_MODE){ var c = pickCode(n); return ES_LES_EMO[c] || LES_EMO[c] || "✅"; } return LES_EMO[pickCode(n)] || "✅"; }
   function pickBg(n){ return ' les-g'+(((n % 4) + 4) % 4); } // plus de photos réalistes : pictogramme animé sur fond coloré
   function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
