@@ -746,7 +746,7 @@
 <!-- Examens de fin de palier (phase d'immersion B1+, window.LESSON_EXAMS) : remplacent le QCM de
      l'étape Contrôle des paliers concernés. Fichier absent → QCM classique partout. -->
 <script src="js/data/exams.js?v=20260930a"></script>
-<script src="js/data/exams-es.js?v=20261007a"></script>
+<script src="js/data/exams-es.js?v=20261007b"></script>
 <!-- Encarts « French Interference Lab » + « Survival English » des paliers A1/A2/B1/B2/C1
      (window.LESSONS_TRANSVERSAL). Fichier absent, ou palier sans encart → leçon inchangée. -->
 <script src="js/data/transversal.js?v=20260930a"></script>
@@ -755,7 +755,7 @@
      A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
 <script src="js/data/lessons-es.js?v=20260930a"></script>
 <!-- Espagnol niveau A2 (A2.1 à A2.12 = leçons 213 à 224), chargé après lessons-es.js (helpers __esB, __esIdx, __esR). Absent → l'A1 espagnol fonctionne seul. -->
-<script src="js/data/lessons-es-a2.js?v=20261007a"></script>
+<script src="js/data/lessons-es-a2.js?v=20261007b"></script>
 <script src="js/data/vocab-deco-ext.js?v=20261001a"></script>
 <script src="js/data/vocab-nature-es.js?v=20261001a"></script>
 <script>
@@ -9825,13 +9825,19 @@
   var micGate = { granted:false, denied:false };
   var micStream = null;
   var canRecord = typeof MediaRecorder !== "undefined";
+  function releaseMic(){
+    // iOS : un flux micro ouvert garde la session audio en mode « appel » (volume très bas, voix de synthèse muette).
+    // On ne garde donc JAMAIS le micro ouvert : on le coupe dès que l'enregistrement est fini.
+    if(micStream){ try{ micStream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){} }
+    micStream = null;
+  }
   function requestMicAccess(onDone){
     if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
       onDone(false, "unsupported");
       return;
     }
     navigator.mediaDevices.getUserMedia({ audio:true }).then(function(stream){
-      micStream = stream; // gardé ouvert pour pouvoir réécouter chaque tentative
+      try{ stream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){}
       onDone(true);
     }).catch(function(err){
       onDone(false, (err && err.name) || "error");
@@ -9845,64 +9851,89 @@
     {en:"My nickname is Ash.", fr:"Mon surnom est Ash."},
     {en:"I have blue eyes.", fr:"J'ai les yeux bleus."}
   ];
+  var pronBusy = null; // { stop() } de l'essai en cours
   function attemptPronunciation(expected, statusEl, micBtn, replayBtn){
-    if(!micSupported || !micStream){
+    if(!micSupported || !micGate.granted){
       statusEl.textContent = "—";
       statusEl.title = "Autorise d'abord le micro ci-dessus";
       return;
     }
+    // 2e appui sur le micro = j'arrête
+    if(pronBusy){ pronBusy.stop(); return; }
+    try{ window.speechSynthesis && window.speechSynthesis.cancel(); }catch(e){}
     var prevLabel = micBtn.textContent;
-    micBtn.disabled = true;
-    micBtn.textContent = "🎙️";
+    micBtn.textContent = "⏹";
+    micBtn.title = "Appuie pour arrêter";
+    statusEl.className = "pron-status";
     statusEl.textContent = "…";
+    var done = false, recorder = null, chunks = [], rec = null, started = Date.now(), restarts = 0, got = false;
 
-    // Enregistrement pour pouvoir se réécouter
-    var recorder = null, chunks = [];
-    if(canRecord){
-      try{
-        recorder = new MediaRecorder(micStream);
-        recorder.ondataavailable = function(e){ if(e.data && e.data.size) chunks.push(e.data); };
-        recorder.onstop = function(){
-          if(chunks.length){
-            var blob = new Blob(chunks, { type: recorder.mimeType || "audio/webm" });
-            var url = URL.createObjectURL(blob);
-            replayBtn.disabled = false;
-            replayBtn.onclick = function(){ new Audio(url).play(); };
-          }
-        };
-        recorder.start();
-      }catch(e){ recorder = null; }
-    }
-
-    function finish(ok){
+    function endAll(ok){
+      if(done) return; done = true;
+      pronBusy = null;
       statusEl.textContent = ok === null ? "—" : (ok ? "✓" : "✗");
       statusEl.className = "pron-status" + (ok === true ? " ok" : ok === false ? " bad" : "");
-      micBtn.disabled = false;
       micBtn.textContent = prevLabel;
-      if(recorder && recorder.state !== "inactive") recorder.stop();
+      micBtn.title = "T'enregistrer";
+      try{ if(rec) rec.abort(); }catch(e){}
+      if(recorder && recorder.state !== "inactive"){ try{ recorder.stop(); }catch(e){ releaseMic(); } }
+      else releaseMic();
+    }
+    pronBusy = { stop:function(){ endAll(got ? null : null); } };
+
+    // Micro ouvert seulement le temps de l'essai
+    navigator.mediaDevices.getUserMedia({ audio:true }).then(function(stream){
+      if(done){ try{ stream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){} return; }
+      micStream = stream;
+      if(canRecord){
+        try{
+          recorder = new MediaRecorder(stream);
+          recorder.ondataavailable = function(e){ if(e.data && e.data.size) chunks.push(e.data); };
+          recorder.onstop = function(){
+            releaseMic();
+            if(chunks.length){
+              var blob = new Blob(chunks, { type: recorder.mimeType || "audio/webm" });
+              var url = URL.createObjectURL(blob);
+              replayBtn.disabled = false;
+              replayBtn.onclick = function(){ var a = new Audio(url); a.volume = 1; a.play(); };
+            }
+          };
+          recorder.start();
+        }catch(e){ recorder = null; }
+      }
+      // petit délai : on laisse le micro s'installer avant de lancer la reconnaissance (sinon elle coupe tout de suite)
+      statusEl.textContent = "…";
+      setTimeout(function(){ if(!done) startRec(); }, 450);
+    }).catch(function(){ endAll(null); });
+
+    function startRec(){
+      try{
+        rec = new SpeechRec();
+        rec.lang = targetLang();
+        rec.maxAlternatives = 3;
+        rec.onresult = function(e){
+          got = true;
+          var said = (e.results[0][0].transcript || "").toLowerCase().replace(/[.,!?]/g,"").trim();
+          var exp = expected.toLowerCase().replace(/[.,!?]/g,"").trim();
+          if(ES_MODE){ said = drillFold(said.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); exp = drillFold(exp.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); }
+          endAll(said.indexOf(exp) !== -1 || exp.indexOf(said) !== -1);
+        };
+        rec.onerror = function(e){
+          // « no-speech » : on relance au lieu d'abandonner
+          if(e && (e.error === "no-speech" || e.error === "aborted") && restarts < 2 && !done){ return; }
+          endAll(null);
+        };
+        rec.onend = function(){
+          if(done || got) return;
+          if(restarts < 2 && Date.now() - started < 9000){ restarts++; setTimeout(function(){ if(!done) startRec(); }, 150); return; }
+          endAll(null);
+        };
+        rec.start();
+      }catch(err){ endAll(null); }
     }
 
-    try{
-      var rec = new SpeechRec();
-      rec.lang = targetLang();
-      rec.maxAlternatives = 3;
-      var finished = false;
-      rec.onresult = function(e){
-        finished = true;
-        var said = (e.results[0][0].transcript || "").toLowerCase().replace(/[.,!?]/g,"").trim();
-        var exp = expected.toLowerCase().replace(/[.,!?]/g,"").trim();
-        // Espagnol : on ignore aussi ¿ ¡ et les accents (le micro ne les rend pas toujours).
-        if(ES_MODE){ said = drillFold(said.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); exp = drillFold(exp.replace(/[¿¡;:]/g, "")).replace(/\s+/g, " "); }
-        finish(said.indexOf(exp) !== -1 || exp.indexOf(said) !== -1);
-      };
-      rec.onerror = function(){ finished = true; finish(null); };
-      rec.onend = function(){ if(!finished) finish(null); };
-      rec.start();
-    }catch(err){
-      finish(null);
-    }
-
-    setTimeout(function(){ if(recorder && recorder.state !== "inactive") recorder.stop(); }, 4000);
+    // sécurité : 10 s max (avant : 4 s, ce qui coupait l'enregistrement)
+    setTimeout(function(){ if(!done) endAll(null); }, 10000);
   }
   function screenPrononciation(){
     postmark.innerHTML = "PRONON-<br>CIATION";
@@ -13900,6 +13931,43 @@
     render();
   }
 
+  // « Continuer » respecte l'ordre choisi sur le plan de la leçon (Parler d'abord, Les règles d'abord, Par le jeu…).
+  // Le moteur avance dans l'ordre classique ; quand on QUITTE un groupe de cases (ex. Grammaire + ses jeux),
+  // on saute au groupe suivant de l'ordre choisi au lieu de celui du manuel. Les écrans internes d'un groupe
+  // (pages, blocs de vocabulaire, jeux qui suivent la grammaire…) gardent leur déroulé normal.
+  var ORDER_ROW_GROUP = {1:"voc", 2:"jeu", 3:"gra", 4:"gra", 5:"con", 6:"con", 7:"ecou", 8:"ecou", 9:"ecri", 10:"parl", 11:"ctl", 12:"bonus", 13:"bonus"};
+  function orderWrap(fn){
+    return function(){
+      if(PRACTICE || STANDALONE || isGrandControle() || state.hub || state.pick || state.gateOpen || state.lessonsPage || state.restartPage || state.returnTo != null || (ES_MODE && !isPlayableLesson(state.lesson))) return fn();
+      var b0 = state.step, b1 = state.subStep;
+      var modeId = hubGet(HUB_ORDER_KEY, HUB_MODES.map(function(x){ return x.id; }), "cls");
+      if(modeId === "cls" || b0 < 1 || b0 > 4) return fn();
+      var U = guidedUnits(), i0 = guidedIndex(U, b0, b1);
+      if(i0 < 0) return fn();
+      var curG = ORDER_ROW_GROUP[U[i0].rows[0]];
+      var lessonBefore = state.lesson;
+      fn();
+      if(state.lesson !== lessonBefore || state.hub || state.pick || state.gateOpen) return;
+      if(state.step === b0 && state.subStep === b1) return;           // simple défilement interne
+      var i1 = guidedIndex(U, state.step, state.subStep);
+      if(i1 < 0 || ORDER_ROW_GROUP[U[i1].rows[0]] === curG) return;     // reste dans le même groupe
+      var mode = HUB_MODES.filter(function(m){ return m.id === modeId; })[0];
+      var groups = [], tileOf = {};
+      mode.o.forEach(function(k){ var g = ORDER_ROW_GROUP[HUB_TILES[k].row]; if(groups.indexOf(g) < 0){ groups.push(g); tileOf[g] = k; } });
+      var pos = groups.indexOf(curG);
+      if(pos < 0) return;
+      for(var n = pos + 1; n < groups.length; n++){
+        var g = groups[n], target = null;
+        for(var u = 0; u < U.length; u++){ if(ORDER_ROW_GROUP[U[u].rows[0]] === g){ target = U[u]; break; } }
+        if(!target) continue;
+        if(target.step === state.step && target.sub === state.subStep) return;   // le moteur y allait déjà
+        hubMarkSeen(tileOf[g]);
+        guidedGo(target);
+        return;
+      }
+    };
+  }
+
   var cardQ = null, cardPos = 0, cardFlip = false;
   function CARDS(){ return viewMode() === "cartes" && !PRACTICE && !STANDALONE && !isGrandControle(); }
   function cardsReset(){ cardQ = null; cardPos = 0; cardFlip = false; }
@@ -14183,7 +14251,7 @@
     }
     render();
   }
-  nextBtn.addEventListener("click", ficheNextWrap(guidedWrap(goNext, 1)));
+  nextBtn.addEventListener("click", ficheNextWrap(orderWrap(guidedWrap(goNext, 1))));
 
   function goBack(){
     if(state.lessonsPage){ return; }
