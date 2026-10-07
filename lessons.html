@@ -753,6 +753,8 @@
      Chapitre « Les blocages du francophone » = 301..308 (X1..X8) ; 200..212 réservés aux futurs paliers
      A1.0-A1.12. Fichier absent → le mode espagnol affiche « bientôt disponible », l'anglais ne change pas. -->
 <script src="js/data/lessons-es.js?v=20260930a"></script>
+<!-- Espagnol niveau A2 (A2.1 à A2.12 = leçons 213 à 224), chargé après lessons-es.js (helpers __esB, __esIdx, __esR). Absent → l'A1 espagnol fonctionne seul. -->
+<script src="js/data/lessons-es-a2.js?v=20261007a"></script>
 <script src="js/data/vocab-deco-ext.js?v=20261001a"></script>
 <script src="js/data/vocab-nature-es.js?v=20261001a"></script>
 <script>
@@ -770,7 +772,8 @@
   var ES_MODE = /[?&]lang=es(?:&|$)/.test(location.search || "");
   // Numéros des leçons espagnoles : 200..212 RÉSERVÉS aux futurs paliers A1.0-A1.12 (jouables le jour
   // où LESSONS_ES[200..212] existera), 301..308 = chapitre « Les blocages du francophone » (X1..X8).
-  var ES_PALIER_START = 200, ES_PALIER_LAST = 212, ES_BLOCAGE_START = 301, ES_BLOCAGE_LAST = 308;
+  // 213..224 = paliers A2.1-A2.12 (js/data/lessons-es-a2.js).
+  var ES_PALIER_START = 200, ES_PALIER_LAST = 224, ES_BLOCAGE_START = 301, ES_BLOCAGE_LAST = 308;
   var LESSON_KEY = ES_MODE ? "the_roots_lesson_es" : "the_roots_lesson_en_gb";
   // lesson = -1 : module transversal Foundations (couleurs, nombres, jours, mois, saisons, dates, heure),
   // proposé avant la Leçon 1 pour les nouveaux arrivants (les 12 paliers A1.1-A1.12 restent 0-11).
@@ -993,7 +996,7 @@
   // Code court d'un chapitre espagnol : « X1 » (champ code des données), sinon le numéro.
   function esCode(n){ var X = LESSONS_EXT[n]; return (X && X.code) || String(n); }
   // Titre d'un chapitre espagnol (META.vocabTitle) sans le code répété à la fin (« … (X1) »).
-  function esTitle(n){ var X = LESSONS_EXT[n]; return ((X && X.META && X.META.vocabTitle) || "").replace(/\s*\((?:X\d+|A1\.\d+)\)\s*$/, ""); }
+  function esTitle(n){ var X = LESSONS_EXT[n]; return ((X && X.META && X.META.vocabTitle) || "").replace(/\s*\((?:X\d+|A[12]\.\d+)\)\s*$/, ""); }
   // true pour le chapitre « Les blocages du francophone » (301..308).
   function isEsBlocage(n){ return n >= ES_BLOCAGE_START && n <= ES_BLOCAGE_LAST; }
   // Accès direct à un chapitre : lessons.html?lang=es#lesson=303 (accès LIBRE, sans verrou).
@@ -13651,7 +13654,9 @@
     "A2.0":"🧭","A2.1":"⏰","A2.2":"🕰️","A2.3":"🎞️","A2.4":"🎯","A2.5":"⚖️","A2.6":"🩺","A2.7":"🌦️","A2.8":"🏠","A2.9":"📞","A2.10":"🎟️","A2.11":"💭","A2.12":"🌍",
     "B1.0":"🧭","B1.1":"🪪","B1.2":"🕰️","B1.3":"💬","B1.4":"🏠","B1.5":"💼","B1.6":"🧳","B1.7":"🗣️","B1.8":"😊","B1.9":"📱","B1.10":"🧩","B1.11":"🎬","B1.12":"🌍",
     "B2.0":"🧭","B2.1":"⚖️","B2.2":"🔍","B2.3":"🎭","B2.4":"🧩","B2.5":"🎧","B2.6":"🌐","B2.7":"🤡","B2.8":"📖","B2.9":"💻","B2.10":"🧠","B2.11":"☀️","B2.12":"🌍"};
-  function pickEmo(n){ return LES_EMO[pickCode(n)] || "✅"; }
+  // Espagnol A2 : pictogrammes propres (les thèmes diffèrent de l'anglais : temps du passé, futur, etc.).
+  var ES_LES_EMO = {"A2.1":"🕰️","A2.2":"⏮️","A2.3":"🧾","A2.4":"🔮","A2.5":"🎞️","A2.6":"⚖️","A2.7":"📏","A2.8":"🔗","A2.9":"🗺️","A2.10":"🩺","A2.11":"💭","A2.12":"🌍"};
+  function pickEmo(n){ if(ES_MODE){ var c = pickCode(n); return ES_LES_EMO[c] || LES_EMO[c] || "✅"; } return LES_EMO[pickCode(n)] || "✅"; }
   function pickBg(n){ return ' les-g'+(((n % 4) + 4) % 4); } // plus de photos réalistes : pictogramme animé sur fond coloré
   function pickList(){ return LESSON_ORDER.filter(function(n){ return isPlayableLesson(n) && !(ES_MODE && isEsBlocage(n)); }); }
   function pickMax(){
