@@ -2450,7 +2450,7 @@
     { bank:["you","to","introduce","me","her","Let","."], answer:"let me introduce you to her .", display:"Let me introduce you to her.", fr:"Laisse-moi te présenter à elle." },
     { bank:["never","out","hang","They","."], answer:"they never hang out .", display:"They never hang out.", fr:"Ils/Elles ne traînent jamais ensemble." },
     { bank:["for","a","Let's","walk","go","."], answer:"let's go for a walk .", display:"Let's go for a walk.", fr:"Allons nous promener." },
-    { bank:["you","in","touch","Stay","."], answer:"stay in touch .", display:"Stay in touch.", fr:"Reste en contact." },
+    { bank:["in","touch","Stay","."], answer:"stay in touch .", display:"Stay in touch.", fr:"Reste en contact." },
     { bank:["you","Have","met","Tom","?"], answer:"have you met tom ?", display:"Have you met Tom?", fr:"Tu as déjà rencontré Tom ?" }
   ];
 
@@ -3361,7 +3361,7 @@
     { bank:["have","Can","I","a","window","seat","?"], answer:"can i have a window seat ?", display:"Can I have a window seat?", fr:"Puis-je avoir une place côté fenêtre ?" },
     { bank:["to","I","need","check","in","."], answer:"i need to check in .", display:"I need to check in.", fr:"Je dois faire l'enregistrement." },
     { bank:["is","flight","The","delayed","."], answer:"the flight is delayed .", display:"The flight is delayed.", fr:"Le vol est retardé." },
-    { bank:["go","We're","sightseeing","."], answer:"we're going sightseeing .", display:"We're going sightseeing.", fr:"Nous allons faire du tourisme." },
+    { bank:["going","We're","sightseeing","."], answer:"we're going sightseeing .", display:"We're going sightseeing.", fr:"Nous allons faire du tourisme." },
     { bank:["my","need","I","suitcase","to","pack","."], answer:"i need to pack my suitcase .", display:"I need to pack my suitcase.", fr:"Je dois faire ma valise." }
   ];
 
@@ -9460,7 +9460,7 @@
   // Réutilisé à l'identique par toutes les leçons A2 concernées (voir META.videoTheme) : rien à
   // dupliquer palier par palier. Sans effet sur les leçons A1 (elles n'ont pas de META.videoTheme).
   function videoPlaceholderHtml(){
-    if(!META.videoTheme) return "";
+    if(!META.videoTheme || !META.videoUrl) return ""; // pas de bloc « à venir » visible côté apprenti tant que le lien n'est pas validé
     var embedHtml = META.videoUrl
       ? '<div style="margin-top:10px;border-radius:10px;overflow:hidden;aspect-ratio:16/9"><iframe src="'+META.videoUrl+'" style="width:100%;height:100%;border:0" allowfullscreen title="Extrait vidéo"></iframe></div>'
       : "";
@@ -10793,7 +10793,7 @@
     if(!r) return "";
     var ai = r.ai || {};
     return '<div class="exam-ai">' +
-      '<div class="exam-ai-score">'+(r.skipped ? "⏭️ Partie passée (mode créatrice) — non corrigée" : "🤖 Correction de l'IA : <b>"+examFmt(r.score)+" / "+r.max+"</b>")+'</div>' +
+      '<div class="exam-ai-score">'+(r.pending ? "⏳ Correction IA indisponible — partie non comptée" : r.skipped ? "⏭️ Partie passée (mode créatrice) — non corrigée" : "🤖 Correction de l'IA : <b>"+examFmt(r.score)+" / "+r.max+"</b>")+'</div>' +
       (ai.feedback ? '<div class="exam-ai-fb">'+examEsc(ai.feedback).replace(/\n/g, "<br>")+'</div>' : "") +
       (ai.strengths ? '<div class="exam-ai-good">👍 '+examEsc(ai.strengths)+'</div>' : "") +
       (ai.corrections && ai.corrections.length ? '<div class="exam-ai-sub">À corriger</div><ul class="exam-ai-corr">'+ai.corrections.map(function(c){ return '<li>'+examEsc(c)+'</li>'; }).join("")+'</ul>' : "") +
@@ -10825,11 +10825,11 @@
       status = '<div class="exam-err"><b>'+examEsc(examUi.error)+'</b>' +
         '<div class="exam-actions"><button type="button" class="btn btn-primary" id="examRetry" style="margin-left:0">Réessayer</button>' +
         '<button type="button" class="btn btn-ghost" id="examLater">Revenir plus tard</button>' +
-        (CREATOR_MODE ? '<button type="button" class="btn btn-ghost" id="examSkip">Passer (mode créatrice)</button>' : "") + '</div>' +
-        '<div style="margin-top:8px;font-size:.8rem">Tes réponses sont gardées sur ce téléphone : rien n\'est perdu.' + (CREATOR_MODE ? "" : " L'examen ne peut pas être terminé sans cette correction.") + '</div></div>';
+        (CREATOR_MODE ? '<button type="button" class="btn btn-ghost" id="examSkip">Passer (mode créatrice)</button>' : '<button type="button" class="btn btn-ghost" id="examPend">Continuer sans cette correction</button>') + '</div>' +
+        '<div style="margin-top:8px;font-size:.8rem">Tes réponses sont gardées sur ce téléphone : rien n\'est perdu.' + (CREATOR_MODE ? "" : " « Continuer sans cette correction » : la partie n'est pas comptée et ton bilan sera marqué provisoire (repasse l'examen plus tard pour la faire noter).") + '</div></div>';
     }
     return examPassageHtml(S) + quotes + prompt + mic + area + status +
-      (res ? (examShowCorr(d) ? examAiResultHtml(res) : '<div class="exam-ok" style="color:var(--ink-soft,#555)">✓ Réponse envoyée et corrigée. Ta note et les commentaires de l\'IA s\'affichent à la fin de l\'examen.</div>') : "");
+      (res ? (examShowCorr(d) ? examAiResultHtml(res) : (res.pending ? '<div class="exam-ok" style="color:var(--ink-soft,#555)">⏳ Correction IA indisponible : cette partie n\'est pas comptée pour l\'instant. Repasse l\'examen plus tard pour la faire noter.</div>' : '<div class="exam-ok" style="color:var(--ink-soft,#555)">✓ Réponse envoyée et corrigée. Ta note et les commentaires de l\'IA s\'affichent à la fin de l\'examen.</div>')) : "");
   }
   function wireExamAi(S, d, res){
     var ta = document.getElementById("examText");
@@ -10853,6 +10853,11 @@
     if(retry) retry.addEventListener("click", function(){ examUi.error = ""; examValidate(S, d, true); });
     var later = document.getElementById("examLater");
     if(later) later.addEventListener("click", function(){ examSaveDraft(); window.location.href = "index.html"; });
+    var pend = document.getElementById("examPend");
+    if(pend) pend.addEventListener("click", function(){
+      d.results[S.id] = { score:0, max:S.points, skipped:true, pending:true, ai:{ feedback:"Correction IA indisponible : cette partie n'est pas comptée dans ta note. Repasse l'examen quand la connexion revient pour la faire noter." } };
+      examUi.error = ""; examSaveDraft(); render();
+    });
     var skip = document.getElementById("examSkip");
     if(skip) skip.addEventListener("click", function(){
       if(!CREATOR_MODE) return;
@@ -11035,9 +11040,10 @@
 
   // ---------- Note finale → résultat compatible avec les contrôles existants ----------
   function examFinalize(d){
-    var total = 0, max = 0, sk = {}, rows = [];
+    var total = 0, max = 0, sk = {}, rows = [], pendingN = 0;
     EXAM.sections.forEach(function(S){
       var r = d.results[S.id] || { score:0, max:S.points };
+      if(r.pending){ pendingN++; rows.push({ id:S.id, num:S.num, title:S.title, titleFr:S.titleFr, type:S.type, score:0, max:S.points, ai:r.ai || null, skipped:true, pending:true }); return; }
       total += r.score; max += S.points;
       var k = S.skill || "gr"; sk[k] = sk[k] || [0, 0]; sk[k][0] += r.score; sk[k][1] += S.points;
       rows.push({ id:S.id, num:S.num, title:S.title, titleFr:S.titleFr, type:S.type, score:r.score, max:S.points, ai:r.ai || null, skipped:!!r.skipped });
@@ -11047,6 +11053,7 @@
     var skills = {};
     Object.keys(sk).forEach(function(k){ skills[k] = sk[k][1] ? Math.round(sk[k][0] / sk[k][1] * 100) : null; });
     var decision = pct < 70 ? "fail" : (pct < 80 ? "renfort" : (pct < 93 ? "rappel" : "net"));
+    if(pendingN && decision !== "fail") decision = "renfort"; // bilan provisoire : au mieux « validé avec renfort » tant qu'une partie IA n'a pas été notée (le palier reste dans Mes renforts)
     var floor = Object.keys(skills).filter(function(k){ return skills[k] != null && skills[k] < 50; });
     // Le palier lui-même est la « leçon à consolider » (renfort / rappels vers les leçons B1 suivantes).
     // En cas d'échec, pas de leçon imposée (weak vide) : seul le délai d'une semaine s'applique.
@@ -11057,7 +11064,7 @@
     saveControlResult(EXAM.code, ev);
     if(decision !== "fail"){ grantAiCredit(); recordPass(state.lesson); }
     d.done = true;
-    d.result = { code:EXAM.code, label:EXAM.label || "", variant:examVariant(), pct:pct, total:total, max:max, decision:decision, skills:skills, floor:floor, rows:rows, at:Date.now() };
+    d.result = { code:EXAM.code, label:EXAM.label || "", variant:examVariant(), pct:pct, total:total, max:max, decision:decision, skills:skills, floor:floor, rows:rows, pending:pendingN, at:Date.now() };
     examSaveDraft();
     state.examResult = d.result;
   }
@@ -11122,7 +11129,7 @@
       (passed && META.bilanTitle ? '<p class="lede" style="margin-top:4px"><b>'+examEsc(META.bilanTitle)+'</b></p>' : "") +
       '<div class="score-band exam-band"><span class="big">'+R.pct+'&nbsp;%</span><span class="of">'+examFmt(R.total)+' / '+R.max+' · '+examEsc(R.label || ("examen " + R.code))+'</span></div>' +
       '<div class="card" style="padding:14px 16px;margin-top:12px"><div class="eyebrow" style="margin-bottom:4px">Détail par section</div>'+rowsHtml+'</div>' +
-      '<p class="lede" style="margin-top:12px">'+DEC.d+'</p>' + floorHtml +
+      '<p class="lede" style="margin-top:12px">'+DEC.d+'</p>' + ((passed && isB && nextB == null && !STANDALONE) ? '<div class="card" style="margin-top:12px;text-align:center"><div style="font-size:2rem">🎓</div><b>Parcours terminé</b><p class="lede" style="margin:6px 0 0">Tu as terminé tous les paliers disponibles, jusqu\'au B2. Les niveaux suivants arrivent : en attendant, revois tes renforts et rejoue les Grands Contrôles.</p></div>' : "") + (R.pending ? '<p class="lede" style="margin-top:8px"><b>Bilan provisoire :</b> '+R.pending+' partie'+(R.pending>1?'s':'')+' corrigée'+(R.pending>1?'s':'')+' par l\'IA '+(R.pending>1?'n\'ont':'n\'a')+' pas pu être notée'+(R.pending>1?'s':'')+' (relais indisponible) et '+(R.pending>1?'ne sont':'n\'est')+' pas comptée'+(R.pending>1?'s':'')+'. Le palier est ajouté à tes renforts. Repasse l\'examen quand la connexion revient pour obtenir la note complète.</p>' : "") + floorHtml +
       (examCorrigeHtml() || aiHtml) + nextInfo;
     nextBtn.style.display = "";
     nextBtn.disabled = false;
@@ -11360,7 +11367,7 @@
     { bank:["it","because","home","stayed","raining","I","was","."], answer:"i stayed home because it was raining .", display:"I stayed home because it was raining.", fr:"Je suis resté(e) à la maison parce qu'il pleuvait." },
     { bank:["late","was","so","a","I","took","I","taxi","."], answer:"i was late so i took a taxi .", display:"I was late, so I took a taxi.", fr:"J'étais en retard, alors j'ai pris un taxi." },
     { bank:["never","this","have","I","before","seen","."], answer:"i have never seen this before .", display:"I have never seen this before.", fr:"Je n'ai jamais vu ça avant." },
-    { bank:["you","go","going","are","to","the","party","?"], answer:"are you going to the party ?", display:"Are you going to the party?", fr:"Est-ce que tu vas à la fête ?" },
+    { bank:["you","going","are","to","the","party","?"], answer:"are you going to the party ?", display:"Are you going to the party?", fr:"Est-ce que tu vas à la fête ?" },
     { bank:["finally","home","we","arrived","."], answer:"finally we arrived home .", display:"Finally, we arrived home.", fr:"Finalement, nous sommes arrivés à la maison." }
   ];
 
@@ -11802,7 +11809,7 @@
     { bank:["knocked","door","the","Someone","on","."], answer:"someone knocked on the door .", display:"Someone knocked on the door.", fr:"Quelqu'un a frappé à la porte." },
     { bank:["was","surprised","really","I","."], answer:"i was really surprised .", display:"I was really surprised.", fr:"J'ai été vraiment surpris(e)." },
     { bank:["out","went","lights","The","suddenly","."], answer:"the lights went out suddenly .", display:"The lights went out suddenly.", fr:"Les lumières se sont éteintes tout à coup." },
-    { bank:["was","the","in","was","cooking","kitchen","I","."], answer:"i was cooking in the kitchen .", display:"I was cooking in the kitchen.", fr:"Je cuisinais dans la cuisine." },
+    { bank:["the","in","was","cooking","kitchen","I","."], answer:"i was cooking in the kitchen .", display:"I was cooking in the kitchen.", fr:"Je cuisinais dans la cuisine." },
     { bank:["phone","dropped","I","my","shock","in","."], answer:"i dropped my phone in shock .", display:"I dropped my phone in shock.", fr:"J'ai laissé tomber mon téléphone sous le choc." }
   ];
 
@@ -12247,7 +12254,7 @@
     { bank:["appointment","need","an","I","."], answer:"i need an appointment .", display:"I need an appointment.", fr:"J'ai besoin d'un rendez-vous." },
     { bank:["rest","should","get","You","some","."], answer:"you should get some rest .", display:"You should get some rest.", fr:"Tu devrais te reposer un peu." },
     { bank:["sick","feel","I","."], answer:"i feel sick .", display:"I feel sick.", fr:"J'ai la nausée." },
-    { bank:["prescription","need","this","I","for","."], answer:"i need this for a prescription .", display:"I need this for a prescription.", fr:"J'ai besoin de ceci pour une ordonnance." },
+    { bank:["prescription","need","this","I","for","a","."], answer:"i need this for a prescription .", display:"I need this for a prescription.", fr:"J'ai besoin de ceci pour une ordonnance." },
     { bank:["shouldn't","so","work","much","You","."], answer:"you shouldn't work so much .", display:"You shouldn't work so much.", fr:"Tu ne devrais pas autant travailler." },
     { bank:["water","must","drink","lots","of","You","."], answer:"you must drink lots of water .", display:"You must drink lots of water.", fr:"Tu dois boire beaucoup d'eau." }
   ];
@@ -12834,7 +12841,7 @@
     { bank:["to","invite","dinner","like","I","would","you","to","."], answer:"i would like to invite you to dinner .", display:"I would like to invite you to dinner.", fr:"Je voudrais t'inviter à dîner." },
     { bank:["the","we","cinema","Shall","go","to","?"], answer:"shall we go to the cinema ?", display:"Shall we go to the cinema?", fr:"Et si on allait au cinéma ?" },
     { bank:["try","don't","new","that","restaurant","we","Why","?"], answer:"why don't we try that new restaurant ?", display:"Why don't we try that new restaurant?", fr:"Pourquoi ne pas essayer ce nouveau restaurant ?" },
-    { bank:["love","I'd","."], answer:"i'd love to .", display:"I'd love to.", fr:"Avec plaisir." },
+    { bank:["love","I'd","to","."], answer:"i'd love to .", display:"I'd love to.", fr:"Avec plaisir." },
     { bank:["make","I","it","can't","."], answer:"i can't make it .", display:"I can't make it.", fr:"Je ne peux pas venir." },
     { bank:["Saturday","meet","Let's","up","on","."], answer:"let's meet up on saturday .", display:"Let's meet up on Saturday.", fr:"Retrouvons-nous samedi." },
     { bank:["a","table","book","We","should","."], answer:"we should book a table .", display:"We should book a table.", fr:"On devrait réserver une table." },
@@ -12984,7 +12991,7 @@
     { bank:["trip","excited","the","I'm","about","."], answer:"i'm excited about the trip .", display:"I'm excited about the trip.", fr:"Je suis enthousiaste à propos du voyage." },
     { bank:["opinion","great","was","my","the","In","film","."], answer:"in my opinion the film was great .", display:"In my opinion, the film was great.", fr:"À mon avis, le film était génial." },
     { bank:["mind","don't","waiting","I","."], answer:"i don't mind waiting .", display:"I don't mind waiting.", fr:"Ça ne me dérange pas d'attendre." },
-    { bank:["late","can't","I","stand","waiting","."], answer:"i can't stand waiting .", display:"I can't stand waiting.", fr:"Je ne supporte pas d'attendre." },
+    { bank:["can't","I","stand","waiting","."], answer:"i can't stand waiting .", display:"I can't stand waiting.", fr:"Je ne supporte pas d'attendre." },
     { bank:["worried","the","I'm","exam","about","."], answer:"i'm worried about the exam .", display:"I'm worried about the exam.", fr:"Je suis inquiet(ète) à propos de l'examen." },
     { bank:["proud","really","I'm","you","of","."], answer:"i'm really proud of you .", display:"I'm really proud of you.", fr:"Je suis vraiment fier(ère) de toi." },
     { bank:["honest","not","was","the","great","To","be","film","."], answer:"to be honest the film was not great .", display:"To be honest, the film was not great.", fr:"Pour être honnête, le film n'était pas terrible." }
@@ -13120,12 +13127,12 @@
     GC_ROUNDS_A2 = [
       { bank:["airport","the","went","We","early","to","."], answer:"we went to the airport early .", display:"We went to the airport early.", fr:"Nous sommes allés à l'aéroport tôt." },
       { bank:["used","fly","to","often","I","."], answer:"i used to fly often .", display:"I used to fly often.", fr:"Je prenais souvent l'avion, avant." },
-      { bank:["called","when","my","phone","boarding","started","I","was","."], answer:"i was boarding when my phone called .", display:"I was boarding when my phone called.", fr:"J'étais en train d'embarquer quand mon téléphone a sonné." },
+      { bank:["called","when","my","phone","boarding","I","was","."], answer:"i was boarding when my phone called .", display:"I was boarding when my phone called.", fr:"J'étais en train d'embarquer quand mon téléphone a sonné." },
       { bank:["miss","if","the","We'll","flight","late","are","we","."], answer:"we'll miss the flight if we are late .", display:"We'll miss the flight if we are late.", fr:"Nous raterons le vol si nous sommes en retard." },
       { bank:["going","early","are","to","We","arrive","."], answer:"we are going to arrive early .", display:"We are going to arrive early.", fr:"Nous allons arriver tôt." },
       { bank:["one","that","is","This","airport","than","bigger","."], answer:"this airport is bigger than that one .", display:"This airport is bigger than that one.", fr:"Cet aéroport est plus grand que celui-là." },
       { bank:["help","should","for","staff","You","ask","."], answer:"you should ask staff for help .", display:"You should ask staff for help.", fr:"Tu devrais demander de l'aide au personnel." },
-      { bank:["connection","we","the","delayed","miss","If","flight","the","is","we'll","."], answer:"if the flight is delayed we'll miss the connection .", display:"If the flight is delayed, we'll miss the connection.", fr:"Si le vol est retardé, nous raterons la correspondance." },
+      { bank:["connection","the","delayed","miss","If","flight","the","is","we'll","."], answer:"if the flight is delayed we'll miss the connection .", display:"If the flight is delayed, we'll miss the connection.", fr:"Si le vol est retardé, nous raterons la correspondance." },
       { bank:["gate","near","any","aren't","There","seats","the","."], answer:"there aren't any seats near the gate .", display:"There aren't any seats near the gate.", fr:"Il n'y a aucun siège près de la porte d'embarquement." },
       { bank:["would","said","late","he","arrive","He","that","."], answer:"he said that he would arrive late .", display:"He said that he would arrive late.", fr:"Il a dit qu'il arriverait en retard." },
       { bank:["desk","ask","information","the","don't","we","at","Why","?"], answer:"why don't we ask at the information desk ?", display:"Why don't we ask at the information desk?", fr:"Pourquoi ne pas demander au comptoir d'information ?" },
