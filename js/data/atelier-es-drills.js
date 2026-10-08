@@ -8989,5 +8989,1590 @@ export const ES_DRILLS = {
     }
    ]
   }
+ ],
+ "verbes-pronominaux": [
+  {
+   "id": "pronominaux-1",
+   "reg": "informal",
+   "title": "Comprendre les pronominaux : la logique du « se » · Informel (tú)",
+   "why": "L'espagnol adore les verbes pronominaux, bien plus que le français. Leur logique est simple : <b>l'action revient sur celui qui la fait</b>. <i>Levantar</i> = lever (un objet, quelqu'un d'autre) ; <i>levantarse</i> = me lever, lever <b>moi-même</b>. Le petit pronom (me, te, se…) est le « retour » de l'action vers le sujet.<br>Avec le corps, c'est comme en français : on dit « je me lave <b>les</b> mains » et <i>me lavo <b>las</b> manos</i>, sans possessif, puisque le pronom dit déjà à qui sont les mains.<br>Mais les deux langues ne se recouvrent pas. <b>Pronominaux en espagnol, pas en français</b> : <i>quedarse</i> (rester), <i>irse</i> (partir), <i>caerse</i> (tomber), <i>comerse</i> (manger jusqu'au bout). <b>Pronominaux en français, pas en espagnol</b> : « se promener » = <i>pasear</i>, « se passer » = <i>pasar</i> (<i>¿Qué pasa?</i>). Retiens donc chaque verbe avec son <b>se</b> quand il en a un.",
+   "rule": "1. Pars de l'infinitif en <b>-se</b> : levantar<b>se</b>, ducharse, llamarse.<br>2. Choisis le pronom selon la personne : yo <b>me</b>, tú <b>te</b>, él/ella/usted <b>se</b>, nosotros <b>nos</b>, vosotros <b>os</b>, ellos/ustedes <b>se</b>.<br>3. Conjugue le verbe <b>normalement</b>, sans le -se : <b>me</b> levant<b>o</b>, <b>te</b> levant<b>as</b>…<br>4. Place du pronom : <b>avant</b> le verbe conjugué (<b>me</b> levanto) ; <b>collé</b> à l'infinitif (voy a levantar<b>me</b>), au gérondif (estoy levantándo<b>me</b>) et à l'impératif affirmatif (levánta<b>te</b>) ; devant le verbe à l'impératif négatif (<b>no te</b> levantes).<br>5. Parties du corps et vêtements : on met l'<b>article</b> (el, la, los, las), jamais le possessif : me lavo <b>las</b> manos, me pongo <b>el</b> abrigo.",
+   "timeline": "levantar ──▶ un objet ou quelqu'un d'autre   |   levantarse ──▶ ↩ moi-même",
+   "table": {
+    "caption": "levantarse (se lever)",
+    "headers": [
+     "Personne",
+     "Forme",
+     "Français"
+    ],
+    "rows": [
+     [
+      "yo",
+      "<b>me</b> levanto",
+      "je me lève"
+     ],
+     [
+      "tú",
+      "<b>te</b> levantas",
+      "tu te lèves"
+     ],
+     [
+      "él / ella / usted",
+      "<b>se</b> levanta",
+      "il / elle se lève ; vous vous levez (politesse)"
+     ],
+     [
+      "nosotros / nosotras",
+      "<b>nos</b> levantamos",
+      "nous nous levons"
+     ],
+     [
+      "vosotros / vosotras",
+      "<b>os</b> levantáis",
+      "vous vous levez (plusieurs amis, Espagne)"
+     ],
+     [
+      "ellos / ellas / ustedes",
+      "<b>se</b> levantan",
+      "ils / elles se lèvent ; vous vous levez (politesse, pluriel)"
+     ]
+    ]
+   },
+   "examples": [
+    {
+     "es": "Me cepillo los dientes después de cenar.",
+     "fr": "Je me brosse les dents après le dîner.",
+     "note": "los dientes : article, pas « mis dientes »"
+    },
+    {
+     "es": "Mi hermano se queda en casa los domingos.",
+     "fr": "Mon frère reste à la maison le dimanche.",
+     "note": "quedarse : pronominal en espagnol, pas en français"
+    },
+    {
+     "es": "Voy a ponerme el abrigo, que hace frío.",
+     "fr": "Je vais mettre mon manteau, il fait froid.",
+     "note": "pronom collé à l'infinitif + article el"
+    },
+    {
+     "es": "Paseamos por el parque después de comer.",
+     "fr": "Nous nous promenons dans le parc après le repas.",
+     "note": "« se promener » = pasear : pas de pronom en espagnol"
+    },
+    {
+     "es": "Ella se pone las gafas para leer.",
+     "fr": "Elle met ses lunettes pour lire.",
+     "note": "las gafas : article"
+    },
+    {
+     "es": "Lucía y Pablo se quieren mucho.",
+     "fr": "Lucía et Pablo s'aiment beaucoup.",
+     "note": "sens réciproque : l'un l'autre"
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Me lavo mis manos.",
+     "right": "Me lavo las manos.",
+     "why": "Le pronom <b>me</b> dit déjà que ce sont mes mains : article (las), pas possessif."
+    },
+    {
+     "wrong": "Voy a ducharse.",
+     "right": "Voy a ducharme.",
+     "why": "Le pronom suit la <b>personne</b> (yo → me), pas le -se de l'infinitif."
+    },
+    {
+     "wrong": "Me paseo por el parque.",
+     "right": "Paseo por el parque.",
+     "why": "<i>Pasear</i> n'est pas pronominal en espagnol, même si « se promener » l'est en français."
+    },
+    {
+     "wrong": "Está vistiendose.",
+     "right": "Está vistiéndose.",
+     "why": "Quand on colle le pronom au gérondif, on écrit l'accent : vistiéndose."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "Quelle phrase veut dire « Je lève la main » ?",
+     "opts": [
+      "Me levanto la mano",
+      "Levanto la mano",
+      "Se levanta la mano"
+     ],
+     "correct": 1,
+     "why": "Sans pronom, l'action va sur autre chose que moi : <b>la mano</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Tú ___ ___ (bañarse) después del gimnasio.",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "bañas"
+      ]
+     ],
+     "why": "tú → <b>te</b> + bañas."
+    },
+    {
+     "type": "mcq",
+     "q": "« Vous vous levez » (vosotros, à deux amis) =",
+     "opts": [
+      "Os levantáis",
+      "Se levantáis",
+      "Vos levantáis"
+     ],
+     "correct": 0,
+     "why": "vosotros → <b>os</b> + levantáis."
+    },
+    {
+     "type": "fill",
+     "text": "Mis padres ___ ___ (quedarse) en casa los domingos.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "quedan"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + quedan."
+    },
+    {
+     "type": "speak",
+     "es": "Todos los días me levanto temprano y me ducho.",
+     "fr": "Tous les jours, je me lève tôt et je me douche."
+    },
+    {
+     "type": "mcq",
+     "q": "Pourquoi dit-on « Me lavo las manos » et pas « mis manos » ?",
+     "opts": [
+      "Parce que manos est féminin",
+      "Parce que « mis » n'existe pas",
+      "Parce que <b>me</b> dit déjà que ce sont mes mains"
+     ],
+     "correct": 2,
+     "why": "Le pronom indique le possesseur : on met l'article."
+    },
+    {
+     "type": "fill",
+     "text": "Nosotros ___ ___ (sentarse) a la mesa.",
+     "answers": [
+      [
+       "nos"
+      ],
+      [
+       "sentamos"
+      ]
+     ],
+     "why": "nosotros → <b>nos</b> + sentamos."
+    },
+    {
+     "type": "mcq",
+     "q": "Lequel est pronominal en espagnol mais PAS en français ?",
+     "opts": [
+      "llamarse (s'appeler)",
+      "lavarse (se laver)",
+      "quedarse (rester)"
+     ],
+     "correct": 2,
+     "why": "« Rester » n'est pas pronominal ; <b>quedarse</b> l'est."
+    },
+    {
+     "type": "fill",
+     "text": "Ellos ___ ___ (lavarse) los dientes.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "lavan"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + lavan."
+    },
+    {
+     "type": "mcq",
+     "q": "« Je me promène dans le parc » =",
+     "opts": [
+      "Paseo por el parque",
+      "Me paseo por el parque",
+      "Me pasear por el parque"
+     ],
+     "correct": 0,
+     "why": "<b>Pasear</b> n'est pas pronominal en espagnol."
+    },
+    {
+     "type": "fill",
+     "text": "Anna ___ ___ (quitarse) los zapatos en casa.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "quita"
+      ]
+     ],
+     "why": "Anna = ella → <b>se</b> + quita."
+    },
+    {
+     "type": "fill",
+     "text": "Cuando pierde, mi hermano ___ ___ (enfadarse).",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "enfada"
+      ]
+     ],
+     "why": "él → <b>se</b> + enfada."
+    },
+    {
+     "type": "speak",
+     "es": "Cuando hace frío, me pongo el abrigo.",
+     "fr": "Quand il fait froid, je mets mon manteau."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-2",
+   "reg": "formal",
+   "title": "Les pronoms à toutes les personnes · Formel (usted)",
+   "why": "Au vouvoiement, un seul pronom à retenir : <b>se</b>, pour <i>usted</i> (une personne) comme pour <i>ustedes</i> (plusieurs). Le pronom suit la personne dont on parle, et le verbe se conjugue normalement.",
+   "rule": "1. yo <b>me</b>, tú <b>te</b>, él/ella/usted <b>se</b>, nosotros <b>nos</b>, vosotros <b>os</b>, ellos/ustedes <b>se</b>.<br>2. Avec usted ou ustedes : toujours <b>se</b> + verbe à la 3e personne (usted <b>se</b> llama, ustedes <b>se</b> llaman).",
+   "examples": [
+    {
+     "es": "Buenos días, me llamo Lucía Ortega.",
+     "fr": "Bonjour, je m'appelle Lucía Ortega."
+    },
+    {
+     "es": "¿Cómo se llama usted, señor?",
+     "fr": "Comment vous appelez-vous, monsieur ?",
+     "note": "usted → se + llama"
+    },
+    {
+     "es": "Los clientes se quedan en el hotel dos noches.",
+     "fr": "Les clients restent à l'hôtel deux nuits."
+    },
+    {
+     "es": "Ustedes se sientan en la sala de espera.",
+     "fr": "Vous vous asseyez dans la salle d'attente.",
+     "note": "ustedes → se + sientan"
+    },
+    {
+     "es": "Mis colegas y yo nos preparamos para la reunión.",
+     "fr": "Mes collègues et moi nous préparons pour la réunion."
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "¿Cómo te llama usted?",
+     "right": "¿Cómo se llama usted?",
+     "why": "Avec usted, le pronom est <b>se</b>, jamais te."
+    },
+    {
+     "wrong": "Ustedes os sentáis aquí.",
+     "right": "Ustedes se sientan aquí.",
+     "why": "ustedes se conjugue comme ellos : <b>se</b> + 3e personne du pluriel."
+    },
+    {
+     "wrong": "Usted se llamas Ruiz.",
+     "right": "Usted se llama Ruiz.",
+     "why": "usted prend la terminaison de la 3e personne du singulier."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "Avec « usted », quel pronom utilise-t-on ?",
+     "opts": [
+      "te",
+      "se",
+      "os"
+     ],
+     "correct": 1,
+     "why": "usted et ustedes → <b>se</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Buenos días, señora. ¿Cómo ___ ___ (llamarse) usted?",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "llama"
+      ]
+     ],
+     "why": "usted → <b>se</b> + llama."
+    },
+    {
+     "type": "fill",
+     "text": "Señor Gil, ¿a qué hora ___ ___ (levantarse) usted?",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "levanta"
+      ]
+     ],
+     "why": "usted → <b>se</b> + levanta."
+    },
+    {
+     "type": "mcq",
+     "q": "Pour vouvoyer UN client, quelle phrase est correcte ?",
+     "opts": [
+      "Usted se sienta aquí",
+      "Usted te sientas aquí",
+      "Usted se sientas aquí"
+     ],
+     "correct": 0,
+     "why": "usted → <b>se</b> + sienta (3e personne du singulier)."
+    },
+    {
+     "type": "speak",
+     "es": "¿Cómo se llama usted y de dónde es?",
+     "fr": "Comment vous appelez-vous et d'où êtes-vous ?"
+    },
+    {
+     "type": "fill",
+     "text": "Los invitados ___ ___ (quedarse) hasta las nueve.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "quedan"
+      ]
+     ],
+     "why": "los invitados = ellos → <b>se</b> + quedan."
+    },
+    {
+     "type": "mcq",
+     "q": "Mis colegas y yo ___ preparamos para la reunión.",
+     "opts": [
+      "se",
+      "me",
+      "nos"
+     ],
+     "correct": 2,
+     "why": "« Mis colegas y yo » = nosotros → <b>nos</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Yo ___ ___ (llamarse) Marta Sanz y soy la nueva secretaria.",
+     "answers": [
+      [
+       "me"
+      ],
+      [
+       "llamo"
+      ]
+     ],
+     "why": "yo → <b>me</b> + llamo."
+    },
+    {
+     "type": "mcq",
+     "q": "Le directeur s'adresse à deux clients : « ¿Cómo ___ ustedes? »",
+     "opts": [
+      "se llama",
+      "os llamáis",
+      "te llamas",
+      "se llaman"
+     ],
+     "correct": 3,
+     "why": "ustedes → <b>se</b> + llaman (3e personne du pluriel)."
+    },
+    {
+     "type": "fill",
+     "text": "Señora Pérez, ¿usted ___ ___ (acordarse) de mi nombre?",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "acuerda"
+      ]
+     ],
+     "why": "usted → <b>se</b> + acuerda (o → ue)."
+    },
+    {
+     "type": "mcq",
+     "q": "En réunion : « Nous nous présentons »",
+     "opts": [
+      "Se presentamos",
+      "Nos presentamos",
+      "Os presentamos"
+     ],
+     "correct": 1,
+     "why": "nosotros → <b>nos</b> + presentamos."
+    },
+    {
+     "type": "fill",
+     "text": "La directora ___ ___ (irse) de viaje mañana.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "va"
+      ]
+     ],
+     "why": "ella → <b>se</b> + va (irse : se va)."
+    },
+    {
+     "type": "speak",
+     "es": "Mi jefe se va a las seis y yo me quedo.",
+     "fr": "Mon chef part à six heures et moi je reste."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-3",
+   "reg": "informal",
+   "title": "Ma routine, du matin au soir · Informel (tú)",
+   "why": "La routine quotidienne est le terrain idéal : presque chaque geste de la journée est pronominal, du réveil au coucher.",
+   "rule": "1. Ordre de la journée : despertarse → levantarse → ducharse → vestirse → peinarse → acostarse.<br>2. Certains changent de voyelle (despertarse : me despierto ; acostarse : me acuesto ; vestirse : me visto), sauf nosotros et vosotros.<br>3. Corps et vêtements : article (los dientes, el pelo).",
+   "examples": [
+    {
+     "es": "Me despierto a las seis, pero me levanto a las siete.",
+     "fr": "Je me réveille à six heures, mais je me lève à sept heures."
+    },
+    {
+     "es": "Mi hermano se viste en cinco minutos.",
+     "fr": "Mon frère s'habille en cinq minutes."
+    },
+    {
+     "es": "¿Te lavas los dientes después de comer?",
+     "fr": "Tu te brosses les dents après manger ?",
+     "note": "lavarse los dientes : article los"
+    },
+    {
+     "es": "Nos peinamos delante del mismo espejo.",
+     "fr": "Nous nous coiffons devant le même miroir."
+    },
+    {
+     "es": "Por la noche me quito los zapatos y me pongo el pijama.",
+     "fr": "Le soir, j'enlève mes chaussures et je mets mon pyjama."
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Me lavo mis dientes.",
+     "right": "Me lavo los dientes.",
+     "why": "Le pronom montre déjà que ce sont mes dents : article los."
+    },
+    {
+     "wrong": "Me acosto a las once.",
+     "right": "Me acuesto a las once.",
+     "why": "acostarse change sa voyelle : o → ue (me acuesto)."
+    },
+    {
+     "wrong": "Nos acuestamos temprano.",
+     "right": "Nos acostamos temprano.",
+     "why": "À nosotros, pas de changement de voyelle : acostamos."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "« Je me réveille à sept heures » =",
+     "opts": [
+      "Me despierto a las siete",
+      "Me despiertas a las siete",
+      "Despierto a las siete"
+     ],
+     "correct": 0,
+     "why": "yo → <b>me</b> + despierto (e → ie)."
+    },
+    {
+     "type": "fill",
+     "text": "Mi hermano ___ ___ (vestirse) en cinco minutos.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "viste"
+      ]
+     ],
+     "why": "él → <b>se</b> + viste."
+    },
+    {
+     "type": "fill",
+     "text": "Tú ___ ___ (lavarse) los dientes tres veces al día.",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "lavas"
+      ]
+     ],
+     "why": "tú → <b>te</b> + lavas ; los dientes avec l'article."
+    },
+    {
+     "type": "mcq",
+     "q": "« Nous nous couchons à onze heures » =",
+     "opts": [
+      "Nos acuestamos",
+      "Nos acostáis",
+      "Nos acostamos"
+     ],
+     "correct": 2,
+     "why": "nosotros garde la voyelle d'origine : acostamos."
+    },
+    {
+     "type": "fill",
+     "text": "Yo ___ ___ (acostarse) a las once.",
+     "answers": [
+      [
+       "me"
+      ],
+      [
+       "acuesto"
+      ]
+     ],
+     "why": "yo → <b>me</b> + acuesto (o → ue)."
+    },
+    {
+     "type": "speak",
+     "es": "Me despierto a las siete, pero me levanto más tarde.",
+     "fr": "Je me réveille à sept heures, mais je me lève plus tard."
+    },
+    {
+     "type": "mcq",
+     "q": "Que veut dire « Mi madre me peina » ?",
+     "opts": [
+      "Ma mère se coiffe",
+      "Ma mère me coiffe",
+      "Je coiffe ma mère"
+     ],
+     "correct": 1,
+     "why": "Ici <b>me</b> n'est pas un retour : c'est moi qui suis coiffé par ma mère."
+    },
+    {
+     "type": "fill",
+     "text": "Nosotros ___ ___ (ducharse) antes de cenar.",
+     "answers": [
+      [
+       "nos"
+      ],
+      [
+       "duchamos"
+      ]
+     ],
+     "why": "nosotros → <b>nos</b> + duchamos."
+    },
+    {
+     "type": "mcq",
+     "q": "« Je me lave les cheveux » =",
+     "opts": [
+      "Me lavo el pelo",
+      "Me lavo mi pelo",
+      "Lavo me el pelo"
+     ],
+     "correct": 0,
+     "why": "<b>Me</b> + article <b>el</b>, jamais le possessif."
+    },
+    {
+     "type": "fill",
+     "text": "Por la noche, tú ___ ___ (quitarse) los zapatos.",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "quitas"
+      ]
+     ],
+     "why": "tú → <b>te</b> + quitas."
+    },
+    {
+     "type": "mcq",
+     "q": "Mis hermanos ___ peinan antes de salir.",
+     "opts": [
+      "me",
+      "te",
+      "se"
+     ],
+     "correct": 2,
+     "why": "mis hermanos = ellos → <b>se</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Mis padres ___ ___ (levantarse) muy temprano los sábados.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "levantan"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + levantan."
+    },
+    {
+     "type": "speak",
+     "es": "Mi hermana se peina y se maquilla antes de salir.",
+     "fr": "Ma sœur se coiffe et se maquille avant de sortir."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-4",
+   "reg": "formal",
+   "title": "Pronom + infinitif, ir a et gérondif · Formel (usted)",
+   "why": "Dans les échanges polis, on entend sans cesse « voy a », « quiero » ou « estoy » suivis d'un pronominal. Le pronom reste fidèle à la <b>personne</b>, pas au -se de l'infinitif.",
+   "rule": "1. Infinitif : pronom collé (voy a presentar<b>me</b>) ou devant le groupe (<b>me</b> voy a presentar).<br>2. Gérondif : collé avec accent (estoy duchán<b>dome</b>) ou devant (<b>me</b> estoy duchando).<br>3. Jamais au milieu : pas de « voy a me presentar ».",
+   "examples": [
+    {
+     "es": "Voy a presentarme: soy la nueva gerente.",
+     "fr": "Je vais me présenter : je suis la nouvelle gérante."
+    },
+    {
+     "es": "¿Va a quedarse usted otra noche, señor?",
+     "fr": "Allez-vous rester une nuit de plus, monsieur ?"
+    },
+    {
+     "es": "Los huéspedes se van a instalar en el segundo piso.",
+     "fr": "Les clients vont s'installer au deuxième étage.",
+     "note": "pronom devant le groupe"
+    },
+    {
+     "es": "El doctor se está cambiando de bata.",
+     "fr": "Le docteur est en train de changer de blouse."
+    },
+    {
+     "es": "Estamos preparándonos para la reunión.",
+     "fr": "Nous sommes en train de nous préparer pour la réunion.",
+     "note": "accent : preparándonos"
+    },
+    {
+     "es": "Deseo sentarme cerca de la ventana.",
+     "fr": "Je souhaite m'asseoir près de la fenêtre."
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Voy a me presentar.",
+     "right": "Voy a presentarme / Me voy a presentar.",
+     "why": "Le pronom va devant le groupe entier ou collé à la fin, jamais au milieu."
+    },
+    {
+     "wrong": "Está duchandose.",
+     "right": "Está duchándose.",
+     "why": "Le gérondif collé garde son accent tonique : duchándose."
+    },
+    {
+     "wrong": "Usted va a quedarme.",
+     "right": "Usted va a quedarse.",
+     "why": "Le pronom suit la personne : usted → se."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "« Je vais me présenter » =",
+     "opts": [
+      "Voy a presentarse",
+      "Voy a presentarme",
+      "Voy a me presentar"
+     ],
+     "correct": 1,
+     "why": "yo → me, collé à l'infinitif : presentarme."
+    },
+    {
+     "type": "fill",
+     "text": "Señora Díaz, ¿va a ___ (instalarse, usted) en la habitación doce?",
+     "answers": [
+      [
+       "instalarse"
+      ]
+     ],
+     "why": "usted → se, collé à l'infinitif."
+    },
+    {
+     "type": "mcq",
+     "q": "« Le patient est en train de se changer » =",
+     "opts": [
+      "Está cambiándose",
+      "Está cambiandose",
+      "Está se cambiando"
+     ],
+     "correct": 0,
+     "why": "Gérondif + se collé, avec accent : cambiándose."
+    },
+    {
+     "type": "fill",
+     "text": "El gerente se está ___ (vestirse) para la reunión.",
+     "answers": [
+      [
+       "vistiendo"
+      ]
+     ],
+     "why": "vestirse → gérondif vistiendo (e → i)."
+    },
+    {
+     "type": "speak",
+     "es": "Voy a ducharme y después bajo a recepción.",
+     "fr": "Je vais me doucher et ensuite je descends à la réception."
+    },
+    {
+     "type": "fill",
+     "text": "Los invitados ___ van a sentar a la mesa tres (sentarse).",
+     "answers": [
+      [
+       "se"
+      ]
+     ],
+     "why": "ellos → se, devant le groupe : se van a sentar."
+    },
+    {
+     "type": "mcq",
+     "q": "« Vous vous inquiétez sans raison, madame » =",
+     "opts": [
+      "Está preocupandose",
+      "Está se preocupando",
+      "Está preocupándose"
+     ],
+     "correct": 2,
+     "why": "Pronom collé au gérondif, avec accent : preocupándose."
+    },
+    {
+     "type": "fill",
+     "text": "Nosotros estamos ___ (prepararse) para la reunión.",
+     "answers": [
+      [
+       "preparándonos"
+      ]
+     ],
+     "why": "nosotros → nos, collé au gérondif : preparándonos."
+    },
+    {
+     "type": "mcq",
+     "q": "Laquelle de ces phrases est INCORRECTE ?",
+     "opts": [
+      "Se va a levantar",
+      "Va a se levantar",
+      "Va a levantarse"
+     ],
+     "correct": 1,
+     "why": "Le pronom ne se met jamais entre « va a » et l'infinitif."
+    },
+    {
+     "type": "fill",
+     "text": "Disculpe, ___ voy a sentar aquí un momento (sentarse, yo).",
+     "answers": [
+      [
+       "me"
+      ]
+     ],
+     "why": "yo → me, devant le groupe : me voy a sentar."
+    },
+    {
+     "type": "mcq",
+     "q": "« Elle est en train de se doucher » : quel gérondif collé est bien écrit ?",
+     "opts": [
+      "duchandose",
+      "duchándose",
+      "duchandóse"
+     ],
+     "correct": 1,
+     "why": "L'accent reste sur la syllabe tonique : duchándose."
+    },
+    {
+     "type": "fill",
+     "text": "Doctora, yo estoy ___ (cambiarse) en el vestuario.",
+     "answers": [
+      [
+       "cambiándome"
+      ]
+     ],
+     "why": "yo → me, collé au gérondif : cambiándome."
+    },
+    {
+     "type": "speak",
+     "es": "Disculpe, ¿puedo sentarme junto a la ventana?",
+     "fr": "Excusez-moi, puis-je m'asseoir près de la fenêtre ?"
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-5",
+   "reg": "informal",
+   "title": "Quand « se » change le sens (irse, dormirse, ponerse…) · Informel (tú)",
+   "why": "Ajouter <b>se</b> ne fait pas que « retourner » l'action : ça change souvent le sens du verbe. Mieux vaut apprendre ces verbes par paires.",
+   "rule": "1. Sans pronom : l'action va vers autre chose ou quelqu'un d'autre. Avec pronom : elle revient sur le sujet, ou le verbe prend un sens nouveau.<br>2. Les paires à retenir : ir / <b>irse</b>, dormir / <b>dormirse</b>, llamar / <b>llamarse</b>, poner / <b>ponerse</b>, quedar / <b>quedarse</b>, llevar / <b>llevarse</b>.",
+   "examples": [
+    {
+     "es": "Me voy, que llego tarde.",
+     "fr": "Je m'en vais, je suis en retard.",
+     "note": "ir = aller ; irse = partir"
+    },
+    {
+     "es": "Duermo ocho horas, pero me duermo tarde.",
+     "fr": "Je dors huit heures, mais je m'endors tard.",
+     "note": "dormir / dormirse"
+    },
+    {
+     "es": "Llamo a mi madre cada domingo; mi perro se llama Bruno.",
+     "fr": "J'appelle ma mère chaque dimanche ; mon chien s'appelle Bruno.",
+     "note": "llamar / llamarse"
+    },
+    {
+     "es": "Pongo las llaves en la mesa y me pongo las gafas.",
+     "fr": "Je pose les clés sur la table et je mets mes lunettes.",
+     "note": "poner / ponerse"
+    },
+    {
+     "es": "Quedamos a las nueve en el cine.",
+     "fr": "On se retrouve à neuf heures au cinéma.",
+     "note": "quedar = fixer un rendez-vous ; quedarse = rester"
+    },
+    {
+     "es": "Me llevo muy bien con mi vecino.",
+     "fr": "Je m'entends très bien avec mon voisin.",
+     "note": "llevarse bien = s'entendre bien"
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Me duermo ocho horas cada noche.",
+     "right": "Duermo ocho horas cada noche.",
+     "why": "Pour une durée de sommeil, on utilise <b>dormir</b> ; dormirse = s'endormir."
+    },
+    {
+     "wrong": "Voy de la fiesta a las doce.",
+     "right": "Me voy de la fiesta a las doce.",
+     "why": "Pour dire « partir, quitter un lieu », il faut <b>irse</b>."
+    },
+    {
+     "wrong": "Nos quedamos a las ocho en la plaza.",
+     "right": "Quedamos a las ocho en la plaza.",
+     "why": "Pour fixer un rendez-vous : <b>quedar</b> sans pronom ; quedarse = rester."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "« Je m'endors devant la télé » =",
+     "opts": [
+      "Me duermo delante de la tele",
+      "Duermo delante de la tele",
+      "Me dormo delante de la tele"
+     ],
+     "correct": 0,
+     "why": "s'endormir = <b>dormirse</b> ; yo → me duermo."
+    },
+    {
+     "type": "fill",
+     "text": "Mi hermana ___ ___ (llamarse) Lucía.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "llama"
+      ]
+     ],
+     "why": "ella → <b>se</b> + llama."
+    },
+    {
+     "type": "mcq",
+     "q": "« Llamo a mi padre » veut dire…",
+     "opts": [
+      "Je m'appelle mon père",
+      "J'appelle mon père",
+      "Mon père m'appelle"
+     ],
+     "correct": 1,
+     "why": "Sans pronom, <b>llamar</b> = appeler quelqu'un."
+    },
+    {
+     "type": "fill",
+     "text": "Esta noche tú ___ ___ (quedarse) en casa, ¿verdad?",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "quedas"
+      ]
+     ],
+     "why": "tú → <b>te</b> + quedas (rester)."
+    },
+    {
+     "type": "speak",
+     "es": "Quedamos a las ocho en la plaza, ¿vale?",
+     "fr": "On se retrouve à huit heures sur la place, d'accord ?"
+    },
+    {
+     "type": "mcq",
+     "q": "« Je mets mes lunettes (sur mon nez) » =",
+     "opts": [
+      "Pongo mis gafas",
+      "Pongo las gafas",
+      "Me pongo las gafas"
+     ],
+     "correct": 2,
+     "why": "Mettre sur soi = <b>ponerse</b> + article."
+    },
+    {
+     "type": "fill",
+     "text": "Mis amigos ___ ___ (irse) de la fiesta a medianoche.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "van"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + van."
+    },
+    {
+     "type": "mcq",
+     "q": "« Je m'entends bien avec toi » =",
+     "opts": [
+      "Me llevo bien contigo",
+      "Llevo bien contigo",
+      "Me quedo bien contigo"
+     ],
+     "correct": 0,
+     "why": "<b>Llevarse bien con</b> = s'entendre bien avec."
+    },
+    {
+     "type": "fill",
+     "text": "Yo ___ ___ (dormirse) siempre en el autobús.",
+     "answers": [
+      [
+       "me"
+      ],
+      [
+       "duermo"
+      ]
+     ],
+     "why": "yo → <b>me</b> + duermo (o → ue)."
+    },
+    {
+     "type": "mcq",
+     "q": "Quelle phrase veut dire « Je pose mon sac sur la chaise » ?",
+     "opts": [
+      "Me pongo el bolso en la silla",
+      "Pongo el bolso en la silla",
+      "Pongo me el bolso en la silla"
+     ],
+     "correct": 1,
+     "why": "Poser un objet = <b>poner</b> sans pronom."
+    },
+    {
+     "type": "fill",
+     "text": "Nosotros ___ (quedar : fixer un rendez-vous) a las seis en tu casa.",
+     "answers": [
+      [
+       "quedamos"
+      ]
+     ],
+     "why": "Rendez-vous = <b>quedar</b> sans pronom."
+    },
+    {
+     "type": "fill",
+     "text": "Tú ___ ___ (ponerse) nervioso antes de los exámenes.",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "pones"
+      ]
+     ],
+     "why": "ponerse + adjectif = devenir : tú → <b>te</b> + pones."
+    },
+    {
+     "type": "speak",
+     "es": "Me voy ya, que mañana trabajo temprano.",
+     "fr": "Je m'en vais, car demain je travaille tôt."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-6",
+   "reg": "formal",
+   "title": "L'impératif avec pronoms : « Quédese », « No se preocupe » · Formel (usted)",
+   "why": "Au vouvoiement, les consignes polies sont presque toujours pronominales : on invite à s'asseoir, à se calmer, à ne pas s'inquiéter.",
+   "rule": "1. Impératif usted (-ar → -e, -er/-ir → -a), avec <b>se</b> : sentarse → siéntese.<br>2. Affirmatif : <b>se</b> collé à la fin, avec accent : quédese, cálmese. Ustedes : -n (quédense).<br>3. Négatif : <b>no se</b> + verbe, sans accent : no se preocupe, no se preocupen.",
+   "examples": [
+    {
+     "es": "Quédese en recepción, por favor.",
+     "fr": "Restez à la réception, s'il vous plaît.",
+     "note": "quédese : accent + se collé"
+    },
+    {
+     "es": "Cálmese, señora, todo va bien.",
+     "fr": "Calmez-vous, madame, tout va bien."
+    },
+    {
+     "es": "No se preocupe, señor; su habitación está lista.",
+     "fr": "Ne vous inquiétez pas, monsieur ; votre chambre est prête.",
+     "note": "négatif : no se + preocupe"
+    },
+    {
+     "es": "Póngase cómodo, señor; el director llega en cinco minutos.",
+     "fr": "Mettez-vous à l'aise, monsieur ; le directeur arrive dans cinq minutes."
+    },
+    {
+     "es": "Señoras y señores, levántense, por favor.",
+     "fr": "Mesdames et messieurs, levez-vous, s'il vous plaît.",
+     "note": "ustedes : levántense"
+    },
+    {
+     "es": "No se levante, señor; yo abro la puerta.",
+     "fr": "Ne vous levez pas, monsieur ; j'ouvre la porte."
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Sientese, por favor.",
+     "right": "Siéntese, por favor.",
+     "why": "L'accent écrit est obligatoire quand le pronom est collé."
+    },
+    {
+     "wrong": "No siéntese aquí.",
+     "right": "No se siente aquí.",
+     "why": "À la forme négative, le pronom passe <b>devant</b> le verbe, sans accent."
+    },
+    {
+     "wrong": "Siéntate, señora.",
+     "right": "Siéntese, señora.",
+     "why": "À une dame qu'on vouvoie : usted → siéntese ; siéntate est la forme tú."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "« Levez-vous, monsieur » (levantarse) =",
+     "opts": [
+      "Levantese, señor",
+      "Levántese, señor",
+      "Levántate, señor"
+     ],
+     "correct": 1,
+     "why": "usted → levante + se, avec accent : <b>levántese</b>."
+    },
+    {
+     "type": "fill",
+     "text": "___ (quedarse, usted) aquí un momento, señora.",
+     "answers": [
+      [
+       "Quédese",
+       "quédese"
+      ]
+     ],
+     "why": "usted : quede + se, accent sur quédese."
+    },
+    {
+     "type": "mcq",
+     "q": "« Ne vous inquiétez pas, monsieur » =",
+     "opts": [
+      "No se preocupe, señor",
+      "No preocúpese, señor",
+      "No se preocupa, señor"
+     ],
+     "correct": 0,
+     "why": "Négatif : <b>no se</b> + preocupe."
+    },
+    {
+     "type": "fill",
+     "text": "Señores, ___ (sentarse, ustedes) aquí, por favor.",
+     "answers": [
+      [
+       "siéntense",
+       "Siéntense"
+      ]
+     ],
+     "why": "ustedes : siente + n + se → siéntense."
+    },
+    {
+     "type": "speak",
+     "es": "Quítese la chaqueta y siéntese en la camilla.",
+     "fr": "Enlevez votre veste et asseyez-vous sur la table d'examen."
+    },
+    {
+     "type": "fill",
+     "text": "No ___ (irse, usted) todavía, señora.",
+     "answers": [
+      [
+       "se vaya"
+      ]
+     ],
+     "why": "Négatif : no + se + vaya."
+    },
+    {
+     "type": "mcq",
+     "q": "« Ne vous asseyez pas là » (usted) =",
+     "opts": [
+      "No siéntese ahí",
+      "No sientese ahí",
+      "No se siente ahí"
+     ],
+     "correct": 2,
+     "why": "Négatif : <b>no se</b> + siente, sans pronom collé."
+    },
+    {
+     "type": "fill",
+     "text": "___ (acostarse, usted) aquí, por favor, y relájese.",
+     "answers": [
+      [
+       "Acuéstese",
+       "acuéstese"
+      ]
+     ],
+     "why": "usted : acueste + se → acuéstese."
+    },
+    {
+     "type": "mcq",
+     "q": "Quelle forme est bien écrite ?",
+     "opts": [
+      "Quitese el abrigo",
+      "Quítese el abrigo",
+      "Quitése el abrigo"
+     ],
+     "correct": 1,
+     "why": "L'accent reste sur la même syllabe : <b>quítese</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Señores, no ___ (preocuparse, ustedes): todo está bien.",
+     "answers": [
+      [
+       "se preocupen"
+      ]
+     ],
+     "why": "Négatif pluriel : no + se + preocupen."
+    },
+    {
+     "type": "mcq",
+     "q": "Pour dire à des clients (ustedes) de se calmer :",
+     "opts": [
+      "Cálmense, por favor",
+      "Cálmese, por favor",
+      "Cálmanse, por favor"
+     ],
+     "correct": 0,
+     "why": "ustedes : calme + n + se → <b>cálmense</b>."
+    },
+    {
+     "type": "fill",
+     "text": "___ (ponerse, usted) el casco, por favor.",
+     "answers": [
+      [
+       "Póngase",
+       "póngase"
+      ]
+     ],
+     "why": "usted : ponga + se → póngase."
+    },
+    {
+     "type": "speak",
+     "es": "Señores, siéntense y esperen un momento, por favor.",
+     "fr": "Messieurs-dames, asseyez-vous et patientez un instant, s'il vous plaît."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-7",
+   "reg": "informal",
+   "title": "Réciproques et émotions · Informel (tú)",
+   "why": "Quand deux personnes agissent l'une sur l'autre, le pronom pluriel (nos, os, se) veut dire « l'un l'autre ». Beaucoup d'émotions se disent aussi avec un pronom : me enfado, te alegras.",
+   "rule": "1. Réciproque : sujet pluriel + <b>nos / os / se</b> (nos escribimos, os queréis, se quieren).<br>2. Émotions : pronom + verbe (me enfado, te aburres, se alegra de…).",
+   "examples": [
+    {
+     "es": "Mis abuelos se quieren mucho.",
+     "fr": "Mes grands-parents s'aiment beaucoup.",
+     "note": "réciproque : l'un l'autre"
+    },
+    {
+     "es": "Ana y yo nos escribimos todos los días.",
+     "fr": "Ana et moi, nous nous écrivons tous les jours."
+    },
+    {
+     "es": "Mis primos se ven en verano.",
+     "fr": "Mes cousins se voient en été."
+    },
+    {
+     "es": "Mi hermano se enfada por cualquier tontería.",
+     "fr": "Mon frère se fâche pour n'importe quelle bêtise.",
+     "note": "émotion : enfadarse"
+    },
+    {
+     "es": "Mi hermana se alegra de tu visita.",
+     "fr": "Ma sœur se réjouit de ta visite.",
+     "note": "alegrarse de"
+    },
+    {
+     "es": "Los niños se aburren en el coche.",
+     "fr": "Les enfants s'ennuient dans la voiture."
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Mis padres quieren mucho.",
+     "right": "Mis padres se quieren mucho.",
+     "why": "Sans <b>se</b>, la phrase est incomplète ; le pronom donne le sens « l'un l'autre »."
+    },
+    {
+     "wrong": "Yo enfado con mi hermano.",
+     "right": "Me enfado con mi hermano.",
+     "why": "Se fâcher = <b>enfadarse</b> : le pronom est obligatoire."
+    },
+    {
+     "wrong": "Nosotros se ayudamos.",
+     "right": "Nosotros nos ayudamos.",
+     "why": "Le pronom suit la personne : nosotros → nos."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "« Mes parents s'aiment » =",
+     "opts": [
+      "Mis padres quieren",
+      "Mis padres se quieren",
+      "Mis padres me quieren"
+     ],
+     "correct": 1,
+     "why": "Réciproque : <b>se</b> + quieren. Avec « me », ils m'aiment."
+    },
+    {
+     "type": "fill",
+     "text": "Ana y yo ___ ___ (escribirse) mensajes todos los días.",
+     "answers": [
+      [
+       "nos"
+      ],
+      [
+       "escribimos"
+      ]
+     ],
+     "why": "nosotros → <b>nos</b> + escribimos."
+    },
+    {
+     "type": "fill",
+     "text": "Mis primos ___ ___ (verse) en verano.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "ven"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + ven."
+    },
+    {
+     "type": "mcq",
+     "q": "Que veut dire « Luis y Marta se ayudan » ?",
+     "opts": [
+      "Luis aide Marta seulement",
+      "Marta aide Luis seulement",
+      "Ils s'aident l'un l'autre"
+     ],
+     "correct": 2,
+     "why": "Pronom pluriel = <b>réciproque</b>."
+    },
+    {
+     "type": "speak",
+     "es": "Me alegro de verte después de tanto tiempo.",
+     "fr": "Je suis content de te voir après si longtemps."
+    },
+    {
+     "type": "fill",
+     "text": "Tú ___ ___ (enfadarse) muy rápido con tus amigos.",
+     "answers": [
+      [
+       "te"
+      ],
+      [
+       "enfadas"
+      ]
+     ],
+     "why": "tú → <b>te</b> + enfadas."
+    },
+    {
+     "type": "mcq",
+     "q": "« Vous vous aimez » (vosotros, deux amis) =",
+     "opts": [
+      "Os queréis",
+      "Te quieres",
+      "Se queréis"
+     ],
+     "correct": 0,
+     "why": "vosotros → <b>os</b> + queréis."
+    },
+    {
+     "type": "fill",
+     "text": "Mis hermanos ___ ___ (aburrirse) los domingos.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "aburren"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + aburren."
+    },
+    {
+     "type": "mcq",
+     "q": "« Je m'ennuie » =",
+     "opts": [
+      "Aburro",
+      "Me aburre",
+      "Me aburro"
+     ],
+     "correct": 2,
+     "why": "Je m'ennuie = <b>aburrirse</b> : me aburro."
+    },
+    {
+     "type": "fill",
+     "text": "Nosotros ___ ___ (ayudarse) con los deberes.",
+     "answers": [
+      [
+       "nos"
+      ],
+      [
+       "ayudamos"
+      ]
+     ],
+     "why": "nosotros → <b>nos</b> + ayudamos."
+    },
+    {
+     "type": "mcq",
+     "q": "Laquelle de ces phrases est réciproque ?",
+     "opts": [
+      "Pedro se ducha",
+      "Pedro y Ana se abrazan",
+      "Pedro se levanta"
+     ],
+     "correct": 1,
+     "why": "Deux personnes, chacune agit sur l'autre."
+    },
+    {
+     "type": "fill",
+     "text": "Mi madre ___ ___ (preocuparse) cuando llego tarde.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "preocupa"
+      ]
+     ],
+     "why": "ella → <b>se</b> + preocupa."
+    },
+    {
+     "type": "speak",
+     "es": "Mis amigos y yo nos vemos todos los sábados.",
+     "fr": "Mes amis et moi, nous nous voyons tous les samedis."
+    }
+   ]
+  },
+  {
+   "id": "pronominaux-8",
+   "reg": "formal",
+   "title": "Mises en situation : hôtel, médecin, bureau, entretien · Formel (usted)",
+   "why": "Tout ensemble, dans quatre lieux où l'on vouvoie : l'hôtel (quedarse, instalarse), le cabinet médical (sentirse, quitarse), le bureau (reunirse) et l'entretien (presentarse, dedicarse).",
+   "rule": "1. Pronom selon la personne : usted et ustedes → <b>se</b>.<br>2. Place : devant le verbe conjugué ; collé à l'infinitif, au gérondif et à l'impératif affirmatif ; devant <b>no</b> + impératif négatif.<br>3. Corps et vêtements : l'article, jamais le possessif.",
+   "examples": [
+    {
+     "es": "¿Se queda usted dos noches o tres?",
+     "fr": "Restez-vous deux nuits ou trois ?",
+     "note": "hôtel"
+    },
+    {
+     "es": "¿Cómo se siente hoy, señor Prado?",
+     "fr": "Comment vous sentez-vous aujourd'hui, monsieur Prado ?",
+     "note": "médecin"
+    },
+    {
+     "es": "Quítese la camisa y túmbese en la camilla.",
+     "fr": "Enlevez votre chemise et allongez-vous sur la table d'examen.",
+     "note": "médecin : article la"
+    },
+    {
+     "es": "El comité se reúne todos los lunes.",
+     "fr": "Le comité se réunit tous les lundis.",
+     "note": "bureau"
+    },
+    {
+     "es": "Me llamo Elena Mora y me dedico a la contabilidad.",
+     "fr": "Je m'appelle Elena Mora et je me consacre à la comptabilité.",
+     "note": "entretien"
+    }
+   ],
+   "pitfalls": [
+    {
+     "wrong": "Quítese su chaqueta.",
+     "right": "Quítese la chaqueta.",
+     "why": "Le pronom indique déjà de qui est la veste : article la."
+    },
+    {
+     "wrong": "Estamos reuniendo con el director.",
+     "right": "Estamos reuniéndonos con el director.",
+     "why": "Il manque le pronom nos, collé au gérondif avec accent."
+    },
+    {
+     "wrong": "¿Cómo te sientes, señor?",
+     "right": "¿Cómo se siente, señor?",
+     "why": "On vouvoie : usted → se siente."
+    }
+   ],
+   "exercises": [
+    {
+     "type": "mcq",
+     "q": "À l'hôtel : « Combien de nuits restez-vous ? »",
+     "opts": [
+      "¿Cuántas noches se queda usted?",
+      "¿Cuántas noches te quedas?",
+      "¿Cuántas noches queda usted?"
+     ],
+     "correct": 0,
+     "why": "usted → <b>se</b> + queda ; sans pronom, ce serait un autre sens."
+    },
+    {
+     "type": "fill",
+     "text": "Doctor, ___ ___ (sentirse, yo) un poco mareado hoy.",
+     "answers": [
+      [
+       "me"
+      ],
+      [
+       "siento"
+      ]
+     ],
+     "why": "yo → <b>me</b> + siento (e → ie)."
+    },
+    {
+     "type": "fill",
+     "text": "Señor, ___ (quitarse, usted) la camisa, por favor.",
+     "answers": [
+      [
+       "Quítese",
+       "quítese"
+      ]
+     ],
+     "why": "usted : quite + se, accent sur quítese."
+    },
+    {
+     "type": "mcq",
+     "q": "Au bureau : « Nous nous réunissons à dix heures »",
+     "opts": [
+      "Se reunimos a las diez",
+      "Nos reunimos a las diez",
+      "Nos reúnimos a las diez"
+     ],
+     "correct": 1,
+     "why": "nosotros → <b>nos</b> + reunimos (sans accent)."
+    },
+    {
+     "type": "speak",
+     "es": "Buenos días, me llamo Elena Mora y tengo una cita.",
+     "fr": "Bonjour, je m'appelle Elena Mora et j'ai un rendez-vous."
+    },
+    {
+     "type": "fill",
+     "text": "Señores, ¿cuánto tiempo ___ ___ (quedarse, ustedes) en la ciudad?",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "quedan"
+      ]
+     ],
+     "why": "ustedes → <b>se</b> + quedan."
+    },
+    {
+     "type": "mcq",
+     "q": "Chez le médecin, quelle phrase est correcte ?",
+     "opts": [
+      "Se quite la camisa, por favor",
+      "Quítese la camisa, por favor",
+      "Quítate la camisa, por favor"
+     ],
+     "correct": 1,
+     "why": "Affirmatif usted : pronom collé, avec accent."
+    },
+    {
+     "type": "fill",
+     "text": "En la entrevista: «Yo ___ ___ (dedicarse) a la contabilidad.»",
+     "answers": [
+      [
+       "me"
+      ],
+      [
+       "dedico"
+      ]
+     ],
+     "why": "yo → <b>me</b> + dedico."
+    },
+    {
+     "type": "mcq",
+     "q": "« Nous sommes en train de nous préparer » (nosotros) =",
+     "opts": [
+      "Estamos preparando nos",
+      "Nos estamos preparandonos",
+      "Nos estamos preparando"
+     ],
+     "correct": 2,
+     "why": "Pronom devant le groupe : nos estamos preparando."
+    },
+    {
+     "type": "fill",
+     "text": "Doctora, ¿puedo ___ (acostarse, yo) aquí un momento?",
+     "answers": [
+      [
+       "acostarme"
+      ]
+     ],
+     "why": "yo → me, collé à l'infinitif."
+    },
+    {
+     "type": "mcq",
+     "q": "À un couple : « Installez-vous, messieurs-dames »",
+     "opts": [
+      "Instálese, señores",
+      "Instálense, señores",
+      "Instalen se, señores"
+     ],
+     "correct": 1,
+     "why": "ustedes : instale + n + se → <b>instálense</b>."
+    },
+    {
+     "type": "fill",
+     "text": "Los candidatos ___ ___ (presentarse) en recepción a las nueve.",
+     "answers": [
+      [
+       "se"
+      ],
+      [
+       "presentan"
+      ]
+     ],
+     "why": "ellos → <b>se</b> + presentan."
+    },
+    {
+     "type": "speak",
+     "es": "¿A qué hora se reúne el equipo con la directora?",
+     "fr": "À quelle heure l'équipe se réunit-elle avec la directrice ?"
+    }
+   ]
+  }
  ]
 };
