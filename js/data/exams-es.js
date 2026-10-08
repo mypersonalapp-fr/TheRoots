@@ -1,4 +1,4 @@
-// The Roots — EXAMENS d'ESPAGNOL (A1.0–A1.12, A2.1–A2.12 + 3 grands contrôles : 225 GC A1, 226 GC A2, 227 GC A1+A2).
+// The Roots — EXAMENS d'ESPAGNOL (A1.0–A1.12, A2.0 (228), A2.1–A2.12 + 3 grands contrôles : 225 GC A1, 226 GC A2, 227 GC A1+A2).
 // Même format que exams.js (window.LESSON_EXAMS_ES[n]).
 window.LESSON_EXAMS_ES = window.LESSON_EXAMS_ES || {};
 (function(E){
@@ -4730,6 +4730,167 @@ E[227] = {
       }
     ]
   }
+};
+
+
+// ---- 228.js — A2.0 « Bases transversales A2 » (08/10) ----
+// Examen de fin de palier du module d'entrée A2 (leçon 228, joué entre le Grand Contrôle A1 et A2.1).
+// Il ne teste QUE ce qui est enseigné en A2.0 : marqueurs de temps, connecteurs, interrogatifs accentués,
+// « voy a + infinitif », ya / todavía no, nunca avant le verbe, et le repérage tú / usted. Les formes du
+// passé (indefinido) ne sont pas conjuguées ici : leur détail arrive en A2.1 et A2.2.
+E[228] = {
+  code: "A2.0", level: "A2",
+  title: "Examen A2.0 – Bases del nivel A2: tiempo, conectores y preguntas",
+  titleFr: "Examen A2.0 – Bases du niveau A2 : le temps, les connecteurs et les questions",
+  objective: "Aprobar el nivel A2.0: marcadores de tiempo (pasado, futuro, frecuencia), conectores de relato, preguntas con acento y trato de tú y de usted.",
+  objectiveFr: "Valider le niveau A2.0 : marqueurs de temps (passé, futur, fréquence), connecteurs de récit, questions accentuées et tutoiement / vouvoiement.",
+  sections: [
+    {
+      id: "vocab", num: "I", title: "Vocabulario", titleFr: "Vocabulaire",
+      points: 15, skill: "vo", type: "fill",
+      instructions: "Completa cada frase con una palabra o expresión de la lista. Hay palabras que no necesitas.",
+      instructionsFr: "Complète chaque phrase avec un mot ou une expression de la liste. Certains mots ne servent pas.",
+      bank: ["ayer", "anoche", "dentro de", "hace", "siempre", "nunca", "primero", "luego", "mientras", "por eso", "pero", "mañana"],
+      items: [
+        { text: "Hoy es martes. El lunes trabajé mucho: ___ trabajé mucho.",
+          blanks: [["ayer"]],
+          why: "Lundi, quand on est mardi = hier = « ayer ». « Mañana » (demain) désigne le futur : c'est l'intrus." },
+        { text: "Son las diez de la mañana. A las diez de la noche cené con mis padres: ___ cené con mis padres.",
+          blanks: [["anoche"]],
+          why: "« anoche » = hier soir. Un seul mot, avec « ch » = tch." },
+        { text: "El tren sale a las cinco y ahora son las cuatro. Sale ___ una hora.",
+          blanks: [["dentro de"]],
+          why: "« dentro de » + durée = dans (futur). « hace » + durée = il y a (passé)." },
+        { text: "Llegué a Madrid ___ dos días, el lunes.",
+          blanks: [["hace"]],
+          why: "« hace » + durée = il y a : « Llegué hace dos días ». Le verbe reste au passé." },
+        { text: "Mi hermana ___ cena tarde: todos los días a las diez.",
+          blanks: [["siempre"]],
+          why: "« todos los días » = toujours : habitude à 100 %. « Nunca » dirait l'inverse." },
+        { text: "___ abro la puerta y luego salgo de casa.",
+          blanks: [["primero"]],
+          why: "« primero » ouvre un récit (d'abord). « luego » vient ensuite." },
+        { text: "Estoy muy cansado, ___ me voy a casa.",
+          blanks: [["por eso"]],
+          why: "« por eso » = c'est pourquoi : il donne la conséquence de « estoy cansado »." },
+        { text: "Canto ___ cocino: hago las dos cosas a la vez.",
+          blanks: [["mientras"]],
+          why: "« mientras » = pendant que : deux actions en même temps." }
+      ]
+    },
+    {
+      id: "grammar", num: "II", title: "Gramática y preguntas", titleFr: "Grammaire et questions",
+      points: 20, skill: "gr", type: "fill",
+      instructions: "Completa cada frase. Escribe solo la palabra o expresión que falta. Los acentos no se penalizan.",
+      instructionsFr: "Complète chaque phrase. Tape seulement le mot ou l'expression manquant(e). Les accents ne sont pas pénalisés.",
+      items: [
+        { text: "¿ ___ vas mañana? (direction : vers où)",
+          blanks: [["adónde", "a dónde"]],
+          why: "Direction (aller vers) : ¿adónde? Un lieu fixe se demande avec ¿dónde? (¿Dónde estás?)." },
+        { text: "— ¿ ___ no vienes a la fiesta? — ___ estoy cansado.",
+          blanks: [["por qué"], ["porque"]],
+          why: "Question : « por qué » en deux mots avec accent. Réponse : « porque » en un mot, sans accent." },
+        { text: "Al cliente: ¿ ___ llegó usted? (quand)",
+          blanks: [["cuándo"]],
+          why: "Dans une question, « cuándo » prend l'accent. Sans accent, « cuando » relie deux idées (« Cuando llego, cocino »)." },
+        { text: "Mañana yo ___ a viajar a Sevilla.",
+          blanks: [["voy"]],
+          why: "Futur proche = ir a + infinitif. Avec yo : voy a viajar." },
+        { text: "Al cliente: ¿Adónde ___ a ir usted?",
+          blanks: [["va"]],
+          why: "usted se conjugue comme él / ella : va a ir. Le client est vouvoyé." },
+        { text: "A un amigo: ¿Adónde ___ a ir tú?",
+          blanks: [["vas"]],
+          why: "tú → vas a ir. L'ami est tutoyé." },
+        { text: "No quiero hablar con él. ___ viajo con él. (jamais, avant le verbe)",
+          blanks: [["nunca"]],
+          why: "« nunca » avant le verbe : pas de « no » en plus (« Nunca viajo »). Après le verbe : « No viajo nunca »." },
+        { text: "— ¿Ya terminaste el trabajo? — No, ___ no terminé. (pas encore)",
+          blanks: [["todavía", "todavia"]],
+          why: "« todavía no » = pas encore. « ya » = déjà." },
+        { text: "Quiero ir al cine, ___ no puedo.",
+          blanks: [["pero"]],
+          why: "« pero » oppose deux idées : je veux, mais je ne peux pas. « porque » donnerait une cause." },
+        { text: "A un amigo: ¿ ___ días te quedas en Madrid? (combien)",
+          blanks: [["cuántos"]],
+          why: "« día » est masculin pluriel : ¿cuántos días? « Cuánto / cuántas / cuánta » s'accordent avec le nom." }
+      ]
+    },
+    {
+      id: "reading", num: "III", title: "Comprensión escrita", titleFr: "Compréhension écrite",
+      points: 15, skill: "ce", type: "mcq",
+      instructions: "Lee el texto y elige la respuesta correcta.",
+      instructionsFr: "Lis le texte et choisis la bonne réponse.",
+      passage: "Me llamo Lucía y vivo en Madrid. Siempre trabajo en una oficina, pero esta semana es diferente. Ayer trabajé hasta tarde y anoche cené con mi hermano.\n\nHoy preparo la maleta. Mañana voy a viajar a Valencia en tren: primero salgo de casa, luego voy a la estación y después compro un café. Llego dentro de tres horas.\n\nTodavía no compré el billete de vuelta, por eso voy a mirar los horarios esta noche. Pasado mañana voy a visitar a mi tía. Nunca viajo en coche porque es caro.",
+      items: [
+        { q: "¿Qué hizo Lucía anoche?", qFr: "Qu'a fait Lucía hier soir ?",
+          opts: ["Cenó con su hermano.", "Trabajó hasta tarde.", "Preparó la maleta."], correct: 0,
+          why: "« anoche cené con mi hermano ». Elle a travaillé tard hier (« ayer »), et elle prépare la valise aujourd'hui." },
+        { q: "¿Adónde va a viajar Lucía mañana?", qFr: "Où Lucía va-t-elle voyager demain ?",
+          opts: ["A Madrid", "A Valencia", "A casa de su tía"], correct: 1,
+          why: "« Mañana voy a viajar a Valencia ». La tante, c'est après-demain (« pasado mañana »)." },
+        { q: "¿Cuándo llega a Valencia?", qFr: "Quand arrive-t-elle à Valence ?",
+          opts: ["Hace tres horas", "Dentro de tres horas", "Pasado mañana"], correct: 1,
+          why: "« Llego dentro de tres horas » = dans trois heures. « Hace » regarderait vers le passé." },
+        { q: "¿Por qué va a mirar los horarios esta noche?", qFr: "Pourquoi va-t-elle regarder les horaires ce soir ?",
+          opts: ["Porque nunca viaja en tren.", "Porque todavía no compró el billete de vuelta.", "Porque su tía llega mañana."], correct: 1,
+          why: "« Todavía no compré el billete de vuelta, por eso voy a mirar los horarios » : « por eso » donne la conséquence." },
+        { q: "¿Cuándo va a visitar a su tía?", qFr: "Quand va-t-elle rendre visite à sa tante ?",
+          opts: ["Mañana", "Pasado mañana", "Anoche"], correct: 1,
+          why: "« Pasado mañana voy a visitar a mi tía » = après-demain. « Mañana », c'est le voyage à Valence." }
+      ]
+    },
+    {
+      id: "listening", num: "IV", title: "Comprensión oral", titleFr: "Compréhension orale",
+      points: 15, skill: "co", type: "mcq",
+      instructions: "Escucha cada audio y elige la respuesta correcta.",
+      instructionsFr: "Écoute chaque enregistrement et choisis la bonne réponse.",
+      items: [
+        { audio: "Ayer fui al mercado y anoche dormí muy bien.",
+          q: "¿Cuándo fue la persona al mercado?", qFr: "Quand la personne est-elle allée au marché ?",
+          opts: ["Ayer", "Anoche", "Mañana"], correct: 0,
+          why: "« Ayer fui al mercado » = hier. « Anoche », c'est le moment où elle a dormi." },
+        { audio: [{ who: "A", text: "Buenos días, señor. ¿Adónde va usted?" }, { who: "B", text: "Voy a Toledo. Llego dentro de una hora." }],
+          q: "¿Cuándo llega B a Toledo?", qFr: "Quand B arrive-t-il à Tolède ?",
+          opts: ["Hace una hora", "Dentro de una hora", "Mañana"], correct: 1,
+          why: "« dentro de una hora » = dans une heure. « Hace una hora » serait il y a une heure." },
+        { audio: "Primero abro la puerta, luego salgo y después compro el pan.",
+          q: "¿Qué hace la persona en segundo lugar?", qFr: "Que fait la personne en deuxième ?",
+          opts: ["Abre la puerta.", "Sale de casa.", "Compra el pan."], correct: 1,
+          why: "Ordre : primero (ouvrir la porte), luego (sortir), después (acheter le pain). En deuxième : « luego salgo »." },
+        { audio: [{ who: "A", text: "¿Por qué no vienes a la fiesta?" }, { who: "B", text: "Porque todavía no terminé mi trabajo." }],
+          q: "¿Por qué no va B a la fiesta?", qFr: "Pourquoi B ne va-t-il pas à la fête ?",
+          opts: ["Porque está cansado.", "Porque no terminó su trabajo.", "Porque no tiene tiempo mañana."], correct: 1,
+          why: "« todavía no terminé mi trabajo » : il n'a pas encore fini son travail. Il ne dit pas qu'il est fatigué." },
+        { audio: [{ who: "A", text: "Perdone, ¿cuándo llegó usted a Madrid?" }, { who: "B", text: "Llegué hace dos días." }],
+          q: "¿Cómo habla A con B?", qFr: "Comment A s'adresse-t-il à B ?",
+          opts: ["De tú, como con un amigo.", "De usted, con respeto.", "De vosotros, a un grupo."], correct: 1,
+          why: "« Perdone » et « llegó usted » : vouvoiement (usted). Avec un ami, A dirait « ¿Cuándo llegaste? »." }
+      ]
+    },
+    {
+      id: "writing", num: "V", title: "Expresión escrita", titleFr: "Expression écrite",
+      points: 20, skill: "ee", type: "ai-text",
+      instructions: "Escribe un mensaje de 50 a 80 palabras.",
+      instructionsFr: "Écris un message de 50 à 80 mots.",
+      prompt: "Escribe a un amigo español sobre tu semana. Di qué hiciste ayer y qué vas a hacer mañana y pasado mañana. Usa marcadores de tiempo (ayer, anoche, mañana, siempre, a veces, nunca…) y conectores (primero, luego, después, porque, pero, por eso…). Al final, escribe dos preguntas: una a tu amigo (con tú) y otra a un cliente (con usted), con los acentos correctos.",
+      promptFr: "Écris à un ami espagnol à propos de ta semaine. Dis ce que tu as fait hier et ce que tu vas faire demain et après-demain. Utilise des marqueurs de temps (ayer, anoche, mañana, siempre, a veces, nunca…) et des connecteurs (primero, luego, después, porque, pero, por eso…). À la fin, écris deux questions : une à ton ami (avec tú) et une à un client (avec usted), avec les bons accents.",
+      minWords: 50, maxWords: 80,
+      rubric: "Total 20 points. Level: very beginning of A2 (module A2.0) — the learner only needs to RECOGNISE and reuse a few past forms (trabajé, fui, hice, tuve, estuve…); do NOT penalise past-tense endings heavily and do not expect the full pretérito indefinido, which is taught later. Time markers (5 pts): at least five different markers used correctly (ayer, anoche, mañana, pasado mañana, siempre, a veces, nunca, dentro de, hace…; 1 pt each, max 5). Connectors (4 pts): at least four different connectors used correctly (primero, luego, después, porque, pero, por eso, mientras, al final, entonces; 1 pt each, max 4). Future plans (3 pts): at least two correct uses of «voy a / vas a / va a + infinitive» (1.5 pts each). Questions (6 pts): one question to a friend with tú (e.g. ¿Adónde vas?, ¿Qué haces mañana?) and one to a client with usted (e.g. ¿Adónde va usted?, ¿Cuándo llegó usted?); 3 pts each: 1 pt correct tú/usted form, 1 pt correct accented interrogative (qué, cuándo, adónde, cómo, por qué…), 1 pt inverted question marks and order. Clarity and spelling (2 pts): understandable, reasonable spelling. Deduct about 1 pt if the message is shorter than 40 words. Do not give credit for words copied from the instructions without a real sentence.",
+      reference: "Hola, Pedro. Ayer trabajé mucho y anoche cené con mi madre. Siempre cenamos tarde, pero ayer terminamos pronto. Mañana voy a viajar a Sevilla: primero salgo de casa, luego voy a la estación y después compro un café. Pasado mañana voy a visitar a mi hermana, por eso no voy a trabajar. Nunca viajo en coche porque es caro. Y tú, ¿adónde vas a ir este fin de semana? Señor López (cliente): ¿Cuándo llegó usted a Madrid?"
+    },
+    {
+      id: "speaking", num: "VI", title: "Expresión oral", titleFr: "Expression orale",
+      points: 15, skill: "eo", type: "ai-oral",
+      instructions: "Habla durante unos 30 segundos. Usa «voy a» y conectores.",
+      instructionsFr: "Parle pendant environ 30 secondes. Utilise « voy a » et des connecteurs.",
+      prompt: "Cuenta tus planes para mañana y pasado mañana. Usa «primero», «luego» y «después», y di por qué haces cada cosa con «porque» o «por eso». Termina con una pregunta a un cliente, con usted.",
+      promptFr: "Raconte tes projets pour demain et après-demain. Utilise « primero », « luego » et « después », et dis pourquoi tu fais chaque chose avec « porque » ou « por eso ». Termine par une question à un client, avec usted.",
+      targetSeconds: 30,
+      rubric: "Total 15 points. Level: module A2.0 (very beginning of A2). Content (5 pts): plans for tomorrow AND the day after tomorrow, at least four different actions (1 pt each up to 4), plus 1 pt for saying why with «porque» or «por eso». Structure (4 pts): uses «primero», «luego» and «después» in a logical order (1 pt each) and at least one time marker such as «mañana», «pasado mañana» or «dentro de» (1 pt). Grammar (3 pts): correct «voy a / va a + infinitive» (1 pt per correct use up to 3); do not penalise past-tense forms, which are taught later. Final question with usted (2 pts): a polite question to a client with usted (e.g. ¿Adónde va usted?, ¿Cuándo llegó usted?): 1 pt for the usted form, 1 pt for the interrogative word. Pronunciation and fluency (1 pt): understandable, no long silences. If the learner types instead of speaking, grade the text the same way.",
+      reference: "Mañana voy a viajar a Sevilla. Primero voy a salir de casa a las siete, luego voy a ir a la estación y después voy a comprar un café. Voy en tren porque es cómodo. Pasado mañana voy a visitar a mi hermana, por eso no voy a trabajar. Y usted, señor, ¿adónde va a ir este fin de semana?"
+    }
+  ]
 };
 
 })(window.LESSON_EXAMS_ES);
