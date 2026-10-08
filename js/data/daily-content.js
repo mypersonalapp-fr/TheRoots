@@ -34,6 +34,12 @@ export function pickEveryThreeDays(list, d) {
   return list[Math.floor(dayNumber(d) / 3) % list.length];
 }
 
+// Citation : la même pendant 5 jours (demande d'Ashley le 08/10).
+export function pickEveryFiveDays(list, d) {
+  if (!list || !list.length) return null;
+  return list[Math.floor(dayNumber(d) / 5) % list.length];
+}
+
 export function pickEveryTwoDays(list, d) {
   if (!list || !list.length) return null;
   return list[Math.floor(dayNumber(d) / 2) % list.length];
