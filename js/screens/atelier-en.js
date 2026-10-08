@@ -1,4 +1,4 @@
-// The Roots — « Atelier de grammaire espagnole » (25/09). Un grand chapitre
+// The Roots — « Atelier de grammaire anglaise » (25/09). Un grand chapitre
 // autonome, indépendant de « Mes cours », pour les blocages typiques des
 // francophones en espagnol : les temps, les verbes pronominaux, ser/estar,
 // por/para, les pronoms, la prononciation… Beaucoup d'exercices, et
@@ -16,31 +16,17 @@
 //    traduction, expliqués « racine + terminaison ».
 //  - Textes annotés : chaque mot se touche (nature, info, traduction).
 //
-// Contenu : js/data/atelier-es.js (ATELIER_ES = { chapters, decoder, texts },
+// Contenu : js/data/atelier-es.js (ATELIER_EN = { chapters, decoder, texts },
 // format décrit dans .staging/es/ATELIER-FORMAT.md). Le contenu pédagogique
 // reste en français, quelle que soit la langue de l'interface (même logique
 // que l'Aide & FAQ et les programmes). Progression : localStorage uniquement
-// (clé the_roots_atelier_es_v1), pas de backend. Chaque réponse alimente
+// (clé the_roots_atelier_en_v1), pas de backend. Chaque réponse alimente
 // aussi les jauges Grammaire / Prononciation de l'espagnol (recordSkill).
 
-import { ATELIER_ES } from "../data/atelier-es.js?v=20261008a";
-import { ES_DRILLS } from "../data/atelier-es-drills.js?v=20261008a";
+import { ATELIER_EN } from "../data/atelier-en.js?v=20261008a";
 import { recordSkill } from "../data/progress.js?v=20260930a";
 
-// Ajoute (une seule fois) les séries d'entraînement à la fin de chaque chapitre de temps.
-(function mergeDrills() {
-  try {
-    (ATELIER_ES.chapters || []).forEach((ch) => {
-      const extra = ES_DRILLS[ch.id];
-      if (!extra || ch.__drills) return;
-      ch.__drills = true;
-      const have = new Set((ch.lessons || []).map((l) => l.id));
-      extra.forEach((l) => { if (!have.has(l.id)) ch.lessons.push(l); });
-    });
-  } catch (e) { /* séries d'entraînement indisponibles */ }
-})();
-
-const PROGRESS_KEY = "the_roots_atelier_es_v1";
+const PROGRESS_KEY = "the_roots_atelier_en_v1";
 
 const GROUPS = [
   { id: "temps", label: "Les temps", icon: "⏱️" },
@@ -52,7 +38,7 @@ const GROUPS = [
 
 const DECODER_EXAMPLES = ["serán", "hablaremos", "fui", "tendré", "comían", "estoy hablando", "he comido", "voy a salir"];
 
-const ACCENT_KEYS = ["á", "é", "í", "ó", "ú", "ñ", "ü", "¿", "¡"];
+const ACCENT_KEYS = ["’"];
 
 // ---------- petites aides ----------
 
@@ -114,10 +100,10 @@ function lessonKey(ch, l) { return ch.id + "/" + l.id; }
 
 // ---------- voix ----------
 
-function spanishVoice() {
+function englishVoice() {
   try {
     const voices = window.speechSynthesis.getVoices() || [];
-    return voices.find((v) => /^es[-_]ES/i.test(v.lang)) || voices.find((v) => /^es\b|^es[-_]/i.test(v.lang)) || null;
+    return voices.find((v) => /^en[-_]GB/i.test(v.lang)) || voices.find((v) => /^en\b|^en[-_]/i.test(v.lang)) || null;
   } catch (e) { return null; }
 }
 function speakEs(text, rate) {
@@ -126,9 +112,9 @@ function speakEs(text, rate) {
   if (!toSay) return;
   try {
     const u = new SpeechSynthesisUtterance(toSay);
-    const v = spanishVoice();
+    const v = englishVoice();
     if (v) u.voice = v;
-    u.lang = v ? v.lang : "es-ES";
+    u.lang = v ? v.lang : "en-GB";
     u.rate = rate || 0.9;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
@@ -214,8 +200,8 @@ function posSlug(pos) { return stripAcc(String(pos || "")).toLowerCase().replace
 
 // =====================================================================
 
-export function renderAtelierEs(container) {
-  const DATA = ATELIER_ES || { chapters: [], decoder: null, texts: [] };
+export function renderAtelierEn(container) {
+  const DATA = ATELIER_EN || { chapters: [], decoder: null, texts: [] };
   const chapters = Array.isArray(DATA.chapters) ? DATA.chapters : [];
   const texts = Array.isArray(DATA.texts) ? DATA.texts : [];
   const decoder = DATA.decoder || null;
@@ -309,24 +295,12 @@ export function renderAtelierEs(container) {
     }).join("");
     return `
       <div class="card ates-hero">
-        <div class="ates-hero-title">🇪🇸 Atelier de grammaire espagnole</div>
-        <div class="ates-hero-sub">Les temps, les verbes pronominaux, ser/estar, por/para… On comprend <b>pourquoi</b>, puis on s'entraîne beaucoup — à l'écrit et à voix haute.</div>
+        <div class="ates-hero-title">🇬🇧 Atelier de grammaire anglaise</div>
+        <div class="ates-hero-sub">Tous les temps, en registre formel et informel… On comprend <b>pourquoi</b>, puis on s'entraîne beaucoup — à l'écrit et à voix haute.</div>
         <div class="ates-hero-prog"><span>${allDone} / ${allLessons} leçons terminées</span><span>${pct} %</span></div>
         <div class="dash-progress-bar"><div class="dash-progress-fill" style="width:${pct}%"></div></div>
       </div>
       ${resume}
-      <div class="ates-tools">
-        <button class="card ates-tool" data-go="decoder" ${decoder ? "" : "disabled"}>
-          <span class="ates-tool-icon">🔎</span>
-          <span class="ates-tool-title">Décodeur de verbes</span>
-          <span class="ates-tool-sub">« serán » ? Tape une forme, je te dis ce que c'est.</span>
-        </button>
-        <button class="card ates-tool" data-go="texts" ${texts.length ? "" : "disabled"}>
-          <span class="ates-tool-icon">📖</span>
-          <span class="ates-tool-title">Textes annotés</span>
-          <span class="ates-tool-sub">Touche chaque mot : nature, sens, traduction.</span>
-        </button>
-      </div>
       ${groups || `<div class="card ates-muted" style="margin-top:14px">Le contenu de l'atelier arrive très bientôt.</div>`}
     `;
   }
@@ -395,9 +369,9 @@ export function renderAtelierEs(container) {
         <div class="card ates-block"><div class="ates-block-title">🗣️ Exemples</div>
           ${l.examples.map((x) => `
             <div class="ates-example">
-              ${sayBtn(x.es)}
+              ${sayBtn(x.en)}
               <div class="ates-ex-body">
-                <div class="ates-es">${x.es}</div>
+                <div class="ates-es">${x.en}</div>
                 <div class="ates-fr">${x.fr || ""}</div>
                 ${x.note ? `<div class="ates-note">${x.note}</div>` : ""}
               </div>
@@ -489,8 +463,8 @@ export function renderAtelierEs(container) {
     if (x.type === "speak") {
       const heardWords = st.heard ? new Set(normWords(st.heard).split(" ")) : null;
       const target = heardWords
-        ? String(x.es).split(/\s+/).map((w) => `<span class="${heardWords.has(normWords(w)) ? "ates-w-ok" : "ates-w-miss"}">${esc(w)}</span>`).join(" ")
-        : esc(x.es);
+        ? String(x.en).split(/\s+/).map((w) => `<span class="${heardWords.has(normWords(w)) ? "ates-w-ok" : "ates-w-miss"}">${esc(w)}</span>`).join(" ")
+        : esc(x.en);
       const pct = st.sim == null ? null : Math.round(st.sim * 100);
       const verdict = pct == null ? "" : pct >= 85 ? "Excellent ! 🎉" : pct >= 60 ? "Pas mal ! Encore une fois pour être parfait(e) ?" : "Réécoute et réessaie, doucement.";
       const noMic = !MicRec || ["not-allowed", "service-not-allowed", "audio-capture", "network"].includes(st.micError);
@@ -499,8 +473,8 @@ export function renderAtelierEs(container) {
         <div class="ates-speak-es">${target}</div>
         <div class="ates-fr">${x.fr || ""}</div>
         <div class="ates-speak-btns">
-          ${sayBtn(x.es, "btn btn-ghost ates-sbtn", "🔊 Écouter")}
-          ${sayBtn(x.es, "btn btn-ghost ates-sbtn", "🐢 Lentement")}
+          ${sayBtn(x.en, "btn btn-ghost ates-sbtn", "🔊 Écouter")}
+          ${sayBtn(x.en, "btn btn-ghost ates-sbtn", "🐢 Lentement")}
           ${MicRec ? `<button class="btn btn-primary ates-sbtn" id="atesMic">${st.listening ? "⏹ J'ai fini" : st.heard ? "🎤 Réessayer" : "🎤 Répéter"}</button>` : ""}
         </div>
         ${st.listening ? `<div class="ates-note ates-listening">🎙️ Je t'écoute… parle maintenant.</div>` : ""}
@@ -578,7 +552,7 @@ export function renderAtelierEs(container) {
     const st = lesson.ex;
     st.resolved = true;
     lesson.results[lesson.idx] = point;
-    try { recordSkill("es", skill, point); } catch (e) { /* jauges indisponibles */ }
+    try { recordSkill("en", skill, point); } catch (e) { /* jauges indisponibles */ }
   }
 
   function checkMcq(i) {
@@ -634,7 +608,7 @@ export function renderAtelierEs(container) {
     let got = false;
     try {
       recognition = new MicRec();
-      recognition.lang = "es-ES";
+      recognition.lang = "en-GB";
       recognition.interimResults = false;
       recognition.maxAlternatives = 3;
       recognition.onresult = (e) => {
@@ -642,8 +616,8 @@ export function renderAtelierEs(container) {
         const alts = [];
         const res = e.results && e.results[0];
         if (res) for (let i = 0; i < res.length; i++) alts.push(res[i].transcript || "");
-        let best = alts[0] || "", bestSim = similarity(x.es, best);
-        alts.forEach((a) => { const s = similarity(x.es, a); if (s > bestSim) { best = a; bestSim = s; } });
+        let best = alts[0] || "", bestSim = similarity(x.en, best);
+        alts.forEach((a) => { const s = similarity(x.en, a); if (s > bestSim) { best = a; bestSim = s; } });
         st.heard = best.trim();
         st.sim = bestSim;
         st.best = Math.max(st.best || 0, bestSim);
@@ -916,7 +890,7 @@ export function renderAtelierEs(container) {
     st.attempts = (st.attempts || 0) + 1;
     if (i === q.correct) { st.resolved = true; st.point = st.attempts === 1 ? 1 : 0; }
     else { st.wrong.push(i); if (st.attempts >= 2) { st.resolved = true; st.point = 0; } }
-    if (st.resolved) { try { recordSkill("es", "ce", st.point); } catch (e) { /* rien */ } }
+    if (st.resolved) { try { recordSkill("en", "ce", st.point); } catch (e) { /* rien */ } }
     const card = container.querySelector(`[data-tq="${qi}"]`);
     if (card) {
       card.outerHTML = textQuestionHtml(q, qi);

@@ -22,7 +22,8 @@ import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.
 import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20260930a";
 import { plantSvg } from "./plant.js?v=20260930a";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
-import { renderAtelierEs } from "./atelier-es.js?v=20261007d";
+import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
+import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
 const DAY = 24 * 3600 * 1000;
@@ -201,6 +202,12 @@ export function renderMesCours(container, shellRoot) {
 
   // --- Espagnol : rubrique « Mes ateliers » = Atelier des blocages du francophone + Atelier de grammaire espagnole ---
   function paintAteliers() {
+    if (openAteliers === "atelier-en") {
+      container.innerHTML = `<button class="settings-back" id="atBack">← Anglais</button><div id="atBody"></div>`;
+      container.querySelector("#atBack").addEventListener("click", () => { openAteliers = null; paint(); });
+      renderAtelierEn(container.querySelector("#atBody"));
+      return;
+    }
     if (openAteliers === "atelier") {
       container.innerHTML = `<button class="settings-back" id="atBack">← Mes ateliers</button><div id="atBody"></div>`;
       container.querySelector("#atBack").addEventListener("click", () => { openAteliers = "home"; paint(); });
@@ -363,6 +370,15 @@ export function renderMesCours(container, shellRoot) {
         <div class="dash-box"><h3>Contrôles A1 · A2 · final</h3><div class="card">${controlsHtml(code)}</div></div>
       ` : ""}
 
+      ${code === "en" ? `
+        <div class="dash-box">
+          <h3>🧠 Mes ateliers</h3>
+          <button class="lt-opt" id="mcOpenAtelierEn" style="width:100%;text-align:left;display:flex;align-items:center;gap:8px">
+            <span style="flex-grow:1"><strong>Atelier anglais</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">Tous les temps, plus de 100 exercices chacun · formel et informel</span></span>
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>` : ""}
+
       ${code === "es" ? `
         <div class="dash-box">
           <h3>🧠 Mes ateliers</h3>
@@ -417,6 +433,8 @@ export function renderMesCours(container, shellRoot) {
     container.querySelector("#mcBack").addEventListener("click", () => { openCode = null; paint(); });
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
     container.querySelector("#mcOpenProgram").addEventListener("click", () => { openProgram = { code, level: "A1", palier: null }; paint(); });
+    const atEn = container.querySelector("#mcOpenAtelierEn");
+    if (atEn) atEn.addEventListener("click", () => { openAteliers = "atelier-en"; paint(); });
     const atBtn = container.querySelector("#mcOpenAteliers");
     if (atBtn) atBtn.addEventListener("click", () => { openAteliers = "home"; paint(); });
 
