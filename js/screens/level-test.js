@@ -166,6 +166,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     el.remove();
   }
 
+  let lastTierPct = null;
   let tierIdx = 0, qIdx = 0, tierCorrect = 0, highestLevel = null;
   let timeLeft = TEST_MAX_MINUTES * 60, timerId = null;
   let orderPicked = [];
@@ -432,6 +433,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
       if (qIdx < currentTier().questions.length) { paintQuestion(); return; }
       // fin du palier
       const ratio = tierCorrect / currentTier().questions.length;
+      lastTierPct = Math.round(ratio * 100); // dernier palier tenté : gardé avec le niveau
       if (ratio >= PASS_RATIO) {
         highestLevel = currentTier().id;
         if (tierIdx + 1 < TIERS.length) { tierIdx++; renderTierUp(); }
@@ -467,7 +469,7 @@ export function renderLevelTest(root, { langCode, langLabel, onDone }) {
     const finalLevel = highestLevel || TIERS[0].id; // plancher : Débutant A1
     const maxedOut = finalLevel === TIERS[TIERS.length - 1].id;
 
-    store.setPlacementResult(langCode, { score: null, level: finalLevel, entryLevel: finalLevel, entryDate: new Date().toISOString(), resetEntry: CREATOR_MODE });
+    store.setPlacementResult(langCode, { score: lastTierPct, level: finalLevel, entryLevel: finalLevel, entryDate: new Date().toISOString(), resetEntry: CREATOR_MODE });
 
     el.innerHTML = `
       <div class="app-topbar"><div class="title">${t("lt_title_result", lang)}</div></div>
