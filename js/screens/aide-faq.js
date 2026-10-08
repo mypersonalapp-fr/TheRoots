@@ -9,7 +9,7 @@ import { store } from "../data/store.js?v=20260930a";
 const AIDE = [
   { id: "accueil", e: "🏠", n: "Accueil", d: "Ta page de départ", c: 1, items: [
     { q: "À quoi sert l'Accueil ?", a: "C'est ta page de départ. Tant que le test de niveau n'est pas fait, tu y trouves le test à passer. Ensuite : ta mission du jour, « J'ai 5 minutes », la question culture, l'expression, la citation et la vidéo." },
-    { q: "Les petites cartes changent-elles ?", a: "Oui. L'expression et la citation changent tous les 3 jours, la question culture et la vidéo changent régulièrement." },
+    { q: "Les petites cartes changent-elles ?", a: "Oui. L'expression change tous les 3 jours, la citation tous les 5 jours, la question culture et la vidéo changent régulièrement." },
   ] },
   { id: "menu", e: "☰", n: "Le menu", d: "Pour aller partout", c: 2, items: [
     { q: "Comment ouvrir le menu ?", a: "Touche l'icône en haut à gauche, ou glisse depuis le bord gauche de l'écran." },

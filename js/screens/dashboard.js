@@ -7,8 +7,8 @@ import { store } from "../data/store.js?v=20260930a";
 import { t } from "../data/i18n.js?v=20260930a";
 import { dueMissions } from "../data/progress.js?v=20260930a";
 import { aiCredits } from "../data/ai-credits.js?v=20260930a";
-import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays, pickEveryThreeDays } from "../data/daily-content.js?v=20261001a";
-// Titres des deux cartes (sans « du jour » : le contenu reste 3 jours).
+import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays, pickEveryThreeDays, pickEveryFiveDays } from "../data/daily-content.js?v=20261008a";
+// Titres des deux cartes (sans « du jour » : expression 3 jours, citation 5 jours).
 const CARD_TITLES = { expr: { fr: "Expression", en: "Expression", es: "Expresión", pt: "Expressão" }, quote: { fr: "Citation", en: "Quote", es: "Cita", pt: "Citação" } };
 
 const LOCALE_MAP = { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" };
@@ -196,7 +196,7 @@ export function renderDashboard(container, { onGoToCourses, onGoToTab } = {}) {
     const learnLang = EXPRESSIONS[settings.primaryLearningLang] ? settings.primaryLearningLang : "en";
     const learnLabel = (settings.langs.find((l) => l.code === learnLang) || {}).label || "";
     const expr = pickEveryThreeDays(EXPRESSIONS[learnLang]);
-    const quote = pickEveryThreeDays(QUOTES);
+    const quote = pickEveryFiveDays(QUOTES); // citation : 5 jours
     const video = pickEveryTwoDays(VIDEOS[learnLang] || VIDEOS.en);
     const leveledLangs = settings.langs.filter((l) => l.leveled);
     const quoteLang = leveledLangs.find((l) => l.code === learnLang) || leveledLangs[0] || settings.langs.find((l) => l.code === learnLang);
