@@ -219,7 +219,7 @@ export const store = {
   // sont écrits qu'une seule fois (le tout premier test) et ne bougent plus
   // ensuite — c'est la référence gardée pour se comparer plus tard, même
   // si "level" (le niveau actuel) évolue avec la progression.
-  setPlacementResult(code, { level, entryLevel, entryDate, resetEntry = false }) {
+  setPlacementResult(code, { level, entryLevel, entryDate, score = null, resetEntry = false }) {
     const data = load();
     data.settings.langs = data.settings.langs.map((l) => {
       if (l.code !== code) return l;
@@ -228,6 +228,9 @@ export const store = {
         leveled: true,
         level,
         progress: l.progress || 0,
+        // score (%) du dernier palier tenté au test ; entryScore = celui du tout premier test
+        placementScore: score,
+        entryScore: resetEntry ? score : (l.entryScore != null ? l.entryScore : score),
         // resetEntry (mode créatrice, voir dev-config.js) : un nouveau
         // passage du test remplace aussi le niveau d'entrée.
         entryLevel: resetEntry ? (entryLevel || level) : (l.entryLevel || entryLevel || level),
