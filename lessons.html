@@ -703,6 +703,11 @@
   .fv-tile .vis{ width:36px; height:36px; font-size:1.3rem; border-radius:10px; }
   .fv-tile b{ display:block; font-size:.86rem; }
   .fv-tile span.f{ display:block; font-size:.76rem; color:var(--muted); }
+
+  /* A1.1 — navigation par écrans courts, sans défilement de cours interminable */
+  .a11-page-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+  .a11-page-nav .btn{min-height:44px;max-width:48%;white-space:normal}
+  @media(max-width:420px){.a11-page-nav{gap:8px}.a11-page-nav .btn{font-size:.88rem}}
 </style>
 </head>
 <body>
@@ -9623,6 +9628,34 @@
     var rows = G.conj.map(function(r){
       return '<div class="conj-item"><b>'+r[0]+'</b>'+r[1]+(r[2] !== "—" ? ' <span class="ctr">('+r[2]+')</span>' : '')+'</div>';
     }).join("");
+    // A1.1 : une notion par écran, sans transformer toute la grammaire en page interminable.
+    // Les autres paliers gardent leur rendu historique tant que leur contenu n'est pas audité.
+    if(state.lesson === 0){
+      var pages = [
+        '<p class="lede">'+G.lede+'</p><div class="conj-grid">'+rows+'</div>',
+        (G.ruleHtml ? '<div class="q-passage" style="border-left-color:var(--gold)">'+G.ruleHtml+'</div>' : '<p class="lede">'+G.lede+'</p>'),
+        '<p class="lede">'+G.dialogueLede+'</p><div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>'
+      ];
+      var current = 0;
+      function showGrammarPage(){
+        screen.innerHTML =
+          '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 2/'+LECON_SUBSTEPS+'</div>' +
+          '<div class="wc-meta"><span>Une notion à la fois</span><b>Page '+(current+1)+' / '+pages.length+'</b></div>' +
+          '<h2 class="screen-title">'+G.heading+'</h2>' +
+          pages[current] +
+          '<div class="a11-page-nav" role="group" aria-label="Navigation dans la grammaire">' +
+          '<button type="button" class="btn btn-ghost" id="a11Prev" '+(current===0?'disabled':'')+'>Précédent</button>' +
+          '<button type="button" class="btn btn-primary" id="a11Next" '+(current===pages.length-1?'disabled':'')+'>Page suivante →</button></div>';
+        var prev = document.getElementById("a11Prev"), next = document.getElementById("a11Next");
+        prev.addEventListener("click",function(){ if(current>0){current--;showGrammarPage();} });
+        next.addEventListener("click",function(){ if(current<pages.length-1){current++;showGrammarPage();} });
+        nextBtn.style.display = current===pages.length-1 ? "" : "none";
+        if(current===pages.length-1) whyToggle(screen,G.whyLabel,G.whyText);
+        nextBtn.textContent = "Vérifier";
+      }
+      showGrammarPage();
+      return;
+    }
     screen.innerHTML =
       '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 2/'+LECON_SUBSTEPS+'</div>' +
       '<h2 class="screen-title">'+G.heading+'</h2>' +
