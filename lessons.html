@@ -721,6 +721,40 @@
   body:has(.a11-page-nav) .dialogue{margin:6px 0;}
   body:has(.a11-page-nav) .mini-check{margin:8px 0;padding:15px;}
 }
+
+/* The Roots A1.1 — véritable scène pédagogique plein écran, sans page verticale */
+@media (max-width: 800px) {
+  body:has(.a11-stage) { overflow:hidden!important; }
+  #screen:has(.a11-stage) {
+    position:fixed!important;inset:0!important;z-index:9000!important;
+    width:100vw!important;height:100dvh!important;max-height:none!important;
+    margin:0!important;padding:0!important;overflow:hidden!important;
+    background:#f7f9f6!important;border:0!important;border-radius:0!important;
+    box-shadow:none!important;color:#17382e!important;
+  }
+  .a11-stage{height:100%;box-sizing:border-box;display:flex;flex-direction:column;
+    padding:calc(env(safe-area-inset-top,0px) + 18px) 22px calc(env(safe-area-inset-bottom,0px) + 15px);
+    font-family:"Manrope",sans-serif;background:linear-gradient(160deg,#f9fbf8 0%,#eaf2eb 100%);color:#17382e}
+  .a11-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:800;letter-spacing:.09em}
+  .a11-brand span{color:#7b9487}.a11-counter{color:#557467}
+  .a11-track{height:5px;background:#d8e4da;border-radius:99px;margin-top:14px;overflow:hidden;flex-shrink:0}
+  .a11-track span{display:block;height:100%;background:#2c7554;border-radius:99px;transition:width .2s}
+  .a11-center{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(8px,1.8dvh,16px)}
+  .a11-kicker{font-size:11px;font-weight:800;letter-spacing:.15em;color:#518069}
+  .a11-title{font-size:clamp(20px,5.8vw,30px);font-weight:800;line-height:1.15;margin:0;color:#17382e}
+  .a11-english{font-family:"Sora",sans-serif;font-size:clamp(38px,11vw,58px);font-weight:800;line-height:1.1;color:#235b42}
+  .a11-french{font-size:clamp(15px,4vw,19px);color:#627d6f}
+  .a11-example{width:100%;max-width:390px;box-sizing:border-box;background:white;border:1px solid #d7e5db;border-radius:19px;padding:clamp(13px,2dvh,20px);display:flex;flex-direction:column;gap:6px;box-shadow:0 7px 22px #183f2b0b;text-align:left}
+  .a11-example-label{font-size:10px;font-weight:800;letter-spacing:.12em;color:#65957a}
+  .a11-example strong{font-size:clamp(17px,4.8vw,22px);color:#17382e}
+  .a11-example span{font-size:14px;color:#6b8376}
+  .a11-tip{font-size:clamp(12px,3.5vw,15px);color:#4d7560;line-height:1.4;max-width:350px}
+  .a11-footer{display:flex;gap:10px;flex-shrink:0;padding-top:12px}
+  .a11-footer button{flex:1;min-width:0;min-height:50px;border-radius:13px;font:800 15px "Manrope",sans-serif;cursor:pointer}
+  .a11-back{border:1px solid #c8d9ce;background:#fff;color:#315f48}
+  .a11-back:disabled{opacity:.38}.a11-forward{border:1px solid #276849;background:#276849;color:white}
+  @media(max-height:650px){.a11-stage{padding-top:calc(env(safe-area-inset-top,0px) + 8px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px)}.a11-center{gap:6px}.a11-example{padding:10px}.a11-footer button{min-height:42px}}
+}
 </style>
 </head>
 <body>
@@ -9615,30 +9649,33 @@
     // Les autres paliers gardent leur rendu historique tant que leur contenu n'est pas audité.
     if(state.lesson === 0){
       var pages = [
-        '<p class="lede">Le verbe <b>to be</b> veut dire « être ».</p><div class="conj-grid"><div class="conj-item"><b>I</b> am (I’m)</div><div class="conj-item"><b>You</b> are (You’re)</div></div>',
-        '<div class="conj-grid"><div class="conj-item"><b>He / She / It</b> is (He’s / She’s / It’s)</div><div class="conj-item"><b>We / They</b> are (We’re / They’re)</div></div>',
-        '<div class="q-passage"><b>Dire non</b><p>I am not Emma.</p><p>She is not Emma.</p></div>',
-        '<div class="q-passage"><b>Poser une question</b><p>Are you Emma?</p><p>Is she Emma?</p></div>',
-        '<div class="q-passage"><b>Répondre</b><p>Yes, I am.</p><p>No, I am not.</p></div>',
-        '<div class="dialogue">'+dialogueHtml(G.dialogue.slice(0,2))+'</div>',
-        '<div class="dialogue">'+dialogueHtml(G.dialogue.slice(2))+'</div>'
+        {title:"Dire « Je suis »",en:"I am",fr:"Je suis",example:"I am Emma.",translation:"Je suis Emma.",tip:"À l'oral : I'm Emma."},
+        {title:"Dire « Tu es »",en:"You are",fr:"Tu es",example:"You are Emma.",translation:"Tu es Emma.",tip:"À l'oral : You're Emma."},
+        {title:"Parler d'une personne",en:"She is",fr:"Elle est",example:"She is Emma.",translation:"Elle est Emma.",tip:"He is = Il est. It is = C'est."},
+        {title:"Parler de plusieurs personnes",en:"We are",fr:"Nous sommes",example:"We are from France.",translation:"Nous venons de France.",tip:"They are = Ils / Elles sont."},
+        {title:"Dire non",en:"I am not",fr:"Je ne suis pas",example:"I am not Emma.",translation:"Je ne suis pas Emma.",tip:"On ajoute not après am, is ou are."},
+        {title:"Poser une question",en:"Are you…?",fr:"Es-tu… ?",example:"Are you Emma?",translation:"Es-tu Emma ?",tip:"Pour poser la question, are passe devant you."},
+        {title:"Répondre simplement",en:"Yes, I am.",fr:"Oui.",example:"No, I am not.",translation:"Non.",tip:"Deux réponses courtes à retenir."}
       ];
-      var current = Math.max(0,Math.min(pages.length-1,state.grammarPageA11 || 0));
+      var current=Math.max(0,Math.min(pages.length-1,state.grammarPageA11||0));
       function showGrammarPage(){
-        screen.innerHTML =
-          '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 2/'+LECON_SUBSTEPS+'</div>' +
-          '<div class="wc-meta"><span>Une notion à la fois</span><b>Page '+(current+1)+' / '+pages.length+'</b></div>' +
-          '<h2 class="screen-title">'+G.heading+'</h2>' +
-          pages[current] +
-          '<div class="a11-page-nav" role="group" aria-label="Navigation dans la grammaire">' +
-          '<button type="button" class="btn btn-ghost" id="a11Prev" '+(current===0?'disabled':'')+'>Précédent</button>' +
-          '<button type="button" class="btn btn-primary" id="a11Next" '+(current===pages.length-1?'disabled':'')+'>Page suivante →</button></div>';
-        var prev = document.getElementById("a11Prev"), next = document.getElementById("a11Next");
-        prev.addEventListener("click",function(){ if(current>0){current--;state.grammarPageA11=current;showGrammarPage();} });
-        next.addEventListener("click",function(){ if(current<pages.length-1){current++;state.grammarPageA11=current;showGrammarPage();} });
-        nextBtn.style.display = current===pages.length-1 ? "" : "none";
-        if(current===pages.length-1) whyToggle(screen,G.whyLabel,G.whyText);
-        nextBtn.textContent = "Vérifier";
+        var p=pages[current];
+        screen.innerHTML='<div class="a11-stage">'+
+          '<div class="a11-head"><span class="a11-brand">THE ROOTS <span>· A1.1</span></span><span class="a11-counter">'+(current+1)+' / '+pages.length+'</span></div>'+
+          '<div class="a11-track"><span style="width:'+((current+1)*100/pages.length)+'%"></span></div>'+
+          '<div class="a11-center"><div class="a11-kicker">GRAMMAIRE · TO BE</div>'+
+          '<h2 class="a11-title">'+p.title+'</h2>'+
+          '<div class="a11-english">'+p.en+'</div><div class="a11-french">'+p.fr+'</div>'+
+          '<div class="a11-example"><div class="a11-example-label">EXEMPLE</div><strong>'+p.example+'</strong><span>'+p.translation+'</span></div>'+
+          '<div class="a11-tip">'+p.tip+'</div></div>'+
+          '<div class="a11-footer"><button type="button" id="a11Prev" class="a11-back" '+(current===0?'disabled':'')+'>← Précédent</button>'+
+          '<button type="button" id="a11Next" class="a11-forward">'+(current===pages.length-1?'Vérifier →':'Suivant →')+'</button></div></div>';
+        document.getElementById("a11Prev").addEventListener("click",function(){if(current>0){current--;state.grammarPageA11=current;showGrammarPage();}});
+        document.getElementById("a11Next").addEventListener("click",function(){
+          if(current<pages.length-1){current++;state.grammarPageA11=current;showGrammarPage();}
+          else{state.grammarPageA11=0;goNext();}
+        });
+        nextBtn.style.display="none";
       }
       showGrammarPage();
       return;
