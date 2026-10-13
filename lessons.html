@@ -708,7 +708,20 @@
   .a11-page-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
   .a11-page-nav .btn{min-height:44px;max-width:48%;white-space:normal}
   @media(max-width:420px){.a11-page-nav{gap:8px}.a11-page-nav .btn{font-size:.88rem}}
-\n  @media(max-width:600px){.controls .btn{min-height:48px;overflow-wrap:anywhere}.screen-title{overflow-wrap:anywhere}.card{max-width:100%}.a11-page-nav{flex-wrap:wrap}.a11-page-nav .btn{flex:1;min-width:0}}\n</style>
+\n  @media(max-width:600px){.controls .btn{min-height:48px;overflow-wrap:anywhere}.screen-title{overflow-wrap:anywhere}.card{max-width:100%}.a11-page-nav{flex-wrap:wrap}.a11-page-nav .btn{flex:1;min-width:0}}\n
+/* A1.1 : écrans courts et navigation fixe sur mobile. */
+@media(max-width:700px){
+  body:has(.a11-page-nav){overflow:hidden!important;}
+  body:has(.a11-page-nav) .a11-page-nav{position:sticky;bottom:0;z-index:4;background:var(--surface);padding:10px 0 4px;display:flex;gap:8px;}
+  body:has(.a11-page-nav) .a11-page-nav button{flex:1;min-height:44px;}
+  body:has(.a11-page-nav) #screen{max-height:calc(100dvh - 295px);overflow-y:auto;overscroll-behavior:contain;}
+  body:has(.a11-page-nav) .screen-title{font-size:clamp(20px,5vw,27px);line-height:1.2;margin:7px 0 10px;}
+  body:has(.a11-page-nav) .conj-grid{gap:8px;}
+  body:has(.a11-page-nav) .conj-item{padding:12px;}
+  body:has(.a11-page-nav) .dialogue{margin:6px 0;}
+  body:has(.a11-page-nav) .mini-check{margin:8px 0;padding:15px;}
+}
+</style>
 </head>
 <body>
 
@@ -9602,9 +9615,13 @@
     // Les autres paliers gardent leur rendu historique tant que leur contenu n'est pas audité.
     if(state.lesson === 0){
       var pages = [
-        '<p class="lede">'+G.lede+'</p><div class="conj-grid">'+rows+'</div>',
-        '<div class="q-passage" style="border-left-color:var(--gold)"><b>Dire non :</b> I am not Emma. / She is not Emma.<br><b>Poser une question :</b> Are you Emma? / Is she Emma?<br><b>Répondre :</b> Yes, I am. / No, I am not.</div>',
-        '<p class="lede">'+G.dialogueLede+'</p><div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>'
+        '<p class="lede">Le verbe <b>to be</b> veut dire « être ».</p><div class="conj-grid"><div class="conj-item"><b>I</b> am (I’m)</div><div class="conj-item"><b>You</b> are (You’re)</div></div>',
+        '<div class="conj-grid"><div class="conj-item"><b>He / She / It</b> is (He’s / She’s / It’s)</div><div class="conj-item"><b>We / They</b> are (We’re / They’re)</div></div>',
+        '<div class="q-passage"><b>Dire non</b><p>I am not Emma.</p><p>She is not Emma.</p></div>',
+        '<div class="q-passage"><b>Poser une question</b><p>Are you Emma?</p><p>Is she Emma?</p></div>',
+        '<div class="q-passage"><b>Répondre</b><p>Yes, I am.</p><p>No, I am not.</p></div>',
+        '<div class="dialogue">'+dialogueHtml(G.dialogue.slice(0,2))+'</div>',
+        '<div class="dialogue">'+dialogueHtml(G.dialogue.slice(2))+'</div>'
       ];
       var current = Math.max(0,Math.min(pages.length-1,state.grammarPageA11 || 0));
       function showGrammarPage(){
@@ -9639,6 +9656,52 @@
   }
 
   function renderMiniChecks(){
+    if(state.lesson !== 0){
+      renderMiniChecksLegacy();
+      return;
+    }
+    var current = Math.max(0,Math.min(MINI_CHECKS.length-1,state.miniPageA11||0));
+    var done = state.miniDoneA11 || {};
+    function draw(){
+      var mc = MINI_CHECKS[current];
+      screen.innerHTML =
+        '<div class="eyebrow">'+lessonLabel()+' · Questions éclair · 3/'+LECON_SUBSTEPS+'</div>'+
+        '<div class="wc-meta"><span>Une question par écran</span><b>'+(current+1)+' / '+MINI_CHECKS.length+'</b></div>'+
+        '<h2 class="screen-title">Choisis la bonne réponse</h2>'+
+        '<div class="mini-check"><div class="mini-q">'+mc.q+'</div><div class="mini-opts" id="a11MiniOpts"></div><div class="mini-fb" id="a11MiniFb"></div></div>'+
+        '<div class="a11-page-nav"><button type="button" class="btn btn-ghost" id="a11MiniPrev" '+(current===0?'disabled':'')+'>Précédent</button>'+
+        '<button type="button" class="btn btn-primary" id="a11MiniNext" '+(!done[current]?'disabled':'')+'>'+(current===MINI_CHECKS.length-1?'Terminer':'Suivant →')+'</button></div>';
+      nextBtn.style.display="none";
+      hint.textContent="Une question à la fois. Deux essais maximum.";
+      var opts=document.getElementById("a11MiniOpts"),fb=document.getElementById("a11MiniFb"),attempts=0;
+      mc.opts.forEach(function(opt,oi){
+        var btn=document.createElement("button");btn.type="button";btn.className="mini-opt";btn.textContent=opt;
+        if(done[current]){btn.disabled=true;if(oi===mc.correct)markOption(btn,"correct");}
+        btn.addEventListener("click",function(){
+          if(done[current]||btn.disabled)return;
+          attempts++;
+          if(oi===mc.correct||attempts>=2){
+            if(oi!==mc.correct){markOption(btn,"incorrect");markOption(opts.children[mc.correct],"correct");fb.textContent=mc.fb;}
+            else{markOption(btn,"correct");fb.textContent="✓ Correct !";}
+            done[current]=true;state.miniDoneA11=done;
+            Array.prototype.forEach.call(opts.children,function(x){x.disabled=true;});
+            document.getElementById("a11MiniNext").disabled=false;
+          }else{markOption(btn,"incorrect");btn.disabled=true;fb.textContent="Essaie encore.";}
+        });
+        opts.appendChild(btn);
+      });
+      if(done[current])fb.textContent="✓ Question terminée";
+      document.getElementById("a11MiniPrev").addEventListener("click",function(){if(current>0){current--;state.miniPageA11=current;draw();}});
+      document.getElementById("a11MiniNext").addEventListener("click",function(){
+        if(!done[current])return;
+        if(current<MINI_CHECKS.length-1){current++;state.miniPageA11=current;draw();}
+        else{state.miniPageA11=0;state.miniDoneA11={};goNext();}
+      });
+    }
+    draw();
+  }
+  function renderMiniChecksLegacy(){
+
     screen.innerHTML =
       '<div class="eyebrow">'+lessonLabel()+' · On vérifie ensemble · 3/'+LECON_SUBSTEPS+'</div>' +
       '<h2 class="screen-title">Questions éclair</h2>' +
@@ -9690,9 +9753,7 @@
         opts.appendChild(b);
       });
       wrap.appendChild(box);
-    });
-  }
-
+    });\n  }
   function renderGrammar2(){
     var G = GRAMMAR2;
     var label = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : (DRILLS ? "🏋️ Entraînement intensif" : "Construire une phrase");
