@@ -9792,27 +9792,32 @@
     var G = GRAMMAR2;
     var label = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : (DRILLS ? "🏋️ Entraînement intensif" : "Construire une phrase");
     if(state.lesson === 0){
-      var pages = [
-        '<div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>',
-        '<div class="q-passage">'+G.ruleHtml+'</div>'
+      var pages=[
+        {title:"Demander le prénom",en:"What is your name?",fr:"Comment t'appelles-tu ?",example:"My name is Emma.",translation:"Je m'appelle Emma.",tip:"What is = What's."},
+        {title:"Demander l'âge",en:"How old are you?",fr:"Quel âge as-tu ?",example:"I am 28 years old.",translation:"J'ai 28 ans.",tip:"En anglais, on utilise to be pour l'âge."},
+        {title:"Demander l'origine",en:"Where are you from?",fr:"D'où viens-tu ?",example:"I am from France.",translation:"Je viens de France.",tip:"Where = où ; from = de."},
+        {title:"Former la négation",en:"She is not French.",fr:"Elle n'est pas française.",example:"I'm not from London.",translation:"Je ne viens pas de Londres.",tip:"is not = isn't ; are not = aren't."},
+        {title:"Poser une question",en:"Are you French?",fr:"Es-tu français(e) ?",example:"Yes, I am. / No, I'm not.",translation:"Oui. / Non.",tip:"Le verbe passe devant le sujet."},
+        {title:"Mon et ton",en:"My name / Your name",fr:"Mon nom / Ton nom",example:"What is your first name?",translation:"Quel est ton prénom ?",tip:"my = mon/ma ; your = ton/ta/votre."}
       ];
-      var current = Math.max(0,Math.min(pages.length-1,state.grammar2PageA11 || 0));
-      function show(){
-        screen.innerHTML =
-          '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 4/'+LECON_SUBSTEPS+'</div>'+
-          '<div class="wc-meta"><span>Questions et réponses</span><b>Page '+(current+1)+' / '+pages.length+'</b></div>'+
-          '<h2 class="screen-title">'+G.heading+'</h2>'+pages[current]+
-          '<div class="a11-page-nav" role="group" aria-label="Navigation dans la grammaire">'+
-          '<button type="button" class="btn btn-ghost" id="a11Prev" '+(current===0?'disabled':'')+'>Précédent</button>'+
-          '<button type="button" class="btn btn-primary" id="a11Next" '+(current===pages.length-1?'disabled':'')+'>Page suivante →</button></div>';
-        document.getElementById("a11Prev").addEventListener("click",function(){if(current>0){current--;state.grammar2PageA11=current;show();}});
-        document.getElementById("a11Next").addEventListener("click",function(){if(current<pages.length-1){current++;state.grammar2PageA11=current;show();}});
-        nextBtn.style.display = current===pages.length-1 ? "" : "none";
-        if(current===pages.length-1)whyToggle(screen,G.whyLabel,G.whyText);
-        nextBtn.textContent=label;
-        nextBtn.disabled=false;
+      var current=Math.max(0,Math.min(pages.length-1,state.grammar2PageA11||0));
+      function draw(){
+        var p=pages[current];
+        screen.innerHTML='<div class="a11-stage">'+
+          '<div class="a11-head"><span class="a11-brand">A1.1 · MON IDENTITÉ</span><span class="a11-counter">'+(current+1)+' / '+pages.length+'</span></div>'+
+          '<div class="a11-track"><span style="width:'+Math.round((current+1)*100/pages.length)+'%"></span></div>'+
+          '<div class="a11-center"><div class="a11-kicker">GRAMMAIRE · QUESTIONS ET RÉPONSES</div>'+
+          '<h2 class="a11-title">'+p.title+'</h2><div class="a11-english">'+p.en+'</div>'+
+          '<div class="a11-french">'+p.fr+'</div>'+
+          '<div class="a11-example"><div class="a11-example-label">EXEMPLE</div><strong>'+p.example+'</strong><span>'+p.translation+'</span></div>'+
+          '<div class="a11-tip">'+p.tip+'</div></div>'+
+          '<div class="a11-footer"><button type="button" class="a11-back" id="a11G2Prev" '+(current===0?'disabled':'')+'>← Précédent</button>'+
+          '<button type="button" class="a11-forward" id="a11G2Next">'+(current===pages.length-1?'S\u2019entraîner →':'Suivant →')+'</button></div></div>';
+        nextBtn.style.display="none";
+        document.getElementById("a11G2Prev").addEventListener("click",function(){if(current>0){current--;state.grammar2PageA11=current;draw();}});
+        document.getElementById("a11G2Next").addEventListener("click",function(){if(current<pages.length-1){current++;state.grammar2PageA11=current;draw();}else{state.grammar2PageA11=0;goNext();}});
       }
-      show();
+      draw();
       return;
     }
     screen.innerHTML =
