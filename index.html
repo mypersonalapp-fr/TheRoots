@@ -83,6 +83,35 @@
       }, 6000);
     })();
   </script>
+  <!-- Commande de test temporaire : ne pas fusionner sur la version officielle. -->
+  <div id="preview-reset-wrap" style="position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 14px);right:12px;z-index:99999;max-width:230px">
+    <button id="preview-reset-btn" type="button" style="border:2px solid #123c35;border-radius:12px;background:#fff;color:#123c35;padding:11px 13px;font:700 13px system-ui;box-shadow:0 2px 12px #0003">↻ Refaire le test de niveau</button>
+  </div>
+  <script>
+  (function(){
+    document.getElementById("preview-reset-btn").addEventListener("click",function(){
+      if(!confirm("MODE TEST — Recommencer le test de positionnement anglais ? Ton niveau actuel et la progression de test seront remis à zéro sur ce site. Ton compte sera conservé."))return;
+      try{
+        var key="the_roots_store_v1",st=JSON.parse(localStorage.getItem(key)||"null");
+        if(st&&st.settings&&Array.isArray(st.settings.langs)){
+          st.settings.langs.forEach(function(l){if(l.code==="en"||l.code==="en-gb"||l.code==="en-us"){
+            l.level=null;l.progress=0;l.leveled=false;l.entryLevel=null;l.entryDate=null;l.selectedVariant=null;
+          }});
+          localStorage.setItem(key,JSON.stringify(st));
+        }
+        Object.keys(localStorage).forEach(function(k){
+          if(/^the_roots_lesson_en|^the_roots_lesson_passes|^the_roots_boosts|^the_roots_placement|^the_roots_level_test|^the_roots_test_level/i.test(k)){
+            if(k==="the_roots_lesson_passes_v1"||k==="the_roots_boosts_v1"){
+              try{var v=JSON.parse(localStorage.getItem(k)||"{}");delete v.en;localStorage.setItem(k,JSON.stringify(v));}catch(e){}
+            }else localStorage.removeItem(k);
+          }
+        });
+        alert("Parcours anglais réinitialisé sur ce navigateur. Tu peux refaire le test.");
+        location.reload();
+      }catch(e){alert("Réinitialisation impossible : "+e.message);}
+    });
+  })();
+  </script>
   <script type="module" src="js/app.js?v=20261007d"></script>
 </body>
 </html>
