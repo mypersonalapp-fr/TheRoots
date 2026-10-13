@@ -16,11 +16,11 @@ h1,h2,h3,.panel strong{font-family:Manrope,"Avenir Next",system-ui,sans-serif;le
 html{background:#fff}
 body{font-family:"Manrope",system-ui,sans-serif!important;color:#1b1d22!important;background:transparent!important;isolation:isolate}
 body:before,body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:url("assets/img/shell-bg.jpg");background-position:center;background-repeat:no-repeat}
-body:before{background-size:cover;filter:blur(35px);transform:scale(1.1)}
-body:after{z-index:-1;background-size:contain}
-main{background:transparent!important;overflow:visible!important}
+body:before{background-size:cover;filter:blur(46px);transform:scale(1.12)}
+body:after{z-index:-1;background-size:contain;opacity:.12}
+main{background:transparent!important;overflow:visible!important;padding-bottom:24px!important}
 main:before,main:after{display:none!important}
-.panel{background:rgba(255,255,255,.88)!important;color:#1b1d22!important;border:1px solid rgba(255,255,255,.75)!important;box-shadow:0 9px 25px #1b1d2222!important}
+.panel{background:rgba(255,255,255,.97)!important;color:#1b1d22!important;border:1px solid rgba(255,255,255,.75)!important;box-shadow:0 9px 25px #1b1d2222!important}
 .panel h1,.panel h2,.panel h3{font-family:"Sora",system-ui,sans-serif!important;text-transform:none!important}
 .panel p,.panel strong{color:inherit}
 button.primary,.primary{background:#e2a13d!important;color:#fff!important}
@@ -29,7 +29,7 @@ button.primary,.primary{background:#e2a13d!important;color:#fff!important}
 html{background:#0e171d}
 body{color:#e7eef1!important}
 body:before,body:after{background-image:url("assets/img/shell-bg-dark.jpg")}
-.panel{background:rgba(22,34,42,.88)!important;color:#e7eef1!important;border-color:rgba(166,196,213,.25)!important}
+.panel{background:rgba(22,34,42,.97)!important;color:#e7eef1!important;border-color:rgba(166,196,213,.25)!important}
 .option{background:#1d2c35!important;color:#e7eef1!important;border-color:#476072!important}
 .option.selected{background:#314555!important}
 .secondary{background:#30414a!important;color:#e7eef1!important}
@@ -50,4 +50,4 @@ if(screen==='practice')h+='<div class="panel"><h1>🧩 Entraînement</h1><p>10 q
 if(screen==='result'){let score=DATA.questions.reduce((s,q,i)=>s+(answers[i]===q[2]?1:0),0);h+='<div class="panel"><h1>🏅 Leçon terminée !</h1><p class="result">'+score+'/40</p><p>'+ (score>=32?'Très bon résultat.':'Revois les notions non maîtrisées et réessaie.')+'</p><h2>Correction</h2>'+DATA.questions.map((q,i)=>'<div class="line">'+(answers[i]===q[2]?'✅':'❌')+' '+escapeHtml(q[0])+'<br><strong>'+escapeHtml(q[1][q[2]])+'</strong></div>').join('')+'<button class="primary" onclick="go(\'menu\')">Retour aux leçons</button><button class="secondary" onclick="reset()">Réinitialiser le test</button></div>'}
 app.innerHTML=h;app.querySelectorAll('.panel h2,.panel p').forEach(el=>{if(el.closest('details')||el.closest('button')||el.querySelector('button,textarea'))return;const raw=(el.textContent||'').trim();if(!raw||raw.length>180||!/\\b(?:I|you|he|she|we|they|my|your|hello|good|where|what|how|have|has|am|is|are|do|does)\\b/i.test(raw))return;const b=document.createElement('button');b.type='button';b.className='a11-audio';b.setAttribute('aria-label','Écouter la prononciation en anglais');b.textContent='🔊';b.onclick=()=>window.speak(raw);el.appendChild(b)})}
 const old=saved();answers=old.answers||{};textAnswer=old.textAnswer||'';render();
-</script><script src="js/a11-adaptive-preview.js?v=20261014a"></script><a href="a11-competences.html" style="position:fixed;z-index:9999;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:14px;background:#ec9a35;color:white;text-align:center;border-radius:16px;text-decoration:none;font:800 14px system-ui;box-shadow:0 4px 18px #0003">📝 Bilan complet A1.1 · 40 points →</a><script src="js/a11-drills.js?v=20261014b"></script><button onclick="openA11Drills()" style="position:fixed;z-index:9998;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:12px;background:#fff2d6;color:#8c5b20;border:1px solid #e5b76a;border-radius:14px;font:800 14px system-ui">🧩 Exercices interactifs · corrections et rattrapage</button><a href="a11-transversale.html" style="position:fixed;z-index:9997;bottom:calc(env(safe-area-inset-bottom,0px) + 124px);left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:12px;background:#1b3c39;color:white;text-align:center;border-radius:14px;text-decoration:none;font:800 14px Manrope,system-ui">🌱 Transversale A1.1 · pratique quotidienne →</a></body></html>
+</script><script src="js/a11-adaptive-preview.js?v=20261014a"></script><a href="a11-competences.html" style="position:relative;z-index:3;display:block;margin:12px auto;left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:14px;background:#ec9a35;color:white;text-align:center;border-radius:16px;text-decoration:none;font:800 14px system-ui;box-shadow:0 4px 18px #0003">📝 Bilan complet A1.1 · 40 points →</a><script src="js/a11-drills.js?v=20261014b"></script><button onclick="openA11Drills()" style="position:relative;z-index:3;display:block;margin:12px auto;left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:12px;background:#fff2d6;color:#8c5b20;border:1px solid #e5b76a;border-radius:14px;font:800 14px system-ui">🧩 Exercices interactifs · corrections et rattrapage</button><a href="a11-transversale.html" style="position:relative;z-index:3;display:block;margin:12px auto;left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);padding:12px;background:#1b3c39;color:white;text-align:center;border-radius:14px;text-decoration:none;font:800 14px Manrope,system-ui">🌱 Transversale A1.1 · pratique quotidienne →</a></body></html>
