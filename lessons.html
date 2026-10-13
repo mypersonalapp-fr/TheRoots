@@ -2361,12 +2361,12 @@
     heading: "Poser des questions sur l'identité",
     dialogueLede: "",
     dialogue: [
-      {who:"them", en:"Where are you from? Where do you live?", fr:"D'où viens-tu ? Où habites-tu ?"},
-      {who:"you", en:"I'm from France, and I live in Paris.", fr:"Je viens de France, et j'habite à Paris."}
+      {who:"them", en:"What's your name? Where are you from?", fr:"Comment t'appelles-tu ? D'où viens-tu ?"},
+      {who:"you", en:"My name is Emma. I'm from France.", fr:"Je m'appelle Emma. Je viens de France."}
     ],
-    ruleHtml: "Pour poser une question avec « to be », on inverse simplement l'ordre : <b>What is your name?</b>, <b>How old are you?</b>, <b>Where are you from?</b>. Pour dire « ne... pas », on ajoute <b>not</b> juste après « to be » : <b>I am not from Spain.</b>",
-    whyLabel: "my / your / his / her — et this / that",
-    whyText: "Pour dire à qui appartient quelque chose : <b>my</b> (mon/ma), <b>your</b> (ton/ta), <b>his</b> (son/sa, à un homme), <b>her</b> (son/sa, à une femme). Et pour montrer quelque chose de proche : <b>this</b> (singulier) / <b>these</b> (pluriel) ; de loin : <b>that</b> / <b>those</b>."
+    ruleHtml: "Avec <b>to be</b>, on inverse le sujet et le verbe pour poser une question : <b>Are you Emma?</b> / <b>Yes, I am.</b> Pour une question d'identité : <b>What is your name?</b>, <b>How old are you?</b>, <b>Where are you from?</b>. Pour nier : <b>I am not from Spain.</b>",
+    whyLabel: "my / your : les deux possessifs à connaître",
+    whyText: "<b>My</b> signifie mon/ma et <b>your</b> signifie ton/ta ou votre. Exemples : <b>My name is Emma.</b> / <b>What's your name?</b> Les autres possessifs et les démonstratifs seront étudiés plus tard."
   };
   var GRAMMAR1_L2 = {
     heading: "have got / has got",
@@ -9633,10 +9633,10 @@
     if(state.lesson === 0){
       var pages = [
         '<p class="lede">'+G.lede+'</p><div class="conj-grid">'+rows+'</div>',
-        (G.ruleHtml ? '<div class="q-passage" style="border-left-color:var(--gold)">'+G.ruleHtml+'</div>' : '<p class="lede">'+G.lede+'</p>'),
+        '<div class="q-passage" style="border-left-color:var(--gold)"><b>Dire non :</b> I am not Emma. / She is not Emma.<br><b>Poser une question :</b> Are you Emma? / Is she Emma?<br><b>Répondre :</b> Yes, I am. / No, I am not.</div>',
         '<p class="lede">'+G.dialogueLede+'</p><div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>'
       ];
-      var current = 0;
+      var current = Math.max(0,Math.min(pages.length-1,state.grammarPageA11 || 0));
       function showGrammarPage(){
         screen.innerHTML =
           '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 2/'+LECON_SUBSTEPS+'</div>' +
@@ -9647,8 +9647,8 @@
           '<button type="button" class="btn btn-ghost" id="a11Prev" '+(current===0?'disabled':'')+'>Précédent</button>' +
           '<button type="button" class="btn btn-primary" id="a11Next" '+(current===pages.length-1?'disabled':'')+'>Page suivante →</button></div>';
         var prev = document.getElementById("a11Prev"), next = document.getElementById("a11Next");
-        prev.addEventListener("click",function(){ if(current>0){current--;showGrammarPage();} });
-        next.addEventListener("click",function(){ if(current<pages.length-1){current++;showGrammarPage();} });
+        prev.addEventListener("click",function(){ if(current>0){current--;state.grammarPageA11=current;showGrammarPage();} });
+        next.addEventListener("click",function(){ if(current<pages.length-1){current++;state.grammarPageA11=current;showGrammarPage();} });
         nextBtn.style.display = current===pages.length-1 ? "" : "none";
         if(current===pages.length-1) whyToggle(screen,G.whyLabel,G.whyText);
         nextBtn.textContent = "Vérifier";
