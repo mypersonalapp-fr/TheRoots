@@ -722,38 +722,35 @@
   body:has(.a11-page-nav) .mini-check{margin:8px 0;padding:15px;}
 }
 
-/* The Roots A1.1 — véritable scène pédagogique plein écran, sans page verticale */
-@media (max-width: 800px) {
-  body:has(.a11-stage) { overflow:hidden!important; }
-  #screen:has(.a11-stage) {
-    position:fixed!important;inset:0!important;z-index:9000!important;
-    width:100vw!important;height:100dvh!important;max-height:none!important;
-    margin:0!important;padding:0!important;overflow:hidden!important;
-    background:#f7f9f6!important;border:0!important;border-radius:0!important;
-    box-shadow:none!important;color:#17382e!important;
-  }
-  .a11-stage{height:100%;box-sizing:border-box;display:flex;flex-direction:column;
-    padding:calc(env(safe-area-inset-top,0px) + 18px) 22px calc(env(safe-area-inset-bottom,0px) + 15px);
-    font-family:"Manrope",sans-serif;background:linear-gradient(160deg,#f9fbf8 0%,#eaf2eb 100%);color:#17382e}
-  .a11-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:800;letter-spacing:.09em}
-  .a11-brand span{color:#7b9487}.a11-counter{color:#557467}
-  .a11-track{height:5px;background:#d8e4da;border-radius:99px;margin-top:14px;overflow:hidden;flex-shrink:0}
-  .a11-track span{display:block;height:100%;background:#2c7554;border-radius:99px;transition:width .2s}
-  .a11-center{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(8px,1.8dvh,16px)}
-  .a11-kicker{font-size:11px;font-weight:800;letter-spacing:.15em;color:#518069}
-  .a11-title{font-size:clamp(20px,5.8vw,30px);font-weight:800;line-height:1.15;margin:0;color:#17382e}
-  .a11-english{font-family:"Sora",sans-serif;font-size:clamp(38px,11vw,58px);font-weight:800;line-height:1.1;color:#235b42}
-  .a11-french{font-size:clamp(15px,4vw,19px);color:#627d6f}
-  .a11-example{width:100%;max-width:390px;box-sizing:border-box;background:white;border:1px solid #d7e5db;border-radius:19px;padding:clamp(13px,2dvh,20px);display:flex;flex-direction:column;gap:6px;box-shadow:0 7px 22px #183f2b0b;text-align:left}
-  .a11-example-label{font-size:10px;font-weight:800;letter-spacing:.12em;color:#65957a}
-  .a11-example strong{font-size:clamp(17px,4.8vw,22px);color:#17382e}
-  .a11-example span{font-size:14px;color:#6b8376}
-  .a11-tip{font-size:clamp(12px,3.5vw,15px);color:#4d7560;line-height:1.4;max-width:350px}
-  .a11-footer{display:flex;gap:10px;flex-shrink:0;padding-top:12px}
-  .a11-footer button{flex:1;min-width:0;min-height:50px;border-radius:13px;font:800 15px "Manrope",sans-serif;cursor:pointer}
-  .a11-back{border:1px solid #c8d9ce;background:#fff;color:#315f48}
-  .a11-back:disabled{opacity:.38}.a11-forward{border:1px solid #276849;background:#276849;color:white}
-  @media(max-height:650px){.a11-stage{padding-top:calc(env(safe-area-inset-top,0px) + 8px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px)}.a11-center{gap:6px}.a11-example{padding:10px}.a11-footer button{min-height:42px}}
+/* A1.1 — mise en page compacte DANS le décor et la carte d'origine. */
+@media(max-width:800px){
+  body:has(.a11-stage) .controls,body:has(.a11-stage) .hint{display:none!important}
+  body:has(.a11-stage) #screen{overflow:visible!important;max-height:none!important}
+  body:has(.a11-stage) .card{padding:12px!important}
+  .a11-stage{box-sizing:border-box;height:clamp(340px,calc(100dvh - 280px),590px);min-height:0;
+    display:flex;flex-direction:column;gap:6px;padding:10px 8px 4px;
+    color:var(--ink);font-family:"Manrope",sans-serif;background:transparent}
+  .a11-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:800;letter-spacing:.07em;color:var(--muted)}
+  .a11-track{height:5px;flex-shrink:0;background:var(--line);border-radius:9px;overflow:hidden}
+  .a11-track span{display:block;height:100%;background:var(--accent);border-radius:9px}
+  .a11-center{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(6px,1.5dvh,13px);text-align:center}
+  .a11-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--pop)}
+  .a11-title{margin:0;font-size:clamp(19px,5.3vw,27px);line-height:1.2;color:var(--ink)}
+  .a11-english{font-family:"Sora",sans-serif;font-size:clamp(33px,9vw,53px);font-weight:800;line-height:1.12;color:var(--ink)}
+  .a11-french{font-size:16px;color:var(--muted)}
+  .a11-example{width:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:5px;text-align:left;
+    padding:13px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+  .a11-example-label{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+  .a11-example strong{font-size:18px;color:var(--ink)}
+  .a11-example span{font-size:13px;color:var(--muted)}
+  .a11-tip{font-size:13px;line-height:1.35;color:var(--muted)}
+  .a11-footer{display:flex;gap:9px;flex-shrink:0;padding-top:8px}
+  .a11-footer button{flex:1;min-width:0;min-height:46px;padding:8px 6px;border-radius:12px;
+    font:800 14px "Manrope",sans-serif;cursor:pointer}
+  .a11-back{border:1px solid var(--line);background:var(--surface-2);color:var(--ink)}
+  .a11-back:disabled{opacity:.4}
+  .a11-forward{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+  @media(max-height:700px){.a11-stage{height:clamp(300px,calc(100dvh - 260px),460px)}.a11-center{gap:5px}.a11-example{padding:10px}}
 }
 </style>
 </head>
