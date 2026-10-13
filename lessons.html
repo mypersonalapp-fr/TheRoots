@@ -708,7 +708,7 @@
   .a11-page-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
   .a11-page-nav .btn{min-height:44px;max-width:48%;white-space:normal}
   @media(max-width:420px){.a11-page-nav{gap:8px}.a11-page-nav .btn{font-size:.88rem}}
-</style>
+\n  @media(max-width:600px){.controls .btn{min-height:48px;overflow-wrap:anywhere}.screen-title{overflow-wrap:anywhere}.card{max-width:100%}.a11-page-nav{flex-wrap:wrap}.a11-page-nav .btn{flex:1;min-width:0}}\n</style>
 </head>
 <body>
 
@@ -2179,27 +2179,27 @@
   ];
 
   var QUIZ_L1 = [
-    { cat:"oral", audio:"What's your name?", q:"Écoute : que demande-t-on ?", opts:["Ton âge","Ton prénom","Ta nationalité","Ta ville"], correct:1, why:"« What's your name? » = Comment tu t'appelles ?" },
-    { cat:"oral", audio:"I am 28 years old.", q:"Écoute : qu'exprime cette phrase ?", opts:["Une origine","Un âge","Une nationalité","Une adresse"], correct:1, why:"« ... years old » sert à donner son âge." },
-    { cat:"oral", audio:"She has blue eyes.", q:"Écoute : de quoi parle-t-on ?", opts:["De la taille","De la couleur des yeux","Du poids","De la pointure"], correct:1, why:"« eyes » = yeux." },
-    { cat:"oral", audio:"Where do you live?", q:"Écoute : que demande-t-on ?", opts:["Où tu es né(e)","Où tu vis","Ton nom","Ton âge"], correct:1, why:"« Where do you live? » = Où habites-tu ?" },
-    { cat:"ecrit", q:"Comment dit-on « prénom » ?", opts:["Last name","Nickname","First name","Surname"], correct:2, why:"« First name » = prénom, « Last name »/« Surname » = nom de famille." },
-    { cat:"ecrit", q:"Complète : “I ___ 28 years old.”", opts:["have","is","am","are"], correct:2, why:"Pour l'âge, on utilise toujours « to be », jamais « to have »." },
-    { cat:"ecrit", q:"Comment dit-on « pays » ?", opts:["City","Country","Nationality","Origin"], correct:1, why:"« Country » = pays." },
-    { cat:"ecrit", q:"Complète : “I ___ not French.”", opts:["am","do","have"], correct:0, why:"La négation avec « to be » se forme avec « am/is/are + not »." },
-    { cat:"ecrit", q:"Comment dit-on « son surnom » (à propos d'un garçon) ?", opts:["Her nickname","His nickname","Its nickname","Your nickname"], correct:1, why:"« his » s'accorde avec la personne qui possède (un garçon), pas avec l'objet possédé." },
-    { cat:"comprehension", passage:"“Hello! My name is Emma, and my nickname is Em. I am 28 years old, and I am from London.”", q:"D'après le texte, quel est le surnom de la narratrice ?", opts:["Emma","Em","London","28"], correct:1, why:"« my nickname is Em »." },
-    { cat:"comprehension", passage:"“I live in Paris now, but my place of birth is Madrid. I am Spanish.”", q:"Où est née la narratrice ?", opts:["À Paris","À Madrid","À Londres","En France"], correct:1, why:"« my place of birth is Madrid »." },
-    { cat:"comprehension", passage:"“She has blue eyes and brown hair. She is not very tall.”", q:"De quelle couleur sont les yeux de la personne ?", opts:["Marrons","Verts","Bleus","Noirs"], correct:2, why:"« blue eyes » = yeux bleus." },
-    { cat:"oral", audio:"He has a beard and he wears glasses.", q:"Écoute : que porte cette personne ?", opts:["Une barbe et des lunettes","Une moustache et un chapeau","Rien de particulier","Un sourire"], correct:0, why:"« a beard and... glasses »." },
-    { cat:"oral", audio:"She is very friendly and confident.", q:"Écoute : comment est cette personne ?", opts:["Timide et sérieuse","Amicale et sûre d'elle","Drôle et âgée","Grande et petite"], correct:1, why:"« friendly and confident »." },
-    { cat:"ecrit", q:"Comment dit-on « timide » ?", opts:["Shy","Confident","Serious"], correct:0, why:"« Shy » = timide." },
-    { cat:"ecrit", q:"Comment dit-on « quartier » ?", opts:["Hometown","Neighbourhood","Abroad"], correct:1, why:"« Neighbourhood » = quartier." },
-    { cat:"comprehension", passage:"“My name is Marco. I live abroad, in London, but my hometown is Rome. I am quite shy, but very friendly once you know me.”", q:"D'après le texte, où est né Marco (sa ville natale) ?", opts:["À Londres","À Rome","À l'étranger"], correct:1, why:"« my hometown is Rome »." },
-    { cat:"comprehension", passage:"“He has a beard and a moustache. He is not very tall, and he always has a big smile.”", q:"D'après le texte, qu'est-ce que cette personne a toujours ?", opts:["Un grand sourire","Des lunettes","Une barbe seulement"], correct:0, why:"« he always has a big smile »." }
+    {cat:"oral",audio:"What's your name?",q:"Quelle information demande-t-on ?",opts:["L'âge","Le nom","Le pays","La ville"],correct:1,why:"What's your name? demande le nom."},
+    {cat:"oral",audio:"I am 28 years old.",q:"Quelle information est donnée ?",opts:["Le pays","L'âge","Le nom","L'adresse"],correct:1,why:"I am ... years old indique l'âge."},
+    {cat:"oral",audio:"Where are you from?",q:"Quelle information demande-t-on ?",opts:["L'adresse","Le nom","Le pays d'origine","L'âge"],correct:2,why:"Where are you from? demande l'origine."},
+    {cat:"oral",audio:"She is from France.",q:"D'où vient cette personne ?",opts:["D'Espagne","De France","De Londres","D'Italie"],correct:1,why:"She is from France."},
+    {cat:"ecrit",q:"Comment dit-on « prénom » ?",opts:["Country","Last name","First name","Age"],correct:2,why:"First name signifie prénom."},
+    {cat:"ecrit",q:"Complète : I ___ 28 years old.",opts:["have","is","am","are"],correct:2,why:"I am 28 years old."},
+    {cat:"ecrit",q:"Comment dit-on « pays » ?",opts:["City","Country","Address","Age"],correct:1,why:"Country signifie pays."},
+    {cat:"ecrit",q:"Complète : I ___ not French.",opts:["am","do","have","is"],correct:0,why:"La négation est I am not."},
+    {cat:"ecrit",q:"Complète : Where ___ you from?",opts:["is","am","are","do"],correct:2,why:"Avec you, on utilise are."},
+    {cat:"comprehension",passage:"Hello! My name is Emma. I am 28 years old. I am from Spain.",q:"Quel âge a Emma ?",opts:["18 ans","28 ans","38 ans","20 ans"],correct:1,why:"I am 28 years old."},
+    {cat:"comprehension",passage:"Hello! My name is Emma. I am 28 years old. I am from Spain.",q:"De quel pays vient Emma ?",opts:["France","Italie","Espagne","Royaume-Uni"],correct:2,why:"I am from Spain."},
+    {cat:"comprehension",passage:"My first name is Tom. My last name is Smith. I am from London.",q:"Quel est le nom de famille de Tom ?",opts:["London","Tom","Smith","Emma"],correct:2,why:"My last name is Smith."},
+    {cat:"oral",audio:"My name is Marco.",q:"Quel est le prénom entendu ?",opts:["Emma","Marco","Tom","Alex"],correct:1,why:"My name is Marco."},
+    {cat:"oral",audio:"Are you Emma?",q:"Est-ce une question ?",opts:["Oui","Non"],correct:0,why:"Are you Emma? est une question avec to be."},
+    {cat:"ecrit",q:"Complète : She ___ from London.",opts:["am","are","is","have"],correct:2,why:"She is from London."},
+    {cat:"ecrit",q:"Quelle phrase est correcte ?",opts:["I have 28 years old.","I am 28 years old.","I is 28 years old."],correct:1,why:"En anglais, l'âge se dit avec to be."},
+    {cat:"comprehension",passage:"My name is Sara. I am not from France. I am from Italy.",q:"Sara vient-elle de France ?",opts:["Oui","Non"],correct:1,why:"I am not from France."},
+    {cat:"comprehension",passage:"My name is Sara. I am not from France. I am from Italy.",q:"D'où vient Sara ?",opts:["Italie","France","Espagne"],correct:0,why:"I am from Italy."}
   ];
 
-  // ---------- Leçon 2 (A1.2 Family) : famille proche, élargie, la décrire ----------
+    // ---------- Leçon 2 (A1.2 Family) : famille proche, élargie, la décrire ----------
   var VOCAB_L2 = [
     {block:"Famille proche", en:"Mother", ipa:"/ˈmʌðər/", fr:"Mère", note:"Version familière : « Mum » (UK) ou « Mom » (US)."},
     {block:"Famille proche", en:"Father", ipa:"/ˈfɑːðər/", fr:"Père", note:"Version familière : « Dad »."},
@@ -9641,14 +9641,14 @@
   function renderMiniChecks(){
     screen.innerHTML =
       '<div class="eyebrow">'+lessonLabel()+' · On vérifie ensemble · 3/'+LECON_SUBSTEPS+'</div>' +
-      '<h2 class="screen-title">Deux questions éclair</h2>' +
+      '<h2 class="screen-title">Questions éclair</h2>' +
       '<div id="mcWrap"></div>';
     nextBtn.style.display = "none";
     hint.textContent = "Bonne réponse : ça avance tout seul. Sinon, une 2e chance t'est donnée.";
     var wrap = document.getElementById("mcWrap");
-    var resolved = [false, false];
+    var resolved = MINI_CHECKS.map(function(){return false;});
     function maybeAdvance(){
-      if(resolved[0] && resolved[1]){
+      if(resolved.every(function(v){return v;})){
         pendingAutoAdvance = setTimeout(goNext, 700);
       }
     }
@@ -9695,6 +9695,31 @@
 
   function renderGrammar2(){
     var G = GRAMMAR2;
+    var label = TRANSV ? "🇫🇷➜🇬🇧 Pièges et formules de survie" : (DRILLS ? "🏋️ Entraînement intensif" : "Construire une phrase");
+    if(state.lesson === 0){
+      var pages = [
+        '<div class="dialogue">'+dialogueHtml(G.dialogue)+'</div>',
+        '<div class="q-passage">'+G.ruleHtml+'</div>'
+      ];
+      var current = Math.max(0,Math.min(pages.length-1,state.grammar2PageA11 || 0));
+      function show(){
+        screen.innerHTML =
+          '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 4/'+LECON_SUBSTEPS+'</div>'+
+          '<div class="wc-meta"><span>Questions et réponses</span><b>Page '+(current+1)+' / '+pages.length+'</b></div>'+
+          '<h2 class="screen-title">'+G.heading+'</h2>'+pages[current]+
+          '<div class="a11-page-nav" role="group" aria-label="Navigation dans la grammaire">'+
+          '<button type="button" class="btn btn-ghost" id="a11Prev" '+(current===0?'disabled':'')+'>Précédent</button>'+
+          '<button type="button" class="btn btn-primary" id="a11Next" '+(current===pages.length-1?'disabled':'')+'>Page suivante →</button></div>';
+        document.getElementById("a11Prev").addEventListener("click",function(){if(current>0){current--;state.grammar2PageA11=current;show();}});
+        document.getElementById("a11Next").addEventListener("click",function(){if(current<pages.length-1){current++;state.grammar2PageA11=current;show();}});
+        nextBtn.style.display = current===pages.length-1 ? "" : "none";
+        if(current===pages.length-1)whyToggle(screen,G.whyLabel,G.whyText);
+        nextBtn.textContent=label;
+        nextBtn.disabled=false;
+      }
+      show();
+      return;
+    }
     screen.innerHTML =
       '<div class="eyebrow">'+lessonLabel()+' · Grammaire · 4/'+LECON_SUBSTEPS+'</div>' +
       '<h2 class="screen-title">'+G.heading+'</h2>' +
@@ -10187,23 +10212,20 @@
 
   // ---------- Screen : Lecture (compréhension) ----------
   var READING_L1 = [
-    "Hello! My name is Emma, and my nickname is Em.",
-    "I am 28 years old, and my date of birth is in May.",
-    "I am from Spain, and my place of birth is Madrid.",
-    "Today, I live in Paris, in France.",
-    "My nationality is Spanish, but I speak French too.",
-    "I have blue eyes and brown hair.",
-    "I am not very tall, but I am not very short either.",
-    "My best friend's nickname is Tom, and he is British.",
-    "He lives in London, and his nationality is British.",
-    "Goodbye for now, and thank you for reading!"
+    "Hello! My name is Emma.",
+    "I am 28 years old.",
+    "I am from Spain.",
+    "My country is Spain, and my city is Madrid.",
+    "My first name is Emma.",
+    "My last name is Martin.",
+    "My friend is Tom.",
+    "He is 30 years old.",
+    "He is from London.",
+    "Goodbye!"
   ];
   var GLOSS_L1 = [
-    {en:"too", fr:"aussi"},
-    {en:"for now", fr:"pour l'instant"},
-    {en:"reading", fr:"la lecture, le fait de lire"},
-    {en:"to speak", fr:"parler (une langue)"},
-    {en:"best friend", fr:"meilleur(e) ami(e)"}
+    {en:"friend",fr:"ami(e)"},
+    {en:"goodbye",fr:"au revoir"}
   ];
   function screenLecture(){
     if(IMG && IMG.scene && state.subStep === LECTURE_SUBSTEPS-1) return screenDescribe();
