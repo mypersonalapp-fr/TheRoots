@@ -61,3 +61,19 @@ Total : 100 points. Hypothèse de validation : 80/100 avec minima par compétenc
 
 ## Prochain lot technique
 Cartographier les objets A1.1 et les fonctions de rendu/notation/déverrouillage, puis préparer une modification ciblée, testable et réversible sur cette branche.
+
+## Exigence UX fonctionnelle — pagination, pas de défilement interminable (13 octobre 2026)
+Priorité produit : **navigation page par page**. Ne pas consacrer ce lot à l'esthétique.
+
+- Une page de leçon doit afficher un ensemble limité et cohérent : un concept, un petit groupe d'exemples ou une activité.
+- Quand le contenu dépasse l'espace réellement disponible sur l'écran, le répartir en pages successives avec **Précédent / Suivant**. Ne pas tronquer le texte et ne pas rendre l'ensemble du cours en une seule colonne déroulante.
+- Calculer l'espace disponible à partir de la hauteur utile réelle (en-tête, commandes et clavier mobile compris), sans nombre fixe de pixels supposé universel.
+- Ne pas couper au milieu d'une question, d'un exemple avec sa correction, d'un tableau ou d'un bloc interactif. Un élément indivisible plus haut que l'écran doit disposer d'un traitement adapté (mise en page compacte ou défilement local exceptionnel).
+- Préserver les réponses saisies, l'état des exercices, les validations, la synthèse vocale et la progression lors des changements de page.
+- Désactiver « Suivant » lorsqu'une réponse obligatoire de la page courante n'est pas validée ; conserver les règles de contrôle propres à l'activité.
+- Afficher la position « Page X / Y » ; prévoir le retour à la page précédente sans perte de données.
+- Sur téléphone, tester petits et grands écrans, zoom texte, clavier ouvert, rotation, textes longs et traduction.
+- Garder les pages de bilan, examens et activités cohérentes avec ce principe, sans appliquer une transformation globale risquée aux écrans qui ont leur propre navigation.
+- Critère d'acceptation : aucun parcours A1.1 normal ne requiert un défilement vertical interminable pour atteindre la prochaine activité.
+
+**État** : exigence enregistrée, **pagination non encore codée**. Une implémentation doit être validée sur les parcours existants avant généralisation.
