@@ -13787,6 +13787,8 @@
     return isGrandControleId(n) ? "Grand contrôle" : "";
   }
   function isGrandControleId(n){ return n === GRAND_CONTROLE_LESSON || n === GRAND_CONTROLE_A2_LESSON || n === GRAND_CONTROLE_FINAL_LESSON; }
+  // Mode test temporaire : remettre à false avant fusion sur main.
+  var THE_ROOTS_PREVIEW_UNLOCK = true;
   var lvTab = null;
   function screenLessons(){
     backBtn.style.visibility = "hidden";
@@ -13797,7 +13799,7 @@
     var passed = (lsGet(K_PASS, {})[LANG]) || {}, layout = hubGet(HUB_LAYOUT_KEY, ["mosaique","chemin"], "mosaique");
     var info = L.map(function(n, i){
       var r = lessonRank(n), prev = i > 0 ? L[i-1] : null, ps = !!passed[n];
-      var exempt = r < startR && !ps, open = r <= startR || ps || (prev != null && !!passed[prev]) || r <= maxR;
+      var exempt = r < startR && !ps, open = THE_ROOTS_PREVIEW_UNLOCK || r <= startR || ps || (prev != null && !!passed[prev]) || r <= maxR;
       return {n:n, i:i, level:levelOfLesson(n), passed:ps, exempt:exempt, open:open};
     });
     var cur = null; info.forEach(function(x){ if(cur == null && x.open && !x.passed && lessonRank(x.n) >= startR) cur = x; });
