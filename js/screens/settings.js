@@ -190,6 +190,16 @@ export function renderSettings(container, onChange) {
           <button class="btn btn-ghost" id="themeToggle">${settings.theme === "dark" ? t("set_theme_dark_btn", lang) : t("set_theme_light_btn", lang)}</button>
         </div>
 
+        <div class="card" style="padding:16px;margin:12px 0;border-radius:18px">
+          <strong>Mon personnage pédagogique</strong>
+          <p style="font-size:12px;color:var(--ink-soft);margin:6px 0 12px">Choisis une fille ou un garçon, puis un personnage. Ton choix est conservé pour les leçons.</p>
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <button type="button" class="btn btn-ghost" data-avatar-gender="girl" aria-pressed="${(settings.avatarGender||'girl')==='girl'}">Fille</button>
+            <button type="button" class="btn btn-ghost" data-avatar-gender="boy" aria-pressed="${settings.avatarGender==='boy'}">Garçon</button>
+          </div>
+          <div id="rootsAvatarGrid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px"></div>
+          <p style="font-size:11px;color:var(--ink-soft)">Les portraits illustrés définitifs seront ajoutés à la prochaine étape graphique.</p>
+        </div>
         <div class="card settings-tab">
           <div><strong>${t("set_interface_lang", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_interface_lang_desc", lang)}</div></div>
           <select id="interfaceLang">
@@ -227,6 +237,17 @@ export function renderSettings(container, onChange) {
       </div>
     `;
     container.querySelector("#settingsBack").addEventListener("click", () => { view = "root"; paint(); });
+    // Personnage conservé dans le même store que les autres préférences.
+    const avatars = {girl:['👧🏿','👩🏽','👧🏼','👩🏻','👧🏾','👩🏼'],boy:['👦🏿','👨🏽','👦🏼','👨🏻','👦🏾','👨🏼']};
+    function paintAvatars(){
+      const cfg=store.get().settings, gender=cfg.avatarGender||'girl';
+      const grid=container.querySelector('#rootsAvatarGrid');if(!grid)return;
+      grid.innerHTML=avatars[gender].map((symbol,i)=>'<button type="button" data-avatar-index="'+i+'" aria-pressed="'+((cfg.avatarIndex||0)===i)+'" style="border:2px solid '+((cfg.avatarIndex||0)===i?'#f59a21':'transparent')+';background:var(--card,rgba(255,255,255,.3));border-radius:14px;min-height:78px;font-size:39px;cursor:pointer">'+symbol+'</button>').join('');
+      grid.querySelectorAll('[data-avatar-index]').forEach(b=>b.addEventListener('click',()=>{store.updateSettings({avatarIndex:Number(b.dataset.avatarIndex)});paintAvatars()}));
+      container.querySelectorAll('[data-avatar-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.avatarGender===gender)));
+    }
+    container.querySelectorAll('[data-avatar-gender]').forEach(b=>b.addEventListener('click',()=>{store.updateSettings({avatarGender:b.dataset.avatarGender,avatarIndex:0});paintAvatars()}));
+    paintAvatars();
     container.querySelector("#themeToggle").addEventListener("click", () => {
       const next = settings.theme === "dark" ? "light" : "dark";
       store.updateSettings({ theme: next });
