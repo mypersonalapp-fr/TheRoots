@@ -89,4 +89,18 @@ if(screen==='practice')h+='<div class="panel"><h1>🧩 Entraînement</h1><p>10 q
 if(screen==='result'){let score=DATA.questions.reduce((s,q,i)=>s+(answers[i]===q[2]?1:0),0);h+='<div class="panel"><h1>🏅 Leçon terminée !</h1><p class="result">'+score+'/40</p><p>'+ (score>=32?'Très bon résultat.':'Revois les notions non maîtrisées et réessaie.')+'</p><h2>Correction</h2>'+DATA.questions.map((q,i)=>'<div class="line">'+(answers[i]===q[2]?'✅':'❌')+' '+escapeHtml(q[0])+'<br><strong>'+escapeHtml(q[1][q[2]])+'</strong></div>').join('')+'<button class="primary" onclick="go(\'menu\')">Retour aux leçons</button><button class="secondary" onclick="reset()">Réinitialiser le test</button></div>'}
 app.innerHTML=h;app.querySelectorAll('.panel h2,.panel p').forEach(el=>{if(el.closest('details')||el.closest('button')||el.querySelector('button,textarea'))return;const raw=(el.textContent||'').trim();if(!raw||raw.length>180||!/\\b(?:I|you|he|she|we|they|my|your|hello|good|where|what|how|have|has|am|is|are|do|does)\\b/i.test(raw))return;const b=document.createElement('button');b.type='button';b.className='a11-audio';b.setAttribute('aria-label','Écouter la prononciation en anglais');b.textContent='🔊';b.onclick=()=>window.speak(raw);el.appendChild(b)})}
 const old=saved();answers=old.answers||{};textAnswer=old.textAnswer||'';render();
-</script><script src="js/a11-adaptive-preview.js?v=20261014a"></script></body></html>
+</script><script src="js/a11-adaptive-preview.js?v=20261014a"></script><script id="roots-a11-character-preference">
+(function(){
+const STORAGE_KEY='the_roots_store_v1';
+function chosen(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}').settings||{};return {gender:x.avatarGender||'girl',index:x.avatarIndex||0}}catch(e){return {gender:'girl',index:0}}}
+function decorate(){
+const c=chosen(),boys=['👦🏿','👨🏽','👦🏼','👨🏻','👦🏾','👨🏼'],girls=['👧🏿','👩🏽','👧🏼','👩🏻','👧🏾','👩🏼'];
+const symbol=(c.gender==='boy'?boys:girls)[c.index]||'👧🏿';
+document.querySelectorAll('.a11-portrait').forEach(el=>{el.textContent=symbol;el.setAttribute('aria-label','Personnage sélectionné')});
+const p=document.querySelector('.a11-lesson-heading');
+if(p&&!p.querySelector('.a11-character-chip')){const tag=document.createElement('span');tag.className='a11-character-chip';tag.textContent='Mon personnage '+symbol;tag.style.cssText='display:inline-block;margin:5px 0 8px;padding:7px 12px;background:#fff5db;color:#20364d;border-radius:20px;font-size:12px;font-weight:800';p.insertBefore(tag,p.querySelector('.progress'))}
+}
+new MutationObserver(()=>{requestAnimationFrame(decorate)}).observe(document.getElementById('app'),{childList:true});
+decorate();
+})();
+</script></body></html>
