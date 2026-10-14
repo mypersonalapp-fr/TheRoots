@@ -6,7 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014h";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014i";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -25,7 +25,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014h" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014i" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -105,8 +105,8 @@ export function currentCharacter() {
   const max = gender === "boy" ? BOYS : GIRLS;
   const idx = Math.min(Math.max(Number(s.avatarIndex) || 0, 0), max - 1);
   const name = gender === "boy" ? "Lucas" : "Emma", key = name.toLowerCase();
-  // Versions en pied disponibles (index 0-based). Garçons n°4, 6, 8 : en attente, portrait en repli.
-  const hasFull = gender === "girl" || [0, 1, 2, 4, 6, 8].includes(idx);
+
+  const hasFull = true; // les 18 personnages ont une version en pied
   // Emma et Lucas (n°1) ont une version en pied (introduction) et une version « réussite ».
   return { gender, idx, src: `assets/img/characters/${gender}-${idx + 1}.png`, name,
     full: hasFull ? (idx === 0 ? `assets/img/characters/${key}-intro.png` : `assets/img/characters/${gender}-${idx + 1}-intro.png`) : null,
@@ -242,7 +242,7 @@ export function renderLessonA11(root, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014h" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014i" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {

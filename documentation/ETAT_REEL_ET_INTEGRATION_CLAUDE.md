@@ -44,3 +44,5 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Intégrés : filles 2 à 9 et garçons 2, 3, 5, 7, 9 (`assets/img/characters/{girl|boy}-N-intro.png`, détourés, liseré retiré, damier incrusté supprimé pour 4 d'entre eux). Utilisés aussi à l'écran de résultat.
 - En attente (portrait en repli) : garçon 4 (cheveux noirs lisses, sweat rouge), garçon 6 (veste en jean), garçon 8 (cheveux noirs bouclés, peau plus foncée, sweat jaune). Les versions reçues ne correspondaient pas aux portraits (visage/cheveux), ou manquaient.
 - Reçus mais non utilisés : garçon sweat vert blond, garçon sweat noir.
+
+- Mise à jour v20261014i : garçons 4, 6, 8 reçus et intégrés. Les 18 personnages ont désormais une version en pied (plus aucun repli portrait nécessaire).
