@@ -1,16 +1,16 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014p";
+const V = "20261014q";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
   { id: "m1", ic: "👂", title: "Trouve la bonne personne", sub: "Écoute la description, touche la bonne personne.", hero: "city/m1" },
   { id: "m2", ic: "🪪", title: "Complète les fiches d’identité", sub: "Écoute et remplis nom, âge et nationalité.", hero: "city/m2" },
-  { id: "m3", ic: "💬", title: "Construis le dialogue", sub: "Remets les mots dans l’ordre.", hero: "lesson/scene-friends" },
+  { id: "m3", ic: "💬", title: "Construis le dialogue", sub: "Remets les mots dans l’ordre.", hero: "city/m3" },
   { id: "m4", ic: "🛂", title: "Passeport international", sub: "Associe chaque pays à sa nationalité.", hero: "city/m4" },
   { id: "m5", ic: "🕵️", title: "Portrait-robot", sub: "Find the person : cheveux, yeux, vêtements.", hero: "lesson/scene-describe" },
-  { id: "m6", ic: "🎉", title: "Le grand rassemblement", sub: "Présente un personnage en anglais.", hero: "lesson/scene-nationality" },
+  { id: "m6", ic: "🎉", title: "Le grand rassemblement", sub: "Présente un personnage en anglais.", hero: "city/m6" },
 ];
 
 const TILE = (i) => ({ v: String(i), img: img(`city/t${i}`) });
