@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014q";
+const V = "20261014r";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
@@ -21,7 +21,7 @@ const M1 = [
   ["He has blond hair and a yellow hoodie.", "5"],
   ["She has curly black hair and a purple hoodie.", "2"],
   ["He has curly dark hair and a red hoodie.", "0"],
-].map(([say, a]) => ({ say, groups: [{ label: "Qui est-ce ?", answer: a, opts: [0, 1, 2, 3, 4, 5].map(TILE), tiles: true }] }));
+].map(([say, a]) => ({ say, groups: [{ label: "Who is it?", answer: a, opts: [0, 1, 2, 3, 4, 5].map(TILE), tiles: true }] }));
 
 const names = (arr) => arr.map((n) => ({ v: n, label: n }));
 const ages = (arr) => arr.map((n) => ({ v: String(n), label: String(n) }));
@@ -51,9 +51,9 @@ const NAT_Q = [
 const M4 = NAT_Q.map(([flag, country, nat, opts]) => ({ say: `I'm from ${country}.`, flag, country, groups: [{ label: "Nationality", answer: nat, opts: names(opts) }] }));
 
 const sw = (v, label, color) => ({ v, label, color });
-const HAIR = (a) => ({ label: "Cheveux", answer: a, opts: [{ v: "ls", label: "Longs et lisses" }, { v: "lc", label: "Longs et bouclés" }, { v: "sc", label: "Courts et bouclés" }, { v: "sb", label: "Courts et blonds" }] });
-const EYES = (a) => ({ label: "Yeux", answer: a, opts: [sw("brown", "Marron", "#7b4a1e"), sw("blue", "Bleus", "#2f6fd1"), sw("green", "Verts", "#2e9a4f"), sw("grey", "Gris", "#777")] });
-const CLO = (a) => ({ label: "Vêtements", answer: a, opts: [sw("red", "Sweat rouge", "#d62d2d"), sw("pink", "Sweat rose", "#ee7fb0"), sw("purple", "Sweat violet", "#8a52d6"), sw("green", "Sweat vert", "#2a8a3c")] });
+const HAIR = (a) => ({ label: "Hair", answer: a, opts: [{ v: "ls", label: "Long and straight" }, { v: "lc", label: "Long and curly" }, { v: "sc", label: "Short and curly" }, { v: "sb", label: "Short and blond" }] });
+const EYES = (a) => ({ label: "Eyes", answer: a, opts: [sw("brown", "Brown", "#7b4a1e"), sw("blue", "Blue", "#2f6fd1"), sw("green", "Green", "#2e9a4f"), sw("grey", "Grey", "#777")] });
+const CLO = (a) => ({ label: "Clothes", answer: a, opts: [sw("red", "Red hoodie", "#d62d2d"), sw("pink", "Pink hoodie", "#ee7fb0"), sw("purple", "Purple hoodie", "#8a52d6"), sw("green", "Green hoodie", "#2a8a3c")] });
 const M5 = [
   { say: "She has long straight hair, brown eyes and a red hoodie.", groups: [HAIR("ls"), EYES("brown"), CLO("red")] },
   { say: "He has short curly hair, green eyes and a purple hoodie.", groups: [HAIR("sc"), EYES("green"), CLO("purple")] },
@@ -99,7 +99,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
     const step = steps[S.n], pick = {}; let checked = false;
     const c = { tiles: step.groups.some((g) => g.tiles) };
     const lead = m.id === "m4"
-      ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">Quelle est sa nationalité ?</p>`
+      ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">What is his or her nationality?</p>`
       : `${play(step.say)}`;
     const paint = () => {
       const groups = step.groups.map((g, gi) => `<div class="rc-group"><h3 class="lc-h3">${esc(g.label)}</h3><div class="rc-opts ${g.tiles ? "rc-tiles" : ""}">${g.opts.map((o) => {
