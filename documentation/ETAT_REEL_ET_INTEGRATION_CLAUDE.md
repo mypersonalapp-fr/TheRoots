@@ -46,3 +46,7 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Reçus mais non utilisés : garçon sweat vert blond, garçon sweat noir.
 
 - Mise à jour v20261014i : garçons 4, 6, 8 reçus et intégrés. Les 18 personnages ont désormais une version en pied (plus aucun repli portrait nécessaire).
+
+## Aperçu direct (2026-10-14, v20261014j)
+- `apercu-a11.html` : ouvre la leçon A1.1 directement, sans connexion ni test de niveau. Options : `?g=girl|boy&i=0..8&t=light|dark`.
+- Dans l'app normale, la leçon s'ouvre seulement après connexion + test de niveau, puis Mes cours → Anglais → bouton « Leçon A1.1 — Mon identité (nouvelle version) ».
