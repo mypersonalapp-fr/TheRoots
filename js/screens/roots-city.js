@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014u";
+const V = "20261014v";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [

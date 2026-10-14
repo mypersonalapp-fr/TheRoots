@@ -80,3 +80,4 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - M5 : fond de classe reçu (city/m5.webp) ; titre « Portrait-robot » et post-it « Find the person » en texte superposé (.rc-chalk/.rc-post).
 - M5 refait avec vignettes découpées de l'image Portrait-robot (city/k-*.webp : 9 coiffures, 4 yeux, 4 sweats, 4 pantalons, 4 chaussures) + fiche « Portrait » qui se remplit. Personnage animé en calques : en attente des calques ChatGPT.
 - Scènes vocabulaire « Les nombres » et « Le corps » intégrées (scene-numbers/scene-body). Planche de calques ChatGPT reçue mais inutilisable en l'état (fonds non transparents, éléments non alignés).
+- Test de fin élargi : 8 textes, 8 audios, 47 questions de grammaire/vocabulaire (10 tirées au sort par essai) couvrant nombres, couleurs, description, démonstratifs, to do, dates et heure.
