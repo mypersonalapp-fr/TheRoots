@@ -6,10 +6,10 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014d";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014e";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
-const GIRLS = 8;
+const GIRLS = 9;
 const BOYS = 9;
 
 /* ---------- contenu ---------- */
@@ -98,7 +98,10 @@ export function currentCharacter() {
   const gender = s.avatarGender === "boy" ? "boy" : "girl";
   const max = gender === "boy" ? BOYS : GIRLS;
   const idx = Math.min(Math.max(Number(s.avatarIndex) || 0, 0), max - 1);
-  return { gender, idx, src: `assets/img/characters/${gender}-${idx + 1}.png`, name: gender === "boy" ? "Lucas" : "Emma" };
+  const name = gender === "boy" ? "Lucas" : "Emma", key = name.toLowerCase();
+  // Emma et Lucas (n°1) ont une version en pied (introduction) et une version « réussite ».
+  return { gender, idx, src: `assets/img/characters/${gender}-${idx + 1}.png`, name,
+    full: idx === 0 ? `assets/img/characters/${key}-intro.png` : null, win: idx === 0 ? `assets/img/characters/${key}-win.png` : null };
 }
 
 /* ---------- audio (Safari iPhone : speak() appelé directement dans le clic) ---------- */
@@ -176,7 +179,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     frame("A1.1 – Mon identité", { cur: 1, total: 8 }, `
       <section class="lc-hero">
         <div class="lc-bubble">Hello!</div>
-        <img class="lc-hero-img" src="${c.src}" alt="Personnage ${c.name}"/>
+        ${c.full ? `<img class="lc-hero-full" src="${c.full}" alt="Personnage ${c.name}"/>` : `<img class="lc-hero-img" src="${c.src}" alt="Personnage ${c.name}"/>`}
       </section>
       <section class="lc-card lc-intro">
         <div class="lc-level">A1.1</div>
@@ -573,7 +576,7 @@ export function renderLessonA11(root, { onExit } = {}) {
       ...T.text.q.map((q, i) => ["r" + i, q]), ...T.audio.q.map((q, i) => ["l" + i, q]), ...T.gram.map((id) => ["g" + id, TEST_GRAMMAR[id]]),
     ].filter(([k, q]) => T.ans[k] !== q[2]).map(([k, q]) => `<li><b>${esc(q[0])}</b><small>Ta réponse : ${esc(q[1][T.ans[k]] ?? "—")} · Bonne réponse : ${esc(q[1][q[2]])}</small></li>`).join("");
     frame("Test de fin de leçon", null, `
-      <section class="lc-hero"><img class="lc-hero-img lc-hero-sm" src="${c0().src}" alt=""/></section>
+      <section class="lc-hero">${c0().win ? `<img class="lc-hero-full" src="${c0().win}" alt=""/>` : `<img class="lc-hero-img lc-hero-sm" src="${c0().src}" alt=""/>`}</section>
       <section class="lc-card lc-intro"><h1>${passed ? "Leçon terminée !" : "Presque !"}</h1>
         <p class="lc-lead">${passed ? "Bravo ! Tu as validé A1.1 – Mon identité." : "Il faut 32/40 pour valider. Revois les points manqués et réessaie."}</p>
         <table class="lc-table"><tbody>

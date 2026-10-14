@@ -238,12 +238,12 @@ export function renderSettings(container, onChange) {
     `;
     container.querySelector("#settingsBack").addEventListener("click", () => { view = "root"; paint(); });
     // Personnage conservé dans le même store que les autres préférences.
-    const avatarCount = {girl:8,boy:9};
+    const avatarCount = {girl:9,boy:9};
     function paintAvatars(){
       const cfg=store.get().settings, gender=cfg.avatarGender||'girl';
       const grid=container.querySelector('#rootsAvatarGrid');if(!grid)return;
       const sel=Math.min(cfg.avatarIndex||0,avatarCount[gender]-1);
-      grid.innerHTML=Array.from({length:avatarCount[gender]},(_,i)=>'<button type="button" data-avatar-index="'+i+'" aria-label="Personnage '+(i+1)+'" aria-pressed="'+(sel===i)+'" style="border:3px solid '+(sel===i?'#f59a21':'transparent')+';background:transparent;border-radius:16px;padding:0;overflow:hidden;cursor:pointer;aspect-ratio:1"><img src="assets/img/characters/'+gender+'-'+(i+1)+'.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block"/></button>').join('');
+      grid.innerHTML=Array.from({length:avatarCount[gender]},(_,i)=>'<button type="button" data-avatar-index="'+i+'" aria-label="Personnage '+(i+1)+'" aria-pressed="'+(sel===i)+'" style="border:3px solid '+(sel===i?'#f59a21':'transparent')+';background:linear-gradient(160deg,#cfe8fb,#eef7ff);border-radius:16px;padding:0;overflow:hidden;cursor:pointer;aspect-ratio:1"><img src="assets/img/characters/'+gender+'-'+(i+1)+'.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block"/></button>').join('');
       grid.querySelectorAll('[data-avatar-index]').forEach(b=>b.addEventListener('click',()=>{store.updateSettings({avatarIndex:Number(b.dataset.avatarIndex)});paintAvatars()}));
       container.querySelectorAll('[data-avatar-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.avatarGender===gender)));
     }
