@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014v";
+const V = "20261014w";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
@@ -132,7 +132,22 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
 
   /* ---- missions de construction (3, 6) ---- */
   function build(m, steps, S) {
-    const t = steps[S.n]; let placed = []; let checked = false, good = false;
+    const t = steps[S.n]; let placed = []; let checked = false, good = false, vmsg = "", listening = false;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const target = t.answer.join(" ").replace(/ ([?.])/g, "$1");
+    const norm = (s) => s.toLowerCase().replace(/[^a-z']+/g, " ").trim().split(/\s+/).filter(Boolean);
+    const voice = () => m.id !== "m6" || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${SR ? `<button type="button" class="rc-listen" id="rcMic" ${listening ? "disabled" : ""}>${listening ? "🎙️ Je t’écoute…" : "🎤 Enregistrer"}</button>` : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
+    const startMic = () => {
+      const r = new SR(); r.lang = "en-GB"; r.interimResults = false; r.maxAlternatives = 3; listening = true; vmsg = ""; paint();
+      r.onresult = (e) => {
+        const alts = [...e.results[0]].map((a) => a.transcript);
+        const exp = norm(target), best = Math.max(...alts.map((a) => { const w = norm(a); return exp.filter((x) => w.includes(x)).length / exp.length; }));
+        vmsg = best >= 0.8 ? `🌟 Great! J’ai entendu : « ${alts[0]} »` : `J’ai entendu : « ${alts[0]} ». Réécoute le modèle et réessaie.`;
+      };
+      r.onerror = () => { vmsg = "Micro indisponible ou refusé. Autorise le micro, ou dis la phrase sans enregistrer."; };
+      r.onend = () => { listening = false; paint(); };
+      try { r.start(); } catch (e) { listening = false; vmsg = "Impossible de démarrer le micro."; paint(); }
+    };
     const paint = () => {
       const used = new Set(placed);
       const bank = t.bank.map((w, k) => `<button type="button" class="rc-tok ${used.has(k) ? "used" : ""}" data-k="${k}" ${used.has(k) || checked ? "disabled" : ""}>${esc(w)}</button>`).join("");
@@ -141,11 +156,13 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2><p class="rc-ask">${esc(t.prompt)}</p>${card}
         <div class="rc-slots ${checked ? (good ? "ok" : "ko") : ""}">${slots}</div><div class="rc-bank">${bank}</div>
         <div class="rc-fb" aria-live="polite">${checked ? (good ? "✅ Parfait !" : `Pas tout à fait. Réponse : <b>${esc(t.answer.join(" ").replace(/ ([?.])/g, "$1"))}</b>`) : ""}</div>
-        ${checked ? play(t.answer.join(" ").replace(/ ([?.])/g, "$1")) : ""}
+        ${checked ? play(target) : ""}${voice()}
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && placed.length === 0 ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
       bindBack(start);
       el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); paint(); }));
       el.querySelectorAll("[data-p]").forEach((b) => b.addEventListener("click", () => { placed.splice(Number(b.dataset.p), 1); paint(); }));
+      const mic = el.querySelector("#rcMic"); if (mic) mic.onclick = startMic;
+      const said = el.querySelector("#rcSaid"); if (said) said.onclick = () => { vmsg = "👍 Bravo, continue à t’entraîner !"; paint(); };
       el.querySelector("#rcGo").onclick = () => {
         if (!checked) {
           good = placed.map((k) => t.bank[k]).join("|") === t.answer.join("|");
