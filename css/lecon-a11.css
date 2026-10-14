@@ -115,3 +115,19 @@
 body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 :root[data-theme="dark"] .lc-choice.lc-wrong{ background:#4a1f1a; color:#ffd2cb; }
 [data-avatar-gender][aria-pressed="true"]{ background:var(--accent)!important; color:#fff!important; border-color:var(--accent)!important; }
+
+/* Grammaire / Lecture / Écoute */
+.lc-table{ width:100%; border-collapse:collapse; font-size:15px; }
+.lc-table td{ padding:9px 8px; border-bottom:1px solid var(--border); vertical-align:top; }
+.lc-table tr:last-child td{ border-bottom:0; }
+.lc-form{ font-weight:800; color:#c8680c; }
+:root[data-theme="dark"] .lc-form{ color:#f3b36a; }
+.lc-text{ font-size:17px; line-height:1.55; margin:4px 0 12px; }
+.lc-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.lc-chip{ border:0; border-radius:99px; min-height:44px; padding:10px 16px; background:#ffe6c2; color:#7a420a; font:800 14px var(--font-main); cursor:pointer; }
+:root[data-theme="dark"] .lc-chip{ background:#4a3418; color:#ffe2b8; }
+.lc-tr{ margin:10px 0 0; padding:10px 12px; border-radius:12px; background:var(--surface-soft); font-style:italic; line-height:1.45; }
+.lc-qb{ margin:0 0 14px; }
+.lc-qb:last-child{ margin-bottom:0; }
+.lc-speed{ border:0; cursor:pointer; min-height:44px; }
+.lc-main > .lc-card:last-child{ margin-bottom:4px; }

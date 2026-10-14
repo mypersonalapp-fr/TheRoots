@@ -5,7 +5,7 @@
 
 import { renderDashboard } from "./dashboard.js?v=20261001a";
 import { renderSettings } from "./settings.js?v=20261014a";
-import { renderMesCours } from "./mes-cours.js?v=20261014a";
+import { renderMesCours } from "./mes-cours.js?v=20261014b";
 import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
 import { renderComprehension } from "./comprehension.js?v=20261001d";
 import { renderExpression } from "./expression.js?v=20261001d";

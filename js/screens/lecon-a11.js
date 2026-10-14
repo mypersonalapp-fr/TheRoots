@@ -6,6 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES } from "../data/lecon-a11-data.js?v=20261014b";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 8;
@@ -74,9 +75,9 @@ const LEARN_GOALS = [
 
 const MENU = [
   { n: 1, id: "vocab", icon: "📖", title: "Vocabulaire", sub: "Mots essentiels", ready: true },
-  { n: 2, id: "grammar", icon: "⚙️", title: "Grammaire", sub: "Règles simples" },
-  { n: 3, id: "reading", icon: "📚", title: "Lecture", sub: "Compréhension écrite" },
-  { n: 4, id: "listening", icon: "🎧", title: "Écoute", sub: "Compréhension orale" },
+  { n: 2, id: "grammar", icon: "⚙️", title: "Grammaire", sub: "Règles simples", ready: true },
+  { n: 3, id: "reading", icon: "📚", title: "Lecture", sub: "Compréhension écrite", ready: true },
+  { n: 4, id: "listening", icon: "🎧", title: "Écoute", sub: "Compréhension orale", ready: true },
   { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire" },
   { section: "S’entraîner et progresser" },
   { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage" },
@@ -110,13 +111,14 @@ function pickVoice() {
       || voices.find((v) => /^en/i.test(v.lang)) || null;
   } catch (e) { return null; }
 }
+let speedMul = 1;
 function speak(text) {
   if (!window.speechSynthesis || !text) return false;
   try {
     const u = new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g, ""));
     const v = pickVoice();
     if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "en-GB"; }
-    u.rate = 0.9;
+    u.rate = 0.9 * speedMul;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
     return true;
@@ -201,6 +203,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     el.querySelector("#lcBack").onclick = showIntro;
     el.querySelectorAll(".lc-row").forEach((b) => b.addEventListener("click", () => {
       if (b.dataset.act === "vocab") { page = 0; showVocab(); }
+      else if (ACT[b.dataset.act]) { page = 0; showAct(b.dataset.act); }
       else toast("Cette activité arrive bientôt");
     }));
   }
@@ -296,6 +299,77 @@ export function renderLessonA11(root, { onExit } = {}) {
     if (answered[page]) { // retour sur une page déjà réussie : état conservé
       el.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === p.q[2]); });
     }
+  }
+
+  /* ----- Grammaire / Lecture / Écoute : pages à questions obligatoires ----- */
+  const ACT = {
+    grammar: { icon: "⚙️", title: "Grammaire", sub: "Le verbe to be, to have et les questions.", pages: GRAMMAR_PAGES },
+    reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: READING_PAGES },
+    listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: LISTENING_PAGES },
+  };
+  const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5" };
+  const okQ = {}; // "activité:page" → { indexQuestion: true }
+
+  function showAct(id) {
+    screen = id;
+    const A = ACT[id], p = A.pages[page], total = A.pages.length, key = id + ":" + page;
+    const c = currentCharacter();
+    const sub = (x) => x.replace(/\{name\}/g, c.name);
+    let body = "";
+    if (id === "grammar") {
+      body = `<section class="lc-card"><h2 class="lc-h2">${p.icon} ${esc(p.title)}</h2>
+        <table class="lc-table"><tbody>${p.table.map(([a, b, f]) => `<tr><td><b>${esc(a)}</b></td><td class="lc-form">${esc(b)}</td><td>${esc(f)}</td></tr>`).join("")}</tbody></table></section>
+        <section class="lc-card lc-ctx"><h2 class="lc-h2 lc-h2-ctx">💡 Exemples</h2><ul class="lc-list">${p.examples.map(([en, fr]) => `
+          <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(sub(en))}</b><small>${esc(sub(fr))}</small></span>${spk(sub(en))}</li>`).join("")}</ul></section>`;
+    } else if (id === "reading") {
+      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${READERS[p.who]}.png`)} ${esc(p.who)}</h2>
+        <p class="lc-text">${esc(p.text)}</p>
+        <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
+        <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
+    } else {
+      body = `<section class="lc-card"><h2 class="lc-h2">🎧 ${esc(p.title)}</h2>
+        <div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.text)}" aria-label="Écouter l’audio">▶</button>
+          <span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>
+        <div class="lc-actions"><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Afficher la transcription</button></div>
+        <p class="lc-tr" id="lcTrText" hidden>${esc(p.text)}</p></section>`;
+    }
+    body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" ? "À toi de pratiquer !" : "Questions"}</h2>
+      ${p.qs.map((q, qi) => `<div class="lc-qb" data-qi="${qi}"><p class="lc-q">${qi + 1}. ${esc(q[0])}</p>
+        <div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice" data-qi="${qi}" data-i="${i}">${esc(o)}</button>`).join("")}</div>
+        <p class="lc-fb" aria-live="polite"></p></div>`).join("")}</section>`;
+
+    const last = page === total - 1;
+    const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
+      <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
+    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${A.icon}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
+    el.querySelector(".lc-main").scrollTop = 0;
+
+    const next = el.querySelector("#lcNext");
+    const refresh = () => { next.disabled = !p.qs.every((_, qi) => (okQ[key] || {})[qi]); };
+    const mark = (qi, withMsg) => {
+      const q = p.qs[qi], box = el.querySelector(`.lc-qb[data-qi="${qi}"]`);
+      box.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === q[2]); });
+      const fb = box.querySelector(".lc-fb"); fb.className = "lc-fb lc-fb-ok"; fb.textContent = withMsg ? "Bravo ! " + (q[3] || "") : "✓ " + (q[3] || "");
+    };
+    Object.keys(okQ[key] || {}).forEach((qi) => mark(Number(qi), false));
+    refresh();
+
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showAct(id); } };
+    next.onclick = () => {
+      if (!last) { page++; showAct(id); return; }
+      prog.done = Object.assign({}, prog.done, { [id]: true }); saveProgress(prog); showMenu();
+    };
+    el.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
+      const qi = Number(b.dataset.qi), q = p.qs[qi];
+      el.querySelectorAll(`.lc-qb[data-qi="${qi}"] .lc-choice`).forEach((x) => x.classList.remove("lc-wrong"));
+      if (Number(b.dataset.i) === q[2]) { okQ[key] = Object.assign({}, okQ[key], { [qi]: true }); mark(qi, true); refresh(); }
+      else { b.classList.add("lc-wrong"); const fb = b.closest(".lc-qb").querySelector(".lc-fb"); fb.className = "lc-fb lc-fb-ko"; fb.textContent = "Pas tout à fait, réessaie."; }
+    }));
+    const tr = el.querySelector("#lcTr");
+    if (tr) tr.onclick = () => { const t = el.querySelector("#lcTrText"); t.hidden = !t.hidden; tr.setAttribute("aria-expanded", String(!t.hidden)); };
+    const sp = el.querySelector("#lcSpeed");
+    if (sp) sp.onclick = () => { speedMul = speedMul === 1 ? 0.75 : 1; sp.textContent = speedMul === 1 ? "1x" : "0.75x"; };
   }
 
   showIntro();
