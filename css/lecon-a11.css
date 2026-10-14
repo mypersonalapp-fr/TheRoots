@@ -131,3 +131,23 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-qb:last-child{ margin-bottom:0; }
 .lc-speed{ border:0; cursor:pointer; min-height:44px; }
 .lc-main > .lc-card:last-child{ margin-bottom:4px; }
+
+/* Expression */
+.lc-tabs{ display:grid; grid-template-columns:1fr 1fr; gap:6px; background:var(--surface-soft); padding:4px; border-radius:14px; margin-bottom:12px; }
+.lc-tab{ border:0; border-radius:11px; min-height:44px; background:transparent; color:var(--ink); font:800 15px var(--font-main); cursor:pointer; }
+.lc-tab.on{ background:var(--accent); color:#fff; }
+.lc-prompts{ margin:0 0 12px; padding-left:22px; display:grid; gap:6px; font-weight:600; }
+.lc-model{ display:flex; align-items:center; gap:10px; background:var(--surface); border-radius:14px; padding:8px 10px; margin-bottom:12px; }
+.lc-ta{ width:100%; min-height:110px; border:2px solid var(--border); border-radius:14px; padding:12px; background:var(--surface); color:var(--ink); font:600 16px/1.45 var(--font-main); resize:vertical; }
+.lc-mic{ text-align:center; }
+.lc-micbtn{ width:84px; height:84px; border-radius:50%; border:0; background:#1f6fe0; color:#fff; font-size:34px; cursor:pointer; box-shadow:var(--shadow-card); }
+.lc-mic-on{ background:var(--pop)!important; }
+.lc-small{ font-size:13px; color:var(--ink-soft); margin:8px 0; }
+.lc-heard{ min-height:22px; font-style:italic; margin:6px 0; }
+.lc-said{ display:flex; gap:10px; align-items:center; justify-content:center; min-height:44px; font-weight:700; }
+.lc-said input{ width:22px; height:22px; accent-color:var(--accent); }
+.lc-checks{ list-style:none; margin:12px 0 0; padding:0; display:grid; gap:6px; }
+.lc-checks li{ display:flex; gap:10px; align-items:center; font-weight:600; color:var(--ink-soft); }
+.lc-checks li.on{ color:var(--success); }
+.lc-checks li span{ width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--surface-soft); font-weight:800; font-size:13px; }
+.lc-checks li.on span{ background:var(--success); color:#fff; }

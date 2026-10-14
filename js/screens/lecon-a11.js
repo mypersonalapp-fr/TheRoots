@@ -6,7 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES } from "../data/lecon-a11-data.js?v=20261014b";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES } from "../data/lecon-a11-data.js?v=20261014c";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 8;
@@ -78,9 +78,9 @@ const MENU = [
   { n: 2, id: "grammar", icon: "⚙️", title: "Grammaire", sub: "Règles simples", ready: true },
   { n: 3, id: "reading", icon: "📚", title: "Lecture", sub: "Compréhension écrite", ready: true },
   { n: 4, id: "listening", icon: "🎧", title: "Écoute", sub: "Compréhension orale", ready: true },
-  { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire" },
+  { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire", ready: true },
   { section: "S’entraîner et progresser" },
-  { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage" },
+  { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage", ready: true },
   { n: 7, id: "transversal", icon: "🌱", title: "Transversale", sub: "Pratique quotidienne" },
   { n: 8, id: "test", icon: "🏆", title: "Test de fin de leçon", sub: "Valide tes acquis" },
 ];
@@ -196,13 +196,14 @@ export function renderLessonA11(root, { onExit } = {}) {
       ? `<h2 class="lc-sec">${esc(m.section)}</h2>`
       : `<button type="button" class="lc-row ${m.ready ? "" : "lc-row-soon"}" data-act="${m.id}" ${m.ready ? "" : 'aria-disabled="true"'}>
           <span class="lc-num">${m.n}</span><span class="lc-ic">${m.icon}</span>
-          <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.ready ? m.sub : m.sub + " · bientôt")}</small></span>
+          <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.ready ? m.sub + ((prog.scores || {})[m.id] ? " · " + prog.scores[m.id] : "") : m.sub + " · bientôt")}</small></span>
           <span class="lc-go">${done[m.id] ? "✓" : "›"}</span>
         </button>`).join("");
     frame("A1.1 – Mon identité", { cur: 1, total: 8 }, `<section class="lc-card lc-menu">${rows}</section>`);
     el.querySelector("#lcBack").onclick = showIntro;
     el.querySelectorAll(".lc-row").forEach((b) => b.addEventListener("click", () => {
       if (b.dataset.act === "vocab") { page = 0; showVocab(); }
+      else if (b.dataset.act === "speaking") { page = 0; showSpeak(); }
       else if (ACT[b.dataset.act]) { page = 0; showAct(b.dataset.act); }
       else toast("Cette activité arrive bientôt");
     }));
@@ -306,8 +307,10 @@ export function renderLessonA11(root, { onExit } = {}) {
     grammar: { icon: "⚙️", title: "Grammaire", sub: "Le verbe to be, to have et les questions.", pages: GRAMMAR_PAGES },
     reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: READING_PAGES },
     listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: LISTENING_PAGES },
+    exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: EXERCISE_PAGES },
   };
   const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5" };
+  const firstTry = {}; // "exercices:page:question" → réussi du premier coup ?
   const okQ = {}; // "activité:page" → { indexQuestion: true }
 
   function showAct(id) {
@@ -326,14 +329,18 @@ export function renderLessonA11(root, { onExit } = {}) {
         <p class="lc-text">${esc(p.text)}</p>
         <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
         <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
-    } else {
+    } else if (id === "listening") {
       body = `<section class="lc-card"><h2 class="lc-h2">🎧 ${esc(p.title)}</h2>
         <div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.text)}" aria-label="Écouter l’audio">▶</button>
           <span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>
         <div class="lc-actions"><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Afficher la transcription</button></div>
         <p class="lc-tr" id="lcTrText" hidden>${esc(p.text)}</p></section>`;
+    } else {
+      body = `<section class="lc-card"><h2 class="lc-h2">🧩 ${esc(p.title)}</h2><p class="lc-lead">${esc(p.help)}</p>
+        ${p.passage ? `<p class="lc-text">${esc(p.passage)}</p><div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.passage)}">🔊 Écouter</button></div>` : ""}
+        ${p.audio ? `<div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.audio)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>` : ""}</section>`;
     }
-    body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" ? "À toi de pratiquer !" : "Questions"}</h2>
+    body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" || id === "exercises" ? "À toi de pratiquer !" : "Questions"}</h2>
       ${p.qs.map((q, qi) => `<div class="lc-qb" data-qi="${qi}"><p class="lc-q">${qi + 1}. ${esc(q[0])}</p>
         <div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice" data-qi="${qi}" data-i="${i}">${esc(o)}</button>`).join("")}</div>
         <p class="lc-fb" aria-live="polite"></p></div>`).join("")}</section>`;
@@ -358,18 +365,84 @@ export function renderLessonA11(root, { onExit } = {}) {
     el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showAct(id); } };
     next.onclick = () => {
       if (!last) { page++; showAct(id); return; }
-      prog.done = Object.assign({}, prog.done, { [id]: true }); saveProgress(prog); showMenu();
+      prog.done = Object.assign({}, prog.done, { [id]: true });
+      if (id === "exercises") {
+        let sc = 0, tot = 0;
+        EXERCISE_PAGES.forEach((pg, k) => pg.qs.forEach((_, qi) => { tot++; if (firstTry[`exercises:${k}:${qi}`] === true) sc++; }));
+        prog.scores = Object.assign({}, prog.scores, { exercises: `${sc}/${tot}` });
+      }
+      saveProgress(prog); showMenu();
     };
     el.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
-      const qi = Number(b.dataset.qi), q = p.qs[qi];
+      const qi = Number(b.dataset.qi), q = p.qs[qi], ftKey = `${key}:${qi}`;
       el.querySelectorAll(`.lc-qb[data-qi="${qi}"] .lc-choice`).forEach((x) => x.classList.remove("lc-wrong"));
-      if (Number(b.dataset.i) === q[2]) { okQ[key] = Object.assign({}, okQ[key], { [qi]: true }); mark(qi, true); refresh(); }
-      else { b.classList.add("lc-wrong"); const fb = b.closest(".lc-qb").querySelector(".lc-fb"); fb.className = "lc-fb lc-fb-ko"; fb.textContent = "Pas tout à fait, réessaie."; }
+      if (Number(b.dataset.i) === q[2]) { if (firstTry[ftKey] === undefined) firstTry[ftKey] = true; okQ[key] = Object.assign({}, okQ[key], { [qi]: true }); mark(qi, true); refresh(); }
+      else { firstTry[ftKey] = false; b.classList.add("lc-wrong"); const fb = b.closest(".lc-qb").querySelector(".lc-fb"); fb.className = "lc-fb lc-fb-ko"; fb.textContent = id === "exercises" ? "Pas tout à fait — " + (q[3] || "") + " Réessaie." : "Pas tout à fait, réessaie."; }
     }));
     const tr = el.querySelector("#lcTr");
     if (tr) tr.onclick = () => { const t = el.querySelector("#lcTrText"); t.hidden = !t.hidden; tr.setAttribute("aria-expanded", String(!t.hidden)); };
     const sp = el.querySelector("#lcSpeed");
     if (sp) sp.onclick = () => { speedMul = speedMul === 1 ? 0.75 : 1; sp.textContent = speedMul === 1 ? "1x" : "0.75x"; };
+  }
+
+  /* ----- Expression : parler ou écrire (validation si ≥ 3 éléments repérés) ----- */
+  const spkState = { tab: "write", text: {}, heard: {}, said: {}, ok: {} };
+  function showSpeak() {
+    screen = "speaking";
+    const p = EXPRESSION_PAGES[page], total = EXPRESSION_PAGES.length, c = currentCharacter();
+    const sub = (x) => x.replace(/\{name\}/g, c.name);
+    const tab = spkState.tab;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const txt = (tab === "write" ? spkState.text[page] : spkState.heard[page]) || "";
+    const body = `<section class="lc-card"><h2 class="lc-h2">${p.icon} ${esc(p.title)}</h2>
+      <div class="lc-tabs" role="tablist">
+        <button type="button" class="lc-tab ${tab === "speak" ? "on" : ""}" data-tab="speak" role="tab" aria-selected="${tab === "speak"}">🎤 Parler</button>
+        <button type="button" class="lc-tab ${tab === "write" ? "on" : ""}" data-tab="write" role="tab" aria-selected="${tab === "write"}">✍️ Écrire</button></div>
+      <ol class="lc-prompts">${p.prompts.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>
+      <div class="lc-model"><span class="lc-w"><small>Modèle</small><b>${esc(sub(p.model))}</b></span>${spk(sub(p.model))}</div>
+      ${tab === "write"
+        ? `<textarea id="lcTa" class="lc-ta" rows="4" placeholder="Écris en anglais…" aria-label="Ta réponse en anglais">${esc(txt)}</textarea>`
+        : `<div class="lc-mic">${SR ? `<button type="button" class="lc-micbtn" id="lcMic" aria-label="Appuie et parle">🎙️</button><p class="lc-small">Appuie et parle en anglais.</p>` : `<p class="lc-small">La reconnaissance vocale n’est pas disponible sur cet appareil : dis ta réponse à voix haute, puis coche la case.</p>`}
+            <p class="lc-heard" id="lcHeard">${esc(txt)}</p>
+            <label class="lc-said"><input type="checkbox" id="lcSaid" ${spkState.said[page] ? "checked" : ""}/> J’ai dit ma réponse à voix haute</label></div>`}
+      <ul class="lc-checks" id="lcChecks" aria-live="polite"></ul></section>`;
+    const last = page === total - 1;
+    const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
+      <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
+    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🎤</span><div><h1>Expression</h1><p>Parle et écris.</p></div></div>${body}`, foot);
+    el.querySelector(".lc-main").scrollTop = 0;
+
+    const next = el.querySelector("#lcNext");
+    const paint = () => {
+      const cur = (tab === "write" ? spkState.text[page] : spkState.heard[page]) || "";
+      const res = p.checks.map(([l, re]) => [l, new RegExp(re, "i").test(cur)]);
+      el.querySelector("#lcChecks").innerHTML = res.map(([l, ok]) => `<li class="${ok ? "on" : ""}"><span>${ok ? "✓" : "○"}</span>${esc(l)}</li>`).join("");
+      if (res.filter((r) => r[1]).length >= 3 || (tab === "speak" && spkState.said[page])) spkState.ok[page] = true;
+      next.disabled = !spkState.ok[page];
+    };
+    paint();
+    el.querySelectorAll(".lc-tab").forEach((b) => b.addEventListener("click", () => { spkState.tab = b.dataset.tab; showSpeak(); }));
+    const ta = el.querySelector("#lcTa");
+    if (ta) ta.addEventListener("input", () => { spkState.text[page] = ta.value; paint(); });
+    const said = el.querySelector("#lcSaid");
+    if (said) said.addEventListener("change", () => { spkState.said[page] = said.checked; paint(); });
+    const mic = el.querySelector("#lcMic");
+    if (mic) mic.addEventListener("click", () => {
+      try {
+        const r = new SR(); r.lang = "en-GB"; r.interimResults = false;
+        mic.classList.add("lc-mic-on");
+        r.onresult = (e) => { spkState.heard[page] = Array.from(e.results).map((x) => x[0].transcript).join(" "); el.querySelector("#lcHeard").textContent = spkState.heard[page]; paint(); };
+        r.onerror = () => toast("Micro indisponible ou refusé");
+        r.onend = () => mic.classList.remove("lc-mic-on");
+        r.start();
+      } catch (e) { toast("Micro indisponible sur cet appareil"); }
+    });
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showSpeak(); } };
+    next.onclick = () => {
+      if (!last) { page++; showSpeak(); return; }
+      prog.done = Object.assign({}, prog.done, { speaking: true }); saveProgress(prog); showMenu();
+    };
   }
 
   showIntro();

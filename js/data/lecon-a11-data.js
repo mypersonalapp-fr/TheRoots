@@ -65,3 +65,372 @@ export const LISTENING_PAGES = [
   { title: "David", text: "Good morning. I am David. I am thirty years old. I am Canadian. I live in Toronto.",
     qs: [["How old is David?", ["20", "30", "40"], 1, "Thirty = 30."], ["What is his nationality?", ["British", "Canadian", "Spanish"], 1, "I am Canadian."]] },
 ];
+
+// Exercices : séries corrigées (js/a11-drills.js) — la correction s'affiche à chaque réponse, rattrapage possible.
+export const EXERCISE_PAGES = [
+ {
+  "title": "Vocabulaire — Se présenter",
+  "help": "Choisis le sens correct de chaque expression.",
+  "qs": [
+   [
+    "Nice to meet you.",
+    [
+     "Enchanté(e).",
+     "À demain.",
+     "Je suis fatigué(e)."
+    ],
+    0,
+    "Nice to meet you = enchanté(e)."
+   ],
+   [
+    "surname",
+    [
+     "prénom",
+     "nom de famille",
+     "nationalité"
+    ],
+    1,
+    "Surname ou last name = nom de famille."
+   ],
+   [
+    "I live in Paris.",
+    [
+     "Je viens de Paris.",
+     "J’habite à Paris.",
+     "Je travaille à Paris."
+    ],
+    1,
+    "Live in = habiter à."
+   ],
+   [
+    "I am from Portugal.",
+    [
+     "Je viens du Portugal.",
+     "Je vais au Portugal.",
+     "Je parle portugais."
+    ],
+    0,
+    "Be from = venir de."
+   ],
+   [
+    "teacher",
+    [
+     "médecin",
+     "enseignant",
+     "étudiant"
+    ],
+    1,
+    "Teacher = enseignant ; student = étudiant."
+   ],
+   [
+    "brown eyes",
+    [
+     "yeux marron",
+     "cheveux bruns",
+     "yeux bleus"
+    ],
+    0,
+    "Eyes = yeux ; hair = cheveux."
+   ],
+   [
+    "How old are you?",
+    [
+     "Quel est ton nom ?",
+     "Où habites-tu ?",
+     "Quel âge as-tu ?"
+    ],
+    2,
+    "How old = quel âge."
+   ],
+   [
+    "Good evening",
+    [
+     "Bonsoir",
+     "Bonjour (matin)",
+     "Bonne nuit"
+    ],
+    0,
+    "Good evening s’utilise en saluant le soir."
+   ]
+  ]
+ },
+ {
+  "title": "Grammaire — Be, have, do",
+  "help": "Complète chaque phrase.",
+  "qs": [
+   [
+    "She ___ from Spain.",
+    [
+     "are",
+     "is",
+     "am"
+    ],
+    1,
+    "Avec she, on utilise is."
+   ],
+   [
+    "They ___ British.",
+    [
+     "is",
+     "are",
+     "am"
+    ],
+    1,
+    "Avec they, on utilise are."
+   ],
+   [
+    "I ___ a brother.",
+    [
+     "has",
+     "have",
+     "is"
+    ],
+    1,
+    "I have, she has."
+   ],
+   [
+    "___ you live in London?",
+    [
+     "Do",
+     "Does",
+     "Are"
+    ],
+    0,
+    "Do + you + base verbale."
+   ],
+   [
+    "He ___ not have a car.",
+    [
+     "do",
+     "does",
+     "is"
+    ],
+    1,
+    "He does not have / he doesn’t have."
+   ],
+   [
+    "___ she a student?",
+    [
+     "Do",
+     "Does",
+     "Is"
+    ],
+    2,
+    "Avec be : Is she a student?"
+   ],
+   [
+    "This is ___ mother.",
+    [
+     "I",
+     "my",
+     "me"
+    ],
+    1,
+    "My est l’adjectif possessif."
+   ],
+   [
+    "___ are my shoes.",
+    [
+     "This",
+     "That",
+     "These"
+    ],
+    2,
+    "These désigne plusieurs objets proches."
+   ]
+  ]
+ },
+ {
+  "title": "Lecture — Comprendre une identité",
+  "help": "Lis le texte, puis réponds sans regarder les solutions.",
+  "passage": "Hello! My name is Sofia. I am twenty-two years old. I am Spanish, but I live in Lyon, France. I am a student. I have a brother called Pablo. I have green eyes.",
+  "qs": [
+   [
+    "How old is Sofia?",
+    [
+     "20",
+     "22",
+     "12"
+    ],
+    1,
+    "Twenty-two = 22."
+   ],
+   [
+    "Where does Sofia live?",
+    [
+     "Lyon",
+     "Madrid",
+     "London"
+    ],
+    0,
+    "She lives in Lyon."
+   ],
+   [
+    "What is her nationality?",
+    [
+     "French",
+     "British",
+     "Spanish"
+    ],
+    2,
+    "She is Spanish."
+   ],
+   [
+    "Who is Pablo?",
+    [
+     "Her teacher",
+     "Her brother",
+     "Her father"
+    ],
+    1,
+    "She has a brother called Pablo."
+   ],
+   [
+    "What colour are her eyes?",
+    [
+     "Blue",
+     "Brown",
+     "Green"
+    ],
+    2,
+    "She has green eyes."
+   ]
+  ]
+ },
+ {
+  "title": "Écoute — Comprendre sans lire",
+  "help": "Appuie sur Écouter, puis réponds. Tu peux réécouter.",
+  "audio": "Hello. My name is Daniel. I am thirty years old. I am Canadian. I live in Toronto. I am a doctor. I have brown eyes.",
+  "qs": [
+   [
+    "What is his first name?",
+    [
+     "David",
+     "Daniel",
+     "Samuel"
+    ],
+    1,
+    "His name is Daniel."
+   ],
+   [
+    "How old is he?",
+    [
+     "13",
+     "30",
+     "40"
+    ],
+    1,
+    "Thirty = 30."
+   ],
+   [
+    "Where does he live?",
+    [
+     "Toronto",
+     "London",
+     "Paris"
+    ],
+    0,
+    "He lives in Toronto."
+   ],
+   [
+    "What is his job?",
+    [
+     "Teacher",
+     "Student",
+     "Doctor"
+    ],
+    2,
+    "He is a doctor."
+   ],
+   [
+    "What colour are his eyes?",
+    [
+     "Blue",
+     "Green",
+     "Brown"
+    ],
+    2,
+    "He has brown eyes."
+   ]
+  ]
+ },
+ {
+  "title": "Expression — Construire des phrases",
+  "help": "Sélectionne la phrase anglaise correcte.",
+  "qs": [
+   [
+    "Je m’appelle Mia.",
+    [
+     "My name is Mia.",
+     "I name Mia.",
+     "I am name Mia."
+    ],
+    0,
+    "My name is…"
+   ],
+   [
+    "J’ai 19 ans.",
+    [
+     "I have 19 years.",
+     "I am 19 years old.",
+     "I is 19."
+    ],
+    1,
+    "En anglais, on utilise be pour l’âge."
+   ],
+   [
+    "Je viens de France.",
+    [
+     "I live France.",
+     "I am French from.",
+     "I am from France."
+    ],
+    2,
+    "I am from + pays."
+   ],
+   [
+    "Je ne suis pas médecin.",
+    [
+     "I am not a doctor.",
+     "I do not a doctor.",
+     "I not doctor."
+    ],
+    0,
+    "Négation de be : am not."
+   ],
+   [
+    "Est-elle étudiante ?",
+    [
+     "Does she a student?",
+     "Is she a student?",
+     "She is student?"
+    ],
+    1,
+    "Inversion de be : Is she…?"
+   ],
+   [
+    "C’est mon frère.",
+    [
+     "This is my brother.",
+     "This is me brother.",
+     "This is I brother."
+    ],
+    0,
+    "My + nom."
+   ]
+  ]
+ }
+];
+
+// Expression : tâche guidée (écrire ou parler). Une page est validée si au moins 3 des 4 éléments sont repérés
+// (ou si l'apprenant confirme avoir dit sa présentation à voix haute).
+export const EXPRESSION_PAGES = [
+  { title: "Présente-toi", icon: "🎤",
+    prompts: ["Dis ton prénom.", "Dis ton âge.", "Dis d’où tu viens.", "Dis ce que tu aimes."],
+    model: "My name is {name}. I am ten years old. I am from France. I like music.",
+    checks: [["Ton prénom", "my (first )?name is\\s+\\w+"], ["Ton âge", "(i am|i'm)\\s+\\w+\\s+years? old"], ["D’où tu viens", "(i am|i'm)\\s+from\\s+\\w+"], ["Ce que tu aimes", "\\bi (like|love)\\s+\\w+"]] },
+  { title: "Présente une autre personne", icon: "🧑‍🤝‍🧑",
+    prompts: ["Dis son prénom.", "Dis son âge.", "Dis d’où il / elle vient.", "Dis ce qu’il / elle aime."],
+    model: "This is Lucas. He is twenty-five years old. He is from Portugal. He likes football.",
+    checks: [["Son prénom", "(this is|his name is|her name is)\\s+\\w+"], ["Son âge", "(he|she) is\\s+\\w+\\s+years? old"], ["D’où il / elle vient", "(he|she) is from\\s+\\w+"], ["Ce qu’il / elle aime", "(he|she) (likes|loves)\\s+\\w+"]] },
+];
