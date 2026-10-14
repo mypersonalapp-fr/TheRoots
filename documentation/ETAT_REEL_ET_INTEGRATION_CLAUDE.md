@@ -27,3 +27,9 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Seuls Emma et Lucas (n°1) ont une version en pied ; les autres personnages s'affichent en portrait dans l'introduction.
 - Pas testé sur un vrai iPhone / Safari (seulement Chromium 390×844).
 - Barème du bilan à trancher : 40 points (15/15/10) retenu dans `a11-competences.html`.
+
+## Mise à jour 2026-10-14 (images ChatGPT intégrées)
+- Personnages plein pied Emma/Lucas (intro + win) : détourés/nettoyés (fragments voisins retirés), `assets/img/characters/*-intro|win.png` (hauteur 900 px). Limite : pied droit d'Emma (win) légèrement coupé à l'origine.
+- Icônes menu : `assets/img/lesson/ic-*.png`. vocab, reading, listening, speaking, exercises = fournies par ChatGPT (nettoyées). grammar, transversal = redessinées (originales inutilisables : barre/ombre parasites). test (trophée) = absent des fichiers fournis, dessiné par Claude.
+- Scènes : `assets/img/lesson/scene-*.jpg` affichées sur la page Salutations (« En situation »).
+- Versions `?v=20261014f`.

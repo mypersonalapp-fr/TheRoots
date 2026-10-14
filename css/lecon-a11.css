@@ -170,3 +170,11 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 :root[data-theme="dark"] .lc-hero-img, :root[data-theme="dark"] .lc-greet-hero img{ background:linear-gradient(160deg,#2a4a6b,#1d3550); }
 .lc-hero-img{ object-fit:contain; }
 .lc-bubble{ z-index:3; }
+
+.lc-ic-img{ width:28px; height:28px; object-fit:contain; display:block; margin:0 auto; }
+.lc-vh-ic .lc-ic-img{ width:36px; height:36px; }
+.lc-h3{ font-size:15px; margin:14px 0 8px; }
+.lc-scenes{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:6px; }
+.lc-scenes figure{ margin:0; border-radius:14px; overflow:hidden; background:rgba(0,0,0,.05); }
+.lc-scenes img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+.lc-scenes figcaption{ padding:6px 10px; font-size:13px; font-weight:600; }

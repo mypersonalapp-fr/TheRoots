@@ -6,7 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014e";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014f";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -24,6 +24,10 @@ const GREETINGS = [
 
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
+const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014f" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
+
 const VOCAB_PAGES = [
   {
     kind: "greetings", title: "Les salutations",
@@ -198,7 +202,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const rows = MENU.map((m) => m.section
       ? `<h2 class="lc-sec">${esc(m.section)}</h2>`
       : `<button type="button" class="lc-row ${m.ready ? "" : "lc-row-soon"}" data-act="${m.id}" ${m.ready ? "" : 'aria-disabled="true"'}>
-          <span class="lc-num">${m.n}</span><span class="lc-ic">${m.icon}</span>
+          <span class="lc-num">${m.n}</span><span class="lc-ic">${icImg(m.id, m.icon)}</span>
           <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.ready ? m.sub + ((prog.scores || {})[m.id] ? " · " + prog.scores[m.id] : "") : m.sub + " · bientôt")}</small></span>
           <span class="lc-go">${done[m.id] ? "✓" : "›"}</span>
         </button>`).join("");
@@ -232,6 +236,8 @@ export function renderLessonA11(root, { onExit } = {}) {
               <li>${ico(`assets/img/characters/${i % 2 ? "boy" : "girl"}-${(i % 2 ? (i % BOYS) : (i % GIRLS)) + 1}.png`, "lc-ava-sm")}
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
+          <h3 class="lc-h3">En situation</h3>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014f" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -357,7 +363,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const last = page === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
       <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
-    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${A.icon}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
+    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${icImg(id, A.icon)}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
@@ -477,7 +483,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     screen = "transversal";
     const done = prog.transv || {};
     const rows = TRANSV_DAYS.map((D, i) => `<button type="button" class="lc-row" data-day="${i}">
-      <span class="lc-num">${i + 1}</span><span class="lc-ic">🌱</span>
+      <span class="lc-num">${i + 1}</span><span class="lc-ic">${icImg("transversal","🌱")}</span>
       <span class="lc-txt"><b>${esc(D.title)}</b><small>${esc(D.goal)}</small></span><span class="lc-go">${done[i] ? "✓" : "›"}</span></button>`).join("");
     frame("A1.1 – Mon identité", null, `<div class="lc-vocab-head"><span class="lc-vh-ic">🌱</span><div><h1>Transversale</h1><p>7 jours pour ancrer les acquis.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
     el.querySelector("#lcBack").onclick = showMenu;
