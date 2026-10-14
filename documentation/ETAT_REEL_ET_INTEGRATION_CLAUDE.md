@@ -55,3 +55,6 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Interrupteur unique : `UNLOCK_ALL_PREVIEW = true` dans `js/data/dev-config.js`.
 - Effet : dans la leçon A1.1, « Suivant » n'est jamais bloqué (réponse non obligatoire), le test de fin s'ouvre sans conditions ; le bouton de la leçon apparaît dans Mes cours (anglais) même sans test de niveau.
 - À l'officialisation : passer à `false` pour remettre les blocages (réponses obligatoires, test de niveau avant les cours).
+
+## Images allégées (v20261014l)
+- Personnages, icônes et scènes convertis en WebP (`assets/img/characters/*.webp`, `assets/img/lesson/*.webp`) : environ 12 Mo → 2 Mo. Les PNG/JPG d'origine sont retirés (historique git conservé).

@@ -6,8 +6,8 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014k";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014k";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014l";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014l";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -26,7 +26,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014k" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014l" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -109,9 +109,9 @@ export function currentCharacter() {
 
   const hasFull = true; // les 18 personnages ont une version en pied
   // Emma et Lucas (n°1) ont une version en pied (introduction) et une version « réussite ».
-  return { gender, idx, src: `assets/img/characters/${gender}-${idx + 1}.png`, name,
-    full: hasFull ? (idx === 0 ? `assets/img/characters/${key}-intro.png` : `assets/img/characters/${gender}-${idx + 1}-intro.png`) : null,
-    win: idx === 0 ? `assets/img/characters/${key}-win.png` : (hasFull ? `assets/img/characters/${gender}-${idx + 1}-intro.png` : null) };
+  return { gender, idx, src: `assets/img/characters/${gender}-${idx + 1}.webp`, name,
+    full: hasFull ? (idx === 0 ? `assets/img/characters/${key}-intro.webp` : `assets/img/characters/${gender}-${idx + 1}-intro.webp`) : null,
+    win: idx === 0 ? `assets/img/characters/${key}-win.webp` : (hasFull ? `assets/img/characters/${gender}-${idx + 1}-intro.webp` : null) };
 }
 
 /* ---------- audio (Safari iPhone : speak() appelé directement dans le clic) ---------- */
@@ -244,11 +244,11 @@ export function renderLessonA11(root, { onExit } = {}) {
           <div class="lc-greet">
             <div class="lc-greet-hero"><div class="lc-bubble lc-bubble-sm">Hello!</div><img src="${c.src}" alt=""/></div>
             <ul class="lc-list">${GREETINGS.map(([en, fr], i) => `
-              <li>${ico(`assets/img/characters/${i % 2 ? "boy" : "girl"}-${(i % 2 ? (i % BOYS) : (i % GIRLS)) + 1}.png`, "lc-ava-sm")}
+              <li>${ico(`assets/img/characters/${i % 2 ? "boy" : "girl"}-${(i % 2 ? (i % BOYS) : (i % GIRLS)) + 1}.webp`, "lc-ava-sm")}
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014k" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014l" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -348,7 +348,7 @@ export function renderLessonA11(root, { onExit } = {}) {
         <section class="lc-card lc-ctx"><h2 class="lc-h2 lc-h2-ctx">💡 Exemples</h2><ul class="lc-list">${p.examples.map(([en, fr]) => `
           <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(sub(en))}</b><small>${esc(sub(fr))}</small></span>${spk(sub(en))}</li>`).join("")}</ul></section>`;
     } else if (id === "reading") {
-      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${READERS[p.who]}.png`)} ${esc(p.who)}</h2>
+      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${READERS[p.who]}.webp`)} ${esc(p.who)}</h2>
         <p class="lc-text">${esc(p.text)}</p>
         <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
         <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
