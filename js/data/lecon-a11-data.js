@@ -55,9 +55,9 @@ export const LISTENING_PAGES = [
   { title: "At school", text: "Hello! What's your name? My name is Anna. How old are you? I'm twelve. Where are you from? I'm from Spain.",
     qs: [["What is her name?", ["Anna", "Emma", "Lila"], 0, "My name is Anna."], ["How old is she?", ["10", "12", "20"], 1, "Twelve = 12."], ["Where is she from?", ["Spain", "France", "Italy"], 0, "I'm from Spain."]] },
   { title: "At work", text: "Good morning. Are you a teacher? No, I'm not. I'm a doctor. Do you live here? Yes, I do.",
-    qs: [["Is he a teacher?", ["Yes", "No", "We don't know"], 1, "No, I'm not."], ["What is his job?", ["Teacher", "Doctor", "Student"], 1, "I'm a doctor."], ["Does he live here?", ["Yes", "No", "We don't know"], 0, "Yes, I do."]] },
+    qs: [["Is the speaker a teacher?", ["Yes", "No", "We don't know"], 1, "No, I'm not."], ["What is the speaker’s job?", ["Teacher", "Doctor", "Student"], 1, "I'm a doctor."], ["Does the speaker live here?", ["Yes", "No", "We don't know"], 0, "Yes, I do."]] },
   { title: "New friends", text: "Hi, I'm James. What's your nationality? I'm British. Do you have brothers or sisters? Yes, I have one brother.",
-    qs: [["What is the nationality?", ["British", "Canadian", "Spanish"], 0, "I'm British."], ["How many brothers does he have?", ["None", "One", "Two"], 1, "One brother."]] },
+    qs: [["What is James's nationality?", ["British", "Canadian", "Spanish"], 0, "I'm British."], ["How many brothers does he have?", ["None", "One", "Two"], 1, "One brother."]] },
   { title: "Sam", text: "Hello! I am Sam. I am twenty. I am British. I live in London.",
     qs: [["How old is Sam?", ["10", "20", "30"], 1, "Twenty = 20."], ["Where does Sam live?", ["Paris", "London", "Rome"], 1, "He lives in London."], ["Is Sam British?", ["Yes", "No", "Unknown"], 0, "I am British."]] },
   { title: "Anna", text: "Hi! My name is Anna. I am from Spain. I live in Madrid. I am a student.",
@@ -428,11 +428,11 @@ export const EXPRESSION_PAGES = [
   { title: "Présente-toi", icon: "🎤",
     prompts: ["Dis ton prénom.", "Dis ton âge.", "Dis d’où tu viens.", "Dis ce que tu aimes."],
     model: "My name is {name}. I am ten years old. I am from France. I like music.",
-    checks: [["Ton prénom", "my (first )?name is\\s+\\w+"], ["Ton âge", "(i am|i'm)\\s+\\w+\\s+years? old"], ["D’où tu viens", "(i am|i'm)\\s+from\\s+\\w+"], ["Ce que tu aimes", "\\bi (like|love)\\s+\\w+"]] },
+    checks: [["Ton prénom", "my (first )?name( is|'s)\\s+\\w+"], ["Ton âge", "(i am|i'm)\\s+[\\w-]+\\s+years? old|(i am|i'm)\\s+\\d{1,3}\\b"], ["D’où tu viens", "(i am|i'm|i come)\\s+from\\s+\\w+"], ["Ce que tu aimes", "\\bi (really )?(like|love|enjoy)\\s+\\w+"]] },
   { title: "Présente une autre personne", icon: "🧑‍🤝‍🧑",
     prompts: ["Dis son prénom.", "Dis son âge.", "Dis d’où il / elle vient.", "Dis ce qu’il / elle aime."],
     model: "This is Lucas. He is twenty-five years old. He is from Portugal. He likes football.",
-    checks: [["Son prénom", "(this is|his name is|her name is)\\s+\\w+"], ["Son âge", "(he|she) is\\s+\\w+\\s+years? old"], ["D’où il / elle vient", "(he|she) is from\\s+\\w+"], ["Ce qu’il / elle aime", "(he|she) (likes|loves)\\s+\\w+"]] },
+    checks: [["Son prénom", "(this is|his name is|her name is)\\s+\\w+"], ["Son âge", "(he|she)(\\s+is|'s)\\s+[\\w-]+\\s+years? old"], ["D’où il / elle vient", "(he|she)(\\s+is|'s)\\s+from\\s+\\w+"], ["Ce qu’il / elle aime", "(he|she) (likes|loves)\\s+\\w+"]] },
 ];
 
 // Transversale : 7 jours de pratique (a11-transversale.html) — mots, 3 questions, expression écrite.
@@ -570,7 +570,7 @@ export const TRANSV_DAYS = [
   ],
   "qs": [
    [
-    "I am ___ Portugal.",
+    "I am ___ Portugal. (origine)",
     [
      "at",
      "from",

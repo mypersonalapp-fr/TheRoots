@@ -33,3 +33,9 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Icônes menu : `assets/img/lesson/ic-*.png`. vocab, reading, listening, speaking, exercises = fournies par ChatGPT (nettoyées). grammar, transversal = redessinées (originales inutilisables : barre/ombre parasites). test (trophée) = absent des fichiers fournis, dessiné par Claude.
 - Scènes : `assets/img/lesson/scene-*.jpg` affichées sur la page Salutations (« En situation »).
 - Versions `?v=20261014f`.
+
+## Relecture anglais + corrections (2026-10-14, v20261014g)
+- Correcteur d'expression : accepte apostrophes iPhone (’), « twenty-two », « I'm 12 », « My name's », « I come from », « I really like », « He's … ».
+- Questions ambiguës corrigées : écoute « At work » (locuteur sans genre → « the speaker »), « What is the nationality? » → James, transversale jour 3 (« I am ___ Portugal » acceptait « in » → précisé « origine »).
+- Vocabulaire : page « Origine et adresse » renommée, exemple « My city is Paris » → « I live in Paris ».
+- Tests Playwright (clair/sombre) : activités, transversale, test 40/40, avatars : 0 erreur JS.

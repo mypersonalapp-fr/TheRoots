@@ -6,7 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014f";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014g";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -25,8 +25,10 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014f" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.png?v=20261014g" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
+
+const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
 
 const VOCAB_PAGES = [
   {
@@ -50,11 +52,11 @@ const VOCAB_PAGES = [
     kind: "words", title: "Naissance et lieu",
     words: [["date of birth", "date de naissance"], ["place of birth", "lieu de naissance"], ["country", "pays"], ["city", "ville"]],
     tip: "On dit “I was born in…” pour donner son lieu de naissance.",
-    examples: [["My country is France.", "Mon pays est la France."], ["My city is Paris.", "Ma ville est Paris."]],
+    examples: [["My country is France.", "Mon pays est la France."], ["I live in Paris.", "J’habite à Paris."]],
     q: ["“City” veut dire…", ["pays", "ville", "adresse"], 1],
   },
   {
-    kind: "words", title: "Origine et adresse",
+    kind: "words", title: "Nationalité et description",
     words: [["nationality", "nationalité"], ["address", "adresse"], ["height", "taille"], ["weight", "poids"]],
     tip: "“Nationality” se termine souvent par -ish, -an ou -ese : British, Canadian, Chinese.",
     examples: [["What is your nationality?", "Quelle est ta nationalité ?"], ["What is your address?", "Quelle est ton adresse ?"]],
@@ -237,7 +239,7 @@ export function renderLessonA11(root, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014f" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.jpg?v=20261014g" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -438,7 +440,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const next = el.querySelector("#lcNext");
     const paint = () => {
       const cur = (tab === "write" ? spkState.text[page] : spkState.heard[page]) || "";
-      const res = p.checks.map(([l, re]) => [l, new RegExp(re, "i").test(cur)]);
+      const res = p.checks.map(([l, re]) => [l, rxTest(re, cur)]);
       el.querySelector("#lcChecks").innerHTML = res.map(([l, ok]) => `<li class="${ok ? "on" : ""}"><span>${ok ? "✓" : "○"}</span>${esc(l)}</li>`).join("");
       if (res.filter((r) => r[1]).length >= 3 || (tab === "speak" && spkState.said[page])) spkState.ok[page] = true;
       next.disabled = !spkState.ok[page];
@@ -552,7 +554,7 @@ export function renderLessonA11(root, { onExit } = {}) {
         const r = new SR(); r.lang = "en-GB"; r.interimResults = false; mic.classList.add("lc-mic-on");
         r.onresult = (e) => {
           T.heard = Array.from(e.results).map((x) => x[0].transcript).join(" "); el.querySelector("#lcHeard").textContent = T.heard;
-          EXPRESSION_PAGES[0].checks.forEach(([, re], i) => { if (new RegExp(re, "i").test(T.heard)) { T.oral[i] = true; const cb = el.querySelector(`[data-o="${i}"]`); if (cb) cb.checked = true; } });
+          EXPRESSION_PAGES[0].checks.forEach(([, re], i) => { if (rxTest(re, T.heard)) { T.oral[i] = true; const cb = el.querySelector(`[data-o="${i}"]`); if (cb) cb.checked = true; } });
           refresh();
         };
         r.onerror = () => toast("Micro indisponible ou refusé"); r.onend = () => mic.classList.remove("lc-mic-on"); r.start();
@@ -567,7 +569,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const cnt = (list, pre) => list.reduce((n, q, i) => n + (T.ans[pre + i] === q[2] ? 1 : 0), 0);
     const r = cnt(T.text.q, "r"), l = cnt(T.audio.q, "l");
     const g = T.gram.reduce((n, id) => n + (T.ans["g" + id] === TEST_GRAMMAR[id][2] ? 1 : 0), 0);
-    const w = EXPRESSION_PAGES[0].checks.filter(([, re]) => new RegExp(re, "i").test(T.written)).length / 4 * 7.5;
+    const w = EXPRESSION_PAGES[0].checks.filter(([, re]) => rxTest(re, T.written)).length / 4 * 7.5;
     const o = T.oral.filter(Boolean).length / 4 * 7.5;
     const pts = [r / 3 * 7.5, l / 3 * 7.5, g, w, o];
     const sum = Math.round(pts.reduce((a, b) => a + b, 0));
