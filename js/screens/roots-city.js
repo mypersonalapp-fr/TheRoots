@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014r";
+const V = "20261014s";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
@@ -9,7 +9,7 @@ const MISSIONS = [
   { id: "m2", ic: "🪪", title: "Complète les fiches d’identité", sub: "Écoute et remplis nom, âge et nationalité.", hero: "city/m2" },
   { id: "m3", ic: "💬", title: "Construis le dialogue", sub: "Remets les mots dans l’ordre.", hero: "city/m3" },
   { id: "m4", ic: "🛂", title: "Passeport international", sub: "Associe chaque pays à sa nationalité.", hero: "city/m4" },
-  { id: "m5", ic: "🕵️", title: "Portrait-robot", sub: "Find the person : cheveux, yeux, vêtements.", hero: "lesson/scene-describe" },
+  { id: "m5", ic: "🕵️", title: "Portrait-robot", sub: "Find the person : cheveux, yeux, vêtements.", hero: "city/m5" },
   { id: "m6", ic: "🎉", title: "Le grand rassemblement", sub: "Présente un personnage en anglais.", hero: "city/m6" },
 ];
 
@@ -69,7 +69,7 @@ const DATA = { m1: M1, m2: M2, m4: M4, m5: M5, m3: M3, m6: M6 };
 
 export function createCity({ el, frame, esc, speak, toast, back, getStars, setStar }) {
   const bindBack = (fn) => { el.querySelector("#lcBack").onclick = fn; };
-  const hero = (m) => `<div class="rc-hero"><img src="${img(m.hero)}" alt="" onerror="this.parentElement.remove()"/></div>`;
+  const hero = (m) => `<div class="rc-hero ${m.id === "m5" ? "rc-m5" : ""}"><img src="${img(m.hero)}" alt="" onerror="this.parentElement.remove()"/>${m.id === "m5" ? `<span class="rc-chalk">Portrait-robot</span><span class="rc-post">Find<br>the person</span>` : ""}</div>`;
   const play = (t) => `<button type="button" class="rc-listen" data-say="${esc(t)}">🔊 Écouter</button>`;
   const starsTxt = (n) => "⭐".repeat(n) + "☆".repeat(3 - n);
 
@@ -107,7 +107,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-g="${gi}" data-v="${esc(o.v)}" ${checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="Personnage ${Number(o.v) + 1}"/>` : ""}${o.color ? `<i class="rc-sw" style="background:${o.color}"></i>` : ""}${o.label ? `<span>${esc(o.label)}</span>` : ""}</button>`;
       }).join("")}</div></div>`).join("");
       const allSet = step.groups.every((g, gi) => pick[gi] != null);
-      const extra = m.id === "m5" ? `<div class="rc-board"><b>Portrait-robot</b><span class="rc-note">Find the person</span></div>` : "";
+      const extra = "";
       frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}
         <div class="rc-fb" aria-live="polite">${checked ? (S.last ? "✅ Bien joué !" : "Pas tout à fait — regarde les bonnes réponses en vert.") : ""}</div>
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && !allSet ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);

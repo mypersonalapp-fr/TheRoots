@@ -77,3 +77,4 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - M1 trouver la personne (audio), M2 fiches d'identité, M3 dialogue (ordre des mots), M4 passeport (pays→nationalité), M5 portrait-robot, M6 présenter un personnage.
 - Reste : enregistrement vocal en M6, plus de manches, éventuels fonds dédiés M3/M6.
 - Fonds propres reçus (14/10) pour M1, M2, M3, M4, M6 (assets/img/city/m*.webp). M5 utilise encore scene-describe.
+- M5 : fond de classe reçu (city/m5.webp) ; titre « Portrait-robot » et post-it « Find the person » en texte superposé (.rc-chalk/.rc-post).

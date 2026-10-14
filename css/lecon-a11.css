@@ -222,3 +222,7 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-go{ display:block; border:0; border-radius:14px; padding:14px; min-height:48px; font:inherit; font-weight:800; font-size:16px; background:#1f9d55; color:#fff; cursor:pointer; margin-top:8px; }
 .rc-go:disabled{ background:#9aa7bd; cursor:default; }
 .rc-end .rc-go{ margin-bottom:0; }
+.rc-m5{ position:relative; container-type:inline-size; }
+.rc-m5 img{ max-height:none; }
+.rc-chalk{ position:absolute; left:41%; width:50%; top:26%; text-align:center; color:#f4f1e6; font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive; font-weight:700; font-size:7.4cqw; text-shadow:0 0 2px rgba(255,255,255,.4); transform:rotate(-1.5deg); }
+.rc-post{ position:absolute; left:82.8%; top:15.3%; width:7.4%; height:10.4%; display:flex; align-items:center; justify-content:center; text-align:center; color:#5a4300; font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive; font-weight:700; font-size:3.1cqw; line-height:1.0; transform:rotate(2deg); }
