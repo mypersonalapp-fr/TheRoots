@@ -6,7 +6,7 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES } from "../data/lecon-a11-data.js?v=20261014c";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014d";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 8;
@@ -81,8 +81,8 @@ const MENU = [
   { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire", ready: true },
   { section: "S’entraîner et progresser" },
   { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage", ready: true },
-  { n: 7, id: "transversal", icon: "🌱", title: "Transversale", sub: "Pratique quotidienne" },
-  { n: 8, id: "test", icon: "🏆", title: "Test de fin de leçon", sub: "Valide tes acquis" },
+  { n: 7, id: "transversal", icon: "🌱", title: "Transversale", sub: "Pratique quotidienne", ready: true },
+  { n: 8, id: "test", icon: "🏆", title: "Test de fin de leçon", sub: "Valide tes acquis", ready: true },
 ];
 
 /* ---------- état / préférences ---------- */
@@ -204,6 +204,8 @@ export function renderLessonA11(root, { onExit } = {}) {
     el.querySelectorAll(".lc-row").forEach((b) => b.addEventListener("click", () => {
       if (b.dataset.act === "vocab") { page = 0; showVocab(); }
       else if (b.dataset.act === "speaking") { page = 0; showSpeak(); }
+      else if (b.dataset.act === "transversal") { showTransvList(); }
+      else if (b.dataset.act === "test") { startTest(); }
       else if (ACT[b.dataset.act]) { page = 0; showAct(b.dataset.act); }
       else toast("Cette activité arrive bientôt");
     }));
@@ -307,6 +309,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     grammar: { icon: "⚙️", title: "Grammaire", sub: "Le verbe to be, to have et les questions.", pages: GRAMMAR_PAGES },
     reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: READING_PAGES },
     listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: LISTENING_PAGES },
+    transversal: { icon: "🌱", title: "Transversale", sub: "", pages: [] },
     exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: EXERCISE_PAGES },
   };
   const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5" };
@@ -315,7 +318,7 @@ export function renderLessonA11(root, { onExit } = {}) {
 
   function showAct(id) {
     screen = id;
-    const A = ACT[id], p = A.pages[page], total = A.pages.length, key = id + ":" + page;
+    const A = ACT[id], p = A.pages[page], total = A.pages.length, key = id + (id === "transversal" ? ":d" + tday : "") + ":" + page, exit = id === "transversal" ? showTransvList : showMenu;
     const c = currentCharacter();
     const sub = (x) => x.replace(/\{name\}/g, c.name);
     let body = "";
@@ -335,12 +338,15 @@ export function renderLessonA11(root, { onExit } = {}) {
           <span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>
         <div class="lc-actions"><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Afficher la transcription</button></div>
         <p class="lc-tr" id="lcTrText" hidden>${esc(p.text)}</p></section>`;
+    } else if (id === "transversal") {
+      if (p.kind === "words") body = `<section class="lc-card"><h2 class="lc-h2">🔊 Écoute et répète</h2><p class="lc-lead">${esc(p.title)} — ${esc(p.goal)}</p><ul class="lc-list">${p.words.map(([en, fr]) => `<li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul></section>`;
+      else if (p.kind === "write") body = `<section class="lc-card"><h2 class="lc-h2">✍️ Expression écrite</h2><p class="lc-lead">${esc(p.prompt)}</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta réponse en anglais">${esc(writeTx[key] || "")}</textarea><p class="lc-small">Écris en anglais (au moins une phrase).</p></section>`;
     } else {
       body = `<section class="lc-card"><h2 class="lc-h2">🧩 ${esc(p.title)}</h2><p class="lc-lead">${esc(p.help)}</p>
         ${p.passage ? `<p class="lc-text">${esc(p.passage)}</p><div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.passage)}">🔊 Écouter</button></div>` : ""}
         ${p.audio ? `<div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.audio)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>` : ""}</section>`;
     }
-    body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" || id === "exercises" ? "À toi de pratiquer !" : "Questions"}</h2>
+    if (p.qs.length) body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" || id === "exercises" ? "À toi de pratiquer !" : "Questions"}</h2>
       ${p.qs.map((q, qi) => `<div class="lc-qb" data-qi="${qi}"><p class="lc-q">${qi + 1}. ${esc(q[0])}</p>
         <div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice" data-qi="${qi}" data-i="${i}">${esc(o)}</button>`).join("")}</div>
         <p class="lc-fb" aria-live="polite"></p></div>`).join("")}</section>`;
@@ -352,7 +358,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
-    const refresh = () => { next.disabled = !p.qs.every((_, qi) => (okQ[key] || {})[qi]); };
+    const refresh = () => { next.disabled = !p.qs.every((_, qi) => (okQ[key] || {})[qi]) || (p.kind === "write" && (writeTx[key] || "").trim().length < 15); };
     const mark = (qi, withMsg) => {
       const q = p.qs[qi], box = el.querySelector(`.lc-qb[data-qi="${qi}"]`);
       box.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === q[2]); });
@@ -361,10 +367,18 @@ export function renderLessonA11(root, { onExit } = {}) {
     Object.keys(okQ[key] || {}).forEach((qi) => mark(Number(qi), false));
     refresh();
 
-    el.querySelector("#lcBack").onclick = showMenu;
-    el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showAct(id); } };
+    el.querySelector("#lcBack").onclick = exit;
+    el.querySelector("#lcPrev").onclick = () => { if (page === 0) exit(); else { page--; showAct(id); } };
+    const wta = el.querySelector("#lcTa"); if (wta) wta.addEventListener("input", () => { writeTx[key] = wta.value; refresh(); });
     next.onclick = () => {
       if (!last) { page++; showAct(id); return; }
+      if (id === "transversal") {
+        prog.transv = Object.assign({}, prog.transv, { [tday]: true });
+        const n = Object.keys(prog.transv).length;
+        prog.scores = Object.assign({}, prog.scores, { transversal: `${n}/7 jours` });
+        if (n >= 7) prog.done = Object.assign({}, prog.done, { transversal: true });
+        saveProgress(prog); showTransvList(); return;
+      }
       prog.done = Object.assign({}, prog.done, { [id]: true });
       if (id === "exercises") {
         let sc = 0, tot = 0;
@@ -444,6 +458,139 @@ export function renderLessonA11(root, { onExit } = {}) {
       prog.done = Object.assign({}, prog.done, { speaking: true }); saveProgress(prog); showMenu();
     };
   }
+
+  /* ----- Transversale : 7 jours (mots → entraînement → expression écrite) ----- */
+  const writeTx = {};
+  let tday = 0;
+  function dayPages(d) {
+    const D = TRANSV_DAYS[d];
+    return [
+      { kind: "words", title: D.title, goal: D.goal, words: D.words, qs: [] },
+      { kind: "practice", title: "Entraînement", qs: D.qs },
+      { kind: "write", title: "Expression écrite", prompt: D.writing, qs: [] },
+    ];
+  }
+  function showTransvList() {
+    screen = "transversal";
+    const done = prog.transv || {};
+    const rows = TRANSV_DAYS.map((D, i) => `<button type="button" class="lc-row" data-day="${i}">
+      <span class="lc-num">${i + 1}</span><span class="lc-ic">🌱</span>
+      <span class="lc-txt"><b>${esc(D.title)}</b><small>${esc(D.goal)}</small></span><span class="lc-go">${done[i] ? "✓" : "›"}</span></button>`).join("");
+    frame("A1.1 – Mon identité", null, `<div class="lc-vocab-head"><span class="lc-vh-ic">🌱</span><div><h1>Transversale</h1><p>7 jours pour ancrer les acquis.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => {
+      tday = Number(b.dataset.day); page = 0; ACT.transversal.pages = dayPages(tday); ACT.transversal.sub = TRANSV_DAYS[tday].title; showAct("transversal");
+    }));
+  }
+
+  /* ----- Test de fin de leçon : 40 points (7,5 + 7,5 lecture/écoute, 10 grammaire, 7,5 + 7,5 expression) ----- */
+  let T = null; // état du test en cours
+  function startTest() {
+    const attempt = prog.testAttempts || 0;
+    let seed = attempt * 7919 + 13;
+    const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const ids = TEST_GRAMMAR.map((_, i) => i);
+    for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
+    T = { attempt, text: TEST_TEXTS[attempt % TEST_TEXTS.length], audio: TEST_AUDIOS[(attempt + 1) % TEST_AUDIOS.length], gram: ids.slice(0, 10), ans: {}, written: "", heard: "", oral: [false, false, false, false], p: 0 };
+    showTest();
+  }
+  function showTest() {
+    screen = "test";
+    const total = 6, p = T.p, c = currentCharacter();
+    const Q = (key, q, n) => `<div class="lc-qb"><p class="lc-q">${n}. ${esc(q[0])}</p><div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice ${T.ans[key] === i ? "lc-sel" : ""}" data-k="${key}" data-i="${i}">${esc(o)}</button>`).join("")}</div></div>`;
+    let body = "", keys = [], head = "";
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (p === 0) {
+      keys = T.text.q.map((_, i) => "r" + i); head = "Compréhension écrite · 7,5 pts";
+      body = `<section class="lc-card"><h2 class="lc-h2">📚 ${esc(T.text.title)}</h2><p class="lc-text">${esc(T.text.text)}</p></section><section class="lc-card lc-prac">${T.text.q.map((q, i) => Q("r" + i, q, i + 1)).join("")}</section>`;
+    } else if (p === 1) {
+      keys = T.audio.q.map((_, i) => "l" + i); head = "Compréhension orale · 7,5 pts";
+      body = `<section class="lc-card"><h2 class="lc-h2">🎧 Écoute</h2><div class="lc-player"><button type="button" class="lc-play" data-say="${esc(T.audio.script)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed">${speedMul === 1 ? "1x" : "0.75x"}</button></div></section><section class="lc-card lc-prac">${T.audio.q.map((q, i) => Q("l" + i, q, i + 1)).join("")}</section>`;
+    } else if (p === 2 || p === 3) {
+      const part = T.gram.slice((p - 2) * 5, (p - 2) * 5 + 5); keys = part.map((id) => "g" + id); head = "Grammaire, verbes, vocabulaire · 10 pts";
+      body = `<section class="lc-card lc-prac">${part.map((id, i) => Q("g" + id, TEST_GRAMMAR[id], (p - 2) * 5 + i + 1)).join("")}</section>`;
+    } else if (p === 4) {
+      head = "Expression écrite · 7,5 pts";
+      body = `<section class="lc-card"><h2 class="lc-h2">✍️ Présente-toi en anglais</h2><p class="lc-lead">Écris au moins 4 phrases : ton prénom, ton âge, d’où tu viens, ce que tu aimes.</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta présentation en anglais">${esc(T.written)}</textarea></section>`;
+    } else {
+      head = "Expression orale · 7,5 pts";
+      body = `<section class="lc-card"><h2 class="lc-h2">🎤 Dis ta présentation</h2><p class="lc-lead">Présente-toi à voix haute en anglais, puis coche ce que tu as réellement dit (auto-évaluation).</p>
+        ${SR ? `<div class="lc-mic"><button type="button" class="lc-micbtn" id="lcMic" aria-label="Appuie et parle">🎙️</button><p class="lc-heard" id="lcHeard">${esc(T.heard)}</p></div>` : ""}
+        <ul class="lc-checks lc-checks-in">${EXPRESSION_PAGES[0].checks.map(([l], i) => `<li><label><input type="checkbox" data-o="${i}" ${T.oral[i] ? "checked" : ""}/> ${esc(l)}</label></li>`).join("")}</ul></section>`;
+    }
+    const last = p === total - 1;
+    const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button><button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Voir mon résultat" : "Suivant →"}</button></footer>`;
+    frame("Test de fin de leçon", { cur: p + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🏆</span><div><h1>Test de fin</h1><p>${esc(head)}</p></div></div>${body}`, foot);
+    el.querySelector(".lc-main").scrollTop = 0;
+    const next = el.querySelector("#lcNext");
+    const refresh = () => {
+      if (p <= 3) next.disabled = !keys.every((k) => T.ans[k] !== undefined);
+      else if (p === 4) next.disabled = T.written.trim().length < 15;
+      else next.disabled = !T.oral.some(Boolean);
+    };
+    refresh();
+    el.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
+      T.ans[b.dataset.k] = Number(b.dataset.i);
+      el.querySelectorAll(`.lc-choice[data-k="${b.dataset.k}"]`).forEach((x) => x.classList.toggle("lc-sel", x === b));
+      refresh();
+    }));
+    const ta = el.querySelector("#lcTa"); if (ta) ta.addEventListener("input", () => { T.written = ta.value; refresh(); });
+    el.querySelectorAll("[data-o]").forEach((b) => b.addEventListener("change", () => { T.oral[Number(b.dataset.o)] = b.checked; refresh(); }));
+    const sp = el.querySelector("#lcSpeed"); if (sp) sp.onclick = () => { speedMul = speedMul === 1 ? 0.75 : 1; sp.textContent = speedMul === 1 ? "1x" : "0.75x"; };
+    const mic = el.querySelector("#lcMic");
+    if (mic) mic.addEventListener("click", () => {
+      try {
+        const r = new SR(); r.lang = "en-GB"; r.interimResults = false; mic.classList.add("lc-mic-on");
+        r.onresult = (e) => {
+          T.heard = Array.from(e.results).map((x) => x[0].transcript).join(" "); el.querySelector("#lcHeard").textContent = T.heard;
+          EXPRESSION_PAGES[0].checks.forEach(([, re], i) => { if (new RegExp(re, "i").test(T.heard)) { T.oral[i] = true; const cb = el.querySelector(`[data-o="${i}"]`); if (cb) cb.checked = true; } });
+          refresh();
+        };
+        r.onerror = () => toast("Micro indisponible ou refusé"); r.onend = () => mic.classList.remove("lc-mic-on"); r.start();
+      } catch (e) { toast("Micro indisponible sur cet appareil"); }
+    });
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelector("#lcPrev").onclick = () => { if (p === 0) showMenu(); else { T.p--; showTest(); } };
+    next.onclick = () => { if (!last) { T.p++; showTest(); } else showTestResult(); };
+  }
+  function showTestResult() {
+    screen = "test-result";
+    const cnt = (list, pre) => list.reduce((n, q, i) => n + (T.ans[pre + i] === q[2] ? 1 : 0), 0);
+    const r = cnt(T.text.q, "r"), l = cnt(T.audio.q, "l");
+    const g = T.gram.reduce((n, id) => n + (T.ans["g" + id] === TEST_GRAMMAR[id][2] ? 1 : 0), 0);
+    const w = EXPRESSION_PAGES[0].checks.filter(([, re]) => new RegExp(re, "i").test(T.written)).length / 4 * 7.5;
+    const o = T.oral.filter(Boolean).length / 4 * 7.5;
+    const pts = [r / 3 * 7.5, l / 3 * 7.5, g, w, o];
+    const sum = Math.round(pts.reduce((a, b) => a + b, 0));
+    const passed = sum >= 32;
+    const fmt = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
+    prog.testAttempts = (T.attempt || 0) + 1;
+    prog.scores = Object.assign({}, prog.scores, { test: `${sum}/40` });
+    prog.testHist = (prog.testHist || []).concat([{ d: new Date().toISOString().slice(0, 10), total: sum, passed }]).slice(-20);
+    if (passed) prog.done = Object.assign({}, prog.done, { test: true });
+    saveProgress(prog);
+    const wrong = [
+      ...T.text.q.map((q, i) => ["r" + i, q]), ...T.audio.q.map((q, i) => ["l" + i, q]), ...T.gram.map((id) => ["g" + id, TEST_GRAMMAR[id]]),
+    ].filter(([k, q]) => T.ans[k] !== q[2]).map(([k, q]) => `<li><b>${esc(q[0])}</b><small>Ta réponse : ${esc(q[1][T.ans[k]] ?? "—")} · Bonne réponse : ${esc(q[1][q[2]])}</small></li>`).join("");
+    frame("Test de fin de leçon", null, `
+      <section class="lc-hero"><img class="lc-hero-img lc-hero-sm" src="${c0().src}" alt=""/></section>
+      <section class="lc-card lc-intro"><h1>${passed ? "Leçon terminée !" : "Presque !"}</h1>
+        <p class="lc-lead">${passed ? "Bravo ! Tu as validé A1.1 – Mon identité." : "Il faut 32/40 pour valider. Revois les points manqués et réessaie."}</p>
+        <table class="lc-table"><tbody>
+          <tr><td>Compréhension écrite</td><td class="lc-form">${fmt(pts[0])} / 7,5</td></tr>
+          <tr><td>Compréhension orale</td><td class="lc-form">${fmt(pts[1])} / 7,5</td></tr>
+          <tr><td>Grammaire, vocabulaire</td><td class="lc-form">${fmt(pts[2])} / 10</td></tr>
+          <tr><td>Expression écrite</td><td class="lc-form">${fmt(pts[3])} / 7,5</td></tr>
+          <tr><td>Expression orale (auto-éval.)</td><td class="lc-form">${fmt(pts[4])} / 7,5</td></tr>
+          <tr><td><b>Total</b></td><td class="lc-form"><b>${sum} / 40</b></td></tr></tbody></table>
+        ${wrong ? `<details class="lc-det"><summary>Revoir mes réponses (${wrong.split("</li>").length - 1})</summary><ul class="lc-list lc-wronglist">${wrong}</ul></details>` : ""}
+        <button type="button" class="lc-cta" id="lcAgain" style="margin-top:12px">Refaire une nouvelle version</button>
+        <button type="button" class="lc-sec-btn" id="lcToMenu" style="width:100%;margin-top:10px">Retour aux leçons</button></section>`);
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelector("#lcToMenu").onclick = showMenu;
+    el.querySelector("#lcAgain").onclick = startTest;
+  }
+  const c0 = () => currentCharacter();
 
   showIntro();
 }

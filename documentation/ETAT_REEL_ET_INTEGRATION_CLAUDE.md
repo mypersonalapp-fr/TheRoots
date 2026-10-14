@@ -9,7 +9,7 @@ Les fichiers `a11-complete.html`, `a11-demo.html`, `a11-competences.html`, `a11-
 `js/a11-drills.js`, `js/a11-adaptive-preview.js` sont des **prototypes isolés** : ils ne sont pas dans le routage.
 
 ## Intégré dans le vrai routage (testé en navigateur, jour/nuit)
-- `js/screens/lecon-a11.js` + `css/lecon-a11.css` + `js/data/lecon-a11-data.js` : **Introduction A1.1**, **Menu A1.1**, **Vocabulaire** (5 pages), **Grammaire** (5 pages : be, formes courtes/négation, questions, have, questions/possessifs), **Lecture** (4 textes), **Écoute** (6 audios), **Expression** (2 pages parler/écrire : validée si ≥ 3 éléments repérés, ou case « dit à voix haute » ; micro via reconnaissance vocale si disponible) et **Exercices** (5 séries, 32 questions corrigées avec rattrapage ; score du premier essai sauvegardé). Pagination X/Y, « Suivant » bloqué tant que les réponses ne sont pas justes, progression sauvegardée (`the_roots_a11_lesson_v1`).
+- `js/screens/lecon-a11.js` + `css/lecon-a11.css` + `js/data/lecon-a11-data.js` : **Introduction A1.1**, **Menu A1.1**, **Vocabulaire** (5 pages), **Grammaire** (5 pages : be, formes courtes/négation, questions, have, questions/possessifs), **Lecture** (4 textes), **Écoute** (6 audios), **Expression** (2 pages parler/écrire : validée si ≥ 3 éléments repérés, ou case « dit à voix haute » ; micro via reconnaissance vocale si disponible) **Exercices** (5 séries, 32 questions corrigées avec rattrapage ; score du premier essai sauvegardé), **Transversale** (7 jours : mots, 3 questions à réussir, expression écrite ≥ 15 caractères ; progression n/7) et **Test de fin de leçon** (6 pages, 40 points : lecture 7,5 + écoute 7,5 + grammaire 10 + expression écrite 7,5 + orale 7,5 ; seuil 32/40 repris de `a11-competences.html` ; 3 versions de texte/audio, 10 questions de grammaire tirées au sort sur 15 ; résultat détaillé, « Revoir mes réponses », historique des essais). Pagination X/Y, « Suivant » bloqué tant que les réponses ne sont pas justes, progression sauvegardée (`the_roots_a11_lesson_v1`).
 - Ouverture : Mes cours → anglais → bouton « Leçon A1.1 — Mon identité (nouvelle version) ».
 - Personnage : Paramètres → Réglages généraux → Mon personnage pédagogique (fille 8 / garçon 9, images `assets/img/characters/`).
   Le choix (`settings.avatarGender`, `settings.avatarIndex`) est sauvegardé et repris dans la leçon (Emma / Lucas).
@@ -17,12 +17,11 @@ Les fichiers `a11-complete.html`, `a11-demo.html`, `a11-competences.html`, `a11-
 - Audio : `speechSynthesis` appelé directement dans le clic (Safari iPhone), voix choisie dans Paramètres si définie.
 
 ## Pas encore intégré
-Transversale (7 jours) et Test de fin de leçon (affichés « bientôt » dans le menu). Contenu existant dans `a11-transversale.html`, `a11-competences.html`.
-Le contenu pédagogique de ces parties existe dans les prototypes `a11-*` (voir l'extraction fournie à Ashley).
+Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverrouillage lié au parcours global, synchronisation avec la progression de `lessons.html`, corrections par IA de l'expression, enregistrements audio natifs, intégration de A1.2 et suivants.
 
 ## Limites connues
 - Les questions de Lecture et des dialogues d'Écoute (et les textes « Sam », « Anna », « David ») viennent des prototypes ou ont été ajoutées ; le contenu anglais reste à relire.
-- L'expression écrite/orale n'est pas corrigée par une IA : seul le repérage de formules (regex) est fait, sans note de 7,5 pts.
+- L'expression écrite est notée par repérage de formules (regex, 4 éléments) ; l'expression orale du test est une **auto-évaluation** (cases à cocher, ou transcription si la reconnaissance vocale existe). Pas de correction par une personne ou une IA.
 - L'audio utilise la synthèse vocale de l'appareil (pas d'enregistrements natifs).
 - Portraits recadrés depuis la maquette 09 (≈ 80 px à l'origine, agrandis à 256 px) : qualité moyenne. À remplacer par de vrais PNG fond transparent.
 - La maquette 09 contient 8 filles (le 9e portrait « fille » est un garçon à lunettes) et 9 garçons.

@@ -434,3 +434,397 @@ export const EXPRESSION_PAGES = [
     model: "This is Lucas. He is twenty-five years old. He is from Portugal. He likes football.",
     checks: [["Son prénom", "(this is|his name is|her name is)\\s+\\w+"], ["Son âge", "(he|she) is\\s+\\w+\\s+years? old"], ["D’où il / elle vient", "(he|she) is from\\s+\\w+"], ["Ce qu’il / elle aime", "(he|she) (likes|loves)\\s+\\w+"]] },
 ];
+
+// Transversale : 7 jours de pratique (a11-transversale.html) — mots, 3 questions, expression écrite.
+export const TRANSV_DAYS = [
+ {
+  "title": "Jour 1 · Se présenter",
+  "goal": "Prénom, nom et salutations",
+  "words": [
+   [
+    "Hello",
+    "Bonjour"
+   ],
+   [
+    "My name is…",
+    "Je m’appelle…"
+   ],
+   [
+    "First name",
+    "Prénom"
+   ],
+   [
+    "Last name",
+    "Nom de famille"
+   ]
+  ],
+  "qs": [
+   [
+    "My name ___ Emma.",
+    [
+     "am",
+     "is",
+     "are"
+    ],
+    1,
+    ""
+   ],
+   [
+    "What is your ___ name?",
+    [
+     "first",
+     "from",
+     "old"
+    ],
+    0,
+    ""
+   ],
+   [
+    "Nice to ___ you.",
+    [
+     "meet",
+     "live",
+     "have"
+    ],
+    0,
+    ""
+   ]
+  ],
+  "writing": "Écris trois phrases pour te présenter en anglais."
+ },
+ {
+  "title": "Jour 2 · Âge et nombres",
+  "goal": "Dire son âge et comprendre les nombres",
+  "words": [
+   [
+    "How old are you?",
+    "Quel âge as-tu ?"
+   ],
+   [
+    "I am twenty.",
+    "J’ai vingt ans."
+   ],
+   [
+    "Birthday",
+    "Anniversaire"
+   ],
+   [
+    "Years old",
+    "Ans"
+   ]
+  ],
+  "qs": [
+   [
+    "I ___ 20 years old.",
+    [
+     "have",
+     "am",
+     "is"
+    ],
+    1,
+    ""
+   ],
+   [
+    "Twenty-five =",
+    [
+     "15",
+     "25",
+     "35"
+    ],
+    1,
+    ""
+   ],
+   [
+    "How ___ are you?",
+    [
+     "many",
+     "old",
+     "from"
+    ],
+    1,
+    ""
+   ]
+  ],
+  "writing": "Présente ton âge et la date de ton anniversaire."
+ },
+ {
+  "title": "Jour 3 · Origines et nationalités",
+  "goal": "Dire son pays, sa ville et sa nationalité",
+  "words": [
+   [
+    "I am from France.",
+    "Je viens de France."
+   ],
+   [
+    "I live in Paris.",
+    "J’habite à Paris."
+   ],
+   [
+    "French",
+    "Français(e)"
+   ],
+   [
+    "Where are you from?",
+    "D’où viens-tu ?"
+   ]
+  ],
+  "qs": [
+   [
+    "I am ___ Portugal.",
+    [
+     "at",
+     "from",
+     "in"
+    ],
+    1,
+    ""
+   ],
+   [
+    "She ___ in London.",
+    [
+     "live",
+     "lives",
+     "living"
+    ],
+    1,
+    ""
+   ],
+   [
+    "Where ___ you from?",
+    [
+     "is",
+     "are",
+     "do"
+    ],
+    1,
+    ""
+   ]
+  ],
+  "writing": "Écris ton pays d’origine, ta nationalité et ta ville."
+ },
+ {
+  "title": "Jour 4 · Être et avoir",
+  "goal": "Conjuguer be et have au présent",
+  "words": [
+   [
+    "I am",
+    "Je suis"
+   ],
+   [
+    "She is",
+    "Elle est"
+   ],
+   [
+    "I have",
+    "J’ai"
+   ],
+   [
+    "He has",
+    "Il a"
+   ]
+  ],
+  "qs": [
+   [
+    "They ___ students.",
+    [
+     "is",
+     "are",
+     "am"
+    ],
+    1,
+    ""
+   ],
+   [
+    "She ___ blue eyes.",
+    [
+     "have",
+     "has",
+     "is"
+    ],
+    1,
+    ""
+   ],
+   [
+    "I ___ not a doctor.",
+    [
+     "am",
+     "is",
+     "do"
+    ],
+    0,
+    ""
+   ]
+  ],
+  "writing": "Écris une phrase avec am, une avec is et une avec have."
+ },
+ {
+  "title": "Jour 5 · Questions et négation",
+  "goal": "Poser une question, répondre et nier",
+  "words": [
+   [
+    "Are you…?",
+    "Es-tu… ?"
+   ],
+   [
+    "Do you have…?",
+    "As-tu… ?"
+   ],
+   [
+    "I am not",
+    "Je ne suis pas"
+   ],
+   [
+    "She doesn't have",
+    "Elle n’a pas"
+   ]
+  ],
+  "qs": [
+   [
+    "___ he British?",
+    [
+     "Is",
+     "Does",
+     "Do"
+    ],
+    0,
+    ""
+   ],
+   [
+    "___ you have a sister?",
+    [
+     "Are",
+     "Do",
+     "Is"
+    ],
+    1,
+    ""
+   ],
+   [
+    "She ___ not have a car.",
+    [
+     "do",
+     "does",
+     "is"
+    ],
+    1,
+    ""
+   ]
+  ],
+  "writing": "Écris deux questions et deux réponses négatives."
+ },
+ {
+  "title": "Jour 6 · Description et possessifs",
+  "goal": "Décrire une personne avec my, his, her",
+  "words": [
+   [
+    "Brown eyes",
+    "Yeux marron"
+   ],
+   [
+    "Blond hair",
+    "Cheveux blonds"
+   ],
+   [
+    "My brother",
+    "Mon frère"
+   ],
+   [
+    "Her name",
+    "Son prénom (à elle)"
+   ]
+  ],
+  "qs": [
+   [
+    "This is ___ mother.",
+    [
+     "my",
+     "I",
+     "me"
+    ],
+    0,
+    ""
+   ],
+   [
+    "___ name is Paul (à lui).",
+    [
+     "Her",
+     "His",
+     "Your"
+    ],
+    1,
+    ""
+   ],
+   [
+    "I ___ green eyes.",
+    [
+     "has",
+     "am",
+     "have"
+    ],
+    2,
+    ""
+   ]
+  ],
+  "writing": "Décris-toi en 4 phrases, dont une avec un possessif."
+ },
+ {
+  "title": "Jour 7 · Révision et transfert",
+  "goal": "Utiliser tout le vocabulaire dans une situation réelle",
+  "words": [
+   [
+    "Nice to meet you.",
+    "Enchanté(e)."
+   ],
+   [
+    "Where do you live?",
+    "Où habites-tu ?"
+   ],
+   [
+    "What do you do?",
+    "Que fais-tu dans la vie ?"
+   ],
+   [
+    "I am a student.",
+    "Je suis étudiant(e)."
+   ]
+  ],
+  "qs": [
+   [
+    "Where ___ she live?",
+    [
+     "do",
+     "does",
+     "is"
+    ],
+    1,
+    ""
+   ],
+   [
+    "He ___ a teacher.",
+    [
+     "is",
+     "are",
+     "am"
+    ],
+    0,
+    ""
+   ],
+   [
+    "___ are my friends.",
+    [
+     "These",
+     "This",
+     "That"
+    ],
+    0,
+    ""
+   ]
+  ],
+  "writing": "Rédige une présentation complète de 6 à 8 phrases. Puis lis-la à voix haute."
+ }
+];
+
+// Test de fin de leçon (a11-competences.html) : 3 textes, 3 audios, 15 questions de grammaire (10 tirées au sort).
+export const TEST_TEXTS = [{"title": "Emma à Paris", "text": "Hello! My name is Emma. I am ten years old. I am French. I live in Paris. I am a student.", "q": [["Where does Emma live?", ["London", "Paris", "Madrid"], 1], ["How old is Emma?", ["10", "12", "20"], 0], ["Is Emma a student?", ["Yes", "No", "Not stated"], 0]]}, {"title": "Lucas à Porto", "text": "Hi! I am Lucas. I am twenty-five. I am Portuguese and I live in Porto. I am a teacher.", "q": [["Where does Lucas live?", ["Porto", "Lisbon", "Rome"], 0], ["How old is Lucas?", ["15", "25", "35"], 1], ["What is his job?", ["Doctor", "Teacher", "Student"], 1]]}, {"title": "Maya à Manchester", "text": "Good morning! My name is Maya Smith. I am British. I live in Manchester. I have a sister called Lily.", "q": [["What is her last name?", ["Lily", "Maya", "Smith"], 2], ["Where does she live?", ["Manchester", "Paris", "London"], 0], ["Who is Lily?", ["Her sister", "Her mother", "Her friend"], 0]]}];
+export const TEST_AUDIOS = [{"script": "Hello! I am Sam. I am twenty. I am British. I live in London.", "q": [["How old is Sam?", ["10", "20", "30"], 1], ["Where does Sam live?", ["Paris", "London", "Rome"], 1], ["Is Sam British?", ["Yes", "No", "Unknown"], 0]]}, {"script": "Hi! My name is Anna. I am from Spain. I live in Madrid. I am a student.", "q": [["Where is Anna from?", ["Spain", "France", "Italy"], 0], ["Where does Anna live?", ["London", "Madrid", "Porto"], 1], ["Is Anna a student?", ["Yes", "No", "Unknown"], 0]]}, {"script": "Good morning. I am David. I am thirty years old. I am Canadian. I live in Toronto.", "q": [["How old is David?", ["13", "30", "40"], 1], ["What nationality is David?", ["British", "Canadian", "French"], 1], ["Where does he live?", ["Toronto", "Paris", "Madrid"], 0]]}];
+export const TEST_GRAMMAR = [["I ___ French.", ["am", "is", "are"], 0], ["She ___ 12.", ["am", "is", "are"], 1], ["We ___ students.", ["is", "are", "am"], 1], ["I ___ not British.", ["am", "is", "are"], 0], ["___ he live in Paris?", ["Do", "Does", "Is"], 1], ["I ___ a sister.", ["has", "have", "am"], 1], ["She ___ blue eyes.", ["have", "has", "is"], 1], ["This is ___ bag.", ["my", "me", "I"], 0], ["___ is your name?", ["Where", "What", "When"], 1], ["___ are my shoes.", ["These", "This", "That"], 0], ["They ___ not from Spain.", ["are", "is", "am"], 0], ["Where ___ you live?", ["does", "do", "is"], 1], ["He ___ not a teacher.", ["are", "is", "do"], 1], ["My ___ name is Smith.", ["last", "old", "from"], 0], ["___ she have a brother?", ["Does", "Do", "Is"], 0]];
