@@ -58,3 +58,9 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 
 ## Images allégées (v20261014l)
 - Personnages, icônes et scènes convertis en WebP (`assets/img/characters/*.webp`, `assets/img/lesson/*.webp`) : environ 12 Mo → 2 Mo. Les PNG/JPG d'origine sont retirés (historique git conservé).
+
+## Conseil IA facultatif (v20261014m)
+- Bouton « 💡 Obtenir un conseil » sous les zones d'écriture (Expression écrite, Transversale, Test). Utilise le relais Cloudflare existant (`AI_RELAY_URL`, mode `feedback`, aucun redéploiement nécessaire).
+- Ne compte JAMAIS dans la note (les mots-clés/coches vertes restent la note officielle). Phrase d'information avant l'envoi : le texte est envoyé à Google (clé gratuite : usage possible par Google pour améliorer ses produits).
+- Limite : 5 conseils par jour (localStorage). Repli : message simple si pas de réseau/quota.
+- À faire avant l'ouverture aux vrais élèves : information parents/mineurs (RGPD), clé payante si besoin.

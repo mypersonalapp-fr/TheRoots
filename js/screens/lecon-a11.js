@@ -6,8 +6,9 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014l";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014l";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014m";
+import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014m";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -26,10 +27,38 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014l" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014m" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
+
+// ── Conseil de l'IA (facultatif, ne compte JAMAIS dans la note) ─────────────
+const ADVICE_KEY = "the_roots_a11_advice_v1", ADVICE_MAX_PER_DAY = 5;
+function adviceLeft() {
+  try {
+    const d = new Date().toISOString().slice(0, 10), v = JSON.parse(localStorage.getItem(ADVICE_KEY) || "{}");
+    return ADVICE_MAX_PER_DAY - (v.d === d ? v.n || 0 : 0);
+  } catch (e) { return ADVICE_MAX_PER_DAY; }
+}
+function adviceUsed() {
+  try {
+    const d = new Date().toISOString().slice(0, 10), v = JSON.parse(localStorage.getItem(ADVICE_KEY) || "{}");
+    localStorage.setItem(ADVICE_KEY, JSON.stringify({ d, n: (v.d === d ? v.n || 0 : 0) + 1 }));
+  } catch (e) { /* stockage indisponible */ }
+}
+async function fetchAdvice(text) {
+  if (!/^https:\/\//.test(AI_RELAY_URL || "")) throw new Error("not_configured");
+  const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 25000);
+  try {
+    const res = await fetch(AI_RELAY_URL, { method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal,
+      body: JSON.stringify({ mode: "feedback", lang: "en", variant: "en-gb", level: "A1", topic: "Se présenter en anglais (A1.1)",
+        lede: "Prénom, âge, pays, goûts. Réponds avec bienveillance.", messages: [{ role: "user", text: String(text).slice(0, 1200) }] }) });
+    const j = await res.json().catch(() => ({}));
+    if (res.status === 429 || j.error === "quota_exceeded") throw new Error("quota");
+    if (!res.ok || !j.text) throw new Error("relay");
+    return String(j.text);
+  } finally { clearTimeout(timer); }
+}
 
 const VOCAB_PAGES = [
   {
@@ -159,6 +188,26 @@ export function renderLessonA11(root, { onExit } = {}) {
       .observe(el, { subtree: true, childList: true, attributes: true, attributeFilter: ["disabled"] });
   }
 
+  // Ajoute sous la zone d'écriture un bouton « Obtenir un conseil » (IA) — jamais noté.
+  function mountAdvice(getText) {
+    const ta = el.querySelector("#lcTa"); if (!ta) return;
+    const card = ta.closest("section") || ta.parentElement;
+    const box = document.createElement("div"); box.className = "lc-advice";
+    box.innerHTML = `<p class="lc-advice-info">💡 Conseil facultatif d’une IA (Google Gemini). Ton texte est envoyé à Google pour l’obtenir. Il ne change pas ta note.</p>
+      <button type="button" class="lc-sec-btn lc-advice-btn">💡 Obtenir un conseil</button><div class="lc-advice-out" aria-live="polite"></div>`;
+    card.appendChild(box);
+    const btn = box.querySelector(".lc-advice-btn"), out = box.querySelector(".lc-advice-out");
+    btn.onclick = async () => {
+      const txt = (getText() || "").trim();
+      if (txt.length < 15) { out.textContent = "Écris d’abord au moins une phrase en anglais."; return; }
+      if (adviceLeft() <= 0) { out.textContent = "Tu as utilisé tes " + ADVICE_MAX_PER_DAY + " conseils du jour. Reviens demain !"; return; }
+      btn.disabled = true; out.textContent = "L’IA lit ton texte…";
+      try { const r = await fetchAdvice(txt); adviceUsed(); out.textContent = r; out.classList.add("on"); }
+      catch (e) { out.classList.remove("on"); out.textContent = e.message === "quota" ? "Le service de conseils est très demandé. Réessaie un peu plus tard." : e.message === "not_configured" ? "Les conseils de l’IA ne sont pas encore activés." : "Impossible d’obtenir un conseil pour l’instant (connexion ?). Ta note n’est pas affectée."; }
+      finally { btn.disabled = false; }
+    };
+  }
+
   function frame(headTitle, counter, inner, foot) {
     const pct = counter ? Math.round((counter.cur / counter.total) * 100) : 0;
     el.innerHTML = `
@@ -248,7 +297,7 @@ export function renderLessonA11(root, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014l" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014m" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -389,7 +438,7 @@ export function renderLessonA11(root, { onExit } = {}) {
 
     el.querySelector("#lcBack").onclick = exit;
     el.querySelector("#lcPrev").onclick = () => { if (page === 0) exit(); else { page--; showAct(id); } };
-    const wta = el.querySelector("#lcTa"); if (wta) wta.addEventListener("input", () => { writeTx[key] = wta.value; refresh(); });
+    const wta = el.querySelector("#lcTa"); if (wta) { wta.addEventListener("input", () => { writeTx[key] = wta.value; refresh(); }); mountAdvice(() => wta.value); }
     next.onclick = () => {
       if (!last) { page++; showAct(id); return; }
       if (id === "transversal") {
@@ -457,7 +506,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     paint();
     el.querySelectorAll(".lc-tab").forEach((b) => b.addEventListener("click", () => { spkState.tab = b.dataset.tab; showSpeak(); }));
     const ta = el.querySelector("#lcTa");
-    if (ta) ta.addEventListener("input", () => { spkState.text[page] = ta.value; paint(); });
+    if (ta) { ta.addEventListener("input", () => { spkState.text[page] = ta.value; paint(); }); mountAdvice(() => ta.value); }
     const said = el.querySelector("#lcSaid");
     if (said) said.addEventListener("change", () => { spkState.said[page] = said.checked; paint(); });
     const mic = el.querySelector("#lcMic");
@@ -554,7 +603,7 @@ export function renderLessonA11(root, { onExit } = {}) {
       el.querySelectorAll(`.lc-choice[data-k="${b.dataset.k}"]`).forEach((x) => x.classList.toggle("lc-sel", x === b));
       refresh();
     }));
-    const ta = el.querySelector("#lcTa"); if (ta) ta.addEventListener("input", () => { T.written = ta.value; refresh(); });
+    const ta = el.querySelector("#lcTa"); if (ta) { ta.addEventListener("input", () => { T.written = ta.value; refresh(); }); mountAdvice(() => ta.value); }
     el.querySelectorAll("[data-o]").forEach((b) => b.addEventListener("change", () => { T.oral[Number(b.dataset.o)] = b.checked; refresh(); }));
     const sp = el.querySelector("#lcSpeed"); if (sp) sp.onclick = () => { speedMul = speedMul === 1 ? 0.75 : 1; sp.textContent = speedMul === 1 ? "1x" : "0.75x"; };
     const mic = el.querySelector("#lcMic");

@@ -178,3 +178,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-scenes figure{ margin:0; border-radius:14px; overflow:hidden; background:rgba(0,0,0,.05); }
 .lc-scenes img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
 .lc-scenes figcaption{ padding:6px 10px; font-size:13px; font-weight:600; }
+
+.lc-advice{ margin-top:12px; padding-top:10px; border-top:1px dashed rgba(0,0,0,.15); }
+.lc-advice-info{ font-size:12px; opacity:.75; margin:0 0 8px; line-height:1.35; }
+.lc-advice-btn{ width:100%; }
+.lc-advice-out{ margin-top:8px; font-size:14px; line-height:1.45; white-space:pre-wrap; }
+.lc-advice-out.on{ padding:10px 12px; border-radius:12px; background:rgba(60,170,90,.12); border:1px solid rgba(60,170,90,.35); }
