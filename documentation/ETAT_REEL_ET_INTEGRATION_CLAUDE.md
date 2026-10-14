@@ -50,3 +50,8 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 ## Aperçu direct (2026-10-14, v20261014j)
 - `apercu-a11.html` : ouvre la leçon A1.1 directement, sans connexion ni test de niveau. Options : `?g=girl|boy&i=0..8&t=light|dark`.
 - Dans l'app normale, la leçon s'ouvre seulement après connexion + test de niveau, puis Mes cours → Anglais → bouton « Leçon A1.1 — Mon identité (nouvelle version) ».
+
+## Blocages retirés pendant la construction (v20261014k)
+- Interrupteur unique : `UNLOCK_ALL_PREVIEW = true` dans `js/data/dev-config.js`.
+- Effet : dans la leçon A1.1, « Suivant » n'est jamais bloqué (réponse non obligatoire), le test de fin s'ouvre sans conditions ; le bouton de la leçon apparaît dans Mes cours (anglais) même sans test de niveau.
+- À l'officialisation : passer à `false` pour remettre les blocages (réponses obligatoires, test de niveau avant les cours).

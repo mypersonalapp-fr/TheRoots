@@ -15,3 +15,11 @@ export const CREATOR_MODE = true;
 // Quand tout est validé : passer à false → les cours redeviennent verrouillés
 // tant que le test de niveau n'est pas fait.
 export const UNLOCK_COURSES_PREVIEW = true;
+
+// UNLOCK_ALL_PREVIEW = true : pendant la construction, TOUT est accessible dans la
+// leçon A1.1 « Mon identité » : on peut passer à la page suivante sans répondre,
+// ouvrir le test de fin sans avoir fait le reste, et le bouton de la leçon est
+// visible dans Mes cours même si le test de niveau n'est pas passé.
+// Quand tout est validé et officiel : passer à false → les blocages reviennent
+// (réponses obligatoires avant « Suivant », cours verrouillés avant le test).
+export const UNLOCK_ALL_PREVIEW = true;
