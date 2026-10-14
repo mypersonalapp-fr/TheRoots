@@ -39,3 +39,8 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Questions ambiguës corrigées : écoute « At work » (locuteur sans genre → « the speaker »), « What is the nationality? » → James, transversale jour 3 (« I am ___ Portugal » acceptait « in » → précisé « origine »).
 - Vocabulaire : page « Origine et adresse » renommée, exemple « My city is Paris » → « I live in Paris ».
 - Tests Playwright (clair/sombre) : activités, transversale, test 40/40, avatars : 0 erreur JS.
+
+## Personnages en pied (2026-10-14, v20261014h)
+- Intégrés : filles 2 à 9 et garçons 2, 3, 5, 7, 9 (`assets/img/characters/{girl|boy}-N-intro.png`, détourés, liseré retiré, damier incrusté supprimé pour 4 d'entre eux). Utilisés aussi à l'écran de résultat.
+- En attente (portrait en repli) : garçon 4 (cheveux noirs lisses, sweat rouge), garçon 6 (veste en jean), garçon 8 (cheveux noirs bouclés, peau plus foncée, sweat jaune). Les versions reçues ne correspondaient pas aux portraits (visage/cheveux), ou manquaient.
+- Reçus mais non utilisés : garçon sweat vert blond, garçon sweat noir.
