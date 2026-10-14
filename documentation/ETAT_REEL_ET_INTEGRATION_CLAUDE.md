@@ -79,3 +79,4 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Fonds propres reçus (14/10) pour M1, M2, M3, M4, M6 (assets/img/city/m*.webp). M5 utilise encore scene-describe.
 - M5 : fond de classe reçu (city/m5.webp) ; titre « Portrait-robot » et post-it « Find the person » en texte superposé (.rc-chalk/.rc-post).
 - M5 refait avec vignettes découpées de l'image Portrait-robot (city/k-*.webp : 9 coiffures, 4 yeux, 4 sweats, 4 pantalons, 4 chaussures) + fiche « Portrait » qui se remplit. Personnage animé en calques : en attente des calques ChatGPT.
+- Scènes vocabulaire « Les nombres » et « Le corps » intégrées (scene-numbers/scene-body). Planche de calques ChatGPT reçue mais inutilisable en l'état (fonds non transparents, éléments non alignés).

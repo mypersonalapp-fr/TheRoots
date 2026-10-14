@@ -4,8 +4,8 @@
 // routage entre les onglets.
 
 import { renderDashboard } from "./dashboard.js?v=20261001a";
-import { renderSettings } from "./settings.js?v=20261014t";
-import { renderMesCours } from "./mes-cours.js?v=20261014t";
+import { renderSettings } from "./settings.js?v=20261014u";
+import { renderMesCours } from "./mes-cours.js?v=20261014u";
 import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
 import { renderComprehension } from "./comprehension.js?v=20261001d";
 import { renderExpression } from "./expression.js?v=20261001d";
