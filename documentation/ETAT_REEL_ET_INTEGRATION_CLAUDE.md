@@ -71,3 +71,8 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Transversale : remplacée par le module officiel « Foundations » (couleurs, nombres/âges, jours, mois/saisons, dates/ordinaux, années, heure).
 - Reste : illustrations des pages de vocabulaire (ChatGPT), jeu de consolidation, test iPhone, branchement parcours officiel, mineurs/RGPD.
 - Scènes de vocabulaire intégrées (ChatGPT, 14/10) : scene-name, scene-birth, scene-nationality, scene-describe (champ `scene` des pages ; l'image absente est retirée via onerror). Manquent : « Les nombres », « Le corps ». La planche 4-en-1 reçue n'est pas utilisée.
+
+## Roots City (14/10/2026)
+- `js/screens/roots-city.js` : 6 missions d'entraînement (non notées, étoiles dans `prog.city`), menu item « Roots City » (n°7). Texte en vrai HTML ; images = recadrages des maquettes ChatGPT (`assets/img/city/`) + scènes existantes.
+- M1 trouver la personne (audio), M2 fiches d'identité, M3 dialogue (ordre des mots), M4 passeport (pays→nationalité), M5 portrait-robot, M6 présenter un personnage.
+- Reste : enregistrement vocal en M6, plus de manches, éventuels fonds dédiés M3/M6.
