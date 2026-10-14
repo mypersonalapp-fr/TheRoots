@@ -70,3 +70,4 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Grammaire : 7 pages (+ this/that/these/those ; to do + réponses courtes). Lecture : 5 (+ Noah). Écoute : 8 (+ 2). Exercices : 7 séries (+ 2).
 - Transversale : remplacée par le module officiel « Foundations » (couleurs, nombres/âges, jours, mois/saisons, dates/ordinaux, années, heure).
 - Reste : illustrations des pages de vocabulaire (ChatGPT), jeu de consolidation, test iPhone, branchement parcours officiel, mineurs/RGPD.
+- Scènes de vocabulaire intégrées (ChatGPT, 14/10) : scene-name, scene-birth, scene-nationality, scene-describe (champ `scene` des pages ; l'image absente est retirée via onerror). Manquent : « Les nombres », « Le corps ». La planche 4-en-1 reçue n'est pas utilisée.
