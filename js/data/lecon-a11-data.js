@@ -435,394 +435,602 @@ export const EXPRESSION_PAGES = [
     checks: [["Son prénom", "(this is|his name is|her name is)\\s+\\w+"], ["Son âge", "(he|she)(\\s+is|'s)\\s+[\\w-]+\\s+years? old"], ["D’où il / elle vient", "(he|she)(\\s+is|'s)\\s+from\\s+\\w+"], ["Ce qu’il / elle aime", "(he|she) (likes|loves)\\s+\\w+"]] },
 ];
 
-// Transversale : 7 jours de pratique (a11-transversale.html) — mots, 3 questions, expression écrite.
+// Transversale : module « Foundations » (7 jours) — couleurs, nombres, jours, mois, dates, années, heure.
 export const TRANSV_DAYS = [
  {
-  "title": "Jour 1 · Se présenter",
-  "goal": "Prénom, nom et salutations",
+  "title": "Jour 1 · Les couleurs",
+  "goal": "Red, blue, green… décrire avec les couleurs",
   "words": [
    [
-    "Hello",
-    "Bonjour"
+    "red",
+    "rouge"
    ],
    [
-    "My name is…",
-    "Je m’appelle…"
+    "blue",
+    "bleu"
    ],
    [
-    "First name",
-    "Prénom"
+    "green",
+    "vert"
    ],
    [
-    "Last name",
-    "Nom de famille"
+    "yellow",
+    "jaune"
+   ],
+   [
+    "black",
+    "noir"
+   ],
+   [
+    "white",
+    "blanc"
+   ],
+   [
+    "orange",
+    "orange"
+   ],
+   [
+    "pink",
+    "rose"
+   ],
+   [
+    "purple",
+    "violet"
+   ],
+   [
+    "brown",
+    "marron"
+   ],
+   [
+    "grey",
+    "gris"
    ]
   ],
   "qs": [
    [
-    "My name ___ Emma.",
+    "What colour is the sky?",
     [
-     "am",
-     "is",
-     "are"
+     "blue",
+     "red",
+     "brown"
     ],
-    1,
-    ""
+    0,
+    "The sky is blue."
    ],
    [
-    "What is your ___ name?",
+    "Banana = ?",
+    [
+     "green",
+     "yellow",
+     "purple"
+    ],
+    1,
+    "A banana is yellow."
+   ],
+   [
+    "“Marron” en anglais :",
+    [
+     "brown",
+     "grey",
+     "pink"
+    ],
+    0,
+    "Marron = brown."
+   ]
+  ],
+  "writing": "Écris 4 phrases : « My favourite colour is… », « My eyes are… », « My hair is… », « My bag is… »."
+ },
+ {
+  "title": "Jour 2 · Les nombres et les âges",
+  "goal": "0 à 100 et « I am … years old »",
+  "words": [
+   [
+    "zero",
+    "zéro"
+   ],
+   [
+    "one, two, three",
+    "un, deux, trois"
+   ],
+   [
+    "four, five, six",
+    "quatre, cinq, six"
+   ],
+   [
+    "seven, eight, nine, ten",
+    "sept, huit, neuf, dix"
+   ],
+   [
+    "eleven, twelve",
+    "onze, douze"
+   ],
+   [
+    "thirteen … nineteen",
+    "treize … dix-neuf"
+   ],
+   [
+    "twenty",
+    "vingt"
+   ],
+   [
+    "thirty, forty, fifty",
+    "trente, quarante, cinquante"
+   ],
+   [
+    "sixty, seventy",
+    "soixante, soixante-dix"
+   ],
+   [
+    "eighty, ninety, a hundred",
+    "quatre-vingts, quatre-vingt-dix, cent"
+   ]
+  ],
+  "qs": [
+   [
+    "How do you say 15?",
+    [
+     "fifty",
+     "fifteen",
+     "fourteen"
+    ],
+    1,
+    "15 = fifteen (≠ fifty = 50)."
+   ],
+   [
+    "“Thirty” =",
+    [
+     "13",
+     "30",
+     "3"
+    ],
+    1,
+    "Thirty = 30."
+   ],
+   [
+    "“I am ___ years old.” (22)",
+    [
+     "twenty-two",
+     "two-twenty",
+     "twelve-two"
+    ],
+    0,
+    "22 = twenty-two."
+   ]
+  ],
+  "writing": "Écris ton âge, l’âge d’un ami et l’âge d’un membre de ta famille, en toutes lettres."
+ },
+ {
+  "title": "Jour 3 · Les jours de la semaine",
+  "goal": "Monday to Sunday",
+  "words": [
+   [
+    "Monday",
+    "lundi"
+   ],
+   [
+    "Tuesday",
+    "mardi"
+   ],
+   [
+    "Wednesday",
+    "mercredi"
+   ],
+   [
+    "Thursday",
+    "jeudi"
+   ],
+   [
+    "Friday",
+    "vendredi"
+   ],
+   [
+    "Saturday",
+    "samedi"
+   ],
+   [
+    "Sunday",
+    "dimanche"
+   ],
+   [
+    "today",
+    "aujourd’hui"
+   ],
+   [
+    "tomorrow",
+    "demain"
+   ],
+   [
+    "weekend",
+    "week-end"
+   ]
+  ],
+  "qs": [
+   [
+    "The day after Monday is…",
+    [
+     "Sunday",
+     "Tuesday",
+     "Friday"
+    ],
+    1,
+    "Monday → Tuesday."
+   ],
+   [
+    "“Samedi” =",
+    [
+     "Sunday",
+     "Saturday",
+     "Thursday"
+    ],
+    1,
+    "Samedi = Saturday."
+   ],
+   [
+    "“Today is Friday.” Tomorrow is…",
+    [
+     "Saturday",
+     "Thursday",
+     "Sunday"
+    ],
+    0,
+    "After Friday: Saturday."
+   ]
+  ],
+  "writing": "Écris : « Today is… », « Tomorrow is… », « My favourite day is… because… »."
+ },
+ {
+  "title": "Jour 4 · Les mois et les saisons",
+  "goal": "January to December · spring, summer…",
+  "words": [
+   [
+    "January, February, March",
+    "janvier, février, mars"
+   ],
+   [
+    "April, May, June",
+    "avril, mai, juin"
+   ],
+   [
+    "July, August, September",
+    "juillet, août, septembre"
+   ],
+   [
+    "October, November, December",
+    "octobre, novembre, décembre"
+   ],
+   [
+    "spring",
+    "printemps"
+   ],
+   [
+    "summer",
+    "été"
+   ],
+   [
+    "autumn",
+    "automne"
+   ],
+   [
+    "winter",
+    "hiver"
+   ],
+   [
+    "month",
+    "mois"
+   ],
+   [
+    "season",
+    "saison"
+   ]
+  ],
+  "qs": [
+   [
+    "“Août” =",
+    [
+     "April",
+     "August",
+     "October"
+    ],
+    1,
+    "Août = August."
+   ],
+   [
+    "Summer is…",
+    [
+     "l’hiver",
+     "l’été",
+     "l’automne"
+    ],
+    1,
+    "Summer = été."
+   ],
+   [
+    "The month after June is…",
+    [
+     "July",
+     "May",
+     "August"
+    ],
+    0,
+    "June → July."
+   ]
+  ],
+  "writing": "Écris : « My birthday is in… », « My favourite month is… », « My favourite season is… »."
+ },
+ {
+  "title": "Jour 5 · Les dates et les ordinaux",
+  "goal": "first, second, third… et « on the 5th of May »",
+  "words": [
+   [
+    "first (1st)",
+    "premier"
+   ],
+   [
+    "second (2nd)",
+    "deuxième"
+   ],
+   [
+    "third (3rd)",
+    "troisième"
+   ],
+   [
+    "fourth (4th)",
+    "quatrième"
+   ],
+   [
+    "fifth (5th)",
+    "cinquième"
+   ],
+   [
+    "tenth (10th)",
+    "dixième"
+   ],
+   [
+    "twentieth (20th)",
+    "vingtième"
+   ],
+   [
+    "date",
+    "date"
+   ],
+   [
+    "birthday",
+    "anniversaire"
+   ],
+   [
+    "on the 5th of May",
+    "le 5 mai"
+   ]
+  ],
+  "qs": [
+   [
+    "“3rd” se dit…",
+    [
+     "three",
+     "third",
+     "thirty"
+    ],
+    1,
+    "3rd = third."
+   ],
+   [
+    "“My birthday is ___ the 12th of June.”",
+    [
+     "in",
+     "on",
+     "at"
+    ],
+    1,
+    "Avec une date : on."
+   ],
+   [
+    "“1st” =",
     [
      "first",
-     "from",
-     "old"
+     "one",
+     "second"
     ],
     0,
-    ""
-   ],
-   [
-    "Nice to ___ you.",
-    [
-     "meet",
-     "live",
-     "have"
-    ],
-    0,
-    ""
+    "1st = first."
    ]
   ],
-  "writing": "Écris trois phrases pour te présenter en anglais."
+  "writing": "Écris ta date de naissance complète : « I was born on the … of … ». Puis la date d’aujourd’hui."
  },
  {
-  "title": "Jour 2 · Âge et nombres",
-  "goal": "Dire son âge et comprendre les nombres",
+  "title": "Jour 6 · Les années",
+  "goal": "Dire une année en anglais",
   "words": [
    [
-    "How old are you?",
-    "Quel âge as-tu ?"
+    "year",
+    "année"
    ],
    [
-    "I am twenty.",
-    "J’ai vingt ans."
+    "nineteen ninety-five (1995)",
+    "1995"
    ],
    [
-    "Birthday",
-    "Anniversaire"
+    "two thousand (2000)",
+    "2000"
    ],
    [
-    "Years old",
-    "Ans"
+    "two thousand and ten (2010)",
+    "2010"
+   ],
+   [
+    "twenty twenty-six (2026)",
+    "2026"
+   ],
+   [
+    "I was born in…",
+    "je suis né(e) en…"
+   ],
+   [
+    "last year",
+    "l’année dernière"
+   ],
+   [
+    "this year",
+    "cette année"
+   ],
+   [
+    "next year",
+    "l’année prochaine"
+   ],
+   [
+    "century",
+    "siècle"
    ]
   ],
   "qs": [
    [
-    "I ___ 20 years old.",
+    "1990 se dit…",
     [
-     "have",
-     "am",
-     "is"
+     "nineteen ninety",
+     "one nine nine zero",
+     "ninety-nine"
     ],
-    1,
-    ""
+    0,
+    "On coupe en deux : nineteen ninety."
    ],
    [
-    "Twenty-five =",
+    "“I was born ___ 2001.”",
     [
-     "15",
-     "25",
-     "35"
+     "in",
+     "on",
+     "at"
     ],
-    1,
-    ""
+    0,
+    "Avec une année : in."
    ],
    [
-    "How ___ are you?",
+    "2026 se dit souvent…",
     [
-     "many",
-     "old",
-     "from"
+     "twenty twenty-six",
+     "two zero two six",
+     "twenty-two six"
     ],
-    1,
-    ""
+    0,
+    "twenty twenty-six."
    ]
   ],
-  "writing": "Présente ton âge et la date de ton anniversaire."
+  "writing": "Écris : « I was born in… », « This year is… », « Next year is… »."
  },
  {
-  "title": "Jour 3 · Origines et nationalités",
-  "goal": "Dire son pays, sa ville et sa nationalité",
+  "title": "Jour 7 · L’heure",
+  "goal": "What time is it?",
   "words": [
    [
-    "I am from France.",
-    "Je viens de France."
+    "What time is it?",
+    "Quelle heure est-il ?"
    ],
    [
-    "I live in Paris.",
-    "J’habite à Paris."
+    "It’s three o’clock.",
+    "Il est trois heures."
    ],
    [
-    "French",
-    "Français(e)"
+    "It’s half past three.",
+    "Il est trois heures et demie."
    ],
    [
-    "Where are you from?",
-    "D’où viens-tu ?"
+    "It’s a quarter past three.",
+    "Il est trois heures et quart."
+   ],
+   [
+    "It’s a quarter to four.",
+    "Il est quatre heures moins le quart."
+   ],
+   [
+    "morning",
+    "matin"
+   ],
+   [
+    "afternoon",
+    "après-midi"
+   ],
+   [
+    "evening",
+    "soir"
+   ],
+   [
+    "night",
+    "nuit"
+   ],
+   [
+    "noon / midnight",
+    "midi / minuit"
    ]
   ],
   "qs": [
    [
-    "I am ___ Portugal. (origine)",
+    "“It’s half past two” =",
     [
-     "at",
-     "from",
-     "in"
-    ],
-    1,
-    ""
-   ],
-   [
-    "She ___ in London.",
-    [
-     "live",
-     "lives",
-     "living"
-    ],
-    1,
-    ""
-   ],
-   [
-    "Where ___ you from?",
-    [
-     "is",
-     "are",
-     "do"
-    ],
-    1,
-    ""
-   ]
-  ],
-  "writing": "Écris ton pays d’origine, ta nationalité et ta ville."
- },
- {
-  "title": "Jour 4 · Être et avoir",
-  "goal": "Conjuguer be et have au présent",
-  "words": [
-   [
-    "I am",
-    "Je suis"
-   ],
-   [
-    "She is",
-    "Elle est"
-   ],
-   [
-    "I have",
-    "J’ai"
-   ],
-   [
-    "He has",
-    "Il a"
-   ]
-  ],
-  "qs": [
-   [
-    "They ___ students.",
-    [
-     "is",
-     "are",
-     "am"
-    ],
-    1,
-    ""
-   ],
-   [
-    "She ___ blue eyes.",
-    [
-     "have",
-     "has",
-     "is"
-    ],
-    1,
-    ""
-   ],
-   [
-    "I ___ not a doctor.",
-    [
-     "am",
-     "is",
-     "do"
+     "2h30",
+     "2h15",
+     "1h30"
     ],
     0,
-    ""
-   ]
-  ],
-  "writing": "Écris une phrase avec am, une avec is et une avec have."
- },
- {
-  "title": "Jour 5 · Questions et négation",
-  "goal": "Poser une question, répondre et nier",
-  "words": [
-   [
-    "Are you…?",
-    "Es-tu… ?"
+    "Half past = et demie."
    ],
    [
-    "Do you have…?",
-    "As-tu… ?"
-   ],
-   [
-    "I am not",
-    "Je ne suis pas"
-   ],
-   [
-    "She doesn't have",
-    "Elle n’a pas"
-   ]
-  ],
-  "qs": [
-   [
-    "___ he British?",
+    "“A quarter to five” =",
     [
-     "Is",
-     "Does",
-     "Do"
-    ],
-    0,
-    ""
-   ],
-   [
-    "___ you have a sister?",
-    [
-     "Are",
-     "Do",
-     "Is"
+     "5h15",
+     "4h45",
+     "4h15"
     ],
     1,
-    ""
+    "Quarter to five = 4h45."
    ],
    [
-    "She ___ not have a car.",
+    "“What time is it?” =",
     [
-     "do",
-     "does",
-     "is"
+     "Quel jour ?",
+     "Quelle heure ?",
+     "Quel âge ?"
     ],
     1,
-    ""
+    "What time = quelle heure."
    ]
   ],
-  "writing": "Écris deux questions et deux réponses négatives."
- },
- {
-  "title": "Jour 6 · Description et possessifs",
-  "goal": "Décrire une personne avec my, his, her",
-  "words": [
-   [
-    "Brown eyes",
-    "Yeux marron"
-   ],
-   [
-    "Blond hair",
-    "Cheveux blonds"
-   ],
-   [
-    "My brother",
-    "Mon frère"
-   ],
-   [
-    "Her name",
-    "Son prénom (à elle)"
-   ]
-  ],
-  "qs": [
-   [
-    "This is ___ mother.",
-    [
-     "my",
-     "I",
-     "me"
-    ],
-    0,
-    ""
-   ],
-   [
-    "___ name is Paul (à lui).",
-    [
-     "Her",
-     "His",
-     "Your"
-    ],
-    1,
-    ""
-   ],
-   [
-    "I ___ green eyes.",
-    [
-     "has",
-     "am",
-     "have"
-    ],
-    2,
-    ""
-   ]
-  ],
-  "writing": "Décris-toi en 4 phrases, dont une avec un possessif."
- },
- {
-  "title": "Jour 7 · Révision et transfert",
-  "goal": "Utiliser tout le vocabulaire dans une situation réelle",
-  "words": [
-   [
-    "Nice to meet you.",
-    "Enchanté(e)."
-   ],
-   [
-    "Where do you live?",
-    "Où habites-tu ?"
-   ],
-   [
-    "What do you do?",
-    "Que fais-tu dans la vie ?"
-   ],
-   [
-    "I am a student.",
-    "Je suis étudiant(e)."
-   ]
-  ],
-  "qs": [
-   [
-    "Where ___ she live?",
-    [
-     "do",
-     "does",
-     "is"
-    ],
-    1,
-    ""
-   ],
-   [
-    "He ___ a teacher.",
-    [
-     "is",
-     "are",
-     "am"
-    ],
-    0,
-    ""
-   ],
-   [
-    "___ are my friends.",
-    [
-     "These",
-     "This",
-     "That"
-    ],
-    0,
-    ""
-   ]
-  ],
-  "writing": "Rédige une présentation complète de 6 à 8 phrases. Puis lis-la à voix haute."
+  "writing": "Écris l’heure de ton réveil, de ton déjeuner et de ton coucher : « I wake up at… »."
  }
 ];
+
+/* ---- Extension A1.1 (octobre 2026) ---- */
+GRAMMAR_PAGES.push(
+  {
+    title: "This / that / these / those", icon: "👉",
+    table: [["this", "ce / cet / cette (proche, 1)", "This is my book."], ["that", "ce… là (loin, 1)", "That is her car."], ["these", "ces (proches, plusieurs)", "These are my friends."], ["those", "ces… là (loin, plusieurs)", "Those are his shoes."]],
+    examples: [["This is my passport.", "Voici mon passeport."], ["Those are my sisters.", "Ce sont mes sœurs (là-bas)."], ["What is that? — It’s a bag.", "C’est quoi, ça ? — C’est un sac."]],
+    qs: [["___ are my shoes. (plusieurs, proches)", ["This", "These", "That"], 1, "Plusieurs + proche → these."], ["___ is my teacher. (un, loin)", ["That", "These", "Those"], 0, "Un seul + loin → that."]],
+  },
+  {
+    title: "To do : questions et réponses courtes", icon: "↩️",
+    table: [["Do I / you / we / they…?", "Yes, I do. / No, I don’t.", "Do you live in Paris?"], ["Does he / she / it…?", "Yes, she does. / No, she doesn’t.", "Does she like music?"], ["don’t", "= do not", "I don’t have a car."], ["doesn’t", "= does not", "He doesn’t speak Spanish."]],
+    examples: [["Do you have a brother? — Yes, I do.", "As-tu un frère ? — Oui."], ["Does Lucas live in Porto? — No, he doesn’t.", "Lucas habite-t-il à Porto ? — Non."], ["I don’t speak German.", "Je ne parle pas allemand."]],
+    qs: [["___ she have a sister?", ["Do", "Does", "Is"], 1, "she → Does."], ["Do you like tea? — No, I ___.", ["don’t", "doesn’t", "isn’t"], 0, "Réponse courte : No, I don’t."], ["He ___ live in London.", ["don’t", "doesn’t", "isn’t"], 1, "he → doesn’t."]],
+  },
+);
+
+READING_PAGES.push(
+  { who: "Noah", text: "Hi! I'm Noah. I'm fifteen. My birthday is on the 3rd of March. I'm tall: I'm one metre eighty. I have short black hair and brown eyes. My shoe size is forty-two.",
+    fr: "Noah a quinze ans, son anniversaire est le 3 mars. Il est grand (1,80 m), a les cheveux courts et noirs, les yeux marron et chausse du 42.",
+    qs: [["When is Noah's birthday?", ["3rd of March", "13th of March", "3rd of May"], 0, "On the 3rd of March."], ["What colour is his hair?", ["Brown", "Black", "Blond"], 1, "Short black hair."], ["What is his shoe size?", ["Forty", "Forty-two", "Fourteen"], 1, "Forty-two = 42."]] },
+);
+
+LISTENING_PAGES.push(
+  { title: "Phone number and age", text: "Hello, my name is Sophie. I am twenty-eight years old. My phone number is oh seven, one two, three four. My birthday is in July.",
+    qs: [["How old is Sophie?", ["18", "28", "38"], 1, "Twenty-eight = 28."], ["When is her birthday?", ["June", "July", "August"], 1, "In July."]] },
+  { title: "What does she look like?", text: "This is my friend Mia. She is tall. She has long brown hair and green eyes. Her shoes are red.",
+    qs: [["What colour are her eyes?", ["Green", "Blue", "Brown"], 0, "Green eyes."], ["What colour are her shoes?", ["Red", "Pink", "Black"], 0, "Her shoes are red."]] },
+);
+
+EXERCISE_PAGES.push(
+  { title: "Vocabulaire — Nombres et description", help: "Choisis la bonne réponse.",
+    qs: [["shoe size", ["pointure", "taille", "poids"], 0, "Shoe size = pointure."], ["height", ["poids", "taille", "âge"], 1, "Height = taille."], ["“Eighteen” =", ["8", "18", "80"], 1, "Eighteen = 18."], ["“Skin colour” =", ["couleur des yeux", "couleur de peau", "couleur de cheveux"], 1, "Skin colour = couleur de peau."], ["“Hand” =", ["pied", "main", "tête"], 1, "Hand = main."], ["“Leg” =", ["bras", "jambe", "dos"], 1, "Leg = jambe."]] },
+  { title: "Grammaire — This/that et do/does", help: "Complète la phrase.",
+    qs: [["___ is my pen. (proche, 1)", ["This", "These", "Those"], 0, "This."], ["___ are my parents. (loin, plusieurs)", ["That", "Those", "This"], 1, "Those."], ["___ you have a phone?", ["Does", "Do", "Is"], 1, "you → Do."], ["Does he play football? — Yes, he ___.", ["do", "does", "is"], 1, "Yes, he does."], ["I ___ like coffee.", ["doesn’t", "don’t", "isn’t"], 1, "I don’t."]] },
+);
 
 // Test de fin de leçon (a11-competences.html) : 3 textes, 3 audios, 15 questions de grammaire (10 tirées au sort).
 export const TEST_TEXTS = [{"title": "Emma à Paris", "text": "Hello! My name is Emma. I am ten years old. I am French. I live in Paris. I am a student.", "q": [["Where does Emma live?", ["London", "Paris", "Madrid"], 1], ["How old is Emma?", ["10", "12", "20"], 0], ["Is Emma a student?", ["Yes", "No", "Not stated"], 0]]}, {"title": "Lucas à Porto", "text": "Hi! I am Lucas. I am twenty-five. I am Portuguese and I live in Porto. I am a teacher.", "q": [["Where does Lucas live?", ["Porto", "Lisbon", "Rome"], 0], ["How old is Lucas?", ["15", "25", "35"], 1], ["What is his job?", ["Doctor", "Teacher", "Student"], 1]]}, {"title": "Maya à Manchester", "text": "Good morning! My name is Maya Smith. I am British. I live in Manchester. I have a sister called Lily.", "q": [["What is her last name?", ["Lily", "Maya", "Smith"], 2], ["Where does she live?", ["Manchester", "Paris", "London"], 0], ["Who is Lily?", ["Her sister", "Her mother", "Her friend"], 0]]}];

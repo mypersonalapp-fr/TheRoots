@@ -64,3 +64,9 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Ne compte JAMAIS dans la note (les mots-clés/coches vertes restent la note officielle). Phrase d'information avant l'envoi : le texte est envoyé à Google (clé gratuite : usage possible par Google pour améliorer ses produits).
 - Limite : 5 conseils par jour (localStorage). Repli : message simple si pas de réseau/quota.
 - À faire avant l'ouverture aux vrais élèves : information parents/mineurs (RGPD), clé payante si besoin.
+
+## Extension contenu A1.1 (14/10/2026)
+- Vocabulaire : 7 pages (ajout « Les nombres », « Apparence physique », « Le corps » ; « Nationalité et résidence »). Champ optionnel `icon` par page.
+- Grammaire : 7 pages (+ this/that/these/those ; to do + réponses courtes). Lecture : 5 (+ Noah). Écoute : 8 (+ 2). Exercices : 7 séries (+ 2).
+- Transversale : remplacée par le module officiel « Foundations » (couleurs, nombres/âges, jours, mois/saisons, dates/ordinaux, années, heure).
+- Reste : illustrations des pages de vocabulaire (ChatGPT), jeu de consolidation, test iPhone, branchement parcours officiel, mineurs/RGPD.

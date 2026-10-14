@@ -6,9 +6,9 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014m";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014n";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014m";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014n";
 
 const PROGRESS_KEY = "the_roots_a11_lesson_v1";
 const GIRLS = 9;
@@ -27,7 +27,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014m" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014n" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -86,11 +86,32 @@ const VOCAB_PAGES = [
     q: ["“City” veut dire…", ["pays", "ville", "adresse"], 1],
   },
   {
-    kind: "words", title: "Nationalité et description",
-    words: [["nationality", "nationalité"], ["address", "adresse"], ["height", "taille"], ["weight", "poids"]],
+    kind: "words", title: "Nationalité et résidence", icon: "🌍",
+    words: [["nationality", "nationalité"], ["address", "adresse"], ["phone number", "numéro de téléphone"], ["email", "adresse e-mail"]],
     tip: "“Nationality” se termine souvent par -ish, -an ou -ese : British, Canadian, Chinese.",
     examples: [["What is your nationality?", "Quelle est ta nationalité ?"], ["What is your address?", "Quelle est ton adresse ?"]],
     q: ["“Address” veut dire…", ["adresse", "âge", "poids"], 0],
+  },
+  {
+    kind: "words", title: "Les nombres", icon: "🔢",
+    words: [["one, two, three", "un, deux, trois"], ["ten", "dix"], ["fifteen", "quinze"], ["twenty", "vingt"], ["thirty", "trente"], ["a hundred", "cent"]],
+    tip: "Attention : “fifteen” = 15 mais “fifty” = 50 ; “thirteen” = 13 mais “thirty” = 30.",
+    examples: [["I am twenty-two years old.", "J’ai vingt-deux ans."], ["My phone number is oh seven, one two…", "Mon numéro est le 07 12…"]],
+    q: ["“Fifty” veut dire…", ["15", "50", "5"], 1],
+  },
+  {
+    kind: "words", title: "Apparence physique", icon: "📏",
+    words: [["height", "taille"], ["weight", "poids"], ["shoe size", "pointure"], ["skin colour", "couleur de peau"], ["eye colour", "couleur des yeux"], ["hair colour", "couleur des cheveux"]],
+    tip: "Pour la taille : “I am one metre seventy.” Pour les yeux : “I have blue eyes.”",
+    examples: [["I am one metre seventy.", "Je mesure 1,70 m."], ["My shoe size is thirty-nine.", "Je chausse du 39."], ["She has long brown hair.", "Elle a de longs cheveux châtains."]],
+    q: ["“Shoe size” veut dire…", ["pointure", "taille", "poids"], 0],
+  },
+  {
+    kind: "words", title: "Le corps", icon: "🧍",
+    words: [["head", "tête"], ["eye", "œil"], ["hand", "main"], ["arm", "bras"], ["leg", "jambe"], ["foot (feet)", "pied (pieds)"]],
+    tip: "Pluriels irréguliers : one foot → two feet ; one tooth → two teeth.",
+    examples: [["I have two arms and two legs.", "J’ai deux bras et deux jambes."], ["Her hands are small.", "Ses mains sont petites."]],
+    q: ["“Leg” veut dire…", ["bras", "jambe", "main"], 1],
   },
   {
     kind: "words", title: "Décrire et présenter",
@@ -117,7 +138,7 @@ const MENU = [
   { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire", ready: true },
   { section: "S’entraîner et progresser" },
   { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage", ready: true },
-  { n: 7, id: "transversal", icon: "🌱", title: "Transversale", sub: "Pratique quotidienne", ready: true },
+  { n: 7, id: "transversal", icon: "🌱", title: "Transversale", sub: "Foundations : couleurs, nombres, dates, heure", ready: true },
   { n: 8, id: "test", icon: "🏆", title: "Test de fin de leçon", sub: "Valide tes acquis", ready: true },
 ];
 
@@ -297,13 +318,13 @@ export function renderLessonA11(root, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014m" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014n" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
       body = `
         <section class="lc-card">
-          <h2 class="lc-h2">${["", "🪪", "🌍", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
+          <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
@@ -375,13 +396,13 @@ export function renderLessonA11(root, { onExit } = {}) {
 
   /* ----- Grammaire / Lecture / Écoute : pages à questions obligatoires ----- */
   const ACT = {
-    grammar: { icon: "⚙️", title: "Grammaire", sub: "Le verbe to be, to have et les questions.", pages: GRAMMAR_PAGES },
+    grammar: { icon: "⚙️", title: "Grammaire", sub: "Be, have, do, this/that et les questions.", pages: GRAMMAR_PAGES },
     reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: READING_PAGES },
     listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: LISTENING_PAGES },
     transversal: { icon: "🌱", title: "Transversale", sub: "", pages: [] },
     exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: EXERCISE_PAGES },
   };
-  const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5" };
+  const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5", Noah: "boy-3" };
   const firstTry = {}; // "exercices:page:question" → réussi du premier coup ?
   const okQ = {}; // "activité:page" → { indexQuestion: true }
 
