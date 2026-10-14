@@ -225,4 +225,11 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-m5{ position:relative; container-type:inline-size; }
 .rc-m5 img{ max-height:none; }
 .rc-chalk{ position:absolute; left:41%; width:50%; top:26%; text-align:center; color:#f4f1e6; font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive; font-weight:700; font-size:7.4cqw; text-shadow:0 0 2px rgba(255,255,255,.4); transform:rotate(-1.5deg); }
-.rc-post{ position:absolute; left:82.8%; top:15.3%; width:7.4%; height:10.4%; display:flex; align-items:center; justify-content:center; text-align:center; color:#5a4300; font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive; font-weight:700; font-size:3.1cqw; line-height:1.0; transform:rotate(2deg); }
+.rc-post{ position:absolute; left:82.8%; top:15.3%; width:7.4%; height:10.4%; display:flex; align-items:center; justify-content:center; text-align:center; color:#5a4300; font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive; font-weight:700; font-size:2.5cqw; line-height:1.0; white-space:nowrap; transform:rotate(2deg); }
+.rc-opts.rc-tiles{ grid-template-columns:repeat(var(--c,3),1fr); }
+.rc-opts.rc-tiles .rc-opt{ padding:3px; min-height:0; }
+.rc-sum{ margin-top:12px; background:rgba(47,111,209,.07); border-radius:14px; padding:8px 12px; }
+.rc-sumrow{ display:flex; align-items:center; gap:10px; padding:3px 0; }
+.rc-sumrow img{ width:36px; height:36px; border-radius:8px; object-fit:cover; flex:none; }
+.rc-empty{ width:36px; height:36px; border-radius:8px; border:2px dashed rgba(47,111,209,.35); flex:none; }
+.rc-muted{ opacity:.55; }

@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014s";
+const V = "20261014t";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
@@ -50,14 +50,18 @@ const NAT_Q = [
 ];
 const M4 = NAT_Q.map(([flag, country, nat, opts]) => ({ say: `I'm from ${country}.`, flag, country, groups: [{ label: "Nationality", answer: nat, opts: names(opts) }] }));
 
-const sw = (v, label, color) => ({ v, label, color });
-const HAIR = (a) => ({ label: "Hair", answer: a, opts: [{ v: "ls", label: "Long and straight" }, { v: "lc", label: "Long and curly" }, { v: "sc", label: "Short and curly" }, { v: "sb", label: "Short and blond" }] });
-const EYES = (a) => ({ label: "Eyes", answer: a, opts: [sw("brown", "Brown", "#7b4a1e"), sw("blue", "Blue", "#2f6fd1"), sw("green", "Green", "#2e9a4f"), sw("grey", "Grey", "#777")] });
-const CLO = (a) => ({ label: "Clothes", answer: a, opts: [sw("red", "Red hoodie", "#d62d2d"), sw("pink", "Pink hoodie", "#ee7fb0"), sw("purple", "Purple hoodie", "#8a52d6"), sw("green", "Green hoodie", "#2a8a3c")] });
+const K = (id, label) => ({ v: id, label, img: img(`city/k-${id}`) });
+const G5 = (a) => [
+  { label: "Hair", answer: a[0], cols: 3, opts: [K("h0", "long wavy brown hair"), K("h1", "long straight dark hair"), K("h2", "curly black hair"), K("h3", "short black hair"), K("h4", "long wavy blond hair"), K("h5", "long wavy black hair"), K("h6", "black hair with a fringe"), K("h7", "two buns"), K("h8", "medium brown hair")] },
+  { label: "Eyes", answer: a[1], cols: 4, opts: [K("e0", "brown eyes"), K("e1", "blue eyes"), K("e2", "green eyes"), K("e3", "grey eyes")] },
+  { label: "Hoodie", answer: a[2], cols: 4, opts: [K("t0", "a red hoodie"), K("t1", "a pink hoodie"), K("t2", "a purple hoodie"), K("t3", "a green hoodie")] },
+  { label: "Trousers", answer: a[3], cols: 4, opts: [K("p0", "light jeans"), K("p1", "blue jeans"), K("p2", "black trousers"), K("p3", "beige trousers")] },
+  { label: "Shoes", answer: a[4], cols: 4, opts: [K("s0", "white trainers"), K("s1", "black trainers"), K("s2", "pink trainers"), K("s3", "red trainers")] },
+];
 const M5 = [
-  { say: "She has long straight hair, brown eyes and a red hoodie.", groups: [HAIR("ls"), EYES("brown"), CLO("red")] },
-  { say: "He has short curly hair, green eyes and a purple hoodie.", groups: [HAIR("sc"), EYES("green"), CLO("purple")] },
-  { say: "She has long curly hair, blue eyes and a pink hoodie.", groups: [HAIR("lc"), EYES("blue"), CLO("pink")] },
+  { say: "She has long straight dark hair, brown eyes, a red hoodie, blue jeans and white trainers.", groups: G5(["h1", "e0", "t0", "p1", "s0"]) },
+  { say: "She has long wavy blond hair, green eyes, a purple hoodie, beige trousers and black trainers.", groups: G5(["h4", "e2", "t2", "p3", "s1"]) },
+  { say: "She has two buns, blue eyes, a green hoodie, black trousers and pink trainers.", groups: G5(["h7", "e1", "t3", "p2", "s2"]) },
 ];
 
 const M6 = [
@@ -97,18 +101,19 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
   /* ---- missions à choix (1, 2, 4, 5) ---- */
   function choose(m, steps, S) {
     const step = steps[S.n], pick = {}; let checked = false;
-    const c = { tiles: step.groups.some((g) => g.tiles) };
+    
     const lead = m.id === "m4"
       ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">What is his or her nationality?</p>`
       : `${play(step.say)}`;
+    const sum = () => `<div class="rc-sum"><h3 class="lc-h3">Portrait</h3>${step.groups.map((g, gi) => { const o = g.opts.find((x) => x.v === pick[gi]); return `<div class="rc-sumrow">${o ? `<img src="${o.img}" alt=""/><span>${esc(o.label)}</span>` : `<i class="rc-empty"></i><span class="rc-muted">${esc(g.label)} …</span>`}</div>`; }).join("")}</div>`;
     const paint = () => {
-      const groups = step.groups.map((g, gi) => `<div class="rc-group"><h3 class="lc-h3">${esc(g.label)}</h3><div class="rc-opts ${g.tiles ? "rc-tiles" : ""}">${g.opts.map((o) => {
+      const groups = step.groups.map((g, gi) => `<div class="rc-group"><h3 class="lc-h3">${esc(g.label)}</h3><div class="rc-opts ${g.tiles || g.cols ? "rc-tiles" : ""}" style="--c:${g.cols || 3}">${g.opts.map((o) => {
         const sel = pick[gi] === o.v, ok = checked && o.v === g.answer, ko = checked && sel && o.v !== g.answer;
-        return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-g="${gi}" data-v="${esc(o.v)}" ${checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="Personnage ${Number(o.v) + 1}"/>` : ""}${o.color ? `<i class="rc-sw" style="background:${o.color}"></i>` : ""}${o.label ? `<span>${esc(o.label)}</span>` : ""}</button>`;
+        return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-g="${gi}" data-v="${esc(o.v)}" ${checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="${esc(o.img && o.label ? o.label : "Character " + (Number(o.v) + 1))}"/>` : ""}${o.label && !o.img ? `<span>${esc(o.label)}</span>` : ""}</button>`;
       }).join("")}</div></div>`).join("");
       const allSet = step.groups.every((g, gi) => pick[gi] != null);
       const extra = "";
-      frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}
+      frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}${m.id === "m5" ? sum() : ""}
         <div class="rc-fb" aria-live="polite">${checked ? (S.last ? "✅ Bien joué !" : "Pas tout à fait — regarde les bonnes réponses en vert.") : ""}</div>
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && !allSet ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
       bindBack(start);
