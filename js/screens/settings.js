@@ -198,7 +198,7 @@ export function renderSettings(container, onChange) {
             <button type="button" class="btn btn-ghost" data-avatar-gender="boy" aria-pressed="${settings.avatarGender==='boy'}">Garçon</button>
           </div>
           <div id="rootsAvatarGrid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px"></div>
-          <p style="font-size:11px;color:var(--ink-soft)">Les portraits illustrés définitifs seront ajoutés à la prochaine étape graphique.</p>
+          <p style="font-size:11px;color:var(--ink-soft)">Tu pourras changer de personnage à tout moment.</p>
         </div>
         <div class="card settings-tab">
           <div><strong>${t("set_interface_lang", lang)}</strong><div style="font-size:12px;color:var(--ink-soft)">${t("set_interface_lang_desc", lang)}</div></div>
@@ -238,11 +238,12 @@ export function renderSettings(container, onChange) {
     `;
     container.querySelector("#settingsBack").addEventListener("click", () => { view = "root"; paint(); });
     // Personnage conservé dans le même store que les autres préférences.
-    const avatars = {girl:['👧🏿','👩🏽','👧🏼','👩🏻','👧🏾','👩🏼'],boy:['👦🏿','👨🏽','👦🏼','👨🏻','👦🏾','👨🏼']};
+    const avatarCount = {girl:8,boy:9};
     function paintAvatars(){
       const cfg=store.get().settings, gender=cfg.avatarGender||'girl';
       const grid=container.querySelector('#rootsAvatarGrid');if(!grid)return;
-      grid.innerHTML=avatars[gender].map((symbol,i)=>'<button type="button" data-avatar-index="'+i+'" aria-pressed="'+((cfg.avatarIndex||0)===i)+'" style="border:2px solid '+((cfg.avatarIndex||0)===i?'#f59a21':'transparent')+';background:var(--card,rgba(255,255,255,.3));border-radius:14px;min-height:78px;font-size:39px;cursor:pointer">'+symbol+'</button>').join('');
+      const sel=Math.min(cfg.avatarIndex||0,avatarCount[gender]-1);
+      grid.innerHTML=Array.from({length:avatarCount[gender]},(_,i)=>'<button type="button" data-avatar-index="'+i+'" aria-label="Personnage '+(i+1)+'" aria-pressed="'+(sel===i)+'" style="border:3px solid '+(sel===i?'#f59a21':'transparent')+';background:transparent;border-radius:16px;padding:0;overflow:hidden;cursor:pointer;aspect-ratio:1"><img src="assets/img/characters/'+gender+'-'+(i+1)+'.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block"/></button>').join('');
       grid.querySelectorAll('[data-avatar-index]').forEach(b=>b.addEventListener('click',()=>{store.updateSettings({avatarIndex:Number(b.dataset.avatarIndex)});paintAvatars()}));
       container.querySelectorAll('[data-avatar-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.avatarGender===gender)));
     }

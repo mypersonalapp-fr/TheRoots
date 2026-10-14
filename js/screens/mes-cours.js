@@ -9,6 +9,8 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
+import { renderLessonA11 } from "./lecon-a11.js?v=20261014a";
+import { renderShell } from "./shell.js?v=20261014a";
 import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20260930a";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
@@ -349,6 +351,7 @@ export function renderMesCours(container, shellRoot) {
             ${!needsVariantChoice ? `
               <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("mc_course_followed", lang)}<strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">${t("mc_change", lang)}</button></div>
               <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">${t("mc_continue", lang)}</button>
+              ${code === "en" ? `<button class="btn btn-ghost" id="mcA11Open" style="width:100%;margin-top:10px">✨ Leçon A1.1 — Mon identité (nouvelle version)</button>` : ""}
             ` : ""}
           ` : `
             <div class="mc-locked-msg">
@@ -440,6 +443,8 @@ export function renderMesCours(container, shellRoot) {
 
     const previewBtn = container.querySelector("#mcPreviewOpen");
     if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=200" : "lessons.html"; });
+    const a11Btn = container.querySelector("#mcA11Open");
+    if (a11Btn) a11Btn.addEventListener("click", () => { renderLessonA11(shellRoot, { onExit: () => renderShell(shellRoot) }); });
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { if (code === "es") {
         // Premier lancement (aucune progression espagnole) : on ouvre le premier palier, A1.1.

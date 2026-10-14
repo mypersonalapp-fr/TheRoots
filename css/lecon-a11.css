@@ -1,0 +1,117 @@
+/* The Roots — leçon A1.1 (Introduction, Menu, Vocabulaire).
+   Fonds d'origine jour/nuit ; cartes illustrées, CTA orange. Suit data-theme. */
+
+.lc-screen{ position:fixed; inset:0; overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--font-main); }
+.lc-wrap{ position:relative; z-index:1; height:100dvh; max-width:520px; margin:0 auto; display:flex; flex-direction:column; padding:max(10px, env(safe-area-inset-top)) 14px max(10px, env(safe-area-inset-bottom)); }
+.lc-screen *{ box-sizing:border-box; }
+
+/* en-tête */
+.lc-head{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px; padding:4px 0 8px; }
+.lc-back{ border:0; border-radius:999px; padding:10px 16px; min-height:44px; font:800 14px var(--font-main); background:#fff3cf; color:#1b3c39; cursor:pointer; box-shadow:var(--shadow-card); }
+.lc-head-title{ text-align:center; font-weight:800; font-size:16px; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,.45); }
+:root:not([data-theme="dark"]) .lc-head-title{ color:var(--brand-teal); text-shadow:0 1px 4px rgba(255,255,255,.8); }
+.lc-count{ min-width:52px; text-align:center; padding:9px 12px; border-radius:999px; background:var(--surface); color:var(--ink); font-weight:800; font-size:13px; box-shadow:var(--shadow-card); }
+.lc-count-ghost{ visibility:hidden; }
+.lc-bar{ height:7px; border-radius:99px; background:rgba(255,255,255,.55); overflow:hidden; margin:0 4px 10px; }
+.lc-bar > div{ height:100%; background:var(--accent); border-radius:99px; transition:width .25s ease; }
+
+/* zone qui défile (jamais sous le pied de page) */
+.lc-main{ flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:0 2px 14px; -webkit-overflow-scrolling:touch; }
+.lc-foot{ flex:0 0 auto; display:flex; gap:10px; padding-top:10px; }
+.lc-foot > button{ flex:1; }
+
+/* boutons */
+.lc-cta{ width:100%; border:0; border-radius:16px; min-height:54px; padding:14px 18px; background:linear-gradient(180deg,#f3a437,#e8821c); color:#fff; font:800 17px var(--font-main); cursor:pointer; box-shadow:0 6px 16px rgba(232,130,28,.38); }
+.lc-cta:disabled{ opacity:.45; box-shadow:none; cursor:not-allowed; }
+.lc-sec-btn{ border:0; border-radius:16px; min-height:54px; padding:14px 18px; background:var(--surface); color:var(--ink); font:800 16px var(--font-main); cursor:pointer; box-shadow:var(--shadow-card); }
+
+/* cartes */
+.lc-card{ background:color-mix(in srgb, var(--surface) 92%, transparent); border-radius:22px; padding:16px; margin:0 0 12px; box-shadow:var(--shadow-card); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.lc-h2{ margin:0 0 12px; font-size:19px; font-weight:800; }
+.lc-ctx{ background:color-mix(in srgb, #fff0d9 88%, var(--surface)); }
+:root[data-theme="dark"] .lc-ctx{ background:color-mix(in srgb, #3a2c18 88%, var(--surface)); }
+.lc-h2-ctx{ color:#b35a10; }
+.lc-prac{ background:color-mix(in srgb, #e6f6e6 90%, var(--surface)); }
+:root[data-theme="dark"] .lc-prac{ background:color-mix(in srgb, #173a2c 90%, var(--surface)); }
+.lc-h2-prac{ color:#1d6b3a; }
+:root[data-theme="dark"] .lc-h2-ctx{ color:#f3b36a; }
+:root[data-theme="dark"] .lc-h2-prac{ color:#7fdba2; }
+
+/* introduction */
+.lc-hero{ position:relative; display:flex; justify-content:center; padding:6px 0 0; }
+.lc-hero-img{ width:min(52vw,210px); aspect-ratio:1; object-fit:cover; border-radius:28px; border:4px solid #fff; box-shadow:var(--shadow-pop); }
+.lc-bubble{ position:absolute; top:6px; right:calc(50% - min(52vw,210px)/2 - 44px); z-index:2; background:#fff; color:#1b1d22; font:800 20px var(--font-main); padding:8px 16px; border-radius:18px; box-shadow:var(--shadow-card); transform:rotate(4deg); }
+.lc-bubble-sm{ position:absolute; top:4px; left:4px; right:auto; font-size:13px; padding:4px 9px; }
+.lc-intro{ margin-top:-18px; padding-top:30px; text-align:center; }
+.lc-level{ font-weight:800; font-size:32px; color:var(--brand-teal); line-height:1; }
+:root[data-theme="dark"] .lc-level{ color:#f4d38f; }
+.lc-intro h1{ margin:2px 0 10px; font-size:30px; font-weight:800; }
+.lc-lead{ margin:0 0 10px; color:var(--ink-soft); text-align:left; font-size:15px; }
+.lc-goals{ list-style:none; padding:0; margin:0 0 16px; text-align:left; display:grid; gap:9px; }
+.lc-goals li{ display:flex; gap:10px; align-items:center; font-size:15px; font-weight:600; }
+.lc-check{ flex:0 0 24px; width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:#fff; font-size:14px; font-weight:800; }
+
+/* menu */
+.lc-menu{ padding:10px; }
+.lc-sec{ margin:14px 6px 8px; font-size:16px; font-weight:800; }
+.lc-row{ width:100%; display:flex; align-items:center; gap:10px; text-align:left; border:0; background:var(--surface-soft); color:var(--ink); border-radius:16px; padding:10px 12px; min-height:58px; margin:0 0 8px; cursor:pointer; font:inherit; }
+.lc-row-soon{ opacity:.62; }
+.lc-num{ flex:0 0 28px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:#fff; font-weight:800; font-size:14px; }
+.lc-ic{ flex:0 0 30px; font-size:24px; text-align:center; }
+.lc-txt{ flex:1; display:flex; flex-direction:column; min-width:0; }
+.lc-txt b{ font-size:16px; }
+.lc-txt small{ color:var(--ink-soft); font-size:12.5px; }
+.lc-go{ flex:0 0 30px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:#fde7c8; color:#c8680c; font-weight:800; font-size:20px; }
+:root[data-theme="dark"] .lc-go{ background:#4a3418; color:#f3b36a; }
+
+/* vocabulaire */
+.lc-vocab-head{ display:flex; gap:12px; align-items:center; padding:2px 6px 12px; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,.5); }
+:root:not([data-theme="dark"]) .lc-vocab-head{ color:var(--brand-teal); text-shadow:0 1px 4px rgba(255,255,255,.85); }
+.lc-vh-ic{ font-size:38px; }
+.lc-vocab-head h1{ margin:0; font-size:28px; font-weight:800; }
+.lc-vocab-head p{ margin:2px 0 0; font-size:15px; }
+.lc-greet{ display:grid; grid-template-columns:27% 1fr; gap:8px; align-items:start; }
+.lc-greet-hero{ position:relative; }
+.lc-greet-hero{ position:sticky; top:0; }
+.lc-greet-hero img{ width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top; border-radius:16px; }
+.lc-greet .lc-list li{ padding:6px 8px; gap:8px; }
+.lc-greet .lc-w b{ font-size:15px; }
+.lc-greet .lc-spk{ flex-basis:40px; width:40px; height:40px; font-size:18px; }
+.lc-greet .lc-ava-sm{ display:none; }
+.lc-list{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.lc-list li{ display:flex; align-items:center; gap:10px; background:var(--surface); border-radius:14px; padding:8px 10px; min-width:0; }
+.lc-ava{ width:42px; height:42px; border-radius:50%; object-fit:cover; flex:0 0 auto; background:#cfe8fb; }
+.lc-ava-sm{ width:38px; height:38px; }
+.lc-w{ flex:1; min-width:0; display:flex; flex-direction:column; overflow-wrap:anywhere; }
+.lc-w b{ font-size:16px; }
+.lc-w small{ color:var(--ink-soft); font-size:13px; }
+.lc-spk{ flex:0 0 44px; width:44px; height:44px; border:0; border-radius:50%; background:#ffe6c2; color:#e8821c; font-size:20px; cursor:pointer; }
+:root[data-theme="dark"] .lc-spk{ background:#4a3418; }
+.lc-spk-on{ background:var(--accent)!important; color:#fff; }
+.lc-tip{ display:flex; gap:10px; align-items:flex-start; margin-top:12px; padding:10px 12px; border-radius:14px; background:#e6f3fd; color:#17415f; }
+:root[data-theme="dark"] .lc-tip{ background:#1d3a52; color:#e3f2ff; }
+.lc-tip span{ font-size:24px; }
+.lc-tip p{ margin:2px 0 0; font-size:13.5px; line-height:1.4; }
+.lc-q{ margin:0 0 10px; font-weight:700; }
+.lc-choices{ display:grid; gap:8px; }
+.lc-choice{ border:2px solid transparent; border-radius:14px; min-height:48px; padding:10px 14px; text-align:left; background:var(--surface); color:var(--ink); font:700 16px var(--font-main); cursor:pointer; }
+.lc-choice.lc-right{ border-color:var(--success); background:color-mix(in srgb, var(--success) 18%, var(--surface)); }
+.lc-choice.lc-wrong{ border-color:var(--pop); background:var(--pop-soft); color:#7a1d12; }
+.lc-fb{ min-height:22px; margin:10px 0 0; font-weight:700; font-size:14px; }
+.lc-fb-ok{ color:var(--success); } .lc-fb-ko{ color:var(--pop); }
+.lc-player{ display:flex; align-items:center; gap:12px; background:var(--surface); border-radius:16px; padding:10px 12px; }
+.lc-play{ width:50px; height:50px; border-radius:50%; border:0; background:#1f6fe0; color:#fff; font-size:20px; cursor:pointer; }
+.lc-wave{ flex:1; height:30px; background:repeating-linear-gradient(90deg,#9db8de 0 2px,transparent 2px 6px); mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent); -webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent); }
+.lc-speed{ background:#e8f0fb; color:#1b3c70; border-radius:99px; padding:6px 10px; font-weight:800; font-size:13px; }
+
+.lc-toast{ position:absolute; left:50%; bottom:92px; transform:translateX(-50%); z-index:5; background:#1b1d22; color:#fff; padding:10px 16px; border-radius:99px; font-weight:700; font-size:14px; box-shadow:var(--shadow-pop); }
+.lc-back:focus-visible,.lc-cta:focus-visible,.lc-sec-btn:focus-visible,.lc-row:focus-visible,.lc-spk:focus-visible,.lc-choice:focus-visible,.lc-play:focus-visible{ outline:3px solid #1f6fe0; outline-offset:2px; }
+
+@media (max-width:360px){ .lc-intro h1{ font-size:26px; } .lc-vocab-head h1{ font-size:24px; } }
+@media (orientation:landscape) and (max-height:520px){ .lc-hero-img{ width:110px; } }
+
+/* Le bouton de test temporaire d'index.html (« Refaire le test de niveau »)
+   ne doit jamais flotter par-dessus un écran de leçon. */
+body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
+:root[data-theme="dark"] .lc-choice.lc-wrong{ background:#4a1f1a; color:#ffd2cb; }
+[data-avatar-gender][aria-pressed="true"]{ background:var(--accent)!important; color:#fff!important; border-color:var(--accent)!important; }
