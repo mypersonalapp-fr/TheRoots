@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>The Roots — Aperçu leçon A1</title>
+  <link rel="stylesheet" href="css/base.css?v=20260930a"/>
+  <link rel="stylesheet" href="css/backgrounds.css?v=20260930a"/>
+  <link rel="stylesheet" href="css/screens.css?v=20261001c"/>
+  <link rel="stylesheet" href="css/lecon-a11.css?v=20261015a"/>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    // Aperçu direct d'une leçon A1 : ?n=1..12  &g=girl|boy  &i=0..8  &t=light|dark
+    import { store } from "./js/data/store.js?v=20260930a";
+    const q = new URLSearchParams(location.search);
+    const patch = {};
+    if (q.get("g") === "girl" || q.get("g") === "boy") patch.avatarGender = q.get("g");
+    if (q.has("i")) patch.avatarIndex = Math.max(0, Math.min(8, Number(q.get("i")) || 0));
+    if (q.get("t") === "light" || q.get("t") === "dark") patch.theme = q.get("t");
+    if (Object.keys(patch).length) store.updateSettings(patch);
+    document.documentElement.setAttribute("data-theme", store.get().settings.theme || "light");
+    const isExam = q.get("n") === "exam";
+    const n = Math.max(1, Math.min(12, Number(q.get("n")) || 1));
+    const { renderLesson } = await import("./js/screens/lecon-a11.js?v=20261015a");
+    const { loadBundle, loadExamBundle } = await import("./js/data/lecons-a1.js?v=20261015a");
+    renderLesson(document.getElementById("app"), await (isExam ? loadExamBundle() : loadBundle(n)), { onExit: () => location.reload() });
+  </script>
+</body>
+</html>

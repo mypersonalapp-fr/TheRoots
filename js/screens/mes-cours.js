@@ -9,10 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLessonA11 } from "./lecon-a11.js?v=20261014x";
-import { renderShell } from "./shell.js?v=20261014x";
+import { renderLesson } from "./lecon-a11.js?v=20261015a";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261015a";
+import { renderShell } from "./shell.js?v=20261015a";
 import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014x";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261015a";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -336,6 +337,22 @@ export function renderMesCours(container, shellRoot) {
     const variant = langData.variants?.find((v) => v.code === langData.selectedVariant);
     const needsVariantChoice = langData.leveled && !variant;
 
+    const a1PathHtml = () => {
+      const rows = A1_LIST.map((L) => {
+        const st = lessonStatus(L.n), open = isUnlocked(L.n, UNLOCK_ALL_PREVIEW);
+        return `<button class="lt-opt" data-a1="${L.n}" ${open ? "" : "disabled"} style="width:100%;text-align:left;display:flex;align-items:center;gap:8px;${open ? "" : "opacity:.55"}">
+          <span style="flex-grow:1"><strong>${L.code}</strong> — ${L.titleFr}<span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">${L.titleEn}${st.score ? ` · test ${st.score}` : ""}</span></span>
+          <span aria-hidden="true">${st.passed ? "✓" : open ? "›" : "🔒"}</span></button>`;
+      }).join("");
+      const done = A1_LIST.filter((L) => lessonStatus(L.n).passed).length;
+      const ex = examStatus(), exOpen = examUnlocked(UNLOCK_ALL_PREVIEW);
+      const examRow = `<button class="lt-opt" id="mcExam" ${exOpen ? "" : "disabled"} style="width:100%;text-align:left;display:flex;align-items:center;gap:8px;${exOpen ? "" : "opacity:.55"}"><span style="flex-grow:1"><strong>🏁 Grand contrôle de fin de A1</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">${exOpen ? "Teste tout le niveau A1" : "S’ouvre quand les 12 leçons sont validées"}${ex.score ? ` · ${ex.score}` : ""}</span></span><span aria-hidden="true">${ex.passed ? "✓" : exOpen ? "›" : "🔒"}</span></button>`;
+      return `<div class="dash-box"><h3>📘 Mon parcours A1</h3><div class="card"><div style="font-size:12px;color:var(--ink-soft)">${done}/12 leçons validées${UNLOCK_ALL_PREVIEW ? " · mode vérification : tout est ouvert" : ""}</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">${rows}${examRow}</div></div></div>`;
+    };
+    const openA1 = async (n) => {
+      try { const B = await loadBundle(n); renderLesson(shellRoot, B, { onExit: () => renderShell(shellRoot) }); }
+      catch (e) { console.error(e); alert("Cette leçon n’a pas pu s’ouvrir."); }
+    };
     container.innerHTML = `
       <button class="settings-back" id="mcBack">${t("mc_back", lang)}</button>
       <div class="dash-box">
@@ -352,7 +369,6 @@ export function renderMesCours(container, shellRoot) {
             ${!needsVariantChoice ? `
               <div style="font-size:12px;color:var(--ink-soft);margin-top:10px">${t("mc_course_followed", lang)}<strong style="color:var(--ink)">${variant.label}</strong> — <button class="mc-variant-change" id="mcChangeVariant">${t("mc_change", lang)}</button></div>
               <button class="btn btn-primary" id="mcContinue" style="width:100%;margin-top:14px">${t("mc_continue", lang)}</button>
-              ${code === "en" ? `<button class="btn btn-ghost" id="mcA11Open" style="width:100%;margin-top:10px">✨ Leçon A1.1 — Mon identité (nouvelle version)</button>` : ""}
             ` : ""}
           ` : `
             <div class="mc-locked-msg">
@@ -363,12 +379,13 @@ export function renderMesCours(container, shellRoot) {
               </div>
             </div>
             <button class="btn btn-primary" id="mcStartTest" style="width:100%;margin-top:12px">${t("mc_start_test", lang)}</button>
-            ${UNLOCK_ALL_PREVIEW && code === "en" ? `<button class="btn btn-ghost" id="mcA11Open" style="width:100%;margin-top:10px">✨ Leçon A1.1 — Mon identité (nouvelle version)</button>` : ""}
             ${UNLOCK_COURSES_PREVIEW ? `<button class="btn btn-ghost" id="mcPreviewOpen" style="width:100%;margin-top:10px">🔓 Ouvrir les cours (mode vérification)</button>
             <div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;text-align:center">Accès temporaire pendant l'installation : à verrouiller ensuite (UNLOCK_COURSES_PREVIEW dans dev-config.js).</div>` : ""}
           `}
         </div>
       </div>
+
+      ${code === "en" && (langData.leveled || UNLOCK_ALL_PREVIEW) ? a1PathHtml() : ""}
 
       ${langData.leveled && code === "en" ? `
         ${renfortsHtml(code) ? `<div class="dash-box"><h3>Mes renforts</h3><div class="card">${renfortsHtml(code)}</div></div>` : ""}
@@ -445,14 +462,16 @@ export function renderMesCours(container, shellRoot) {
 
     const previewBtn = container.querySelector("#mcPreviewOpen");
     if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=200" : "lessons.html"; });
-    const a11Btn = container.querySelector("#mcA11Open");
-    if (a11Btn) a11Btn.addEventListener("click", () => { renderLessonA11(shellRoot, { onExit: () => renderShell(shellRoot) }); });
+    const exB = container.querySelector("#mcExam");
+    if (exB) exB.addEventListener("click", async () => { try { renderLesson(shellRoot, await loadExamBundle(), { onExit: () => renderShell(shellRoot) }); } catch (e) { console.error(e); alert("Le contrôle n’a pas pu s’ouvrir."); } });
+    container.querySelectorAll("[data-a1]").forEach((b) => b.addEventListener("click", () => openA1(Number(b.dataset.a1))));
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { if (code === "es") {
         // Premier lancement (aucune progression espagnole) : on ouvre le premier palier, A1.1.
         let saved = null;
         try { saved = localStorage.getItem("the_roots_lesson_es"); } catch (e) {}
         window.location.href = saved ? "lessons.html?lang=es" : "lessons.html?lang=es#lesson=200";
+      } else if (code === "en" && currentOf(langData).level === "A1") { openA1(nextLessonN(UNLOCK_ALL_PREVIEW));
       } else { window.location.href = "lessons.html"; } });
 
     const changeBtn = container.querySelector("#mcChangeVariant");
@@ -559,6 +578,7 @@ export function renderMesCours(container, shellRoot) {
         <div class="card">
           <div style="font-weight:700;font-size:12.5px;color:var(--ink-soft)">${t("prog_objective_label", lang)}</div>
           <p style="font-size:13.5px;margin:6px 0 0">${p.objective}</p>
+          ${code === "en" && level === "A1" && A1_LIST.some((L) => L.code === p.code) && (UNLOCK_ALL_PREVIEW || langData.leveled) ? `<button class="btn btn-primary" id="progOpenLesson" style="width:100%;margin-top:12px"${isUnlocked(A1_LIST.find((L) => L.code === p.code).n, UNLOCK_ALL_PREVIEW) ? "" : " disabled"}>Ouvrir la leçon ${p.code}</button>` : ""}
         </div>
       </div>
       ${p.whyHow ? `
@@ -634,5 +654,10 @@ export function renderMesCours(container, shellRoot) {
       </div>
     `;
     container.querySelector("#progBackToOverview").addEventListener("click", () => { openProgram = { code, level, palier: null }; paint(); });
+    const openLesson = container.querySelector("#progOpenLesson");
+    if (openLesson) openLesson.addEventListener("click", async () => {
+      try { const B = await loadBundle(A1_LIST.find((L) => L.code === p.code).n); renderLesson(shellRoot, B, { onExit: () => renderShell(shellRoot) }); }
+      catch (e) { console.error(e); alert("Cette leçon n’a pas pu s’ouvrir."); }
+    });
   }
 }

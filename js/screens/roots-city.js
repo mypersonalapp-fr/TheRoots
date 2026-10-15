@@ -1,15 +1,17 @@
-// The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
+// The Roots — « Roots City » : 6 missions de consolidation par leçon (entraînement, non noté dans les 40 points).
+// Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014x";
+import { balanceAll } from "../data/balance.js?v=20261015a";
+const V = "20261015a";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
-const MISSIONS = [
+const DEF_MISSIONS = [
   { id: "m1", ic: "👂", title: "Trouve la bonne personne", sub: "Écoute la description, touche la bonne personne.", hero: "city/m1" },
   { id: "m2", ic: "🪪", title: "Complète les fiches d’identité", sub: "Écoute et remplis nom, âge et nationalité.", hero: "city/m2" },
   { id: "m3", ic: "💬", title: "Construis le dialogue", sub: "Remets les mots dans l’ordre.", hero: "city/m3" },
   { id: "m4", ic: "🛂", title: "Passeport international", sub: "Associe chaque pays à sa nationalité.", hero: "city/m4" },
-  { id: "m5", ic: "🕵️", title: "Portrait-robot", sub: "Find the person : cheveux, yeux, vêtements.", hero: "city/m5" },
+  { id: "m5", ic: "🕵️", portrait: true, title: "Portrait-robot", sub: "Find the person : cheveux, yeux, vêtements.", hero: "city/m5" },
   { id: "m6", ic: "🎉", title: "Le grand rassemblement", sub: "Présente un personnage en anglais.", hero: "city/m6" },
 ];
 
@@ -69,11 +71,13 @@ const M6 = [
   { prompt: "Présente ce personnage.", card: [["Name", "Maya"], ["Nationality", "British"], ["Eyes", "Green"]], answer: ["This is", "Maya.", "She is", "British.", "She has", "green eyes."], bank: ["green eyes.", "He is", "This is", "She has", "Maya.", "British.", "She is", "He has"] },
 ];
 
-const DATA = { m1: M1, m2: M2, m4: M4, m5: M5, m3: M3, m6: M6 };
+const DEF_DATA = { m1: M1, m2: M2, m4: M4, m5: M5, m3: M3, m6: M6 };
+balanceAll(DEF_DATA);
 
-export function createCity({ el, frame, esc, speak, toast, back, getStars, setStar }) {
+export function createCity({ el, frame, esc, speak, toast, back, getStars, setStar, missions, data }) {
+  const MISSIONS = missions || DEF_MISSIONS, DATA = data || DEF_DATA;
   const bindBack = (fn) => { el.querySelector("#lcBack").onclick = fn; };
-  const hero = (m) => `<div class="rc-hero ${m.id === "m5" ? "rc-m5" : ""}"><img src="${img(m.hero)}" alt="" onerror="this.parentElement.remove()"/>${m.id === "m5" ? `<span class="rc-chalk">Portrait-robot</span><span class="rc-post">Find<br>the person</span>` : ""}</div>`;
+  const hero = (m) => `<div class="rc-hero ${m.portrait ? "rc-m5" : ""}"><img src="${img(m.hero)}" alt="" onerror="this.parentElement.remove()"/>${m.portrait ? `<span class="rc-chalk">Portrait-robot</span><span class="rc-post">Find<br>the person</span>` : ""}</div>`;
   const play = (t) => `<button type="button" class="rc-listen" data-say="${esc(t)}">🔊 Écouter</button>`;
   const starsTxt = (n) => "⭐".repeat(n) + "☆".repeat(3 - n);
 
@@ -93,7 +97,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
   function run(i) {
     const m = MISSIONS[i], steps = DATA[m.id];
     const S = { i, n: 0, errors: 0 };
-    (m.id === "m3" || m.id === "m6" ? build : choose)(m, steps, S);
+    (steps[0].answer && steps[0].bank ? build : choose)(m, steps, S);
   }
 
   const head = (m, S, steps) => ({ cur: S.n + 1, total: steps.length });
@@ -102,7 +106,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
   function choose(m, steps, S) {
     const step = steps[S.n], pick = {}; let checked = false, first = true;
     
-    const lead = m.id === "m4"
+    const lead = step.flag
       ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">What is his or her nationality?</p>`
       : `${play(step.say)}`;
     const sum = () => `<div class="rc-sum"><h3 class="lc-h3">Portrait</h3>${step.groups.map((g, gi) => { const o = g.opts.find((x) => x.v === pick[gi]); return `<div class="rc-sumrow">${o ? `<img src="${o.img}" alt=""/><span>${esc(o.label)}</span>` : `<i class="rc-empty"></i><span class="rc-muted">${esc(g.label)} …</span>`}</div>`; }).join("")}</div>`;
@@ -114,7 +118,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       }).join("")}</div></div>`).join("");
       const allSet = step.groups.every((g, gi) => pick[gi] != null);
       const extra = "";
-      frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}${m.id === "m5" ? sum() : ""}
+      frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}${m.portrait ? sum() : ""}
         <div class="rc-fb" aria-live="polite">${checked ? (S.last ? "✅ Bien joué !" : "Pas tout à fait — regarde les bonnes réponses en vert.") : ""}</div>
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && !allSet ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
       first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
@@ -127,8 +131,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         } else if (S.n + 1 >= steps.length) finish(m, S, steps);
         else { S.n++; S.last = false; choose(m, steps, S); }
       };
-      if (!checked && m.id === "m4") { /* pas d’audio automatique : l’élève le déclenche */ }
-    };
+          };
     paint();
   }
 
@@ -138,7 +141,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     const target = t.answer.join(" ").replace(/ ([?.])/g, "$1");
     const norm = (s) => s.toLowerCase().replace(/[^a-z']+/g, " ").trim().split(/\s+/).filter(Boolean);
-    const voice = () => m.id !== "m6" || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${SR ? `<button type="button" class="rc-listen" id="rcMic" ${listening ? "disabled" : ""}>${listening ? "🎙️ Je t’écoute…" : "🎤 Enregistrer"}</button>` : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
+    const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${SR ? `<button type="button" class="rc-listen" id="rcMic" ${listening ? "disabled" : ""}>${listening ? "🎙️ Je t’écoute…" : "🎤 Enregistrer"}</button>` : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
     const startMic = () => {
       const r = new SR(); r.lang = "en-GB"; r.interimResults = false; r.maxAlternatives = 3; listening = true; vmsg = ""; paint();
       r.onresult = (e) => {

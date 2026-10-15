@@ -6,12 +6,13 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014x";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261015a";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261014x";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261014x";
+import { createCity } from "./roots-city.js?v=20261015a";
+import { balanceAll } from "../data/balance.js?v=20261015a";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261015a";
 
-const PROGRESS_KEY = "the_roots_a11_lesson_v1";
+let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
 const BOYS = 9;
 
@@ -28,7 +29,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261014x" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261015a" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -47,13 +48,13 @@ function adviceUsed() {
     localStorage.setItem(ADVICE_KEY, JSON.stringify({ d, n: (v.d === d ? v.n || 0 : 0) + 1 }));
   } catch (e) { /* stockage indisponible */ }
 }
-async function fetchAdvice(text) {
+async function fetchAdvice(text, topic, lede) {
   if (!/^https:\/\//.test(AI_RELAY_URL || "")) throw new Error("not_configured");
   const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 25000);
   try {
     const res = await fetch(AI_RELAY_URL, { method: "POST", headers: { "Content-Type": "application/json" }, signal: ctrl.signal,
-      body: JSON.stringify({ mode: "feedback", lang: "en", variant: "en-gb", level: "A1", topic: "Se présenter en anglais (A1.1)",
-        lede: "Prénom, âge, pays, goûts. Réponds avec bienveillance.", messages: [{ role: "user", text: String(text).slice(0, 1200) }] }) });
+      body: JSON.stringify({ mode: "feedback", lang: "en", variant: "en-gb", level: "A1", topic: topic || "Se présenter en anglais (A1.1)",
+        lede: lede || "Prénom, âge, pays, goûts. Réponds avec bienveillance.", messages: [{ role: "user", text: String(text).slice(0, 1200) }] }) });
     const j = await res.json().catch(() => ({}));
     if (res.status === 429 || j.error === "quota_exceeded") throw new Error("quota");
     if (!res.ok || !j.text) throw new Error("relay");
@@ -195,7 +196,9 @@ const ico = (src, cls = "") => `<img class="lc-ava ${cls}" src="${src}" alt="" l
 const spk = (text, label) => `<button type="button" class="lc-spk" data-say="${esc(text)}" aria-label="Écouter : ${esc(label || text)}">🔊</button>`;
 
 /* ---------- rendu ---------- */
-export function renderLessonA11(root, { onExit } = {}) {
+export function renderLesson(root, B, { onExit } = {}) {
+  PROGRESS_KEY = B.progressKey;
+  const HEAD = B.head;
   const prog = loadProgress();
   let screen = "intro"; // intro | menu | vocab
   let page = 0;
@@ -225,7 +228,7 @@ export function renderLessonA11(root, { onExit } = {}) {
       if (txt.length < 15) { out.textContent = "Écris d’abord au moins une phrase en anglais."; return; }
       if (adviceLeft() <= 0) { out.textContent = "Tu as utilisé tes " + ADVICE_MAX_PER_DAY + " conseils du jour. Reviens demain !"; return; }
       btn.disabled = true; out.textContent = "L’IA lit ton texte…";
-      try { const r = await fetchAdvice(txt); adviceUsed(); out.textContent = r; out.classList.add("on"); }
+      try { const r = await fetchAdvice(txt, B.adviceTopic, B.adviceLede); adviceUsed(); out.textContent = r; out.classList.add("on"); }
       catch (e) { out.classList.remove("on"); out.textContent = e.message === "quota" ? "Le service de conseils est très demandé. Réessaie un peu plus tard." : e.message === "not_configured" ? "Les conseils de l’IA ne sont pas encore activés." : "Impossible d’obtenir un conseil pour l’instant (connexion ?). Ta note n’est pas affectée."; }
       finally { btn.disabled = false; }
     };
@@ -260,23 +263,23 @@ export function renderLessonA11(root, { onExit } = {}) {
     setTimeout(() => t.remove(), 1800);
   }
 
-  const city = createCity({ el, frame, esc, speak, toast, back: () => showMenu(),
+  const city = createCity({ el, frame, esc, speak, toast, back: () => showMenu(), missions: B.city && B.city.missions, data: B.city && B.city.data,
     getStars: () => prog.city || {},
     setStar: (k, v) => { prog.city = Object.assign({}, prog.city, { [k]: Math.max(v, (prog.city || {})[k] || 0) }); saveProgress(prog); } });
 
   function showIntro() {
     screen = "intro";
     const c = currentCharacter();
-    frame("A1.1 – Mon identité", { cur: 1, total: 8 }, `
+    frame(HEAD, { cur: 1, total: 8 }, `
       <section class="lc-hero">
-        <div class="lc-bubble">Hello!</div>
+        <div class="lc-bubble">${esc(B.bubble || "Hello!")}</div>
         ${c.full ? `<img class="lc-hero-full" src="${c.full}" alt="Personnage ${c.name}"/>` : `<img class="lc-hero-img" src="${c.src}" alt="Personnage ${c.name}"/>`}
       </section>
       <section class="lc-card lc-intro">
-        <div class="lc-level">A1.1</div>
-        <h1>Mon identité</h1>
+        <div class="lc-level">${esc(B.code)}</div>
+        <h1>${esc(B.titleFr)}</h1>
         <p class="lc-lead">Dans cette leçon, tu vas apprendre à :</p>
-        <ul class="lc-goals">${LEARN_GOALS.map((g) => `<li><span class="lc-check">✓</span>${esc(g)}</li>`).join("")}</ul>
+        <ul class="lc-goals">${B.goals.map((g) => `<li><span class="lc-check">✓</span>${esc(g)}</li>`).join("")}</ul>
         <button type="button" class="lc-cta" id="lcStart">Commencer la leçon →</button>
       </section>`);
     el.querySelector("#lcBack").onclick = () => onExit && onExit();
@@ -286,14 +289,14 @@ export function renderLessonA11(root, { onExit } = {}) {
   function showMenu() {
     screen = "menu";
     const done = prog.done || {};
-    const rows = MENU.map((m) => m.section
+    const rows = MENU.filter((m) => m.id !== "transversal" || B.transv).map((m) => m.section
       ? `<h2 class="lc-sec">${esc(m.section)}</h2>`
       : `<button type="button" class="lc-row ${m.ready ? "" : "lc-row-soon"}" data-act="${m.id}" ${m.ready ? "" : 'aria-disabled="true"'}>
           <span class="lc-num">${m.n}</span><span class="lc-ic">${icImg(m.id, m.icon)}</span>
           <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.ready ? m.sub + ((prog.scores || {})[m.id] ? " · " + prog.scores[m.id] : "") : m.sub + " · bientôt")}</small></span>
           <span class="lc-go">${done[m.id] ? "✓" : "›"}</span>
         </button>`).join("");
-    frame("A1.1 – Mon identité", { cur: 1, total: 8 }, `<section class="lc-card lc-menu">${rows}</section>`);
+    frame(HEAD, { cur: 1, total: 8 }, `<section class="lc-card lc-menu">${rows}</section>`);
     el.querySelector("#lcBack").onclick = showIntro;
     el.querySelectorAll(".lc-row").forEach((b) => b.addEventListener("click", () => {
       if (b.dataset.act === "vocab") { page = 0; showVocab(); }
@@ -308,8 +311,8 @@ export function renderLessonA11(root, { onExit } = {}) {
 
   function showVocab() {
     screen = "vocab";
-    const p = VOCAB_PAGES[page];
-    const total = VOCAB_PAGES.length;
+    const p = B.vocab[page];
+    const total = B.vocab.length;
     const c = currentCharacter();
     const sub = (s) => s.replace(/\{name\}/g, c.name);
     let body = "";
@@ -320,12 +323,12 @@ export function renderLessonA11(root, { onExit } = {}) {
           <h2 class="lc-h2">👥 ${esc(p.title)}</h2>
           <div class="lc-greet">
             <div class="lc-greet-hero"><div class="lc-bubble lc-bubble-sm">Hello!</div><img src="${c.src}" alt=""/></div>
-            <ul class="lc-list">${GREETINGS.map(([en, fr], i) => `
+            <ul class="lc-list">${(B.greetings || p.examples).map(([en, fr], i) => `
               <li>${ico(`assets/img/characters/${i % 2 ? "boy" : "girl"}-${(i % 2 ? (i % BOYS) : (i % GIRLS)) + 1}.webp`, "lc-ava-sm")}
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
-          <h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${SCENES.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261014x" alt="" loading="lazy"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>
+          ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261015a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -334,7 +337,7 @@ export function renderLessonA11(root, { onExit } = {}) {
           <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
-          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261014x" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
+          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261015a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     }
@@ -372,7 +375,7 @@ export function renderLessonA11(root, { onExit } = {}) {
         <button type="button" class="lc-cta lc-next" id="lcNext" ${needsAnswer ? "disabled" : ""}>${last ? "Terminer ✓" : "Suivant →"}</button>
       </footer>`;
 
-    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">📖</span><div><h1>Vocabulaire</h1><p>Écoute et répète les mots.</p></div></div>${body}`, foot);
+    frame(HEAD, { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">📖</span><div><h1>Vocabulaire</h1><p>Écoute et répète les mots.</p></div></div>${body}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     el.querySelector("#lcBack").onclick = showMenu;
@@ -404,13 +407,14 @@ export function renderLessonA11(root, { onExit } = {}) {
 
   /* ----- Grammaire / Lecture / Écoute : pages à questions obligatoires ----- */
   const ACT = {
-    grammar: { icon: "⚙️", title: "Grammaire", sub: "Be, have, do, this/that et les questions.", pages: GRAMMAR_PAGES },
-    reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: READING_PAGES },
-    listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: LISTENING_PAGES },
+    grammar: { icon: "⚙️", title: "Grammaire", sub: B.grammarSub, pages: B.grammar },
+    reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: B.reading },
+    listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: B.listening },
     transversal: { icon: "🌱", title: "Transversale", sub: "", pages: [] },
-    exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: EXERCISE_PAGES },
+    exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: B.exercises },
   };
   const READERS = { Emma: "girl-1", Lucas: "boy-2", Maya: "girl-2", Alex: "boy-5", Noah: "boy-3" };
+  const readerAva = (who) => { if (READERS[who]) return READERS[who]; let h = 0; for (const ch of String(who)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return `${h % 2 ? "boy" : "girl"}-${(h >> 1) % 9 + 1}`; };
   const firstTry = {}; // "exercices:page:question" → réussi du premier coup ?
   const okQ = {}; // "activité:page" → { indexQuestion: true }
 
@@ -426,7 +430,7 @@ export function renderLessonA11(root, { onExit } = {}) {
         <section class="lc-card lc-ctx"><h2 class="lc-h2 lc-h2-ctx">💡 Exemples</h2><ul class="lc-list">${p.examples.map(([en, fr]) => `
           <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(sub(en))}</b><small>${esc(sub(fr))}</small></span>${spk(sub(en))}</li>`).join("")}</ul></section>`;
     } else if (id === "reading") {
-      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${READERS[p.who]}.webp`)} ${esc(p.who)}</h2>
+      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${readerAva(p.who)}.webp`)} ${esc(p.who)}</h2>
         <p class="lc-text">${esc(p.text)}</p>
         <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
         <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
@@ -452,7 +456,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const last = page === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
       <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
-    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${icImg(id, A.icon)}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
+    frame(HEAD, { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${icImg(id, A.icon)}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
@@ -480,7 +484,7 @@ export function renderLessonA11(root, { onExit } = {}) {
       prog.done = Object.assign({}, prog.done, { [id]: true });
       if (id === "exercises") {
         let sc = 0, tot = 0;
-        EXERCISE_PAGES.forEach((pg, k) => pg.qs.forEach((_, qi) => { tot++; if (firstTry[`exercises:${k}:${qi}`] === true) sc++; }));
+        B.exercises.forEach((pg, k) => pg.qs.forEach((_, qi) => { tot++; if (firstTry[`exercises:${k}:${qi}`] === true) sc++; }));
         prog.scores = Object.assign({}, prog.scores, { exercises: `${sc}/${tot}` });
       }
       saveProgress(prog); showMenu();
@@ -501,7 +505,7 @@ export function renderLessonA11(root, { onExit } = {}) {
   const spkState = { tab: "write", text: {}, heard: {}, said: {}, ok: {} };
   function showSpeak() {
     screen = "speaking";
-    const p = EXPRESSION_PAGES[page], total = EXPRESSION_PAGES.length, c = currentCharacter();
+    const p = B.expression[page], total = B.expression.length, c = currentCharacter();
     const sub = (x) => x.replace(/\{name\}/g, c.name);
     const tab = spkState.tab;
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -521,7 +525,7 @@ export function renderLessonA11(root, { onExit } = {}) {
     const last = page === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
       <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
-    frame("A1.1 – Mon identité", { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🎤</span><div><h1>Expression</h1><p>Parle et écris.</p></div></div>${body}`, foot);
+    frame(HEAD, { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🎤</span><div><h1>Expression</h1><p>Parle et écris.</p></div></div>${body}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
@@ -561,7 +565,7 @@ export function renderLessonA11(root, { onExit } = {}) {
   const writeTx = {};
   let tday = 0;
   function dayPages(d) {
-    const D = TRANSV_DAYS[d];
+    const D = B.transv[d];
     return [
       { kind: "words", title: D.title, goal: D.goal, words: D.words, qs: [] },
       { kind: "practice", title: "Entraînement", qs: D.qs },
@@ -571,25 +575,27 @@ export function renderLessonA11(root, { onExit } = {}) {
   function showTransvList() {
     screen = "transversal";
     const done = prog.transv || {};
-    const rows = TRANSV_DAYS.map((D, i) => `<button type="button" class="lc-row" data-day="${i}">
+    const rows = B.transv.map((D, i) => `<button type="button" class="lc-row" data-day="${i}">
       <span class="lc-num">${i + 1}</span><span class="lc-ic">${icImg("transversal","🌱")}</span>
       <span class="lc-txt"><b>${esc(D.title)}</b><small>${esc(D.goal)}</small></span><span class="lc-go">${done[i] ? "✓" : "›"}</span></button>`).join("");
-    frame("A1.1 – Mon identité", null, `<div class="lc-vocab-head"><span class="lc-vh-ic">🌱</span><div><h1>Transversale</h1><p>7 jours pour ancrer les acquis.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
+    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">🌱</span><div><h1>Transversale</h1><p>7 jours pour ancrer les acquis.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
     el.querySelector("#lcBack").onclick = showMenu;
     el.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => {
-      tday = Number(b.dataset.day); page = 0; ACT.transversal.pages = dayPages(tday); ACT.transversal.sub = TRANSV_DAYS[tday].title; showAct("transversal");
+      tday = Number(b.dataset.day); page = 0; ACT.transversal.pages = dayPages(tday); ACT.transversal.sub = B.transv[tday].title; showAct("transversal");
     }));
   }
 
   /* ----- Test de fin de leçon : 40 points (7,5 + 7,5 lecture/écoute, 10 grammaire, 7,5 + 7,5 expression) ----- */
   let T = null; // état du test en cours
+  const EW = B.expression[B.testW || 0], EO = B.expression[B.testO || 0];
+  const leave = () => (B.exam ? (onExit && onExit()) : showMenu());
   function startTest() {
     const attempt = prog.testAttempts || 0;
     let seed = attempt * 7919 + 13;
     const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
-    const ids = TEST_GRAMMAR.map((_, i) => i);
+    const ids = B.testGrammar.map((_, i) => i);
     for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
-    T = { attempt, text: TEST_TEXTS[attempt % TEST_TEXTS.length], audio: TEST_AUDIOS[(attempt + 1) % TEST_AUDIOS.length], gram: ids.slice(0, 10), ans: {}, written: "", heard: "", oral: [false, false, false, false], p: 0 };
+    T = { attempt, text: B.testTexts[attempt % B.testTexts.length], audio: B.testAudios[(attempt + 1) % B.testAudios.length], gram: ids.slice(0, 10), ans: {}, written: "", heard: "", oral: EO.checks.map(() => false), p: 0 };
     showTest();
   }
   function showTest() {
@@ -606,19 +612,19 @@ export function renderLessonA11(root, { onExit } = {}) {
       body = `<section class="lc-card"><h2 class="lc-h2">🎧 Écoute</h2><div class="lc-player"><button type="button" class="lc-play" data-say="${esc(T.audio.script)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed">${speedMul === 1 ? "1x" : "0.75x"}</button></div></section><section class="lc-card lc-prac">${T.audio.q.map((q, i) => Q("l" + i, q, i + 1)).join("")}</section>`;
     } else if (p === 2 || p === 3) {
       const part = T.gram.slice((p - 2) * 5, (p - 2) * 5 + 5); keys = part.map((id) => "g" + id); head = "Grammaire, verbes, vocabulaire · 10 pts";
-      body = `<section class="lc-card lc-prac">${part.map((id, i) => Q("g" + id, TEST_GRAMMAR[id], (p - 2) * 5 + i + 1)).join("")}</section>`;
+      body = `<section class="lc-card lc-prac">${part.map((id, i) => Q("g" + id, B.testGrammar[id], (p - 2) * 5 + i + 1)).join("")}</section>`;
     } else if (p === 4) {
       head = "Expression écrite · 7,5 pts";
-      body = `<section class="lc-card"><h2 class="lc-h2">✍️ Présente-toi en anglais</h2><p class="lc-lead">Écris au moins 4 phrases : ton prénom, ton âge, d’où tu viens, ce que tu aimes.</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta présentation en anglais">${esc(T.written)}</textarea></section>`;
+      body = `<section class="lc-card"><h2 class="lc-h2">✍️ ${esc(B.testWriteTitle)}</h2><p class="lc-lead">${esc(B.testWriteLead)}</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta présentation en anglais">${esc(T.written)}</textarea></section>`;
     } else {
       head = "Expression orale · 7,5 pts";
-      body = `<section class="lc-card"><h2 class="lc-h2">🎤 Dis ta présentation</h2><p class="lc-lead">Présente-toi à voix haute en anglais, puis coche ce que tu as réellement dit (auto-évaluation).</p>
+      body = `<section class="lc-card"><h2 class="lc-h2">🎤 ${esc(B.testOralTitle)}</h2><p class="lc-lead">${esc(B.testOralLead)} Puis coche ce que tu as réellement dit (auto-évaluation).</p>
         ${SR ? `<div class="lc-mic"><button type="button" class="lc-micbtn" id="lcMic" aria-label="Appuie et parle">🎙️</button><p class="lc-heard" id="lcHeard">${esc(T.heard)}</p></div>` : ""}
-        <ul class="lc-checks lc-checks-in">${EXPRESSION_PAGES[0].checks.map(([l], i) => `<li><label><input type="checkbox" data-o="${i}" ${T.oral[i] ? "checked" : ""}/> ${esc(l)}</label></li>`).join("")}</ul></section>`;
+        <ul class="lc-checks lc-checks-in">${EO.checks.map(([l], i) => `<li><label><input type="checkbox" data-o="${i}" ${T.oral[i] ? "checked" : ""}/> ${esc(l)}</label></li>`).join("")}</ul></section>`;
     }
     const last = p === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button><button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Voir mon résultat" : "Suivant →"}</button></footer>`;
-    frame("Test de fin de leçon", { cur: p + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🏆</span><div><h1>Test de fin</h1><p>${esc(head)}</p></div></div>${body}`, foot);
+    frame(B.exam ? "Grand contrôle A1" : "Test de fin de leçon", { cur: p + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🏆</span><div><h1>${B.exam ? "Grand contrôle A1" : "Test de fin"}</h1><p>${esc(head)}</p></div></div>${body}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
     const next = el.querySelector("#lcNext");
     const refresh = () => {
@@ -641,23 +647,23 @@ export function renderLessonA11(root, { onExit } = {}) {
         const r = new SR(); r.lang = "en-GB"; r.interimResults = false; mic.classList.add("lc-mic-on");
         r.onresult = (e) => {
           T.heard = Array.from(e.results).map((x) => x[0].transcript).join(" "); el.querySelector("#lcHeard").textContent = T.heard;
-          EXPRESSION_PAGES[0].checks.forEach(([, re], i) => { if (rxTest(re, T.heard)) { T.oral[i] = true; const cb = el.querySelector(`[data-o="${i}"]`); if (cb) cb.checked = true; } });
+          EO.checks.forEach(([, re], i) => { if (rxTest(re, T.heard)) { T.oral[i] = true; const cb = el.querySelector(`[data-o="${i}"]`); if (cb) cb.checked = true; } });
           refresh();
         };
         r.onerror = () => toast("Micro indisponible ou refusé"); r.onend = () => mic.classList.remove("lc-mic-on"); r.start();
       } catch (e) { toast("Micro indisponible sur cet appareil"); }
     });
-    el.querySelector("#lcBack").onclick = showMenu;
-    el.querySelector("#lcPrev").onclick = () => { if (p === 0) showMenu(); else { T.p--; showTest(); } };
+    el.querySelector("#lcBack").onclick = leave;
+    el.querySelector("#lcPrev").onclick = () => { if (p === 0) leave(); else { T.p--; showTest(); } };
     next.onclick = () => { if (!last) { T.p++; showTest(); } else showTestResult(); };
   }
   function showTestResult() {
     screen = "test-result";
     const cnt = (list, pre) => list.reduce((n, q, i) => n + (T.ans[pre + i] === q[2] ? 1 : 0), 0);
     const r = cnt(T.text.q, "r"), l = cnt(T.audio.q, "l");
-    const g = T.gram.reduce((n, id) => n + (T.ans["g" + id] === TEST_GRAMMAR[id][2] ? 1 : 0), 0);
-    const w = EXPRESSION_PAGES[0].checks.filter(([, re]) => rxTest(re, T.written)).length / 4 * 7.5;
-    const o = T.oral.filter(Boolean).length / 4 * 7.5;
+    const g = T.gram.reduce((n, id) => n + (T.ans["g" + id] === B.testGrammar[id][2] ? 1 : 0), 0);
+    const w = EW.checks.filter(([, re]) => rxTest(re, T.written)).length / EW.checks.length * 7.5;
+    const o = T.oral.filter(Boolean).length / EO.checks.length * 7.5;
     const pts = [r / 3 * 7.5, l / 3 * 7.5, g, w, o];
     const sum = Math.round(pts.reduce((a, b) => a + b, 0));
     const passed = sum >= 32;
@@ -668,12 +674,12 @@ export function renderLessonA11(root, { onExit } = {}) {
     if (passed) prog.done = Object.assign({}, prog.done, { test: true });
     saveProgress(prog);
     const wrong = [
-      ...T.text.q.map((q, i) => ["r" + i, q]), ...T.audio.q.map((q, i) => ["l" + i, q]), ...T.gram.map((id) => ["g" + id, TEST_GRAMMAR[id]]),
+      ...T.text.q.map((q, i) => ["r" + i, q]), ...T.audio.q.map((q, i) => ["l" + i, q]), ...T.gram.map((id) => ["g" + id, B.testGrammar[id]]),
     ].filter(([k, q]) => T.ans[k] !== q[2]).map(([k, q]) => `<li><b>${esc(q[0])}</b><small>Ta réponse : ${esc(q[1][T.ans[k]] ?? "—")} · Bonne réponse : ${esc(q[1][q[2]])}</small></li>`).join("");
-    frame("Test de fin de leçon", null, `
+    frame(B.exam ? "Grand contrôle A1" : "Test de fin de leçon", null, `
       <section class="lc-hero">${c0().win ? `<img class="lc-hero-full" src="${c0().win}" alt=""/>` : `<img class="lc-hero-img lc-hero-sm" src="${c0().src}" alt=""/>`}</section>
-      <section class="lc-card lc-intro"><h1>${passed ? "Leçon terminée !" : "Presque !"}</h1>
-        <p class="lc-lead">${passed ? "Bravo ! Tu as validé A1.1 – Mon identité." : "Il faut 32/40 pour valider. Revois les points manqués et réessaie."}</p>
+      <section class="lc-card lc-intro"><h1>${passed ? (B.exam ? "Niveau A1 validé !" : "Leçon terminée !") : "Presque !"}</h1>
+        <p class="lc-lead">${passed ? `Bravo ! Tu as validé ${HEAD}.` : "Il faut 32/40 pour valider. Revois les points manqués et réessaie."}</p>
         <table class="lc-table"><tbody>
           <tr><td>Compréhension écrite</td><td class="lc-form">${fmt(pts[0])} / 7,5</td></tr>
           <tr><td>Compréhension orale</td><td class="lc-form">${fmt(pts[1])} / 7,5</td></tr>
@@ -683,12 +689,28 @@ export function renderLessonA11(root, { onExit } = {}) {
           <tr><td><b>Total</b></td><td class="lc-form"><b>${sum} / 40</b></td></tr></tbody></table>
         ${wrong ? `<details class="lc-det"><summary>Revoir mes réponses (${wrong.split("</li>").length - 1})</summary><ul class="lc-list lc-wronglist">${wrong}</ul></details>` : ""}
         <button type="button" class="lc-cta" id="lcAgain" style="margin-top:12px">Refaire une nouvelle version</button>
-        <button type="button" class="lc-sec-btn" id="lcToMenu" style="width:100%;margin-top:10px">Retour aux leçons</button></section>`);
-    el.querySelector("#lcBack").onclick = showMenu;
-    el.querySelector("#lcToMenu").onclick = showMenu;
+        <button type="button" class="lc-sec-btn" id="lcToMenu" style="width:100%;margin-top:10px">${B.exam ? "Retour à Mes cours" : "Retour aux leçons"}</button></section>`);
+    el.querySelector("#lcBack").onclick = leave;
+    el.querySelector("#lcToMenu").onclick = leave;
     el.querySelector("#lcAgain").onclick = startTest;
   }
   const c0 = () => currentCharacter();
 
-  showIntro();
+  if (B.exam) startTest(); else showIntro();
 }
+
+/* ---------- lot de données de la leçon A1.1 (les autres leçons viennent de js/data/lecons-a1.js) ---------- */
+balanceAll({ VOCAB_PAGES, GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR });
+
+export const BUNDLE_A11 = {
+  code: "A1.1", head: "A1.1 – Mon identité", titleFr: "Mon identité", progressKey: "the_roots_a11_lesson_v1",
+  goals: LEARN_GOALS, vocab: VOCAB_PAGES, greetings: GREETINGS, scenes: SCENES,
+  grammar: GRAMMAR_PAGES, grammarSub: "Be, have, do, this/that et les questions.",
+  reading: READING_PAGES, listening: LISTENING_PAGES, exercises: EXERCISE_PAGES, expression: EXPRESSION_PAGES, transv: TRANSV_DAYS,
+  testTexts: TEST_TEXTS, testAudios: TEST_AUDIOS, testGrammar: TEST_GRAMMAR, testW: 0, testO: 0,
+  testWriteTitle: "Présente-toi en anglais", testWriteLead: "Écris au moins 4 phrases : ton prénom, ton âge, d’où tu viens, ce que tu aimes.",
+  testOralTitle: "Dis ta présentation", testOralLead: "Présente-toi à voix haute en anglais.",
+  city: null,
+};
+
+export function renderLessonA11(root, opts) { return renderLesson(root, BUNDLE_A11, opts); }
