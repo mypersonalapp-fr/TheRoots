@@ -37,7 +37,7 @@ export const VOCAB_A111 = [
     words: [["o'clock", "pile (heure)"], ["half past", "et demie"], ["quarter past", "et quart"], ["quarter to", "moins le quart"], ["noon", "midi"], ["midnight", "minuit"]],
     tip: "3:00 = three o'clock. 3:30 = half past three. 3:15 = quarter past three. 3:45 = quarter to four.",
     examples: [["It's half past two.", "Il est deux heures et demie."], ["It's quarter to six.", "Il est six heures moins le quart."]],
-    q: ["“Quarter past four” = ", ["4h15", "4h45", "4h30"], 0] },
+    q: ["“Quarter past four” =", ["4h15", "4h45", "4h30"], 0] },
 ];
 
 export const GRAMMAR_A111 = [
@@ -62,13 +62,13 @@ export const GRAMMAR_A111 = [
     examples: [["It snows in January.", "Il neige en janvier."], ["It's snowing today.", "Il neige aujourd'hui."]],
     qs: [["It ___ a lot in winter. (rain)", ["rains", "is raining", "rain"], 0, "Habitude → présent simple."], ["Look! It ___ now. (snow)", ["is snowing", "snows", "snow"], 0, "Maintenant → continu."]] },
   { title: "Hier, aujourd'hui, demain : les repères", icon: "⏳",
-    table: [["yesterday", "hier", "passé"], ["today / now", "aujourd'hui / maintenant", "présent"], ["tomorrow / next week", "demain / la semaine prochaine", "futur"], ["It's going to rain tomorrow.", "Il va pleuvoir demain.", "going to"]],
-    examples: [["Tomorrow it's going to be sunny.", "Demain il va faire beau."], ["Next week is cold.", "La semaine prochaine est froide."]],
+    table: [["yesterday", "hier", "passé : “it was cold”"], ["today / now", "aujourd'hui / maintenant", "présent"], ["tomorrow / next week", "demain / la semaine prochaine", "futur"], ["It's going to rain tomorrow.", "Il va pleuvoir demain.", "going to"]],
+    examples: [["Tomorrow it's going to be sunny.", "Demain il va faire beau."], ["Next week it's going to be cold.", "La semaine prochaine, il va faire froid."]],
     qs: [["It's ___ to rain tomorrow.", ["going", "go", "goes"], 0, "going to."], ["The opposite of “yesterday” is…", ["tomorrow", "today", "last week"], 0, "tomorrow."]] },
 ];
 
 export const READING_A111 = [
-  { who: "Zoe", text: "Hi! I'm Zoe. Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. We play football. Tomorrow it's going to rain, so we stay at home.",
+  { who: "Zoe", text: "Hi! I'm Zoe. Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. We play football. Tomorrow it's going to rain, so we are going to stay at home.",
     fr: "Zoé profite du soleil au parc ; demain il va pleuvoir.",
     qs: [["What's the weather like today?", ["Sunny and warm", "Cold and rainy", "Snowy"], 0, "Sunny and warm."], ["What about tomorrow?", ["It's going to rain", "It's going to snow", "It's going to be hot"], 0, "Rain."]] },
   { who: "Jack", text: "I'm Jack. I wake up early, at six o'clock. In winter it's very cold and dark. I have breakfast at half past six. I leave home at seven and I take the bus.",
@@ -93,11 +93,11 @@ export const LISTENING_A111 = [
   { title: "A cold day", text: "It's freezing today. It's minus two degrees. It's snowing in the mountains. Take a hat and a scarf.",
     qs: [["How cold is it?", ["Minus two degrees", "Two degrees", "Twelve degrees"], 0, "-2."], ["What is the weather in the mountains?", ["Snowing", "Raining", "Sunny"], 0, "Snowing."]] },
   { title: "The morning", text: "I get up at seven. I have breakfast at half past seven. I leave home at eight. In the morning I work. In the afternoon I have meetings.",
-    qs: [["When does he get up?", ["At seven", "At eight", "At six"], 0, "Seven."], ["What does he do in the afternoon?", ["Has meetings", "Works alone", "Sleeps"], 0, "Meetings."]] },
+    qs: [["When does the speaker get up?", ["At seven", "At eight", "At six"], 0, "Seven."], ["What does the speaker do in the afternoon?", ["Has meetings", "Works alone", "Sleeps"], 0, "Meetings."]] },
   { title: "Plans for the weekend", text: "What are you doing this weekend? On Saturday it's going to be sunny, so I'm going to go to the beach. On Sunday it's going to rain, so I'm going to read at home.",
-    qs: [["What is she doing on Saturday?", ["Going to the beach", "Reading at home", "Working"], 0, "Beach."], ["Why does she read on Sunday?", ["It's going to rain", "She is tired", "It's cold"], 0, "Rain."]] },
+    qs: [["What is the second speaker doing on Saturday?", ["Going to the beach", "Reading at home", "Working"], 0, "Beach."], ["Why does the second speaker read on Sunday?", ["It's going to rain", "She is tired", "It's cold"], 0, "Rain."]] },
   { title: "Dates", text: "When is your birthday? It's on the fifth of May. And yours? It's in December. Winter is my favourite season.",
-    qs: [["When is the first speaker's birthday?", ["On the fifth of May", "In December", "In July"], 0, "5 May."], ["Favourite season:", ["Winter", "Summer", "Spring"], 0, "Winter."]] },
+    qs: [["When is the second speaker's birthday?", ["On the fifth of May", "In December", "In July"], 0, "5 May."], ["When is the first speaker's birthday?", ["In December", "On the fifth of May", "In July"], 0, "December."]] },
   { title: "Yesterday and today", text: "Yesterday it was rainy and cold. Today it's sunny but windy. I'm wearing a coat. Tomorrow we are going to have a picnic.",
     qs: [["Yesterday was…", ["Rainy and cold", "Hot", "Snowy"], 0, "Rainy and cold."], ["Tomorrow they…", ["Have a picnic", "Go to work", "Stay home"], 0, "Picnic."]] },
   { title: "School time", text: "School starts at quarter to nine. We have a break at half past ten. Lunch is at twelve. School finishes at four. On Wednesday we finish at one.",
@@ -133,11 +133,11 @@ export const EXPRESSION_A111 = [
 ];
 
 export const TEST_TEXTS_A111 = [
-  { title: "Un jour de soleil", text: "Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. Tomorrow it's going to rain, so we stay at home.", q: [["What's the weather like today?", ["Sunny and warm", "Rainy", "Snowy"], 0], ["How many degrees?", ["Twenty-two", "Twelve", "Two"], 0], ["Tomorrow:", ["Rain", "Sun", "Snow"], 0]] },
-  { title: "Le réveil", text: "I wake up early, at six o'clock. In winter it's very cold and dark. I have breakfast at half past six. I leave home at seven.", q: [["When does he wake up?", ["At six", "At seven", "At eight"], 0], ["How is winter?", ["Cold and dark", "Hot", "Sunny"], 0], ["When does he leave?", ["At seven", "At six", "At half past six"], 0]] },
-  { title: "L'été", text: "In summer I love the beach. It's hot, about thirty degrees. In the evening we eat outside. In winter I stay at home and drink hot chocolate.", q: [["Where does she go in summer?", ["The beach", "The mountains", "School"], 0], ["How hot is it?", ["About thirty", "About ten", "About twenty"], 0], ["In winter she…", ["stays at home", "travels", "swims"], 0]] },
+  { title: "Un jour de soleil", text: "Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. Tomorrow it's going to rain, so we are going to stay at home.", q: [["What's the weather like today?", ["Sunny and warm", "Rainy", "Snowy"], 0], ["How many degrees?", ["Twenty-two", "Twelve", "Two"], 0], ["Tomorrow:", ["Rain", "Sun", "Snow"], 0]] },
+  { title: "Le réveil", text: "I wake up early, at six o'clock. In winter it's very cold and dark. I have breakfast at half past six. I leave home at seven.", q: [["When does the speaker wake up?", ["At six", "At seven", "At eight"], 0], ["How is winter?", ["Cold and dark", "Hot", "Sunny"], 0], ["When does the speaker leave?", ["At seven", "At six", "At half past six"], 0]] },
+  { title: "L'été", text: "In summer I love the beach. It's hot, about thirty degrees. In the evening we eat outside. In winter I stay at home and drink hot chocolate.", q: [["Where does the speaker go in summer?", ["The beach", "The mountains", "School"], 0], ["How hot is it?", ["About thirty", "About ten", "About twenty"], 0], ["In winter the speaker…", ["stays at home", "travels", "swims"], 0]] },
   { title: "L'école de Léo", text: "My school starts at quarter to nine. Lunch is at twelve. I finish at four. On Saturday I sleep late. I get up at ten.", q: [["School starts at…", ["8:45", "9:15", "9:00"], 0], ["Lunch is at…", ["Twelve", "One", "Four"], 0], ["On Saturday he…", ["sleeps late", "goes to school", "works"], 0]] },
-  { title: "Hier et demain", text: "Yesterday it was cold, but today it's warm and windy. Tomorrow is Friday. Next week is a holiday, so I'm going to travel to the mountains.", q: [["Today is…", ["Warm and windy", "Cold", "Snowy"], 0], ["Tomorrow is…", ["Friday", "Monday", "Sunday"], 0], ["Next week she…", ["travels", "works", "studies"], 0]] },
+  { title: "Hier et demain", text: "Yesterday it was cold, but today it's warm and windy. Tomorrow is Friday. Next week is a holiday, so I'm going to travel to the mountains.", q: [["Today is…", ["Warm and windy", "Cold", "Snowy"], 0], ["Tomorrow is…", ["Friday", "Monday", "Sunday"], 0], ["Next week the speaker…", ["travels", "works", "studies"], 0]] },
 ];
 
 export const TEST_AUDIOS_A111 = [

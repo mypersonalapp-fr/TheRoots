@@ -43,7 +43,7 @@ export const VOCAB_A112 = [
 export const GRAMMAR_A112 = [
   { title: "Revoir : to be et to have", icon: "🧱",
     table: [["I am / you are / she is", "je suis / tu es / elle est", "to be"], ["I'm not / he isn't", "je ne suis pas / il n'est pas", "négatif"], ["I have / she has", "j'ai / elle a", "to have"], ["Are you ready? Yes, I am.", "Es-tu prêt ? Oui.", "question courte"]],
-    examples: [["I'm Ashley and I'm from France.", "Je suis Ashley et je viens de France."], ["She has two brothers.", "Elle a deux frères."]],
+    examples: [["I'm Anna and I'm from France.", "Je suis Anna et je viens de France."], ["She has two brothers.", "Elle a deux frères."]],
     qs: [["She ___ a teacher.", ["is", "are", "am"], 0, "She is."], ["He ___ two sisters.", ["has", "have", "is"], 0, "He has."]] },
   { title: "Revoir : les questions", icon: "❓",
     table: [["Who is she?", "Qui est-elle ?", "who"], ["Where do you live?", "Où habites-tu ?", "where + do"], ["What time does it start?", "À quelle heure ça commence ?", "what time + does"], ["How much is it?", "Combien ça coûte ?", "how much"]],
@@ -76,7 +76,7 @@ export const READING_A112 = [
     qs: [["What does Ben say first?", ["Good morning", "Good night", "Goodbye"], 0, "Good morning."], ["What does the teacher ask?", ["To sit here", "To leave", "To write"], 0, "Sit here."]] },
   { who: "Lina", text: "I'm Lina. I'm late for the bus. 'Excuse me, can I sit here?' 'Of course.' 'Thank you!' 'You're welcome.' I'm happy because the bus is warm.",
     fr: "Lina demande poliment de s'asseoir dans le bus et remercie.",
-    qs: [["What does Lina ask?", ["Can I sit here?", "Where is the bus?", "What time is it?"], 0, "Can I sit here."], ["Why is she happy?", ["The bus is warm", "She is early", "She has a seat on the beach"], 0, "The bus is warm."]] },
+    qs: [["What does Lina ask?", ["Can I sit here?", "Where is the bus?", "What time is it?"], 0, "Can I sit here."], ["Why is the speaker happy?", ["The bus is warm", "She is early", "She is on holiday"], 0, "The bus is warm."]] },
   { who: "Max", text: "Hi, I'm Max. I have to go now. 'See you tomorrow, Anna! Say hello to your mother.' 'Thanks, Max. Have a good evening!' 'You too! Bye!'",
     fr: "Max dit au revoir à Anna et salue sa mère.",
     qs: [["What does Max say to Anna?", ["See you tomorrow", "Good morning", "Nice to meet you"], 0, "See you tomorrow."], ["Who does he say hello to?", ["Her mother", "Her teacher", "Her friend"], 0, "Her mother."]] },
@@ -89,19 +89,19 @@ export const LISTENING_A112 = [
   { title: "Greeting a friend", text: "Hi, Mark! How are you? I'm fine, thanks. And you? Not bad. What's new? I have a new job!",
     qs: [["How is the first speaker?", ["Fine", "Tired", "Sad"], 0, "Fine."], ["What's new?", ["A new job", "A new house", "A new car"], 0, "New job."]] },
   { title: "In a shop", text: "Excuse me, could you help me, please? Of course. I'd like a blue T-shirt. Here you are. Thank you. You're welcome.",
-    qs: [["What does she want?", ["A blue T-shirt", "A red hat", "Shoes"], 0, "Blue T-shirt."], ["The answer to thank you:", ["You're welcome", "Sorry", "Goodbye"], 0, "You're welcome."]] },
+    qs: [["What does the customer want?", ["A blue T-shirt", "A red hat", "Shoes"], 0, "Blue T-shirt."], ["The answer to thank you:", ["You're welcome", "Sorry", "Goodbye"], 0, "You're welcome."]] },
   { title: "Introducing", text: "Hello! My name is Paul. Nice to meet you. Nice to meet you too, Paul. I'm Lucy. Are you a student? No, I'm a teacher.",
     qs: [["What is Lucy's friend called?", ["Paul", "Mark", "Tom"], 0, "Paul."], ["What is Paul?", ["A teacher", "A student", "A doctor"], 0, "A teacher."]] },
   { title: "Sorry!", text: "Oh, sorry! No problem. I'm late because the bus is late. It's OK. Please sit down. Thank you.",
-    qs: [["Why is she late?", ["The bus is late", "She is ill", "She forgets"], 0, "Bus late."], ["The answer to sorry:", ["No problem", "Goodbye", "Good morning"], 0, "No problem."]] },
+    qs: [["Why is the speaker late?", ["The bus is late", "She is ill", "She forgets"], 0, "Bus late."], ["The answer to sorry:", ["No problem", "Goodbye", "Good morning"], 0, "No problem."]] },
   { title: "On the phone", text: "Hello? Hi, it's Anna. Can I speak to Tom, please? Sorry, he isn't here. Could you ask him to call me? Sure!",
     qs: [["Who is calling?", ["Anna", "Tom", "Lucy"], 0, "Anna."], ["What does she ask?", ["To ask Tom to call", "To buy bread", "To come now"], 0, "Call back."]] },
   { title: "Making a plan", text: "Would you like to go to the cinema on Saturday? Sorry, I can't, but I'm free on Sunday. OK, see you on Sunday at six.",
-    qs: [["Why is Saturday impossible?", ["The speaker can't", "The cinema is closed", "It's raining"], 0, "She can't."], ["When do they meet?", ["Sunday at six", "Saturday at six", "Sunday at ten"], 0, "Sunday 6."]] },
+    qs: [["Why is Saturday impossible?", ["The second speaker can't come", "The cinema is closed", "It's raining"], 0, "She can't."], ["When do they meet?", ["Sunday at six", "Saturday at six", "Sunday at ten"], 0, "Sunday 6."]] },
   { title: "Leaving", text: "I have to go now. OK, see you tomorrow! Say hello to your family. Thanks! Have a good evening. You too! Bye!",
-    qs: [["What does he say before leaving?", ["I have to go", "I want a coffee", "I am hungry"], 0, "I have to go."], ["See you…", ["tomorrow", "next year", "on Sunday"], 0, "Tomorrow."]] },
+    qs: [["What does the first speaker say before leaving?", ["I have to go", "I want a coffee", "I am hungry"], 0, "I have to go."], ["See you…", ["tomorrow", "next year", "on Sunday"], 0, "Tomorrow."]] },
   { title: "Reasons", text: "Why are you late? Because my bike is broken. So how do you come? I come on foot. I'm tired, but happy.",
-    qs: [["Why is he late?", ["His bike is broken", "He is ill", "He forgets"], 0, "Broken bike."], ["How does he come?", ["On foot", "By bus", "By car"], 0, "On foot."]] },
+    qs: [["Why is the second speaker late?", ["A broken bike", "He is ill", "He forgets"], 0, "Broken bike."], ["How does the second speaker come?", ["On foot", "By bus", "By car"], 0, "On foot."]] },
 ];
 
 export const EXERCISES_A112 = [
@@ -128,24 +128,24 @@ export const EXPRESSION_A112 = [
     checks: [["Salutation", "(hi|hello|hey)\\b.*how are you|how are you"], ["Excuse + raison", "(i'?m )?sorry.*because"], ["Proposition", "would you like to\\s+\\w+|can we\\s+\\w+|let'?s\\s+\\w+"], ["Fin", "see you (soon|tomorrow|on \\w+)|have a (good|nice) (day|evening|weekend)|take care|bye"]] },
   { title: "Une conversation complète", icon: "🗣️",
     prompts: ["Salue et présente-toi.", "Demande poliment quelque chose.", "Dis ce que tu aimes avec 'and' ou 'but'.", "Dis au revoir."],
-    model: "Hello! I'm Ashley. Could you help me, please? I like tea, but I don't like coffee. I have to go. Goodbye!",
+    model: "Hello! I'm Anna. Could you help me, please? I like tea, but I don't like coffee. I have to go. Goodbye!",
     checks: [["Présentation", "(hello|hi|good (morning|afternoon|evening))\\b.*(i'?m|my name is)\\s+\\w+"], ["Demande polie", "could you\\s+\\w+|can i\\s+\\w+|would you like"], ["Connecteur", "\\b(and|but|so|because)\\b"], ["Au revoir", "goodbye|bye|see you|i have to go|take care"]] },
 ];
 
 export const TEST_TEXTS_A112 = [
   { title: "Au café", text: "We are at the café. Hello, Tom! Long time no see! How are you? Not bad, thanks. And you? Great! Let's have a coffee.", q: [["Where are they?", ["At the café", "At school", "At the airport"], 0], ["How is Tom?", ["Not bad", "Very sad", "Tired"], 0], ["What do they decide?", ["To have a coffee", "To go home", "To study"], 0]] },
   { title: "Nouvelle école", text: "Good morning! I'm Ben. Nice to meet you. Welcome, Ben! Could you sit here, please? Of course. Thank you.", q: [["Who is new?", ["Ben", "The teacher", "Tom"], 0], ["What does the teacher ask?", ["To sit here", "To leave", "To write"], 0], ["Ben's answer:", ["Of course", "No", "Sorry"], 0]] },
-  { title: "Dans le bus", text: "Excuse me, can I sit here? Of course. Thank you! You're welcome. I'm happy because the bus is warm.", q: [["What does she ask?", ["To sit", "The time", "The price"], 0], ["Answer to thank you:", ["You're welcome", "No problem", "Sorry"], 0], ["Why is she happy?", ["The bus is warm", "She is early", "She has a seat on the beach"], 0]] },
+  { title: "Dans le bus", text: "Excuse me, can I sit here? Of course. Thank you! You're welcome. I'm happy because the bus is warm.", q: [["What does the speaker ask?", ["To sit", "The time", "The price"], 0], ["Answer to thank you:", ["You're welcome", "No problem", "Sorry"], 0], ["Why is the speaker happy?", ["The bus is warm", "She is early", "She is on holiday"], 0]] },
   { title: "Au revoir", text: "I have to go now. See you tomorrow, Anna! Say hello to your mother. Thanks, Max. Have a good evening! You too! Bye!", q: [["Who goes?", ["Max", "Anna", "The mother"], 0], ["See you…", ["tomorrow", "next week", "on Sunday"], 0], ["Who does Max greet?", ["Anna's mother", "Anna's teacher", "Anna's friend"], 0]] },
-  { title: "Le message", text: "Hi Zoe! I'm sorry, I can't come on Saturday because I have an exam. But I'm free on Sunday. Are you going to be at home?", q: [["Why can't she come?", ["She has an exam", "She is on holiday", "She is ill"], 0], ["When is she free?", ["On Sunday", "On Friday", "On Monday"], 0], ["Who is the message for?", ["Zoe", "Eva", "Tom"], 0]] },
+  { title: "Le message", text: "Hi Zoe! I'm sorry, I can't come on Saturday because I have an exam. But I'm free on Sunday. Are you going to be at home?", q: [["Why can't the writer come?", ["The writer has an exam", "The writer is on holiday", "The writer is ill"], 0], ["When is the writer free?", ["On Sunday", "On Friday", "On Monday"], 0], ["Who is the message for?", ["Zoe", "Eva", "Tom"], 0]] },
 ];
 
 export const TEST_AUDIOS_A112 = [
   { script: "Hi, Mark! How are you? I'm fine, thanks. And you? Not bad. What's new? I have a new job!", q: [["How is the first speaker?", ["Fine", "Tired", "Sad"], 0], ["What's new?", ["A new job", "A new house", "A new car"], 0]] },
-  { script: "Excuse me, could you help me, please? Of course. I'd like a blue T-shirt. Here you are. Thank you. You're welcome.", q: [["What does she want?", ["A blue T-shirt", "A red hat", "Shoes"], 0], ["Answer to thank you:", ["You're welcome", "Sorry", "Goodbye"], 0]] },
-  { script: "Oh, sorry! No problem. I'm late because the bus is late. It's OK. Please sit down. Thank you.", q: [["Why is she late?", ["The bus is late", "She is ill", "She forgets"], 0], ["Answer to sorry:", ["No problem", "Goodbye", "Good morning"], 0]] },
-  { script: "Would you like to go to the cinema on Saturday? Sorry, I can't, but I'm free on Sunday. OK, see you on Sunday at six.", q: [["Saturday:", ["She can't", "The cinema is closed", "It's raining"], 0], ["They meet:", ["Sunday at six", "Saturday at six", "Sunday at ten"], 0]] },
-  { script: "I have to go now. OK, see you tomorrow! Say hello to your family. Thanks! Have a good evening. You too! Bye!", q: [["He says:", ["I have to go", "I want a coffee", "I am hungry"], 0], ["See you…", ["tomorrow", "next year", "on Sunday"], 0]] },
+  { script: "Excuse me, could you help me, please? Of course. I'd like a blue T-shirt. Here you are. Thank you. You're welcome.", q: [["What does the customer want?", ["A blue T-shirt", "A red hat", "Shoes"], 0], ["Answer to thank you:", ["You're welcome", "Sorry", "Goodbye"], 0]] },
+  { script: "Oh, sorry! No problem. I'm late because the bus is late. It's OK. Please sit down. Thank you.", q: [["Why is the speaker late?", ["The bus is late", "She is ill", "She forgets"], 0], ["Answer to sorry:", ["No problem", "Goodbye", "Good morning"], 0]] },
+  { script: "Would you like to go to the cinema on Saturday? Sorry, I can't, but I'm free on Sunday. OK, see you on Sunday at six.", q: [["Saturday:", ["The second speaker can't come", "The cinema is closed", "It's raining"], 0], ["They meet:", ["Sunday at six", "Saturday at six", "Sunday at ten"], 0]] },
+  { script: "I have to go now. OK, see you tomorrow! Say hello to your family. Thanks! Have a good evening. You too! Bye!", q: [["The first speaker says:", ["I have to go", "I want a coffee", "I am hungry"], 0], ["See you…", ["tomorrow", "next year", "on Sunday"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A112 = [

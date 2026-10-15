@@ -203,8 +203,8 @@ export const DATA_A19 = {
     pick("Tu veux une place côté fenêtre.", "Say", "I'd like a window seat.", ["I'd like a window seat.", "I want seat window.", "I like seating window."]),
   ],
   m6: [
-    { prompt: "Présente ton voyage.", card: [["Where", "Rome"], ["How", "plane"], ["Stay", "hotel"]], answer: ["I'm going to", "travel to Rome.", "I'm going to", "take the plane.", "I'm going to", "stay in a hotel."], bank: ["travel to Rome.", "travel to Paris.", "I'm going to", "take the plane.", "take the train.", "stay in a hotel.", "stay at home.", "I'm going to"] },
-    { prompt: "Présente son voyage.", card: [["Where", "London"], ["How", "train"], ["Nights", "three"]], answer: ["She is going to", "travel to London", "by train.", "She is going to", "stay three", "nights."], bank: ["travel to London", "travel to Rome", "She is going to", "by train.", "by plane.", "stay three", "stay ten", "nights."] },
+    { prompt: "Présente ton voyage.", card: [["Where", "Rome"], ["How", "plane"], ["Stay", "hotel"]], answer: ["I'm going to", "travel to Rome.", "I'm going to", "take the plane.", "I'm going to", "stay in a hotel."], bank: ["travel to Rome.", "travel to Paris.", "I'm going to", "take the plane.", "take the train.", "stay in a hotel.", "stay at home.", "I'm going to", "I'm going to"] },
+    { prompt: "Présente son voyage.", card: [["Where", "London"], ["How", "train"], ["Nights", "three"]], answer: ["She is going to", "travel to London", "by train.", "She is going to", "stay three", "nights."], bank: ["travel to London", "travel to Rome", "She is going to", "She is going to", "by train.", "by plane.", "stay three", "stay ten", "nights."] },
   ],
 };
 
