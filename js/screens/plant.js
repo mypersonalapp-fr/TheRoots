@@ -7,49 +7,53 @@
 export function plantSvg(stage, { w = 120, h = 150, roots = true, grow = 0 } = {}) {
   stage = Math.max(0, Math.min(6, stage | 0));
   const f = (n) => n.toFixed(1);
-  const gy = h * 0.62;
+  const k = h / 150;
+  const gy = h * 0.58;
   const cx = w / 2;
+  // g = avancement sur TOUT le parcours A1 → C2 (0..1). L'arbre n'est complet qu'au C2 ;
+  // à l'entrée en A1, il n'y a presque rien au-dessus du sol : seules les racines partent déjà de très bas.
+  const g = stage === 0 ? 0 : Math.min(1, (stage - 1 + Math.max(0, Math.min(1, grow))) / 6);
   const p = [
     `<rect x="0" y="${f(gy)}" width="${w}" height="${f(h - gy)}" fill="#8a5a3b" opacity="0.18"/>`,
     `<path d="M0 ${f(gy)}H${w}" stroke="#6b4a2f" stroke-width="2"/>`,
   ];
   if (roots) {
-    const base = [6, 10, 16, 22, 28, 34, 40][stage];
-    const next = [10, 16, 22, 28, 34, 40, 44][stage];
-    const depth = (base + (next - base) * Math.max(0, Math.min(1, grow))) * (h / 150);
-    const n = stage + 1;
+    // Racines profondes dès le début, qui s'étendent et se ramifient avec le niveau.
+    const depth = h * (0.30 + 0.08 * Math.sqrt(g));
+    const n = 2 + Math.round(g * 5);
     for (let i = 0; i < n; i++) {
-      const ang = (i - (n - 1) / 2) * 0.35;
-      const x2 = cx + Math.sin(ang) * depth * 1.1;
-      const y2 = gy + depth * (0.8 + 0.2 * Math.cos(ang));
-      p.push(`<path d="M${f(cx)} ${f(gy)} Q${f(cx + (x2 - cx) * 0.4)} ${f(gy + depth * 0.5)} ${f(x2)} ${f(y2)}" stroke="#8a5a3b" stroke-width="${f(Math.max(1, 2.4 - i * 0.15))}" fill="none" stroke-linecap="round"/>`);
+      const ang = (i - (n - 1) / 2) * 0.32;
+      const x2 = cx + Math.sin(ang) * depth * 1.15;
+      const y2 = gy + depth * (0.82 + 0.18 * Math.cos(ang));
+      p.push(`<path d="M${f(cx)} ${f(gy)} Q${f(cx + (x2 - cx) * 0.35)} ${f(gy + depth * 0.55)} ${f(x2)} ${f(y2)}" stroke="#8a5a3b" stroke-width="${f(Math.max(0.9, 2.4 - i * 0.2))}" fill="none" stroke-linecap="round" opacity="${f(0.95 - i * 0.04)}"/>`);
     }
   }
   if (stage === 0) {
-    // Graine bien enterrée (retour d'Ashley le 23/09 : "la graine doit
-    // être sous terre déjà et pas énorme") — avant, l'ellipse dépassait
-    // encore un peu au-dessus de la ligne du sol et était trop grosse ;
-    // elle est maintenant petite et entièrement sous la ligne du sol.
-    p.push(`<ellipse cx="${f(cx)}" cy="${f(gy + 7)}" rx="5" ry="3.5" fill="#9b6b3f"/>`);
-    p.push(`<path d="M${f(cx)} ${f(gy)} q2 -5 5 -7" stroke="#5fae62" stroke-width="1.6" fill="none" stroke-linecap="round"/>`);
+    // Graine bien enterrée (retour d'Ashley le 23/09) : petite et entièrement sous la ligne du sol.
+    p.push(`<ellipse cx="${f(cx)}" cy="${f(gy + 9 * k)}" rx="5" ry="3.5" fill="#9b6b3f"/>`);
   } else {
-    const th = [0, 22, 38, 52, 62, 72, 80][stage] * (h / 150);
-    const tw = [0, 2, 3, 5, 7, 9, 11][stage] * (w / 120);
-    const col = stage <= 2 ? "#5fae62" : "#6b4a2f";
-    p.push(`<rect x="${f(cx - tw / 2)}" y="${f(gy - th)}" width="${f(tw)}" height="${f(th)}" rx="${f(tw / 2)}" fill="${col}"/>`);
+    const th = (3 + 35 * Math.pow(g, 1.15)) * k;       // tronc : 3 → 38
+    const tw = (1.4 + 9.6 * Math.pow(g, 1.1)) * (w / 120); // épaisseur : 1,4 → 11
+    const col = g < 0.34 ? "#5fae62" : "#6b4a2f";
     const top = gy - th;
-    if (stage === 1) {
-      p.push(`<ellipse cx="${f(cx - 7)}" cy="${f(top + 4)}" rx="8" ry="4" fill="#6cc070" transform="rotate(-25 ${f(cx - 7)} ${f(top + 4)})"/>`);
-      p.push(`<ellipse cx="${f(cx + 7)}" cy="${f(top + 4)}" rx="8" ry="4" fill="#5fae62" transform="rotate(25 ${f(cx + 7)} ${f(top + 4)})"/>`);
-    } else if (stage === 2) {
-      [[-10, 6, 9], [10, 4, 10], [0, -4, 11]].forEach(([dx, dy, r]) => p.push(`<circle cx="${f(cx + dx)}" cy="${f(top + dy)}" r="${r}" fill="#63b86a"/>`));
-    } else {
-      const R = [0, 0, 0, 22, 28, 34, 40][stage] * (w / 120);
+    p.push(`<rect x="${f(cx - tw / 2)}" y="${f(top)}" width="${f(tw)}" height="${f(th)}" rx="${f(tw / 2)}" fill="${col}"/>`);
+    // Petites feuilles : seulement au début, elles s'effacent quand la couronne apparaît.
+    const lf = Math.max(0, 1 - g / 0.34);
+    if (lf > 0) {
+      const lx = 3 + 5 * (1 - lf);
+      p.push(`<ellipse cx="${f(cx - lx)}" cy="${f(top + 1)}" rx="${f(1.5 + 2.5 * lf)}" ry="${f(0.8 + 1.2 * lf)}" fill="#6cc070" transform="rotate(-25 ${f(cx - lx)} ${f(top + 1)})"/>`);
+      p.push(`<ellipse cx="${f(cx + lx)}" cy="${f(top + 1)}" rx="${f(1.5 + 2.5 * lf)}" ry="${f(0.8 + 1.2 * lf)}" fill="#5fae62" transform="rotate(25 ${f(cx + lx)} ${f(top + 1)})"/>`);
+    }
+    // Couronne : commence vers le B1 et ne devient grande qu'au C2.
+    const cg = Math.max(0, (g - 0.3) / 0.7);
+    if (cg > 0) {
+      const R = 5 + 31 * Math.pow(cg, 1.05);
+      const R2 = R * (w / 120);
       const cols = ["#3f8f4f", "#4fa25c", "#66b56d"];
-      [[-R * 0.55, R * 0.25, R * 0.62], [R * 0.55, R * 0.2, R * 0.66], [0, -R * 0.35, R * 0.75], [0, R * 0.2, R * 0.7]]
+      [[-R2 * 0.55, R2 * 0.25, R2 * 0.62], [R2 * 0.55, R2 * 0.2, R2 * 0.66], [0, -R2 * 0.35, R2 * 0.75], [0, R2 * 0.2, R2 * 0.7]]
         .forEach(([dx, dy, r], j) => p.push(`<circle cx="${f(cx + dx)}" cy="${f(top + dy)}" r="${f(r)}" fill="${cols[j % 3]}"/>`));
-      if (stage >= 5) {
-        [[-R * 0.4, -R * 0.1], [R * 0.35, R * 0.15], [0, -R * 0.55]]
+      if (g >= 0.8) {
+        [[-R2 * 0.4, -R2 * 0.1], [R2 * 0.35, R2 * 0.15], [0, -R2 * 0.55]]
           .forEach(([dx, dy]) => p.push(`<circle cx="${f(cx + dx)}" cy="${f(top + dy)}" r="3" fill="#e2a13d"/>`));
       }
     }

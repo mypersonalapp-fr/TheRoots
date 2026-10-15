@@ -140,6 +140,11 @@ function lessonLevelPos(lesson) {
   return null;
 }
 
+// Nouveau parcours A1 : lit directement le stockage local des leçons (voir js/data/lecons-a1.js).
+function a1Passed(key) { try { const p = JSON.parse(localStorage.getItem(key) || "{}"); return !!(p.done && p.done.test); } catch (e) { return false; } }
+function a1ValidatedCount() { let n = 0; for (let i = 1; i <= 12; i++) if (a1Passed(i === 1 ? "the_roots_a11_lesson_v1" : `the_roots_a1${i}_lesson_v1`)) n++; return n; }
+function a1ExamPassed() { return a1Passed("the_roots_a1_exam_v1"); }
+
 // Niveau de travail + plante d'une langue. Pour l'anglais (seule langue avec
 // des leçons pour l'instant), on suit les leçons et les contrôles ; sinon, le
 // résultat du test de positionnement.
@@ -168,6 +173,12 @@ export function langGrowth(code) {
     else if ((c.FINAL && c.FINAL.passed) || (r && r.level === "B1")) { level = "B1"; pct = r && r.level === "B1" ? r.pct : 0; }
     else if ((c.A1 && c.A1.passed) || (r && r.level === "A2")) { level = "A2"; pct = r && r.level === "A2" ? r.pct : 0; }
     else { level = "A1"; pct = r && r.level === "A1" ? r.pct : 0; }
+    // Nouveau parcours A1 (12 leçons + Grand contrôle) : chaque test réussi fait avancer la plante.
+    if (level === "A1") {
+      const n = a1ValidatedCount();
+      pct = Math.max(pct, Math.round((n / 12) * 100));
+      if (n === 12 && a1ExamPassed()) { level = "A2"; pct = 0; }
+    }
     // Test de positionnement plus haut que le parcours (ex. B1 d'entrée) : on garde le plus haut.
     if (l.level && LEVELS.indexOf(l.level) > LEVELS.indexOf(level) && (lesson == null || lesson === -1 || lesson === 0)) { level = l.level; pct = 0; }
     return { stage: LEVELS.indexOf(level) + 1, level, pct };
