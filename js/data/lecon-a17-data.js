@@ -53,7 +53,7 @@ export const GRAMMAR_A17 = [
     table: [["expensive", "more expensive", "more + adjectif long"], ["beautiful", "more beautiful", ""], ["good → better", "irrégulier", "à retenir"], ["bad → worse", "irrégulier", "à retenir"]],
     examples: [["The dress is more expensive than the shirt.", "La robe est plus chère que la chemise."], ["This bag is better than that one.", "Ce sac est meilleur que celui-là."]],
     qs: [["The coat is ___ the shirt. (expensive)", ["more expensive than", "expensiver than", "most expensive"], 0, "more + long adjectif."], ["This one is ___. (good)", ["better", "gooder", "more good"], 0, "good → better."]] },
-  { title: "How much is it ?", icon: "💰",
+  { title: "How much is it?", icon: "💰",
     table: [["How much is it?", "Combien ça coûte ? (singulier)", "How much is this bag?"], ["How much are they?", "Combien ils coûtent ? (pluriel)", "How much are these shoes?"], ["It's ten pounds.", "Ça coûte dix livres.", ""], ["They're twenty euros.", "Ils coûtent vingt euros.", ""]],
     examples: [["How much is this jacket? — It's forty pounds.", "Combien coûte cette veste ? — Quarante livres."], ["How much are these shoes? — They're fifty euros.", "Combien coûtent ces chaussures ? — Cinquante euros."]],
     qs: [["How much ___ these shoes?", ["are", "is", "am"], 0, "Pluriel → are."], ["How much ___ this bag?", ["is", "are", "do"], 0, "Singulier → is."]] },
@@ -64,7 +64,7 @@ export const GRAMMAR_A17 = [
   { title: "Trop et assez", icon: "⚖️",
     table: [["too big", "trop grand", "too + adjectif"], ["too expensive", "trop cher", ""], ["not big enough", "pas assez grand", "not + adjectif + enough"], ["just right", "parfait", "ni trop, ni trop peu"]],
     examples: [["This shirt is too small.", "Cette chemise est trop petite."], ["It isn't big enough.", "Ce n'est pas assez grand."]],
-    qs: [["It costs 200 pounds. It is ___ expensive.", ["too", "enough", "very much"], 0, "too expensive."], ["The bag is ___ big. (pas assez)", ["not ... enough", "not too", "too not"], 0, "not big enough."]] },
+    qs: [["It costs 200 pounds. It is ___ expensive.", ["too", "enough", "very much"], 0, "too expensive."], ["The bag is ___. (pas assez grand)", ["not big enough", "not enough big", "too not big"], 0, "not big enough."]] },
 ];
 
 export const READING_A17 = [
@@ -87,21 +87,21 @@ export const READING_A17 = [
 
 export const LISTENING_A17 = [
   { title: "Can I help you?", text: "Hello! Can I help you? Yes, please. I'd like a blue shirt. What size? Medium. Here you are. Thank you.",
-    qs: [["What does he want?", ["A blue shirt", "A red dress", "Shoes"], 0, "A blue shirt."], ["What size?", ["Medium", "Small", "Large"], 0, "Medium."]] },
+    qs: [["What does the customer want?", ["A blue shirt", "A red dress", "Shoes"], 0, "A blue shirt."], ["What size?", ["Medium", "Small", "Large"], 0, "Medium."]] },
   { title: "How much?", text: "How much is this bag? It's twenty pounds. Oh, that is too expensive. How much are those? They are ten pounds. OK, I'll take them.",
-    qs: [["How much is the first bag?", ["Twenty pounds", "Ten pounds", "Two pounds"], 0, "Twenty."], ["What does she decide?", ["To buy the cheaper bags", "Not to buy", "To buy the expensive bag"], 0, "I'll take them."]] },
+    qs: [["How much is the first bag?", ["Twenty pounds", "Ten pounds", "Two pounds"], 0, "Twenty."], ["What does the customer decide?", ["To buy the cheaper bags", "Not to buy", "To buy the expensive bag"], 0, "I'll take them."]] },
   { title: "Too big", text: "How is it? It's too big. Do you have a smaller size? Yes, we do. Here is a small one. It fits well, thank you.",
     qs: [["What is the problem?", ["It's too big", "It's too small", "It's too expensive"], 0, "Too big."], ["Does the small one fit?", ["Yes", "No", "We don't know"], 0, "It fits well."]] },
   { title: "Pay by card", text: "That is thirty euros, please. Can I pay by card? Of course. Here is your receipt. Have a nice day!",
-    qs: [["How much is it?", ["Thirty euros", "Thirteen euros", "Three euros"], 0, "Thirty."], ["How does she pay?", ["By card", "In cash", "By phone"], 0, "By card."]] },
+    qs: [["How much is it?", ["Thirty euros", "Thirteen euros", "Three euros"], 0, "Thirty."], ["How does the customer pay?", ["By card", "In cash", "By phone"], 0, "By card."]] },
   { title: "Colour", text: "Do you have this in red? I'm sorry, we don't. But we have it in blue and green. I prefer green. OK, I'll take the green one.",
-    qs: [["Do they have red?", ["No", "Yes", "A little"], 0, "We don't."], ["What does he buy?", ["The green one", "The blue one", "The red one"], 0, "Green."]] },
+    qs: [["Do they have red?", ["No", "Yes", "A little"], 0, "We don't."], ["What does the customer buy?", ["The green one", "The blue one", "The red one"], 0, "Green."]] },
   { title: "On sale", text: "This jacket is on sale. It is half price. It was forty pounds. Now it is twenty. That is great! I'll take it.",
     qs: [["How much is the jacket now?", ["Twenty pounds", "Forty pounds", "Ten pounds"], 0, "Twenty."], ["Why is it cheap?", ["It is on sale", "It is old", "It is small"], 0, "On sale."]] },
   { title: "The fitting room", text: "Can I try on these trousers? Of course. The fitting room is over there. They are too long. Do you have a shorter size?",
-    qs: [["What does she want to try on?", ["Trousers", "A dress", "Shoes"], 0, "Trousers."], ["What is the problem?", ["They are too long", "They are too short", "They are too expensive"], 0, "Too long."]] },
+    qs: [["What does the customer want to try on?", ["Trousers", "A dress", "Shoes"], 0, "Trousers."], ["What is the problem?", ["They are too long", "They are too short", "They are too expensive"], 0, "Too long."]] },
   { title: "At the supermarket", text: "Excuse me, where is the bread? It is next to the milk. Thank you. And the checkout? It is over there. We close in ten minutes.",
-    qs: [["What does he look for?", ["The bread", "The milk", "The checkout"], 0, "The bread."], ["Where is it?", ["Next to the milk", "Opposite the door", "Far away"], 0, "Next to the milk."]] },
+    qs: [["What does the customer look for?", ["The bread", "The milk", "The checkout"], 0, "The bread."], ["Where is it?", ["Next to the milk", "Opposite the door", "Far away"], 0, "Next to the milk."]] },
 ];
 
 export const EXERCISES_A17 = [
@@ -116,7 +116,7 @@ export const EXERCISES_A17 = [
   { title: "Do you have… ? Can I… ?", help: "Poser des questions en magasin.",
     qs: [["___ you have this in blue?", ["Do", "Does", "Are"], 0, "Do you have."], ["Can I ___ it on?", ["try", "tries", "trying"], 0, "Can I try."], ["Do you have a bigger ___?", ["size", "price", "bag"], 0, "Size."], ["Yes, we ___.", ["do", "does", "have"], 0, "Yes, we do."], ["Can I pay ___ card?", ["by", "in", "with the"], 0, "By card."]] },
   { title: "Trop et assez", help: "too, enough.",
-    qs: [["It is ___ small for me.", ["too", "enough", "very much"], 0, "Too small."], ["It isn't big ___.", ["enough", "too", "much"], 0, "Not big enough."], ["It costs 500 pounds. It is ___ expensive.", ["too", "enough", "a little"], 0, "Too."], ["The size is ___. (parfait)", ["just right", "too right", "right too"], 0, "Just right."], ["It is not ___ cheap. (assez)", ["cheap enough", "enough cheap", "too cheap"], 0, "Cheap enough."]] },
+    qs: [["It is ___ small for me.", ["too", "enough", "very much"], 0, "Too small."], ["It isn't big ___.", ["enough", "too", "much"], 0, "Not big enough."], ["It costs 500 pounds. It is ___ expensive.", ["too", "enough", "a little"], 0, "Too."], ["The size is ___. (parfait)", ["just right", "too right", "right too"], 0, "Just right."], ["It is not ___. (assez bon marché)", ["cheap enough", "enough cheap", "too cheap"], 0, "Cheap enough."]] },
   { title: "Mise en situation", help: "Au magasin.",
     qs: [["You want to pay with your card:", ["Can I pay by card?", "I pay card you?", "Card pay can I?"], 0, "Can I pay by card?"], ["You like the jacket and buy it:", ["I'll take it.", "I try it.", "I make it."], 0, "I'll take it."], ["It is too small:", ["Do you have a bigger size?", "Do you have a small size?", "Do you have a cheap size?"], 0, "Bigger."], ["It is half price:", ["It is on sale.", "It is cheap and big.", "It is closed."], 0, "On sale."], ["The shop is not open:", ["It is closed.", "It is cheap.", "It is small."], 0, "Closed."]] },
 ];
@@ -135,17 +135,17 @@ export const EXPRESSION_A17 = [
 export const TEST_TEXTS_A17 = [
   { title: "La robe d'Emma", text: "I like this blue dress. How much is it? It's thirty pounds. It's too small. Do you have a bigger size? Yes, we do. I'll take it!", q: [["How much is the dress?", ["Thirty pounds", "Thirteen pounds", "Fifty pounds"], 0], ["What is the problem?", ["Too small", "Too big", "Too expensive"], 0], ["What does she do?", ["She buys the bigger size", "She leaves", "She buys nothing"], 0]] },
   { title: "Les chaussures de Sam", text: "These black shoes are cheaper than those white shoes. But the white shoes are nicer. I try on both pairs.", q: [["Which shoes are cheaper?", ["Black", "White", "Red"], 0], ["Which shoes are nicer?", ["White", "Black", "Both"], 0], ["What does he do?", ["Tries on both pairs", "Leaves", "Pays"], 0]] },
-  { title: "Le marché", text: "I go to the market on Saturdays. I buy fruit and vegetables. The market is cheaper than the supermarket. I pay in cash.", q: [["When does she go?", ["On Saturdays", "On Sundays", "Every day"], 0], ["Which is cheaper?", ["The market", "The supermarket", "The same"], 0], ["How does she pay?", ["In cash", "By card", "Not stated"], 0]] },
-  { title: "À la caisse", text: "The total is twenty-five euros. Can I pay by card? Yes, of course. Here is your receipt. Thank you, goodbye!", q: [["What is the total?", ["Twenty-five euros", "Fifteen euros", "Fifty euros"], 0], ["How does he pay?", ["By card", "In cash", "Not stated"], 0], ["What does he get?", ["A receipt", "A bag", "Change"], 0]] },
-  { title: "Les soldes", text: "I often go to the shopping centre with my friends. We try on clothes. Today I buy a jacket. It is on sale. It is half price!", q: [["Where does she go?", ["The shopping centre", "The market", "A café"], 0], ["What does she buy?", ["A jacket", "A dress", "Shoes"], 0], ["Why is it cheap?", ["It is on sale", "It is old", "It is small"], 0]] },
+  { title: "Le marché", text: "I go to the market on Saturdays. I buy fruit and vegetables. The market is cheaper than the supermarket. I pay in cash.", q: [["When does the speaker go?", ["On Saturdays", "On Sundays", "Every day"], 0], ["Which is cheaper?", ["The market", "The supermarket", "The same"], 0], ["How does the speaker pay?", ["In cash", "By card", "Not stated"], 0]] },
+  { title: "À la caisse", text: "The total is twenty-five euros. Can I pay by card? Yes, of course. Here is your receipt. Thank you, goodbye!", q: [["What is the total?", ["Twenty-five euros", "Fifteen euros", "Fifty euros"], 0], ["How does the speaker pay?", ["By card", "In cash", "Not stated"], 0], ["What does the speaker get?", ["A receipt", "A bag", "Change"], 0]] },
+  { title: "Les soldes", text: "I often go to the shopping centre with my friends. We try on clothes. Today I buy a jacket. It is on sale. It is half price!", q: [["Where does the speaker go?", ["The shopping centre", "The market", "A café"], 0], ["What does the speaker buy?", ["A jacket", "A dress", "Shoes"], 0], ["Why is it cheap?", ["It is on sale", "It is old", "It is small"], 0]] },
 ];
 
 export const TEST_AUDIOS_A17 = [
-  { script: "Hello! Can I help you? Yes, please. I'd like a blue shirt. What size? Medium. Here you are. Thank you.", q: [["What does he want?", ["A blue shirt", "A red dress", "Shoes"], 0], ["What size?", ["Medium", "Small", "Large"], 0]] },
-  { script: "How much is this bag? It's twenty pounds. That is too expensive. How much are those? They are ten pounds. OK, I'll take them.", q: [["First bag price:", ["Twenty pounds", "Ten pounds", "Two pounds"], 0], ["What does she decide?", ["Buy the cheaper bags", "Not to buy", "Buy the expensive one"], 0]] },
+  { script: "Hello! Can I help you? Yes, please. I'd like a blue shirt. What size? Medium. Here you are. Thank you.", q: [["What does the customer want?", ["A blue shirt", "A red dress", "Shoes"], 0], ["What size?", ["Medium", "Small", "Large"], 0]] },
+  { script: "How much is this bag? It's twenty pounds. That is too expensive. How much are those? They are ten pounds. OK, I'll take them.", q: [["First bag price:", ["Twenty pounds", "Ten pounds", "Two pounds"], 0], ["What does the customer decide?", ["Buy the cheaper bags", "Not to buy", "Buy the expensive one"], 0]] },
   { script: "It's too big. Do you have a smaller size? Yes, we do. Here is a small one. It fits well, thank you.", q: [["What is the problem?", ["Too big", "Too small", "Too expensive"], 0], ["Does the small one fit?", ["Yes", "No", "Unknown"], 0]] },
-  { script: "That is thirty euros, please. Can I pay by card? Of course. Here is your receipt.", q: [["How much?", ["Thirty euros", "Thirteen euros", "Three euros"], 0], ["How does she pay?", ["By card", "In cash", "By phone"], 0]] },
-  { script: "Do you have this in red? I'm sorry, we don't. But we have it in blue and green. I'll take the green one.", q: [["Do they have red?", ["No", "Yes", "A little"], 0], ["What does he buy?", ["The green one", "The blue one", "The red one"], 0]] },
+  { script: "That is thirty euros, please. Can I pay by card? Of course. Here is your receipt.", q: [["How much?", ["Thirty euros", "Thirteen euros", "Three euros"], 0], ["How does the customer pay?", ["By card", "In cash", "By phone"], 0]] },
+  { script: "Do you have this in red? I'm sorry, we don't. But we have it in blue and green. I'll take the green one.", q: [["Do they have red?", ["No", "Yes", "A little"], 0], ["What does the customer buy?", ["The green one", "The blue one", "The red one"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A17 = [

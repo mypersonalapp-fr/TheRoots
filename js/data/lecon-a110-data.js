@@ -49,7 +49,7 @@ export const GRAMMAR_A110 = [
     table: [["She works", "elle travaille", "+ s"], ["He studies", "il étudie", "y → ies"], ["She finishes", "elle finit", "-sh → +es"], ["He has a meeting", "il a une réunion", "have → has"]],
     examples: [["He works in a hospital.", "Il travaille dans un hôpital."], ["She studies maths.", "Elle étudie les maths."]],
     qs: [["She ___ in a school.", ["works", "work", "working"], 0, "She works."], ["He ___ at six. (finish)", ["finishes", "finish", "finishs"], 0, "finish → finishes."]] },
-  { title: "Questions : What do you do ?", icon: "❓",
+  { title: "Questions : What do you do?", icon: "❓",
     table: [["What do you do?", "Que faites-vous ?", "métier"], ["Where do you work?", "Où travaillez-vous ?", "lieu"], ["What are you studying?", "Qu'étudiez-vous ?", "présent continu"], ["What does she do?", "Que fait-elle ?", "does + she"]],
     examples: [["Where do you work? — In a hospital.", "Où travaillez-vous ? — Dans un hôpital."], ["What does he do? — He's a driver.", "Que fait-il ? — Il est chauffeur."]],
     qs: [["What ___ you do?", ["do", "does", "are"], 0, "What do you do?"], ["Where ___ she work?", ["does", "do", "is"], 0, "does + she."]] },
@@ -61,7 +61,7 @@ export const GRAMMAR_A110 = [
     table: [["at nine / at noon / at night", "à neuf heures / à midi / la nuit", "AT + heure"], ["on Monday / on Friday", "le lundi / le vendredi", "ON + jour"], ["in the morning / in July", "le matin / en juillet", "IN + moment / mois"], ["on Monday morning", "lundi matin", "on + jour + moment"]],
     examples: [["I start at nine.", "Je commence à neuf heures."], ["We have an exam on Friday.", "Nous avons un examen vendredi."]],
     qs: [["I work ___ Monday.", ["on", "at", "in"], 0, "on + jour."], ["I finish ___ five.", ["at", "on", "in"], 0, "at + heure."]] },
-  { title: "Je travaille / J'étudie : à la maison ou ailleurs", icon: "🏠",
+  { title: "Travailler in / at / from", icon: "🏠",
     table: [["I work from home.", "Je travaille de chez moi.", ""], ["I work in an office.", "Je travaille dans un bureau.", "in + lieu fermé"], ["I work at a bank.", "Je travaille dans une banque.", "at + entreprise"], ["I study at university.", "J'étudie à l'université.", "at + école"]],
     examples: [["She works at a bank.", "Elle travaille dans une banque."], ["He studies at school.", "Il étudie à l'école."]],
     qs: [["I work ___ a bank.", ["at", "on", "to"], 0, "at a bank."], ["She works ___ an office.", ["in", "on", "at the"], 0, "in an office."]] },
@@ -79,7 +79,7 @@ export const READING_A110 = [
     qs: [["What does Mr Lee teach?", ["Maths", "English", "Science"], 0, "Maths."], ["What does he do in the afternoon?", ["Checks homework", "Has lunch", "Goes home"], 0, "Checks homework."]] },
   { who: "Carla", text: "I'm Carla. I work in an office. I start work at nine. We have a meeting on Monday morning. I have lunch at one. I finish at half past five.",
     fr: "Carla travaille dans un bureau, réunion le lundi matin, finit à 17h30.",
-    qs: [["When is the meeting?", ["On Monday morning", "On Friday", "At night"], 0, "Monday morning."], ["When does she finish?", ["At half past five", "At five", "At six"], 0, "17:30."]] },
+    qs: [["When is the meeting?", ["On Monday morning", "On Friday", "At night"], 0, "Monday morning."], ["When does the speaker finish?", ["At half past five", "At five", "At six"], 0, "17:30."]] },
   { who: "Ben", text: "Hi, I'm Ben. I'm an engineer. I work in a factory. My boss is Mrs Green. I don't work on Saturday or Sunday. I like my job.",
     fr: "Ben est ingénieur en usine, ne travaille pas le week-end et aime son travail.",
     qs: [["Where does Ben work?", ["In a factory", "In a shop", "In a school"], 0, "Factory."], ["Does he work on Sunday?", ["No", "Yes", "Sometimes"], 0, "No."]] },
@@ -87,19 +87,19 @@ export const READING_A110 = [
 
 export const LISTENING_A110 = [
   { title: "What do you do?", text: "What do you do? I'm a doctor. Where do you work? I work in a hospital. Do you like your job? Yes, I love it.",
-    qs: [["What is her job?", ["Doctor", "Teacher", "Driver"], 0, "Doctor."], ["Where does she work?", ["In a hospital", "In a school", "In a shop"], 0, "Hospital."]] },
+    qs: [["What is the second speaker’s job?", ["Doctor", "Teacher", "Driver"], 0, "Doctor."], ["Where does the second speaker work?", ["In a hospital", "In a school", "In a shop"], 0, "Hospital."]] },
   { title: "A student", text: "I'm a student. I study English and history. I have classes in the morning. In the afternoon I do my homework.",
-    qs: [["What does he study?", ["English and history", "Maths and art", "Science"], 0, "English and history."], ["When does he do homework?", ["In the afternoon", "In the morning", "At night"], 0, "Afternoon."]] },
+    qs: [["What does the speaker study?", ["English and history", "Maths and art", "Science"], 0, "English and history."], ["When does the speaker do homework?", ["In the afternoon", "In the morning", "At night"], 0, "Afternoon."]] },
   { title: "Work hours", text: "I start work at nine. I have a break at eleven. I have lunch at one. I finish work at half past five.",
-    qs: [["When is the break?", ["At eleven", "At nine", "At one"], 0, "11:00."], ["When does he finish?", ["At half past five", "At five", "At six"], 0, "17:30."]] },
+    qs: [["When is the break?", ["At eleven", "At nine", "At one"], 0, "11:00."], ["When does the speaker finish?", ["At half past five", "At five", "At six"], 0, "17:30."]] },
   { title: "The timetable", text: "On Monday I have maths and English. On Tuesday I have history and art. On Friday I have PE and science.",
-    qs: [["What does she have on Tuesday?", ["History and art", "Maths and English", "PE and science"], 0, "History and art."], ["When is PE?", ["On Friday", "On Monday", "On Tuesday"], 0, "Friday."]] },
+    qs: [["What does the speaker have on Tuesday?", ["History and art", "Maths and English", "PE and science"], 0, "History and art."], ["When is PE?", ["On Friday", "On Monday", "On Tuesday"], 0, "Friday."]] },
   { title: "A meeting", text: "We have a meeting on Wednesday at ten. Is it in the office? No, it is in room four. Who is coming? My boss and two colleagues.",
     qs: [["When is the meeting?", ["On Wednesday at ten", "On Monday", "On Friday at two"], 0, "Wednesday 10."], ["Where is it?", ["In room four", "In the office", "At home"], 0, "Room four."]] },
   { title: "Where do you work?", text: "Where do you work? I work at a bank. Do you like it? It is OK. My colleagues are nice, but the work is long.",
-    qs: [["Where does she work?", ["At a bank", "At a school", "At home"], 0, "A bank."], ["What is nice?", ["Her colleagues", "The hours", "The boss"], 0, "Colleagues."]] },
+    qs: [["Where does the second speaker work?", ["At a bank", "At a school", "At home"], 0, "A bank."], ["What is nice?", ["The colleagues", "The hours", "The boss"], 0, "Colleagues."]] },
   { title: "An exam", text: "I have an exam on Friday. It is a maths exam. I study every evening. I don't watch TV this week. I want a good result.",
-    qs: [["What exam is it?", ["Maths", "English", "History"], 0, "Maths."], ["What does he not do this week?", ["Watch TV", "Study", "Eat"], 0, "No TV."]] },
+    qs: [["What exam is it?", ["Maths", "English", "History"], 0, "Maths."], ["What does the speaker not do this week?", ["Watch TV", "Study", "Eat"], 0, "No TV."]] },
   { title: "My teacher", text: "My teacher is Mrs Brown. She teaches science. She is kind and funny. She doesn't give a lot of homework.",
     qs: [["What does Mrs Brown teach?", ["Science", "Maths", "Art"], 0, "Science."], ["What is she like?", ["Kind and funny", "Strict and tired", "Shy"], 0, "Kind and funny."]] },
 ];
@@ -136,16 +136,16 @@ export const TEST_TEXTS_A110 = [
   { title: "Anna l'infirmière", text: "I'm Anna. I'm a nurse. I work in a hospital. I start work at seven and I finish at three. I like my colleagues.", q: [["What is her job?", ["Nurse", "Teacher", "Driver"], 0], ["Where does she work?", ["In a hospital", "In a school", "In a shop"], 0], ["When does she finish?", ["At three", "At seven", "At five"], 0]] },
   { title: "Tom l'étudiant", text: "I'm Tom. I'm a student. I study history at university. I have classes on Monday and Tuesday. I don't have classes on Friday.", q: [["What does he study?", ["History", "Maths", "Art"], 0], ["Where?", ["At university", "At school", "At home"], 0], ["Classes on Friday?", ["No", "Yes", "Not stated"], 0]] },
   { title: "Le professeur", text: "Mr Lee is a maths teacher. He works in a big school. He starts at eight and finishes at four. He checks homework in the afternoon.", q: [["What does he teach?", ["Maths", "English", "Science"], 0], ["When does he start?", ["At eight", "At nine", "At four"], 0], ["In the afternoon he…", ["checks homework", "has an exam", "goes home"], 0]] },
-  { title: "Au bureau", text: "I work in an office. I start at nine. We have a meeting on Monday morning. I have lunch at one. I finish at half past five.", q: [["Where does she work?", ["In an office", "In a factory", "At home"], 0], ["When is the meeting?", ["On Monday morning", "On Friday", "At night"], 0], ["When does she finish?", ["Half past five", "Five", "Six"], 0]] },
+  { title: "Au bureau", text: "I work in an office. I start at nine. We have a meeting on Monday morning. I have lunch at one. I finish at half past five.", q: [["Where does the speaker work?", ["In an office", "In a factory", "At home"], 0], ["When is the meeting?", ["On Monday morning", "On Friday", "At night"], 0], ["When does the speaker finish?", ["Half past five", "Five", "Six"], 0]] },
   { title: "L'ingénieur", text: "I'm Ben. I'm an engineer. I work in a factory. My boss is Mrs Green. I don't work on Saturday or Sunday.", q: [["What is his job?", ["Engineer", "Doctor", "Student"], 0], ["Who is his boss?", ["Mrs Green", "Mr Lee", "Anna"], 0], ["Does he work on Sunday?", ["No", "Yes", "Sometimes"], 0]] },
 ];
 
 export const TEST_AUDIOS_A110 = [
-  { script: "What do you do? I'm a doctor. Where do you work? I work in a hospital. Do you like your job? Yes, I love it.", q: [["What is her job?", ["Doctor", "Teacher", "Driver"], 0], ["Where does she work?", ["In a hospital", "In a school", "In a shop"], 0]] },
-  { script: "I start work at nine. I have a break at eleven. I have lunch at one. I finish work at half past five.", q: [["When is the break?", ["Eleven", "Nine", "One"], 0], ["When does he finish?", ["Half past five", "Five", "Six"], 0]] },
+  { script: "What do you do? I'm a doctor. Where do you work? I work in a hospital. Do you like your job? Yes, I love it.", q: [["What is the second speaker’s job?", ["Doctor", "Teacher", "Driver"], 0], ["Where does the second speaker work?", ["In a hospital", "In a school", "In a shop"], 0]] },
+  { script: "I start work at nine. I have a break at eleven. I have lunch at one. I finish work at half past five.", q: [["When is the break?", ["Eleven", "Nine", "One"], 0], ["When does the speaker finish?", ["Half past five", "Five", "Six"], 0]] },
   { script: "On Monday I have maths and English. On Tuesday I have history and art. On Friday I have PE and science.", q: [["Tuesday:", ["History and art", "Maths and English", "PE and science"], 0], ["PE is on…", ["Friday", "Monday", "Tuesday"], 0]] },
   { script: "We have a meeting on Wednesday at ten. It is in room four. My boss and two colleagues are coming.", q: [["When is the meeting?", ["Wednesday at ten", "Monday", "Friday"], 0], ["Where?", ["Room four", "The office", "At home"], 0]] },
-  { script: "I have an exam on Friday. It is a maths exam. I study every evening. I don't watch TV this week.", q: [["Which exam?", ["Maths", "English", "History"], 0], ["What does he not do?", ["Watch TV", "Study", "Eat"], 0]] },
+  { script: "I have an exam on Friday. It is a maths exam. I study every evening. I don't watch TV this week.", q: [["Which exam?", ["Maths", "English", "History"], 0], ["What does the speaker not do?", ["Watch TV", "Study", "Eat"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A110 = [
@@ -156,7 +156,7 @@ export const TEST_GRAMMAR_A110 = [
   ["I start ___ nine.", ["at", "on", "in"], 0], ["The exam is ___ Friday.", ["on", "at", "in"], 0], ["I study ___ the evening.", ["in", "on", "at"], 0], ["I don't work ___ night.", ["at", "in", "on"], 0],
   ["“Colleague” means…", ["collègue", "patron", "élève"], 0], ["“Factory” means…", ["usine", "bureau", "école"], 0], ["“Homework” means…", ["devoirs", "examen", "pause"], 0], ["“Timetable” means…", ["emploi du temps", "réunion", "bureau"], 0],
   ["I work ___ a bank.", ["at", "on", "to"], 0], ["She works ___ an office.", ["in", "on", "at the"], 0], ["You ask someone's job:", ["What do you do?", "What you do?", "What are you do?"], 0], ["I'm ___ engineer.", ["an", "a", "the"], 0],
-  ["My ___ is Mrs Green. (patron)", ["boss", "class", "break"], 0], ["I have ___ homework.", ["some", "a", "two homeworks"], 0],
+  ["My ___ is Mrs Green. (patron)", ["boss", "class", "break"], 0], ["I have ___ homework.", ["some", "a", "two"], 0],
 ];
 
 export const MISSIONS_A110 = [

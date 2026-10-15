@@ -57,11 +57,11 @@ export const GRAMMAR_A19 = [
     table: [["What time does the flight leave?", "À quelle heure part le vol ?", "does + sujet 3e pers."], ["What time does it arrive?", "À quelle heure arrive-t-il ?", ""], ["When is breakfast?", "Quand est le petit-déjeuner ?", ""], ["How long does it take?", "Combien de temps ça prend ?", ""]],
     examples: [["What time does the train leave?", "À quelle heure part le train ?"], ["It arrives at six.", "Il arrive à six heures."]],
     qs: [["What time ___ the flight leave?", ["does", "do", "is"], 0, "does + the flight."], ["How long ___ it take?", ["does", "do", "is"], 0, "How long does it take?"]] },
-  { title: "Is breakfast included ?", icon: "🍳",
+  { title: "Is breakfast included?", icon: "🍳",
     table: [["Is breakfast included?", "Le petit-déjeuner est-il compris ?", "Is + nom + included"], ["Is there Wi-Fi?", "Y a-t-il du Wi-Fi ?", "Is there…?"], ["Do you have a room?", "Avez-vous une chambre ?", "Do you have…?"], ["How much is the room?", "Combien coûte la chambre ?", "How much…?"]],
     examples: [["Is Wi-Fi free?", "Le Wi-Fi est-il gratuit ?"], ["Do you have a single room for tonight?", "Avez-vous une chambre simple pour ce soir ?"]],
     qs: [["___ breakfast included?", ["Is", "Are", "Do"], 0, "Is breakfast included?"], ["___ you have a room?", ["Do", "Does", "Is"], 0, "Do you have…?"]] },
-  { title: "Present continu pour un plan proche", icon: "📅",
+  { title: "Présent continu pour un plan proche", icon: "📅",
     table: [["I'm leaving tomorrow.", "Je pars demain.", "plan arrangé"], ["We're flying at ten.", "Nous prenons l'avion à dix heures.", "plan organisé"], ["She's staying in a hotel.", "Elle loge à l'hôtel.", "plan"], ["tomorrow / next week / tonight", "indices de futur proche", ""]],
     examples: [["I'm flying to Madrid tomorrow.", "Je prends l'avion pour Madrid demain."], ["They're staying for two nights.", "Ils restent deux nuits."]],
     qs: [["I ___ to London tomorrow. (fly)", ["am flying", "fly", "flies"], 0, "Plan arrangé → continu."], ["We ___ at six. (leave)", ["are leaving", "leaves", "leaving"], 0, "We are leaving."]] },
@@ -93,11 +93,11 @@ export const LISTENING_A19 = [
   { title: "Flight delayed", text: "Attention please. Flight BA two-oh-five to Rome is delayed. It is going to leave at half past ten. Please wait in the departure lounge.",
     qs: [["What is the problem?", ["The flight is delayed", "The flight is cancelled", "The gate is closed"], 0, "Delayed."], ["When does it leave?", ["At half past ten", "At nine", "At noon"], 0, "10:30."]] },
   { title: "Hotel check-in", text: "I'd like to check in. Do you have a reservation? Yes, a double room for two nights. Here is your key. Breakfast is from seven to ten.",
-    qs: [["Which room did he book?", ["A double room", "A single room", "A suite"], 0, "Double."], ["How many nights?", ["Two", "Three", "One"], 0, "Two nights."]] },
+    qs: [["Which room is booked?", ["A double room", "A single room", "A suite"], 0, "Double."], ["How many nights?", ["Two", "Three", "One"], 0, "Two nights."]] },
   { title: "Questions at reception", text: "Is breakfast included? Yes, it is. Is there free Wi-Fi? Yes, the password is on your key card. What time is check-out? At eleven.",
     qs: [["Is breakfast included?", ["Yes", "No", "A little"], 0, "Yes."], ["What time is check-out?", ["At eleven", "At nine", "At noon"], 0, "Eleven."]] },
   { title: "Luggage", text: "My suitcase is heavy. How heavy? Twenty-two kilos. The limit is twenty. You need to take something out. OK, I'm going to take my shoes out.",
-    qs: [["How heavy is the suitcase?", ["Twenty-two kilos", "Twelve kilos", "Two kilos"], 0, "22 kg."], ["What does he take out?", ["His shoes", "His passport", "His phone"], 0, "Shoes."]] },
+    qs: [["How heavy is the suitcase?", ["Twenty-two kilos", "Twelve kilos", "Two kilos"], 0, "22 kg."], ["What does the traveller take out?", ["Their shoes", "Their passport", "Their phone"], 0, "Shoes."]] },
   { title: "Plans", text: "What are you going to do on holiday? I'm going to visit museums and take photos. And you? I'm going to relax on the beach.",
     qs: [["What is the first speaker going to do?", ["Visit museums", "Relax on the beach", "Work"], 0, "Museums."], ["What is the second speaker going to do?", ["Relax on the beach", "Visit museums", "Study"], 0, "Beach."]] },
   { title: "Taking the train", text: "What time does the train leave? At ten past nine. And what time does it arrive? At noon. How long does it take? Almost three hours.",
@@ -118,7 +118,7 @@ export const EXERCISES_A19 = [
   { title: "Avion, hôtel, bagages", help: "Vocabulaire en contexte.",
     qs: [["You show it at the airport:", ["a passport", "a key", "a menu"], 0, "Passport."], ["You use it to open your room:", ["a key", "a suitcase", "a gate"], 0, "Key."], ["It carries your clothes:", ["a suitcase", "a ticket", "a seat"], 0, "Suitcase."], ["Breakfast is free:", ["It's included.", "It's delayed.", "It's closed."], 0, "Included."], ["The plane is late:", ["It is delayed.", "It is lost.", "It is free."], 0, "Delayed."]] },
   { title: "Mise en situation", help: "En voyage.",
-    qs: [["You arrive at the hotel:", ["I'd like to check in, please.", "I'd like check out please.", "I'm going check."], 0, "Check in."], ["You want a seat by the window:", ["I'd like a window seat.", "I'd like seat window.", "I like window."], 0, "Window seat."], ["You ask the departure time:", ["What time does the flight leave?", "What time is the flight leaving?", "What does the flight leave time?"], 0, "Does + leave."], ["You ask if breakfast is free:", ["Is breakfast included?", "Is breakfast free luggage?", "Does breakfast include?"], 0, "Included."], ["You say your plan:", ["I'm going to visit London.", "I go to visit London.", "I'm go to London."], 0, "Going to."]] },
+    qs: [["You arrive at the hotel:", ["I'd like to check in, please.", "I'd like check out please.", "I'm going check."], 0, "Check in."], ["You want a seat by the window:", ["I'd like a window seat.", "I'd like seat window.", "I like window."], 0, "Window seat."], ["You ask the departure time:", ["What time does the flight leave?", "What time leaves the flight?", "What does the flight leave time?"], 0, "Does + leave."], ["You ask if breakfast is free:", ["Is breakfast included?", "Is breakfast free luggage?", "Does breakfast include?"], 0, "Included."], ["You say your plan:", ["I'm going to visit London.", "I go to visit London.", "I'm go to London."], 0, "Going to."]] },
 ];
 
 export const EXPRESSION_A19 = [
@@ -134,10 +134,10 @@ export const EXPRESSION_A19 = [
 
 export const TEST_TEXTS_A19 = [
   { title: "Le voyage d'Emma", text: "I'm going to travel to London next week. I'm going to take the plane. I want a window seat. I'm going to stay in a hotel for three nights.", q: [["Where is she going?", ["To London", "To Paris", "To Rome"], 0], ["How is she going to travel?", ["By plane", "By train", "By bus"], 0], ["How many nights?", ["Three", "Two", "Ten"], 0]] },
-  { title: "À l'aéroport", text: "I'm at the airport. My flight to Madrid is at ten. I check in and show my passport. I have a boarding pass. The gate is number twelve.", q: [["Where is the flight going?", ["To Madrid", "To London", "To Rome"], 0], ["What does he show?", ["His passport", "His key", "His menu"], 0], ["Which gate?", ["Twelve", "Two", "Twenty"], 0]] },
-  { title: "L'hôtel", text: "I'd like to check in, please. I have a reservation. Here is your key. Breakfast is included. Room 205.", q: [["What does she want?", ["To check in", "To check out", "To book a flight"], 0], ["What is the room number?", ["205", "250", "52"], 0], ["Is breakfast included?", ["Yes", "No", "Not stated"], 0]] },
-  { title: "La valise", text: "My suitcase is very heavy. At the airport, the woman says: 'Your suitcase is too heavy. You need to pay.' I'm not happy, but I pay.", q: [["What is the problem?", ["The suitcase is heavy", "A lost passport", "The flight is full"], 0], ["What does he do?", ["Pays", "Leaves", "Complains and doesn't pay"], 0], ["How does he feel?", ["Not happy", "Very happy", "Tired"], 0]] },
-  { title: "Le train en retard", text: "My train is delayed. It is going to arrive at six, not at five. I'm going to call my friend and say: 'I'm going to be late, sorry!'", q: [["What is the problem?", ["The train is delayed", "The train is cancelled", "The ticket is lost"], 0], ["What time is it going to arrive?", ["At six", "At five", "At seven"], 0], ["Who is she going to call?", ["Her friend", "Her mother", "A taxi"], 0]] },
+  { title: "À l'aéroport", text: "I'm at the airport. My flight to Madrid is at ten. I check in and show my passport. I have a boarding pass. The gate is number twelve.", q: [["Where is the flight going?", ["To Madrid", "To London", "To Rome"], 0], ["What does the speaker show?", ["Their passport", "Their key", "Their menu"], 0], ["Which gate?", ["Twelve", "Two", "Twenty"], 0]] },
+  { title: "L'hôtel", text: "I'd like to check in, please. I have a reservation. Here is your key. Breakfast is included. Room 205.", q: [["What does the speaker want?", ["To check in", "To check out", "To book a flight"], 0], ["What is the room number?", ["205", "250", "52"], 0], ["Is breakfast included?", ["Yes", "No", "Not stated"], 0]] },
+  { title: "La valise", text: "My suitcase is very heavy. At the airport, the woman says: 'Your suitcase is too heavy. You need to pay.' I'm not happy, but I pay.", q: [["What is the problem?", ["The suitcase is heavy", "A lost passport", "The flight is full"], 0], ["What does the speaker do?", ["Pays", "Leaves", "Complains and doesn't pay"], 0], ["How does the speaker feel?", ["Not happy", "Very happy", "Tired"], 0]] },
+  { title: "Le train en retard", text: "My train is delayed. It is going to arrive at six, not at five. I'm going to call my friend and say: 'I'm going to be late, sorry!'", q: [["What is the problem?", ["The train is delayed", "The train is cancelled", "The ticket is lost"], 0], ["What time is it going to arrive?", ["At six", "At five", "At seven"], 0], ["Who is the speaker going to call?", ["Her friend", "Her mother", "A taxi"], 0]] },
 ];
 
 export const TEST_AUDIOS_A19 = [

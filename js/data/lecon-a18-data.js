@@ -77,7 +77,7 @@ export const READING_A18 = [
   { who: "Lily", text: "I'm Lily. I'm a tourist in London. I don't understand the map. I ask a man: 'Excuse me, could you repeat that? Speak slowly, please.' He smiles. 'Of course!'",
     fr: "Lily, touriste à Londres, demande qu'on lui répète lentement les explications.",
     qs: [["Where is Lily?", ["In London", "In Paris", "At home"], 0, "In London."], ["What does Lily ask?", ["To repeat slowly", "For money", "For a taxi"], 0, "Repeat, speak slowly."]] },
-  { who: "Omar", text: "Hi, I'm Omar. I'm at the bus stop. I'm waiting for the bus to the hospital. I'm going the wrong way! The hospital is in the other direction. I change buses at the next stop.",
+  { who: "Omar", text: "Hi, I'm Omar. I'm on the bus to the hospital. I'm going the wrong way! The hospital is in the other direction. I get off and change buses at the next stop.",
     fr: "Omar se trompe de direction et change de bus à l'arrêt suivant pour aller à l'hôpital.",
     qs: [["Where is Omar going?", ["To the hospital", "To the park", "To school"], 0, "To the hospital."], ["What is the problem?", ["He is going the wrong way", "The bus is late", "He is lost in the park"], 0, "Wrong way."]] },
   { who: "Nina", text: "Hello! I'm Nina. I work at the tourist office. Every day, I help tourists. I say: 'This way, please. Follow me!' The post office is near the park. The pharmacy is opposite the bank.",
@@ -87,21 +87,21 @@ export const READING_A18 = [
 
 export const LISTENING_A18 = [
   { title: "Excuse me", text: "Excuse me, I'm looking for the pharmacy. Go straight on. Turn right at the traffic lights. It is next to the bank. Is it far? No, it's two minutes away.",
-    qs: [["What is he looking for?", ["The pharmacy", "The bank", "The library"], 0, "The pharmacy."], ["Where is it?", ["Next to the bank", "Opposite the school", "At the station"], 0, "Next to the bank."]] },
+    qs: [["What is the first speaker looking for?", ["The pharmacy", "The bank", "The library"], 0, "The pharmacy."], ["Where is it?", ["Next to the bank", "Opposite the school", "At the station"], 0, "Next to the bank."]] },
   { title: "I'm lost", text: "I'm lost. Can you help me? Where do you want to go? To the station. This is the wrong way. Turn around and go straight on.",
-    qs: [["Where does she want to go?", ["To the station", "To the park", "To the hospital"], 0, "To the station."], ["What is the problem?", ["She is going the wrong way", "The station is closed", "She has no ticket"], 0, "Wrong way."]] },
+    qs: [["Where does the first speaker want to go?", ["To the station", "To the park", "To the hospital"], 0, "To the station."], ["What is the problem?", ["The first speaker is going the wrong way", "The station is closed", "The first speaker has no ticket"], 0, "Wrong way."]] },
   { title: "Could you repeat?", text: "Take the bus number five. Sorry? Could you repeat that? Of course. Take the bus number five. Get off at the library.",
     qs: [["Which bus?", ["Number five", "Number fifteen", "Number fifty"], 0, "Number five."], ["Where do you get off?", ["At the library", "At the bank", "At the market"], 0, "Library."]] },
   { title: "At the bus stop", text: "Is this the bus to the hospital? No, it isn't. You need the number twelve. Where is it? It's coming now! Thank you!",
-    qs: [["Which bus does he need?", ["Number twelve", "Number two", "Number twenty"], 0, "Twelve."], ["Where does he go?", ["To the hospital", "To the market", "To school"], 0, "Hospital."]] },
+    qs: [["Which bus does the first speaker need?", ["Number twelve", "Number two", "Number twenty"], 0, "Twelve."], ["Where does the first speaker go?", ["To the hospital", "To the market", "To school"], 0, "Hospital."]] },
   { title: "Change trains", text: "I'm going to Manchester. You need to change trains at Leeds. Then take the train to Manchester. How long does it take? About two hours.",
     qs: [["Where must you change trains?", ["At Leeds", "At Manchester", "At London"], 0, "Leeds."], ["How long does it take?", ["About two hours", "About ten minutes", "All day"], 0, "Two hours."]] },
   { title: "Tourist information", text: "Hello! I'm a tourist. Where is the tourist office? It's near the park. Follow me, please. This way. Thank you very much!",
-    qs: [["Where is the tourist office?", ["Near the park", "Near the bank", "At the station"], 0, "Near the park."], ["What does the man say?", ["Follow me", "Stop", "Go away"], 0, "Follow me."]] },
+    qs: [["Where is the tourist office?", ["Near the park", "Near the bank", "At the station"], 0, "Near the park."], ["What does the second speaker say?", ["Follow me", "Stop", "Go away"], 0, "Follow me."]] },
   { title: "I don't understand", text: "I don't understand. What does 'opposite' mean? It means 'in front of, on the other side'. Ah, I see! The bank is opposite the school.",
-    qs: [["What does she not understand?", ["The word 'opposite'", "The word 'bank'", "The word 'school'"], 0, "Opposite."], ["Where is the bank?", ["Opposite the school", "Next to the school", "Far from the school"], 0, "Opposite the school."]] },
-  { title: "Missing the bus", text: "Oh no! I miss the bus again! Don't worry. The next bus is in ten minutes. OK. I am going to wait here. Let's have a coffee.",
-    qs: [["What happens to him?", ["He misses the bus", "He is lost", "He loses a ticket"], 0, "Misses the bus."], ["When is the next bus?", ["In ten minutes", "In an hour", "Tomorrow"], 0, "Ten minutes."]] },
+    qs: [["What does the first speaker not understand?", ["The word 'opposite'", "The word 'bank'", "The word 'school'"], 0, "Opposite."], ["Where is the bank?", ["Opposite the school", "Next to the school", "Far from the school"], 0, "Opposite the school."]] },
+  { title: "Missing the bus", text: "Oh no! The bus is leaving without me! Don't worry. The next bus is in ten minutes. OK. I'm waiting here. Let's have a coffee.",
+    qs: [["What happens to the first speaker?", ["He misses the bus", "He is lost", "He loses a ticket"], 0, "Misses the bus."], ["When is the next bus?", ["In ten minutes", "In an hour", "Tomorrow"], 0, "Ten minutes."]] },
 ];
 
 export const EXERCISES_A18 = [
@@ -136,16 +136,16 @@ export const TEST_TEXTS_A18 = [
   { title: "La bibliothèque", text: "I'm Emma. I'm looking for the library. I'm lost. A woman says: 'Go straight on. Turn left at the bank. The library is on your right.' It's five minutes away.", q: [["What is she looking for?", ["The library", "The bank", "The hospital"], 0], ["Where is the library?", ["On the right", "On the left", "Opposite the bank"], 0], ["How far is it?", ["Five minutes", "One hour", "Very far"], 0]] },
   { title: "Le bus de Sam", text: "I'm going to the station. I take the number 8 bus. I get off at the market. Then I walk for ten minutes. I never miss the bus.", q: [["Which bus?", ["Number 8", "Number 18", "Number 80"], 0], ["Where does he get off?", ["At the market", "At the bank", "At the park"], 0], ["Does he miss the bus?", ["Never", "Always", "Sometimes"], 0]] },
   { title: "La touriste", text: "I'm a tourist in London. I don't understand the map. I ask a man: 'Could you repeat that? Speak slowly, please.' He smiles.", q: [["Where is she?", ["In London", "In Paris", "At home"], 0], ["What does she ask?", ["To repeat slowly", "For a taxi", "For money"], 0], ["Does the man help?", ["Yes", "No", "Not stated"], 0]] },
-  { title: "Le mauvais bus", text: "I'm at the bus stop. I'm waiting for the bus to the hospital. I'm going the wrong way! I change buses at the next stop.", q: [["Where does he go?", ["To the hospital", "To the park", "To school"], 0], ["What is the problem?", ["Wrong way", "No money", "Late"], 0], ["What does he do?", ["Changes buses", "Walks home", "Takes a taxi"], 0]] },
-  { title: "L'office de tourisme", text: "I work at the tourist office. I say: 'This way, please. Follow me!' The post office is near the park. The pharmacy is opposite the bank.", q: [["Where does she work?", ["At the tourist office", "At the bank", "At the library"], 0], ["Where is the post office?", ["Near the park", "Opposite the bank", "Behind the school"], 0], ["Where is the pharmacy?", ["Opposite the bank", "Near the park", "Next to the library"], 0]] },
+  { title: "Le mauvais bus", text: "I'm on the bus to the hospital. I'm going the wrong way! I get off and change buses at the next stop.", q: [["Where does the speaker go?", ["To the hospital", "To the park", "To school"], 0], ["What is the problem?", ["Wrong way", "No money", "Late"], 0], ["What does the speaker do?", ["Changes buses", "Walks home", "Takes a taxi"], 0]] },
+  { title: "L'office de tourisme", text: "I work at the tourist office. I say: 'This way, please. Follow me!' The post office is near the park. The pharmacy is opposite the bank.", q: [["Where does the speaker work?", ["At the tourist office", "At the bank", "At the library"], 0], ["Where is the post office?", ["Near the park", "Opposite the bank", "Behind the school"], 0], ["Where is the pharmacy?", ["Opposite the bank", "Near the park", "Next to the library"], 0]] },
 ];
 
 export const TEST_AUDIOS_A18 = [
-  { script: "Excuse me, I'm looking for the pharmacy. Go straight on. Turn right at the traffic lights. It is next to the bank. It's two minutes away.", q: [["What is he looking for?", ["The pharmacy", "The bank", "The library"], 0], ["Where is it?", ["Next to the bank", "Opposite the school", "At the station"], 0]] },
-  { script: "I'm lost. Can you help me? Where do you want to go? To the station. This is the wrong way. Turn around and go straight on.", q: [["Where does she want to go?", ["To the station", "To the park", "To the hospital"], 0], ["What is the problem?", ["Wrong way", "No ticket", "Closed station"], 0]] },
+  { script: "Excuse me, I'm looking for the pharmacy. Go straight on. Turn right at the traffic lights. It is next to the bank. It's two minutes away.", q: [["What is the first speaker looking for?", ["The pharmacy", "The bank", "The library"], 0], ["Where is it?", ["Next to the bank", "Opposite the school", "At the station"], 0]] },
+  { script: "I'm lost. Can you help me? Where do you want to go? To the station. This is the wrong way. Turn around and go straight on.", q: [["Where does the first speaker want to go?", ["To the station", "To the park", "To the hospital"], 0], ["What is the problem?", ["Wrong way", "No ticket", "Closed station"], 0]] },
   { script: "Take the bus number five. Sorry? Could you repeat that? Of course. Take the bus number five. Get off at the library.", q: [["Which bus?", ["Number five", "Number fifteen", "Number fifty"], 0], ["Where do you get off?", ["At the library", "At the bank", "At the market"], 0]] },
   { script: "I'm going to Manchester. You need to change trains at Leeds. How long does it take? About two hours.", q: [["Where do you change trains?", ["At Leeds", "At Manchester", "At London"], 0], ["How long?", ["Two hours", "Ten minutes", "All day"], 0]] },
-  { script: "Where is the tourist office? It's near the park. Follow me, please. This way. Thank you very much!", q: [["Where is it?", ["Near the park", "Near the bank", "At the station"], 0], ["What does he say?", ["Follow me", "Stop", "Go away"], 0]] },
+  { script: "Where is the tourist office? It's near the park. Follow me, please. This way. Thank you very much!", q: [["Where is it?", ["Near the park", "Near the bank", "At the station"], 0], ["What does the second speaker say?", ["Follow me", "Stop", "Go away"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A18 = [
@@ -155,7 +155,7 @@ export const TEST_GRAMMAR_A18 = [
   ["___ , go straight on. (d'abord)", ["First", "Finally", "Opposite"], 0], ["First turn left. ___ turn right.", ["Then", "Opposite", "Far"], 0], ["Get ___ at the next stop.", ["off", "on", "of"], 0], ["___ you repeat that, please?", ["Could", "Do", "Are"], 0],
   ["What does “wrong” ___ ?", ["mean", "means", "meaning"], 0], ["Speak ___ , please.", ["slowly", "slow", "slowest"], 0], ["“Library” means…", ["bibliothèque", "librairie", "banque"], 0], ["“Lost” means…", ["perdu", "loin", "fermé"], 0],
   ["“Get off” means…", ["descendre", "monter", "rater"], 0], ["“Miss the bus” means…", ["rater le bus", "prendre le bus", "attendre le bus"], 0], ["You need medicine:", ["the pharmacy", "the library", "the post office"], 0], ["You want to send a letter:", ["the post office", "the gym", "the bank"], 0],
-  ["___ there a bank near here?", ["Is", "Are", "Do"], 0], ["There ___ two shops.", ["are", "is", "am"], 0], ["Running: I'm ___ . (run)", ["running", "runing", "runs"], 0], ["He is ___ a coffee now. (have)", ["having", "haves", "have"], 0],
+  ["___ there a bank near here?", ["Is", "Are", "Do"], 0], ["There ___ two shops.", ["are", "is", "am"], 0], ["I'm ___ . (run)", ["running", "runing", "runs"], 0], ["He is ___ a coffee now. (have)", ["having", "haves", "have"], 0],
   ["You didn't hear. You say:", ["Could you repeat that?", "Could you open that?", "Could you buy that?"], 0], ["I'm not ___ to the park. (go)", ["going", "go", "goes"], 0],
 ];
 
