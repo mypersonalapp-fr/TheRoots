@@ -87,21 +87,21 @@ export const READING_A16 = [
 
 export const LISTENING_A16 = [
   { title: "Breakfast", text: "What do you have for breakfast? I have bread and a glass of milk. And you? I have an apple and some tea.",
-    qs: [["What does she drink?", ["Milk", "Tea", "Juice"], 0, "A glass of milk."], ["What does he have?", ["An apple and tea", "Bread and milk", "Rice"], 0, "An apple and some tea."]] },
+    qs: [["What does the second speaker drink?", ["Milk", "Tea", "Juice"], 0, "A glass of milk."], ["What does the first speaker have?", ["An apple and tea", "Bread and milk", "Rice"], 0, "An apple and some tea."]] },
   { title: "At the restaurant", text: "Hello! A table for two, please. Here is the menu. I'd like a soup, please. And I'd like a pizza. Anything to drink? Water, please.",
     qs: [["How many people?", ["Two", "Three", "One"], 0, "A table for two."], ["What do they drink?", ["Water", "Juice", "Tea"], 0, "Water."]] },
   { title: "Can I have…?", text: "Can I have a coffee, please? Of course. Anything else? Yes, a piece of cake, please. That's all, thank you.",
-    qs: [["What does she order to drink?", ["A coffee", "A tea", "Water"], 0, "A coffee."], ["What else does she order?", ["A piece of cake", "A pizza", "A soup"], 0, "A piece of cake."]] },
+    qs: [["What does the customer order to drink?", ["A coffee", "A tea", "Water"], 0, "A coffee."], ["What else does she order?", ["A piece of cake", "A pizza", "A soup"], 0, "A piece of cake."]] },
   { title: "Some or any?", text: "Do you have any milk? No, I don't. But I have some juice. OK, I'd like a glass of juice, please.",
-    qs: [["Does he have milk?", ["No", "Yes", "A little"], 0, "No, I don't."], ["What does she choose?", ["Juice", "Milk", "Water"], 0, "A glass of juice."]] },
+    qs: [["Does the second speaker have milk?", ["No", "Yes", "A little"], 0, "No, I don't."], ["What does the first speaker choose?", ["Juice", "Milk", "Water"], 0, "A glass of juice."]] },
   { title: "Favourite food", text: "My favourite food is pasta. I eat it every Sunday. I love it with a lot of cheese. My brother hates cheese. He prefers rice.",
-    qs: [["When does she eat pasta?", ["Every Sunday", "Every day", "Never"], 0, "Every Sunday."], ["What does her brother prefer?", ["Rice", "Pasta", "Pizza"], 0, "He prefers rice."]] },
+    qs: [["When does the speaker eat pasta?", ["Every Sunday", "Every day", "Never"], 0, "Every Sunday."], ["What does the speaker’s brother prefer?", ["Rice", "Pasta", "Pizza"], 0, "He prefers rice."]] },
   { title: "I'm thirsty", text: "I am very thirsty! Do you want some water? Yes, please. Or a lemonade? No, water is fine. Here is a glass of water.",
-    qs: [["Is he thirsty?", ["Yes", "No", "A little"], 0, "Very thirsty."], ["What does he drink?", ["Water", "Lemonade", "Tea"], 0, "Water."]] },
+    qs: [["Is the first speaker thirsty?", ["Yes", "No", "A little"], 0, "Very thirsty."], ["What does the first speaker drink?", ["Water", "Lemonade", "Tea"], 0, "Water."]] },
   { title: "Spicy food", text: "Is this food spicy? Yes, a little. I don't like spicy food. Then I'd like the fish, please. It is not spicy. It is fresh and delicious.",
-    qs: [["Does he like spicy food?", ["No", "Yes", "Sometimes"], 0, "He doesn't like it."], ["What does he choose?", ["The fish", "The soup", "The pizza"], 0, "The fish."]] },
+    qs: [["Does the customer like spicy food?", ["No", "Yes", "Sometimes"], 0, "He doesn't like it."], ["What does the customer choose?", ["The fish", "The soup", "The pizza"], 0, "The fish."]] },
   { title: "The bill", text: "The bill, please. Of course. That is twelve pounds. Here you are. Thank you very much. Have a nice day!",
-    qs: [["What does he ask for?", ["The bill", "The menu", "A table"], 0, "The bill."], ["How much is it?", ["Twelve pounds", "Two pounds", "Twenty pounds"], 0, "Twelve pounds."]] },
+    qs: [["What does the customer ask for?", ["The bill", "The menu", "A table"], 0, "The bill."], ["How much is it?", ["Twelve pounds", "Two pounds", "Twenty pounds"], 0, "Twelve pounds."]] },
 ];
 
 export const EXERCISES_A16 = [
@@ -135,17 +135,17 @@ export const EXPRESSION_A16 = [
 export const TEST_TEXTS_A16 = [
   { title: "Emma", text: "For breakfast I eat bread and I drink a glass of milk. For lunch I have rice and vegetables. I don't like fish. For dinner I eat some fruit.", q: [["What does she drink for breakfast?", ["Milk", "Tea", "Juice"], 0], ["Does she like fish?", ["Yes", "No", "Not stated"], 1], ["What does she eat for dinner?", ["Fruit", "Rice", "Bread"], 0]] },
   { title: "Sam", text: "I love pizza! I eat it every Friday with my friends. We drink lemonade. I don't like spicy food.", q: [["When does he eat pizza?", ["Every Friday", "Every day", "Never"], 0], ["What do they drink?", ["Lemonade", "Water", "Coffee"], 0], ["Does he like spicy food?", ["Yes", "No", "Not stated"], 1]] },
-  { title: "Au restaurant", text: "I'm at a restaurant with my mum. I say: 'I'd like a soup, please.' My mum says: 'Can I have a tea?'", q: [["Where are they?", ["At a restaurant", "At school", "At home"], 0], ["What does the girl order?", ["A soup", "A tea", "A pizza"], 0], ["What does the mum order?", ["A tea", "A soup", "A coffee"], 0]] },
+  { title: "Au restaurant", text: "I'm at a restaurant with my mum. I say: 'I'd like a soup, please.' My mum says: 'Can I have a tea?'", q: [["Where are they?", ["At a restaurant", "At school", "At home"], 0], ["What does the speaker order?", ["A soup", "A tea", "A pizza"], 0], ["What does the mum order?", ["A tea", "A soup", "A coffee"], 0]] },
   { title: "Omar a faim", text: "I'm very hungry! I have a piece of bread and some cheese. I don't have any milk. I drink a glass of water.", q: [["Is he hungry?", ["Yes", "No", "A little"], 0], ["Does he have milk?", ["Yes", "No", "A lot"], 1], ["What does he drink?", ["Water", "Juice", "Tea"], 0]] },
   { title: "Nina", text: "My favourite meal is dinner. I eat chicken and rice with a lot of vegetables. It is delicious. I drink some tea after dinner.", q: [["Her favourite meal:", ["Dinner", "Lunch", "Breakfast"], 0], ["What does she eat?", ["Chicken and rice", "Fish", "Pizza"], 0], ["What does she drink after dinner?", ["Tea", "Water", "Milk"], 0]] },
 ];
 
 export const TEST_AUDIOS_A16 = [
-  { script: "What do you have for breakfast? I have bread and a glass of milk. And you? I have an apple and some tea.", q: [["What does she drink?", ["Milk", "Tea", "Juice"], 0], ["What does he have?", ["An apple and tea", "Bread and milk", "Rice"], 0]] },
-  { script: "A table for two, please. Here is the menu. I'd like a soup, please. And water, please.", q: [["How many people?", ["Two", "Three", "One"], 0], ["What does he drink?", ["Water", "Juice", "Tea"], 0]] },
+  { script: "What do you have for breakfast? I have bread and a glass of milk. And you? I have an apple and some tea.", q: [["What does the second speaker drink?", ["Milk", "Tea", "Juice"], 0], ["What does the first speaker have?", ["An apple and tea", "Bread and milk", "Rice"], 0]] },
+  { script: "A table for two, please. Here is the menu. I'd like a soup, please. And water, please.", q: [["How many people?", ["Two", "Three", "One"], 0], ["What does the customer drink?", ["Water", "Juice", "Tea"], 0]] },
   { script: "Can I have a coffee, please? Of course. Anything else? Yes, a piece of cake. That's all, thank you.", q: [["Drink ordered:", ["Coffee", "Tea", "Water"], 0], ["Food ordered:", ["Cake", "Pizza", "Soup"], 0]] },
-  { script: "Do you have any milk? No, I don't. But I have some juice. OK, I'd like a glass of juice, please.", q: [["Does he have milk?", ["No", "Yes", "A little"], 0], ["What does she choose?", ["Juice", "Milk", "Water"], 0]] },
-  { script: "The bill, please. That is twelve pounds. Here you are. Thank you very much.", q: [["What does he ask for?", ["The bill", "The menu", "A table"], 0], ["How much is it?", ["Twelve pounds", "Two pounds", "Twenty pounds"], 0]] },
+  { script: "Do you have any milk? No, I don't. But I have some juice. OK, I'd like a glass of juice, please.", q: [["Does the second speaker have milk?", ["No", "Yes", "A little"], 0], ["What does the first speaker choose?", ["Juice", "Milk", "Water"], 0]] },
+  { script: "The bill, please. That is twelve pounds. Here you are. Thank you very much.", q: [["What does the customer ask for?", ["The bill", "The menu", "A table"], 0], ["How much is it?", ["Twelve pounds", "Two pounds", "Twenty pounds"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A16 = [
@@ -172,7 +172,7 @@ const pick = (say, label, a, o) => ({ say, groups: [{ label, answer: a, opts: na
 export const DATA_A16 = {
   m1: [
     pick("It is white. You drink it. It comes from a cow.", "What is it?", "milk", ["milk", "tea", "juice", "rice"]),
-    pick("It is yellow. You eat it with butter. It is bread.", "What is it?", "bread", ["bread", "fish", "water", "fruit"]),
+    pick("You eat it with butter or jam. You make sandwiches with it.", "What is it?", "bread", ["bread", "fish", "water", "fruit"]),
     pick("It is hot. You drink it in the morning. It is brown.", "What is it?", "coffee", ["coffee", "juice", "lemonade", "milk"]),
     pick("It is small and white. You eat it with fish or chicken.", "What is it?", "rice", ["rice", "bread", "fruit", "tea"]),
     pick("It is red or green. You eat it. It is a fruit.", "What is it?", "apple", ["apple", "fish", "milk", "bread"]),

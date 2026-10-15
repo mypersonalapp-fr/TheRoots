@@ -82,21 +82,21 @@ export const READING_A15 = [
 
 export const LISTENING_A15 = [
   { title: "What do you like?", text: "What do you like? I like music and dancing. Do you like sport? Yes, I do. I love football.",
-    qs: [["What does he like?", ["Music and dancing", "Cooking", "Reading"], 0, "Music and dancing."], ["Does he love sport?", ["Yes", "No", "We don't know"], 0, "Yes, football."]] },
+    qs: [["What does the second speaker like?", ["Music and dancing", "Cooking", "Reading"], 0, "Music and dancing."], ["Does the second speaker love sport?", ["Yes", "No", "We don't know"], 0, "Yes, football."]] },
   { title: "Favourite colour", text: "What's your favourite colour? Blue. And my brother's favourite colour is green. We both like red too.",
-    qs: [["What is her favourite colour?", ["Blue", "Green", "Red"], 0, "Blue."], ["What is her brother's favourite colour?", ["Blue", "Green", "Red"], 1, "Green."]] },
+    qs: [["What is the speaker’s favourite colour?", ["Blue", "Green", "Red"], 0, "Blue."], ["What is the speaker’s brother’s favourite colour?", ["Blue", "Green", "Red"], 1, "Green."]] },
   { title: "Me too", text: "I like pizza. Me too! I don't like fish. Me neither. I love chocolate. So do I!",
     qs: [["Do they like fish?", ["Yes", "No", "One yes, one no"], 1, "Both don't."], ["What do they both love?", ["Chocolate", "Pizza", "Fish"], 0, "Chocolate."]] },
   { title: "At the café", text: "Do you like tea? No, I don't. I prefer coffee. Really? I prefer tea. OK, one tea and one coffee, please.",
-    qs: [["What does she prefer?", ["Coffee", "Tea", "Water"], 0, "Coffee."], ["What do they order?", ["Tea and coffee", "Two teas", "Two coffees"], 0, "One tea, one coffee."]] },
+    qs: [["What does the first speaker prefer?", ["Coffee", "Tea", "Water"], 0, "Coffee."], ["What do they order?", ["Tea and coffee", "Two teas", "Two coffees"], 0, "One tea, one coffee."]] },
   { title: "A new film", text: "Do you like films? Yes, I do. This film is great! I think it is very funny. I don't like scary films. They are terrible.",
-    qs: [["What does he think of the film?", ["Great and funny", "Boring", "Scary"], 0, "Great and funny."], ["What doesn't he like?", ["Scary films", "Funny films", "Music"], 0, "Scary films."]] },
+    qs: [["What does the second speaker think of the film?", ["Great and funny", "Boring", "Scary"], 0, "Great and funny."], ["What doesn’t the second speaker like?", ["Scary films", "Funny films", "Music"], 0, "Scary films."]] },
   { title: "My hobbies", text: "I love drawing. I like reading too. I don't like cooking. I hate running. My favourite hobby is dancing.",
-    qs: [["What does she hate?", ["Running", "Dancing", "Drawing"], 0, "Running."], ["What is her favourite hobby?", ["Dancing", "Reading", "Drawing"], 0, "Dancing."]] },
+    qs: [["What does the speaker hate?", ["Running", "Dancing", "Drawing"], 0, "Running."], ["What is the speaker’s favourite hobby?", ["Dancing", "Reading", "Drawing"], 0, "Dancing."]] },
   { title: "Football or tennis?", text: "Do you prefer football or tennis? I prefer football. I think tennis is difficult. Football is easy and fun.",
-    qs: [["What does he prefer?", ["Football", "Tennis", "Swimming"], 0, "Football."], ["What does he think of tennis?", ["Difficult", "Easy", "Fun"], 0, "Difficult."]] },
+    qs: [["What does the second speaker prefer?", ["Football", "Tennis", "Swimming"], 0, "Football."], ["What does the second speaker think of tennis?", ["Difficult", "Easy", "Fun"], 0, "Difficult."]] },
   { title: "At a concert", text: "I love this concert! The music is great. Do you like the guitar? Yes, I do. It's my favourite instrument.",
-    qs: [["What is her favourite instrument?", ["The guitar", "The piano", "The drums"], 0, "The guitar."], ["What does she think of the music?", ["Great", "Boring", "Terrible"], 0, "Great."]] },
+    qs: [["What is the speaker’s favourite instrument?", ["The guitar", "The piano", "The drums"], 0, "The guitar."], ["What does the speaker think of the music?", ["Great", "Boring", "Terrible"], 0, "Great."]] },
 ];
 
 export const EXERCISES_A15 = [
@@ -136,11 +136,11 @@ export const TEST_TEXTS_A15 = [
 ];
 
 export const TEST_AUDIOS_A15 = [
-  { script: "What do you like? I like music and dancing. Do you like sport? Yes, I do. I love football.", q: [["What does he like?", ["Music and dancing", "Cooking", "Reading"], 0], ["Does he like sport?", ["Yes", "No", "Unknown"], 0]] },
-  { script: "What's your favourite colour? Blue. And my brother's favourite colour is green.", q: [["Her favourite colour:", ["Blue", "Green", "Red"], 0], ["Her brother's favourite colour:", ["Blue", "Green", "Red"], 1]] },
+  { script: "What do you like? I like music and dancing. Do you like sport? Yes, I do. I love football.", q: [["What does the second speaker like?", ["Music and dancing", "Cooking", "Reading"], 0], ["Does the second speaker like sport?", ["Yes", "No", "Unknown"], 0]] },
+  { script: "What's your favourite colour? Blue. And my brother's favourite colour is green.", q: [["The speaker’s favourite colour:", ["Blue", "Green", "Red"], 0], ["The speaker’s brother’s favourite colour:", ["Blue", "Green", "Red"], 1]] },
   { script: "I like pizza. Me too! I don't like fish. Me neither. I love chocolate. So do I!", q: [["Do they like fish?", ["Yes", "No", "One yes"], 1], ["What do they both love?", ["Chocolate", "Pizza", "Fish"], 0]] },
-  { script: "Do you like tea? No, I don't. I prefer coffee. Really? I prefer tea.", q: [["What does he prefer?", ["Coffee", "Tea", "Water"], 0], ["What does she prefer?", ["Coffee", "Tea", "Water"], 1]] },
-  { script: "Do you prefer football or tennis? I prefer football. I think tennis is difficult.", q: [["What does he prefer?", ["Football", "Tennis", "Swimming"], 0], ["What does he think of tennis?", ["Difficult", "Easy", "Fun"], 0]] },
+  { script: "Do you like tea? No, I don't. I prefer coffee. Really? I prefer tea.", q: [["What does the first speaker prefer?", ["Coffee", "Tea", "Water"], 0], ["What does the second speaker prefer?", ["Coffee", "Tea", "Water"], 1]] },
+  { script: "Do you prefer football or tennis? I prefer football. I think tennis is difficult.", q: [["What does the second speaker prefer?", ["Football", "Tennis", "Swimming"], 0], ["What does the second speaker think of tennis?", ["Difficult", "Easy", "Fun"], 0]] },
 ];
 
 export const TEST_GRAMMAR_A15 = [

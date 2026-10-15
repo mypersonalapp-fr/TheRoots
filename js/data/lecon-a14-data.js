@@ -87,11 +87,11 @@ export const READING_A14 = [
 
 export const LISTENING_A14 = [
   { title: "Excuse me", text: "Excuse me, where is the bus stop? It is next to the school. Is it far? No, it is near. Thank you!",
-    qs: [["What does he look for?", ["The bus stop", "The station", "The bank"], 0, "The bus stop."], ["Is it far?", ["Yes", "No", "We don't know"], 1, "It is near."]] },
+    qs: [["What does the speaker look for?", ["The bus stop", "The station", "The bank"], 0, "The bus stop."], ["Is it far?", ["Yes", "No", "We don't know"], 1, "It is near."]] },
   { title: "Turn left", text: "Go straight on. Turn left at the corner. Then take the second street on the right. The park is at the end of the street.",
     qs: [["Where do you turn left?", ["At the corner", "At the bridge", "At the station"], 0, "At the corner."], ["Where is the park?", ["At the end of the street", "Next to the bank", "Opposite the school"], 0, "At the end of the street."]] },
   { title: "At the ticket office", text: "A return ticket to Manchester, please. That is twenty pounds. Which platform? Platform three. The train leaves at ten.",
-    qs: [["Which ticket does he want?", ["Return", "Single", "Bus"], 0, "A return ticket."], ["Which platform?", ["Two", "Three", "Five"], 1, "Platform three."]] },
+    qs: [["Which ticket does the customer want?", ["Return", "Single", "Bus"], 0, "A return ticket."], ["Which platform?", ["Two", "Three", "Five"], 1, "Platform three."]] },
   { title: "By bike", text: "I go to school by bike. It takes ten minutes. My sister goes by bus. It takes twenty minutes. My father goes by car.",
     qs: [["How does the sister go?", ["By bus", "By bike", "On foot"], 0, "By bus."], ["How long by bike?", ["Ten minutes", "Twenty minutes", "An hour"], 0, "Ten minutes."]] },
   { title: "Where is the bank?", text: "The bank is opposite the station. The café is between the bank and the school. The supermarket is far from here.",
@@ -101,7 +101,7 @@ export const LISTENING_A14 = [
   { title: "Don't turn right", text: "Don't turn right. Go straight on. The station is on your left, opposite the bridge. It takes five minutes on foot.",
     qs: [["What must you not do?", ["Turn right", "Go straight on", "Cross the bridge"], 0, "Don't turn right."], ["How long on foot?", ["Five minutes", "Fifteen minutes", "An hour"], 0, "Five minutes."]] },
   { title: "A taxi", text: "Hello! A taxi to the airport, please. It takes thirty minutes. Is it expensive? About forty pounds. OK, let's go!",
-    qs: [["Where does he go?", ["The airport", "The station", "The park"], 0, "The airport."], ["How long does it take?", ["Thirty minutes", "Ten minutes", "An hour"], 0, "Thirty minutes."]] },
+    qs: [["Where does the passenger go?", ["The airport", "The station", "The park"], 0, "The airport."], ["How long does it take?", ["Thirty minutes", "Ten minutes", "An hour"], 0, "Thirty minutes."]] },
 ];
 
 export const EXERCISES_A14 = [
@@ -135,13 +135,13 @@ export const EXPRESSION_A14 = [
 export const TEST_TEXTS_A14 = [
   { title: "L'école de Tom", text: "I go to school by bus. The bus stop is next to my house. I take the number 12. It takes fifteen minutes.", q: [["How does he go to school?", ["By bus", "By bike", "On foot"], 0], ["Where is the bus stop?", ["Next to his house", "Opposite the school", "At the station"], 0], ["How long does it take?", ["Five minutes", "Fifteen minutes", "An hour"], 1]] },
   { title: "La gare", text: "Go straight on. Turn left at the traffic lights. The station is opposite the bank.", q: [["Where do you turn left?", ["At the traffic lights", "At the bridge", "At the school"], 0], ["Where is the station?", ["Opposite the bank", "Next to the park", "Behind the school"], 0], ["First, what do you do?", ["Go straight on", "Turn right", "Cross the bridge"], 0]] },
-  { title: "À vélo", text: "I never take the bus. I always go to work by bike. The road is short. It takes ten minutes.", q: [["How does she go to work?", ["By bike", "By bus", "By car"], 0], ["Does she take the bus?", ["Yes", "No", "Sometimes"], 1], ["How long does it take?", ["Ten minutes", "Twenty minutes", "An hour"], 0]] },
-  { title: "Le cinéma", text: "First, I take the train. Then I walk to the corner. After that, I turn right. The cinema is between a café and a bank.", q: [["What does he take first?", ["The train", "The bus", "A taxi"], 0], ["Where does he turn?", ["Right", "Left", "He doesn't turn"], 0], ["Where is the cinema?", ["Between a café and a bank", "Opposite the school", "Next to the park"], 0]] },
-  { title: "À la gare", text: "The train is late. I look at the timetable. I buy a return ticket because I come back tonight.", q: [["Is the train on time?", ["Yes", "No", "Not stated"], 1], ["What does he look at?", ["The timetable", "A map", "A ticket"], 0], ["Which ticket?", ["A return ticket", "A single ticket", "A bus ticket"], 0]] },
+  { title: "À vélo", text: "I never take the bus. I always go to work by bike. The road is short. It takes ten minutes.", q: [["How does the speaker go to work?", ["By bike", "By bus", "By car"], 0], ["Does she take the bus?", ["Yes", "No", "Sometimes"], 1], ["How long does it take?", ["Ten minutes", "Twenty minutes", "An hour"], 0]] },
+  { title: "Le cinéma", text: "First, I take the train. Then I walk to the corner. After that, I turn right. The cinema is between a café and a bank.", q: [["What does the speaker take first?", ["The train", "The bus", "A taxi"], 0], ["Where does the speaker turn?", ["Right", "Left", "He doesn't turn"], 0], ["Where is the cinema?", ["Between a café and a bank", "Opposite the school", "Next to the park"], 0]] },
+  { title: "À la gare", text: "The train is late. I look at the timetable. I buy a return ticket because I come back tonight.", q: [["Is the train on time?", ["Yes", "No", "Not stated"], 1], ["What does the speaker look at?", ["The timetable", "A map", "A ticket"], 0], ["Which ticket?", ["A return ticket", "A single ticket", "A bus ticket"], 0]] },
 ];
 
 export const TEST_AUDIOS_A14 = [
-  { script: "Excuse me, where is the bus stop? It is next to the school. Is it far? No, it is near. Thank you!", q: [["What does he look for?", ["The bus stop", "The station", "The bank"], 0], ["Is it far?", ["Yes", "No", "Unknown"], 1]] },
+  { script: "Excuse me, where is the bus stop? It is next to the school. Is it far? No, it is near. Thank you!", q: [["What does the speaker look for?", ["The bus stop", "The station", "The bank"], 0], ["Is it far?", ["Yes", "No", "Unknown"], 1]] },
   { script: "Go straight on. Turn left at the corner. Then take the second street on the right. The park is at the end of the street.", q: [["Where do you turn left?", ["At the corner", "At the bridge", "At the station"], 0], ["Where is the park?", ["At the end of the street", "Next to the bank", "Opposite the school"], 0]] },
   { script: "A return ticket to Manchester, please. That is twenty pounds. Which platform? Platform three. The train leaves at ten.", q: [["Which ticket?", ["Return", "Single", "Bus"], 0], ["Which platform?", ["Two", "Three", "Five"], 1]] },
   { script: "The bank is opposite the station. The café is between the bank and the school. The supermarket is far from here.", q: [["Where is the bank?", ["Opposite the station", "Next to the school", "Far"], 0], ["What is far?", ["The supermarket", "The café", "The bank"], 0]] },
@@ -171,11 +171,11 @@ export const MISSIONS_A14 = [
 const pick = (say, label, a, o) => ({ say, groups: [{ label, answer: a, opts: names(o) }] });
 export const DATA_A14 = {
   m1: [
-    pick("I go to school with my bike.", "Transport", "bike", ["bike", "bus", "train", "taxi"]),
+    pick("I go to school on my bike.", "Transport", "bike", ["bike", "bus", "train", "taxi"]),
     pick("I take the number 12. It stops at the bus stop.", "Transport", "bus", ["bus", "plane", "bike", "car"]),
     pick("It runs on rails and stops at the station.", "Transport", "train", ["train", "bus", "taxi", "bike"]),
     pick("I walk to work. I don't take a vehicle.", "Transport", "on foot", ["on foot", "by car", "by bus", "by taxi"]),
-    pick("It is yellow in New York and you pay at the end.", "Transport", "taxi", ["taxi", "bus", "train", "bike"]),
+    pick("A driver takes you to your address and you pay at the end.", "Transport", "taxi", ["taxi", "bus", "train", "bike"]),
   ],
   m2: [
     pick("Go straight on and turn left at the corner.", "First", "Go straight on", ["Go straight on", "Turn right", "Cross the bridge"]),

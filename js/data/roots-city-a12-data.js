@@ -42,7 +42,7 @@ const JOB_Q = [
   ["She drives a bus.", "driver", ["driver", "nurse", "doctor", "engineer"]],
   ["He builds bridges.", "engineer", ["teacher", "engineer", "nurse", "retired"]],
   ["She doesn't work now. She is 70.", "retired", ["retired", "driver", "doctor", "teacher"]],
-  ["He works in a hospital. He is a…", "doctor", ["engineer", "doctor", "driver", "nurse"]],
+  ["He works in a hospital. He is a…", "doctor", ["engineer", "doctor", "driver", "teacher"]],
 ];
 const M4 = JOB_Q.map(([say, a, o]) => ({ say, groups: [{ label: "Job", answer: a, opts: names(o) }] }));
 
