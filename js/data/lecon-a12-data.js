@@ -1,6 +1,8 @@
 // The Roots — A1.2 « Family » : Vocabulaire (7 pages) + Grammaire (6 pages). Même format qu'A1.1.
 // À relire par un anglophone natif (fin de projet). q = [question, choix, bonne réponse, explication]
 
+import { balanceAll } from "./balance.js";
+
 export const VOCAB_A12 = [
   { kind: "greetings", title: "Présenter ma famille", icon: "👨‍👩‍👧",
     tip: "Pour présenter quelqu'un : “This is my…” (voici mon / ma…).",
@@ -156,3 +158,5 @@ export const TEST_GRAMMAR_A12 = [
   ["Your mother’s mother is your ___.", ["aunt", "grandmother", "cousin"], 1], ["Your uncle’s son is your ___.", ["brother", "cousin", "grandson"], 1], ["Where do you cook?", ["In the bedroom", "In the kitchen", "In the garden"], 1], ["“Single” means…", ["marié", "célibataire", "retraité"], 1],
   ["My parents’ house is ___.", ["big", "bigs", "a big"], 0], ["She ___ two brothers.", ["have", "has", "is"], 1],
 ];
+
+balanceAll({ VOCAB_A12, GRAMMAR_A12, READING_A12, LISTENING_A12, EXERCISES_A12, EXPRESSION_A12, TEST_TEXTS_A12, TEST_AUDIOS_A12, TEST_GRAMMAR_A12 });

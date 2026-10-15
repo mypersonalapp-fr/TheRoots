@@ -1,5 +1,6 @@
 // The Roots — A1.5 « Likes and Preferences » : contenu texte complet. Mêmes formats qu'A1.1–A1.4. À relire par un natif.
 // Images à fournir : lesson/scene-a15-*.webp et city/a15-m1..m6.webp.
+import { balanceAll } from "./balance.js";
 const names = (a) => a.map((n) => ({ v: n, label: n }));
 
 export const VOCAB_A15 = [
@@ -202,3 +203,5 @@ export const DATA_A15 = {
     { prompt: "Présente ses goûts.", card: [["Name", "Anna"], ["Love", "dancing"], ["Prefer", "tea"]], answer: ["Anna", "loves dancing.", "She", "prefers tea.", "She doesn't", "like coffee."], bank: ["loves dancing.", "Anna", "She", "prefers tea.", "She doesn't", "like coffee.", "He", "love dancing."] },
   ],
 };
+
+balanceAll({ VOCAB_A15, GRAMMAR_A15, READING_A15, LISTENING_A15, EXERCISES_A15, EXPRESSION_A15, TEST_TEXTS_A15, TEST_AUDIOS_A15, TEST_GRAMMAR_A15, MISSIONS_A15, DATA_A15 });

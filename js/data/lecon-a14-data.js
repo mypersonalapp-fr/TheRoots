@@ -1,5 +1,6 @@
 // The Roots — A1.4 « Transport / Directions » : contenu texte complet. Mêmes formats qu'A1.1–A1.3. À relire par un natif.
 // Images à fournir : lesson/scene-a14-*.webp et city/a14-m1..m6.webp.
+import { balanceAll } from "./balance.js";
 const names = (a) => a.map((n) => ({ v: n, label: n }));
 
 export const VOCAB_A14 = [
@@ -206,3 +207,5 @@ export const DATA_A14 = {
     { prompt: "Explique le trajet.", card: [["First", "cross the bridge"], ["Then", "turn right"], ["Place", "park"]], answer: ["First,", "cross the bridge.", "Then,", "turn right.", "The park", "is there."], bank: ["cross the bridge.", "turn left.", "First,", "Then,", "turn right.", "The park", "is there.", "is far."] },
   ],
 };
+
+balanceAll({ VOCAB_A14, GRAMMAR_A14, READING_A14, LISTENING_A14, EXERCISES_A14, EXPRESSION_A14, TEST_TEXTS_A14, TEST_AUDIOS_A14, TEST_GRAMMAR_A14, MISSIONS_A14, DATA_A14 });

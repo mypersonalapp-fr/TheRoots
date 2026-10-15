@@ -1,5 +1,6 @@
 // The Roots — Roots City A1.2 « La photo de famille » : 6 missions (entraînement, non noté dans les 40 points).
 // Même format que roots-city.js (A1.1). Textes cliquables ; images de fond à fournir : assets/img/city/a12-m1..m6.webp
+import { balanceAll } from "./balance.js";
 const names = (a) => a.map((n) => ({ v: n, label: n }));
 
 export const MISSIONS_A12 = [
@@ -57,3 +58,5 @@ const M6 = [
 ];
 
 export const DATA_A12 = { m1: M1, m2: M2, m3: M3, m4: M4, m5: M5, m6: M6 };
+
+balanceAll(DATA_A12);

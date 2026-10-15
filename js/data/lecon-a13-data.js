@@ -1,6 +1,7 @@
 // The Roots — A1.3 « Friends / Social Relationships » : contenu texte complet (vocabulaire, grammaire,
 // lecture, écoute, exercices, expression, test, Roots City). Même formats qu'A1.1/A1.2. À relire par un natif.
 // Images à fournir : scene-a13-*.webp (lesson) et city/a13-m1..m6.webp.
+import { balanceAll } from "./balance.js";
 const names = (a) => a.map((n) => ({ v: n, label: n }));
 
 export const VOCAB_A13 = [
@@ -208,3 +209,5 @@ export const DATA_A13 = {
     { prompt: "Présente ton amie.", card: [["Name", "Lily"], ["Relation", "neighbour"], ["Activity", "coffee"]], answer: ["This is", "Lily.", "She is", "my neighbour.", "We have", "a coffee."], bank: ["a coffee.", "He is", "This is", "She is", "my neighbour.", "Lily.", "We have", "We play"] },
   ],
 };
+
+balanceAll({ VOCAB_A13, GRAMMAR_A13, READING_A13, LISTENING_A13, EXERCISES_A13, EXPRESSION_A13, TEST_TEXTS_A13, TEST_AUDIOS_A13, TEST_GRAMMAR_A13, MISSIONS_A13, DATA_A13 });
