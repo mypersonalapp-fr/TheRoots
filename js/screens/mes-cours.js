@@ -9,10 +9,10 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLessonA11 } from "./lecon-a11.js?v=20261014w";
-import { renderShell } from "./shell.js?v=20261014w";
+import { renderLessonA11 } from "./lecon-a11.js?v=20261014x";
+import { renderShell } from "./shell.js?v=20261014x";
 import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014w";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261014x";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";

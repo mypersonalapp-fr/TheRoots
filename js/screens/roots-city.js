@@ -1,7 +1,7 @@
 // The Roots — « Roots City » : 6 missions de consolidation pour A1.1 (entraînement, non noté dans les 40 points).
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-const V = "20261014w";
+const V = "20261014x";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const MISSIONS = [
@@ -52,7 +52,7 @@ const M4 = NAT_Q.map(([flag, country, nat, opts]) => ({ say: `I'm from ${country
 
 const K = (id, label) => ({ v: id, label, img: img(`city/k-${id}`) });
 const G5 = (a) => [
-  { label: "Hair", answer: a[0], cols: 3, opts: [K("h0", "long wavy brown hair"), K("h1", "long straight dark hair"), K("h2", "curly black hair"), K("h3", "short black hair"), K("h4", "long wavy blond hair"), K("h5", "long wavy black hair"), K("h6", "black hair with a fringe"), K("h7", "two buns"), K("h8", "medium brown hair")] },
+  { label: "Hair", answer: a[0], cols: 5, opts: [K("h0", "long wavy brown hair"), K("h1", "long straight dark hair"), K("h2", "curly black hair"), K("h3", "short black hair"), K("h4", "long wavy blond hair"), K("h5", "long wavy black hair"), K("h6", "black hair with a fringe"), K("h7", "two buns"), K("h8", "medium brown hair")] },
   { label: "Eyes", answer: a[1], cols: 4, opts: [K("e0", "brown eyes"), K("e1", "blue eyes"), K("e2", "green eyes"), K("e3", "grey eyes")] },
   { label: "Hoodie", answer: a[2], cols: 4, opts: [K("t0", "a red hoodie"), K("t1", "a pink hoodie"), K("t2", "a purple hoodie"), K("t3", "a green hoodie")] },
   { label: "Trousers", answer: a[3], cols: 4, opts: [K("p0", "light jeans"), K("p1", "blue jeans"), K("p2", "black trousers"), K("p3", "beige trousers")] },
@@ -100,13 +100,14 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
 
   /* ---- missions à choix (1, 2, 4, 5) ---- */
   function choose(m, steps, S) {
-    const step = steps[S.n], pick = {}; let checked = false;
+    const step = steps[S.n], pick = {}; let checked = false, first = true;
     
     const lead = m.id === "m4"
       ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">What is his or her nationality?</p>`
       : `${play(step.say)}`;
     const sum = () => `<div class="rc-sum"><h3 class="lc-h3">Portrait</h3>${step.groups.map((g, gi) => { const o = g.opts.find((x) => x.v === pick[gi]); return `<div class="rc-sumrow">${o ? `<img src="${o.img}" alt=""/><span>${esc(o.label)}</span>` : `<i class="rc-empty"></i><span class="rc-muted">${esc(g.label)} …</span>`}</div>`; }).join("")}</div>`;
     const paint = () => {
+      const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
       const groups = step.groups.map((g, gi) => `<div class="rc-group"><h3 class="lc-h3">${esc(g.label)}</h3><div class="rc-opts ${g.tiles || g.cols ? "rc-tiles" : ""}" style="--c:${g.cols || 3}">${g.opts.map((o) => {
         const sel = pick[gi] === o.v, ok = checked && o.v === g.answer, ko = checked && sel && o.v !== g.answer;
         return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-g="${gi}" data-v="${esc(o.v)}" ${checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="${esc(o.img && o.label ? o.label : "Character " + (Number(o.v) + 1))}"/>` : ""}${o.label && !o.img ? `<span>${esc(o.label)}</span>` : ""}</button>`;
@@ -116,6 +117,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}${m.id === "m5" ? sum() : ""}
         <div class="rc-fb" aria-live="polite">${checked ? (S.last ? "✅ Bien joué !" : "Pas tout à fait — regarde les bonnes réponses en vert.") : ""}</div>
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && !allSet ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
+      first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
       el.querySelectorAll(".rc-opt").forEach((b) => b.addEventListener("click", () => { pick[b.dataset.g] = b.dataset.v; paint(); }));
       el.querySelector("#rcGo").onclick = () => {
@@ -132,7 +134,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
 
   /* ---- missions de construction (3, 6) ---- */
   function build(m, steps, S) {
-    const t = steps[S.n]; let placed = []; let checked = false, good = false, vmsg = "", listening = false;
+    const t = steps[S.n]; let placed = []; let checked = false, good = false, vmsg = "", listening = false, first = true;
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     const target = t.answer.join(" ").replace(/ ([?.])/g, "$1");
     const norm = (s) => s.toLowerCase().replace(/[^a-z']+/g, " ").trim().split(/\s+/).filter(Boolean);
@@ -149,6 +151,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       try { r.start(); } catch (e) { listening = false; vmsg = "Impossible de démarrer le micro."; paint(); }
     };
     const paint = () => {
+      const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
       const used = new Set(placed);
       const bank = t.bank.map((w, k) => `<button type="button" class="rc-tok ${used.has(k) ? "used" : ""}" data-k="${k}" ${used.has(k) || checked ? "disabled" : ""}>${esc(w)}</button>`).join("");
       const slots = placed.map((k, p) => `<button type="button" class="rc-tok in" data-p="${p}" ${checked ? "disabled" : ""}>${esc(t.bank[k])}</button>`).join("") || `<span class="rc-ph">Touche les mots dans l’ordre</span>`;
@@ -158,6 +161,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         <div class="rc-fb" aria-live="polite">${checked ? (good ? "✅ Parfait !" : `Pas tout à fait. Réponse : <b>${esc(t.answer.join(" ").replace(/ ([?.])/g, "$1"))}</b>`) : ""}</div>
         ${checked ? play(target) : ""}${voice()}
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && placed.length === 0 ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
+      first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
       el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); paint(); }));
       el.querySelectorAll("[data-p]").forEach((b) => b.addEventListener("click", () => { placed.splice(Number(b.dataset.p), 1); paint(); }));

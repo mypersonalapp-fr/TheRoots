@@ -236,3 +236,12 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-voice{ margin-top:10px; padding:12px; border-radius:14px; background:rgba(47,111,209,.08); text-align:center; }
 .rc-vmsg{ min-height:22px; font-weight:600; margin:8px 0 2px; }
 .rc-listen:disabled{ opacity:.7; }
+/* Roots City : écrans plus courts, bouton Valider toujours visible */
+.rc-go{ position:sticky; bottom:6px; z-index:3; box-shadow:0 4px 14px rgba(0,0,0,.25); }
+.rc-card{ padding-bottom:10px; }
+.rc-group{ margin-top:4px; } .rc-group .lc-h3{ margin:4px 0 4px; font-size:14px; }
+.rc-opts{ gap:5px; } .rc-opts.rc-tiles{ gap:4px; }
+.rc-fb{ min-height:0; margin:6px 0 2px; }
+.rc-sum{ display:flex; flex-wrap:wrap; gap:4px 10px; padding:6px 8px; margin-top:6px; }
+.rc-sum .lc-h3{ width:100%; margin:0; font-size:14px; }
+.rc-sumrow{ padding:0; font-size:13px; } .rc-sumrow img,.rc-empty{ width:26px; height:26px; }

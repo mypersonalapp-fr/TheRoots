@@ -82,3 +82,4 @@ Les 8 activités du menu A1.1 sont intégrées. Non fait : verrouillage/déverro
 - Scènes vocabulaire « Les nombres » et « Le corps » intégrées (scene-numbers/scene-body). Planche de calques ChatGPT reçue mais inutilisable en l'état (fonds non transparents, éléments non alignés).
 - Test de fin élargi : 8 textes, 8 audios, 47 questions de grammaire/vocabulaire (10 tirées au sort par essai) couvrant nombres, couleurs, description, démonstratifs, to do, dates et heure.
 - M6 : enregistrement vocal (SpeechRecognition en-GB, comparaison mot à mot ≥80 %, non noté ; repli « Je l'ai dit à voix haute » si le micro n'existe pas). Testé avec une reconnaissance simulée, pas sur un vrai micro.
+- Roots City : le défilement est conservé à chaque choix (plus de retour en haut), bouton Valider collant en bas, mission 5 raccourcie (coiffures sur 5 colonnes, fiche compacte : ~1700 px → ~1050 px).
