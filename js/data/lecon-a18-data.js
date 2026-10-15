@@ -68,20 +68,20 @@ export const GRAMMAR_A18 = [
 ];
 
 export const READING_A18 = [
-  { who: "Emma", text: "Hi! I'm Emma. I'm looking for the library. I'm lost. A woman says: 'Go straight on. Turn left at the bank. The library is on your right.' It's five minutes away. Thank you!",
-    fr: "Emma est perdue et cherche la bibliothèque. Une femme lui explique le chemin : à cinq minutes.",
+  { who: "Emma", text: "Hi! I'm Emma. I'm looking for the library. I'm lost. A woman says: 'Go straight on. Turn left at the bank. The library is on your right.' It's five minutes away. Thank you! I walk to the library and I find it easily. I'm happy now.",
+    fr: "Emma est perdue et cherche la bibliothèque. Une femme lui explique le chemin : à cinq minutes.  Elle marche, trouve facilement la bibliothèque et est contente.",
     qs: [["What is Emma looking for?", ["The library", "The bank", "The hospital"], 0, "The library."], ["How far is it?", ["Five minutes away", "One hour", "Very far"], 0, "Five minutes."]] },
-  { who: "Sam", text: "Hello! I'm Sam. I'm going to the station. I take the number 8 bus. I get off at the market. Then I walk for ten minutes. I never miss the bus because I'm always early.",
-    fr: "Sam prend le bus 8, descend au marché et marche dix minutes. Il est toujours en avance.",
+  { who: "Sam", text: "Hello! I'm Sam. I'm going to the station. I take the number 8 bus. I get off at the market. Then I walk for ten minutes. I never miss the bus because I'm always early. The bus is clean and not full. I sit near the window and look at the streets.",
+    fr: "Sam prend le bus 8, descend au marché et marche dix minutes. Il est toujours en avance.  Le bus est propre ; il s'assoit près de la fenêtre.",
     qs: [["Where does Sam get off?", ["At the market", "At the bank", "At the park"], 0, "At the market."], ["Does he miss the bus?", ["No, never", "Yes, always", "Sometimes"], 0, "He never misses it."]] },
-  { who: "Lily", text: "I'm Lily. I'm a tourist in London. I don't understand the map. I ask a man: 'Excuse me, could you repeat that? Speak slowly, please.' He smiles. 'Of course!'",
-    fr: "Lily, touriste à Londres, demande qu'on lui répète lentement les explications.",
+  { who: "Lily", text: "I'm Lily. I'm a tourist in London. I don't understand the map. I ask a man: 'Excuse me, could you repeat that? Speak slowly, please.' He smiles. 'Of course!' Now I understand the map. I say: 'Thank you very much!' and I go to the museum.",
+    fr: "Lily, touriste à Londres, demande qu'on lui répète lentement les explications.  Maintenant elle comprend ; elle remercie et va au musée.",
     qs: [["Where is Lily?", ["In London", "In Paris", "At home"], 0, "In London."], ["What does Lily ask?", ["To repeat slowly", "For money", "For a taxi"], 0, "Repeat, speak slowly."]] },
-  { who: "Omar", text: "Hi, I'm Omar. I'm on the bus to the hospital. I'm going the wrong way! The hospital is in the other direction. I get off and change buses at the next stop.",
-    fr: "Omar se trompe de direction et change de bus à l'arrêt suivant pour aller à l'hôpital.",
+  { who: "Omar", text: "Hi, I'm Omar. I'm on the bus to the hospital. I'm going the wrong way! The hospital is in the other direction. I get off and change buses at the next stop. The next bus is on time. I'm a little tired, but I'm not angry.",
+    fr: "Omar se trompe de direction et change de bus à l'arrêt suivant pour aller à l'hôpital.  Le bus suivant est à l'heure ; Omar est un peu fatigué mais pas fâché.",
     qs: [["Where is Omar going?", ["To the hospital", "To the park", "To school"], 0, "To the hospital."], ["What is the problem?", ["He is going the wrong way", "The bus is late", "He is lost in the park"], 0, "Wrong way."]] },
-  { who: "Nina", text: "Hello! I'm Nina. I work at the tourist office. Every day, I help tourists. I say: 'This way, please. Follow me!' The post office is near the park. The pharmacy is opposite the bank.",
-    fr: "Nina travaille à l'office de tourisme et guide les touristes : poste près du parc, pharmacie en face de la banque.",
+  { who: "Nina", text: "Hello! I'm Nina. I work at the tourist office. Every day, I help tourists. I say: 'This way, please. Follow me!' The post office is near the park. The pharmacy is opposite the bank. The tourists are happy and say thank you. I love my job.",
+    fr: "Nina travaille à l'office de tourisme et guide les touristes : poste près du parc, pharmacie en face de la banque.  Les touristes remercient Nina ; elle adore son travail.",
     qs: [["Where does Nina work?", ["At the tourist office", "At the bank", "At the library"], 0, "Tourist office."], ["Where is the pharmacy?", ["Opposite the bank", "Next to the park", "Behind the post office"], 0, "Opposite the bank."]] },
 ];
 

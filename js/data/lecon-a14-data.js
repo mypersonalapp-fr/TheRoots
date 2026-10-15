@@ -68,20 +68,20 @@ export const GRAMMAR_A14 = [
 ];
 
 export const READING_A14 = [
-  { who: "Tom", text: "Hi! I'm Tom. I go to school by bus. The bus stop is next to my house. I take the number 12. It takes fifteen minutes. My best friend goes to school on foot.",
-    fr: "Tom prend le bus 12 pour aller à l'école (15 minutes). Son meilleur ami y va à pied.",
+  { who: "Tom", text: "Hi! I'm Tom. I go to school by bus. The bus stop is next to my house. I take the number 12. It takes fifteen minutes. My best friend goes to school on foot. I like my bus because it is warm and I listen to music.",
+    fr: "Tom prend le bus 12 pour aller à l'école (15 minutes). Son meilleur ami y va à pied.  Il aime son bus : il y fait chaud et il écoute de la musique.",
     qs: [["How does Tom go to school?", ["By bus", "By bike", "On foot"], 0, "By bus."], ["How long does it take?", ["Five minutes", "Fifteen minutes", "An hour"], 1, "Fifteen minutes."]] },
-  { who: "Lily", text: "Excuse me! Where is the station? Go straight on. Turn left at the traffic lights. The station is opposite the bank. Thank you very much!",
-    fr: "Lily demande la gare : tout droit, à gauche aux feux, en face de la banque.",
+  { who: "Lily", text: "Excuse me! Where is the station? Go straight on. Turn left at the traffic lights. The station is opposite the bank. Thank you very much! The man smiles and says: 'You're welcome. Have a nice day!'",
+    fr: "Lily demande la gare : tout droit, à gauche aux feux, en face de la banque.  L'homme sourit et lui souhaite une bonne journée.",
     qs: [["Where do you turn left?", ["At the bridge", "At the traffic lights", "At the school"], 1, "At the traffic lights."], ["Where is the station?", ["Opposite the bank", "Next to the school", "Behind the park"], 0, "Opposite the bank."]] },
-  { who: "Sara", text: "I live in a small town. I never take the bus. I always go to work by bike. The road is short and the weather is nice. It takes ten minutes.",
-    fr: "Sara va toujours au travail à vélo (10 minutes).",
+  { who: "Sara", text: "I live in a small town. I never take the bus. I always go to work by bike. The road is short and the weather is nice. It takes ten minutes. My bike is red and I really love it.",
+    fr: "Sara va toujours au travail à vélo (10 minutes).  Son vélo est rouge et elle l'adore.",
     qs: [["How does Sara go to work?", ["By bike", "By bus", "By car"], 0, "By bike."], ["Does she take the bus?", ["Yes", "No", "Sometimes"], 1, "She never takes the bus."]] },
-  { who: "Omar", text: "Today I want to go to the cinema. First, I take the train. Then I walk to the corner. After that, I turn right. The cinema is between a café and a bank.",
-    fr: "Omar prend le train, marche jusqu'au coin, tourne à droite ; le cinéma est entre un café et une banque.",
+  { who: "Omar", text: "Today I want to go to the cinema. First, I take the train. Then I walk to the corner. After that, I turn right. The cinema is between a café and a bank. I love this cinema. The seats are big and comfortable.",
+    fr: "Omar prend le train, marche jusqu'au coin, tourne à droite ; le cinéma est entre un café et une banque.  Il adore ce cinéma : les sièges sont grands et confortables.",
     qs: [["What does Omar take first?", ["The train", "The bus", "A taxi"], 0, "First, I take the train."], ["Where is the cinema?", ["Between a café and a bank", "Opposite the school", "Next to the station"], 0, "Between a café and a bank."]] },
-  { who: "Nina", text: "I am at the station. The train is late. I look at the timetable. A single ticket to London is ten pounds. I buy a return ticket because I come back tonight.",
-    fr: "Nina est à la gare ; le train a du retard ; elle achète un aller-retour pour Londres.",
+  { who: "Nina", text: "I am at the station. The train is late. I look at the timetable. A single ticket to London is ten pounds. I buy a return ticket because I come back tonight. My friend waits for me in London. We eat lunch together.",
+    fr: "Nina est à la gare ; le train a du retard ; elle achète un aller-retour pour Londres.  Son amie l'attend à Londres ; elles déjeunent ensemble.",
     qs: [["Is the train on time?", ["Yes", "No", "We don't know"], 1, "The train is late."], ["Which ticket does Nina buy?", ["A single ticket", "A return ticket", "A bus ticket"], 1, "She buys a return ticket."]] },
 ];
 

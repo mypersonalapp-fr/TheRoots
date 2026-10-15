@@ -68,20 +68,20 @@ export const GRAMMAR_A111 = [
 ];
 
 export const READING_A111 = [
-  { who: "Zoe", text: "Hi! I'm Zoe. Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. We play football. Tomorrow it's going to rain, so we are going to stay at home.",
-    fr: "Zoé profite du soleil au parc ; demain il va pleuvoir.",
+  { who: "Zoe", text: "Hi! I'm Zoe. Today it's sunny and warm. It's twenty-two degrees. I'm at the park with my friends. We play football. Tomorrow it's going to rain, so we are going to stay at home. I wear a T-shirt and shorts. My friend Mia brings some water. We are very happy and we laugh a lot.",
+    fr: "Zoé profite du soleil au parc ; demain il va pleuvoir.  Elle porte un t-shirt et un short ; une amie apporte de l'eau ; elles rient beaucoup.",
     qs: [["What's the weather like today?", ["Sunny and warm", "Cold and rainy", "Snowy"], 0, "Sunny and warm."], ["What about tomorrow?", ["It's going to rain", "It's going to snow", "It's going to be hot"], 0, "Rain."]] },
-  { who: "Jack", text: "I'm Jack. I wake up early, at six o'clock. In winter it's very cold and dark. I have breakfast at half past six. I leave home at seven and I take the bus.",
-    fr: "Jack se lève à six heures ; l'hiver, il fait froid et nuit.",
+  { who: "Jack", text: "I'm Jack. I wake up early, at six o'clock. In winter it's very cold and dark. I have breakfast at half past six. I leave home at seven and I take the bus. I wear a warm coat and a hat. The bus is full of people. I read a book and I am never late.",
+    fr: "Jack se lève à six heures ; l'hiver, il fait froid et nuit.  Il porte un manteau chaud et un bonnet ; le bus est plein ; il lit et n'est jamais en retard.",
     qs: [["When does Jack wake up?", ["At six", "At seven", "At eight"], 0, "Six o'clock."], ["How is winter?", ["Cold and dark", "Hot", "Sunny"], 0, "Cold and dark."]] },
-  { who: "Mia", text: "I'm Mia. In summer I love the beach. It's hot, about thirty degrees. In the evening we eat outside. In winter I stay at home and drink hot chocolate.",
-    fr: "Mia aime l'été à la plage et l'hiver à la maison avec un chocolat chaud.",
+  { who: "Mia", text: "I'm Mia. In summer I love the beach. It's hot, about thirty degrees. In the evening we eat outside. In winter I stay at home and drink hot chocolate. I swim in the sea and I play with my cousins. I also love ice cream. My favourite season is summer.",
+    fr: "Mia aime l'été à la plage et l'hiver à la maison avec un chocolat chaud.  Elle nage dans la mer, joue avec ses cousins, adore les glaces ; sa saison préférée est l'été.",
     qs: [["What does she love in summer?", ["The beach", "The snow", "The school"], 0, "The beach."], ["What does she do in winter?", ["Stays home", "Goes to the beach", "Travels"], 0, "Stays home."]] },
-  { who: "Leo", text: "Hello, I'm Leo. My school starts at quarter to nine. Lunch is at twelve. I finish at four. On Saturday I sleep late. I get up at ten.",
-    fr: "Léo : école à 8h45, déjeuner à midi, fin à 16h ; le samedi il dort tard.",
+  { who: "Leo", text: "Hello, I'm Leo. My school starts at quarter to nine. Lunch is at twelve. I finish at four. On Saturday I sleep late. I get up at ten. At school I study maths and English. My best friend is in my class. In the evening I do my homework.",
+    fr: "Léo : école à 8h45, déjeuner à midi, fin à 16h ; le samedi il dort tard.  À l'école il étudie les maths et l'anglais ; son meilleur ami est dans sa classe ; le soir il fait ses devoirs.",
     qs: [["When does school start?", ["Quarter to nine", "Quarter past nine", "Nine o'clock"], 0, "8:45."], ["When does he get up on Saturday?", ["At ten", "At six", "At eight"], 0, "Ten."]] },
-  { who: "Rita", text: "I'm Rita. Yesterday it was cold, but today it's warm and windy. Tomorrow is Friday. Next week is a holiday, so I'm going to travel to the mountains.",
-    fr: "Rita : hier froid, aujourd'hui doux et venteux ; la semaine prochaine, vacances à la montagne.",
+  { who: "Rita", text: "I'm Rita. Yesterday it was cold, but today it's warm and windy. Tomorrow is Friday. Next week is a holiday, so I'm going to travel to the mountains. I put my boots and my warm jacket in the bag. My brother comes with me. We love walking and taking photos.",
+    fr: "Rita : hier froid, aujourd'hui doux et venteux ; la semaine prochaine, vacances à la montagne.  Elle prépare ses bottes et sa veste ; son frère l'accompagne ; ils adorent marcher et photographier.",
     qs: [["What's the weather like today?", ["Warm and windy", "Cold", "Snowy"], 0, "Warm and windy."], ["What is Rita going to do next week?", ["Travel to the mountains", "Stay at school", "Go to the beach"], 0, "Mountains."]] },
 ];
 

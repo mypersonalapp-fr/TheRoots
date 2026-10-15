@@ -68,20 +68,20 @@ export const GRAMMAR_A19 = [
 ];
 
 export const READING_A19 = [
-  { who: "Emma", text: "Hi! I'm Emma. I'm going to travel to London next week. I'm going to take the plane. I want a window seat. I'm going to stay in a hotel for three nights. I'm very happy!",
-    fr: "Emma part à Londres la semaine prochaine en avion et logera trois nuits à l'hôtel.",
+  { who: "Emma", text: "Hi! I'm Emma. I'm going to travel to London next week. I'm going to take the plane. I want a window seat. I'm going to stay in a hotel for three nights. I'm very happy! I put my clothes in my bag. My friend Anna is going to meet me there.",
+    fr: "Emma part à Londres la semaine prochaine en avion et logera trois nuits à l'hôtel.  Elle prépare son sac ; son amie Anna la retrouvera là-bas.",
     qs: [["Where is Emma going?", ["To London", "To Paris", "To Rome"], 0, "To London."], ["How many nights?", ["Three", "Two", "Ten"], 0, "Three nights."]] },
-  { who: "Sam", text: "Hello! I'm Sam. I'm at the airport. My flight to Madrid is at ten. I check in and show my passport. I have a boarding pass. The gate is number twelve.",
-    fr: "Sam est à l'aéroport : vol pour Madrid à dix heures, porte douze.",
+  { who: "Sam", text: "Hello! I'm Sam. I'm at the airport. My flight to Madrid is at ten. I check in and show my passport. I have a boarding pass. The gate is number twelve. The queue is long, but the staff are kind. I buy a bottle of water and wait.",
+    fr: "Sam est à l'aéroport : vol pour Madrid à dix heures, porte douze.  La file est longue mais le personnel est aimable ; il achète de l'eau.",
     qs: [["Where is Sam's flight?", ["To Madrid", "To London", "To Rome"], 0, "Madrid."], ["Which gate?", ["Twelve", "Two", "Twenty"], 0, "Gate twelve."]] },
-  { who: "Lily", text: "I'm Lily. I'm at the hotel reception. 'I'd like to check in, please. I have a reservation.' 'Your name?' 'Lily Brown.' 'Here is your key. Breakfast is included. Room 205.'",
-    fr: "Lily s'enregistre à l'hôtel : chambre 205, petit-déjeuner inclus.",
+  { who: "Lily", text: "I'm Lily. I'm at the hotel reception. 'I'd like to check in, please. I have a reservation.' 'Your name?' 'Lily Brown.' 'Here is your key. Breakfast is included. Room 205.' The room is clean and quiet. There is a big bed and a small table.",
+    fr: "Lily s'enregistre à l'hôtel : chambre 205, petit-déjeuner inclus.  La chambre est propre et calme, avec un grand lit.",
     qs: [["What is Lily's room number?", ["205", "250", "52"], 0, "205."], ["Is breakfast included?", ["Yes", "No", "We don't know"], 0, "Yes."]] },
-  { who: "Omar", text: "Hi, I'm Omar. My suitcase is very heavy. I have a lot of clothes. At the airport, the woman says: 'Your suitcase is too heavy. You need to pay.' I'm not happy, but I pay.",
-    fr: "La valise d'Omar est trop lourde ; il doit payer un supplément.",
+  { who: "Omar", text: "Hi, I'm Omar. My suitcase is very heavy. I have a lot of clothes. At the airport, the woman says: 'Your suitcase is too heavy. You need to pay.' I'm not happy, but I pay. The woman is friendly and gives me a receipt. Next time I'm going to take fewer clothes.",
+    fr: "La valise d'Omar est trop lourde ; il doit payer un supplément.  L'employée est aimable et lui donne un reçu ; la prochaine fois, moins de vêtements.",
     qs: [["What is the problem?", ["The suitcase is heavy", "He lost his passport", "The flight is full"], 0, "Too heavy."], ["What does he do?", ["He pays", "He leaves", "He cries"], 0, "He pays."]] },
-  { who: "Nina", text: "Hello! I'm Nina. My train is delayed. It is going to arrive at six, not at five. I'm going to call my friend and say: 'I'm going to be late, sorry!' Then I'm going to have a coffee.",
-    fr: "Le train de Nina est en retard ; elle prévient son amie et prend un café.",
+  { who: "Nina", text: "Hello! I'm Nina. My train is delayed. It is going to arrive at six, not at five. I'm going to call my friend and say: 'I'm going to be late, sorry!' Then I'm going to have a coffee. The platform is full of people. I read my book and wait.",
+    fr: "Le train de Nina est en retard ; elle prévient son amie et prend un café.  Le quai est plein de monde ; Nina lit en attendant.",
     qs: [["What time is the train going to arrive?", ["At six", "At five", "At ten"], 0, "At six."], ["What is Nina going to do first?", ["Call her friend", "Go home", "Take a taxi"], 0, "Call her friend."]] },
 ];
 

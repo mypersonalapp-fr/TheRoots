@@ -68,20 +68,20 @@ export const GRAMMAR_A112 = [
 ];
 
 export const READING_A112 = [
-  { who: "Sara", text: "Hi! I'm Sara. I meet my friend Tom at the café. 'Hello, Tom! Long time no see! How are you?' 'Not bad, thanks. And you?' 'Great! Let's have a coffee.'",
-    fr: "Sara retrouve Tom au café et ils prennent un café.",
+  { who: "Sara", text: "Hi! I'm Sara. I meet my friend Tom at the café. 'Hello, Tom! Long time no see! How are you?' 'Not bad, thanks. And you?' 'Great! Let's have a coffee.' Tom tells me about his new job. I listen and I smile. We talk for an hour.",
+    fr: "Sara retrouve Tom au café et ils prennent un café.  Tom lui parle de son nouveau travail ; elle écoute et sourit ; ils parlent pendant une heure.",
     qs: [["Where do they meet?", ["At the café", "At school", "At the airport"], 0, "At the café."], ["How is Tom?", ["Not bad", "Very sad", "Tired"], 0, "Not bad."]] },
-  { who: "Ben", text: "Hello, I'm Ben. I'm at a new school. I say: 'Good morning! I'm Ben. Nice to meet you.' The teacher says: 'Welcome, Ben! Could you sit here, please?'",
-    fr: "Ben se présente à son nouveau professeur, qui l'invite à s'asseoir.",
+  { who: "Ben", text: "Hello, I'm Ben. I'm at a new school. I say: 'Good morning! I'm Ben. Nice to meet you.' The teacher says: 'Welcome, Ben! Could you sit here, please?' I sit near the window. The other students say hello to me. I'm a little nervous, but I'm happy.",
+    fr: "Ben se présente à son nouveau professeur, qui l'invite à s'asseoir.  Ben s'assoit près de la fenêtre, les élèves le saluent ; il est un peu nerveux mais content.",
     qs: [["What does Ben say first?", ["Good morning", "Good night", "Goodbye"], 0, "Good morning."], ["What does the teacher ask?", ["To sit here", "To leave", "To write"], 0, "Sit here."]] },
-  { who: "Lina", text: "I'm Lina. I'm late for the bus. 'Excuse me, can I sit here?' 'Of course.' 'Thank you!' 'You're welcome.' I'm happy because the bus is warm.",
-    fr: "Lina demande poliment de s'asseoir dans le bus et remercie.",
+  { who: "Lina", text: "I'm Lina. I'm late for the bus. 'Excuse me, can I sit here?' 'Of course.' 'Thank you!' 'You're welcome.' I'm happy because the bus is warm. An old woman smiles and moves her bag. She is very polite. I say thank you again.",
+    fr: "Lina demande poliment de s'asseoir dans le bus et remercie.  Une dame âgée sourit et déplace son sac ; elle est très polie ; Lina la remercie encore.",
     qs: [["What does Lina ask?", ["Can I sit here?", "Where is the bus?", "What time is it?"], 0, "Can I sit here."], ["Why is the speaker happy?", ["The bus is warm", "She is early", "She is on holiday"], 0, "The bus is warm."]] },
-  { who: "Max", text: "Hi, I'm Max. I have to go now. 'See you tomorrow, Anna! Say hello to your mother.' 'Thanks, Max. Have a good evening!' 'You too! Bye!'",
-    fr: "Max dit au revoir à Anna et salue sa mère.",
+  { who: "Max", text: "Hi, I'm Max. I have to go now. 'See you tomorrow, Anna! Say hello to your mother.' 'Thanks, Max. Have a good evening!' 'You too! Bye!' I walk home and think about tomorrow. I am tired, but I feel good. It is a nice evening.",
+    fr: "Max dit au revoir à Anna et salue sa mère.  Max rentre à pied ; il est fatigué mais se sent bien ; la soirée est agréable.",
     qs: [["What does Max say to Anna?", ["See you tomorrow", "Good morning", "Nice to meet you"], 0, "See you tomorrow."], ["Who does he say hello to?", ["Her mother", "Her teacher", "Her friend"], 0, "Her mother."]] },
-  { who: "Eva", text: "I'm Eva. Today I send a message to my friend: 'Hi Zoe! I'm sorry, I can't come on Saturday because I have an exam. But I'm free on Sunday. Are you going to be at home? Eva.'",
-    fr: "Eva s'excuse par message : examen samedi, libre dimanche.",
+  { who: "Eva", text: "I'm Eva. Today I send a message to my friend: 'Hi Zoe! I'm sorry, I can't come on Saturday because I have an exam. But I'm free on Sunday. Are you going to be at home? Eva.' I write it politely because Zoe is a good friend. I send the message and I wait for her answer. I hope she is free.",
+    fr: "Eva s'excuse par message : examen samedi, libre dimanche.  Elle l'écrit poliment, l'envoie et attend la réponse de Zoé.",
     qs: [["Why can't Eva come on Saturday?", ["She has an exam", "She is on holiday", "She is ill"], 0, "Exam."], ["When is she free?", ["On Sunday", "On Friday", "On Monday"], 0, "Sunday."]] },
 ];
 
