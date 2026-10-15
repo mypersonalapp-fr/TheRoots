@@ -118,3 +118,41 @@ export const EXERCISES_A12 = [
   { title: "Mise en situation", help: "Famille, maison, métiers.",
     qs: [["Your mother’s mother is your…", ["aunt", "grandmother", "cousin"], 1, "Grandmother."], ["Your uncle’s son is your…", ["brother", "cousin", "grandson"], 1, "Cousin."], ["Where do you cook?", ["bedroom", "kitchen", "garden"], 1, "Kitchen."], ["A person who helps sick people in a hospital:", ["driver", "nurse", "engineer"], 1, "Nurse."], ["“Single” means…", ["marié", "célibataire", "retraité"], 1, "Single = célibataire."]] },
 ];
+
+export const EXPRESSION_A12 = [
+  { title: "Présente ta famille", icon: "👨‍👩‍👧",
+    prompts: ["Dis combien de frères et sœurs tu as.", "Présente ta mère ou ton père.", "Dis son métier.", "Dis comment il / elle est."],
+    model: "I have two sisters. This is my mother. She is a nurse. She is kind and funny.",
+    checks: [["Frères et sœurs", "\\bi (have|don't have|do not have)\\b.*\\b(brother|sister|brothers|sisters)\\b"], ["Ta mère / ton père", "this is my (mother|mum|father|dad|parents)"], ["Son métier", "(he|she) is an? \\w+|(he|she)'s an? \\w+"], ["Comment il / elle est", "(he|she) is \\w+( and \\w+)?|(he|she)'s \\w+"]] },
+  { title: "Décris ta maison", icon: "🏠",
+    prompts: ["Dis combien de chambres il y a.", "Dis s'il y a un jardin.", "Dis où est ta mère.", "Dis où tu habites."],
+    model: "There are three bedrooms. There is a garden. My mother is in the kitchen. I live in Paris.",
+    checks: [["Les chambres", "there (are|is) \\w+ bedrooms?"], ["Le jardin", "there (is|isn't|is not) a garden"], ["Où est ta mère", "my (mother|mum|father|dad) is in the \\w+"], ["Où tu habites", "i live in \\w+"]] },
+];
+
+export const TEST_TEXTS_A12 = [
+  { title: "La famille de Tom", text: "Hi! I'm Tom. I have two sisters and one brother. My father is a doctor. My mother is a teacher. We live in a house with a garden.", q: [["How many sisters has Tom got?", ["One", "Two", "Three"], 1], ["What is Tom's mother's job?", ["Teacher", "Doctor", "Nurse"], 0], ["Is there a garden?", ["Yes", "No", "Not stated"], 0]] },
+  { title: "Les grands-parents de Lily", text: "My name is Lily. My grandmother is seventy and retired. My grandfather is funny. They live near our house in London.", q: [["Who is retired?", ["Her grandmother", "Her mother", "Her aunt"], 0], ["Where do they live?", ["Paris", "London", "Madrid"], 1], ["How old is her grandmother?", ["Sixty", "Seventy", "Eighty"], 1]] },
+  { title: "Sara et Mia", text: "I'm Sara. This is my husband, Paul. We have a baby daughter, Mia. She is one year old and very happy.", q: [["Who is Paul?", ["Her husband", "Her brother", "Her father"], 0], ["Who is Mia?", ["Their daughter", "Their sister", "Their mother"], 0], ["How old is Mia?", ["One", "Two", "Three"], 0]] },
+  { title: "Les cousins d'Omar", text: "I'm Omar. My uncle is an engineer and my aunt is a nurse. They have three children. My cousins are five, seven and nine.", q: [["What is his uncle's job?", ["Engineer", "Nurse", "Driver"], 0], ["How many cousins are there?", ["Two", "Three", "Nine"], 1], ["Who is a nurse?", ["His aunt", "His uncle", "His father"], 0]] },
+  { title: "La maison de Nina", text: "There are four bedrooms in my house, a kitchen and a living room. There isn't a garden. My brother's room is small.", q: [["How many bedrooms are there?", ["Two", "Four", "Five"], 1], ["Is there a garden?", ["Yes", "No", "Not stated"], 1], ["Whose room is small?", ["Her brother's", "Her mother's", "Her sister's"], 0]] },
+];
+
+export const TEST_AUDIOS_A12 = [
+  { script: "This is my family. My mother is a nurse. My father is a driver. I have one brother. His name is Max.", q: [["What is the father's job?", ["Driver", "Nurse", "Doctor"], 0], ["What is the brother's name?", ["Ben", "Max", "Tom"], 1], ["How many brothers has the speaker got?", ["One", "Two", "Three"], 0]] },
+  { script: "Who is he? He is my uncle. He lives in Manchester. He is married and he has two children.", q: [["Who is he?", ["Her uncle", "Her father", "Her cousin"], 0], ["Where does he live?", ["London", "Manchester", "Paris"], 1], ["How many children has he got?", ["One", "Two", "Three"], 1]] },
+  { script: "Today is my grandmother's birthday. She is seventy-five. The family is in the garden.", q: [["How old is she?", ["Seventy", "Seventy-five", "Eighty"], 1], ["Where is the family?", ["In the garden", "In the kitchen", "At school"], 0]] },
+  { script: "Our new house is big. There are three bedrooms and a big kitchen. There isn't a garden.", q: [["How many bedrooms are there?", ["Two", "Three", "Four"], 1], ["Is there a garden?", ["Yes", "No", "Unknown"], 1]] },
+  { script: "My dad is tall and funny. My mum is short and kind. My little sister is a baby. She is very happy.", q: [["Who is funny?", ["The dad", "The mum", "The baby"], 0], ["Who is a baby?", ["The sister", "The mum", "The dad"], 0]] },
+];
+
+export const TEST_GRAMMAR_A12 = [
+  ["Anna is a girl. ___ brother is Tom.", ["His", "Her", "Their"], 1], ["We love ___ grandma.", ["our", "we", "us"], 0], ["They live in ___ house.", ["their", "them", "they"], 0], ["I love ___ family.", ["my", "me", "I"], 0],
+  ["Tom is a boy. ___ sister is Lily.", ["His", "Her", "Our"], 0], ["This is ___ car. (my father)", ["my father’s", "my fathers", "of my father"], 0], ["Two ___ (baby)", ["babys", "babies", "babyes"], 1], ["Three ___ (child)", ["childs", "children", "childes"], 1],
+  ["The ___ room is small. (children)", ["children’s", "childrens’", "childs"], 0], ["Two ___ (brother)", ["brothers", "brotheres", "brotherys"], 0], ["There ___ a garden.", ["is", "are", "have"], 0], ["There ___ two bedrooms.", ["is", "are", "has"], 1],
+  ["___ there a kitchen?", ["Is", "Are", "Do"], 0], ["___ there three bedrooms?", ["Is", "Are", "Does"], 1], ["There ___ a pool. (non)", ["isn’t", "aren’t", "don’t"], 0], ["___ many cousins do you have?", ["How", "What", "Who"], 0],
+  ["___ is she? — She is my aunt.", ["Who", "Where", "How"], 0], ["___ he have a sister?", ["Do", "Does", "Is"], 1], ["___ you have brothers?", ["Do", "Does", "Are"], 0], ["My sisters ___ tall.", ["is", "are", "has"], 1],
+  ["She is ___ engineer.", ["a", "an", "the"], 1], ["He is ___ doctor.", ["a", "an", "—"], 0], ["My brothers are ___.", ["kinds", "kind", "a kind"], 1], ["My father ___ a teacher.", ["is", "are", "am"], 0],
+  ["Your mother’s mother is your ___.", ["aunt", "grandmother", "cousin"], 1], ["Your uncle’s son is your ___.", ["brother", "cousin", "grandson"], 1], ["Where do you cook?", ["In the bedroom", "In the kitchen", "In the garden"], 1], ["“Single” means…", ["marié", "célibataire", "retraité"], 1],
+  ["My parents’ house is ___.", ["big", "bigs", "a big"], 0], ["She ___ two brothers.", ["have", "has", "is"], 1],
+];
