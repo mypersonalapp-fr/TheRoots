@@ -2,9 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { createVoice } from "./voice.js?v=20261017l";
-import { balanceAll } from "../data/balance.js?v=20261017l";
-const V = "20261017l";
+import { createVoice } from "./voice.js?v=20261017p";
+import { balanceAll } from "../data/balance.js?v=20261017p";
+const V = "20261017p";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -135,6 +135,8 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       { const hh0 = el.querySelector(".rc-hero"), ov = () => mn2 && mn2.scrollHeight > mn2.clientHeight + 2; if (hh0 && ov() && items.every((it) => !it.checked)) hh0.classList.add("rc-hero-s"); }
       if (items.length > 1 && mn2 && mn2.scrollHeight > mn2.clientHeight + 2 && items.every((it) => !it.checked)) { S.cap = items.length - 1; choose(m, steps, S); return; }
       if (items.length === 1 && mn2 && items.every((it) => !it.checked)) {
+        const dense = () => { if (mn2.scrollHeight > mn2.clientHeight + 2) { const c = el.querySelector(".rc-card"); if (c) c.classList.add("rc-dense"); } };
+        setTimeout(dense, 0); dense();
         const hh = el.querySelector(".rc-hero");
         if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.classList.add("rc-hero-s"); }
         if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.remove(); }
@@ -175,10 +177,10 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       },
       onError: (c) => { if (c === "denied") vmsg = "Micro refusé : autorise-le dans les réglages du navigateur, ou dis la phrase sans enregistrer."; else if (c === "unavailable") vmsg = "Micro indisponible sur cet appareil."; else if (c === "play") vmsg = "Lecture impossible : vérifie le volume et que le mode silencieux est coupé."; paint(); },
     });
-    const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${V.supported ? (vstate === "listening"
+    const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p>${V.supported ? (vstate === "listening"
       ? `<button type="button" class="rc-listen rc-stop" id="rcStop">⏹ Terminer</button><p class="rc-heard" id="rcInterim" aria-live="polite">${interim ? `« ${esc(interim)} »` : "Je t’écoute…"}</p>`
       : `<div class="rc-vbtns"><button type="button" class="rc-listen" id="rcMic">${vurl || vmsg ? "🎤 Réessayer" : "🎤 Enregistrer"}</button>${vurl ? `<button type="button" class="rc-listen rc-replay" id="rcReplay">▶ Me réécouter</button>` : ""}</div>`)
-      : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
+      : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p></div>`;
     const startMic = () => { vurl = false; V.start(); };
     const paint = () => {
       const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
@@ -187,7 +189,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       const slots = placed.map((k, p) => `<button type="button" class="rc-tok in" data-p="${p}" ${checked ? "disabled" : ""}>${esc(t.bank[k])}</button>`).join("") || `<span class="rc-ph">Touche les mots dans l’ordre</span>`;
       const card = t.card ? `<div class="rc-sheet">${t.card.map(([a, b]) => `<div><small>${esc(a)}</small><b>${esc(b)}</b></div>`).join("")}</div>` : "";
       frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2><p class="rc-ask">${esc(t.prompt)}</p>${card}
-        <div class="rc-slots ${checked ? (good ? "ok" : "ko") : ""}">${slots}</div><div class="rc-bank">${bank}</div>
+        <div class="rc-slots ${checked ? (good ? "ok" : "ko") : ""}">${slots}</div>${checked ? "" : `<div class="rc-bank">${bank}</div>`}
         <div class="rc-fb" aria-live="polite">${checked ? (good ? "✅ Parfait !" : `Pas tout à fait. Réponse : <b>${esc(t.answer.join(" ").replace(/ ([?.])/g, "$1"))}</b>`) : ""}</div>
         ${checked ? play(target) : ""}${voice()}
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && placed.length === 0 ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);

@@ -400,3 +400,11 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-hero.rc-hero-s img{ height:90px !important; max-height:90px !important; }
 .rc-hero img{ aspect-ratio:16/9; }
 .rc-hero.rc-hero-s img{ aspect-ratio:auto !important; }
+
+.rc-dense .rc-opt{ min-height:38px; padding:6px 8px; }
+.rc-dense .rc-opts{ gap:6px; }
+.rc-dense .lc-h3{ margin:6px 0 4px; }
+.rc-dense .rc-lead{ margin:2px 0 6px; }
+.rc-dense .rc-go{ margin-top:4px; }
+.rc-dense .rc-opts.rc-tiles .rc-opt img{ width:auto; height:56px; aspect-ratio:auto; object-fit:contain; margin:0 auto; }
+.rc-dense .rc-opts.rc-tiles{ gap:4px; }
