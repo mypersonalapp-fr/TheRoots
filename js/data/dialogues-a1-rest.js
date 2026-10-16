@@ -114,7 +114,7 @@ export const DIALOGUES_A1_REST = {
     {
      "npc": "Where do we meet?",
      "ok": [
-      "\\b(let's meet|we meet|meet me|at the|in front of|outside)\\b.+"
+      "^(let's meet|we can meet|we meet|meet me|i meet you)?\\s*(at|in front of|outside|near)\\s+(the|a|my)\\s+[a-z]+"
      ],
      "model": "Let's meet at the cinema.",
      "hint": "Propose un lieu avec « Let's meet… »."

@@ -265,3 +265,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-listen.rc-replay{ background:#1f9d55; }
 .rc-heard{ text-align:center; font-weight:600; min-height:22px; margin:6px 0 0; }
 .rc-vmsg{ text-align:center; font-weight:600; margin:8px 0 0; }
+
+.lc-rec{ margin:8px 0 0; padding:8px 10px; border-radius:12px; background:#fff1f0; color:#9f1d1d; font:600 14px/1.35 var(--font-main); }
+.lc-recdot{ display:inline-block; width:10px; height:10px; border-radius:50%; background:#e11d1d; margin-right:4px; animation:lcpulse 1s infinite; }
+@keyframes lcpulse{ 50%{ opacity:.25; } }
+.lc-alt{ display:block; flex-basis:100%; font-size:12px; font-weight:500; opacity:.8; margin-top:2px; }
+.lc-chat.me{ flex-wrap:wrap; }
