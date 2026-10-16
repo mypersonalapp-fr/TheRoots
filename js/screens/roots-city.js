@@ -2,9 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { createVoice } from "./voice.js?v=20261017j";
-import { balanceAll } from "../data/balance.js?v=20261017j";
-const V = "20261017j";
+import { createVoice } from "./voice.js?v=20261017l";
+import { balanceAll } from "../data/balance.js?v=20261017l";
+const V = "20261017l";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -132,6 +132,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       bindBack(start);
       // trop haut pour l'écran : on réduit le nombre de questions par écran
       const mn2 = el.querySelector(".lc-main");
+      { const hh0 = el.querySelector(".rc-hero"), ov = () => mn2 && mn2.scrollHeight > mn2.clientHeight + 2; if (hh0 && ov() && items.every((it) => !it.checked)) hh0.classList.add("rc-hero-s"); }
       if (items.length > 1 && mn2 && mn2.scrollHeight > mn2.clientHeight + 2 && items.every((it) => !it.checked)) { S.cap = items.length - 1; choose(m, steps, S); return; }
       if (items.length === 1 && mn2 && items.every((it) => !it.checked)) {
         const hh = el.querySelector(".rc-hero");
@@ -192,6 +193,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && placed.length === 0 ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
       first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
+      { const mn = el.querySelector(".lc-main"), hh = el.querySelector(".rc-hero"); if (hh && mn && mn.scrollHeight > mn.clientHeight + 2) { hh.classList.add("rc-hero-s"); if (mn.scrollHeight > mn.clientHeight + 2) hh.remove(); } }
       el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); if (placed.length === t.bank.length) { good = placed.map((k) => t.bank[k]).join("|") === t.answer.join("|"); if (!good) S.errors++; checked = true; } paint(); }));
       { const mn = el.querySelector(".lc-main"), hh = el.querySelector(".rc-hero"); if (hh && mn && mn.scrollHeight > mn.clientHeight + 2) { hh.classList.add("rc-hero-s"); if (mn.scrollHeight > mn.clientHeight + 2) hh.remove(); } }
       el.querySelectorAll("[data-p]").forEach((b) => b.addEventListener("click", () => { placed.splice(Number(b.dataset.p), 1); paint(); }));

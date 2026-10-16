@@ -398,3 +398,5 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-item .rc-fb{ min-height:26px; margin:4px 0 0; }
 
 .rc-hero.rc-hero-s img{ height:90px !important; max-height:90px !important; }
+.rc-hero img{ aspect-ratio:16/9; }
+.rc-hero.rc-hero-s img{ aspect-ratio:auto !important; }
