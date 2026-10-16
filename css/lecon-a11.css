@@ -408,3 +408,8 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-dense .rc-go{ margin-top:4px; }
 .rc-dense .rc-opts.rc-tiles .rc-opt img{ width:auto; height:56px; aspect-ratio:auto; object-fit:contain; margin:0 auto; }
 .rc-dense .rc-opts.rc-tiles{ gap:4px; }
+
+.rc-dense2 .rc-opts.rc-tiles .rc-opt img{ height:44px; }
+.rc-dense2 .rc-sum .lc-h3{ display:none; }
+.rc-dense2 .rc-opt{ min-height:34px; padding:4px 6px; }
+.rc-dense2 .rc-sum{ margin-top:2px; }

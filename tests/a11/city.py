@@ -27,7 +27,7 @@ with sync_playwright() as p:
                 g=pg.locator("#rcGo")
                 if g.count()==0: break
                 t=g.inner_text()
-                pg.evaluate("document.querySelector('#rcGo').disabled=false"); g.click(); pg.wait_for_timeout(120)
+                pg.evaluate("document.querySelector('#rcGo').disabled=false"); g.click(); pg.wait_for_timeout(700)
                 if "Terminer" in t and pg.locator(".rc-end").count(): break
                 if pg.locator(".rc-end").count(): break
                 if screens>30: break

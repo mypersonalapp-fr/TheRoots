@@ -2,9 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { createVoice } from "./voice.js?v=20261017p";
-import { balanceAll } from "../data/balance.js?v=20261017p";
-const V = "20261017p";
+import { createVoice } from "./voice.js?v=20261017r";
+import { balanceAll } from "../data/balance.js?v=20261017r";
+const V = "20261017r";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -106,7 +106,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
   /* ---- missions à choix (1, 2, 4, 5) : plusieurs questions par écran, correction immédiate au clic ---- */
   function choose(m, steps, S) {
     const simple = (st) => st.groups.length === 1 && !m.portrait;
-    S.cap = S.cap || 3;
+    S.cap = S.cap || 3; S.pp = S.pp || 0;
     const k = simple(steps[S.n]) ? Math.max(1, Math.min(S.cap, steps.length - S.n)) : 1;
     const items = [];
     for (let j = 0; j < k && S.n + j < steps.length; j++) { if (j > 0 && !simple(steps[S.n + j])) break; items.push({ step: steps[S.n + j], pick: {}, checked: false, good: false }); }
@@ -120,14 +120,15 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       const groups = step.groups.map((g, gi) => `<div class="rc-group">${step.groups.length > 1 || g.label !== "Temps" ? `<h3 class="lc-h3">${esc(g.label)}</h3>` : ""}<div class="rc-opts ${g.tiles || g.cols ? "rc-tiles" : ""}" style="--c:${g.cols || 3}">${g.opts.map((o) => {
         const sel = it.pick[gi] === o.v, ok = it.checked && o.v === g.answer, ko = it.checked && sel && o.v !== g.answer;
         return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-i="${ii}" data-g="${gi}" data-v="${esc(o.v)}" ${it.checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="${esc(o.img && o.label ? o.label : "Character " + (Number(o.v) + 1))}"/>` : ""}${o.label && !o.img ? `<span>${esc(o.label)}</span>` : ""}</button>`;
-      }).join("")}</div></div>`).join("");
+      }).join("")}</div></div>`).filter((_, gi) => !m.portrait || (S.pp ? gi >= Math.ceil(step.groups.length / 2) : gi < Math.ceil(step.groups.length / 2))).join("");
       return `<div class="rc-item ${it.checked ? (it.good ? "good" : "bad") : ""}"><div class="rc-lead">${leadOf(step)}</div>${groups}${m.portrait ? sum(it) : ""}<div class="rc-fb" aria-live="polite">${it.checked ? (it.good ? "✅ Bien joué !" : "❌ Pas tout à fait — la bonne réponse est en vert.") : ""}</div></div>`;
     };
     const paint = () => {
       const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
+      const half = Math.ceil(items[0].step.groups.length / 2), pg0 = m.portrait && !S.pp && !items[0].checked && items[0].step.groups.slice(0, half).every((g, gi) => items[0].pick[gi] != null);
       const done = items.every((it) => it.checked), lastChunk = S.n + items.length >= steps.length;
       frame(`Mission ${S.i + 1}/6`, { cur: S.n + items.length, total: steps.length }, `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${items.map(itemHtml).join("")}
-        <button type="button" class="lc-next rc-go" id="rcGo" ${done ? "" : "disabled"}>${done ? (lastChunk ? "Terminer" : "Suivant ›") : "Choisis ta réponse"}</button></section>`);
+        <button type="button" class="lc-next rc-go" id="rcGo" ${done || pg0 ? "" : "disabled"}>${done ? (lastChunk ? "Terminer" : "Suivant ›") : pg0 ? "Suite ›" : "Choisis ta réponse"}</button></section>`);
       first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
       // trop haut pour l'écran : on réduit le nombre de questions par écran
@@ -141,6 +142,19 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.classList.add("rc-hero-s"); }
         if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.remove(); }
       }
+      { const tok = (S._t = (S._t || 0) + 1);
+        const refit = () => {
+          if (S._t !== tok || !el.querySelector("#rcGo")) return;
+          const mn = el.querySelector(".lc-main"); if (!mn || items.some((it) => it.checked)) return;
+          const ov = () => mn.scrollHeight > mn.clientHeight + 2, c = el.querySelector(".rc-card"), hh = el.querySelector(".rc-hero");
+          if (ov() && hh) hh.classList.add("rc-hero-s");
+          if (ov() && items.length > 1) { S.cap = items.length - 1; choose(m, steps, S); return; }
+          if (ov() && c) c.classList.add("rc-dense");
+          if (ov() && c) c.classList.add("rc-dense2");
+          if (ov() && hh) hh.remove();
+        };
+        setTimeout(refit, 150); setTimeout(refit, 500);
+        el.querySelectorAll("img").forEach((im) => im.addEventListener("load", refit)); }
       el.querySelectorAll(".rc-opt").forEach((b) => b.addEventListener("click", () => {
         const it = items[Number(b.dataset.i)]; if (it.checked) return;
         it.pick[b.dataset.g] = b.dataset.v;
@@ -151,6 +165,8 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         paint();
       }));
       el.querySelector("#rcGo").onclick = () => {
+        if (pg0) { S.pp = 1; paint(); return; }
+        S.pp = 0;
         if (S.n + items.length >= steps.length) finish(m, S, steps);
         else { S.n += items.length; choose(m, steps, S); }
       };
