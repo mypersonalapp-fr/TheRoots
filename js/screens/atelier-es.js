@@ -25,7 +25,7 @@
 
 import { ATELIER_ES } from "../data/atelier-es.js?v=20261008a";
 import { ES_DRILLS } from "../data/atelier-es-drills.js?v=20261008a";
-import { recordSkill } from "../data/progress.js?v=20261016y";
+import { recordSkill } from "../data/progress.js?v=20261016z";
 
 // Ajoute (une seule fois) les séries d'entraînement à la fin de chaque chapitre de temps.
 (function mergeDrills() {
