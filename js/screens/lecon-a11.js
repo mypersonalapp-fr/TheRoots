@@ -6,18 +6,19 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016q";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016r";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261016q";
-import { balanceAll } from "../data/balance.js?v=20261016q";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261016q";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261016q";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261016q";
-import { createVoice } from "./voice.js?v=20261016q";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261016q";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016q";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261016q";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016q";
+import { createCity } from "./roots-city.js?v=20261016r";
+import { balanceAll } from "../data/balance.js?v=20261016r";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261016r";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261016r";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261016r";
+import { buildPractice, mountPractice } from "./practice.js?v=20261016r";
+import { createVoice } from "./voice.js?v=20261016r";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261016r";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016r";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261016r";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016r";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -36,7 +37,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016q" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016r" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -340,7 +341,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016q" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016r" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -349,7 +350,7 @@ export function renderLesson(root, B, { onExit } = {}) {
           <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
-          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016q" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
+          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016r" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     }
@@ -374,9 +375,8 @@ export function renderLesson(root, B, { onExit } = {}) {
       body += `
         <section class="lc-card lc-prac">
           <h2 class="lc-h2 lc-h2-prac">✏️ À toi de pratiquer !</h2>
-          <p class="lc-q">1. ${esc(p.q[0])}</p>
-          <div class="lc-choices" role="group">${p.q[1].map((o, i) => `<button type="button" class="lc-choice" data-i="${i}">${esc(o)}</button>`).join("")}</div>
-          <p class="lc-fb" id="lcFb" aria-live="polite"></p>
+          <p class="pr-intro">5 séries : associer, compléter, remettre en ordre, écrire, mini-défi.</p>
+          <div id="lcPrac" class="pr-host"></div>
         </section>`;
     }
 
@@ -399,23 +399,11 @@ export function renderLesson(root, B, { onExit } = {}) {
       saveProgress(prog);
       showMenu();
     };
-    el.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
-      const ok = Number(b.dataset.i) === p.q[2];
-      const fb = el.querySelector("#lcFb");
-      el.querySelectorAll(".lc-choice").forEach((x) => x.classList.remove("lc-wrong"));
-      if (ok) {
-        answered[page] = true;
-        el.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === p.q[2]); });
-        fb.textContent = "Bravo ! Bonne réponse."; fb.className = "lc-fb lc-fb-ok";
-        el.querySelector("#lcNext").disabled = false;
-      } else {
-        b.classList.add("lc-wrong");
-        fb.textContent = "Pas tout à fait, réessaie."; fb.className = "lc-fb lc-fb-ko";
-      }
-    }));
-    if (answered[page]) { // retour sur une page déjà réussie : état conservé
-      el.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === p.q[2]); });
-    }
+    const host = el.querySelector("#lcPrac");
+    if (host) mountPractice(host, buildPractice(p, sub), {
+      speak, startAt: answered[page] ? 99 : 0,
+      onDone: () => { answered[page] = true; const n = el.querySelector("#lcNext"); if (n) n.disabled = false; },
+    });
   }
 
   /* ----- Grammaire / Lecture / Écoute : pages à questions obligatoires ----- */
