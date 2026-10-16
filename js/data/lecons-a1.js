@@ -25,22 +25,23 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261017e";
-import { plusPages } from "./vocab-plus-a1.js?v=20261017e";
+const V = "20261017f";
+import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261017f";
+import { plusPages } from "./vocab-plus-a1.js?v=20261017f";
 const coreSet = (pages) => new Set(pages.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase())));
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261017e"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261017f"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
-  const core = m[`VOCAB_${s}`], vocab = [...core, ...plusPages(n, coreSet(core))], exprs = m[`EXPRESSION_${s}`];
-  const w = exprs[0], o = exprs[1] || exprs[0];
+  const core = m[`VOCAB_${s}`], vocab = [...core, ...plusPages(n, coreSet(core))], exprs0 = m[`EXPRESSION_${s}`], exprs = [...exprs0, ...(EXPRESSION_PLUS_A1[n] || [])];
+  const w = exprs0[0], o = exprs0[1] || exprs0[0];
   return {
     code: base.code, head: `${base.code} – ${A1_TITLES_FR[n - 1]}`, titleFr: A1_TITLES_FR[n - 1], progressKey: KEYS(n),
     goals: shortGoals(base),
     vocab, grammar: m[`GRAMMAR_${s}`], grammarSub: "Les règles de la leçon, avec des exemples.",
     reading: m[`READING_${s}`], listening: m[`LISTENING_${s}`], exercises: m[`EXERCISES_${s}`], expression: exprs, transv: null,
-    testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs[1] ? 1 : 0,
+    testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs0[1] ? 1 : 0,
     testWriteTitle: w.title, testWriteLead: `Écris 4 phrases : ${w.prompts.join(" ")}`,
     testOralTitle: o.title, testOralLead: o.prompts.join(" "),
     adviceTopic: `${base.title} (${base.code})`, adviceLede: "Réponds avec bienveillance.",

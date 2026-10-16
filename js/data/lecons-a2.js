@@ -2,6 +2,7 @@
 // et les met au format attendu par renderLesson() (js/screens/lecon-a11.js). Même principe que lecons-a1.js.
 // Leçons construites : A2.1 (voir A2_BUILT). Les autres paliers viendront un par un.
 import { A2_EN_PALIERS } from "./programme-a2-en.js";
+import { EXPRESSION_PLUS_A2 } from "./expression-plus-a1.js?v=20261017f";
 
 // Objectifs courts pour l'écran d'accueil : une ligne chacun (le détail reste dans les pages de grammaire).
 const cut = (t, n = 64) => { let x = String(t).split(/ [—–-] | \(|\.\s/)[0].replace(/^Grammaire : /, ""); x = x.split(" : ")[0]; if (x.length > n) { x = x.slice(0, n); x = x.slice(0, x.lastIndexOf(" ")) + "…"; } return x; };
@@ -19,19 +20,19 @@ export function lessonStatusA2(n) {
   } catch (e) { return { started: false, passed: false, score: null }; }
 }
 
-const V = "20261017e";
+const V = "20261017f";
 export async function loadBundleA2(n) {
   if (!A2_BUILT.includes(n)) throw new Error("A2." + n + " pas encore construit");
   const s = `A2${n}`, base = A2_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a2${n}-data.js?v=${V}`);
-  const vocab = m[`VOCAB_${s}`], exprs = m[`EXPRESSION_${s}`];
-  const w = exprs[0], o = exprs[1] || exprs[0];
+  const vocab = m[`VOCAB_${s}`], exprs0 = m[`EXPRESSION_${s}`], exprs = [...exprs0, ...(EXPRESSION_PLUS_A2[n] || [])];
+  const w = exprs0[0], o = exprs0[1] || exprs0[0];
   return {
     code: base.code, head: `${base.code} – ${A2_TITLES_FR[n - 1]}`, titleFr: A2_TITLES_FR[n - 1], progressKey: KEYS(n),
     goals: shortGoals(base),
     vocab, grammar: m[`GRAMMAR_${s}`], grammarSub: "Les règles de la leçon, avec des exemples.",
     reading: m[`READING_${s}`], listening: m[`LISTENING_${s}`], exercises: m[`EXERCISES_${s}`], expression: exprs, transv: null,
-    testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs[1] ? 1 : 0,
+    testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs0[1] ? 1 : 0,
     testWriteTitle: w.title, testWriteLead: `Écris 4 phrases : ${w.prompts.join(" ")}`,
     testOralTitle: o.title, testOralLead: o.prompts.join(" "),
     adviceTopic: `${base.title} (${base.code})`, adviceLede: "Réponds avec bienveillance. Niveau A2.",

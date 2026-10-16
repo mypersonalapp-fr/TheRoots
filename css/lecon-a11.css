@@ -363,3 +363,32 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-kw .lc-h2{ margin:0 0 6px; font-size:15px; }
 .lc-kw .lc-vl li{ padding-top:3px; padding-bottom:3px; }
 .lc-kw .lc-spk{ width:34px; height:34px; min-width:34px; }
+
+/* Expression : écran compact (sans défilement) */
+.lc-prompts{ margin:0 0 8px; gap:2px; font-size:15px; line-height:1.3; }
+.lc-model{ margin-bottom:8px; padding:6px 10px; }
+.lc-model .lc-w b{ font-size:15px; }
+.lc-ta{ min-height:84px; }
+.lc-tabs{ margin-bottom:8px; }
+.lc-tab{ min-height:40px; }
+.lc-micbtn{ width:64px; height:64px; font-size:26px; }
+.lc-mic .lc-small{ margin:4px 0; }
+.lc-said{ min-height:36px; }
+.lc-checks.lc-chips{ display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 0; }
+.lc-chips li{ gap:5px; font-size:12.5px; background:var(--surface); border-radius:999px; padding:3px 9px 3px 4px; }
+.lc-chips li span{ width:18px; height:18px; font-size:11px; }
+.lc-advice{ margin-top:8px; padding-top:6px; }
+.lc-advice-sum{ cursor:pointer; font-weight:700; font-size:14px; padding:6px 0; list-style:none; }
+.lc-advice-sum::-webkit-details-marker{ display:none; }
+.lc-ta{ min-height:64px; }
+.lc-prompts{ font-size:14.5px; line-height:1.25; margin-bottom:6px; }
+.lc-model .lc-w b{ font-size:14.5px; line-height:1.3; }
+.lc-model .lc-spk{ width:38px; height:38px; min-width:38px; }
+.lc-ta{ min-height:56px; }
+.lc-tight .lc-prompts{ font-size:13.5px; }
+.lc-tight .lc-model small{ display:none; }
+.lc-tight .lc-model .lc-w b{ font-size:13.5px; }
+.lc-tight .lc-ta{ min-height:44px; }
+.lc-tight .lc-tab{ min-height:36px; }
+.lc-tight .lc-h2{ margin-bottom:6px; font-size:17px; }
+.lc-tight .lc-checks.lc-chips{ margin-top:4px; }

@@ -6,20 +6,21 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { withExtraQs } from "../data/extra-qs.js?v=20261017e";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017e";
+import { EXPRESSION_PLUS_A1 } from "../data/expression-plus-a1.js?v=20261017f";
+import { withExtraQs } from "../data/extra-qs.js?v=20261017f";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017f";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261017e";
-import { balanceAll } from "../data/balance.js?v=20261017e";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017e";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017e";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261017e";
-import { buildPractice, mountPractice } from "./practice.js?v=20261017e";
-import { createVoice } from "./voice.js?v=20261017e";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017e";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017e";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017e";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017e";
+import { createCity } from "./roots-city.js?v=20261017f";
+import { balanceAll } from "../data/balance.js?v=20261017f";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017f";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017f";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261017f";
+import { buildPractice, mountPractice } from "./practice.js?v=20261017f";
+import { createVoice } from "./voice.js?v=20261017f";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017f";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017f";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017f";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017f";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -38,7 +39,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017e" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017f" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -229,8 +230,8 @@ export function renderLesson(root, B, { onExit } = {}) {
   function mountAdvice(getText) {
     const ta = el.querySelector("#lcTa"); if (!ta) return;
     const card = ta.closest("section") || ta.parentElement;
-    const box = document.createElement("div"); box.className = "lc-advice";
-    box.innerHTML = `<p class="lc-advice-info">💡 Conseil facultatif d’une IA (Google Gemini). Ton texte est envoyé à Google pour l’obtenir. Il ne change pas ta note.</p>
+    const box = document.createElement("details"); box.className = "lc-advice";
+    box.innerHTML = `<summary class="lc-advice-sum">💡 Conseil d’une IA (facultatif)</summary><p class="lc-advice-info">💡 Conseil facultatif d’une IA (Google Gemini). Ton texte est envoyé à Google pour l’obtenir. Il ne change pas ta note.</p>
       <button type="button" class="lc-sec-btn lc-advice-btn">💡 Obtenir un conseil</button><div class="lc-advice-out" aria-live="polite"></div>`;
     card.appendChild(box);
     const btn = box.querySelector(".lc-advice-btn"), out = box.querySelector(".lc-advice-out");
@@ -360,7 +361,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017f" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
 
@@ -384,7 +385,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       body = `
         <section class="lc-card">
           <h2 class="lc-h2">${p.icon || "📖"} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
-          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
+          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017f" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
           <ul class="lc-list lc-vl">${st.words.map(([en, fr]) => `
             <li><span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           ${st.last ? `<h3 class="lc-h3 lc-h3s">💬 En contexte</h3>
@@ -656,11 +657,11 @@ export function renderLesson(root, B, { onExit } = {}) {
             <p class="lc-heard" id="lcHeard">${esc(txt)}</p>
             <button type="button" class="lc-sec-btn" id="lcReplay" ${spkState.url && spkState.url[page] ? "" : "hidden"}>▶ Me réécouter</button>
             <label class="lc-said"><input type="checkbox" id="lcSaid" ${spkState.said[page] ? "checked" : ""}/> J’ai dit ma réponse à voix haute</label></div>`}
-      <ul class="lc-checks" id="lcChecks" aria-live="polite"></ul></section>`;
+      <ul class="lc-checks lc-chips" id="lcChecks" aria-live="polite"></ul></section>`;
     const last = page === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
       <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
-    frame(HEAD, { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">🎤</span><div><h1>Expression</h1><p>Parle et écris.</p></div></div>${body}`, foot);
+    frame(HEAD, { cur: page + 1, total }, body, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
@@ -672,6 +673,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       next.disabled = !spkState.ok[page];
     };
     paint();
+    { const mn = el.querySelector(".lc-main"); if (mn.scrollHeight > mn.clientHeight + 2) mn.classList.add("lc-tight"); }
     el.querySelectorAll(".lc-tab").forEach((b) => b.addEventListener("click", () => { spkState.tab = b.dataset.tab; showSpeak(); }));
     const ta = el.querySelector("#lcTa");
     if (ta) { ta.addEventListener("input", () => { spkState.text[page] = ta.value; paint(); }); mountAdvice(() => ta.value); }
@@ -903,7 +905,7 @@ export function renderLesson(root, B, { onExit } = {}) {
     const Q = (key, q, n) => `<div class="lc-qb"><p class="lc-q">${n}. ${esc(q[0])}</p><div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice ${T.ans[key] === i ? "lc-sel" : ""}" data-k="${key}" data-i="${i}">${esc(o)}</button>`).join("")}</div></div>`;
     let body = "", keys = [], head = "";
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261017e" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
+    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261017f" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
     if (p === 0) {
       keys = T.text.q.map((_, i) => "r" + i); head = "Compréhension écrite · 7,5 pts";
       body = `<section class="lc-card"><h2 class="lc-h2">📚 ${esc(T.text.title)}</h2><p class="lc-text">${esc(T.text.text)}</p></section><section class="lc-card lc-prac">${T.text.q.map((q, i) => Q("r" + i, q, i + 1)).join("")}</section>`;
@@ -1021,7 +1023,7 @@ export const BUNDLE_A11 = {
   code: "A1.1", head: "A1.1 – Mon identité", titleFr: "Mon identité", progressKey: "the_roots_a11_lesson_v1",
   goals: LEARN_GOALS, vocab: [...VOCAB_PAGES, ...plusPages(1, new Set(VOCAB_PAGES.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase()))))], greetings: GREETINGS, scenes: SCENES,
   grammar: GRAMMAR_LIGHT, grammarSub: "Be, have, this/that et les questions.",
-  reading: READING_PAGES, listening: LISTENING_PAGES, exercises: EXERCISES_LIGHT, expression: EXPRESSION_PAGES, transv: TRANSV_DAYS,
+  reading: READING_PAGES, listening: LISTENING_PAGES, exercises: EXERCISES_LIGHT, expression: [...EXPRESSION_PAGES, ...(EXPRESSION_PLUS_A1[1] || [])], transv: TRANSV_DAYS,
   testTexts: TEST_TEXTS, testAudios: TEST_AUDIOS, testGrammar: TEST_GRAMMAR_LIGHT, testW: 0, testO: 0,
   testWriteTitle: "Présente-toi en anglais", testWriteLead: "Écris au moins 4 phrases : ton prénom, ton âge, d’où tu viens, ce que tu aimes.",
   testOralTitle: "Dis ta présentation", testOralLead: "Présente-toi à voix haute en anglais.",
