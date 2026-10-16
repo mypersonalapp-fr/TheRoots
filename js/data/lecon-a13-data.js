@@ -119,7 +119,7 @@ export const EXERCISES_A13 = [
   { title: "Inviter", help: "Do you want to… / Let's…",
     qs: [["___ you want to play tennis?", ["Do", "Does", "Are"], 0, "Do you want to…"], ["Let's ___ a coffee.", ["have", "has", "having"], 0, "Let's + base."], ["« Oui, bien sûr ! »", ["Yes, of course!", "Sorry, I can't.", "See you later!"], 0, "Accepter."], ["« À quelle heure ? »", ["What time?", "Where?", "Who?"], 0, "What time?"], ["« À plus tard ! »", ["See you later!", "Nice to meet you!", "Let's go!"], 0, "See you later!"]] },
   { title: "Mise en situation", help: "Amis et activités.",
-    qs: [["A person who lives next to you:", ["neighbour", "colleague", "classmate"], 0, "Neighbour."], ["A person who works with you:", ["neighbour", "colleague", "cousin"], 1, "Colleague."], ["You go to the cinema once a month:", ["I often go.", "I sometimes go.", "I always go."], 1, "Sometimes."], ["Your friend doesn't like sport:", ["He plays sport.", "He doesn't play sport.", "He don't play sport."], 1, "doesn't."], ["Your friend is not talkative:", ["shy", "funny", "helpful"], 0, "Shy."]] },
+    qs: [["A person who lives next to you:", ["neighbour", "colleague", "classmate"], 0, "Neighbour."], ["A person who works with you:", ["neighbour", "colleague", "cousin"], 1, "Colleague."], ["You go to the cinema once a month:", ["I often go.", "I sometimes go.", "I always go."], 1, "Sometimes."], ["Your friend doesn't like sport:", ["He plays sport.", "He doesn't play sport.", "He don't play sport."], 1, "doesn't."], ["Your friend is afraid to talk to new people:", ["shy", "funny", "helpful"], 0, "Shy."]] },
 ];
 
 export const EXPRESSION_A13 = [

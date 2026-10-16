@@ -46,7 +46,7 @@ export const GRAMMAR_A111 = [
     examples: [["It's ten o'clock.", "Il est dix heures."], ["It's quarter to eight.", "Il est huit heures moins le quart."]],
     qs: [["What time ___ it?", ["is", "are", "does"], 0, "What time is it?"], ["3:30 = ___ three.", ["half past", "quarter to", "o'clock"], 0, "half past three."]] },
   { title: "It impersonnel : la météo", icon: "🌤️",
-    table: [["It's sunny.", "Il fait soleil.", "It's + adjectif"], ["It's cold.", "Il fait froid.", ""], ["It's raining.", "Il pleut.", "It's + verbe-ing"], ["It's snowing.", "Il neige.", ""]],
+    table: [["It's sunny.", "Il fait beau.", "It's + adjectif"], ["It's cold.", "Il fait froid.", ""], ["It's raining.", "Il pleut.", "It's + verbe-ing"], ["It's snowing.", "Il neige.", ""]],
     examples: [["It's hot today.", "Il fait chaud aujourd'hui."], ["It's raining in London.", "Il pleut à Londres."]],
     qs: [["___ cold today.", ["It's", "He's", "They're"], 0, "It's cold."], ["It's ___ now. (rain)", ["raining", "rains", "rain"], 0, "It's raining."]] },
   { title: "Questions sur la météo", icon: "❓",

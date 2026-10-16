@@ -118,7 +118,7 @@ export const EXERCISES_A16 = [
   { title: "Goûts", help: "like / love / hate.",
     qs: [["He ___ fish. (hate)", ["hates", "hate", "hating"], 0, "he → hates."], ["I love ___ tea. (drink)", ["drinking", "drink", "to drinks"], 0, "love + -ing."], ["Do you ___ rice?", ["like", "likes", "liking"], 0, "Do you like."], ["She doesn't ___ spicy food.", ["like", "likes", "liking"], 0, "doesn't + base."], ["It is very ___. (délicieux)", ["delicious", "salty", "cold"], 0, "Delicious."]] },
   { title: "Mise en situation", help: "Repas et restaurant.",
-    qs: [["You are hungry. You say:", ["I am hungry.", "I have hunger.", "I am hunger."], 0, "I am hungry."], ["You want a polite order:", ["I'd like a pizza, please.", "Give pizza.", "I want pizza now."], 0, "Poli."], ["Soup is…", ["hot", "cold", "fresh"], 0, "Hot (en général)."], ["You have no milk:", ["I don't have any milk.", "I don't have some milk.", "I haven't a milk."], 0, "any."], ["Breakfast is…", ["the morning meal", "the evening meal", "a snack"], 0, "Matin."]] },
+    qs: [["You are hungry. You say:", ["I am hungry.", "I have hunger.", "I am hunger."], 0, "I am hungry."], ["You want a polite order:", ["I'd like a pizza, please.", "Give pizza.", "I want pizza now."], 0, "Poli."], ["Ice cream is…", ["cold", "hot", "spicy"], 0, "Cold."], ["You have no milk:", ["I don't have any milk.", "I don't have some milk.", "I haven't a milk."], 0, "any."], ["Breakfast is…", ["the morning meal", "the evening meal", "a snack"], 0, "Matin."]] },
 ];
 
 export const EXPRESSION_A16 = [

@@ -39,7 +39,7 @@ export const EXPRESSION_PLUS_A1 = {
     T("Décris ton meilleur ami", "🧑‍🤝‍🧑", "My best friend is Sara. She is funny and kind. We play tennis and we watch films together.", [
       ["Dis comment il / elle s'appelle.", "Son nom", "friend|name|is|called"], ["Dis comment il / elle est.", "Comment il est", "funny|kind|nice|friendly|clever|shy|quiet|happy|tall"],
       ["Dis ce que vous faites ensemble.", "Ce que vous faites", "together|play|watch|go|walk|talk|study|cook|eat"], ["Dis où vous vous voyez.", "Où", "at|in|park|school|cafe|home|house|cinema|work"]]),
-    T("Accepte une invitation", "🎉", "Thank you! Yes, I would love to come. What time is it? Where is the party?", [
+    T("Accepte une invitation", "🎉", "Thank you! Yes, I would love to come. What time is the party? Where is it?", [
       ["Dis merci.", "Merci", "thank|thanks"], ["Dis oui avec plaisir.", "Oui avec plaisir", "yes|love|great|sure|please|happy"],
       ["Demande l'heure.", "L'heure", "time|when|what time"], ["Demande où.", "Le lieu", "where|place|address"]]),
     T("Refuse poliment", "🙏", "I'm sorry, I can't come. I have homework. Can we meet on Saturday?", [
@@ -87,12 +87,12 @@ export const EXPRESSION_PLUS_A1 = {
     T("Ce que tu ne manges pas", "🚫", "I don't eat fish. I don't like onions. I drink water and tea. Can I have some water, please?", [
       ["Dis ce que tu ne manges pas.", "Ce que tu ne manges pas", "don't eat|do not eat|no|don't like|do not like"], ["Dis un aliment que tu n'aimes pas.", "Un aliment", "fish|onions|meat|cheese|eggs|milk|mushrooms|tomatoes|fruit"],
       ["Dis ce que tu bois.", "Ce que tu bois", "drink|water|tea|coffee|juice|milk"], ["Demande de l'eau poliment.", "Poliment", "can i have|could i have|please|water"]]),
-    T("Fais les courses", "🛒", "I need bread, eggs and milk. Two bottles of milk and a packet of eggs. Where is the milk? It is ten euros.", [
+    T("Fais les courses", "🛒", "I need bread, eggs and milk. Two bottles of milk and a box of eggs. Where is the milk? It is ten euros.", [
       ["Dis ce qu'il te faut.", "Ce qu'il te faut", "need|bread|eggs|milk|rice|apples|butter|cheese"], ["Dis les quantités.", "Quantités", "two|three|bottle|bottles|packet|kilo|some|box|bag"],
       ["Demande où est un produit.", "Où est", "where is|where are|where's"], ["Dis combien tu paies.", "Le total", "euros|euro|ten|twenty|how much|total"]]),
   ],
   7: [
-    T("Essaye un vêtement", "👕", "Can I try this jacket? I am a medium. It is too big. Do you have a smaller size?", [
+    T("Essaye un vêtement", "👕", "Can I try this jacket on? I am a medium. It is too big. Do you have a smaller size?", [
       ["Dis que tu veux essayer.", "Essayer", "try|can i|could i"], ["Dis ta taille.", "Ta taille", "small|medium|large|size|am a|i'm a"],
       ["Dis que c'est trop grand ou petit.", "Trop grand / petit", "too big|too small|too large|too short|too long|too tight"], ["Demande une autre taille.", "Une autre taille", "do you have|bigger|smaller|another|other size"]]),
     T("Dis ce que tu portes", "👗", "I am wearing a blue sweater. I am wearing black trousers and white shoes. I like wearing jeans.", [
@@ -120,8 +120,8 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis où sont les magasins.", "Les magasins", "near|next to|close|shops|market|supermarket"], ["Dis pourquoi tu l'aimes.", "Pourquoi", "because|like|love|green|nice|beautiful"]]),
   ],
   9: [
-    T("Réserve un billet", "🎫", "I want a ticket to London. For Friday. For two people. How much is it?", [
-      ["Dis où tu vas.", "Destination", "ticket|to|london|paris|madrid|rome|want"], ["Dis quand.", "Quand", "monday|tuesday|wednesday|thursday|friday|saturday|sunday|tomorrow|today|next"],
+    T("Réserve un billet", "🎫", "I'd like a ticket to London. For Friday. For two people. How much is it?", [
+      ["Dis où tu vas.", "Destination", "ticket|to|london|paris|madrid|rome|want|like"], ["Dis quand.", "Quand", "monday|tuesday|wednesday|thursday|friday|saturday|sunday|tomorrow|today|next"],
       ["Dis pour combien de personnes.", "Combien de personnes", "one|two|three|four|people|person|adult|adults"], ["Demande le prix.", "Le prix", "how much|price|cost"]]),
     T("À l'aéroport", "✈️", "I have one suitcase. I am going to Rome. Which gate is it? My flight is at ten o'clock.", [
       ["Dis que tu as une valise.", "Ta valise", "suitcase|bag|luggage|baggage"], ["Dis ta destination.", "Destination", "going to|flying to|to|rome|london|paris|madrid"],
@@ -168,7 +168,7 @@ export const EXPRESSION_PLUS_A1 = {
     T("Remercie et excuse-toi", "🙏", "Thank you for the gift. I'm sorry I'm late. It's OK. You're welcome.", [
       ["Dis merci pour un cadeau.", "Merci", "thank|thanks|gift|present"], ["Excuse-toi d'être en retard.", "Excuse", "sorry|late|excuse|apologise|apologize"],
       ["Dis que ce n'est pas grave.", "Pas grave", "it's ok|it's okay|no problem|never mind|don't worry|it is ok"], ["Dis « de rien ».", "De rien", "you're welcome|you are welcome|no problem|not at all"]]),
-    T("Demande poliment", "💬", "Can I have a pen, please? Can you help me? Can you repeat, please? Thank you.", [
+    T("Demande poliment", "💬", "Can I have a pen, please? Could you help me? Could you repeat that, please? Thank you.", [
       ["Demande un stylo.", "Un objet", "can i have|could i have|pen|book|water|please"], ["Demande de l'aide.", "De l'aide", "help|can you help|could you help"],
       ["Demande de répéter.", "Répéter", "repeat|again|slowly|say that"], ["Remercie.", "Merci", "thank|thanks"]]),
     T("Termine la conversation", "👋", "I have to go now. It was nice to talk to you. See you soon! Have a good evening!", [

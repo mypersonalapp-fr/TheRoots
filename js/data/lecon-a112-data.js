@@ -31,7 +31,7 @@ export const VOCAB_A112 = [
   { kind: "words", title: "Les connecteurs", icon: "🔗", scene: ["scene-a112-connectors", "Quatre panneaux vides reliés par des flèches"],
     words: [["and", "et"], ["but", "mais"], ["so", "donc"], ["because", "parce que"], ["or", "ou"], ["also", "aussi"]],
     tip: "“Because” explique la raison : “I'm tired because I work a lot.” “So” donne la conséquence : “I'm tired, so I sleep.”",
-    examples: [["I like tea, but I don't like coffee.", "J'aime le thé, mais pas le café."], ["I'm hungry because I don't eat.", "J'ai faim parce que je ne mange pas."]],
+    examples: [["I like tea, but I don't like coffee.", "J'aime le thé, mais pas le café."], ["I'm happy because it's Friday.", "Je suis content parce que c'est vendredi."]],
     q: ["“Because” veut dire…", ["parce que", "donc", "mais"], 0] },
   { kind: "words", title: "Finir une conversation", icon: "👋", scene: ["scene-a112-goodbye", "Deux amis qui se disent au revoir devant une porte"],
     words: [["I have to go", "je dois partir"], ["Nice to meet you", "enchanté"], ["See you tomorrow", "à demain"], ["Take care", "prends soin de toi"], ["Say hello to…", "salue… de ma part"], ["Talk to you later", "à plus tard"]],
@@ -197,7 +197,7 @@ export const DATA_A112 = {
     pick("I stay home ___ it's raining.", "Connector", "because", ["because", "so", "and"]),
   ],
   m5: [
-    pick("Tu demandes poliment un verre d'eau.", "Say", "Could I have a glass of water, please?", ["Could I have a glass of water, please?", "Give me water now.", "I want water you."]),
+    pick("Tu demandes poliment un verre d'eau.", "Say", "Can I have a glass of water, please?", ["Can I have a glass of water, please?", "Give me water now.", "I want water you."]),
     pick("Tu rencontres quelqu'un.", "Say", "Hello! Nice to meet you.", ["Hello! Nice to meet you.", "Hello! I meet you nice.", "Hi! Meeting nice you."]),
     pick("Tu veux quitter la conversation.", "Say", "I have to go. See you soon!", ["I have to go. See you soon!", "I must go to see.", "Go I have, soon see."]),
     pick("Tu t'excuses pour ton retard.", "Say", "I'm sorry I'm late.", ["I'm sorry I'm late.", "Sorry I late am.", "I'm late sorry am."]),

@@ -81,7 +81,7 @@ export const DIALOGUES_A1_REST = {
       "\\b(this is|these are|it's|there (is|are))\\b.+",
       "\\bmy (mother|father|brother|sister|mum|dad|family)\\b"
      ],
-     "model": "This is my mother and my brother.",
+     "model": "These are my mother and my brother.",
      "hint": "Présente les personnes."
     }
    ]
@@ -804,7 +804,7 @@ export const DIALOGUES_A1_REST = {
      "hint": "Accepte."
     },
     {
-     "npc": "Excuse me, can I sit here?",
+     "npc": "Sorry, I am late! Can I sit here?",
      "ok": [
       "\\b(of course|sure|yes|go ahead)\\b"
      ],

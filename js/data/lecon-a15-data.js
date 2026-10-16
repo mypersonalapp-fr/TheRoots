@@ -54,7 +54,7 @@ export const GRAMMAR_A15 = [
     qs: [["What's your ___ colour?", ["favourite", "favourites", "like"], 0, "favourite."]] },
   { title: "Préférer", icon: "⚖️",
     table: [["I prefer tea.", "Je préfère le thé.", "prefer + nom"], ["I prefer reading to watching TV.", "Je préfère lire à regarder la télé.", "prefer A to B"], ["She prefers dancing.", "Elle préfère danser.", "he / she → prefers"], ["I'd rather stay home.", "Je préférerais rester.", "I'd rather + verbe"]],
-    examples: [["He prefers football to tennis.", "Il préfère le foot au tennis."], ["I'd rather have a tea.", "Je préférerais un thé."]],
+    examples: [["He prefers football to tennis.", "Il préfère le foot au tennis."], ["I'd rather have tea.", "Je préférerais du thé."]],
     qs: [["She ___ cooking.", ["prefer", "prefers", "preferring"], 1, "she → prefers."], ["I prefer tea ___ coffee.", ["to", "than", "of"], 0, "prefer A to B."]] },
   { title: "Moi aussi / Moi non plus", icon: "🤝",
     table: [["I like pop. — Me too!", "Moi aussi !", "phrase positive"], ["I don't like fish. — Me neither.", "Moi non plus.", "phrase négative"], ["I love dancing. — So do I.", "Moi aussi.", "so do I"], ["I hate waiting. — Really? I don't.", "Vraiment ? Pas moi.", ""]],

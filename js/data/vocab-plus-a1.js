@@ -23,7 +23,7 @@ VOCAB_PLUS_A1[1] = [
     "On dit “I speak English” (sans article). “Mother tongue” = langue maternelle.", ["I speak French and English.=Je parle français et anglais.", "Her mother tongue is Arabic.=Sa langue maternelle est l'arabe."]),
   P("Les nombres de 20 à 100", "🔢", "twenty=vingt; thirty=trente; forty=quarante; fifty=cinquante; sixty=soixante; seventy=soixante-dix; eighty=quatre-vingts; ninety=quatre-vingt-dix; hundred=cent; twenty-one=vingt et un",
     "Attention : thirteen (13) / thirty (30), fourteen (14) / forty (40) : on n'écrit pas “fourty”.", ["I am thirty-five years old.=J'ai trente-cinq ans.", "It costs a hundred pounds.=Cela coûte cent livres."]),
-  P("Les mois et les dates", "📅", "January=janvier; February=février; March=mars; April=avril; May=mai; June=juin; July=juillet; August=août; September=septembre; October=octobre",
+  P("Les mois et les dates", "📅", "January=janvier; February=février; March=mars; April=avril; May=mai; June=juin; July=juillet; August=août; September=septembre; October=octobre; November=novembre; December=décembre",
     "Les mois prennent une majuscule. Date : “the fifth of May” ou “May the fifth”.", ["My birthday is in June.=Mon anniversaire est en juin.", "I was born in March.=Je suis né(e) en mars."]),
   P("Décrire son visage", "🙂", "hair=cheveux; eyes=yeux; nose=nez; mouth=bouche; face=visage; blond=blond; dark=brun / foncé; curly=bouclé; straight=raide; beard=barbe",
     "“Hair” est singulier en anglais : “Her hair is long.” (pas “are”).", ["He has dark curly hair.=Il a des cheveux bruns et bouclés.", "She has blue eyes.=Elle a les yeux bleus."]),
@@ -158,7 +158,7 @@ VOCAB_PLUS_A1[7] = [
   P("Les vêtements (suite)", "👕", "T-shirt=T-shirt; jeans=jean; skirt=jupe; coat=manteau; jumper=pull; socks=chaussettes; shorts=short; suit=costume; scarf=écharpe; hat=chapeau",
     "“Jeans”, “trousers”, “shorts” sont toujours pluriels : “a pair of jeans”.", ["I need a warm coat.=J'ai besoin d'un manteau chaud.", "He wears a suit to work.=Il porte un costume pour travailler."]),
   P("Les accessoires", "👜", "belt=ceinture; gloves=gants; sunglasses=lunettes de soleil; watch=montre; ring=bague; necklace=collier; umbrella=parapluie; wallet=portefeuille; purse=porte-monnaie; handbag=sac à main",
-    "“Wallet” pour billets (homme), “purse” = porte-monnaie (britannique).", ["I lost my wallet.=J'ai perdu mon portefeuille.", "Take an umbrella.=Prends un parapluie."]),
+    "“Wallet” = portefeuille (billets, cartes) ; “purse” = porte-monnaie (britannique), sac à main (américain).", ["I lost my wallet.=J'ai perdu mon portefeuille.", "Take an umbrella.=Prends un parapluie."]),
   P("Les couleurs", "🎨", "red=rouge; blue=bleu; green=vert; yellow=jaune; black=noir; white=blanc; grey=gris; pink=rose; brown=marron; purple=violet",
     "La couleur se place avant le nom : “a red dress”.", ["I like the blue shirt.=J'aime la chemise bleue.", "She has a black bag.=Elle a un sac noir."]),
   P("Les matières et les motifs", "🧵", "cotton=coton; wool=laine; leather=cuir; silk=soie; plastic=plastique; plain=uni; striped=rayé; checked=à carreaux; soft=doux; comfortable=confortable",
@@ -203,7 +203,7 @@ VOCAB_PLUS_A1[8] = [
 
 /* ===== A1.9 — Voyager ===== */
 VOCAB_PLUS_A1[9] = [
-  P("Les types de voyage", "🧳", "holiday=vacances; trip=excursion; journey=trajet; tour=visite guidée; cruise=croisière; weekend break=court séjour; business trip=voyage d'affaires; honeymoon=voyage de noces; excursion=sortie; adventure=aventure",
+  P("Les types de voyage", "🧳", "holiday=vacances; trip=voyage (court); journey=trajet; tour=visite guidée; cruise=croisière; weekend break=court séjour; business trip=voyage d'affaires; honeymoon=voyage de noces; excursion=sortie; adventure=aventure",
     "“Holiday” (britannique) = vacances ; “vacation” (américain).", ["We are on holiday in Spain.=Nous sommes en vacances en Espagne.", "It was a long journey.=Ce fut un long trajet."]),
   P("Les hébergements", "🏨", "hostel=auberge de jeunesse; campsite=camping; tent=tente; guest house=chambre d'hôtes; apartment=appartement; villa=villa; cabin=chalet; resort=station / complexe; bed and breakfast=chambre d'hôtes avec petit déjeuner; cottage=petite maison de campagne",
     "“B&B” = bed and breakfast.", ["We stay at a campsite.=Nous séjournons dans un camping.", "I booked a cottage.=J'ai réservé un cottage."]),
@@ -245,7 +245,7 @@ VOCAB_PLUS_A1[10] = [
     "Les matières scolaires n'ont pas d'article : “I like history.”", ["I'm good at geography.=Je suis bon en géographie.", "We have music on Tuesdays.=Nous avons musique le mardi."]),
   P("Les examens", "📝", "test=contrôle; mark=note; result=résultat; pass=réussir; fail=échouer; revise=réviser; practise=s'entraîner; mistake=erreur; correct=correct; question=question",
     "“Pass an exam” = réussir un examen (pas « passer »). « Passer un examen » = take an exam.", ["I take the exam on Friday.=Je passe l'examen vendredi.", "She passed her test.=Elle a réussi son contrôle."]),
-  P("Les qualités professionnelles", "🏆", "hard-working=travailleur; organised=organisé; motivated=motivé; experienced=expérimenté; skilled=qualifié; punctual=ponctuel; creative=créatif; independent=autonome; team player=esprit d'équipe; ambitious=ambitieux",
+  P("Les qualités professionnelles", "🏆", "hard-working=travailleur; organised=organisé; motivated=motivé; experienced=expérimenté; skilled=qualifié; punctual=ponctuel; creative=créatif; independent=autonome; team player=qui a l'esprit d'équipe; ambitious=ambitieux",
     "“Experienced” = qui a de l'expérience ; “experiment” = expérience scientifique.", ["He is very hard-working.=Il est très travailleur.", "She is organised and punctual.=Elle est organisée et ponctuelle."]),
 ];
 
@@ -257,7 +257,7 @@ VOCAB_PLUS_A1[11] = [
     "“It's raining” = il pleut. Pour le temps, on utilise “it”.", ["It's a dry day.=C'est une journée sèche.", "It's mild for December.=Il fait doux pour décembre."]),
   P("Les vêtements selon la météo", "🧥", "raincoat=imperméable; boots=bottes; umbrella=parapluie; gloves=gants; scarf=écharpe; hat=bonnet / chapeau; sunglasses=lunettes de soleil; sandals=sandales; shorts=short; warm clothes=vêtements chauds",
     "“Wear” = porter (un vêtement) : “Wear a raincoat.”", ["Take your umbrella.=Prends ton parapluie.", "I wear sandals in summer.=Je porte des sandales en été."]),
-  P("Les mois (suite)", "🗓️", "February=février; March=mars; April=avril; May=mai; June=juin; July=juillet; August=août; September=septembre; October=octobre; November=novembre",
+  P("Les mois (suite)", "🗓️", "February=février; March=mars; April=avril; May=mai; June=juin; July=juillet; August=août; September=septembre; October=octobre; November=novembre; December=décembre",
     "Les mois ne prennent pas de “the” : “in April”.", ["My birthday is in April.=Mon anniversaire est en avril.", "School starts in September.=L'école commence en septembre."]),
   P("Les jours et le temps", "📆", "Monday=lundi; Tuesday=mardi; Wednesday=mercredi; Thursday=jeudi; Friday=vendredi; Saturday=samedi; Sunday=dimanche; week=semaine; month=mois; year=an",
     "“On” + jour (on Monday) ; “in” + mois ou saison (in May, in summer).", ["I work on Monday.=Je travaille lundi.", "We go away for a week.=Nous partons pour une semaine."]),
@@ -281,7 +281,7 @@ VOCAB_PLUS_A1[12] = [
     "“Sorry” seul = pardon. “I'm sorry for…” + -ing / nom : “I'm sorry for being late.”", ["I'm so sorry I'm late.=Je suis vraiment désolé d'être en retard.", "Don't worry, it's OK.=Ne t'inquiète pas, ce n'est rien."]),
   P("Remercier et féliciter", "🎉", "thanks a lot=merci beaucoup; that's kind=c'est gentil; congratulations=félicitations; well done=bravo; good luck=bonne chance; cheers=merci / santé; I appreciate it=j'apprécie; happy birthday=joyeux anniversaire; great job=beau travail; all the best=meilleurs vœux",
     "“Cheers” = santé ET merci (familier, Royaume-Uni).", ["Well done! You passed!=Bravo ! Tu as réussi !", "Thanks a lot for your help.=Merci beaucoup pour ton aide."]),
-  P("Au téléphone", "📞", "hello=allô / bonjour; speaking=lui-même; hold on=ne quittez pas; wrong number=mauvais numéro; call back=rappeler; leave a message=laisser un message; busy=occupé; line=ligne; voicemail=messagerie; hang up=raccrocher",
+  P("Au téléphone", "📞", "hello=allô / bonjour; speaking=c'est moi (à l'appareil); hold on=ne quittez pas; wrong number=mauvais numéro; call back=rappeler; leave a message=laisser un message; busy=occupé; line=ligne; voicemail=messagerie; hang up=raccrocher",
     "“Who's calling?” = qui est à l'appareil ?", ["Hold on, please.=Ne quittez pas, s'il vous plaît.", "I'll call you back later.=Je vous rappellerai plus tard."]),
   P("Exprimer son accord ou son doute", "🤔", "right=exact; exactly=exactement; probably=probablement; definitely=certainement; perhaps=peut-être; I think so=je pense que oui; I don't think so=je ne pense pas; I'm not sure=je ne suis pas sûr; really=vraiment; absolutely=absolument",
     "“I think so” / “I don't think so” remplacent « je pense que oui / non ».", ["I'm not sure about that.=Je n'en suis pas sûr.", "Definitely! See you there.=Certainement ! On se voit là-bas."]),
@@ -306,7 +306,7 @@ X(3, P("Les réseaux et le numérique", "💻", "online=en ligne; website=site w
 X(7, P("Les tailles et formes", "📐", "tight=serré; loose=ample; long=long; short=court; wide=large; narrow=étroit; heavy=lourd; light=léger; fashionable=à la mode; old-fashioned=démodé", "“Tight” = serré ; “light” = léger ET clair.", ["These shoes are too tight.=Ces chaussures sont trop serrées.", "I like loose trousers.=J'aime les pantalons amples."]));
 X(8, P("Les rues et les bâtiments", "🏙️", "skyscraper=gratte-ciel; bench=banc; bin=poubelle; lamp post=réverbère; fence=clôture; gate=portail; pond=étang; path=chemin; tunnel=tunnel; harbour=port", "“Bin” (britannique) = poubelle ; “trash can” en américain.", ["There is a bench in the park.=Il y a un banc dans le parc.", "Put it in the bin.=Mets-le à la poubelle."]),
   P("Les métiers de la ville", "👮", "postman=facteur; bus driver=conducteur de bus; shopkeeper=commerçant; street cleaner=balayeur; traffic warden=agent de la circulation; taxi driver=chauffeur de taxi; guide=guide; baker=boulanger; butcher=boucher; mayor=maire", "“Postman” est aussi dit “postal worker”.", ["The postman comes at ten.=Le facteur vient à dix heures.", "The baker opens early.=Le boulanger ouvre tôt."]));
-X(9, P("Les problèmes en voyage", "😰", "lost=perdu; late=en retard; stolen=volé; broken=cassé; ill=malade; sunburnt=brûlé par le soleil; homesick=le mal du pays; jet lag=décalage horaire; strike=grève; queue=file", "“Jet lag” = décalage horaire dû à l'avion.", ["I have jet lag.=J'ai le décalage horaire.", "My bag was stolen.=Mon sac a été volé."]));
+X(9, P("Les problèmes en voyage", "😰", "lost=perdu; late=en retard; stolen=volé; broken=cassé; ill=malade; sunburnt=brûlé par le soleil; homesick=qui a le mal du pays; jet lag=décalage horaire; strike=grève; queue=file", "“Jet lag” = décalage horaire dû à l'avion.", ["I have jet lag.=J'ai le décalage horaire.", "My bag was stolen.=Mon sac a été volé."]));
 X(10, P("Les lieux d'études", "🏫", "classroom=salle de classe; playground=cour de récréation; canteen=cantine; laboratory=laboratoire; library=bibliothèque; staff room=salle des profs; hall=salle; campus=campus; gym=gymnase; corridor=couloir", "“Canteen” = cantine scolaire ou d'entreprise.", ["We eat in the canteen.=Nous mangeons à la cantine.", "The lab is on the first floor.=Le laboratoire est au premier étage."]),
   P("La vie d'entreprise", "🏭", "customer=client; product=produit; manager=directeur; team=équipe; project=projet; deadline=date limite; report=rapport; presentation=présentation; boss=patron; employee=employé", "“Deadline” = date limite à respecter.", ["The deadline is Friday.=La date limite est vendredi.", "Our team has a new project.=Notre équipe a un nouveau projet."]));
 X(11, P("Les saisons et la nature", "🍂", "leaves=feuilles; blossom=fleurs (d'arbre); harvest=récolte; frost=gel; heatwave=canicule; puddle=flaque; drought=sécheresse; flood=inondation; breeze=brise; shade=ombre", "“Leaves” = pluriel de “leaf”.", ["The leaves fall in autumn.=Les feuilles tombent en automne.", "There is a heatwave this week.=Il y a une canicule cette semaine."]),

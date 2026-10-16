@@ -128,7 +128,7 @@ export const EXPRESSION_A17 = [
     checks: [["Ce que tu veux", "\\bi'?d like (a|an|some)\\s+\\w+|\\bi want (a|an|some)\\s+\\w+"], ["La couleur", "\\b(red|blue|green|black|white|yellow|pink|purple|orange|brown|grey|gray)\\b"], ["Ta taille", "\\b(size\\s+\\w+|small|medium|large)\\b"], ["Le prix", "how much (is|are)\\s+\\w+"]] },
   { title: "Au magasin (jeu de rôle)", icon: "🛍️",
     prompts: ["Demande à essayer.", "Dis si c'est trop grand ou trop petit.", "Choisis : « je le prends ».", "Demande à payer par carte."],
-    model: "Can I try it on, please? It's too small. I'll take it. Can I pay by card?",
+    model: "Can I try it on, please? It isn't too small. I'll take it. Can I pay by card?",
     checks: [["Essayer", "can i try (it|them|this|these) on"], ["Trop grand / petit", "too (big|small|long|short|expensive)"], ["Je le prends", "i'?ll take (it|them|this|these)"], ["Payer par carte", "can i pay by (card|cash)"]] },
 ];
 
