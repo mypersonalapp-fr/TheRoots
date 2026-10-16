@@ -337,7 +337,8 @@ export function plusPages(n, coreSeen = new Set()) {
   const out = [];
   for (const p of VOCAB_PLUS_A1[n] || []) {
     const words = p.words.filter((w) => { const k = w[0].toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
-    if (words.length >= 4) out.push({ ...p, words, q: [`« ${words[0][0]} » veut dire…`, [words[0][1], words[1][1], words[2][1]], 0] });
+    if (words.length >= 4) { const pos = (n + out.length * 2 + words[0][0].length) % 3, ch = [words[1][1], words[2][1]]; ch.splice(pos, 0, words[0][1]);
+      out.push({ ...p, words, q: [`« ${words[0][0]} » veut dire…`, ch, pos] }); }
   }
   return out;
 }

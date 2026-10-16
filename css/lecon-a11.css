@@ -279,7 +279,7 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .pr-hint{ margin:0 0 10px; font-size:14px; color:var(--ink-soft); }
 .pr-pairs{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .pr-pairs > div{ display:flex; flex-direction:column; gap:8px; }
-.pr-cell{ min-height:46px; font-size:14px; padding:8px 10px; }
+.pr-cell{ min-height:40px; font-size:13.5px; line-height:1.25; padding:6px 10px; }
 .pr-cell:disabled{ opacity:.85; }
 .pr-card{ background:var(--surface-soft); border-radius:14px; padding:14px; font-size:18px; font-weight:700; line-height:1.4; margin-bottom:12px; }
 .pr-card small{ display:block; font-size:13px; font-weight:600; color:var(--ink-soft); margin-top:6px; }
