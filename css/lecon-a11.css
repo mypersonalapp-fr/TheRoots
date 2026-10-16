@@ -343,3 +343,10 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-rules .lc-w b{ font-size:17px; }
 .lc-rules .lc-w .lc-form{ display:block; font-size:17px; font-weight:800; margin-top:2px; }
 .lc-rules .lc-w small{ display:block; font-size:13px; }
+.lc-rules li{ padding-top:5px; padding-bottom:5px; }
+.lc-rules .lc-w{ line-height:1.2; }
+.lc-rules .lc-w .lc-form{ margin-top:0; }
+.lc-rules .lc-w b,.lc-rules .lc-w .lc-form{ display:inline; }
+.lc-rules .lc-w .lc-form{ margin-left:8px; }
+.lc-rules .lc-w small{ display:block; }
+.lc-rules .lc-w{ display:block; }
