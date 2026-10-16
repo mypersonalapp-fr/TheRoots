@@ -3,6 +3,9 @@
 // Leçons construites : A2.1 (voir A2_BUILT). Les autres paliers viendront un par un.
 import { A2_EN_PALIERS } from "./programme-a2-en.js";
 
+// Objectifs courts pour l'écran d'accueil : une ligne chacun (le détail reste dans les pages de grammaire).
+const cut = (t, n = 64) => { let x = String(t).split(/ [—–-] | \(|\.\s/)[0].replace(/^Grammaire : /, ""); x = x.split(" : ")[0]; if (x.length > n) { x = x.slice(0, n); x = x.slice(0, x.lastIndexOf(" ")) + "…"; } return x; };
+export const shortGoals = (base) => [cut(base.objective.split(", ")[0], 70), ...base.grammar.slice(0, 2).map((g) => "Grammaire : " + cut(g, 40))];
 export const A2_TITLES_FR = ["Ma routine au quotidien", "Le passé et « used to »", "Pendant que…", "Mes projets", "Comparer", "Santé et bien-être", "Météo et environnement", "Logement et quartier", "Au téléphone", "Sorties et invitations", "Opinions et sentiments", "Imprévus en voyage"];
 export const A2_BUILT = [1];
 const KEYS = (n) => `the_roots_a2${n}_lesson_v1`;
@@ -16,7 +19,7 @@ export function lessonStatusA2(n) {
   } catch (e) { return { started: false, passed: false, score: null }; }
 }
 
-const V = "20261016s";
+const V = "20261016w";
 export async function loadBundleA2(n) {
   if (!A2_BUILT.includes(n)) throw new Error("A2." + n + " pas encore construit");
   const s = `A2${n}`, base = A2_EN_PALIERS[n - 1];
@@ -25,7 +28,7 @@ export async function loadBundleA2(n) {
   const w = exprs[0], o = exprs[1] || exprs[0];
   return {
     code: base.code, head: `${base.code} – ${A2_TITLES_FR[n - 1]}`, titleFr: A2_TITLES_FR[n - 1], progressKey: KEYS(n),
-    goals: [base.objective, ...base.grammar.slice(0, 3).map((g) => `Grammaire : ${g}`)],
+    goals: shortGoals(base),
     vocab, grammar: m[`GRAMMAR_${s}`], grammarSub: "Les règles de la leçon, avec des exemples.",
     reading: m[`READING_${s}`], listening: m[`LISTENING_${s}`], exercises: m[`EXERCISES_${s}`], expression: exprs, transv: null,
     testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs[1] ? 1 : 0,
