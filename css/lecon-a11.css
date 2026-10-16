@@ -413,3 +413,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .rc-dense2 .rc-sum .lc-h3{ display:none; }
 .rc-dense2 .rc-opt{ min-height:34px; padding:4px 6px; }
 .rc-dense2 .rc-sum{ margin-top:2px; }
+.lc-chatbox.lc-chatfull{ max-height:none; overflow:visible; }
+.lc-chatbox{ max-height:none; margin:6px 0; }
+.lc-chatbox + .lc-ta, #dlgIn.lc-ta{ min-height:48px; }
+.lc-dlg-actions{ margin-top:6px; }
+.lc-chatfull + .lc-small{ margin:4px 0; font-size:13px; }
+.lc-card > .lc-advice .lc-advice-info{ font-size:12px; margin:2px 0 6px; }
