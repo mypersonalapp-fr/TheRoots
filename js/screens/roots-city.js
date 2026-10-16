@@ -2,8 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { balanceAll } from "../data/balance.js?v=20261016d";
-const V = "20261016d";
+import { createVoice } from "./voice.js?v=20261016e";
+import { balanceAll } from "../data/balance.js?v=20261016e";
+const V = "20261016e";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -138,21 +139,27 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
   /* ---- missions de construction (3, 6) ---- */
   function build(m, steps, S) {
     const t = steps[S.n]; let placed = []; let checked = false, good = false, vmsg = "", listening = false, first = true;
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     const target = t.answer.join(" ").replace(/ ([?.])/g, "$1");
     const norm = (s) => s.toLowerCase().replace(/[^a-z']+/g, " ").trim().split(/\s+/).filter(Boolean);
-    const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${SR ? `<button type="button" class="rc-listen" id="rcMic" ${listening ? "disabled" : ""}>${listening ? "🎙️ Je t’écoute…" : "🎤 Enregistrer"}</button>` : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
-    const startMic = () => {
-      const r = new SR(); r.lang = "en-GB"; r.interimResults = false; r.maxAlternatives = 3; listening = true; vmsg = ""; paint();
-      r.onresult = (e) => {
-        const alts = [...e.results[0]].map((a) => a.transcript);
-        const exp = norm(target), best = Math.max(...alts.map((a) => { const w = norm(a); return exp.filter((x) => w.includes(x)).length / exp.length; }));
-        vmsg = best >= 0.8 ? `🌟 Great! J’ai entendu : « ${alts[0]} »` : `J’ai entendu : « ${alts[0]} ». Réécoute le modèle et réessaie.`;
-      };
-      r.onerror = () => { vmsg = "Micro indisponible ou refusé. Autorise le micro, ou dis la phrase sans enregistrer."; };
-      r.onend = () => { listening = false; paint(); };
-      try { r.start(); } catch (e) { listening = false; vmsg = "Impossible de démarrer le micro."; paint(); }
-    };
+    let vstate = "idle", interim = "", vurl = false;
+    const V = createVoice({
+      onState: (st) => { vstate = st; if (st === "listening") { interim = ""; vmsg = ""; } paint(); },
+      onText: (txt) => { interim = txt; const e = el.querySelector("#rcInterim"); if (e) e.textContent = txt ? `« ${txt} »` : ""; },
+      onDone: ({ alts }) => {
+        vurl = V.hasAudio();
+        if (alts && alts.length) {
+          const exp = norm(target), best = Math.max(...alts.map((a) => { const w = norm(a); return exp.filter((x) => w.includes(x)).length / exp.length; }));
+          vmsg = best >= 0.8 ? `🌟 Great ! J’ai compris : « ${alts[0]} »` : `J’ai compris : « ${alts[0]} ». Réécoute le modèle et réessaie.`;
+        } else vmsg = vurl ? "Je n’ai pas bien compris. Réécoute-toi, puis réessaie." : "Je n’ai rien entendu. Réessaie un peu plus fort.";
+        paint();
+      },
+      onError: (c) => { if (c === "denied") vmsg = "Micro refusé : autorise-le dans les réglages du navigateur, ou dis la phrase sans enregistrer."; else if (c === "unavailable") vmsg = "Micro indisponible sur cet appareil."; paint(); },
+    });
+    const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${V.supported ? (vstate === "listening"
+      ? `<button type="button" class="rc-listen rc-stop" id="rcStop">⏹ Terminer</button><p class="rc-heard" id="rcInterim" aria-live="polite">${interim ? `« ${esc(interim)} »` : "Je t’écoute…"}</p>`
+      : `<div class="rc-vbtns"><button type="button" class="rc-listen" id="rcMic">${vurl || vmsg ? "🎤 Réessayer" : "🎤 Enregistrer"}</button>${vurl ? `<button type="button" class="rc-listen rc-replay" id="rcReplay">▶ Me réécouter</button>` : ""}</div>`)
+      : `<button type="button" class="rc-listen" id="rcSaid">✔ Je l’ai dit à voix haute</button>`}<p class="rc-vmsg" aria-live="polite">${esc(vmsg)}</p><p class="rc-muted">Entraînement : ça ne change pas tes étoiles.</p></div>`;
+    const startMic = () => { vurl = false; V.start(); };
     const paint = () => {
       const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
       const used = new Set(placed);
@@ -169,6 +176,8 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
       el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); paint(); }));
       el.querySelectorAll("[data-p]").forEach((b) => b.addEventListener("click", () => { placed.splice(Number(b.dataset.p), 1); paint(); }));
       const mic = el.querySelector("#rcMic"); if (mic) mic.onclick = startMic;
+      const stp = el.querySelector("#rcStop"); if (stp) stp.onclick = () => V.stop();
+      const rpl = el.querySelector("#rcReplay"); if (rpl) rpl.onclick = () => V.play();
       const said = el.querySelector("#rcSaid"); if (said) said.onclick = () => { vmsg = "👍 Bravo, continue à t’entraîner !"; paint(); };
       el.querySelector("#rcGo").onclick = () => {
         if (!checked) {

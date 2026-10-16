@@ -259,3 +259,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-go.lc-go-stars{ flex:0 0 auto; width:auto; height:auto; min-width:30px; padding:4px 8px; border-radius:999px; font-size:13px; letter-spacing:0; white-space:nowrap; }
 .rc-total{ display:table; margin:10px auto 0; padding:6px 16px; border-radius:999px; background:rgba(255,255,255,.92); color:#14213d; }
 :root[data-theme="dark"] .rc-total{ background:rgba(20,28,50,.92); color:#eef2ff; }
+
+.rc-vbtns{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.rc-listen.rc-stop{ background:#d64545; }
+.rc-listen.rc-replay{ background:#1f9d55; }
+.rc-heard{ text-align:center; font-weight:600; min-height:22px; margin:6px 0 0; }
+.rc-vmsg{ text-align:center; font-weight:600; margin:8px 0 0; }

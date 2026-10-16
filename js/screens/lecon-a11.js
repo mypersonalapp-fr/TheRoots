@@ -6,12 +6,13 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016d";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016e";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261016d";
-import { balanceAll } from "../data/balance.js?v=20261016d";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016d";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016d";
+import { createCity } from "./roots-city.js?v=20261016e";
+import { balanceAll } from "../data/balance.js?v=20261016e";
+import { createVoice } from "./voice.js?v=20261016e";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016e";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016e";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -30,7 +31,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016d" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016e" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -332,7 +333,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -341,7 +342,7 @@ export function renderLesson(root, B, { onExit } = {}) {
           <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
-          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
+          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     }
@@ -523,8 +524,9 @@ export function renderLesson(root, B, { onExit } = {}) {
       <div class="lc-model"><span class="lc-w"><small>Modèle</small><b>${esc(sub(p.model))}</b></span>${spk(sub(p.model))}</div>
       ${tab === "write"
         ? `<textarea id="lcTa" class="lc-ta" rows="4" placeholder="Écris en anglais…" aria-label="Ta réponse en anglais">${esc(txt)}</textarea>`
-        : `<div class="lc-mic">${SR ? `<button type="button" class="lc-micbtn" id="lcMic" aria-label="Appuie et parle">🎙️</button><p class="lc-small">Appuie et parle en anglais.</p>` : `<p class="lc-small">La reconnaissance vocale n’est pas disponible sur cet appareil : dis ta réponse à voix haute, puis coche la case.</p>`}
+        : `<div class="lc-mic">${(SR || window.MediaRecorder) ? `<button type="button" class="lc-micbtn" id="lcMic" aria-label="Appuie et parle">🎙️</button><p class="lc-small">Appuie, parle en anglais, puis appuie sur ⏹ pour terminer.</p>` : `<p class="lc-small">La reconnaissance vocale n’est pas disponible sur cet appareil : dis ta réponse à voix haute, puis coche la case.</p>`}
             <p class="lc-heard" id="lcHeard">${esc(txt)}</p>
+            <button type="button" class="lc-sec-btn" id="lcReplay" ${spkState.url && spkState.url[page] ? "" : "hidden"}>▶ Me réécouter</button>
             <label class="lc-said"><input type="checkbox" id="lcSaid" ${spkState.said[page] ? "checked" : ""}/> J’ai dit ma réponse à voix haute</label></div>`}
       <ul class="lc-checks" id="lcChecks" aria-live="polite"></ul></section>`;
     const last = page === total - 1;
@@ -548,16 +550,24 @@ export function renderLesson(root, B, { onExit } = {}) {
     const said = el.querySelector("#lcSaid");
     if (said) said.addEventListener("change", () => { spkState.said[page] = said.checked; paint(); });
     const mic = el.querySelector("#lcMic");
-    if (mic) mic.addEventListener("click", () => {
-      try {
-        const r = new SR(); r.lang = "en-GB"; r.interimResults = false;
-        mic.classList.add("lc-mic-on");
-        r.onresult = (e) => { spkState.heard[page] = Array.from(e.results).map((x) => x[0].transcript).join(" "); el.querySelector("#lcHeard").textContent = spkState.heard[page]; paint(); };
-        r.onerror = () => toast("Micro indisponible ou refusé");
-        r.onend = () => mic.classList.remove("lc-mic-on");
-        r.start();
-      } catch (e) { toast("Micro indisponible sur cet appareil"); }
-    });
+    if (mic) {
+      spkState.url = spkState.url || {};
+      let on = false;
+      const V = createVoice({
+        onState: (st) => { on = st === "listening"; mic.textContent = on ? "⏹" : "🎙️"; mic.classList.toggle("lc-mic-on", on); },
+        onText: (t) => { spkState.heard[page] = t; const h = el.querySelector("#lcHeard"); if (h) h.textContent = t; },
+        onDone: ({ alts, url }) => {
+          if (alts && alts[0]) spkState.heard[page] = alts[0];
+          if (url) { spkState.url[page] = url; const r = el.querySelector("#lcReplay"); if (r) r.hidden = false; }
+          const h = el.querySelector("#lcHeard"); if (h) h.textContent = spkState.heard[page] || "";
+          paint();
+        },
+        onError: (c) => toast(c === "denied" ? "Micro refusé : autorise-le dans les réglages" : "Micro indisponible sur cet appareil"),
+      });
+      mic.onclick = () => (on ? V.stop() : V.start());
+      const rp = el.querySelector("#lcReplay");
+      if (rp) rp.onclick = () => { try { new Audio(spkState.url[page]).play(); } catch (e) { toast("Lecture impossible"); } };
+    }
     el.querySelector("#lcBack").onclick = showMenu;
     el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showSpeak(); } };
     next.onclick = () => {
