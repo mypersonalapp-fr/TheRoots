@@ -9,11 +9,12 @@ with sync_playwright() as p:
         if "exam" not in url:
             pg.click("#lcStart"); pg.wait_for_timeout(150); pg.click(".lc-row[data-act=test]"); pg.wait_for_timeout(300)
             if pg.locator("#lcTestStart").count(): pg.click("#lcTestStart")
-        n=0; over=[]
+        n=0; over=[]; gaps=[]
         while True:
             n+=1; pg.wait_for_timeout(250)
             m=pg.evaluate("(()=>{const e=document.querySelector('.lc-main');return [e.scrollHeight,e.clientHeight]})()")
             if m[0]>m[1]+2: over.append((n,m))
+            gp=pg.evaluate("(()=>{const mm=document.querySelector('.lc-main'),f=document.querySelector('.lc-foot');return Math.round(f.getBoundingClientRect().top-mm.lastElementChild.getBoundingClientRect().bottom)})()"); gaps.append(gp)
             for c in pg.locator(".lc-qb").all():
                 c.locator(".lc-choice").first.click()
             ta=pg.locator("#lcTa")
@@ -23,4 +24,4 @@ with sync_playwright() as p:
             pg.click("#lcNext")
             if "résultat" in t: break
             if n>40: break
-        print(url,"écrans",n,"débordements",over,errs)
+        print(url,"écrans",n,"débordements",over,"vide px",gaps,errs)

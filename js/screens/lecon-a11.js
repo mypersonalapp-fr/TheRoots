@@ -6,21 +6,21 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { EXPRESSION_PLUS_A1 } from "../data/expression-plus-a1.js?v=20261017w";
-import { withExtraQs } from "../data/extra-qs.js?v=20261017w";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017w";
+import { EXPRESSION_PLUS_A1 } from "../data/expression-plus-a1.js?v=20261018d";
+import { withExtraQs } from "../data/extra-qs.js?v=20261018d";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018d";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261017w";
-import { balanceAll } from "../data/balance.js?v=20261017w";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017w";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017w";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261017w";
-import { buildPractice, mountPractice } from "./practice.js?v=20261017w";
-import { createVoice } from "./voice.js?v=20261017w";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017w";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017w";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017w";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017w";
+import { createCity } from "./roots-city.js?v=20261018d";
+import { balanceAll } from "../data/balance.js?v=20261018d";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261018d";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261018d";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261018d";
+import { buildPractice, mountPractice } from "./practice.js?v=20261018d";
+import { createVoice } from "./voice.js?v=20261018d";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261018d";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261018d";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261018d";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261018d";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -39,7 +39,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017w" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261018d" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -361,7 +361,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017w" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261018d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
 
@@ -385,7 +385,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       body = `
         <section class="lc-card">
           <h2 class="lc-h2">${p.icon || "📖"} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
-          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017w" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
+          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261018d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
           <ul class="lc-list lc-vl">${st.words.map(([en, fr]) => `
             <li><span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           ${st.last ? `<h3 class="lc-h3 lc-h3s">💬 En contexte</h3>
@@ -755,10 +755,10 @@ export function renderLesson(root, B, { onExit } = {}) {
       const msgHtml = (m) => `<div class="lc-chat ${m.who}"><span>${esc(m.text)}</span>${m.who === "npc" ? spk(m.text) : ""}${m.tag ? `<em>${esc(m.tag)}</em>` : ""}${m.reg ? `<small class="lc-alt"><b>Formel :</b> ${esc(m.reg[0])} ${spk(m.reg[0])}<br><b>Informel :</b> ${esc(m.reg[1])} ${spk(m.reg[1])}</small>` : ""}</div>`;
       const pairs = []; for (let i = 0; i < log.length; i += 2) pairs.push(log.slice(i, i + 2).map(msgHtml).join(""));
       const extras = `<p class="lc-small">Conversation terminée. ✓ = ta réponse contient les bons éléments. L’appli ne vérifie pas toute la grammaire : compare avec les versions « Formel » et « Informel » sous chaque réponse.</p><div class="lc-advice"><p class="lc-advice-info">💡 Conseil facultatif d’une IA (Google Gemini). Tes réponses sont envoyées à Google. Ne change pas ta note.</p><button type="button" class="lc-sec-btn" id="dlgAdv">💡 Faire corriger mes réponses</button><div class="lc-advice-out" id="dlgAdvOut" aria-live="polite"></div></div>`;
-      const mk = (a, z, lastPage) => `<section class="lc-card"><h2 class="lc-h2">${D.icon} ${esc(D.title)}</h2><div class="lc-chatbox lc-chatfull">${pairs.slice(a, z).join("")}</div>${lastPage ? extras : ""}</section>`;
+      const mk = (a, z, lastPage) => `<section class="lc-card">${a === 0 ? `<h2 class=\"lc-h2\">${D.icon} ${esc(D.title)}</h2>` : ""}<div class="lc-chatbox lc-chatfull">${pairs.slice(a, z).join("")}</div>${lastPage ? extras : ""}</section>`;
       const foot = (i, n) => `<footer class="lc-foot">${i > 0 ? '<button type="button" class="lc-sec-btn" id="dlgPrev">← Précédent</button>' : ""}${i < n - 1 ? '<button type="button" class="lc-cta lc-next" id="dlgNextP">Suivant →</button>' : '<button type="button" class="lc-cta" id="dlgEnd">Terminer ✓</button>'}</footer>`;
       const cnt = { cur: D.turns.length, total: D.turns.length };
-      const fits = () => { const m = el.querySelector(".lc-main"); return m.scrollHeight <= m.clientHeight - 8; };
+      const fits = () => { const m = el.querySelector(".lc-main"), f = el.querySelector(".lc-foot"); return m.scrollHeight <= m.clientHeight + 2 && (!f || m.lastElementChild.getBoundingClientRect().bottom <= f.getBoundingClientRect().top - 10); };
       if (!fplan) {
         fplan = []; let a = 0;
         while (a < pairs.length) {
@@ -770,6 +770,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       fi = Math.min(fi, fplan.length - 1);
       const [a, z] = fplan[fi];
       frame(HEAD, cnt, mk(a, z, z === pairs.length), foot(fi, fplan.length));
+      fillSpace();
       el.querySelector("#lcBack").onclick = showDialogueList;
       const pv = el.querySelector("#dlgPrev"); if (pv) pv.onclick = () => { fi--; drawEnd(); };
       const nx = el.querySelector("#dlgNextP"); if (nx) nx.onclick = () => { fi++; drawEnd(); };
@@ -805,6 +806,7 @@ export function renderLesson(root, B, { onExit } = {}) {
         finished ? `<footer class="lc-foot"><button type="button" class="lc-cta" id="dlgEnd">Terminer ✓</button></footer>` : "");
       { const mn = el.querySelector(".lc-main"); if (!noReg && mn.scrollHeight > mn.clientHeight + 2) { draw(msg, true); return; } }
       el.querySelector("#lcBack").onclick = showDialogueList;
+      fillSpace();
       const cb = el.querySelector(".lc-chatbox"); if (cb) cb.scrollTop = cb.scrollHeight;
       if (finished) {
         const ab = el.querySelector("#dlgAdv"), ao = el.querySelector("#dlgAdvOut");
@@ -947,13 +949,24 @@ export function renderLesson(root, B, { onExit } = {}) {
     T = { attempt, text: B.testTexts[attempt % B.testTexts.length], audio: B.testAudios[(attempt + 1) % B.testAudios.length], gram: ids.slice(0, 10), ans: {}, written: "", heard: "", oral: EO.checks.map(() => false), p: 0 };
     showTest();
   }
+  // remplit le vide restant : image plus grande, puis la dernière carte s'étire et répartit son contenu
+  function fillSpace() {
+    const m = el.querySelector(".lc-main"), f = el.querySelector(".lc-foot"); if (!m) return;
+    const gap = () => { const l = m.lastElementChild; return Math.floor((f ? f.getBoundingClientRect().top : m.getBoundingClientRect().bottom - 8) - l.getBoundingClientRect().bottom - 26); };
+    let L = gap(); if (L < 24) return;
+    const im = el.querySelector(".lc-exhero img");
+    if (im) { const h0 = im.getBoundingClientRect().height, add = Math.min(L * 0.6, 110); im.style.aspectRatio = "auto"; im.style.objectFit = "cover"; im.style.height = Math.round(h0 + add) + "px"; L = gap(); }
+    const tx = el.querySelector("#lcTa"); if (tx && L > 8) { tx.style.height = Math.round(tx.getBoundingClientRect().height + L) + "px"; L = gap(); }
+    const cards = el.querySelectorAll(".lc-main > .lc-card"), c = cards[cards.length - 1];
+    if (c && L > 8) { c.style.minHeight = Math.round(c.getBoundingClientRect().height + L) + "px"; c.style.display = "flex"; c.style.flexDirection = "column"; c.style.justifyContent = "space-evenly"; }
+  }
   function showTest() {
     screen = "test";
     const total = 6, p = T.p;
     T.plan = T.plan || {};
     const Q = (key, q, n) => `<div class="lc-qb"><p class="lc-q">${n}. ${esc(q[0])}</p><div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice ${T.ans[key] === i ? "lc-sel" : ""}" data-k="${key}" data-i="${i}">${esc(o)}</button>`).join("")}</div></div>`;
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261017w" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
+    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261018d" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
     // la page est découpée en blocs ; on remplit chaque écran au maximum, sans défilement
     const bl = []; let head = "", hero = "";
     if (p === 0) {
@@ -979,10 +992,10 @@ export function renderLesson(root, B, { onExit } = {}) {
     const last = p === total - 1;
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button><button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Voir mon résultat" : "Suivant →"}</button></footer>`;
     const build = (a, z, first, tight, meas) => {
-      let html = first ? `${tight ? "" : hero}<div class="lc-vocab-head"><span class="lc-vh-ic">🏆</span><div><h1>${B.exam ? "Grand contrôle A1" : "Test de fin"}</h1><p>${esc(head)}</p></div></div>` : "";
+      let html = first ? `${tight === 2 ? "" : tight === 1 ? hero.replace("lc-exhero", "lc-exhero lc-exs") : hero}<div class="lc-vocab-head"><span class="lc-vh-ic">🏆</span><div><h1>${B.exam ? "Grand contrôle A1" : "Test de fin"}</h1><p>${esc(head)}</p></div></div>` : "";
       for (let i = a; i < z;) {
         const k = bl[i].k;
-        if (k === "x") { html += (tight ? bl[i].h.replace('rows="5"', 'rows="3"') : bl[i].h) + (meas && bl[i].ta ? '<div style="height:52px"></div>' : ""); i++; continue; }
+        if (k === "x") { html += (tight === 2 ? bl[i].h.replace('rows="5"', 'rows="3"') : bl[i].h) + (meas && bl[i].ta ? '<div style="height:52px"></div>' : ""); i++; continue; }
         let j = i; while (j < z && bl[j].k === k) j++;
         const inner = bl.slice(i, j).map((x) => x.h).join("");
         html += k === "q" ? `<section class="lc-card lc-prac">${inner}</section>` : `<section class="lc-card"><ul class="lc-checks lc-checks-in">${inner}</ul></section>`;
@@ -996,10 +1009,15 @@ export function renderLesson(root, B, { onExit } = {}) {
     if (!T.plan[p]) {
       const plan = []; let a = 0;
       while (a < bl.length) {
-        let z = bl.length, tight = false;
-        for (;;) { draw(a, z, false, true); if (fits() || z - a <= 1) break; z--; }
-        if (!fits()) { tight = true; draw(a, z, true, true); }
-        plan.push([a, z, tight]); a = z;
+        let best = null;
+        for (const tier of (a === 0 && hero) || bl.some((x) => x.ta) ? [0, 1, 2] : [0]) {
+          let z = bl.length;
+          for (;;) { draw(a, z, tier, true); if (fits() || z - a <= 1) break; z--; }
+          const ok = fits();
+          if (!best || (ok && (!best.ok || z > best.z))) best = { z, tier, ok };
+          if (ok && z === bl.length) break;
+        }
+        plan.push([a, best.z, best.tier]); a = best.z;
       }
       T.plan[p] = plan;
     }
@@ -1022,6 +1040,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       refresh();
     }));
     const ta = el.querySelector("#lcTa"); if (ta) { ta.addEventListener("input", () => { T.written = ta.value; refresh(); }); mountAdvice(() => ta.value); }
+    fillSpace();
     el.querySelectorAll("[data-o]").forEach((b) => b.addEventListener("change", () => { T.oral[Number(b.dataset.o)] = b.checked; refresh(); }));
     const sp = el.querySelector("#lcSpeed"); if (sp) sp.onclick = () => { speedMul = speedMul === 1 ? 0.75 : 1; sp.textContent = speedMul === 1 ? "1x" : "0.75x"; };
     const mic = el.querySelector("#lcMic");

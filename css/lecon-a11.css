@@ -419,3 +419,8 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-dlg-actions{ margin-top:6px; }
 .lc-chatfull + .lc-small{ margin:4px 0; font-size:13px; }
 .lc-card > .lc-advice .lc-advice-info{ font-size:12px; margin:2px 0 6px; }
+.lc-exs img{ aspect-ratio:auto !important; height:92px; object-fit:cover !important; }
+.lc-alt .lc-spk{ display:inline-flex; width:26px; height:26px; min-width:26px; padding:0; font-size:13px; vertical-align:middle; margin-left:4px; }
+.lc-chat .lc-spk{ flex:none; }
+.lc-chatfull .lc-chat{ padding:7px 10px; }
+.lc-chatfull .lc-alt{ line-height:1.25; }
