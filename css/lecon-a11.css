@@ -333,3 +333,8 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-h3s{ margin:10px 0 2px; font-size:14px; }
 .lc-nexthint{ margin-top:8px; padding:6px; }
 .lc-vl .lc-spk{ width:40px; height:40px; min-width:40px; font-size:16px; }
+
+/* même taille de texte sur tous les écrans de mots / exemples */
+.lc-ex .lc-w b, .lc-vl .lc-w b{ font-size:17px; } .lc-ex .lc-w small, .lc-vl .lc-w small{ font-size:13px; }
+.lc-ex li{ padding-top:6px; padding-bottom:6px; }
+.lc-h3s{ margin:12px 0 4px; font-size:15px; }

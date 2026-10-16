@@ -24,7 +24,7 @@
 // aussi les jauges Grammaire / Prononciation de l'espagnol (recordSkill).
 
 import { ATELIER_EN } from "../data/atelier-en.js?v=20261008a";
-import { recordSkill } from "../data/progress.js?v=20261016w";
+import { recordSkill } from "../data/progress.js?v=20261016y";
 
 const PROGRESS_KEY = "the_roots_atelier_en_v1";
 
