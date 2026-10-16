@@ -1,6 +1,6 @@
 // The Roots — pratique du vocabulaire : 5 séries par page de mots (associer, compléter, remettre en ordre, produire, mini-défi).
 // Tout est généré à partir des mots et des exemples de la page ; l'élève tape, touche et dit — il ne se contente pas de choisir.
-import { createVoice } from "./voice.js?v=20261016r";
+import { createVoice } from "./voice.js?v=20261016s";
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const norm = (t) => String(t || "").toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:"“”]/g, "").replace(/\s+/g, " ").trim();
@@ -46,12 +46,16 @@ export function buildPractice(p, sub = (s) => s) {
 }
 
 // ---------- affichage ----------
-export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {}) {
+export function mountPractice(host, stages, { speak, onDone, startAt = 0, scene = "", icon = "✏️" } = {}) {
   const missed = new Set();
   let si = startAt, score = 0, total = 0;
 
-  const bar = () => `<div class="pr-top"><span>Pratique ${si + 1}/${stages.length}</span><span>${"●".repeat(si)}${"○".repeat(stages.length - si)}</span></div>`;
-  const shell = (st, inner) => { host.innerHTML = `${bar()}<h2 class="lc-h2 lc-h2-prac pr-h">✏️ ${esc(st.title)}</h2>${inner}`; };
+  const sceneBox = (st) => st.type === "challenge" ? "" : `<div class="pr-scene"><span>${esc(icon)}</span>${scene ? `<img src="assets/img/lesson/${esc(scene)}.webp?v=20261016s" alt="" loading="lazy" onerror="this.remove()"/>` : ""}</div>`;
+  const shell = (st, inner, cnt = "") => {
+    host.innerHTML = `<div class="pr-top"><span>Pratique ${si + 1}/${stages.length}</span><span>${esc(cnt)}</span></div>
+      <div class="pr-bar"><i style="width:${Math.round(((si + 0.5) / stages.length) * 100)}%"></i></div>
+      <h2 class="pr-h">${esc(st.title)}</h2>${sceneBox(st)}${inner}`;
+  };
   const next = () => { si++; if (si >= stages.length) finish(); else run(); };
   function finish() {
     host.innerHTML = `<div class="pr-done"><div class="pr-big">🎉</div><b>Pratique terminée !</b><p>${score}/${total} réponses justes${missed.size ? ` · à revoir : ${[...missed].slice(0, 4).map(esc).join(", ")}` : ""}</p>
@@ -72,7 +76,7 @@ export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {})
   function runMatch(st) {
     const L = shuffle(st.pairs.map((p, i) => ({ t: p[0], i, side: "en" }))), R = shuffle(st.pairs.map((p, i) => ({ t: p[1], i, side: "fr" })));
     const cell = (c) => `<button type="button" class="lc-choice pr-cell" data-i="${c.i}" data-s="${c.side}">${esc(c.t)}</button>`;
-    shell(st, `<p class="hint pr-hint">${esc(st.hint)}</p><div class="pr-pairs"><div>${L.map(cell).join("")}</div><div>${R.map(cell).join("")}</div></div><p class="lc-fb" id="prFb" aria-live="polite"></p>${goBtn()}`);
+    shell(st, `<p class="hint pr-hint">${esc(st.hint)}</p><div class="pr-pairs"><div>${L.map(cell).join("")}</div><div>${R.map(cell).join("")}</div></div><p class="lc-fb" id="prFb" aria-live="polite"></p>${goBtn()}`, `0/${st.pairs.length}`);
     let sel = null, found = 0;
     host.querySelectorAll(".pr-cell").forEach((b) => b.addEventListener("click", () => {
       if (b.disabled) return;
@@ -80,7 +84,7 @@ export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {})
       if (!sel || sel.dataset.s === b.dataset.s) { host.querySelectorAll(".pr-cell.lc-sel").forEach((x) => x.classList.remove("lc-sel")); sel = b; b.classList.add("lc-sel"); return; }
       total++;
       if (sel.dataset.i === b.dataset.i) {
-        score++; found++;
+        score++; found++; host.querySelector('.pr-top span:last-child').textContent = `${found}/${st.pairs.length}`;
         [sel, b].forEach((x) => { x.disabled = true; x.classList.remove("lc-sel"); x.classList.add("lc-right"); });
         say(found === st.pairs.length ? "✔ Toutes les paires sont trouvées !" : `✔ ${found} paire${found > 1 ? "s" : ""} trouvée${found > 1 ? "s" : ""}`, true);
         if (found === st.pairs.length) host.querySelector("#prGo").disabled = false;
@@ -102,9 +106,9 @@ export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {})
       const q = it.kind === "sentence"
         ? `<div class="pr-card">${esc(it.en).replace(new RegExp(esc(reEsc(it.answer)), "i"), '<span class="pr-gap">＿＿＿＿</span>')}<small>${esc(it.fr)}</small></div>`
         : `<div class="pr-card"><small>Comment dit-on en anglais ?</small><b class="pr-fr">${esc(it.fr)}</b></div>`;
-      shell(st, `<p class="hint pr-hint">${k + 1} / ${st.items.length} · tape le mot en anglais</p>${q}
+      shell(st, `<p class="hint pr-hint">Tape le mot en anglais.</p>${q}
         <input class="pr-in" id="prIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Écris ici…"/>
-        <p class="lc-fb" id="prFb" aria-live="polite"></p><div class="pr-row"><button type="button" class="lc-sec-btn" id="prHint">Indice</button><button type="button" class="lc-cta pr-go" id="prGo">Valider</button></div>`);
+        <p class="lc-fb" id="prFb" aria-live="polite"></p><div class="pr-row"><button type="button" class="lc-sec-btn" id="prHint">Indice</button><button type="button" class="lc-cta pr-go" id="prGo">Valider</button></div>`, `${k + 1}/${st.items.length}`);
       const inp = host.querySelector("#prIn"); inp.focus();
       host.querySelector("#prHint").onclick = () => { say(`Commence par « ${it.answer[0]} » · ${it.answer.length} lettres`, false); };
       host.querySelector("#prGo").onclick = () => {
@@ -134,8 +138,8 @@ export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {})
       const it = st.items[k], toks = it.en.split(/\s+/);
       let pool = shuffle(toks.map((t, i) => ({ t, i }))); if (toks.length > 2) for (let g = 0; g < 5 && pool.every((x, i) => x.i === i); g++) pool = shuffle(pool);
       const placed = []; let tries = 0, done = false;
-      shell(st, `<p class="hint pr-hint">${k + 1} / ${st.items.length} · « ${esc(it.fr)} »</p><div class="pr-line" id="prLine"></div><div class="pr-chips" id="prPool"></div>
-        <p class="lc-fb" id="prFb" aria-live="polite"></p><div class="pr-row"><button type="button" class="lc-sec-btn" id="prClr">Effacer</button><button type="button" class="lc-cta pr-go" id="prGo">Valider</button></div>`);
+      shell(st, `<p class="hint pr-hint">« ${esc(it.fr)} »</p><div class="pr-line" id="prLine"></div><div class="pr-chips" id="prPool"></div>
+        <p class="lc-fb" id="prFb" aria-live="polite"></p><div class="pr-row"><button type="button" class="lc-sec-btn" id="prClr">Effacer</button><button type="button" class="lc-cta pr-go" id="prGo">Valider</button></div>`, `${k + 1}/${st.items.length}`);
       const line = host.querySelector("#prLine"), poolEl = host.querySelector("#prPool");
       const paint = () => {
         line.innerHTML = placed.map((x, j) => `<button type="button" class="pr-chip on" data-j="${j}">${esc(x.t)}</button>`).join("") || '<span class="pr-ph">Touche les mots dans l\'ordre</span>';
@@ -197,7 +201,7 @@ export function mountPractice(host, stages, { speak, onDone, startAt = 0 } = {})
       shell(st, `<p class="hint pr-hint">${k + 1} / ${picks.length}${missed.has(en) ? " · <span class='pr-tag'>à revoir</span>" : ""}</p>
         <div class="pr-card"><small>${toFr ? "Que veut dire…" : "Comment dit-on en anglais…"}</small><b class="pr-fr">${esc(toFr ? en : fr)}</b>${toFr && speak ? `<button type="button" class="lc-spk" data-say="${esc(en)}" aria-label="Écouter">🔊</button>` : ""}</div>
         <div class="lc-choices">${opts.map((o) => `<button type="button" class="lc-choice" data-o="${esc(o)}">${esc(o)}</button>`).join("")}</div>
-        <p class="lc-fb" id="prFb" aria-live="polite"></p>${goBtn(k + 1 >= picks.length ? "Terminer" : "Suivant")}`);
+        <p class="lc-fb" id="prFb" aria-live="polite"></p>${goBtn(k + 1 >= picks.length ? "Terminer" : "Suivant")}`, `${k + 1}/${picks.length}`);
       host.querySelectorAll(".lc-spk").forEach((b) => b.onclick = () => speak(b.dataset.say));
       host.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
         if (b.dataset.o === ans) {

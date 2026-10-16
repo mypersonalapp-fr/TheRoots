@@ -301,3 +301,12 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .pr-mic{ display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap; } .pr-mic[hidden]{ display:none; }
 .pr-tag{ background:var(--pop-soft); color:#7a1d12; border-radius:8px; padding:2px 8px; font-size:11px; font-weight:800; }
 .pr-done{ text-align:center; padding:8px 0; } .pr-big{ font-size:40px; }
+
+/* Pratique — look « maquette » : compteur, barre orange, grand titre, vignette */
+.pr-top{ font-size:13px; } .pr-top span:last-child{ color:var(--accent); }
+.pr-bar{ height:7px; border-radius:9px; background:var(--surface-soft); overflow:hidden; margin:4px 0 12px; } .pr-bar i{ display:block; height:100%; background:var(--accent); border-radius:9px; transition:width .3s; }
+.pr-h{ margin:0 0 10px; font-size:20px; font-weight:800; color:var(--ink); }
+.pr-scene{ position:relative; height:104px; border-radius:16px; overflow:hidden; margin-bottom:12px; background:linear-gradient(135deg,#ffd9a0,#f7b2a3); display:flex; align-items:center; justify-content:center; font-size:46px; }
+.pr-scene img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.pr-card{ background:var(--surface-soft); border:0; }
+.pr-go{ box-shadow:0 4px 0 color-mix(in srgb, var(--accent) 60%, #000); }
