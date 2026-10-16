@@ -4,7 +4,7 @@ urls=sys.argv[1:]
 with sync_playwright() as p:
     b=p.chromium.launch(); bad=0
     for url in urls:
-        pg=b.new_page(viewport={"width":390,"height":844}); errs=[]
+        pg=b.new_page(viewport={"width":390,"height":710}); errs=[]
         pg.on("pageerror",lambda e:errs.append(str(e)))
         pg.goto(url); pg.wait_for_timeout(800); pg.click("#lcStart"); pg.wait_for_timeout(150)
         for act in ["grammar","reading","listening","exercises"]:

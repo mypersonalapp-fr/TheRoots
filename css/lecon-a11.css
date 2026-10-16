@@ -350,3 +350,12 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-rules .lc-w .lc-form{ margin-left:8px; }
 .lc-rules .lc-w small{ display:block; }
 .lc-rules .lc-w{ display:block; }
+/* Questions : plus compactes pour que 2 questions tiennent sur un écran de téléphone */
+.lc-fb:empty{ display:none; }
+.lc-qb{ margin:0 0 10px; }
+.lc-choices{ gap:6px; }
+.lc-choice{ min-height:44px; padding:8px 14px; }
+.lc-prac .lc-q{ margin-bottom:8px; }
+.lc-rules li{ padding-top:4px; padding-bottom:4px; }
+.lc-ctx .lc-vl li{ padding-top:4px; padding-bottom:4px; }
+.lc-ctx{ padding-top:12px; padding-bottom:12px; }

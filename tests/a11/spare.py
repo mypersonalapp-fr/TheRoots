@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     b=p.chromium.launch()
     for url in sys.argv[1:]:
-        pg=b.new_page(viewport={"width":390,"height":844}); pg.goto(url); pg.wait_for_timeout(800); pg.click("#lcStart"); pg.wait_for_timeout(150)
+        pg=b.new_page(viewport={"width":390,"height":710}); pg.goto(url); pg.wait_for_timeout(800); pg.click("#lcStart"); pg.wait_for_timeout(150)
         for act in ["vocab","grammar","reading","listening","exercises"]:
             pg.click(f".lc-row[data-act={act}]"); pg.wait_for_timeout(200); sp=[]
             while True:
