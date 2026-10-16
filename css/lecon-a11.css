@@ -338,3 +338,8 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-ex .lc-w b, .lc-vl .lc-w b{ font-size:17px; } .lc-ex .lc-w small, .lc-vl .lc-w small{ font-size:13px; }
 .lc-ex li{ padding-top:6px; padding-bottom:6px; }
 .lc-h3s{ margin:12px 0 4px; font-size:15px; }
+
+/* Grammaire : règles empilées (une règle par ligne, lisible sans tableau) */
+.lc-rules .lc-w b{ font-size:17px; }
+.lc-rules .lc-w .lc-form{ display:block; font-size:17px; font-weight:800; margin-top:2px; }
+.lc-rules .lc-w small{ display:block; font-size:13px; }

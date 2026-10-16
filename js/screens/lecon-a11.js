@@ -6,19 +6,19 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016z";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017a";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261016z";
-import { balanceAll } from "../data/balance.js?v=20261016z";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261016z";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261016z";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261016z";
-import { buildPractice, mountPractice } from "./practice.js?v=20261016z";
-import { createVoice } from "./voice.js?v=20261016z";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261016z";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016z";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261016z";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016z";
+import { createCity } from "./roots-city.js?v=20261017a";
+import { balanceAll } from "../data/balance.js?v=20261017a";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017a";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017a";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261017a";
+import { buildPractice, mountPractice } from "./practice.js?v=20261017a";
+import { createVoice } from "./voice.js?v=20261017a";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017a";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017a";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017a";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017a";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -37,7 +37,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016z" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017a" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -357,7 +357,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016z" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
 
@@ -381,7 +381,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       body = `
         <section class="lc-card">
           <h2 class="lc-h2">${p.icon || "📖"} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
-          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016z" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
+          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
           <ul class="lc-list lc-vl">${st.words.map(([en, fr]) => `
             <li><span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           ${st.last ? `<h3 class="lc-h3 lc-h3s">💬 En contexte</h3>
@@ -439,51 +439,104 @@ export function renderLesson(root, B, { onExit } = {}) {
   const firstTry = {}; // "exercices:page:question" → réussi du premier coup ?
   const okQ = {}; // "activité:page" → { indexQuestion: true }
 
+  // Étapes d'une activité : même principe que le vocabulaire — écrans courts (contenu), puis écrans de questions. Rien à faire défiler.
+  const chunkEven = (arr, cap) => {
+    const L = arr.length, nc = Math.max(1, Math.ceil(L / cap)), base = Math.floor(L / nc), extra = L % nc, out = [];
+    for (let i = 0, k = 0; k < nc; k++) { const sz = base + (k < extra ? 1 : 0); out.push(arr.slice(i, i + sz)); i += sz; }
+    return out;
+  };
+  function actSteps(id, A) {
+    const S = [];
+    A.pages.forEach((p, pi) => {
+      if (id === "grammar") {
+        const ch = chunkEven(p.table, 4);
+        ch.forEach((rows, ci) => S.push({ t: "gtab", p, pi, rows, ci, n: ch.length }));
+        S.push({ t: "gex", p, pi });
+      } else if (id === "transversal" && p.kind === "words") {
+        const ch = chunkEven(p.words, 6);
+        ch.forEach((words, ci) => S.push({ t: "twords", p, pi, words, ci, n: ch.length }));
+      } else if (p.kind === "write") S.push({ t: "twrite", p, pi });
+      else if (id === "reading" || id === "listening" || (id === "exercises" && (p.passage || p.audio))) S.push({ t: "text", p, pi });
+      if (p.qs.length) {
+        const ch = chunkEven(p.qs.map((_, i) => i), 2);
+        ch.forEach((ix, ci) => S.push({ t: "qs", p, pi, ix, ci, n: ch.length }));
+      }
+    });
+    return S;
+  }
   function showAct(id) {
     screen = id;
-    const A = ACT[id], p = A.pages[page], total = A.pages.length, key = id + (id === "transversal" ? ":d" + tday : "") + ":" + page, exit = id === "transversal" ? showTransvList : showMenu;
+    const A = ACT[id], steps = actSteps(id, A), total = steps.length;
+    if (page >= total) page = total - 1;
+    const st = steps[page], p = st.p, key = id + (id === "transversal" ? ":d" + tday : "") + ":" + st.pi, exit = id === "transversal" ? showTransvList : showMenu;
     const c = currentCharacter();
     const sub = (x) => x.replace(/\{name\}/g, c.name);
-    let body = "";
-    if (id === "grammar") {
-      body = `<section class="lc-card"><h2 class="lc-h2">${p.icon} ${esc(p.title)}</h2>
-        <table class="lc-table"><tbody>${p.table.map(([a, b, f]) => `<tr><td><b>${esc(a)}</b></td><td class="lc-form">${esc(b)}</td><td>${esc(f)}</td></tr>`).join("")}</tbody></table></section>
-        <section class="lc-card lc-ctx"><h2 class="lc-h2 lc-h2-ctx">💡 Exemples</h2><ul class="lc-list">${p.examples.map(([en, fr]) => `
-          <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(sub(en))}</b><small>${esc(sub(fr))}</small></span>${spk(sub(en))}</li>`).join("")}</ul></section>`;
-    } else if (id === "reading") {
-      body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${readerAva(p.who)}.webp`)} ${esc(p.who)}</h2>
-        <p class="lc-text">${esc(p.text)}</p>
-        <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
-        <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
-    } else if (id === "listening") {
-      body = `<section class="lc-card"><h2 class="lc-h2">🎧 ${esc(p.title)}</h2>
-        <div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.text)}" aria-label="Écouter l’audio">▶</button>
-          <span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>
-        <div class="lc-actions"><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Afficher la transcription</button></div>
-        <p class="lc-tr" id="lcTrText" hidden>${esc(p.text)}</p></section>`;
-    } else if (id === "transversal") {
-      if (p.kind === "words") body = `<section class="lc-card"><h2 class="lc-h2">🔊 Écoute et répète</h2><p class="lc-lead">${esc(p.title)} — ${esc(p.goal)}</p><ul class="lc-list">${p.words.map(([en, fr]) => `<li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul></section>`;
-      else if (p.kind === "write") body = `<section class="lc-card"><h2 class="lc-h2">✍️ Expression écrite</h2><p class="lc-lead">${esc(p.prompt)}</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta réponse en anglais">${esc(writeTx[key] || "")}</textarea><p class="lc-small">Écris en anglais (au moins une phrase).</p></section>`;
+    const li = (en, fr) => `<li><span class="lc-w"><b>${esc(sub(en))}</b><small>${esc(sub(fr))}</small></span>${spk(sub(en))}</li>`;
+    let body = "", hint = "", btn = "Suivant →", bubble = "À toi de jouer !", station = 1;
+    const nxt = steps[page + 1], toQ = st.t !== "qs" && nxt && nxt.t === "qs" && nxt.pi === st.pi;
+    if (toQ) { btn = id === "reading" || id === "listening" ? "Questions ✏️" : "Exercices ✏️"; hint = `<p class="lc-nexthint">👉 Page suivante : ${id === "reading" || id === "listening" ? "les questions" : "les exercices"}</p>`; }
+
+    if (st.t === "gtab") {
+      station = 0; bubble = "Retiens la règle !";
+      body = `<section class="lc-card"><h2 class="lc-h2">${p.icon} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
+        <ul class="lc-list lc-vl lc-rules">${st.rows.map(([a, b, f]) => `<li><span class="lc-w"><b>${esc(a)}</b><span class="lc-form">${esc(b)}</span><small>${esc(f)}</small></span></li>`).join("")}</ul></section>`;
+    } else if (st.t === "gex") {
+      station = 0; bubble = "Écoute et répète !";
+      body = `<section class="lc-card lc-ctx"><h2 class="lc-h2 lc-h2-ctx">💡 Exemples</h2><ul class="lc-list lc-vl">${p.examples.map(([en, fr]) => li(en, fr)).join("")}</ul></section>`;
+    } else if (st.t === "twords") {
+      station = 0; bubble = "Écoute et répète !";
+      body = `<section class="lc-card"><h2 class="lc-h2">🔊 ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>${st.ci === 0 && p.goal ? `<p class="lc-lead">${esc(p.goal)}</p>` : ""}<ul class="lc-list lc-vl">${st.words.map(([en, fr]) => li(en, fr)).join("")}</ul></section>`;
+    } else if (st.t === "twrite") {
+      station = 0; bubble = "Écris en anglais !";
+      body = `<section class="lc-card"><h2 class="lc-h2">✍️ Expression écrite</h2><p class="lc-lead">${esc(p.prompt)}</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta réponse en anglais">${esc(writeTx[key] || "")}</textarea><p class="lc-small">Écris en anglais (au moins une phrase).</p></section>`;
+    } else if (st.t === "text") {
+      station = 0;
+      if (id === "reading") {
+        bubble = "Lis le texte !";
+        body = `<section class="lc-card"><h2 class="lc-h2">${ico(`assets/img/characters/${readerAva(p.who)}.webp`)} ${esc(p.who)}</h2>
+          <p class="lc-text">${esc(p.text)}</p>
+          <div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.text)}">🔊 Écouter</button><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Voir la traduction</button></div>
+          <p class="lc-tr" id="lcTrText" hidden>${esc(p.fr)}</p></section>`;
+      } else if (id === "listening") {
+        bubble = "Écoute bien !";
+        body = `<section class="lc-card"><h2 class="lc-h2">🎧 ${esc(p.title)}</h2>
+          <div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.text)}" aria-label="Écouter l’audio">▶</button>
+            <span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>
+          <div class="lc-actions"><button type="button" class="lc-chip" id="lcTr" aria-expanded="false">Afficher la transcription</button></div>
+          <p class="lc-tr" id="lcTrText" hidden>${esc(p.text)}</p></section>`;
+      } else {
+        bubble = "Lis et écoute !";
+        body = `<section class="lc-card"><h2 class="lc-h2">🧩 ${esc(p.title)}</h2><p class="lc-lead">${esc(p.help || "")}</p>
+          ${p.passage ? `<p class="lc-text">${esc(p.passage)}</p><div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.passage)}">🔊 Écouter</button></div>` : ""}
+          ${p.audio ? `<div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.audio)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>` : ""}</section>`;
+      }
     } else {
-      body = `<section class="lc-card"><h2 class="lc-h2">🧩 ${esc(p.title)}</h2><p class="lc-lead">${esc(p.help)}</p>
-        ${p.passage ? `<p class="lc-text">${esc(p.passage)}</p><div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(p.passage)}">🔊 Écouter</button></div>` : ""}
-        ${p.audio ? `<div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.audio)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>` : ""}</section>`;
-    }
-    if (p.qs.length) body += `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${id === "grammar" || id === "exercises" ? "À toi de pratiquer !" : "Questions"}</h2>
-      ${p.qs.map((q, qi) => `<div class="lc-qb" data-qi="${qi}"><p class="lc-q">${qi + 1}. ${esc(q[0])}</p>
+      const lbl = id === "grammar" || id === "exercises" || id === "transversal" ? "À toi de pratiquer !" : "Questions";
+      body = `<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${lbl}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
+        ${st.ci === 0 && id === "exercises" && !(p.passage || p.audio) ? `<p class="lc-lead">${esc(p.title)}${p.help ? " — " + esc(p.help) : ""}</p>` : ""}
+        ${st.ix.map((qi, k) => { const q = p.qs[qi]; return `<div class="lc-qb" data-qi="${qi}"><p class="lc-q">${qi + 1}. ${esc(q[0])}</p>
         <div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice" data-qi="${qi}" data-i="${i}">${esc(o)}</button>`).join("")}</div>
-        <p class="lc-fb" aria-live="polite"></p></div>`).join("")}</section>`;
+        <p class="lc-fb" aria-live="polite"></p></div>`; }).join("")}</section>`;
+    }
 
     const last = page === total - 1;
+    if (last) btn = "Terminer ✓";
     const foot = `<footer class="lc-foot"><button type="button" class="lc-sec-btn" id="lcPrev">← Précédent</button>
-      <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${last ? "Terminer ✓" : "Suivant →"}</button></footer>`;
-    frame(HEAD, { cur: page + 1, total }, `<div class="lc-vocab-head"><span class="lc-vh-ic">${icImg(id, A.icon)}</span><div><h1>${esc(A.title)}</h1><p>${esc(A.sub)}</p></div></div>${body}`, foot);
+      <button type="button" class="lc-cta lc-next" id="lcNext" disabled>${btn}</button></footer>`;
+    const guide = `<div class="lc-guide">${ico(c.src, "lc-ava-md")}<div class="lc-gbub">${esc(bubble)}</div>
+      <div class="lc-path" aria-hidden="true"><i class="${station > 0 ? "d" : "c"}"></i><u></u><i class="${station > 0 ? "c" : ""}"></i></div></div>`;
+    frame(HEAD, { cur: page + 1, total }, `${guide}${body}${hint}`, foot);
     el.querySelector(".lc-main").scrollTop = 0;
 
     const next = el.querySelector("#lcNext");
-    const refresh = () => { next.disabled = !p.qs.every((_, qi) => (okQ[key] || {})[qi]) || (p.kind === "write" && (writeTx[key] || "").trim().length < 15); };
+    const refresh = () => {
+      if (st.t === "qs") next.disabled = !st.ix.every((qi) => (okQ[key] || {})[qi]);
+      else if (st.t === "twrite") next.disabled = (writeTx[key] || "").trim().length < 15;
+      else next.disabled = false;
+    };
     const mark = (qi, withMsg) => {
       const q = p.qs[qi], box = el.querySelector(`.lc-qb[data-qi="${qi}"]`);
+      if (!box) return;
       box.querySelectorAll(".lc-choice").forEach((x) => { x.disabled = true; x.classList.toggle("lc-right", Number(x.dataset.i) === q[2]); });
       const fb = box.querySelector(".lc-fb"); fb.className = "lc-fb lc-fb-ok"; fb.textContent = withMsg ? "Bravo ! " + (q[3] || "") : "✓ " + (q[3] || "");
     };
