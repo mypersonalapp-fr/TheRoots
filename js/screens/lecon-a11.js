@@ -6,11 +6,11 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261015e";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016a";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261015e";
-import { balanceAll } from "../data/balance.js?v=20261015e";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261015e";
+import { createCity } from "./roots-city.js?v=20261016a";
+import { balanceAll } from "../data/balance.js?v=20261016a";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016a";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -29,7 +29,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261015e" alt="" width="28" height="28" loading="lazy"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016a" alt="" width="28" height="28" loading="lazy"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -328,7 +328,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261015e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -337,7 +337,7 @@ export function renderLesson(root, B, { onExit } = {}) {
           <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
-          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261015e" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
+          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016a" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     }
@@ -703,12 +703,26 @@ export function renderLesson(root, B, { onExit } = {}) {
 /* ---------- lot de données de la leçon A1.1 (les autres leçons viennent de js/data/lecons-a1.js) ---------- */
 balanceAll({ VOCAB_PAGES, GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR });
 
+/* Allègement A1.1 : les possessifs (A1.2) et do/does (A1.3) ne sont plus enseignés ici. */
+const DROP_GRAMMAR = ["Questions et possessifs", "To do : questions et réponses courtes"];
+const DROP_TEST_G = [/^___ he live in Paris\?/, /^Where ___ you live\?/, /^___ she have a brother\?/, /^___ you have a phone\?/, /^He ___ not like coffee/, /^Does she live in Rome/, /^What is ___ nationality\?/];
+const GRAMMAR_LIGHT = GRAMMAR_PAGES.filter((g) => !DROP_GRAMMAR.includes(g.title));
+const TEST_GRAMMAR_LIGHT = TEST_GRAMMAR.filter((q) => !DROP_TEST_G.some((r) => r.test(q[0])));
+const EXERCISES_LIGHT = EXERCISE_PAGES.map((pg) => {
+  if (pg.title === "Grammaire — Be, have, do") return Object.assign({}, pg, { title: "Grammaire — Be et have", qs: pg.qs.filter((q) => !/^___ you live in London\?|^He ___ not have a car/.test(q[0])) });
+  if (pg.title === "Grammaire — This/that et do/does") return Object.assign({}, pg, { title: "Grammaire — This/that", qs: pg.qs.slice(0, 2).concat([
+    ["___ is my bag. (loin, un seul)", ["This", "That", "These"], 1, "Loin + un seul : That."],
+    ["___ are my friends. (près, plusieurs)", ["Those", "That", "These"], 2, "Près + plusieurs : These."],
+    ["___ is my book. (près, un seul)", ["That", "Those", "This"], 2, "Près + un seul : This."]]) });
+  return pg;
+});
+
 export const BUNDLE_A11 = {
   code: "A1.1", head: "A1.1 – Mon identité", titleFr: "Mon identité", progressKey: "the_roots_a11_lesson_v1",
   goals: LEARN_GOALS, vocab: VOCAB_PAGES, greetings: GREETINGS, scenes: SCENES,
-  grammar: GRAMMAR_PAGES, grammarSub: "Be, have, do, this/that et les questions.",
-  reading: READING_PAGES, listening: LISTENING_PAGES, exercises: EXERCISE_PAGES, expression: EXPRESSION_PAGES, transv: TRANSV_DAYS,
-  testTexts: TEST_TEXTS, testAudios: TEST_AUDIOS, testGrammar: TEST_GRAMMAR, testW: 0, testO: 0,
+  grammar: GRAMMAR_LIGHT, grammarSub: "Be, have, this/that et les questions.",
+  reading: READING_PAGES, listening: LISTENING_PAGES, exercises: EXERCISES_LIGHT, expression: EXPRESSION_PAGES, transv: TRANSV_DAYS,
+  testTexts: TEST_TEXTS, testAudios: TEST_AUDIOS, testGrammar: TEST_GRAMMAR_LIGHT, testW: 0, testO: 0,
   testWriteTitle: "Présente-toi en anglais", testWriteLead: "Écris au moins 4 phrases : ton prénom, ton âge, d’où tu viens, ce que tu aimes.",
   testOralTitle: "Dis ta présentation", testOralLead: "Présente-toi à voix haute en anglais.",
   city: null,
