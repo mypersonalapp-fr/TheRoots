@@ -68,20 +68,20 @@ export const GRAMMAR_A12 = [
 ];
 
 export const READING_A12 = [
-  { who: "Tom", text: "Hi! I'm Tom. I have a big family. I have two sisters and one brother. My father is a doctor and my mother is a teacher. We live in a house with a garden.",
-    fr: "Tom a une grande famille : deux sœurs, un frère, un père médecin et une mère enseignante. Ils habitent une maison avec jardin.",
+  { who: "Tom", text: "Hi! I'm Tom. I have a big family. I have two sisters and one brother. My father is a doctor and my mother is a teacher. We live in a house with a garden. On Sundays we eat lunch together.",
+    fr: "Tom a une grande famille : deux sœurs, un frère, un père médecin et une mère enseignante. Ils habitent une maison avec jardin.  Le dimanche, ils déjeunent ensemble.",
     qs: [["How many sisters does Tom have?", ["One", "Two", "Three"], 1, "Two sisters and one brother."], ["What is Tom's father's job?", ["Teacher", "Doctor", "Nurse"], 1, "My father is a doctor."]] },
-  { who: "Lily", text: "Hello! My name is Lily. My grandmother is seventy. She is retired and she is very kind. My grandfather is funny. They live in London, near our house.",
-    fr: "Lily a une grand-mère retraitée et gentille, un grand-père drôle ; ils habitent près de chez elle à Londres.",
+  { who: "Lily", text: "Hello! My name is Lily. My grandmother is seventy. She is retired and she is very kind. My grandfather is funny. They live in London, near our house. I like their big garden.",
+    fr: "Lily a une grand-mère retraitée et gentille, un grand-père drôle ; ils habitent près de chez elle à Londres.  Elle aime leur grand jardin.",
     qs: [["Is Lily's grandmother retired?", ["Yes", "No", "We don't know"], 0, "She is retired."], ["Where do her grandparents live?", ["Paris", "London", "Madrid"], 1, "They live in London."]] },
-  { who: "Sara", text: "Hi, I'm Sara. This is my husband, Paul. He is tall and strong. We have a baby daughter. Her name is Mia. She is one year old. She is very happy.",
-    fr: "Sara présente son mari Paul, grand et fort, et leur bébé Mia, un an, très heureuse.",
+  { who: "Sara", text: "Hi, I'm Sara. This is my husband, Paul. He is tall and strong. We have a baby daughter. Her name is Mia. She is one year old. She is very happy. We love our little family.",
+    fr: "Sara présente son mari Paul, grand et fort, et leur bébé Mia, un an, très heureuse.  Ils adorent leur petite famille.",
     qs: [["Who is Mia?", ["Sara's sister", "Sara's daughter", "Sara's mother"], 1, "We have a baby daughter, Mia."], ["How old is Mia?", ["One", "Two", "Ten"], 0, "She is one year old."]] },
-  { who: "Omar", text: "Good morning! I'm Omar. My uncle is an engineer. My aunt is a nurse. They have three children. My cousins are young: they are five, seven and nine. They are funny.",
-    fr: "Omar a un oncle ingénieur, une tante infirmière et trois jeunes cousins de 5, 7 et 9 ans.",
+  { who: "Omar", text: "Good morning! I'm Omar. My uncle is an engineer. My aunt is a nurse. They have three children. My cousins are young: they are five, seven and nine. They are funny. We play together in the park.",
+    fr: "Omar a un oncle ingénieur, une tante infirmière et trois jeunes cousins de 5, 7 et 9 ans.  Ils jouent ensemble au parc.",
     qs: [["What is Omar's aunt's job?", ["Nurse", "Engineer", "Driver"], 0, "My aunt is a nurse."], ["How many cousins does Omar have?", ["Two", "Three", "Nine"], 1, "They have three children."]] },
-  { who: "Nina", text: "Hello! I'm Nina. In my house there are four bedrooms, a kitchen and a living room. There isn't a garden. My brother's room is small. My parents' room is big.",
-    fr: "Dans la maison de Nina : quatre chambres, une cuisine, un salon, pas de jardin ; la chambre de son frère est petite, celle de ses parents grande.",
+  { who: "Nina", text: "Hello! I'm Nina. In my house there are four bedrooms, a kitchen and a living room. There isn't a garden. My brother's room is small. My parents' room is big. I like my room because it is quiet.",
+    fr: "Dans la maison de Nina : quatre chambres, une cuisine, un salon, pas de jardin ; la chambre de son frère est petite, celle de ses parents grande.  Elle aime sa chambre car elle est calme.",
     qs: [["How many bedrooms are there?", ["Two", "Four", "Five"], 1, "Four bedrooms."], ["Is there a garden?", ["Yes", "No", "We don't know"], 1, "There isn't a garden."]] },
 ];
 
@@ -134,9 +134,9 @@ export const EXPRESSION_A12 = [
 
 export const TEST_TEXTS_A12 = [
   { title: "La famille de Tom", text: "Hi! I'm Tom. I have two sisters and one brother. My father is a doctor. My mother is a teacher. We live in a house with a garden.", q: [["How many sisters does Tom have?", ["One", "Two", "Three"], 1], ["What is Tom's mother's job?", ["Teacher", "Doctor", "Nurse"], 0], ["Is there a garden?", ["Yes", "No", "Not stated"], 0]] },
-  { title: "Les grands-parents de Lily", text: "My name is Lily. My grandmother is seventy and retired. My grandfather is funny. They live near our house in London.", q: [["Who is retired?", ["Her grandmother", "Her mother", "Her aunt"], 0], ["Where do they live?", ["Paris", "London", "Madrid"], 1], ["How old is her grandmother?", ["Sixty", "Seventy", "Eighty"], 1]] },
-  { title: "Sara et Mia", text: "I'm Sara. This is my husband, Paul. We have a baby daughter, Mia. She is one year old and very happy.", q: [["Who is Paul?", ["Her husband", "Her brother", "Her father"], 0], ["Who is Mia?", ["Their daughter", "Their sister", "Their mother"], 0], ["How old is Mia?", ["One", "Two", "Three"], 0]] },
-  { title: "Les cousins d'Omar", text: "I'm Omar. My uncle is an engineer and my aunt is a nurse. They have three children. My cousins are five, seven and nine.", q: [["What is his uncle's job?", ["Engineer", "Nurse", "Driver"], 0], ["How many cousins are there?", ["Two", "Three", "Nine"], 1], ["Who is a nurse?", ["His aunt", "His uncle", "His father"], 0]] },
+  { title: "Les grands-parents de Lily", text: "My name is Lily. My grandmother is seventy and retired. My grandfather is funny. They live near our house in London. I like their big garden.", q: [["Who is retired?", ["Her grandmother", "Her mother", "Her aunt"], 0], ["Where do they live?", ["Paris", "London", "Madrid"], 1], ["How old is her grandmother?", ["Sixty", "Seventy", "Eighty"], 1]] },
+  { title: "Sara et Mia", text: "I'm Sara. This is my husband, Paul. We have a baby daughter, Mia. She is one year old and very happy. We love our little family.", q: [["Who is Paul?", ["Her husband", "Her brother", "Her father"], 0], ["Who is Mia?", ["Their daughter", "Their sister", "Their mother"], 0], ["How old is Mia?", ["One", "Two", "Three"], 0]] },
+  { title: "Les cousins d'Omar", text: "I'm Omar. My uncle is an engineer and my aunt is a nurse. They have three children. My cousins are five, seven and nine. We play together in the park.", q: [["What is his uncle's job?", ["Engineer", "Nurse", "Driver"], 0], ["How many cousins are there?", ["Two", "Three", "Nine"], 1], ["Who is a nurse?", ["His aunt", "His uncle", "His father"], 0]] },
   { title: "La maison de Nina", text: "There are four bedrooms in my house, a kitchen and a living room. There isn't a garden. My brother's room is small.", q: [["How many bedrooms are there?", ["Two", "Four", "Five"], 1], ["Is there a garden?", ["Yes", "No", "Not stated"], 1], ["Whose room is small?", ["Her brother's", "Her mother's", "Her sister's"], 0]] },
 ];
 

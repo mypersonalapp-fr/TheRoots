@@ -37,17 +37,17 @@ export const GRAMMAR_PAGES = [
 ];
 
 export const READING_PAGES = [
-  { who: "Emma", text: "Hello! My name is Emma. I am ten years old. I am from France. I live in Paris. I am a student. I have brown eyes.",
-    fr: "Emma habite à Paris. Elle a dix ans, elle est française et a les yeux marron.",
+  { who: "Emma", text: "Hello! My name is Emma. I am ten years old. I am from France. I live in Paris. I am a student. I have brown eyes. I like music and I love my school.",
+    fr: "Emma habite à Paris. Elle a dix ans, elle est française et a les yeux marron.  Elle aime la musique et adore son école.",
     qs: [["How old is Emma?", ["10", "12", "20"], 0, "Ten = 10."], ["Where does Emma live?", ["London", "Paris", "Madrid"], 1, "She lives in Paris."]] },
-  { who: "Lucas", text: "Hi! I'm Lucas. I'm twenty-five years old. I'm Portuguese. I live in Porto. I'm a teacher. I have green eyes.",
-    fr: "Lucas est portugais, habite à Porto, enseigne et a les yeux verts.",
+  { who: "Lucas", text: "Hi! I'm Lucas. I'm twenty-five years old. I'm Portuguese. I live in Porto. I'm a teacher. I have green eyes. I like music and I play the guitar. My school is big.",
+    fr: "Lucas est portugais, habite à Porto, enseigne et a les yeux verts.  Il aime la musique et joue de la guitare ; son école est grande.",
     qs: [["What is Lucas's job?", ["Teacher", "Doctor", "Student"], 0, "I'm a teacher."], ["What colour are his eyes?", ["Brown", "Green", "Blue"], 1, "He has green eyes."]] },
-  { who: "Maya", text: "Good morning! My first name is Maya and my last name is Smith. I'm British. I live in Manchester. I have a sister. Her name is Lily.",
-    fr: "Maya Smith est britannique. Elle vit à Manchester et sa sœur s'appelle Lily.",
+  { who: "Maya", text: "Good morning! My first name is Maya and my last name is Smith. I'm British. I live in Manchester. I have a sister. Her name is Lily. My sister is eight. We like dancing.",
+    fr: "Maya Smith est britannique. Elle vit à Manchester et sa sœur s'appelle Lily.  Sa sœur a huit ans ; elles aiment danser.",
     qs: [["What is Maya's last name?", ["Lily", "Smith", "Manchester"], 1, "Her last name is Smith."], ["What is her sister's name?", ["Lily", "Emma", "Anna"], 0, "Her name is Lily."]] },
-  { who: "Alex", text: "Hello, my name is Alex. I'm from Canada but I live in London. I'm not a student. I'm a doctor. My eyes are blue.",
-    fr: "Alex vient du Canada, habite Londres, est médecin et n'est pas étudiant.",
+  { who: "Alex", text: "Hello, my name is Alex. I'm from Canada but I live in London. I'm not a student. I'm a doctor. My eyes are blue. I speak English and French. I like my job.",
+    fr: "Alex vient du Canada, habite Londres, est médecin et n'est pas étudiant.  Il parle anglais et français et aime son travail.",
     qs: [["Where is Alex from?", ["Canada", "London", "France"], 0, "I'm from Canada."], ["Is Alex a student?", ["Yes", "No", "We don't know"], 1, "I'm not a student."]] },
 ];
 
@@ -1013,8 +1013,8 @@ GRAMMAR_PAGES.push(
 );
 
 READING_PAGES.push(
-  { who: "Noah", text: "Hi! I'm Noah. I'm fifteen. My birthday is on the 3rd of March. I'm tall: I'm one metre eighty. I have short black hair and brown eyes. My shoe size is forty-two.",
-    fr: "Noah a quinze ans, son anniversaire est le 3 mars. Il est grand (1,80 m), a les cheveux courts et noirs, les yeux marron et chausse du 42.",
+  { who: "Noah", text: "Hi! I'm Noah. I'm fifteen. My birthday is on the 3rd of March. I'm tall: I'm one metre eighty. I have short black hair and brown eyes. My shoe size is forty-two. I play basketball. I love sport and I'm very happy.",
+    fr: "Noah a quinze ans, son anniversaire est le 3 mars. Il est grand (1,80 m), a les cheveux courts et noirs, les yeux marron et chausse du 42.  Il joue au basket, adore le sport et est très heureux.",
     qs: [["When is Noah's birthday?", ["3rd of March", "13th of March", "3rd of May"], 0, "On the 3rd of March."], ["What colour is his hair?", ["Brown", "Black", "Blond"], 1, "Short black hair."], ["What is his shoe size?", ["Forty", "Forty-two", "Fourteen"], 1, "Forty-two = 42."]] },
 );
 
