@@ -22,13 +22,15 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261016p";
+const V = "20261016q";
+import { plusPages } from "./vocab-plus-a1.js?v=20261016q";
+const coreSet = (pages) => new Set(pages.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase())));
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261016p"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261016q"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
-  const vocab = m[`VOCAB_${s}`], exprs = m[`EXPRESSION_${s}`];
+  const core = m[`VOCAB_${s}`], vocab = [...core, ...plusPages(n, coreSet(core))], exprs = m[`EXPRESSION_${s}`];
   const w = exprs[0], o = exprs[1] || exprs[0];
   return {
     code: base.code, head: `${base.code} – ${A1_TITLES_FR[n - 1]}`, titleFr: A1_TITLES_FR[n - 1], progressKey: KEYS(n),
