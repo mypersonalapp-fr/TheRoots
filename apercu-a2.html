@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/base.css?v=20260930a"/>
   <link rel="stylesheet" href="css/backgrounds.css?v=20260930a"/>
   <link rel="stylesheet" href="css/screens.css?v=20261001c"/>
-  <link rel="stylesheet" href="css/lecon-a11.css?v=20261016o"/>
+  <link rel="stylesheet" href="css/lecon-a11.css?v=20261016p"/>
 </head>
 <body>
   <div id="app"></div>
@@ -23,8 +23,8 @@
     document.documentElement.setAttribute("data-theme", store.get().settings.theme || "light");
     const isExam = q.get("n") === "exam";
     const n = Math.max(1, Math.min(12, Number(q.get("n")) || 1));
-    const { renderLesson } = await import("./js/screens/lecon-a11.js?v=20261016o");
-    const { loadBundleA2: loadBundle } = await import("./js/data/lecons-a2.js?v=20261016o");
+    const { renderLesson } = await import("./js/screens/lecon-a11.js?v=20261016p");
+    const { loadBundleA2: loadBundle } = await import("./js/data/lecons-a2.js?v=20261016p");
     renderLesson(document.getElementById("app"), await loadBundle(n), { onExit: () => location.reload() });
   </script>
 </body>

@@ -16,7 +16,7 @@ export function lessonStatusA2(n) {
   } catch (e) { return { started: false, passed: false, score: null }; }
 }
 
-const V = "20261016o";
+const V = "20261016p";
 export async function loadBundleA2(n) {
   if (!A2_BUILT.includes(n)) throw new Error("A2." + n + " pas encore construit");
   const s = `A2${n}`, base = A2_EN_PALIERS[n - 1];
