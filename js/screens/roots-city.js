@@ -2,8 +2,8 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { balanceAll } from "../data/balance.js?v=20261016c";
-const V = "20261016c";
+import { balanceAll } from "../data/balance.js?v=20261016d";
+const V = "20261016d";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -86,7 +86,7 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
     const st = getStars();
     const rows = MISSIONS.map((m, i) => `<button type="button" class="lc-row" data-m="${i}">
       <span class="lc-num">${i + 1}</span><span class="lc-ic rc-ic">${m.ic}</span>
-      <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.sub)}</small></span><span class="lc-go">${st[m.id] ? starsTxt(st[m.id]) : "›"}</span></button>`).join("");
+      <span class="lc-txt"><b>${esc(m.title)}</b><small>${esc(m.sub)}</small></span><span class="lc-go${st[m.id] ? " lc-go-stars" : ""}">${st[m.id] ? starsTxt(st[m.id]) : "›"}</span></button>`).join("");
     const tot = MISSIONS.reduce((s, m) => s + (st[m.id] || 0), 0);
     frame("Roots City", null, `<div class="lc-vocab-head"><span class="lc-vh-ic">🏙️</span><div><h1>Roots City</h1><p>6 missions pour t’entraîner. Non noté : ta note officielle reste celle du test.</p></div></div>
       <section class="lc-card lc-menu">${rows}</section><p class="rc-total">${tot} / 18 ⭐</p>`);
