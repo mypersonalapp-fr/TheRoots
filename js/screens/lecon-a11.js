@@ -6,19 +6,20 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017c";
+import { withExtraQs } from "../data/extra-qs.js?v=20261017d";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261017d";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261017c";
-import { balanceAll } from "../data/balance.js?v=20261017c";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017c";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017c";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261017c";
-import { buildPractice, mountPractice } from "./practice.js?v=20261017c";
-import { createVoice } from "./voice.js?v=20261017c";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017c";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017c";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017c";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017c";
+import { createCity } from "./roots-city.js?v=20261017d";
+import { balanceAll } from "../data/balance.js?v=20261017d";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261017d";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261017d";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261017d";
+import { buildPractice, mountPractice } from "./practice.js?v=20261017d";
+import { createVoice } from "./voice.js?v=20261017d";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261017d";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261017d";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261017d";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261017d";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -37,7 +38,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017c" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261017d" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -359,7 +360,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017c" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261017d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
 
@@ -383,7 +384,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       body = `
         <section class="lc-card">
           <h2 class="lc-h2">${p.icon || "📖"} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
-          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017c" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
+          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261017d" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
           <ul class="lc-list lc-vl">${st.words.map(([en, fr]) => `
             <li><span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           ${st.last ? `<h3 class="lc-h3 lc-h3s">💬 En contexte</h3>
@@ -436,10 +437,13 @@ export function renderLesson(root, B, { onExit } = {}) {
   }
 
   /* ----- Grammaire / Lecture / Écoute : pages à questions obligatoires ----- */
+  // Au moins 3 questions par page (phrases à compléter générées depuis le texte) : plus d'écran avec une seule question et du vide.
+  const vocW = (B.vocab || []).flatMap((v) => (v.words || []).map((w) => String(w[0]).trim())).filter((w) => !/\s/.test(w));
+  const aug = (kind, pages) => (pages || []).map((p) => Object.assign({}, p, { qsPool: withExtraQs(kind, Object.assign({}, p, { examples: (p.examples || []).filter((e) => !/\{/.test(e[0])) }), vocW, 5) }));
   const ACT = {
-    grammar: { icon: "⚙️", title: "Grammaire", sub: B.grammarSub, pages: B.grammar },
-    reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: B.reading },
-    listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: B.listening },
+    grammar: { icon: "⚙️", title: "Grammaire", sub: B.grammarSub, pages: aug("grammar", B.grammar) },
+    reading: { icon: "📚", title: "Lecture", sub: "Lis le texte puis réponds aux questions.", pages: aug("reading", B.reading) },
+    listening: { icon: "🎧", title: "Écoute", sub: "Écoute l’audio puis réponds aux questions.", pages: aug("listening", B.listening) },
     transversal: { icon: "🌱", title: "Transversale", sub: "", pages: [] },
     exercises: { icon: "🧩", title: "Exercices", sub: "Réponds : la correction s’affiche, tu peux réessayer.", pages: B.exercises },
   };
@@ -454,7 +458,7 @@ export function renderLesson(root, B, { onExit } = {}) {
     for (let i = 0, k = 0; k < nc; k++) { const sz = base + (k < extra ? 1 : 0); out.push(arr.slice(i, i + sz)); i += sz; }
     return out;
   };
-  const noMerge = new Set(), gLvl = {}, qCap = {}, noHint = new Set(); // écrans qui ne tiennent pas en un seul : on les redécoupe
+  const noMerge = new Set(), gLvl = {}, qCap = {}, noHint = new Set(), kwMax = {}; // écrans qui ne tiennent pas en un seul : on les redécoupe
   function actSteps(id, A) {
     const S = [];
     A.pages.forEach((p, pi) => {
@@ -474,6 +478,13 @@ export function renderLesson(root, B, { onExit } = {}) {
       } else if (p.kind === "write") S.push({ t: "twrite", p, pi });
       const hasText = id === "reading" || id === "listening" || (id === "exercises" && (p.passage || p.audio));
       if (hasText && (!mergeT || !p.qs.length)) S.push({ t: "text", p, pi });
+      const special = (hasText && mergeT) || (id === "grammar" && (gLvl[id + ":g" + pi] || 0) === 1);
+      if (p.qsPool) { // nombre de questions choisi pour que chaque écran soit plein (pas de question seule)
+        let n = Math.max(p.qs.length, 3); const pool = p.qsPool;
+        if (special ? n % 2 === 0 : n % 2 === 1) n += 1;
+        n = Math.min(n, pool.length); if (special ? n % 2 === 0 : n % 2 === 1) n = Math.max(n - 1, 1);
+        p = Object.assign({}, p, { qs: pool.slice(0, Math.max(n, 1)) });
+      }
       if (p.qs.length) {
         const all = p.qs.map((_, i) => i), wt = hasText && mergeT;
         const qc = qCap[id + ":" + pi] || 2;
@@ -519,6 +530,14 @@ export function renderLesson(root, B, { onExit } = {}) {
           ${p.audio ? `<div class="lc-player"><button type="button" class="lc-play" data-say="${esc(p.audio)}" aria-label="Écouter l’audio">▶</button><span class="lc-wave" aria-hidden="true"></span><button type="button" class="lc-speed" id="lcSpeed" aria-label="Vitesse de lecture">${speedMul === 1 ? "1x" : "0.75x"}</button></div>` : ""}</section>`;
       }
     }
+    // Écran de lecture un peu vide : on ajoute « Mots du texte » (vocabulaire de la leçon repéré dans le texte)
+    let kwBody = "";
+    if (st.t === "text" && id === "reading" && (kwMax[key] ?? 4) >= 2) {
+      const tx = " " + String(p.text).toLowerCase().replace(/[^a-z0-9'’ -]/g, " ") + " ", seen = new Set();
+      const kw = (B.vocab || []).flatMap((v) => (v.words || [])).filter(([en]) => { const e = String(en).toLowerCase().trim(); if (seen.has(e) || e.length < 3) return false; seen.add(e); return new RegExp(" " + e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(s|es)? ").test(tx); })
+        .sort((a, b) => b[0].length - a[0].length).slice(0, kwMax[key] ?? 4);
+      if (kw.length >= 2) kwBody = `<section class="lc-card lc-ctx lc-kw"><h2 class="lc-h2 lc-h2-ctx">🔑 Mots du texte</h2><ul class="lc-list lc-vl">${kw.map(([en, fr]) => li(en, fr)).join("")}</ul></section>`;
+    }
     if (st.t === "gall") {
       station = 0; bubble = "Retiens la règle !";
       body = `<section class="lc-card"><h2 class="lc-h2">${p.icon} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
@@ -537,7 +556,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       station = 0; bubble = "Écris en anglais !";
       body = `<section class="lc-card"><h2 class="lc-h2">✍️ Expression écrite</h2><p class="lc-lead">${esc(p.prompt)}</p><textarea id="lcTa" class="lc-ta" rows="5" aria-label="Ta réponse en anglais">${esc(writeTx[key] || "")}</textarea><p class="lc-small">Écris en anglais (au moins une phrase).</p></section>`;
     } else if (st.t === "text") {
-      station = 0; body = textBody;
+      station = 0; body = textBody + kwBody;
     } else {
       const lbl = id === "grammar" || id === "exercises" || id === "transversal" ? "À toi de pratiquer !" : "Questions";
       body = `${st.withText ? textBody : ""}${st.withEx ? exBody() : ""}<section class="lc-card lc-prac"><h2 class="lc-h2 lc-h2-prac">✏️ ${lbl}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
@@ -559,6 +578,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       const mn = el.querySelector(".lc-main"), ft = el.querySelector(".lc-foot"), lastEl = mn.lastElementChild;
       if (lastEl && ft && (lastEl.getBoundingClientRect().bottom > ft.getBoundingClientRect().top - 6 || mn.scrollHeight > mn.clientHeight + 2)) {
         const gk = id + ":g" + st.pi;
+        if (kwBody) { kwMax[key] = (kwMax[key] ?? 4) - 1; showAct(id); return; }
         if (hint && !noHint.has(id + st.pi)) { noHint.add(id + st.pi); showAct(id); return; }
         if (st.t === "gall" && (gLvl[gk] || 0) < 2) { gLvl[gk] = (gLvl[gk] || 0) + 1; showAct(id); return; }
         if (st.t === "qs" && st.withEx) { gLvl[id + ":g" + st.pi] = 2; showAct(id); return; }

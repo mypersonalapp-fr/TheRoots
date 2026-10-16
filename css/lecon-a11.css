@@ -359,3 +359,7 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-rules li{ padding-top:4px; padding-bottom:4px; }
 .lc-ctx .lc-vl li{ padding-top:4px; padding-bottom:4px; }
 .lc-ctx{ padding-top:12px; padding-bottom:12px; }
+.lc-kw{ padding:10px 14px; }
+.lc-kw .lc-h2{ margin:0 0 6px; font-size:15px; }
+.lc-kw .lc-vl li{ padding-top:3px; padding-bottom:3px; }
+.lc-kw .lc-spk{ width:34px; height:34px; min-width:34px; }

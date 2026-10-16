@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/base.css?v=20260930a"/>
   <link rel="stylesheet" href="css/backgrounds.css?v=20260930a"/>
   <link rel="stylesheet" href="css/screens.css?v=20261001c"/>
-  <link rel="stylesheet" href="css/lecon-a11.css?v=20261017c"/>
+  <link rel="stylesheet" href="css/lecon-a11.css?v=20261017d"/>
 </head>
 <body>
   <div id="app"></div>
@@ -24,7 +24,7 @@
     if (q.get("t") === "light" || q.get("t") === "dark") patch.theme = q.get("t");
     if (Object.keys(patch).length) store.updateSettings(patch);
     document.documentElement.setAttribute("data-theme", store.get().settings.theme || "light");
-    const { renderLessonA11 } = await import("./js/screens/lecon-a11.js?v=20261017c");
+    const { renderLessonA11 } = await import("./js/screens/lecon-a11.js?v=20261017d");
     renderLessonA11(document.getElementById("app"), { onExit: () => location.reload() });
   </script>
 </body>
