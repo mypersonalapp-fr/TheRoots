@@ -16,7 +16,7 @@
 
 import { store } from "../data/store.js?v=20260930a";
 import { t } from "../data/i18n.js?v=20260930a";
-import { recordSkill } from "../data/progress.js?v=20261016n";
+import { recordSkill } from "../data/progress.js?v=20261016o";
 import { COMPREHENSION_ECRITE_EN } from "../data/comprehension-ecrite-en.js?v=20260930a";
 import { COMPREHENSION_ECRITE_A2_EN } from "../data/comprehension-ecrite-a2-en.js?v=20260930a";
 import { COMPREHENSION_ORALE_EN } from "../data/comprehension-orale-en.js?v=20260930a";
