@@ -22,9 +22,9 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261016h";
+const V = "20261016i";
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261016h"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261016i"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
