@@ -2,9 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { createVoice } from "./voice.js?v=20261016e";
-import { balanceAll } from "../data/balance.js?v=20261016e";
-const V = "20261016e";
+import { createVoice } from "./voice.js?v=20261016f";
+import { balanceAll } from "../data/balance.js?v=20261016f";
+const V = "20261016f";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -150,10 +150,10 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         if (alts && alts.length) {
           const exp = norm(target), best = Math.max(...alts.map((a) => { const w = norm(a); return exp.filter((x) => w.includes(x)).length / exp.length; }));
           vmsg = best >= 0.8 ? `🌟 Great ! J’ai compris : « ${alts[0]} »` : `J’ai compris : « ${alts[0]} ». Réécoute le modèle et réessaie.`;
-        } else vmsg = vurl ? "Je n’ai pas bien compris. Réécoute-toi, puis réessaie." : "Je n’ai rien entendu. Réessaie un peu plus fort.";
+        } else vmsg = vurl ? (V.transcribes() ? "Je n’ai pas bien compris. Réécoute-toi, puis réessaie." : "✅ Enregistré ! Appuie sur ▶ Me réécouter, puis compare avec le modèle 🔊.") : "Je n’ai rien entendu. Réessaie un peu plus fort.";
         paint();
       },
-      onError: (c) => { if (c === "denied") vmsg = "Micro refusé : autorise-le dans les réglages du navigateur, ou dis la phrase sans enregistrer."; else if (c === "unavailable") vmsg = "Micro indisponible sur cet appareil."; paint(); },
+      onError: (c) => { if (c === "denied") vmsg = "Micro refusé : autorise-le dans les réglages du navigateur, ou dis la phrase sans enregistrer."; else if (c === "unavailable") vmsg = "Micro indisponible sur cet appareil."; else if (c === "play") vmsg = "Lecture impossible : vérifie le volume et que le mode silencieux est coupé."; paint(); },
     });
     const voice = () => !t.card || !checked ? "" : `<div class="rc-voice"><p class="rc-ask">🎤 Maintenant, dis-le à voix haute !</p><p class="rc-say">“${esc(target)}”</p>${V.supported ? (vstate === "listening"
       ? `<button type="button" class="rc-listen rc-stop" id="rcStop">⏹ Terminer</button><p class="rc-heard" id="rcInterim" aria-live="polite">${interim ? `« ${esc(interim)} »` : "Je t’écoute…"}</p>`

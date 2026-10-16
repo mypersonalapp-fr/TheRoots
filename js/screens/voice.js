@@ -1,6 +1,9 @@
 // The Roots — enregistrement de la voix de l'élève : transcription (si le navigateur sait) + réécoute de sa propre voix.
 // createVoice({ lang, onState, onText, onDone, onError }) → { start, stop, play, hasAudio, supported }
 const SR = typeof window !== "undefined" ? (window.SpeechRecognition || window.webkitSpeechRecognition) : null;
+// Sur iPhone/iPad, transcrire et enregistrer en même temps se gêne : on enregistre seulement (la réécoute est le but).
+const IOS = typeof navigator !== "undefined" && (/iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
+const pickMime = () => { try { return ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find((t) => MediaRecorder.isTypeSupported(t)) || ""; } catch (e) { return ""; } };
 export const voiceSupported = () => !!(SR || (typeof MediaRecorder !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia));
 
 export function createVoice({ lang = "en-GB", maxMs = 12000, onState = () => {}, onText = () => {}, onDone = () => {}, onError = () => {} } = {}) {
@@ -20,13 +23,14 @@ export function createVoice({ lang = "en-GB", maxMs = 12000, onState = () => {},
     if (canRec) {
       try {
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        rec = new MediaRecorder(stream);
+        const mt = pickMime(); rec = mt ? new MediaRecorder(stream, { mimeType: mt }) : new MediaRecorder(stream);
         rec.ondataavailable = (e) => { if (e.data && e.data.size) chunks.push(e.data); };
         rec.onstop = () => { if (chunks.length) url = URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || "audio/mp4" })); part(); };
         rec.start(); pending++;
       } catch (e) { rec = null; onError("denied"); }
     }
-    if (SR) {
+    const wantSR = SR && !(IOS && canRec && rec);
+    if (wantSR) {
       try {
         sr = new SR(); sr.lang = lang; sr.interimResults = true; sr.maxAlternatives = 3;
         sr.onresult = (e) => {
@@ -49,6 +53,6 @@ export function createVoice({ lang = "en-GB", maxMs = 12000, onState = () => {},
     try { if (sr) sr.stop(); } catch (e) { /* déjà arrêté */ }
     kill = setTimeout(() => { pending = 0; done(); }, 2500);
   }
-  function play() { if (!url) return; try { if (audio) audio.pause(); audio = new Audio(url); audio.play(); } catch (e) { onError("play"); } }
-  return { start, stop, play, hasAudio: () => !!url, supported: voiceSupported() };
+  function play() { if (!url) return; try { if (audio) audio.pause(); audio = new Audio(url); const pr = audio.play(); if (pr && pr.catch) pr.catch(() => onError("play")); } catch (e) { onError("play"); } }
+  return { start, stop, play, hasAudio: () => !!url, supported: voiceSupported(), transcribes: () => !!sr };
 }
