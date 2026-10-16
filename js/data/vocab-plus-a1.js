@@ -75,7 +75,7 @@ VOCAB_PLUS_A1[3] = [
     "“Party” = fête. “Come in!” = entre ! / entrez !", ["You are invited to my party.=Tu es invité à ma fête.", "Welcome! Come in and sit down.=Bienvenue ! Entre et assieds-toi."]),
   P("Refuser poliment", "🙏", "sorry=désolé; busy=occupé; maybe=peut-être; another time=une autre fois; I can't=je ne peux pas; I'm afraid=je crains; thanks anyway=merci quand même; next week=la semaine prochaine; unfortunately=malheureusement; I'd love to=j'aimerais bien",
     "Pour refuser avec gentillesse : “I'd love to, but I can't.”", ["Sorry, I'm busy tonight.=Désolé, je suis occupé ce soir.", "Maybe next week?=Peut-être la semaine prochaine ?"]),
-  P("Se mettre d'accord", "🤝", "agree=être d'accord; disagree=ne pas être d'accord; of course=bien sûr; sure=bien sûr; OK=d'accord; fine=très bien; perfect=parfait; no problem=pas de problème; why not=pourquoi pas; let's go=allons-y",
+  P("Se mettre d'accord", "🤝", "agree=être d'accord; disagree=ne pas être d'accord; of course=bien sûr; sure=évidemment; OK=d'accord; fine=très bien; perfect=parfait; no problem=pas de problème; why not=pourquoi pas; let's go=allons-y",
     "“I agree” se dit sans « être » : on ne dit pas “I am agree”.", ["I agree with you.=Je suis d'accord avec toi.", "Why not? Let's go!=Pourquoi pas ? Allons-y !"]),
   P("Les lieux de rencontre", "📍", "café=café; park=parc; cinema=cinéma; library=bibliothèque; school=école; playground=aire de jeux; beach=plage; gym=salle de sport; restaurant=restaurant; shopping centre=centre commercial",
     "Pour proposer un lieu : “Let's meet at the café.”", ["Let's meet at the park.=Retrouvons-nous au parc.", "We study in the library.=Nous étudions à la bibliothèque."]),
