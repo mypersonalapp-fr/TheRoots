@@ -2,9 +2,9 @@
 // Missions/données de A1.1 par défaut ; les autres leçons passent { missions, data } à createCity.
 // Le texte est de vrai texte (pas dans les images) : cliquable, lisible, corrigeable.
 
-import { createVoice } from "./voice.js?v=20261017h";
-import { balanceAll } from "../data/balance.js?v=20261017h";
-const V = "20261017h";
+import { createVoice } from "./voice.js?v=20261017j";
+import { balanceAll } from "../data/balance.js?v=20261017j";
+const V = "20261017j";
 const img = (p) => `assets/img/${p}.webp?v=${V}`;
 
 const DEF_MISSIONS = [
@@ -103,36 +103,55 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
 
   const head = (m, S, steps) => ({ cur: S.n + 1, total: steps.length });
 
-  /* ---- missions à choix (1, 2, 4, 5) ---- */
+  /* ---- missions à choix (1, 2, 4, 5) : plusieurs questions par écran, correction immédiate au clic ---- */
   function choose(m, steps, S) {
-    const step = steps[S.n], pick = {}; let checked = false, first = true;
-    
-    const lead = step.flag
+    const simple = (st) => st.groups.length === 1 && !m.portrait;
+    S.cap = S.cap || 3;
+    const k = simple(steps[S.n]) ? Math.max(1, Math.min(S.cap, steps.length - S.n)) : 1;
+    const items = [];
+    for (let j = 0; j < k && S.n + j < steps.length; j++) { if (j > 0 && !simple(steps[S.n + j])) break; items.push({ step: steps[S.n + j], pick: {}, checked: false, good: false }); }
+    let first = true;
+    const leadOf = (step) => step.flag
       ? `<div class="rc-flag">${step.flag}</div><p class="rc-say">“I’m from ${esc(step.country)}.”</p><p class="rc-ask">What is his or her nationality?</p>`
       : `${play(step.say)}`;
-    const sum = () => `<div class="rc-sum"><h3 class="lc-h3">Portrait</h3>${step.groups.map((g, gi) => { const o = g.opts.find((x) => x.v === pick[gi]); return `<div class="rc-sumrow">${o ? `<img src="${o.img}" alt=""/><span>${esc(o.label)}</span>` : `<i class="rc-empty"></i><span class="rc-muted">${esc(g.label)} …</span>`}</div>`; }).join("")}</div>`;
+    const sum = (it) => `<div class="rc-sum"><h3 class="lc-h3">Portrait</h3>${it.step.groups.map((g, gi) => { const o = g.opts.find((x) => x.v === it.pick[gi]); return `<div class="rc-sumrow">${o ? `<img src="${o.img}" alt=""/><span>${esc(o.label)}</span>` : `<i class="rc-empty"></i><span class="rc-muted">${esc(g.label)} …</span>`}</div>`; }).join("")}</div>`;
+    const itemHtml = (it, ii) => {
+      const step = it.step;
+      const groups = step.groups.map((g, gi) => `<div class="rc-group">${step.groups.length > 1 || g.label !== "Temps" ? `<h3 class="lc-h3">${esc(g.label)}</h3>` : ""}<div class="rc-opts ${g.tiles || g.cols ? "rc-tiles" : ""}" style="--c:${g.cols || 3}">${g.opts.map((o) => {
+        const sel = it.pick[gi] === o.v, ok = it.checked && o.v === g.answer, ko = it.checked && sel && o.v !== g.answer;
+        return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-i="${ii}" data-g="${gi}" data-v="${esc(o.v)}" ${it.checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="${esc(o.img && o.label ? o.label : "Character " + (Number(o.v) + 1))}"/>` : ""}${o.label && !o.img ? `<span>${esc(o.label)}</span>` : ""}</button>`;
+      }).join("")}</div></div>`).join("");
+      return `<div class="rc-item ${it.checked ? (it.good ? "good" : "bad") : ""}"><div class="rc-lead">${leadOf(step)}</div>${groups}${m.portrait ? sum(it) : ""}<div class="rc-fb" aria-live="polite">${it.checked ? (it.good ? "✅ Bien joué !" : "❌ Pas tout à fait — la bonne réponse est en vert.") : ""}</div></div>`;
+    };
     const paint = () => {
       const y0 = first ? 0 : (el.querySelector(".lc-main") || {}).scrollTop || 0;
-      const groups = step.groups.map((g, gi) => `<div class="rc-group"><h3 class="lc-h3">${esc(g.label)}</h3><div class="rc-opts ${g.tiles || g.cols ? "rc-tiles" : ""}" style="--c:${g.cols || 3}">${g.opts.map((o) => {
-        const sel = pick[gi] === o.v, ok = checked && o.v === g.answer, ko = checked && sel && o.v !== g.answer;
-        return `<button type="button" class="rc-opt ${sel ? "sel" : ""} ${ok ? "ok" : ""} ${ko ? "ko" : ""}" data-g="${gi}" data-v="${esc(o.v)}" ${checked ? "disabled" : ""}>${o.img ? `<img src="${o.img}" alt="${esc(o.img && o.label ? o.label : "Character " + (Number(o.v) + 1))}"/>` : ""}${o.label && !o.img ? `<span>${esc(o.label)}</span>` : ""}</button>`;
-      }).join("")}</div></div>`).join("");
-      const allSet = step.groups.every((g, gi) => pick[gi] != null);
-      const extra = "";
-      frame(`Mission ${S.i + 1}/6`, head(m, S, steps), `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${extra}<div class="rc-lead">${lead}</div>${groups}${m.portrait ? sum() : ""}
-        <div class="rc-fb" aria-live="polite">${checked ? (S.last ? "✅ Bien joué !" : "Pas tout à fait — regarde les bonnes réponses en vert.") : ""}</div>
-        <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && !allSet ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
+      const done = items.every((it) => it.checked), lastChunk = S.n + items.length >= steps.length;
+      frame(`Mission ${S.i + 1}/6`, { cur: S.n + items.length, total: steps.length }, `${hero(m)}<section class="lc-card rc-card"><h2 class="lc-h2">${m.ic} ${esc(m.title)}</h2>${items.map(itemHtml).join("")}
+        <button type="button" class="lc-next rc-go" id="rcGo" ${done ? "" : "disabled"}>${done ? (lastChunk ? "Terminer" : "Suivant ›") : "Choisis ta réponse"}</button></section>`);
       first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
-      el.querySelectorAll(".rc-opt").forEach((b) => b.addEventListener("click", () => { pick[b.dataset.g] = b.dataset.v; paint(); }));
+      // trop haut pour l'écran : on réduit le nombre de questions par écran
+      const mn2 = el.querySelector(".lc-main");
+      if (items.length > 1 && mn2 && mn2.scrollHeight > mn2.clientHeight + 2 && items.every((it) => !it.checked)) { S.cap = items.length - 1; choose(m, steps, S); return; }
+      if (items.length === 1 && mn2 && items.every((it) => !it.checked)) {
+        const hh = el.querySelector(".rc-hero");
+        if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.classList.add("rc-hero-s"); }
+        if (hh && mn2.scrollHeight > mn2.clientHeight + 2) { hh.remove(); }
+      }
+      el.querySelectorAll(".rc-opt").forEach((b) => b.addEventListener("click", () => {
+        const it = items[Number(b.dataset.i)]; if (it.checked) return;
+        it.pick[b.dataset.g] = b.dataset.v;
+        if (it.step.groups.every((g, gi) => it.pick[gi] != null)) { // correction immédiate, sans bouton « Valider »
+          const wrong = it.step.groups.filter((g, gi) => it.pick[gi] !== g.answer).length;
+          S.errors += wrong; it.good = wrong === 0; it.checked = true;
+        }
+        paint();
+      }));
       el.querySelector("#rcGo").onclick = () => {
-        if (!checked) {
-          const wrong = step.groups.filter((g, gi) => pick[gi] !== g.answer).length;
-          S.errors += wrong; S.last = wrong === 0; checked = true; paint();
-        } else if (S.n + 1 >= steps.length) finish(m, S, steps);
-        else { S.n++; S.last = false; choose(m, steps, S); }
+        if (S.n + items.length >= steps.length) finish(m, S, steps);
+        else { S.n += items.length; choose(m, steps, S); }
       };
-          };
+    };
     paint();
   }
 
@@ -173,7 +192,8 @@ export function createCity({ el, frame, esc, speak, toast, back, getStars, setSt
         <button type="button" class="lc-next rc-go" id="rcGo" ${!checked && placed.length === 0 ? "disabled" : ""}>${checked ? (S.n + 1 >= steps.length ? "Terminer" : "Suivant ›") : "Valider"}</button></section>`);
       first = false; { const mn = el.querySelector(".lc-main"); if (mn) mn.scrollTop = y0; }
       bindBack(start);
-      el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); paint(); }));
+      el.querySelectorAll("[data-k]").forEach((b) => b.addEventListener("click", () => { placed.push(Number(b.dataset.k)); if (placed.length === t.bank.length) { good = placed.map((k) => t.bank[k]).join("|") === t.answer.join("|"); if (!good) S.errors++; checked = true; } paint(); }));
+      { const mn = el.querySelector(".lc-main"), hh = el.querySelector(".rc-hero"); if (hh && mn && mn.scrollHeight > mn.clientHeight + 2) { hh.classList.add("rc-hero-s"); if (mn.scrollHeight > mn.clientHeight + 2) hh.remove(); } }
       el.querySelectorAll("[data-p]").forEach((b) => b.addEventListener("click", () => { placed.splice(Number(b.dataset.p), 1); paint(); }));
       const mic = el.querySelector("#rcMic"); if (mic) mic.onclick = startMic;
       const stp = el.querySelector("#rcStop"); if (stp) stp.onclick = () => V.stop();

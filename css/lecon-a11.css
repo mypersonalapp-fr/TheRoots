@@ -392,3 +392,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-tight .lc-tab{ min-height:36px; }
 .lc-tight .lc-h2{ margin-bottom:6px; font-size:17px; }
 .lc-tight .lc-checks.lc-chips{ margin-top:4px; }
+.rc-item + .rc-item{ border-top:1px dashed rgba(0,0,0,.15); margin-top:10px; padding-top:10px; }
+.rc-item .rc-lead{ text-align:center; }
+.rc-item.good .rc-fb{ color:var(--success); } .rc-item.bad .rc-fb{ color:var(--pop); }
+.rc-item .rc-fb{ min-height:26px; margin:4px 0 0; }
+
+.rc-hero.rc-hero-s img{ height:90px !important; max-height:90px !important; }
