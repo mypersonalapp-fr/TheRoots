@@ -19,7 +19,7 @@ export const A1_EN_PALIERS = [
     code: "A1.1", title: "Identity",
     objective: "Donner et demander des informations simples permettant d'identifier une personne et décrire des caractéristiques physiques élémentaires.",
     vocab: ["first name, last name, nickname, age, numbers, date of birth, place of birth", "origin, country, city, nationality, live, residence", "height, weight, shoe size, skin colour, eye colour, main body parts"],
-    grammar: ["Pronoms personnels (I, you, he, she, we, they), TO BE et TO HAVE de base, phrases affirmatives", "Questions : What is your name? / How old are you? / Where are you from? / Where do you live?", "Négation", "Possessifs : my, your, his, her", "Démonstratifs : this, that, these, those"],
+    grammar: ["Pronoms personnels (I, you, he, she, we, they), TO BE et TO HAVE de base, phrases affirmatives", "Questions : What is your name? / How old are you? / Where are you from? (Where do you live? est vu avec le présent simple, en A1.3)", "Négation", "Possessifs : my, your, his, her", "Démonstratifs : this, that, these, those"],
     conjugation: "Présent — TO BE, TO HAVE, TO DO (affirmatif, négatif, questions, réponses courtes, formes contractées).",
     activities: ["Vocabulaire", "Jeux", "Grammaire", "Jeux", "Conjugaison", "Jeux", "Compréhension orale", "Compréhension écrite", "Expression écrite (courte présentation de soi)", "Expression orale (se présenter)", "Contrôle de niveau", "Bonus : 10 expressions", "Fiche PDF"],
   },

@@ -430,3 +430,12 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-menu .lc-row{ padding:4px 10px; min-height:40px; margin:0 0 4px; }
 .lc-menu .lc-row small{ font-size:12px; line-height:1.2; }
 .lc-menu h3, .lc-menu .lc-sec{ margin:6px 0 4px; }
+
+/* Revoir le texte / Réécouter depuis les pages de questions */
+.lc-h2-row{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.lc-recap{ min-height:36px; padding:6px 12px; font-size:13px; flex:none; }
+.lc-recap-row{ display:flex; justify-content:flex-end; margin:0 0 6px; }
+.lc-recap-sheet{ position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end; background:rgba(0,0,0,.45); }
+.lc-recap-card{ width:100%; max-height:75%; overflow:auto; box-sizing:border-box; padding:18px 18px 22px; border-radius:22px 22px 0 0; background:#fffaf0; color:#3a2a14; box-shadow:0 -8px 30px rgba(0,0,0,.3); }
+:root[data-theme="dark"] .lc-recap-card{ background:#2a2218; color:#f4e6cf; }
+.lc-recap-close{ width:100%; margin-top:14px; }

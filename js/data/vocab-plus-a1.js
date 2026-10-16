@@ -11,6 +11,8 @@ export const VOCAB_PLUS_A1 = {};
 
 /* ===== A1.1 — Mon identité ===== */
 VOCAB_PLUS_A1[1] = [
+  P("Origine et résidence", "🌍", "origin=origine; country of origin=pays d'origine; residence=résidence; place of residence=lieu de résidence; resident=habitant; native=natif; citizen=citoyen; abroad=à l'étranger",
+    "“Origin” = d'où l'on vient ; “residence” = où l'on habite maintenant.", ["My country of origin is Brazil.=Mon pays d'origine est le Brésil.", "My place of residence is Paris.=Mon lieu de résidence est Paris."]),
   P("Les formulaires", "📝", "first name=prénom; surname=nom de famille; full name=nom complet; date of birth=date de naissance; address=adresse; postcode=code postal; email address=adresse e-mail; phone number=numéro de téléphone; signature=signature; form=formulaire",
     "Sur un formulaire britannique : “first name” (prénom) et “surname” ou “last name” (nom de famille).", ["Please write your full name.=Écrivez votre nom complet, s'il vous plaît.", "What is your postcode?=Quel est votre code postal ?"]),
   P("Les documents", "🪪", "passport=passeport; ID card=carte d'identité; driving licence=permis de conduire; visa=visa; ticket=billet; card=carte; certificate=certificat; photo=photo; document=document; number=numéro",
@@ -35,6 +37,8 @@ VOCAB_PLUS_A1[1] = [
 
 /* ===== A1.2 — Ma famille ===== */
 VOCAB_PLUS_A1[2] = [
+  P("Neveux, nièces et plus", "👪", "niece=nièce; nephew=neveu; sibling=frère ou sœur; godfather=parrain; godmother=marraine; family tree=arbre généalogique; generation=génération",
+    "“Sibling” désigne un frère ou une sœur, sans préciser lequel.", ["She is my niece.=C'est ma nièce.", "He is my nephew.=C'est mon neveu."]),
   P("La famille proche (suite)", "👨‍👩‍👧", "parents=parents; grandparents=grands-parents; grandchildren=petits-enfants; husband=mari; wife=épouse; twins=jumeaux; baby=bébé; child=enfant; children=enfants; relatives=famille / proches",
     "“Children” est le pluriel irrégulier de “child”. “Parents” = père et mère (pas « les parents » au sens large : “relatives”).", ["My parents live in Lyon.=Mes parents habitent à Lyon.", "They have twin daughters.=Ils ont des filles jumelles."]),
   P("Les liens par alliance", "💍", "mother-in-law=belle-mère (de son conjoint); father-in-law=beau-père; son-in-law=gendre; daughter-in-law=belle-fille; stepfather=beau-père (remarié); stepmother=belle-mère (remariée); half-brother=demi-frère; half-sister=demi-sœur; godfather=parrain; godmother=marraine",
@@ -107,6 +111,8 @@ VOCAB_PLUS_A1[4] = [
 
 /* ===== A1.5 — Mes goûts ===== */
 VOCAB_PLUS_A1[5] = [
+  P("Dire sa préférence", "💬", "would rather=préférer plutôt; I'd rather=je préférerais; can't stand=ne pas supporter; be keen on=être passionné de; be into=être branché sur; fond of=attaché à",
+    "“I'd rather + verbe” : I'd rather stay home. (je préférerais rester).", ["I'd rather have tea.=Je préférerais prendre du thé.", "She can't stand noise.=Elle ne supporte pas le bruit."]),
   P("Les sports (suite)", "⚽", "tennis=tennis; basketball=basket; rugby=rugby; cycling=cyclisme; skiing=ski; golf=golf; boxing=boxe; volleyball=volley; athletics=athlétisme; yoga=yoga",
     "On dit “play” pour les sports de balle, “do” pour yoga/judo, “go” pour -ing.", ["I play tennis on Sundays.=Je joue au tennis le dimanche.", "She does yoga every morning.=Elle fait du yoga tous les matins."]),
   P("Les instruments", "🎹", "piano=piano; violin=violon; drums=batterie; flute=flûte; trumpet=trompette; saxophone=saxophone; band=groupe; song=chanson; singer=chanteur; lyrics=paroles",
@@ -155,6 +161,8 @@ VOCAB_PLUS_A1[6] = [
 
 /* ===== A1.7 — Faire les achats ===== */
 VOCAB_PLUS_A1[7] = [
+  P("L'argent et les monnaies", "💷", "currency=monnaie (devise); pound=livre sterling; euro=euro; dollar=dollar; coin=pièce; banknote=billet; exchange rate=taux de change; cash machine=distributeur",
+    "La monnaie britannique est la livre : “pound” (symbole £).", ["The currency in the UK is the pound.=La monnaie au Royaume-Uni est la livre.", "Is there a cash machine here?=Y a-t-il un distributeur ici ?"]),
   P("Les vêtements (suite)", "👕", "T-shirt=T-shirt; jeans=jean; skirt=jupe; coat=manteau; jumper=pull; socks=chaussettes; shorts=short; suit=costume; scarf=écharpe; hat=chapeau",
     "“Jeans”, “trousers”, “shorts” sont toujours pluriels : “a pair of jeans”.", ["I need a warm coat.=J'ai besoin d'un manteau chaud.", "He wears a suit to work.=Il porte un costume pour travailler."]),
   P("Les accessoires", "👜", "belt=ceinture; gloves=gants; sunglasses=lunettes de soleil; watch=montre; ring=bague; necklace=collier; umbrella=parapluie; wallet=portefeuille; purse=porte-monnaie; handbag=sac à main",

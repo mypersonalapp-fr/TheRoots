@@ -36,7 +36,7 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis qui cuisine.", "Qui cuisine", "cooks|cook|cooking|makes|prepares"], ["Dis si c'est un bon moment.", "Ton avis", "nice|good|great|happy|lovely|fun|love"]]),
   ],
   3: [
-    T("Décris ton meilleur ami", "🧑‍🤝‍🧑", "My best friend is Sara. She is funny and kind. We play tennis and we watch films together.", [
+    T("Décris ton meilleur ami", "🧑‍🤝‍🧑", "My best friend is Sara. She is funny and kind. We play tennis at the park and we watch films together.", [
       ["Dis comment il / elle s'appelle.", "Son nom", "friend|name|is|called"], ["Dis comment il / elle est.", "Comment il est", "funny|kind|nice|friendly|clever|shy|quiet|happy|tall"],
       ["Dis ce que vous faites ensemble.", "Ce que vous faites", "together|play|watch|go|walk|talk|study|cook|eat"], ["Dis où vous vous voyez.", "Où", "at|in|park|school|cafe|home|house|cinema|work"]]),
     T("Accepte une invitation", "🎉", "Thank you! Yes, I would love to come. What time is the party? Where is it?", [

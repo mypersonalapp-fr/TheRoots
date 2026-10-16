@@ -25,12 +25,13 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261018m";
-import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018m";
-import { plusPages } from "./vocab-plus-a1.js?v=20261018m";
+const V = "20261018n";
+import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018n";
+import { plusPages } from "./vocab-plus-a1.js?v=20261018n";
+import { TEST_PLUS_A1 } from "./test-plus-a1.js?v=20261018n";
 const coreSet = (pages) => new Set(pages.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase())));
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018m"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018n"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
@@ -41,7 +42,7 @@ export async function loadBundle(n) {
     goals: shortGoals(base),
     vocab, grammar: m[`GRAMMAR_${s}`], grammarSub: "Les règles de la leçon, avec des exemples.",
     reading: m[`READING_${s}`], listening: m[`LISTENING_${s}`], exercises: m[`EXERCISES_${s}`], expression: exprs, transv: null,
-    testTexts: m[`TEST_TEXTS_${s}`], testAudios: m[`TEST_AUDIOS_${s}`], testGrammar: m[`TEST_GRAMMAR_${s}`], testW: 0, testO: exprs0[1] ? 1 : 0,
+    testTexts: [...m[`TEST_TEXTS_${s}`], ...TEST_PLUS_A1[n].texts], testAudios: [...m[`TEST_AUDIOS_${s}`], ...TEST_PLUS_A1[n].audios], testGrammar: [...m[`TEST_GRAMMAR_${s}`], ...TEST_PLUS_A1[n].gram], testW: 0, testO: exprs0[1] ? 1 : 0,
     testWriteTitle: w.title, testWriteLead: `Écris 4 phrases : ${w.prompts.join(" ")}`,
     testOralTitle: o.title, testOralLead: o.prompts.join(" "),
     adviceTopic: `${base.title} (${base.code})`, adviceLede: "Réponds avec bienveillance.",
