@@ -64,19 +64,19 @@ export const GRAMMAR_A15 = [
 
 export const READING_A15 = [
   { who: "Emma", text: "Hi! I'm Emma. I love reading and I like drawing. I hate cooking because it's boring. My favourite colour is purple. I don't mind running. I also like animals. I have a small cat.",
-    fr: "Emma adore lire, aime dessiner, déteste cuisiner. Sa couleur préférée est le violet.  Elle aime aussi les animaux et a un petit chat.",
+    fr: "Emma adore lire, aime dessiner, déteste cuisiner. Sa couleur préférée est le violet. Elle aime aussi les animaux et a un petit chat.",
     qs: [["What does Emma love?", ["Reading", "Cooking", "Running"], 0, "I love reading."], ["What is her favourite colour?", ["Purple", "Blue", "Red"], 0, "Purple."]] },
   { who: "Sam", text: "Hello! I'm Sam. I like football and swimming. I prefer football to tennis. I don't like jazz, but I love pop music. My favourite singer is Adele. I play football with my friends every Saturday.",
-    fr: "Sam aime le football et la natation ; il préfère le foot au tennis ; il aime la pop.  Il joue au foot avec ses amis le samedi.",
+    fr: "Sam aime le football et la natation ; il préfère le foot au tennis ; il aime la pop. Il joue au foot avec ses amis le samedi.",
     qs: [["What does Sam prefer?", ["Football", "Tennis", "Swimming"], 0, "He prefers football to tennis."], ["Does he like jazz?", ["Yes", "No", "We don't know"], 1, "He doesn't like jazz."]] },
   { who: "Lily", text: "I'm Lily. Do you like music? I do! I play the guitar and I sing. I go to a concert every month. I think concerts are great and very fun. My friends like my songs and they clap.",
-    fr: "Lily joue de la guitare, chante, va à un concert chaque mois.  Ses amis aiment ses chansons et applaudissent.",
+    fr: "Lily joue de la guitare, chante, va à un concert chaque mois. Ses amis aiment ses chansons et applaudissent.",
     qs: [["What does Lily play?", ["The guitar", "The piano", "Football"], 0, "The guitar."], ["How often does she go to concerts?", ["Every month", "Every day", "Never"], 0, "Every month."]] },
   { who: "Omar", text: "Hi! I'm Omar. I love travelling. I like visiting new cities and meeting people. I prefer trains to planes. I don't like waiting at airports. It is boring. I take a lot of photos of the places I visit.",
-    fr: "Omar adore voyager, préfère le train à l'avion et n'aime pas attendre aux aéroports.  Il prend beaucoup de photos des lieux qu'il visite.",
+    fr: "Omar adore voyager, préfère le train à l'avion et n'aime pas attendre aux aéroports. Il prend beaucoup de photos des lieux qu'il visite.",
     qs: [["What does Omar prefer?", ["Trains", "Planes", "Cars"], 0, "He prefers trains to planes."], ["Why doesn't he like airports?", ["Waiting is boring", "They are far", "They are cheap"], 0, "Waiting is boring."]] },
   { who: "Nina", text: "Hello, I'm Nina. Do I like cooking? Yes, I do! I cook every Sunday. My favourite food is pasta. My brother doesn't like pasta, he prefers rice. I also like desserts, but I don't like coffee.",
-    fr: "Nina adore cuisiner le dimanche ; sa nourriture préférée est les pâtes ; son frère préfère le riz.  Elle aime aussi les desserts mais pas le café.",
+    fr: "Nina adore cuisiner le dimanche ; sa nourriture préférée est les pâtes ; son frère préfère le riz. Elle aime aussi les desserts mais pas le café.",
     qs: [["When does Nina cook?", ["Every Sunday", "Every day", "Never"], 0, "Every Sunday."], ["What does her brother prefer?", ["Rice", "Pasta", "Pizza"], 0, "He prefers rice."]] },
 ];
 

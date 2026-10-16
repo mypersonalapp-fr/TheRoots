@@ -69,19 +69,19 @@ export const GRAMMAR_A110 = [
 
 export const READING_A110 = [
   { who: "Anna", text: "Hi! I'm Anna. I'm a nurse. I work in a hospital. I start work at seven in the morning and I finish at three. I like my colleagues. They are very kind. I wear a blue uniform. After work I go home and I cook dinner for my family. On Sunday I don't work, so I visit my mother.",
-    fr: "Anna est infirmière, elle travaille de sept heures à quinze heures et aime ses collègues.  Elle porte un uniforme bleu, cuisine pour sa famille et rend visite à sa mère le dimanche.",
+    fr: "Anna est infirmière, elle travaille de sept heures à quinze heures et aime ses collègues. Elle porte un uniforme bleu, cuisine pour sa famille et rend visite à sa mère le dimanche.",
     qs: [["What does Anna do?", ["She's a nurse", "She's a teacher", "She's a driver"], 0, "A nurse."], ["When does she finish?", ["At three", "At seven", "At five"], 0, "At three."]] },
   { who: "Tom", text: "Hello! I'm Tom. I'm a student. I study history at university. I have classes on Monday, Tuesday and Thursday. I don't have classes on Friday. I do my homework in the library. I live with two friends near the university. We cook together in the evening. On Saturday I play football.",
-    fr: "Tom étudie l'histoire à l'université ; pas de cours le vendredi.  Il vit avec deux amis et ils cuisinent ensemble ; le samedi il joue au foot.",
+    fr: "Tom étudie l'histoire à l'université ; pas de cours le vendredi. Il vit avec deux amis et ils cuisinent ensemble ; le samedi il joue au foot.",
     qs: [["What does Tom study?", ["History", "Maths", "Art"], 0, "History."], ["Does he have classes on Friday?", ["No", "Yes", "Sometimes"], 0, "No."]] },
   { who: "Mr Lee", text: "My name is Mr Lee. I'm a maths teacher. I work in a big school. I start at eight and I finish at four. In the morning I teach and in the afternoon I check homework. My students are friendly. I like my job because I help young people. At home I read and I listen to music.",
-    fr: "M. Lee est professeur de maths ; il enseigne le matin et corrige l'après-midi.  Ses élèves sont sympathiques ; il aime aider les jeunes ; chez lui il lit et écoute de la musique.",
+    fr: "M. Lee est professeur de maths ; il enseigne le matin et corrige l'après-midi. Ses élèves sont sympathiques ; il aime aider les jeunes ; chez lui il lit et écoute de la musique.",
     qs: [["What does Mr Lee teach?", ["Maths", "English", "Science"], 0, "Maths."], ["What does he do in the afternoon?", ["Checks homework", "Has lunch", "Goes home"], 0, "Checks homework."]] },
   { who: "Carla", text: "I'm Carla. I work in an office. I start work at nine. We have a meeting on Monday morning. I have lunch at one. I finish at half past five. My office is big and bright. My colleagues are very nice. After work I go to the gym.",
-    fr: "Carla travaille dans un bureau, réunion le lundi matin, finit à 17h30.  Son bureau est grand et lumineux, ses collègues sont gentils ; après le travail elle va à la salle de sport.",
+    fr: "Carla travaille dans un bureau, réunion le lundi matin, finit à 17h30. Son bureau est grand et lumineux, ses collègues sont gentils ; après le travail elle va à la salle de sport.",
     qs: [["When is the meeting?", ["On Monday morning", "On Friday", "At night"], 0, "Monday morning."], ["When does the speaker finish?", ["At half past five", "At five", "At six"], 0, "17:30."]] },
   { who: "Ben", text: "Hi, I'm Ben. I'm an engineer. I work in a factory. My boss is Mrs Green. I don't work on Saturday or Sunday. I like my job. My colleagues are friendly. I take the bus to the factory every day. At home I play with my children.",
-    fr: "Ben est ingénieur en usine, ne travaille pas le week-end et aime son travail.  Ses collègues sont aimables ; il prend le bus ; chez lui il joue avec ses enfants.",
+    fr: "Ben est ingénieur en usine, ne travaille pas le week-end et aime son travail. Ses collègues sont aimables ; il prend le bus ; chez lui il joue avec ses enfants.",
     qs: [["Where does Ben work?", ["In a factory", "In a shop", "In a school"], 0, "Factory."], ["Does he work on Sunday?", ["No", "Yes", "Sometimes"], 0, "No."]] },
 ];
 

@@ -11,25 +11,25 @@
 //
 // ---------------------------------------------------------------------------
 // FORMAT — window.LESSON_EXAMS[numéro de leçon] = {
-//   code:        "B1.1"            code du palier (sert aussi de clé pour le résultat enregistré)
+//   code: "B1.1"            code du palier (sert aussi de clé pour le résultat enregistré)
 //   title, titleFr                 titre de l'examen (anglais / français)
 //   objective, objectiveFr         objectif (anglais / français)
 //   sections: [                    une section = un écran ; total conseillé = 100 points
 //     {
-//       id:      "vocab"           identifiant unique dans l'examen (sert à la sauvegarde)
-//       num:     "I"               numéro affiché
+//       id: "vocab"           identifiant unique dans l'examen (sert à la sauvegarde)
+//       num: "I"               numéro affiché
 //       title, titleFr             titre de la section
-//       points:  15                points de la section
-//       skill:   "vo"              jauge : vo vocabulaire · cj conjugaison · gr grammaire · ce compréhension écrite ·
+//       points: 15                points de la section
+//       skill: "vo"              jauge : vo vocabulaire · cj conjugaison · gr grammaire · ce compréhension écrite ·
 //                                  co compréhension orale · ee expression écrite · eo expression orale
 //       instructions, instructionsFr   consigne (anglais / français)
-//       type:    "fill" | "mcq" | "ai-text" | "ai-oral"
+//       type: "fill" | "mcq" | "ai-text" | "ai-oral"
 //
 //       — type "fill" (phrases à trous tapées) —
-//       bank:  ["become", …]       banque de mots (facultatif, affichée en pastilles)
+//       bank: ["become", …]       banque de mots (facultatif, affichée en pastilles)
 //       items: [{
 //         header: { en, fr }       (facultatif) sous-consigne affichée avant cet item (A., B., C.)
-//         text:  "… ___ … ___ …"   la phrase ; chaque « ___ » est un trou
+//         text: "… ___ … ___ …"   la phrase ; chaque « ___ » est un trou
 //         blanks: [["is wearing", "'s wearing"], ["prefers"]]
 //                                  une liste de réponses acceptées PAR trou (la 1re est la
 //                                  réponse affichée en correction). Comparaison souple :
@@ -37,7 +37,7 @@
 //                                  (I've = I have, 'm = am, 'll = will, 're = are, n't = not…),
 //                                  orthographe UK/US (travelled = traveled), sujet retapé
 //                                  (« I have lived » accepté pour « I ___ »).
-//         why:   "…"               courte explication en français (affichée en correction)
+//         why: "…"               courte explication en français (affichée en correction)
 //         points: 2.5              (facultatif) sinon points de la section / nombre d'items ;
 //                                  les points d'un item sont répartis entre ses trous
 //       }]

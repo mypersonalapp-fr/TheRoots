@@ -2170,7 +2170,7 @@ export const ES_DRILLS = {
     },
     {
      "type": "mcq",
-     "q": "« Vous (ustedes) avez préparé la réunion. »  Ustedes ___ la reunión.",
+     "q": "« Vous (ustedes) avez préparé la réunion. » Ustedes ___ la reunión.",
      "opts": [
       "preparó",
       "prepararán",
@@ -2538,7 +2538,7 @@ export const ES_DRILLS = {
     },
     {
      "type": "mcq",
-     "q": "« Vous (ustedes) avez fait le travail. »  Ustedes ___ el trabajo.",
+     "q": "« Vous (ustedes) avez fait le travail. » Ustedes ___ el trabajo.",
      "opts": [
       "hacieron",
       "hizieron",
@@ -2615,7 +2615,7 @@ export const ES_DRILLS = {
    "exercises": [
     {
      "type": "mcq",
-     "q": "« Le client a demandé une remise. »  El cliente ___ un descuento.",
+     "q": "« Le client a demandé une remise. » El cliente ___ un descuento.",
      "opts": [
       "pedió",
       "pidió",
@@ -2647,7 +2647,7 @@ export const ES_DRILLS = {
     },
     {
      "type": "mcq",
-     "q": "« Hier, j'ai cherché votre dossier. »  Ayer ___ su expediente.",
+     "q": "« Hier, j'ai cherché votre dossier. » Ayer ___ su expediente.",
      "opts": [
       "busqé",
       "buscé",
@@ -2965,7 +2965,7 @@ export const ES_DRILLS = {
     },
     {
      "type": "mcq",
-     "q": "« Hier, je suis allé à la plage. »  Ayer yo ___ a la playa.",
+     "q": "« Hier, je suis allé à la plage. » Ayer yo ___ a la playa.",
      "opts": [
       "fui",
       "fuí",
@@ -2998,7 +2998,7 @@ export const ES_DRILLS = {
     },
     {
      "type": "mcq",
-     "q": "« Mes amis nous ont dit la vérité. »  Mis amigos nos ___ la verdad.",
+     "q": "« Mes amis nous ont dit la vérité. » Mis amigos nos ___ la verdad.",
      "opts": [
       "dijieron",
       "dijeron",

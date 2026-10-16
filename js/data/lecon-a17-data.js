@@ -69,19 +69,19 @@ export const GRAMMAR_A17 = [
 
 export const READING_A17 = [
   { who: "Emma", text: "Hi! I'm Emma. I'm at a clothes shop. I like this blue dress. How much is it? It's thirty pounds. It's too small. Do you have a bigger size? Yes, we do. I'll take it! The shop assistant is very kind. I pay by card and I say thank you.",
-    fr: "Emma essaie une robe bleue à 30 livres ; trop petite, elle prend la taille au-dessus.  La vendeuse est très gentille ; Emma paie par carte et remercie.",
+    fr: "Emma essaie une robe bleue à 30 livres ; trop petite, elle prend la taille au-dessus. La vendeuse est très gentille ; Emma paie par carte et remercie.",
     qs: [["How much is the dress?", ["Thirty pounds", "Thirteen pounds", "Fifty pounds"], 0, "Thirty pounds."], ["What is the problem with the first dress?", ["It's too small", "It's too big", "It's too expensive"], 0, "Too small."]] },
   { who: "Sam", text: "Hello! I'm Sam. I want new shoes. These black shoes are cheaper than those white shoes. But the white shoes are nicer. I can't decide. I try on both pairs. My sister likes the white shoes. I look at the prices again.",
-    fr: "Sam hésite entre des chaussures noires bon marché et des blanches plus jolies.  Sa sœur aime les blanches ; il regarde encore les prix.",
+    fr: "Sam hésite entre des chaussures noires bon marché et des blanches plus jolies. Sa sœur aime les blanches ; il regarde encore les prix.",
     qs: [["Which shoes are cheaper?", ["The black shoes", "The white shoes", "The red shoes"], 0, "The black shoes."], ["What does Sam do?", ["He tries on both pairs", "He leaves", "He buys nothing"], 0, "He tries on both."]] },
   { who: "Lily", text: "I'm Lily. I go to the market on Saturdays. I buy fruit and vegetables. The market is cheaper than the supermarket. I pay in cash. I always take a bag. My mum likes the fresh fish. The seller is friendly and he says hello.",
-    fr: "Lily va au marché le samedi : c'est moins cher que le supermarché ; elle paie en espèces.  Sa mère aime le poisson frais ; le vendeur est aimable.",
+    fr: "Lily va au marché le samedi : c'est moins cher que le supermarché ; elle paie en espèces. Sa mère aime le poisson frais ; le vendeur est aimable.",
     qs: [["When does Lily go to the market?", ["On Saturdays", "On Sundays", "Every day"], 0, "On Saturdays."], ["How does she pay?", ["In cash", "By card", "She doesn't pay"], 0, "In cash."]] },
   { who: "Omar", text: "Hi, I'm Omar. I'm at the checkout. The total is twenty-five euros. Can I pay by card? Yes, of course. Here is your receipt. Thank you, goodbye! The cashier is polite. I put the receipt in my pocket and go home.",
-    fr: "Omar paie 25 euros par carte et reçoit son ticket.  La caissière est polie ; il range le ticket dans sa poche.",
+    fr: "Omar paie 25 euros par carte et reçoit son ticket. La caissière est polie ; il range le ticket dans sa poche.",
     qs: [["How much is the total?", ["Twenty-five euros", "Fifteen euros", "Fifty euros"], 0, "Twenty-five."], ["How does he pay?", ["By card", "In cash", "He doesn't pay"], 0, "By card."]] },
   { who: "Nina", text: "Hello! I'm Nina. I like shopping. I often go to the shopping centre with my friends. We try on clothes. Today I buy a jacket. It is on sale. It is half price! My friend buys a bag and a hat. They are cheap. We are very happy.",
-    fr: "Nina aime faire les boutiques avec ses amies ; aujourd'hui elle achète une veste en solde à moitié prix.  Son amie achète un sac et un chapeau, pas chers ; elles sont ravies.",
+    fr: "Nina aime faire les boutiques avec ses amies ; aujourd'hui elle achète une veste en solde à moitié prix. Son amie achète un sac et un chapeau, pas chers ; elles sont ravies.",
     qs: [["What does Nina buy?", ["A jacket", "A dress", "Shoes"], 0, "A jacket."], ["Why is it cheap?", ["It is on sale", "It is old", "It is small"], 0, "On sale."]] },
 ];
 

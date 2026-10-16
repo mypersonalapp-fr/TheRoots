@@ -69,19 +69,19 @@ export const GRAMMAR_A16 = [
 
 export const READING_A16 = [
   { who: "Emma", text: "Hi! I'm Emma. For breakfast I eat bread and I drink a glass of milk. For lunch I have rice and vegetables. I don't like fish. For dinner I eat some fruit. I like my food and I eat slowly.",
-    fr: "Emma mange du pain et boit du lait au petit-déjeuner, du riz et des légumes au déjeuner, et des fruits au dîner. Elle n'aime pas le poisson.  Elle aime sa nourriture et mange lentement.",
+    fr: "Emma mange du pain et boit du lait au petit-déjeuner, du riz et des légumes au déjeuner, et des fruits au dîner. Elle n'aime pas le poisson. Elle aime sa nourriture et mange lentement.",
     qs: [["What does Emma drink for breakfast?", ["Milk", "Tea", "Juice"], 0, "A glass of milk."], ["Does she like fish?", ["Yes", "No", "We don't know"], 1, "She doesn't like fish."]] },
   { who: "Sam", text: "Hello! I'm Sam. I love pizza! I eat pizza every Friday with my friends. We drink lemonade. I don't like spicy food, so I never eat spicy pizza. After pizza, we eat ice cream. It is cold and sweet.",
-    fr: "Sam adore la pizza et en mange chaque vendredi. Il n'aime pas l'épicé.  Après la pizza, ils mangent une glace, froide et sucrée.",
+    fr: "Sam adore la pizza et en mange chaque vendredi. Il n'aime pas l'épicé. Après la pizza, ils mangent une glace, froide et sucrée.",
     qs: [["When does Sam eat pizza?", ["Every Friday", "Every day", "Never"], 0, "Every Friday."], ["What does he drink?", ["Lemonade", "Water", "Coffee"], 0, "Lemonade."]] },
   { who: "Lily", text: "I'm Lily. I'm at a restaurant with my mum. The waiter says: 'Hello! Here is the menu.' I say: 'I'd like a soup, please.' My mum says: 'Can I have a tea?' The soup is hot and very good. We say thank you to the waiter.",
-    fr: "Lily et sa mère sont au restaurant. Lily commande une soupe, sa mère un thé.  La soupe est chaude et très bonne ; elles remercient le serveur.",
+    fr: "Lily et sa mère sont au restaurant. Lily commande une soupe, sa mère un thé. La soupe est chaude et très bonne ; elles remercient le serveur.",
     qs: [["What does Lily order?", ["A soup", "A pizza", "A tea"], 0, "A soup."], ["What does her mum want?", ["A tea", "A coffee", "A juice"], 0, "A tea."]] },
   { who: "Omar", text: "Hi! I'm Omar. I'm very hungry! I have a piece of bread and some cheese. I don't have any milk. I drink a glass of water. Then I eat a lot of fruit. I like cheese because it's tasty.",
-    fr: "Omar a très faim : pain, fromage, eau et beaucoup de fruits. Pas de lait.  Il aime le fromage parce que c'est bon.",
+    fr: "Omar a très faim : pain, fromage, eau et beaucoup de fruits. Pas de lait. Il aime le fromage parce que c'est bon.",
     qs: [["Is Omar hungry?", ["Yes", "No", "We don't know"], 0, "He is very hungry."], ["Does he have milk?", ["Yes", "No", "A little"], 1, "He doesn't have any milk."]] },
   { who: "Nina", text: "Hello! I'm Nina. My favourite meal is dinner. I eat chicken and rice with a lot of vegetables. It is delicious. I drink some tea after dinner. My mum cooks it with a lot of love.",
-    fr: "Nina préfère le dîner : poulet, riz, légumes. Elle boit du thé ensuite.  Sa maman le prépare avec beaucoup d'amour.",
+    fr: "Nina préfère le dîner : poulet, riz, légumes. Elle boit du thé ensuite. Sa maman le prépare avec beaucoup d'amour.",
     qs: [["What is Nina's favourite meal?", ["Dinner", "Lunch", "Breakfast"], 0, "Dinner."], ["What does she drink after dinner?", ["Tea", "Water", "Milk"], 0, "Some tea."]] },
 ];
 

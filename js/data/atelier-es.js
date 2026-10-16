@@ -600,7 +600,7 @@ ATELIER.chapters.push({
     id: "imperfecto-usos", title: "Quand l'employer ? Décor, habitude, « Estaba… cuando… »",
     why: "Pense à un <b>film</b> : l'imperfecto, c'est l'<b>arrière-plan</b> (le décor, ce qui durait). L'indefinido, c'est l'<b>événement</b> qui arrive et « coupe » l'action, comme une photo. C'est le même contraste qu'en français : « Je <b>mangeais</b> (décor) quand il <b>a téléphoné</b> (événement) ». Piège : le français dit « il a téléphoné » avec le passé composé, mais l'espagnol met ici l'<b>indefinido</b> (llamó).",
     rule: "1. <b>Habitude</b> : siempre, todos los días, cada verano, de niño → imperfecto.<br>2. <b>Description</b> (âge, heure, météo, personne) : tenía diez años, eran las ocho, hacía frío → imperfecto.<br>3. <b>Action en cours</b> : estaba + gérondif (estaba cenando), mientras → imperfecto.<br>4. <b>Événement ponctuel</b> qui interrompt : <b>Estaba</b> en casa <b>cuando llegó</b> Pablo → imperfecto (décor) + indefinido (événement).",
-    timeline: "décor : ~~~~~~~~~~ estaba cenando ~~~~~~~~~~<br>événement :                 ● sonó el teléfono",
+    timeline: "décor : ~~~~~~~~~~ estaba cenando ~~~~~~~~~~<br>événement : ● sonó el teléfono",
     table: { caption: "Imperfecto : quatre emplois", headers: ["Emploi", "Mots-clés", "Exemple"], rows: [
       ["Habitude", "siempre, todos los días, cada verano, de niño", "De niño <b>jugaba</b> en la calle."],
       ["Description", "âge, heure, météo, aspect", "<b>Eran</b> las ocho y <b>hacía</b> frío."],

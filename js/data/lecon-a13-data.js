@@ -70,19 +70,19 @@ export const GRAMMAR_A13 = [
 
 export const READING_A13 = [
   { who: "Sam", text: "Hi! I'm Sam. My best friend is Max. We are classmates. We play football on Saturdays and we often hang out after school. Max is funny and very kind. Max has a dog and we walk it together.",
-    fr: "Sam et Max sont meilleurs amis et camarades de classe. Ils jouent au football le samedi.  Max a un chien et ils le promènent ensemble.",
+    fr: "Sam et Max sont meilleurs amis et camarades de classe. Ils jouent au football le samedi. Max a un chien et ils le promènent ensemble.",
     qs: [["Who is Max?", ["Sam's brother", "Sam's best friend", "Sam's teacher"], 1, "My best friend is Max."], ["When do they play football?", ["On Saturdays", "Every day", "On Sundays"], 0, "On Saturdays."]] },
   { who: "Lily", text: "Hello! I'm Lily. My neighbour Anna is my friend. She doesn't play sport, but she always helps me with homework. We sometimes have a coffee after class. She is very nice and I like her a lot.",
-    fr: "Anna, voisine de Lily, ne fait pas de sport mais l'aide toujours avec ses devoirs.  Elle est très gentille et Lily l'apprécie beaucoup.",
+    fr: "Anna, voisine de Lily, ne fait pas de sport mais l'aide toujours avec ses devoirs. Elle est très gentille et Lily l'apprécie beaucoup.",
     qs: [["Does Anna play sport?", ["Yes", "No", "We don't know"], 1, "She doesn't play sport."], ["What does Anna always do?", ["Helps Lily", "Plays tennis", "Goes to the cinema"], 0, "She always helps me."]] },
   { who: "Omar", text: "Hi, I'm Omar. I have a colleague called Paul. He is shy, but he is very clever. We never meet at weekends. We chat at work every day. I like him because he is always polite.",
-    fr: "Paul, collègue d'Omar, est timide mais intelligent. Ils discutent chaque jour au travail.  Omar l'aime bien car il est toujours poli.",
+    fr: "Paul, collègue d'Omar, est timide mais intelligent. Ils discutent chaque jour au travail. Omar l'aime bien car il est toujours poli.",
     qs: [["What is Paul like?", ["Shy and clever", "Funny and lazy", "Rude"], 0, "Shy but very clever."], ["When do they chat?", ["At weekends", "At work", "Never"], 1, "We chat at work every day."]] },
   { who: "Nina", text: "Hello! I'm Nina. Today I want to go to the cinema with my friends. I call them and say: 'Do you want to come? Let's meet at six!' They say: 'Yes, of course!' After the film, we eat pizza.",
-    fr: "Nina invite ses amis au cinéma et ils acceptent.  Après le film, ils mangent une pizza.",
+    fr: "Nina invite ses amis au cinéma et ils acceptent. Après le film, ils mangent une pizza.",
     qs: [["Where does Nina want to go?", ["To the cinema", "To school", "To a café"], 0, "To the cinema."], ["What do her friends say?", ["No, sorry", "Yes, of course!", "Maybe"], 1, "Yes, of course!"]] },
   { who: "Tom", text: "I'm Tom. I am in a football team. We train on Tuesdays and we play on Saturdays. My teammates are my friends. I like them a lot. We always have fun. Our coach is kind and he helps us.",
-    fr: "Tom fait partie d'une équipe de football ; ses coéquipiers sont ses amis.  Leur entraîneur est gentil et les aide.",
+    fr: "Tom fait partie d'une équipe de football ; ses coéquipiers sont ses amis. Leur entraîneur est gentil et les aide.",
     qs: [["When does Tom's team play?", ["On Tuesdays", "On Saturdays", "Every day"], 1, "We play on Saturdays."], ["Does Tom like his teammates?", ["Yes", "No", "We don't know"], 0, "I like them a lot."]] },
 ];
 
