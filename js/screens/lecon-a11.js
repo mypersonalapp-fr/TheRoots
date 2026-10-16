@@ -6,14 +6,15 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016g";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261016h";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261016g";
-import { balanceAll } from "../data/balance.js?v=20261016g";
-import { createVoice } from "./voice.js?v=20261016g";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016g";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261016g";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016g";
+import { createCity } from "./roots-city.js?v=20261016h";
+import { balanceAll } from "../data/balance.js?v=20261016h";
+import { createVoice } from "./voice.js?v=20261016h";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261016h";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261016h";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261016h";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261016h";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -32,7 +33,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016g" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261016h" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -142,6 +143,7 @@ const MENU = [
   { n: 4, id: "listening", icon: "🎧", title: "Écoute", sub: "Compréhension orale", ready: true },
   { n: 5, id: "speaking", icon: "🎤", title: "Expression", sub: "Parler et écrire", ready: true },
   { n: 5.5, id: "dialogue", icon: "💬", title: "Conversation", sub: "Réponds en anglais à un personnage", ready: true },
+  { n: 5.6, id: "write", icon: "✍️", title: "Écrire en anglais", sub: "Dictée et phrases à toi", ready: true },
   { section: "S’entraîner et progresser" },
   { n: 6, id: "exercises", icon: "🧩", title: "Exercices", sub: "Corrections et rattrapage", ready: true },
   { n: 7, id: "city", icon: "🏙️", title: "Roots City", sub: "6 missions pour t’entraîner (non noté)", ready: true },
@@ -294,7 +296,7 @@ export function renderLesson(root, B, { onExit } = {}) {
     screen = "menu";
     const done = prog.done || {};
     let nn = 0;
-    const rows = MENU.filter((m) => (m.id !== "transversal" || B.transv) && (m.id !== "dialogue" || DLG)).map((m) => m.section
+    const rows = MENU.filter((m) => (m.id !== "transversal" || B.transv) && (m.id !== "dialogue" || DLG) && (m.id !== "write" || SIT)).map((m) => m.section
       ? `<h2 class="lc-sec">${esc(m.section)}</h2>`
       : `<button type="button" class="lc-row ${m.ready ? "" : "lc-row-soon"}" data-act="${m.id}" ${m.ready ? "" : 'aria-disabled="true"'}>
           <span class="lc-num">${++nn}</span><span class="lc-ic">${icImg(m.id, m.icon)}</span>
@@ -307,6 +309,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       if (b.dataset.act === "vocab") { page = 0; showVocab(); }
       else if (b.dataset.act === "speaking") { page = 0; showSpeak(); }
       else if (b.dataset.act === "dialogue") { showDialogueList(); }
+      else if (b.dataset.act === "write") { showWriteList(); }
       else if (b.dataset.act === "city") { city.start(); }
       else if (b.dataset.act === "transversal") { showTransvList(); }
       else if (b.dataset.act === "test") { startTest(); }
@@ -334,7 +337,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016g" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261016h" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     } else {
@@ -343,7 +346,7 @@ export function renderLesson(root, B, { onExit } = {}) {
           <h2 class="lc-h2">${p.icon || ["", "🪪", "📍", "🎓"][page] || "📖"} ${esc(p.title)}</h2>
           <ul class="lc-list">${p.words.map(([en, fr]) => `
             <li>${ico(c.src, "lc-ava-sm")}<span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
-          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016g" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
+          ${p.scene ? `<div class="lc-scenes"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261016h" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(p.scene[1])}</figcaption></figure></div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
     }
@@ -637,6 +640,73 @@ export function renderLesson(root, B, { onExit } = {}) {
     draw();
   }
 
+  /* ----- Écrire en anglais : dictée + « dis-le en anglais » (production libre, sans traduire) ----- */
+  const CONTR = [[/\bi am\b/g, "i'm"], [/\byou are\b/g, "you're"], [/\bhe is\b/g, "he's"], [/\bshe is\b/g, "she's"], [/\bit is\b/g, "it's"], [/\bwe are\b/g, "we're"], [/\bthey are\b/g, "they're"], [/\bdo not\b/g, "don't"], [/\bdoes not\b/g, "doesn't"], [/\bis not\b/g, "isn't"], [/\bare not\b/g, "aren't"], [/\bcannot\b/g, "can't"], [/\bwhat is\b/g, "what's"], [/\bthat is\b/g, "that's"]];
+  const dnorm = (t) => { let x = String(t || "").toLowerCase().replace(/[’‘`´]/g, "'").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim(); CONTR.forEach(([r, v]) => { x = x.replace(r, v); }); return x; };
+  function dictSentences() {
+    const out = [];
+    (B.reading || []).forEach((r) => {
+      const ss = String(r.text || "").split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter((x) => !/["'’]\s*$|[:]/.test(x) || true);
+      const ok = ss.filter((x) => { const n = x.split(/\s+/).length; return n >= 4 && n <= 9 && !/\d|“|”|"/.test(x) && !/^(hi|hello|good morning)\b/i.test(x); });
+      if (ok.length) out.push(ok[Math.min(ok.length - 1, 1)]); else { const any = ss.filter((x) => x.split(/\s+/).length >= 3 && x.split(/\s+/).length <= 9 && !/“|”|"/.test(x)); if (any.length) out.push(any[0]); }
+    });
+    return out.slice(0, 5);
+  }
+  function showWriteList() {
+    screen = "write";
+    const done = prog.writes || {};
+    const rows = [["dict", "🎧", "Dictée", "Écoute la phrase et écris-la"], ["sit", "💬", "Dis-le en anglais", "Une situation : écris ce que tu dirais"]].map(([k, ic, t, sub], i) => `<button type="button" class="lc-row" data-wr="${k}">
+      <span class="lc-num">${i + 1}</span><span class="lc-ic">${ic}</span><span class="lc-txt"><b>${esc(t)}</b><small>${esc(sub)}</small></span><span class="lc-go">${done[k] ? "✓" : "›"}</span></button>`).join("");
+    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">✍️</span><div><h1>Écrire en anglais</h1><p>Écris toi-même, sans choix de réponses.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
+    el.querySelector("#lcBack").onclick = showMenu;
+    el.querySelectorAll("[data-wr]").forEach((b) => b.addEventListener("click", () => runWrite(b.dataset.wr)));
+  }
+  function runWrite(kind) {
+    screen = "write";
+    const items = kind === "dict"
+      ? dictSentences().map((t) => ({ kind, text: t, model: t }))
+      : SIT.map((x) => Object.assign({ kind }, x));
+    let i = 0, tries = 0, first = 0, shown = false;
+    function draw(msg) {
+      if (i >= items.length) {
+        prog.writes = Object.assign({}, prog.writes, { [kind]: true }); saveProgress(prog);
+        frame(HEAD, { cur: items.length, total: items.length }, `<section class="lc-card"><h2 class="lc-h2">🎉 Bravo !</h2><p>${first} réponse${first > 1 ? "s" : ""} juste${first > 1 ? "s" : ""} du premier coup sur ${items.length}.</p></section>`,
+          `<footer class="lc-foot"><button type="button" class="lc-cta" id="wrEnd">Terminer ✓</button></footer>`);
+        el.querySelector("#lcBack").onclick = showWriteList; el.querySelector("#wrEnd").onclick = showWriteList; return;
+      }
+      const it = items[i];
+      const top = kind === "dict"
+        ? `<p class="lc-ask">🎧 Écoute la phrase, puis écris-la en anglais.</p><div class="lc-actions"><button type="button" class="lc-chip" data-say="${esc(it.text)}">🔊 Écouter</button></div>`
+        : `<p class="lc-ask">${it.icon} ${esc(it.cue)}</p>${shown ? `<p class="lc-small">💡 ${esc(it.hint)}</p>` : ""}`;
+      frame(HEAD, { cur: i + 1, total: items.length }, `<section class="lc-card"><h2 class="lc-h2">${kind === "dict" ? "🎧 Dictée" : "💬 Dis-le en anglais"}</h2>${top}
+        <textarea id="wrIn" class="lc-ta" rows="2" placeholder="Écris en anglais…" aria-label="Ta réponse en anglais" autocapitalize="sentences" autocomplete="off" spellcheck="false"></textarea>
+        ${msg ? `<p class="lc-small" aria-live="polite">${msg}</p>` : ""}
+        <div class="lc-dlg-actions">${kind === "sit" ? `<button type="button" class="lc-sec-btn" id="wrHint">💡 Aide</button>` : ""}<button type="button" class="lc-cta" id="wrSend">Vérifier</button></div></section>`);
+      el.querySelector("#lcBack").onclick = showWriteList;
+      const ta = el.querySelector("#wrIn");
+      const next = () => { i++; tries = 0; shown = false; draw(); };
+      const send = () => {
+        const v = ta.value.trim(); if (!v) return;
+        let good, score = 0;
+        if (kind === "dict") { const a = dnorm(v).split(" "), b = dnorm(it.text).split(" "); good = a.join(" ") === b.join(" "); score = b.filter((w, k) => a[k] === w).length + "/" + b.length; }
+        else good = it.ok.some((r) => new RegExp(r, "i").test(v.replace(/[’‘`´]/g, "'")));
+        if (good) { if (tries === 0) first++; frame2(true, v, it); }
+        else { tries++; draw(kind === "dict" ? (tries >= 2 ? `${score} mots justes. Voici la phrase : « ${esc(it.text)} »` : `${score} mots justes. Réécoute et vérifie chaque mot.`) : (tries >= 2 ? `Pas tout à fait. Essaie comme ceci : « ${esc(it.model)} »` : "Pas tout à fait. Relis la situation et réessaie."));
+          const t2 = el.querySelector("#wrIn"); if (t2) t2.value = v; }
+      };
+      function frame2(ok, v, it2) {
+        frame(HEAD, { cur: i + 1, total: items.length }, `<section class="lc-card"><h2 class="lc-h2">✅ Bien !</h2><div class="lc-chat me"><span>${esc(v)}</span></div><p class="lc-small">Modèle : « ${esc(it2.model)} »</p>${spk(it2.model)}</section>`,
+          `<footer class="lc-foot"><button type="button" class="lc-cta" id="wrNext">${i + 1 >= items.length ? "Terminer ✓" : "Suivant →"}</button></footer>`);
+        el.querySelector("#lcBack").onclick = showWriteList; el.querySelector("#wrNext").onclick = next;
+      }
+      el.querySelector("#wrSend").onclick = send;
+      ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } });
+      const h = el.querySelector("#wrHint"); if (h) h.onclick = () => { shown = true; const cur = ta.value; draw(tries >= 1 ? `Modèle : « ${esc(it.model)} »` : ""); el.querySelector("#wrIn").value = cur; };
+      ta.focus();
+    }
+    draw();
+  }
+
   /* ----- Transversale : 7 jours (mots → entraînement → expression écrite) ----- */
   const writeTx = {};
   let tday = 0;
@@ -664,6 +734,7 @@ export function renderLesson(root, B, { onExit } = {}) {
   /* ----- Test de fin de leçon : 40 points (7,5 + 7,5 lecture/écoute, 10 grammaire, 7,5 + 7,5 expression) ----- */
   let T = null; // état du test en cours
   const EW = B.expression[B.testW || 0], EO = B.expression[B.testO || 0];
+  const SIT = (!B.exam && SITUATIONS_A1[String(B.code || "").replace("A1.", "")]) || null;
   const DLG = (!B.exam && Object.assign({}, DIALOGUES_A1_REST, DIALOGUES_A1)[String(B.code || "").replace("A1.", "")]) || null;
   const leave = () => (B.exam ? (onExit && onExit()) : showMenu());
   function startTest() {
