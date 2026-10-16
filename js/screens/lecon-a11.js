@@ -6,21 +6,21 @@
 // personnage choisi dans Paramètres (settings.avatarGender / avatarIndex).
 
 import { store } from "../data/store.js?v=20260930a";
-import { EXPRESSION_PLUS_A1 } from "../data/expression-plus-a1.js?v=20261018f";
-import { withExtraQs } from "../data/extra-qs.js?v=20261018f";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018f";
+import { EXPRESSION_PLUS_A1 } from "../data/expression-plus-a1.js?v=20261018k";
+import { withExtraQs } from "../data/extra-qs.js?v=20261018k";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018k";
 import { AI_RELAY_URL } from "../data/ai-config.js?v=20260930a";
-import { createCity } from "./roots-city.js?v=20261018f";
-import { balanceAll } from "../data/balance.js?v=20261018f";
-import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261018f";
-import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261018f";
-import { plusPages } from "../data/vocab-plus-a1.js?v=20261018f";
-import { buildPractice, mountPractice } from "./practice.js?v=20261018f";
-import { createVoice } from "./voice.js?v=20261018f";
-import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261018f";
-import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261018f";
-import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261018f";
-import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261018f";
+import { createCity } from "./roots-city.js?v=20261018k";
+import { balanceAll } from "../data/balance.js?v=20261018k";
+import { MUST_A1 } from "../data/dialogues-a1-must.js?v=20261018k";
+import { REGISTERS_A1 } from "../data/dialogues-a1-registers.js?v=20261018k";
+import { plusPages } from "../data/vocab-plus-a1.js?v=20261018k";
+import { buildPractice, mountPractice } from "./practice.js?v=20261018k";
+import { createVoice } from "./voice.js?v=20261018k";
+import { SITUATIONS_A1 } from "../data/situations-a1.js?v=20261018k";
+import { DIALOGUES_A1 } from "../data/dialogues-a1.js?v=20261018k";
+import { DIALOGUES_A1_REST } from "../data/dialogues-a1-rest.js?v=20261018k";
+import { GRAMMAR_PAGES, READING_PAGES, LISTENING_PAGES, EXERCISE_PAGES, EXPRESSION_PAGES, TRANSV_DAYS, TEST_TEXTS, TEST_AUDIOS, TEST_GRAMMAR } from "../data/lecon-a11-data.js?v=20261018k";
 
 let PROGRESS_KEY = "the_roots_a11_lesson_v1"; // fixé à chaque ouverture de leçon (renderLesson)
 const GIRLS = 9;
@@ -39,7 +39,7 @@ const GREETINGS = [
 // Pages 2 à 5 : mots d'identité du cahier des charges A1.1.
 // q = [question, choix, index de la bonne réponse]
 const IC_IMG = { vocab:1, grammar:1, reading:1, listening:1, speaking:1, exercises:1, transversal:1, test:1 };
-const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261018f" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
+const icImg = (id, fb) => IC_IMG[id] ? `<img class="lc-ic-img" src="assets/img/lesson/ic-${id}.webp?v=20261018k" alt="" width="28" height="28" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.replaceWith(document.createTextNode('${fb}'));}"/>` : fb;
 const SCENES = [["scene-greeting","Hello! Nice to meet you."],["scene-friends","Hi! How are you?"],["scene-goodbye","Goodbye! See you tomorrow!"]];
 
 const rxTest = (re, txt) => new RegExp(re, "i").test(String(txt || "").replace(/[’‘`´]/g, "'").replace(/\s+/g, " "));
@@ -339,6 +339,24 @@ export function renderLesson(root, B, { onExit } = {}) {
     });
     return S;
   }
+  // remplit le vide d'une page de leçon : lignes de mots / réponses plus aérées, puis image
+  function fillRows() {
+    const m = el.querySelector(".lc-main"), f = el.querySelector(".lc-foot"); if (!m || !f) return;
+    const cards0 = m.querySelectorAll(":scope > .lc-card"), c0x = cards0[cards0.length - 1];
+    const reset = () => { if (!c0x) return; c0x.style.minHeight = c0x.style.display = c0x.style.flexDirection = c0x.style.justifyContent = ""; c0x.querySelectorAll("li, .lc-choice").forEach((x) => { x.style.paddingTop = x.style.paddingBottom = ""; }); };
+    reset();
+    if (!m.dataset.fr) { m.dataset.fr = "1"; m.querySelectorAll("img").forEach((im) => { if (!im.complete) im.addEventListener("load", fillRows, { once: true }); }); setTimeout(fillRows, 500); }
+    const reserve = m.querySelector(".lc-qb, .lc-fb") ? 70 : 24;
+    const gap = () => Math.floor(f.getBoundingClientRect().top - m.lastElementChild.getBoundingClientRect().bottom - reserve);
+    let L = gap(); if (L < 24) return;
+    const cards = m.querySelectorAll(":scope > .lc-card"), c = cards[cards.length - 1]; if (!c) return;
+    const lis = c.querySelectorAll(":scope > ul > li, :scope ul.lc-words > li"); 
+    if (lis.length) { const pad = Math.min(26, Math.floor(L / (2 * lis.length))); if (pad > 1) lis.forEach((li) => { li.style.paddingTop = (parseFloat(getComputedStyle(li).paddingTop) + pad) + "px"; li.style.paddingBottom = (parseFloat(getComputedStyle(li).paddingBottom) + pad) + "px"; }); L = gap(); }
+    const chs = c.querySelectorAll(".lc-choice");
+    if (chs.length && L > 16) { const pad = Math.min(10, Math.floor(L / (2 * chs.length))); if (pad > 1) chs.forEach((b) => { b.style.paddingTop = (parseFloat(getComputedStyle(b).paddingTop) + pad) + "px"; b.style.paddingBottom = (parseFloat(getComputedStyle(b).paddingBottom) + pad) + "px"; }); L = gap(); }
+    if (L > 40) { c.style.minHeight = Math.round(c.getBoundingClientRect().height + L - 10) + "px"; c.style.display = "flex"; c.style.flexDirection = "column"; c.style.justifyContent = "space-evenly"; }
+    if (m.scrollHeight > m.clientHeight + 2 || m.lastElementChild.getBoundingClientRect().bottom > f.getBoundingClientRect().top - 6) reset();
+  }
   function showVocab() {
     screen = "vocab";
     const steps = B._steps || (B._steps = vocabSteps());
@@ -361,7 +379,7 @@ export function renderLesson(root, B, { onExit } = {}) {
               <span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           </div>
           ${B.scenes ? `<h3 class="lc-h3">En situation</h3>
-          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261018f" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
+          <div class="lc-scenes">${B.scenes.map(([f, t]) => `<figure><img src="assets/img/lesson/${f}.webp?v=20261018k" alt="" loading="lazy" onerror="this.closest('figure').remove()"/><figcaption>${esc(t)}</figcaption></figure>`).join("")}</div>` : ""}
           <div class="lc-tip"><span>💡</span><div><b>Astuce</b><p>${esc(p.tip)}</p></div></div>
         </section>`;
 
@@ -385,7 +403,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       body = `
         <section class="lc-card">
           <h2 class="lc-h2">${p.icon || "📖"} ${esc(p.title)}${st.n > 1 ? ` <span class="lc-part">${st.ci + 1}/${st.n}</span>` : ""}</h2>
-          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261018f" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
+          ${p.scene && st.ci === 0 ? `<div class="lc-scenes lc-scene-sm"><figure><img src="assets/img/lesson/${p.scene[0]}.webp?v=20261018k" alt="" loading="lazy" onerror="this.closest('figure').remove()"/></figure></div>` : ""}
           <ul class="lc-list lc-vl">${st.words.map(([en, fr]) => `
             <li><span class="lc-w"><b>${esc(en)}</b><small>${esc(fr)}</small></span>${spk(en)}</li>`).join("")}</ul>
           ${st.last ? `<h3 class="lc-h3 lc-h3s">💬 En contexte</h3>
@@ -422,6 +440,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       }
     }
 
+    fillRows();
     el.querySelector("#lcBack").onclick = showMenu;
     el.querySelector("#lcPrev").onclick = () => { if (page === 0) showMenu(); else { page--; showVocab(); } };
     el.querySelector("#lcNext").onclick = () => {
@@ -589,6 +608,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       }
     }
 
+    fillRows();
     const next = el.querySelector("#lcNext");
     const refresh = () => {
       if (st.t === "qs") next.disabled = !st.ix.every((qi) => (okQ[key] || {})[qi]);
@@ -716,13 +736,15 @@ export function renderLesson(root, B, { onExit } = {}) {
 
   /* ----- Conversation : le personnage parle, l'élève répond en anglais ----- */
   const dlgState = { done: {} };
+  const sceneHero = (k) => { const sl = (B.vocab || []).filter((x) => x.scene).map((x) => x.scene).concat(B.scenes || []), sc = sl[k % Math.max(1, sl.length)]; return sc ? `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/${sc[0]}.webp?v=20261018k" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>` : ""; };
   function showDialogueList() {
     screen = "dialogue";
     const done = prog.dialogues || {};
     const rows = DLG.map((d, i) => `<button type="button" class="lc-row" data-dlg="${i}">
       <span class="lc-num">${i + 1}</span><span class="lc-ic">${d.icon}</span>
       <span class="lc-txt"><b>${esc(d.title)}</b><small>${esc(d.scene)}</small></span><span class="lc-go">${done[i] ? "✓" : "›"}</span></button>`).join("");
-    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">💬</span><div><h1>Conversation</h1><p>Le personnage parle. Tu réponds en anglais.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
+    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">💬</span><div><h1>Conversation</h1><p>Le personnage parle. Tu réponds en anglais.</p></div></div>${sceneHero(3)}<section class="lc-card lc-menu">${rows}</section>`);
+    fillSpace();
     el.querySelector("#lcBack").onclick = showMenu;
     el.querySelectorAll("[data-dlg]").forEach((b) => b.addEventListener("click", () => runDialogue(Number(b.dataset.dlg))));
   }
@@ -860,7 +882,8 @@ export function renderLesson(root, B, { onExit } = {}) {
     const done = prog.writes || {};
     const rows = [["dict", "🎧", "Dictée", "Écoute la phrase et écris-la"], ["sit", "💬", "Dis-le en anglais", "Une situation : écris ce que tu dirais"]].map(([k, ic, t, sub], i) => `<button type="button" class="lc-row" data-wr="${k}">
       <span class="lc-num">${i + 1}</span><span class="lc-ic">${ic}</span><span class="lc-txt"><b>${esc(t)}</b><small>${esc(sub)}</small></span><span class="lc-go">${done[k] ? "✓" : "›"}</span></button>`).join("");
-    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">✍️</span><div><h1>Écrire en anglais</h1><p>Écris toi-même, sans choix de réponses.</p></div></div><section class="lc-card lc-menu">${rows}</section>`);
+    frame(HEAD, null, `<div class="lc-vocab-head"><span class="lc-vh-ic">✍️</span><div><h1>Écrire en anglais</h1><p>Écris toi-même, sans choix de réponses.</p></div></div>${sceneHero(5)}<section class="lc-card lc-menu">${rows}</section>`);
+    fillSpace();
     el.querySelector("#lcBack").onclick = showMenu;
     el.querySelectorAll("[data-wr]").forEach((b) => b.addEventListener("click", () => runWrite(b.dataset.wr)));
   }
@@ -870,7 +893,7 @@ export function renderLesson(root, B, { onExit } = {}) {
       ? dictSentences().map((t) => ({ kind, text: t, model: t }))
       : SIT.map((x) => Object.assign({ kind }, x));
     let i = 0, tries = 0, first = 0, shown = false;
-    const scImg = (k) => { const sl = (B.vocab || []).filter((x) => x.scene).map((x) => x.scene).concat(B.scenes || []), sc = sl[k % Math.max(1, sl.length)]; return sc ? `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/${sc[0]}.webp?v=20261018f" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>` : ""; };
+    const scImg = (k) => { const sl = (B.vocab || []).filter((x) => x.scene).map((x) => x.scene).concat(B.scenes || []), sc = sl[k % Math.max(1, sl.length)]; return sc ? `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/${sc[0]}.webp?v=20261018k" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>` : ""; };
     function draw(msg) {
       if (i >= items.length) {
         prog.writes = Object.assign({}, prog.writes, { [kind]: true }); saveProgress(prog);
@@ -968,7 +991,7 @@ export function renderLesson(root, B, { onExit } = {}) {
     T.plan = T.plan || {};
     const Q = (key, q, n) => `<div class="lc-qb"><p class="lc-q">${n}. ${esc(q[0])}</p><div class="lc-choices" role="group">${q[1].map((o, i) => `<button type="button" class="lc-choice ${T.ans[key] === i ? "lc-sel" : ""}" data-k="${key}" data-i="${i}">${esc(o)}</button>`).join("")}</div></div>`;
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261018f" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
+    const exImg = (n) => `<div class="lc-scenes lc-scene-sm lc-exhero"><figure><img src="assets/img/lesson/exam-a1-${n}.webp?v=20261018k" alt="" loading="lazy" onerror="this.closest('.lc-exhero').remove()"/></figure></div>`;
     // la page est découpée en blocs ; on remplit chaque écran au maximum, sans défilement
     const bl = []; let head = "", hero = "";
     if (p === 0) {

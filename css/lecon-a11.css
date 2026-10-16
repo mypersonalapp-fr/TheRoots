@@ -424,3 +424,9 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-chat .lc-spk{ flex:none; }
 .lc-chatfull .lc-chat{ padding:7px 10px; }
 .lc-chatfull .lc-alt{ line-height:1.25; }
+.lc-menu[style*="flex"] .lc-row{ flex:1 1 0; max-height:100px; }
+/* menus : tout tient sans défilement sur iPhone */
+.lc-menu{ padding:6px 8px; }
+.lc-menu .lc-row{ padding:4px 10px; min-height:40px; margin:0 0 4px; }
+.lc-menu .lc-row small{ font-size:12px; line-height:1.2; }
+.lc-menu h3, .lc-menu .lc-sec{ margin:6px 0 4px; }
