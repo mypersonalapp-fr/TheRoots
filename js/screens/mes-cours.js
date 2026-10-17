@@ -191,7 +191,7 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire A1 (maquette 1) : notes par compétence, lacunes détectées, 12 tests réussis / à repasser ---
-function bulletinHtml(level = "A1") {
+export function bulletinHtml(level = "A1") {
   const B = bulletinA1(level), f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
   if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin ${level}</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
   const sk = B.skills.map((s) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : r >= 0.7 ? "#e2a13d" : "#e0432f"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div>`; }).join("");

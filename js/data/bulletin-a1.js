@@ -7,7 +7,9 @@ const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}
 export function bulletinA1(level = "A1") {
   const LIST = level === "A2" ? A2_LIST.filter((L) => A2_BUILT.includes(L.n)) : A1_LIST;
   const tests = LIST.map((L) => {
-    const p = read(L.key), h = p.testHist || [], last = h[h.length - 1] || null;
+    const p = read(L.key), sc = parseInt(((p.scores || {}).test || "").split("/")[0], 10);
+    // Mise à jour : un test noté avant l'enregistrement du détail (testHist) entre dans la même norme, marqué « ancien » jusqu'à ce qu'il soit repassé.
+    const h = (p.testHist && p.testHist.length) ? p.testHist : (Number.isFinite(sc) ? [{ total: sc, passed: sc >= PASS }] : []), last = h[h.length - 1] || null;
     const best = h.reduce((m, x) => Math.max(m, x.total), 0);
     return { n: L.n, id: L.code, code: L.code, title: L.titleFr, done: h.length > 0, best, passed: !!(p.done && p.done.test) || best >= PASS, last, tries: h.length, started: !!p.scores || Object.keys(p.done || {}).length > 0 };
   });
