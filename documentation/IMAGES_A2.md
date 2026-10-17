@@ -49,3 +49,6 @@ Dossier `assets/img/lesson/`, webp 1280 × 720, simples, neutres, sans texte lis
 - describe-a18-classroom.webp : 4 étudiants en classe (une fille écrit, un garçon lit, un professeur près du tableau, horloge sans chiffres, sacs)
 - describe-a18-park.webp : 3 amis dans un parc (une fille court, un garçon assis sur un banc avec un livre, un grand arbre, un lac, soleil)
 - describe-a18-library.webp : 2 étudiants à la bibliothèque devant un ordinateur portable, étagères pleines de livres, fille cheveux longs en pull jaune
+
+# Images « Décris l'image » — A1.9 à A2.1 (assets/img/lesson/, webp 1280 × 720)
+describe-a19-station, describe-a19-airport, describe-a110-office, describe-a110-university, describe-a111-rain, describe-a111-beach, describe-a112-cafe, describe-a112-market, describe-a20-kitchen, describe-a20-street, describe-a21-morning, describe-a21-evening

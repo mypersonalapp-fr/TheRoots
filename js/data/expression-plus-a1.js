@@ -129,6 +129,16 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis où sont les magasins.", "Les magasins", "near|next to|close|shops|market|supermarket"], ["Dis pourquoi tu l'aimes.", "Pourquoi", "because|like|love|green|nice|beautiful"]]),
   ],
   9: [
+    T("Décris l'image : à la gare", "🚉", "There are many travellers at the station. A woman is carrying a suitcase. A man is buying a ticket. A train is arriving. I think they are going on holiday.", [
+      ["Dis où sont les personnes.", "Où", "station|train|platform|in the|at the"],
+      ["Dis ce que font deux personnes.", "Ce qu'ils font", "is (carrying|buying|waiting|walking|reading)|are (carrying|buying|waiting|walking|reading)"],
+      ["Dis ce que tu vois autour.", "Autour", "suitcase|ticket|train|bag|clock|there is|there are|i can see"],
+      ["Dis où ils vont, à ton avis.", "À ton avis", "going|travelling|holiday|trip|think|maybe"]], "describe-a19-station"),
+    T("Décris l'image : à l'aéroport", "✈️", "We are at the airport. A family is waiting at the gate. The little boy is looking at a plane. There are many suitcases. They are going to travel tomorrow.", [
+      ["Dis où sont les personnes.", "Où", "airport|gate|plane|in the|at the"],
+      ["Dis ce que fait la famille.", "Ce qu'ils font", "is (waiting|looking|sitting|carrying|holding)|are (waiting|looking|sitting|carrying|holding)"],
+      ["Dis ce que tu vois.", "Ce que tu vois", "plane|suitcases|window|bags|passport|there is|there are|i can see"],
+      ["Dis ce qu'ils vont faire.", "Ce qu'ils vont faire", "going to|will|travel|fly|tomorrow|next"]], "describe-a19-airport"),
     T("Réserve un billet", "🎫", "I'd like a ticket to London. For Friday. For two people. How much is it?", [
       ["Dis où tu vas.", "Destination", "ticket|to|london|paris|madrid|rome|want|like"], ["Dis quand.", "Quand", "monday|tuesday|wednesday|thursday|friday|saturday|sunday|tomorrow|today|next"],
       ["Dis pour combien de personnes.", "Combien de personnes", "one|two|three|four|people|person|adult|adults"], ["Demande le prix.", "Le prix", "how much|price|cost"]]),
@@ -143,6 +153,16 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis où tu l'as laissé.", "Où", "train|bus|hotel|airport|taxi|restaurant|left|in|on"], ["Demande de l'aide.", "De l'aide", "help|can you|could you|please"]]),
   ],
   10: [
+    T("Décris l'image : au bureau", "💼", "There are three colleagues in an office. A man is using a computer. A woman is talking on the phone. They work in a big, bright room. I think they are busy.", [
+      ["Dis qui est sur l'image.", "Qui", "colleagues|man|woman|people|there are|there is"],
+      ["Dis ce que font les personnes.", "Ce qu'ils font", "is (using|talking|working|writing|typing)|are (using|talking|working|writing|typing)"],
+      ["Dis où ils sont.", "Où", "office|room|desk|work|in a|in the"],
+      ["Dis ce que tu vois sur le bureau.", "Sur le bureau", "computer|phone|desk|papers|notebook|coffee|there is|there are"]], "describe-a110-office"),
+    T("Décris l'image : à l'université", "🎓", "Some students are on a campus. Two girls are studying on the grass. A boy is carrying many books. They are happy because it is a nice day.", [
+      ["Dis qui est sur l'image.", "Qui", "students|girls|boy|people|there are|there is"],
+      ["Dis ce que font les étudiants.", "Ce qu'ils font", "is (studying|carrying|reading|walking|sitting)|are (studying|carrying|reading|walking|sitting)"],
+      ["Dis où ils sont.", "Où", "campus|university|grass|garden|outside|in the|on the"],
+      ["Dis comment ils se sentent.", "Comment", "happy|smiling|tired|nice|because|good"]], "describe-a110-university"),
     T("Présente un collègue", "🧑‍💼", "This is Marie. She is a teacher. She works in a school. She teaches English.", [
       ["Dis son prénom.", "Son prénom", "this is|name|is"], ["Dis son métier.", "Son métier", "teacher|nurse|doctor|engineer|driver|student|manager|secretary|cook|works"],
       ["Dis où il / elle travaille.", "Où il travaille", "works|in|at|school|office|hospital|shop|restaurant"], ["Dis ce qu'il / elle fait.", "Ce qu'il fait", "teaches|helps|cooks|drives|answers|writes|makes|sells"]]),
@@ -157,6 +177,16 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis les langues que tu parles.", "Langues", "speak|french|english|spanish|language"], ["Dis quand tu peux commencer.", "Quand", "start|monday|tomorrow|next|week|month|from"]]),
   ],
   11: [
+    T("Décris l'image : un jour de pluie", "🌧️", "It is a rainy day. People are walking in the street with umbrellas. A girl is wearing a yellow raincoat. The sky is grey and the ground is wet.", [
+      ["Dis quel temps il fait.", "Le temps", "rainy|raining|rain|grey|cloudy|wet|weather|it is|it's"],
+      ["Dis ce que font les gens.", "Ce qu'ils font", "is (walking|wearing|holding|running)|are (walking|wearing|holding|running)"],
+      ["Dis ce que portent les personnes.", "Les vêtements", "umbrella|raincoat|boots|coat|jacket|wearing|wears"],
+      ["Décris le ciel ou le sol.", "Le décor", "sky|ground|street|grey|wet|clouds"]], "describe-a111-rain"),
+    T("Décris l'image : à la plage", "🏖️", "It is a hot, sunny day at the beach. A family is sitting under an umbrella. Two children are playing in the sand. The sea is blue and calm.", [
+      ["Dis quel temps il fait.", "Le temps", "hot|sunny|warm|summer|blue sky|weather|it is|it's"],
+      ["Dis ce que font les personnes.", "Ce qu'ils font", "is (sitting|playing|swimming|walking)|are (sitting|playing|swimming|walking)"],
+      ["Dis ce que tu vois.", "Ce que tu vois", "sea|sand|umbrella|beach|towel|ball|there is|there are|i can see"],
+      ["Dis quelle saison, à ton avis.", "La saison", "summer|spring|holiday|season|think|maybe"]], "describe-a111-beach"),
     T("Quelle heure est-il ?", "🕒", "It is half past six. I have lunch at noon. I go to bed at ten. What time is it, please?", [
       ["Dis l'heure qu'il est.", "L'heure", "it is|it's|o'clock|half past|quarter|past|to"], ["Dis à quelle heure tu manges.", "Repas", "lunch|dinner|breakfast|noon|eat|at"],
       ["Dis à quelle heure tu te couches.", "Coucher", "bed|sleep|go to bed|ten|eleven|nine"], ["Demande l'heure.", "Ta question", "what time|time is it|the time"]]),
@@ -171,6 +201,16 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis s'il fait froid en hiver.", "L'hiver", "cold|winter|snow|freezing"], ["Dis ce que tu portes.", "Ce que tu portes", "wear|coat|jacket|scarf|hat|t-shirt|sweater"]]),
   ],
   12: [
+    T("Décris l'image : au café", "☕", "Three friends are at a café. They are talking and laughing. There are two cups of coffee and a cake on the table. I think they are good friends.", [
+      ["Dis qui est sur l'image.", "Qui", "friends|three|girls|boys|people|there are"],
+      ["Dis ce qu'ils font.", "Ce qu'ils font", "are (talking|laughing|drinking|eating|sitting)|is (talking|laughing|drinking|eating|sitting)"],
+      ["Dis ce qu'il y a sur la table.", "Sur la table", "cup|coffee|cake|table|glass|there is|there are"],
+      ["Dis ce qu'ils pensent ou ressentent.", "Émotions", "happy|laughing|friends|think|good|funny|smiling"]], "describe-a112-cafe"),
+    T("Décris l'image : au marché", "🛒", "This is a market. A woman is selling fruit and vegetables. A man is asking about the price. There are apples, tomatoes and bread on the stall. It is busy.", [
+      ["Dis où sont les personnes.", "Où", "market|stall|street|in the|at the"],
+      ["Dis ce que font les personnes.", "Ce qu'ils font", "is (selling|asking|buying|paying|talking)|are (selling|asking|buying|paying|talking)"],
+      ["Dis ce qu'on peut acheter.", "Les produits", "apples|tomatoes|bread|fruit|vegetables|cheese|there is|there are"],
+      ["Dis comment est l'ambiance.", "L'ambiance", "busy|noisy|crowded|colourful|nice|lively"]], "describe-a112-market"),
     T("Salue selon le moment", "🌞", "Good morning! Good evening! How are you? I'm fine, thank you.", [
       ["Dis bonjour le matin.", "Le matin", "good morning|morning|hello|hi"], ["Dis bonsoir.", "Le soir", "good evening|evening|good afternoon|afternoon"],
       ["Demande comment ça va.", "Comment ça va", "how are you|how's it going|how are things"], ["Réponds poliment.", "Ta réponse", "fine|good|well|great|thank"]]),
@@ -188,7 +228,29 @@ export const EXPRESSION_PLUS_A1 = {
 
 // A2 : mêmes sujets supplémentaires (A2.1)
 export const EXPRESSION_PLUS_A2 = {
+  0: [
+    T("Décris l'image : la cuisine", "🍳", "In this picture, a family is cooking dinner. The father is cutting vegetables and the mother is stirring a pot. Usually they cook together on Sundays. They are going to eat at seven.", [
+      ["Dis ce que font les personnes en ce moment.", "En ce moment", "is (cutting|stirring|cooking|chopping|helping)|are (cutting|stirring|cooking|chopping|helping)"],
+      ["Dis ce qu'ils font d'habitude.", "D'habitude", "usually|often|always|every|on sundays|cook together"],
+      ["Dis ce que tu vois dans la cuisine.", "La cuisine", "pot|knife|vegetables|table|oven|kitchen|there is|there are"],
+      ["Dis ce qu'ils vont faire ensuite.", "Ensuite", "going to|will|eat|dinner|at seven|later"]], "describe-a20-kitchen"),
+    T("Décris l'image : une rue animée", "🏙️", "The street is very busy. A man is running for the bus, but a woman is walking slowly. A boy is eating ice cream. Every day many people take this street to go to work.", [
+      ["Dis ce que font trois personnes.", "Trois personnes", "is (running|walking|eating|waiting|talking)|are (running|walking|eating|waiting|talking)"],
+      ["Compare deux personnes.", "Comparer", "but|while|and|slowly|quickly|faster|slower"],
+      ["Dis ce que les gens font chaque jour.", "Chaque jour", "every day|usually|often|always|take|go to work"],
+      ["Dis où ça se passe.", "Où", "street|city|town|bus stop|in the|on the"]], "describe-a20-street"),
+  ],
   1: [
+    T("Décris l'image : le matin", "🌅", "In the morning, the girl brushes her teeth and has breakfast. Right now she is putting on her shoes. She usually leaves at eight. She never misses the bus.", [
+      ["Dis ce que fait la fille d'habitude.", "Habitude", "brushes|has breakfast|usually|every morning|always|gets up|leaves"],
+      ["Dis ce qu'elle fait en ce moment.", "En ce moment", "is (putting|brushing|eating|wearing|getting)|right now|now"],
+      ["Dis à quelle heure elle part.", "L'heure", "at (seven|eight|nine)|leaves|o'clock|half past"],
+      ["Utilise un adverbe de fréquence.", "Fréquence", "always|never|usually|often|sometimes"]], "describe-a21-morning"),
+    T("Décris l'image : le soir", "🌙", "In the evening, the family is at home. The mother cooks, the son reads a book and the father watches TV. They often eat together at half past seven. Tonight they are going to watch a film.", [
+      ["Dis ce que fait chaque personne.", "Chaque personne", "cooks|reads|watches|is (cooking|reading|watching)|are (cooking|reading|watching)"],
+      ["Dis ce qu'ils font souvent le soir.", "Souvent", "often|usually|always|every evening|eat together"],
+      ["Dis ce qu'il y a dans la pièce.", "La pièce", "sofa|lamp|table|tv|book|there is|there are"],
+      ["Dis ce qu'ils vont faire ce soir.", "Ce soir", "going to|tonight|will|this evening|watch a film"]], "describe-a21-evening"),
     T("Ton week-end habituel", "🌤️", "I usually get up late on Saturday. I often meet my friends. We always have lunch together. I never work on Sunday.", [
       ["Dis à quelle heure tu te lèves le week-end.", "Le lever", "get up|wake up|late|early|o'clock|at"], ["Dis ce que tu fais souvent.", "Ce que tu fais souvent", "often|usually|meet|go|visit|play|watch|clean"],
       ["Dis ce que tu fais toujours.", "Toujours", "always|every"], ["Dis ce que tu ne fais jamais.", "Jamais", "never|rarely"]]),

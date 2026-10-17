@@ -25,3 +25,8 @@ Décision d'Ashley (15/10/2026) : un seul type de visuel partout. Référence = 
 
 ## Règle permanente (Ashley)
 Garder partout la MÊME présentation : toute nouvelle leçon (A1, A2, B1…) utilise le même moteur (js/screens/lecon-a11.js), le même menu (Vocabulaire, Grammaire, Lecture, Écoute, Expression, Dialogue, Écrit, Exercices, Roots City, Test de fin) et les mêmes styles. Ne jamais créer une présentation différente.
+
+## Règle permanente : « Décris l'image » (de A1.8 jusqu'à C2)
+À partir de A1.8 et dans TOUTES les leçons suivantes jusqu'à la fin du niveau C2, chaque leçon contient des sujets d'expression « Décris l'image » : une image simple, neutre et descriptible (étudiants, lieux, scènes du quotidien), que l'apprenti décrit à l'écrit ou à l'oral. Même moteur, même présentation (champ `img` d'un sujet d'expression, image dans `assets/img/lesson/describe-<leçon>-<nom>.webp`, 1280 × 720, sans texte lisible).
+Progression : A1.8–A1.12 qui / quoi / où (there is, présent continu) · A2 habitudes + maintenant + futur proche + comparaison · B1 opinion, cause, hypothèse · B2 déduction, nuance, argumentation · C1 analyse critique et registre · C2 images abstraites ou symboliques, maîtrise fine.
+Chaque nouvelle leçon livre donc ses images à décrire (liste des images demandée avant la construction).
