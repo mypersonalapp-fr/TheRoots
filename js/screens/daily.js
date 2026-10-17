@@ -107,6 +107,7 @@ export function renderDaily(container) {
         <div class="dp-vr"></div>
         <aside class="dp-side">${story("Food", x.food, x.img.food)}<div class="dp-rs"></div>${story("City", x.city, x.img.city)}<div class="dp-rs"></div>${story("Weather", x.wx, x.img.wx)}</aside>
       </div>
+      <nav class="dp-issues" aria-label="Issues">${DAILY_ITEMS.filter((i) => i.type === "news" && i.level === x.level).sort((a, b) => a.n - b.n).map((i) => `<button data-open="${i.id}"${i.id === x.id ? ' aria-current="true"' : ""}>${nn(i.n)}</button>`).join("")}</nav>
       <div class="dp-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div>
     </div>`;
   }
