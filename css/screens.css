@@ -1173,3 +1173,4 @@
 .bl-cta.lc-cta{ color:#1b1d22; text-shadow:none; }
 .bl-lock .bl-tag{ background:#8a8f98; } .bl-lock .bl-st-ok{ background:#1f7a45; } .bl-lock .bl-st-ko{ background:#c8382a; }
 .bl-ex-ok{ background:#e3f6ea; } .bl-ex-ko{ background:#fdeceb; } .bl-lock b{ font-size:14.5px; }
+.bl-lock span.bl-tag{ flex:none; }
