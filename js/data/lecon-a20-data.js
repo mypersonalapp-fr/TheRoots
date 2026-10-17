@@ -82,6 +82,43 @@ export const GRAMMAR_A20 = [
     E("“Tomorrow I ___ walk.”", "am going to", "am", "walking", "Tomorrow + projet → be going to.", "“am walk” : il manque le -ing ou going to.", "“walking” seul n'est pas conjugué."),
     E("Quel mot annonce le PASSÉ ?", "yesterday", "tomorrow", "now", "Yesterday = hier → c'est le passé (A2.2).", "Tomorrow = demain → futur.", "Now = maintenant → présent."),
   ]),
+  // Ce qui t'attend en A2 : questions d'éveil (on découvre, on n'apprend pas tout) — chaque réponse est expliquée.
+  G("Ce qui t'attend en A2 (1/6) : routine et passé", "🔭", [
+    E("Quelle phrase parle d'une ROUTINE ?", "I get up at seven every day.", "I'm getting up now.", "I got up at seven yesterday.", "Every day = habitude, présent simple (A2.1).", "Now = en ce moment : présent continu.", "Yesterday = hier : c'est le passé, que tu verras en A2.2."),
+    E("“Yesterday I ___ to the cinema.”", "went", "go", "going", "“went” est le passé de “go” : tu le verras en A2.2.", "“go” est le présent : avec yesterday, il faut le passé.", "“going” seul n'est pas conjugué."),
+    E("“We ___ pizza last night.”", "ate", "eat", "eating", "“ate” est le passé de “eat” (verbe irrégulier, A2.2).", "“eat” est le présent : last night annonce le passé.", "“eating” seul n'est pas conjugué."),
+    E("“I used to play football.” veut dire…", "Avant, je jouais au foot.", "Je joue au foot en ce moment.", "Je vais jouer au foot.", "“Used to” = une habitude du passé qui n'existe plus (A2.2).", "En ce moment se dirait : I'm playing.", "Un projet se dirait : I'm going to play."),
+  ]),
+  G("Ce qui t'attend en A2 (2/6) : pendant que et projets", "🔭", [
+    E("“I was cooking when the phone rang.” veut dire…", "Je cuisinais quand le téléphone a sonné.", "Je vais cuisiner.", "Je cuisine tous les jours.", "“was cooking” = action en cours dans le passé (A2.3).", "Un projet se dirait : I'm going to cook.", "Une habitude se dirait : I cook every day."),
+    E("“while” veut dire…", "pendant que", "avant", "après", "“While” relie deux actions simultanées (A2.3).", "Avant se dit before.", "Après se dit after."),
+    E("“I'm going to study medicine.” exprime…", "un projet", "une habitude", "un souvenir", "Be going to = projet (A2.4, tu l'as déjà vu).", "Une habitude utiliserait le présent simple.", "Un souvenir utiliserait le passé."),
+    E("“I'm meeting Tom at six tonight.” exprime…", "un rendez-vous prévu", "une habitude", "un souvenir", "Présent continu + heure = arrangement déjà prévu (A2.4).", "Une habitude aurait “every …”.", "Un souvenir serait au passé."),
+  ]),
+  G("Ce qui t'attend en A2 (3/6) : comparer et santé", "🔭", [
+    E("“It's the ___ day of the year.” (chaud)", "hottest", "most hot", "hotter", "Superlatif court : hot → the hottest (A2.5).", "“most hot” n'existe pas pour un adjectif court.", "“hotter” compare deux choses, il ne dit pas « le plus »."),
+    E("“He is as tall as his brother.” veut dire…", "Il est aussi grand que son frère.", "Il est plus grand que son frère.", "Il est moins grand que son frère.", "As … as = aussi … que (A2.5).", "Plus grand se dit taller than.", "Moins grand se dit not as tall as."),
+    E("“I have a headache.” veut dire…", "J'ai mal à la tête.", "J'ai faim.", "J'ai froid.", "Headache = mal de tête (A2.6, la santé).", "Avoir faim = be hungry.", "Avoir froid = be cold."),
+    E("“You should rest.” veut dire…", "Tu devrais te reposer.", "Tu dois payer.", "Tu es en retard.", "“Should” donne un conseil (A2.6).", "Payer se dirait : You must pay.", "En retard se dirait : You are late."),
+  ]),
+  G("Ce qui t'attend en A2 (4/6) : météo et logement", "🔭", [
+    E("“It's going to rain tomorrow.” veut dire…", "Il va pleuvoir demain.", "Il pleut maintenant.", "Il pleuvait hier.", "Going to + tomorrow = prévision proche (A2.7).", "Maintenant se dirait : It's raining.", "Hier se dirait : It rained yesterday."),
+    E("“The forecast says it will be sunny.” — “will” indique…", "une prévision pour plus tard", "un souvenir", "une habitude", "“Will” annonce une prévision (A2.7).", "Un souvenir serait au passé : It was sunny.", "Une habitude : It is usually sunny."),
+    E("“There's a big garden behind the house.” — garden =", "jardin", "garage", "grenier", "Garden = jardin (A2.8, logement).", "Garage = garage, un autre mot.", "Grenier = attic."),
+    E("“I live in a flat near the station.” — flat =", "appartement", "maison", "chambre", "Flat = appartement en anglais britannique (A2.8).", "Maison = house.", "Chambre = bedroom."),
+  ]),
+  G("Ce qui t'attend en A2 (5/6) : téléphone et sorties", "🔭", [
+    E("“Can I speak to Anna, please?” veut dire…", "Puis-je parler à Anna ?", "Je suis Anna.", "Anna est partie.", "Formule de base au téléphone (A2.9).", "Se présenter se dit : This is Anna.", "Anna est partie se dirait : Anna has left."),
+    E("“Hold on, please.” veut dire…", "Ne quittez pas, s'il vous plaît.", "Au revoir.", "Répétez, s'il vous plaît.", "Hold on = attendre au téléphone (A2.9).", "Au revoir se dit : Goodbye.", "Répéter se dit : Could you repeat that?"),
+    E("“Would you like to come to the cinema?” est…", "une invitation", "un refus", "un horaire", "Would you like to … ? = inviter (A2.10).", "Un refus : I'm sorry, I can't.", "Un horaire : The film starts at eight."),
+    E("“I'm sorry, I can't make it.” veut dire…", "Désolé, je ne peux pas venir.", "Désolé, je suis en retard.", "Désolé, j'arrive.", "Can't make it = ne pas pouvoir venir (A2.10).", "En retard se dit : I'm late.", "J'arrive se dit : I'm on my way."),
+  ]),
+  G("Ce qui t'attend en A2 (6/6) : opinions et voyage", "🔭", [
+    E("“In my opinion, it's a great idea.” — in my opinion =", "à mon avis", "par contre", "par exemple", "In my opinion = à mon avis (A2.11).", "Par contre = however.", "Par exemple = for example."),
+    E("“I'm really excited about the trip.” — excited =", "enthousiaste", "fatigué", "inquiet", "Excited = enthousiaste (A2.11, sentiments).", "Fatigué = tired.", "Inquiet = worried."),
+    E("“My flight was cancelled.” veut dire…", "Mon vol a été annulé.", "Mon vol est retardé.", "J'ai réservé mon vol.", "Was cancelled = passé passif : un imprévu en voyage (A2.12).", "Retardé se dit : was delayed.", "Réserver se dit : book."),
+    E("“I lost my passport.” veut dire…", "J'ai perdu mon passeport.", "J'ai trouvé mon passeport.", "J'ai oublié mon passeport.", "“Lost” est le passé de lose (A2.12).", "Trouvé se dit : found.", "Oublié se dit : forgot."),
+  ]),
 ];
 
 export const READING_A20 = [

@@ -25,13 +25,13 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261018w";
-import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018w";
-import { plusPages } from "./vocab-plus-a1.js?v=20261018w";
-import { TEST_PLUS_A1 } from "./test-plus-a1.js?v=20261018w";
+const V = "20261018x";
+import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018x";
+import { plusPages } from "./vocab-plus-a1.js?v=20261018x";
+import { TEST_PLUS_A1 } from "./test-plus-a1.js?v=20261018x";
 const coreSet = (pages) => new Set(pages.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase())));
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018w"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018x"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
