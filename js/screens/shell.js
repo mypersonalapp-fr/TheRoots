@@ -4,8 +4,8 @@
 // routage entre les onglets.
 
 import { renderDashboard } from "./dashboard.js?v=20261001a";
-import { renderSettings } from "./settings.js?v=20261018c6";
-import { renderMesCours } from "./mes-cours.js?v=20261018c6";
+import { renderSettings } from "./settings.js?v=20261018c7";
+import { renderMesCours } from "./mes-cours.js?v=20261018c7";
 import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
 import { renderComprehension } from "./comprehension.js?v=20261001d";
 import { renderExpression } from "./expression.js?v=20261001d";
@@ -13,6 +13,7 @@ import { renderTraduction } from "./traduction.js?v=20260930a";
 import { renderDictionnaire } from "./dictionnaire.js?v=20260930a";
 import { renderConversation } from "./conversation.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
+import { renderDaily } from "./daily.js?v=20261018c7";
 import { renderBibliotheque } from "./bibliotheque.js?v=20261001a";
 import { renderAideFaq } from "./aide-faq.js?v=20261001c";
 import { mountMyWorld } from "./my-world.js?v=20260930a";
@@ -39,6 +40,7 @@ function menuSections(lang) {
       { id: "traduction", label: t("menu_traduction", lang), icon: "🌐" },
       { id: "bibliotheque", label: t("menu_bibliotheque", lang), icon: "📖", badge: t("menu_badge_new", lang) },
     ] },
+    { items: [{ id: "daily", label: t("menu_daily", lang), icon: "📰" }] },
     { title: t("menu_section_explorer", lang), items: [
       { id: "my-world", label: t("menu_myworld", lang), icon: "🌍" },
     ] },
@@ -61,6 +63,7 @@ function titles(lang) {
     "dictionnaire": t("title_dictionnaire", lang),
     "traduction": t("title_traduction", lang),
     "bibliotheque": t("title_bibliotheque", lang),
+    "daily": t("title_daily", lang),
     "my-world": t("title_myworld", lang),
     "parametres": t("title_parametres", lang),
     "aide": t("title_aide", lang),
@@ -175,6 +178,7 @@ export function renderShell(root) {
     else if (id === "dictionnaire") renderDictionnaire(body);
     else if (id === "traduction") renderTraduction(body);
     else if (id === "bibliotheque") renderBibliotheque(body);
+    else if (id === "daily") renderDaily(body);
     else if (id === "aide") renderAideFaq(body);
     else if (id === "my-world") {
       body.innerHTML = "";

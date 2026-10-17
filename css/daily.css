@@ -1,0 +1,42 @@
+/* The Roots Daily */
+.dl-wrap{ padding:4px 0 28px; }
+.dl-head{ display:flex; justify-content:space-between; align-items:center; margin:2px 0 10px; }
+.dl-head b{ display:block; font-size:18px; color:var(--ink); }
+.dl-head span{ font-size:12px; color:var(--ink-soft); }
+.dl-stats{ font-size:13px; font-weight:800; color:var(--ink); background:var(--surface-soft); border-radius:99px; padding:6px 12px; }
+.dl-seg{ display:flex; gap:6px; background:var(--surface-soft); padding:4px; border-radius:var(--radius-md); margin:10px 0 4px; }
+.dl-seg button{ flex:1; border:0; background:transparent; color:var(--ink-soft); font:inherit; font-weight:700; font-size:14px; padding:10px 6px; border-radius:12px; }
+.dl-seg button.on{ background:var(--surface); color:var(--ink); box-shadow:var(--shadow-card); }
+.dl-sec{ font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin:16px 2px 8px; }
+.dl-card{ display:flex; flex-direction:column; gap:4px; width:100%; text-align:left; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:12px 14px; margin-bottom:8px; box-shadow:var(--shadow-card); }
+.dl-card.dl-big{ padding:0 0 12px; overflow:hidden; border-left:4px solid var(--accent); }
+.dl-big .dl-meta,.dl-big .dl-title,.dl-big .dl-state{ padding:0 14px; }
+.dl-big .dl-meta{ padding-top:12px; }
+.dl-big .dl-title{ font-size:18px; }
+.dl-img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:12px 12px 0 0; }
+.dl-meta{ font-size:12px; color:var(--ink-soft); }
+.dl-title{ font-size:15px; line-height:1.3; }
+.dl-state{ font-size:12px; font-weight:700; color:var(--success); }
+.dl-empty{ text-align:center; display:flex; flex-direction:column; gap:6px; align-items:center; padding:28px 18px; margin-top:14px; color:var(--ink); }
+.dl-empty span{ font-size:13px; color:var(--ink-soft); }
+.dl-art{ padding:14px; margin:8px 0; }
+.dl-art .dl-img{ border-radius:12px; margin-bottom:10px; }
+.dl-h{ font-size:21px; line-height:1.25; margin:6px 0 10px; color:var(--ink); }
+.dl-body p{ font-size:16px; line-height:1.6; margin:0 0 12px; color:var(--ink); }
+.dl-w{ border:0; background:transparent; font:inherit; color:inherit; padding:0; border-bottom:2px dotted var(--accent); }
+.dl-tip{ font-size:13px; color:var(--ink-soft); background:var(--surface-soft); border-radius:10px; padding:8px 10px; }
+.dl-mailhead{ border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin-bottom:12px; font-size:13px; color:var(--ink); background:var(--surface-soft); }
+.dl-mailhead span{ display:inline-block; width:46px; color:var(--ink-soft); font-weight:700; }
+.dl-q{ margin:8px 0; padding:14px; }
+.dl-ql{ font-size:12px; font-weight:800; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; }
+.dl-qt{ font-size:16px; font-weight:700; margin:4px 0 10px; color:var(--ink); }
+.dl-in{ width:100%; font:inherit; font-size:16px; color:var(--ink); background:var(--surface); border:2px solid var(--border); border-radius:12px; padding:10px 12px; resize:vertical; }
+.dl-in:focus{ outline:none; border-color:var(--accent); }
+.dl-fb{ font-size:14px; margin-top:8px; color:var(--ink); }
+.dl-fb:empty{ display:none; }
+.dl-fb.ok{ color:var(--success); font-weight:700; }
+.dl-fb.ko{ color:var(--pop); font-weight:700; }
+.dl-fb ul{ margin:6px 0 0; padding-left:18px; font-weight:600; }
+.dl-actions{ display:flex; align-items:center; gap:14px; margin-top:10px; flex-wrap:wrap; }
+.dl-link{ border:0; background:transparent; color:var(--ink-soft); font:inherit; font-size:13px; font-weight:700; text-decoration:underline; padding:6px 0; }
+.dl-score{ text-align:center; font-size:16px; color:var(--ink); margin-top:10px; }
