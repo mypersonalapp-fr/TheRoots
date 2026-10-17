@@ -94,7 +94,7 @@ export function renderDaily(container) {
   const story = (k, o, src) => `<article class="dp-story">${im(src, "dp-thumb")}<div class="dp-kicker">${k}</div><h3>${esc(o.t)}</h3><p>${esc(o.p)}</p></article>`;
   function paper(x) {
     const today = new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-    return `<div class="dp">
+    return `<div class="dp" data-page="1">
       <div class="dp-r5"></div><div class="dp-mast">The Roots Daily</div><div class="dp-r3"></div><div class="dp-gap"></div><div class="dp-r1"></div>
       <div class="dp-dateline"><span>Level ${x.level}</span><span class="dp-today">${esc(today)}</span><span>${x.minutes} min read</span></div>
       <div class="dp-r1"></div>
@@ -107,6 +107,7 @@ export function renderDaily(container) {
         <div class="dp-vr"></div>
         <aside class="dp-side">${story("Food", x.food, x.img.food)}<div class="dp-rs"></div>${story("City", x.city, x.img.city)}<div class="dp-rs"></div>${story("Weather", x.wx, x.img.wx)}</aside>
       </div>
+      <div class="dp-pager"><button data-pg="1" aria-current="true">1</button><span>Page</span><button data-pg="2">2</button><button class="dp-next" data-pgnext="1">Page suivante ›</button></div>
       <nav class="dp-issues" aria-label="Issues">${DAILY_ITEMS.filter((i) => i.type === "news" && i.level === x.level).sort((a, b) => a.n - b.n).map((i) => `<button data-open="${i.id}"${i.id === x.id ? ' aria-current="true"' : ""}>${nn(i.n)}</button>`).join("")}</nav>
       <div class="dp-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div>
     </div>`;
@@ -140,6 +141,19 @@ export function renderDaily(container) {
     box.innerHTML = `<b>${score}/${total}</b> ${score === total ? "Parfait !" : "Relis le texte et corrige tes réponses."}`;
   }
 
+  function setPage(dp, n) {
+    dp.dataset.page = n;
+    dp.querySelectorAll("[data-pg]").forEach((b) => (b.dataset.pg === n ? b.setAttribute("aria-current", "true") : b.removeAttribute("aria-current")));
+    const nx = dp.querySelector(".dp-next"); if (nx) nx.textContent = n === "1" ? "Page suivante ›" : "‹ Page précédente";
+    dp.scrollIntoView({ block: "start" });
+  }
+  let sx = null;
+  container.addEventListener("touchstart", (e) => { sx = e.target.closest(".dp") ? e.touches[0].clientX : null; }, { passive: true });
+  container.addEventListener("touchend", (e) => {
+    const dp = container.querySelector(".dp"); if (sx === null || !dp) return;
+    const dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 60 && matchMedia("(orientation: portrait)").matches) setPage(dp, dx < 0 ? "2" : "1");
+  });
   container.addEventListener("click", (e) => {
     const t = e.target;
     const lv = t.closest("[data-lv]"); if (lv) { level = lv.dataset.lv; paint(); return; }
@@ -148,6 +162,8 @@ export function renderDaily(container) {
     if (t.closest("[data-back]")) { openId = null; paint(); return; }
     const x = openId && DAILY_ITEMS.find((i) => i.id === openId);
     if (!x) return;
+    const pgb = t.closest("[data-pg],[data-pgnext]");
+    if (pgb) { const dp = container.querySelector(".dp"); if (dp) setPage(dp, pgb.dataset.pgnext ? (dp.dataset.page === "1" ? "2" : "1") : pgb.dataset.pg); return; }
     const g = t.closest(".dl-w");
     if (g) { const [en, fr] = x.glossary[+g.dataset.gi]; container.querySelector("#dlTip").innerHTML = `<b>${esc(en)}</b> = ${esc(fr)}`; return; }
     const ck = t.closest("[data-check]");

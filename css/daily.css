@@ -82,3 +82,16 @@
 .dp-issues{ display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin-top:26px; padding-top:16px; border-top:1px solid var(--rsoft); }
 .dp-issues button{ font:inherit; font-size:12px; font-weight:600; letter-spacing:.08em; color:var(--soft); background:transparent; width:34px; height:34px; border:1px solid var(--rsoft); border-radius:17px; padding:0; }
 .dp-issues button[aria-current="true"]{ background:var(--pink); color:var(--paper); border-color:var(--pink); }
+
+/* iPhone / portrait : le journal tient sur 2 pages ; paysage : tout sur une page */
+.dp-pager{ display:none; }
+@media (orientation:portrait){
+  .dp[data-page="1"] .dp-side{ display:none; }
+  .dp[data-page="2"] .dp-lead{ display:none; }
+  .dp[data-page="2"] .dp-grid{ margin-top:14px; }
+  .dp[data-page="2"] .dp-side{ border-top:0; padding-top:0; }
+  .dp-pager{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin-top:20px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+  .dp-pager [data-pg]{ font:inherit; font-weight:600; width:30px; height:30px; border-radius:15px; border:1px solid var(--rsoft); background:transparent; color:var(--soft); padding:0; }
+  .dp-pager [data-pg][aria-current="true"]{ background:var(--pink); color:var(--paper); border-color:var(--pink); }
+  .dp-pager .dp-next{ flex-basis:100%; margin-top:8px; font:inherit; font-size:14px; font-weight:700; letter-spacing:0; text-transform:none; border:1px solid var(--pink); color:var(--pink); background:transparent; border-radius:99px; padding:10px 14px; }
+}
