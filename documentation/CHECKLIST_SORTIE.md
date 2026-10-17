@@ -13,3 +13,7 @@
 Un contrôle change entièrement à chaque passage : autre texte, autre audio, autres questions de grammaire, autres sujets d'expression écrite et orale.
 Chaque nouvelle leçon doit donc fournir au minimum : 3 textes, 3 audios, 30 questions de grammaire, 6 sujets d'expression.
 Vérifier après chaque leçon : `python3 tools/verifier-controles.py` (aucune ligne KO).
+
+## Règle des exercices (A2 et au-delà)
+Chaque niveau a au moins 2× les questions d'exercices du niveau précédent. A1 ≈ 36 par leçon, donc A2 ≥ 72 (12 séries de 6). Les niveaux suivants : au moins 2× le niveau d'avant (B1 ≥ 144, etc.). Vérifié par `tools/verifier-controles.py`.
+Chaque nouvelle leçon passe aussi `node tools/valider-lecon.mjs N` (réponses valides, choix distincts, modèles d'expression conformes à leurs critères).
