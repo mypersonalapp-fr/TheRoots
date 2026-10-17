@@ -52,3 +52,9 @@ Dossier `assets/img/lesson/`, webp 1280 × 720, simples, neutres, sans texte lis
 
 # Images « Décris l'image » — A1.9 à A2.1 (assets/img/lesson/, webp 1280 × 720)
 describe-a19-station, describe-a19-airport, describe-a110-office, describe-a110-university, describe-a111-rain, describe-a111-beach, describe-a112-cafe, describe-a112-market, describe-a20-kitchen, describe-a20-street, describe-a21-morning, describe-a21-evening
+
+## A2.2 « Le passé et used to » — 16 images à fournir
+Scènes `assets/img/lesson/` : scene-a22-childhood, memory, journey, adventure, yesterday, usedto, hometown, surprise.
+Roots City `assets/img/city/` : a22-m1 à a22-m6.
+« Décris l'image » `assets/img/lesson/` : describe-a22-camping, describe-a22-grandparents (aucun texte lisible, écrans éteints).
+Les prompts sont dans la conversation du 17/10/2026 ; à recopier ici une fois les images reçues.
