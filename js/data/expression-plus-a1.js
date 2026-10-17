@@ -264,4 +264,28 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis à quelle heure tu rentres.", "Le retour", "get home|come home|arrive|home|o'clock|at"], ["Dis ce que tu manges.", "Le dîner", "dinner|eat|cook|supper|meal"],
       ["Dis ce que tu fais avant de dormir.", "Avant de dormir", "watch|read|relax|shower|talk|tv|phone|book"], ["Dis à quelle heure tu te couches.", "Le coucher", "go to bed|sleep|bed|ten|eleven|nine"]]),
   ],
+  2: [
+    T("Décris l'image : le camping", "⛺", "In this picture, a family is at a campsite by a lake. The girl is roasting marshmallows and the boy is reading with a flashlight. Last night they caught some fish. When I was a child, I used to go camping every summer.", [
+      ["Dis ce que font les personnes.", "Les personnes", "is (roasting|reading|fishing|sleeping|cooking)|are (roasting|reading|fishing|sitting|cooking)|roasting|reading|fishing"],
+      ["Dis ce qu'ils ont fait hier.", "Hier", "yesterday|last night|caught|cooked|walked|swam|went|ate|had|played"],
+      ["Dis ce qu'il y a au camping.", "Le camping", "tent|fire|campfire|lake|dog|trees|flashlight|there is|there are"],
+      ["Dis ce que tu faisais quand tu étais enfant.", "Enfance", "used to|when i was|as a child|every summer"]], "describe-a22-camping"),
+    T("Décris l'image : les grands-parents", "👵", "In this picture, the grandmother is knitting and the grandfather is showing an old photo. The children are sitting on the carpet. The grandfather used to ride a bicycle to work. Yesterday they visited their grandparents.", [
+      ["Dis ce que font les grands-parents.", "Les grands-parents", "is (knitting|showing|telling|sitting|talking)|are (knitting|showing|telling|sitting|talking)|knitting|showing"],
+      ["Dis ce que le grand-père faisait avant.", "Avant", "used to|when he was|years ago|in the past|as a young"],
+      ["Dis ce qu'il y a dans la pièce.", "La pièce", "radio|carpet|sofa|photo|shelf|lamp|there is|there are"],
+      ["Dis ce que les enfants ont fait hier.", "Hier", "yesterday|last|visited|went|played|listened|talked|ate"]], "describe-a22-grandparents"),
+    T("Mon dernier week-end", "📆", "Last weekend I visited my parents. We had lunch together and we walked in the park. I took a lot of photos. I came home on Sunday evening.", [
+      ["Dis où tu es allé(e).", "Où", "visited|went|stayed|travelled|came|to|at"], ["Dis ce que tu as fait.", "Ce que tu as fait", "had|walked|played|watched|cooked|met|saw|ate|took|cleaned"],
+      ["Dis avec qui.", "Avec qui", "with|friends|family|parents|sister|brother|alone"], ["Dis quand tu es rentré(e).", "Retour", "came|went|got|home|back|sunday|evening|night|afternoon"]]),
+    T("Mon enfance", "🧸", "When I was a child, I lived in a small town. I used to play outside with my friends. I didn't have a phone. My favourite toy was a teddy bear.", [
+      ["Dis où tu habitais.", "Où", "lived|grew up|small|town|village|city|house|flat"], ["Dis ce que tu faisais souvent.", "Habitude", "used to|every day|often|always|played|rode|watched"],
+      ["Dis ce que tu n'avais pas.", "Ce que tu n'avais pas", "didn.t have|didn.t|no |without|wasn.t"], ["Dis ton jouet préféré.", "Ton jouet", "toy|teddy|doll|game|bike|ball|favourite|favorite"]]),
+    T("Mes dernières vacances", "🏖️", "Last summer I went to Spain for a week. We stayed in a small hotel near the beach. We swam every day and we ate fresh fish. It was fantastic.", [
+      ["Dis où tu es allé(e) et quand.", "Où et quand", "went|travelled|visited|last|ago|in \\d{4}"], ["Dis où tu as dormi.", "Hébergement", "stayed|slept|hotel|tent|house|flat|campsite|friends"],
+      ["Dis ce que tu as fait.", "Ce que tu as fait", "swam|ate|visited|walked|saw|played|climbed|took|had|bought"], ["Dis si c'était bien.", "Ton avis", "was|were|great|fantastic|beautiful|boring|good|nice|loved|liked"]]),
+    T("Avant et maintenant", "🔄", "I used to live in a small flat. Now I live in a house with a garden. I used to take the bus, but now I drive. I don't miss the old flat.", [
+      ["Dis où tu habitais avant.", "Avant", "used to live|lived|before"], ["Dis où tu habites maintenant.", "Maintenant", "now|today|these days|live in|i live"],
+      ["Dis une chose que tu ne fais plus.", "Ce qui a changé", "used to|any more|anymore|no longer|but now|but i"], ["Dis ce que tu regrettes (ou pas).", "Regret", "miss|don.t miss|prefer|like|love|better"]]),
+  ],
 };

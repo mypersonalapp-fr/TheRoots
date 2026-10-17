@@ -11,4 +11,9 @@ export const SITUATIONS_A2 = {
     S("🔄", "Say what you are doing today that is different.", "Dis ce qui est différent aujourd'hui.", "\\b(today|this week)\\b.*\\b(i'm|i am)\\s+\\w+ing\\b|\\b(i'm|i am)\\s+\\w+ing\\b.*\\b(today|this week)\\b", "Today I'm working from home."),
     S("📊", "Say one thing you never do.", "Utilise « never ».", "\\bi (never|rarely)\\s+\\w+", "I never watch TV in the morning."),
   ],
+  "A2.2": [
+    S("✈️", "Say where you went on your last holiday.", "Dis où tu es allé(e) (Past Simple).", "\\bi (went|travelled|traveled|visited|flew|drove)\\b", "I went to Spain last summer."),
+    S("🧸", "Say one thing you used to do as a child.", "Utilise « used to ».", "\\bi used to\\s+\\w+", "I used to play outside every day."),
+    S("❌", "Say one thing you didn't do yesterday.", "Utilise « didn't ».", "\\bi (didn.t|did not)\\s+\\w+", "I didn't watch TV yesterday."),
+  ],
 };

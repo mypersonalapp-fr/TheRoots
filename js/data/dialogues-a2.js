@@ -26,4 +26,16 @@ export const DIALOGUES_A2 = {
       { npc: "Is that normal?", ok: ["\\b(yes|no|usually|normally)\\b"], model: "No, I usually work in the office.", hint: "Compare avec ton habitude." },
       { npc: "I hope the bus is back tomorrow!", ok: ["\\b(thanks|thank you|me too|i hope so|yes|see you)\\b"], model: "I hope so too!", hint: "Réponds gentiment." }] },
   ],
+  "A2.2": [
+    { title: "Tes dernières vacances", icon: "🏖️", scene: "Un collègue te demande où tu es allé(e) en vacances.", turns: [
+      { npc: "Hi! Did you go on holiday last summer?", ok: ["\\b(yes|no|i did|i didn.t|i went|we went)\\b"], model: "Yes, I went to Spain.", hint: "Réponds avec did / went." },
+      { npc: "Nice! What did you do there?", ok: ["\\b(i|we) (swam|visited|ate|walked|saw|played|climbed|stayed|relaxed|took|had|met|bought)\\b"], model: "We swam and we visited old towns.", hint: "Past Simple : swam, visited…" },
+      { npc: "How long did you stay?", ok: ["\\b(a week|two weeks|ten days|\\w+ (days|weeks|nights)|for \\w+|\\d)"], model: "We stayed for a week.", hint: "Dis la durée avec for." },
+      { npc: "Sounds great! Did you like it?", ok: ["\\b(yes|no|loved|liked|enjoyed|it was|i did|i didn.t)\\b"], model: "Yes, I loved it!", hint: "Dis si tu as aimé." }] },
+    { title: "Quand tu étais petit(e)", icon: "🧸", scene: "Un ami te pose des questions sur ton enfance.", turns: [
+      { npc: "Where did you live when you were a child?", ok: ["\\b(i (used to live|lived|grew up)|in (a|the|my))\\b"], model: "I used to live in a small village.", hint: "Used to live / lived." },
+      { npc: "What did you use to do after school?", ok: ["\\b(i used to|i (played|watched|rode|read|did))\\b"], model: "I used to play football with my friends.", hint: "I used to + verbe." },
+      { npc: "Do you still do that?", ok: ["\\b(yes|no|not any ?more|no longer|sometimes|i still|i do|i don.t)\\b"], model: "No, not any more.", hint: "Réponds avec not any more." },
+      { npc: "Times change! Thanks for sharing.", ok: ["\\b(thanks|thank you|yes|true|you.re welcome|bye)\\b"], model: "Yes, times change!", hint: "Réponds gentiment." }] },
+  ],
 };
