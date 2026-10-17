@@ -85,3 +85,9 @@ Scènes `assets/img/lesson/` : scene-a23-interrupt, meanwhile, suddenly, moment,
 Roots City `assets/img/city/` : a23-m1 à a23-m6.
 « Décris l'image » `assets/img/lesson/` : describe-a23-playground (cour de récréation), describe-a23-station (quai de gare). Aucun texte lisible, écrans éteints.
 Le prompt complet en français (un seul texte, noms de fichiers inclus) a été donné dans la conversation.
+
+## A2.4 « Mes projets » — 16 images à fournir
+Scènes `assets/img/lesson/` : scene-a24-plan, decision, prediction, booking, appointment, trip, restaurant, weekend.
+Roots City `assets/img/city/` : a24-m1 à a24-m6.
+« Décris l'image » `assets/img/lesson/` : describe-a24-agency (agence de voyages), describe-a24-party (préparatifs de fête). Aucun texte lisible, écrans éteints.
+Le prompt complet en français (un seul texte, noms de fichiers inclus) a été donné dans la conversation.

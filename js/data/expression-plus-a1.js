@@ -330,4 +330,36 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis ce que faisaient d'autres personnes.", "Les autres", "(man|woman|boy|girl|people|someone|he|she|they) (was|were) \\w+ing"],
       ["Dis ce que tu as fait.", "Ta réaction", "i (called|ran|stopped|shouted|helped|went|took|waited|told)"]]),
   ],
+  4: [
+    T("Décris l'image : l'agence de voyages", "🧭", "In this picture, a couple is looking at brochures. The travel agent is showing a map to them. A woman is talking on the phone and a child is touching a globe. Next summer I'm going to visit a new country. I'm going to book a flight and a hotel.", [
+      ["Dis ce que font les personnes.", "Les personnes", "is (looking|showing|talking|touching|helping|choosing)|are (looking|showing|talking|choosing|planning)"],
+      ["Dis ce que tu vois dans l'agence.", "L'agence", "brochure|map|globe|suitcase|desk|poster|computer|travel agent|counter|agency"],
+      ["Dis où tu vas aller un jour.", "Projet", "going to|will|plan|want to|next"],
+      ["Dis ce que tu vas réserver.", "Réserver", "book|reserve|hotel|flight|ticket"]], "describe-a24-agency"),
+    T("Décris l'image : la fête", "🎈", "In this picture, a family is getting ready for a party. The father is hanging lights and the mother is carrying a cake. Children are blowing up balloons. Next Saturday we're going to have a party in our garden.", [
+      ["Dis ce que font les personnes.", "Les personnes", "is (hanging|carrying|blowing|putting|setting|helping|cooking)|are (blowing|hanging|setting|putting|helping|cooking|carrying)"],
+      ["Dis ce qu'il y a sur la terrasse.", "La terrasse", "table|chairs|balloons|cake|lights|garden|dog|fruit|invitations"],
+      ["Dis quand la fête va avoir lieu.", "Quand", "next|this|on (saturday|sunday)|tomorrow|tonight|weekend"],
+      ["Dis ce que tu vas préparer pour une fête.", "Ta fête", "going to|will|prepare|make|bring|buy"]], "describe-a24-party"),
+    T("Mon week-end", "🏖️", "This weekend I'm going to visit my grandparents. On Saturday I'm meeting my friend Julie at the cinema. I think it will rain on Sunday, so I'll stay at home. I'm looking forward to the weekend!", [
+      ["Dis ce que tu vas faire ce week-end.", "Projet", "going to|will|planning"],
+      ["Dis un rendez-vous fixé.", "Rendez-vous", "(i.m|i am|we.re|we are) (meeting|seeing|having|visiting|going)"],
+      ["Fais une prévision.", "Prévision", "i think|probably|it will|will be|i hope"],
+      ["Dis si tu as hâte.", "Hâte", "looking forward|can.t wait|excited"]]),
+    T("Un rendez-vous", "📅", "I'm seeing the dentist on Tuesday at four o'clock. I'm going to leave work early. I'll call the office if I'm late. After that I'm meeting a friend for coffee.", [
+      ["Dis avec qui tu as rendez-vous.", "Avec qui", "(i.m|i am) (seeing|meeting|visiting)"],
+      ["Dis quand.", "Quand", "on (monday|tuesday|wednesday|thursday|friday|saturday|sunday)|at (one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\\d+)|tomorrow|next"],
+      ["Dis ce que tu vas faire avant.", "Avant", "going to|will|leave|call"],
+      ["Dis ce que tu fais après.", "Après", "after|then|later|afterwards"]]),
+    T("Un voyage à organiser", "🧳", "We're going to travel to Italy in August. I booked the flights last week and we're staying in a small hotel near the sea. I'm going to pack light. I think we'll have a wonderful time.", [
+      ["Dis où vous allez.", "Destination", "going to|travelling|traveling|flying|visiting|going"],
+      ["Dis ce que tu as réservé.", "Réservé", "booked|reserved|hotel|flight|tickets"],
+      ["Dis ce que tu vas emporter.", "Valise", "pack|take|bring|suitcase"],
+      ["Fais une prévision.", "Prévision", "i think|probably|will|hope"]]),
+    T("Ma résolution de l'année", "🌱", "This year I'm going to learn to cook. I intend to take a cooking class in March. I'll cook one new recipe every week. I think my family will be very happy!", [
+      ["Dis ce que tu vas apprendre ou changer.", "Objectif", "going to|intend to|want to|will"],
+      ["Dis quand tu vas commencer.", "Début", "in (january|february|march|april|may|june|july|august|september|october|november|december)|next \\w+|tomorrow|soon|this \\w+"],
+      ["Dis comment tu vas faire.", "Comment", "i.ll|i will|going to|by|every|class|course"],
+      ["Fais une prévision.", "Prévision", "i think|probably|hope|will be"]]),
+  ],
 };

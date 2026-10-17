@@ -21,4 +21,9 @@ export const SITUATIONS_A2 = {
     S("🔄", "Say two things that happened at the same time.", "Utilise « while ».", "\\bwhile\\b.*\\b(was|were)\\s+\\w+ing\\b", "While I was reading, he was watching TV."),
     S("🌧️", "Say what happened suddenly while you were out.", "Utilise « when » et le Past Simple.", "\\b(was|were)\\s+\\w+ing\\b.*\\bwhen\\b|\\bwhen\\b.*\\b(was|were)\\s+\\w+ing\\b", "We were walking when it started to rain."),
   ],
+  "A2.4": [
+    S("🗓️", "Say one thing you are going to do next weekend.", "Utilise « going to ».", "\\b(i.m|i am) going to\\s+\\w+", "I'm going to visit my parents."),
+    S("🤝", "Offer to help someone right now.", "Utilise « I'll ».", "\\bi.ll\\s+\\w+|\\bi will\\s+\\w+", "I'll carry your bag."),
+    S("🏨", "Book a table or a room.", "Commence par « I'd like to… ».", "\\bi.d like to (book|reserve|have)\\b|\\bi would like to (book|reserve|have)\\b", "I'd like to book a table for two."),
+  ],
 };

@@ -2507,6 +2507,623 @@
 - `VOCAB_A23` She whispered: “Follow me.”
 - `VOCAB_A23` “Whisper” veut dire…
 
+## A2.4 (774 lignes)
+
+- `EXERCISES_A24` Vocabulaire — Les projets
+- `EXERCISES_A24` Choisis le sens correct.
+- `EXERCISES_A24` plan de ville
+- `EXERCISES_A24` intend to
+- `EXERCISES_A24` avoir l'intention de
+- `EXERCISES_A24` Intend to.
+- `EXERCISES_A24` Arrange = organiser, fixer.
+- `EXERCISES_A24` look forward to
+- `EXERCISES_A24` regarder devant
+- `EXERCISES_A24` Look forward to.
+- `EXERCISES_A24` next month
+- `EXERCISES_A24` ce mois-ci
+- `EXERCISES_A24` le mois dernier
+- `EXERCISES_A24` le mois prochain
+- `EXERCISES_A24` Next month.
+- `EXERCISES_A24` Going to : la forme
+- `EXERCISES_A24` am / is / are + going to.
+- `EXERCISES_A24` I ___ going to visit my aunt.
+- `EXERCISES_A24` She ___ going to study law.
+- `EXERCISES_A24` She → is.
+- `EXERCISES_A24` We ___ going to travel in July.
+- `EXERCISES_A24` We → are.
+- `EXERCISES_A24` They're going to ___ a hotel.
+- `EXERCISES_A24` Going to + base.
+- `EXERCISES_A24` He ___ going to buy a car.
+- `EXERCISES_A24` I'm going to ___ English.
+- `EXERCISES_A24` Are you going to… ? / I'm not going to… ⚠ espacement/ponctuation
+- `EXERCISES_A24` ___ you going to travel this summer?
+- `EXERCISES_A24` Are you going to… ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` What ___ they going to do?
+- `EXERCISES_A24` What are they going to do?
+- `EXERCISES_A24` He isn't going to come.
+- `EXERCISES_A24` Is she going to call you? — No, she ___.
+- `EXERCISES_A24` No, she isn't.
+- `EXERCISES_A24` We aren't going to stay.
+- `EXERCISES_A24` Where ___ you going to sleep?
+- `EXERCISES_A24` Where are you going to sleep?
+- `EXERCISES_A24` 'm going to make
+- `EXERCISES_A24` Sur le moment : will.
+- `EXERCISES_A24` 'm going to open
+- `EXERCISES_A24` Sur le moment : I'll open.
+- `EXERCISES_A24` 'm going to carry
+- `EXERCISES_A24` 'll carry
+- `EXERCISES_A24` At the restaurant: “I ___ the soup, please.”
+- `EXERCISES_A24` 'm going to have
+- `EXERCISES_A24` On commande avec I'll have.
+- `EXERCISES_A24` 'll close
+- `EXERCISES_A24` 'm going to close
+- `EXERCISES_A24` Sur le moment : I'll close.
+- `EXERCISES_A24` 'm going to go
+- `EXERCISES_A24` Sur le moment : I'll go.
+- `EXERCISES_A24` I think … will …
+- `EXERCISES_A24` I think it ___ rain tomorrow.
+- `EXERCISES_A24` She ___ probably win.
+- `EXERCISES_A24` Will probably.
+- `EXERCISES_A24` I don't think he ___ come.
+- `EXERCISES_A24` I don't think he will come.
+- `EXERCISES_A24` Next year ___ be a good year.
+- `EXERCISES_A24` Will + be.
+- `EXERCISES_A24` They ___ be late, I think.
+- `EXERCISES_A24` I think you ___ love this film.
+- `EXERCISES_A24` Will love.
+- `EXERCISES_A24` Won't et probably
+- `EXERCISES_A24` I ___ tell anyone. (promesse)
+- `EXERCISES_A24` I won't tell.
+- `EXERCISES_A24` She will ___ stay at home.
+- `EXERCISES_A24` It ___ be easy.
+- `EXERCISES_A24` It won't be easy.
+- `EXERCISES_A24` He'll ___ come late.
+- `EXERCISES_A24` We ___ forget your birthday!
+- `EXERCISES_A24` We won't forget.
+- `EXERCISES_A24` Will you help me? — Yes, I ___.
+- `EXERCISES_A24` Yes, I will.
+- `EXERCISES_A24` I ___ my dentist at five tomorrow.
+- `EXERCISES_A24` am seeing
+- `EXERCISES_A24` are flying
+- `EXERCISES_A24` Are flying.
+- `EXERCISES_A24` ___ you doing anything tonight?
+- `EXERCISES_A24` Are you doing… ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` She ___ a new job on Monday.
+- `EXERCISES_A24` is starting
+- `EXERCISES_A24` Is starting.
+- `EXERCISES_A24` They ___ dinner with us tonight.
+- `EXERCISES_A24` are having
+- `EXERCISES_A24` Are having.
+- `EXERCISES_A24` I ___ Tom at the station at six.
+- `EXERCISES_A24` am meeting
+- `EXERCISES_A24` Am meeting.
+- `EXERCISES_A24` Going to, will ou Present Continuous ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` Quelle forme pour quelle situation ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` Look at those clouds! It ___ rain.
+- `EXERCISES_A24` are going to
+- `EXERCISES_A24` is going to
+- `EXERCISES_A24` Preuve visible : is going to.
+- `EXERCISES_A24` I've decided: I ___ learn Spanish.
+- `EXERCISES_A24` 'm going to
+- `EXERCISES_A24` Sur le moment : I'll.
+- `EXERCISES_A24` are seeing
+- `EXERCISES_A24` Are seeing.
+- `EXERCISES_A24` I think it ___ be a great party.
+- `EXERCISES_A24` Tonight I ___ dinner with Tom at eight.
+- `EXERCISES_A24` 'm having
+- `EXERCISES_A24` Rendez-vous : I'm having.
+- `EXERCISES_A24` I'd like ___ a table for four.
+- `EXERCISES_A24` I'd like to book.
+- `EXERCISES_A24` ___ you have any rooms available?
+- `EXERCISES_A24` Do you have… ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` Could I ___ a double room?
+- `EXERCISES_A24` Could I have.
+- `EXERCISES_A24` What time is ___?
+- `EXERCISES_A24` check out
+- `EXERCISES_A24` Check-out (nom).
+- `EXERCISES_A24` I have a ___ in the name of Brown.
+- `EXERCISES_A24` Reservation (nom).
+- `EXERCISES_A24` How many ___ are you staying?
+- `EXERCISES_A24` How many nights.
+- `EXERCISES_A24` Le futur : mots de temps
+- `EXERCISES_A24` next, in, tomorrow, tonight…
+- `EXERCISES_A24` See you ___ week!
+- `EXERCISES_A24` Next week.
+- `EXERCISES_A24` The train leaves ___ two hours.
+- `EXERCISES_A24` I'm looking forward to ___ you.
+- `EXERCISES_A24` Look forward to + -ing.
+- `EXERCISES_A24` I'm going to the cinema ___. (ce soir)
+- `EXERCISES_A24` today night
+- `EXERCISES_A24` this night
+- `EXERCISES_A24` We're leaving ___ Friday.
+- `EXERCISES_A24` On Friday.
+- `EXERCISES_A24` early soon
+- `EXERCISES_A24` Mise en situation
+- `EXERCISES_A24` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A24` You say your plan:
+- `EXERCISES_A24` I'll to visit my parents.
+- `EXERCISES_A24` I going visit my parents.
+- `EXERCISES_A24` I'm going to visit my parents.
+- `EXERCISES_A24` You offer help at the moment:
+- `EXERCISES_A24` I'll help you!
+- `EXERCISES_A24` I'm helping you tomorrow!
+- `EXERCISES_A24` I helping!
+- `EXERCISES_A24` I'll + base.
+- `EXERCISES_A24` You predict rain:
+- `EXERCISES_A24` I think it will to rain.
+- `EXERCISES_A24` I think it going to rains.
+- `EXERCISES_A24` I think it will rain.
+- `EXERCISES_A24` You book a table:
+- `EXERCISES_A24` I want book table two.
+- `EXERCISES_A24` I'd like to book a table for two.
+- `EXERCISES_A24` I'd like book a table.
+- `EXERCISES_A24` You say you have an appointment:
+- `EXERCISES_A24` I'm meeting the doctor at three.
+- `EXERCISES_A24` I meet doctor at three tomorrow.
+- `EXERCISES_A24` I'm meet the doctor at three.
+- `EXERCISES_A24` Present Continuous.
+- `EXERCISES_A24` You say you look forward to something:
+- `EXERCISES_A24` I look forward see you.
+- `EXERCISES_A24` I'm looking forward to see you.
+- `EXERCISES_A24` I'm looking forward to seeing you.
+- `EXERCISES_A24` plat principal
+- `EXPRESSION_A24` Mes projets de vacances
+- `EXPRESSION_A24` Dis quand tu pars.
+- `EXPRESSION_A24` Next summer I'm going to visit Portugal. I'm leaving in July. I'm going to swim in the sea and eat fresh fish. I'm really looking forward to it!
+- `EXPRESSION_A24` Quand tu pars
+- `EXPRESSION_A24` Ce que tu vas faire
+- `EXPRESSION_A24` Dis pour combien de nuits ou de personnes.
+- `EXPRESSION_A24` Dis quand tu arrives.
+- `EXPRESSION_A24` Hello, I'd like to book a double room, please. It's for three nights. We're arriving on Friday evening. Is breakfast included?
+- `EXPRESSION_A24` Nuits ou personnes
+- `EXPRESSION_A24` Quand tu arrives
+- `EXPRESSION_A24` Une question
+- `GRAMMAR_A24` am / is / are + going to + base
+- `GRAMMAR_A24` She's going to study medicine.
+- `GRAMMAR_A24` she's = she is
+- `GRAMMAR_A24` We're not going to travel this year.
+- `GRAMMAR_A24` not going to
+- `GRAMMAR_A24` Are you going to book a hotel?
+- `GRAMMAR_A24` Are + sujet + going to
+- `GRAMMAR_A24` They're going to buy a new house.
+- `GRAMMAR_A24` Ils vont acheter une nouvelle maison.
+- `GRAMMAR_A24` I'm going to learn English this year.
+- `GRAMMAR_A24` I → am going to.
+- `GRAMMAR_A24` she → is going to.
+- `GRAMMAR_A24` We're going to ___ a hotel.
+- `GRAMMAR_A24` going to + base verbale.
+- `GRAMMAR_A24` Is he going to come?
+- `GRAMMAR_A24` Va-t-il venir ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` Is + sujet + going to
+- `GRAMMAR_A24` What are you going to do?
+- `GRAMMAR_A24` Qu'allez-vous faire ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` mot interrogatif + are / is
+- `GRAMMAR_A24` I'm not going to say anything.
+- `GRAMMAR_A24` Je ne vais rien dire.
+- `GRAMMAR_A24` 'm not / isn't / aren't
+- `GRAMMAR_A24` Yes, I am. / No, I'm not.
+- `GRAMMAR_A24` Oui. / Non.
+- `GRAMMAR_A24` Is she going to call you? — No, she isn't.
+- `GRAMMAR_A24` Va-t-elle t'appeler ? — Non. ⚠ espacement/ponctuation
+- `GRAMMAR_A24` Are you going to…?
+- `GRAMMAR_A24` I'll help you with that.
+- `GRAMMAR_A24` I'll have the soup, please.
+- `GRAMMAR_A24` Je prendrai la soupe.
+- `GRAMMAR_A24` commande, offre
+- `GRAMMAR_A24` I'll call you tonight.
+- `GRAMMAR_A24` Je t'appelle ce soir.
+- `GRAMMAR_A24` I won't tell anyone.
+- `GRAMMAR_A24` won't = will not
+- `GRAMMAR_A24` The phone is ringing. — I'll get it!
+- `GRAMMAR_A24` It's cold. I'll close the window.
+- `GRAMMAR_A24` I think it will rain tomorrow.
+- `GRAMMAR_A24` Je pense qu'il pleuvra demain.
+- `GRAMMAR_A24` I think + will (opinion)
+- `GRAMMAR_A24` She'll probably win.
+- `GRAMMAR_A24` Elle va probablement gagner.
+- `GRAMMAR_A24` I don't think he'll come.
+- `GRAMMAR_A24` Je ne pense pas qu'il viendra.
+- `GRAMMAR_A24` don't think + will
+- `GRAMMAR_A24` It will be sunny next week.
+- `GRAMMAR_A24` Il fera beau la semaine prochaine.
+- `GRAMMAR_A24` will + be
+- `GRAMMAR_A24` I think you will love this film.
+- `GRAMMAR_A24` Je pense que tu vas adorer ce film.
+- `GRAMMAR_A24` They'll probably be late.
+- `GRAMMAR_A24` Ils seront probablement en retard.
+- `GRAMMAR_A24` She will ___ win.
+- `GRAMMAR_A24` Adverbe : probably.
+- `GRAMMAR_A24` We're flying to Rome on Friday.
+- `GRAMMAR_A24` Nous prenons l'avion pour Rome vendredi.
+- `GRAMMAR_A24` She's starting a new job next Monday.
+- `GRAMMAR_A24` Elle commence un nouveau travail lundi.
+- `GRAMMAR_A24` Are you doing anything tonight?
+- `GRAMMAR_A24` Fais-tu quelque chose ce soir ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` question sur un programme
+- `GRAMMAR_A24` I'm having dinner with Tom tonight.
+- `GRAMMAR_A24` They're getting married in June.
+- `GRAMMAR_A24` Ils se marient en juin.
+- `GRAMMAR_A24` Are you doing…?
+- `GRAMMAR_A24` I'm going to learn Spanish.
+- `GRAMMAR_A24` Je vais apprendre l'espagnol.
+- `GRAMMAR_A24` I'll help you.
+- `GRAMMAR_A24` Je vais t'aider.
+- `GRAMMAR_A24` I'm having dinner with Tom at eight.
+- `GRAMMAR_A24` Look at those clouds! It's going to rain.
+- `GRAMMAR_A24` Regarde ces nuages ! Il va pleuvoir. ⚠ espacement/ponctuation
+- `GRAMMAR_A24` preuve visible : going to
+- `GRAMMAR_A24` I've decided: I'm going to change jobs.
+- `GRAMMAR_A24` The phone is ringing. I'll get it!
+- `GRAMMAR_A24` Sur le moment : I'll get it.
+- `GRAMMAR_A24` I'd like to + base
+- `GRAMMAR_A24` Do you have any rooms available?
+- `GRAMMAR_A24` Avez-vous des chambres disponibles ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` Do you have + nom ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` Could I have a double room for three nights?
+- `GRAMMAR_A24` Puis-je avoir une chambre double pour trois nuits ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` Could I have… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` What time is check-out?
+- `GRAMMAR_A24` What time… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A24` I have a reservation in the name of Brown.
+- `GRAMMAR_A24` Is breakfast included?
+- `GRAMMAR_A24` I'd like to + base.
+- `GRAMMAR_A24` Could I + base.
+- `GRAMMAR_A24` Parler du futur : mots utiles
+- `GRAMMAR_A24` tomorrow / tonight
+- `GRAMMAR_A24` demain / ce soir
+- `GRAMMAR_A24` next week / next year
+- `GRAMMAR_A24` sans “the”, sans “in”
+- `GRAMMAR_A24` in two days
+- `GRAMMAR_A24` dans deux jours
+- `GRAMMAR_A24` look forward to + -ing
+- `GRAMMAR_A24` The train leaves in two hours.
+- `GRAMMAR_A24` Le train part dans deux heures.
+- `GRAMMAR_A24` See you next week!
+- `GRAMMAR_A24` next week (sans “the”).
+- `GRAMMAR_A24` look forward to + -ing.
+- `LISTENING_A24` Next weekend
+- `LISTENING_A24` What are you doing next weekend? I'm visiting my grandparents. We're having lunch at their house on Saturday, and on Sunday I'm going to help my grandfather in the garden.
+- `LISTENING_A24` Who is the speaker visiting?
+- `LISTENING_A24` His friends
+- `LISTENING_A24` His cousins
+- `LISTENING_A24` His grandparents
+- `LISTENING_A24` His grandparents.
+- `LISTENING_A24` What is he going to do on Sunday?
+- `LISTENING_A24` Go to the cinema
+- `LISTENING_A24` Help in the garden
+- `LISTENING_A24` Cook lunch
+- `LISTENING_A24` Help his grandfather in the garden.
+- `LISTENING_A24` At the hotel
+- `LISTENING_A24` Good evening. I have a reservation for two nights in the name of Brown. Yes, a double room. Breakfast is from seven to ten. Here is your key. Enjoy your stay!
+- `LISTENING_A24` How many nights is the reservation for?
+- `LISTENING_A24` Two nights.
+- `LISTENING_A24` When is breakfast?
+- `LISTENING_A24` From ten to noon
+- `LISTENING_A24` From six to eight
+- `LISTENING_A24` From seven to ten
+- `LISTENING_A24` From seven to ten.
+- `LISTENING_A24` A spontaneous offer
+- `LISTENING_A24` Oh, you have a lot of bags! I'll carry one for you. Thank you, that's very kind. No problem. Where are you going? To the bus station.
+- `LISTENING_A24` What will he do?
+- `LISTENING_A24` Call a taxi
+- `LISTENING_A24` Carry one bag
+- `LISTENING_A24` Buy a ticket
+- `LISTENING_A24` I'll carry one for you.
+- `LISTENING_A24` Where is she going?
+- `LISTENING_A24` To the bus station
+- `LISTENING_A24` To the airport
+- `LISTENING_A24` To the market
+- `LISTENING_A24` To the bus station.
+- `LISTENING_A24` The forecast
+- `LISTENING_A24` Here is the weather forecast. Tomorrow morning it will be cloudy, but in the afternoon it will be sunny and warm. On Sunday it will probably rain.
+- `LISTENING_A24` What will the weather be like tomorrow afternoon?
+- `LISTENING_A24` Sunny and warm
+- `LISTENING_A24` Sunny and warm.
+- `LISTENING_A24` What about Sunday?
+- `LISTENING_A24` It will probably rain
+- `LISTENING_A24` It will snow
+- `LISTENING_A24` It will be hot
+- `LISTENING_A24` It will probably rain.
+- `LISTENING_A24` Booking a table
+- `LISTENING_A24` Hello, I'd like to book a table for four people on Saturday at eight o'clock. Certainly. What's the name, please? The name is Smith. Thank you. See you on Saturday!
+- `LISTENING_A24` How many people is the table for?
+- `LISTENING_A24` Four people.
+- `LISTENING_A24` Which day is the booking?
+- `LISTENING_A24` On Saturday.
+- `LISTENING_A24` The doctor's appointment
+- `LISTENING_A24` I'm seeing the doctor at three o'clock tomorrow. After that I'm meeting my friend for coffee. Then I'm going to buy some fruit at the market.
+- `LISTENING_A24` When is the doctor's appointment?
+- `LISTENING_A24` At three tomorrow
+- `LISTENING_A24` At six tonight
+- `LISTENING_A24` On Friday
+- `LISTENING_A24` At three o'clock tomorrow.
+- `LISTENING_A24` What is she doing after the doctor?
+- `LISTENING_A24` Going home
+- `LISTENING_A24` Meeting a friend for coffee
+- `LISTENING_A24` Meeting her friend for coffee.
+- `LISTENING_A24` A new job
+- `LISTENING_A24` Next Monday I'm starting a new job. I'm going to work in a bank. I'm a bit nervous, but I think it will be a good experience.
+- `LISTENING_A24` When is he starting?
+- `LISTENING_A24` Next year
+- `LISTENING_A24` Next Monday
+- `LISTENING_A24` Next Monday.
+- `LISTENING_A24` Where is he going to work?
+- `LISTENING_A24` In a bank
+- `LISTENING_A24` In a school
+- `LISTENING_A24` In a shop
+- `LISTENING_A24` In a bank.
+- `LISTENING_A24` How does he feel?
+- `LISTENING_A24` Very angry
+- `LISTENING_A24` A bit nervous
+- `LISTENING_A24` A bit nervous.
+- `LISTENING_A24` We're leaving on Friday morning, so tonight I'm going to pack the suitcases. I'll take sunglasses and a camera. I think we'll need warm clothes too, because the mountains are cold.
+- `LISTENING_A24` When are they leaving?
+- `LISTENING_A24` On Friday morning
+- `LISTENING_A24` On Sunday
+- `LISTENING_A24` On Friday morning.
+- `LISTENING_A24` What will he take?
+- `LISTENING_A24` Sunglasses and a camera
+- `LISTENING_A24` Sunglasses and a camera.
+- `LISTENING_A24` Why warm clothes?
+- `LISTENING_A24` It is winter at home
+- `LISTENING_A24` The mountains are cold
+- `LISTENING_A24` He likes them
+- `LISTENING_A24` Because the mountains are cold.
+- `LISTENING_A24` Changing plans
+- `LISTENING_A24` I'm sorry, I can't come on Saturday. I'm working. Oh, that's a pity. What about Sunday? Sunday is fine. I'll meet you at the station at ten.
+- `LISTENING_A24` Why can't he come on Saturday?
+- `LISTENING_A24` He's working
+- `LISTENING_A24` He's travelling
+- `LISTENING_A24` He's working.
+- `LISTENING_A24` Where will they meet?
+- `LISTENING_A24` At the cinema
+- `LISTENING_A24` At the station
+- `LISTENING_A24` At the station, at ten.
+- `LISTENING_A24` This year I'm going to learn to swim. I'm going to start in January. I think it will be difficult, but my sister will help me. I'm really looking forward to it.
+- `LISTENING_A24` What is the speaker going to learn?
+- `LISTENING_A24` Who will help?
+- `LISTENING_A24` His friend
+- `LISTENING_A24` His teacher
+- `LISTENING_A24` His sister
+- `LISTENING_A24` His sister.
+- `MISSIONS_A24` Construis la phrase
+- `MISSIONS_A24` Remets les mots dans l'ordre.
+- `MISSIONS_A24` La bonne forme
+- `MISSIONS_A24` Am, is, are, will ou -ing ? ⚠ espacement/ponctuation
+- `MISSIONS_A24` Going to, will ou -ing ? ⚠ espacement/ponctuation
+- `MISSIONS_A24` Choisis la forme qui convient.
+- `MISSIONS_A24` Raconte un projet
+- `MISSIONS_A24` Compose ta phrase avec la fiche.
+- `READING_A24` Next month I'm going to Japan for two weeks. I booked my flight in January and I'm staying in a small hotel in Kyoto. I'm going to visit temples and I'm going to try real sushi. I'm also learning a few words of Japanese on my phone. I'm really looking forward to it!
+- `READING_A24` How long is Sara going to stay in Japan?
+- `READING_A24` Two months
+- `READING_A24` Two weeks
+- `READING_A24` She's going for two weeks.
+- `READING_A24` What is she going to visit?
+- `READING_A24` She's going to visit temples.
+- `READING_A24` This Saturday I'm meeting my friends at the cinema at six. After the film we're going to have a pizza. On Sunday I'm not going to do anything special: I'm going to stay at home and read. I think it will rain, so it's a good plan.
+- `READING_A24` What time is Ben meeting his friends?
+- `READING_A24` At six, at the cinema.
+- `READING_A24` Go to the beach
+- `READING_A24` Stay at home and read
+- `READING_A24` Play football
+- `READING_A24` He's going to stay at home and read.
+- `READING_A24` Why is it a good plan?
+- `READING_A24` He thinks it will rain
+- `READING_A24` It is cheap
+- `READING_A24` His friends are busy
+- `READING_A24` Hello, I'd like to book a double room for three nights, please. We arrive on Friday and we leave on Monday. Is breakfast included? Yes? Great. Our flight lands at ten in the evening, so we'll check in late. Is that a problem? No? Thank you very much!
+- `READING_A24` How many nights is the booking for?
+- `READING_A24` For three nights.
+- `READING_A24` When do they arrive?
+- `READING_A24` On Monday
+- `READING_A24` They arrive on Friday.
+- `READING_A24` Why will they check in late?
+- `READING_A24` Their flight lands late
+- `READING_A24` They love sleeping
+- `READING_A24` The hotel is far
+- `READING_A24` Their flight lands at ten in the evening.
+- `READING_A24` Last night my neighbour was carrying heavy boxes up the stairs. I said: “I'll help you!” Now it's a plan: tomorrow I'm going to help her again, and we're starting at nine o'clock. I think we'll finish before lunch. After that she's going to cook for me.
+- `READING_A24` What did Carlos say to his neighbour?
+- `READING_A24` “Be careful!”
+- `READING_A24` “Good morning!”
+- `READING_A24` “I'll help you!”
+- `READING_A24` He said: I'll help you!
+- `READING_A24` What time are they starting tomorrow?
+- `READING_A24` We're starting at nine o'clock.
+- `READING_A24` What does he think?
+- `READING_A24` It will rain
+- `READING_A24` It will be impossible
+- `READING_A24` They will finish before lunch
+- `READING_A24` I think we'll finish before lunch.
+- `READING_A24` The forecast says that tomorrow will be sunny and hot, so we're going to have a picnic by the lake. I think the children will want to swim, so I'm going to pack their swimming costumes. On Sunday it will probably rain. We'll stay at home and play board games.
+- `READING_A24` What will the weather be like tomorrow?
+- `READING_A24` Sunny and hot
+- `READING_A24` Cold and windy
+- `READING_A24` Sunny and hot.
+- `READING_A24` What is she going to pack?
+- `READING_A24` Swimming costumes
+- `READING_A24` Warm coats
+- `READING_A24` Their swimming costumes.
+- `READING_A24` What will they do on Sunday?
+- `READING_A24` Visit friends
+- `READING_A24` Go to the lake
+- `READING_A24` Stay at home and play games
+- `READING_A24` They'll stay at home and play board games.
+- `READING_A24` I work in a shop now, but I'm not going to stay there for ever. I intend to study computer science at night school. The course starts in September and I already paid for the first term. In five years I think I'll be a programmer. It will be hard, but I'm sure I can do it.
+- `READING_A24` Where does Dev work now?
+- `READING_A24` In an office
+- `READING_A24` He works in a shop.
+- `READING_A24` When does the course start?
+- `READING_A24` In September
+- `READING_A24` In January
+- `READING_A24` Next week
+- `READING_A24` The course starts in September.
+- `READING_A24` What does he think he will be in five years?
+- `READING_A24` A teacher
+- `READING_A24` A programmer
+- `READING_A24` A manager
+- `READING_A24` I think I'll be a programmer.
+- `READING_A24` It's my mother's birthday on Friday, so I'm going to book a table at her favourite restaurant. I phoned yesterday and the waiter said: “A table for six at eight o'clock? No problem.” We're meeting there at a quarter to eight. I'm going to bring a small cake and the waiter will bring a candle.
+- `READING_A24` Whose birthday is it?
+- `READING_A24` Her mother's
+- `READING_A24` Her sister's
+- `READING_A24` Her friend's
+- `READING_A24` It's her mother's birthday.
+- `READING_A24` A table for six.
+- `READING_A24` What time is the table?
+- `READING_A24` At six o'clock
+- `READING_A24` At eight o'clock
+- `READING_A24` At eight o'clock.
+- `READING_A24` On Sunday I wanted to go to the beach, but the forecast changed. Now I'm not going to go. Instead I'm meeting my sister for lunch and we're going to see an exhibition. I'll send her a message tonight to confirm. I'm happy because I'm looking forward to seeing her.
+- `READING_A24` Why did Paul change his plan?
+- `READING_A24` The forecast changed
+- `READING_A24` He was ill
+- `READING_A24` He lost his keys
+- `READING_A24` The forecast changed.
+- `READING_A24` Who is he meeting?
+- `READING_A24` His neighbour
+- `READING_A24` He's meeting his sister for lunch.
+- `READING_A24` What will he do tonight?
+- `READING_A24` Cook dinner
+- `READING_A24` Send her a message
+- `READING_A24` I'll send her a message tonight.
+- `TEST_AUDIOS_A24` Go shopping
+- `TEST_AUDIOS_A24` How many nights is the reservation?
+- `TEST_AUDIOS_A24` What will tomorrow afternoon be like?
+- `TEST_AUDIOS_A24` When is the booking?
+- `TEST_AUDIOS_A24` On Friday at six
+- `TEST_AUDIOS_A24` On Saturday at eight
+- `TEST_AUDIOS_A24` On Sunday at noon
+- `TEST_AUDIOS_A24` When is the appointment?
+- `TEST_AUDIOS_A24` What will she buy?
+- `TEST_AUDIOS_A24` Some flowers
+- `TEST_AUDIOS_A24` Some bread
+- `TEST_AUDIOS_A24` Some fruit
+- `TEST_AUDIOS_A24` Why do they need warm clothes?
+- `TEST_AUDIOS_A24` They like them
+- `TEST_GRAMMAR_A24` “Look forward to” means…
+- `TEST_GRAMMAR_A24` “Available” means…
+- `TEST_GRAMMAR_A24` “Luggage” means…
+- `TEST_GRAMMAR_A24` “Bill” (au restaurant) means…
+- `TEST_GRAMMAR_A24` “Postpone” means…
+- `TEST_GRAMMAR_A24` “Forecast” means…
+- `TEST_TEXTS_A24` Next month I'm going to Japan for two weeks. I booked my flight in January and I'm staying in a small hotel in Kyoto. I'm going to visit temples and I'm going to try real sushi. I'm really looking forward to it!
+- `TEST_TEXTS_A24` How long is she going to stay?
+- `TEST_TEXTS_A24` Where is she staying?
+- `TEST_TEXTS_A24` In a tent
+- `TEST_TEXTS_A24` With friends
+- `TEST_TEXTS_A24` In a small hotel
+- `TEST_TEXTS_A24` What is she going to try?
+- `TEST_TEXTS_A24` This Saturday I'm meeting my friends at the cinema at six. After the film we're going to have a pizza. On Sunday I'm going to stay at home and read. I think it will rain, so it's a good plan.
+- `TEST_TEXTS_A24` Where is he meeting his friends?
+- `TEST_TEXTS_A24` At a restaurant
+- `TEST_TEXTS_A24` At the park
+- `TEST_TEXTS_A24` What are they going to eat?
+- `TEST_TEXTS_A24` Why is staying at home a good plan?
+- `TEST_TEXTS_A24` He is tired
+- `TEST_TEXTS_A24` He has no money
+- `TEST_TEXTS_A24` Hello, I'd like to book a double room for three nights, please. We arrive on Friday and we leave on Monday. Is breakfast included? Our flight lands at ten in the evening, so we'll check in late.
+- `TEST_TEXTS_A24` What does she want to book?
+- `TEST_TEXTS_A24` A double room
+- `TEST_TEXTS_A24` When do they leave?
+- `TEST_TEXTS_A24` What does she ask about?
+- `TEST_TEXTS_A24` The price
+- `TEST_TEXTS_A24` Last night my neighbour was carrying heavy boxes up the stairs. I said: “I'll help you!” Now it's a plan: tomorrow I'm going to help her again, and we're starting at nine o'clock. I think we'll finish before lunch.
+- `TEST_TEXTS_A24` Who does Carlos help?
+- `TEST_TEXTS_A24` His brother
+- `TEST_TEXTS_A24` When are they starting?
+- `TEST_TEXTS_A24` They'll finish before lunch
+- `TEST_TEXTS_A24` It will be too hard
+- `TEST_TEXTS_A24` The forecast says that tomorrow will be sunny and hot, so we're going to have a picnic by the lake. I think the children will want to swim, so I'm going to pack their swimming costumes. On Sunday it will probably rain.
+- `TEST_TEXTS_A24` Where is the picnic?
+- `TEST_TEXTS_A24` At the beach
+- `TEST_TEXTS_A24` In the park
+- `TEST_TEXTS_A24` By the lake
+- `TEST_TEXTS_A24` What will the children want to do?
+- `TEST_TEXTS_A24` What will the weather be on Sunday?
+- `TEST_TEXTS_A24` I work in a shop now, but I'm not going to stay there for ever. I intend to study computer science at night school. The course starts in September. In five years I think I'll be a programmer.
+- `TEST_TEXTS_A24` Where does he work now?
+- `TEST_TEXTS_A24` What does he intend to study?
+- `TEST_TEXTS_A24` Computer science
+- `TEST_TEXTS_A24` It's my mother's birthday on Friday, so I'm going to book a table at her favourite restaurant. The waiter said: “A table for six at eight o'clock? No problem.” We're meeting there at a quarter to eight. I'm going to bring a small cake.
+- `TEST_TEXTS_A24` What is Elena going to book?
+- `TEST_TEXTS_A24` How many people are coming?
+- `TEST_TEXTS_A24` What is she going to bring?
+- `TEST_TEXTS_A24` A small cake
+- `TEST_TEXTS_A24` On Sunday I wanted to go to the beach, but the forecast changed. Now I'm not going to go. Instead I'm meeting my sister for lunch and we're going to see an exhibition. I'll send her a message tonight to confirm.
+- `TEST_TEXTS_A24` Is Paul going to the beach?
+- `TEST_TEXTS_A24` What are they going to see?
+- `TEST_TEXTS_A24` An exhibition
+- `TEST_TEXTS_A24` When will he send the message?
+- `VOCAB_A24` Parler de ses projets
+- `VOCAB_A24` I'm going to visit my parents next week.
+- `VOCAB_A24` I'll help you with your bags.
+- `VOCAB_A24` Je vais t'aider avec tes sacs.
+- `VOCAB_A24` I'm meeting the doctor at three o'clock.
+- `VOCAB_A24` Next month I'm going to visit Rome, and I'm looking forward to it.
+- `VOCAB_A24` Faire un plan
+- `VOCAB_A24` organiser / fixer
+- `VOCAB_A24` next week
+- `VOCAB_A24` la semaine prochaine
+- `VOCAB_A24` in the future
+- `VOCAB_A24` dans le futur
+- `VOCAB_A24` “Look forward to” est suivi d'un verbe en -ing : “I'm looking forward to seeing you.” (jamais l'infinitif).
+- `VOCAB_A24` We plan to travel in July.
+- `VOCAB_A24` I'm looking forward to the holidays.
+- `VOCAB_A24` “Look forward to” veut dire…
+- `VOCAB_A24` of course
+- `VOCAB_A24` no problem
+- `VOCAB_A24` I think so
+- `VOCAB_A24` je pense que oui
+- `VOCAB_A24` Let me carry your bags.
+- `VOCAB_A24` Laisse-moi porter tes sacs.
+- `VOCAB_A24` I promise I'll call you tonight.
+- `VOCAB_A24` Je promets que je t'appellerai ce soir.
+- `VOCAB_A24` “Carry” veut dire…
+- `VOCAB_A24` next year
+- `VOCAB_A24` je pense que
+- `VOCAB_A24` I hope the weather will be sunny.
+- `VOCAB_A24` “Forecast” veut dire…
+- `VOCAB_A24` single room
+- `VOCAB_A24` chambre simple
+- `VOCAB_A24` double room
+- `VOCAB_A24` chambre double
+- `VOCAB_A24` I'd like to book a double room for two nights.
+- `VOCAB_A24` “Available” veut dire…
+- `VOCAB_A24` Les rendez-vous
+- `VOCAB_A24` emploi du temps
+- `VOCAB_A24` I have an appointment at the dentist's.
+- `VOCAB_A24` J'ai rendez-vous chez le dentiste.
+- `VOCAB_A24` Are you free on Friday?
+- `VOCAB_A24` Es-tu libre vendredi ? ⚠ espacement/ponctuation
+- `VOCAB_A24` “Postpone” veut dire…
+- `VOCAB_A24` Deux enfants font leurs valises dans une chambre
+- `VOCAB_A24` faire ses valises
+- `VOCAB_A24` lunettes de soleil
+- `VOCAB_A24` guide touristique
+- `VOCAB_A24` Don't forget your passport!
+- `VOCAB_A24` N'oublie pas ton passeport ! ⚠ espacement/ponctuation
+- `VOCAB_A24` We're going abroad this summer.
+- `VOCAB_A24` “Passport” veut dire…
+- `VOCAB_A24` a table for four
+- `VOCAB_A24` une table pour quatre
+- `VOCAB_A24` carte / menu
+- `VOCAB_A24` main course
+- `VOCAB_A24` I'd like to book a table for four at eight.
+- `VOCAB_A24` Could we have the bill, please?
+- `VOCAB_A24` “Bill” veut dire…
+- `VOCAB_A24` Le week-end en famille
+- `VOCAB_A24` Une famille vote pour son programme du week-end
+- `VOCAB_A24` allons… / faisons…
+- `VOCAB_A24` why don't we…?
+- `VOCAB_A24` et si on… ? ⚠ espacement/ponctuation
+- `VOCAB_A24` Why don't we have a picnic on Sunday?
+- `VOCAB_A24` Et si on faisait un pique-nique dimanche ? ⚠ espacement/ponctuation
+- `VOCAB_A24` I agree with you.
+- `VOCAB_A24` Je suis d'accord avec toi.
+- `VOCAB_A24` “Agree” veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -2598,6 +3215,27 @@
 - `dialogues.A2.3.turns.hint` He was + verbe en -ing.
 - `dialogues.A2.3.turns.npc` Thank you for your help.
 - `dialogues.A2.3.turns.model` You're welcome!
+- `dialogues.A2.4.turns.npc` Good morning, Sunrise Hotel. How can I help you?
+- `dialogues.A2.4.turns.model` I'd like to book a double room, please.
+- `dialogues.A2.4.turns.hint` Demande poliment : I'd like to book…
+- `dialogues.A2.4.turns.npc` For how many nights?
+- `dialogues.A2.4.turns.model` For three nights, please.
+- `dialogues.A2.4.turns.npc` And when are you arriving?
+- `dialogues.A2.4.turns.model` We're arriving on Friday.
+- `dialogues.A2.4.turns.npc` Perfect. I'll book it for you. Is there anything else?
+- `dialogues.A2.4.turns.model` Is breakfast included?
+- `dialogues.A2.4.turns.hint` Pose une question ou remercie.
+- `dialogues.A2.4.title` Nos projets
+- `dialogues.A2.4.turns.npc` Hi! What are you doing this weekend?
+- `dialogues.A2.4.turns.model` I'm going to visit my parents.
+- `dialogues.A2.4.turns.hint` I'm going to + verbe, ou I'm + verbe en -ing.
+- `dialogues.A2.4.turns.npc` Nice! When are you leaving?
+- `dialogues.A2.4.turns.model` I'm leaving on Friday evening.
+- `dialogues.A2.4.turns.hint` Dis quand avec on, at ou tomorrow.
+- `dialogues.A2.4.turns.npc` Will you drive or take the train?
+- `dialogues.A2.4.turns.model` I'll take the train.
+- `dialogues.A2.4.turns.npc` Great! I think the weather will be nice.
+- `dialogues.A2.4.turns.model` I hope so too!
 
 ## situations
 
@@ -2635,8 +3273,17 @@
 - `situations.A2.3.cue` Say what happened suddenly while you were out.
 - `situations.A2.3.hint` Utilise « when » et le Past Simple.
 - `situations.A2.3.model` We were walking when it started to rain.
+- `situations.A2.4.cue` Say one thing you are going to do next weekend.
+- `situations.A2.4.hint` Utilise « going to ».
+- `situations.A2.4.model` I'm going to visit my parents.
+- `situations.A2.4.cue` Offer to help someone right now.
+- `situations.A2.4.hint` Utilise « I'll ».
+- `situations.A2.4.model` I'll carry your bag.
+- `situations.A2.4.cue` Book a table or a room.
+- `situations.A2.4.hint` Commence par « I'd like to… ».
+- `situations.A2.4.model` I'd like to book a table for two.
 
-## Alertes automatiques (52)
+## Alertes automatiques (75)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.help : « Habitude, maintenant ou projet ? » → espacement/ponctuation
@@ -2689,4 +3336,27 @@
 - ⚠ A2.3 TEST_TEXTS_A23.text : « Yesterday evening at seven o'clock, I was cooking pasta in the kitchen. My husband was setting the table and t » → was/were à vérifier
 - ⚠ A2.3 TEST_TEXTS_A23.text : « At my cousin's wedding, the photographer was taking a family photo. Everybody was smiling and looking at the c » → was/were à vérifier
 - ⚠ A2.3 VOCAB_A23.tip : « On dit “take a photo” (prendre une photo), jamais “make a photo”. “Smile!” = Souriez ! » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.help : « Are you going to… ? / I'm not going to… » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.qs : « Are you going to… ? » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.qs : « Are you doing… ? » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.title : « Going to, will ou Present Continuous ? » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.help : « Quelle forme pour quelle situation ? » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.qs : « Do you have… ? » → espacement/ponctuation
+- ⚠ A2.4 EXERCISES_A24.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Va-t-il venir ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Qu'allez-vous faire ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.examples : « Va-t-elle t'appeler ? — Non. » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Fais-tu quelque chose ce soir ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Regarde ces nuages ! Il va pleuvoir. » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Avez-vous des chambres disponibles ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Do you have + nom ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Puis-je avoir une chambre double pour trois nuits ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « Could I have… ? » → espacement/ponctuation
+- ⚠ A2.4 GRAMMAR_A24.table : « What time… ? » → espacement/ponctuation
+- ⚠ A2.4 MISSIONS_A24.sub : « Am, is, are, will ou -ing ? » → espacement/ponctuation
+- ⚠ A2.4 MISSIONS_A24.title : « Going to, will ou -ing ? » → espacement/ponctuation
+- ⚠ A2.4 VOCAB_A24.examples : « Es-tu libre vendredi ? » → espacement/ponctuation
+- ⚠ A2.4 VOCAB_A24.examples : « N'oublie pas ton passeport ! » → espacement/ponctuation
+- ⚠ A2.4 VOCAB_A24.words : « et si on… ? » → espacement/ponctuation
+- ⚠ A2.4 VOCAB_A24.examples : « Et si on faisait un pique-nique dimanche ? » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation

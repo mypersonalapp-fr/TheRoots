@@ -50,4 +50,16 @@ export const DIALOGUES_A2 = {
       { npc: "What was he doing?", ok: ["\\b(he was|he wasn.t)\\s+\\w+ing\\b|\\bhe (ran|walked|stood|looked)\\b"], model: "He was running very fast.", hint: "He was + verbe en -ing." },
       { npc: "Thank you for your help.", ok: ["\\b(you.re welcome|no problem|thank you|thanks|bye|goodbye)\\b"], model: "You're welcome!", hint: "Réponds poliment." }] },
   ],
+  "A2.4": [
+    { title: "Réserver une chambre", icon: "🏨", scene: "Tu réserves une chambre d'hôtel par téléphone.", turns: [
+      { npc: "Good morning, Sunrise Hotel. How can I help you?", ok: ["\\b(i.d like|i would like|can i|could i|i want|book|reserve|room)\\b"], model: "I'd like to book a double room, please.", hint: "Demande poliment : I'd like to book…" },
+      { npc: "For how many nights?", ok: ["\\b(\\w+ nights?|for (one|two|three|four|five|a week|\\d+)|a week|one night)\\b"], model: "For three nights, please.", hint: "Dis la durée avec for." },
+      { npc: "And when are you arriving?", ok: ["\\b(on (monday|tuesday|wednesday|thursday|friday|saturday|sunday)|next \\w+|tomorrow|tonight|arriving|in \\w+)\\b"], model: "We're arriving on Friday.", hint: "Projet organisé : We're arriving…" },
+      { npc: "Perfect. I'll book it for you. Is there anything else?", ok: ["\\b(no|yes|is breakfast|thank|thanks|that.s all|what time|do you)\\b"], model: "Is breakfast included?", hint: "Pose une question ou remercie." }] },
+    { title: "Nos projets", icon: "📅", scene: "Un collègue te demande tes projets pour le week-end.", turns: [
+      { npc: "Hi! What are you doing this weekend?", ok: ["\\b(i.m|i am|we.re|we are)\\s+(going|visiting|meeting|seeing|having|staying|working)\\b"], model: "I'm going to visit my parents.", hint: "I'm going to + verbe, ou I'm + verbe en -ing." },
+      { npc: "Nice! When are you leaving?", ok: ["\\b(on (friday|saturday|sunday|monday)|tomorrow|tonight|this (evening|afternoon|morning)|at \\w+|after work|next \\w+)\\b"], model: "I'm leaving on Friday evening.", hint: "Dis quand avec on, at ou tomorrow." },
+      { npc: "Will you drive or take the train?", ok: ["\\b(i.ll|i will|i.m going to|i.m taking|i.m driving|by (car|train)|drive|train|take)\\b"], model: "I'll take the train.", hint: "Décision : I'll + verbe." },
+      { npc: "Great! I think the weather will be nice.", ok: ["\\b(i hope|hope so|me too|great|thanks|thank you|i think so|yes)\\b"], model: "I hope so too!", hint: "Réponds gentiment." }] },
+  ],
 };

@@ -1,14 +1,14 @@
 // The Roots — registre des leçons du niveau A2 (anglais) : charge à la demande les données de chaque leçon
 // et les met au format attendu par renderLesson() (js/screens/lecon-a11.js). Même principe que lecons-a1.js.
-// Leçons construites : A2.0 à A2.3 (voir A2_BUILT). Les autres paliers viendront un par un.
+// Leçons construites : A2.0 à A2.4 (voir A2_BUILT). Les autres paliers viendront un par un.
 import { A2_EN_PALIERS } from "./programme-a2-en.js";
-import { EXPRESSION_PLUS_A2 } from "./expression-plus-a1.js?v=20261018c3";
+import { EXPRESSION_PLUS_A2 } from "./expression-plus-a1.js?v=20261018c4";
 
 // Objectifs courts pour l'écran d'accueil : une ligne chacun (le détail reste dans les pages de grammaire).
 const cut = (t, n = 64) => { let x = String(t).split(/ [—–-] | \(|\.\s/)[0].replace(/^Grammaire : /, ""); x = x.split(" : ")[0]; if (x.length > n) { x = x.slice(0, n); x = x.slice(0, x.lastIndexOf(" ")) + "…"; } return x; };
 export const shortGoals = (base) => [cut(base.objective.split(", ")[0], 70), ...base.grammar.slice(0, 2).map((g) => "Grammaire : " + cut(g, 40))];
 export const A2_TITLES_FR = ["Ma routine au quotidien", "Le passé et « used to »", "Pendant que…", "Mes projets", "Comparer", "Santé et bien-être", "Météo et environnement", "Logement et quartier", "Au téléphone", "Sorties et invitations", "Opinions et sentiments", "Imprévus en voyage"];
-export const A2_BUILT = [0, 1, 2, 3];
+export const A2_BUILT = [0, 1, 2, 3, 4];
 // A2.0 « Passerelle A1 → A2 » : leçon transversale placée entre A1 et A2.1 (n = 0).
 const A20_BASE = { code: "A2.0", title: "Bridge A1 to A2", objective: "Réviser les règles des temps vus en A1 et les verbes de base, pour partir sans lacune vers le passé (A2.2).", grammar: ["Présent simple : la règle complète", "Présent continu : la règle complète", "Be et have got : révision"] };
 const KEYS = (n) => `the_roots_a2${n}_lesson_v1`;
@@ -22,7 +22,7 @@ export function lessonStatusA2(n) {
   } catch (e) { return { started: false, passed: false, score: null }; }
 }
 
-const V = "20261018c3";
+const V = "20261018c4";
 export async function loadBundleA2(n) {
   if (!A2_BUILT.includes(n)) throw new Error("A2." + n + " pas encore construit");
   const s = `A2${n}`, base = n === 0 ? A20_BASE : A2_EN_PALIERS[n - 1], titleFr = n === 0 ? "Passerelle A1 → A2" : A2_TITLES_FR[n - 1];
