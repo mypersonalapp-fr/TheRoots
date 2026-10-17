@@ -52,14 +52,15 @@ export function renderDaily(container) {
   const state = load();
   state.done = state.done || {}; state.days = state.days || [];
 
-  function items() { return DAILY_ITEMS.filter((x) => x.level === level && x.type === type).sort((a, b) => b.date.localeCompare(a.date)); }
-  const fmt = (d) => { try { return new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }); } catch (e) { return d; } };
+  function items() { return DAILY_ITEMS.filter((x) => x.level === level && x.type === type).sort((a, b) => (b.n || 0) - (a.n || 0) || String(b.date).localeCompare(String(a.date))); }
+  const nn = (n) => ("0" + n).slice(-2);
+  const fmt = (d) => { if (!d) return ""; try { return new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }); } catch (e) { return d; } };
 
   function card(x, big) {
     const d = state.done[x.id];
     return `<button class="dl-card${big ? " dl-big" : ""}" data-open="${x.id}">
-      ${x.img ? `<img class="dl-img" src="${esc(x.img)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-      <span class="dl-meta">${x.type === "mail" ? "✉️ Mail" : "📰 " + esc(x.tag || "News")} · ${fmt(x.date)} · ${x.minutes} min${x.demo ? " · <i>Exemple de mise en page</i>" : ""}</span>
+      ${x.img && x.img.hero ? `<img class="dl-img" src="${esc(x.img.hero)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+      <span class="dl-meta">${x.type === "mail" ? "✉️ Mail" : "📰 N° " + nn(x.n) + " · " + esc(x.tag || "News")}${x.date ? " · " + fmt(x.date) : ""} · ${x.minutes} min${x.demo ? " · <i>Exemple de mise en page</i>" : ""}</span>
       <b class="dl-title">${esc(x.title)}</b>
       <span class="dl-state">${d ? `✓ ${d.score}/${d.total}` : `${x.questions.length} questions`}</span>
     </button>`;
@@ -89,16 +90,32 @@ export function renderDaily(container) {
     </div>`;
   }
 
+  const im = (src, cls) => src ? `<div class="${cls}"><img src="${esc(src)}" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>` : "";
+  const story = (k, o, src) => `<article class="dp-story">${im(src, "dp-thumb")}<div class="dp-kicker">${k}</div><h3>${esc(o.t)}</h3><p>${esc(o.p)}</p></article>`;
+  function paper(x) {
+    const today = new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+    return `<div class="dp">
+      <div class="dp-r5"></div><div class="dp-mast">The Roots Daily</div><div class="dp-r3"></div><div class="dp-gap"></div><div class="dp-r1"></div>
+      <div class="dp-dateline"><span>Level ${x.level}</span><span class="dp-today">${esc(today)}</span><span>${x.minutes} min read</span></div>
+      <div class="dp-r1"></div>
+      <div class="dp-grid">
+        <article class="dp-lead"><div><div class="dp-kicker">${esc(x.tag)} · N° ${nn(x.n)}</div><h2>${esc(x.title)}</h2></div>
+          <p class="dp-stand">${esc(x.stand)}</p>
+          <figure>${im(x.img.hero, "dp-shot")}<figcaption>${esc(x.cap)}</figcaption></figure>
+          <div class="dp-cols">${x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("")}</div>
+        </article>
+        <div class="dp-vr"></div>
+        <aside class="dp-side">${story("Food", x.food, x.img.food)}<div class="dp-rs"></div>${story("City", x.city, x.img.city)}<div class="dp-rs"></div>${story("Weather", x.wx, x.img.wx)}</aside>
+      </div>
+      <div class="dp-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div>
+    </div>`;
+  }
   function reader(x) {
     const mail = x.mail ? `<div class="dl-mailhead"><div><span>De</span> ${esc(x.mail.from)}</div><div><span>À</span> ${esc(x.mail.to)}</div><div><span>Objet</span> <b>${esc(x.mail.subject)}</b></div><div><span>Date</span> ${fmt(x.date)}</div></div>` : "";
-    return `<button class="comp-back" data-back="1">‹ Retour</button>
-      <article class="card dl-art">
-        ${x.img ? `<img class="dl-img" src="${esc(x.img)}" alt="" onerror="this.remove()">` : ""}
-        ${x.mail ? "" : `<div class="dl-meta">📰 ${esc(x.tag || "News")} · ${fmt(x.date)} · ${x.minutes} min</div><h2 class="dl-h">${esc(x.title)}</h2>`}
-        ${mail}
+    const art = x.type === "news" ? paper(x) : `<article class="card dl-art">${mail}
         <div class="dl-body">${x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("")}</div>
-        <div class="dl-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div>
-      </article>
+        <div class="dl-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div></article>`;
+    return `<button class="comp-back" data-back="1">‹ Retour</button>${art}
       <div class="dl-sec">Questions</div>
       ${x.questions.map((q, i) => qBlock(x, q, i)).join("")}
       <div class="card dl-score" id="dlScore" hidden></div>`;
