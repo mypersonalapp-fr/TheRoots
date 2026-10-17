@@ -80,21 +80,21 @@ export function renderDaily(container) {
     const d = state.done[x.id];
     const label = { short: "Réponse courte", gap: "Complète", tf: "Vrai ou faux ? Justifie", reply: "Écris ta réponse" }[q.k];
     const field = q.k === "reply" || q.k === "tf"
-      ? `<textarea class="dl-in" rows="${q.k === "reply" ? 3 : 2}" data-q="${i}" placeholder="${q.k === "tf" ? "True / False, because…" : "Write in English…"}" autocapitalize="sentences" spellcheck="false"></textarea>`
-      : `<input class="dl-in" data-q="${i}" type="text" placeholder="Type your answer…" autocomplete="off" autocapitalize="none" spellcheck="false">`;
+      ? `<textarea class="dl-in" rows="${q.k === "reply" ? 3 : 2}" data-q="${i}" placeholder="${q.k === "tf" ? "True / False, because…" : "Write in English…"}" autocapitalize="sentences" spellcheck="false">${esc(vals[i] || "")}</textarea>`
+      : `<input class="dl-in" data-q="${i}" type="text" value="${esc(vals[i] || "")}" placeholder="Type your answer…" autocomplete="off" autocapitalize="none" spellcheck="false">`;
     return `<div class="card dl-q" data-qb="${i}">
       <div class="dl-ql">${i + 1}. ${label}</div><div class="dl-qt">${esc(q.q)}</div>
       ${field}
-      <div class="dl-fb" data-fb="${i}"></div>
+      <div class="dl-fb${fbs[i] ? " " + fbs[i].c : ""}" data-fb="${i}">${fbs[i] ? fbs[i].h : ""}</div>
       <div class="dl-actions"><button class="btn btn-primary" data-check="${i}">Vérifier</button>${q.hint ? `<button class="dl-link" data-hint="${i}">Indice</button>` : ""}<button class="dl-link" data-model="${i}">Réponse modèle</button></div>
     </div>`;
   }
 
   const im = (src, cls) => src ? `<div class="${cls}"><img src="${esc(src)}" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>` : "";
   const story = (k, o, src) => `<article class="dp-story">${im(src, "dp-thumb")}<div class="dp-kicker">${k}</div><h3>${esc(o.t)}</h3><p>${esc(o.p)}</p></article>`;
-  function paper(x) {
+  function paper(x, pg) {
     const today = new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-    return `<div class="dp" data-page="1">
+    return `<div class="dp" data-page="${pg || "1"}">
       <div class="dp-r5"></div><div class="dp-mast">The Roots Daily</div><div class="dp-r3"></div><div class="dp-gap"></div><div class="dp-r1"></div>
       <div class="dp-dateline"><span>Level ${x.level}</span><span class="dp-today">${esc(today)}</span><span>${x.minutes} min read</span></div>
       <div class="dp-r1"></div>
@@ -107,20 +107,45 @@ export function renderDaily(container) {
         <div class="dp-vr"></div>
         <aside class="dp-side">${story("Food", x.food, x.img.food)}<div class="dp-rs"></div>${story("City", x.city, x.img.city)}<div class="dp-rs"></div>${story("Weather", x.wx, x.img.wx)}</aside>
       </div>
-      <div class="dp-pager"><button data-pg="1" aria-current="true">1</button><span>Page</span><button data-pg="2">2</button><button class="dp-next" data-pgnext="1">Page suivante ›</button></div>
       <nav class="dp-issues" aria-label="Issues">${DAILY_ITEMS.filter((i) => i.type === "news" && i.level === x.level).sort((a, b) => a.n - b.n).map((i) => `<button data-open="${i.id}"${i.id === x.id ? ' aria-current="true"' : ""}>${nn(i.n)}</button>`).join("")}</nav>
       <div class="dp-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div>
     </div>`;
   }
+  let step = 0, sheet = false;
+  const vals = {}, fbs = {};
+  const stepsOf = (x) => (x.type === "news" ? ["read", "rub"] : ["read"]).concat(x.questions.map((_, i) => i));
+  const isLand = () => matchMedia("(orientation: landscape)").matches;
+  function mailCard(x) {
+    return `<article class="card dl-art"><div class="dl-mailhead"><div><span>De</span> ${esc(x.mail.from)}</div><div><span>À</span> ${esc(x.mail.to)}</div><div><span>Objet</span> <b>${esc(x.mail.subject)}</b></div><div><span>Date</span> ${fmt(x.date)}</div></div>
+      <div class="dl-body">${x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("")}</div>
+      <div class="dl-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div></article>`;
+  }
   function reader(x) {
-    const mail = x.mail ? `<div class="dl-mailhead"><div><span>De</span> ${esc(x.mail.from)}</div><div><span>À</span> ${esc(x.mail.to)}</div><div><span>Objet</span> <b>${esc(x.mail.subject)}</b></div><div><span>Date</span> ${fmt(x.date)}</div></div>` : "";
-    const art = x.type === "news" ? paper(x) : `<article class="card dl-art">${mail}
-        <div class="dl-body">${x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("")}</div>
-        <div class="dl-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div></article>`;
-    return `<button class="comp-back" data-back="1">‹ Retour</button>${art}
-      <div class="dl-sec">Questions</div>
-      ${x.questions.map((q, i) => qBlock(x, q, i)).join("")}
-      <div class="card dl-score" id="dlScore" hidden></div>`;
+    const S = stepsOf(x), cur = S[step], nq = x.questions.length;
+    let body, foot;
+    if (cur === "read" || cur === "rub") {
+      body = x.type === "news" ? paper(x, cur === "rub" ? "2" : "1") : mailCard(x);
+      const nxt = x.type === "news" && cur === "read" && !isLand() ? "Rubriques ›" : `${nq} questions ›`;
+      foot = `<button class="fl-btn" ${cur === "read" ? 'data-back="1"' : 'data-fl="-1"'}>${cur === "read" ? "‹ Numéros" : "‹ Article"}</button><button class="fl-btn am" data-fl="1">${nxt}</button>`;
+    } else {
+      const q = x.questions[cur], done = Object.keys(results).length >= nq, sc = x.questions.filter((_, i) => results[i]).length;
+      body = `<div class="fl-qh"><span>Question ${cur + 1} / ${nq}</span><button class="fl-rev" data-sheet="1">📖 Revoir le texte</button></div>
+        <div class="fl-prog"><i style="width:${((cur + 1) / nq) * 100}%"></i></div>
+        ${qBlock(x, q, cur)}
+        <div class="card dl-score" id="dlScore" ${done ? "" : "hidden"}>${done ? `<b>${sc}/${nq}</b> ${sc === nq ? "Parfait !" : "Relis le texte et corrige tes réponses."}` : ""}</div>`;
+      foot = `<button class="fl-btn" data-fl="-1">‹</button>` + (cur === nq - 1 ? `<button class="fl-btn" data-back="1">Terminer</button>` : `<button class="fl-btn am" data-fl="1">Question suivante ›</button>`);
+    }
+    const text = x.type === "news" ? x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("") : x.body.map((p) => `<p>${esc(p)}</p>`).join("");
+    return `<div class="fl">${body}<div class="fl-foot">${foot}</div></div>
+      <div class="fl-veil${sheet ? " on" : ""}" data-sheet="0"></div>
+      <div class="fl-sheet${sheet ? " open" : ""}"><div class="fl-grab"></div><div class="fl-sh"><b>Le texte</b><button class="fl-btn" data-sheet="0">Fermer</button></div><div class="fl-sc">${text}</div></div>`;
+  }
+  function go(d) {
+    const x = DAILY_ITEMS.find((i) => i.id === openId); if (!x) return;
+    const S = stepsOf(x); let n = step + d;
+    if (S[n] === "rub" && isLand()) n += d;
+    step = Math.max(0, Math.min(S.length - 1, n)); sheet = false; paint(); container.scrollTop = 0;
+    const sc = container.closest(".app-body"); if (sc) sc.scrollTop = 0;
   }
 
   function paint() {
@@ -141,29 +166,26 @@ export function renderDaily(container) {
     box.innerHTML = `<b>${score}/${total}</b> ${score === total ? "Parfait !" : "Relis le texte et corrige tes réponses."}`;
   }
 
-  function setPage(dp, n) {
-    dp.dataset.page = n;
-    dp.querySelectorAll("[data-pg]").forEach((b) => (b.dataset.pg === n ? b.setAttribute("aria-current", "true") : b.removeAttribute("aria-current")));
-    const nx = dp.querySelector(".dp-next"); if (nx) nx.textContent = n === "1" ? "Page suivante ›" : "‹ Page précédente";
-    dp.scrollIntoView({ block: "start" });
-  }
+  function setFb(el, i, c, h) { fbs[i] = { c, h }; el.className = "dl-fb" + (c ? " " + c : ""); el.innerHTML = h; }
   let sx = null;
   container.addEventListener("touchstart", (e) => { sx = e.target.closest(".dp") ? e.touches[0].clientX : null; }, { passive: true });
   container.addEventListener("touchend", (e) => {
-    const dp = container.querySelector(".dp"); if (sx === null || !dp) return;
+    if (sx === null || !openId || isLand()) return;
     const dx = e.changedTouches[0].clientX - sx; sx = null;
-    if (Math.abs(dx) > 60 && matchMedia("(orientation: portrait)").matches) setPage(dp, dx < 0 ? "2" : "1");
+    const x = DAILY_ITEMS.find((i) => i.id === openId), cur = x && stepsOf(x)[step];
+    if (Math.abs(dx) > 60 && (cur === "read" || cur === "rub")) { if (dx < 0 && cur === "read") go(1); else if (dx > 0 && cur === "rub") go(-1); }
   });
+  container.addEventListener("input", (e) => { const f = e.target.closest("[data-q]"); if (f) vals[+f.dataset.q] = f.value; });
   container.addEventListener("click", (e) => {
     const t = e.target;
     const lv = t.closest("[data-lv]"); if (lv) { level = lv.dataset.lv; paint(); return; }
     const ty = t.closest("[data-type]"); if (ty) { type = ty.dataset.type; paint(); return; }
-    const op = t.closest("[data-open]"); if (op) { openId = op.dataset.open; Object.keys(results).forEach((k) => delete results[k]); paint(); container.scrollTop = 0; return; }
-    if (t.closest("[data-back]")) { openId = null; paint(); return; }
+    const op = t.closest("[data-open]"); if (op) { openId = op.dataset.open; [results, vals, fbs].forEach((o) => Object.keys(o).forEach((k) => delete o[k])); step = 0; sheet = false; paint(); container.scrollTop = 0; return; }
+    if (t.closest("[data-back]")) { openId = null; step = 0; sheet = false; paint(); return; }
+    const fl = t.closest("[data-fl]"); if (fl) { go(+fl.dataset.fl); return; }
+    const sh = t.closest("[data-sheet]"); if (sh) { sheet = sh.dataset.sheet === "1"; paint(); return; }
     const x = openId && DAILY_ITEMS.find((i) => i.id === openId);
     if (!x) return;
-    const pgb = t.closest("[data-pg],[data-pgnext]");
-    if (pgb) { const dp = container.querySelector(".dp"); if (dp) setPage(dp, pgb.dataset.pgnext ? (dp.dataset.page === "1" ? "2" : "1") : pgb.dataset.pg); return; }
     const g = t.closest(".dl-w");
     if (g) { const [en, fr] = x.glossary[+g.dataset.gi]; container.querySelector("#dlTip").innerHTML = `<b>${esc(en)}</b> = ${esc(fr)}`; return; }
     const ck = t.closest("[data-check]");
@@ -171,17 +193,16 @@ export function renderDaily(container) {
       const i = +ck.dataset.check, q = x.questions[i];
       const v = container.querySelector(`[data-q="${i}"]`).value;
       const r = grade(q, v); const fb = container.querySelector(`[data-fb="${i}"]`);
-      if (r.empty) { fb.className = "dl-fb"; fb.textContent = "Écris ta réponse d'abord."; return; }
+      if (r.empty) { setFb(fb, i, "", "Écris ta réponse d'abord."); return; }
       results[i] = r.ok;
-      fb.className = "dl-fb " + (r.ok ? "ok" : "ko");
-      fb.innerHTML = (r.ok ? "✓ Bonne réponse" : "✗ Pas encore") + (r.msg ? `<br>${esc(r.msg)}` : "") +
-        (r.detail ? "<ul>" + r.detail.map(([l, o]) => `<li>${o ? "✓" : "✗"} ${esc(l)}</li>`).join("") + "</ul>" : "");
+      setFb(fb, i, r.ok ? "ok" : "ko", (r.ok ? "✓ Bonne réponse" : "✗ Pas encore") + (r.msg ? `<br>${esc(r.msg)}` : "") +
+        (r.detail ? "<ul>" + r.detail.map(([l, o]) => `<li>${o ? "✓" : "✗"} ${esc(l)}</li>`).join("") + "</ul>" : ""));
       finish(x); return;
     }
     const h = t.closest("[data-hint]");
-    if (h) { const i = +h.dataset.hint; const fb = container.querySelector(`[data-fb="${i}"]`); fb.className = "dl-fb"; fb.textContent = "💡 " + x.questions[i].hint; return; }
+    if (h) { const i = +h.dataset.hint; setFb(container.querySelector(`[data-fb="${i}"]`), i, "", "💡 " + esc(x.questions[i].hint)); return; }
     const m = t.closest("[data-model]");
-    if (m) { const i = +m.dataset.model; const fb = container.querySelector(`[data-fb="${i}"]`); fb.className = "dl-fb"; fb.innerHTML = "Modèle : <b>" + esc(x.questions[i].model) + "</b>"; }
+    if (m) { const i = +m.dataset.model; setFb(container.querySelector(`[data-fb="${i}"]`), i, "", "Modèle : <b>" + esc(x.questions[i].model) + "</b>"); }
   });
   paint();
 }
