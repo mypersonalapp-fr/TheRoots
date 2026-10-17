@@ -1,6 +1,6 @@
 // The Roots — bulletin scolaire A1 : lit les tests de fin de leçon (stockage local) et en déduit notes, lacunes et rattrapage.
-import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261018b7";
-import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018b7";
+import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261018b8";
+import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018b8";
 export const PASS = 32;
 export const SK = [["Compréhension écrite", 7.5], ["Compréhension orale", 7.5], ["Grammaire", 10], ["Expression écrite", 7.5], ["Expression orale", 7.5]];
 const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { return {}; } };
@@ -22,6 +22,11 @@ export function bulletinA1(level = "A1") {
   if (level === "A1") {
     const p = read(EXAM_KEY), h = p.testHist || [], sc = parseInt(((p.scores || {}).test || "").split("/")[0], 10), best = h.length ? h.reduce((m, x) => Math.max(m, x.total), 0) : (Number.isFinite(sc) ? sc : 0);
     exam = { done: h.length > 0 || Number.isFinite(sc), best, passed: !!(p.done && p.done.test) || best >= PASS, open: tests.every((t) => t.passed) };
+    // Grand contrôle raté : il a lui aussi sa série de rattrapage (questions tirées des 12 leçons, selon la compétence faible).
+    if (exam.done && !exam.passed) {
+      const l = h[h.length - 1] || null;
+      gaps.push({ n: 0, id: "EXAM-A1", legacy: !(l && l.pts), code: "A1", title: "Grand contrôle", miss: PASS - best, list: ((l && l.gaps) || []).slice(0, 3), weak: l && l.pts ? SK.filter(([, m], i) => l.pts[i] / m < 0.8).map(([nm]) => nm) : [] });
+    }
   }
   return { exam, tests, skills, gaps, avg, nDone: done.length, nOk: done.filter((t) => t.passed).length };
 }
@@ -29,6 +34,15 @@ export function bulletinA1(level = "A1") {
 // ---- Exercices en plus (rattrapage) : 5 questions tirées des exercices corrigés de la leçon, selon la compétence faible ----
 const RT_KEY = "the_roots_a1_rattrapage_v1";
 export const rtLoad = () => read(RT_KEY);
+export const rtSeries = (id) => (rtLoad()[id] || {}).series || 0;
+/** Verrou « Repasser le test » : après un échec, il faut terminer au moins une série de rattrapage faite APRÈS cet échec. */
+export function retakeLocked(prog, id) {
+  const h = (prog && prog.testHist) || [], last = h[h.length - 1];
+  const sc = parseInt((((prog || {}).scores || {}).test || "").split("/")[0], 10);
+  const failed = last ? !last.passed : (Number.isFinite(sc) && sc < PASS && !((prog.done || {}).test));
+  if (!failed || (prog.done || {}).test) return false;
+  return rtSeries(id) <= ((last && last.rt) || 0);
+}
 export function rtSave(id, ok, tot) { const o = rtLoad(), d = new Date().toISOString().slice(0, 10), h = ((o[id] || {}).hist || []).concat([{ d, ok, tot }]).slice(-20); o[id] = { series: ((o[id] || {}).series || 0) + 1, last: `${ok}/${tot}`, d, hist: h }; try { localStorage.setItem(RT_KEY, JSON.stringify(o)); } catch (e) { /* stockage indisponible */ } }
 // Rattrapages faits, avec l'évolution du test : première note → meilleure note.
 export function rattrapagesFaits(level) {

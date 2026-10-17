@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261018b7";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018b7";
-import { renderShell } from "./shell.js?v=20261018b7";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018b7";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018b7";
+import { renderLesson } from "./lecon-a11.js?v=20261018b8";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018b8";
+import { renderShell } from "./shell.js?v=20261018b8";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018b8";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018b8";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,13 +23,14 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018b7";
-import { plantSvg } from "./plant.js?v=20261018b7";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018b8";
+import { plantSvg } from "./plant.js?v=20261018b8";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { currentCharacter } from "./lecon-a11.js?v=20261018b7";
-import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261018b7";
-import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018b7";
+import { currentCharacter } from "./lecon-a11.js?v=20261018b8";
+import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261018b8";
+import { runRattrapage } from "./rattrapage.js?v=20261018b8";
+import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018b8";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -192,7 +193,7 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
-const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261018b7`;
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261018b8`;
 const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
 const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
 export function bulletinHtml(level = "A1") {
@@ -355,35 +356,8 @@ export function renderMesCours(container, shellRoot) {
   }
 
   // --- Exercices en plus : 5 questions corrigées, une explication à chaque réponse ---
-  async function paintRattrapage(id) {
-    const lv = id.startsWith("A2") ? "A2" : "A1", B = bulletinA1(lv), g = B.gaps.find((x) => x.id === id), n = g ? g.n : Number(id.split(".")[1]);
-    const bundle = lv === "A2" ? await loadBundleA2(n) : await loadBundle(n);
-    const att = (rtLoad()[id] || {}).series || 0;
-    const items = pickRattrapage(bundle.exercises, g ? g.weak : [], att + n);
-    let i = 0, firstOk = 0, tried = false;
-    const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;");
-    const draw = () => {
-      if (i >= items.length) {
-        rtSave(id, firstOk, items.length);
-        container.innerHTML = `<button class="settings-back" id="rtBack">Retour au livret</button><div class="card bl-card"><h3 class="bl-h">Série terminée</h3><div class="bl-big">${firstOk} / ${items.length}</div><p class="bl-soft">${firstOk >= 4 ? "Très bien : la notion est solide. Repasse le test de la leçon." : "Relis les explications, refais une série puis repasse le test."}</p><button type="button" class="lc-cta bl-cta" id="rtRetest">Repasser le test ${g ? g.code : ""}</button><button type="button" class="lc-sec-btn bl-cta" id="rtAgain">Refaire une série</button></div>`;
-        container.querySelector("#rtBack").onclick = () => { openLivret = true; paint(); };
-        container.querySelector("#rtAgain").onclick = () => paintRattrapage(id);
-        container.querySelector("#rtRetest").onclick = () => { openLivret = false; openCode = "en"; paint(); };
-        return;
-      }
-      const { page, q } = items[i]; tried = false;
-      container.innerHTML = `<button class="settings-back" id="rtBack">Quitter</button><div class="card bl-card"><div class="bl-soft">Exercices en plus · ${g ? g.code : ""} · ${i + 1} / ${items.length}</div><div class="bl-bar"><i style="width:${Math.round(i / items.length * 100)}%;background:#2fa35e"></i></div><div class="bl-soft">${esc(page)}</div><h3 class="bl-h">${esc(q[0])}</h3>${q[1].map((c, k) => `<button type="button" class="lc-choice" data-k="${k}">${esc(c)}</button>`).join("")}<div class="bl-fb" id="rtFb" aria-live="polite"></div><button type="button" class="lc-cta bl-cta" id="rtNext" style="display:none">${i + 1 < items.length ? "Question suivante" : "Voir mon résultat"}</button></div>`;
-      container.querySelector("#rtBack").onclick = () => { openLivret = true; paint(); };
-      const fb = container.querySelector("#rtFb");
-      container.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
-        if (b.classList.contains("lc-right")) return;
-        const ok = Number(b.dataset.k) === q[2];
-        if (ok) { if (!tried) firstOk++; b.classList.add("lc-right"); fb.className = "bl-fb bl-fb-ok"; fb.textContent = "Bravo ! " + (q[3] || ""); container.querySelector("#rtNext").style.display = ""; container.querySelectorAll(".lc-choice").forEach((x) => x.disabled = true); }
-        else { tried = true; b.classList.add("lc-wrong"); b.disabled = true; fb.className = "bl-fb bl-fb-ko"; fb.textContent = "Pas tout à fait — " + (q[3] || "") + " Réessaie."; }
-      }));
-      container.querySelector("#rtNext").onclick = () => { i++; draw(); };
-    };
-    draw();
+  function paintRattrapage(id) {
+    runRattrapage(container, id, { onBack: () => { openLivret = true; paint(); }, onRetest: () => { openLivret = false; openCode = "en"; paint(); } });
   }
 
   function paintLangDetail(code) {

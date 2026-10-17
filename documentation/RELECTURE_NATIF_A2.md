@@ -1,0 +1,1985 @@
+# Relecture native — anglais des leçons A2
+
+À relire par un anglophone : fautes, phrases peu naturelles, registre. Les lignes marquées ⚠ sont des alertes automatiques.
+
+## A2.0 (588 lignes)
+
+- `EXERCISES_A20` Vocabulaire — Les verbes de base
+- `EXERCISES_A20` Choisis le sens correct.
+- `EXERCISES_A20` se coucher
+- `EXERCISES_A20` Se laver = wash.
+- `EXERCISES_A20` Se coucher = go to bed.
+- `EXERCISES_A20` Get up = quitter le lit.
+- `EXERCISES_A20` Arriver = arrive.
+- `EXERCISES_A20` Wait = attendre.
+- `EXERCISES_A20` Partir = leave.
+- `EXERCISES_A20` Leave = partir / quitter.
+- `EXERCISES_A20` Rester = stay.
+- `EXERCISES_A20` Payer = pay.
+- `EXERCISES_A20` Acheter = buy.
+- `EXERCISES_A20` The train ___ at nine.
+- `EXERCISES_A20` Avec it, il faut le -s.
+- `EXERCISES_A20` Horaire fixe, it → leaves.
+- `EXERCISES_A20` I ___ coffee every morning.
+- `EXERCISES_A20` am drinking
+- `EXERCISES_A20` Every morning = habitude, donc pas -ing.
+- `EXERCISES_A20` Le -s est pour he / she / it.
+- `EXERCISES_A20` Habitude avec I → drink.
+- `EXERCISES_A20` ___ you live in Paris?
+- `EXERCISES_A20` Does va avec he / she / it.
+- `EXERCISES_A20` Question avec you → Do.
+- `EXERCISES_A20` Are va avec -ing ou un adjectif, pas avec “live”.
+- `EXERCISES_A20` he → doesn't.
+- `EXERCISES_A20` don't va avec I / you / we / they.
+- `EXERCISES_A20` isn't va avec -ing ou un adjectif.
+- `EXERCISES_A20` Am / is / are + -ing.
+- `EXERCISES_A20` I ___ a letter now.
+- `EXERCISES_A20` am writing
+- `EXERCISES_A20` “writes” = habitude et he / she / it.
+- `EXERCISES_A20` “write” = habitude, pas maintenant.
+- `EXERCISES_A20` Now → am + -ing.
+- `EXERCISES_A20` They ___ for the bus.
+- `EXERCISES_A20` is waiting
+- `EXERCISES_A20` are waiting
+- `EXERCISES_A20` is va avec he / she / it.
+- `EXERCISES_A20` they → are + -ing.
+- `EXERCISES_A20` What ___ you doing?
+- `EXERCISES_A20` Question avec doing → are.
+- `EXERCISES_A20` do ne va pas avec -ing.
+- `EXERCISES_A20` does ne va pas avec -ing.
+- `EXERCISES_A20` Shh! The baby ___.
+- `EXERCISES_A20` is sleeping
+- `EXERCISES_A20` baby = 3e personne : sleep est incorrect.
+- `EXERCISES_A20` sleeps dirait une habitude.
+- `EXERCISES_A20` Shh = maintenant → is sleeping.
+- `EXERCISES_A20` Going to et would like
+- `EXERCISES_A20` Projets et demandes polies.
+- `EXERCISES_A20` I ___ going to buy a ticket.
+- `EXERCISES_A20` I → am going to.
+- `EXERCISES_A20` don't non plus.
+- `EXERCISES_A20` isn't going to.
+- `EXERCISES_A20` ___ you going to stay?
+- `EXERCISES_A20` Do est inutile ici.
+- `EXERCISES_A20` Are you going to … ? ⚠ espacement/ponctuation
+- `EXERCISES_A20` Does est inutile ici.
+- `EXERCISES_A20` Would you like ___ tea?
+- `EXERCISES_A20` an s'utilise devant une voyelle.
+- `EXERCISES_A20` Be et have got
+- `EXERCISES_A20` He ___ twenty years old.
+- `EXERCISES_A20` She ___ got a sister.
+- `EXERCISES_A20` have va avec I / you / we / they.
+- `EXERCISES_A20` she → has got.
+- `EXERCISES_A20` is got n'existe pas.
+- `EXERCISES_A20` They ___ students.
+- `EXERCISES_A20` they → are.
+- `EXERCISES_A20` have exprime la possession.
+- `EXERCISES_A20` hasn't va avec he / she / it.
+- `EXERCISES_A20` I → haven't got.
+- `EXERCISES_A20` don't got n'est pas la forme standard.
+- `EXERCISES_A20` Choisir le bon temps
+- `EXERCISES_A20` Habitude, maintenant ou projet ? ⚠ espacement/ponctuation
+- `EXERCISES_A20` Every day I ___ to work.
+- `EXERCISES_A20` am walking
+- `EXERCISES_A20` am going to walk
+- `EXERCISES_A20` Continu = maintenant.
+- `EXERCISES_A20` Going to = projet.
+- `EXERCISES_A20` Right now I ___ to work.
+- `EXERCISES_A20` walks = he / she / it.
+- `EXERCISES_A20` walk = habitude.
+- `EXERCISES_A20` Right now → continu.
+- `EXERCISES_A20` Tomorrow I ___ walk to work.
+- `EXERCISES_A20` am going to
+- `EXERCISES_A20` am walk : forme incorrecte.
+- `EXERCISES_A20` Tomorrow → going to.
+- `EXERCISES_A20` I ___ the answer. (know)
+- `EXERCISES_A20` am knowing
+- `EXERCISES_A20` On ne dit pas am knowing.
+- `EXERCISES_A20` knows : seulement he / she / it.
+- `EXPRESSION_A20` Ma routine d'aujourd'hui
+- `EXPRESSION_A20` Dis ce que tu fais d'habitude le matin.
+- `EXPRESSION_A20` Dis ce que tu fais en ce moment.
+- `EXPRESSION_A20` Dis ce que tu vas faire demain.
+- `EXPRESSION_A20` Dis une chose que tu ne fais jamais.
+- `EXPRESSION_A20` I usually get up at seven. At the moment I'm writing a message. Tomorrow I'm going to visit my sister. I never watch TV in the morning.
+- `EXPRESSION_A20` Une habitude
+- `EXPRESSION_A20` En ce moment
+- `EXPRESSION_A20` Moi et ma famille
+- `EXPRESSION_A20` Dis ce que tu voudrais faire ce week-end.
+- `EXPRESSION_A20` I live in Paris. I have got two sisters. My brother works in a hospital. I'd like to go to the cinema this weekend.
+- `EXPRESSION_A20` Une personne de la famille
+- `EXPRESSION_A20` Un souhait
+- `GRAMMAR_A20` “I ___ at seven every day.” (habitude)
+- `GRAMMAR_A20` am getting up
+- `GRAMMAR_A20` getting up
+- `GRAMMAR_A20` “Look! It ___.” (maintenant)
+- `GRAMMAR_A20` is raining
+- `GRAMMAR_A20` “Next week we ___ visit Rome.” (projet)
+- `GRAMMAR_A20` do going to
+- `GRAMMAR_A20` are going to
+- `GRAMMAR_A20` “do going to” n'existe pas : on utilise am / is / are going to.
+- `GRAMMAR_A20` Projet proche → be going to + verbe.
+- `GRAMMAR_A20` Quel mot annonce une HABITUDE ? ⚠ espacement/ponctuation
+- `GRAMMAR_A20` every day
+- `GRAMMAR_A20` “Tomorrow” (demain) annonce going to.
+- `GRAMMAR_A20` She ___ in a bank.
+- `GRAMMAR_A20` Avec she, il faut le -s : “work” va avec I / you / we / they.
+- `GRAMMAR_A20` he / she / it + verbe + -s : she works.
+- `GRAMMAR_A20` “don't” va avec I / you / we / they.
+- `GRAMMAR_A20` he / she / it → doesn't + verbe de base.
+- `GRAMMAR_A20` “isn't” va avec -ing ou un adjectif, pas avec “eat”.
+- `GRAMMAR_A20` ___ she live in London?
+- `GRAMMAR_A20` Question avec she → Does + sujet + verbe de base.
+- `GRAMMAR_A20` “Do” va avec I / you / we / they.
+- `GRAMMAR_A20` “Is” s'utilise avec be, pas avec le verbe “live”.
+- `GRAMMAR_A20` My brother ___ English at school.
+- `GRAMMAR_A20` Avec “my brother” (3e personne), il faut la terminaison : studies.
+- `GRAMMAR_A20` consonne + y → -ies : study → studies.
+- `GRAMMAR_A20` “is” va avec he / she / it.
+- `GRAMMAR_A20` they → are + verbe en -ing.
+- `GRAMMAR_A20` I'm ___ a letter. (write)
+- `GRAMMAR_A20` Verbe en -e : on supprime le e, donc pas “writeing”.
+- `GRAMMAR_A20` “doesn't” s'utilise avec le verbe de base, pas avec -ing.
+- `GRAMMAR_A20` “don't” va avec I / you / we / they et le verbe de base.
+- `GRAMMAR_A20` ___ you reading now?
+- `GRAMMAR_A20` “Do” va avec le verbe de base : Do you read … ? ⚠ espacement/ponctuation
+- `GRAMMAR_A20` “Does” va avec he / she / it et le verbe de base.
+- `GRAMMAR_A20` Les verbes qui n'aiment pas le -ing
+- `GRAMMAR_A20` She ___ a coffee. (want)
+- `GRAMMAR_A20` is wanting
+- `GRAMMAR_A20` Avec she, il faut le -s : “wants”.
+- `GRAMMAR_A20` We ___ music. (love)
+- `GRAMMAR_A20` are loving
+- `GRAMMAR_A20` “loves” est pour he / she / it, pas pour we.
+- `GRAMMAR_A20` She ___ got two cats.
+- `GRAMMAR_A20` “is got” n'existe pas : on garde have / has got.
+- `GRAMMAR_A20` “have got” va avec I / you / we / they.
+- `GRAMMAR_A20` she → has got (possession).
+- `GRAMMAR_A20` I ___ a student.
+- `GRAMMAR_A20` ___ there a park near here?
+- `GRAMMAR_A20` “Do there” n'existe pas : on inverse is / are.
+- `GRAMMAR_A20` “Are there” demande un pluriel : parks.
+- `GRAMMAR_A20` “a park” est singulier → Is there … ? ⚠ espacement/ponctuation
+- `GRAMMAR_A20` “hasn't got” va avec he / she / it.
+- `GRAMMAR_A20` “don't got” n'est pas la forme standard avec have got.
+- `GRAMMAR_A20` I'm going ___ buy a ticket.
+- `GRAMMAR_A20` going to + verbe de base.
+- `GRAMMAR_A20` “for” ne s'emploie pas ici : le projet se dit going to.
+- `GRAMMAR_A20` “at” indique un lieu ou une heure, pas un projet.
+- `GRAMMAR_A20` “don't” non plus : il faut be + not.
+- `GRAMMAR_A20` I ___ a coffee, please. (poli)
+- `GRAMMAR_A20` “I'm like” a un autre sens (c'est comme). ⚠ « a » devant voyelle
+- `GRAMMAR_A20` I'd like = je voudrais (demande polie).
+- `GRAMMAR_A20` “like to” seul n'est pas une demande polie.
+- `GRAMMAR_A20` Question avec going to : Are you going to … ? ⚠ espacement/ponctuation
+- `GRAMMAR_A20` “Do” est inutile : be s'inverse directement.
+- `GRAMMAR_A20` “Does” non plus : c'est le verbe be qui passe devant.
+- `GRAMMAR_A20` “Right now I ___ to work.”
+- `GRAMMAR_A20` “walks” est pour he / she / it et pour une habitude.
+- `GRAMMAR_A20` “walk” dit une habitude, pas ce qui se passe maintenant.
+- `GRAMMAR_A20` “Every day I ___ to work.”
+- `GRAMMAR_A20` Going to parle d'un projet, pas d'une habitude.
+- `GRAMMAR_A20` “Tomorrow I ___ walk.”
+- `GRAMMAR_A20` “am walk” : il manque le -ing ou going to.
+- `GRAMMAR_A20` Tomorrow + projet → be going to.
+- `GRAMMAR_A20` Tomorrow = demain → futur.
+- `GRAMMAR_A20` Quelle phrase parle d'une ROUTINE ? ⚠ espacement/ponctuation
+- `GRAMMAR_A20` I get up at seven every day.
+- `GRAMMAR_A20` I'm getting up now.
+- `GRAMMAR_A20` I got up at seven yesterday.
+- `GRAMMAR_A20` “Yesterday I ___ to the cinema.”
+- `GRAMMAR_A20` “We ___ pizza last night.”
+- `GRAMMAR_A20` “I used to play football.” veut dire…
+- `GRAMMAR_A20` Avant, je jouais au foot.
+- `GRAMMAR_A20` Je joue au foot en ce moment.
+- `GRAMMAR_A20` Je vais jouer au foot.
+- `GRAMMAR_A20` En ce moment se dirait : I'm playing.
+- `GRAMMAR_A20` Un projet se dirait : I'm going to play.
+- `GRAMMAR_A20` Ce qui t'attend en A2 (2/6) : pendant que et projets
+- `GRAMMAR_A20` “I was cooking when the phone rang.” veut dire…
+- `GRAMMAR_A20` Je vais cuisiner.
+- `GRAMMAR_A20` Je cuisine tous les jours.
+- `GRAMMAR_A20` Un projet se dirait : I'm going to cook.
+- `GRAMMAR_A20` Une habitude se dirait : I cook every day.
+- `GRAMMAR_A20` “while” veut dire…
+- `GRAMMAR_A20` pendant que
+- `GRAMMAR_A20` Avant se dit before.
+- `GRAMMAR_A20` “I'm going to study medicine.” exprime…
+- `GRAMMAR_A20` un souvenir
+- `GRAMMAR_A20` une habitude
+- `GRAMMAR_A20` un projet
+- `GRAMMAR_A20` “I'm meeting Tom at six tonight.” exprime…
+- `GRAMMAR_A20` Une habitude aurait “every …”.
+- `GRAMMAR_A20` “It's the ___ day of the year.” (chaud)
+- `GRAMMAR_A20` Superlatif court : hot → the hottest (A2.5).
+- `GRAMMAR_A20` “most hot” n'existe pas pour un adjectif court.
+- `GRAMMAR_A20` “hotter” compare deux choses, il ne dit pas « le plus ».
+- `GRAMMAR_A20` “He is as tall as his brother.” veut dire…
+- `GRAMMAR_A20` Moins grand se dit not as tall as.
+- `GRAMMAR_A20` Plus grand se dit taller than.
+- `GRAMMAR_A20` As … as = aussi … que (A2.5).
+- `GRAMMAR_A20` “I have a headache.” veut dire…
+- `GRAMMAR_A20` J'ai faim.
+- `GRAMMAR_A20` J'ai froid.
+- `GRAMMAR_A20` Avoir faim = be hungry.
+- `GRAMMAR_A20` Avoir froid = be cold.
+- `GRAMMAR_A20` “You should rest.” veut dire…
+- `GRAMMAR_A20` Tu es en retard.
+- `GRAMMAR_A20` Tu dois payer.
+- `GRAMMAR_A20` Tu devrais te reposer.
+- `GRAMMAR_A20` En retard se dirait : You are late.
+- `GRAMMAR_A20` Payer se dirait : You must pay.
+- `GRAMMAR_A20` “Should” donne un conseil (A2.6).
+- `GRAMMAR_A20` “It's going to rain tomorrow.” veut dire…
+- `GRAMMAR_A20` Il pleut maintenant.
+- `GRAMMAR_A20` Il va pleuvoir demain.
+- `GRAMMAR_A20` Il pleuvait hier.
+- `GRAMMAR_A20` Maintenant se dirait : It's raining.
+- `GRAMMAR_A20` Hier se dirait : It rained yesterday.
+- `GRAMMAR_A20` “The forecast says it will be sunny.” — “will” indique…
+- `GRAMMAR_A20` Une habitude : It is usually sunny.
+- `GRAMMAR_A20` “There's a big garden behind the house.” — garden =
+- `GRAMMAR_A20` Grenier = attic.
+- `GRAMMAR_A20` Garage = garage, un autre mot.
+- `GRAMMAR_A20` Garden = jardin (A2.8, logement).
+- `GRAMMAR_A20` “I live in a flat near the station.” — flat =
+- `GRAMMAR_A20` Maison = house.
+- `GRAMMAR_A20` Flat = appartement en anglais britannique (A2.8).
+- `GRAMMAR_A20` Chambre = bedroom.
+- `GRAMMAR_A20` “Can I speak to Anna, please?” veut dire…
+- `GRAMMAR_A20` Je suis Anna.
+- `GRAMMAR_A20` Anna est partie.
+- `GRAMMAR_A20` Anna est partie se dirait : Anna has left.
+- `GRAMMAR_A20` “Hold on, please.” veut dire…
+- `GRAMMAR_A20` Au revoir.
+- `GRAMMAR_A20` Au revoir se dit : Goodbye.
+- `GRAMMAR_A20` “Would you like to come to the cinema?” est…
+- `GRAMMAR_A20` une invitation
+- `GRAMMAR_A20` un horaire
+- `GRAMMAR_A20` Would you like to … ? = inviter (A2.10). ⚠ espacement/ponctuation
+- `GRAMMAR_A20` Un refus : I'm sorry, I can't.
+- `GRAMMAR_A20` Un horaire : The film starts at eight.
+- `GRAMMAR_A20` “I'm sorry, I can't make it.” veut dire…
+- `GRAMMAR_A20` J'arrive se dit : I'm on my way.
+- `GRAMMAR_A20` En retard se dit : I'm late.
+- `GRAMMAR_A20` Can't make it = ne pas pouvoir venir (A2.10).
+- `GRAMMAR_A20` Ce qui t'attend en A2 (6/6) : opinions et voyage
+- `GRAMMAR_A20` “In my opinion, it's a great idea.” — in my opinion =
+- `GRAMMAR_A20` par contre
+- `GRAMMAR_A20` par exemple
+- `GRAMMAR_A20` Par contre = however.
+- `GRAMMAR_A20` Par exemple = for example.
+- `GRAMMAR_A20` “I'm really excited about the trip.” — excited =
+- `GRAMMAR_A20` Excited = enthousiaste (A2.11, sentiments).
+- `GRAMMAR_A20` Inquiet = worried.
+- `GRAMMAR_A20` “My flight was cancelled.” veut dire…
+- `GRAMMAR_A20` “I lost my passport.” veut dire…
+- `GRAMMAR_A20` J'ai perdu mon passeport.
+- `LISTENING_A20` A normal day
+- `LISTENING_A20` I get up at seven every day. I have breakfast at half past seven and I go to school by bus. I never eat lunch at home.
+- `LISTENING_A20` What time does the speaker get up?
+- `LISTENING_A20` Huit n'est pas dit : c'est sept heures.
+- `LISTENING_A20` Six n'est pas dit : c'est sept heures.
+- `LISTENING_A20` “I get up at seven every day.”
+- `LISTENING_A20` How does the speaker go to school?
+- `LISTENING_A20` Il ne dit pas qu'il marche.
+- `LISTENING_A20` “I go to school by bus.”
+- `LISTENING_A20` Il ne parle pas de voiture.
+- `LISTENING_A20` On the phone
+- `LISTENING_A20` Hello, Anna. What are you doing? I'm waiting for the bus at the moment. Are you going to be late? No, I'm going to arrive at nine.
+- `LISTENING_A20` What is Anna doing?
+- `LISTENING_A20` Waiting for the bus
+- `LISTENING_A20` “I'm waiting for the bus at the moment.”
+- `LISTENING_A20` Rien n'indique qu'elle cuisine.
+- `LISTENING_A20` Elle attend un bus, elle ne travaille pas.
+- `LISTENING_A20` When is she going to arrive?
+- `LISTENING_A20` “I'm going to arrive at nine.”
+- `LISTENING_A20` Does she work in London? No, she doesn't. She works in Oxford. Is she working today? Yes, she is. She's working at home.
+- `LISTENING_A20` Where does she work?
+- `LISTENING_A20` In London
+- `LISTENING_A20` In Oxford
+- `LISTENING_A20` At home only
+- `LISTENING_A20` Elle travaille chez elle aujourd'hui seulement.
+- `LISTENING_A20` Is she working today?
+- `LISTENING_A20` Yes, at home
+- `LISTENING_A20` No, she is ill
+- `LISTENING_A20` No, she is on holiday
+- `LISTENING_A20` “Yes, she is. She's working at home.”
+- `LISTENING_A20` Le texte dit oui, pas qu'elle est malade.
+- `LISTENING_A20` Le texte dit oui, pas qu'elle est en vacances.
+- `LISTENING_A20` Good morning. Would you like a coffee or a tea? I'd like a tea, please. Are you going to have a sandwich too? Yes, I'd like a cheese sandwich.
+- `LISTENING_A20` What does the customer order to drink?
+- `LISTENING_A20` “I'd like a tea, please.”
+- `LISTENING_A20` What sandwich does the customer choose?
+- `LISTENING_A20` “I'd like a cheese sandwich.”
+- `MISSIONS_A20` Quel temps ? ⚠ espacement/ponctuation
+- `MISSIONS_A20` Les verbes de base
+- `MISSIONS_A20` Construis la phrase
+- `MISSIONS_A20` Remets les mots dans l'ordre.
+- `MISSIONS_A20` Simple ou continu ? ⚠ espacement/ponctuation
+- `MISSIONS_A20` Choisis la bonne forme du verbe.
+- `MISSIONS_A20` Going to ou would like ? ⚠ espacement/ponctuation
+- `MISSIONS_A20` Choisis la bonne expression.
+- `READING_A20` Hi! I'm Lina. I live in Lyon and I work in a bank. Every day I get up at seven and I walk to work. Today is different: I'm working at home because the bus is on strike. Tomorrow I'm going to visit my sister in Paris. She has got two children.
+- `READING_A20` How does Lina usually go to work?
+- `READING_A20` She drives
+- `READING_A20` She takes the bus
+- `READING_A20` She walks
+- `READING_A20` Elle ne parle jamais de voiture.
+- `READING_A20` What is she going to do tomorrow?
+- `READING_A20` Work at home
+- `READING_A20` Visit her sister
+- `READING_A20` Go to the bank
+- `READING_A20` “Tomorrow I'm going to visit my sister” : projet avec going to.
+- `READING_A20` I'm Omar and I'm a student. I study English and I like music. I don't watch TV in the evening. Right now I'm waiting for the train to Oxford. I'd like to find a seat near the window. I'm going to arrive at ten.
+- `READING_A20` What is Omar doing now?
+- `READING_A20` Waiting for a train
+- `READING_A20` Watching TV
+- `READING_A20` What would he like?
+- `READING_A20` A seat near the window
+- `READING_A20` “I'd like to find a seat near the window” : demande polie.
+- `READING_A20` My name is Sara. I have got a brother and a sister. My brother lives in London and my sister works in Madrid. There are four people in my family. At the moment I'm cooking dinner. I know the recipe by heart, so it's easy.
+- `READING_A20` How many people are there in her family?
+- `READING_A20` Le texte dit : “There are four people in my family.”
+- `READING_A20` Le texte ne parle pas de six personnes.
+- `READING_A20` What is Sara doing at the moment?
+- `READING_A20` Cooking dinner
+- `READING_A20` Working in Madrid
+- `READING_A20` Visiting London
+- `READING_A20` I'm Ben. I play football every Saturday and I never miss a game. This week I'm not playing because I'm ill. I'm staying in bed and I'm reading a book. Next week I'm going to play again. I want to score a goal!
+- `READING_A20` Ben joue au football tous les samedis. Cette semaine il est malade et il lit. La semaine prochaine il va rejouer.
+- `READING_A20` When does Ben usually play football?
+- `READING_A20` Next week
+- `READING_A20` Every day
+- `READING_A20` Every Saturday
+- `READING_A20` Next week = la semaine prochaine : un projet, pas l'habitude.
+- `READING_A20` Le texte dit “every Saturday”, pas tous les jours.
+- `READING_A20` Why isn't he playing this week?
+- `READING_A20` He is ill
+- `READING_A20` He is busy
+- `READING_A20` He is on holiday
+- `READING_A20` “Because I'm ill” = parce que je suis malade.
+- `READING_A20` Il reste au lit, pas en vacances.
+- `TEST_AUDIOS_A20` I get up at seven every day. I have breakfast at half past seven and I go to school by bus.
+- `TEST_AUDIOS_A20` Hello, Anna. What are you doing? I'm waiting for the bus at the moment. I'm going to arrive at nine.
+- `TEST_AUDIOS_A20` Does she work in London? No, she doesn't. She works in Oxford. But today she's working at home.
+- `TEST_AUDIOS_A20` Where is she today?
+- `TEST_AUDIOS_A20` Would you like a coffee or a tea? I'd like a tea, please. And a cheese sandwich.
+- `TEST_AUDIOS_A20` What does the customer drink?
+- `TEST_AUDIOS_A20` I have got two brothers. They live in Manchester. My mother is a nurse and my father is a driver.
+- `TEST_AUDIOS_A20` How many brothers has the speaker got?
+- `TEST_AUDIOS_A20` What is the father's job?
+- `TEST_AUDIOS_A20` We are not working today. We're going to the beach because the weather is sunny. We're going to take the train at ten.
+- `TEST_AUDIOS_A20` Where are they going?
+- `TEST_AUDIOS_A20` To the museum
+- `TEST_AUDIOS_A20` To the beach
+- `TEST_AUDIOS_A20` What time are they going to take the train?
+- `TEST_AUDIOS_A20` At eleven
+- `TEST_AUDIOS_A20` Excuse me, is there a bank near here? Yes, go straight on and turn left. It's next to the supermarket.
+- `TEST_AUDIOS_A20` What is the person looking for?
+- `TEST_AUDIOS_A20` A station
+- `TEST_AUDIOS_A20` A supermarket
+- `TEST_AUDIOS_A20` Where is it?
+- `TEST_AUDIOS_A20` Opposite the school
+- `TEST_AUDIOS_A20` Next to the supermarket
+- `TEST_AUDIOS_A20` Behind the station
+- `TEST_AUDIOS_A20` I don't eat meat, but I eat fish. I'm having fish today because I'm very hungry. I know a good restaurant near here.
+- `TEST_AUDIOS_A20` What doesn't the speaker eat?
+- `TEST_AUDIOS_A20` What is the speaker having today?
+- `TEST_GRAMMAR_A20` She ___ to school by bus every day.
+- `TEST_GRAMMAR_A20` Look! It ___ raining.
+- `TEST_GRAMMAR_A20` I'm ___ a letter right now. (write)
+- `TEST_GRAMMAR_A20` He ___ TV in the evening. (watch)
+- `TEST_GRAMMAR_A20` ___ she work on Saturdays?
+- `TEST_GRAMMAR_A20` She ___ a new phone. (want)
+- `TEST_GRAMMAR_A20` The train ___ at eight.
+- `TEST_GRAMMAR_A20` They ___ for the bus now.
+- `TEST_GRAMMAR_A20` What ___ you usually do on Saturday?
+- `TEST_GRAMMAR_A20` What ___ you doing now?
+- `TEST_GRAMMAR_A20` I'm ___ to buy a ticket.
+- `TEST_GRAMMAR_A20` She ___ going to call him.
+- `TEST_GRAMMAR_A20` They ___ going to travel next week.
+- `TEST_GRAMMAR_A20` ___ you going to stay at home?
+- `TEST_GRAMMAR_A20` Tomorrow I ___ visit my aunt.
+- `TEST_GRAMMAR_A20` Every Sunday we ___ lunch together.
+- `TEST_GRAMMAR_A20` are having
+- `TEST_GRAMMAR_A20` Right now we ___ lunch.
+- `TEST_GRAMMAR_A20` My sister ___ in a hospital.
+- `TEST_GRAMMAR_A20` We ___ to the cinema on Fridays.
+- `TEST_GRAMMAR_A20` He ___ his homework now.
+- `TEST_GRAMMAR_A20` She doesn't ___ meat.
+- `TEST_GRAMMAR_A20` Does he ___ English?
+- `TEST_GRAMMAR_A20` There ___ two books on the table.
+- `TEST_GRAMMAR_A20` How many brothers ___ you have?
+- `TEST_GRAMMAR_A20` I usually ___ tea, but today I'm drinking coffee.
+- `TEST_GRAMMAR_A20` He is ___ late. (jamais)
+- `TEST_GRAMMAR_A20` Next week we ___ going to move house.
+- `TEST_GRAMMAR_A20` ______ she live in London? (question)
+- `TEST_TEXTS_A20` I live in Lyon and I work in a bank. Every day I walk to work. Today is different: I'm working at home because the bus is on strike. Tomorrow I'm going to visit my sister in Paris.
+- `TEST_TEXTS_A20` Why is she at home today?
+- `TEST_TEXTS_A20` The bus is on strike
+- `TEST_TEXTS_A20` She is ill
+- `TEST_TEXTS_A20` It is Sunday
+- `TEST_TEXTS_A20` Stay at home
+- `TEST_TEXTS_A20` I'm a student and I study English. Right now I'm waiting for the train to Oxford. I'd like a seat near the window. I'm going to arrive at ten.
+- `TEST_TEXTS_A20` What does Omar study?
+- `TEST_TEXTS_A20` What is he doing now?
+- `TEST_TEXTS_A20` Buying a ticket
+- `TEST_TEXTS_A20` What time is he going to arrive?
+- `TEST_TEXTS_A20` I have got a brother and a sister. My brother lives in London and my sister works in Madrid. At the moment I'm cooking dinner. I know the recipe by heart.
+- `TEST_TEXTS_A20` Where does her sister work?
+- `TEST_TEXTS_A20` In Madrid
+- `TEST_TEXTS_A20` What is she doing at the moment?
+- `TEST_TEXTS_A20` How many brothers has she got?
+- `TEST_TEXTS_A20` I play football every Saturday. This week I'm not playing because I'm ill. I'm staying in bed and reading a book. Next week I'm going to play again.
+- `TEST_TEXTS_A20` When does he usually play?
+- `TEST_TEXTS_A20` On Sunday
+- `TEST_TEXTS_A20` What is he doing this week?
+- `TEST_TEXTS_A20` Playing football
+- `TEST_TEXTS_A20` Reading in bed
+- `TEST_TEXTS_A20` When is he going to play again?
+- `TEST_TEXTS_A20` This weekend
+- `TEST_TEXTS_A20` A message
+- `TEST_TEXTS_A20` Hi Tom! I'm at the station. The train doesn't leave until six, so I'm having a coffee. I'm going to call you at five. Would you like to meet me at the park? Anna
+- `TEST_TEXTS_A20` Where is Anna?
+- `TEST_TEXTS_A20` At the station
+- `TEST_TEXTS_A20` At the park
+- `TEST_TEXTS_A20` What is she having?
+- `TEST_TEXTS_A20` A sandwich
+- `TEST_TEXTS_A20` What does she ask Tom?
+- `TEST_TEXTS_A20` To call at six
+- `TEST_TEXTS_A20` To meet at the park
+- `TEST_TEXTS_A20` To come to the station
+- `TEST_TEXTS_A20` At the hotel
+- `TEST_TEXTS_A20` Good evening. I'd like to book a room for two nights, please. A single room or a double room? A single room. Breakfast is at eight. Are you going to have breakfast here? Yes, I am.
+- `TEST_TEXTS_A20` How many nights is the room for?
+- `TEST_TEXTS_A20` What kind of room does the guest want?
+- `TEST_TEXTS_A20` A double room
+- `TEST_TEXTS_A20` A single room
+- `TEST_TEXTS_A20` A family room
+- `TEST_TEXTS_A20` Is the guest going to have breakfast at the hotel?
+- `TEST_TEXTS_A20` We don't know
+- `TEST_TEXTS_A20` My neighbour
+- `TEST_TEXTS_A20` My neighbour Mr Lee is a teacher. He teaches maths at the local school. He doesn't drive: he cycles to work every day. This morning he isn't cycling because it's raining. He is taking the bus.
+- `TEST_TEXTS_A20` What is Mr Lee's job?
+- `TEST_TEXTS_A20` How does he usually go to work?
+- `TEST_TEXTS_A20` Why is he taking the bus today?
+- `TEST_TEXTS_A20` It's raining
+- `TEST_TEXTS_A20` His bike is old
+- `TEST_TEXTS_A20` Weekend plans
+- `TEST_TEXTS_A20` This weekend I'm going to relax. On Saturday I'm going to see a film with my friends. On Sunday I'd like to cook a big lunch for my family. We usually eat together on Sundays.
+- `TEST_TEXTS_A20` What is she going to do on Saturday?
+- `TEST_TEXTS_A20` Visit her aunt
+- `TEST_TEXTS_A20` Cook lunch
+- `TEST_TEXTS_A20` See a film
+- `TEST_TEXTS_A20` What would she like to do on Sunday?
+- `TEST_TEXTS_A20` Cook a big lunch
+- `TEST_TEXTS_A20` Go shopping
+- `TEST_TEXTS_A20` When does her family usually eat together?
+- `TEST_TEXTS_A20` On Saturdays
+- `TEST_TEXTS_A20` On Sundays
+- `VOCAB_A20` Pourquoi cette passerelle ? ⚠ espacement/ponctuation
+- `VOCAB_A20` I'm cooking dinner now.
+- `VOCAB_A20` We're going to visit Rome next week.
+- `VOCAB_A20` Nous allons visiter Rome la semaine prochaine.
+- `VOCAB_A20` Before the past, I check my present.
+- `VOCAB_A20` Les 12 verbes de base
+- `VOCAB_A20` Une personne qui va, prend, fait et a : les 12 verbes de base en action
+- `VOCAB_A20` fabriquer / faire
+- `VOCAB_A20` obtenir / devenir
+- `VOCAB_A20` I am a student and I have two sisters.
+- `VOCAB_A20` She lives in Paris and works in a bank.
+- `VOCAB_A20` « Aller » se dit…
+- `VOCAB_A20` Go = aller (I go to school).
+- `VOCAB_A20` Take = prendre.
+- `VOCAB_A20` Get = obtenir / devenir.
+- `VOCAB_A20` Les verbes du quotidien
+- `VOCAB_A20` He studies English every evening.
+- `VOCAB_A20` They meet their friends on Saturday.
+- `VOCAB_A20` Ils retrouvent leurs amis le samedi.
+- `VOCAB_A20` Watch = regarder.
+- `VOCAB_A20` Read = lire.
+- `VOCAB_A20` Les verbes de la ville et du voyage
+- `VOCAB_A20` partir / quitter
+- `VOCAB_A20` The train arrives at nine.
+- `VOCAB_A20` She tries a jacket on.
+- `VOCAB_A20` Elle essaie une veste.
+- `VOCAB_A20` Buy = acheter.
+- `VOCAB_A20` Pay = payer.
+- `VOCAB_A20` Une horloge, un calendrier et une valise : tous les jours, maintenant, demain
+- `VOCAB_A20` tous les jours
+- `VOCAB_A20` at the moment
+- `VOCAB_A20` en ce moment
+- `VOCAB_A20` next week
+- `VOCAB_A20` la semaine prochaine
+- `VOCAB_A20` last week
+- `VOCAB_A20` I work every day, but I'm not working now.
+- `VOCAB_A20` Je travaille tous les jours, mais pas maintenant.
+- `VOCAB_A20` We're going to leave tomorrow.
+- `VOCAB_A20` Nous allons partir demain.
+- `VOCAB_A20` « En ce moment » se dit…
+- `VOCAB_A20` Next week = la semaine prochaine (going to).
+
+## A2.1 (811 lignes)
+
+- `EXERCISES_A21` Vocabulaire — La routine
+- `EXERCISES_A21` Choisis le sens correct.
+- `EXERCISES_A21` get dressed
+- `EXERCISES_A21` se doucher
+- `EXERCISES_A21` Get dressed.
+- `EXERCISES_A21` trajet domicile-travail
+- `EXERCISES_A21` run errands
+- `EXERCISES_A21` faire du sport
+- `EXERCISES_A21` Run errands.
+- `EXERCISES_A21` go to bed
+- `EXERCISES_A21` aller se coucher
+- `EXERCISES_A21` Go to bed.
+- `EXERCISES_A21` right now
+- `EXERCISES_A21` tous les jours
+- `EXERCISES_A21` Right now.
+- `EXERCISES_A21` Present Simple
+- `EXERCISES_A21` Habitudes et horaires.
+- `EXERCISES_A21` She ___ at seven every day.
+- `EXERCISES_A21` is getting up
+- `EXERCISES_A21` Every day → Simple.
+- `EXERCISES_A21` I ___ coffee every morning.
+- `EXERCISES_A21` am drinking
+- `EXERCISES_A21` He ___ to work by train.
+- `EXERCISES_A21` he → goes.
+- `EXERCISES_A21` The shop ___ at nine.
+- `EXERCISES_A21` is opening
+- `EXERCISES_A21` Horaire fixe.
+- `EXERCISES_A21` We ___ lunch at noon.
+- `EXERCISES_A21` are having
+- `EXERCISES_A21` Present Continuous
+- `EXERCISES_A21` En ce moment.
+- `EXERCISES_A21` Look! The children ___.
+- `EXERCISES_A21` are playing
+- `EXERCISES_A21` Look! → maintenant.
+- `EXERCISES_A21` I ___ a book right now.
+- `EXERCISES_A21` am reading
+- `EXERCISES_A21` She ___ lunch at the moment.
+- `EXERCISES_A21` is having
+- `EXERCISES_A21` At the moment.
+- `EXERCISES_A21` They ___ for the bus.
+- `EXERCISES_A21` are waiting
+- `EXERCISES_A21` En cours.
+- `EXERCISES_A21` He ___ on the phone.
+- `EXERCISES_A21` is talking
+- `EXERCISES_A21` Simple ou Continuous ? ⚠ espacement/ponctuation
+- `EXERCISES_A21` Choisis le bon temps.
+- `EXERCISES_A21` I usually ___ tea, but today I'm drinking coffee.
+- `EXERCISES_A21` Usually → Simple.
+- `EXERCISES_A21` Shh! She ___.
+- `EXERCISES_A21` is sleeping
+- `EXERCISES_A21` is working
+- `EXERCISES_A21` Situation stable.
+- `EXERCISES_A21` This week I ___ at home.
+- `EXERCISES_A21` am working
+- `EXERCISES_A21` Cette semaine.
+- `EXERCISES_A21` Water ___ at 100 degrees.
+- `EXERCISES_A21` is boiling
+- `EXERCISES_A21` Place de always, never…
+- `EXERCISES_A21` I ___ late. (jamais)
+- `EXERCISES_A21` She ___ goes to the gym. (souvent)
+- `EXERCISES_A21` Often + verbe.
+- `EXERCISES_A21` We ___ eat out. (rarement)
+- `EXERCISES_A21` They are ___ happy. (toujours)
+- `EXERCISES_A21` I ___ watch TV on Sundays. (parfois)
+- `EXERCISES_A21` some times
+- `EXERCISES_A21` Mise en situation
+- `EXERCISES_A21` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A21` Friend calls. You are cooking. You say:
+- `EXERCISES_A21` I cook now.
+- `EXERCISES_A21` I'm cooking now.
+- `EXERCISES_A21` I cooking.
+- `EXERCISES_A21` You describe your habit:
+- `EXERCISES_A21` I get up at six.
+- `EXERCISES_A21` I am getting up at six every day.
+- `EXERCISES_A21` I getting up.
+- `EXERCISES_A21` You ask about someone's routine:
+- `EXERCISES_A21` What you do usually?
+- `EXERCISES_A21` What are you usually doing?
+- `EXERCISES_A21` What do you usually do?
+- `EXERCISES_A21` You ask what he is doing now:
+- `EXERCISES_A21` What are you doing?
+- `EXERCISES_A21` What do you do?
+- `EXERCISES_A21` What you doing?
+- `EXERCISES_A21` Say you never watch TV:
+- `EXERCISES_A21` I am never watching TV.
+- `EXERCISES_A21` I watch never TV.
+- `EXERCISES_A21` I never watch TV.
+- `EXERCISES_A21` Never + verbe.
+- `EXERCISES_A21` Questions courtes
+- `EXERCISES_A21` Do / Does / Are / Is.
+- `EXERCISES_A21` ___ you get up early? — Yes, I do.
+- `EXERCISES_A21` Habitude → Do.
+- `EXERCISES_A21` ___ she working today? — No, she isn't.
+- `EXERCISES_A21` Maintenant → Is.
+- `EXERCISES_A21` Does he walk to school? — Yes, he ___.
+- `EXERCISES_A21` Yes, he does.
+- `EXERCISES_A21` Are they having lunch? — No, they ___.
+- `EXERCISES_A21` No, they aren't.
+- `EXERCISES_A21` Do you work on Sundays? — No, I ___.
+- `EXERCISES_A21` No, I don't.
+- `EXERCISES_A21` Is it raining now? — Yes, it ___.
+- `EXERCISES_A21` Yes, it is.
+- `EXERCISES_A21` don't / doesn't / isn't / aren't.
+- `EXERCISES_A21` I ___ eat breakfast. (habitude)
+- `EXERCISES_A21` Habitude → don't.
+- `EXERCISES_A21` She ___ work today. (en ce moment)
+- `EXERCISES_A21` don't working
+- `EXERCISES_A21` doesn't work
+- `EXERCISES_A21` isn't working
+- `EXERCISES_A21` Maintenant → isn't working.
+- `EXERCISES_A21` He ___ like coffee.
+- `EXERCISES_A21` he → doesn't.
+- `EXERCISES_A21` We ___ watching TV now.
+- `EXERCISES_A21` Maintenant → aren't.
+- `EXERCISES_A21` They ___ go out on weekdays.
+- `EXERCISES_A21` I ___ using the car this week.
+- `EXERCISES_A21` Cette semaine → am not.
+- `EXERCISES_A21` know, want, like, need : pas de -ing.
+- `EXERCISES_A21` I ___ the answer.
+- `EXERCISES_A21` am knowing
+- `EXERCISES_A21` She ___ a coffee.
+- `EXERCISES_A21` is wanting
+- `EXERCISES_A21` We ___ this song.
+- `EXERCISES_A21` are liking
+- `EXERCISES_A21` He ___ some help.
+- `EXERCISES_A21` is needing
+- `EXERCISES_A21` am having
+- `EXERCISES_A21` I'm ___ lunch. (manger)
+- `EXERCISES_A21` have lunch → having.
+- `EXERCISES_A21` L'orthographe du -ing
+- `EXERCISES_A21` Forme correcte.
+- `EXERCISES_A21` Double n.
+- `EXERCISES_A21` -y reste.
+- `EXERCISES_A21` Double m.
+- `EXERCISES_A21` Double p.
+- `EXERCISES_A21` Habitude ou maintenant ? ⚠ espacement/ponctuation
+- `EXERCISES_A21` Marqueurs de temps.
+- `EXERCISES_A21` Every Monday I ___ to the gym.
+- `EXERCISES_A21` Every Monday.
+- `EXERCISES_A21` At the moment she ___ a bath.
+- `EXERCISES_A21` I ___ to music on the bus every day.
+- `EXERCISES_A21` am listening
+- `EXERCISES_A21` Every day.
+- `EXERCISES_A21` This month we ___ in a small flat.
+- `EXERCISES_A21` are living
+- `EXERCISES_A21` This month.
+- `EXERCISES_A21` He ___ football on Saturdays.
+- `EXERCISES_A21` is playing
+- `EXERCISES_A21` On Saturdays.
+- `EXERCISES_A21` Look! They ___ across the road.
+- `EXERCISES_A21` are running
+- `EXERCISES_A21` Vocabulaire — Maison et travail
+- `EXERCISES_A21` date limite
+- `EXERCISES_A21` do the laundry
+- `EXERCISES_A21` faire le lit
+- `EXERCISES_A21` faire la vaisselle
+- `EXERCISES_A21` faire la lessive
+- `EXERCISES_A21` Laundry = lessive.
+- `EXERCISES_A21` rush hour
+- `EXERCISES_A21` heure de pointe
+- `EXERCISES_A21` Rush hour.
+- `EXERCISES_A21` hardly ever
+- `EXERCISES_A21` presque jamais
+- `EXERCISES_A21` Hardly ever.
+- `EXERCISES_A21` jour de travail
+- `EXERCISES_A21` wash the dishes
+- `EXERCISES_A21` mettre la table
+- `EXERCISES_A21` Dishes = vaisselle.
+- `EXPRESSION_A21` Dis ce que tu fais le soir.
+- `EXPRESSION_A21` Dis une chose que tu ne fais jamais.
+- `EXPRESSION_A21` I usually get up at seven. I go to work by bus. In the evening I cook dinner and I relax. I never watch TV before ten.
+- `EXPRESSION_A21` Le trajet
+- `EXPRESSION_A21` Dis ce que tu fais d'habitude.
+- `EXPRESSION_A21` Dis ce que tu fais aujourd'hui.
+- `EXPRESSION_A21` I usually work in the office. Today I'm working from home. I'm sitting in my kitchen. It's different because the bus is on strike.
+- `EXPRESSION_A21` Ce que tu fais d'habitude
+- `GRAMMAR_A21` Present Simple : les habitudes
+- `GRAMMAR_A21` I get up at seven.
+- `GRAMMAR_A21` She works in a bank.
+- `GRAMMAR_A21` Elle travaille dans une banque.
+- `GRAMMAR_A21` he / she / it → -s
+- `GRAMMAR_A21` He watches TV.
+- `GRAMMAR_A21` watch → watches
+- `GRAMMAR_A21` The train leaves at 8am.
+- `GRAMMAR_A21` horaire fixe
+- `GRAMMAR_A21` I walk to work every day.
+- `GRAMMAR_A21` Water boils at 100 degrees.
+- `GRAMMAR_A21` She ___ to school by bus.
+- `GRAMMAR_A21` she → goes.
+- `GRAMMAR_A21` He ___ TV every evening.
+- `GRAMMAR_A21` watch → watches.
+- `GRAMMAR_A21` always (100 %)
+- `GRAMMAR_A21` I always have breakfast.
+- `GRAMMAR_A21` usually / often
+- `GRAMMAR_A21` d'habitude / souvent
+- `GRAMMAR_A21` She usually walks.
+- `GRAMMAR_A21` We sometimes eat out.
+- `GRAMMAR_A21` rarely / never
+- `GRAMMAR_A21` rarement / jamais
+- `GRAMMAR_A21` He never runs.
+- `GRAMMAR_A21` I am always tired on Mondays.
+- `GRAMMAR_A21` They often go to the cinema.
+- `GRAMMAR_A21` I ___ eat meat. (jamais)
+- `GRAMMAR_A21` never = jamais.
+- `GRAMMAR_A21` She is ___ late. (rarement)
+- `GRAMMAR_A21` Present Continuous : maintenant
+- `GRAMMAR_A21` I am reading.
+- `GRAMMAR_A21` Je suis en train de lire.
+- `GRAMMAR_A21` am + -ing
+- `GRAMMAR_A21` She is cooking now.
+- `GRAMMAR_A21` Elle cuisine en ce moment.
+- `GRAMMAR_A21` is + -ing
+- `GRAMMAR_A21` They are waiting.
+- `GRAMMAR_A21` Ils attendent.
+- `GRAMMAR_A21` are + -ing
+- `GRAMMAR_A21` He is running.
+- `GRAMMAR_A21` Il court.
+- `GRAMMAR_A21` run → running
+- `GRAMMAR_A21` I'm having lunch right now.
+- `GRAMMAR_A21` We're staying with friends this week.
+- `GRAMMAR_A21` Nous logeons chez des amis cette semaine.
+- `GRAMMAR_A21` Look! It ___ raining.
+- `GRAMMAR_A21` I am ___ a letter. (write)
+- `GRAMMAR_A21` write → writing.
+- `GRAMMAR_A21` Simple ou Continuous : comment choisir ? ⚠ espacement/ponctuation
+- `GRAMMAR_A21` every day, always, usually
+- `GRAMMAR_A21` right now, at the moment, today
+- `GRAMMAR_A21` I live in Paris.
+- `GRAMMAR_A21` situation stable
+- `GRAMMAR_A21` I'm living with a friend this month.
+- `GRAMMAR_A21` situation temporaire
+- `GRAMMAR_A21` I usually drink tea, but today I'm drinking coffee.
+- `GRAMMAR_A21` She works in a shop. She is working today.
+- `GRAMMAR_A21` Elle travaille dans un magasin. Elle travaille aujourd'hui.
+- `GRAMMAR_A21` I ___ a shower every morning.
+- `GRAMMAR_A21` every morning → Present Simple.
+- `GRAMMAR_A21` Be quiet! The baby ___.
+- `GRAMMAR_A21` Maintenant → Continuous.
+- `GRAMMAR_A21` Do you get up early?
+- `GRAMMAR_A21` Do / Does + base
+- `GRAMMAR_A21` I don't work on Sundays.
+- `GRAMMAR_A21` Je ne travaille pas le dimanche.
+- `GRAMMAR_A21` don't / doesn't
+- `GRAMMAR_A21` Are you working now?
+- `GRAMMAR_A21` Tu travailles en ce moment ? ⚠ espacement/ponctuation
+- `GRAMMAR_A21` Am / Is / Are + sujet + -ing
+- `GRAMMAR_A21` She isn't cooking.
+- `GRAMMAR_A21` Elle ne cuisine pas.
+- `GRAMMAR_A21` isn't + -ing
+- `GRAMMAR_A21` What do you usually do on Saturday?
+- `GRAMMAR_A21` Que fais-tu d'habitude le samedi ? ⚠ espacement/ponctuation
+- `GRAMMAR_A21` What are you doing now?
+- `GRAMMAR_A21` Que fais-tu en ce moment ? ⚠ espacement/ponctuation
+- `GRAMMAR_A21` ___ she work on Saturdays?
+- `GRAMMAR_A21` Habitude + she → Does.
+- `GRAMMAR_A21` ___ you reading now?
+- `GRAMMAR_A21` Maintenant → Are.
+- `GRAMMAR_A21` Les verbes qu'on met rarement en -ing
+- `GRAMMAR_A21` I know the answer.
+- `GRAMMAR_A21` pas “I am knowing”
+- `GRAMMAR_A21` She wants a coffee.
+- `GRAMMAR_A21` pas “is wanting”
+- `GRAMMAR_A21` I like this song.
+- `GRAMMAR_A21` J'aime cette chanson.
+- `GRAMMAR_A21` pas “am liking”
+- `GRAMMAR_A21` He has a car.
+- `GRAMMAR_A21` Il a une voiture. ⚠ « a » devant voyelle
+- `GRAMMAR_A21` I need help right now.
+- `GRAMMAR_A21` J'ai besoin d'aide en ce moment.
+- `GRAMMAR_A21` We love this place.
+- `GRAMMAR_A21` Nous adorons cet endroit.
+- `GRAMMAR_A21` I ___ the answer. (know)
+- `GRAMMAR_A21` know : pas de -ing.
+- `GRAMMAR_A21` She ___ a new phone. (want)
+- `GRAMMAR_A21` want : Simple.
+- `GRAMMAR_A21` work → working
+- `GRAMMAR_A21` on ajoute -ing
+- `GRAMMAR_A21` make → making
+- `GRAMMAR_A21` voyelle + consonne : on double
+- `GRAMMAR_A21` study → studying
+- `GRAMMAR_A21` -y reste : studying
+- `GRAMMAR_A21` She is making dinner.
+- `GRAMMAR_A21` They are running to the bus.
+- `GRAMMAR_A21` Ils courent vers le bus.
+- `GRAMMAR_A21` He is ___ a cake. (make)
+- `GRAMMAR_A21` make → making.
+- `GRAMMAR_A21` We are ___ for the train. (run)
+- `GRAMMAR_A21` run → running.
+- `GRAMMAR_A21` I am ___ English. (study)
+- `GRAMMAR_A21` study → studying.
+- `GRAMMAR_A21` Maintenant, ces jours-ci, d'habitude
+- `GRAMMAR_A21` right now / at the moment
+- `GRAMMAR_A21` these days / this month / this year
+- `GRAMMAR_A21` ces temps-ci
+- `GRAMMAR_A21` Present Continuous (temporaire)
+- `GRAMMAR_A21` every day / on Fridays / once a week
+- `GRAMMAR_A21` de nos jours
+- `GRAMMAR_A21` souvent Present Simple ou Continuous
+- `GRAMMAR_A21` I'm learning to cook this month.
+- `GRAMMAR_A21` I cook dinner every evening.
+- `GRAMMAR_A21` I ___ for an exam this month.
+- `GRAMMAR_A21` am studying
+- `GRAMMAR_A21` This month → temporaire.
+- `GRAMMAR_A21` She ___ the gym on Fridays.
+- `GRAMMAR_A21` is visiting
+- `GRAMMAR_A21` On Fridays → habitude.
+- `GRAMMAR_A21` They ___ in London at the moment.
+- `LISTENING_A21` Every day
+- `LISTENING_A21` I get up at seven every day. I have a shower and I have breakfast at half past seven. Then I catch the bus to work. I arrive at nine.
+- `LISTENING_A21` What time does the speaker get up?
+- `LISTENING_A21` At seven.
+- `LISTENING_A21` What does the speaker do at half past seven?
+- `LISTENING_A21` Catches the bus
+- `LISTENING_A21` Has breakfast
+- `LISTENING_A21` Arrives at work
+- `LISTENING_A21` Right now
+- `LISTENING_A21` Hello, Sam. What are you doing? I'm cooking dinner at the moment. Can I call you back in ten minutes? Of course.
+- `LISTENING_A21` What is the speaker doing now?
+- `LISTENING_A21` Cooking dinner
+- `LISTENING_A21` Watching TV
+- `LISTENING_A21` Cooking dinner.
+- `LISTENING_A21` When will they call back?
+- `LISTENING_A21` In ten minutes
+- `LISTENING_A21` In an hour
+- `LISTENING_A21` In ten minutes.
+- `LISTENING_A21` Usually and today
+- `LISTENING_A21` I usually walk to school, but today it's raining, so I'm taking the bus. It's full of people. I'm standing near the door.
+- `LISTENING_A21` How does the speaker usually go to school?
+- `LISTENING_A21` He walks.
+- `LISTENING_A21` Why is he on the bus today?
+- `LISTENING_A21` He is tired
+- `LISTENING_A21` He is late
+- `LISTENING_A21` It is raining
+- `LISTENING_A21` It's raining.
+- `LISTENING_A21` Never late
+- `LISTENING_A21` Do you ever arrive late? No, never. I always leave home at eight, and I'm always at my desk at nine. And you? I'm often late. The traffic is terrible.
+- `LISTENING_A21` Does the first speaker arrive late?
+- `LISTENING_A21` Why is the second speaker often late?
+- `LISTENING_A21` The traffic
+- `LISTENING_A21` The weather
+- `LISTENING_A21` The traffic.
+- `LISTENING_A21` This week
+- `LISTENING_A21` My sister usually works in an office, but this week she's working at home. She's using my laptop because hers is broken. I'm sitting next to her and I'm reading.
+- `LISTENING_A21` Where does the sister usually work?
+- `LISTENING_A21` In a shop
+- `LISTENING_A21` In an office
+- `LISTENING_A21` In an office.
+- `LISTENING_A21` Why is she using the speaker's laptop?
+- `LISTENING_A21` It is bigger
+- `LISTENING_A21` Hers is broken
+- `LISTENING_A21` It is faster
+- `LISTENING_A21` Her laptop is broken.
+- `LISTENING_A21` An evening
+- `LISTENING_A21` I usually relax on the sofa after dinner. I watch TV or I read a book. Tonight I'm tidying the flat because my friends are coming at eight.
+- `LISTENING_A21` What does the speaker usually do after dinner?
+- `LISTENING_A21` Why is the speaker tidying tonight?
+- `LISTENING_A21` A party is over
+- `LISTENING_A21` Friends are coming
+- `LISTENING_A21` The flat is dirty
+- `LISTENING_A21` Friends are coming.
+- `LISTENING_A21` At weekends I don't get up early. I sleep until ten and then I have a long breakfast. Today is Saturday and I'm having breakfast in bed. It's great!
+- `LISTENING_A21` What time does the speaker sleep until at weekends?
+- `LISTENING_A21` Until ten.
+- `LISTENING_A21` Where is the speaker having breakfast today?
+- `LISTENING_A21` In the garden
+- `LISTENING_A21` On the phone
+- `LISTENING_A21` Hi Mum, I'm at the supermarket. I'm buying milk and bread. Do you want anything else? Yes, please, some eggs. OK, see you soon.
+- `LISTENING_A21` Where is the speaker?
+- `LISTENING_A21` At the supermarket
+- `LISTENING_A21` At school
+- `LISTENING_A21` What does Mum want?
+- `LISTENING_A21` Some eggs.
+- `LISTENING_A21` A busy morning
+- `LISTENING_A21` Good morning, this is Rita. I usually take the eight o'clock train, but today I'm driving because the trains are not running. I'm sitting in traffic and I'm already late. Please start the meeting without me.
+- `LISTENING_A21` How does Rita usually go to work?
+- `LISTENING_A21` The eight o'clock train.
+- `LISTENING_A21` Why is she driving today?
+- `LISTENING_A21` The trains are not running
+- `LISTENING_A21` Her car is new
+- `LISTENING_A21` She likes it
+- `LISTENING_A21` The trains are not running.
+- `LISTENING_A21` What does she ask?
+- `LISTENING_A21` To cancel the meeting
+- `LISTENING_A21` To wait for her
+- `LISTENING_A21` To start the meeting without her
+- `LISTENING_A21` Start without me.
+- `LISTENING_A21` Changing plans
+- `LISTENING_A21` I normally go to the gym on Tuesdays, but this week I'm not going because I'm working late. Instead I'm going on Saturday morning. Do you want to come with me? Sure, I'm free on Saturday.
+- `LISTENING_A21` When does the speaker normally go to the gym?
+- `LISTENING_A21` On Saturdays
+- `LISTENING_A21` On Tuesdays
+- `LISTENING_A21` On Tuesdays.
+- `LISTENING_A21` Why isn't the speaker going this week on Tuesday?
+- `LISTENING_A21` Working late
+- `LISTENING_A21` On holiday
+- `LISTENING_A21` I'm working late.
+- `LISTENING_A21` When is the friend free?
+- `LISTENING_A21` On Sunday
+- `LISTENING_A21` On Tuesday
+- `LISTENING_A21` On Saturday
+- `LISTENING_A21` On Saturday.
+- `MISSIONS_A21` Construis la phrase
+- `MISSIONS_A21` Remets les mots dans l'ordre.
+- `MISSIONS_A21` Choisis la bonne forme du verbe.
+- `MISSIONS_A21` Combien de fois ? ⚠ espacement/ponctuation
+- `MISSIONS_A21` Compare ta routine et aujourd'hui.
+- `READING_A21` Hi! I'm Marta and I work in a hospital. I usually get up at six and I catch the bus at seven. My commute takes forty minutes. I always have a break at noon and I have lunch with my colleagues. Today is different: I'm working from home because my bus company is on strike, so I'm writing this message in my kitchen.
+- `READING_A21` How long is Marta's commute?
+- `READING_A21` Forty minutes
+- `READING_A21` Four minutes
+- `READING_A21` Her commute takes forty minutes.
+- `READING_A21` Why is she working from home today?
+- `READING_A21` She is on holiday
+- `READING_A21` She is ill
+- `READING_A21` The buses are on strike
+- `READING_A21` Her bus company is on strike.
+- `READING_A21` I'm Tom and I'm a student. I usually study in the library, but this week I'm studying at home because the library is closed. Every morning I wake up at eight, I have a quick breakfast and I start work at nine. I rarely go out on weekdays. At the moment I'm preparing for my exams, so I never watch TV before ten at night.
+- `READING_A21` Where does Tom usually study?
+- `READING_A21` In the library
+- `READING_A21` Usually: in the library.
+- `READING_A21` Why is he studying at home this week?
+- `READING_A21` It is cold
+- `READING_A21` He is lazy
+- `READING_A21` The library is closed
+- `READING_A21` The library is closed.
+- `READING_A21` My name is Anna and I'm a nurse. On Mondays and Tuesdays I work at night, so I sleep in the day. I usually cook dinner for my children at six, then I leave for work at eight. Right now it is three o'clock in the afternoon and I'm running errands: I'm buying medicine at the pharmacy and I'm posting a parcel.
+- `READING_A21` When does Anna work at night?
+- `READING_A21` On Mondays and Tuesdays
+- `READING_A21` At weekends
+- `READING_A21` Mondays and Tuesdays.
+- `READING_A21` What is she doing right now?
+- `READING_A21` Running errands
+- `READING_A21` She's running errands.
+- `READING_A21` I'm Omar. I'm a taxi driver and I often finish work late. I usually have dinner at ten, and then I relax with a book. Tonight is special: it's my daughter's birthday, so I'm not working. We're sitting in the garden, my wife is cooking and the children are playing football. I'm feeling very happy.
+- `READING_A21` When does Omar usually have dinner?
+- `READING_A21` Why is he not working tonight?
+- `READING_A21` He is ill
+- `READING_A21` It is his daughter's birthday
+- `READING_A21` He is on holiday
+- `READING_A21` His daughter's birthday.
+- `READING_A21` Hello! I'm Lucy and I live in a small flat in London. I don't have a car, so I cycle to work every day. It usually takes me twenty minutes, but today it's raining, so I'm taking the bus. I'm sitting next to the window and I'm listening to music. I'm never late because I always leave home early.
+- `READING_A21` How does Lucy usually go to work?
+- `READING_A21` She cycles every day.
+- `READING_A21` Why is she on the bus today?
+- `READING_A21` Her bike is broken
+- `READING_A21` She is late
+- `READING_A21` My name is Priya and I work for a travel company. On a normal day I get up at six, I have a quick shower and I drive to the office. I usually answer emails until noon, and then I have lunch in the park with a friend. But this week is not normal. I'm visiting our new office in Edinburgh, so I'm staying in a small hotel near the station. At the moment I'm sitting in the hotel restaurant and I'm drinking a cup of tea. I miss my own kitchen, but I'm enjoying the city.
+- `READING_A21` What does Priya usually do until noon?
+- `READING_A21` She answers emails
+- `READING_A21` She visits clients
+- `READING_A21` She drives
+- `READING_A21` She usually answers emails until noon.
+- `READING_A21` Where is she this week?
+- `READING_A21` In London
+- `READING_A21` In Edinburgh
+- `READING_A21` She's visiting the new office in Edinburgh.
+- `READING_A21` What is she doing at the moment?
+- `READING_A21` Walking to the station
+- `READING_A21` Drinking tea in a restaurant
+- `READING_A21` Answering emails
+- `READING_A21` She's sitting in the hotel restaurant, drinking tea.
+- `READING_A21` I'm Jack and I'm a baker. My day starts when most people are asleep: I get up at two in the morning and I'm at the bakery by three. I make bread, croissants and cakes, and the shop opens at seven. I rarely eat lunch because I finish work at noon, and then I go straight to bed. This month I'm training a new assistant, Leo, so I'm talking more than usual. Right now he's learning how to make a baguette and I'm watching him carefully.
+- `READING_A21` What time does Jack get up?
+- `READING_A21` At two in the morning
+- `READING_A21` At two in the morning.
+- `READING_A21` When does he finish work?
+- `READING_A21` He finishes at noon.
+- `READING_A21` What is Leo doing right now?
+- `READING_A21` Selling bread
+- `READING_A21` Learning to make a baguette
+- `READING_A21` He's learning how to make a baguette.
+- `READING_A21` When does Sofia usually have dinner in Spain?
+- `READING_A21` About ten o'clock
+- `READING_A21` At about ten.
+- `READING_A21` How does she go to university in Manchester?
+- `READING_A21` She's using the bus every day.
+- `READING_A21` Where does she meet other students?
+- `READING_A21` At the library
+- `TEST_AUDIOS_A21` I get up at seven every day. I have a shower and I have breakfast at half past seven. Then I catch the bus to work and I arrive at nine.
+- `TEST_AUDIOS_A21` What time does the speaker have breakfast?
+- `TEST_AUDIOS_A21` Half past seven
+- `TEST_AUDIOS_A21` What time does the speaker arrive at work?
+- `TEST_AUDIOS_A21` What is Sam doing?
+- `TEST_AUDIOS_A21` When will the caller phone again?
+- `TEST_AUDIOS_A21` I usually walk to school, but today it's raining, so I'm taking the bus. It's full of people and I'm standing near the door.
+- `TEST_AUDIOS_A21` Where is the speaker standing?
+- `TEST_AUDIOS_A21` At the back
+- `TEST_AUDIOS_A21` Near the door
+- `TEST_AUDIOS_A21` My sister usually works in an office, but this week she's working at home. She's using my laptop because hers is broken.
+- `TEST_AUDIOS_A21` Where is the sister working this week?
+- `TEST_AUDIOS_A21` Why is she using the laptop?
+- `TEST_AUDIOS_A21` It is new
+- `TEST_AUDIOS_A21` It is cheap
+- `TEST_AUDIOS_A21` At weekends I don't get up early. I sleep until ten and then I have a long breakfast. Today is Saturday and I'm having breakfast in bed.
+- `TEST_AUDIOS_A21` What time does the speaker get up at weekends?
+- `TEST_AUDIOS_A21` About ten
+- `TEST_AUDIOS_A21` Good morning, this is Rita. I usually take the eight o'clock train, but today I'm driving because the trains are not running. I'm sitting in traffic and I'm already late.
+- `TEST_AUDIOS_A21` Her train is late
+- `TEST_AUDIOS_A21` She likes driving
+- `TEST_AUDIOS_A21` I normally go to the gym on Tuesdays, but this week I'm working late, so I'm going on Saturday morning. Do you want to come? Sure, I'm free on Saturday.
+- `TEST_AUDIOS_A21` When is the speaker going this week?
+- `TEST_AUDIOS_A21` On Saturday morning
+- `TEST_GRAMMAR_A21` She ___ to school by bus every day.
+- `TEST_GRAMMAR_A21` I'm ___ a letter right now. (write)
+- `TEST_GRAMMAR_A21` He ___ TV in the evening. (watch)
+- `TEST_GRAMMAR_A21` Shh! The baby ___.
+- `TEST_GRAMMAR_A21` The train ___ at eight.
+- `TEST_GRAMMAR_A21` is leaving
+- `TEST_GRAMMAR_A21` They ___ for the bus now.
+- `TEST_GRAMMAR_A21` What ___ you usually do on Saturday?
+- `TEST_GRAMMAR_A21` What ___ you doing now?
+- `TEST_GRAMMAR_A21` “Commute” means…
+- `TEST_GRAMMAR_A21` “Get dressed” means…
+- `TEST_GRAMMAR_A21` “Run errands” means…
+- `TEST_GRAMMAR_A21` We ___ lunch at noon every day.
+- `TEST_GRAMMAR_A21` I ___ to music at the moment.
+- `TEST_GRAMMAR_A21` She is ___ on time. (toujours)
+- `TEST_GRAMMAR_A21` He ___ go to the gym. (souvent)
+- `TEST_GRAMMAR_A21` I'm ___ with a friend this month.
+- `TEST_TEXTS_A21` I work in a hospital and I usually get up at six. I catch the bus at seven and my commute takes forty minutes. I always have lunch with my colleagues at noon. Today is different: I'm working from home because my bus company is on strike, so I'm writing from my kitchen.
+- `TEST_TEXTS_A21` What time does she usually get up?
+- `TEST_TEXTS_A21` How long is her commute?
+- `TEST_TEXTS_A21` Why is she at home today?
+- `TEST_TEXTS_A21` It is a holiday
+- `TEST_TEXTS_A21` I'm a student and I usually study in the library. This week I'm studying at home because the library is closed. Every morning I wake up at eight, I have a quick breakfast and I start work at nine. I rarely go out on weekdays and I never watch TV before ten at night.
+- `TEST_TEXTS_A21` Where does he usually study?
+- `TEST_TEXTS_A21` When does he wake up?
+- `TEST_TEXTS_A21` Does he watch TV before ten?
+- `TEST_TEXTS_A21` No, never
+- `TEST_TEXTS_A21` Yes, always
+- `TEST_TEXTS_A21` I'm a nurse. On Mondays and Tuesdays I work at night, so I sleep in the day. I usually cook dinner for my children at six, then I leave for work at eight. Right now it's three in the afternoon and I'm running errands: I'm buying medicine at the pharmacy.
+- `TEST_TEXTS_A21` When does she work at night?
+- `TEST_TEXTS_A21` Monday and Tuesday
+- `TEST_TEXTS_A21` What time does she usually cook dinner?
+- `TEST_TEXTS_A21` What is she doing now?
+- `TEST_TEXTS_A21` I'm a taxi driver and I often finish work late. I usually have dinner at ten and then I relax with a book. Tonight is special: it's my daughter's birthday, so I'm not working. We're sitting in the garden, my wife is cooking and the children are playing football.
+- `TEST_TEXTS_A21` What is Omar's job?
+- `TEST_TEXTS_A21` Taxi driver
+- `TEST_TEXTS_A21` Why is tonight special?
+- `TEST_TEXTS_A21` It's his daughter's birthday
+- `TEST_TEXTS_A21` It's his birthday
+- `TEST_TEXTS_A21` What are the children doing?
+- `TEST_TEXTS_A21` Playing football
+- `TEST_TEXTS_A21` I live in a small flat in London. I don't have a car, so I cycle to work every day. It usually takes me twenty minutes, but today it's raining, so I'm taking the bus. I'm sitting next to the window and I'm listening to music. I'm never late because I always leave home early.
+- `TEST_TEXTS_A21` How does she usually go to work?
+- `TEST_TEXTS_A21` What is she doing on the bus?
+- `TEST_TEXTS_A21` Listening to music
+- `TEST_TEXTS_A21` I work for a travel company. On a normal day I get up at six, I have a shower and I drive to the office. I usually answer emails until noon, and then I have lunch in the park with a friend. But this week I'm visiting our new office in Edinburgh, so I'm staying in a small hotel near the station. At the moment I'm sitting in the hotel restaurant and I'm drinking tea.
+- `TEST_TEXTS_A21` What does she usually do until noon?
+- `TEST_TEXTS_A21` Answers emails
+- `TEST_TEXTS_A21` Visits clients
+- `TEST_TEXTS_A21` Drinking tea
+- `TEST_TEXTS_A21` I'm a baker. My day starts when most people are asleep: I get up at two in the morning and I'm at the bakery by three. I make bread, croissants and cakes, and the shop opens at seven. I finish work at noon and then I go to bed. This month I'm training a new assistant, so right now he's learning how to make a baguette and I'm watching him.
+- `TEST_TEXTS_A21` What time does he get up?
+- `TEST_TEXTS_A21` Two in the morning
+- `TEST_TEXTS_A21` When does the shop open?
+- `TEST_TEXTS_A21` What is the assistant doing now?
+- `TEST_TEXTS_A21` Where is she from?
+- `TEST_TEXTS_A21` When does she have dinner in Manchester?
+- `VOCAB_A21` Pour une habitude : “I get up at seven every day.” Pour ce qui se passe en ce moment : “I'm getting dressed right now.” Deux temps, deux situations.
+- `VOCAB_A21` I get up at seven every day.
+- `VOCAB_A21` I'm having breakfast right now.
+- `VOCAB_A21` What do you usually do after work?
+- `VOCAB_A21` I usually get up at seven, but today I'm getting up late.
+- `VOCAB_A21` brush my teeth
+- `VOCAB_A21` me brosser les dents
+- `VOCAB_A21` have a shower
+- `VOCAB_A21` prendre une douche
+- `VOCAB_A21` have breakfast
+- `VOCAB_A21` make the bed
+- `VOCAB_A21` wash my face
+- `VOCAB_A21` me laver le visage
+- `VOCAB_A21` make breakfast
+- `VOCAB_A21` leave home
+- `VOCAB_A21` quitter la maison
+- `VOCAB_A21` “Wake up” = ouvrir les yeux ; “get up” = quitter le lit. On dit “have breakfast”, “have a shower” (pas “take” en anglais britannique).
+- `VOCAB_A21` I wake up at six but I get up at half past six.
+- `VOCAB_A21` She has a shower before breakfast.
+- `VOCAB_A21` “Get dressed” veut dire…
+- `VOCAB_A21` faire le trajet domicile-travail
+- `VOCAB_A21` catch the bus
+- `VOCAB_A21` prendre le bus
+- `VOCAB_A21` be on time
+- `VOCAB_A21` miss the bus
+- `VOCAB_A21` rater le bus
+- `VOCAB_A21` get on / get off
+- `VOCAB_A21` monter / descendre
+- `VOCAB_A21` park the car
+- `VOCAB_A21` garer la voiture
+- `VOCAB_A21` My commute takes forty minutes.
+- `VOCAB_A21` Mon trajet dure quarante minutes.
+- `VOCAB_A21` He is never late for school.
+- `VOCAB_A21` “Traffic” veut dire…
+- `VOCAB_A21` have a break
+- `VOCAB_A21` faire une pause
+- `VOCAB_A21` have lunch
+- `VOCAB_A21` do the shopping
+- `VOCAB_A21` faire les courses
+- `VOCAB_A21` meet a friend
+- `VOCAB_A21` retrouver un ami
+- `VOCAB_A21` finish work
+- `VOCAB_A21` finir le travail
+- `VOCAB_A21` attend a meeting
+- `VOCAB_A21` answer emails
+- `VOCAB_A21` pick up the children
+- `VOCAB_A21` aller chercher les enfants
+- `VOCAB_A21` work overtime
+- `VOCAB_A21` I have a break at eleven.
+- `VOCAB_A21` On Saturdays I run errands.
+- `VOCAB_A21` “Run errands” veut dire…
+- `VOCAB_A21` courir vite
+- `VOCAB_A21` cook dinner
+- `VOCAB_A21` do the housework
+- `VOCAB_A21` check my emails
+- `VOCAB_A21` set the table
+- `VOCAB_A21` take out the rubbish
+- `VOCAB_A21` sortir les poubelles
+- `VOCAB_A21` have a bath
+- `VOCAB_A21` prendre un bain
+- `VOCAB_A21` I relax on the sofa after dinner.
+- `VOCAB_A21` He goes to bed at eleven.
+- `VOCAB_A21` “Relax” veut dire…
+- `VOCAB_A21` se coucher
+- `VOCAB_A21` once a week
+- `VOCAB_A21` une fois par semaine
+- `VOCAB_A21` twice a month
+- `VOCAB_A21` deux fois par mois
+- `VOCAB_A21` from time to time
+- `VOCAB_A21` de temps en temps
+- `VOCAB_A21` She is always on time.
+- `VOCAB_A21` We rarely eat out.
+- `VOCAB_A21` Nous mangeons rarement dehors.
+- `VOCAB_A21` “Rarely” veut dire…
+- `VOCAB_A21` Maintenant ou d'habitude ? ⚠ espacement/ponctuation
+- `VOCAB_A21` Une horloge, un calendrier et une personne qui travaille
+- `VOCAB_A21` at the moment
+- `VOCAB_A21` en ce moment
+- `VOCAB_A21` this week
+- `VOCAB_A21` cette semaine
+- `VOCAB_A21` every day
+- `VOCAB_A21` on Mondays
+- `VOCAB_A21` these days
+- `VOCAB_A21` ces jours-ci
+- `VOCAB_A21` for the moment
+- `VOCAB_A21` pour le moment
+- `VOCAB_A21` Right now / at the moment / today / this week → souvent Present Continuous. Every day / on Mondays → Present Simple.
+- `VOCAB_A21` I'm working from home this week.
+- `VOCAB_A21` I work in the office on Mondays.
+- `VOCAB_A21` Je travaille au bureau le lundi.
+- `VOCAB_A21` “Every day” va avec…
+- `VOCAB_A21` Past Simple
+- `VOCAB_A21` Une maison avec lessive, aspirateur, plantes et chat
+- `VOCAB_A21` passer l'aspirateur
+- `VOCAB_A21` feed the cat
+- `VOCAB_A21` nourrir le chat
+- `VOCAB_A21` water the plants
+- `VOCAB_A21` arroser les plantes
+- `VOCAB_A21` go for a walk
+- `VOCAB_A21` faire une promenade
+- `VOCAB_A21` do exercise
+- `VOCAB_A21` faire de l'exercice
+- `VOCAB_A21` take a nap
+- `VOCAB_A21` faire la sieste
+- `VOCAB_A21` On dit “do the laundry”, “do the dishes”, “do exercise” avec do. Mais “make the bed”, “make dinner” avec make.
+- `VOCAB_A21` I do the laundry on Sundays.
+- `VOCAB_A21` Je fais la lessive le dimanche.
+- `VOCAB_A21` She is watering the plants right now.
+- `VOCAB_A21` Elle arrose les plantes en ce moment.
+- `VOCAB_A21` “Tidy up” veut dire…
+- `VOCAB_A21` Le travail et les horaires
+- `VOCAB_A21` emploi du temps
+- `VOCAB_A21` service / poste (horaire)
+- `VOCAB_A21` patron / chef
+- `VOCAB_A21` I work part-time on Mondays and Tuesdays.
+- `VOCAB_A21` I'm very busy at the moment.
+- `VOCAB_A21` “Deadline” veut dire…
+
+## A2.2 (786 lignes)
+
+- `EXERCISES_A22` Choisis le sens correct.
+- `EXERCISES_A22` Childhood = enfance.
+- `EXERCISES_A22` Memory = souvenir.
+- `EXERCISES_A22` se perdre
+- `EXERCISES_A22` Get lost.
+- `EXERCISES_A22` Yesterday = hier.
+- `EXERCISES_A22` Ago = il y a.
+- `EXERCISES_A22` Was / were
+- `EXERCISES_A22` I ___ tired last night.
+- `EXERCISES_A22` They ___ at the party.
+- `EXERCISES_A22` They → were.
+- `EXERCISES_A22` It ___ a beautiful day.
+- `EXERCISES_A22` It → was.
+- `EXERCISES_A22` ___ you at home yesterday?
+- `EXERCISES_A22` You → Were.
+- `EXERCISES_A22` We ___ in Rome in 2019.
+- `EXERCISES_A22` We → were.
+- `EXERCISES_A22` She wasn't.
+- `EXERCISES_A22` Ajoute -ed (ou -d, -ied).
+- `EXERCISES_A22` I ___ my grandmother yesterday. (visit)
+- `EXERCISES_A22` She ___ in Spain in 2015. (live)
+- `EXERCISES_A22` Live → lived.
+- `EXERCISES_A22` We ___ a lot at the party. (laugh)
+- `EXERCISES_A22` He ___ French at school. (study)
+- `EXERCISES_A22` Study → studied.
+- `EXERCISES_A22` The bus ___ at the corner. (stop)
+- `EXERCISES_A22` Stop → stopped.
+- `EXERCISES_A22` They ___ the tent near the lake. (camp)
+- `EXERCISES_A22` Go → went.
+- `EXERCISES_A22` See → saw.
+- `EXERCISES_A22` Buy → bought.
+- `EXERCISES_A22` Take → took.
+- `EXERCISES_A22` Eat → ate.
+- `EXERCISES_A22` Come → came.
+- `EXERCISES_A22` Write → wrote.
+- `EXERCISES_A22` Have → had.
+- `EXERCISES_A22` didn't + base verbale.
+- `EXERCISES_A22` I ___ go to school yesterday.
+- `EXERCISES_A22` She didn't ___ the film.
+- `EXERCISES_A22` We ___ buy anything.
+- `EXERCISES_A22` didn't buy.
+- `EXERCISES_A22` He didn't ___ me. (call)
+- `EXERCISES_A22` didn't call.
+- `EXERCISES_A22` Be → weren't.
+- `EXERCISES_A22` I didn't ___ the answer. (know)
+- `EXERCISES_A22` didn't know.
+- `EXERCISES_A22` Did + sujet + base.
+- `EXERCISES_A22` ___ you go to the party?
+- `EXERCISES_A22` Did you go.
+- `EXERCISES_A22` Where ___ she live?
+- `EXERCISES_A22` Where did she live?
+- `EXERCISES_A22` What ___ you do last night?
+- `EXERCISES_A22` What did you do?
+- `EXERCISES_A22` ___ they at school yesterday?
+- `EXERCISES_A22` Be → Were.
+- `EXERCISES_A22` Did he call you? — Yes, he ___.
+- `EXERCISES_A22` Yes, he did.
+- `EXERCISES_A22` When ___ you arrive?
+- `EXERCISES_A22` When did you arrive?
+- `EXERCISES_A22` ago, last, yesterday, in…
+- `EXERCISES_A22` I called her two days ___.
+- `EXERCISES_A22` Two days ago.
+- `EXERCISES_A22` We went to Spain ___ summer.
+- `EXERCISES_A22` Last summer.
+- `EXERCISES_A22` I met him ___ 2018.
+- `EXERCISES_A22` She phoned me ___ night.
+- `EXERCISES_A22` Last night.
+- `EXERCISES_A22` He arrived ___ an hour ago.
+- `EXERCISES_A22` About an hour ago.
+- `EXERCISES_A22` I saw him ___ morning. (hier)
+- `EXERCISES_A22` Yesterday morning.
+- `EXERCISES_A22` Habitudes d'avant.
+- `EXERCISES_A22` I ___ live in Paris.
+- `EXERCISES_A22` am used to
+- `EXERCISES_A22` Used to + base.
+- `EXERCISES_A22` Did you ___ play football?
+- `EXERCISES_A22` Did you use to.
+- `EXERCISES_A22` She didn't ___ like coffee.
+- `EXERCISES_A22` Didn't use to.
+- `EXERCISES_A22` We ___ visit our grandparents every Sunday.
+- `EXERCISES_A22` were used to
+- `EXERCISES_A22` Used to visit.
+- `EXERCISES_A22` He ___ be shy.
+- `EXERCISES_A22` is used to
+- `EXERCISES_A22` Used to be.
+- `EXERCISES_A22` They ___ have a dog. (avant)
+- `EXERCISES_A22` Used to have.
+- `EXERCISES_A22` Used to ou Past Simple ? ⚠ espacement/ponctuation
+- `EXERCISES_A22` Habitude ou action unique ? ⚠ espacement/ponctuation
+- `EXERCISES_A22` I ___ to London last year.
+- `EXERCISES_A22` used to go
+- `EXERCISES_A22` use to go
+- `EXERCISES_A22` Last year : Past Simple.
+- `EXERCISES_A22` When I was young, I ___ every day.
+- `EXERCISES_A22` used to swim
+- `EXERCISES_A22` swam last Monday
+- `EXERCISES_A22` Habitude : used to.
+- `EXERCISES_A22` We ___ the film yesterday.
+- `EXERCISES_A22` used to watch
+- `EXERCISES_A22` use to watch
+- `EXERCISES_A22` Yesterday → Past Simple.
+- `EXERCISES_A22` She ___ in a bank for ten years.
+- `EXERCISES_A22` used to worked
+- `EXERCISES_A22` use to work
+- `EXERCISES_A22` He ___ a motorbike as a student.
+- `EXERCISES_A22` had last week
+- `EXERCISES_A22` used to have
+- `EXERCISES_A22` Habitude d'avant.
+- `EXERCISES_A22` I ___ my keys two days ago.
+- `EXERCISES_A22` used to lose
+- `EXERCISES_A22` use to lose
+- `EXERCISES_A22` Avant / maintenant.
+- `EXERCISES_A22` I ___ a car, but I sold it.
+- `EXERCISES_A22` am having
+- `EXERCISES_A22` Avant, plus maintenant.
+- `EXERCISES_A22` She ___ in a bank now.
+- `EXERCISES_A22` used to work
+- `EXERCISES_A22` We used to live in Spain. Now we ___ in France.
+- `EXERCISES_A22` used to live
+- `EXERCISES_A22` He ___ be shy, but now he's confident.
+- `EXERCISES_A22` I ___ to the gym these days.
+- `EXERCISES_A22` They no longer ___ here.
+- `EXERCISES_A22` Mise en situation
+- `EXERCISES_A22` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A22` You tell what you did last weekend:
+- `EXERCISES_A22` I goed to the beach.
+- `EXERCISES_A22` I go to the beach yesterday.
+- `EXERCISES_A22` I went to the beach.
+- `EXERCISES_A22` You ask a friend about his holiday:
+- `EXERCISES_A22` Where you went?
+- `EXERCISES_A22` Where did you go?
+- `EXERCISES_A22` Where did you went?
+- `EXERCISES_A22` Did + base.
+- `EXERCISES_A22` You say you don't do it any more:
+- `EXERCISES_A22` I used to play, but not any more.
+- `EXERCISES_A22` I use to playing.
+- `EXERCISES_A22` I am used to play.
+- `EXERCISES_A22` You say it wasn't easy:
+- `EXERCISES_A22` It not was easy.
+- `EXERCISES_A22` It didn't easy.
+- `EXERCISES_A22` It wasn't easy.
+- `EXERCISES_A22` You ask when it happened:
+- `EXERCISES_A22` When did it happen?
+- `EXERCISES_A22` When it happened?
+- `EXERCISES_A22` When does it happened?
+- `EXERCISES_A22` You describe your childhood:
+- `EXERCISES_A22` I used to living.
+- `EXERCISES_A22` I am living in a village.
+- `EXERCISES_A22` I used to live in a village.
+- `EXERCISES_A22` Vocabulaire — Voyage et souvenirs
+- `EXERCISES_A22` visite touristique
+- `EXERCISES_A22` photo album
+- `EXERCISES_A22` appareil photo
+- `EXERCISES_A22` album photo
+- `EXERCISES_A22` Photo album.
+- `EXERCISES_A22` back then
+- `EXERCISES_A22` plus tard
+- `EXERCISES_A22` Back then.
+- `EXPRESSION_A22` Un souvenir de voyage
+- `EXPRESSION_A22` Last summer I went to Portugal with my family. We stayed in a small hotel near the sea. We visited old towns and we ate fresh fish. I loved it.
+- `EXPRESSION_A22` Ce que tu as fait
+- `EXPRESSION_A22` Dis ce que tu faisais souvent.
+- `EXPRESSION_A22` Dis une chose que tu ne fais plus.
+- `EXPRESSION_A22` Dis ce que tu fais maintenant.
+- `EXPRESSION_A22` When I was a child, I used to live in a small town. I used to play football every day. I don't play football any more, but now I run twice a week.
+- `EXPRESSION_A22` Ce que tu faisais
+- `EXPRESSION_A22` Ce que tu ne fais plus
+- `GRAMMAR_A22` I was tired.
+- `GRAMMAR_A22` I / he / she / it → was
+- `GRAMMAR_A22` You were late.
+- `GRAMMAR_A22` you / we / they → were
+- `GRAMMAR_A22` was not = wasn't
+- `GRAMMAR_A22` Were they at home?
+- `GRAMMAR_A22` Was / Were + sujet
+- `GRAMMAR_A22` I was a shy child.
+- `GRAMMAR_A22` We were in Spain last year.
+- `GRAMMAR_A22` She ___ at home yesterday.
+- `GRAMMAR_A22` she → was.
+- `GRAMMAR_A22` They ___ very happy.
+- `GRAMMAR_A22` they → were.
+- `GRAMMAR_A22` ___ you at school last Monday?
+- `GRAMMAR_A22` you → Were.
+- `GRAMMAR_A22` play → played
+- `GRAMMAR_A22` on ajoute -ed
+- `GRAMMAR_A22` live → lived
+- `GRAMMAR_A22` verbe en -e : on ajoute -d
+- `GRAMMAR_A22` study → studied
+- `GRAMMAR_A22` consonne + y → -ied
+- `GRAMMAR_A22` stop → stopped
+- `GRAMMAR_A22` voyelle + consonne : on double
+- `GRAMMAR_A22` We visited the museum yesterday.
+- `GRAMMAR_A22` She studied French at school.
+- `GRAMMAR_A22` I ___ my friends last Sunday. (visit)
+- `GRAMMAR_A22` He ___ in Paris in 2015. (live)
+- `GRAMMAR_A22` live → lived.
+- `GRAMMAR_A22` She ___ at the station. (stop)
+- `GRAMMAR_A22` stop → stopped (on double le p).
+- `GRAMMAR_A22` go → went
+- `GRAMMAR_A22` I went to Rome.
+- `GRAMMAR_A22` see → saw
+- `GRAMMAR_A22` We saw a film.
+- `GRAMMAR_A22` have → had
+- `GRAMMAR_A22` avoir / prendre
+- `GRAMMAR_A22` She had a coffee.
+- `GRAMMAR_A22` buy → bought
+- `GRAMMAR_A22` He bought a map.
+- `GRAMMAR_A22` I took a lot of photos.
+- `GRAMMAR_A22` J'ai pris beaucoup de photos.
+- `GRAMMAR_A22` They ate in a small restaurant.
+- `GRAMMAR_A22` Last year we ___ to Italy. (go)
+- `GRAMMAR_A22` go → went.
+- `GRAMMAR_A22` She ___ a new bag. (buy)
+- `GRAMMAR_A22` buy → bought.
+- `GRAMMAR_A22` I ___ a beautiful beach. (see)
+- `GRAMMAR_A22` see → saw.
+- `GRAMMAR_A22` Did you go to the party?
+- `GRAMMAR_A22` Did + sujet + base
+- `GRAMMAR_A22` I didn't go.
+- `GRAMMAR_A22` didn't + base (jamais -ed)
+- `GRAMMAR_A22` mot interrogatif + did
+- `GRAMMAR_A22` Yes, I did. / No, I didn't.
+- `GRAMMAR_A22` Oui. / Non.
+- `GRAMMAR_A22` What did you do last weekend?
+- `GRAMMAR_A22` Qu'as-tu fait le week-end dernier ? ⚠ espacement/ponctuation
+- `GRAMMAR_A22` He didn't call me yesterday.
+- `GRAMMAR_A22` ___ you see the film?
+- `GRAMMAR_A22` She didn't ___ the answer. (know)
+- `GRAMMAR_A22` Where ___ they go last summer?
+- `GRAMMAR_A22` Where did they go…?
+- `GRAMMAR_A22` yesterday / last night
+- `GRAMMAR_A22` hier / hier soir
+- `GRAMMAR_A22` yesterday evening
+- `GRAMMAR_A22` last week / last year
+- `GRAMMAR_A22` sans “the”
+- `GRAMMAR_A22` two days ago
+- `GRAMMAR_A22` il y a deux jours
+- `GRAMMAR_A22` in 2019 / when I was ten
+- `GRAMMAR_A22` en 2019 / quand j'avais dix ans
+- `GRAMMAR_A22` We arrived two hours ago.
+- `GRAMMAR_A22` I met him in 2018.
+- `GRAMMAR_A22` I saw her ___ week.
+- `GRAMMAR_A22` last week.
+- `GRAMMAR_A22` He called me two days ___.
+- `GRAMMAR_A22` before now
+- `GRAMMAR_A22` two days ago.
+- `GRAMMAR_A22` We moved here ___ 2019.
+- `GRAMMAR_A22` Used to : l'habitude d'avant
+- `GRAMMAR_A22` I used to play football.
+- `GRAMMAR_A22` Je jouais au football (avant).
+- `GRAMMAR_A22` used to + base
+- `GRAMMAR_A22` She used to live in Paris.
+- `GRAMMAR_A22` Did you use to swim?
+- `GRAMMAR_A22` Tu nageais (avant) ? ⚠ espacement/ponctuation
+- `GRAMMAR_A22` Did + use to
+- `GRAMMAR_A22` I didn't use to like fish.
+- `GRAMMAR_A22` Je n'aimais pas le poisson (avant).
+- `GRAMMAR_A22` didn't use to
+- `GRAMMAR_A22` We used to visit our grandparents every Sunday.
+- `GRAMMAR_A22` He didn't use to wear glasses.
+- `GRAMMAR_A22` Il ne portait pas de lunettes avant.
+- `GRAMMAR_A22` I ___ play the piano, but I don't now.
+- `GRAMMAR_A22` used to + base.
+- `GRAMMAR_A22` Did you ___ live here?
+- `GRAMMAR_A22` Avec did : use to (sans -d).
+- `GRAMMAR_A22` She ___ like spinach as a child.
+- `GRAMMAR_A22` didn't used to ⚠ did + verbe au passé ?
+- `GRAMMAR_A22` doesn't use to
+- `GRAMMAR_A22` didn't use to.
+- `GRAMMAR_A22` I used to go swimming every Sunday.
+- `GRAMMAR_A22` I went swimming last Sunday.
+- `GRAMMAR_A22` Past Simple
+- `GRAMMAR_A22` We lived in Spain for three years.
+- `GRAMMAR_A22` He used to be very shy.
+- `GRAMMAR_A22` I used to eat fast food, but yesterday I ate a salad.
+- `GRAMMAR_A22` She visited Rome in 2019.
+- `GRAMMAR_A22` I ___ to Rome last summer.
+- `GRAMMAR_A22` When I was a child, I ___ in the river every day.
+- `GRAMMAR_A22` swam last Sunday
+- `GRAMMAR_A22` We ___ a film yesterday.
+- `GRAMMAR_A22` yesterday → Past Simple.
+- `GRAMMAR_A22` Used to ou Present Simple ? ⚠ espacement/ponctuation
+- `GRAMMAR_A22` avant, mais plus maintenant
+- `GRAMMAR_A22` I play football.
+- `GRAMMAR_A22` aujourd'hui, c'est vrai
+- `GRAMMAR_A22` I used to be shy, but now I'm confident.
+- `GRAMMAR_A22` contraste avant / maintenant
+- `GRAMMAR_A22` She no longer smokes.
+- `GRAMMAR_A22` plus maintenant
+- `GRAMMAR_A22` I used to live in London. Now I live in Lyon.
+- `GRAMMAR_A22` We used to eat out. These days we cook at home.
+- `GRAMMAR_A22` Avant mais plus maintenant : used to.
+- `GRAMMAR_A22` now → Present Simple.
+- `GRAMMAR_A22` They used to live in Spain. Now they ___ in France.
+- `LISTENING_A22` Last weekend
+- `LISTENING_A22` What did you do last weekend? I went to the beach with my family. We swam in the sea and we had a picnic. It was a great day.
+- `LISTENING_A22` Where did the speaker go?
+- `LISTENING_A22` To the cinema
+- `LISTENING_A22` To the mountains
+- `LISTENING_A22` To the beach
+- `LISTENING_A22` To the beach.
+- `LISTENING_A22` What did they have?
+- `LISTENING_A22` A picnic.
+- `LISTENING_A22` When I was a child
+- `LISTENING_A22` When I was a child, I used to live in a small village. I used to walk to school with my brother. Now I live in a big city and I take the metro.
+- `LISTENING_A22` Where did the speaker live as a child?
+- `LISTENING_A22` In a village
+- `LISTENING_A22` In a city
+- `LISTENING_A22` By the sea
+- `LISTENING_A22` In a small village.
+- `LISTENING_A22` How does the speaker go to work now?
+- `LISTENING_A22` He takes the metro.
+- `LISTENING_A22` I woke up late yesterday. I had a quick coffee and I missed the bus. I arrived at work an hour late and my boss wasn't happy.
+- `LISTENING_A22` What did the speaker miss?
+- `LISTENING_A22` The train
+- `LISTENING_A22` How late did the speaker arrive?
+- `LISTENING_A22` Two hours
+- `LISTENING_A22` Ten minutes
+- `LISTENING_A22` An hour late.
+- `LISTENING_A22` Did you…?
+- `LISTENING_A22` Did you see the film last night? No, I didn't. I was tired, so I went to bed early. Oh, you missed a good film.
+- `LISTENING_A22` Did the second speaker see the film?
+- `LISTENING_A22` Only half
+- `LISTENING_A22` No, I didn't.
+- `LISTENING_A22` He was tired
+- `LISTENING_A22` He was busy
+- `LISTENING_A22` He was away
+- `LISTENING_A22` An old photo
+- `LISTENING_A22` Look at this photo. It's my grandfather in 1960. He used to work in a factory, and he used to ride a motorbike to work. He didn't have a car.
+- `LISTENING_A22` Where did the grandfather work?
+- `LISTENING_A22` In a school
+- `LISTENING_A22` In a shop
+- `LISTENING_A22` In a factory
+- `LISTENING_A22` In a factory.
+- `LISTENING_A22` How did he go to work?
+- `LISTENING_A22` By motorbike
+- `LISTENING_A22` By motorbike.
+- `LISTENING_A22` Two years ago
+- `LISTENING_A22` Two years ago I moved to London. I didn't speak English very well, so I took a course. Now I understand almost everything.
+- `LISTENING_A22` When did the speaker move to London?
+- `LISTENING_A22` Last year
+- `LISTENING_A22` Last month
+- `LISTENING_A22` Two years ago.
+- `LISTENING_A22` What did the speaker do?
+- `LISTENING_A22` Bought a flat
+- `LISTENING_A22` Got a new job
+- `LISTENING_A22` Took an English course
+- `LISTENING_A22` He took a course.
+- `LISTENING_A22` A birthday surprise
+- `LISTENING_A22` Last Saturday my friends organised a surprise for my birthday. They hid in my kitchen with a cake. When I opened the door, they shouted “Happy birthday!” I was so surprised.
+- `LISTENING_A22` Where did the friends hide?
+- `LISTENING_A22` In the kitchen
+- `LISTENING_A22` In the garden
+- `LISTENING_A22` In the car
+- `LISTENING_A22` In my kitchen.
+- `LISTENING_A22` What did they shout?
+- `LISTENING_A22` Good luck
+- `LISTENING_A22` Happy birthday
+- `LISTENING_A22` Happy birthday!
+- `LISTENING_A22` Not any more
+- `LISTENING_A22` I used to play tennis every Saturday, but I stopped two years ago because of my knee. Now I swim twice a week. I don't miss tennis very much.
+- `LISTENING_A22` What did the speaker use to do on Saturdays?
+- `LISTENING_A22` Play tennis
+- `LISTENING_A22` Play tennis.
+- `LISTENING_A22` Why did the speaker stop?
+- `LISTENING_A22` A knee problem
+- `LISTENING_A22` No friends
+- `LISTENING_A22` Because of my knee.
+- `LISTENING_A22` The lost key
+- `LISTENING_A22` Hello, Mum. I lost my key yesterday. I looked in my bag, in my coat and in the car, but I didn't find it. Then I remembered: I left it at the office! I went back and it was on my desk.
+- `LISTENING_A22` What did the speaker lose?
+- `LISTENING_A22` Where was it?
+- `LISTENING_A22` At the office
+- `LISTENING_A22` In the coat
+- `LISTENING_A22` At the office, on the desk.
+- `LISTENING_A22` What did the speaker do at the end?
+- `LISTENING_A22` Went back to the office
+- `LISTENING_A22` Called a friend
+- `LISTENING_A22` Bought a new key
+- `LISTENING_A22` Went back to the office.
+- `LISTENING_A22` Our holiday
+- `LISTENING_A22` Last August we went to Portugal for ten days. We stayed in a small hotel near the sea. Every day we visited a different town and we ate fresh fish. We didn't want to come home!
+- `LISTENING_A22` How long did they stay?
+- `LISTENING_A22` A weekend
+- `LISTENING_A22` Ten days.
+- `LISTENING_A22` What did they eat?
+- `LISTENING_A22` Fresh fish
+- `LISTENING_A22` Fresh fish.
+- `LISTENING_A22` Did they want to come home?
+- `LISTENING_A22` No, they didn't.
+- `MISSIONS_A22` Construis la phrase
+- `MISSIONS_A22` Remets les mots dans l'ordre.
+- `MISSIONS_A22` Choisis la bonne forme du Past Simple.
+- `MISSIONS_A22` Habitude d'avant ou action unique ? ⚠ espacement/ponctuation
+- `MISSIONS_A22` Avant et maintenant
+- `READING_A22` I'm Rose and I'm seventy years old. When I was a child, I lived in a small village with my parents and my five brothers and sisters. We didn't have a television, so we used to play outside every day. I used to ride a bicycle to school, and in the evening my grandfather used to tell us stories. Now I live in a big city, but I still remember the village very well. I miss the quiet life.
+- `READING_A22` Where did Rose live as a child?
+- `READING_A22` On a farm abroad
+- `READING_A22` In a big city
+- `READING_A22` In a small village
+- `READING_A22` She lived in a small village.
+- `READING_A22` What did her grandfather use to do?
+- `READING_A22` Ride a bicycle
+- `READING_A22` Tell stories
+- `READING_A22` Play football
+- `READING_A22` He used to tell them stories.
+- `READING_A22` Last weekend I went to Wales with two friends. We left on Friday evening and we arrived at midnight. On Saturday we climbed a mountain and we took a lot of photos. It rained in the afternoon, so we didn't stay long at the top. In the evening we had dinner in a small pub and we met some funny people. We came home on Sunday and we were very tired.
+- `READING_A22` When did they arrive in Wales?
+- `READING_A22` At midnight
+- `READING_A22` On Saturday morning
+- `READING_A22` On Sunday
+- `READING_A22` They arrived at midnight.
+- `READING_A22` Why didn't they stay long at the top?
+- `READING_A22` They were hungry
+- `READING_A22` It rained
+- `READING_A22` It was dark
+- `READING_A22` It rained in the afternoon.
+- `READING_A22` I was born in a small town near the sea. We moved to the capital when I was ten. At first I didn't like it: the streets were noisy and I didn't have any friends. I used to cry at night because I missed my grandparents. Then I joined a drama club at school and I met two girls, Sara and Joy. They became my best friends. Today I love the city and I never want to leave.
+- `READING_A22` When did Mia move to the capital?
+- `READING_A22` When she was ten
+- `READING_A22` When she was born
+- `READING_A22` We moved when I was ten.
+- `READING_A22` How did she make friends?
+- `READING_A22` She called her grandparents
+- `READING_A22` She went to the sea
+- `READING_A22` She joined a drama club
+- `READING_A22` She joined a drama club.
+- `READING_A22` Two summers ago I went camping with my cousins in the forest. We put up the tent next to a river and we made a campfire in the evening. One day we got lost: the path disappeared and we walked for two hours. Finally my cousin found a small road and we came back to the camp. We were tired and hungry, but we laughed a lot. It was a great adventure.
+- `READING_A22` Where did they put up the tent?
+- `READING_A22` On a mountain
+- `READING_A22` Next to a river
+- `READING_A22` Next to a river.
+- `READING_A22` How long did they walk when they were lost?
+- `READING_A22` All night
+- `READING_A22` They walked for two hours.
+- `READING_A22` Last month it was my best friend's birthday and we organised a surprise party. Her brother invited twenty guests and we hid in the living room with balloons and a big chocolate cake. When she opened the door, we all shouted “Surprise!” She didn't say anything for a few seconds, and then she started to cry with happiness. We sang, we danced and we ate cake until midnight.
+- `READING_A22` How many guests did her brother invite?
+- `READING_A22` Twenty guests.
+- `READING_A22` How did her friend feel?
+- `READING_A22` Very happy
+- `READING_A22` She cried with happiness.
+- `READING_A22` I remember my first day at the new school very well. I woke up early, I had breakfast and I took the bus. I was nervous because I didn't know anybody. In class the teacher asked me to introduce myself, but I forgot my English words and everyone laughed. At lunch a boy called Tom sat next to me and we talked about football. After that day I wasn't nervous any more.
+- `READING_A22` Why was Dev nervous?
+- `READING_A22` He lost his bag
+- `READING_A22` He was late
+- `READING_A22` He didn't know anybody
+- `READING_A22` He didn't know anybody.
+- `READING_A22` Who sat next to him at lunch?
+- `READING_A22` The teacher
+- `READING_A22` A boy called Tom.
+- `READING_A22` My grandfather grew up in a small town in Italy. When he was young, the main square used to be full of people on Sundays. There was a fountain, a bakery and an old bell tower. He used to buy warm bread every morning and then he used to play cards with his friends. Last year we visited the town together. The bakery was still there, but the old square wasn't busy any more. “Everything changed,” he said, “but the bread tastes the same.”
+- `READING_A22` What used the square to be like on Sundays?
+- `READING_A22` Full of people
+- `READING_A22` Very noisy with cars
+- `READING_A22` It used to be full of people.
+- `READING_A22` What is still there today?
+- `READING_A22` The market
+- `READING_A22` The cinema
+- `READING_A22` The bakery
+- `READING_A22` The bakery was still there.
+- `READING_A22` What did the grandfather say?
+- `READING_A22` The town is bigger
+- `READING_A22` The bread tastes the same
+- `READING_A22` The square is more beautiful
+- `READING_A22` Everything changed, but the bread tastes the same.
+- `READING_A22` What was Paul like as a child?
+- `READING_A22` Very loud
+- `READING_A22` Very lazy
+- `READING_A22` What did he start at sixteen?
+- `READING_A22` Playing football
+- `READING_A22` Playing the guitar
+- `READING_A22` Learning French
+- `READING_A22` He started playing the guitar.
+- `READING_A22` What is his job today?
+- `READING_A22` Music teacher
+- `READING_A22` He's a music teacher.
+- `TEST_AUDIOS_A22` To a museum
+- `TEST_AUDIOS_A22` On an island
+- `TEST_AUDIOS_A22` How does the speaker travel now?
+- `TEST_AUDIOS_A22` The meeting
+- `TEST_AUDIOS_A22` How late was the speaker?
+- `TEST_AUDIOS_A22` In an office
+- `TEST_AUDIOS_A22` When did the speaker move?
+- `TEST_AUDIOS_A22` Last week
+- `TEST_AUDIOS_A22` What did the speaker do to improve?
+- `TEST_AUDIOS_A22` Read books
+- `TEST_AUDIOS_A22` Watched films
+- `TEST_AUDIOS_A22` Took a course
+- `TEST_AUDIOS_A22` I used to play tennis every Saturday, but I stopped two years ago because of my knee. Now I swim twice a week.
+- `TEST_AUDIOS_A22` Why did the speaker stop tennis?
+- `TEST_AUDIOS_A22` A new job
+- `TEST_AUDIOS_A22` What does the speaker do now?
+- `TEST_AUDIOS_A22` Plays football
+- `TEST_AUDIOS_A22` Last August we went to Portugal for ten days. We stayed in a small hotel near the sea. Every day we visited a different town and we ate fresh fish.
+- `TEST_AUDIOS_A22` How long was the holiday?
+- `TEST_AUDIOS_A22` Where did they stay?
+- `TEST_AUDIOS_A22` In a tent
+- `TEST_AUDIOS_A22` In a small hotel
+- `TEST_AUDIOS_A22` With friends
+- `TEST_GRAMMAR_A22` They ___ very happy at the party.
+- `TEST_GRAMMAR_A22` I ___ my grandmother last Sunday. (visit)
+- `TEST_GRAMMAR_A22` didn't call
+- `TEST_GRAMMAR_A22` didn't called ⚠ did + verbe au passé ?
+- `TEST_GRAMMAR_A22` not called
+- `TEST_GRAMMAR_A22` “Childhood” means…
+- `TEST_GRAMMAR_A22` “Get lost” means…
+- `TEST_GRAMMAR_A22` “Guest” means…
+- `TEST_GRAMMAR_A22` “Suddenly” means…
+- `TEST_GRAMMAR_A22` I ___ a lot of photos in Rome. (take)
+- `TEST_GRAMMAR_A22` We ___ dinner in a small restaurant. (eat)
+- `TEST_GRAMMAR_A22` She ___ me a letter last week. (write)
+- `TEST_GRAMMAR_A22` They ___ home at midnight. (come)
+- `TEST_GRAMMAR_A22` I met him ___ an hour ago.
+- `TEST_TEXTS_A22` When I was a child, I lived in a small village with my parents and my five brothers and sisters. We didn't have a television, so we used to play outside every day. In the evening my grandfather used to tell us stories. Now I live in a big city, but I still remember the village very well.
+- `TEST_TEXTS_A22` Where did she live as a child?
+- `TEST_TEXTS_A22` In a flat
+- `TEST_TEXTS_A22` Did they have a television?
+- `TEST_TEXTS_A22` Only a radio
+- `TEST_TEXTS_A22` What did her grandfather do?
+- `TEST_TEXTS_A22` He cooked
+- `TEST_TEXTS_A22` He played games
+- `TEST_TEXTS_A22` He told stories
+- `TEST_TEXTS_A22` Last weekend I went to Wales with two friends. We left on Friday evening and we arrived at midnight. On Saturday we climbed a mountain and took a lot of photos. It rained in the afternoon, so we didn't stay long at the top. We came home on Sunday.
+- `TEST_TEXTS_A22` Where did he go?
+- `TEST_TEXTS_A22` To Scotland
+- `TEST_TEXTS_A22` To France
+- `TEST_TEXTS_A22` When did they arrive?
+- `TEST_TEXTS_A22` On Saturday
+- `TEST_TEXTS_A22` Why didn't they stay at the top?
+- `TEST_TEXTS_A22` It was cold
+- `TEST_TEXTS_A22` I was born in a small town near the sea. We moved to the capital when I was ten. At first I didn't like it: the streets were noisy and I didn't have any friends. Then I joined a drama club at school and I met two girls. They became my best friends.
+- `TEST_TEXTS_A22` Where was she born?
+- `TEST_TEXTS_A22` Near the sea
+- `TEST_TEXTS_A22` In the capital
+- `TEST_TEXTS_A22` In the mountains
+- `TEST_TEXTS_A22` When did they move?
+- `TEST_TEXTS_A22` She played football
+- `TEST_TEXTS_A22` She went online
+- `TEST_TEXTS_A22` Two summers ago I went camping with my cousins in the forest. We put up the tent next to a river and we made a campfire in the evening. One day we got lost and we walked for two hours. Finally my cousin found a small road and we came back to the camp.
+- `TEST_TEXTS_A22` Who did he go camping with?
+- `TEST_TEXTS_A22` His cousins
+- `TEST_TEXTS_A22` His parents
+- `TEST_TEXTS_A22` His teacher
+- `TEST_TEXTS_A22` What happened one day?
+- `TEST_TEXTS_A22` They saw a bear
+- `TEST_TEXTS_A22` They got lost
+- `TEST_TEXTS_A22` They lost the tent
+- `TEST_TEXTS_A22` How did they come back?
+- `TEST_TEXTS_A22` Along a small road
+- `TEST_TEXTS_A22` Last month we organised a surprise party for my best friend's birthday. Her brother invited twenty guests and we hid in the living room with balloons and a big chocolate cake. When she opened the door, we all shouted “Surprise!” She started to cry with happiness. We sang and danced until midnight.
+- `TEST_TEXTS_A22` What did they organise?
+- `TEST_TEXTS_A22` A concert
+- `TEST_TEXTS_A22` A surprise party
+- `TEST_TEXTS_A22` Where did they hide?
+- `TEST_TEXTS_A22` In the living room
+- `TEST_TEXTS_A22` How did the friend react?
+- `TEST_TEXTS_A22` She cried with happiness
+- `TEST_TEXTS_A22` She laughed and left
+- `TEST_TEXTS_A22` She was angry
+- `TEST_TEXTS_A22` I remember my first day at the new school very well. I woke up early and I took the bus. I was nervous because I didn't know anybody. In class the teacher asked me to introduce myself, but I forgot my English words and everyone laughed. At lunch a boy called Tom sat next to me and we talked about football.
+- `TEST_TEXTS_A22` How did Dev go to school?
+- `TEST_TEXTS_A22` Why was he nervous?
+- `TEST_TEXTS_A22` He had no lunch
+- `TEST_TEXTS_A22` What did he talk about with Tom?
+- `TEST_TEXTS_A22` My grandfather grew up in a small town in Italy. When he was young, the main square used to be full of people on Sundays. There was a fountain, a bakery and an old bell tower. Last year we visited the town together. The bakery was still there, but the square wasn't busy any more.
+- `TEST_TEXTS_A22` Where did her grandfather grow up?
+- `TEST_TEXTS_A22` In France
+- `TEST_TEXTS_A22` What used the square to be like?
+- `TEST_TEXTS_A22` What was still there last year?
+- `TEST_TEXTS_A22` What was Paul like at school?
+- `TEST_TEXTS_A22` Very noisy
+- `TEST_TEXTS_A22` Very sporty
+- `TEST_TEXTS_A22` The guitar
+- `TEST_TEXTS_A22` The piano
+- `TEST_TEXTS_A22` What is his job now?
+- `VOCAB_A22` I visited my grandmother yesterday.
+- `VOCAB_A22` I used to live in a small town.
+- `VOCAB_A22` J'habitais dans une petite ville (avant).
+- `VOCAB_A22` Where did you go on holiday?
+- `VOCAB_A22` When I was a child, I used to play in the garden, but yesterday I played football with my friends.
+- `VOCAB_A22` teddy bear
+- `VOCAB_A22` ours en peluche
+- `VOCAB_A22` aire de jeux
+- `VOCAB_A22` voisin / voisine
+- `VOCAB_A22` when I was young
+- `VOCAB_A22` I grew up in a small village.
+- `VOCAB_A22` J'ai grandi dans un petit village.
+- `VOCAB_A22` My favourite toy was a teddy bear.
+- `VOCAB_A22` “Childhood” veut dire…
+- `VOCAB_A22` Les souvenirs
+- `VOCAB_A22` se souvenir de
+- `VOCAB_A22` a long time ago
+- `VOCAB_A22` il y a longtemps
+- `VOCAB_A22` une fois / autrefois
+- `VOCAB_A22` I remember my first day at school.
+- `VOCAB_A22` We celebrated her birthday last year.
+- `VOCAB_A22` “Remember” veut dire…
+- `VOCAB_A22` Le voyage
+- `VOCAB_A22` trajet / voyage
+- `VOCAB_A22` voyage / excursion
+- `VOCAB_A22` partir / quitter
+- `VOCAB_A22` stay in a hotel
+- `VOCAB_A22` souvenir (objet)
+- `VOCAB_A22` The journey took six hours.
+- `VOCAB_A22` We went on a trip to the mountains.
+- `VOCAB_A22` “Suitcase” veut dire…
+- `VOCAB_A22` feu de camp
+- `VOCAB_A22` lampe torche
+- `VOCAB_A22` We camped near a lake last summer.
+- `VOCAB_A22` He climbed a big tree.
+- `VOCAB_A22` “Get lost” veut dire…
+- `VOCAB_A22` last night
+- `VOCAB_A22` last week
+- `VOCAB_A22` last year
+- `VOCAB_A22` after that
+- `VOCAB_A22` when I was ten
+- `VOCAB_A22` quand j'avais dix ans
+- `VOCAB_A22` in the past
+- `VOCAB_A22` I called her two days ago.
+- `VOCAB_A22` We moved here in 2019.
+- `VOCAB_A22` “Two days ago” veut dire…
+- `VOCAB_A22` dans deux jours
+- `VOCAB_A22` pendant deux jours
+- `VOCAB_A22` Avant, mais plus maintenant
+- `VOCAB_A22` avait l'habitude de / faisait (avant)
+- `VOCAB_A22` not any more
+- `VOCAB_A22` no longer
+- `VOCAB_A22` these days
+- `VOCAB_A22` ces jours-ci / aujourd'hui
+- `VOCAB_A22` as a child
+- `VOCAB_A22` in those days
+- `VOCAB_A22` at that time
+- `VOCAB_A22` de nos jours
+- `VOCAB_A22` I didn't use to
+- `VOCAB_A22` je n'avais pas l'habitude de
+- `VOCAB_A22` She no longer lives in Paris.
+- `VOCAB_A22` “Used to” exprime…
+- `VOCAB_A22` une action future
+- `VOCAB_A22` Ma ville d'enfance
+- `VOCAB_A22` Une petite place de vieille ville avec fontaine, boulangerie et clocher
+- `VOCAB_A22` ville natale
+- `VOCAB_A22` bell tower
+- `VOCAB_A22` move house
+- `VOCAB_A22` vieux / ancien
+- `VOCAB_A22` I was born in a small town.
+- `VOCAB_A22` We moved house when I was ten.
+- `VOCAB_A22` “Be born” veut dire…
+- `VOCAB_A22` se cacher / cacher
+- `VOCAB_A22` arriver / se passer
+- `VOCAB_A22` We hid behind the sofa.
+- `VOCAB_A22` Everyone shouted “Surprise!”
+- `VOCAB_A22` “Guest” veut dire…
+
+## dialogues
+
+- `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
+- `dialogues.A2.0.turns.model` I usually get up at seven.
+- `dialogues.A2.0.turns.npc` And what are you doing right now?
+- `dialogues.A2.0.turns.model` I'm talking to you.
+- `dialogues.A2.0.turns.hint` Maintenant : I'm + verbe en -ing.
+- `dialogues.A2.0.turns.npc` Do you work on Saturdays?
+- `dialogues.A2.0.turns.model` No, I don't work on Saturdays.
+- `dialogues.A2.0.turns.npc` What are you going to do tomorrow?
+- `dialogues.A2.0.turns.model` I'm going to visit my sister.
+- `dialogues.A2.0.turns.hint` Projet : I'm going to + verbe.
+- `dialogues.A2.0.turns.npc` Thanks! See you tomorrow.
+- `dialogues.A2.0.turns.model` See you! Bye!
+- `dialogues.A2.0.turns.hint` Dis au revoir.
+- `dialogues.A2.0.turns.npc` Hello! What would you like?
+- `dialogues.A2.0.turns.model` I'd like a tea, please.
+- `dialogues.A2.0.turns.hint` Demande poliment : I'd like…
+- `dialogues.A2.0.turns.npc` Are you going to have something to eat?
+- `dialogues.A2.0.turns.model` Yes, I'd like a sandwich.
+- `dialogues.A2.0.turns.npc` Do you like cheese?
+- `dialogues.A2.0.turns.model` Yes, I love cheese.
+- `dialogues.A2.0.turns.hint` I like / I don't like.
+- `dialogues.A2.0.turns.npc` That's five pounds, please.
+- `dialogues.A2.0.turns.model` Here you are. Thank you!
+- `dialogues.A2.0.turns.hint` Paye et remercie.
+- `dialogues.A2.1.turns.npc` Hi! How do you usually come to work?
+- `dialogues.A2.1.turns.model` I usually take the bus.
+- `dialogues.A2.1.turns.hint` Habitude : I usually…
+- `dialogues.A2.1.turns.npc` What time do you start work?
+- `dialogues.A2.1.turns.model` I start at nine.
+- `dialogues.A2.1.turns.hint` Dis l'heure.
+- `dialogues.A2.1.turns.npc` Do you always have lunch at the office?
+- `dialogues.A2.1.turns.model` No, I sometimes eat out.
+- `dialogues.A2.1.turns.npc` See you at lunch!
+- `dialogues.A2.1.turns.model` See you! Bye!
+- `dialogues.A2.1.turns.hint` Dis au revoir.
+- `dialogues.A2.1.turns.npc` You look busy! What are you doing today?
+- `dialogues.A2.1.turns.model` I'm working from home.
+- `dialogues.A2.1.turns.hint` Maintenant : I'm + -ing.
+- `dialogues.A2.1.turns.npc` Why are you working from home?
+- `dialogues.A2.1.turns.model` Because the bus is on strike.
+- `dialogues.A2.1.turns.hint` Explique avec « because ».
+- `dialogues.A2.1.turns.npc` Is that normal?
+- `dialogues.A2.1.turns.model` No, I usually work in the office.
+- `dialogues.A2.1.turns.hint` Compare avec ton habitude.
+- `dialogues.A2.1.turns.npc` I hope the bus is back tomorrow!
+- `dialogues.A2.1.turns.model` I hope so too!
+- `dialogues.A2.2.turns.npc` Hi! Did you go on holiday last summer?
+- `dialogues.A2.2.turns.model` Yes, I went to Spain.
+- `dialogues.A2.2.turns.npc` Nice! What did you do there?
+- `dialogues.A2.2.turns.model` We swam and we visited old towns.
+- `dialogues.A2.2.turns.hint` Past Simple : swam, visited…
+- `dialogues.A2.2.turns.npc` How long did you stay?
+- `dialogues.A2.2.turns.model` We stayed for a week.
+- `dialogues.A2.2.turns.npc` Sounds great! Did you like it?
+- `dialogues.A2.2.turns.model` Yes, I loved it!
+- `dialogues.A2.2.scene` Un ami te pose des questions sur ton enfance.
+- `dialogues.A2.2.turns.npc` Where did you live when you were a child?
+- `dialogues.A2.2.turns.model` I used to live in a small village.
+- `dialogues.A2.2.turns.hint` Used to live / lived.
+- `dialogues.A2.2.turns.npc` What did you use to do after school?
+- `dialogues.A2.2.turns.model` I used to play football with my friends.
+- `dialogues.A2.2.turns.hint` I used to + verbe.
+- `dialogues.A2.2.turns.npc` Do you still do that?
+- `dialogues.A2.2.turns.model` No, not any more.
+- `dialogues.A2.2.turns.npc` Times change! Thanks for sharing.
+- `dialogues.A2.2.turns.model` Yes, times change!
+
+## situations
+
+- `situations.A2.0.cue` Say what you usually do every day.
+- `situations.A2.0.hint` Dis une habitude.
+- `situations.A2.0.model` I usually get up at seven.
+- `situations.A2.0.cue` Say what you are doing right now.
+- `situations.A2.0.hint` Dis ce que tu fais maintenant.
+- `situations.A2.0.model` I'm studying English.
+- `situations.A2.0.cue` Say what you are going to do tomorrow.
+- `situations.A2.0.hint` Dis un projet pour demain.
+- `situations.A2.0.model` I'm going to visit my sister.
+- `situations.A2.1.cue` Say how you usually go to work or school.
+- `situations.A2.1.hint` Dis ton trajet habituel.
+- `situations.A2.1.model` I usually take the bus.
+- `situations.A2.1.cue` Say what you are doing today that is different.
+- `situations.A2.1.model` Today I'm working from home.
+- `situations.A2.1.cue` Say one thing you never do.
+- `situations.A2.1.hint` Utilise « never ».
+- `situations.A2.1.model` I never watch TV in the morning.
+- `situations.A2.2.cue` Say where you went on your last holiday.
+- `situations.A2.2.model` I went to Spain last summer.
+- `situations.A2.2.cue` Say one thing you used to do as a child.
+- `situations.A2.2.hint` Utilise « used to ».
+- `situations.A2.2.model` I used to play outside every day.
+- `situations.A2.2.cue` Say one thing you didn't do yesterday.
+- `situations.A2.2.hint` Utilise « didn't ».
+- `situations.A2.2.model` I didn't watch TV yesterday.
+
+## Alertes automatiques (32)
+
+- ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
+- ⚠ A2.0 EXERCISES_A20.help : « Habitude, maintenant ou projet ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « Quel mot annonce une HABITUDE ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « “Do” va avec le verbe de base : Do you read … ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « “a park” est singulier → Is there … ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « “I'm like” a un autre sens (c'est comme). » → « a » devant voyelle
+- ⚠ A2.0 GRAMMAR_A20.qs : « Question avec going to : Are you going to … ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « Quelle phrase parle d'une ROUTINE ? » → espacement/ponctuation
+- ⚠ A2.0 GRAMMAR_A20.qs : « Would you like to … ? = inviter (A2.10). » → espacement/ponctuation
+- ⚠ A2.0 MISSIONS_A20.title : « Quel temps ? » → espacement/ponctuation
+- ⚠ A2.0 MISSIONS_A20.title : « Simple ou continu ? » → espacement/ponctuation
+- ⚠ A2.0 MISSIONS_A20.title : « Going to ou would like ? » → espacement/ponctuation
+- ⚠ A2.0 VOCAB_A20.title : « Pourquoi cette passerelle ? » → espacement/ponctuation
+- ⚠ A2.1 EXERCISES_A21.title : « Simple ou Continuous ? » → espacement/ponctuation
+- ⚠ A2.1 EXERCISES_A21.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.1 EXERCISES_A21.title : « Habitude ou maintenant ? » → espacement/ponctuation
+- ⚠ A2.1 GRAMMAR_A21.title : « Simple ou Continuous : comment choisir ? » → espacement/ponctuation
+- ⚠ A2.1 GRAMMAR_A21.table : « Tu travailles en ce moment ? » → espacement/ponctuation
+- ⚠ A2.1 GRAMMAR_A21.examples : « Que fais-tu d'habitude le samedi ? » → espacement/ponctuation
+- ⚠ A2.1 GRAMMAR_A21.examples : « Que fais-tu en ce moment ? » → espacement/ponctuation
+- ⚠ A2.1 GRAMMAR_A21.table : « Il a une voiture. » → « a » devant voyelle
+- ⚠ A2.1 MISSIONS_A21.title : « Combien de fois ? » → espacement/ponctuation
+- ⚠ A2.1 VOCAB_A21.title : « Maintenant ou d'habitude ? » → espacement/ponctuation
+- ⚠ A2.2 EXERCISES_A22.title : « Used to ou Past Simple ? » → espacement/ponctuation
+- ⚠ A2.2 EXERCISES_A22.help : « Habitude ou action unique ? » → espacement/ponctuation
+- ⚠ A2.2 EXERCISES_A22.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.2 GRAMMAR_A22.examples : « Qu'as-tu fait le week-end dernier ? » → espacement/ponctuation
+- ⚠ A2.2 GRAMMAR_A22.table : « Tu nageais (avant) ? » → espacement/ponctuation
+- ⚠ A2.2 GRAMMAR_A22.qs : « didn't used to » → did + verbe au passé ?
+- ⚠ A2.2 GRAMMAR_A22.title : « Used to ou Present Simple ? » → espacement/ponctuation
+- ⚠ A2.2 MISSIONS_A22.sub : « Habitude d'avant ou action unique ? » → espacement/ponctuation
+- ⚠ A2.2 TEST_GRAMMAR_A22 : « didn't called » → did + verbe au passé ?
