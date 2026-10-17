@@ -43,3 +43,9 @@ Style commun (à coller au début de chaque prompt) :
 | a20-m4 | Two children at a crossroads in a city: one road shows a person cooking every day, the other a person cooking right now, a signpost in the middle. |
 | a20-m5 | A boy standing at a railway station platform with a suitcase and a ticket, a girl with a travel brochure about next week's trip. |
 | a20-m6 | Two children crossing a glowing bridge toward a bright city at sunrise, a banner shaped like a flag at the end of the bridge. |
+
+# Images à décrire — A1.8 (activité « Décris l'image »)
+Dossier `assets/img/lesson/`, webp 1280 × 720, simples, neutres, sans texte lisible :
+- describe-a18-classroom.webp : 4 étudiants en classe (une fille écrit, un garçon lit, un professeur près du tableau, horloge sans chiffres, sacs)
+- describe-a18-park.webp : 3 amis dans un parc (une fille court, un garçon assis sur un banc avec un livre, un grand arbre, un lac, soleil)
+- describe-a18-library.webp : 2 étudiants à la bibliothèque devant un ordinateur portable, étagères pleines de livres, fille cheveux longs en pull jaune

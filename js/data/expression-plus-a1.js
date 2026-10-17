@@ -1,7 +1,7 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
-const T = (title, icon, model, rows) => ({
-  title, icon, model,
+const T = (title, icon, model, rows, img) => ({
+  title, icon, model, img,
   prompts: rows.map((r) => r[0]),
   checks: rows.map((r) => [r[1], `\\b(${r[2]})\\b`]),
 });
@@ -106,6 +106,15 @@ export const EXPRESSION_PLUS_A1 = {
       ["Dis le prix.", "Le prix", "euros|euro|twenty|ten|thirty|fifty|price"], ["Dis pourquoi.", "Pourquoi", "likes|loves|because|favourite|red|blue|nice"]]),
   ],
   8: [
+    T("Décris l'image : les étudiants en classe", "🖼️", "There are four students in a classroom. A girl is writing in a notebook. A boy is reading a book. There is a teacher near the board. I can see a clock and some bags.", [
+      ["Dis combien de personnes tu vois.", "Combien", "there are|there is|four|three|five|two|students|people"], ["Dis ce que font les personnes.", "Ce qu'ils font", "is (writing|reading|talking|listening|smiling|sitting)|are (writing|reading|talking|listening|smiling|sitting)"],
+      ["Dis où ils sont.", "Où", "classroom|school|in the|at the|room"], ["Dis ce que tu vois autour.", "Autour", "i can see|there is|there are|board|clock|bags|books|window|table"]], "describe-a18-classroom"),
+    T("Décris l'image : au parc", "🌳", "There are three friends in a park. A girl is running. A boy is sitting on a bench with a book. There is a big tree and a lake behind them. It is sunny.", [
+      ["Dis qui est sur l'image.", "Qui", "friends|girl|boy|children|people|there are|there is"], ["Dis ce que font les personnes.", "Ce qu'ils font", "is (running|sitting|playing|reading|walking|laughing)|are (running|sitting|playing|reading|walking|laughing)"],
+      ["Dis où ils sont.", "Où", "park|garden|bench|tree|lake|outside|in the|on the"], ["Dis quel temps il fait.", "Le temps", "sunny|warm|nice|weather|blue sky|cloudy|it is|it's"]], "describe-a18-park"),
+    T("Décris l'image : à la bibliothèque", "📚", "Two students are in a library. They are looking at a laptop and they are smiling. There are many books on the shelves. The girl has long hair and wears a yellow sweater.", [
+      ["Dis qui est sur l'image.", "Qui", "students|girl|boy|two|people|there are|there is"], ["Dis ce qu'ils font.", "Ce qu'ils font", "is (looking|reading|studying|smiling|working|talking)|are (looking|reading|studying|smiling|working|talking)"],
+      ["Dis ce qu'il y a.", "Ce qu'il y a", "books|shelves|laptop|computer|table|chairs|there are|there is"], ["Décris une personne.", "Une personne", "hair|wears|sweater|jacket|glasses|tall|short|has|long|dark|blond|brown"]], "describe-a18-library"),
     T("Décris ta ville", "🏙️", "I live in Lille. There is a big square and many shops. It is not very big. I like the cafés.", [
       ["Dis le nom de ta ville.", "Ta ville", "live|city|town|village|in"], ["Dis ce qu'il y a.", "Ce qu'il y a", "there is|there are|square|shops|park|station|museum|school"],
       ["Dis si elle est grande ou petite.", "Grande ou petite", "big|small|large|little|quiet|busy"], ["Dis ce que tu aimes.", "Ce que tu aimes", "like|love|enjoy|nice|favourite"]]),

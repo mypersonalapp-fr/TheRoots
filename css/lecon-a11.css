@@ -439,3 +439,5 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-recap-card{ width:100%; max-height:75%; overflow:auto; box-sizing:border-box; padding:18px 18px 22px; border-radius:22px 22px 0 0; background:#fffaf0; color:#3a2a14; box-shadow:0 -8px 30px rgba(0,0,0,.3); }
 :root[data-theme="dark"] .lc-recap-card{ background:#2a2218; color:#f4e6cf; }
 .lc-recap-close{ width:100%; margin-top:14px; }
+
+.lc-pic{ margin:0 0 10px; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(20,20,30,.15); } .lc-pic img{ display:block; width:100%; height:auto; }
