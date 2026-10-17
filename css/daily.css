@@ -164,3 +164,19 @@
   .dp[data-page="1"] .dp-issues,.dp[data-page="1"] .dp-tip{ display:none; }
   .dp[data-page="2"] .dp-tip{ display:none; }
 }
+
+/* Parcours plein écran : le papier remplit tout l'écran (comme la maquette), image bord à bord, boutons collés en bas */
+.dl-flow{ --flp:#F6F4EF; background:var(--flp) !important; padding:0 !important; display:flex; flex-direction:column; }
+:root[data-theme="dark"] .dl-flow{ --flp:#121B2B; }
+.dl-flow .dl-wrap{ flex:1; display:flex; flex-direction:column; padding:0; min-height:0; }
+.dl-flow .fl{ flex:1; min-height:0; }
+.fl .dp{ margin:0; border-radius:0; padding:0; background:transparent; flex:0 0 auto; }
+.fl .dp > *{ margin-left:16px; margin-right:16px; }
+.fl .dp-shot{ margin-left:-16px; margin-right:-16px; border-radius:0; }
+.fl .dp-lead{ margin:0; }
+.fl-qh,.fl-prog,.fl .dl-q,.fl .dl-score{ margin-left:16px; margin-right:16px; }
+.fl .dl-q{ background:var(--surface); }
+.fl-foot{ margin:auto 0 0; position:static; background:transparent; border-top:1px solid var(--rsoft,rgba(27,42,65,.3)); padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px)); }
+.fl-btn{ color:var(--ink); }
+.fl-btn.am{ color:#fff; }
+.fl-qh,.fl-sh{ color:var(--ink-soft); }

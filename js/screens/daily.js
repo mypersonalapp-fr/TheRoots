@@ -150,6 +150,7 @@ export function renderDaily(container) {
 
   function paint() {
     const x = openId && DAILY_ITEMS.find((i) => i.id === openId);
+    container.classList.toggle("dl-flow", !!x);
     container.innerHTML = `<div class="dl-wrap">${x ? reader(x) : list()}</div>`;
   }
 
