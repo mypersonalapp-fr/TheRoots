@@ -116,7 +116,7 @@ export function renderDaily(container) {
   const stepsOf = (x) => (x.type === "news" ? ["read", "rub"] : ["read"]).concat(x.questions.map((_, i) => i));
   const isLand = () => matchMedia("(orientation: landscape)").matches;
   function mailCard(x) {
-    return `<article class="card dl-art"><div class="dl-mailhead"><div><span>De</span> ${esc(x.mail.from)}</div><div><span>À</span> ${esc(x.mail.to)}</div><div><span>Objet</span> <b>${esc(x.mail.subject)}</b></div><div><span>Date</span> ${fmt(x.date)}</div></div>
+    return `<article class="card dl-art"><div class="dl-mailhead"><div><span>From</span> ${esc(x.mail.from)}</div><div><span>To</span> ${esc(x.mail.to)}</div><div><span>Subject</span> <b>${esc(x.mail.subject)}</b></div><div><span>Date</span> ${fmt(x.date)}</div></div>
       <div class="dl-body">${x.body.map((p) => `<p>${wrapGlossary(p, x.glossary)}</p>`).join("")}</div>
       <div class="dl-tip" id="dlTip">Touche un mot souligné pour sa traduction.</div></article>`;
   }
