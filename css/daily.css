@@ -116,3 +116,15 @@
   .dp[data-page="1"] figcaption{ font-size:13.5px; }
   .dp[data-page="1"] .dp-tip{ font-size:14px; }
 }
+
+/* Journal pleine largeur (sans marge sur les côtés) ; page 1 en taille supérieure en portrait */
+.dp{ margin-left:-18px; margin-right:-18px; border-radius:0; padding-left:16px; padding-right:16px; }
+@media (orientation:portrait){
+  .dp-lead{ gap:16px; }
+  .dp-lead .dp-kicker{ font-size:12.5px; }
+  .dp-lead h2{ font-size:clamp(30px,9vw,40px); }
+  .dp-stand{ font-size:19px; line-height:1.4; }
+  .dp figcaption{ font-size:13px; }
+  .dp-cols p{ font-size:18.5px; line-height:1.6; margin-bottom:14px; }
+  .dp-lead .dp-shot{ aspect-ratio:3/2; }
+}
