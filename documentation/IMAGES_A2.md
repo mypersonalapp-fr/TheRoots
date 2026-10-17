@@ -24,3 +24,22 @@ Tant qu'une image manque, la leçon fonctionne : la vignette est simplement masq
 
 ## Même chose pour A2.1
 Scènes `scene-a21-*` (8) : morning, commute, day, evening, frequency, now, home, work, et Roots City `a21-m1` à `a21-m6`.
+
+## Prompts ChatGPT — A2.0
+
+Style commun (à coller au début de chaque prompt) :
+> 3D animated film still, Pixar style, warm lighting, children aged 10-12 wearing plain sweatshirts, cargo pants and sneakers, clean background, no text, no letters, no logos, no user interface, wide 16:9 composition.
+
+| Fichier | Prompt (après le style commun) |
+|---|---|
+| scene-a20-bridge | A wooden footbridge over a sunny river between two green riverbanks, a girl and a boy start on the left bank and walk toward the right bank, a small flower garden on the left, a bigger city skyline on the right. |
+| scene-a20-basic-verbs | A cheerful girl in a bright living room holding a backpack and a mug, a boy next to her opening the door to go out, a table with a book and a sandwich: everyday actions of going, taking, making and having. |
+| scene-a20-daily-verbs | A family at home in the evening: a girl reading a book, a boy watching TV, a mother eating dinner at the table, a father listening to music with headphones, a glass of water on the table. |
+| scene-a20-city-verbs | A busy city street with a crosswalk: a boy crossing the road, a girl turning the corner with a map, a shop window where a customer is buying a jacket and paying at the counter, a train station sign shape without text in the background. |
+| scene-a20-time | A big round wall clock, a wall calendar with colored days and a packed suitcase by the door, a girl looking at her watch and a boy pointing at the calendar: today, now and tomorrow. |
+| a20-m1 | Two children in a city plaza looking at three colorful signposts shaped like a sun, a clock and a plane, deciding which way to go. |
+| a20-m2 | A boy holding a ring of twelve big colorful keys, a girl pointing at a treasure chest in a city park. |
+| a20-m3 | A girl building a sentence with large wooden word blocks on a table in a sunny cafe, a boy helping her. |
+| a20-m4 | Two children at a crossroads in a city: one road shows a person cooking every day, the other a person cooking right now, a signpost in the middle. |
+| a20-m5 | A boy standing at a railway station platform with a suitcase and a ticket, a girl with a travel brochure about next week's trip. |
+| a20-m6 | Two children crossing a glowing bridge toward a bright city at sunrise, a banner shaped like a flag at the end of the bridge. |
