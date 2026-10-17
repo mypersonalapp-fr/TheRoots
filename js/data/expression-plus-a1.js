@@ -239,6 +239,16 @@ export const EXPRESSION_PLUS_A2 = {
       ["Compare deux personnes.", "Comparer", "but|while|and|slowly|quickly|faster|slower"],
       ["Dis ce que les gens font chaque jour.", "Chaque jour", "every day|usually|often|always|take|go to work"],
       ["Dis où ça se passe.", "Où", "street|city|town|bus stop|in the|on the"]], "describe-a20-street"),
+    T("Mes projets de week-end", "🗓️", "This weekend I am going to visit my aunt. I usually stay at home on Sundays, but this time we are going to have lunch in a restaurant. I am not going to work. Right now I am planning the trip.", [
+      ["Dis ce que tu vas faire ce week-end.", "Projet", "going to|will|this weekend|visit"],
+      ["Dis ce que tu fais d'habitude le dimanche.", "D'habitude", "usually|always|often|every|on sundays|stay"],
+      ["Dis une chose que tu ne vas pas faire.", "Négation", "not going to|am not|won't|don't|never"],
+      ["Dis ce que tu fais en ce moment.", "En ce moment", "right now|now|at the moment|am (planning|writing|reading|thinking)"]]),
+    T("Invite un ami", "💌", "Would you like to come to the cinema with me? I usually go on Fridays. Right now I am looking at the film times. We are going to meet at seven. I would like to see a comedy.", [
+      ["Invite un ami avec « Would you like… ? ».", "Invitation", "would you like|do you want|how about|why don't"],
+      ["Dis ce que tu fais d'habitude.", "D'habitude", "usually|always|often|every|on fridays|go"],
+      ["Dis ce que tu fais en ce moment.", "En ce moment", "right now|now|at the moment|am (looking|checking|reading|writing|choosing)"],
+      ["Dis ce que vous allez faire.", "Projet", "going to|will|meet|at seven|see"]]),
   ],
   1: [
     T("Décris l'image : le matin", "🌅", "In the morning, the girl brushes her teeth and has breakfast. Right now she is putting on her shoes. She usually leaves at eight. She never misses the bus.", [

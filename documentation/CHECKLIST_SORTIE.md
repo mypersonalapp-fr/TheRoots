@@ -8,3 +8,8 @@
 4. Retester avec les drapeaux à false : réponses obligatoires avant « Suivant », cours verrouillés avant le test de niveau, test de leçon verrouillé après un échec jusqu'à une série de rattrapage.
 5. Parcours complet A1.1 → Grand contrôle → A2.0 → dernière leçon construite (Playwright), 0 erreur console, 0 image 404.
 6. Fusion dans `main` (jamais avant 1 et 2).
+
+## Règle permanente pour TOUTES les leçons (A1 → C2)
+Un contrôle change entièrement à chaque passage : autre texte, autre audio, autres questions de grammaire, autres sujets d'expression écrite et orale.
+Chaque nouvelle leçon doit donc fournir au minimum : 3 textes, 3 audios, 30 questions de grammaire, 6 sujets d'expression.
+Vérifier après chaque leçon : `python3 tools/verifier-controles.py` (aucune ligne KO).
