@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261018y";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018y";
-import { renderShell } from "./shell.js?v=20261018y";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018y";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018y";
+import { renderLesson } from "./lecon-a11.js?v=20261018z";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018z";
+import { renderShell } from "./shell.js?v=20261018z";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018z";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018z";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,11 +23,11 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018y";
-import { plantSvg } from "./plant.js?v=20261018y";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018z";
+import { plantSvg } from "./plant.js?v=20261018z";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { bulletinA1, PASS } from "../data/bulletin-a1.js?v=20261018y";
+import { bulletinA1, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018z";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -194,7 +194,7 @@ function bulletinHtml() {
   const B = bulletinA1(), f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
   if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin A1</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
   const sk = B.skills.map((s) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : r >= 0.7 ? "#e2a13d" : "#e0432f"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div>`; }).join("");
-  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">Lacunes détectées</h3><p class="bl-soft">Repérées à partir de tes erreurs aux tests. Fais les exercices en plus de la leçon, puis repasse le test.</p>${B.gaps.map((g) => `<div class="bl-gap"><div><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · à renforcer : " + g.weak.join(", ") : ""}</small>${g.list.map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}</div><span class="bl-tag bl-ko">À revoir</span></div>`).join("")}<button type="button" class="lc-cta bl-cta" id="blRattrap">Faire mes exercices de rattrapage</button></div>` : "";
+  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">Lacunes détectées</h3><p class="bl-soft">Repérées à partir de tes erreurs aux tests. Fais les exercices en plus de la leçon, puis repasse le test.</p>${B.gaps.map((g) => `<div class="bl-gap"><div><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · à renforcer : " + g.weak.join(", ") : ""}</small>${g.list.map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</div><button type="button" class="bl-tag bl-ko bl-go" data-rt="${g.n}">${(rtLoad()[g.n] || {}).series ? "Refaire · " + rtLoad()[g.n].last : "Exercices en plus"}</button></div>`).join("")}</div>` : "";
   const tiles = B.tests.map((t) => { const c = t.done ? (t.passed ? "ok" : "ko") : "no"; return `<div class="bl-tile bl-${c}"><b>${t.code}</b><span>${t.done ? t.best + "/40" : "—"}</span><small>${t.done ? (t.passed ? "Réussi" : "À repasser") : "À venir"}</small></div>`; }).join("");
   return `<div class="card bl-card bl-head"><div><b class="bl-big">Niveau A1</b><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${B.nDone - B.nOk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>
     <div class="card bl-card"><h3 class="bl-h">Mes notes par compétence</h3>${sk}</div>${gaps}
@@ -339,9 +339,41 @@ export function renderMesCours(container, shellRoot) {
       </div>
     `;
     container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
-    const rt = container.querySelector("#blRattrap"); if (rt) rt.addEventListener("click", () => { openLivret = false; openCode = livretLang; paint(); });
+    container.querySelectorAll("[data-rt]").forEach((b) => b.addEventListener("click", () => paintRattrapage(Number(b.dataset.rt))));
     container.querySelectorAll("[data-livret-lang]").forEach((b) => b.addEventListener("click", () => { livretLang = b.dataset.livretLang; paint(); }));
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
+  }
+
+  // --- Exercices en plus : 5 questions corrigées, une explication à chaque réponse ---
+  async function paintRattrapage(n) {
+    const B = bulletinA1(), g = B.gaps.find((x) => x.n === n);
+    const bundle = await loadBundle(n);
+    const att = (rtLoad()[n] || {}).series || 0;
+    const items = pickRattrapage(bundle.exercises, g ? g.weak : [], att + n);
+    let i = 0, firstOk = 0, tried = false;
+    const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    const draw = () => {
+      if (i >= items.length) {
+        rtSave(n, firstOk, items.length);
+        container.innerHTML = `<button class="settings-back" id="rtBack">Retour au livret</button><div class="card bl-card"><h3 class="bl-h">Série terminée</h3><div class="bl-big">${firstOk} / ${items.length}</div><p class="bl-soft">${firstOk >= 4 ? "Très bien : la notion est solide. Repasse le test de la leçon." : "Relis les explications, refais une série puis repasse le test."}</p><button type="button" class="lc-cta bl-cta" id="rtRetest">Repasser le test ${g ? g.code : ""}</button><button type="button" class="lc-sec-btn bl-cta" id="rtAgain">Refaire une série</button></div>`;
+        container.querySelector("#rtBack").onclick = () => { openLivret = true; paint(); };
+        container.querySelector("#rtAgain").onclick = () => paintRattrapage(n);
+        container.querySelector("#rtRetest").onclick = () => { openLivret = false; openCode = "en"; paint(); };
+        return;
+      }
+      const { page, q } = items[i]; tried = false;
+      container.innerHTML = `<button class="settings-back" id="rtBack">Quitter</button><div class="card bl-card"><div class="bl-soft">Exercices en plus · ${g ? g.code : ""} · ${i + 1} / ${items.length}</div><div class="bl-bar"><i style="width:${Math.round(i / items.length * 100)}%;background:#2fa35e"></i></div><div class="bl-soft">${esc(page)}</div><h3 class="bl-h">${esc(q[0])}</h3>${q[1].map((c, k) => `<button type="button" class="lc-choice" data-k="${k}">${esc(c)}</button>`).join("")}<div class="bl-fb" id="rtFb" aria-live="polite"></div><button type="button" class="lc-cta bl-cta" id="rtNext" style="display:none">${i + 1 < items.length ? "Question suivante" : "Voir mon résultat"}</button></div>`;
+      container.querySelector("#rtBack").onclick = () => { openLivret = true; paint(); };
+      const fb = container.querySelector("#rtFb");
+      container.querySelectorAll(".lc-choice").forEach((b) => b.addEventListener("click", () => {
+        if (b.classList.contains("lc-right")) return;
+        const ok = Number(b.dataset.k) === q[2];
+        if (ok) { if (!tried) firstOk++; b.classList.add("lc-right"); fb.className = "bl-fb bl-fb-ok"; fb.textContent = "Bravo ! " + (q[3] || ""); container.querySelector("#rtNext").style.display = ""; container.querySelectorAll(".lc-choice").forEach((x) => x.disabled = true); }
+        else { tried = true; b.classList.add("lc-wrong"); b.disabled = true; fb.className = "bl-fb bl-fb-ko"; fb.textContent = "Pas tout à fait — " + (q[3] || "") + " Réessaie."; }
+      }));
+      container.querySelector("#rtNext").onclick = () => { i++; draw(); };
+    };
+    draw();
   }
 
   function paintLangDetail(code) {

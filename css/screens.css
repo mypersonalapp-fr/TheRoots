@@ -1159,3 +1159,5 @@
 .bl-tile{ border-radius:14px; padding:8px 4px; text-align:center; display:flex; flex-direction:column; gap:1px; font-size:13px; }
 .bl-tile span{ font-size:15px; font-weight:800; } .bl-tile small{ font-size:11px; font-weight:800; }
 .bl-ok{ background:#1f7a45; color:#fff; } .bl-ko.bl-tile, .bl-tile.bl-ko{ background:#c8382a; color:#fff; } .bl-no{ background:#eceef2; color:#1b1d22; }
+.bl-go{ border:0; cursor:pointer; font-family:inherit; background:#e8821c; color:#1b1d22; flex:none; min-height:36px; }
+.bl-fb{ font-size:14px; font-weight:700; line-height:1.4; } .bl-fb-ok{ color:#1f7a45; } .bl-fb-ko{ color:#c8382a; }
