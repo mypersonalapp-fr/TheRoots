@@ -299,10 +299,10 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis une chose que tu ne fais plus.", "Ce qui a changé", "used to|any more|anymore|no longer|but now|but i"], ["Dis ce que tu regrettes (ou pas).", "Regret", "miss|don.t miss|prefer|like|love|better"]]),
   ],
   3: [
-    T("Décris l'image : la cour de récréation", "🏫", "In this picture, children are skipping and a boy is falling off his bike. Two girls are chatting on a bench while a teacher is watching. Yesterday we were playing football when a dog ran across the yard.", [
-      ["Dis ce que font les enfants.", "Les enfants", "is (skipping|playing|falling|riding|running|chatting|jumping)|are (skipping|playing|falling|riding|running|chatting|jumping|talking)"],
+    T("Décris l'image : la cour de récréation", "🏫", "In this picture, a boy is falling off his bike and a woman is helping him. A teacher is running with a first-aid box while a girl is reading on a bench. A boy is playing basketball and a dog is running. Yesterday we were playing football when a dog ran across the yard.", [
+      ["Dis ce que font les enfants.", "Les enfants", "is (skipping|playing|falling|riding|running|chatting|jumping|reading|helping)|are (skipping|playing|falling|riding|running|chatting|jumping|talking|reading)"],
       ["Dis ce qui se passe en même temps.", "En même temps", "while|at the same time|meanwhile|and"],
-      ["Dis ce que tu vois dans la cour.", "La cour", "bench|bike|ball|dog|teacher|playground|yard|children"],
+      ["Dis ce que tu vois dans la cour.", "La cour", "bench|bike|ball|dog|teacher|playground|yard|children|slide|helmet"],
       ["Raconte un souvenir de récréation avec « was / were + -ing ».", "Souvenir", "was \\w+ing|were \\w+ing"]], "describe-a23-playground"),
     T("Décris l'image : la gare", "🚉", "In this picture, a busy station. A man is running with a suitcase and a woman is talking on the phone. A child is eating an ice cream while a train is arriving. Yesterday I was waiting for my train when I met an old friend.", [
       ["Dis ce que font trois personnes.", "Trois personnes", "is (running|talking|eating|waiting|kissing|whistling)|are (running|talking|eating|waiting|kissing|whistling)"],
