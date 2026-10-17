@@ -8,7 +8,7 @@ export function balanceAll(root) {
     if (Array.isArray(x)) {
       if (typeof x[0] === "string" && Array.isArray(x[1]) && typeof x[2] === "number" && x[1].every((o) => typeof o === "string")) {
         const len = x[1].length, to = Math.floor(((n++ * 0.618034) % 1) * len);
-        swapTo(x[1], x[2], to); x[2] = to; return;
+        swapTo(x[1], x[2], to); if (Array.isArray(x[3])) swapTo(x[3], x[2], to); x[2] = to; return;
       }
       x.forEach(walk); return;
     }
