@@ -1,6 +1,6 @@
 // The Roots — bulletin scolaire A1 : lit les tests de fin de leçon (stockage local) et en déduit notes, lacunes et rattrapage.
-import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261018a4";
-import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018a4";
+import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261018a6";
+import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018a6";
 export const PASS = 32;
 export const SK = [["Compréhension écrite", 7.5], ["Compréhension orale", 7.5], ["Grammaire", 10], ["Expression écrite", 7.5], ["Expression orale", 7.5]];
 const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { return {}; } };
@@ -29,7 +29,15 @@ export function bulletinA1(level = "A1") {
 // ---- Exercices en plus (rattrapage) : 5 questions tirées des exercices corrigés de la leçon, selon la compétence faible ----
 const RT_KEY = "the_roots_a1_rattrapage_v1";
 export const rtLoad = () => read(RT_KEY);
-export function rtSave(id, ok, tot) { const o = rtLoad(); o[id] = { series: ((o[id] || {}).series || 0) + 1, last: `${ok}/${tot}`, d: new Date().toISOString().slice(0, 10) }; try { localStorage.setItem(RT_KEY, JSON.stringify(o)); } catch (e) { /* stockage indisponible */ } }
+export function rtSave(id, ok, tot) { const o = rtLoad(), d = new Date().toISOString().slice(0, 10), h = ((o[id] || {}).hist || []).concat([{ d, ok, tot }]).slice(-20); o[id] = { series: ((o[id] || {}).series || 0) + 1, last: `${ok}/${tot}`, d, hist: h }; try { localStorage.setItem(RT_KEY, JSON.stringify(o)); } catch (e) { /* stockage indisponible */ } }
+// Rattrapages faits, avec l'évolution du test : première note → meilleure note.
+export function rattrapagesFaits(level) {
+  const o = rtLoad(), B = bulletinA1(level);
+  return B.tests.filter((t) => o[t.id] && o[t.id].series).map((t) => {
+    const p = read((level === "A2" ? A2_LIST : A1_LIST).find((L) => L.code === t.id).key), h = p.testHist || [];
+    return { id: t.id, title: t.title, series: o[t.id].series, hist: o[t.id].hist || [], first: h.length ? h[0].total : null, best: t.best, passed: t.passed, retaken: h.length > 1 };
+  });
+}
 const kindOf = (t) => /^Vocabulaire/.test(t) ? "voc" : /^(Mise en situation|Lecture|Écoute)/.test(t) ? "lis" : "gram";
 export function pickRattrapage(exercises, weak, seed) {
   const want = new Set();
