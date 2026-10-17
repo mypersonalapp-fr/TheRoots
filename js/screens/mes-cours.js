@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261018z";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018z";
-import { renderShell } from "./shell.js?v=20261018z";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018z";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018z";
+import { renderLesson } from "./lecon-a11.js?v=20261018a2";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018a2";
+import { renderShell } from "./shell.js?v=20261018a2";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018a2";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018a2";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,12 +23,13 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018z";
-import { plantSvg } from "./plant.js?v=20261018z";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018a2";
+import { plantSvg } from "./plant.js?v=20261018a2";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { loadBundleA2 } from "../data/lecons-a2.js?v=20261018z";
-import { bulletinA1, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018z";
+import { currentCharacter } from "./lecon-a11.js?v=20261018a2";
+import { loadBundleA2 } from "../data/lecons-a2.js?v=20261018a2";
+import { bulletinA1, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018a2";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -190,18 +191,24 @@ function bothFlagsFor(l) {
   return GROUP_FLAGS[l.code] || "";
 }
 
-// --- Bulletin scolaire A1 (maquette 1) : notes par compétence, lacunes détectées, 12 tests réussis / à repasser ---
+// --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261018a2`;
+const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
+const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
 export function bulletinHtml(level = "A1") {
-  const B = bulletinA1(level), f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
+  const B = bulletinA1(level), f = (n) => String(Math.round(n * 10) / 10).replace(".", ","), ch = currentCharacter();
+  const nk = B.nDone - B.nOk;
   if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin ${level}</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
-  const sk = B.skills.map((s) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : r >= 0.7 ? "#e2a13d" : "#e0432f"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div>`; }).join("");
-  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">Lacunes détectées</h3><p class="bl-soft">Repérées à partir de tes erreurs aux tests. Fais les exercices en plus de la leçon, puis repasse le test.</p>${B.gaps.map((g) => `<div class="bl-gap"><div><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · à renforcer : " + g.weak.join(", ") : ""}</small>${g.list.map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</div><button type="button" class="bl-tag bl-ko bl-go" data-rt="${g.id}">${(rtLoad()[g.id] || {}).series ? "Refaire · " + rtLoad()[g.id].last : "Exercices en plus"}</button></div>`).join("")}</div>` : "";
+  const head = `<div class="card bl-card bl-head"><img class="bl-ava" src="${ch.src}" alt=""/><div class="bl-hd"><div class="bl-big">Niveau ${level}</div><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${nk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>`;
+  const sk = B.skills.filter((s) => s.avg !== null).map((s, i) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-skrow"><img class="bl-sk-img" src="${BL_SK[i]}" alt="" loading="lazy"/><div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div></div>`; }).join("");
+  const skills = sk ? `<div class="card bl-card"><div class="bl-sp"><h3 class="bl-h">Mes notes par compétence</h3><span class="bl-soft">Moyenne des tests</span></div>${sk}</div>` : "";
+  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">🔎 Lacunes détectées</h3><p class="bl-soft" style="color:#7a1d12">Repérées à partir de tes erreurs aux tests. L'appli a déjà préparé des exercices en plus.</p>${B.gaps.map((g) => `<button type="button" class="bl-gap" data-rt="${g.id}"><img src="${BL_IMG(BL_GAP[(g.list[0] || {}).sk] || "ic-test")}" alt="" width="40" height="40"/><span class="bl-gt"><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · " + g.weak.join(", ") : ""}</small>${g.list.slice(0, 2).map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</span><span class="bl-tag bl-ko">${(rtLoad()[g.id] || {}).series ? "Refaire · " + rtLoad()[g.id].last : "À revoir"}</span></button>`).join("")}<button type="button" class="lc-cta bl-cta" data-rt="${B.gaps[0].id}"><img src="${BL_IMG("ic-exercises")}" alt="" width="30" height="30"/>Faire mes exercices de rattrapage</button><div class="bl-soft" style="text-align:center">${B.gaps.length} série${B.gaps.length > 1 ? "s" : ""} · environ 5 minutes chacune</div></div>` : "";
   const tiles = B.tests.map((t) => { const c = t.done ? (t.passed ? "ok" : "ko") : "no"; return `<div class="bl-tile bl-${c}"><b>${t.code}</b><span>${t.done ? t.best + "/40" : "—"}</span><small>${t.done ? (t.passed ? "Réussi" : "À repasser") : "À venir"}</small></div>`; }).join("");
-  return `<div class="card bl-card bl-head"><div><b class="bl-big">Niveau ${level}</b><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${B.nDone - B.nOk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>
-    <div class="card bl-card"><h3 class="bl-h">Mes notes par compétence</h3>${sk}</div>${gaps}
-    <div class="card bl-card"><h3 class="bl-h">Mes tests de fin de leçon</h3><div class="bl-tiles">${tiles}</div><p class="bl-soft">Réussi à partir de ${PASS}/40.</p></div>`;
+  const grid = `<div class="card bl-card"><h3 class="bl-h">Mes tests de fin de leçon</h3><div class="bl-tiles">${tiles}</div>${level === "A1" ? `<div class="bl-lock"><img src="${BL_IMG("ic-test")}" alt="" width="34" height="34"/><span class="bl-soft">Grand contrôle A1 : s'ouvre quand les 12 leçons sont réussies</span></div>` : ""}<p class="bl-soft">Réussi à partir de ${PASS}/40.</p></div>`;
+  const emma = B.gaps.length ? `Beau travail ! Il te manque juste ${f(B.gaps[0].miss)} point${B.gaps[0].miss > 1 ? "s" : ""} à la leçon ${B.gaps[0].code}. Une petite série et tu repasses le test.` : "Tous tes tests sont réussis. Continue comme ça !";
+  const word = `<div class="card bl-card bl-emma"><img src="${ch.full || ch.src}" alt="" loading="lazy"/><div><div class="bl-lab">LE MOT D'${ch.name.toUpperCase()}</div><div class="bl-say">${emma}</div></div></div>`;
+  return head + skills + gaps + grid + word;
 }
-
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
