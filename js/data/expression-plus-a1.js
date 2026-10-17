@@ -298,4 +298,36 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis où tu habitais avant.", "Avant", "used to live|lived|before"], ["Dis où tu habites maintenant.", "Maintenant", "now|today|these days|live in|i live"],
       ["Dis une chose que tu ne fais plus.", "Ce qui a changé", "used to|any more|anymore|no longer|but now|but i"], ["Dis ce que tu regrettes (ou pas).", "Regret", "miss|don.t miss|prefer|like|love|better"]]),
   ],
+  3: [
+    T("Décris l'image : la cour de récréation", "🏫", "In this picture, children are skipping and a boy is falling off his bike. Two girls are chatting on a bench while a teacher is watching. Yesterday we were playing football when a dog ran across the yard.", [
+      ["Dis ce que font les enfants.", "Les enfants", "is (skipping|playing|falling|riding|running|chatting|jumping)|are (skipping|playing|falling|riding|running|chatting|jumping|talking)"],
+      ["Dis ce qui se passe en même temps.", "En même temps", "while|at the same time|meanwhile|and"],
+      ["Dis ce que tu vois dans la cour.", "La cour", "bench|bike|ball|dog|teacher|playground|yard|children"],
+      ["Raconte un souvenir de récréation avec « was / were + -ing ».", "Souvenir", "was \\w+ing|were \\w+ing"]], "describe-a23-playground"),
+    T("Décris l'image : la gare", "🚉", "In this picture, a busy station. A man is running with a suitcase and a woman is talking on the phone. A child is eating an ice cream while a train is arriving. Yesterday I was waiting for my train when I met an old friend.", [
+      ["Dis ce que font trois personnes.", "Trois personnes", "is (running|talking|eating|waiting|kissing|whistling)|are (running|talking|eating|waiting|kissing|whistling)"],
+      ["Dis ce qui arrive en même temps.", "En même temps", "while|at the same time|meanwhile|and"],
+      ["Dis ce que tu vois sur le quai.", "Le quai", "train|platform|suitcase|clock|station|ticket"],
+      ["Dis ce que tu faisais la dernière fois dans une gare.", "Souvenir", "was \\w+ing|were \\w+ing"]], "describe-a23-station"),
+    T("Hier à huit heures", "🕗", "Yesterday at eight o'clock I was having breakfast. My brother was getting ready for school and my mother was making coffee. At nine I was already on the bus. It was a normal morning.", [
+      ["Dis ce que tu faisais à une heure précise.", "Heure précise", "(i was|we were) \\w+ing"],
+      ["Dis ce que faisait un membre de ta famille.", "Famille", "(my|his|her) (brother|sister|mother|father|mum|dad|wife|husband|friend|son|daughter) (was|were) \\w+ing"],
+      ["Ajoute une autre heure.", "Autre heure", "at (one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\\d+)"],
+      ["Termine par une phrase sur la matinée.", "Fin", "it was|that was|what a"]]),
+    T("Un orage", "⛈️", "Last summer we were swimming in the sea when a storm arrived. The sky was getting dark and the wind was blowing. Suddenly it started to rain. We ran to the car and we waited for an hour.", [
+      ["Dis ce que vous faisiez.", "Action en cours", "(i was|we were) \\w+ing"],
+      ["Dis comment était le temps.", "Le temps", "(sky|wind|sun|rain|weather|it) (was|were) \\w+ing|dark|cloudy|stormy|windy"],
+      ["Dis ce qui s'est passé soudain.", "Soudain", "suddenly|when|then|started to rain|at that moment"],
+      ["Dis ce que vous avez fait ensuite.", "Ensuite", "(we|i) (ran|waited|went|stayed|hid|took|came|left|drove|packed)"]]),
+    T("Une panne de courant", "🕯️", "We were having dinner when the lights went out. Mum was serving the soup and Dad was talking. We lit some candles and we told stories. After thirty minutes the lights came back on.", [
+      ["Dis ce que vous faisiez.", "Ce que vous faisiez", "(we|i) (were|was) \\w+ing"],
+      ["Dis ce qui a interrompu.", "Interruption", "when|suddenly|lights went out|power (cut|went)|blackout"],
+      ["Dis ce que faisaient deux personnes.", "Deux personnes", "(mum|dad|he|she|they|my \\w+) (was|were) \\w+ing"],
+      ["Dis comment ça s'est terminé.", "Fin", "came back|came on|after|finally|in the end|later"]]),
+    T("Un témoin", "🕵️", "I was walking in the park when I heard a loud noise. A man was running away and a woman was shouting. I called the police at once. I wasn't afraid, but I was surprised.", [
+      ["Dis ce que tu faisais.", "Toi", "(i was|i wasn.t) \\w+ing"],
+      ["Dis ce que tu as entendu ou vu.", "Perception", "heard|saw|noticed|noise|shout"],
+      ["Dis ce que faisaient d'autres personnes.", "Les autres", "(man|woman|boy|girl|people|someone|he|she|they) (was|were) \\w+ing"],
+      ["Dis ce que tu as fait.", "Ta réaction", "i (called|ran|stopped|shouted|helped|went|took|waited|told)"]]),
+  ],
 };

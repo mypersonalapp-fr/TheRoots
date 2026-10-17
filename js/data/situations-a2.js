@@ -16,4 +16,9 @@ export const SITUATIONS_A2 = {
     S("🧸", "Say one thing you used to do as a child.", "Utilise « used to ».", "\\bi used to\\s+\\w+", "I used to play outside every day."),
     S("❌", "Say one thing you didn't do yesterday.", "Utilise « didn't ».", "\\bi (didn.t|did not)\\s+\\w+", "I didn't watch TV yesterday."),
   ],
+  "A2.3": [
+    S("📞", "Say what you were doing when the phone rang.", "Utilise « was + -ing ».", "\\bi was\\s+\\w+ing\\b", "I was cooking when the phone rang."),
+    S("🔄", "Say two things that happened at the same time.", "Utilise « while ».", "\\bwhile\\b.*\\b(was|were)\\s+\\w+ing\\b", "While I was reading, he was watching TV."),
+    S("🌧️", "Say what happened suddenly while you were out.", "Utilise « when » et le Past Simple.", "\\b(was|were)\\s+\\w+ing\\b.*\\bwhen\\b|\\bwhen\\b.*\\b(was|were)\\s+\\w+ing\\b", "We were walking when it started to rain."),
+  ],
 };

@@ -38,4 +38,16 @@ export const DIALOGUES_A2 = {
       { npc: "Do you still do that?", ok: ["\\b(yes|no|not any ?more|no longer|sometimes|i still|i do|i don.t)\\b"], model: "No, not any more.", hint: "Réponds avec not any more." },
       { npc: "Times change! Thanks for sharing.", ok: ["\\b(thanks|thank you|yes|true|you.re welcome|bye)\\b"], model: "Yes, times change!", hint: "Réponds gentiment." }] },
   ],
+  "A2.3": [
+    { title: "Que faisais-tu hier soir ?", icon: "🌙", scene: "Un ami te demande ce que tu faisais hier soir.", turns: [
+      { npc: "Hi! I called you last night at nine. Were you sleeping?", ok: ["\\b(no|yes|i wasn.t|i was|i didn.t)\\b"], model: "No, I wasn't. I was watching a film.", hint: "Réponds avec was / wasn't." },
+      { npc: "Oh, sorry. What were you watching?", ok: ["\\b(i was watching|we were watching|a (film|movie|series|show|comedy)|the news|football)\\b"], model: "I was watching a comedy.", hint: "I was watching + ce que tu regardais." },
+      { npc: "Was anybody with you?", ok: ["\\b(yes|no|my (brother|sister|friend|mum|mother|dad|father|husband|wife)|i was (alone|with)|nobody)\\b"], model: "Yes, my brother was watching it with me.", hint: "Dis qui était avec toi." },
+      { npc: "Nice! Did you hear the thunder?", ok: ["\\b(yes|no|i did|i didn.t|i heard|it was|too loud|asleep)\\b"], model: "Yes, I did. It was very loud!", hint: "Réponds avec did / didn't." }] },
+    { title: "Un témoin", icon: "🕵️", scene: "Un policier te pose des questions sur ce que tu faisais.", turns: [
+      { npc: "Good morning. What were you doing at six o'clock yesterday?", ok: ["\\b(i was|we were)\\s+\\w+ing\\b"], model: "I was walking my dog.", hint: "I was + verbe en -ing." },
+      { npc: "Did you see anything unusual?", ok: ["\\b(yes|no|i (saw|didn.t see)|nothing|a (man|woman|car))\\b"], model: "Yes, I saw a man near the bank.", hint: "Dis ce que tu as vu." },
+      { npc: "What was he doing?", ok: ["\\b(he was|he wasn.t)\\s+\\w+ing\\b|\\bhe (ran|walked|stood|looked)\\b"], model: "He was running very fast.", hint: "He was + verbe en -ing." },
+      { npc: "Thank you for your help.", ok: ["\\b(you.re welcome|no problem|thank you|thanks|bye|goodbye)\\b"], model: "You're welcome!", hint: "Réponds poliment." }] },
+  ],
 };

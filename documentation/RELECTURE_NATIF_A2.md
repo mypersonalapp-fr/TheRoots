@@ -1852,6 +1852,661 @@
 - `VOCAB_A22` Everyone shouted “Surprise!”
 - `VOCAB_A22` “Guest” veut dire…
 
+## A2.3 (779 lignes)
+
+- `EXERCISES_A23` Vocabulaire — Les interruptions
+- `EXERCISES_A23` Choisis le sens correct.
+- `EXERCISES_A23` Ring = sonner.
+- `EXERCISES_A23` Knock = frapper.
+- `EXERCISES_A23` Noise = bruit.
+- `EXERCISES_A23` Suddenly = soudain.
+- `EXERCISES_A23` at that moment
+- `EXERCISES_A23` plus tard
+- `EXERCISES_A23` At that moment.
+- `EXERCISES_A23` in the middle of
+- `EXERCISES_A23` au milieu de
+- `EXERCISES_A23` In the middle of.
+- `EXERCISES_A23` Was / were
+- `EXERCISES_A23` Choisis was ou were.
+- `EXERCISES_A23` I ___ reading a book.
+- `EXERCISES_A23` They ___ playing outside.
+- `EXERCISES_A23` They → were.
+- `EXERCISES_A23` She ___ cooking dinner.
+- `EXERCISES_A23` She → was.
+- `EXERCISES_A23` We ___ waiting for the bus.
+- `EXERCISES_A23` We → were.
+- `EXERCISES_A23` You ___ talking too loudly.
+- `EXERCISES_A23` You → were.
+- `EXERCISES_A23` It ___ raining all day.
+- `EXERCISES_A23` It → was.
+- `EXERCISES_A23` L'orthographe en -ing
+- `EXERCISES_A23` Make → making.
+- `EXERCISES_A23` Run → running.
+- `EXERCISES_A23` Sit → sitting.
+- `EXERCISES_A23` Write → writing.
+- `EXERCISES_A23` Lie → lying.
+- `EXERCISES_A23` Play → playing.
+- `EXERCISES_A23` wasn't / weren't + -ing.
+- `EXERCISES_A23` I wasn't sleeping.
+- `EXERCISES_A23` They weren't listening.
+- `EXERCISES_A23` She wasn't working.
+- `EXERCISES_A23` We weren't watching TV.
+- `EXERCISES_A23` didn't know
+- `EXERCISES_A23` wasn't knowing
+- `EXERCISES_A23` weren't knowing
+- `EXERCISES_A23` Know n'a pas de forme en -ing : didn't know.
+- `EXERCISES_A23` You weren't paying attention.
+- `EXERCISES_A23` Questions au Past Continuous
+- `EXERCISES_A23` Was / Were + sujet + -ing.
+- `EXERCISES_A23` ___ you sleeping?
+- `EXERCISES_A23` Were you sleeping?
+- `EXERCISES_A23` What ___ she doing?
+- `EXERCISES_A23` What was she doing?
+- `EXERCISES_A23` Where ___ they going?
+- `EXERCISES_A23` Where were they going?
+- `EXERCISES_A23` ___ he working at nine?
+- `EXERCISES_A23` Was he working?
+- `EXERCISES_A23` Was she crying? — No, she ___.
+- `EXERCISES_A23` No, she wasn't.
+- `EXERCISES_A23` Were they playing? — Yes, they ___.
+- `EXERCISES_A23` Yes, they were.
+- `EXERCISES_A23` While, when, during
+- `EXERCISES_A23` Choisis le bon mot.
+- `EXERCISES_A23` I was sleeping ___ the phone rang.
+- `EXERCISES_A23` when + action courte (Past Simple).
+- `EXERCISES_A23` ___ the film, he fell asleep.
+- `EXERCISES_A23` during + nom.
+- `EXERCISES_A23` She was cooking ___ he was reading.
+- `EXERCISES_A23` while + sujet + verbe.
+- `EXERCISES_A23` ___ I was walking, it began to rain.
+- `EXERCISES_A23` While + Past Continuous.
+- `EXERCISES_A23` He was talking ___ the whole meeting.
+- `EXERCISES_A23` during + nom (the whole meeting).
+- `EXERCISES_A23` We were having dinner ___ the lights went out.
+- `EXERCISES_A23` when + Past Simple.
+- `EXERCISES_A23` L'action courte (Past Simple)
+- `EXERCISES_A23` Quelle action interrompt ? ⚠ espacement/ponctuation
+- `EXERCISES_A23` I was cooking when the phone ___.
+- `EXERCISES_A23` She was sleeping when the alarm ___.
+- `EXERCISES_A23` We were walking when it ___ to rain.
+- `EXERCISES_A23` He was driving when he ___ an accident.
+- `EXERCISES_A23` They were eating when the lights ___ out.
+- `EXERCISES_A23` Went out.
+- `EXERCISES_A23` I was reading when someone ___ at the door.
+- `EXERCISES_A23` L'action longue (Past Continuous)
+- `EXERCISES_A23` I ___ a film when the phone rang.
+- `EXERCISES_A23` was watching
+- `EXERCISES_A23` Was watching.
+- `EXERCISES_A23` She ___ in the garden when it started to rain.
+- `EXERCISES_A23` was working
+- `EXERCISES_A23` Was working.
+- `EXERCISES_A23` We ___ lunch when they arrived.
+- `EXERCISES_A23` were having
+- `EXERCISES_A23` Were having.
+- `EXERCISES_A23` He ___ on the phone when I came in.
+- `EXERCISES_A23` was talking
+- `EXERCISES_A23` Was talking.
+- `EXERCISES_A23` They ___ football when it got dark.
+- `EXERCISES_A23` were playing
+- `EXERCISES_A23` Were playing.
+- `EXERCISES_A23` You ___ when I called.
+- `EXERCISES_A23` were sleeping
+- `EXERCISES_A23` Were sleeping.
+- `EXERCISES_A23` Past Continuous ou Past Simple ? ⚠ espacement/ponctuation
+- `EXERCISES_A23` She ___ the door and walked in.
+- `EXERCISES_A23` was opening
+- `EXERCISES_A23` Actions qui se suivent : Past Simple.
+- `EXERCISES_A23` I ___ TV when you called.
+- `EXERCISES_A23` Action en cours : was watching.
+- `EXERCISES_A23` We ___ at six and had breakfast.
+- `EXERCISES_A23` were getting up
+- `EXERCISES_A23` Suite d'actions : Past Simple.
+- `EXERCISES_A23` He ___ a shower when the lights went out.
+- `EXERCISES_A23` was taking
+- `EXERCISES_A23` Action en cours : was taking.
+- `EXERCISES_A23` They ___ a taxi and went home.
+- `EXERCISES_A23` were taking
+- `EXERCISES_A23` Suite d'actions : took.
+- `EXERCISES_A23` It ___ when we left the house.
+- `EXERCISES_A23` was raining
+- `EXERCISES_A23` While Dad was cooking, Mum ___ the table.
+- `EXERCISES_A23` was setting
+- `EXERCISES_A23` Deux actions en cours : was setting.
+- `EXERCISES_A23` I was reading while she ___ TV.
+- `EXERCISES_A23` They were singing while we ___ dinner.
+- `EXERCISES_A23` were making
+- `EXERCISES_A23` Were making.
+- `EXERCISES_A23` The kids were laughing while their parents ___.
+- `EXERCISES_A23` were dancing
+- `EXERCISES_A23` Were dancing.
+- `EXERCISES_A23` While he ___, she was sleeping.
+- `EXERCISES_A23` was driving
+- `EXERCISES_A23` Was driving.
+- `EXERCISES_A23` She was studying while I ___ music.
+- `EXERCISES_A23` listen to
+- `EXERCISES_A23` was listening to
+- `EXERCISES_A23` Was listening to.
+- `EXERCISES_A23` Mise en situation
+- `EXERCISES_A23` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A23` You say what you were doing at eight:
+- `EXERCISES_A23` I watching TV at eight.
+- `EXERCISES_A23` I was watching TV at eight.
+- `EXERCISES_A23` I was watch TV at eight.
+- `EXERCISES_A23` Was + -ing.
+- `EXERCISES_A23` You ask a friend what he was doing:
+- `EXERCISES_A23` What were you doing?
+- `EXERCISES_A23` What you were doing?
+- `EXERCISES_A23` What did you doing?
+- `EXERCISES_A23` You say the phone interrupted you:
+- `EXERCISES_A23` I was cook when the phone rang.
+- `EXERCISES_A23` I cooking when the phone ringed.
+- `EXERCISES_A23` I was cooking when the phone rang.
+- `EXERCISES_A23` Was cooking + rang.
+- `EXERCISES_A23` You say it was raining:
+- `EXERCISES_A23` It rain was.
+- `EXERCISES_A23` It was raining.
+- `EXERCISES_A23` It was rain.
+- `EXERCISES_A23` You say two things at once:
+- `EXERCISES_A23` While I was reading, she was cooking.
+- `EXERCISES_A23` While I read, she is cooking yesterday.
+- `EXERCISES_A23` While I was read, she cooking.
+- `EXERCISES_A23` While + was + -ing.
+- `EXERCISES_A23` You answer “Were you sleeping?” (non):
+- `EXERCISES_A23` No, I weren't.
+- `EXERCISES_A23` No, I didn't.
+- `EXERCISES_A23` No, I wasn't.
+- `EXERCISES_A23` Vocabulaire — Orage, panne, photo
+- `EXERCISES_A23` panne de courant
+- `EXERCISES_A23` coucher de soleil
+- `EXPRESSION_A23` Une interruption
+- `EXPRESSION_A23` Dis ce que tu faisais.
+- `EXPRESSION_A23` Dis ce que tu as fait ensuite.
+- `EXPRESSION_A23` Dis ce que tu as ressenti.
+- `EXPRESSION_A23` Yesterday I was cooking dinner when the phone rang. It was my sister. I turned off the cooker and we talked for a long time. I was very happy to hear her.
+- `EXPRESSION_A23` Ce que tu faisais
+- `EXPRESSION_A23` Ce que tu as fait ensuite
+- `EXPRESSION_A23` Ce que tu as ressenti
+- `EXPRESSION_A23` Dis comment l'histoire a fini.
+- `EXPRESSION_A23` At eight o'clock last night I was reading a book. While I was reading, my brother was playing video games. Suddenly the lights went out. In the end we both went to bed early.
+- `GRAMMAR_A23` Past Continuous : la forme
+- `GRAMMAR_A23` I was reading.
+- `GRAMMAR_A23` I / he / she / it → was + -ing
+- `GRAMMAR_A23` You were sleeping.
+- `GRAMMAR_A23` Tu dormais.
+- `GRAMMAR_A23` you / we / they → were + -ing
+- `GRAMMAR_A23` They were playing outside.
+- `GRAMMAR_A23` Ils jouaient dehors.
+- `GRAMMAR_A23` were + verbe en -ing
+- `GRAMMAR_A23` Il pleuvait.
+- `GRAMMAR_A23` it → was + -ing
+- `GRAMMAR_A23` She was cooking dinner at seven o'clock.
+- `GRAMMAR_A23` We were waiting for the bus.
+- `GRAMMAR_A23` Nous attendions le bus.
+- `GRAMMAR_A23` I ___ a book at eight o'clock.
+- `GRAMMAR_A23` were reading
+- `GRAMMAR_A23` was reading
+- `GRAMMAR_A23` I → was + -ing.
+- `GRAMMAR_A23` They ___ in the garden.
+- `GRAMMAR_A23` was playing
+- `GRAMMAR_A23` they → were + -ing.
+- `GRAMMAR_A23` She ___ a letter. (write)
+- `GRAMMAR_A23` was writing
+- `GRAMMAR_A23` were writing
+- `GRAMMAR_A23` was write
+- `GRAMMAR_A23` she → was + writing.
+- `GRAMMAR_A23` Le verbe en -ing : l'orthographe
+- `GRAMMAR_A23` play → playing
+- `GRAMMAR_A23` on ajoute -ing
+- `GRAMMAR_A23` make → making
+- `GRAMMAR_A23` run → running
+- `GRAMMAR_A23` on double la consonne
+- `GRAMMAR_A23` lie → lying
+- `GRAMMAR_A23` mentir / s'allonger
+- `GRAMMAR_A23` -ie devient -ying
+- `GRAMMAR_A23` He was running to the station.
+- `GRAMMAR_A23` Il courait vers la gare.
+- `GRAMMAR_A23` We were making a cake.
+- `GRAMMAR_A23` She was ___ a cake. (make)
+- `GRAMMAR_A23` He was ___ fast. (run)
+- `GRAMMAR_A23` run → running (on double le n).
+- `GRAMMAR_A23` They were ___ football. (play)
+- `GRAMMAR_A23` play → playing.
+- `GRAMMAR_A23` Je ne dormais pas.
+- `GRAMMAR_A23` wasn't + -ing
+- `GRAMMAR_A23` weren't = were not
+- `GRAMMAR_A23` Was she working?
+- `GRAMMAR_A23` Travaillait-elle ? ⚠ espacement/ponctuation
+- `GRAMMAR_A23` Was / Were + sujet + -ing
+- `GRAMMAR_A23` Que faisais-tu ? ⚠ espacement/ponctuation
+- `GRAMMAR_A23` mot interrogatif + was / were
+- `GRAMMAR_A23` Were you sleeping? — Yes, I was. / No, I wasn't.
+- `GRAMMAR_A23` Dormais-tu ? — Oui. / Non. ⚠ espacement/ponctuation
+- `GRAMMAR_A23` ___ you sleeping at ten?
+- `GRAMMAR_A23` you → Were.
+- `GRAMMAR_A23` She ___ working. She was on holiday.
+- `GRAMMAR_A23` What ___ they doing?
+- `GRAMMAR_A23` they → were.
+- `GRAMMAR_A23` Quand l'utiliser ? ⚠ espacement/ponctuation
+- `GRAMMAR_A23` At eight o'clock I was cooking.
+- `GRAMMAR_A23` What were you doing yesterday at noon?
+- `GRAMMAR_A23` It was raining and the wind was blowing.
+- `GRAMMAR_A23` Il pleuvait et le vent soufflait.
+- `GRAMMAR_A23` I was living in Paris in 2019.
+- `GRAMMAR_A23` At nine last night, I was watching a film.
+- `GRAMMAR_A23` The sun was shining and the birds were singing. ⚠ was/were à vérifier
+- `GRAMMAR_A23` Le soleil brillait et les oiseaux chantaient.
+- `GRAMMAR_A23` At seven o'clock yesterday, I ___ dinner.
+- `GRAMMAR_A23` am cooking
+- `GRAMMAR_A23` was cooking
+- `GRAMMAR_A23` What ___ you doing at noon?
+- `GRAMMAR_A23` The sun ___ and the birds were singing.
+- `GRAMMAR_A23` is shining
+- `GRAMMAR_A23` was shining
+- `GRAMMAR_A23` While I was reading, she was watching TV.
+- `GRAMMAR_A23` while + Past Continuous, Past Continuous
+- `GRAMMAR_A23` Dad was cooking while Mum was working.
+- `GRAMMAR_A23` Papa cuisinait pendant que maman travaillait.
+- `GRAMMAR_A23` les deux actions durent
+- `GRAMMAR_A23` I was studying and my brother was playing music.
+- `GRAMMAR_A23` and relie deux actions
+- `GRAMMAR_A23` While we were walking, we were talking.
+- `GRAMMAR_A23` Pendant que nous marchions, nous parlions.
+- `GRAMMAR_A23` While he was driving, she was sleeping.
+- `GRAMMAR_A23` Pendant qu'il conduisait, elle dormait.
+- `GRAMMAR_A23` The children were playing while their parents were talking.
+- `GRAMMAR_A23` Les enfants jouaient pendant que leurs parents discutaient.
+- `GRAMMAR_A23` ___ I was cooking, he was washing up.
+- `GRAMMAR_A23` while + action en cours.
+- `GRAMMAR_A23` She was reading while he ___ TV.
+- `GRAMMAR_A23` They were talking ___ they were walking.
+- `GRAMMAR_A23` Une action en cours interrompue
+- `GRAMMAR_A23` Past Continuous + when + Past Simple
+- `GRAMMAR_A23` When the phone rang, I was cooking.
+- `GRAMMAR_A23` While I was walking, I met an old friend.
+- `GRAMMAR_A23` while + Past Continuous, Past Simple
+- `GRAMMAR_A23` We were eating when the lights went out.
+- `GRAMMAR_A23` l'action courte = Past Simple
+- `GRAMMAR_A23` She was sleeping when the alarm rang.
+- `GRAMMAR_A23` It started to rain while we were having a picnic.
+- `GRAMMAR_A23` I was reading when the phone ___.
+- `GRAMMAR_A23` Action courte qui interrompt : Past Simple (rang).
+- `GRAMMAR_A23` We ___ dinner when the lights went out.
+- `GRAMMAR_A23` Action longue interrompue : were having.
+- `GRAMMAR_A23` I ___ home when I saw an accident.
+- `GRAMMAR_A23` am walking
+- `GRAMMAR_A23` was walking
+- `GRAMMAR_A23` Action en cours : was walking.
+- `GRAMMAR_A23` I was cooking dinner at seven.
+- `GRAMMAR_A23` action en cours, pas finie
+- `GRAMMAR_A23` Past Continuous
+- `GRAMMAR_A23` I cooked dinner and went to bed.
+- `GRAMMAR_A23` Past Simple
+- `GRAMMAR_A23` I was reading when she called.
+- `GRAMMAR_A23` action longue + action courte
+- `GRAMMAR_A23` was reading + called
+- `GRAMMAR_A23` She opened the door and came in.
+- `GRAMMAR_A23` actions qui se suivent
+- `GRAMMAR_A23` Past Simple + Past Simple
+- `GRAMMAR_A23` He was watching TV when the power went off.
+- `GRAMMAR_A23` He turned off the TV and went to bed.
+- `GRAMMAR_A23` I ___ to music when you called.
+- `GRAMMAR_A23` was listening
+- `GRAMMAR_A23` Action en cours quand l'autre arrive : was listening.
+- `GRAMMAR_A23` Les verbes qui n'aiment pas le « -ing »
+- `GRAMMAR_A23` I knew the answer.
+- `GRAMMAR_A23` know → knew (jamais “was knowing”)
+- `GRAMMAR_A23` She wanted a coffee.
+- `GRAMMAR_A23` want, like, love, need : Past Simple
+- `GRAMMAR_A23` We had a big house.
+- `GRAMMAR_A23` Nous avions une grande maison.
+- `GRAMMAR_A23` He was having a shower.
+- `GRAMMAR_A23` Il prenait une douche.
+- `GRAMMAR_A23` have = faire une action : -ing possible
+- `GRAMMAR_A23` I didn't understand the question.
+- `GRAMMAR_A23` Je n'ai pas compris la question.
+- `GRAMMAR_A23` They were having lunch.
+- `GRAMMAR_A23` I ___ the answer, but I didn't speak.
+- `GRAMMAR_A23` were knowing
+- `GRAMMAR_A23` was knowing
+- `GRAMMAR_A23` know → knew.
+- `GRAMMAR_A23` was wanting
+- `GRAMMAR_A23` were wanting
+- `GRAMMAR_A23` want → wanted.
+- `GRAMMAR_A23` We were ___ lunch when you called.
+- `GRAMMAR_A23` have (action) : were having.
+- `LISTENING_A23` At eight o'clock
+- `LISTENING_A23` What were you doing at eight o'clock last night? I was watching a film with my brother. My parents were cooking in the kitchen. Then my aunt called us for dinner. ⚠ was/were à vérifier
+- `LISTENING_A23` What was the speaker doing at eight?
+- `LISTENING_A23` Watching a film
+- `LISTENING_A23` He was watching a film.
+- `LISTENING_A23` Who was cooking?
+- `LISTENING_A23` His parents
+- `LISTENING_A23` His brother
+- `LISTENING_A23` His parents were cooking.
+- `LISTENING_A23` The phone call
+- `LISTENING_A23` I was taking a shower when the phone rang. I ran to the kitchen in a towel! It was a wrong number. Then I went back to the bathroom.
+- `LISTENING_A23` What was the speaker doing?
+- `LISTENING_A23` Taking a shower
+- `LISTENING_A23` He was taking a shower.
+- `LISTENING_A23` Who called?
+- `LISTENING_A23` A wrong number
+- `LISTENING_A23` It was a wrong number.
+- `LISTENING_A23` Were you sleeping when I called? No, I wasn't. I was reading in bed. Sorry, I didn't hear the phone because the music was playing.
+- `LISTENING_A23` Was he sleeping?
+- `LISTENING_A23` Only a little
+- `LISTENING_A23` Why didn't he hear the phone?
+- `LISTENING_A23` He was in the garden
+- `LISTENING_A23` The music was playing
+- `LISTENING_A23` He was asleep
+- `LISTENING_A23` The music was playing.
+- `LISTENING_A23` A rainy picnic
+- `LISTENING_A23` We were having a picnic when it started to rain. We ran to the car and we ate our sandwiches inside. It was funny.
+- `LISTENING_A23` What were they doing?
+- `LISTENING_A23` Having a picnic
+- `LISTENING_A23` They were having a picnic.
+- `LISTENING_A23` Where did they eat?
+- `LISTENING_A23` Under a tree
+- `LISTENING_A23` In the car
+- `LISTENING_A23` They ate in the car.
+- `LISTENING_A23` The accident
+- `LISTENING_A23` I was driving to work when I saw an accident. Two cars were stopped in the middle of the road. A policeman was talking to the drivers. Nobody was hurt. ⚠ was/were à vérifier
+- `LISTENING_A23` Walking home
+- `LISTENING_A23` Driving to work
+- `LISTENING_A23` He was driving to work.
+- `LISTENING_A23` What was the policeman doing?
+- `LISTENING_A23` Talking to the drivers
+- `LISTENING_A23` He was talking to the drivers.
+- `LISTENING_A23` Two things at once
+- `LISTENING_A23` While my mother was cooking, my father was cleaning the windows. My sister was doing her homework and I was playing with the cat.
+- `LISTENING_A23` What was the father doing?
+- `LISTENING_A23` Cleaning the windows
+- `LISTENING_A23` He was cleaning the windows.
+- `LISTENING_A23` Playing with the cat
+- `LISTENING_A23` Doing homework
+- `LISTENING_A23` He was playing with the cat.
+- `LISTENING_A23` The lost wallet
+- `LISTENING_A23` I was walking in the park when I found a wallet on a bench. I looked inside and found a phone number. I called it and the owner came ten minutes later. He was very happy.
+- `LISTENING_A23` Where did the speaker find the wallet?
+- `LISTENING_A23` On the bus
+- `LISTENING_A23` In a shop
+- `LISTENING_A23` On a bench
+- `LISTENING_A23` On a bench.
+- `LISTENING_A23` When did the owner come?
+- `LISTENING_A23` The next day
+- `LISTENING_A23` Ten minutes later
+- `LISTENING_A23` An hour later
+- `LISTENING_A23` Ten minutes later.
+- `LISTENING_A23` Power cut
+- `LISTENING_A23` We were watching TV when the lights went out. Dad found a torch and Mum lit some candles. We played cards for an hour until the lights came on again.
+- `LISTENING_A23` Watching TV
+- `LISTENING_A23` They were watching TV.
+- `LISTENING_A23` What did they play?
+- `LISTENING_A23` They played cards.
+- `LISTENING_A23` At the station
+- `LISTENING_A23` I was waiting for my train when I heard a loud noise. A man was running along the platform with a big suitcase. He jumped onto the train just before the doors closed.
+- `LISTENING_A23` What was the man doing?
+- `LISTENING_A23` Buying a ticket
+- `LISTENING_A23` Running along the platform
+- `LISTENING_A23` He was running along the platform.
+- `LISTENING_A23` What did he do at the end?
+- `LISTENING_A23` He jumped onto the train
+- `LISTENING_A23` He missed the train
+- `LISTENING_A23` He called a taxi
+- `LISTENING_A23` He jumped onto the train.
+- `LISTENING_A23` Why were you late?
+- `LISTENING_A23` Why were you late this morning? I was waiting for the bus, but it didn't come. Then it started to rain, so I took a taxi. Sorry about that!
+- `LISTENING_A23` Waiting for the bus
+- `LISTENING_A23` He was waiting for the bus.
+- `LISTENING_A23` What did he take?
+- `LISTENING_A23` He took a taxi.
+- `LISTENING_A23` What started?
+- `LISTENING_A23` It started to rain.
+- `MISSIONS_A23` Construis la phrase
+- `MISSIONS_A23` Remets les mots dans l'ordre.
+- `MISSIONS_A23` La bonne forme en -ing
+- `MISSIONS_A23` Choisis la forme correcte du Past Continuous.
+- `MISSIONS_A23` Continuous ou Simple ? ⚠ espacement/ponctuation
+- `MISSIONS_A23` Action en cours ou action courte ? ⚠ espacement/ponctuation
+- `MISSIONS_A23` Deux actions, une histoire
+- `READING_A23` Yesterday evening at seven o'clock, I was cooking pasta in the kitchen. My husband was setting the table and the children were doing their homework. Suddenly the phone rang. It was my sister from Canada! I turned off the cooker and we talked for twenty minutes. Meanwhile the pasta was getting cold, but nobody minded. ⚠ was/were à vérifier
+- `READING_A23` What was Anna doing at seven o'clock?
+- `READING_A23` Setting the table
+- `READING_A23` Cooking pasta
+- `READING_A23` She was cooking pasta.
+- `READING_A23` Her husband
+- `READING_A23` Her sister
+- `READING_A23` It was her sister from Canada.
+- `READING_A23` Last Sunday we were having a picnic in the park. The children were flying a kite and my wife was reading a book. Then dark clouds appeared and it started to rain. We quickly picked up our things and ran to a small kiosk. We waited there for an hour and we drank hot chocolate. In the end the sun came out again.
+- `READING_A23` What were the children doing?
+- `READING_A23` Flying a kite
+- `READING_A23` They were flying a kite.
+- `READING_A23` Where did they run?
+- `READING_A23` To the car
+- `READING_A23` To a kiosk
+- `READING_A23` They ran to a small kiosk.
+- `READING_A23` I was walking home from school when I saw a small cat under a car. It was crying and it looked frightened. I put my bag down and spoke to it quietly. Slowly the cat came to me and I took it home. Now it sleeps on my bed. We call it Lucky, because it was lucky that I was walking there.
+- `READING_A23` What was Lily doing when she saw the cat?
+- `READING_A23` She was walking home from school.
+- `READING_A23` Where was the cat?
+- `READING_A23` In a tree
+- `READING_A23` Under a car
+- `READING_A23` Under a car.
+- `READING_A23` What is the cat's name?
+- `READING_A23` They call it Lucky.
+- `READING_A23` We were having dinner last Friday when the lights suddenly went out. The whole street was dark. My daughter was afraid, but my wife found some candles in a drawer. We finished the meal by candlelight and we told funny stories. Thirty minutes later the electricity came back, but we didn't want to switch on the lights!
+- `READING_A23` What happened while they were having dinner?
+- `READING_A23` The lights went out
+- `READING_A23` The phone rang
+- `READING_A23` A friend arrived
+- `READING_A23` The lights suddenly went out.
+- `READING_A23` What did his wife find?
+- `READING_A23` She found some candles.
+- `READING_A23` At my cousin's wedding, the photographer was taking a family photo. Everybody was smiling and looking at the camera. Suddenly a dog ran across the grass and jumped into the picture. We were laughing so much that the photographer took ten more photos. The funny one is now our favourite photo. ⚠ was/were à vérifier
+- `READING_A23` What was everybody doing before the dog arrived?
+- `READING_A23` Smiling at the camera
+- `READING_A23` They were smiling and looking at the camera.
+- `READING_A23` Which photo do they like best?
+- `READING_A23` The last one
+- `READING_A23` The first one
+- `READING_A23` The funny one
+- `READING_A23` The funny one is their favourite.
+- `READING_A23` On Saturday afternoon we were at the beach. The children were building a sandcastle and I was lying on a towel. Suddenly the sky became black and we heard thunder. The wind was blowing hard, so we packed up quickly. While we were driving home, the storm began. We were lucky! ⚠ was/were à vérifier
+- `READING_A23` What were the children building?
+- `READING_A23` A sandcastle
+- `READING_A23` They were building a sandcastle.
+- `READING_A23` What did they hear?
+- `READING_A23` They heard thunder.
+- `READING_A23` When did the storm begin?
+- `READING_A23` At midnight
+- `READING_A23` Before they arrived
+- `READING_A23` While they were driving home
+- `READING_A23` While they were driving home.
+- `READING_A23` Last night my brother and I were sitting at the window when we saw a strange shadow in the garden. Someone was walking slowly near the old wall. We were very quiet and my brother was holding a torch. Then the shadow moved and we heard a small noise: miaow! It was only a cat looking for food. We laughed and went to bed. ⚠ was/were à vérifier
+- `READING_A23` Where were they sitting?
+- `READING_A23` In the garden
+- `READING_A23` At the window
+- `READING_A23` On the stairs
+- `READING_A23` They were sitting at the window.
+- `READING_A23` What was the shadow?
+- `READING_A23` It was only a cat.
+- `READING_A23` Yesterday was a busy day. At eight I was waiting for the bus when I met my old teacher. We talked for ten minutes, so I missed the bus. I walked to the office and arrived late. At lunchtime I was eating a sandwich when my boss called. He wasn't angry: he only wanted a report! In the evening I was so tired that I fell asleep on the sofa while I was watching a film.
+- `READING_A23` What was Leo doing when he met his old teacher?
+- `READING_A23` Eating lunch
+- `READING_A23` Walking to work
+- `READING_A23` Why did he miss the bus?
+- `READING_A23` He talked to his teacher
+- `READING_A23` He woke up late
+- `READING_A23` He lost his ticket
+- `READING_A23` They talked for ten minutes.
+- `READING_A23` What did he do in the evening?
+- `READING_A23` He cooked dinner
+- `READING_A23` He went out
+- `READING_A23` He fell asleep on the sofa
+- `READING_A23` He fell asleep while he was watching a film.
+- `TEST_AUDIOS_A23` Who called them for dinner?
+- `TEST_AUDIOS_A23` His mother
+- `TEST_AUDIOS_A23` Who was on the phone?
+- `TEST_AUDIOS_A23` A colleague
+- `TEST_AUDIOS_A23` Where was the speaker going?
+- `TEST_AUDIOS_A23` To the airport
+- `TEST_AUDIOS_A23` Was anybody hurt?
+- `TEST_AUDIOS_A23` Yes, two people
+- `TEST_AUDIOS_A23` Yes, one driver
+- `TEST_AUDIOS_A23` The mother
+- `TEST_AUDIOS_A23` The father
+- `TEST_AUDIOS_A23` The sister
+- `TEST_AUDIOS_A23` What was the sister doing?
+- `TEST_AUDIOS_A23` Her homework
+- `TEST_AUDIOS_A23` What happened while they were watching TV?
+- `TEST_AUDIOS_A23` Someone knocked
+- `TEST_AUDIOS_A23` How long did they play cards?
+- `TEST_AUDIOS_A23` Ten minutes
+- `TEST_AUDIOS_A23` What was the speaker waiting for?
+- `TEST_AUDIOS_A23` What did the man carry?
+- `TEST_AUDIOS_A23` A big suitcase
+- `TEST_GRAMMAR_A23` She ___ a letter when I came in. (write)
+- `TEST_GRAMMAR_A23` We ___ lunch when you called.
+- `TEST_GRAMMAR_A23` We were ___ a cake. (make)
+- `TEST_GRAMMAR_A23` They were ___ on the sofa. (sit)
+- `TEST_GRAMMAR_A23` It started to rain while we ___ a picnic.
+- `TEST_GRAMMAR_A23` I ___ the answer, but I didn't speak. (know)
+- `TEST_GRAMMAR_A23` At nine o'clock last night I ___ a film.
+- `TEST_GRAMMAR_A23` am watching
+- `TEST_GRAMMAR_A23` Where ___ she going?
+- `TEST_GRAMMAR_A23` “Doorbell” means…
+- `TEST_GRAMMAR_A23` “Suddenly” means…
+- `TEST_GRAMMAR_A23` “Candle” means…
+- `TEST_GRAMMAR_A23` “Whisper” means…
+- `TEST_GRAMMAR_A23` “Umbrella” means…
+- `TEST_GRAMMAR_A23` “While” means…
+- `TEST_GRAMMAR_A23` avant que
+- `TEST_GRAMMAR_A23` pendant que
+- `TEST_GRAMMAR_A23` It ___ and the wind was blowing.
+- `TEST_GRAMMAR_A23` is raining
+- `TEST_TEXTS_A23` Yesterday evening at seven o'clock, I was cooking pasta in the kitchen. My husband was setting the table and the children were doing their homework. Suddenly the phone rang. It was my sister from Canada! I turned off the cooker and we talked for twenty minutes. ⚠ was/were à vérifier
+- `TEST_TEXTS_A23` What was she doing at seven?
+- `TEST_TEXTS_A23` Who was setting the table?
+- `TEST_TEXTS_A23` The children
+- `TEST_TEXTS_A23` How long did they talk?
+- `TEST_TEXTS_A23` Two hours
+- `TEST_TEXTS_A23` Twenty minutes
+- `TEST_TEXTS_A23` Five minutes
+- `TEST_TEXTS_A23` Last Sunday we were having a picnic in the park. The children were flying a kite and my wife was reading a book. Then dark clouds appeared and it started to rain. We quickly picked up our things and ran to a small kiosk. In the end the sun came out again.
+- `TEST_TEXTS_A23` What was his wife doing?
+- `TEST_TEXTS_A23` Reading a book
+- `TEST_TEXTS_A23` What happened after the dark clouds?
+- `TEST_TEXTS_A23` The wind stopped
+- `TEST_TEXTS_A23` It got hot
+- `TEST_TEXTS_A23` It started to rain
+- `TEST_TEXTS_A23` I was walking home from school when I saw a small cat under a car. It was crying and it looked frightened. I put my bag down and spoke to it quietly. Slowly the cat came to me and I took it home. Now it sleeps on my bed.
+- `TEST_TEXTS_A23` Where was Lily going?
+- `TEST_TEXTS_A23` To the shop
+- `TEST_TEXTS_A23` To the park
+- `TEST_TEXTS_A23` How did the cat look?
+- `TEST_TEXTS_A23` Where does the cat sleep now?
+- `TEST_TEXTS_A23` On her bed
+- `TEST_TEXTS_A23` In the kitchen
+- `TEST_TEXTS_A23` We were having dinner last Friday when the lights suddenly went out. The whole street was dark. My daughter was afraid, but my wife found some candles in a drawer. We finished the meal by candlelight and we told funny stories.
+- `TEST_TEXTS_A23` Playing cards
+- `TEST_TEXTS_A23` Having dinner
+- `TEST_TEXTS_A23` How did the daughter feel?
+- `TEST_TEXTS_A23` How did they finish the meal?
+- `TEST_TEXTS_A23` By candlelight
+- `TEST_TEXTS_A23` At my cousin's wedding, the photographer was taking a family photo. Everybody was smiling and looking at the camera. Suddenly a dog ran across the grass and jumped into the picture. We were laughing so much that the photographer took ten more photos. ⚠ was/were à vérifier
+- `TEST_TEXTS_A23` Who was taking the photo?
+- `TEST_TEXTS_A23` The cousin
+- `TEST_TEXTS_A23` The photographer
+- `TEST_TEXTS_A23` What did the dog do?
+- `TEST_TEXTS_A23` It jumped into the picture
+- `TEST_TEXTS_A23` It ran away
+- `TEST_TEXTS_A23` How many more photos did he take?
+- `TEST_TEXTS_A23` One hundred
+- `TEST_TEXTS_A23` On Saturday afternoon we were at the beach. The children were building a sandcastle and I was lying on a towel. Suddenly the sky became black and we heard thunder. The wind was blowing hard, so we packed up quickly.
+- `TEST_TEXTS_A23` What was Jack doing?
+- `TEST_TEXTS_A23` Lying on a towel
+- `TEST_TEXTS_A23` Building a sandcastle
+- `TEST_TEXTS_A23` Why did they pack up?
+- `TEST_TEXTS_A23` It was late
+- `TEST_TEXTS_A23` They were hungry
+- `TEST_TEXTS_A23` A storm was coming
+- `TEST_TEXTS_A23` Last night my brother and I were sitting at the window when we saw a strange shadow in the garden. Someone was walking slowly near the old wall. My brother was holding a torch. Then we heard a small noise: miaow! It was only a cat looking for food.
+- `TEST_TEXTS_A23` What did they see?
+- `TEST_TEXTS_A23` A strange shadow
+- `TEST_TEXTS_A23` What was her brother holding?
+- `TEST_TEXTS_A23` What was the shadow in the end?
+- `TEST_TEXTS_A23` A neighbour
+- `TEST_TEXTS_A23` Yesterday was a busy day. At eight I was waiting for the bus when I met my old teacher. We talked for ten minutes, so I missed the bus. I walked to the office and arrived late. At lunchtime I was eating a sandwich when my boss called.
+- `TEST_TEXTS_A23` Who did Leo meet at the bus stop?
+- `TEST_TEXTS_A23` His old teacher
+- `TEST_TEXTS_A23` How did he get to the office?
+- `TEST_TEXTS_A23` What was he doing when his boss called?
+- `TEST_TEXTS_A23` Writing a report
+- `TEST_TEXTS_A23` Eating a sandwich
+- `VOCAB_A23` Raconter une histoire
+- `VOCAB_A23` I was reading when the phone rang.
+- `VOCAB_A23` While we were eating, it started to rain.
+- `VOCAB_A23` What were you doing at eight o'clock?
+- `VOCAB_A23` I was reading a book when the phone suddenly rang.
+- `VOCAB_A23` Les interruptions
+- `VOCAB_A23` phone call
+- `VOCAB_A23` Someone knocked on the door while I was sleeping.
+- `VOCAB_A23` I was in the middle of a film when the doorbell rang.
+- `VOCAB_A23` “Doorbell” veut dire…
+- `VOCAB_A23` Une maman cuisine pendant que deux enfants jouent dans le jardin
+- `VOCAB_A23` pendant ce temps
+- `VOCAB_A23` at the same time
+- `VOCAB_A23` pendant (+ nom)
+- `VOCAB_A23` alors que / tandis que
+- `VOCAB_A23` all afternoon
+- `VOCAB_A23` that evening
+- `VOCAB_A23` at nine o'clock
+- `VOCAB_A23` “While” est suivi d'un sujet et d'un verbe : “while we were watching the film”. “During” est suivi d'un nom : “during the film”.
+- `VOCAB_A23` Mum was cooking while Dad was washing the car.
+- `VOCAB_A23` Maman cuisinait pendant que papa lavait la voiture.
+- `VOCAB_A23` During the film, he fell asleep.
+- `VOCAB_A23` Pendant le film, il s'est endormi.
+- `VOCAB_A23` “While” veut dire…
+- `VOCAB_A23` Soudain, la pluie
+- `VOCAB_A23` Un pique-nique au parc : la pluie arrive et tout le monde ramasse ses affaires
+- `VOCAB_A23` pluie / pleuvoir
+- `VOCAB_A23` We were having a picnic when it started to rain.
+- `VOCAB_A23` Everyone ran to the shelter.
+- `VOCAB_A23` Tout le monde a couru vers l'abri.
+- `VOCAB_A23` “Umbrella” veut dire…
+- `VOCAB_A23` take a photo
+- `VOCAB_A23` prendre une photo
+- `VOCAB_A23` passer en courant
+- `VOCAB_A23` At two o'clock, a musician was playing the violin.
+- `VOCAB_A23` A dog was barking while a boy was taking photos.
+- `VOCAB_A23` “Crowd” veut dire…
+- `VOCAB_A23` La panne de courant
+- `VOCAB_A23` sombre / noir
+- `VOCAB_A23` switch off
+- `VOCAB_A23` switch on
+- `VOCAB_A23` lampe torche
+- `VOCAB_A23` dining room
+- `VOCAB_A23` We were having dinner when the lights went out.
+- `VOCAB_A23` Mum lit a candle.
+- `VOCAB_A23` “Candle” veut dire…
+- `VOCAB_A23` appareil photo
+- `VOCAB_A23` On dit “take a photo” (prendre une photo), jamais “make a photo”. “Smile!” = Souriez ! ⚠ espacement/ponctuation
+- `VOCAB_A23` We were posing for a photo when the dog jumped in.
+- `VOCAB_A23` The ball flew across the picture.
+- `VOCAB_A23` “Tripod” veut dire…
+- `VOCAB_A23` La plage et l'orage
+- `VOCAB_A23` prendre un bain de soleil
+- `VOCAB_A23` ranger ses affaires
+- `VOCAB_A23` “Pack up” = ranger ses affaires pour partir. “Get up” = se lever (du lit ou d'une chaise).
+- `VOCAB_A23` Children were building a sandcastle when the storm arrived.
+- `VOCAB_A23` The seagulls flew away.
+- `VOCAB_A23` “Seagull” veut dire…
+- `VOCAB_A23` se cacher
+- `VOCAB_A23` doucement / sans bruit
+- `VOCAB_A23` bruit de pas
+- `VOCAB_A23` We were hiding behind a wall when we heard footsteps.
+- `VOCAB_A23` She whispered: “Follow me.”
+- `VOCAB_A23` “Whisper” veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -1920,6 +2575,29 @@
 - `dialogues.A2.2.turns.model` No, not any more.
 - `dialogues.A2.2.turns.npc` Times change! Thanks for sharing.
 - `dialogues.A2.2.turns.model` Yes, times change!
+- `dialogues.A2.3.title` Que faisais-tu hier soir ? ⚠ espacement/ponctuation
+- `dialogues.A2.3.scene` Un ami te demande ce que tu faisais hier soir.
+- `dialogues.A2.3.turns.npc` Hi! I called you last night at nine. Were you sleeping?
+- `dialogues.A2.3.turns.model` No, I wasn't. I was watching a film.
+- `dialogues.A2.3.turns.npc` Oh, sorry. What were you watching?
+- `dialogues.A2.3.turns.model` I was watching a comedy.
+- `dialogues.A2.3.turns.hint` I was watching + ce que tu regardais.
+- `dialogues.A2.3.turns.npc` Was anybody with you?
+- `dialogues.A2.3.turns.model` Yes, my brother was watching it with me.
+- `dialogues.A2.3.turns.npc` Nice! Did you hear the thunder?
+- `dialogues.A2.3.turns.model` Yes, I did. It was very loud!
+- `dialogues.A2.3.scene` Un policier te pose des questions sur ce que tu faisais.
+- `dialogues.A2.3.turns.npc` Good morning. What were you doing at six o'clock yesterday?
+- `dialogues.A2.3.turns.model` I was walking my dog.
+- `dialogues.A2.3.turns.hint` I was + verbe en -ing.
+- `dialogues.A2.3.turns.npc` Did you see anything unusual?
+- `dialogues.A2.3.turns.model` Yes, I saw a man near the bank.
+- `dialogues.A2.3.turns.hint` Dis ce que tu as vu.
+- `dialogues.A2.3.turns.npc` What was he doing?
+- `dialogues.A2.3.turns.model` He was running very fast.
+- `dialogues.A2.3.turns.hint` He was + verbe en -ing.
+- `dialogues.A2.3.turns.npc` Thank you for your help.
+- `dialogues.A2.3.turns.model` You're welcome!
 
 ## situations
 
@@ -1948,8 +2626,17 @@
 - `situations.A2.2.cue` Say one thing you didn't do yesterday.
 - `situations.A2.2.hint` Utilise « didn't ».
 - `situations.A2.2.model` I didn't watch TV yesterday.
+- `situations.A2.3.cue` Say what you were doing when the phone rang.
+- `situations.A2.3.hint` Utilise « was + -ing ».
+- `situations.A2.3.model` I was cooking when the phone rang.
+- `situations.A2.3.cue` Say two things that happened at the same time.
+- `situations.A2.3.hint` Utilise « while ».
+- `situations.A2.3.model` While I was reading, he was watching TV.
+- `situations.A2.3.cue` Say what happened suddenly while you were out.
+- `situations.A2.3.hint` Utilise « when » et le Past Simple.
+- `situations.A2.3.model` We were walking when it started to rain.
 
-## Alertes automatiques (32)
+## Alertes automatiques (52)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.help : « Habitude, maintenant ou projet ? » → espacement/ponctuation
@@ -1983,3 +2670,23 @@
 - ⚠ A2.2 GRAMMAR_A22.title : « Used to ou Present Simple ? » → espacement/ponctuation
 - ⚠ A2.2 MISSIONS_A22.sub : « Habitude d'avant ou action unique ? » → espacement/ponctuation
 - ⚠ A2.2 TEST_GRAMMAR_A22 : « didn't called » → did + verbe au passé ?
+- ⚠ A2.3 EXERCISES_A23.help : « Quelle action interrompt ? » → espacement/ponctuation
+- ⚠ A2.3 EXERCISES_A23.title : « Past Continuous ou Past Simple ? » → espacement/ponctuation
+- ⚠ A2.3 EXERCISES_A23.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.3 GRAMMAR_A23.table : « Travaillait-elle ? » → espacement/ponctuation
+- ⚠ A2.3 GRAMMAR_A23.table : « Que faisais-tu ? » → espacement/ponctuation
+- ⚠ A2.3 GRAMMAR_A23.examples : « Dormais-tu ? — Oui. / Non. » → espacement/ponctuation
+- ⚠ A2.3 GRAMMAR_A23.title : « Quand l'utiliser ? » → espacement/ponctuation
+- ⚠ A2.3 GRAMMAR_A23.examples : « The sun was shining and the birds were singing. » → was/were à vérifier
+- ⚠ A2.3 LISTENING_A23.text : « What were you doing at eight o'clock last night? I was watching a film with my brother. My parents were cookin » → was/were à vérifier
+- ⚠ A2.3 LISTENING_A23.text : « I was driving to work when I saw an accident. Two cars were stopped in the middle of the road. A policeman was » → was/were à vérifier
+- ⚠ A2.3 MISSIONS_A23.title : « Continuous ou Simple ? » → espacement/ponctuation
+- ⚠ A2.3 MISSIONS_A23.sub : « Action en cours ou action courte ? » → espacement/ponctuation
+- ⚠ A2.3 READING_A23.text : « Yesterday evening at seven o'clock, I was cooking pasta in the kitchen. My husband was setting the table and t » → was/were à vérifier
+- ⚠ A2.3 READING_A23.text : « At my cousin's wedding, the photographer was taking a family photo. Everybody was smiling and looking at the c » → was/were à vérifier
+- ⚠ A2.3 READING_A23.text : « On Saturday afternoon we were at the beach. The children were building a sandcastle and I was lying on a towel » → was/were à vérifier
+- ⚠ A2.3 READING_A23.text : « Last night my brother and I were sitting at the window when we saw a strange shadow in the garden. Someone was » → was/were à vérifier
+- ⚠ A2.3 TEST_TEXTS_A23.text : « Yesterday evening at seven o'clock, I was cooking pasta in the kitchen. My husband was setting the table and t » → was/were à vérifier
+- ⚠ A2.3 TEST_TEXTS_A23.text : « At my cousin's wedding, the photographer was taking a family photo. Everybody was smiling and looking at the c » → was/were à vérifier
+- ⚠ A2.3 VOCAB_A23.tip : « On dit “take a photo” (prendre une photo), jamais “make a photo”. “Smile!” = Souriez ! » → espacement/ponctuation
+- ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation

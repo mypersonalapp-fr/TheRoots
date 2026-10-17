@@ -78,3 +78,10 @@ Roots City `assets/img/city/` : a22-m1 à a22-m6.
 | a22-m6 | Two children on a stage in a city theatre telling a story with big expressive gestures, a small audience smiling. |
 | describe-a22-camping | A family at a lakeside campsite in the evening: a tent, a campfire, a girl roasting marshmallows, a boy reading with a flashlight, a father fishing at the lake, a dog sleeping. No text. |
 | describe-a22-grandparents | Grandparents and two grandchildren in a living room: the grandmother knitting, the grandfather showing an old bicycle photo, grandchildren sitting on the carpet, an old radio on a shelf, TV off. No readable writing. |
+
+
+## A2.3 « Pendant que… » — 16 images à fournir
+Scènes `assets/img/lesson/` : scene-a23-interrupt, meanwhile, suddenly, moment, blackout, photo, storm, mystery.
+Roots City `assets/img/city/` : a23-m1 à a23-m6.
+« Décris l'image » `assets/img/lesson/` : describe-a23-playground (cour de récréation), describe-a23-station (quai de gare). Aucun texte lisible, écrans éteints.
+Le prompt complet en français (un seul texte, noms de fichiers inclus) a été donné dans la conversation.
