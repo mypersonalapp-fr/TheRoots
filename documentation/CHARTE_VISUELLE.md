@@ -22,3 +22,6 @@ Décision d'Ashley (15/10/2026) : un seul type de visuel partout. Référence = 
 ## Fonctionnement commun
 - Entraînement ludique (type Roots City) non noté ; la note officielle reste le test de fin de leçon (40 pts, réussite ≥ 32).
 - Son : voix du navigateur pour l'écoute ; micro = confort, jamais bloquant (case « Je l'ai dit à voix haute » en repli).
+
+## Règle permanente (Ashley)
+Garder partout la MÊME présentation : toute nouvelle leçon (A1, A2, B1…) utilise le même moteur (js/screens/lecon-a11.js), le même menu (Vocabulaire, Grammaire, Lecture, Écoute, Expression, Dialogue, Écrit, Exercices, Roots City, Test de fin) et les mêmes styles. Ne jamais créer une présentation différente.
