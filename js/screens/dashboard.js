@@ -5,7 +5,7 @@
 
 import { store } from "../data/store.js?v=20260930a";
 import { t } from "../data/i18n.js?v=20260930a";
-import { dueMissions } from "../data/progress.js?v=20261018r";
+import { dueMissions } from "../data/progress.js?v=20261018s";
 import { aiCredits } from "../data/ai-credits.js?v=20260930a";
 import { EXPRESSIONS, QUOTES, VIDEOS, pickDaily, pickEveryTwoDays, pickEveryThreeDays, pickEveryFiveDays } from "../data/daily-content.js?v=20261008a";
 // Titres des deux cartes (sans « du jour » : expression 3 jours, citation 5 jours).
