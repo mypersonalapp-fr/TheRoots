@@ -25,13 +25,13 @@ export function nextLessonN(unlockAll) {
   return 12;
 }
 
-const V = "20261018b9";
-import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018b9";
-import { plusPages } from "./vocab-plus-a1.js?v=20261018b9";
-import { TEST_PLUS_A1 } from "./test-plus-a1.js?v=20261018b9";
+const V = "20261018c1";
+import { EXPRESSION_PLUS_A1 } from "./expression-plus-a1.js?v=20261018c1";
+import { plusPages } from "./vocab-plus-a1.js?v=20261018c1";
+import { TEST_PLUS_A1 } from "./test-plus-a1.js?v=20261018c1";
 const coreSet = (pages) => new Set(pages.flatMap((p) => (p.words || []).map((w) => String(w[0]).toLowerCase())));
 export async function loadBundle(n) {
-  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018b9"); return m.BUNDLE_A11; }
+  if (n === 1) { const m = await import("../screens/lecon-a11.js?v=20261018c1"); return m.BUNDLE_A11; }
   const s = `A1${n}`, base = A1_EN_PALIERS[n - 1];
   const m = await import(`./lecon-a1${n}-data.js?v=${V}`);
   const city = n === 2 ? await import(`./roots-city-a12-data.js?v=${V}`) : m;
@@ -65,7 +65,7 @@ export async function loadExamBundle() {
     exam: true, code: "A1", head: "le Grand contrôle A1", titleFr: "Grand contrôle de fin de A1", progressKey: EXAM_KEY,
     goals: [], vocab: [], grammar: [], reading: [], listening: [], exercises: [], expression: base.expression, transv: null,
     testTexts: all.map((b) => b.testTexts[0]), testAudios: all.map((b) => b.testAudios[0]),
-    testGrammar: all.flatMap((b) => b.testGrammar.slice(0, 5)), testW: 0, testO: 1,
+    testGrammar: all.flatMap((b) => b.testGrammar.slice(0, 5)), testW: 0, testO: 1, testPool: all.flatMap((b) => b.expression),
     testWriteTitle: "Présente-toi et parle de ta vie", testWriteLead: "Écris 4 phrases : ton nom et ton âge, ta famille, ce que tu aimes, où tu vas aujourd’hui.",
     testOralTitle: base.testOralTitle, testOralLead: base.testOralLead, adviceTopic: "Grand contrôle A1", adviceLede: "Réponds avec bienveillance.", city: null,
   };
