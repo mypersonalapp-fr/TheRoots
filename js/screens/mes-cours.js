@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261018a7";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018a7";
-import { renderShell } from "./shell.js?v=20261018a7";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018a7";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018a7";
+import { renderLesson } from "./lecon-a11.js?v=20261018a8";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261018a8";
+import { renderShell } from "./shell.js?v=20261018a8";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261018a8";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261018a8";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,13 +23,13 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018a7";
-import { plantSvg } from "./plant.js?v=20261018a7";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261018a8";
+import { plantSvg } from "./plant.js?v=20261018a8";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { currentCharacter } from "./lecon-a11.js?v=20261018a7";
-import { loadBundleA2 } from "../data/lecons-a2.js?v=20261018a7";
-import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018a7";
+import { currentCharacter } from "./lecon-a11.js?v=20261018a8";
+import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261018a8";
+import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018a8";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -192,7 +192,7 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
-const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261018a7`;
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261018a8`;
 const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
 const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
 export function bulletinHtml(level = "A1") {
@@ -406,6 +406,21 @@ export function renderMesCours(container, shellRoot) {
       const examRow = `<button class="lt-opt" id="mcExam" ${exOpen ? "" : "disabled"} style="width:100%;text-align:left;display:flex;align-items:center;gap:8px;${exOpen ? "" : "opacity:.55"}"><span style="flex-grow:1"><strong>🏁 Grand contrôle de fin de A1</strong><span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">${exOpen ? "Teste tout le niveau A1" : "S’ouvre quand les 12 leçons sont validées"}${ex.score ? ` · ${ex.score}` : ""}</span></span><span aria-hidden="true">${ex.passed ? "✓" : exOpen ? "›" : "🔒"}</span></button>`;
       return `<div class="dash-box"><h3>📘 Mon parcours A1</h3><div class="card"><div style="font-size:12px;color:var(--ink-soft)">${done}/12 leçons validées${UNLOCK_ALL_PREVIEW ? " · mode vérification : tout est ouvert" : ""}</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">${rows}${examRow}</div></div></div>`;
     };
+    const a2PathHtml = () => {
+      const a1Done = A1_LIST.every((L) => lessonStatus(L.n).passed);
+      const built = A2_LIST.filter((L) => A2_BUILT.includes(L.n));
+      const rows = built.map((L) => {
+        const st = lessonStatusA2(L.n), open = UNLOCK_ALL_PREVIEW || (L.n === 0 ? a1Done : lessonStatusA2(L.n - 1).passed);
+        return `<button class="lt-opt" data-a2="${L.n}" ${open ? "" : "disabled"} style="width:100%;text-align:left;display:flex;align-items:center;gap:8px;${open ? "" : "opacity:.55"}">
+          <span style="flex-grow:1"><strong>${L.code}</strong> — ${L.titleFr}<span style="display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px">${L.titleEn}${st.score ? ` · test ${st.score}` : ""}</span></span>
+          <span aria-hidden="true">${st.passed ? "✓" : open ? "›" : "🔒"}</span></button>`;
+      }).join("");
+      return `<div class="dash-box"><h3>📗 Mon parcours A2</h3><div class="card"><div style="font-size:12px;color:var(--ink-soft)">${built.filter((L) => lessonStatusA2(L.n).passed).length}/${built.length} leçons validées · A2.2 à A2.12 : bientôt${UNLOCK_ALL_PREVIEW ? " · mode vérification : tout est ouvert" : ""}</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">${rows}</div></div></div>`;
+    };
+    const openA2 = async (n) => {
+      try { const B = await loadBundleA2(n); renderLesson(shellRoot, B, { onExit: () => renderShell(shellRoot) }); }
+      catch (e) { console.error(e); alert("Cette leçon n’a pas pu s’ouvrir."); }
+    };
     const openA1 = async (n) => {
       try { const B = await loadBundle(n); renderLesson(shellRoot, B, { onExit: () => renderShell(shellRoot) }); }
       catch (e) { console.error(e); alert("Cette leçon n’a pas pu s’ouvrir."); }
@@ -442,7 +457,7 @@ export function renderMesCours(container, shellRoot) {
         </div>
       </div>
 
-      ${code === "en" && (langData.leveled || UNLOCK_ALL_PREVIEW) ? a1PathHtml() : ""}
+      ${code === "en" && (langData.leveled || UNLOCK_ALL_PREVIEW) ? a1PathHtml() + a2PathHtml() : ""}
 
       ${langData.leveled && code === "en" ? `
         ${renfortsHtml(code) ? `<div class="dash-box"><h3>Mes renforts</h3><div class="card">${renfortsHtml(code)}</div></div>` : ""}
@@ -521,6 +536,7 @@ export function renderMesCours(container, shellRoot) {
     if (previewBtn) previewBtn.addEventListener("click", () => { window.location.href = code === "es" ? "lessons.html?lang=es#lesson=200" : "lessons.html"; });
     const exB = container.querySelector("#mcExam");
     if (exB) exB.addEventListener("click", async () => { try { renderLesson(shellRoot, await loadExamBundle(), { onExit: () => renderShell(shellRoot) }); } catch (e) { console.error(e); alert("Le contrôle n’a pas pu s’ouvrir."); } });
+    container.querySelectorAll("[data-a2]").forEach((b) => b.addEventListener("click", () => openA2(Number(b.dataset.a2))));
     container.querySelectorAll("[data-a1]").forEach((b) => b.addEventListener("click", () => openA1(Number(b.dataset.a1))));
     const continueBtn = container.querySelector("#mcContinue");
     if (continueBtn) continueBtn.addEventListener("click", () => { if (code === "es") {

@@ -21,7 +21,7 @@
 import { store } from "../data/store.js?v=20260930a";
 import { aiCredits } from "../data/ai-credits.js?v=20260930a";
 import { AI_RELAY_URL, AI_MAX_PER_DAY, AI_MAX_TURNS } from "../data/ai-config.js?v=20260930a";
-import { CREATOR_MODE } from "../data/dev-config.js?v=20261018a7";
+import { CREATOR_MODE } from "../data/dev-config.js?v=20261018a8";
 
 const LANG_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const SPEECH_BY_VARIANT = { "en-gb": "en-GB", "en-us": "en-US", "es-es": "es-ES", "es-co": "es-CO", "pt-pt": "pt-PT", "pt-br": "pt-BR" };
