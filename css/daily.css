@@ -105,3 +105,14 @@
   .dp-story p{ font-size:17px; line-height:1.5; }
   .dp-kicker{ font-size:12px; }
 }
+
+/* Page 1 (portrait) : une taille au-dessus */
+@media (orientation:portrait){
+  .dp[data-page="1"] .dp-lead{ gap:16px; }
+  .dp[data-page="1"] .dp-kicker{ font-size:13px; }
+  .dp[data-page="1"] .dp-lead h2{ font-size:clamp(32px,9vw,42px); line-height:1.12; }
+  .dp[data-page="1"] .dp-stand{ font-size:20px; line-height:1.4; }
+  .dp[data-page="1"] .dp-cols p{ font-size:19px; line-height:1.6; margin-bottom:14px; }
+  .dp[data-page="1"] figcaption{ font-size:13.5px; }
+  .dp[data-page="1"] .dp-tip{ font-size:14px; }
+}
