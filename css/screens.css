@@ -1140,3 +1140,22 @@
 :root[data-theme="dark"] .aide-sq{color:#f2f3f5}
 :root[data-theme="dark"] .aide-c1{background:#3a2227}:root[data-theme="dark"] .aide-c2{background:#212c40}:root[data-theme="dark"] .aide-c3{background:#3c3220}:root[data-theme="dark"] .aide-c4{background:#2d2540}:root[data-theme="dark"] .aide-c5{background:#3b2535}:root[data-theme="dark"] .aide-c6{background:#1f3239}
 :root[data-theme="dark"] .aide-search{background:#1b1d22;color:#f2f3f5;border-color:#2c2f37}
+
+/* --- Bulletin scolaire A1 (livret) --- */
+.bl-card{ display:flex; flex-direction:column; gap:10px; margin-bottom:10px; }
+.bl-h{ margin:0; font-size:18px; font-weight:800; }
+.bl-soft{ font-size:13px; font-weight:600; color:var(--ink-soft); margin:0; }
+.bl-head{ flex-direction:row; align-items:center; justify-content:space-between; }
+.bl-big{ font-size:20px; }
+.bl-avg{ text-align:center; } .bl-avg b{ display:block; font-size:30px; line-height:1; } .bl-avg small{ font-size:12px; color:var(--ink-soft); }
+.bl-sk{ display:flex; flex-direction:column; gap:4px; } .bl-sk-top{ display:flex; justify-content:space-between; font-size:15px; }
+.bl-bar{ height:10px; border-radius:99px; background:var(--surface-soft); overflow:hidden; } .bl-bar i{ display:block; height:100%; border-radius:99px; }
+.bl-gaps{ background:#fdeceb; }
+.bl-gap{ background:#fff; border-radius:16px; padding:10px 12px; display:flex; gap:10px; align-items:flex-start; color:#1b1d22; }
+.bl-gap > div{ flex:1; display:flex; flex-direction:column; gap:2px; } .bl-gap small{ font-size:12.5px; font-weight:600; color:#5b6068; }
+.bl-tag{ font-size:12px; font-weight:800; border-radius:99px; padding:5px 10px; color:#fff; } .bl-ko{ background:#c8382a; }
+.bl-cta{ width:100%; }
+.bl-tiles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+.bl-tile{ border-radius:14px; padding:8px 4px; text-align:center; display:flex; flex-direction:column; gap:1px; font-size:13px; }
+.bl-tile span{ font-size:15px; font-weight:800; } .bl-tile small{ font-size:11px; font-weight:800; }
+.bl-ok{ background:#1f7a45; color:#fff; } .bl-ko.bl-tile, .bl-tile.bl-ko{ background:#c8382a; color:#fff; } .bl-no{ background:#eceef2; color:#1b1d22; }
