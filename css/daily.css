@@ -95,3 +95,13 @@
   .dp-pager [data-pg][aria-current="true"]{ background:var(--pink); color:var(--paper); border-color:var(--pink); }
   .dp-pager .dp-next{ flex-basis:100%; margin-top:8px; font:inherit; font-size:14px; font-weight:700; letter-spacing:0; text-transform:none; border:1px solid var(--pink); color:var(--pink); background:transparent; border-radius:99px; padding:10px 14px; }
 }
+
+/* Portrait : même taille de texte sur les 2 pages (corps 17px) */
+@media (orientation:portrait){
+  .dp-cols p{ font-size:17px; line-height:1.6; }
+  .dp-stand{ font-size:18px; }
+  .dp-story{ grid-template-columns:120px minmax(0,1fr); }
+  .dp-story h3{ font-size:21px; }
+  .dp-story p{ font-size:17px; line-height:1.5; }
+  .dp-kicker{ font-size:12px; }
+}
