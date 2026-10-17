@@ -52,7 +52,7 @@ export function renderDaily(container) {
   const state = load();
   state.done = state.done || {}; state.days = state.days || [];
 
-  function items() { return DAILY_ITEMS.filter((x) => x.level === level && x.type === type).sort((a, b) => (b.n || 0) - (a.n || 0) || String(b.date).localeCompare(String(a.date))); }
+  function items() { return DAILY_ITEMS.filter((x) => x.level === level && x.type === type).sort((a, b) => (a.n || 0) - (b.n || 0) || String(a.date).localeCompare(String(b.date))); }
   const nn = (n) => ("0" + n).slice(-2);
   const fmt = (d) => { if (!d) return ""; try { return new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }); } catch (e) { return d; } };
 
@@ -72,7 +72,7 @@ export function renderDaily(container) {
       <div class="dl-head"><div><b>The Roots Daily</b><span>${fmt(day())}</span></div><div class="dl-stats">🔥 ${streak(state.days)} j · ✓ ${total}</div></div>
       <div class="level-chip-row" id="dlLv">${LEVELS.map((l) => `<button class="level-chip${l === level ? " active" : ""}" data-lv="${l}">${l}</button>`).join("")}</div>
       <div class="dl-seg"><button class="${type === "news" ? "on" : ""}" data-type="news">📰 Actualités</button><button class="${type === "mail" ? "on" : ""}" data-type="mail">✉️ Mails</button></div>
-      ${L.length ? `<div class="dl-sec">À la une</div>${card(L[0], true)}${L.length > 1 ? `<div class="dl-sec">Archives</div>${L.slice(1).map((x) => card(x)).join("")}` : ""}`
+      ${L.length ? `<div class="dl-sec">Commence ici</div>${card(L[0], true)}${L.length > 1 ? `<div class="dl-sec">Numéros suivants</div>${L.slice(1).map((x) => card(x)).join("")}` : ""}`
         : `<div class="card dl-empty"><div style="font-size:38px">${type === "mail" ? "✉️" : "📰"}</div><b>Les premiers ${type === "mail" ? "mails" : "articles"} ${level} arrivent bientôt.</b><span>Reviens vite, ou essaie un autre niveau.</span></div>`}`;
   }
 
