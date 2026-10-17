@@ -1171,3 +1171,5 @@
 .bl-lab{ font-size:12px; font-weight:800; color:#5b6068; letter-spacing:.04em; } .bl-say{ font-size:15px; font-weight:700; line-height:1.35; margin-top:2px; }
 .bl-fb{ font-size:14px; font-weight:700; line-height:1.4; } .bl-fb-ok{ color:#1f7a45; } .bl-fb-ko{ color:#c8382a; }
 .bl-cta.lc-cta{ color:#1b1d22; text-shadow:none; }
+.bl-lock .bl-tag{ background:#8a8f98; } .bl-lock .bl-st-ok{ background:#1f7a45; } .bl-lock .bl-st-ko{ background:#c8382a; }
+.bl-ex-ok{ background:#e3f6ea; } .bl-ex-ko{ background:#fdeceb; } .bl-lock b{ font-size:14.5px; }

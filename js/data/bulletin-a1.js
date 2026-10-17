@@ -1,6 +1,6 @@
 // The Roots — bulletin scolaire A1 : lit les tests de fin de leçon (stockage local) et en déduit notes, lacunes et rattrapage.
-import { A1_LIST } from "./lecons-a1.js?v=20261018a2";
-import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018a2";
+import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261018a3";
+import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261018a3";
 export const PASS = 32;
 export const SK = [["Compréhension écrite", 7.5], ["Compréhension orale", 7.5], ["Grammaire", 10], ["Expression écrite", 7.5], ["Expression orale", 7.5]];
 const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { return {}; } };
@@ -18,7 +18,12 @@ export function bulletinA1(level = "A1") {
   const skills = SK.map(([name, max], i) => ({ name, max, avg: withPts.length ? withPts.reduce((a, t) => a + t.last.pts[i], 0) / withPts.length : null }));
   const gaps = tests.filter((t) => t.done && !t.passed).map((t) => ({ n: t.n, id: t.id, legacy: !t.last.pts, code: t.code, title: t.title, miss: PASS - t.last.total, list: (t.last.gaps || []).slice(0, 3), weak: t.last.pts ? SK.filter(([, m], i) => t.last.pts[i] / m < 0.8).map(([nm]) => nm) : [] }));
   const avg = done.length ? done.reduce((a, t) => a + t.best, 0) / done.length : null;
-  return { tests, skills, gaps, avg, nDone: done.length, nOk: done.filter((t) => t.passed).length };
+  let exam = null;
+  if (level === "A1") {
+    const p = read(EXAM_KEY), h = p.testHist || [], sc = parseInt(((p.scores || {}).test || "").split("/")[0], 10), best = h.length ? h.reduce((m, x) => Math.max(m, x.total), 0) : (Number.isFinite(sc) ? sc : 0);
+    exam = { done: h.length > 0 || Number.isFinite(sc), best, passed: !!(p.done && p.done.test) || best >= PASS, open: tests.every((t) => t.passed) };
+  }
+  return { exam, tests, skills, gaps, avg, nDone: done.length, nOk: done.filter((t) => t.passed).length };
 }
 
 // ---- Exercices en plus (rattrapage) : 5 questions tirées des exercices corrigés de la leçon, selon la compétence faible ----
