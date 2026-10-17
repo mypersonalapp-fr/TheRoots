@@ -12,26 +12,26 @@ const T = (title, text, qs) => ({ title, text, q: qs.map((x) => Q(...x)) });
 const A = (script, qs) => ({ script, q: qs.map((x) => Q(...x)) });
 
 export const VOCAB_A20 = [
-  { kind: "greetings", title: "Pourquoi cette passerelle ?", icon: "🌉",
+  { kind: "greetings", title: "Pourquoi cette passerelle ?", scene: ["scene-a20-bridge", "Un pont entre deux rives : A1 d'un côté, A2 de l'autre"], icon: "🌉",
     tip: "En A1 tu as appris à parler du présent et du futur proche : habitudes (“I get up at seven”), maintenant (“I'm cooking”), projets (“I'm going to travel”). Le niveau A2 ajoute le PASSÉ (“I got up at seven yesterday”). Un passé solide s'appuie sur des verbes et des règles de base sûrs : si “she go” ou “I am work” te échappe encore, l'erreur se répétera au passé. Cette leçon vérifie tout, une fois, pour ne laisser aucune lacune.",
     examples: [["I get up at seven every day.", "Je me lève à sept heures tous les jours."], ["I'm cooking dinner now.", "Je prépare le dîner en ce moment."], ["We're going to visit Rome next week.", "Nous allons visiter Rome la semaine prochaine."]],
     practice: "Écoute et répète la phrase.", say: "Before the past, I check my present." },
-  { kind: "words", title: "Les 12 verbes de base", icon: "🔑",
+  { kind: "words", title: "Les 12 verbes de base", scene: ["scene-a20-basic-verbs", "Une personne qui va, prend, fait et a : les 12 verbes de base en action"], icon: "🔑",
     words: [["be", "être"], ["have", "avoir"], ["do", "faire"], ["go", "aller"], ["take", "prendre"], ["make", "fabriquer / faire"], ["get", "obtenir / devenir"], ["like", "aimer"], ["want", "vouloir"], ["live", "habiter"], ["work", "travailler"], ["play", "jouer"]],
     tip: "Ce sont les verbes les plus utilisés. Attention : “be”, “have”, “do” et “go” changeront de forme au passé (A2.2) : on les maîtrise d'abord au présent.",
     examples: [["I am a student and I have two sisters.", "Je suis étudiant et j'ai deux sœurs."], ["She lives in Paris and works in a bank.", "Elle habite à Paris et travaille dans une banque."]],
     q: E("« Aller » se dit…", "go", "take", "get", "Go = aller (I go to school).", "Take = prendre.", "Get = obtenir / devenir.") },
-  { kind: "words", title: "Les verbes du quotidien", icon: "🏠",
+  { kind: "words", title: "Les verbes du quotidien", scene: ["scene-a20-daily-verbs", "Une famille qui mange, boit, lit, regarde et écoute"], icon: "🏠",
     words: [["eat", "manger"], ["drink", "boire"], ["read", "lire"], ["watch", "regarder"], ["listen", "écouter"], ["study", "étudier"], ["cook", "cuisiner"], ["walk", "marcher"], ["call", "appeler"], ["meet", "rencontrer"]],
     tip: "À la 3e personne du singulier, on ajoute -s : he eats, she reads. Cas spéciaux : study → studies, watch → watches.",
     examples: [["He studies English every evening.", "Il étudie l'anglais tous les soirs."], ["They meet their friends on Saturday.", "Ils retrouvent leurs amis le samedi."]],
     q: E("« Écouter » se dit…", "listen", "watch", "read", "Listen = écouter (listen to music).", "Watch = regarder.", "Read = lire.") },
-  { kind: "words", title: "Les verbes de la ville et du voyage", icon: "🧳",
+  { kind: "words", title: "Les verbes de la ville et du voyage", scene: ["scene-a20-city-verbs", "Une rue avec un passant qui traverse, tourne, achète et paie"], icon: "🧳",
     words: [["turn", "tourner"], ["cross", "traverser"], ["buy", "acheter"], ["pay", "payer"], ["try", "essayer"], ["leave", "partir / quitter"], ["arrive", "arriver"], ["stay", "rester"], ["book", "réserver"], ["wait", "attendre"]],
     tip: "Les verbes en consonne + y changent à la 3e personne : try → tries. “Leave” (partir) deviendra “left” au passé : tu le verras en A2.2.",
     examples: [["The train arrives at nine.", "Le train arrive à neuf heures."], ["She tries a jacket on.", "Elle essaie une veste."]],
     q: E("« Réserver » se dit…", "book", "buy", "pay", "Book = réserver (book a room).", "Buy = acheter.", "Pay = payer.") },
-  { kind: "words", title: "Les repères de temps", icon: "🕒",
+  { kind: "words", title: "Les repères de temps", scene: ["scene-a20-time", "Une horloge, un calendrier et une valise : tous les jours, maintenant, demain"], icon: "🕒",
     words: [["every day", "tous les jours"], ["now", "maintenant"], ["at the moment", "en ce moment"], ["today", "aujourd'hui"], ["tomorrow", "demain"], ["next week", "la semaine prochaine"], ["yesterday", "hier"], ["last week", "la semaine dernière"]],
     tip: "“Every day” → présent simple. “Now / at the moment” → présent continu. “Tomorrow / next week” → going to. “Yesterday / last week” annoncent le passé : c'est le sujet de A2.2.",
     examples: [["I work every day, but I'm not working now.", "Je travaille tous les jours, mais pas maintenant."], ["We're going to leave tomorrow.", "Nous allons partir demain."]],
@@ -246,12 +246,12 @@ export const TEST_GRAMMAR_A20 = [
 ];
 
 export const MISSIONS_A20 = [
-  { id: "m1", ic: "🧭", title: "Quel temps ?", sub: "Habitude, maintenant ou projet ?", hero: "city/m1" },
-  { id: "m2", ic: "🔑", title: "Les verbes de base", sub: "Associe le verbe à son sens.", hero: "city/m2" },
-  { id: "m3", ic: "💬", title: "Construis la phrase", sub: "Remets les mots dans l'ordre.", hero: "city/m3" },
-  { id: "m4", ic: "⚖️", title: "Simple ou continu ?", sub: "Choisis la bonne forme du verbe.", hero: "city/m4" },
-  { id: "m5", ic: "🚀", title: "Going to ou would like ?", sub: "Choisis la bonne expression.", hero: "city/m1" },
-  { id: "m6", ic: "🌉", title: "Prêt pour le passé ?", sub: "Vérifie tes bases avant A2.1.", hero: "city/m2" },
+  { id: "m1", ic: "🧭", title: "Quel temps ?", sub: "Habitude, maintenant ou projet ?", hero: "city/a20-m1" },
+  { id: "m2", ic: "🔑", title: "Les verbes de base", sub: "Associe le verbe à son sens.", hero: "city/a20-m2" },
+  { id: "m3", ic: "💬", title: "Construis la phrase", sub: "Remets les mots dans l'ordre.", hero: "city/a20-m3" },
+  { id: "m4", ic: "⚖️", title: "Simple ou continu ?", sub: "Choisis la bonne forme du verbe.", hero: "city/a20-m4" },
+  { id: "m5", ic: "🚀", title: "Going to ou would like ?", sub: "Choisis la bonne expression.", hero: "city/a20-m5" },
+  { id: "m6", ic: "🌉", title: "Prêt pour le passé ?", sub: "Vérifie tes bases avant A2.1.", hero: "city/a20-m6" },
 ];
 
 const pick = (say, label, a, o) => ({ say, groups: [{ label, answer: a, opts: names(o) }] });
