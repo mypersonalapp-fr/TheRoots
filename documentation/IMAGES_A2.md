@@ -57,4 +57,24 @@ describe-a19-station, describe-a19-airport, describe-a110-office, describe-a110-
 Scènes `assets/img/lesson/` : scene-a22-childhood, memory, journey, adventure, yesterday, usedto, hometown, surprise.
 Roots City `assets/img/city/` : a22-m1 à a22-m6.
 « Décris l'image » `assets/img/lesson/` : describe-a22-camping, describe-a22-grandparents (aucun texte lisible, écrans éteints).
-Les prompts sont dans la conversation du 17/10/2026 ; à recopier ici une fois les images reçues.
+
+
+### Prompts A2.2 (à coller après le style commun)
+| Fichier | Prompt |
+|---|---|
+| scene-a22-childhood | A small girl riding a tricycle in a sunny garden, a boy flying a kite, wooden toy blocks and a teddy bear on the grass, a grandmother watching from a chair. |
+| scene-a22-memory | A girl sitting at a wooden table looking through an open photo album, a boy pointing at a photo, colorful pictures of a beach and a birthday cake, warm afternoon light. |
+| scene-a22-journey | A family car on a country road with suitcases on the roof, mountains and a lake in the background, a girl in the back seat holding a paper map, a boy looking out of the window. |
+| scene-a22-adventure | Two children and a dog at a campsite in a forest, a small tent, a flashlight, a canoe on a river, a girl pointing at a path through the trees. |
+| scene-a22-yesterday | A girl at a desk in her bedroom in the evening writing in a notebook, a school bag, a wet umbrella, a bicycle and a soccer ball at the door: the traces of yesterday. No readable writing. |
+| scene-a22-usedto | Split image, two halves: on the left a small girl in a garden with a puppy, warm faded colors; on the right the same girl as a teenager walking the same dog, bright colors. |
+| scene-a22-hometown | A small old town square with a fountain, a bakery, a bell tower, an old man showing the square to two children, pigeons, a bicycle against a wall. |
+| scene-a22-surprise | A surprise birthday party: children hiding behind a sofa with balloons and a cake, a girl opening the front door with a surprised face, confetti in the air. |
+| a22-m1 | Two children at a city crossroads looking at two signposts: one shaped like a sun (today), one like a moon (yesterday). |
+| a22-m2 | A boy stamping a stack of postcards with a big stamp, a girl sorting them in boxes, a city post office counter. |
+| a22-m3 | A girl opening a big old chest with glowing keys of different shapes in a city museum, a boy holding a lantern. |
+| a22-m4 | Two children asking questions to a friendly detective in a city park, a magnifying glass and a notebook without writing. |
+| a22-m5 | A girl and an old man sitting on a bench in a city garden, he points at a faded old photo of the same garden. No readable writing. |
+| a22-m6 | Two children on a stage in a city theatre telling a story with big expressive gestures, a small audience smiling. |
+| describe-a22-camping | A family at a lakeside campsite in the evening: a tent, a campfire, a girl roasting marshmallows, a boy reading with a flashlight, a father fishing at the lake, a dog sleeping. No text. |
+| describe-a22-grandparents | Grandparents and two grandchildren in a living room: the grandmother knitting, the grandfather showing an old bicycle photo, grandchildren sitting on the carpet, an old radio on a shelf, TV off. No readable writing. |
