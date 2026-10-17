@@ -27,6 +27,7 @@ import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, le
 import { plantSvg } from "./plant.js?v=20261018z";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
+import { loadBundleA2 } from "../data/lecons-a2.js?v=20261018z";
 import { bulletinA1, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261018z";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
@@ -190,13 +191,13 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire A1 (maquette 1) : notes par compétence, lacunes détectées, 12 tests réussis / à repasser ---
-function bulletinHtml() {
-  const B = bulletinA1(), f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
-  if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin A1</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
+function bulletinHtml(level = "A1") {
+  const B = bulletinA1(level), f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
+  if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin ${level}</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
   const sk = B.skills.map((s) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : r >= 0.7 ? "#e2a13d" : "#e0432f"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div>`; }).join("");
-  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">Lacunes détectées</h3><p class="bl-soft">Repérées à partir de tes erreurs aux tests. Fais les exercices en plus de la leçon, puis repasse le test.</p>${B.gaps.map((g) => `<div class="bl-gap"><div><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · à renforcer : " + g.weak.join(", ") : ""}</small>${g.list.map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</div><button type="button" class="bl-tag bl-ko bl-go" data-rt="${g.n}">${(rtLoad()[g.n] || {}).series ? "Refaire · " + rtLoad()[g.n].last : "Exercices en plus"}</button></div>`).join("")}</div>` : "";
+  const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">Lacunes détectées</h3><p class="bl-soft">Repérées à partir de tes erreurs aux tests. Fais les exercices en plus de la leçon, puis repasse le test.</p>${B.gaps.map((g) => `<div class="bl-gap"><div><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · à renforcer : " + g.weak.join(", ") : ""}</small>${g.list.map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</div><button type="button" class="bl-tag bl-ko bl-go" data-rt="${g.id}">${(rtLoad()[g.id] || {}).series ? "Refaire · " + rtLoad()[g.id].last : "Exercices en plus"}</button></div>`).join("")}</div>` : "";
   const tiles = B.tests.map((t) => { const c = t.done ? (t.passed ? "ok" : "ko") : "no"; return `<div class="bl-tile bl-${c}"><b>${t.code}</b><span>${t.done ? t.best + "/40" : "—"}</span><small>${t.done ? (t.passed ? "Réussi" : "À repasser") : "À venir"}</small></div>`; }).join("");
-  return `<div class="card bl-card bl-head"><div><b class="bl-big">Niveau A1</b><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${B.nDone - B.nOk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>
+  return `<div class="card bl-card bl-head"><div><b class="bl-big">Niveau ${level}</b><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${B.nDone - B.nOk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>
     <div class="card bl-card"><h3 class="bl-h">Mes notes par compétence</h3>${sk}</div>${gaps}
     <div class="card bl-card"><h3 class="bl-h">Mes tests de fin de leçon</h3><div class="bl-tiles">${tiles}</div><p class="bl-soft">Réussi à partir de ${PASS}/40.</p></div>`;
 }
@@ -330,7 +331,7 @@ export function renderMesCours(container, shellRoot) {
               </div>
             </div>
           </div>
-          ${l.code === "en" ? bulletinHtml() : ""}
+          ${l.code === "en" ? bulletinHtml("A1") + bulletinHtml("A2") : ""}
           <div class="dash-box"><h3>Mon profil</h3><div class="card">${profileHtml(l.code)}</div></div>
           <div class="dash-box"><h3>Mes contrôles</h3><div class="card">${controlsHtml(l.code)}</div></div>
           <div class="dash-box"><h3>Mes missions</h3><div class="card">${missionsHtml(l.code)}</div></div>
@@ -339,25 +340,25 @@ export function renderMesCours(container, shellRoot) {
       </div>
     `;
     container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
-    container.querySelectorAll("[data-rt]").forEach((b) => b.addEventListener("click", () => paintRattrapage(Number(b.dataset.rt))));
+    container.querySelectorAll("[data-rt]").forEach((b) => b.addEventListener("click", () => paintRattrapage(b.dataset.rt)));
     container.querySelectorAll("[data-livret-lang]").forEach((b) => b.addEventListener("click", () => { livretLang = b.dataset.livretLang; paint(); }));
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
   }
 
   // --- Exercices en plus : 5 questions corrigées, une explication à chaque réponse ---
-  async function paintRattrapage(n) {
-    const B = bulletinA1(), g = B.gaps.find((x) => x.n === n);
-    const bundle = await loadBundle(n);
-    const att = (rtLoad()[n] || {}).series || 0;
+  async function paintRattrapage(id) {
+    const lv = id.startsWith("A2") ? "A2" : "A1", B = bulletinA1(lv), g = B.gaps.find((x) => x.id === id), n = g ? g.n : Number(id.split(".")[1]);
+    const bundle = lv === "A2" ? await loadBundleA2(n) : await loadBundle(n);
+    const att = (rtLoad()[id] || {}).series || 0;
     const items = pickRattrapage(bundle.exercises, g ? g.weak : [], att + n);
     let i = 0, firstOk = 0, tried = false;
     const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;");
     const draw = () => {
       if (i >= items.length) {
-        rtSave(n, firstOk, items.length);
+        rtSave(id, firstOk, items.length);
         container.innerHTML = `<button class="settings-back" id="rtBack">Retour au livret</button><div class="card bl-card"><h3 class="bl-h">Série terminée</h3><div class="bl-big">${firstOk} / ${items.length}</div><p class="bl-soft">${firstOk >= 4 ? "Très bien : la notion est solide. Repasse le test de la leçon." : "Relis les explications, refais une série puis repasse le test."}</p><button type="button" class="lc-cta bl-cta" id="rtRetest">Repasser le test ${g ? g.code : ""}</button><button type="button" class="lc-sec-btn bl-cta" id="rtAgain">Refaire une série</button></div>`;
         container.querySelector("#rtBack").onclick = () => { openLivret = true; paint(); };
-        container.querySelector("#rtAgain").onclick = () => paintRattrapage(n);
+        container.querySelector("#rtAgain").onclick = () => paintRattrapage(id);
         container.querySelector("#rtRetest").onclick = () => { openLivret = false; openCode = "en"; paint(); };
         return;
       }
