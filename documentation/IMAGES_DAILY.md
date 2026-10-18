@@ -9,9 +9,9 @@ Zones par numéro : `hero` (3:2, sujet principal), `food` (plat typique), `city`
 | 02 | School Holidays Are Here! | English Breakfast | Brighton | soleil |
 | 03 | My First Flight | Sunday Roast | Manchester | nuageux |
 | 04 | A Day at School | Shepherd's Pie | Oxford | pluie |
-| 05 | Our School Uniform | Scones with Tea | York | nuageux froid |
-| 06 | A Sunny Weekend | Bangers and Mash | Bath | pluie |
-| 07 | A New Baby Panda | Cornish Pasty | Liverpool | neige |
-| 08 | Football Day at School | Apple Crumble | Cambridge | soleil |
+| 05 | Our School Uniform (food+wx reçus ; hero+city manquants) | Scones with Tea | York | nuageux froid |
+| 06 | A Sunny Weekend (fait, 4/4) | Bangers and Mash | Bath | pluie |
+| 07 | A New Baby Panda (fait, 4/4) | Cornish Pasty | Liverpool | neige |
+| 08 | Football Day at School (fait, 4/4) | Apple Crumble | Cambridge | soleil |
 
 Une image manquante est simplement masquée dans l'appli. Aucun texte lisible dans les images.
