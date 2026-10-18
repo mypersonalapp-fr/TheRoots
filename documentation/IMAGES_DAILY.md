@@ -7,9 +7,9 @@ Zones par numéro : `hero` (3:2, sujet principal), `food` (plat typique), `city`
 |----|-------|------|------|-------|
 | 01 | A Trip to Pandora (fait, 4/4) | Fish and Chips | London | soleil |
 | 02 | School Holidays Are Here! | English Breakfast | Brighton | soleil |
-| 03 | My First Flight | Sunday Roast | Manchester | nuageux |
-| 04 | A Day at School | Shepherd's Pie | Oxford | pluie |
-| 05 | Our School Uniform (hero, food, wx reçus ; city manquant) | Scones with Tea | York | nuageux froid |
+| 03 | My First Flight (wx reçu ; hero, food, city manquants) | Sunday Roast | Manchester | nuageux |
+| 04 | A Day at School (hero, city, wx reçus ; food manquant) | Shepherd's Pie | Oxford | pluie |
+| 05 | Our School Uniform (fait, 4/4) | Scones with Tea | York | nuageux froid |
 | 06 | A Sunny Weekend (fait, 4/4) | Bangers and Mash | Bath | pluie |
 | 07 | A New Baby Panda (fait, 4/4) | Cornish Pasty | Liverpool | neige |
 | 08 | Football Day at School (fait, 4/4) | Apple Crumble | Cambridge | soleil |
