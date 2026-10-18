@@ -91,3 +91,11 @@ Scènes `assets/img/lesson/` : scene-a24-plan, decision, prediction, booking, ap
 Roots City `assets/img/city/` : a24-m1 à a24-m6.
 « Décris l'image » `assets/img/lesson/` : describe-a24-agency (agence de voyages), describe-a24-party (préparatifs de fête). Aucun texte lisible, écrans éteints.
 Le prompt complet en français (un seul texte, noms de fichiers inclus) a été donné dans la conversation.
+
+## A2.4 — 6 images manquantes (prompt redonné le 18/10)
+scene-a24-decision, scene-a24-prediction, scene-a24-booking, scene-a24-appointment, describe-a24-agency, describe-a24-party (dossier `assets/img/lesson/`).
+
+## A2.5 « Comparing » — 16 images à fournir (prompt donné le 18/10, leçon construite après réception)
+Scènes `assets/img/lesson/` : scene-a25-compare, bigger, price, best, equal, preference, cities, shopping.
+Roots City `assets/img/city/` : a25-m1 à a25-m6.
+« Décris l'image » `assets/img/lesson/` : describe-a25-market, describe-a25-street. Aucun texte lisible, écrans éteints.
