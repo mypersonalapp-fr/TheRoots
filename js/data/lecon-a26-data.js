@@ -14,6 +14,21 @@ export const VOCAB_A26 = [
     tip: "“Tooth” fait “teeth” au pluriel. Avec une partie du corps, on utilise le possessif : “My back hurts.” (jamais “the back”).",
     examples: [["My back hurts.", "J'ai mal au dos."], ["Open your mouth and show me your throat.", "Ouvrez la bouche et montrez-moi votre gorge."]],
     q: ["“Knee” veut dire…", ["genou", "coude", "épaule"], 0] },
+  { kind: "words", title: "Le squelette de l'homme", icon: "🦴", scene: ["scene-a26-skeleton-man", "Le squelette d'un homme, vu de face : crâne, mâchoire, clavicule, côtes, colonne, fémur, rotule et tibia"],
+    words: [["skull", "crâne"], ["jaw", "mâchoire"], ["collarbone", "clavicule"], ["breastbone", "sternum"], ["ribs", "côtes"], ["spine", "colonne vertébrale"], ["thigh bone", "fémur"], ["kneecap", "rotule"], ["shin bone", "tibia"], ["bone", "os"]],
+    tip: "“Bone” = os ; “bones” = les os. Le nom savant existe aussi : skull, ribs… mais “thigh bone” (fémur) et “shin bone” (tibia) sont les mots de tous les jours.",
+    examples: [["The skull protects the brain.", "Le crâne protège le cerveau."], ["The ribs protect the heart and the lungs.", "Les côtes protègent le cœur et les poumons."], ["The thigh bone is the longest bone in the body.", "Le fémur est l'os le plus long du corps."]],
+    q: ["“Ribs” veut dire…", ["côtes", "dents", "doigts"], 0] },
+  { kind: "words", title: "Le squelette de la femme", icon: "🦵", scene: ["scene-a26-skeleton-woman", "Le squelette d'une femme, vu de face : épaule, coude, poignet, doigt, hanche, bassin, genou, cheville, orteil"],
+    words: [["shoulder", "épaule"], ["elbow", "coude"], ["wrist", "poignet"], ["finger", "doigt"], ["hip", "hanche"], ["pelvis", "bassin"], ["knee", "genou"], ["ankle", "cheville"], ["toe", "orteil"], ["joint", "articulation"]],
+    tip: "Une articulation (“joint”) relie deux os : l'épaule, le coude, le poignet, la hanche, le genou, la cheville. Le bassin d'une femme est plus large que celui d'un homme.",
+    examples: [["A woman's pelvis is wider than a man's.", "Le bassin d'une femme est plus large que celui d'un homme."], ["The knee is a joint between the thigh bone and the shin bone.", "Le genou est une articulation entre le fémur et le tibia."], ["On average, men are taller than women, so their bones are a little longer.", "En moyenne, les hommes sont plus grands que les femmes ; leurs os sont donc un peu plus longs."]],
+    q: ["“Wrist” veut dire…", ["poignet", "cheville", "coude"], 0] },
+  { kind: "words", title: "Les organes", icon: "🫀", scene: null,
+    words: [["brain", "cerveau"], ["heart", "cœur"], ["lungs", "poumons"], ["liver", "foie"], ["kidneys", "reins"], ["skin", "peau"], ["muscle", "muscle"], ["blood", "sang"], ["vein", "veine"], ["organ", "organe"]],
+    tip: "“Lungs” et “kidneys” sont toujours au pluriel en anglais. Les noms d'organes se disent avec “the” : “the heart pumps blood”.",
+    examples: [["The heart pumps blood around the body.", "Le cœur pompe le sang dans tout le corps."], ["We breathe with our lungs.", "Nous respirons avec nos poumons."], ["The brain controls the whole body.", "Le cerveau contrôle tout le corps."]],
+    q: ["“Lungs” veut dire…", ["poumons", "reins", "veines"], 0] },
   { kind: "words", title: "Les symptômes", icon: "🤧", scene: ["scene-a26-symptoms", "Une femme sur un canapé, sous une couverture, avec un thermomètre et une tasse de thé"],
     words: [["headache", "mal de tête"], ["fever", "fièvre"], ["cough", "toux / tousser"], ["sore throat", "mal de gorge"], ["cold", "rhume"], ["flu", "grippe"], ["toothache", "mal de dents"], ["stomachache", "mal au ventre"], ["dizzy", "étourdi"], ["sick", "malade / nauséeux"]],
     tip: "On dit “I have a headache / a cold / a fever” (verbe “have”). “I feel sick” = j'ai mal au cœur ; “I feel dizzy” = j'ai la tête qui tourne.",
@@ -111,6 +126,9 @@ export const READING_A26 = [
   { who: "Hugo", text: "We're on holiday in the mountains. There are some important rules. We have to wear a helmet when we ride bikes, and we mustn't leave the path in the forest. We don't have to book a table at the café. Our guide says we should take water and a jacket, because the weather changes quickly.",
     fr: "Hugo est en vacances en montagne. Il y a des règles de sécurité : casque obligatoire, ne pas quitter le sentier ; il faut emporter de l'eau et une veste.",
     qs: [["What do they have to wear on bikes?", ["A helmet", "A jacket", "Boots"], 0, "They have to wear a helmet."], ["What mustn't they do?", ["Leave the path", "Ride bikes", "Drink water"], 0, "They mustn't leave the path."], ["What should they take?", ["Water and a jacket", "A tent", "A map only"], 0, "Water and a jacket."]] },
+  { who: "The human body", text: "An adult has 206 bones in the skeleton. The skull protects the brain, the ribs protect the heart and the lungs, and the spine holds the body up. The thigh bone is the longest bone. Men and women have almost the same bones, but a woman's pelvis is wider than a man's, and men are generally a little taller. The bones meet at joints, like the knee and the elbow, and the muscles move them.",
+    fr: "Un adulte a 206 os. Le crâne protège le cerveau, les côtes protègent le cœur et les poumons. Le squelette de l'homme et de la femme est presque identique, mais le bassin de la femme est plus large. Les muscles font bouger les os aux articulations.",
+    qs: [["How many bones does an adult have?", ["206", "106", "260"], 0, "An adult has 206 bones."], ["What do the ribs protect?", ["The heart and the lungs", "The brain", "The knee"], 0, "The ribs protect the heart and the lungs."], ["What is wider in a woman?", ["The pelvis", "The skull", "The spine"], 0, "A woman's pelvis is wider than a man's."]] },
 ];
 
 export const LISTENING_A26 = [
@@ -134,6 +152,8 @@ export const LISTENING_A26 = [
     qs: [["What time must visitors leave?", ["At eight", "At six", "At ten"], 0, "At eight o'clock."], ["What mustn't visitors do?", ["Use their phone", "Bring flowers", "Talk"], 0, "They mustn't use their phone in the ward."], ["Do they have to wait at the desk?", ["No, they don't", "Yes, they do", "Only at night"], 0, "They don't have to wait."]] },
   { title: "A fever", text: "My son has a fever. His temperature is thirty-nine degrees. I think I should call the doctor. Yes, you should. And he has to drink a lot of water.",
     qs: [["What is the boy's temperature?", ["Thirty-nine degrees", "Thirty-seven degrees", "Forty-five degrees"], 0, "Thirty-nine degrees."], ["What should his mother do?", ["Call the doctor", "Go to work", "Wait a week"], 0, "She should call the doctor."]] },
+  { title: "The skeleton", text: "The skeleton has two hundred and six bones. The skull protects the brain. The ribs protect the heart and the lungs. The thigh bone is the longest bone in the body. A woman's pelvis is wider than a man's. The bones meet at joints, like the knee, the hip and the shoulder.",
+    qs: [["What protects the brain?", ["The skull", "The ribs", "The pelvis"], 0, "The skull protects the brain."], ["Which bone is the longest?", ["The thigh bone", "The shin bone", "The collarbone"], 0, "The thigh bone is the longest."], ["Where do bones meet?", ["At joints", "In the skin", "In the blood"], 0, "Bones meet at joints."]] },
 ];
 
 export const EXERCISES_A26 = [
@@ -161,6 +181,8 @@ export const EXERCISES_A26 = [
     qs: [["nap", ["sieste", "énergie", "humeur"], 0, "Nap = sieste."], ["stressed", ["stressé", "calme", "fatigué"], 0, "Stressed = stressé."], ["healthy", ["en bonne santé", "malsain", "dangereux"], 0, "Healthy."], ["fit", ["en forme", "malade", "inquiet"], 0, "Fit = en forme."], ["avoid", ["éviter", "suggérer", "appeler"], 0, "Avoid = éviter."], ["forbidden", ["interdit", "autorisé", "prudent"], 0, "Forbidden = interdit."], ["helmet", ["casque", "ceinture", "règle"], 0, "Helmet = casque."], ["recover", ["se rétablir", "se reposer", "s'étirer"], 0, "Recover = se rétablir."]] },
   { title: "Conseils et règles", help: "Should, have to, must, mustn't.",
     qs: [["You have a cold. You ___ stay warm.", ["should", "mustn't", "don't have to"], 0, "Conseil : should."], ["Visitors ___ leave at eight. It's the rule.", ["must", "mustn't", "shouldn't"], 0, "Règle : must."], ["She isn't ill. She ___ stay in bed.", ["doesn't have to", "has to", "must"], 0, "Pas malade : doesn't have to."], ["He has a fever. He ___ go to school today.", ["shouldn't", "should", "has to"], 0, "Avec de la fièvre : shouldn't."], ["Cyclists ___ wear a helmet. It's the law.", ["have to", "don't have to", "shouldn't"], 0, "Loi : have to."], ["You ___ drink plenty of water. It's good for you.", ["should", "mustn't", "don't have to"], 0, "Conseil : should."], ["You ___ run with a bad knee.", ["shouldn't", "should", "have to"], 0, "Genou blessé : shouldn't."], ["___ I take one tablet or two?", ["Should", "Shoulds", "Am"], 0, "Should I … ?"]] },
+  { title: "Le corps humain", help: "Os, articulations et organes.",
+    qs: [["skull", ["crâne", "côtes", "dent"], 0, "Skull = crâne."], ["ribs", ["côtes", "doigts", "reins"], 0, "Ribs = côtes."], ["thigh bone", ["fémur", "tibia", "rotule"], 0, "Thigh bone = fémur."], ["wrist", ["poignet", "cheville", "épaule"], 0, "Wrist = poignet."], ["lungs", ["poumons", "reins", "foie"], 0, "Lungs = poumons."], ["heart", ["cœur", "cerveau", "sang"], 0, "Heart = cœur."], ["The ___ protects the brain.", ["skull", "knee", "heart"], 0, "The skull protects the brain."], ["A woman's pelvis is ___ than a man's.", ["wider", "more wide", "widest"], 0, "wide → wider."]] },
 ];
 
 export const EXPRESSION_A26 = [

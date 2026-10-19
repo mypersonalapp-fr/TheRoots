@@ -3968,7 +3968,7 @@
 - `VOCAB_A25` Notre nouvel appartement est plus lumineux et plus spacieux.
 - `VOCAB_A25` “Spacious” veut dire…
 
-## A2.6 (834 lignes)
+## A2.6 (894 lignes)
 
 - `EXERCISES_A26` Choisis le sens correct.
 - `EXERCISES_A26` Throat = gorge.
@@ -4036,8 +4036,8 @@
 - `EXERCISES_A26` Mustn't ou don't have to ? ⚠ espacement/ponctuation
 - `EXERCISES_A26` Interdit ou pas obligatoire ? ⚠ espacement/ponctuation
 - `EXERCISES_A26` Danger! You ___ touch this.
-- `EXERCISES_A26` haven't to
 - `EXERCISES_A26` don't have to
+- `EXERCISES_A26` haven't to
 - `EXERCISES_A26` Danger : mustn't.
 - `EXERCISES_A26` It's free. You ___ pay.
 - `EXERCISES_A26` shouldn't to
@@ -4078,30 +4078,30 @@
 - `EXERCISES_A26` What's the matter?
 - `EXERCISES_A26` Que dire ? ⚠ espacement/ponctuation
 - `EXERCISES_A26` You want to make an appointment:
-- `EXERCISES_A26` I make an appointment you.
 - `EXERCISES_A26` I want a rendez-vous, please.
 - `EXERCISES_A26` I'd like to make an appointment, please.
+- `EXERCISES_A26` I make an appointment you.
 - `EXERCISES_A26` I'd like to make an appointment.
 - `EXERCISES_A26` You say where it hurts:
+- `EXERCISES_A26` I have hurt in the throat.
 - `EXERCISES_A26` I hurt throat my.
 - `EXERCISES_A26` My throat hurts.
-- `EXERCISES_A26` I have hurt in the throat.
 - `EXERCISES_A26` You ask for something for a cough:
-- `EXERCISES_A26` I need something for a cough.
 - `EXERCISES_A26` I need something to a cough.
+- `EXERCISES_A26` I need something for a cough.
 - `EXERCISES_A26` I need a something cough.
 - `EXERCISES_A26` something for a cough.
 - `EXERCISES_A26` You ask what to do:
-- `EXERCISES_A26` What do I should?
 - `EXERCISES_A26` What I should do?
+- `EXERCISES_A26` What do I should?
 - `EXERCISES_A26` The doctor gives advice:
-- `EXERCISES_A26` You should rest for three days.
-- `EXERCISES_A26` You should to rest three days.
 - `EXERCISES_A26` You shoulds rest three days.
+- `EXERCISES_A26` You should to rest three days.
+- `EXERCISES_A26` You should rest for three days.
 - `EXERCISES_A26` You say the rule at the hospital:
-- `EXERCISES_A26` You mustn't to use your phone here.
 - `EXERCISES_A26` You don't must use your phone here.
 - `EXERCISES_A26` You mustn't use your phone here.
+- `EXERCISES_A26` You mustn't to use your phone here.
 - `EXERCISES_A26` mustn't + verbe.
 - `EXERCISES_A26` Nap = sieste.
 - `EXERCISES_A26` Fit = en forme.
@@ -4118,6 +4118,16 @@
 - `EXERCISES_A26` You ___ drink plenty of water. It's good for you.
 - `EXERCISES_A26` You ___ run with a bad knee.
 - `EXERCISES_A26` ___ I take one tablet or two?
+- `EXERCISES_A26` Le corps humain
+- `EXERCISES_A26` Os, articulations et organes.
+- `EXERCISES_A26` thigh bone
+- `EXERCISES_A26` Wrist = poignet.
+- `EXERCISES_A26` Lungs = poumons.
+- `EXERCISES_A26` The ___ protects the brain.
+- `EXERCISES_A26` The skull protects the brain.
+- `EXERCISES_A26` A woman's pelvis is ___ than a man's.
+- `EXERCISES_A26` more wide
+- `EXERCISES_A26` wide → wider.
 - `EXPRESSION_A26` Dis depuis quand.
 - `EXPRESSION_A26` Dis ce que tu dois ou devrais faire.
 - `EXPRESSION_A26` I have a headache and a sore throat. It started two days ago. I also feel very tired. I think I should see a doctor.
@@ -4254,30 +4264,30 @@
 - `LISTENING_A26` At the doctor's
 - `LISTENING_A26` What's the matter? I have a sore throat and a cough. Since when? Since Monday. You should drink hot tea and rest. And you have to take these tablets twice a day.
 - `LISTENING_A26` What does the patient have?
-- `LISTENING_A26` A headache
 - `LISTENING_A26` A sore throat and a cough
+- `LISTENING_A26` A headache
 - `LISTENING_A26` A broken leg
 - `LISTENING_A26` A sore throat and a cough.
 - `LISTENING_A26` How often must he take the tablets?
-- `LISTENING_A26` Twice a day
-- `LISTENING_A26` Once a day
 - `LISTENING_A26` Three times a day
+- `LISTENING_A26` Once a day
+- `LISTENING_A26` Twice a day
 - `LISTENING_A26` Twice a day.
 - `LISTENING_A26` Making an appointment
 - `LISTENING_A26` Hello, I'd like to make an appointment with the doctor, please. I have a bad earache. Can you come tomorrow at ten? Yes, that's fine. You have to bring your health card.
 - `LISTENING_A26` What is the problem?
-- `LISTENING_A26` A backache
 - `LISTENING_A26` A toothache
 - `LISTENING_A26` An earache
+- `LISTENING_A26` A backache
 - `LISTENING_A26` A bad earache.
 - `LISTENING_A26` When is the appointment?
-- `LISTENING_A26` Today at ten
 - `LISTENING_A26` Tomorrow at ten
+- `LISTENING_A26` Today at ten
 - `LISTENING_A26` Tomorrow at two
 - `LISTENING_A26` Tomorrow at ten.
 - `LISTENING_A26` What must the patient bring?
-- `LISTENING_A26` The health card
 - `LISTENING_A26` Some money
+- `LISTENING_A26` The health card
 - `LISTENING_A26` The health card.
 - `LISTENING_A26` At the pharmacy
 - `LISTENING_A26` Can I help you? I need something for a headache. Take one tablet, but you mustn't take more than four a day. You should also drink plenty of water.
@@ -4293,22 +4303,22 @@
 - `LISTENING_A26` Get well soon
 - `LISTENING_A26` Hi Tom, I heard you're ill. You should stay in bed and rest. You shouldn't worry about work. I'll bring you some soup this evening. Get well soon!
 - `LISTENING_A26` What should Tom do?
-- `LISTENING_A26` Go to work
 - `LISTENING_A26` Stay in bed
+- `LISTENING_A26` Go to work
 - `LISTENING_A26` Go shopping
 - `LISTENING_A26` He should stay in bed.
 - `LISTENING_A26` What will she bring?
-- `LISTENING_A26` Some soup
 - `LISTENING_A26` Some flowers
+- `LISTENING_A26` Some soup
 - `LISTENING_A26` Some soup.
 - `LISTENING_A26` Seat belts
 - `LISTENING_A26` Everybody has to wear a seat belt in the car. It's the law. Children must sit in the back. And you mustn't use your phone when you drive.
 - `LISTENING_A26` Who has to wear a seat belt?
-- `LISTENING_A26` Only children
 - `LISTENING_A26` Only drivers
+- `LISTENING_A26` Only children
 - `LISTENING_A26` Where must children sit?
-- `LISTENING_A26` In the front
 - `LISTENING_A26` In the back
+- `LISTENING_A26` In the front
 - `LISTENING_A26` On the floor
 - `LISTENING_A26` In the back.
 - `LISTENING_A26` Sports injury
@@ -4324,9 +4334,9 @@
 - `LISTENING_A26` Cold or flu?
 - `LISTENING_A26` How do you know if it's a cold or the flu? With a cold, you have a runny nose and a sore throat, and you feel a bit tired. With the flu, you have a high fever, your whole body hurts and you feel very weak. If your temperature is over thirty-eight degrees, you should see a doctor.
 - `LISTENING_A26` What do you have with a cold?
-- `LISTENING_A26` A runny nose and a sore throat
-- `LISTENING_A26` A high fever
 - `LISTENING_A26` A broken arm
+- `LISTENING_A26` A high fever
+- `LISTENING_A26` A runny nose and a sore throat
 - `LISTENING_A26` A runny nose and a sore throat.
 - `LISTENING_A26` What is typical of the flu?
 - `LISTENING_A26` A runny nose only
@@ -4339,9 +4349,9 @@
 - `LISTENING_A26` A bad night
 - `LISTENING_A26` I didn't sleep well last night. I felt stressed about my job. My friend says I should do some yoga and drink herbal tea before bed. I think she's right.
 - `LISTENING_A26` Why didn't she sleep well?
-- `LISTENING_A26` She felt stressed
-- `LISTENING_A26` She was ill
 - `LISTENING_A26` It was noisy
+- `LISTENING_A26` She was ill
+- `LISTENING_A26` She felt stressed
 - `LISTENING_A26` She felt stressed about her job.
 - `LISTENING_A26` What should she drink before bed?
 - `LISTENING_A26` Herbal tea
@@ -4355,20 +4365,35 @@
 - `LISTENING_A26` Use their phone
 - `LISTENING_A26` They mustn't use their phone in the ward.
 - `LISTENING_A26` Do they have to wait at the desk?
-- `LISTENING_A26` Yes, they do
 - `LISTENING_A26` No, they don't
+- `LISTENING_A26` Yes, they do
 - `LISTENING_A26` Only at night
 - `LISTENING_A26` They don't have to wait.
 - `LISTENING_A26` My son has a fever. His temperature is thirty-nine degrees. I think I should call the doctor. Yes, you should. And he has to drink a lot of water.
 - `LISTENING_A26` What is the boy's temperature?
-- `LISTENING_A26` Thirty-nine degrees
-- `LISTENING_A26` Thirty-seven degrees
 - `LISTENING_A26` Forty-five degrees
+- `LISTENING_A26` Thirty-seven degrees
+- `LISTENING_A26` Thirty-nine degrees
 - `LISTENING_A26` Thirty-nine degrees.
 - `LISTENING_A26` What should his mother do?
-- `LISTENING_A26` Wait a week
 - `LISTENING_A26` Call the doctor
+- `LISTENING_A26` Wait a week
 - `LISTENING_A26` She should call the doctor.
+- `LISTENING_A26` The skeleton
+- `LISTENING_A26` The skeleton has two hundred and six bones. The skull protects the brain. The ribs protect the heart and the lungs. The thigh bone is the longest bone in the body. A woman's pelvis is wider than a man's. The bones meet at joints, like the knee, the hip and the shoulder.
+- `LISTENING_A26` What protects the brain?
+- `LISTENING_A26` The skull
+- `LISTENING_A26` The pelvis
+- `LISTENING_A26` Which bone is the longest?
+- `LISTENING_A26` The collarbone
+- `LISTENING_A26` The shin bone
+- `LISTENING_A26` The thigh bone
+- `LISTENING_A26` The thigh bone is the longest.
+- `LISTENING_A26` Where do bones meet?
+- `LISTENING_A26` In the skin
+- `LISTENING_A26` At joints
+- `LISTENING_A26` In the blood
+- `LISTENING_A26` Bones meet at joints.
 - `MISSIONS_A26` Conseil, obligation ou interdit ? ⚠ espacement/ponctuation
 - `MISSIONS_A26` Construis la phrase
 - `MISSIONS_A26` Remets les mots dans l'ordre.
@@ -4426,15 +4451,15 @@
 - `READING_A26` How many glasses of water does she drink a day?
 - `READING_A26` I only drink two glasses a day.
 - `READING_A26` What shouldn't she do?
-- `READING_A26` Eat fruit
 - `READING_A26` Eat chocolate every day
+- `READING_A26` Eat fruit
 - `READING_A26` Walk to work
 - `READING_A26` She shouldn't eat chocolate every day.
 - `READING_A26` On Monday I didn't feel well at school. I had a stomachache and I felt dizzy. The teacher sent me to the nurse. She took my temperature: it was normal. She said I should drink some water and eat something, because I didn't have breakfast. I felt better after twenty minutes and I went back to class.
 - `READING_A26` What was wrong with Jack?
-- `READING_A26` He had a stomachache and felt dizzy
-- `READING_A26` He broke his leg
 - `READING_A26` He had a cold
+- `READING_A26` He broke his leg
+- `READING_A26` He had a stomachache and felt dizzy
 - `READING_A26` A stomachache, and he felt dizzy.
 - `READING_A26` What was his temperature?
 - `READING_A26` It was normal.
@@ -4451,42 +4476,53 @@
 - `READING_A26` What shouldn't she drink in the evening?
 - `READING_A26` She shouldn't drink coffee.
 - `READING_A26` How did she feel after a week?
-- `READING_A26` More tired
 - `READING_A26` More worried
+- `READING_A26` More tired
 - `READING_A26` She felt calmer.
 - `READING_A26` What do they have to wear on bikes?
 - `READING_A26` They have to wear a helmet.
 - `READING_A26` What mustn't they do?
-- `READING_A26` Ride bikes
 - `READING_A26` Leave the path
+- `READING_A26` Ride bikes
 - `READING_A26` Drink water
 - `READING_A26` They mustn't leave the path.
 - `READING_A26` What should they take?
 - `READING_A26` A map only
 - `READING_A26` Water and a jacket
 - `READING_A26` Water and a jacket.
+- `READING_A26` The human body
+- `READING_A26` An adult has 206 bones in the skeleton. The skull protects the brain, the ribs protect the heart and the lungs, and the spine holds the body up. The thigh bone is the longest bone. Men and women have almost the same bones, but a woman's pelvis is wider than a man's, and men are generally a little taller. The bones meet at joints, like the knee and the elbow, and the muscles move them.
+- `READING_A26` How many bones does an adult have?
+- `READING_A26` An adult has 206 bones.
+- `READING_A26` What do the ribs protect?
+- `READING_A26` The heart and the lungs
+- `READING_A26` The brain
+- `READING_A26` The ribs protect the heart and the lungs.
+- `READING_A26` What is wider in a woman?
+- `READING_A26` The spine
+- `READING_A26` A woman's pelvis is wider than a man's.
 - `TEST_AUDIOS_A26` Since when does he have a sore throat?
-- `TEST_AUDIOS_A26` Since Monday
-- `TEST_AUDIOS_A26` Since Friday
 - `TEST_AUDIOS_A26` Since yesterday
+- `TEST_AUDIOS_A26` Since Friday
+- `TEST_AUDIOS_A26` Since Monday
 - `TEST_AUDIOS_A26` Cold water
 - `TEST_AUDIOS_A26` What does he have to bring?
-- `TEST_AUDIOS_A26` His health card
 - `TEST_AUDIOS_A26` His passport
+- `TEST_AUDIOS_A26` His health card
 - `TEST_AUDIOS_A26` His phone
 - `TEST_AUDIOS_A26` How many tablets can he take a day?
-- `TEST_AUDIOS_A26` Not more than ten
 - `TEST_AUDIOS_A26` Not more than four
+- `TEST_AUDIOS_A26` Not more than ten
 - `TEST_AUDIOS_A26` What else should he do?
 - `TEST_AUDIOS_A26` Go to bed
 - `TEST_AUDIOS_A26` Drink plenty of water
 - `TEST_AUDIOS_A26` What is the law?
-- `TEST_AUDIOS_A26` Buy a car
 - `TEST_AUDIOS_A26` Drive slowly
 - `TEST_AUDIOS_A26` Wear a seat belt
+- `TEST_AUDIOS_A26` Buy a car
 - `TEST_AUDIOS_A26` What mustn't a driver do?
-- `TEST_AUDIOS_A26` Listen to music
 - `TEST_AUDIOS_A26` Use a phone
+- `TEST_AUDIOS_A26` Listen to music
 - `TEST_AUDIOS_A26` Drive at night
 - `TEST_AUDIOS_A26` When did he hurt his ankle?
 - `TEST_AUDIOS_A26` Last week
@@ -4500,9 +4536,9 @@
 - `TEST_AUDIOS_A26` At eight o'clock
 - `TEST_AUDIOS_A26` At midnight
 - `TEST_AUDIOS_A26` Who will come to the visitors?
-- `TEST_AUDIOS_A26` The nurse
-- `TEST_AUDIOS_A26` The doctor
 - `TEST_AUDIOS_A26` The guide
+- `TEST_AUDIOS_A26` The doctor
+- `TEST_AUDIOS_A26` The nurse
 - `TEST_GRAMMAR_A26` He ___ drink more water.
 - `TEST_GRAMMAR_A26` “Throat” means…
 - `TEST_GRAMMAR_A26` “Prescription” means…
@@ -4520,13 +4556,13 @@
 - `TEST_TEXTS_A26` What hurts?
 - `TEST_TEXTS_A26` What should he do every hour?
 - `TEST_TEXTS_A26` When does he have to stretch?
-- `TEST_TEXTS_A26` Every evening
 - `TEST_TEXTS_A26` Every morning
+- `TEST_TEXTS_A26` Every evening
 - `TEST_TEXTS_A26` Once a week
 - `TEST_TEXTS_A26` I went to the pharmacy because I had a bad cough. The pharmacist gave me a syrup. She said I shouldn't drink cold drinks. If the cough is still there after five days, I must go to the doctor.
 - `TEST_TEXTS_A26` Where did Chloe go?
-- `TEST_TEXTS_A26` To the pharmacy
 - `TEST_TEXTS_A26` To the hospital
+- `TEST_TEXTS_A26` To the pharmacy
 - `TEST_TEXTS_A26` To school
 - `TEST_TEXTS_A26` What shouldn't she drink?
 - `TEST_TEXTS_A26` Cold drinks
@@ -4534,9 +4570,9 @@
 - `TEST_TEXTS_A26` If the cough lasts five days
 - `TEST_TEXTS_A26` On Saturday I fell during a football match and hurt my knee. I went to the hospital. The doctor said I mustn't play for three weeks. I don't have to use crutches, but I should rest.
 - `TEST_TEXTS_A26` How did Sam hurt his knee?
-- `TEST_TEXTS_A26` At school
 - `TEST_TEXTS_A26` In the car
 - `TEST_TEXTS_A26` During a football match
+- `TEST_TEXTS_A26` At school
 - `TEST_TEXTS_A26` What mustn't he do for three weeks?
 - `TEST_TEXTS_A26` Play football
 - `TEST_TEXTS_A26` Only in the morning
@@ -4544,31 +4580,31 @@
 - `TEST_TEXTS_A26` What does Priya have for breakfast?
 - `TEST_TEXTS_A26` What should she drink more of?
 - `TEST_TEXTS_A26` Does she have to give up chocolate?
-- `TEST_TEXTS_A26` No, she doesn't
 - `TEST_TEXTS_A26` Yes, she does
+- `TEST_TEXTS_A26` No, she doesn't
 - `TEST_TEXTS_A26` She never eats it
 - `TEST_TEXTS_A26` On Monday I didn't feel well at school. I had a stomachache and I felt dizzy. The nurse took my temperature: it was normal. She said I should drink some water and eat something, because I didn't have breakfast.
 - `TEST_TEXTS_A26` Who did Jack see?
 - `TEST_TEXTS_A26` The pharmacist
 - `TEST_TEXTS_A26` What was normal?
-- `TEST_TEXTS_A26` His temperature
-- `TEST_TEXTS_A26` His breakfast
 - `TEST_TEXTS_A26` His homework
+- `TEST_TEXTS_A26` His breakfast
+- `TEST_TEXTS_A26` His temperature
 - `TEST_TEXTS_A26` Why should he eat something?
-- `TEST_TEXTS_A26` It was lunch
 - `TEST_TEXTS_A26` He was thin
+- `TEST_TEXTS_A26` It was lunch
 - `TEST_TEXTS_A26` Before my exams, I couldn't sleep and I felt very stressed. My mother said I should go to bed earlier and I shouldn't drink coffee in the evening. I don't have to study all night: it's better to rest.
 - `TEST_TEXTS_A26` What did Nina feel before her exams?
 - `TEST_TEXTS_A26` What should she go?
-- `TEST_TEXTS_A26` To bed earlier
 - `TEST_TEXTS_A26` To school earlier
+- `TEST_TEXTS_A26` To bed earlier
 - `TEST_TEXTS_A26` To the doctor
 - `TEST_TEXTS_A26` Does she have to study all night?
 - `TEST_TEXTS_A26` Only on Fridays
 - `TEST_TEXTS_A26` Where are they on holiday?
+- `TEST_TEXTS_A26` In a city
 - `TEST_TEXTS_A26` At the seaside
 - `TEST_TEXTS_A26` In the mountains
-- `TEST_TEXTS_A26` In a city
 - `TEST_TEXTS_A26` What do they not have to do?
 - `TEST_TEXTS_A26` Wear a helmet
 - `TEST_TEXTS_A26` Follow the path
@@ -4585,6 +4621,23 @@
 - `VOCAB_A26` Open your mouth and show me your throat.
 - `VOCAB_A26` Ouvrez la bouche et montrez-moi votre gorge.
 - `VOCAB_A26` “Knee” veut dire…
+- `VOCAB_A26` Le squelette de l'homme
+- `VOCAB_A26` shin bone
+- `VOCAB_A26` The thigh bone is the longest bone in the body.
+- `VOCAB_A26` “Ribs” veut dire…
+- `VOCAB_A26` Le squelette de la femme
+- `VOCAB_A26` Le bassin d'une femme est plus large que celui d'un homme.
+- `VOCAB_A26` The knee is a joint between the thigh bone and the shin bone.
+- `VOCAB_A26` On average, men are taller than women, so their bones are a little longer.
+- `VOCAB_A26` En moyenne, les hommes sont plus grands que les femmes ; leurs os sont donc un peu plus longs.
+- `VOCAB_A26` “Wrist” veut dire…
+- `VOCAB_A26` Les organes
+- `VOCAB_A26` “Lungs” et “kidneys” sont toujours au pluriel en anglais. Les noms d'organes se disent avec “the” : “the heart pumps blood”.
+- `VOCAB_A26` The heart pumps blood around the body.
+- `VOCAB_A26` We breathe with our lungs.
+- `VOCAB_A26` Nous respirons avec nos poumons.
+- `VOCAB_A26` The brain controls the whole body.
+- `VOCAB_A26` “Lungs” veut dire…
 - `VOCAB_A26` toux / tousser
 - `VOCAB_A26` sore throat
 - `VOCAB_A26` mal de gorge
