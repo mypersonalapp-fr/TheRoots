@@ -1,0 +1,14 @@
+{
+  "name": "The Roots — la racine des langues",
+  "short_name": "The Roots",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    { "src": "assets/img/app-icon.png", "sizes": "any", "type": "image/png", "purpose": "any" }
+  ]
+}
