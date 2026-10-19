@@ -467,3 +467,12 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 
 /* menu de leçon : un peu plus bas sous la barre de progression (même rythme sur tous les niveaux) */
 .lc-menu{ margin-top:16px; }
+
+/* allègement : moins de gras, image entière (jamais rognée) */
+.lc-exs img{ object-fit:contain !important; }
+.lc-w b, .lc-ex .lc-w b, .lc-vl .lc-w b, .lc-rules .lc-w b, .lc-greet .lc-w b{ font-weight:600; }
+.lc-form, .lc-rules .lc-w .lc-form{ font-weight:600; }
+.lc-rules .lc-w .lc-form{ font-size:16px; }
+.lc-rules .lc-w b{ font-size:16px; }
+.lc-q{ font-weight:600; }
+.lc-card h2, .lc-card h3{ font-weight:700; }
