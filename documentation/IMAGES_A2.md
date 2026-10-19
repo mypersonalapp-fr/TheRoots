@@ -124,3 +124,8 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - A2.5 : les 16 images sont toutes placées (a25-m4 reçue le 19/10).
 - Images en trop non utilisées : enfants + drapeaux (salutations), femme qui lit le soir.
 - 19/10 (2e lot) : les 8 scene-a26-* (body, symptoms, doctor, pharmacy, advice, obligation, sport, sleep) REÇUES et placées (1280×720). Restent : 6 city a26-m1..m6 + describe-a26-waiting, describe-a26-park.
+
+## A2.7 « Weather and Environment » — 16 images (leçon construite le 19/10, images à fournir en fin de parcours)
+- lesson/ (scènes de vocabulaire) : scene-a27-weather, scene-a27-temperature, scene-a27-storm, scene-a27-clothes, scene-a27-nature, scene-a27-recycle, scene-a27-plans, scene-a27-travel, scene-a27-alert
+- city/ : a27-m1 … a27-m6
+- lesson/ « Décris l'image » : describe-a27-storm, describe-a27-snow

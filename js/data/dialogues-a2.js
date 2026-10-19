@@ -86,4 +86,16 @@ export const DIALOGUES_A2 = {
       { npc: "Take one tablet, but you mustn't take more than four a day.", ok: ["\\b(thank|thanks|ok|okay|yes|sure|understand|got it|four)\\b"], model: "OK, I understand. Thank you.", hint: "Confirme poliment." },
       { npc: "And you should drink plenty of water. Get well soon!", ok: ["\\b(thank|thanks|bye|goodbye|you too|see you)\\b"], model: "Thank you, goodbye!", hint: "Remercie et dis au revoir." }] },
   ],
+  "A2.7": [
+    { title: "Que fait-on s'il pleut ?", icon: "☔", scene: "Tu organises le week-end avec un ami et tu regardes la météo.", turns: [
+      { npc: "What's the weather going to be like on Saturday?", ok: ["\\b(it will|it.ll|it might|sunny|rain|rainy|cloudy|cold|warm|windy|forecast|i think|probably)\\b"], model: "I think it will be sunny, but it might rain in the evening.", hint: "Fais une prédiction avec will ou might." },
+      { npc: "Great! Shall we have a picnic in the park?", ok: ["\\b(yes|ok|okay|sure|good idea|great|let.s|why not|sounds)\\b"], model: "Yes, good idea! I will bring some sandwiches.", hint: "Accepte et propose d'apporter quelque chose." },
+      { npc: "And what will we do if it rains?", ok: ["\\b(if it rains|we will|we.ll|stay|cinema|home|indoors|go to)\\b"], model: "If it rains, we will go to the cinema.", hint: "Utilise if + présent, will + base." },
+      { npc: "Perfect. I'll check the forecast on Friday and send you a message.", ok: ["\\b(thank|thanks|ok|okay|great|perfect|see you|bye|good)\\b"], model: "Thanks! See you on Saturday.", hint: "Remercie et dis au revoir." }] },
+    { title: "Un vol retardé par le brouillard", icon: "✈️", scene: "À l'aéroport, tu demandes des informations sur ton vol.", turns: [
+      { npc: "Good morning. How can I help you?", ok: ["\\b(flight|plane|delay|late|cancel|fog|when|what time|my flight|i.m)\\b"], model: "Hello. Is my flight to Rome late because of the fog?", hint: "Demande si ton vol est en retard." },
+      { npc: "Yes, it will be about two hours late. It might even be cancelled if the fog gets thicker.", ok: ["\\b(oh|what|really|sorry|thank|if it|will|what should|what do|wait|how long)\\b"], model: "Oh no! What will happen if it is cancelled?", hint: "Pose une question avec What will happen if…" },
+      { npc: "If it is cancelled, you will get a seat on tomorrow's flight.", ok: ["\\b(thank|thanks|ok|okay|good|great|understand|fine|wait)\\b"], model: "OK, thank you. I will wait here.", hint: "Remercie et dis ce que tu feras." },
+      { npc: "Please check the screen every thirty minutes. Have a nice day!", ok: ["\\b(thank|thanks|you too|bye|goodbye|see you)\\b"], model: "Thank you, you too!", hint: "Remercie." }] },
+  ],
 };

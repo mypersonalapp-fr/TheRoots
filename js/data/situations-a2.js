@@ -36,4 +36,9 @@ export const SITUATIONS_A2 = {
     S("💡", "Give advice to a friend with a cold.", "Utilise « You should… ».", "\\byou should\\b", "You should stay in bed."),
     S("⚠️", "Say a rule at the hospital.", "Utilise « You mustn't… » ou « You have to… ».", "\\byou (mustn.t|have to|must)\\b", "You mustn't use your phone here."),
   ],
+  "A2.7": [
+    S("🔮", "Say what the weather will be like tomorrow.", "Utilise « It will… ».", "\\bit will\\b|\\bit.ll\\b", "It will rain tomorrow."),
+    S("☔", "Say what you will do if it rains.", "Utilise « If it rains, I will… ».", "\\bif it (rains|snows|is)\\b.*\\b(will|.ll)\\b", "If it rains, I will stay at home."),
+    S("🌥️", "Say something that might happen.", "Utilise « might ».", "\\bmight\\b", "It might snow tonight."),
+  ],
 };

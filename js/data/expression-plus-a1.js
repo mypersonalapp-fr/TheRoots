@@ -1,5 +1,6 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019a4";
 const T = (title, icon, model, rows, img) => ({
   title, icon, model, img,
   prompts: rows.map((r) => r[0]),
@@ -416,4 +417,24 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis ce dont tu as besoin.", "Besoin", "i need|i.d like|something for|do you have"], ["Dis tes symptômes.", "Symptômes", "cold|cough|nose|headache|throat|fever|hurts"],
       ["Pose une question sur la dose.", "Dose", "how many|how often|how much|tablets|times a day|twice"], ["Remercie.", "Merci", "thank|thanks|please"]]),
   ],
+  7: [
+    T("Décris l'image : l'orage au parc", "⛈️", "In this picture, a storm over a park. The sky is dark and grey, and there is lightning. Some people are running with umbrellas, and a girl is wearing a yellow raincoat. In the distance, there is a rainbow. I think the rain will stop soon, and maybe the sun will come out.", [
+      ["Dis quel temps il fait.", "Le temps", "storm|stormy|rain|raining|dark|grey|gray|lightning|wind|windy|cloudy"], ["Dis ce que font ou portent les personnes.", "Les personnes", "running|wearing|holding|umbrella|umbrellas|raincoat|walking|girl|boy|woman|man"],
+      ["Dis ce que tu vois au loin.", "Les détails", "rainbow|sky|clouds|trees|park|lake|bench"], ["Fais une prédiction avec will ou might.", "Prédiction", "will|might|maybe|probably|i think"]],
+      "describe-a27-storm"),
+    T("Décris l'image : la neige au village", "❄️", "In this picture, a snowy village in winter. Children are playing in the snow and one boy is pulling a red sledge. A woman is wearing a warm coat, gloves and a scarf. Smoke is coming from the chimneys. It is very cold, so I think they will go home and drink hot chocolate soon.", [
+      ["Dis quel temps il fait.", "Le temps", "snow|snowy|cold|winter|freezing|white|ice|icy"], ["Dis ce que font les enfants.", "Les enfants", "playing|pulling|sledge|sled|building|snowman|running|children|boy|girl"],
+      ["Dis ce que porte la femme.", "Les vêtements", "coat|gloves|scarf|hat|wearing|boots|jacket"], ["Fais une prédiction avec will ou might.", "Prédiction", "will|might|maybe|probably|i think"]],
+      "describe-a27-snow"),
+    T("Mon week-end selon le temps", "🧺", "If it is sunny on Saturday, I will have a picnic in the park. If it rains, I will stay at home and watch a film. I might go shopping on Sunday. I hope the weather will be good, because I don't like the cold.", [
+      ["Dis ce que tu feras s'il fait beau.", "S'il fait beau", "if it('s| is) (sunny|warm|nice)|if the weather is (good|nice)|picnic|park|beach"], ["Dis ce que tu feras s'il pleut.", "S'il pleut", "if it (rains|snows)|if it('s| is) (rainy|cold)|stay at home|film|read|book"],
+      ["Dis une possibilité avec might.", "Might", "might|maybe|perhaps|probably"], ["Dis ce que tu espères ou n'aimes pas.", "Espoir", "hope|don.t like|do not like|i like|i love|i prefer"]]),
+    T("Protéger la planète", "🌍", "We must protect the planet. If we recycle plastic, we will reduce waste. I will use a reusable bottle, and I will turn off the lights. If everybody does something, the air will be cleaner.", [
+      ["Dis ce qu'on doit faire.", "Obligation", "must|should|have to|need to|let.s"], ["Utilise if + présent, will + base.", "If", "if (we|you|i|everybody|everyone) \\w+"],
+      ["Dis ce que tu feras.", "Ce que tu feras", "i will|i.ll|i.m going to|i can"], ["Cite un geste écologique.", "Un geste", "recycle|reduce|reuse|bottle|lights|energy|water|walk|cycle|plastic|waste"]]),
+  ],
 };
+
+// Exercices de traduction EN↔FR (A1.6 → A2.7) : ajoutés à la fin des expressions de chaque leçon.
+for (const [k, v] of Object.entries(TRADUCTION_A1)) EXPRESSION_PLUS_A1[k] = [...(EXPRESSION_PLUS_A1[k] || []), ...v];
+for (const [k, v] of Object.entries(TRADUCTION_A2)) EXPRESSION_PLUS_A2[k] = [...(EXPRESSION_PLUS_A2[k] || []), ...v];

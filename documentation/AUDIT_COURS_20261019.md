@@ -12,8 +12,8 @@ Outils : `node tools/audit-contenu.mjs` (volumes), `node tools/audit-programme.m
 - « Décris l'image » : présent de A1.8 à A2.6 (2 par leçon).
 
 ## 2. Écarts de cohérence trouvés
-1. A1.1 n'a pas de missions « Roots City » (city = null) alors que A1.2–A1.12 et A2.x en ont 6 → menu non identique.
-2. Aucune traduction EN↔FR dans A1/A2 (présente seulement dans les niveaux B/C).
+1. (Corrigé après vérification : A1.1 a bien ses 6 missions « Roots City », jeu par défaut du moteur, images city/m1..m6 présentes. Fausse alerte.)
+2. Aucune traduction EN↔FR dans A1/A2 → CORRIGÉ le 19/10 : 2 exercices de traduction (EN→FR et FR→EN, 4 phrases, 4 critères) dans A1.6 → A2.7 (js/data/traduction-a1a2.js), écrits seulement (hors onglet « Parler » et hors tirage du test).
 3. Le corps humain n'est enseigné qu'en A2.6 (A1 n'a que « décrire un proche » : adjectifs/visage en A1.1).
 4. « Lire un journal » : seulement The Roots Daily A1 (8 numéros) ; aucun Daily A2.
 5. Météo vue en A1.11 puis approfondie en A2.7 (prévu) : cohérent, à garder.
@@ -31,6 +31,5 @@ Outils : `node tools/audit-contenu.mjs` (volumes), `node tools/audit-programme.m
 
 ## 4. Plan
 - Section « Traduction » dans chaque leçon à partir d'A2.3 (EN→FR sur texte inventé lié au thème : article, revue, chanson, message ; FR→EN avec 4 critères) ; construite dès A2.7.
-- Ajouter les missions City à A1.1.
 - Daily A2.
 - Prompt général d'images à la fin des cours (A2.4 à refaire si besoin, A2.6, A2.7–A2.12).
