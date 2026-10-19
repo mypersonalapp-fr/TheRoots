@@ -123,3 +123,4 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - A2.5 placées (11) : scene-a25-bigger, scene-a25-price (deux vestes de couleurs différentes : à refaire), scene-a25-equal, scene-a25-preference, scene-a25-cities, scene-a25-shopping, a25-m1, a25-m2, a25-m3, a25-m5 (panneaux de gare floutés), a25-m6.
 - A2.5 : les 16 images sont toutes placées (a25-m4 reçue le 19/10).
 - Images en trop non utilisées : enfants + drapeaux (salutations), femme qui lit le soir.
+- 19/10 (2e lot) : les 8 scene-a26-* (body, symptoms, doctor, pharmacy, advice, obligation, sport, sleep) REÇUES et placées (1280×720). Restent : 6 city a26-m1..m6 + describe-a26-waiting, describe-a26-park.
