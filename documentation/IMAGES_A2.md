@@ -114,5 +114,5 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - city/ : a26-m1 (salle d'attente), a26-m2 (pharmacie), a26-m3 (accueil hôpital), a26-m4 (parc sportif), a26-m5 (cuisine saine), a26-m6 (chambre de nuit)
 - lesson/ : describe-a26-waiting, describe-a26-park
 
-### A2.6 — images créées par Claude (SVG → webp, pas à fournir par Ashley)
-- lesson/scene-a26-skeleton-man.webp et scene-a26-skeleton-woman.webp : squelettes de face avec étiquettes anglaises (homme : skull, jaw, collarbone, breastbone, ribs, spine, thigh bone, kneecap, shin bone ; femme : shoulder, elbow, wrist, finger, hip, pelvis, knee, ankle, toe).
+### A2.6 — 2 images supplémentaires (squelettes) à fournir par Ashley, DA Pixar
+- lesson/scene-a26-skeleton-man, lesson/scene-a26-skeleton-woman : squelette de face, style Pixar, sans texte (les mots sont dans la liste de la page). Mon dessin SVG plat a été retiré : hors DA.
