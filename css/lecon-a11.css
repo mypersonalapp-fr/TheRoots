@@ -582,3 +582,5 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-mosaic.lc-fit .lc-tile .lc-tic{ width:clamp(26px,5.2dvh,46px); height:clamp(26px,5.2dvh,46px); }
 .lc-mosaic.lc-fit .lc-tile b{ font-size:clamp(12px,1.75dvh,14px); } .lc-mosaic.lc-fit .lc-tile small{ font-size:clamp(9.5px,1.35dvh,11px); }
 .lc-xrow{ flex:none; margin-top:6px; } .lc-xchip{ padding:7px 6px; }
+.lc-tile-wide{ grid-column:1 / -1; }
+.lc-mosaic:not(.lc-fit) .lc-tile{ min-height:104px; }
