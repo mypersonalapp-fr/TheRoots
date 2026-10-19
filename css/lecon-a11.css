@@ -529,3 +529,28 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-score{ margin-top:6px; padding:10px 14px; border-radius:16px; background:var(--surface); display:grid; gap:2px; font-size:14px; } .lc-score b{ font-size:15px; }
 :root[data-theme="dark"] .lc-corr{ background:#1f3d2a; color:#cdeed8; } :root[data-theme="dark"] .lc-corr.help{ background:#4a3720; color:#ffe2b0; }
 .lc-corr .lc-spk{ position:static; margin-left:auto; }
+
+/* ===== Menu mosaïque + pastilles de matière ===== */
+.lc-mosaic{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px; }
+.lc-tile{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-height:92px; padding:8px 6px; border:0; border-bottom:4px solid var(--c); border-radius:18px; background:rgba(255,255,255,.94); color:var(--ink); font-family:inherit; text-align:center; cursor:pointer; }
+.lc-tile b{ font-size:14px; line-height:1.1; text-transform:capitalize; }
+.lc-tile small{ font-size:11px; color:var(--muted,#5b6b85); text-transform:capitalize; }
+.lc-tile .lc-tic{ width:46px; height:46px; display:grid; place-items:center; }
+.lc-tile .lc-tic img, .lc-mchip-ic img{ width:100%; height:100%; object-fit:contain; }
+.lc-tile .lc-tn{ position:absolute; left:8px; top:7px; width:21px; height:21px; border-radius:50%; background:#e8a23a; color:#fff; font-size:11px; font-weight:800; display:grid; place-items:center; }
+.lc-tile .lc-tdone{ position:absolute; right:8px; top:7px; width:20px; height:20px; border-radius:50%; background:#22a06b; color:#fff; font-size:12px; font-weight:800; display:grid; place-items:center; }
+.lc-tile-off{ opacity:.6; }
+.lc-ph-ic{ display:grid; place-items:center; width:100%; height:100%; border:2px dashed var(--c,#8a99b3); border-radius:50%; font-size:22px; }
+.lc-xrow{ display:flex; gap:8px; margin-top:8px; }
+.lc-xchip{ flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 6px; border:0; border-radius:14px; background:rgba(255,255,255,.94); color:var(--ink); font:700 13px/1.1 inherit; font-family:inherit; cursor:pointer; text-transform:capitalize; }
+.lc-xic{ width:26px; height:26px; display:grid; place-items:center; } .lc-xic img{ width:100%; height:100%; object-fit:contain; } .lc-xic .lc-ph-ic{ font-size:15px; border:0; }
+.lc-mchip{ display:flex; align-items:center; gap:10px; margin:2px 0 8px; padding:8px 12px; border-radius:18px; background:var(--c); color:#fff; box-shadow:0 3px 0 color-mix(in srgb,var(--c) 70%,#000); }
+.lc-mchip-ic{ width:42px; height:42px; flex:none; display:grid; place-items:center; padding:5px; border-radius:50%; background:rgba(255,255,255,.88); }
+.lc-mchip-ic .lc-ph-ic{ font-size:18px; border-color:var(--c); }
+.lc-mchip-tx b{ display:block; font-size:16px; line-height:1; text-transform:capitalize; } .lc-mchip-tx small{ display:block; margin-top:2px; font-size:11px; opacity:.92; text-transform:capitalize; }
+.lc-mchip-pg{ margin-left:auto; text-align:right; font-weight:800; font-size:13px; }
+.lc-mchip-pg i{ display:block; width:70px; height:6px; margin-top:4px; border-radius:6px; background:rgba(255,255,255,.35); overflow:hidden; } .lc-mchip-pg s{ display:block; height:100%; background:#fff; }
+:root[data-theme="dark"] .lc-tile, :root[data-theme="dark"] .lc-xchip{ background:rgba(24,34,60,.94); color:#eef2ff; }
+:root[data-theme="dark"] .lc-tile small{ color:#aab6d3; }
+/* Majuscule au début de chaque mot : titres d'écran, boutons et onglets de l'interface */
+.lc-head-title, .lc-cta, .lc-sec-btn, .lc-tab, .lc-back, .lc-sec{ text-transform:capitalize; }

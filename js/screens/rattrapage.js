@@ -1,8 +1,8 @@
 // The Roots — série de rattrapage (5 questions corrigées) : utilisée depuis le livret ET depuis l'écran de verrouillage du test.
 // id = code de leçon ("A1.3", "A2.1") ou "EXAM-A1" pour le Grand contrôle (questions tirées des 12 leçons).
-import { bulletinA1, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019d7";
-import { loadBundle } from "../data/lecons-a1.js?v=20261019d7";
-import { loadBundleA2 } from "../data/lecons-a2.js?v=20261019d7";
+import { bulletinA1, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019d8";
+import { loadBundle } from "../data/lecons-a1.js?v=20261019d8";
+import { loadBundleA2 } from "../data/lecons-a2.js?v=20261019d8";
 
 const esc = (x) => String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
