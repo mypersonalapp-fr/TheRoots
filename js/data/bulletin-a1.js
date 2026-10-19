@@ -1,7 +1,7 @@
 // The Roots — bulletin scolaire A1 : lit les tests de fin de leçon (stockage local) et en déduit notes, lacunes et rattrapage.
-import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261019c7";
-import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261019c7";
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019c7";
+import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261019c9";
+import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261019c9";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019c9";
 export const PASS = 32;
 export const SK = [["Compréhension écrite", 7.5], ["Compréhension orale", 7.5], ["Grammaire", 10], ["Expression écrite", 7.5], ["Expression orale", 7.5]];
 const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { return {}; } };
