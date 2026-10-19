@@ -115,4 +115,4 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - lesson/ : describe-a26-waiting, describe-a26-park
 
 ### A2.6 — 2 images supplémentaires (squelettes) à fournir par Ashley, DA Pixar
-- lesson/scene-a26-skeleton-man, lesson/scene-a26-skeleton-woman : squelette de face, style Pixar, sans texte (les mots sont dans la liste de la page). Mon dessin SVG plat a été retiré : hors DA.
+- lesson/scene-a26-skeleton-man et scene-a26-skeleton-woman : REÇUES le 19/10 (Pixar), recadrées en 16:9.
