@@ -107,3 +107,9 @@ Scènes `assets/img/lesson/` (légende dans le vocabulaire) :
 - scene-a25-shopping : une famille compare deux canapés
 Roots City `assets/img/city/` : a25-m1 (petit appartement calme), a25-m2 (appartement moderne), a25-m3 (marché animé), a25-m4 (parc calme avec lac), a25-m5 (quai de gare à l'heure de pointe), a25-m6 (tour de bureaux à côté d'une vieille maison).
 « Décris l'image » `assets/img/lesson/` : describe-a25-market (marché de fruits et légumes, vendeur qui pèse des pommes, femme qui choisit des tomates, deux enfants avec une orange, chien sous une table), describe-a25-street (supermarché neuf face à une vieille boulangerie, homme à vélo, femme avec des sacs). Aucun texte lisible, écrans éteints.
+
+## A2.6 « Health and Well-being » — 16 images (leçon construite le 19/10, images à placer à leur arrivée)
+Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, écrans éteints).
+- lesson/ : scene-a26-body, scene-a26-symptoms, scene-a26-doctor, scene-a26-pharmacy, scene-a26-advice, scene-a26-obligation, scene-a26-sport, scene-a26-sleep
+- city/ : a26-m1 (salle d'attente), a26-m2 (pharmacie), a26-m3 (accueil hôpital), a26-m4 (parc sportif), a26-m5 (cuisine saine), a26-m6 (chambre de nuit)
+- lesson/ : describe-a26-waiting, describe-a26-park

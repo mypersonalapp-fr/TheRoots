@@ -74,4 +74,16 @@ export const DIALOGUES_A2 = {
       { npc: "Here is your fish. Is everything all right?", ok: ["\\b(yes|it.s|looks|thank|great|perfect|delicious|good|very)\\b"], model: "Yes, it looks delicious. It's the biggest fish I've ever seen!", hint: "Réponds avec un superlatif si tu peux." },
       { npc: "Would you like a dessert?", ok: ["\\b(yes|no|please|thank|thanks|i.d like|i.ll have|not|maybe)\\b"], model: "No, thank you. The bill, please.", hint: "Réponds poliment." }] },
   ],
+  "A2.6": [
+    { title: "Chez le médecin : le diagnostic", icon: "🩺", scene: "Le médecin te pose des questions pour comprendre ce que tu as.", turns: [
+      { npc: "Good morning. What's the matter?", ok: ["\\b(i have|i.ve got|my \\w+ (hurts?|aches?)|i feel|it hurts|sore|headache|cough|cold|fever)\\b"], model: "I have a sore throat and a cough.", hint: "Dis ce que tu as : I have… ou My … hurts." },
+      { npc: "Do you have a fever?", ok: ["\\b(yes|no|a (little|bit)|temperature|degrees|fever|not)\\b"], model: "Yes, a little. My temperature is thirty-eight.", hint: "Réponds par yes / no, puis précise." },
+      { npc: "When did it start?", ok: ["\\b(ago|since|yesterday|monday|tuesday|days?|last night|this morning|started|weekend)\\b"], model: "It started three days ago.", hint: "Utilise « ago » : two days ago." },
+      { npc: "It looks like a cold. You should rest and drink plenty of water. You have to take these tablets twice a day.", ok: ["\\b(thank|thanks|ok|okay|yes|sure|understand|rest|water|twice)\\b"], model: "Thank you, doctor. I'll rest and drink water.", hint: "Remercie et confirme." }] },
+    { title: "À la pharmacie", icon: "💊", scene: "Tu demandes un médicament à la pharmacienne.", turns: [
+      { npc: "Hello! How can I help you?", ok: ["\\b(i need|i.d like|i would like|do you have|something for|headache|cough|cold)\\b"], model: "I need something for a headache.", hint: "I need something for…" },
+      { npc: "Do you have any other symptoms?", ok: ["\\b(yes|no|also|tired|fever|dizzy|sick|just|only|cough|sore)\\b"], model: "No, just a headache, and I feel tired.", hint: "Dis oui ou non, puis ajoute un symptôme." },
+      { npc: "Take one tablet, but you mustn't take more than four a day.", ok: ["\\b(thank|thanks|ok|okay|yes|sure|understand|got it|four)\\b"], model: "OK, I understand. Thank you.", hint: "Confirme poliment." },
+      { npc: "And you should drink plenty of water. Get well soon!", ok: ["\\b(thank|thanks|bye|goodbye|you too|see you)\\b"], model: "Thank you, goodbye!", hint: "Remercie et dis au revoir." }] },
+  ],
 };

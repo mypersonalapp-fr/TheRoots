@@ -31,4 +31,9 @@ export const SITUATIONS_A2 = {
     S("🥇", "Say what the best thing in your town is.", "Utilise « the best » ou « the most … ».", "\\bthe (best|most \\w+|\\w+est)\\b", "The best place in my town is the park."),
     S("⚖️", "Say what you prefer and why.", "Commence par « I prefer… because… ».", "\\bi (prefer|.d rather)\\b.*\\bbecause\\b|\\bbecause\\b.*\\bi (prefer|.d rather)\\b", "I prefer tea because it's lighter."),
   ],
+  "A2.6": [
+    S("🤒", "Tell a friend where it hurts.", "Utilise « My … hurts » ou « I have a … ».", "\\b(my \\w+ (hurts?|aches?)|i have a \\w+)\\b", "My head hurts."),
+    S("💡", "Give advice to a friend with a cold.", "Utilise « You should… ».", "\\byou should\\b", "You should stay in bed."),
+    S("⚠️", "Say a rule at the hospital.", "Utilise « You mustn't… » ou « You have to… ».", "\\byou (mustn.t|have to|must)\\b", "You mustn't use your phone here."),
+  ],
 };

@@ -394,4 +394,26 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis lequel tu préfères.", "Préférence", "prefer|rather|favourite|better"],
       ["Donne une raison avec « because ».", "Raison", "because"]]),
   ],
+  6: [
+    T("Décris l'image : la salle d'attente", "🏥", "In this picture, a doctor's waiting room. A boy has a bandage on his arm and a woman is coughing. A girl is touching her ear, so she probably has an earache. A man is holding a thermometer. The nurse is walking to the desk. I think the boy should rest, and the woman should see the doctor.", [
+      ["Dis ce que les personnes ont.", "Les symptômes", "bandage|coughing|cough|ear|earache|thermometer|fever|hurt|sick|ill"], ["Dis qui est dans la pièce.", "Les personnes", "boy|woman|girl|man|nurse|doctor|patient"],
+      ["Dis où se passe la scène.", "Le lieu", "waiting room|doctor|clinic|hospital|surgery"], ["Donne un conseil avec should.", "Conseil", "should|shouldn.t|had better"]],
+      "describe-a26-waiting"),
+    T("Décris l'image : le parc", "🏃", "In this picture, a sports park on a sunny morning. A woman is doing yoga and two men are jogging. A boy is drinking water from a bottle. An older couple is walking slowly. A girl is riding a bicycle and she has to wear a helmet. Everybody looks healthy, and I think they should do this every day.", [
+      ["Dis ce que font les personnes.", "Les activités", "is (doing|jogging|drinking|walking|riding)|are (jogging|walking)|yoga|jogging|cycling|bicycle"], ["Dis ce qu'on boit ou ce qu'on porte.", "Détails", "water|bottle|helmet|mat|shoes|hat"],
+      ["Dis le moment et le temps.", "Temps", "morning|sunny|sun|weather|warm|day"], ["Utilise should ou have to.", "Conseil ou obligation", "should|have to|must|mustn.t"]],
+      "describe-a26-park"),
+    T("Chez le médecin", "🩺", "Good morning, doctor. I have a bad cough and a sore throat. It started three days ago. I don't have a fever. What should I do? Do I have to take medicine?", [
+      ["Dis ce que tu as.", "Symptômes", "i have|my \\w+ hurts|cough|sore|headache|fever|ache|feel"], ["Dis depuis quand.", "Depuis quand", "ago|since|yesterday|days|started|week"],
+      ["Demande un conseil.", "Ta question", "what should|should i|do i have to|can i"], ["Salue poliment.", "Politesse", "good morning|hello|doctor|thank|please"]]),
+    T("Un conseil à un ami", "🤝", "You look tired, so you should go to bed early. You shouldn't drink coffee in the evening. Why don't you take a day off? You have to rest. Get well soon!", [
+      ["Donne un conseil avec should.", "Should", "should"], ["Dis ce qu'il ne devrait pas faire.", "Shouldn't", "shouldn.t|should not|don.t|mustn.t"],
+      ["Utilise « Why don't you… ».", "Suggestion", "why don.t you|you.d better|try to|if i were you"], ["Souhaite-lui un prompt rétablissement.", "Souhait", "get well|feel better|take care|hope"]]),
+    T("Mes habitudes de santé", "🥗", "I try to stay healthy. I walk every day and I eat vegetables and fruit. I drink two litres of water. I should sleep more, because I only sleep six hours. I mustn't eat too much sugar.", [
+      ["Dis ce que tu fais pour ta santé.", "Habitudes", "walk|exercise|run|jog|swim|eat|drink|sport|yoga"], ["Dis ce que tu manges ou bois.", "Alimentation", "vegetables|fruit|water|salad|tea|healthy"],
+      ["Dis ce que tu devrais faire mieux.", "Je devrais", "should|need to|have to|must"], ["Dis ce que tu ne dois pas faire.", "Interdit", "mustn.t|shouldn.t|don.t|avoid|never"]]),
+    T("À la pharmacie", "💊", "Hello. I need something for a cold. I have a runny nose and a cough. How many tablets can I take a day? Do I have to see a doctor? Thank you very much.", [
+      ["Dis ce dont tu as besoin.", "Besoin", "i need|i.d like|something for|do you have"], ["Dis tes symptômes.", "Symptômes", "cold|cough|nose|headache|throat|fever|hurts"],
+      ["Pose une question sur la dose.", "Dose", "how many|how often|how much|tablets|times a day|twice"], ["Remercie.", "Merci", "thank|thanks|please"]]),
+  ],
 };

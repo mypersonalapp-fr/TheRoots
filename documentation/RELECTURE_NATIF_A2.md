@@ -3431,7 +3431,7 @@
 - `EXERCISES_A25` would rather + verbe.
 - `EXERCISES_A25` I like the flat better ___ it's quieter.
 - `EXERCISES_A25` Which do you ___, tea or coffee?
-- `EXERCISES_A25` Which do you prefer ? ⚠ espacement/ponctuation
+- `EXERCISES_A25` Which do you prefer?
 - `EXERCISES_A25` I'd rather walk ___ take the bus.
 - `EXERCISES_A25` rather … than.
 - `EXERCISES_A25` My ___ colour is blue.
@@ -3968,6 +3968,674 @@
 - `VOCAB_A25` Notre nouvel appartement est plus lumineux et plus spacieux.
 - `VOCAB_A25` “Spacious” veut dire…
 
+## A2.6 (834 lignes)
+
+- `EXERCISES_A26` Choisis le sens correct.
+- `EXERCISES_A26` Throat = gorge.
+- `EXERCISES_A26` Knee = genou.
+- `EXERCISES_A26` mal de dents
+- `EXERCISES_A26` Cough = toux.
+- `EXERCISES_A26` Stomach = ventre.
+- `EXERCISES_A26` Appointment = rendez-vous.
+- `EXERCISES_A26` Prescription = ordonnance.
+- `EXERCISES_A26` Pharmacist = pharmacien.
+- `EXERCISES_A26` Should : conseil
+- `EXERCISES_A26` Should / shouldn't + verbe.
+- `EXERCISES_A26` You look tired. You ___ rest.
+- `EXERCISES_A26` should to
+- `EXERCISES_A26` should + verbe.
+- `EXERCISES_A26` He ___ eat so much sugar. It's bad for him.
+- `EXERCISES_A26` You ___ go out. It's very cold.
+- `EXERCISES_A26` Il fait froid : shouldn't.
+- `EXERCISES_A26` I think you ___ see a doctor.
+- `EXERCISES_A26` should + verbe sans to.
+- `EXERCISES_A26` We ___ stay up late before an exam.
+- `EXERCISES_A26` shouldn't stay up late.
+- `EXERCISES_A26` You ___ wash your hands often.
+- `EXERCISES_A26` Bon conseil : should.
+- `EXERCISES_A26` Demander un conseil
+- `EXERCISES_A26` Should, why don't you, you'd better.
+- `EXERCISES_A26` What ___ I do?
+- `EXERCISES_A26` do should
+- `EXERCISES_A26` What should I do?
+- `EXERCISES_A26` ___ I take the medicine now?
+- `EXERCISES_A26` Should I … ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` Why ___ you ask the pharmacist?
+- `EXERCISES_A26` Why don't you … ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` ___ she see a doctor?
+- `EXERCISES_A26` Does should
+- `EXERCISES_A26` Should she … ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` You'd ___ go to bed early.
+- `EXERCISES_A26` You'd better + verbe.
+- `EXERCISES_A26` If I ___ you, I'd call the doctor.
+- `EXERCISES_A26` If I were you.
+- `EXERCISES_A26` Obligation : have to / has to / had to.
+- `EXERCISES_A26` I ___ to take this medicine twice a day.
+- `EXERCISES_A26` I have to.
+- `EXERCISES_A26` He ___ to stay in bed.
+- `EXERCISES_A26` He has to.
+- `EXERCISES_A26` ___ you have to work tomorrow?
+- `EXERCISES_A26` Do you have to … ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` ___ she have to see the doctor?
+- `EXERCISES_A26` Does she have to … ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` We ___ to wait an hour yesterday.
+- `EXERCISES_A26` They ___ to wear a uniform.
+- `EXERCISES_A26` They have to.
+- `EXERCISES_A26` Must + verbe, sans -s ni to.
+- `EXERCISES_A26` Patients ___ wait here.
+- `EXERCISES_A26` must + verbe.
+- `EXERCISES_A26` You ___ show your card at the door.
+- `EXERCISES_A26` must ne change pas.
+- `EXERCISES_A26` She ___ be tired. She worked all night.
+- `EXERCISES_A26` You ___ be careful with this machine.
+- `EXERCISES_A26` must be careful.
+- `EXERCISES_A26` I ___ call my mother tonight.
+- `EXERCISES_A26` I must call.
+- `EXERCISES_A26` Visitors ___ leave at eight o'clock.
+- `EXERCISES_A26` Visitors must leave.
+- `EXERCISES_A26` Mustn't ou don't have to ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` Interdit ou pas obligatoire ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` Danger! You ___ touch this.
+- `EXERCISES_A26` haven't to
+- `EXERCISES_A26` don't have to
+- `EXERCISES_A26` Danger : mustn't.
+- `EXERCISES_A26` It's free. You ___ pay.
+- `EXERCISES_A26` shouldn't to
+- `EXERCISES_A26` Pas obligatoire : don't have to.
+- `EXERCISES_A26` You ___ smoke in the hospital.
+- `EXERCISES_A26` Interdit : mustn't.
+- `EXERCISES_A26` She ___ come. It's optional.
+- `EXERCISES_A26` doesn't have to
+- `EXERCISES_A26` mustn't to
+- `EXERCISES_A26` doesn't have to.
+- `EXERCISES_A26` Children ___ play near the road.
+- `EXERCISES_A26` Dangereux : mustn't.
+- `EXERCISES_A26` It's Sunday. We ___ get up early.
+- `EXERCISES_A26` hasn't to
+- `EXERCISES_A26` Should, have to ou must ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` Conseil, obligation, interdiction.
+- `EXERCISES_A26` The law says you ___ wear a seat belt.
+- `EXERCISES_A26` Loi : have to.
+- `EXERCISES_A26` It's a good idea, but it's your choice: you ___ see a doctor.
+- `EXERCISES_A26` Conseil : should.
+- `EXERCISES_A26` Smoking is forbidden. You ___ smoke here.
+- `EXERCISES_A26` The test is optional. You ___ do it.
+- `EXERCISES_A26` Optionnel : don't have to.
+- `EXERCISES_A26` The doctor says I ___ take these tablets. It's necessary.
+- `EXERCISES_A26` You ___ eat more vegetables. It's good for you.
+- `EXERCISES_A26` I ___ a headache.
+- `EXERCISES_A26` I have a headache.
+- `EXERCISES_A26` My back ___.
+- `EXERCISES_A26` back = singulier : hurts.
+- `EXERCISES_A26` My legs ___.
+- `EXERCISES_A26` legs = pluriel : hurt.
+- `EXERCISES_A26` I feel ___.
+- `EXERCISES_A26` a headache
+- `EXERCISES_A26` feel + adjectif.
+- `EXERCISES_A26` It started two days ___.
+- `EXERCISES_A26` two days ago.
+- `EXERCISES_A26` What's the ___?
+- `EXERCISES_A26` What's the matter?
+- `EXERCISES_A26` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A26` You want to make an appointment:
+- `EXERCISES_A26` I make an appointment you.
+- `EXERCISES_A26` I want a rendez-vous, please.
+- `EXERCISES_A26` I'd like to make an appointment, please.
+- `EXERCISES_A26` I'd like to make an appointment.
+- `EXERCISES_A26` You say where it hurts:
+- `EXERCISES_A26` I hurt throat my.
+- `EXERCISES_A26` My throat hurts.
+- `EXERCISES_A26` I have hurt in the throat.
+- `EXERCISES_A26` You ask for something for a cough:
+- `EXERCISES_A26` I need something for a cough.
+- `EXERCISES_A26` I need something to a cough.
+- `EXERCISES_A26` I need a something cough.
+- `EXERCISES_A26` something for a cough.
+- `EXERCISES_A26` You ask what to do:
+- `EXERCISES_A26` What do I should?
+- `EXERCISES_A26` What I should do?
+- `EXERCISES_A26` The doctor gives advice:
+- `EXERCISES_A26` You should rest for three days.
+- `EXERCISES_A26` You should to rest three days.
+- `EXERCISES_A26` You shoulds rest three days.
+- `EXERCISES_A26` You say the rule at the hospital:
+- `EXERCISES_A26` You mustn't to use your phone here.
+- `EXERCISES_A26` You don't must use your phone here.
+- `EXERCISES_A26` You mustn't use your phone here.
+- `EXERCISES_A26` mustn't + verbe.
+- `EXERCISES_A26` Nap = sieste.
+- `EXERCISES_A26` Fit = en forme.
+- `EXERCISES_A26` Forbidden = interdit.
+- `EXERCISES_A26` Helmet = casque.
+- `EXERCISES_A26` se reposer
+- `EXERCISES_A26` Should, have to, must, mustn't.
+- `EXERCISES_A26` You have a cold. You ___ stay warm.
+- `EXERCISES_A26` Visitors ___ leave at eight. It's the rule.
+- `EXERCISES_A26` She isn't ill. She ___ stay in bed.
+- `EXERCISES_A26` Pas malade : doesn't have to.
+- `EXERCISES_A26` He has a fever. He ___ go to school today.
+- `EXERCISES_A26` Cyclists ___ wear a helmet. It's the law.
+- `EXERCISES_A26` You ___ drink plenty of water. It's good for you.
+- `EXERCISES_A26` You ___ run with a bad knee.
+- `EXERCISES_A26` ___ I take one tablet or two?
+- `EXPRESSION_A26` Dis depuis quand.
+- `EXPRESSION_A26` Dis ce que tu dois ou devrais faire.
+- `EXPRESSION_A26` I have a headache and a sore throat. It started two days ago. I also feel very tired. I think I should see a doctor.
+- `EXPRESSION_A26` Depuis quand
+- `EXPRESSION_A26` Ce que tu dois ou devrais faire
+- `EXPRESSION_A26` Conseiller un ami malade
+- `EXPRESSION_A26` Donne un conseil avec should.
+- `EXPRESSION_A26` Dis ce qu'il ne devrait pas faire.
+- `EXPRESSION_A26` Dis une obligation avec have to ou must.
+- `EXPRESSION_A26` Termine avec un souhait.
+- `EXPRESSION_A26` You should stay in bed and drink a lot of water. You shouldn't go to work today. You have to take this medicine twice a day. Get well soon!
+- `EXPRESSION_A26` Un conseil avec should
+- `EXPRESSION_A26` Ce qu'il ne devrait pas faire
+- `EXPRESSION_A26` Une obligation
+- `EXPRESSION_A26` Un souhait
+- `GRAMMAR_A26` Should / shouldn't : donner un conseil
+- `GRAMMAR_A26` You should see a doctor.
+- `GRAMMAR_A26` should + verbe sans to
+- `GRAMMAR_A26` You shouldn't go to work today.
+- `GRAMMAR_A26` Tu ne devrais pas aller travailler aujourd'hui.
+- `GRAMMAR_A26` She should drink more water.
+- `GRAMMAR_A26` Elle devrait boire plus d'eau.
+- `GRAMMAR_A26` jamais de -s : she should
+- `GRAMMAR_A26` I think you should rest.
+- `GRAMMAR_A26` Je pense que tu devrais te reposer.
+- `GRAMMAR_A26` I think + you should
+- `GRAMMAR_A26` You should sleep more.
+- `GRAMMAR_A26` Tu devrais dormir davantage.
+- `GRAMMAR_A26` He shouldn't eat so much sugar.
+- `GRAMMAR_A26` Il ne devrait pas manger autant de sucre.
+- `GRAMMAR_A26` You ___ see a doctor.
+- `GRAMMAR_A26` I think you ___ rest.
+- `GRAMMAR_A26` I think you should + verbe.
+- `GRAMMAR_A26` Que dois-je faire ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` What should + sujet + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` Should I call the doctor?
+- `GRAMMAR_A26` Should + sujet + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` Yes, you should.
+- `GRAMMAR_A26` Oui, tu devrais.
+- `GRAMMAR_A26` Why don't you take a day off?
+- `GRAMMAR_A26` Why don't you + verbe = suggestion
+- `GRAMMAR_A26` What should we do?
+- `GRAMMAR_A26` Que devons-nous faire ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` Why don't you try this cream?
+- `GRAMMAR_A26` ___ I call the doctor?
+- `GRAMMAR_A26` To should
+- `GRAMMAR_A26` Should + sujet + verbe.
+- `GRAMMAR_A26` Why ___ you take a day off?
+- `GRAMMAR_A26` Why don't you + verbe.
+- `GRAMMAR_A26` Have to : obligation
+- `GRAMMAR_A26` I have to take this medicine twice a day.
+- `GRAMMAR_A26` have to + verbe
+- `GRAMMAR_A26` She has to stay in bed.
+- `GRAMMAR_A26` Elle doit rester au lit.
+- `GRAMMAR_A26` he / she / it → has to
+- `GRAMMAR_A26` Do you have to work tomorrow?
+- `GRAMMAR_A26` Dois-tu travailler demain ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` question avec do / does
+- `GRAMMAR_A26` We had to wait for an hour.
+- `GRAMMAR_A26` I have to see the doctor at five.
+- `GRAMMAR_A26` Does he have to take the pills?
+- `GRAMMAR_A26` She ___ to stay in bed.
+- `GRAMMAR_A26` 3e personne : has to.
+- `GRAMMAR_A26` We ___ to wait for an hour yesterday.
+- `GRAMMAR_A26` Must : obligation forte
+- `GRAMMAR_A26` You must wear a seat belt.
+- `GRAMMAR_A26` Tu dois porter ta ceinture.
+- `GRAMMAR_A26` Patients must wait here.
+- `GRAMMAR_A26` Les patients doivent attendre ici.
+- `GRAMMAR_A26` must ne change jamais (pas de -s)
+- `GRAMMAR_A26` I must call my mother tonight.
+- `GRAMMAR_A26` must = obligation personnelle
+- `GRAMMAR_A26` You must be tired.
+- `GRAMMAR_A26` You must show your card.
+- `GRAMMAR_A26` Vous devez montrer votre carte.
+- `GRAMMAR_A26` He must be ill. He looks pale.
+- `GRAMMAR_A26` must + verbe, sans -s ni to.
+- `GRAMMAR_A26` Drivers ___ stop at a red light.
+- `GRAMMAR_A26` You mustn't smoke here.
+- `GRAMMAR_A26` Tu ne dois pas fumer ici.
+- `GRAMMAR_A26` mustn't = interdit
+- `GRAMMAR_A26` You don't have to pay.
+- `GRAMMAR_A26` Tu n'as pas besoin de payer.
+- `GRAMMAR_A26` don't have to = pas obligatoire
+- `GRAMMAR_A26` She doesn't have to come.
+- `GRAMMAR_A26` Elle n'a pas besoin de venir.
+- `GRAMMAR_A26` doesn't have to (3e personne)
+- `GRAMMAR_A26` You mustn't touch it. It's hot!
+- `GRAMMAR_A26` Ne le touche pas. C'est chaud ! ⚠ espacement/ponctuation
+- `GRAMMAR_A26` mustn't = danger
+- `GRAMMAR_A26` You mustn't drive fast near a school.
+- `GRAMMAR_A26` We don't have to get up early on Sunday.
+- `GRAMMAR_A26` 3e personne : doesn't have to.
+- `GRAMMAR_A26` You should rest.
+- `GRAMMAR_A26` Tu devrais te reposer.
+- `GRAMMAR_A26` should = conseil, tu as le choix
+- `GRAMMAR_A26` You have to rest. The doctor said so.
+- `GRAMMAR_A26` You must rest. It's very important!
+- `GRAMMAR_A26` must = obligation forte
+- `GRAMMAR_A26` You shouldn't smoke, but you can.
+- `GRAMMAR_A26` Tu ne devrais pas fumer, mais tu peux.
+- `GRAMMAR_A26` You should eat more fruit.
+- `GRAMMAR_A26` Tu devrais manger plus de fruits.
+- `GRAMMAR_A26` You have to wear a helmet.
+- `GRAMMAR_A26` Tu dois porter un casque.
+- `GRAMMAR_A26` Loi = obligation : have to.
+- `GRAMMAR_A26` Smoking is forbidden here. You ___ smoke.
+- `GRAMMAR_A26` You'd better stay in bed.
+- `GRAMMAR_A26` Tu ferais mieux de rester au lit.
+- `GRAMMAR_A26` had better + verbe (conseil fort)
+- `GRAMMAR_A26` If I were you, I'd see a doctor.
+- `GRAMMAR_A26` If I were you, I'd …
+- `GRAMMAR_A26` Why don't you try some tea?
+- `GRAMMAR_A26` Why don't you + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A26` Try to sleep early tonight.
+- `GRAMMAR_A26` You'd better not go out.
+- `GRAMMAR_A26` Tu ferais mieux de ne pas sortir.
+- `GRAMMAR_A26` Take care of yourself!
+- `GRAMMAR_A26` Prends soin de toi ! ⚠ espacement/ponctuation
+- `GRAMMAR_A26` You'd ___ stay in bed.
+- `GRAMMAR_A26` If I ___ you, I'd see a doctor.
+- `GRAMMAR_A26` Why ___ you try some tea?
+- `GRAMMAR_A26` my + partie du corps + hurts
+- `GRAMMAR_A26` I feel dizzy and sick.
+- `GRAMMAR_A26` feel + adjectif
+- `GRAMMAR_A26` It started two days ago.
+- `GRAMMAR_A26` ago = il y a
+- `GRAMMAR_A26` I have a cough. It started three days ago.
+- `GRAMMAR_A26` What's the matter? — I don't feel well.
+- `GRAMMAR_A26` Qu'est-ce qui ne va pas ? — Je ne me sens pas bien. ⚠ espacement/ponctuation
+- `GRAMMAR_A26` have a headache.
+- `GRAMMAR_A26` back est singulier : hurts.
+- `GRAMMAR_A26` two days ago = il y a deux jours.
+- `LISTENING_A26` At the doctor's
+- `LISTENING_A26` What's the matter? I have a sore throat and a cough. Since when? Since Monday. You should drink hot tea and rest. And you have to take these tablets twice a day.
+- `LISTENING_A26` What does the patient have?
+- `LISTENING_A26` A headache
+- `LISTENING_A26` A sore throat and a cough
+- `LISTENING_A26` A broken leg
+- `LISTENING_A26` A sore throat and a cough.
+- `LISTENING_A26` How often must he take the tablets?
+- `LISTENING_A26` Twice a day
+- `LISTENING_A26` Once a day
+- `LISTENING_A26` Three times a day
+- `LISTENING_A26` Twice a day.
+- `LISTENING_A26` Making an appointment
+- `LISTENING_A26` Hello, I'd like to make an appointment with the doctor, please. I have a bad earache. Can you come tomorrow at ten? Yes, that's fine. You have to bring your health card.
+- `LISTENING_A26` What is the problem?
+- `LISTENING_A26` A backache
+- `LISTENING_A26` A toothache
+- `LISTENING_A26` An earache
+- `LISTENING_A26` A bad earache.
+- `LISTENING_A26` When is the appointment?
+- `LISTENING_A26` Today at ten
+- `LISTENING_A26` Tomorrow at ten
+- `LISTENING_A26` Tomorrow at two
+- `LISTENING_A26` Tomorrow at ten.
+- `LISTENING_A26` What must the patient bring?
+- `LISTENING_A26` The health card
+- `LISTENING_A26` Some money
+- `LISTENING_A26` The health card.
+- `LISTENING_A26` At the pharmacy
+- `LISTENING_A26` Can I help you? I need something for a headache. Take one tablet, but you mustn't take more than four a day. You should also drink plenty of water.
+- `LISTENING_A26` What does the customer need?
+- `LISTENING_A26` A plaster
+- `LISTENING_A26` Something for a headache
+- `LISTENING_A26` Something for a headache.
+- `LISTENING_A26` How many tablets a day at most?
+- `LISTENING_A26` Not more than four.
+- `LISTENING_A26` What should he drink?
+- `LISTENING_A26` Plenty of water
+- `LISTENING_A26` Plenty of water.
+- `LISTENING_A26` Get well soon
+- `LISTENING_A26` Hi Tom, I heard you're ill. You should stay in bed and rest. You shouldn't worry about work. I'll bring you some soup this evening. Get well soon!
+- `LISTENING_A26` What should Tom do?
+- `LISTENING_A26` Go to work
+- `LISTENING_A26` Stay in bed
+- `LISTENING_A26` Go shopping
+- `LISTENING_A26` He should stay in bed.
+- `LISTENING_A26` What will she bring?
+- `LISTENING_A26` Some soup
+- `LISTENING_A26` Some flowers
+- `LISTENING_A26` Some soup.
+- `LISTENING_A26` Seat belts
+- `LISTENING_A26` Everybody has to wear a seat belt in the car. It's the law. Children must sit in the back. And you mustn't use your phone when you drive.
+- `LISTENING_A26` Who has to wear a seat belt?
+- `LISTENING_A26` Only children
+- `LISTENING_A26` Only drivers
+- `LISTENING_A26` Where must children sit?
+- `LISTENING_A26` In the front
+- `LISTENING_A26` In the back
+- `LISTENING_A26` On the floor
+- `LISTENING_A26` In the back.
+- `LISTENING_A26` Sports injury
+- `LISTENING_A26` I hurt my ankle yesterday. The doctor says I shouldn't run for two weeks, but I don't have to stay in bed. I just have to rest my foot and put ice on it.
+- `LISTENING_A26` What did he hurt?
+- `LISTENING_A26` His ankle
+- `LISTENING_A26` His ankle.
+- `LISTENING_A26` Does he have to stay in bed?
+- `LISTENING_A26` Yes, he does
+- `LISTENING_A26` No, he doesn't
+- `LISTENING_A26` For two weeks
+- `LISTENING_A26` He doesn't have to stay in bed.
+- `LISTENING_A26` Cold or flu?
+- `LISTENING_A26` How do you know if it's a cold or the flu? With a cold, you have a runny nose and a sore throat, and you feel a bit tired. With the flu, you have a high fever, your whole body hurts and you feel very weak. If your temperature is over thirty-eight degrees, you should see a doctor.
+- `LISTENING_A26` What do you have with a cold?
+- `LISTENING_A26` A runny nose and a sore throat
+- `LISTENING_A26` A high fever
+- `LISTENING_A26` A broken arm
+- `LISTENING_A26` A runny nose and a sore throat.
+- `LISTENING_A26` What is typical of the flu?
+- `LISTENING_A26` A runny nose only
+- `LISTENING_A26` A high fever and a body that hurts
+- `LISTENING_A26` A high fever, and the whole body hurts.
+- `LISTENING_A26` When should you see a doctor?
+- `LISTENING_A26` If the temperature is over thirty-eight
+- `LISTENING_A26` If you are hungry
+- `LISTENING_A26` Over thirty-eight degrees.
+- `LISTENING_A26` A bad night
+- `LISTENING_A26` I didn't sleep well last night. I felt stressed about my job. My friend says I should do some yoga and drink herbal tea before bed. I think she's right.
+- `LISTENING_A26` Why didn't she sleep well?
+- `LISTENING_A26` She felt stressed
+- `LISTENING_A26` She was ill
+- `LISTENING_A26` It was noisy
+- `LISTENING_A26` She felt stressed about her job.
+- `LISTENING_A26` What should she drink before bed?
+- `LISTENING_A26` Herbal tea
+- `LISTENING_A26` Herbal tea.
+- `LISTENING_A26` Hospital rules
+- `LISTENING_A26` Welcome to the hospital. Visitors must leave at eight o'clock. You mustn't use your phone in the ward. You don't have to wait at the desk: the nurse will come to you.
+- `LISTENING_A26` What time must visitors leave?
+- `LISTENING_A26` At eight o'clock.
+- `LISTENING_A26` What mustn't visitors do?
+- `LISTENING_A26` Bring flowers
+- `LISTENING_A26` Use their phone
+- `LISTENING_A26` They mustn't use their phone in the ward.
+- `LISTENING_A26` Do they have to wait at the desk?
+- `LISTENING_A26` Yes, they do
+- `LISTENING_A26` No, they don't
+- `LISTENING_A26` Only at night
+- `LISTENING_A26` They don't have to wait.
+- `LISTENING_A26` My son has a fever. His temperature is thirty-nine degrees. I think I should call the doctor. Yes, you should. And he has to drink a lot of water.
+- `LISTENING_A26` What is the boy's temperature?
+- `LISTENING_A26` Thirty-nine degrees
+- `LISTENING_A26` Thirty-seven degrees
+- `LISTENING_A26` Forty-five degrees
+- `LISTENING_A26` Thirty-nine degrees.
+- `LISTENING_A26` What should his mother do?
+- `LISTENING_A26` Wait a week
+- `LISTENING_A26` Call the doctor
+- `LISTENING_A26` She should call the doctor.
+- `MISSIONS_A26` Conseil, obligation ou interdit ? ⚠ espacement/ponctuation
+- `MISSIONS_A26` Construis la phrase
+- `MISSIONS_A26` Remets les mots dans l'ordre.
+- `MISSIONS_A26` Choisis le bon verbe.
+- `MISSIONS_A26` Compose ta phrase avec la fiche.
+- `READING_A26` I woke up with a terrible headache and a sore throat. I also had a fever, so I made an appointment with Dr Evans. She looked at my throat and listened to my chest. She said I should stay in bed for two days and drink plenty of water. I also have to take one tablet three times a day.
+- `READING_A26` What does Lena have?
+- `READING_A26` A headache and a sore throat
+- `READING_A26` A terrible headache and a sore throat.
+- `READING_A26` Who does she see?
+- `READING_A26` A pharmacist
+- `READING_A26` She has an appointment with Dr Evans.
+- `READING_A26` How often does she take the tablet?
+- `READING_A26` One tablet three times a day.
+- `READING_A26` I work in an office and I sit all day. Last week my back started to hurt. The doctor says I should walk every hour and I shouldn't carry heavy bags. I also have to do some stretching exercises every morning. After one week, my back feels much better.
+- `READING_A26` Where does Omar work?
+- `READING_A26` In a hospital
+- `READING_A26` In an office
+- `READING_A26` In a school
+- `READING_A26` I work in an office.
+- `READING_A26` What shouldn't he carry?
+- `READING_A26` Heavy bags
+- `READING_A26` He shouldn't carry heavy bags.
+- `READING_A26` How does his back feel after a week?
+- `READING_A26` Much better
+- `READING_A26` My back feels much better.
+- `READING_A26` I went to the pharmacy because I had a bad cough. The pharmacist asked me some questions and gave me a syrup. She said I shouldn't drink cold drinks and I should keep my throat warm. I have to take two spoons of syrup in the morning and two in the evening. If the cough is still there after five days, I must go to the doctor.
+- `READING_A26` Chloe tousse. La pharmacienne lui donne un sirop et des conseils ; si la toux dure plus de cinq jours, elle doit consulter.
+- `READING_A26` Why did Chloe go to the pharmacy?
+- `READING_A26` She had a headache
+- `READING_A26` She had a bad cough
+- `READING_A26` She burnt her hand
+- `READING_A26` She had a bad cough.
+- `READING_A26` What did the pharmacist give her?
+- `READING_A26` She gave me a syrup.
+- `READING_A26` When must she see a doctor?
+- `READING_A26` Tomorrow morning
+- `READING_A26` If the cough is still there after five days
+- `READING_A26` After five days, if the cough is still there.
+- `READING_A26` On Saturday I fell during a football match and hurt my knee. It was very painful, so I went to the hospital. The nurse put on a bandage and the doctor said I mustn't play for three weeks. I don't have to use crutches, but I should rest. It's difficult because football is my life!
+- `READING_A26` What did Sam hurt?
+- `READING_A26` He hurt his knee.
+- `READING_A26` How long mustn't he play?
+- `READING_A26` Three months
+- `READING_A26` Three days
+- `READING_A26` Three weeks
+- `READING_A26` He mustn't play for three weeks.
+- `READING_A26` Does he have to use crutches?
+- `READING_A26` I don't have to use crutches.
+- `READING_A26` I want to be healthier, so I changed some habits. I walk to work and I have fruit for breakfast. I try to sleep eight hours a night. My sister says I should drink more water, and she's right: I only drink two glasses a day! I don't have to give up chocolate, but I shouldn't eat it every day.
+- `READING_A26` Priya change ses habitudes : elle marche, mange des fruits et dort huit heures. Elle doit boire plus d'eau et manger moins de chocolat.
+- `READING_A26` How does Priya go to work?
+- `READING_A26` She walks
+- `READING_A26` I walk to work.
+- `READING_A26` How many glasses of water does she drink a day?
+- `READING_A26` I only drink two glasses a day.
+- `READING_A26` What shouldn't she do?
+- `READING_A26` Eat fruit
+- `READING_A26` Eat chocolate every day
+- `READING_A26` Walk to work
+- `READING_A26` She shouldn't eat chocolate every day.
+- `READING_A26` On Monday I didn't feel well at school. I had a stomachache and I felt dizzy. The teacher sent me to the nurse. She took my temperature: it was normal. She said I should drink some water and eat something, because I didn't have breakfast. I felt better after twenty minutes and I went back to class.
+- `READING_A26` What was wrong with Jack?
+- `READING_A26` He had a stomachache and felt dizzy
+- `READING_A26` He broke his leg
+- `READING_A26` He had a cold
+- `READING_A26` A stomachache, and he felt dizzy.
+- `READING_A26` What was his temperature?
+- `READING_A26` It was normal.
+- `READING_A26` Why did he feel ill?
+- `READING_A26` He didn't have breakfast
+- `READING_A26` He ran too much
+- `READING_A26` He slept badly
+- `READING_A26` He didn't have breakfast.
+- `READING_A26` Before my exams, I couldn't sleep and I felt very stressed. My mother said I should go to bed earlier and I shouldn't drink coffee in the evening. She also told me to take a walk every day. I don't have to study all night: it's better to rest. After one week I slept well and I felt calmer.
+- `READING_A26` Why couldn't Nina sleep?
+- `READING_A26` She was noisy
+- `READING_A26` She was stressed about her exams
+- `READING_A26` She felt very stressed before her exams.
+- `READING_A26` What shouldn't she drink in the evening?
+- `READING_A26` She shouldn't drink coffee.
+- `READING_A26` How did she feel after a week?
+- `READING_A26` More tired
+- `READING_A26` More worried
+- `READING_A26` She felt calmer.
+- `READING_A26` What do they have to wear on bikes?
+- `READING_A26` They have to wear a helmet.
+- `READING_A26` What mustn't they do?
+- `READING_A26` Ride bikes
+- `READING_A26` Leave the path
+- `READING_A26` Drink water
+- `READING_A26` They mustn't leave the path.
+- `READING_A26` What should they take?
+- `READING_A26` A map only
+- `READING_A26` Water and a jacket
+- `READING_A26` Water and a jacket.
+- `TEST_AUDIOS_A26` Since when does he have a sore throat?
+- `TEST_AUDIOS_A26` Since Monday
+- `TEST_AUDIOS_A26` Since Friday
+- `TEST_AUDIOS_A26` Since yesterday
+- `TEST_AUDIOS_A26` Cold water
+- `TEST_AUDIOS_A26` What does he have to bring?
+- `TEST_AUDIOS_A26` His health card
+- `TEST_AUDIOS_A26` His passport
+- `TEST_AUDIOS_A26` His phone
+- `TEST_AUDIOS_A26` How many tablets can he take a day?
+- `TEST_AUDIOS_A26` Not more than ten
+- `TEST_AUDIOS_A26` Not more than four
+- `TEST_AUDIOS_A26` What else should he do?
+- `TEST_AUDIOS_A26` Go to bed
+- `TEST_AUDIOS_A26` Drink plenty of water
+- `TEST_AUDIOS_A26` What is the law?
+- `TEST_AUDIOS_A26` Buy a car
+- `TEST_AUDIOS_A26` Drive slowly
+- `TEST_AUDIOS_A26` Wear a seat belt
+- `TEST_AUDIOS_A26` What mustn't a driver do?
+- `TEST_AUDIOS_A26` Listen to music
+- `TEST_AUDIOS_A26` Use a phone
+- `TEST_AUDIOS_A26` Drive at night
+- `TEST_AUDIOS_A26` When did he hurt his ankle?
+- `TEST_AUDIOS_A26` Last week
+- `TEST_AUDIOS_A26` What must he put on it?
+- `TEST_AUDIOS_A26` A bandage
+- `TEST_AUDIOS_A26` My doctor says I should eat more vegetables and I shouldn't eat fast food. So today I have a salad and a bottle of water. Tomorrow I'll try soup.
+- `TEST_AUDIOS_A26` What should he eat more of?
+- `TEST_AUDIOS_A26` Fast food
+- `TEST_AUDIOS_A26` What will he try tomorrow?
+- `TEST_AUDIOS_A26` When must visitors leave?
+- `TEST_AUDIOS_A26` At eight o'clock
+- `TEST_AUDIOS_A26` At midnight
+- `TEST_AUDIOS_A26` Who will come to the visitors?
+- `TEST_AUDIOS_A26` The nurse
+- `TEST_AUDIOS_A26` The doctor
+- `TEST_AUDIOS_A26` The guide
+- `TEST_GRAMMAR_A26` He ___ drink more water.
+- `TEST_GRAMMAR_A26` “Throat” means…
+- `TEST_GRAMMAR_A26` “Prescription” means…
+- `TEST_GRAMMAR_A26` “Fever” means…
+- `TEST_GRAMMAR_A26` “Avoid” means…
+- `TEST_GRAMMAR_A26` “Forbidden” means…
+- `TEST_GRAMMAR_A26` “Nap” means…
+- `TEST_GRAMMAR_A26` “Fit” means…
+- `TEST_TEXTS_A26` I woke up with a terrible headache and a sore throat. I also had a fever, so I made an appointment with Dr Evans. She said I should stay in bed for two days and drink plenty of water. I also have to take one tablet three times a day.
+- `TEST_TEXTS_A26` What should she do for two days?
+- `TEST_TEXTS_A26` Run every day
+- `TEST_TEXTS_A26` How often must she take the tablet?
+- `TEST_TEXTS_A26` Twice a week
+- `TEST_TEXTS_A26` I work in an office and I sit all day. Last week my back started to hurt. The doctor says I should walk every hour and I shouldn't carry heavy bags. I also have to do some stretching exercises every morning.
+- `TEST_TEXTS_A26` What hurts?
+- `TEST_TEXTS_A26` What should he do every hour?
+- `TEST_TEXTS_A26` When does he have to stretch?
+- `TEST_TEXTS_A26` Every evening
+- `TEST_TEXTS_A26` Every morning
+- `TEST_TEXTS_A26` Once a week
+- `TEST_TEXTS_A26` I went to the pharmacy because I had a bad cough. The pharmacist gave me a syrup. She said I shouldn't drink cold drinks. If the cough is still there after five days, I must go to the doctor.
+- `TEST_TEXTS_A26` Where did Chloe go?
+- `TEST_TEXTS_A26` To the pharmacy
+- `TEST_TEXTS_A26` To the hospital
+- `TEST_TEXTS_A26` To school
+- `TEST_TEXTS_A26` What shouldn't she drink?
+- `TEST_TEXTS_A26` Cold drinks
+- `TEST_TEXTS_A26` When must she go to the doctor?
+- `TEST_TEXTS_A26` If the cough lasts five days
+- `TEST_TEXTS_A26` On Saturday I fell during a football match and hurt my knee. I went to the hospital. The doctor said I mustn't play for three weeks. I don't have to use crutches, but I should rest.
+- `TEST_TEXTS_A26` How did Sam hurt his knee?
+- `TEST_TEXTS_A26` At school
+- `TEST_TEXTS_A26` In the car
+- `TEST_TEXTS_A26` During a football match
+- `TEST_TEXTS_A26` What mustn't he do for three weeks?
+- `TEST_TEXTS_A26` Play football
+- `TEST_TEXTS_A26` Only in the morning
+- `TEST_TEXTS_A26` I want to be healthier, so I changed some habits. I walk to work and I have fruit for breakfast. My sister says I should drink more water: I only drink two glasses a day! I don't have to give up chocolate, but I shouldn't eat it every day.
+- `TEST_TEXTS_A26` What does Priya have for breakfast?
+- `TEST_TEXTS_A26` What should she drink more of?
+- `TEST_TEXTS_A26` Does she have to give up chocolate?
+- `TEST_TEXTS_A26` No, she doesn't
+- `TEST_TEXTS_A26` Yes, she does
+- `TEST_TEXTS_A26` She never eats it
+- `TEST_TEXTS_A26` On Monday I didn't feel well at school. I had a stomachache and I felt dizzy. The nurse took my temperature: it was normal. She said I should drink some water and eat something, because I didn't have breakfast.
+- `TEST_TEXTS_A26` Who did Jack see?
+- `TEST_TEXTS_A26` The pharmacist
+- `TEST_TEXTS_A26` What was normal?
+- `TEST_TEXTS_A26` His temperature
+- `TEST_TEXTS_A26` His breakfast
+- `TEST_TEXTS_A26` His homework
+- `TEST_TEXTS_A26` Why should he eat something?
+- `TEST_TEXTS_A26` It was lunch
+- `TEST_TEXTS_A26` He was thin
+- `TEST_TEXTS_A26` Before my exams, I couldn't sleep and I felt very stressed. My mother said I should go to bed earlier and I shouldn't drink coffee in the evening. I don't have to study all night: it's better to rest.
+- `TEST_TEXTS_A26` What did Nina feel before her exams?
+- `TEST_TEXTS_A26` What should she go?
+- `TEST_TEXTS_A26` To bed earlier
+- `TEST_TEXTS_A26` To school earlier
+- `TEST_TEXTS_A26` To the doctor
+- `TEST_TEXTS_A26` Does she have to study all night?
+- `TEST_TEXTS_A26` Only on Fridays
+- `TEST_TEXTS_A26` Where are they on holiday?
+- `TEST_TEXTS_A26` At the seaside
+- `TEST_TEXTS_A26` In the mountains
+- `TEST_TEXTS_A26` In a city
+- `TEST_TEXTS_A26` What do they not have to do?
+- `TEST_TEXTS_A26` Wear a helmet
+- `TEST_TEXTS_A26` Follow the path
+- `TEST_TEXTS_A26` A camera only
+- `VOCAB_A26` Dire comment on se sent
+- `VOCAB_A26` What's the matter? — I have a headache.
+- `VOCAB_A26` I don't feel well.
+- `VOCAB_A26` Je ne me sens pas bien.
+- `VOCAB_A26` I have a headache and a sore throat, so I should see a doctor.
+- `VOCAB_A26` ventre / estomac
+- `VOCAB_A26` “Tooth” fait “teeth” au pluriel. Avec une partie du corps, on utilise le possessif : “My back hurts.” (jamais “the back”).
+- `VOCAB_A26` My back hurts.
+- `VOCAB_A26` J'ai mal au dos.
+- `VOCAB_A26` Open your mouth and show me your throat.
+- `VOCAB_A26` Ouvrez la bouche et montrez-moi votre gorge.
+- `VOCAB_A26` “Knee” veut dire…
+- `VOCAB_A26` toux / tousser
+- `VOCAB_A26` sore throat
+- `VOCAB_A26` mal de gorge
+- `VOCAB_A26` mal au ventre
+- `VOCAB_A26` I have a sore throat and a cough.
+- `VOCAB_A26` She has a fever.
+- `VOCAB_A26` “Fever” veut dire…
+- `VOCAB_A26` waiting room
+- `VOCAB_A26` salle d'attente
+- `VOCAB_A26` The doctor gives me a prescription.
+- `VOCAB_A26` “Prescription” veut dire…
+- `VOCAB_A26` bande / bandage
+- `VOCAB_A26` Il me faut quelque chose contre la toux.
+- `VOCAB_A26` Take one tablet three times a day.
+- `VOCAB_A26` “Tablet” veut dire…
+- `VOCAB_A26` Donner un conseil
+- `VOCAB_A26` se reposer / repos
+- `VOCAB_A26` stay in bed
+- `VOCAB_A26` rester au lit
+- `VOCAB_A26` plenty of
+- `VOCAB_A26` beaucoup de
+- `VOCAB_A26` chaud / au chaud
+- `VOCAB_A26` get better
+- `VOCAB_A26` aller mieux
+- `VOCAB_A26` take care
+- `VOCAB_A26` prendre soin de soi
+- `VOCAB_A26` Can you give me some advice?
+- `VOCAB_A26` Peux-tu me donner un conseil ? ⚠ espacement/ponctuation
+- `VOCAB_A26` Stay in bed and drink plenty of water.
+- `VOCAB_A26` Reste au lit et bois beaucoup d'eau.
+- `VOCAB_A26` “Avoid” veut dire…
+- `VOCAB_A26` seat belt
+- `VOCAB_A26` “Be allowed to” = avoir le droit de. “Forbidden” = interdit. “Be careful!” = Fais attention ! “Wear” s'emploie aussi pour un casque ou une ceinture. ⚠ espacement/ponctuation
+- `VOCAB_A26` Tu dois mettre ta ceinture.
+- `VOCAB_A26` Smoking is forbidden here.
+- `VOCAB_A26` Il est interdit de fumer ici.
+- `VOCAB_A26` “Forbidden” veut dire…
+- `VOCAB_A26` Sport et alimentation
+- `VOCAB_A26` Une famille fait du jogging dans un parc et boit de l'eau
+- `VOCAB_A26` exercice / faire de l'exercice
+- `VOCAB_A26` faire du jogging
+- `VOCAB_A26` I try to do some exercise every day.
+- `VOCAB_A26` J'essaie de faire de l'exercice tous les jours.
+- `VOCAB_A26` Vegetables are healthy.
+- `VOCAB_A26` “Fit” veut dire…
+- `VOCAB_A26` Sommeil et stress
+- `VOCAB_A26` dormir / sommeil
+- `VOCAB_A26` I'm stressed because of my exams.
+- `VOCAB_A26` You should get more sleep.
+- `VOCAB_A26` “Nap” veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -4102,6 +4770,28 @@
 - `dialogues.A2.5.turns.model` Yes, it looks delicious. It's the biggest fish I've ever seen!
 - `dialogues.A2.5.turns.npc` Would you like a dessert?
 - `dialogues.A2.5.turns.model` No, thank you. The bill, please.
+- `dialogues.A2.6.turns.npc` Good morning. What's the matter?
+- `dialogues.A2.6.turns.model` I have a sore throat and a cough.
+- `dialogues.A2.6.turns.hint` Dis ce que tu as : I have… ou My … hurts.
+- `dialogues.A2.6.turns.npc` Do you have a fever?
+- `dialogues.A2.6.turns.model` Yes, a little. My temperature is thirty-eight.
+- `dialogues.A2.6.turns.npc` When did it start?
+- `dialogues.A2.6.turns.model` It started three days ago.
+- `dialogues.A2.6.turns.hint` Utilise « ago » : two days ago.
+- `dialogues.A2.6.turns.npc` It looks like a cold. You should rest and drink plenty of water. You have to take these tablets twice a day.
+- `dialogues.A2.6.turns.model` Thank you, doctor. I'll rest and drink water.
+- `dialogues.A2.6.turns.hint` Remercie et confirme.
+- `dialogues.A2.6.turns.npc` Hello! How can I help you?
+- `dialogues.A2.6.turns.model` I need something for a headache.
+- `dialogues.A2.6.turns.hint` I need something for…
+- `dialogues.A2.6.turns.npc` Do you have any other symptoms?
+- `dialogues.A2.6.turns.model` No, just a headache, and I feel tired.
+- `dialogues.A2.6.turns.npc` Take one tablet, but you mustn't take more than four a day.
+- `dialogues.A2.6.turns.model` OK, I understand. Thank you.
+- `dialogues.A2.6.turns.hint` Confirme poliment.
+- `dialogues.A2.6.turns.npc` And you should drink plenty of water. Get well soon!
+- `dialogues.A2.6.turns.model` Thank you, goodbye!
+- `dialogues.A2.6.turns.hint` Remercie et dis au revoir.
 
 ## situations
 
@@ -4157,8 +4847,17 @@
 - `situations.A2.5.cue` Say what you prefer and why.
 - `situations.A2.5.hint` Commence par « I prefer… because… ».
 - `situations.A2.5.model` I prefer tea because it's lighter.
+- `situations.A2.6.cue` Tell a friend where it hurts.
+- `situations.A2.6.hint` Utilise « My … hurts » ou « I have a … ».
+- `situations.A2.6.model` My head hurts.
+- `situations.A2.6.cue` Give advice to a friend with a cold.
+- `situations.A2.6.hint` Utilise « You should… ».
+- `situations.A2.6.model` You should stay in bed.
+- `situations.A2.6.cue` Say a rule at the hospital.
+- `situations.A2.6.hint` Utilise « You mustn't… » ou « You have to… ».
+- `situations.A2.6.model` You mustn't use your phone here.
 
-## Alertes automatiques (91)
+## Alertes automatiques (111)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.qs : « You → Have you got… ? » → espacement/ponctuation
@@ -4239,7 +4938,6 @@
 - ⚠ A2.4 VOCAB_A24.words : « et si on… ? » → espacement/ponctuation
 - ⚠ A2.4 VOCAB_A24.examples : « Et si on faisait un pique-nique dimanche ? » → espacement/ponctuation
 - ⚠ A2.5 EXERCISES_A25.title : « Than ou as ? » → espacement/ponctuation
-- ⚠ A2.5 EXERCISES_A25.qs : « Which do you prefer ? » → espacement/ponctuation
 - ⚠ A2.5 EXERCISES_A25.help : « Que dire ? » → espacement/ponctuation
 - ⚠ A2.5 GRAMMAR_A25.table : « Is + sujet + more … than ? » → espacement/ponctuation
 - ⚠ A2.5 GRAMMAR_A25.examples : « Mon anglais est meilleur que l'an dernier. » → « an » devant consonne
@@ -4250,4 +4948,25 @@
 - ⚠ A2.5 MISSIONS_A25.title : « Comparatif ou superlatif ? » → espacement/ponctuation
 - ⚠ A2.5 MISSIONS_A25.title : « Quel mot ? » → espacement/ponctuation
 - ⚠ A2.5 MISSIONS_A25.title : « Than, as ou to ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.qs : « Should I … ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.qs : « Why don't you … ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.qs : « Should she … ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.qs : « Do you have to … ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.qs : « Does she have to … ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.title : « Mustn't ou don't have to ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.help : « Interdit ou pas obligatoire ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.title : « Should, have to ou must ? » → espacement/ponctuation
+- ⚠ A2.6 EXERCISES_A26.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « Que dois-je faire ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « What should + sujet + verbe ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « Should + sujet + verbe ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.examples : « Que devons-nous faire ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « Dois-tu travailler demain ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « Ne le touche pas. C'est chaud ! » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.table : « Why don't you + verbe ? » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.examples : « Prends soin de toi ! » → espacement/ponctuation
+- ⚠ A2.6 GRAMMAR_A26.examples : « Qu'est-ce qui ne va pas ? — Je ne me sens pas bien. » → espacement/ponctuation
+- ⚠ A2.6 MISSIONS_A26.title : « Conseil, obligation ou interdit ? » → espacement/ponctuation
+- ⚠ A2.6 VOCAB_A26.examples : « Peux-tu me donner un conseil ? » → espacement/ponctuation
+- ⚠ A2.6 VOCAB_A26.tip : « “Be allowed to” = avoir le droit de. “Forbidden” = interdit. “Be careful!” = Fais attention ! “Wear” s'emploie » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation
