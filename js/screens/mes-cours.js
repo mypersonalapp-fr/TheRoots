@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261019b2";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019b2";
-import { renderShell } from "./shell.js?v=20261019b2";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019b2";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019b2";
+import { renderLesson } from "./lecon-a11.js?v=20261019b3";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019b3";
+import { renderShell } from "./shell.js?v=20261019b3";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019b3";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019b3";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,14 +23,14 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019b2";
-import { plantSvg } from "./plant.js?v=20261019b2";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019b3";
+import { plantSvg } from "./plant.js?v=20261019b3";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { currentCharacter } from "./lecon-a11.js?v=20261019b2";
-import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019b2";
-import { runRattrapage } from "./rattrapage.js?v=20261019b2";
-import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019b2";
+import { currentCharacter } from "./lecon-a11.js?v=20261019b3";
+import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019b3";
+import { runRattrapage } from "./rattrapage.js?v=20261019b3";
+import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019b3";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -193,7 +193,7 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
-const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019b2`;
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019b3`;
 const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
 const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
 export function bulletinParts(level = "A1") {
@@ -203,7 +203,8 @@ export function bulletinParts(level = "A1") {
   const head = `<div class="card bl-card bl-head"><img class="bl-ava" src="${ch.src}" alt=""/><div class="bl-hd"><div class="bl-big">Niveau ${level}</div><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${nk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>`;
   const sk = B.skills.filter((s) => s.avg !== null).map((s, i) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-skrow"><img class="bl-sk-img" src="${BL_SK[i]}" alt="" loading="lazy"/><div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div></div>`; }).join("");
   const tr = B.tradAvg === null ? "" : (() => { const v = B.tradAvg / 10, ok = v >= 8; return `<div class="bl-skrow"><span class="bl-sk-img bl-sk-emo" aria-hidden="true">🔁</span><div class="bl-sk"><div class="bl-sk-top"><b>Traduction</b><b>${f(v)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.tradAvg}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"} · EN→FR et FR→EN</small></div></div>`; })();
-  const skills = (sk || tr) ? `<div class="card bl-card"><div class="bl-sp"><h3 class="bl-h">Mes notes par compétence</h3><span class="bl-soft">Moyenne des tests</span></div>${sk}${tr}</div>` : "";
+  const dc = B.dictAvg === null ? "" : (() => { const v = B.dictAvg / 10, ok = v >= 8; return `<div class="bl-skrow"><span class="bl-sk-img bl-sk-emo" aria-hidden="true">🎧</span><div class="bl-sk"><div class="bl-sk-top"><b>Dictée</b><b>${f(v)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.dictAvg}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"} · phrases justes du 1er coup</small></div></div>`; })();
+  const skills = (sk || tr || dc) ? `<div class="card bl-card"><div class="bl-sp"><h3 class="bl-h">Mes notes par compétence</h3><span class="bl-soft">Moyenne des tests</span></div>${sk}${tr}${dc}</div>` : "";
   const gaps = B.gaps.length ? `<div class="card bl-card bl-gaps"><h3 class="bl-h">🔎 Lacunes détectées</h3><p class="bl-soft" style="color:#7a1d12">Repérées à partir de tes erreurs aux tests. L'appli a déjà préparé des exercices en plus.</p>${B.gaps.map((g) => `<button type="button" class="bl-gap" data-rt="${g.id}"><img src="${BL_IMG(BL_GAP[(g.list[0] || {}).sk] || "ic-test")}" alt="" width="40" height="40"/><span class="bl-gt"><b>${g.code} · ${g.title}</b><small>Il manque ${f(g.miss)} point${g.miss > 1 ? "s" : ""}${g.weak.length ? " · " + g.weak.join(", ") : ""}</small>${g.list.slice(0, 2).map((e) => `<small>• ${e.sk} : ${e.q}</small>`).join("")}${g.legacy ? `<small>Test passé avant la mise à jour : le détail se précisera quand tu le repasseras.</small>` : ""}</span><span class="bl-tag bl-ko">${(rtLoad()[g.id] || {}).series ? "Refaire · " + rtLoad()[g.id].last : "À revoir"}</span></button>`).join("")}<button type="button" class="lc-cta bl-cta" data-rt="${B.gaps[0].id}"><img src="${BL_IMG("ic-exercises")}" alt="" width="30" height="30"/>Faire mes exercices de rattrapage</button><div class="bl-soft" style="text-align:center">${B.gaps.length} série${B.gaps.length > 1 ? "s" : ""} · environ 5 minutes chacune</div></div>` : "";
   const tiles = B.tests.map((t) => { const c = t.done ? (t.passed ? "ok" : "ko") : "no"; return `<div class="bl-tile bl-${c}"><b>${t.code}</b><span>${t.done ? t.best + "/40" : "—"}</span><small>${t.done ? (t.passed ? "Réussi" : "À repasser") : "À venir"}</small>${rtLoad()[t.id] ? `<em class="bl-rtm">↺ rattrapé</em>` : ""}</div>`; }).join("");
   const grid = `<div class="card bl-card"><h3 class="bl-h">Mes tests de fin de leçon</h3><div class="bl-tiles">${tiles}</div>${B.exam ? (() => { const e = B.exam, st = e.done ? (e.passed ? "Réussi" : "À repasser") : (e.open ? "Disponible" : "Verrouillé"), c = e.done ? (e.passed ? "ok" : "ko") : "no"; return `<div class="bl-lock bl-ex-${c}"><img src="${BL_IMG("ic-test")}" alt="" width="34" height="34" style="opacity:${e.done || e.open ? 1 : .55}"/><span class="bl-soft" style="color:inherit"><b>Grand contrôle A1</b><br/>${e.done ? e.best + "/40" : e.open ? "Les 12 leçons sont réussies : tu peux le passer" : "S'ouvre quand les 12 leçons sont réussies"}</span><span class="bl-tag bl-st-${c}">${st}</span></div>`; })() : ""}<p class="bl-soft">Réussi à partir de ${PASS}/40.</p></div>`;
@@ -320,14 +321,14 @@ export function renderMesCours(container, shellRoot) {
   const f1 = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
   const tile = (attrs, e, title, sub) => `<button type="button" class="bl-nav" ${attrs}><span class="bl-nav-e">${e}</span><span class="bl-nav-t"><b>${title}</b><small>${sub}</small></span></button>`;
   function radarHtml(B) {
-    const labs = ["Lecture", "Écoute", "Grammaire", "Écrit", "Oral", "Traduction"], emo = ["📖", "🎧", "⚙️", "✍️", "🗣️", "🔁"];
-    const val = B.skills.map((x) => (x.avg === null ? null : x.avg / x.max)).concat([B.tradAvg === null ? null : B.tradAvg / 100]);
-    const raw = B.skills.map((x) => (x.avg === null ? null : x.avg)).concat([B.tradAvg === null ? null : B.tradAvg / 10]);
-    const cx = 130, cy = 108, R = 78, pt = (i, r) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    const labs = ["Lecture", "Écoute", "Grammaire", "Écrit", "Oral", "Traduction", "Dictée"], emo = ["📖", "🎧", "⚙️", "✍️", "🗣️", "🔁", "🎧"];
+    const val = B.skills.map((x) => (x.avg === null ? null : x.avg / x.max)).concat([B.tradAvg === null ? null : B.tradAvg / 100, B.dictAvg === null ? null : B.dictAvg / 100]);
+    const raw = B.skills.map((x) => (x.avg === null ? null : x.avg)).concat([B.tradAvg === null ? null : B.tradAvg / 10, B.dictAvg === null ? null : B.dictAvg / 10]);
+    const cx = 130, cy = 108, R = 78, pt = (i, r) => { const a = -Math.PI / 2 + i * 2 * Math.PI / labs.length; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
     const ring = (k) => `<polygon points="${labs.map((_, i) => pt(i, R * k).map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="none" stroke="#dfe4ec"/>`;
     const poly = val.map((v, i) => pt(i, R * (v || 0)).map((x) => x.toFixed(1)).join(",")).join(" ");
     const tx = labs.map((l, i) => { const [x, y] = pt(i, R + 17); return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" font-size="11" font-weight="700" text-anchor="middle" fill="#1b3c39">${l}</text>`; }).join("");
-    return `<div class="bl-rad"><svg viewBox="0 0 260 218" width="100%" role="img" aria-label="Radar des 6 compétences">${ring(0.33)}${ring(0.66)}${ring(1)}<polygon points="${poly}" fill="rgba(47,163,94,.28)" stroke="#2fa35e" stroke-width="2.5"/>${tx}</svg>
+    return `<div class="bl-rad"><svg viewBox="0 0 260 218" width="100%" role="img" aria-label="Radar des compétences">${ring(0.33)}${ring(0.66)}${ring(1)}<polygon points="${poly}" fill="rgba(47,163,94,.28)" stroke="#2fa35e" stroke-width="2.5"/>${tx}</svg>
       <div class="bl-leg">${labs.map((l, i) => `<div>${emo[i]} ${l}<b>${raw[i] === null ? "—" : f1(raw[i])}</b></div>`).join("")}</div></div>`;
   }
   function tradHtml(B) {
@@ -335,6 +336,10 @@ export function renderMesCours(container, shellRoot) {
     const sc = (x) => x ? `${x.ok}/${x.tot}${x.done ? " ✓" : ""}` : "—";
     const top = B.tradAvg === null ? `<p class="bl-soft">Fais la page « Traduction » d'une leçon : tes scores apparaîtront ici.</p>` : `<div class="bl-sk-top"><b>🔁 Traduction EN ⇄ FR</b><b>${f1(B.tradAvg / 10)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.tradAvg}%;background:${B.tradAvg >= 80 ? "#2fa35e" : "#e2a13d"}"></i></div>`;
     return `<div class="card bl-card">${top}<div class="bl-trs">${B.trad.map((x) => `<div class="bl-tr"><b>${x.code}</b><span class="${x.fr && x.fr.done ? "ok" : ""}">EN→FR ${sc(x.fr)}</span><span class="${x.en && x.en.done ? "ok" : ""}">FR→EN ${sc(x.en)}</span></div>`).join("")}</div><p class="bl-soft">Une série est réussie à partir de 8 phrases sur 10. Elle ne compte pas dans les 40 points du test.</p></div>`;
+  }
+  function dictHtml(B) {
+    const top = B.dictAvg === null ? `<p class="bl-soft">Fais la « Dictée » d'une leçon (Écrire en anglais) : tes scores apparaîtront ici.</p>` : `<div class="bl-sk-top"><b>🎧 Dictée</b><b>${f1(B.dictAvg / 10)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.dictAvg}%;background:${B.dictAvg >= 80 ? "#2fa35e" : "#e2a13d"}"></i></div>`;
+    return `<div class="card bl-card">${top}${B.dict.length ? `<div class="bl-trs">${B.dict.map((x) => `<div class="bl-tr bl-tr2"><b>${x.code}</b><span class="${x.d.ok >= Math.ceil(x.d.tot * 0.8) ? "ok" : ""}">${x.d.ok}/${x.d.tot} phrases justes du 1er coup</span></div>`).join("")}</div>` : ""}<p class="bl-soft">Elle ne compte pas dans les 40 points du test.</p></div>`;
   }
   function hubHtml(l) {
     const back = (to, label) => `<button type="button" class="bl-back" data-tab="${to}">← ${label}</button>`;
@@ -350,13 +355,13 @@ export function renderMesCours(container, shellRoot) {
     if (lvTab === "notes") body = P.empty ? empty : style === "radar" ? radarHtml(B) : P.skills;
     else if (lvTab === "gaps") body = P.gaps || `<div class="card bl-card"><p class="bl-soft">Aucune lacune détectée 🎉</p></div>`;
     else if (lvTab === "tests") body = P.grid || empty;
-    else if (lvTab === "trad") body = tradHtml(B);
+    else if (lvTab === "trad") body = tradHtml(B) + dictHtml(B);
     else if (lvTab === "plus") body = `<div class="bl-hub">${tile('data-tab="profil"', "📊", "Mon profil", "Forces et points faibles")}${tile('data-tab="ctrl"', "🏁", "Mes contrôles", "A1, A2, contrôle final")}${tile('data-tab="miss"', "🎯", "Mes missions", "Erreurs à revoir")}${tile('data-tab="rt"', "↺", "Mes rattrapages", `${rattrapagesFaits(lvLevel).length} fait${rattrapagesFaits(lvLevel).length > 1 ? "s" : ""}`)}</div>${P.word}`;
     else body = back("plus", "Plus") + (sub[lvTab] || "");
-    const TABS = [["notes", "📈", "Notes"], ["gaps", "🔎", "Lacunes"], ["tests", "🏆", "Tests"], ["trad", "🔁", "Traduc."], ["plus", "⋯", "Plus"]];
+    const TABS = [["notes", "📈", "Notes"], ["gaps", "🔎", "Lacunes"], ["tests", "🏆", "Tests"], ["trad", "✍️", "Écrit"], ["plus", "⋯", "Plus"]];
     const main = TABS.some((t) => t[0] === lvTab) ? lvTab : "plus";
     const tabs = style === "radar"
-      ? `<div class="bl-tabs">${TABS.map(([id, , n]) => `<button type="button" class="${id === main ? "on" : ""}" data-tab="${id}">${n === "Traduc." ? "Traduction" : n}${id === "gaps" && nG ? `<span class="bl-bdg">${nG}</span>` : ""}</button>`).join("")}</div>`
+      ? `<div class="bl-tabs">${TABS.map(([id, , n]) => `<button type="button" class="${id === main ? "on" : ""}" data-tab="${id}">${n}${id === "gaps" && nG ? `<span class="bl-bdg">${nG}</span>` : ""}</button>`).join("")}</div>`
       : `<div class="bl-tb">${TABS.map(([id, e, n]) => `<button type="button" class="${id === main ? "on" : ""}" data-tab="${id}"><i>${e}</i>${n}${id === "gaps" && nG ? `<span class="bl-bdg">${nG}</span>` : ""}</button>`).join("")}</div>`;
     return `${P.empty ? "" : P.head}
       <div class="bl-bar-top"><div class="bl-chips">${["A1", "A2"].map((v) => `<button type="button" class="${v === lvLevel ? "on" : ""}" data-lvl="${v}">${v}</button>`).join("")}</div>

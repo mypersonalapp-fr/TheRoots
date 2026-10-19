@@ -1,7 +1,7 @@
 // The Roots — bulletin scolaire A1 : lit les tests de fin de leçon (stockage local) et en déduit notes, lacunes et rattrapage.
-import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261019b2";
-import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261019b2";
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b2";
+import { A1_LIST, EXAM_KEY } from "./lecons-a1.js?v=20261019b3";
+import { A2_LIST, A2_BUILT } from "./lecons-a2.js?v=20261019b3";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b3";
 export const PASS = 32;
 export const SK = [["Compréhension écrite", 7.5], ["Compréhension orale", 7.5], ["Grammaire", 10], ["Expression écrite", 7.5], ["Expression orale", 7.5]];
 const read = (key) => { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { return {}; } };
@@ -34,7 +34,11 @@ export function bulletinA1(level = "A1") {
   const trad = LIST.filter((L) => TR[L.n]).map((L) => { const t = read(L.key).trad || {}, g = (d) => t[d] || null; return { n: L.n, code: L.code, title: L.titleFr, fr: g("fr"), en: g("en") }; });
   const tOk = trad.reduce((a, x) => a + (x.fr ? x.fr.ok : 0) + (x.en ? x.en.ok : 0), 0), tTot = trad.reduce((a, x) => a + (x.fr ? x.fr.tot : 0) + (x.en ? x.en.tot : 0), 0);
   const tradAvg = tTot ? Math.round((tOk / tTot) * 100) : null;
-  return { exam, tests, skills, gaps, avg, trad, tradAvg, nDone: done.length, nOk: done.filter((t) => t.passed).length };
+  // Dictée : meilleur score (phrases justes du premier coup) par leçon.
+  const dict = LIST.map((L) => { const d = read(L.key).dict || null; return { n: L.n, code: L.code, title: L.titleFr, d }; }).filter((x) => x.d);
+  const dOk = dict.reduce((a, x) => a + x.d.ok, 0), dTot = dict.reduce((a, x) => a + x.d.tot, 0);
+  const dictAvg = dTot ? Math.round((dOk / dTot) * 100) : null;
+  return { exam, tests, skills, gaps, avg, trad, tradAvg, dict, dictAvg, nDone: done.length, nOk: done.filter((t) => t.passed).length };
 }
 
 // ---- Exercices en plus (rattrapage) : 5 questions tirées des exercices corrigés de la leçon, selon la compétence faible ----
