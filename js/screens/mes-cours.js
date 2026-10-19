@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261019a9";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019a9";
-import { renderShell } from "./shell.js?v=20261019a9";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019a9";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019a9";
+import { renderLesson } from "./lecon-a11.js?v=20261019b1";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019b1";
+import { renderShell } from "./shell.js?v=20261019b1";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019b1";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019b1";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,14 +23,14 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019a9";
-import { plantSvg } from "./plant.js?v=20261019a9";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019b1";
+import { plantSvg } from "./plant.js?v=20261019b1";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { currentCharacter } from "./lecon-a11.js?v=20261019a9";
-import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019a9";
-import { runRattrapage } from "./rattrapage.js?v=20261019a9";
-import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019a9";
+import { currentCharacter } from "./lecon-a11.js?v=20261019b1";
+import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019b1";
+import { runRattrapage } from "./rattrapage.js?v=20261019b1";
+import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019b1";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -193,7 +193,7 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
-const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019a9`;
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019b1`;
 const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
 const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
 export function bulletinParts(level = "A1") {
@@ -312,44 +312,56 @@ export function renderMesCours(container, shellRoot) {
   // ne sont pas encore remontées ici (elles vivent aujourd'hui uniquement
   // dans lessons.html) — prochaine étape si besoin : faire remonter chaque
   // score de Grand Contrôle jusqu'ici pour un vrai historique de notes. ---
-  // Livret en « hub » : une page courte, des carrés à ouvrir (niveau → compétences / lacunes / tests…), jamais une longue page.
-  let lvView = { level: null, sec: null };
-  const tile = (attrs, img, title, sub, badge) => `<button type="button" class="bl-nav" ${attrs}><span class="bl-nav-i">${img}</span><span class="bl-nav-t"><b>${title}</b><small>${sub}</small></span>${badge ? `<em class="bl-nav-b">${badge}</em>` : ""}</button>`;
-  const emo = (e) => `<span class="bl-nav-e">${e}</span>`;
-  const im = (f) => `<img src="${BL_IMG(f)}" alt="" width="44" height="44"/>`;
+  // Livret : niveau (A1/A2) + onglets. Deux présentations au choix (bouton en haut) : « Barre » = onglets en bas + notes en liste,
+  // « Radar » = onglets en haut + toile des 6 compétences. Le choix est mémorisé sur l'appareil.
+  const ST_KEY = "the_roots_livret_style_v1";
+  const getStyle = () => { try { return localStorage.getItem(ST_KEY) === "radar" ? "radar" : "bar"; } catch (e) { return "bar"; } };
+  let lvLevel = null, lvTab = "notes";
+  const f1 = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
+  const tile = (attrs, e, title, sub) => `<button type="button" class="bl-nav" ${attrs}><span class="bl-nav-e">${e}</span><span class="bl-nav-t"><b>${title}</b><small>${sub}</small></span></button>`;
+  function radarHtml(B) {
+    const labs = ["Lecture", "Écoute", "Grammaire", "Écrit", "Oral", "Traduction"], emo = ["📖", "🎧", "⚙️", "✍️", "🗣️", "🔁"];
+    const val = B.skills.map((x) => (x.avg === null ? null : x.avg / x.max)).concat([B.tradAvg === null ? null : B.tradAvg / 100]);
+    const raw = B.skills.map((x) => (x.avg === null ? null : x.avg)).concat([B.tradAvg === null ? null : B.tradAvg / 10]);
+    const cx = 130, cy = 108, R = 78, pt = (i, r) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    const ring = (k) => `<polygon points="${labs.map((_, i) => pt(i, R * k).map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="none" stroke="#dfe4ec"/>`;
+    const poly = val.map((v, i) => pt(i, R * (v || 0)).map((x) => x.toFixed(1)).join(",")).join(" ");
+    const tx = labs.map((l, i) => { const [x, y] = pt(i, R + 17); return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" font-size="11" font-weight="700" text-anchor="middle" fill="#1b3c39">${l}</text>`; }).join("");
+    return `<div class="bl-rad"><svg viewBox="0 0 260 218" width="100%" role="img" aria-label="Radar des 6 compétences">${ring(0.33)}${ring(0.66)}${ring(1)}<polygon points="${poly}" fill="rgba(47,163,94,.28)" stroke="#2fa35e" stroke-width="2.5"/>${tx}</svg>
+      <div class="bl-leg">${labs.map((l, i) => `<div>${emo[i]} ${l}<b>${raw[i] === null ? "—" : f1(raw[i])}</b></div>`).join("")}</div></div>`;
+  }
+  function tradHtml(B) {
+    if (!B.trad.length) return `<div class="card bl-card"><p class="bl-soft">Pas de traduction dans ce niveau.</p></div>`;
+    const sc = (x) => x ? `${x.ok}/${x.tot}${x.done ? " ✓" : ""}` : "—";
+    const top = B.tradAvg === null ? `<p class="bl-soft">Fais la page « Traduction » d'une leçon : tes scores apparaîtront ici.</p>` : `<div class="bl-sk-top"><b>🔁 Traduction EN ⇄ FR</b><b>${f1(B.tradAvg / 10)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.tradAvg}%;background:${B.tradAvg >= 80 ? "#2fa35e" : "#e2a13d"}"></i></div>`;
+    return `<div class="card bl-card">${top}<div class="bl-trs">${B.trad.map((x) => `<div class="bl-tr"><b>${x.code}</b><span class="${x.fr && x.fr.done ? "ok" : ""}">EN→FR ${sc(x.fr)}</span><span class="${x.en && x.en.done ? "ok" : ""}">FR→EN ${sc(x.en)}</span></div>`).join("")}</div><p class="bl-soft">Une série est réussie à partir de 8 phrases sur 10. Elle ne compte pas dans les 40 points du test.</p></div>`;
+  }
   function hubHtml(l) {
-    const back = (to, label) => `<button type="button" class="bl-back" data-lv="${to}">← ${label}</button>`;
+    const back = (to, label) => `<button type="button" class="bl-back" data-tab="${to}">← ${label}</button>`;
     if (l.code !== "en") {
       return `<div class="dash-box"><h3>Mon profil</h3><div class="card">${profileHtml(l.code)}</div></div><div class="dash-box"><h3>Mes contrôles</h3><div class="card">${controlsHtml(l.code)}</div></div><div class="dash-box"><h3>Mes missions</h3><div class="card">${missionsHtml(l.code)}</div></div>`;
     }
-    const { level, sec } = lvView;
-    if (level) {
-      const P = bulletinParts(level), B = P.B, f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
-      if (sec) {
-        const body = { skills: P.skills || P.head, gaps: P.gaps || `<div class="card bl-card"><p class="bl-soft">Aucune lacune détectée 🎉</p></div>`, tests: P.grid || P.head, rt: P.rt || `<div class="card bl-card"><p class="bl-soft">Aucun rattrapage pour l'instant.</p></div>` }[sec];
-        return back(level, "Niveau " + level) + body;
-      }
-      const nG = B.gaps.length;
-      return back("", "Mon livret") + P.head + `<div class="bl-hub">
-        ${tile(`data-lv="${level}:skills"`, im("ic-grammar"), "Mes compétences", B.skills.some((s) => s.avg !== null) ? "Notes par compétence + traduction" : "Pas encore de note", "")}
-        ${tile(`data-lv="${level}:gaps"`, emo("🔎"), "Mes lacunes", nG ? `${nG} à revoir` : "Aucune", nG ? String(nG) : "✓")}
-        ${tile(`data-lv="${level}:tests"`, im("ic-test"), "Mes tests de fin de leçon", `${B.nOk}/${B.tests.length} réussis`, "")}
-        ${tile(`data-lv="${level}:rt"`, emo("↺"), "Mes rattrapages", `${rattrapagesFaits(level).length} fait${rattrapagesFaits(level).length > 1 ? "s" : ""}`, "")}
-      </div>${P.word}`;
-    }
-    if (sec) {
-      const html = { profil: `<div class="card">${profileHtml(l.code)}</div>`, ctrl: `<div class="card">${controlsHtml(l.code)}</div>`, miss: `<div class="card">${missionsHtml(l.code)}</div>` }[sec];
-      return back("", "Mon livret") + html;
-    }
-    const A = bulletinParts("A1").B, A2 = bulletinParts("A2").B;
-    const sub = (B) => B.nDone ? `${B.nDone} test${B.nDone > 1 ? "s" : ""} · moyenne ${String(Math.round(B.avg * 10) / 10).replace(".", ",")}/40` : "Pas encore de test";
-    return `<div class="bl-hub">
-      ${tile(`data-lv="A1"`, emo("A1"), "Niveau A1", sub(A), "")}
-      ${tile(`data-lv="A2"`, emo("A2"), "Niveau A2", sub(A2), "")}
-      ${tile(`data-lv=":profil"`, emo("📊"), "Mon profil", "Forces et points à travailler", "")}
-      ${tile(`data-lv=":ctrl"`, emo("🏁"), "Mes contrôles", "A1, A2, contrôle final", "")}
-      ${tile(`data-lv=":miss"`, emo("🎯"), "Mes missions", "Erreurs à revoir", "")}
-    </div>`;
+    if (!lvLevel) lvLevel = currentOf(l).level === "A1" ? "A1" : "A2";
+    const style = getStyle(), P = bulletinParts(lvLevel), B = P.B, nG = B.gaps.length;
+    const empty = `<div class="card bl-card"><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes apparaîtront ici.</p></div>`;
+    let body = "";
+    const sub = { profil: `<div class="card">${profileHtml("en")}</div>`, ctrl: `<div class="card">${controlsHtml("en")}</div>`, miss: `<div class="card">${missionsHtml("en")}</div>`,
+      rt: P.rt || `<div class="card bl-card"><p class="bl-soft">Aucun rattrapage pour l'instant.</p></div>` };
+    if (lvTab === "notes") body = P.empty ? empty : style === "radar" ? radarHtml(B) : P.skills;
+    else if (lvTab === "gaps") body = P.gaps || `<div class="card bl-card"><p class="bl-soft">Aucune lacune détectée 🎉</p></div>`;
+    else if (lvTab === "tests") body = P.grid || empty;
+    else if (lvTab === "trad") body = tradHtml(B);
+    else if (lvTab === "plus") body = `<div class="bl-hub">${tile('data-tab="profil"', "📊", "Mon profil", "Forces et points faibles")}${tile('data-tab="ctrl"', "🏁", "Mes contrôles", "A1, A2, contrôle final")}${tile('data-tab="miss"', "🎯", "Mes missions", "Erreurs à revoir")}${tile('data-tab="rt"', "↺", "Mes rattrapages", `${rattrapagesFaits(lvLevel).length} fait${rattrapagesFaits(lvLevel).length > 1 ? "s" : ""}`)}</div>${P.word}`;
+    else body = back("plus", "Plus") + (sub[lvTab] || "");
+    const TABS = [["notes", "📈", "Notes"], ["gaps", "🔎", "Lacunes"], ["tests", "🏆", "Tests"], ["trad", "🔁", "Traduc."], ["plus", "⋯", "Plus"]];
+    const main = TABS.some((t) => t[0] === lvTab) ? lvTab : "plus";
+    const tabs = style === "radar"
+      ? `<div class="bl-tabs">${TABS.map(([id, , n]) => `<button type="button" class="${id === main ? "on" : ""}" data-tab="${id}">${n === "Traduc." ? "Traduction" : n}${id === "gaps" && nG ? `<span class="bl-bdg">${nG}</span>` : ""}</button>`).join("")}</div>`
+      : `<div class="bl-tb">${TABS.map(([id, e, n]) => `<button type="button" class="${id === main ? "on" : ""}" data-tab="${id}"><i>${e}</i>${n}${id === "gaps" && nG ? `<span class="bl-bdg">${nG}</span>` : ""}</button>`).join("")}</div>`;
+    return `${P.empty ? "" : P.head}
+      <div class="bl-bar-top"><div class="bl-chips">${["A1", "A2"].map((v) => `<button type="button" class="${v === lvLevel ? "on" : ""}" data-lvl="${v}">${v}</button>`).join("")}</div>
+        <button type="button" class="bl-style" data-style="${style === "radar" ? "bar" : "radar"}" aria-label="Changer la présentation">${style === "radar" ? "📋 Vue liste" : "🕸️ Vue radar"}</button></div>
+      ${style === "radar" ? tabs : ""}${body}${style === "bar" ? tabs : ""}`;
   }
   let livretLang = null;
   function paintLivret() {
@@ -388,7 +400,9 @@ export function renderMesCours(container, shellRoot) {
       </div>
     `;
     container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
-    container.querySelectorAll("[data-lv]").forEach((b) => b.addEventListener("click", () => { const [a, c] = b.dataset.lv.split(":"); lvView = { level: a || null, sec: c || null }; paint(); }));
+    container.querySelectorAll("[data-lvl]").forEach((b) => b.addEventListener("click", () => { lvLevel = b.dataset.lvl; paint(); }));
+    container.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => { lvTab = b.dataset.tab; paint(); }));
+    container.querySelectorAll("[data-style]").forEach((b) => b.addEventListener("click", () => { try { localStorage.setItem(ST_KEY, b.dataset.style); } catch (e) { /* stockage indisponible */ } paint(); }));
     container.querySelectorAll("[data-rt]").forEach((b) => b.addEventListener("click", () => paintRattrapage(b.dataset.rt)));
     container.querySelectorAll("[data-livret-lang]").forEach((b) => b.addEventListener("click", () => { livretLang = b.dataset.livretLang; paint(); }));
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
