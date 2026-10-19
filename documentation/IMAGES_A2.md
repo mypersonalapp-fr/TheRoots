@@ -129,3 +129,8 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - lesson/ (scènes de vocabulaire) : scene-a27-weather, scene-a27-temperature, scene-a27-storm, scene-a27-clothes, scene-a27-nature, scene-a27-recycle, scene-a27-plans, scene-a27-travel, scene-a27-alert
 - city/ : a27-m1 … a27-m6
 - lesson/ « Décris l'image » : describe-a27-storm, describe-a27-snow
+
+## A2.8 « Housing and Neighbourhood » — 17 images (leçon construite le 19/10, images à fournir en fin de parcours)
+- lesson/ (scènes de vocabulaire) : scene-a28-rooms, scene-a28-furniture, scene-a28-kitchen, scene-a28-district, scene-a28-shops, scene-a28-prepos, scene-a28-adjectives, scene-a28-rent, scene-a28-neighbours
+- city/ : a28-m1 … a28-m6
+- lesson/ « Décris l'image » : describe-a28-living (salon lumineux : canapé près de la fenêtre, lampe derrière, fille qui lit sur le tapis, chat sous la table, plantes), describe-a28-street (rue de quartier : boulangerie à côté de la pharmacie, arrêt de bus en face du parc, enfants qui vont à l'école, peu de circulation)

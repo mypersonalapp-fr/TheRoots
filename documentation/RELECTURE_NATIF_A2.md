@@ -4698,6 +4698,1352 @@
 - `VOCAB_A26` You should get more sleep.
 - `VOCAB_A26` “Nap” veut dire…
 
+## A2.7 (815 lignes)
+
+- `EXERCISES_A27` Choisis le sens correct.
+- `EXERCISES_A27` Cloudy = nuageux.
+- `EXERCISES_A27` Foggy = brumeux.
+- `EXERCISES_A27` Thunder = tonnerre.
+- `EXERCISES_A27` Freezing = glacial.
+- `EXERCISES_A27` Rainbow = arc-en-ciel.
+- `EXERCISES_A27` Vocabulaire — Environnement
+- `EXERCISES_A27` Recycle = recycler.
+- `EXERCISES_A27` Pollution = pollution.
+- `EXERCISES_A27` Choisis la bonne forme.
+- `EXERCISES_A27` Tomorrow it ___ be cold.
+- `EXERCISES_A27` will + be.
+- `EXERCISES_A27` I think it ___ snow tonight.
+- `EXERCISES_A27` I think + will.
+- `EXERCISES_A27` The sun ___ shine on Sunday.
+- `EXERCISES_A27` shine will
+- `EXERCISES_A27` will + verbe.
+- `EXERCISES_A27` Next week ___ be warmer.
+- `EXERCISES_A27` Next week will be…
+- `EXERCISES_A27` The storm ___ arrive at nine.
+- `EXERCISES_A27` arrives will
+- `EXERCISES_A27` will + verbe sans to.
+- `EXERCISES_A27` It ___ be sunny all week.
+- `EXERCISES_A27` Won't et questions
+- `EXERCISES_A27` It ___ rain tomorrow. The forecast is good.
+- `EXERCISES_A27` won't = will not.
+- `EXERCISES_A27` ___ it be hot on Friday?
+- `EXERCISES_A27` Will + sujet + verbe ? ⚠ espacement/ponctuation
+- `EXERCISES_A27` Will it snow? — No, it ___.
+- `EXERCISES_A27` What ___ the weather be like?
+- `EXERCISES_A27` What will the weather be like ? ⚠ espacement/ponctuation
+- `EXERCISES_A27` The shops ___ be open on Sunday.
+- `EXERCISES_A27` ___ you need an umbrella?
+- `EXERCISES_A27` Will you need…?
+- `EXERCISES_A27` Probably, maybe, I think
+- `EXERCISES_A27` Choisis le bon mot.
+- `EXERCISES_A27` It will ___ rain. Take your coat.
+- `EXERCISES_A27` will + probably.
+- `EXERCISES_A27` ___ it will be sunny. I'm not sure.
+- `EXERCISES_A27` I ___ think it will snow.
+- `EXERCISES_A27` I don't think it will…
+- `EXERCISES_A27` It probably ___ be cold.
+- `EXERCISES_A27` probably won't.
+- `EXERCISES_A27` I think it will ___ tomorrow.
+- `EXERCISES_A27` ___ the temperature will fall.
+- `EXERCISES_A27` If it ___, we'll stay at home.
+- `EXERCISES_A27` will rain
+- `EXERCISES_A27` If it's sunny, we ___ go to the park.
+- `EXERCISES_A27` We'll have a picnic if the weather ___ good.
+- `EXERCISES_A27` If you ___ a coat, you'll be warm.
+- `EXERCISES_A27` will wear
+- `EXERCISES_A27` If the road is icy, I ___ drive slowly.
+- `EXERCISES_A27` will + base.
+- `EXERCISES_A27` If it snows, the school ___ close.
+- `EXERCISES_A27` If it ___ rain, we'll go out.
+- `EXERCISES_A27` if + doesn't.
+- `EXERCISES_A27` What will you do ___ it rains?
+- `EXERCISES_A27` What will you do if…
+- `EXERCISES_A27` If you don't hurry, you ___ miss the bus.
+- `EXERCISES_A27` Will you come if it ___ cold?
+- `EXERCISES_A27` If it isn't sunny, we ___ swim.
+- `EXERCISES_A27` What will happen ___ the flight is late?
+- `EXERCISES_A27` What will happen if…
+- `EXERCISES_A27` It ___ rain later. I'm not sure.
+- `EXERCISES_A27` might + base.
+- `EXERCISES_A27` We ___ go out. It depends on the weather.
+- `EXERCISES_A27` It might ___ be hot tomorrow.
+- `EXERCISES_A27` She ___ be late because of the snow.
+- `EXERCISES_A27` She might.
+- `EXERCISES_A27` They might ___ the match.
+- `EXERCISES_A27` to cancel
+- `EXERCISES_A27` might + verbe sans to.
+- `EXERCISES_A27` I might ___ a coat.
+- `EXERCISES_A27` If ou when ? ⚠ espacement/ponctuation
+- `EXERCISES_A27` ___ spring comes, the days get longer.
+- `EXERCISES_A27` I don't know. ___ it rains, I'll stay in.
+- `EXERCISES_A27` ___ I get home, I'll call you.
+- `EXERCISES_A27` Take a coat ___ it's cold.
+- `EXERCISES_A27` Condition possible : if.
+- `EXERCISES_A27` ___ winter comes, it snows in the mountains.
+- `EXERCISES_A27` L'hiver arrive toujours : when.
+- `EXERCISES_A27` Call me ___ you need help.
+- `EXERCISES_A27` ___ it rains, we'll have a picnic.
+- `EXERCISES_A27` Unless = sauf s'il pleut.
+- `EXERCISES_A27` I'll go out ___ it snows.
+- `EXERCISES_A27` Unless = if … not.
+- `EXERCISES_A27` Unless you hurry, you ___ miss the train.
+- `EXERCISES_A27` We'll play outside ___ it's too cold.
+- `EXERCISES_A27` ___ the weather is bad, we'll go.
+- `EXERCISES_A27` Unless the weather is bad.
+- `EXERCISES_A27` She won't come ___ you ask her.
+- `EXERCISES_A27` Unless you ask her.
+- `EXERCISES_A27` Will, might ou going to ? ⚠ espacement/ponctuation
+- `EXERCISES_A27` Choisis la meilleure forme.
+- `EXERCISES_A27` Look at those black clouds! It ___ rain.
+- `EXERCISES_A27` is going to
+- `EXERCISES_A27` Signe visible : going to.
+- `EXERCISES_A27` I think it ___ be cold tomorrow.
+- `EXERCISES_A27` Opinion : will.
+- `EXERCISES_A27` I'm not sure, but it ___ snow.
+- `EXERCISES_A27` The forecast says it ___ be sunny.
+- `EXERCISES_A27` It's dark and windy. A storm ___ come.
+- `EXERCISES_A27` Maybe I ___ go out. I don't know yet.
+- `EXERCISES_A27` Choisis la bonne traduction.
+- `EXERCISES_A27` It will rain tomorrow.
+- `EXERCISES_A27` Il a plu hier.
+- `EXERCISES_A27` Il pleuvra demain.
+- `EXERCISES_A27` Il pleut maintenant.
+- `EXERCISES_A27` will = futur : il pleuvra.
+- `EXERCISES_A27` If it snows, we'll stay at home.
+- `EXERCISES_A27` Quand il neige, nous sortons.
+- `EXERCISES_A27` The flight might be late.
+- `EXERCISES_A27` Le vol a eu du retard. ⚠ « a » devant voyelle
+- `EXERCISES_A27` We must protect the planet.
+- `EXERCISES_A27` must = devoir.
+- `EXERCISES_A27` Unless it rains, we'll go out.
+- `EXERCISES_A27` Il pleuvra, nous sortirons.
+- `EXERCISES_A27` Quand il pleut, nous sortons.
+- `EXERCISES_A27` There is a strong wind.
+- `EXERCISES_A27` Il y a un vent fort. ⚠ « a » devant voyelle
+- `EXERCISES_A27` Il n'y a pas de vent.
+- `EXERCISES_A27` strong = fort.
+- `EXERCISES_A27` Il fera beau demain.
+- `EXERCISES_A27` It will be sunny tomorrow.
+- `EXERCISES_A27` It was sunny tomorrow.
+- `EXERCISES_A27` It is sunny yesterday.
+- `EXERCISES_A27` Futur : will be.
+- `EXERCISES_A27` When it rained, I will stay.
+- `EXERCISES_A27` If it will rain, I stay at home.
+- `EXERCISES_A27` If it rains, I will stay at home.
+- `EXERCISES_A27` Il ne neigera pas ce soir.
+- `EXERCISES_A27` It doesn't snow tonight yesterday.
+- `EXERCISES_A27` It won't snow tonight.
+- `EXERCISES_A27` It not will snow.
+- `EXERCISES_A27` won't + base.
+- `EXERCISES_A27` There might be a storm.
+- `EXERCISES_A27` There will might a storm.
+- `EXERCISES_A27` There are might storm.
+- `EXERCISES_A27` might be.
+- `EXERCISES_A27` Tu devrais prendre un parapluie.
+- `EXERCISES_A27` You should to take an umbrella.
+- `EXERCISES_A27` You should take an umbrella.
+- `EXERCISES_A27` You shoulds take an umbrella.
+- `EXERCISES_A27` should + base.
+- `EXERCISES_A27` Recyclons le plastique ! ⚠ espacement/ponctuation
+- `EXERCISES_A27` Let's recycle plastic!
+- `EXERCISES_A27` Let's recycling plastic!
+- `EXERCISES_A27` We recycle let plastic!
+- `EXERCISES_A27` Let's + base.
+- `EXPRESSION_A27` Dis le temps qu'il fera demain.
+- `EXPRESSION_A27` Dis ce qui est possible avec might ou probably.
+- `EXPRESSION_A27` Donne un conseil ou un plan avec if.
+- `EXPRESSION_A27` Tomorrow will be cloudy and cool. The temperature will be ten degrees and the wind will be strong. It might rain in the afternoon. If it rains, you should take an umbrella.
+- `EXPRESSION_A27` Le temps de demain
+- `EXPRESSION_A27` Un conseil ou un plan avec if
+- `EXPRESSION_A27` Mes plans selon le temps
+- `EXPRESSION_A27` Dis ce que tu feras s'il fait beau.
+- `EXPRESSION_A27` Dis ce que tu feras s'il pleut.
+- `EXPRESSION_A27` Dis ce que tu ne feras pas.
+- `EXPRESSION_A27` If it is sunny on Saturday, I will go to the park. If it rains, I will stay at home and read a book. I won't go swimming. I hope the weather is good.
+- `EXPRESSION_A27` S'il fait beau
+- `EXPRESSION_A27` S'il pleut
+- `EXPRESSION_A27` Ce que tu ne feras pas
+- `GRAMMAR_A27` will + verbe sans to
+- `GRAMMAR_A27` It will be sunny.
+- `GRAMMAR_A27` Il fera beau.
+- `GRAMMAR_A27` I think it will snow.
+- `GRAMMAR_A27` Je pense qu'il va neiger.
+- `GRAMMAR_A27` I think + will
+- `GRAMMAR_A27` She will arrive at six.
+- `GRAMMAR_A27` jamais de -s : she will
+- `GRAMMAR_A27` Tomorrow will be cold and windy.
+- `GRAMMAR_A27` Demain sera froid et venteux.
+- `GRAMMAR_A27` The temperature will fall tonight.
+- `GRAMMAR_A27` It ___ rain tomorrow.
+- `GRAMMAR_A27` She ___ arrive at six.
+- `GRAMMAR_A27` I think it ___ be sunny.
+- `GRAMMAR_A27` I think + it will be.
+- `GRAMMAR_A27` Won't et questions avec will
+- `GRAMMAR_A27` It won't rain.
+- `GRAMMAR_A27` Il ne pleuvra pas.
+- `GRAMMAR_A27` won't = will not
+- `GRAMMAR_A27` Will it snow tomorrow?
+- `GRAMMAR_A27` Va-t-il neiger demain ? ⚠ espacement/ponctuation
+- `GRAMMAR_A27` Yes, it will. / No, it won't.
+- `GRAMMAR_A27` Oui. / Non.
+- `GRAMMAR_A27` What will the weather be like?
+- `GRAMMAR_A27` Quel temps fera-t-il ? ⚠ espacement/ponctuation
+- `GRAMMAR_A27` What + will + sujet + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A27` It won't be hot on Sunday.
+- `GRAMMAR_A27` Il ne fera pas chaud dimanche.
+- `GRAMMAR_A27` Will the storm come tonight? — No, it won't.
+- `GRAMMAR_A27` L'orage va-t-il arriver ce soir ? — Non. ⚠ espacement/ponctuation
+- `GRAMMAR_A27` It ___ rain tonight. The sky is clear.
+- `GRAMMAR_A27` ___ it snow tomorrow?
+- `GRAMMAR_A27` Question : Will + sujet + verbe.
+- `GRAMMAR_A27` Will it be cold? — No, it ___.
+- `GRAMMAR_A27` It will probably rain.
+- `GRAMMAR_A27` Il va probablement pleuvoir.
+- `GRAMMAR_A27` will + probably + verbe
+- `GRAMMAR_A27` It probably won't snow.
+- `GRAMMAR_A27` Il ne neigera probablement pas.
+- `GRAMMAR_A27` probably + won't
+- `GRAMMAR_A27` Maybe it will be sunny.
+- `GRAMMAR_A27` I don't think it will rain.
+- `GRAMMAR_A27` Je ne pense pas qu'il pleuvra.
+- `GRAMMAR_A27` I don't think + will (pas I think… won't)
+- `GRAMMAR_A27` It will probably be cloudy tomorrow.
+- `GRAMMAR_A27` Il y aura probablement des nuages demain.
+- `GRAMMAR_A27` I don't think the storm will arrive tonight.
+- `GRAMMAR_A27` Je ne pense pas que l'orage arrive ce soir.
+- `GRAMMAR_A27` It will ___ snow tonight.
+- `GRAMMAR_A27` ___ it will be sunny on Sunday.
+- `GRAMMAR_A27` I ___ think it will rain.
+- `GRAMMAR_A27` On dit I don't think it will…
+- `GRAMMAR_A27` If it rains, we will stay at home.
+- `GRAMMAR_A27` We will stay at home if it rains.
+- `GRAMMAR_A27` l'ordre peut s'inverser, sans virgule
+- `GRAMMAR_A27` If it is sunny, I will go to the beach.
+- `GRAMMAR_A27` If you are cold, you will need a coat.
+- `GRAMMAR_A27` Si tu as froid, tu auras besoin d'un manteau.
+- `GRAMMAR_A27` If it snows, the school will close.
+- `GRAMMAR_A27` If the weather is good, we'll have a picnic.
+- `GRAMMAR_A27` S'il fait beau, nous ferons un pique-nique.
+- `GRAMMAR_A27` If it ___, we will stay at home.
+- `GRAMMAR_A27` rain will
+- `GRAMMAR_A27` If it is sunny, I ___ go to the beach.
+- `GRAMMAR_A27` We will take umbrellas if it ___.
+- `GRAMMAR_A27` If it doesn't rain, we'll go out.
+- `GRAMMAR_A27` S'il ne pleut pas, nous sortirons.
+- `GRAMMAR_A27` if + don't / doesn't
+- `GRAMMAR_A27` What will you do if it rains?
+- `GRAMMAR_A27` Que feras-tu s'il pleut ? ⚠ espacement/ponctuation
+- `GRAMMAR_A27` What will + sujet + do if…?
+- `GRAMMAR_A27` Will you come if it's cold?
+- `GRAMMAR_A27` Viendras-tu s'il fait froid ? ⚠ espacement/ponctuation
+- `GRAMMAR_A27` Will + sujet + verbe + if…?
+- `GRAMMAR_A27` If you don't wear a coat, you'll be cold.
+- `GRAMMAR_A27` Si tu ne mets pas de manteau, tu auras froid.
+- `GRAMMAR_A27` If it isn't sunny, we won't swim.
+- `GRAMMAR_A27` S'il ne fait pas beau, nous ne nagerons pas.
+- `GRAMMAR_A27` What will you do if the flight is cancelled?
+- `GRAMMAR_A27` if + doesn't + verbe.
+- `GRAMMAR_A27` What ___ you do if it snows?
+- `GRAMMAR_A27` What will you do if…?
+- `GRAMMAR_A27` If you ___ a coat, you'll be cold.
+- `GRAMMAR_A27` don't wear
+- `GRAMMAR_A27` won't wear
+- `GRAMMAR_A27` It might rain this afternoon.
+- `GRAMMAR_A27` might + verbe sans to
+- `GRAMMAR_A27` It might not be sunny.
+- `GRAMMAR_A27` Il se peut qu'il ne fasse pas beau.
+- `GRAMMAR_A27` We might go to the beach.
+- `GRAMMAR_A27` She might be late because of the snow.
+- `GRAMMAR_A27` It might snow tonight, but I'm not sure.
+- `GRAMMAR_A27` We might not play outside.
+- `GRAMMAR_A27` We ___ go to the beach, but it depends on the weather.
+- `GRAMMAR_A27` will probably to
+- `GRAMMAR_A27` It might ___ be sunny.
+- `GRAMMAR_A27` If it rains, we'll stay in.
+- `GRAMMAR_A27` When it rains, the river rises.
+- `GRAMMAR_A27` When I arrive, I'll call you.
+- `GRAMMAR_A27` Quand j'arriverai, je t'appellerai.
+- `GRAMMAR_A27` Call me if you need help.
+- `GRAMMAR_A27` Appelle-moi si tu as besoin d'aide.
+- `GRAMMAR_A27` if pour une condition possible
+- `GRAMMAR_A27` If it snows tomorrow, we'll build a snowman.
+- `GRAMMAR_A27` S'il neige demain, nous ferons un bonhomme de neige.
+- `GRAMMAR_A27` When winter comes, the days get shorter.
+- `GRAMMAR_A27` Quand l'hiver arrive, les jours raccourcissent.
+- `GRAMMAR_A27` It's sunny. ___ I get home, I'll water the plants.
+- `GRAMMAR_A27` I don't know if it will rain. ___ it rains, I'll stay home.
+- `GRAMMAR_A27` ___ spring comes, the flowers grow.
+- `GRAMMAR_A27` Le printemps vient toujours : when.
+- `GRAMMAR_A27` Unless et will, might, going to
+- `GRAMMAR_A27` Unless it rains, we'll have a picnic.
+- `GRAMMAR_A27` unless = if … not
+- `GRAMMAR_A27` I'll go out unless it snows.
+- `GRAMMAR_A27` Look at those clouds! It's going to rain.
+- `GRAMMAR_A27` Regarde ces nuages ! Il va pleuvoir. ⚠ espacement/ponctuation
+- `GRAMMAR_A27` going to = signe visible maintenant
+- `GRAMMAR_A27` I think it will rain tomorrow.
+- `GRAMMAR_A27` Je pense qu'il pleuvra demain.
+- `GRAMMAR_A27` Unless you hurry, you'll miss the bus.
+- `GRAMMAR_A27` It's very dark. It's going to storm.
+- `GRAMMAR_A27` ___ it rains, we'll play outside.
+- `GRAMMAR_A27` Unless = if … not : sauf s'il pleut.
+- `GRAMMAR_A27` Look at the sky! It ___ rain.
+- `GRAMMAR_A27` I'll stay home ___ it stops raining.
+- `LISTENING_A27` Weather on the radio
+- `LISTENING_A27` And now the weather. Tomorrow morning will be foggy, but the fog will disappear before noon. In the afternoon, it will be sunny and warm, with a temperature of twenty-two degrees. In the evening, a few clouds will arrive from the west.
+- `LISTENING_A27` What will the morning be like?
+- `LISTENING_A27` The morning will be foggy.
+- `LISTENING_A27` What will the temperature be in the afternoon?
+- `LISTENING_A27` Thirty degrees
+- `LISTENING_A27` Twelve degrees
+- `LISTENING_A27` Twenty-two degrees
+- `LISTENING_A27` Twenty-two degrees.
+- `LISTENING_A27` Changing plans
+- `LISTENING_A27` Shall we go to the beach on Sunday? The forecast says it will rain. Oh no! If it rains, we'll go to the cinema instead. Good idea. I'll check the film times tonight.
+- `LISTENING_A27` What is the problem?
+- `LISTENING_A27` It will rain on Sunday
+- `LISTENING_A27` The beach is closed
+- `LISTENING_A27` The film is long
+- `LISTENING_A27` It will rain on Sunday.
+- `LISTENING_A27` What will they do if it rains?
+- `LISTENING_A27` Go shopping
+- `LISTENING_A27` Stay at home
+- `LISTENING_A27` Go to the cinema
+- `LISTENING_A27` They will go to the cinema.
+- `LISTENING_A27` What will he check tonight?
+- `LISTENING_A27` The weather
+- `LISTENING_A27` The film times
+- `LISTENING_A27` The bus times
+- `LISTENING_A27` The film times.
+- `LISTENING_A27` Packing for a trip
+- `LISTENING_A27` I'm going to Scotland next week. It might be cold and rainy, so I will take a raincoat, a warm jumper and gloves. If it's sunny, I'll wear sunglasses. I won't take shorts. I don't think I will need them.
+- `LISTENING_A27` Where is she going?
+- `LISTENING_A27` To Scotland
+- `LISTENING_A27` To Scotland.
+- `LISTENING_A27` What won't she take?
+- `LISTENING_A27` A raincoat
+- `LISTENING_A27` She won't take shorts.
+- `LISTENING_A27` A flight delay
+- `LISTENING_A27` Attention please. Flight BA two-one-four to Paris will be late because of the fog. The new departure time is six thirty. Passengers should wait in the departure hall. We are sorry for the delay.
+- `LISTENING_A27` Why will the flight be late?
+- `LISTENING_A27` Because of the snow
+- `LISTENING_A27` Because of the fog
+- `LISTENING_A27` Because of a strike
+- `LISTENING_A27` Because of the fog.
+- `LISTENING_A27` What is the new departure time?
+- `LISTENING_A27` Six thirty
+- `LISTENING_A27` Five thirty
+- `LISTENING_A27` Seven thirty
+- `LISTENING_A27` Six thirty.
+- `LISTENING_A27` Storm warning
+- `LISTENING_A27` This is a weather warning. A strong storm will reach the coast at nine tonight. There will be heavy rain, and the wind might reach one hundred kilometres an hour. Please stay indoors and keep your phone charged.
+- `LISTENING_A27` When will the storm reach the coast?
+- `LISTENING_A27` At nine tomorrow
+- `LISTENING_A27` At nine tonight
+- `LISTENING_A27` At nine tonight.
+- `LISTENING_A27` What should people do?
+- `LISTENING_A27` Stay indoors
+- `LISTENING_A27` Go to the beach
+- `LISTENING_A27` Drive fast
+- `LISTENING_A27` Stay indoors.
+- `LISTENING_A27` Recycling at school
+- `LISTENING_A27` Class, from Monday, we will have three bins in the playground: one for paper, one for plastic and one for glass. If you drink water, please put the plastic bottle in the yellow bin. Remember, if we recycle, we will have less rubbish.
+- `LISTENING_A27` How many bins will there be?
+- `LISTENING_A27` Three bins.
+- `LISTENING_A27` Where should the plastic bottle go?
+- `LISTENING_A27` In the blue bin
+- `LISTENING_A27` In the yellow bin
+- `LISTENING_A27` On the floor
+- `LISTENING_A27` In the yellow bin.
+- `LISTENING_A27` Picnic or cinema?
+- `LISTENING_A27` What shall we do on Saturday? If it's sunny, let's have a picnic by the lake. But if it rains, we'll go to the cinema. I'll check the forecast on Friday night and send you a message.
+- `LISTENING_A27` What will they do if it's sunny?
+- `LISTENING_A27` Have a picnic by the lake
+- `LISTENING_A27` A picnic by the lake.
+- `LISTENING_A27` When will he check the forecast?
+- `LISTENING_A27` On Sunday
+- `LISTENING_A27` On Saturday morning
+- `LISTENING_A27` On Friday night
+- `LISTENING_A27` On Friday night.
+- `LISTENING_A27` Phone call to a friend
+- `LISTENING_A27` Hi Anna, it's Tom. I'm calling about the weekend. The weather will be cold, but it won't rain. We might go hiking in the hills. If you want to come, bring warm clothes and a bottle of water. Call me back, please.
+- `LISTENING_A27` Who is calling?
+- `LISTENING_A27` A teacher
+- `LISTENING_A27` It's Tom.
+- `LISTENING_A27` What might they do?
+- `LISTENING_A27` Go skiing
+- `LISTENING_A27` Go swimming
+- `LISTENING_A27` Go hiking
+- `LISTENING_A27` They might go hiking.
+- `LISTENING_A27` What should Anna bring?
+- `LISTENING_A27` A swimsuit
+- `LISTENING_A27` Warm clothes and water
+- `LISTENING_A27` Warm clothes and a bottle of water.
+- `LISTENING_A27` Winter forecast
+- `LISTENING_A27` This winter will be colder than last winter. The temperature will fall to minus five in January, and there will be snow in the mountains. In the cities, the roads might be icy in the morning. Drive slowly and be careful.
+- `LISTENING_A27` How cold will it be in January?
+- `LISTENING_A27` Minus five
+- `LISTENING_A27` Ten degrees
+- `LISTENING_A27` Minus five.
+- `LISTENING_A27` Where will there be snow?
+- `LISTENING_A27` In the desert
+- `LISTENING_A27` At the beach
+- `LISTENING_A27` In the mountains
+- `LISTENING_A27` In the mountains.
+- `LISTENING_A27` Saving water
+- `LISTENING_A27` If you take a shower instead of a bath, you will save a lot of water. And if you close the tap while you brush your teeth, you will save even more. Water is precious, and we mustn't waste it. Let's protect it together.
+- `LISTENING_A27` What will you save if you take a shower?
+- `LISTENING_A27` A lot of money in shops
+- `LISTENING_A27` A lot of water
+- `LISTENING_A27` Some time on the bus
+- `LISTENING_A27` A lot of water.
+- `LISTENING_A27` What should you do while you brush your teeth?
+- `LISTENING_A27` Close the tap
+- `LISTENING_A27` Open the tap
+- `LISTENING_A27` Close the tap.
+- `MISSIONS_A27` Quel temps ? ⚠ espacement/ponctuation
+- `MISSIONS_A27` Construis la phrase
+- `MISSIONS_A27` Remets les mots dans l'ordre.
+- `MISSIONS_A27` Choisis le bon verbe.
+- `MISSIONS_A27` If, when ou unless ? ⚠ espacement/ponctuation
+- `MISSIONS_A27` Compose ta phrase avec la fiche.
+- `READING_A27` Weather report
+- `READING_A27` Good evening. Tomorrow will be a mixed day. In the morning, it will be cloudy and cool, with a temperature of ten degrees. In the afternoon, it will probably rain in the north. In the evening, the wind will be strong. Don't forget your umbrella if you go out.
+- `READING_A27` What will the weather be like in the morning?
+- `READING_A27` Sunny and hot
+- `READING_A27` Cloudy and cool
+- `READING_A27` Cloudy and cool.
+- `READING_A27` Where will it probably rain?
+- `READING_A27` In the north
+- `READING_A27` In the south
+- `READING_A27` In the east
+- `READING_A27` In the north.
+- `READING_A27` What will the wind be like in the evening?
+- `READING_A27` There will be no wind
+- `READING_A27` Strong in the evening.
+- `READING_A27` On Saturday, I want to have a picnic with my friends in the park. The forecast says it will be sunny, so I will bring a blanket, sandwiches and some juice. But if it rains, we will go to my house and play board games. I hope the weather is good!
+- `READING_A27` Where does Mia want to have a picnic?
+- `READING_A27` In the park
+- `READING_A27` In the park.
+- `READING_A27` Cancel everything
+- `READING_A27` Play board games at her house
+- `READING_A27` They will go to her house.
+- `READING_A27` What does the forecast say?
+- `READING_A27` It will snow
+- `READING_A27` It will be sunny
+- `READING_A27` It will be foggy
+- `READING_A27` A strong storm will arrive tonight. There will be heavy rain and strong wind, and there might be some lightning. The streets might be flooded in the morning. If you don't have to travel, you should stay at home. Please don't walk near trees.
+- `READING_A27` When will the storm arrive?
+- `READING_A27` Tomorrow evening
+- `READING_A27` What might happen in the morning?
+- `READING_A27` It will be very hot
+- `READING_A27` The streets might be flooded
+- `READING_A27` The streets might be flooded.
+- `READING_A27` Walk near trees
+- `READING_A27` Stay at home if they don't have to travel
+- `READING_A27` Stay at home.
+- `READING_A27` Saving energy
+- `READING_A27` At our house, we try to save energy. We turn off the lights when we leave a room. If we wash clothes, we use cold water. In winter, we wear warm jumpers, so we don't use too much heating. If everybody does this, the planet will be healthier.
+- `READING_A27` What do they do when they leave a room?
+- `READING_A27` They turn on the TV
+- `READING_A27` They open the windows
+- `READING_A27` They turn off the lights
+- `READING_A27` They turn off the lights.
+- `READING_A27` What do they wear in winter?
+- `READING_A27` Warm jumpers
+- `READING_A27` Warm jumpers.
+- `READING_A27` What will happen if everybody does this?
+- `READING_A27` The planet will be healthier
+- `READING_A27` It will be colder
+- `READING_A27` The bills will be higher
+- `READING_A27` The planet will be healthier.
+- `READING_A27` Climate in my city
+- `READING_A27` I live in Lisbon. The climate here is warm and dry in summer, and mild and rainy in winter. In July, the temperature can be thirty-five degrees. Spring and autumn are my favourite seasons because it is not too hot and not too cold. Tourists come all year, but they prefer May and September.
+- `READING_A27` What is summer like in Lisbon?
+- `READING_A27` Cold and rainy
+- `READING_A27` Warm and dry
+- `READING_A27` Warm and dry.
+- `READING_A27` How hot can it be in July?
+- `READING_A27` Fifteen degrees
+- `READING_A27` Thirty-five degrees
+- `READING_A27` Twenty degrees
+- `READING_A27` Thirty-five degrees.
+- `READING_A27` Which seasons does the writer prefer?
+- `READING_A27` Spring and autumn
+- `READING_A27` Summer and winter
+- `READING_A27` Only winter
+- `READING_A27` Spring and autumn.
+- `READING_A27` Plastic in the ocean
+- `READING_A27` Every year, millions of plastic bottles go into the ocean. Fish and birds can eat small pieces of plastic and become ill. If we use fewer plastic bags and bottles, there will be less waste in the sea. Many schools now ask students to bring a reusable bottle.
+- `READING_A27` What goes into the ocean every year?
+- `READING_A27` Millions of fish
+- `READING_A27` Millions of plastic bottles
+- `READING_A27` Millions of boats
+- `READING_A27` Millions of plastic bottles.
+- `READING_A27` What can happen to fish and birds?
+- `READING_A27` They can become ill
+- `READING_A27` They grow bigger
+- `READING_A27` They go away
+- `READING_A27` They can become ill.
+- `READING_A27` What do many schools ask students to bring?
+- `READING_A27` An umbrella
+- `READING_A27` A plastic bag
+- `READING_A27` A reusable bottle
+- `READING_A27` A reusable bottle.
+- `READING_A27` My family is going skiing in the Alps next week. The forecast says there will be a lot of snow on Monday and Tuesday, and then it will be sunny. If the weather is bad, we will stay in the hotel and swim in the pool. I hope there won't be any delays on the road.
+- `READING_A27` Where is the family going?
+- `READING_A27` To the beach
+- `READING_A27` To the Alps
+- `READING_A27` To London
+- `READING_A27` To the Alps.
+- `READING_A27` What will the weather be like after Tuesday?
+- `READING_A27` Then it will be sunny.
+- `READING_A27` What will they do if the weather is bad?
+- `READING_A27` Swim in the hotel pool
+- `READING_A27` Swim in the pool.
+- `READING_A27` Ben's flight
+- `READING_A27` Ben is at the airport, but there is thick fog. His flight to Rome might be late, and it might even be cancelled. The airline says he should wait and check the screen every thirty minutes. If the flight is cancelled, he will take the train tomorrow morning.
+- `READING_A27` Why might Ben's flight be late?
+- `READING_A27` There is a strike
+- `READING_A27` There is thick fog
+- `READING_A27` It is too hot
+- `READING_A27` There is thick fog.
+- `READING_A27` How often should he check the screen?
+- `READING_A27` Once a day
+- `READING_A27` Every two hours
+- `READING_A27` Every thirty minutes
+- `READING_A27` Every thirty minutes.
+- `READING_A27` What will he do if the flight is cancelled?
+- `READING_A27` Go home and sleep
+- `READING_A27` Take the train tomorrow morning
+- `READING_A27` Take a taxi to Rome
+- `READING_A27` He will take the train.
+- `READING_A27` The environment
+- `READING_A27` The environment is everything around us: air, water, plants, animals and people. When we pollute the air or the rivers, animals and people suffer. Small actions help: if you walk or cycle, you will make less pollution. If you plant a tree, it will clean the air for many years.
+- `READING_A27` What is the environment?
+- `READING_A27` Everything around us
+- `READING_A27` Only the weather
+- `READING_A27` Only big cities
+- `READING_A27` Everything around us.
+- `READING_A27` What happens if you walk or cycle?
+- `READING_A27` You use more energy
+- `READING_A27` You make more waste
+- `READING_A27` You make less pollution
+- `READING_A27` You make less pollution.
+- `READING_A27` What will a tree do?
+- `READING_A27` Make the air dirty
+- `READING_A27` Clean the air for many years
+- `READING_A27` Stop the rain
+- `READING_A27` It will clean the air.
+- `TEST_AUDIOS_A27` And now the weather. Tomorrow morning will be foggy, but the fog will disappear before noon. In the afternoon, it will be sunny and warm, with a temperature of twenty-two degrees.
+- `TEST_AUDIOS_A27` Shall we go to the beach on Sunday? The forecast says it will rain. Oh no! If it rains, we'll go to the cinema instead. Good idea.
+- `TEST_AUDIOS_A27` What will the weather be like on Sunday?
+- `TEST_AUDIOS_A27` Stay in bed
+- `TEST_AUDIOS_A27` I'm going to Scotland next week. It might be cold and rainy, so I will take a raincoat, a warm jumper and gloves. I won't take shorts.
+- `TEST_AUDIOS_A27` Flight BA two-one-four to Paris will be late because of the fog. The new departure time is six thirty. Passengers should wait in the departure hall.
+- `TEST_AUDIOS_A27` Because of rain
+- `TEST_AUDIOS_A27` Because of the wind
+- `TEST_AUDIOS_A27` A strong storm will reach the coast at nine tonight. There will be heavy rain, and the wind might reach one hundred kilometres an hour. Please stay indoors.
+- `TEST_AUDIOS_A27` From Monday, we will have three bins in the playground: one for paper, one for plastic and one for glass. If you drink water, please put the plastic bottle in the yellow bin.
+- `TEST_AUDIOS_A27` Where should a plastic bottle go?
+- `TEST_AUDIOS_A27` If you take a shower instead of a bath, you will save a lot of water. And if you close the tap while you brush your teeth, you will save even more.
+- `TEST_AUDIOS_A27` What saves a lot of water?
+- `TEST_AUDIOS_A27` A shower instead of a bath
+- `TEST_AUDIOS_A27` A long bath
+- `TEST_AUDIOS_A27` An open tap
+- `TEST_AUDIOS_A27` When should you close the tap?
+- `TEST_AUDIOS_A27` While you eat
+- `TEST_AUDIOS_A27` While you sleep
+- `TEST_AUDIOS_A27` While you brush your teeth
+- `TEST_GRAMMAR_A27` Tomorrow ___ be colder.
+- `TEST_GRAMMAR_A27` The storm ___ arrive tonight.
+- `TEST_GRAMMAR_A27` It ___ snow. The sky is clear.
+- `TEST_GRAMMAR_A27` ___ it rain on Sunday?
+- `TEST_GRAMMAR_A27` It will ___ rain.
+- `TEST_GRAMMAR_A27` It probably ___ be hot.
+- `TEST_GRAMMAR_A27` If it's sunny, we ___ go out.
+- `TEST_GRAMMAR_A27` We'll go out if the weather ___ good.
+- `TEST_GRAMMAR_A27` If you wear a coat, you ___ warm.
+- `TEST_GRAMMAR_A27` are being
+- `TEST_GRAMMAR_A27` If it ___ rain, we'll play outside.
+- `TEST_GRAMMAR_A27` We ___ go out. It depends.
+- `TEST_GRAMMAR_A27` It might ___ be hot.
+- `TEST_GRAMMAR_A27` Look at those clouds! It ___ rain.
+- `TEST_GRAMMAR_A27` Maybe I ___ go out.
+- `TEST_GRAMMAR_A27` It's very dark. A storm ___ come.
+- `TEST_GRAMMAR_A27` “Flood” means ___.
+- `TEST_GRAMMAR_A27` “Recycle” means ___.
+- `TEST_GRAMMAR_A27` “Forecast” means ___.
+- `TEST_GRAMMAR_A27` “Reuse” means ___.
+- `TEST_TEXTS_A27` Tomorrow will be a mixed day. In the morning, it will be cloudy and cool, with a temperature of ten degrees. In the afternoon, it will probably rain in the north. In the evening, the wind will be strong.
+- `TEST_TEXTS_A27` When will the wind be strong?
+- `TEST_TEXTS_A27` In the evening
+- `TEST_TEXTS_A27` In the morning
+- `TEST_TEXTS_A27` On Saturday, I want to have a picnic with my friends in the park. The forecast says it will be sunny, so I will bring a blanket and sandwiches. But if it rains, we will go to my house and play board games.
+- `TEST_TEXTS_A27` At school
+- `TEST_TEXTS_A27` What will she bring?
+- `TEST_TEXTS_A27` A blanket and sandwiches
+- `TEST_TEXTS_A27` A football
+- `TEST_TEXTS_A27` A strong storm will arrive tonight. There will be heavy rain and strong wind, and there might be lightning. The streets might be flooded in the morning. If you don't have to travel, you should stay at home.
+- `TEST_TEXTS_A27` What might happen to the streets?
+- `TEST_TEXTS_A27` They might be flooded
+- `TEST_TEXTS_A27` They will be icy
+- `TEST_TEXTS_A27` They will be dry
+- `TEST_TEXTS_A27` Walk in the park
+- `TEST_TEXTS_A27` At our house, we save energy. We turn off the lights when we leave a room. If we wash clothes, we use cold water. In winter, we wear warm jumpers, so we don't use too much heating.
+- `TEST_TEXTS_A27` Open the door
+- `TEST_TEXTS_A27` Turn off the lights
+- `TEST_TEXTS_A27` Play music
+- `TEST_TEXTS_A27` What water do they use for clothes?
+- `TEST_TEXTS_A27` Cold water
+- `TEST_TEXTS_A27` Hot water
+- `TEST_TEXTS_A27` Sea water
+- `TEST_TEXTS_A27` Why do they wear jumpers in winter?
+- `TEST_TEXTS_A27` To play sports
+- `TEST_TEXTS_A27` To go out
+- `TEST_TEXTS_A27` To use less heating
+- `TEST_TEXTS_A27` I live in Lisbon. The climate here is warm and dry in summer, and mild and rainy in winter. In July, it can be thirty-five degrees. I prefer spring and autumn because it is not too hot and not too cold.
+- `TEST_TEXTS_A27` What is the climate like in summer?
+- `TEST_TEXTS_A27` Why does the writer prefer spring and autumn?
+- `TEST_TEXTS_A27` It always rains
+- `TEST_TEXTS_A27` It is not too hot or too cold
+- `TEST_TEXTS_A27` There is snow
+- `TEST_TEXTS_A27` Every year, millions of plastic bottles go into the ocean. Fish and birds can eat small pieces of plastic and become ill. If we use fewer plastic bags, there will be less waste in the sea.
+- `TEST_TEXTS_A27` What goes into the ocean?
+- `TEST_TEXTS_A27` Plastic bottles
+- `TEST_TEXTS_A27` Big ships
+- `TEST_TEXTS_A27` They can sing
+- `TEST_TEXTS_A27` They can learn to swim
+- `TEST_TEXTS_A27` What will happen if we use fewer plastic bags?
+- `TEST_TEXTS_A27` There will be more waste
+- `TEST_TEXTS_A27` There will be less waste
+- `TEST_TEXTS_A27` My family is going skiing next week. The forecast says there will be a lot of snow on Monday and Tuesday, and then it will be sunny. If the weather is bad, we will stay in the hotel and swim in the pool.
+- `TEST_TEXTS_A27` What will the weather be like on Monday?
+- `TEST_TEXTS_A27` What will it be like after Tuesday?
+- `TEST_TEXTS_A27` Where will they swim if the weather is bad?
+- `TEST_TEXTS_A27` In the hotel pool
+- `TEST_TEXTS_A27` In the sea
+- `TEST_TEXTS_A27` In a river
+- `TEST_TEXTS_A27` Ben is at the airport, but there is thick fog. His flight might be late, and it might even be cancelled. If the flight is cancelled, he will take the train tomorrow morning.
+- `TEST_TEXTS_A27` Why is there a problem?
+- `TEST_TEXTS_A27` The airport is closed for a party
+- `TEST_TEXTS_A27` What might happen to the flight?
+- `TEST_TEXTS_A27` It will be early
+- `TEST_TEXTS_A27` It might be cancelled
+- `TEST_TEXTS_A27` It will be free
+- `TEST_TEXTS_A27` What will Ben do if it is cancelled?
+- `TEST_TEXTS_A27` Take the train
+- `TEST_TEXTS_A27` Take a boat
+- `VOCAB_A27` Parler du temps qu'il fait
+- `VOCAB_A27` What's the weather like today? — It's cloudy.
+- `VOCAB_A27` Quel temps fait-il aujourd'hui ? — Il y a des nuages. ⚠ espacement/ponctuation
+- `VOCAB_A27` What's the forecast for tomorrow?
+- `VOCAB_A27` It will be sunny and warm.
+- `VOCAB_A27` Il fera beau et chaud.
+- `VOCAB_A27` The forecast says it will rain tomorrow, so I will take my umbrella.
+- `VOCAB_A27` On forme l'adjectif avec -y : sun → sunny, cloud → cloudy, wind → windy. Attention : on double la consonne dans “sunny” et “foggy”.
+- `VOCAB_A27` It's a cloudy and windy day.
+- `VOCAB_A27` The roads are icy this morning.
+- `VOCAB_A27` “Foggy” veut dire…
+- `VOCAB_A27` doux / chaud
+- `VOCAB_A27` The temperature is twenty degrees.
+- `VOCAB_A27` The climate in Spain is warm and dry.
+- `VOCAB_A27` Le climat en Espagne est chaud et sec.
+- `VOCAB_A27` “Forecast” veut dire…
+- `VOCAB_A27` chute de neige
+- `VOCAB_A27` petite brise
+- `VOCAB_A27` We heard thunder and saw lightning.
+- `VOCAB_A27` After the shower, there was a rainbow.
+- `VOCAB_A27` “Flood” veut dire…
+- `VOCAB_A27` I take an umbrella when it rains.
+- `VOCAB_A27` Je prends un parapluie quand il pleut.
+- `VOCAB_A27` You should wear gloves and a scarf in winter.
+- `VOCAB_A27` “Scarf” veut dire…
+- `VOCAB_A27` The air is clean in the mountains.
+- `VOCAB_A27` L'air est pur dans les montagnes.
+- `VOCAB_A27` We must protect the environment.
+- `VOCAB_A27` “Forest” veut dire…
+- `VOCAB_A27` If we recycle plastic, we protect the planet.
+- `VOCAB_A27` Please don't waste water.
+- `VOCAB_A27` “Reuse” veut dire…
+- `VOCAB_A27` Faire des plans selon le temps
+- `VOCAB_A27` If it rains, we'll stay indoors.
+- `VOCAB_A27` They postponed the match until Sunday.
+- `VOCAB_A27` “Postpone” veut dire…
+- `VOCAB_A27` Voyager par tous les temps
+- `VOCAB_A27` “Delay” est un nom (a delay) et un verbe (the flight is delayed). “Safe” ≠ “dangerous”. “Go skiing”, “go swimming”, “go hiking” : go + verbe en -ing.
+- `VOCAB_A27` The flight will be late because of the snow.
+- `VOCAB_A27` If the road is slippery, drive slowly.
+- `VOCAB_A27` Si la route est glissante, roulez lentement.
+- `VOCAB_A27` “Slippery” veut dire…
+- `VOCAB_A27` alerte / avertissement
+- `VOCAB_A27` baisser / tomber
+- `VOCAB_A27` fort / lourd
+- `VOCAB_A27` chance / risque
+- `VOCAB_A27` On dit “heavy rain” (forte pluie) et “strong wind” (vent fort), pas “strong rain”. “There is a chance of rain” = il y a un risque de pluie. ⚠ « a » devant voyelle
+- `VOCAB_A27` Expect heavy rain in the north.
+- `VOCAB_A27` “Heavy rain” veut dire…
+- `VOCAB_A27` pluie fine
+- `VOCAB_A27` forte pluie
+
+## A2.8 (843 lignes)
+
+- `EXERCISES_A28` Vocabulaire — La maison
+- `EXERCISES_A28` Choisis le sens correct.
+- `EXERCISES_A28` Kitchen = cuisine.
+- `EXERCISES_A28` salle de bains
+- `EXERCISES_A28` Bedroom = chambre.
+- `EXERCISES_A28` Balcony = balcon.
+- `EXERCISES_A28` Wardrobe = armoire.
+- `EXERCISES_A28` Fridge = frigo.
+- `EXERCISES_A28` Curtains = rideaux.
+- `EXERCISES_A28` Vocabulaire — Le quartier
+- `EXERCISES_A28` Bakery = boulangerie.
+- `EXERCISES_A28` Pharmacy = pharmacie.
+- `EXERCISES_A28` Neighbour = voisin.
+- `EXERCISES_A28` Traffic = circulation.
+- `EXERCISES_A28` There is / there are
+- `EXERCISES_A28` Choisis la bonne forme.
+- `EXERCISES_A28` ___ a bakery near my house.
+- `EXERCISES_A28` There are
+- `EXERCISES_A28` Singulier : there is.
+- `EXERCISES_A28` ___ two bedrooms in the flat.
+- `EXERCISES_A28` Pluriel : there are.
+- `EXERCISES_A28` ___ a lift in the building?
+- `EXERCISES_A28` Are there
+- `EXERCISES_A28` Is there… ? ⚠ espacement/ponctuation
+- `EXERCISES_A28` There ___ a lift.
+- `EXERCISES_A28` There isn't.
+- `EXERCISES_A28` ___ any shops near here?
+- `EXERCISES_A28` Have there
+- `EXERCISES_A28` Are there any… ? ⚠ espacement/ponctuation
+- `EXERCISES_A28` There ___ three chairs.
+- `EXERCISES_A28` There are.
+- `EXERCISES_A28` Some et any
+- `EXERCISES_A28` Choisis some ou any.
+- `EXERCISES_A28` There are ___ shops near here.
+- `EXERCISES_A28` Affirmatif : some.
+- `EXERCISES_A28` There aren't ___ shops near here.
+- `EXERCISES_A28` Are there ___ parks in your area?
+- `EXERCISES_A28` Question : any.
+- `EXERCISES_A28` I have ___ furniture in my room.
+- `EXERCISES_A28` We don't have ___ chairs.
+- `EXERCISES_A28` Would you like ___ tea?
+- `EXERCISES_A28` Offre : some.
+- `EXERCISES_A28` A lot of, many, much
+- `EXERCISES_A28` There are ___ parks here.
+- `EXERCISES_A28` Affirmatif : a lot of.
+- `EXERCISES_A28` There aren't ___ shops.
+- `EXERCISES_A28` There isn't ___ traffic.
+- `EXERCISES_A28` Is there ___ space in the kitchen?
+- `EXERCISES_A28` Are there ___ restaurants?
+- `EXERCISES_A28` Question + pluriel : many.
+- `EXERCISES_A28` There is ___ noise at night.
+- `EXERCISES_A28` How many ? How much ? ⚠ espacement/ponctuation
+- `EXERCISES_A28` Choisis how many ou how much.
+- `EXERCISES_A28` How ___ bedrooms are there?
+- `EXERCISES_A28` Pluriel : how many.
+- `EXERCISES_A28` How ___ is the rent?
+- `EXERCISES_A28` Prix : how much.
+- `EXERCISES_A28` How ___ space is there?
+- `EXERCISES_A28` How ___ people live here?
+- `EXERCISES_A28` How ___ rooms are there?
+- `EXERCISES_A28` How ___ is the flat per month?
+- `EXERCISES_A28` The school is ___ the park. (en face)
+- `EXERCISES_A28` En face : opposite.
+- `EXERCISES_A28` Entre : between.
+- `EXERCISES_A28` My flat is ___ the station. (pas loin)
+- `EXERCISES_A28` Pas loin : near.
+- `EXERCISES_A28` in front of
+- `EXERCISES_A28` The bus stop is ___ the school. (devant)
+- `EXERCISES_A28` Devant : in front of.
+- `EXERCISES_A28` Choisis la bonne phrase.
+- `EXERCISES_A28` La boulangerie est au coin de la rue.
+- `EXERCISES_A28` The bakery is on the corner.
+- `EXERCISES_A28` The bakery is in the corner.
+- `EXERCISES_A28` The bakery is at corner.
+- `EXERCISES_A28` On the corner.
+- `EXERCISES_A28` The cinema is on the end of the street.
+- `EXERCISES_A28` The cinema is at the end of the street.
+- `EXERCISES_A28` The cinema is in end street.
+- `EXERCISES_A28` At the end of.
+- `EXERCISES_A28` The school is far from my house.
+- `EXERCISES_A28` The school is far to my house.
+- `EXERCISES_A28` The school is long from my house.
+- `EXERCISES_A28` Far from.
+- `EXERCISES_A28` The park is at left.
+- `EXERCISES_A28` The park is in the left.
+- `EXERCISES_A28` The park is on the left.
+- `EXERCISES_A28` On the left.
+- `EXERCISES_A28` Between … and …
+- `EXERCISES_A28` La poste est en face de la gare.
+- `EXERCISES_A28` The post office is opposite the station.
+- `EXERCISES_A28` The post office is opposite to of the station.
+- `EXERCISES_A28` The post office is in face the station.
+- `EXERCISES_A28` Opposite + nom.
+- `EXERCISES_A28` Comparer des logements
+- `EXERCISES_A28` My flat is ___ than yours.
+- `EXERCISES_A28` Court : bigger than.
+- `EXERCISES_A28` This house is ___ than that flat.
+- `EXERCISES_A28` more expensive
+- `EXERCISES_A28` most expensive
+- `EXERCISES_A28` Long : more expensive.
+- `EXERCISES_A28` The new flat is ___ quiet as the old one.
+- `EXERCISES_A28` It's the ___ room in the house.
+- `EXERCISES_A28` the biggest.
+- `EXERCISES_A28` The kitchen is ___ than the bedroom.
+- `EXERCISES_A28` more small
+- `EXERCISES_A28` Court : smaller.
+- `EXERCISES_A28` This is the ___ street in the city.
+- `EXERCISES_A28` most quiet
+- `EXERCISES_A28` the quietest.
+- `EXERCISES_A28` Too et enough
+- `EXERCISES_A28` Choisis too ou enough.
+- `EXERCISES_A28` The flat is ___ small for four people.
+- `EXERCISES_A28` very enough
+- `EXERCISES_A28` Trop petit : too small.
+- `EXERCISES_A28` The kitchen is big ___.
+- `EXERCISES_A28` Adjectif + enough.
+- `EXERCISES_A28` There isn't ___ space for a sofa.
+- `EXERCISES_A28` enough + nom.
+- `EXERCISES_A28` It's ___ expensive for me.
+- `EXERCISES_A28` Trop cher : too expensive.
+- `EXERCISES_A28` The street is ___ noisy to sleep.
+- `EXERCISES_A28` too + adj + to + verbe.
+- `EXERCISES_A28` The room isn't warm ___.
+- `EXERCISES_A28` adjectif + enough.
+- `EXERCISES_A28` Choisis le bon mot.
+- `EXERCISES_A28` Quiet = calme.
+- `EXERCISES_A28` Bright = lumineux.
+- `EXERCISES_A28` Un logement avec des meubles est…
+- `EXERCISES_A28` Celui qui loue un logement est un…
+- `EXERCISES_A28` Tenant = locataire.
+- `EXERCISES_A28` Choisis la bonne traduction.
+- `EXERCISES_A28` There is a park near my house.
+- `EXERCISES_A28` Il n'y a pas de parc.
+- `EXERCISES_A28` Il y a un parc loin de chez moi. ⚠ « a » devant voyelle
+- `EXERCISES_A28` The bakery is opposite the bank.
+- `EXERCISES_A28` La boulangerie est en face de la banque.
+- `EXERCISES_A28` opposite = en face de.
+- `EXERCISES_A28` There aren't any shops nearby.
+- `EXERCISES_A28` Il y a quelques magasins.
+- `EXERCISES_A28` Il y a beaucoup de magasins.
+- `EXERCISES_A28` aren't any = il n'y a pas de.
+- `EXERCISES_A28` The flat is too small.
+- `EXERCISES_A28` L'appartement est assez petit.
+- `EXERCISES_A28` L'appartement est trop petit.
+- `EXERCISES_A28` too = trop.
+- `EXERCISES_A28` How much is the rent?
+- `EXERCISES_A28` Combien de chambres y a-t-il ? ⚠ espacement/ponctuation
+- `EXERCISES_A28` how much = combien (prix).
+- `EXERCISES_A28` My neighbours are very friendly.
+- `EXERCISES_A28` Mes voisins sont partis.
+- `EXERCISES_A28` friendly = sympathique.
+- `EXERCISES_A28` Il y a trois chambres.
+- `EXERCISES_A28` There is three bedrooms.
+- `EXERCISES_A28` There are three bedrooms.
+- `EXERCISES_A28` It has three bedroom.
+- `EXERCISES_A28` there are + pluriel.
+- `EXERCISES_A28` Is there a pharmacy near here?
+- `EXERCISES_A28` Are there a pharmacy near here?
+- `EXERCISES_A28` Is it a pharmacy near here?
+- `EXERCISES_A28` The bus stop is before of the school.
+- `EXERCISES_A28` The bus stop is in front the school.
+- `EXERCISES_A28` The bus stop is in front of the school.
+- `EXERCISES_A28` in front of.
+- `EXERCISES_A28` Mon appartement est plus grand que le tien.
+- `EXERCISES_A28` My flat is more big than yours.
+- `EXERCISES_A28` My flat is bigger than yours.
+- `EXERCISES_A28` My flat is the biggest yours.
+- `EXERCISES_A28` bigger than.
+- `EXERCISES_A28` Il n'y a pas beaucoup de circulation.
+- `EXERCISES_A28` There isn't much traffic.
+- `EXERCISES_A28` There isn't many traffic.
+- `EXERCISES_A28` There aren't much traffic.
+- `EXERCISES_A28` La cuisine n'est pas assez grande.
+- `EXERCISES_A28` The kitchen isn't enough big.
+- `EXERCISES_A28` The kitchen isn't big enough.
+- `EXERCISES_A28` The kitchen isn't too big.
+- `EXPRESSION_A28` Mon logement
+- `EXPRESSION_A28` Dis ce qu'il y a dans ton salon ou ta chambre.
+- `EXPRESSION_A28` Dis si ton logement est petit, grand, calme ou bruyant.
+- `EXPRESSION_A28` I live in a flat in the city centre. There are two bedrooms, a living room, a kitchen and a bathroom. There is a sofa and a lamp in the living room. The flat is small but cosy, and it is quite quiet.
+- `EXPRESSION_A28` Ce qu'il y a
+- `EXPRESSION_A28` Une description
+- `EXPRESSION_A28` Mon quartier
+- `EXPRESSION_A28` Utilise next to, opposite, between ou near.
+- `EXPRESSION_A28` Dis ce qu'il n'y a pas, avec any ou much.
+- `EXPRESSION_A28` Dis ce que tu aimes ou n'aimes pas dans ton quartier.
+- `EXPRESSION_A28` In my neighbourhood, there are a lot of shops. The bakery is next to the pharmacy, and the park is opposite the school. There aren't any cinemas, and there isn't much traffic. I like my area because it is quiet.
+- `EXPRESSION_A28` Des lieux
+- `EXPRESSION_A28` Ce qu'il n'y a pas
+- `GRAMMAR_A28` there is + singulier
+- `GRAMMAR_A28` There are two bedrooms.
+- `GRAMMAR_A28` Il y a deux chambres.
+- `GRAMMAR_A28` there are + pluriel
+- `GRAMMAR_A28` There isn't a lift.
+- `GRAMMAR_A28` Il n'y a pas d'ascenseur.
+- `GRAMMAR_A28` Is there a bakery near here?
+- `GRAMMAR_A28` question : Is there… ? / Are there… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A28` There is a bus stop opposite the school.
+- `GRAMMAR_A28` Are there any shops in your street?
+- `GRAMMAR_A28` Y a-t-il des magasins dans ta rue ? ⚠ espacement/ponctuation
+- `GRAMMAR_A28` There ___ a sofa in the living room.
+- `GRAMMAR_A28` There ___ three bedrooms in the flat.
+- `GRAMMAR_A28` ___ there a bank near here?
+- `GRAMMAR_A28` Question au singulier : Is there… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A28` There are some shops nearby.
+- `GRAMMAR_A28` some : affirmatif
+- `GRAMMAR_A28` Are there any shops nearby?
+- `GRAMMAR_A28` any : question
+- `GRAMMAR_A28` Would you like some tea?
+- `GRAMMAR_A28` some dans une offre
+- `GRAMMAR_A28` There is some milk in the fridge.
+- `GRAMMAR_A28` Il y a du lait dans le frigo.
+- `GRAMMAR_A28` I don't have any furniture yet.
+- `GRAMMAR_A28` Je n'ai pas encore de meubles.
+- `GRAMMAR_A28` There are ___ chairs in the kitchen.
+- `GRAMMAR_A28` There aren't ___ shops in my street.
+- `GRAMMAR_A28` Are there ___ parks near here?
+- `GRAMMAR_A28` There are a lot of parks here.
+- `GRAMMAR_A28` Il y a beaucoup de parcs ici.
+- `GRAMMAR_A28` a lot of : affirmatif, tous les noms
+- `GRAMMAR_A28` There aren't many shops.
+- `GRAMMAR_A28` Il n'y a pas beaucoup de magasins.
+- `GRAMMAR_A28` There is a lot of noise.
+- `GRAMMAR_A28` Il y a beaucoup de bruit.
+- `GRAMMAR_A28` We have a lot of space in our new flat.
+- `GRAMMAR_A28` Nous avons beaucoup de place dans notre nouvel appartement.
+- `GRAMMAR_A28` There aren't many restaurants in my area.
+- `GRAMMAR_A28` Il n'y a pas beaucoup de restaurants dans mon quartier.
+- `GRAMMAR_A28` There are ___ trees in this street.
+- `GRAMMAR_A28` There aren't ___ shops here.
+- `GRAMMAR_A28` There isn't ___ noise at night.
+- `GRAMMAR_A28` How many bedrooms are there?
+- `GRAMMAR_A28` Combien y a-t-il de chambres ? ⚠ espacement/ponctuation
+- `GRAMMAR_A28` How many + pluriel
+- `GRAMMAR_A28` How much pour le prix
+- `GRAMMAR_A28` How much space is there?
+- `GRAMMAR_A28` Combien de place y a-t-il ? ⚠ espacement/ponctuation
+- `GRAMMAR_A28` There are two. / It's six hundred euros.
+- `GRAMMAR_A28` Il y en a deux. / C'est six cents euros.
+- `GRAMMAR_A28` How many rooms are there in the flat?
+- `GRAMMAR_A28` How much is the flat per month?
+- `GRAMMAR_A28` How ___ bathrooms are there?
+- `GRAMMAR_A28` Next to, between, opposite, near
+- `GRAMMAR_A28` The bakery is next to the pharmacy.
+- `GRAMMAR_A28` between A and B ⚠ « a » devant voyelle
+- `GRAMMAR_A28` The school is opposite the park.
+- `GRAMMAR_A28` opposite = en face de
+- `GRAMMAR_A28` My flat is near the station.
+- `GRAMMAR_A28` near = pas loin
+- `GRAMMAR_A28` The post office is opposite the supermarket.
+- `GRAMMAR_A28` There is a bus stop near my house.
+- `GRAMMAR_A28` The cinema is ___ the library. (en face)
+- `GRAMMAR_A28` En face de : opposite.
+- `GRAMMAR_A28` Entre deux : between … and …
+- `GRAMMAR_A28` My flat is ___ to the park.
+- `GRAMMAR_A28` In front of, behind, on the corner
+- `GRAMMAR_A28` There is a car in front of the house.
+- `GRAMMAR_A28` Il y a une voiture devant la maison. ⚠ « a » devant voyelle
+- `GRAMMAR_A28` in front of = devant
+- `GRAMMAR_A28` The garden is behind the house.
+- `GRAMMAR_A28` on the corner (of the street)
+- `GRAMMAR_A28` The shop is at the end of the street.
+- `GRAMMAR_A28` Le magasin est au bout de la rue.
+- `GRAMMAR_A28` at the end of
+- `GRAMMAR_A28` Turn left. The bank is on the corner.
+- `GRAMMAR_A28` The bus stop is ___ of the school.
+- `GRAMMAR_A28` The pharmacy is at the ___ of the street.
+- `GRAMMAR_A28` Au bout : at the end of.
+- `GRAMMAR_A28` Comparer deux logements
+- `GRAMMAR_A28` adjectif court + -er + than
+- `GRAMMAR_A28` This house is more expensive than that flat.
+- `GRAMMAR_A28` more + adjectif long + than
+- `GRAMMAR_A28` The new flat is as quiet as the old one.
+- `GRAMMAR_A28` Le nouvel appartement est aussi calme que l'ancien.
+- `GRAMMAR_A28` It's the biggest room in the house.
+- `GRAMMAR_A28` the + -est / the most
+- `GRAMMAR_A28` The kitchen is smaller than the bedroom.
+- `GRAMMAR_A28` La cuisine est plus petite que la chambre.
+- `GRAMMAR_A28` This area is the quietest in the city.
+- `GRAMMAR_A28` Ce quartier est le plus calme de la ville.
+- `GRAMMAR_A28` big → bigger than.
+- `GRAMMAR_A28` This house is ___ than that flat. (cher)
+- `GRAMMAR_A28` more + adjectif long.
+- `GRAMMAR_A28` Superlatif : the biggest.
+- `GRAMMAR_A28` The room isn't big enough.
+- `GRAMMAR_A28` adjectif + enough
+- `GRAMMAR_A28` There is enough space for a sofa.
+- `GRAMMAR_A28` enough + nom
+- `GRAMMAR_A28` It's too expensive for me.
+- `GRAMMAR_A28` C'est trop cher pour moi.
+- `GRAMMAR_A28` too + adjectif + for + personne
+- `GRAMMAR_A28` This street is too noisy to sleep.
+- `GRAMMAR_A28` Cette rue est trop bruyante pour dormir.
+- `GRAMMAR_A28` The kitchen is big enough for four people.
+- `GRAMMAR_A28` La cuisine est assez grande pour quatre personnes.
+- `GRAMMAR_A28` The flat is ___ small. We need more space.
+- `GRAMMAR_A28` The kitchen is big ___ for four people.
+- `LISTENING_A28` Visiting a flat
+- `LISTENING_A28` Welcome! Here is the living room. It is bright, and there is a big window. The kitchen is on the left. There is a fridge and an oven, but there isn't a dishwasher. The bedroom is at the end of the hall. The bathroom is next to the bedroom.
+- `LISTENING_A28` What is there in the kitchen?
+- `LISTENING_A28` A fridge and an oven
+- `LISTENING_A28` A dishwasher
+- `LISTENING_A28` A fridge and an oven.
+- `LISTENING_A28` Where is the bedroom?
+- `LISTENING_A28` Next to the kitchen
+- `LISTENING_A28` On the left
+- `LISTENING_A28` At the end of the hall
+- `LISTENING_A28` At the end of the hall.
+- `LISTENING_A28` Asking about the neighbourhood
+- `LISTENING_A28` Excuse me, is there a pharmacy near here? Yes, there is one. It is next to the bakery, opposite the bank. Is it far? No, it is only two minutes from here. Thank you very much.
+- `LISTENING_A28` What is the man looking for?
+- `LISTENING_A28` A pharmacy
+- `LISTENING_A28` A pharmacy.
+- `LISTENING_A28` Where is it?
+- `LISTENING_A28` Behind the station
+- `LISTENING_A28` Next to the bakery
+- `LISTENING_A28` Next to the bakery.
+- `LISTENING_A28` How far is it?
+- `LISTENING_A28` Twenty minutes
+- `LISTENING_A28` Two minutes
+- `LISTENING_A28` Two hours
+- `LISTENING_A28` Two minutes.
+- `LISTENING_A28` On the phone with the landlord
+- `LISTENING_A28` Hello, I'm calling about the flat to rent. How many bedrooms are there? There are two. And how much is the rent? It is seven hundred euros a month. Is it furnished? Yes, it is. You can visit it tomorrow at five.
+- `LISTENING_A28` Nine hundred euros
+- `LISTENING_A28` Five hundred euros
+- `LISTENING_A28` Seven hundred euros
+- `LISTENING_A28` Seven hundred euros.
+- `LISTENING_A28` My bedroom
+- `LISTENING_A28` My bedroom is not very big, but it is cosy. There is a bed next to the window, and a desk opposite the bed. There are some shelves with a lot of books. There isn't a wardrobe, so I put my clothes in a big box.
+- `LISTENING_A28` What is next to the window?
+- `LISTENING_A28` The shelves
+- `LISTENING_A28` Is there a wardrobe?
+- `LISTENING_A28` No, there isn't
+- `LISTENING_A28` Yes, there is
+- `LISTENING_A28` Yes, a big one
+- `LISTENING_A28` There isn't a wardrobe.
+- `LISTENING_A28` Comparing two areas
+- `LISTENING_A28` I lived in the city centre for five years. It was exciting, but it was noisy and more expensive. Now I live in a suburb. It is quieter and cheaper, and my flat is bigger. But the journey to work is longer.
+- `LISTENING_A28` What was the city centre like?
+- `LISTENING_A28` Quiet and cheap
+- `LISTENING_A28` Noisy and expensive
+- `LISTENING_A28` Small and empty
+- `LISTENING_A28` Noisy and more expensive.
+- `LISTENING_A28` What is the problem now?
+- `LISTENING_A28` The journey to work is longer
+- `LISTENING_A28` The flat is too small
+- `LISTENING_A28` It is too noisy
+- `LISTENING_A28` The journey is longer.
+- `LISTENING_A28` Meeting a new neighbour
+- `LISTENING_A28` Hello, I'm Maria. I live on the second floor, next to the lift. Welcome to the building! There is a supermarket opposite the bus stop, and a good bakery at the end of the street. If you need anything, just ask.
+- `LISTENING_A28` Where does Maria live?
+- `LISTENING_A28` On the fifth floor
+- `LISTENING_A28` On the first floor
+- `LISTENING_A28` On the second floor
+- `LISTENING_A28` On the second floor.
+- `LISTENING_A28` Where is the supermarket?
+- `LISTENING_A28` Opposite the bus stop
+- `LISTENING_A28` Behind the building
+- `LISTENING_A28` Opposite the bus stop.
+- `LISTENING_A28` Too small!
+- `LISTENING_A28` I don't like this flat. The living room is too small, and the kitchen isn't big enough for two people. There isn't enough light because the windows are small. Let's look at the other flat. It's more expensive, but it is much bigger.
+- `LISTENING_A28` What is too small?
+- `LISTENING_A28` The living room
+- `LISTENING_A28` The bathroom
+- `LISTENING_A28` The balcony
+- `LISTENING_A28` The living room.
+- `LISTENING_A28` What is the other flat like?
+- `LISTENING_A28` Smaller and cheaper
+- `LISTENING_A28` More expensive and bigger
+- `LISTENING_A28` More expensive, but much bigger.
+- `LISTENING_A28` Finding the way
+- `LISTENING_A28` To get to my house from the bus stop, walk straight on. Pass the post office and the library. Turn right at the corner, and my house is the second on the left. It is behind the big tree, next to a yellow house.
+- `LISTENING_A28` Where do you turn right?
+- `LISTENING_A28` At the bakery
+- `LISTENING_A28` At the corner
+- `LISTENING_A28` At the station
+- `LISTENING_A28` At the corner.
+- `LISTENING_A28` What is the house next to?
+- `LISTENING_A28` The library
+- `LISTENING_A28` A red house
+- `LISTENING_A28` A yellow house
+- `LISTENING_A28` A yellow house.
+- `LISTENING_A28` Moving day
+- `LISTENING_A28` Today is moving day! The big furniture is in the van: the sofa, the table and the wardrobe. The boxes of books are in the hall. I'm putting the lamps and the mirror in my car. There are a lot of things to carry, and we don't have much time.
+- `LISTENING_A28` What is in the van?
+- `LISTENING_A28` The lamps and the mirror
+- `LISTENING_A28` The sofa, the table and the wardrobe
+- `LISTENING_A28` The books
+- `LISTENING_A28` The big furniture.
+- `LISTENING_A28` What does the speaker say about time?
+- `LISTENING_A28` They don't have much time
+- `LISTENING_A28` They have a lot of time
+- `LISTENING_A28` It's night
+- `LISTENING_A28` They don't have much time.
+- `LISTENING_A28` Advert on the radio
+- `LISTENING_A28` Looking for a new home? Come to Green Park, a quiet neighbourhood with a lot of space. Every house has a garden, and there are two parks and a school nearby. The shopping centre is only five minutes away by car. Call us today!
+- `LISTENING_A28` What is Green Park like?
+- `LISTENING_A28` Small and old
+- `LISTENING_A28` Noisy and busy
+- `LISTENING_A28` Quiet with a lot of space
+- `LISTENING_A28` Quiet, with a lot of space.
+- `LISTENING_A28` How far is the shopping centre?
+- `LISTENING_A28` Fifty minutes
+- `LISTENING_A28` Five minutes by car
+- `LISTENING_A28` Five minutes on foot
+- `LISTENING_A28` Five minutes by car.
+- `MISSIONS_A28` Some, any ou a lot of ? ⚠ espacement/ponctuation
+- `MISSIONS_A28` Construis la phrase
+- `MISSIONS_A28` Remets les mots dans l'ordre.
+- `MISSIONS_A28` Too, enough ou than ? ⚠ espacement/ponctuation
+- `MISSIONS_A28` Compose ta phrase avec la fiche.
+- `READING_A28` Emma's flat
+- `READING_A28` I live in a small flat on the third floor. There is a living room, a kitchen, one bedroom and a bathroom. There is also a balcony with some flowers. There isn't a lift, so I use the stairs every day. The flat is small, but it is bright and very cosy.
+- `READING_A28` Which floor is Emma's flat on?
+- `READING_A28` The first floor
+- `READING_A28` The third floor
+- `READING_A28` The ground floor
+- `READING_A28` On the third floor.
+- `READING_A28` What is there on the balcony?
+- `READING_A28` Some flowers
+- `READING_A28` Some flowers.
+- `READING_A28` Is there a lift?
+- `READING_A28` Yes, there are two
+- `READING_A28` Tom's neighbourhood
+- `READING_A28` My neighbourhood is great. There are a lot of shops near my house. The bakery is next to the pharmacy, and the supermarket is opposite the post office. There is a big park between the school and the library. I can walk everywhere, so I don't need a car.
+- `READING_A28` What is next to the pharmacy?
+- `READING_A28` The bakery
+- `READING_A28` The supermarket
+- `READING_A28` The school
+- `READING_A28` What is opposite the post office?
+- `READING_A28` The supermarket.
+- `READING_A28` Why doesn't Tom need a car?
+- `READING_A28` He has a bike
+- `READING_A28` He can walk everywhere
+- `READING_A28` He lives far away
+- `READING_A28` He can walk everywhere.
+- `READING_A28` Flat for rent
+- `READING_A28` Flat to rent in the city centre. There are two bedrooms, a living room and a modern kitchen with a fridge and a dishwasher. The flat is on the second floor, and there is a lift. It is furnished. The rent is nine hundred euros a month. There aren't any pets allowed.
+- `READING_A28` Two bedrooms.
+- `READING_A28` One thousand euros
+- `READING_A28` Six hundred euros
+- `READING_A28` Nine hundred euros a month
+- `READING_A28` Nine hundred euros.
+- `READING_A28` Are pets allowed?
+- `READING_A28` Yes, they are
+- `READING_A28` No, they aren't
+- `READING_A28` Only cats
+- `READING_A28` There aren't any pets allowed.
+- `READING_A28` Moving house
+- `READING_A28` Last month, my family moved house. Our old flat was too small, because there were only two rooms for four people. Our new house is bigger, and it has a garden. There are three bedrooms, so my brother and I don't share a room now. I love it, but I miss my old neighbours.
+- `READING_A28` Why did they move?
+- `READING_A28` They wanted a smaller house
+- `READING_A28` The rent was cheap
+- `READING_A28` The old flat was too small
+- `READING_A28` Too small.
+- `READING_A28` What does the new house have?
+- `READING_A28` A balcony only
+- `READING_A28` A garden.
+- `READING_A28` What does the writer miss?
+- `READING_A28` The old neighbours
+- `READING_A28` The old school
+- `READING_A28` The old car
+- `READING_A28` The old neighbours.
+- `READING_A28` A noisy street
+- `READING_A28` I like my flat, but I don't like my street. There is a lot of traffic, and it is very noisy at night. There aren't many trees, and there isn't a park near my house. Next year, I want to move to a quieter area. A flat near a park would be perfect.
+- `READING_A28` What is the problem with the street?
+- `READING_A28` It is too dark
+- `READING_A28` It is too empty
+- `READING_A28` It is noisy
+- `READING_A28` A lot of traffic and noise.
+- `READING_A28` Is there a park near the house?
+- `READING_A28` There isn't a park.
+- `READING_A28` What does the writer want?
+- `READING_A28` A quieter area
+- `READING_A28` A bigger car
+- `READING_A28` A quieter area.
+- `READING_A28` Two flats
+- `READING_A28` I am looking for a flat. Flat A is bigger than Flat B, and it has a balcony. But Flat A is more expensive: it is eight hundred euros, and Flat B is six hundred. Flat B is nearer to the station, so it is better for work. I think I will take Flat B because it is cheaper. ⚠ « a » devant voyelle
+- `READING_A28` Which flat is bigger?
+- `READING_A28` They are the same
+- `READING_A28` Flat A is bigger. ⚠ « a » devant voyelle
+- `READING_A28` Which flat is nearer to the station?
+- `READING_A28` Why will the writer take Flat B?
+- `READING_A28` It is bigger
+- `READING_A28` It has a balcony
+- `READING_A28` It is cheaper
+- `READING_A28` Because it is cheaper.
+- `READING_A28` Our new kitchen
+- `READING_A28` We have a new kitchen. There is a big fridge, a modern oven and a dishwasher. There are some shelves above the sink, and there is a lot of space on the table. The only problem is that there aren't enough cupboards. My mum wants to buy two more.
+- `READING_A28` What is above the sink?
+- `READING_A28` Some shelves
+- `READING_A28` Some shelves.
+- `READING_A28` What is the problem?
+- `READING_A28` There aren't enough cupboards
+- `READING_A28` The oven is old
+- `READING_A28` The kitchen is too dark
+- `READING_A28` Not enough cupboards.
+- `READING_A28` What does Mum want to buy?
+- `READING_A28` A new fridge
+- `READING_A28` Two more cupboards
+- `READING_A28` Two more cupboards.
+- `READING_A28` Directions to my house
+- `READING_A28` My house is easy to find. From the station, walk down Park Street and turn left at the bakery. My house is the third on the right, opposite the library. There is a red door and a small garden in front of the house. There is a bus stop at the end of the street.
+- `READING_A28` Where do you turn left?
+- `READING_A28` At the library
+- `READING_A28` At the bakery.
+- `READING_A28` What is opposite the house?
+- `READING_A28` The library.
+- `READING_A28` What colour is the door?
+- `READING_A28` A red door.
+- `READING_A28` Living in the country
+- `READING_A28` I live in a village in the country. There aren't many shops, but there is a small market on Saturdays. There isn't much traffic, so it is very quiet. The air is cleaner than in the city, and my house has a big garden. The only problem is that the bus stop is far from my house.
+- `READING_A28` When is the market?
+- `READING_A28` On Saturdays
+- `READING_A28` On Mondays
+- `READING_A28` Every day
+- `READING_A28` On Saturdays.
+- `READING_A28` What is the village like?
+- `READING_A28` Very quiet.
+- `READING_A28` The garden is small
+- `READING_A28` The bus stop is far from the house
+- `READING_A28` There is too much traffic
+- `READING_A28` The bus stop is far.
+- `TEST_AUDIOS_A28` Welcome! Here is the living room. It is bright, and there is a big window. The kitchen is on the left. There is a fridge and an oven, but there isn't a dishwasher. The bedroom is at the end of the hall.
+- `TEST_AUDIOS_A28` Excuse me, is there a pharmacy near here? Yes, there is one. It is next to the bakery, opposite the bank. Is it far? No, it is only two minutes from here.
+- `TEST_AUDIOS_A28` What is he looking for?
+- `TEST_AUDIOS_A28` Ten minutes
+- `TEST_AUDIOS_A28` Hello, I'm calling about the flat to rent. How many bedrooms are there? There are two. And how much is the rent? It is seven hundred euros a month. You can visit it tomorrow at five.
+- `TEST_AUDIOS_A28` When can he visit?
+- `TEST_AUDIOS_A28` Tomorrow at five
+- `TEST_AUDIOS_A28` Today at two
+- `TEST_AUDIOS_A28` On Sunday
+- `TEST_AUDIOS_A28` My bedroom is not very big, but it is cosy. There is a bed next to the window, and a desk opposite the bed. There are some shelves with a lot of books. There isn't a wardrobe.
+- `TEST_AUDIOS_A28` Hello, I'm Maria. I live on the second floor, next to the lift. There is a supermarket opposite the bus stop, and a good bakery at the end of the street.
+- `TEST_AUDIOS_A28` On the third floor
+- `TEST_AUDIOS_A28` On the ground floor
+- `TEST_AUDIOS_A28` Where is the bakery?
+- `TEST_AUDIOS_A28` Next to the lift
+- `TEST_AUDIOS_A28` At the end of the street
+- `TEST_AUDIOS_A28` Opposite the school
+- `TEST_AUDIOS_A28` I don't like this flat. The living room is too small, and the kitchen isn't big enough for two people. Let's look at the other flat. It's more expensive, but it is much bigger.
+- `TEST_AUDIOS_A28` The bedroom
+- `TEST_AUDIOS_A28` Cheaper and smaller
+- `TEST_AUDIOS_A28` To get to my house from the bus stop, walk straight on. Pass the post office and the library. Turn right at the corner, and my house is the second on the left. It is next to a yellow house.
+- `TEST_AUDIOS_A28` At the post office
+- `TEST_AUDIOS_A28` What is next to the house?
+- `TEST_AUDIOS_A28` A red door
+- `TEST_GRAMMAR_A28` There ___ a garden.
+- `TEST_GRAMMAR_A28` The shop is at the ___ of the street.
+- `TEST_GRAMMAR_A28` “Landlord” means ___.
+- `TEST_GRAMMAR_A28` “Wardrobe” means ___.
+- `TEST_GRAMMAR_A28` “Spacious” means ___.
+- `TEST_GRAMMAR_A28` “Opposite” means ___.
+- `TEST_GRAMMAR_A28` en face de
+- `TEST_TEXTS_A28` I live in a small flat on the third floor. There is a living room, a kitchen, one bedroom and a bathroom. There is also a balcony with some flowers. There isn't a lift, so I use the stairs every day.
+- `TEST_TEXTS_A28` Which floor is the flat on?
+- `TEST_TEXTS_A28` The fifth floor
+- `TEST_TEXTS_A28` What is on the balcony?
+- `TEST_TEXTS_A28` Why does she use the stairs?
+- `TEST_TEXTS_A28` It is faster
+- `TEST_TEXTS_A28` There isn't a lift
+- `TEST_TEXTS_A28` She likes running
+- `TEST_TEXTS_A28` My neighbourhood is great. There are a lot of shops near my house. The bakery is next to the pharmacy, and the supermarket is opposite the post office. There is a big park between the school and the library.
+- `TEST_TEXTS_A28` Where is the park?
+- `TEST_TEXTS_A28` Behind the bakery
+- `TEST_TEXTS_A28` Between the school and the library
+- `TEST_TEXTS_A28` Next to the bank
+- `TEST_TEXTS_A28` Flat to rent in the city centre. There are two bedrooms, a living room and a modern kitchen with a fridge and a dishwasher. The flat is on the second floor, and there is a lift. The rent is nine hundred euros a month.
+- `TEST_TEXTS_A28` No, only stairs
+- `TEST_TEXTS_A28` Six hundred euros a month
+- `TEST_TEXTS_A28` Nine hundred euros a year
+- `TEST_TEXTS_A28` Last month, my family moved house. Our old flat was too small, because there were only two rooms for four people. Our new house is bigger, and it has a garden. There are three bedrooms.
+- `TEST_TEXTS_A28` The garden was big
+- `TEST_TEXTS_A28` The old flat was expensive
+- `TEST_TEXTS_A28` How many bedrooms are there now?
+- `TEST_TEXTS_A28` I like my flat, but I don't like my street. There is a lot of traffic, and it is very noisy at night. There aren't many trees, and there isn't a park near my house. I want to move to a quieter area.
+- `TEST_TEXTS_A28` It is dark
+- `TEST_TEXTS_A28` It is too quiet
+- `TEST_TEXTS_A28` Is there a park near?
+- `TEST_TEXTS_A28` More traffic
+- `TEST_TEXTS_A28` Flat A is bigger than Flat B, and it has a balcony. But Flat A is more expensive: it is eight hundred euros, and Flat B is six hundred. Flat B is nearer to the station. I think I will take Flat B because it is cheaper. ⚠ « a » devant voyelle
+- `TEST_TEXTS_A28` Which flat is cheaper?
+- `TEST_TEXTS_A28` Why will he take Flat B?
+- `TEST_TEXTS_A28` We have a new kitchen. There is a big fridge, a modern oven and a dishwasher. There are some shelves above the sink. The only problem is that there aren't enough cupboards. My mum wants to buy two more.
+- `TEST_TEXTS_A28` The kitchen is dark
+- `TEST_TEXTS_A28` How many cupboards does Mum want?
+- `TEST_TEXTS_A28` My house is easy to find. From the station, walk down Park Street and turn left at the bakery. My house is the third on the right, opposite the library. There is a red door and a small garden in front of the house.
+- `TEST_TEXTS_A28` At the park
+- `TEST_TEXTS_A28` The station
+- `TEST_TEXTS_A28` What is in front of the house?
+- `TEST_TEXTS_A28` A small garden
+- `TEST_TEXTS_A28` A bus stop
+- `VOCAB_A28` Parler de chez soi
+- `VOCAB_A28` Where do you live? — I live in a flat near the park.
+- `VOCAB_A28` What's your neighbourhood like?
+- `VOCAB_A28` Comment est ton quartier ? ⚠ espacement/ponctuation
+- `VOCAB_A28` It's quiet and there are a lot of shops.
+- `VOCAB_A28` C'est calme et il y a beaucoup de magasins.
+- `VOCAB_A28` I live in a small flat near the park, and there are some shops next to my building.
+- `VOCAB_A28` living room
+- `VOCAB_A28` dining room
+- `VOCAB_A28` On dit “in the kitchen”, “in the bedroom”, mais “on the balcony” (sur le balcon). “Bathroom” = salle de bains ; “toilet” = les toilettes.
+- `VOCAB_A28` We eat in the kitchen.
+- `VOCAB_A28` Nous mangeons dans la cuisine.
+- `VOCAB_A28` My bedroom has a big window.
+- `VOCAB_A28` “Living room” veut dire…
+- `VOCAB_A28` Les meubles
+- `VOCAB_A28` There is a sofa and a lamp in the living room.
+- `VOCAB_A28` I need some shelves for my books.
+- `VOCAB_A28` “Wardrobe” veut dire…
+- `VOCAB_A28` washing machine
+- `VOCAB_A28` rubbish bin
+- `VOCAB_A28` The milk is in the fridge.
+- `VOCAB_A28` Le lait est dans le frigo.
+- `VOCAB_A28` There isn't a dishwasher in my kitchen.
+- `VOCAB_A28` Il n'y a pas de lave-vaisselle dans ma cuisine.
+- `VOCAB_A28` “Sink” veut dire…
+- `VOCAB_A28` Les lieux du quartier
+- `VOCAB_A28` post office
+- `VOCAB_A28` bureau de poste
+- `VOCAB_A28` “Post office” veut dire…
+- `VOCAB_A28` Les commerces et services
+- `VOCAB_A28` police station
+- `VOCAB_A28` petrol station
+- `VOCAB_A28` salle de sport
+- `VOCAB_A28` shopping centre
+- `VOCAB_A28` centre commercial
+- `VOCAB_A28` There is a market in the square on Sundays.
+- `VOCAB_A28` The hospital is far from here.
+- `VOCAB_A28` “Florist” veut dire…
+- `VOCAB_A28` on the corner
+- `VOCAB_A28` au bout de
+- `VOCAB_A28` on the left / right
+- `VOCAB_A28` The cinema is opposite the library.
+- `VOCAB_A28` “Opposite” veut dire…
+- `VOCAB_A28` Trois logements : un petit studio cosy, un grand appartement lumineux, une vieille maison calme
+- `VOCAB_A28` douillet / confortable
+- `VOCAB_A28` My flat is small but very cosy.
+- `VOCAB_A28` The street is noisy at night.
+- `VOCAB_A28` La rue est bruyante la nuit.
+- `VOCAB_A28` “Spacious” veut dire…
+- `VOCAB_A28` Louer ou acheter
+- `VOCAB_A28` loyer / louer
+- `VOCAB_A28` move house
+- `VOCAB_A28` I rent a flat on the third floor.
+- `VOCAB_A28` Is the flat furnished?
+- `VOCAB_A28` “Landlord” veut dire…
+- `VOCAB_A28` Voisins et vie du quartier
+- `VOCAB_A28` Des voisins se saluent dans un escalier d'immeuble, un enfant joue dans la cour, un chat est sur un muret
+- `VOCAB_A28` quartier / zone
+- `VOCAB_A28` city centre
+- `VOCAB_A28` There is a lot of traffic in the city centre.
+- `VOCAB_A28` Il y a beaucoup de circulation dans le centre-ville.
+- `VOCAB_A28` “Neighbour” veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -4854,6 +6200,51 @@
 - `dialogues.A2.6.turns.npc` And you should drink plenty of water. Get well soon!
 - `dialogues.A2.6.turns.model` Thank you, goodbye!
 - `dialogues.A2.6.turns.hint` Remercie et dis au revoir.
+- `dialogues.A2.7.title` Que fait-on s'il pleut ? ⚠ espacement/ponctuation
+- `dialogues.A2.7.turns.npc` What's the weather going to be like on Saturday?
+- `dialogues.A2.7.turns.model` I think it will be sunny, but it might rain in the evening.
+- `dialogues.A2.7.turns.npc` Great! Shall we have a picnic in the park?
+- `dialogues.A2.7.turns.model` Yes, good idea! I will bring some sandwiches.
+- `dialogues.A2.7.turns.hint` Accepte et propose d'apporter quelque chose.
+- `dialogues.A2.7.turns.npc` And what will we do if it rains?
+- `dialogues.A2.7.turns.model` If it rains, we will go to the cinema.
+- `dialogues.A2.7.turns.npc` Perfect. I'll check the forecast on Friday and send you a message.
+- `dialogues.A2.7.turns.model` Thanks! See you on Saturday.
+- `dialogues.A2.7.turns.hint` Remercie et dis au revoir.
+- `dialogues.A2.7.turns.npc` Good morning. How can I help you?
+- `dialogues.A2.7.turns.model` Hello. Is my flight to Rome late because of the fog?
+- `dialogues.A2.7.turns.hint` Demande si ton vol est en retard.
+- `dialogues.A2.7.turns.npc` Yes, it will be about two hours late. It might even be cancelled if the fog gets thicker.
+- `dialogues.A2.7.turns.model` Oh no! What will happen if it is cancelled?
+- `dialogues.A2.7.turns.hint` Pose une question avec What will happen if…
+- `dialogues.A2.7.turns.npc` If it is cancelled, you will get a seat on tomorrow's flight.
+- `dialogues.A2.7.turns.model` OK, thank you. I will wait here.
+- `dialogues.A2.7.turns.hint` Remercie et dis ce que tu feras.
+- `dialogues.A2.7.turns.npc` Please check the screen every thirty minutes. Have a nice day!
+- `dialogues.A2.7.turns.model` Thank you, you too!
+- `dialogues.A2.8.title` Visiter un appartement
+- `dialogues.A2.8.turns.npc` Hello, how can I help you?
+- `dialogues.A2.8.turns.model` Hello, I'm calling about the flat to rent.
+- `dialogues.A2.8.turns.npc` Yes, of course. It has two bedrooms, a living room and a kitchen.
+- `dialogues.A2.8.turns.model` Is there a lift? And how much is the rent?
+- `dialogues.A2.8.turns.hint` Demande s'il y a un ascenseur ou le prix du loyer. ⚠ « a » devant voyelle
+- `dialogues.A2.8.turns.npc` There isn't a lift, but it is on the first floor. The rent is seven hundred euros a month.
+- `dialogues.A2.8.turns.model` OK, that's good. Can I visit it tomorrow?
+- `dialogues.A2.8.turns.npc` Yes. Come tomorrow at five. See you then!
+- `dialogues.A2.8.turns.model` Thank you, see you tomorrow!
+- `dialogues.A2.8.turns.hint` Remercie et dis au revoir.
+- `dialogues.A2.8.title` Demander son chemin dans le quartier
+- `dialogues.A2.8.scene` Tu cherches la pharmacie dans un quartier que tu ne connais pas.
+- `dialogues.A2.8.turns.npc` Hello! Can I help you?
+- `dialogues.A2.8.turns.model` Excuse me, is there a pharmacy near here?
+- `dialogues.A2.8.turns.npc` Yes, there is one. It is next to the bakery, opposite the bank.
+- `dialogues.A2.8.turns.model` Is it far from here?
+- `dialogues.A2.8.turns.hint` Demande si c'est loin.
+- `dialogues.A2.8.turns.npc` No, it is only two minutes on foot. Turn left at the corner.
+- `dialogues.A2.8.turns.model` Thank you very much!
+- `dialogues.A2.8.turns.npc` You're welcome. Have a nice day!
+- `dialogues.A2.8.turns.model` You too, goodbye!
+- `dialogues.A2.8.turns.hint` Dis au revoir.
 
 ## situations
 
@@ -4918,8 +6309,26 @@
 - `situations.A2.6.cue` Say a rule at the hospital.
 - `situations.A2.6.hint` Utilise « You mustn't… » ou « You have to… ».
 - `situations.A2.6.model` You mustn't use your phone here.
+- `situations.A2.7.cue` Say what the weather will be like tomorrow.
+- `situations.A2.7.hint` Utilise « It will… ».
+- `situations.A2.7.model` It will rain tomorrow.
+- `situations.A2.7.cue` Say what you will do if it rains.
+- `situations.A2.7.hint` Utilise « If it rains, I will… ».
+- `situations.A2.7.model` If it rains, I will stay at home.
+- `situations.A2.7.cue` Say something that might happen.
+- `situations.A2.7.hint` Utilise « might ».
+- `situations.A2.7.model` It might snow tonight.
+- `situations.A2.8.cue` Say what there is in your living room.
+- `situations.A2.8.hint` Utilise « There is… » ou « There are… ».
+- `situations.A2.8.model` There is a sofa and a lamp.
+- `situations.A2.8.cue` Say where the bakery is.
+- `situations.A2.8.hint` Utilise « next to », « opposite » ou « between ».
+- `situations.A2.8.model` The bakery is next to the pharmacy.
+- `situations.A2.8.cue` Say there are no shops in your street.
+- `situations.A2.8.hint` Utilise « There aren't any… ».
+- `situations.A2.8.model` There aren't any shops in my street.
 
-## Alertes automatiques (111)
+## Alertes automatiques (149)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.qs : « You → Have you got… ? » → espacement/ponctuation
@@ -5031,4 +6440,42 @@
 - ⚠ A2.6 MISSIONS_A26.title : « Conseil, obligation ou interdit ? » → espacement/ponctuation
 - ⚠ A2.6 VOCAB_A26.examples : « Peux-tu me donner un conseil ? » → espacement/ponctuation
 - ⚠ A2.6 VOCAB_A26.tip : « “Be allowed to” = avoir le droit de. “Forbidden” = interdit. “Be careful!” = Fais attention ! “Wear” s'emploie » → espacement/ponctuation
+- ⚠ A2.7 EXERCISES_A27.qs : « Will + sujet + verbe ? » → espacement/ponctuation
+- ⚠ A2.7 EXERCISES_A27.qs : « What will the weather be like ? » → espacement/ponctuation
+- ⚠ A2.7 EXERCISES_A27.title : « If ou when ? » → espacement/ponctuation
+- ⚠ A2.7 EXERCISES_A27.title : « Will, might ou going to ? » → espacement/ponctuation
+- ⚠ A2.7 EXERCISES_A27.qs : « Le vol a eu du retard. » → « a » devant voyelle
+- ⚠ A2.7 EXERCISES_A27.qs : « Il y a un vent fort. » → « a » devant voyelle
+- ⚠ A2.7 EXERCISES_A27.qs : « Recyclons le plastique ! » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « Va-t-il neiger demain ? » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « Quel temps fera-t-il ? » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « What + will + sujet + verbe ? » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.examples : « L'orage va-t-il arriver ce soir ? — Non. » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « Que feras-tu s'il pleut ? » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « Viendras-tu s'il fait froid ? » → espacement/ponctuation
+- ⚠ A2.7 GRAMMAR_A27.table : « Regarde ces nuages ! Il va pleuvoir. » → espacement/ponctuation
+- ⚠ A2.7 MISSIONS_A27.title : « Quel temps ? » → espacement/ponctuation
+- ⚠ A2.7 MISSIONS_A27.title : « If, when ou unless ? » → espacement/ponctuation
+- ⚠ A2.7 VOCAB_A27.examples : « Quel temps fait-il aujourd'hui ? — Il y a des nuages. » → espacement/ponctuation
+- ⚠ A2.7 VOCAB_A27.tip : « On dit “heavy rain” (forte pluie) et “strong wind” (vent fort), pas “strong rain”. “There is a chance of rain” » → « a » devant voyelle
+- ⚠ A2.8 EXERCISES_A28.qs : « Is there… ? » → espacement/ponctuation
+- ⚠ A2.8 EXERCISES_A28.qs : « Are there any… ? » → espacement/ponctuation
+- ⚠ A2.8 EXERCISES_A28.title : « How many ? How much ? » → espacement/ponctuation
+- ⚠ A2.8 EXERCISES_A28.qs : « Il y a un parc loin de chez moi. » → « a » devant voyelle
+- ⚠ A2.8 EXERCISES_A28.qs : « Combien de chambres y a-t-il ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.table : « question : Is there… ? / Are there… ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.examples : « Y a-t-il des magasins dans ta rue ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.qs : « Question au singulier : Is there… ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.table : « Combien y a-t-il de chambres ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.table : « Combien de place y a-t-il ? » → espacement/ponctuation
+- ⚠ A2.8 GRAMMAR_A28.table : « between A and B » → « a » devant voyelle
+- ⚠ A2.8 GRAMMAR_A28.table : « Il y a une voiture devant la maison. » → « a » devant voyelle
+- ⚠ A2.8 MISSIONS_A28.title : « Some, any ou a lot of ? » → espacement/ponctuation
+- ⚠ A2.8 MISSIONS_A28.title : « Too, enough ou than ? » → espacement/ponctuation
+- ⚠ A2.8 READING_A28.text : « I am looking for a flat. Flat A is bigger than Flat B, and it has a balcony. But Flat A is more expensive: it  » → « a » devant voyelle
+- ⚠ A2.8 READING_A28.qs : « Flat A is bigger. » → « a » devant voyelle
+- ⚠ A2.8 TEST_TEXTS_A28.text : « Flat A is bigger than Flat B, and it has a balcony. But Flat A is more expensive: it is eight hundred euros, a » → « a » devant voyelle
+- ⚠ A2.8 VOCAB_A28.examples : « Comment est ton quartier ? » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation
+- ⚠ dialogues.A2.7.title  : « Que fait-on s'il pleut ? » → espacement/ponctuation
+- ⚠ dialogues.A2.8.turns.hint  : « Demande s'il y a un ascenseur ou le prix du loyer. » → « a » devant voyelle

@@ -1,6 +1,6 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b1";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b2";
 const T = (title, icon, model, rows, img) => ({
   title, icon, model, img,
   prompts: rows.map((r) => r[0]),
@@ -432,6 +432,22 @@ export const EXPRESSION_PLUS_A2 = {
     T("Protéger la planète", "🌍", "We must protect the planet. If we recycle plastic, we will reduce waste. I will use a reusable bottle, and I will turn off the lights. If everybody does something, the air will be cleaner.", [
       ["Dis ce qu'on doit faire.", "Obligation", "must|should|have to|need to|let.s"], ["Utilise if + présent, will + base.", "If", "if (we|you|i|everybody|everyone) \\w+"],
       ["Dis ce que tu feras.", "Ce que tu feras", "i will|i.ll|i.m going to|i can"], ["Cite un geste écologique.", "Un geste", "recycle|reduce|reuse|bottle|lights|energy|water|walk|cycle|plastic|waste"]]),
+  ],
+  8: [
+    T("Décris l'image : le salon", "🛋️", "In this picture, a bright living room. There is a big sofa next to the window, and a lamp behind the sofa. A girl is reading a book on the carpet, and a cat is sleeping under the table. There aren't any pictures on the walls, but there are some plants. I think it is a cosy and quiet home.", [
+      ["Dis ce qu'il y a dans la pièce.", "Les meubles", "there (is|are)|there.s|sofa|table|lamp|chair|carpet|shelf|shelves|bookcase|tv"], ["Utilise une préposition de lieu.", "Où ?", "next to|behind|in front of|opposite|between|near|under|on the|beside"],
+      ["Dis ce que fait la personne ou l'animal.", "Les actions", "reading|sleeping|sitting|playing|watching|lying|girl|boy|cat|dog"], ["Donne ton avis sur l'endroit.", "Ton avis", "cosy|quiet|bright|comfortable|nice|i think|spacious|modern"]],
+      "describe-a28-living"),
+    T("Décris l'image : la rue du quartier", "🏘️", "In this picture, a busy street in a neighbourhood. The bakery is next to the pharmacy, and the bus stop is opposite the park. There are a lot of people on the pavement, and some children are walking to school. There isn't much traffic, so I think it is a pleasant area to live in.", [
+      ["Cite des lieux du quartier.", "Les lieux", "bakery|pharmacy|park|bus stop|school|shop|shops|cafe|café|bank|supermarket|library"], ["Place deux lieux avec une préposition.", "Où ?", "next to|opposite|between|near|behind|in front of|on the corner|at the end"],
+      ["Utilise a lot of, some ou any.", "Quantité", "a lot of|some|any|many|much|there (is|are)|there (isn.t|aren.t)"], ["Dis si le quartier te plaît.", "Ton avis", "i think|pleasant|nice|quiet|noisy|busy|like|area|neighbourhood"]],
+      "describe-a28-street"),
+    T("Visiter un appartement", "🔑", "Hello, I'm calling about the flat to rent. How many bedrooms are there? Is there a lift? How much is the rent, and is the flat furnished? Can I visit it tomorrow? Thank you very much.", [
+      ["Pose une question sur les chambres.", "Chambres", "how many|bedrooms|rooms"], ["Demande s'il y a un ascenseur ou un balcon.", "Équipements", "is there|are there|lift|balcony|garden|dishwasher|furnished"],
+      ["Demande le prix du loyer.", "Loyer", "how much|rent|price|euros|per month"], ["Propose une visite et remercie.", "Visite", "visit|see the flat|tomorrow|thank|please|can i"]]),
+    T("Mon quartier idéal", "🌳", "My ideal area is quiet, but it isn't too far from the city centre. There are a lot of parks and some small shops. There isn't much traffic, and there are good schools nearby. The bus stop is opposite my house. It is better than my area now.", [
+      ["Dis comment est ton quartier idéal.", "Ambiance", "quiet|safe|green|friendly|clean|nice|ideal|calm|lively"], ["Utilise a lot of, some ou any.", "Quantité", "a lot of|some|any|many|much"],
+      ["Place un lieu avec une préposition.", "Où ?", "next to|opposite|between|near|behind|in front of|not too far|far from"], ["Compare avec ton quartier actuel.", "Comparaison", "than|better|worse|more|less|bigger|quieter|cheaper|as .* as"]]),
   ],
 };
 

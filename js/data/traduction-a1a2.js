@@ -359,6 +359,29 @@ const A2 = {
       "Le vent sera fort demain soir. ¦ The wind will be strong tomorrow evening. ¦ wind & strong & tomorrow",
       "Je ne pense pas qu'il neige. ¦ I don't think it will snow. ¦ think & snow & not/n t",
       "Recyclons le plastique ! ¦ Let's recycle plastic! ¦ recycle & plastic"]))],
+  8: [PAIR(
+    PART("fr", "Annonce, avis et voisins", [
+      "Flat to rent in the city centre. ¦ Appartement à louer au centre-ville. ¦ appartement & louer & centre",
+      "There are two bedrooms and a small balcony. ¦ Il y a deux chambres et un petit balcon. ¦ deux & chambres & balcon",
+      "The kitchen is modern, but it isn't very big. ¦ La cuisine est moderne, mais elle n'est pas très grande. ¦ cuisine & moderne & grand",
+      "The bakery is next to the pharmacy. ¦ La boulangerie est à côté de la pharmacie. ¦ boulangerie & cote & pharmacie",
+      "The school is opposite the park. ¦ L'école est en face du parc. ¦ ecole & face & parc",
+      "There aren't any shops in my street. ¦ Il n'y a pas de magasins dans ma rue. ¦ pas & magasins & rue",
+      "This flat is bigger than my old one. ¦ Cet appartement est plus grand que mon ancien. ¦ appartement & plus grand & ancien",
+      "It's too noisy at night. ¦ C'est trop bruyant la nuit. ¦ trop & bruyant & nuit",
+      "My neighbours are very friendly. ¦ Mes voisins sont très sympathiques. ¦ voisins & sympa",
+      "How much is the rent? ¦ Combien coûte le loyer ? ¦ combien & loyer"]),
+    PART("en", "Mon logement et mon quartier", [
+      "Il y a un parc près de chez moi. ¦ There is a park near my house. ¦ park & near/next to/close to",
+      "Il y a trois chambres dans l'appartement. ¦ There are three bedrooms in the flat. ¦ three/3 & bedrooms & flat/apartment",
+      "Y a-t-il une pharmacie près d'ici ? ¦ Is there a pharmacy near here? ¦ pharmacy & near/nearby/close",
+      "La banque est entre le café et la poste. ¦ The bank is between the café and the post office. ¦ bank & between & cafe & post office",
+      "L'arrêt de bus est devant l'école. ¦ The bus stop is in front of the school. ¦ bus stop & front & school",
+      "Il n'y a pas beaucoup de circulation. ¦ There isn't much traffic. ¦ traffic & not/n t/no & much/lot/many",
+      "Mon appartement est trop petit pour quatre personnes. ¦ My flat is too small for four people. ¦ flat/apartment & too & small & four/4",
+      "La cuisine n'est pas assez grande. ¦ The kitchen isn't big enough. ¦ kitchen & enough & not/n t",
+      "Ce quartier est plus calme que le centre-ville. ¦ This area is quieter than the city centre. ¦ quieter/more quiet & than & centre/center",
+      "Nous déménageons le mois prochain. ¦ We are moving house next month. ¦ moving/move & next month"]))],
 };
 
 export const TRADUCTION_A1 = A1;

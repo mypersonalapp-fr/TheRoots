@@ -41,4 +41,9 @@ export const SITUATIONS_A2 = {
     S("☔", "Say what you will do if it rains.", "Utilise « If it rains, I will… ».", "\\bif it (rains|snows|is)\\b.*\\b(will|.ll)\\b", "If it rains, I will stay at home."),
     S("🌥️", "Say something that might happen.", "Utilise « might ».", "\\bmight\\b", "It might snow tonight."),
   ],
+  "A2.8": [
+    S("🏠", "Say what there is in your living room.", "Utilise « There is… » ou « There are… ».", "\\bthere (is|are)\\b|\\bthere.s\\b", "There is a sofa and a lamp."),
+    S("📍", "Say where the bakery is.", "Utilise « next to », « opposite » ou « between ».", "\\b(next to|opposite|between|near|behind|in front of)\\b", "The bakery is next to the pharmacy."),
+    S("🚫", "Say there are no shops in your street.", "Utilise « There aren't any… ».", "\\bthere (aren.t|isn.t|are no|is no)\\b", "There aren't any shops in my street."),
+  ],
 };

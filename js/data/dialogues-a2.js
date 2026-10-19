@@ -98,4 +98,16 @@ export const DIALOGUES_A2 = {
       { npc: "If it is cancelled, you will get a seat on tomorrow's flight.", ok: ["\\b(thank|thanks|ok|okay|good|great|understand|fine|wait)\\b"], model: "OK, thank you. I will wait here.", hint: "Remercie et dis ce que tu feras." },
       { npc: "Please check the screen every thirty minutes. Have a nice day!", ok: ["\\b(thank|thanks|you too|bye|goodbye|see you)\\b"], model: "Thank you, you too!", hint: "Remercie." }] },
   ],
+  "A2.8": [
+    { title: "Visiter un appartement", icon: "🔑", scene: "Tu appelles pour visiter un appartement à louer.", turns: [
+      { npc: "Hello, how can I help you?", ok: ["\\b(flat|apartment|rent|visit|advert|ad|calling|look)\\b"], model: "Hello, I'm calling about the flat to rent.", hint: "Dis que tu appelles pour l'appartement à louer." },
+      { npc: "Yes, of course. It has two bedrooms, a living room and a kitchen.", ok: ["\\b(is there|are there|how much|rent|lift|balcony|furnished|garden|how many)\\b"], model: "Is there a lift? And how much is the rent?", hint: "Demande s'il y a un ascenseur ou le prix du loyer." },
+      { npc: "There isn't a lift, but it is on the first floor. The rent is seven hundred euros a month.", ok: ["\\b(ok|okay|good|great|visit|see|can i|could i|thank|fine|furnished)\\b"], model: "OK, that's good. Can I visit it tomorrow?", hint: "Réagis et propose une visite." },
+      { npc: "Yes. Come tomorrow at five. See you then!", ok: ["\\b(thank|thanks|see you|bye|goodbye|ok|okay|great)\\b"], model: "Thank you, see you tomorrow!", hint: "Remercie et dis au revoir." }] },
+    { title: "Demander son chemin dans le quartier", icon: "📍", scene: "Tu cherches la pharmacie dans un quartier que tu ne connais pas.", turns: [
+      { npc: "Hello! Can I help you?", ok: ["\\b(excuse me|pharmacy|is there|where|looking for|near here)\\b"], model: "Excuse me, is there a pharmacy near here?", hint: "Demande s'il y a une pharmacie près d'ici." },
+      { npc: "Yes, there is one. It is next to the bakery, opposite the bank.", ok: ["\\b(is it far|how far|far|where|how long|minutes|thank)\\b"], model: "Is it far from here?", hint: "Demande si c'est loin." },
+      { npc: "No, it is only two minutes on foot. Turn left at the corner.", ok: ["\\b(thank|thanks|ok|okay|great|left|corner|got it)\\b"], model: "Thank you very much!", hint: "Remercie." },
+      { npc: "You're welcome. Have a nice day!", ok: ["\\b(you too|thank|bye|goodbye|see you)\\b"], model: "You too, goodbye!", hint: "Dis au revoir." }] },
+  ],
 };

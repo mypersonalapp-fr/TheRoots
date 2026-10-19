@@ -1,6 +1,6 @@
 // Exporte tout l'anglais des leçons A2 construites dans documentation/RELECTURE_NATIF_A2.md + contrôles automatiques.
 import fs from "fs";
-const mods = { "A2.0": "../js/data/lecon-a20-data.js", "A2.1": "../js/data/lecon-a21-data.js", "A2.2": "../js/data/lecon-a22-data.js", "A2.3": "../js/data/lecon-a23-data.js", "A2.4": "../js/data/lecon-a24-data.js", "A2.5": "../js/data/lecon-a25-data.js", "A2.6": "../js/data/lecon-a26-data.js", "A2.7": "../js/data/lecon-a27-data.js" };
+const mods = { "A2.0": "../js/data/lecon-a20-data.js", "A2.1": "../js/data/lecon-a21-data.js", "A2.2": "../js/data/lecon-a22-data.js", "A2.3": "../js/data/lecon-a23-data.js", "A2.4": "../js/data/lecon-a24-data.js", "A2.5": "../js/data/lecon-a25-data.js", "A2.6": "../js/data/lecon-a26-data.js", "A2.7": "../js/data/lecon-a27-data.js", "A2.8": "../js/data/lecon-a28-data.js" };
 const extra = { dialogues: ["../js/data/dialogues-a2.js", "DIALOGUES_A2"], situations: ["../js/data/situations-a2.js", "SITUATIONS_A2"] };
 const isEn = (s) => typeof s === "string" && s.length > 8 && /[A-Za-z]/.test(s) && !/[éèêàâçùûôîïœ]/i.test(s) && / /.test(s) && !/^(https?:|assets\/|js\/)/.test(s) && !/[\\^$]|\(\?:/.test(s);
 const walk = (o, out, path) => { if (typeof o === "string") { if (isEn(o)) out.push([path, o]); } else if (Array.isArray(o)) o.forEach((x, i) => walk(x, out, path)); else if (o && typeof o === "object") for (const k of Object.keys(o)) walk(o[k], out, path + "." + k); };
@@ -26,7 +26,7 @@ for (const [code, f] of Object.entries(mods)) {
 }
 for (const [name, [f, exp]] of Object.entries(extra)) {
   const m = await import(f); const out = []; const d = m[exp];
-  for (const code of ["A2.0", "A2.1", "A2.2", "A2.3", "A2.4", "A2.5", "A2.6", "A2.7"]) if (d[code]) walk(d[code], out, name + "." + code);
+  for (const code of ["A2.0", "A2.1", "A2.2", "A2.3", "A2.4", "A2.5", "A2.6", "A2.7", "A2.8"]) if (d[code]) walk(d[code], out, name + "." + code);
   md += `\n## ${name}\n\n`; for (const [p, s] of out) md += `- \`${p}\` ${s}${check(p, "", s)}\n`;
 }
 md += `\n## Alertes automatiques (${issues.length})\n\n` + issues.join("\n") + "\n";
