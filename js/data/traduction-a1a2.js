@@ -1,212 +1,364 @@
-// The Roots — exercices de TRADUCTION (écrit) pour A1.6 → A2.7 : un texte anglais à traduire en français (EN→FR)
-// et un texte français à traduire en anglais (FR→EN) par leçon. Même format que les expressions « plus » : 4 phrases, 4 critères.
-// Les textes sont inventés pour la leçon (message, avis, annonce, chanson, article…). À relire par un natif.
-// Une partie de traduction : texte source (phrases collées), modèle de traduction, 4 critères (un par phrase).
-const TR = (title, dir, rows) => ({
-  dir, title, src: rows.map((r) => r[0]).join(" "), model: rows.map((r) => r[1]).join(" "),
-  checks: rows.map((r, i) => [`Phrase ${i + 1}`, r[2]]),
+// The Roots — TRADUCTION écrite A1.6 → A2.7 : par leçon, 10 phrases anglais → français et 10 phrases français → anglais
+// (soit 20 phrases par leçon), toutes sur le thème et la grammaire de la leçon. Chaque phrase se valide séparément.
+// Format d'une ligne : « phrase source ¦ traduction modèle ¦ mots-clés ».
+// Mots-clés : groupes séparés par « & » (tous obligatoires) ; dans un groupe, variantes séparées par « / » (une suffit).
+// Comparaison sans accents ni majuscules ni ponctuation (donc « mustn't » = « mustn t »). Textes inventés. À relire par un natif.
+const parse = (lines) => lines.map((l) => {
+  const [src, model, keys] = l.split(" ¦ ").map((x) => x.trim());
+  return { src, model, keys: keys.split(" & ").map((g) => g.split("/").map((a) => a.trim()).filter(Boolean)) };
 });
-// Un exercice par leçon, avec deux cases : anglais → français et français → anglais, chacune avec son bouton Valider.
+const PART = (dir, title, lines) => ({ dir, title, rows: parse(lines) });
 const PAIR = (a, b) => ({ title: "Traduction", icon: "🔁", trad: true, parts: [a, b], prompts: [], checks: [], model: "" });
+
 const A1 = {
-  6: [
-    PAIR(
-      TR("Traduire : un avis sur un restaurant", "fr", [
-        ["The pizza is very good.", "La pizza est très bonne.", "pizza.*(bonne|excellente|d.licieuse|super|g.niale)|(bonne|excellente|d.licieuse|super|g.niale).*pizza"],
-        ["The waiter is kind.", "Le serveur est gentil.", "(serveur|gar.on).*(gentil|aimable|sympa)|(gentil|aimable|sympa).*(serveur|gar.on)"],
-        ["The price is not expensive.", "Le prix n'est pas cher.", "(prix|tarif).*(pas (cher|.lev)|abordable|raisonnable)|(pas cher|abordable|raisonnable).*(prix|tarif)"],
-        ["I love this restaurant.", "J'adore ce restaurant.", "(adore|aime).*restaurant"]]),
-      TR("Traduire : au restaurant", "en", [
-        ["Je voudrais une soupe et de l'eau.", "I would like a soup and some water.", "(i.d like|i would like|i want).*(soup|water)"],
-        ["Je n'aime pas les oignons.", "I don't like onions.", "(don.t|do not) like.*onion"],
-        ["Combien coûte le menu ?", "How much is the menu?", "how much.*(menu|is it|does)"],
-        ["Merci beaucoup.", "Thank you very much.", "thank(s| you).*(much|a lot)|thanks a lot"]])),
-  ],
-  7: [
-    PAIR(
-      TR("Traduire : une petite annonce", "fr", [
-        ["I sell a red bag.", "Je vends un sac rouge.", "vend.*sac.*rouge|sac rouge"],
-        ["It is new and cheap.", "Il est neuf et pas cher.", "(neuf|nouveau).*(pas cher|bon march)|(pas cher|bon march).*(neuf|nouveau)"],
-        ["It costs ten euros.", "Il coûte dix euros.", "(co.te|prix).*(dix|10).*euro"],
-        ["Call me after six.", "Appelez-moi après six heures.", "appel.*(apr.s).*(six|18|dix-huit)"]]),
-      TR("Traduire : au magasin", "en", [
-        ["Je voudrais cette chemise bleue.", "I would like this blue shirt.", "(i.d like|i would like|i want).*shirt"],
-        ["Elle est trop grande.", "It is too big.", "too (big|large)"],
-        ["Avez-vous une taille plus petite ?", "Do you have a smaller size?", "do you have.*(smaller|small)"],
-        ["Combien ça coûte ?", "How much is it?", "how much (is|does|are)"]])),
-  ],
-  8: [
-    PAIR(
-      TR("Traduire : une carte postale", "fr", [
-        ["Hello from Bath!", "Bonjour de Bath !", "(bonjour|salut|coucou).*bath"],
-        ["The city is small and beautiful.", "La ville est petite et belle.", "ville.*petite.*(belle|jolie|magnifique)"],
-        ["I am walking near the river now.", "Je me promène près de la rivière maintenant.", "(prom|march|balad).*(pr.s|le long).*(rivi|fleuve)"],
-        ["See you soon!", "À bientôt !", "bient.t|a plus|plus tard"]]),
-      TR("Traduire : se repérer en ville", "en", [
-        ["Où est la bibliothèque ?", "Where is the library?", "where is.*library"],
-        ["Elle est près du parc.", "It is near the park.", "(near|next to|close to).*park"],
-        ["Je suis perdu.", "I am lost.", "(i am|i.m) lost"],
-        ["Pouvez-vous répéter, s'il vous plaît ?", "Can you repeat that, please?", "(can|could) you (repeat|say it again|say that again)"]])),
-  ],
-  9: [
-    PAIR(
-      TR("Traduire : un message d'hôtel", "fr", [
-        ["Your room is on the second floor.", "Votre chambre est au deuxième étage.", "chambre.*(deuxi|troisi|2|3|second)"],
-        ["Breakfast is at seven.", "Le petit-déjeuner est à sept heures.", "petit.d.jeuner.*(sept|7)"],
-        ["The bus to the airport leaves at nine.", "Le bus pour l'aéroport part à neuf heures.", "(bus|car|navette).*(a.roport).*(part|d.part).*(neuf|9)"],
-        ["Have a good trip!", "Bon voyage !", "bon voyage|bonne route|bon s.jour"]]),
-      TR("Traduire : voyager", "en", [
-        ["Je vais voyager à Rome demain.", "I am going to travel to Rome tomorrow.", "(going to|will) (travel|go|fly).*rome"],
-        ["Je voudrais un billet pour Londres.", "I would like a ticket to London.", "(i.d like|i would like|i want).*ticket.*london"],
-        ["À quelle heure part le train ?", "What time does the train leave?", "what time.*train.*(leave|go|depart)|when does the train leave"],
-        ["Mon bagage est petit.", "My bag is small.", "(bag|luggage|suitcase).*small|small.*(bag|luggage|suitcase)"]])),
-  ],
-  10: [
-    PAIR(
-      TR("Traduire : une présentation", "fr", [
-        ["My name is Sara.", "Je m'appelle Sara.", "(m.appelle|mon nom est|mon pr.nom est).*sara"],
-        ["I work in a hospital.", "Je travaille dans un hôpital.", "travaill.*pital"],
-        ["I start at eight and I finish at five.", "Je commence à huit heures et je finis à cinq heures.", "(commence|d.bute).*(huit|8).*(finis|termine|fini).*(cinq|5)"],
-        ["I like my job.", "J'aime mon travail.", "(aime|adore).*(travail|m.tier|boulot|emploi)"]]),
-      TR("Traduire : au bureau", "en", [
-        ["Je travaille dans un bureau.", "I work in an office.", "(i work|i.m working).*office"],
-        ["Mon collègue s'appelle Tom.", "My colleague is called Tom.", "(colleague|coworker).*tom"],
-        ["Nous avons une réunion à dix heures.", "We have a meeting at ten.", "(have|there is).*meeting.*(ten|10)"],
-        ["J'étudie l'anglais le soir.", "I study English in the evening.", "(study|learn).*english.*(evening|night)"]])),
-  ],
-  11: [
-    PAIR(
-      TR("Traduire : les paroles d'une chanson", "fr", [
-        ["Rain on my window, sun in my heart.", "De la pluie sur ma fenêtre, du soleil dans mon cœur.", "pluie.*fen.tre.*soleil"],
-        ["It's cold today, but we are together.", "Il fait froid aujourd'hui, mais nous sommes ensemble.", "froid.*ensemble"],
-        ["Tomorrow is Monday, but today is ours.", "Demain, c'est lundi, mais aujourd'hui est à nous.", "demain.*lundi.*aujourd"],
-        ["Winter is here, and I am happy.", "L'hiver est là, et je suis heureux.", "hiver.*(heureux|heureuse|content)"]]),
-      TR("Traduire : le temps et l'heure", "en", [
-        ["Il fait chaud aujourd'hui.", "It is hot today.", "(hot|warm).*today|today.*(hot|warm)"],
-        ["Il pleut en hiver.", "It rains in winter.", "(rains|rainy|is raining).*winter|winter.*rain"],
-        ["Quelle heure est-il ?", "What time is it?", "what time is it|what.s the time"],
-        ["Il est trois heures et demie.", "It is half past three.", "half past three|three thirty|3.30"]])),
-  ],
-  12: [
-    PAIR(
-      TR("Traduire : un message à un ami", "fr", [
-        ["Hi Ben!", "Salut Ben !", "(salut|bonjour|coucou).*ben"],
-        ["Thank you for the invitation.", "Merci pour l'invitation.", "merci.*invitation"],
-        ["I'm sorry, but I can't come because I'm working.", "Je suis désolée, mais je ne peux pas venir parce que je travaille.", "(sol|navr|pardon|excuse).*(peux pas|impossible).*venir|ne peux pas venir"],
-        ["Can we meet on Sunday?", "Peut-on se voir dimanche ?", "dimanche.*(voir|rencontrer|retrouver)|(voir|rencontrer|retrouver).*dimanche"]]),
-      TR("Traduire : politesse", "en", [
-        ["Bonjour, comment allez-vous ?", "Hello, how are you?", "(hello|hi|good (morning|afternoon)).*how are you"],
-        ["Très bien, merci, et vous ?", "Very well, thank you, and you?", "(very well|fine|great|good).*thank.*(and you|you\\?)"],
-        ["Excusez-moi, pouvez-vous m'aider ?", "Excuse me, can you help me?", "excuse me.*(can|could) you help"],
-        ["À bientôt !", "See you soon!", "see you (soon|later)|bye"]])),
-  ],
+  6: [PAIR(
+    PART("fr", "Au restaurant et à table", [
+      "The pizza is very good. ¦ La pizza est très bonne. ¦ pizza & bonne/excellente/delicieuse/super",
+      "The waiter is kind. ¦ Le serveur est gentil. ¦ serveur/garcon & gentil/aimable/sympa",
+      "The price is not expensive. ¦ Le prix n'est pas cher. ¦ prix & pas cher/abordable/raisonnable",
+      "I love this restaurant. ¦ J'adore ce restaurant. ¦ restaurant & adore/aime",
+      "Can I have the menu, please? ¦ Puis-je avoir le menu, s'il vous plaît ? ¦ menu/carte & avoir/voir/demander/peux/puis",
+      "I'd like a coffee with milk. ¦ Je voudrais un café avec du lait. ¦ cafe & lait",
+      "We eat rice and chicken for lunch. ¦ Nous mangeons du riz et du poulet à midi. ¦ riz & poulet & mange",
+      "I don't eat meat, but I like fish. ¦ Je ne mange pas de viande, mais j'aime le poisson. ¦ viande & poisson & pas",
+      "There is some bread on the table. ¦ Il y a du pain sur la table. ¦ pain & table",
+      "How much is the soup? ¦ Combien coûte la soupe ? ¦ combien & soupe"]),
+    PART("en", "Commander et manger", [
+      "Je voudrais une soupe et de l'eau. ¦ I would like a soup and some water. ¦ soup & water & like/want",
+      "Je n'aime pas les oignons. ¦ I don't like onions. ¦ onion & not/n t & like",
+      "Combien coûte le menu ? ¦ How much is the menu? ¦ how much & menu",
+      "Merci beaucoup. ¦ Thank you very much. ¦ thank & much/lot",
+      "Qu'est-ce que vous avez comme boissons ? ¦ What drinks do you have? ¦ drink & what & have",
+      "L'addition, s'il vous plaît. ¦ The bill, please. ¦ bill/check & please",
+      "Elle mange une pomme et boit du thé. ¦ She eats an apple and drinks some tea. ¦ apple & tea & eats & drinks",
+      "Nous avons faim. ¦ We are hungry. ¦ hungry",
+      "Il y a du fromage et des œufs. ¦ There is some cheese and there are some eggs. ¦ cheese & egg",
+      "Mon plat préféré, c'est la pizza. ¦ My favourite dish is pizza. ¦ favourite/favorite & pizza"]))],
+  7: [PAIR(
+    PART("fr", "Annonces et magasins", [
+      "I sell a red bag. ¦ Je vends un sac rouge. ¦ vend & sac & rouge",
+      "It is new and cheap. ¦ Il est neuf et pas cher. ¦ neuf/nouveau & pas cher/bon marche",
+      "It costs ten euros. ¦ Il coûte dix euros. ¦ dix/10 & euro",
+      "Call me after six. ¦ Appelez-moi après six heures. ¦ apres & six/18",
+      "Do you have this shirt in blue? ¦ Avez-vous cette chemise en bleu ? ¦ chemise & bleu",
+      "These shoes are too small. ¦ Ces chaussures sont trop petites. ¦ chaussures & trop & petit",
+      "I want to try this jacket. ¦ Je veux essayer cette veste. ¦ essayer & veste/manteau/blouson",
+      "Where can I pay? ¦ Où puis-je payer ? ¦ payer",
+      "The shop is open from nine to six. ¦ Le magasin est ouvert de neuf heures à dix-huit heures. ¦ magasin/boutique & ouvert & neuf/9",
+      "This dress is more expensive than that one. ¦ Cette robe est plus chère que celle-là. ¦ robe & plus cher & que"]),
+    PART("en", "Acheter des vêtements", [
+      "Je voudrais cette chemise bleue. ¦ I would like this blue shirt. ¦ shirt & blue & like/want",
+      "Elle est trop grande. ¦ It is too big. ¦ too & big/large",
+      "Avez-vous une taille plus petite ? ¦ Do you have a smaller size? ¦ smaller/small & size & have",
+      "Combien ça coûte ? ¦ How much is it? ¦ how much",
+      "Je cherche un pantalon noir. ¦ I am looking for black trousers. ¦ black & trousers/pants & look/search/want",
+      "Je paie par carte. ¦ I pay by card. ¦ card & pay",
+      "Ces chaussettes sont moins chères. ¦ These socks are cheaper. ¦ sock & cheaper/less expensive",
+      "Où sont les cabines d'essayage ? ¦ Where are the fitting rooms? ¦ where & fitting/changing & room",
+      "J'achète un cadeau pour ma mère. ¦ I am buying a present for my mother. ¦ present/gift & mother/mum & buy",
+      "Le magasin ferme à sept heures. ¦ The shop closes at seven. ¦ shop/store & close & seven/7"]))],
+  8: [PAIR(
+    PART("fr", "Carte postale et ville", [
+      "Hello from Bath! ¦ Bonjour de Bath ! ¦ bath & bonjour/salut/coucou",
+      "The city is small and beautiful. ¦ La ville est petite et belle. ¦ ville & petite & belle/jolie/magnifique",
+      "I am walking near the river now. ¦ Je me promène près de la rivière maintenant. ¦ riviere/fleuve & pres/le long & maintenant",
+      "See you soon! ¦ À bientôt ! ¦ bientot/plus tard",
+      "The library is next to the park. ¦ La bibliothèque est à côté du parc. ¦ bibliotheque & parc & cote/pres",
+      "Turn left at the traffic lights. ¦ Tournez à gauche au feu. ¦ gauche & tourn & feu",
+      "The bus is coming now. ¦ Le bus arrive maintenant. ¦ bus & arrive/vient & maintenant",
+      "I am lost. Can you help me? ¦ Je suis perdu. Pouvez-vous m'aider ? ¦ perdu & aider",
+      "It takes ten minutes on foot. ¦ Ça prend dix minutes à pied. ¦ dix/10 & minutes & pied",
+      "The museum is far from here. ¦ Le musée est loin d'ici. ¦ musee & loin"]),
+    PART("en", "Se repérer et demander son chemin", [
+      "Où est la bibliothèque ? ¦ Where is the library? ¦ where & library",
+      "Elle est près du parc. ¦ It is near the park. ¦ near/next to/close to & park",
+      "Je suis perdu. ¦ I am lost. ¦ lost",
+      "Pouvez-vous répéter, s'il vous plaît ? ¦ Can you repeat that, please? ¦ repeat/again & please",
+      "Tournez à droite, puis allez tout droit. ¦ Turn right, then go straight on. ¦ right & straight & turn",
+      "La gare est en face de l'hôpital. ¦ The station is opposite the hospital. ¦ station & hospital & opposite/in front of/across",
+      "Je prends le métro tous les jours. ¦ I take the underground every day. ¦ underground/metro/subway/tube & every day/daily & take",
+      "Nous marchons dans le parc maintenant. ¦ We are walking in the park now. ¦ walking & park & now",
+      "C'est à cinq minutes d'ici. ¦ It is five minutes from here. ¦ five & minutes & here",
+      "Excusez-moi, où est la poste ? ¦ Excuse me, where is the post office? ¦ excuse & post & where"]))],
+  9: [PAIR(
+    PART("fr", "À l'hôtel et en voyage", [
+      "Your room is on the second floor. ¦ Votre chambre est au deuxième étage. ¦ chambre & deuxieme/troisieme/2/3",
+      "Breakfast is at seven. ¦ Le petit-déjeuner est à sept heures. ¦ petit dej & sept/7",
+      "The bus to the airport leaves at nine. ¦ Le bus pour l'aéroport part à neuf heures. ¦ bus/navette & aeroport & part/depart & neuf/9",
+      "Have a good trip! ¦ Bon voyage ! ¦ voyage/route/sejour",
+      "My flight is delayed. ¦ Mon vol est retardé. ¦ vol & retard",
+      "Where is the passport control? ¦ Où est le contrôle des passeports ? ¦ passeport & controle",
+      "I have one small bag and one suitcase. ¦ J'ai un petit sac et une valise. ¦ sac & valise",
+      "The train leaves from platform four. ¦ Le train part du quai quatre. ¦ train & quai & quatre/4",
+      "We are going to stay for three nights. ¦ Nous allons rester trois nuits. ¦ trois/3 & nuit & rester/sejourner",
+      "I would like a single room, please. ¦ Je voudrais une chambre simple, s'il vous plaît. ¦ chambre & simple/une personne"]),
+    PART("en", "Voyager et réserver", [
+      "Je vais voyager à Rome demain. ¦ I am going to travel to Rome tomorrow. ¦ rome & tomorrow & travel/go/fly",
+      "Je voudrais un billet pour Londres. ¦ I would like a ticket to London. ¦ ticket & london",
+      "À quelle heure part le train ? ¦ What time does the train leave? ¦ time & train & leave/depart/go",
+      "Mon bagage est petit. ¦ My bag is small. ¦ small/little & bag/luggage/suitcase",
+      "Où est la sortie ? ¦ Where is the exit? ¦ where & exit",
+      "Le vol est à dix heures. ¦ The flight is at ten. ¦ flight/plane & ten/10",
+      "Nous arrivons à l'hôtel ce soir. ¦ We arrive at the hotel this evening. ¦ arrive & hotel & tonight/this evening/this night",
+      "Avez-vous une chambre libre ? ¦ Do you have a free room? ¦ room & free/available/vacant",
+      "Le petit-déjeuner est-il compris ? ¦ Is breakfast included? ¦ breakfast & included",
+      "J'ai perdu mon passeport. ¦ I have lost my passport. ¦ passport & lost/lose"]))],
+  10: [PAIR(
+    PART("fr", "Se présenter au travail", [
+      "My name is Sara. ¦ Je m'appelle Sara. ¦ sara & appelle/nom",
+      "I work in a hospital. ¦ Je travaille dans un hôpital. ¦ travaill & hopital",
+      "I start at eight and I finish at five. ¦ Je commence à huit heures et je finis à cinq heures. ¦ commence/debute & huit/8 & cinq/5",
+      "I like my job. ¦ J'aime mon travail. ¦ aime/adore & travail/metier/emploi",
+      "My colleague is a teacher. ¦ Ma collègue est professeure. ¦ collegue & prof/enseign/instit",
+      "We have a meeting on Monday morning. ¦ Nous avons une réunion lundi matin. ¦ reunion & lundi & matin",
+      "She studies law at university. ¦ Elle étudie le droit à l'université. ¦ etudie & droit & universite/fac",
+      "He works from home on Fridays. ¦ Il travaille à la maison le vendredi. ¦ travaill & maison/domicile/distance & vendredi",
+      "The office opens at nine o'clock. ¦ Le bureau ouvre à neuf heures. ¦ bureau & ouvre & neuf/9",
+      "I don't work on Sundays. ¦ Je ne travaille pas le dimanche. ¦ pas & travaill & dimanche"]),
+    PART("en", "Au bureau et à l'école", [
+      "Je travaille dans un bureau. ¦ I work in an office. ¦ work & office",
+      "Mon collègue s'appelle Tom. ¦ My colleague is called Tom. ¦ colleague/coworker & tom",
+      "Nous avons une réunion à dix heures. ¦ We have a meeting at ten. ¦ meeting & ten/10",
+      "J'étudie l'anglais le soir. ¦ I study English in the evening. ¦ study/learn & english & evening/night",
+      "Je suis infirmière. ¦ I am a nurse. ¦ nurse",
+      "Elle travaille de neuf heures à cinq heures. ¦ She works from nine to five. ¦ works & nine & five",
+      "Mon frère est étudiant. ¦ My brother is a student. ¦ brother & student",
+      "Qu'est-ce que vous faites dans la vie ? ¦ What do you do for a living? ¦ what & do & living/job/work",
+      "Il prend le train pour aller au travail. ¦ He takes the train to work. ¦ train & work & takes/goes/travels",
+      "Nous finissons à dix-sept heures. ¦ We finish at five p.m. ¦ finish & five/17"]))],
+  11: [PAIR(
+    PART("fr", "Paroles de chanson et météo", [
+      "Rain on my window, sun in my heart. ¦ De la pluie sur ma fenêtre, du soleil dans mon cœur. ¦ pluie & fenetre & soleil & coeur",
+      "It's cold today, but we are together. ¦ Il fait froid aujourd'hui, mais nous sommes ensemble. ¦ froid & ensemble",
+      "Tomorrow is Monday, but today is ours. ¦ Demain, c'est lundi, mais aujourd'hui est à nous. ¦ demain & lundi & aujourd",
+      "Winter is here, and I am happy. ¦ L'hiver est là, et je suis heureux. ¦ hiver & heureux/content/heureuse",
+      "It is sunny and warm in July. ¦ Il fait beau et chaud en juillet. ¦ juillet & chaud & beau/soleil/ensoleille",
+      "It is raining. Take an umbrella! ¦ Il pleut. Prends un parapluie ! ¦ pleut & parapluie",
+      "It is half past four. ¦ Il est quatre heures et demie. ¦ quatre/4 & demie/30",
+      "In autumn, it is windy and cloudy. ¦ En automne, il y a du vent et des nuages. ¦ automne & vent & nuage",
+      "What is the weather like today? ¦ Quel temps fait-il aujourd'hui ? ¦ temps & aujourd",
+      "It snows in January in the mountains. ¦ Il neige en janvier dans les montagnes. ¦ neige & janvier & montagne"]),
+    PART("en", "Le temps et l'heure", [
+      "Il fait chaud aujourd'hui. ¦ It is hot today. ¦ hot/warm & today",
+      "Il pleut en hiver. ¦ It rains in winter. ¦ rain & winter",
+      "Quelle heure est-il ? ¦ What time is it? ¦ what time/the time",
+      "Il est trois heures et demie. ¦ It is half past three. ¦ half past three/three thirty/3 30",
+      "Demain, il fera froid. ¦ Tomorrow it will be cold. ¦ tomorrow & cold",
+      "Il y a du soleil et du vent. ¦ It is sunny and windy. ¦ sunny/sun & wind",
+      "Mon anniversaire est en mars. ¦ My birthday is in March. ¦ birthday & march",
+      "Nous sommes lundi. ¦ It is Monday. ¦ monday",
+      "Il neige aujourd'hui. ¦ It is snowing today. ¦ snow & today",
+      "Le printemps est ma saison préférée. ¦ Spring is my favourite season. ¦ spring & season & favourite/favorite"]))],
+  12: [PAIR(
+    PART("fr", "Un message et la politesse", [
+      "Hi Ben! ¦ Salut Ben ! ¦ ben & salut/bonjour/coucou",
+      "Thank you for the invitation. ¦ Merci pour l'invitation. ¦ merci & invitation",
+      "I'm sorry, but I can't come. ¦ Je suis désolé, mais je ne peux pas venir. ¦ desole/navre/excuse/pardon & venir",
+      "Can we meet on Sunday? ¦ Peut-on se voir dimanche ? ¦ dimanche & voir/rencontrer/retrouver",
+      "Excuse me, could you help me? ¦ Excusez-moi, pourriez-vous m'aider ? ¦ excuse & aider",
+      "Nice to meet you. ¦ Enchanté de vous rencontrer. ¦ enchante/ravi/plaisir",
+      "How are you? I'm fine, thanks. ¦ Comment allez-vous ? Je vais bien, merci. ¦ comment & bien & merci",
+      "Please wait here for a moment. ¦ Veuillez attendre ici un instant. ¦ attend & ici",
+      "You're welcome. Have a nice day! ¦ De rien. Bonne journée ! ¦ rien/je vous en prie & journee",
+      "I don't understand. Can you repeat? ¦ Je ne comprends pas. Pouvez-vous répéter ? ¦ comprend & repeter"]),
+    PART("en", "Parler poliment", [
+      "Bonjour, comment allez-vous ? ¦ Hello, how are you? ¦ hello/hi/good morning & how",
+      "Très bien, merci, et vous ? ¦ Very well, thank you, and you? ¦ well/fine/good/great & thank",
+      "Excusez-moi, pouvez-vous m'aider ? ¦ Excuse me, can you help me? ¦ excuse & help",
+      "À bientôt ! ¦ See you soon! ¦ see you/bye",
+      "Je vous en prie. ¦ You are welcome. ¦ welcome",
+      "Enchanté de faire votre connaissance. ¦ Nice to meet you. ¦ nice/pleased/glad & meet",
+      "Pardon, je suis en retard. ¦ Sorry, I am late. ¦ sorry & late",
+      "Pouvez-vous parler plus lentement ? ¦ Can you speak more slowly? ¦ speak/talk & slow",
+      "Bonne nuit et à demain ! ¦ Good night and see you tomorrow! ¦ night & tomorrow",
+      "Je voudrais un café, s'il vous plaît. ¦ I would like a coffee, please. ¦ coffee & please"]))],
 };
 
 const A2 = {
-  0: [
-    PAIR(
-      TR("Traduire : mon emploi du temps", "fr", [
-        ["I usually get up at seven.", "D'habitude, je me lève à sept heures.", "(habitude|habituellement|g.n.ral|normalement).*(l.ve).*(sept|7)|(me l.ve).*(sept|7)"],
-        ["Today I'm working at home.", "Aujourd'hui, je travaille à la maison.", "aujourd.*travaill.*(maison|domicile)"],
-        ["Tomorrow I'm going to visit my sister.", "Demain, je vais rendre visite à ma sœur.", "demain.*(vais|visite|voir).*(s.ur|soeur)"],
-        ["I'd like to learn English.", "J'aimerais apprendre l'anglais.", "(aimerais|voudrais|veux).*apprendre.*anglais"]]),
-      TR("Traduire : habitudes et projets", "en", [
-        ["D'habitude, je prends le bus.", "I usually take the bus.", "(usually|normally|always).*take the bus|take the bus.*usually"],
-        ["Maintenant, je lis un livre.", "Now I am reading a book.", "(now|at the moment).*(reading)"],
-        ["Demain, je vais voyager.", "Tomorrow I am going to travel.", "tomorrow.*(going to|will).*(travel|fly|go)"],
-        ["J'aimerais parler anglais.", "I would like to speak English.", "(i.d like|i would like|i want).*(speak|talk).*english"]])),
-  ],
-  1: [
-    PAIR(
-      TR("Traduire : un journal de bord", "fr", [
-        ["I always get up early, but today I'm sleeping late.", "Je me lève toujours tôt, mais aujourd'hui je dors tard.", "(l.ve.*toujours|toujours.*l.ve).*t.t.*aujourd.*dor.*tard"],
-        ["I never watch TV in the morning.", "Je ne regarde jamais la télé le matin.", "(ne regarde (jamais|pas)).*(t.l).*matin"],
-        ["Now I'm making breakfast.", "Maintenant, je prépare le petit-déjeuner.", "maintenant.*(pr.pare|fais).*petit.d.jeuner"],
-        ["My neighbour is cooking too.", "Mon voisin cuisine aussi.", "voisin.*(cuisine|pr.pare|fait la cuisine).*aussi"]]),
-      TR("Traduire : travail et habitudes", "en", [
-        ["Je vais au travail en train.", "I go to work by train.", "(go|travel|commute).*work.*train"],
-        ["Ces jours-ci, je travaille à la maison.", "These days I work at home.", "(these days|nowadays|at the moment).*(work).*home"],
-        ["Je ne mange jamais le matin.", "I never eat in the morning.", "never (eat|have).*morning"],
-        ["Il fait ses devoirs en ce moment.", "He is doing his homework at the moment.", "(is|.s) doing.*homework"]])),
-  ],
-  2: [
-    PAIR(
-      TR("Traduire : un souvenir d'enfance", "fr", [
-        ["When I was a child, I used to live near the sea.", "Quand j'étais enfant, j'habitais près de la mer.", "quand.*(enfant|petit).*(habitais|vivais).*mer"],
-        ["We played on the beach every day.", "Nous jouions sur la plage tous les jours.", "(jouions|jouait|avons jou).*plage.*(tous les jours|chaque jour)"],
-        ["Last summer I visited my old town.", "L'été dernier, j'ai visité ma vieille ville.", "dernier.*(visit|retourn)|(visit|retourn).*dernier"],
-        ["It was different.", "Elle était différente.", "diff.rente?|chang"]]),
-      TR("Traduire : le passé", "en", [
-        ["Hier, je suis allé au marché.", "Yesterday I went to the market.", "yesterday.*went.*market"],
-        ["Quand j'étais petit, j'avais un chien.", "When I was little, I had a dog.", "(when i was|as a child).*(had|used to have).*dog"],
-        ["Nous avons mangé une pizza.", "We ate a pizza.", "(we ate|we had|we.ve eaten).*pizza"],
-        ["Elle n'a pas aimé le film.", "She didn't like the film.", "(didn.t|did not) like.*(film|movie)"]])),
-  ],
-  3: [
-    PAIR(
-      TR("Traduire : un article de presse", "fr", [
-        ["At eight o'clock, the power went out while everybody was having dinner.", "À huit heures, le courant a été coupé pendant que tout le monde dînait.", "(courant|lectricit).*(pendant que|alors que).*(d.n|repas|manger)"],
-        ["The children were playing when the lights went off.", "Les enfants jouaient quand les lumières se sont éteintes.", "enfants.*jou.*(lumi|courant).*(teint|coup)"],
-        ["A neighbour called the police.", "Un voisin a appelé la police.", "voisin.*(appel|t.l.phon).*police"],
-        ["Nobody was hurt.", "Personne n'a été blessé.", "personne.*bless"]]),
-      TR("Traduire : deux actions", "en", [
-        ["Je lisais quand le téléphone a sonné.", "I was reading when the phone rang.", "(was|were) reading.*when.*phone.*rang"],
-        ["Pendant que nous mangions, il pleuvait.", "While we were eating, it was raining.", "while we were eating.*(was raining|raining)"],
-        ["Il dormait quand je suis arrivé.", "He was sleeping when I arrived.", "(was sleeping|was asleep).*when i (arrived|got)"],
-        ["Que faisais-tu hier soir ?", "What were you doing last night?", "what were you doing.*(last night|yesterday evening)"]])),
-  ],
-  4: [
-    PAIR(
-      TR("Traduire : une invitation", "fr", [
-        ["We are going to have a party on Saturday.", "Nous allons faire une fête samedi.", "(allons|va).*(f.te|soir.e).*samedi"],
-        ["I will bring some cake.", "J'apporterai un gâteau.", "(apporter|apporte).*g.teau"],
-        ["The party starts at seven, and it will finish at midnight.", "La fête commence à sept heures et finira à minuit.", "(commence|d.bute).*(sept|7).*minuit"],
-        ["I hope you can come!", "J'espère que tu pourras venir !", "esp.re.*(venir|viendr|pourr)"]]),
-      TR("Traduire : projets et réservation", "en", [
-        ["Je vais réserver une chambre pour deux nuits.", "I am going to book a room for two nights.", "(going to|will) (book|reserve).*room.*(two nights|2 nights)"],
-        ["Demain, je prends le train de huit heures.", "Tomorrow I am taking the eight o'clock train.", "tomorrow.*(taking|take|catching|catch).*train"],
-        ["Je pense qu'il fera beau.", "I think it will be sunny.", "i think (it will|it.ll) be (sunny|nice|fine|good)"],
-        ["Nous allons visiter Londres.", "We are going to visit London.", "(we are|we.re) going to (visit|see).*london"]])),
-  ],
-  5: [
-    PAIR(
-      TR("Traduire : un avis sur un produit", "fr", [
-        ["This phone is cheaper than the other one.", "Ce téléphone est moins cher que l'autre.", "moins cher.*(l.autre|celui)"],
-        ["It is not as fast.", "Il n'est pas aussi rapide.", "pas (aussi|si|autant) rapide"],
-        ["The screen is bigger and the battery is the best.", "L'écran est plus grand et la batterie est la meilleure.", "cran.*plus grand.*batterie.*meilleur"],
-        ["I prefer this one.", "Je préfère celui-ci.", "pr.f.re.*(celui|ce)"]]),
-      TR("Traduire : comparer", "en", [
-        ["Cette ville est plus grande que la mienne.", "This city is bigger than mine.", "(bigger|larger) than (mine|my)"],
-        ["C'est le meilleur restaurant du quartier.", "It is the best restaurant in the area.", "the best restaurant"],
-        ["Ce sac est aussi cher que celui-là.", "This bag is as expensive as that one.", "as expensive as"],
-        ["Je préfère le train à l'avion.", "I prefer the train to the plane.", "prefer.*train.*(to|than).*(plane|flying|airplane)"]])),
-  ],
-  6: [
-    PAIR(
-      TR("Traduire : un conseil santé", "fr", [
-        ["If you have a cold, you should rest and drink a lot of water.", "Si tu as un rhume, tu devrais te reposer et boire beaucoup d'eau.", "rhume.*(devrais|devriez).*repos.*boire.*beaucoup"],
-        ["You shouldn't go to work with a fever.", "Tu ne devrais pas aller travailler avec de la fièvre.", "(ne devrais pas|ne devriez pas).*travailler.*fi.vre"],
-        ["You have to take your medicine twice a day.", "Tu dois prendre ton médicament deux fois par jour.", "(dois|devez|faut).*prendre.*(dicament|traitement).*deux fois"],
-        ["See a doctor if you don't feel better.", "Va voir un médecin si tu ne te sens pas mieux.", "(decin|docteur).*(si tu ne|si vous ne).*(mieux|bien)"]]),
-      TR("Traduire : médecin et règles", "en", [
-        ["Tu devrais voir un médecin.", "You should see a doctor.", "should see a doctor"],
-        ["Je dois prendre ce médicament trois fois par jour.", "I have to take this medicine three times a day.", "(have to|must).*take.*(medicine|tablet|pill).*three times"],
-        ["Il ne doit pas fumer ici.", "He mustn't smoke here.", "(mustn.t|must not|can.t).*smoke"],
-        ["Qu'est-ce que je dois faire ?", "What should I do?", "what (should|do|must) i (do|have to do)"]])),
-  ],
-  7: [
-    PAIR(
-      TR("Traduire : les paroles d'une chanson", "fr", [
-        ["If the sun comes out tomorrow, I will dance in the street.", "Si le soleil se montre demain, je danserai dans la rue.", "soleil.*demain.*dans.*rue"],
-        ["If the rain comes down, I will sing with you.", "Si la pluie tombe, je chanterai avec toi.", "pluie.*chant.*avec (toi|vous)"],
-        ["The wind will carry our song across the sea.", "Le vent portera notre chanson au-dessus de la mer.", "vent.*(portera|emportera|transportera).*chanson.*mer"],
-        ["Maybe the storm will pass, and we will still be here.", "Peut-être que l'orage passera, et nous serons encore là.", "peut-.tre.*(orage|temp.te).*pass.*encore"]]),
-      TR("Traduire : le bulletin météo", "en", [
-        ["Demain, il fera beau et chaud.", "Tomorrow will be sunny and warm.", "tomorrow.*(will be|it will be).*(sunny|nice|warm|hot)"],
-        ["S'il pleut, nous resterons à la maison.", "If it rains, we will stay at home.", "if it rains.*(we.ll|we will) stay (at )?home"],
-        ["Il ne neigera pas ce week-end.", "It won't snow this weekend.", "(won.t|will not) snow.*weekend|weekend.*(won.t|will not) snow"],
-        ["Il y aura peut-être de l'orage.", "There might be a storm.", "(might|may|could|will probably).*storm|storm.*might"]])),
-  ],
+  0: [PAIR(
+    PART("fr", "Mon emploi du temps", [
+      "I usually get up at seven. ¦ D'habitude, je me lève à sept heures. ¦ habitude/habituellement/normalement/general & leve & sept/7",
+      "Today I'm working at home. ¦ Aujourd'hui, je travaille à la maison. ¦ aujourd & travaill & maison/domicile",
+      "Tomorrow I'm going to visit my sister. ¦ Demain, je vais rendre visite à ma sœur. ¦ demain & soeur & visite/voir",
+      "I'd like to learn English. ¦ J'aimerais apprendre l'anglais. ¦ apprendre & anglais",
+      "She has got two brothers and a dog. ¦ Elle a deux frères et un chien. ¦ deux/2 & frere & chien",
+      "We are having lunch right now. ¦ Nous déjeunons en ce moment. ¦ dejeun/mange & moment/maintenant",
+      "He never drinks coffee in the evening. ¦ Il ne boit jamais de café le soir. ¦ jamais & cafe & soir",
+      "I'm going to buy a new phone next week. ¦ Je vais acheter un nouveau téléphone la semaine prochaine. ¦ acheter & telephone & semaine",
+      "Would you like some tea? ¦ Voudriez-vous du thé ? ¦ the & voudr/veux/aimer",
+      "They are not at school today. ¦ Ils ne sont pas à l'école aujourd'hui. ¦ ecole & pas & aujourd"]),
+    PART("en", "Habitudes et projets", [
+      "D'habitude, je prends le bus. ¦ I usually take the bus. ¦ usually/normally/always/generally & bus",
+      "Maintenant, je lis un livre. ¦ Now I am reading a book. ¦ now/moment & reading & book",
+      "Demain, je vais voyager. ¦ Tomorrow I am going to travel. ¦ tomorrow & travel/fly/go",
+      "J'aimerais parler anglais. ¦ I would like to speak English. ¦ like/want & speak/talk & english",
+      "Elle a deux frères. ¦ She has two brothers. ¦ two & brother",
+      "Nous allons au cinéma samedi. ¦ We are going to the cinema on Saturday. ¦ cinema/movies/films & saturday",
+      "Il travaille dans un bureau. ¦ He works in an office. ¦ works & office",
+      "Je ne mange jamais de viande. ¦ I never eat meat. ¦ never & meat",
+      "Qu'est-ce que tu fais ce week-end ? ¦ What are you doing this weekend? ¦ what & doing & weekend",
+      "Je suis fatigué mais heureux. ¦ I am tired but happy. ¦ tired & happy"]))],
+  1: [PAIR(
+    PART("fr", "Un journal de bord", [
+      "I always get up early, but today I'm sleeping late. ¦ Je me lève toujours tôt, mais aujourd'hui je dors tard. ¦ toujours & tot & tard",
+      "I never watch TV in the morning. ¦ Je ne regarde jamais la télé le matin. ¦ jamais & matin & tele",
+      "Now I'm making breakfast. ¦ Maintenant, je prépare le petit-déjeuner. ¦ maintenant & petit dej",
+      "My neighbour is cooking too. ¦ Mon voisin cuisine aussi. ¦ voisin & cuisin & aussi",
+      "She usually takes the train to work. ¦ Elle prend d'habitude le train pour aller travailler. ¦ train & habitude/generalement/souvent",
+      "At the moment, they are painting the kitchen. ¦ En ce moment, ils peignent la cuisine. ¦ moment & peign & cuisine",
+      "I sometimes cook dinner for my family. ¦ Je prépare parfois le dîner pour ma famille. ¦ parfois/quelquefois/de temps en temps & famille & diner",
+      "He doesn't usually eat lunch at the office. ¦ Il ne déjeune pas d'habitude au bureau. ¦ pas & bureau & dejeun",
+      "This week I'm working from home. ¦ Cette semaine, je travaille à la maison. ¦ semaine & maison/domicile",
+      "What are you doing right now? ¦ Qu'est-ce que tu fais en ce moment ? ¦ fais/fait & moment/maintenant"]),
+    PART("en", "Travail et habitudes", [
+      "Je vais au travail en train. ¦ I go to work by train. ¦ work & train",
+      "Ces jours-ci, je travaille à la maison. ¦ These days I work at home. ¦ these days/nowadays/at the moment & home",
+      "Je ne mange jamais le matin. ¦ I never eat in the morning. ¦ never & morning",
+      "Il fait ses devoirs en ce moment. ¦ He is doing his homework at the moment. ¦ homework & doing/does & moment/now",
+      "Elle se lève à six heures chaque jour. ¦ She gets up at six every day. ¦ gets up/wakes up/rises & six & every day/daily",
+      "Nous regardons un film ce soir. ¦ We are watching a film tonight. ¦ film/movie & tonight/this evening",
+      "Mes enfants jouent dans le jardin. ¦ My children are playing in the garden. ¦ children/kids & playing/play & garden",
+      "Je prends souvent le bus. ¦ I often take the bus. ¦ often & bus",
+      "Il fait la vaisselle tous les soirs. ¦ He does the washing-up every evening. ¦ washing up/dishes & every",
+      "Elle ne dort jamais après minuit. ¦ She never sleeps after midnight. ¦ never & midnight & sleep"]))],
+  2: [PAIR(
+    PART("fr", "Souvenirs et passé", [
+      "When I was a child, I used to live near the sea. ¦ Quand j'étais enfant, j'habitais près de la mer. ¦ enfant/petit & habit/viv & mer",
+      "We played on the beach every day. ¦ Nous jouions sur la plage tous les jours. ¦ plage & jou & jour",
+      "Last summer I visited my old town. ¦ L'été dernier, j'ai visité ma vieille ville. ¦ dernier & visit & ville",
+      "It was different. ¦ C'était différent. ¦ different",
+      "Yesterday I went to the market and bought apples. ¦ Hier, je suis allé au marché et j'ai acheté des pommes. ¦ hier & marche & pomme",
+      "She didn't like the film. ¦ Elle n'a pas aimé le film. ¦ pas & film",
+      "We were very tired after the trip. ¦ Nous étions très fatigués après le voyage. ¦ fatigu & voyage & apres",
+      "My grandfather used to tell us stories. ¦ Mon grand-père nous racontait des histoires. ¦ grand pere & histoire & racont",
+      "Did you see the match last night? ¦ As-tu vu le match hier soir ? ¦ match & hier",
+      "They arrived at the hotel at midnight. ¦ Ils sont arrivés à l'hôtel à minuit. ¦ arriv & hotel & minuit"]),
+    PART("en", "Raconter hier", [
+      "Hier, je suis allé au marché. ¦ Yesterday I went to the market. ¦ yesterday & went & market",
+      "Quand j'étais petit, j'avais un chien. ¦ When I was little, I had a dog. ¦ when & had/used to have & dog",
+      "Nous avons mangé une pizza. ¦ We ate a pizza. ¦ ate/had/eaten & pizza",
+      "Elle n'a pas aimé le film. ¦ She didn't like the film. ¦ not/n t & like & film/movie",
+      "Il a plu toute la journée. ¦ It rained all day. ¦ rain & all day",
+      "Où étiez-vous hier soir ? ¦ Where were you last night? ¦ where & were & last night/yesterday evening",
+      "Mon père travaillait dans une banque. ¦ My father used to work in a bank. ¦ father & bank & work",
+      "Nous avons visité Londres l'année dernière. ¦ We visited London last year. ¦ visited & london & last year",
+      "J'ai perdu mes clés. ¦ I lost my keys. ¦ lost & key",
+      "Elle a appelé sa mère hier. ¦ She called her mother yesterday. ¦ called/phoned/rang & mother/mum & yesterday"]))],
+  3: [PAIR(
+    PART("fr", "Un article de presse", [
+      "At eight o'clock, the power went out while everybody was having dinner. ¦ À huit heures, le courant a été coupé pendant que tout le monde dînait. ¦ courant/electricite & huit/8 & din",
+      "The children were playing when the lights went off. ¦ Les enfants jouaient quand les lumières se sont éteintes. ¦ enfants & jou & lumiere/courant",
+      "A neighbour called the police. ¦ Un voisin a appelé la police. ¦ voisin & police",
+      "Nobody was hurt. ¦ Personne n'a été blessé. ¦ personne & bless",
+      "I was reading when you called. ¦ Je lisais quand tu as appelé. ¦ lisais/lis & appel",
+      "While she was cooking, the phone rang. ¦ Pendant qu'elle cuisinait, le téléphone a sonné. ¦ pendant & cuisin & telephone/sonn",
+      "It was raining, so we stayed at home. ¦ Il pleuvait, alors nous sommes restés à la maison. ¦ pleuv & reste & maison",
+      "What were you doing at nine last night? ¦ Que faisais-tu hier soir à neuf heures ? ¦ faisais & hier/soir & neuf/9/21",
+      "He fell asleep while he was watching TV. ¦ Il s'est endormi pendant qu'il regardait la télé. ¦ endormi & pendant & tele/regard",
+      "The train was moving when I got on. ¦ Le train roulait quand je suis monté. ¦ train & roul/mouvement/avanc & monte"]),
+    PART("en", "Deux actions en même temps", [
+      "Je lisais quand le téléphone a sonné. ¦ I was reading when the phone rang. ¦ reading & phone & rang",
+      "Pendant que nous mangions, il pleuvait. ¦ While we were eating, it was raining. ¦ while & eating & raining",
+      "Il dormait quand je suis arrivé. ¦ He was sleeping when I arrived. ¦ sleeping/asleep & when & arrived/got",
+      "Que faisais-tu hier soir ? ¦ What were you doing last night? ¦ what & doing & last night/yesterday evening",
+      "Elle marchait dans la rue quand il a commencé à pleuvoir. ¦ She was walking in the street when it started to rain. ¦ walking & street & rain",
+      "Nous regardions un film quand la lumière s'est éteinte. ¦ We were watching a film when the light went out. ¦ watching & film/movie & light & went out/off",
+      "Les enfants dormaient pendant que je cuisinais. ¦ The children were sleeping while I was cooking. ¦ children/kids & sleeping & cooking",
+      "Il conduisait quand le téléphone a sonné. ¦ He was driving when the phone rang. ¦ driving & phone & rang",
+      "Pendant que tu travaillais, j'étudiais. ¦ While you were working, I was studying. ¦ while & working & studying",
+      "Il neigeait quand nous sommes partis. ¦ It was snowing when we left. ¦ snowing & left/went"]))],
+  4: [PAIR(
+    PART("fr", "Invitations et projets", [
+      "We are going to have a party on Saturday. ¦ Nous allons faire une fête samedi. ¦ fete/soiree & samedi",
+      "I will bring some cake. ¦ J'apporterai un gâteau. ¦ apport & gateau",
+      "The party starts at seven and finishes at midnight. ¦ La fête commence à sept heures et finit à minuit. ¦ commence & sept/7 & minuit",
+      "I hope you can come! ¦ J'espère que tu pourras venir ! ¦ espere & venir",
+      "I think it will rain tomorrow. ¦ Je pense qu'il pleuvra demain. ¦ pense/crois & pleuvra/pleuvoir/pluie & demain",
+      "We are going to book a hotel for two nights. ¦ Nous allons réserver un hôtel pour deux nuits. ¦ reserv & hotel & nuit",
+      "She is going to study medicine next year. ¦ Elle va étudier la médecine l'année prochaine. ¦ medecine & annee & etudi",
+      "Don't worry, I'll help you. ¦ Ne t'inquiète pas, je vais t'aider. ¦ inquiet & aider",
+      "What are you going to do this summer? ¦ Qu'est-ce que tu vas faire cet été ? ¦ faire & ete",
+      "The meeting is at three o'clock tomorrow. ¦ La réunion est demain à quinze heures. ¦ reunion & demain & trois/15/quinze"]),
+    PART("en", "Réserver et prévoir", [
+      "Je vais réserver une chambre pour deux nuits. ¦ I am going to book a room for two nights. ¦ book/reserve & room & two nights/2 nights",
+      "Demain, je prends le train de huit heures. ¦ Tomorrow I am taking the eight o'clock train. ¦ tomorrow & train & eight/8",
+      "Je pense qu'il fera beau. ¦ I think it will be sunny. ¦ think & will & sunny/nice/fine/good",
+      "Nous allons visiter Londres. ¦ We are going to visit London. ¦ going to & visit/see & london",
+      "Je t'appellerai ce soir. ¦ I will call you tonight. ¦ call/phone & tonight/this evening",
+      "Elle va avoir un bébé. ¦ She is going to have a baby. ¦ going to & baby",
+      "Nous avons rendez-vous chez le dentiste lundi. ¦ We have an appointment at the dentist on Monday. ¦ appointment & dentist & monday",
+      "Je ne vais pas venir à la fête. ¦ I am not going to come to the party. ¦ not & party & come",
+      "Peut-être qu'il pleuvra. ¦ Maybe it will rain. ¦ maybe/perhaps & rain",
+      "Je m'en occuperai demain. ¦ I will do it tomorrow. ¦ will & tomorrow"]))],
+  5: [PAIR(
+    PART("fr", "Avis et comparaisons", [
+      "This phone is cheaper than the other one. ¦ Ce téléphone est moins cher que l'autre. ¦ telephone/portable & moins cher & autre",
+      "It is not as fast. ¦ Il n'est pas aussi rapide. ¦ pas & aussi & rapide",
+      "The screen is bigger and the battery is the best. ¦ L'écran est plus grand et la batterie est la meilleure. ¦ ecran & plus grand & batterie & meilleur",
+      "I prefer this one. ¦ Je préfère celui-ci. ¦ prefere",
+      "London is the biggest city in England. ¦ Londres est la plus grande ville d'Angleterre. ¦ londres & plus grande & angleterre",
+      "My sister is taller than me. ¦ Ma sœur est plus grande que moi. ¦ soeur & plus grande & que",
+      "This hotel is as expensive as that one. ¦ Cet hôtel est aussi cher que celui-là. ¦ hotel & aussi cher",
+      "Trains are faster than buses. ¦ Les trains sont plus rapides que les bus. ¦ train & plus rapide & bus",
+      "It is the most interesting museum in the city. ¦ C'est le musée le plus intéressant de la ville. ¦ musee & plus interessant & ville",
+      "There are fewer people today than yesterday. ¦ Il y a moins de monde aujourd'hui qu'hier. ¦ moins & monde/gens/personnes & hier"]),
+    PART("en", "Comparer et préférer", [
+      "Cette ville est plus grande que la mienne. ¦ This city is bigger than mine. ¦ bigger/larger & mine/my",
+      "C'est le meilleur restaurant du quartier. ¦ It is the best restaurant in the area. ¦ best & restaurant",
+      "Ce sac est aussi cher que celui-là. ¦ This bag is as expensive as that one. ¦ as expensive as",
+      "Je préfère le train à l'avion. ¦ I prefer the train to the plane. ¦ prefer & train & plane/flying/airplane",
+      "Mon frère est plus jeune que moi. ¦ My brother is younger than me. ¦ younger & than",
+      "Cette robe est moins chère. ¦ This dress is cheaper. ¦ dress & cheaper/less expensive",
+      "C'est la plus belle plage du pays. ¦ It is the most beautiful beach in the country. ¦ most beautiful/prettiest/nicest/best & beach & country",
+      "Aujourd'hui, il fait plus chaud qu'hier. ¦ Today it is hotter than yesterday. ¦ hotter/warmer & yesterday",
+      "Ce film est aussi long que l'autre. ¦ This film is as long as the other one. ¦ as long as & film/movie",
+      "Il y a plus de voitures qu'avant. ¦ There are more cars than before. ¦ more & cars & than"]))],
+  6: [PAIR(
+    PART("fr", "Santé : conseils et règles", [
+      "If you have a cold, you should rest and drink a lot of water. ¦ Si tu as un rhume, tu devrais te reposer et boire beaucoup d'eau. ¦ rhume & devrais/devriez & reposer/repos & beaucoup",
+      "You shouldn't go to work with a fever. ¦ Tu ne devrais pas aller travailler avec de la fièvre. ¦ pas & travailler & fievre",
+      "You have to take your medicine twice a day. ¦ Tu dois prendre ton médicament deux fois par jour. ¦ dois/devez/faut & medicament & deux fois",
+      "See a doctor if you don't feel better. ¦ Va voir un médecin si tu ne te sens pas mieux. ¦ medecin/docteur & mieux",
+      "I have a headache and a sore throat. ¦ J'ai mal à la tête et mal à la gorge. ¦ tete & gorge",
+      "My back hurts when I sit all day. ¦ J'ai mal au dos quand je reste assis toute la journée. ¦ dos & assis",
+      "You mustn't smoke in the hospital. ¦ Il est interdit de fumer à l'hôpital. ¦ fum & hopital & interdit/pas",
+      "You don't have to come tomorrow. ¦ Tu n'as pas besoin de venir demain. ¦ pas & venir/besoin & demain",
+      "The doctor says I should walk every day. ¦ Le médecin dit que je devrais marcher tous les jours. ¦ medecin & marcher & jour",
+      "Take one tablet three times a day. ¦ Prenez un comprimé trois fois par jour. ¦ comprime & trois/3 & fois"]),
+    PART("en", "Chez le médecin", [
+      "Tu devrais voir un médecin. ¦ You should see a doctor. ¦ should & doctor",
+      "Je dois prendre ce médicament trois fois par jour. ¦ I have to take this medicine three times a day. ¦ have to/must & medicine/tablet/pill & three times",
+      "Il ne doit pas fumer ici. ¦ He mustn't smoke here. ¦ mustn t/must not/can t/shouldn t & smoke",
+      "Qu'est-ce que je dois faire ? ¦ What should I do? ¦ what & do",
+      "J'ai mal à l'estomac. ¦ My stomach hurts. ¦ stomach",
+      "Elle a de la fièvre et elle tousse. ¦ She has a fever and she is coughing. ¦ fever & cough",
+      "Tu devrais boire plus d'eau. ¦ You should drink more water. ¦ should & drink & water",
+      "Vous n'avez pas besoin d'un rendez-vous. ¦ You don't have to make an appointment. ¦ appointment & not/n t/no need",
+      "Je me sens fatigué et j'ai mal à la tête. ¦ I feel tired and I have a headache. ¦ tired & headache",
+      "La pharmacie est ouverte jusqu'à huit heures. ¦ The pharmacy is open until eight. ¦ pharmacy/chemist & open & eight/8"]))],
+  7: [PAIR(
+    PART("fr", "Chanson, météo et planète", [
+      "If the sun comes out tomorrow, I will dance in the street. ¦ Si le soleil sort demain, je danserai dans la rue. ¦ soleil & demain & rue",
+      "If the rain comes down, I will sing with you. ¦ Si la pluie tombe, je chanterai avec toi. ¦ pluie & chant & avec",
+      "The wind will carry our song across the sea. ¦ Le vent portera notre chanson au-dessus de la mer. ¦ vent & chanson & mer",
+      "Maybe the storm will pass, and we will still be here. ¦ Peut-être que l'orage passera, et nous serons encore là. ¦ orage/tempete & pass & encore",
+      "Tomorrow will be cold and cloudy. ¦ Demain sera froid et nuageux. ¦ demain & froid & nuag",
+      "It might snow tonight. ¦ Il neigera peut-être ce soir. ¦ neig & soir & peut etre",
+      "If we recycle plastic, we protect the planet. ¦ Si nous recyclons le plastique, nous protégeons la planète. ¦ recycl & plastique & planete",
+      "Unless it rains, we will have a picnic. ¦ À moins qu'il pleuve, nous ferons un pique-nique. ¦ moins & pique nique",
+      "The flight will be late because of the fog. ¦ Le vol aura du retard à cause du brouillard. ¦ vol & retard & brouillard",
+      "Don't waste water. ¦ Ne gaspillez pas l'eau. ¦ gaspill & eau"]),
+    PART("en", "Prévisions et conditions", [
+      "Demain, il fera beau et chaud. ¦ Tomorrow will be sunny and warm. ¦ tomorrow & sunny/nice/fine/good & warm/hot",
+      "S'il pleut, nous resterons à la maison. ¦ If it rains, we will stay at home. ¦ if & rains & stay & home",
+      "Il ne neigera pas ce week-end. ¦ It won't snow this weekend. ¦ won t/will not & snow & weekend",
+      "Il y aura peut-être de l'orage. ¦ There might be a storm. ¦ might/may/could/will probably/maybe & storm",
+      "Je pense qu'il pleuvra demain. ¦ I think it will rain tomorrow. ¦ think & rain & tomorrow",
+      "Si tu as froid, mets un manteau. ¦ If you are cold, put on a coat. ¦ if & cold & coat",
+      "Nous éteindrons les lumières pour économiser l'énergie. ¦ We will turn off the lights to save energy. ¦ lights & save & energy",
+      "Le vent sera fort demain soir. ¦ The wind will be strong tomorrow evening. ¦ wind & strong & tomorrow",
+      "Je ne pense pas qu'il neige. ¦ I don't think it will snow. ¦ think & snow & not/n t",
+      "Recyclons le plastique ! ¦ Let's recycle plastic! ¦ recycle & plastic"]))],
 };
 
 export const TRADUCTION_A1 = A1;

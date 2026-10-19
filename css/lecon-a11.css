@@ -442,13 +442,25 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 
 .lc-pic{ margin:0 0 10px; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(20,20,30,.15); } .lc-pic img{ display:block; width:100%; height:auto; }
 
-/* Page « Traduction » : deux cases (anglais → français, français → anglais), chacune avec son bouton Valider */
-.lc-trad{ background:var(--surface); border-radius:16px; padding:12px; margin:10px 0 14px; }
-.lc-trad-h{ margin:0 0 2px; font:800 15px/1.2 var(--font-main); color:var(--accent, #D98E2B); }
-.lc-trad-t{ margin:0 0 8px; font:700 13px/1.3 var(--font-main); opacity:.75; }
-.lc-trad-src{ margin:0 0 10px; padding:10px 12px; border-left:4px solid var(--accent, #D98E2B); background:rgba(0,0,0,.04); border-radius:10px; font:600 16px/1.5 var(--font-main); }
-.lc-trad .lc-cta{ width:100%; margin-top:8px; }
-.lc-trad-msg{ margin:8px 0 0; font:700 13.5px/1.4 var(--font-main); }
-.lc-trad-msg.ok{ color:#1f8a4c; } .lc-trad-msg.ko{ color:#b3481f; }
-.lc-trad-model{ margin-top:10px; }
-.lc-trad [hidden], .lc-trad-model[hidden], .lc-trad-see[hidden]{ display:none !important; }
+/* Page « Traduction » : une carte par phrase, onglets EN→FR / FR→EN */
+.lc-pill{display:inline-block;font:800 11px/1 var(--font-main);padding:4px 7px;border-radius:999px;background:#2b3a55;color:#fff;letter-spacing:.5px}
+.lc-pill.fr{background:#D98E2B}
+.lc-seg{display:flex;gap:6px;background:rgba(0,0,0,.05);border-radius:16px;padding:4px;margin:6px 0 10px}
+.lc-seg button{flex:1;border:0;border-radius:12px;padding:9px 6px;font:800 13px/1.2 var(--font-main);background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:5px}
+.lc-seg button.on{background:#E9A23B;color:#fff;box-shadow:0 3px 0 #C57F1B}
+.lc-seg i{font-style:normal;background:#1f8a4c;color:#fff;border-radius:50%;width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+.lc-trad-t{margin:0 0 8px;font:700 13px/1.3 var(--font-main);opacity:.75}
+.lc-ph{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border-radius:16px;padding:10px;margin:8px 0;border:2px solid transparent}
+.lc-ph.ok{border-color:#37b06c;background:#EAF8F0}.lc-ph.ko{border-color:#E9A23B}
+.lc-n{width:26px;height:26px;border-radius:50%;background:#E9A23B;color:#fff;font:800 13px/26px var(--font-main);text-align:center;flex:none}
+.lc-ph.ok .lc-n{background:#37b06c}
+.lc-ph-b{flex:1;min-width:0}
+.lc-ph-b p{margin:0 0 6px;font:700 14px/1.35 var(--font-main)}
+.lc-ph textarea{width:100%;border:0;border-bottom:2px dashed #cdbd9e;background:transparent;font:600 15px/1.35 var(--font-main);padding:4px 0;color:var(--ink);outline:none;resize:none}
+.lc-ph.ok textarea{border-bottom-color:#37b06c}
+.lc-st{font-size:18px;flex:none}
+.lc-ko{display:inline-block;margin-top:4px;color:#b3481f;font:700 12.5px var(--font-main)}
+.lc-mo{display:block;margin-top:5px;color:#1f6f3f;font:600 13px/1.35 var(--font-main)}
+.lc-see{border:0;background:#fff;border-radius:999px;padding:3px 10px;font:800 12px var(--font-main);color:#8a560c;box-shadow:0 2px 0 rgba(0,0,0,.12)}
+.lc-trad-ok{width:100%;margin-top:6px}
+.lc-trad-msg{margin:8px 0 0;text-align:center;font:700 13.5px/1.4 var(--font-main)}
