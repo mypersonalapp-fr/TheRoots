@@ -197,17 +197,19 @@ export function createGames(ctx) {
   /* ---------- 7. Pendu ---------- */
   function hang() {
     const [mn, mx] = [[4, 5], [5, 8], [6, 12]][LV]; let cand = singles.filter((w) => w.en.length >= mn && w.en.length <= mx); if (!cand.length) cand = singles.filter((w) => w.en.length >= 4);
-    const w = cand[Math.floor(Math.random() * cand.length)], word = w.en.toUpperCase(); const tried = new Set(); let lives = 6;
+    const w = cand[Math.floor(Math.random() * cand.length)], word = w.en.toUpperCase(); const tried = new Set([word[0]]); let lives = 6, helps = 2;
     const faces = ["😀", "🙂", "😐", "😟", "😨", "😱", "💀"];
     function draw() {
       const shown = word.split("").map((ch) => (tried.has(ch) ? ch : "_")).join(" ");
-      const won = word.split("").every((ch) => tried.has(ch));
-      shell("Pendu", "#D946EF", `<section class="lc-card jx-face"><div class="jx-bigface">${faces[6 - lives]}</div><div>${"❤️".repeat(lives)}${"🤍".repeat(6 - lives)}</div><small>${LV === 0 ? "Indice : " + esc(w.fr) : "Indice : un mot de la leçon"}</small></section>
+      shell("Pendu", "#D946EF", `<section class="lc-card jx-face"><div class="jx-bigface">${faces[6 - lives]}</div><div>${"❤️".repeat(lives)}${"🤍".repeat(6 - lives)}</div><div class="jx-hint">Indice : <b>${esc(w.fr)}</b> · ${word.length} lettres</div></section>
         <section class="lc-card jx-hword">${shown}</section>
+        <button type="button" class="lc-sec-btn" id="jxHelp" ${helps ? "" : "disabled"}>💡 Une lettre en plus (${helps})</button>
         <section class="jx-kb">${"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((l) => `<button type="button" class="jx-key ${tried.has(l) ? (word.includes(l) ? "good" : "bad") : ""}" data-l="${l}" ${tried.has(l) ? "disabled" : ""}>${l}</button>`).join("")}</section>`);
-      el.querySelectorAll("[data-l]").forEach((b) => b.addEventListener("click", () => { tried.add(b.dataset.l); if (!word.includes(b.dataset.l)) lives--; const nowWon = word.split("").every((ch) => tried.has(ch)); if (nowWon) { speak(w.en); end("hang", "#D946EF", "Pendu", 10 + lives * 5, `Bravo : « ${w.en} » = ${w.fr}`, hang); } else if (lives <= 0) end("hang", "#D946EF", "Pendu", 0, `C’était « ${w.en} » = ${w.fr}`, hang); else draw(); }));
-      void won;
+      const check = () => { if (word.split("").every((ch) => tried.has(ch))) { speak(w.en); end("hang", "#D946EF", "Pendu", 10 + lives * 5, `Bravo : « ${w.en} » = ${w.fr}`, hang); return true; } return false; };
+      el.querySelector("#jxHelp").onclick = () => { const left = word.split("").filter((ch) => !tried.has(ch)); if (!left.length || !helps) return; helps--; tried.add(left[Math.floor(Math.random() * left.length)]); if (!check()) draw(); };
+      el.querySelectorAll("[data-l]").forEach((b) => b.addEventListener("click", () => { tried.add(b.dataset.l); if (!word.includes(b.dataset.l)) lives--; if (check()) return; if (lives <= 0) end("hang", "#D946EF", "Pendu", 0, `C’était « ${w.en} » = ${w.fr}`, hang); else draw(); }));
     }
+    if (word.split("").every((ch) => tried.has(ch))) return hang();
     draw();
   }
 
