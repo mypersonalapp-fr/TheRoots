@@ -542,7 +542,7 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-tile-off{ opacity:.6; }
 .lc-ph-ic{ display:grid; place-items:center; width:100%; height:100%; border:2px dashed var(--c,#8a99b3); border-radius:50%; font-size:22px; }
 .lc-xrow{ display:flex; gap:8px; margin-top:8px; }
-.lc-xchip{ flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 6px; border:0; border-radius:14px; background:rgba(255,255,255,.94); color:var(--ink); font:700 13px/1.1 inherit; font-family:inherit; cursor:pointer; text-transform:capitalize; }
+.lc-xchip{ flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 6px; border:0; border-radius:14px; background:rgba(255,255,255,.94); color:var(--ink); font-weight:700;font-size:13px;line-height:1.1; font-family:inherit; cursor:pointer; text-transform:capitalize; }
 .lc-xic{ width:26px; height:26px; display:grid; place-items:center; } .lc-xic img{ width:100%; height:100%; object-fit:contain; } .lc-xic .lc-ph-ic{ font-size:15px; border:0; }
 .lc-mchip{ display:flex; align-items:center; gap:10px; margin:2px 0 8px; padding:8px 12px; border-radius:18px; background:var(--c); color:#fff; box-shadow:0 3px 0 color-mix(in srgb,var(--c) 70%,#000); }
 .lc-mchip-ic{ width:42px; height:42px; flex:none; display:grid; place-items:center; padding:5px; border-radius:50%; background:rgba(255,255,255,.88); }
@@ -554,3 +554,23 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 :root[data-theme="dark"] .lc-tile small{ color:#aab6d3; }
 /* Majuscule au début de chaque mot : titres d'écran, boutons et onglets de l'interface */
 .lc-head-title, .lc-cta, .lc-sec-btn, .lc-tab, .lc-back, .lc-sec{ text-transform:capitalize; }
+
+/* ===== Jeux ===== */
+.jx-title{ margin:2px 0 8px; } .jx-title b{ display:inline-block; padding:4px 12px; border-radius:999px; background:color-mix(in srgb,var(--c) 18%,#fff); color:var(--c); font-size:13px; text-transform:capitalize; }
+.jx-h{ font-weight:800; font-size:15px; margin-bottom:6px; text-transform:capitalize; } .jx-tip{ font-size:13px; color:#5b6b85; margin:6px 0 0; } .jx-msg{ text-align:center; font-weight:700; color:#b45309; margin:6px 0; }
+.jx-grid{ display:grid; gap:4px; } .jx-cell{ aspect-ratio:1; border:0; border-radius:9px; background:#eef3fb; color:#14213d; font-weight:800;font-size:17px; font-family:inherit; cursor:pointer; } .jx-cell.sel{ outline:3px solid #8b5cf6; } .jx-cell.on{ background:#8b5cf6; color:#fff; }
+.jx-chips{ display:flex; flex-wrap:wrap; gap:6px; } .jx-chip{ padding:6px 10px; border-radius:10px; background:#eee8ff; color:#6d3fd8; font-weight:800; font-size:13px; } .jx-chip.ok{ background:#d9f5e5; color:#14532d; text-decoration:line-through; }
+.jx-letters,.jx-kb{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:8px 0; } .jx-key{ min-width:42px; height:42px; border:0; border-radius:12px; background:#fff; color:#14213d; font-weight:800;font-size:16px; font-family:inherit; box-shadow:0 2px 0 #cfd8e8; cursor:pointer; } .jx-key:disabled{ opacity:.4; } .jx-key.good{ background:#d9f5e5; } .jx-key.bad{ background:#fde0dc; }
+.jx-word,.jx-hword{ min-height:48px; text-align:center; font-weight:800;font-size:28px;line-height:1.4; letter-spacing:6px; color:#d946ef; } .jx-letters .jx-key{ background:#fff3d6; }
+.jx-row{ display:flex; gap:8px; } .jx-row>*{ flex:1; }
+.jx-mem .jx-card{ aspect-ratio:1/1.1; border:0; border-radius:14px; background:#ef476f; color:#fff; font-weight:800;font-size:15px; font-family:inherit; border-bottom:4px solid #b92f52; cursor:pointer; padding:2px; } .jx-card.up{ background:#fff; color:#14213d; } .jx-card.ok{ background:#d9f5e5; color:#14532d; border-bottom-color:#22a06b; }
+.jx-stat{ text-align:center; } .jx-stats{ display:flex; gap:8px; } .jx-stats .lc-card{ flex:1; text-align:center; } .jx-stats small{ display:block; color:#5b6b85; } .jx-stats b{ font-size:26px; color:#2f80ed; }
+.jx-q{ text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:140px; } .jx-bigw{ font-weight:800;font-size:36px;line-height:1.1; } .jx-eq{ font-size:22px; color:#5b6b85; } .jx-combo{ font-weight:800; color:#ea580c; }
+.jx-no,.jx-yes{ border:0; border-radius:18px; padding:22px 0; color:#fff; font-weight:800;font-size:18px; font-family:inherit; cursor:pointer; } .jx-no{ background:#dc2626; } .jx-yes{ background:#22a06b; }
+.jx-sea{ position:relative; flex:1; min-height:320px; overflow:hidden; border-radius:20px; background:rgba(255,255,255,.35); } .jx-bubble{ position:absolute; bottom:-60px; max-width:90px; min-width:64px; padding:16px 8px; border:0; border-radius:50%; background:radial-gradient(circle at 30% 30%,#fff,#9fe3f5); color:#0b4f63; font-weight:800;font-size:13px; font-family:inherit; animation:jxUp linear infinite; cursor:pointer; }
+@keyframes jxUp{ 0%{ transform:translateY(0) } 100%{ transform:translateY(-420px) } }
+.jx-opts{ display:grid; grid-template-columns:1fr 1fr; gap:8px; } .jx-opt{ min-height:70px; border:0; border-radius:16px; background:rgba(255,255,255,.94); color:#14213d; font-weight:800;font-size:15px; font-family:inherit; border-bottom:4px solid #22a06b; cursor:pointer; padding:6px; } .jx-opt img{ width:100%; height:110px; object-fit:contain; border-radius:10px; } .jx-opt.good{ background:#d9f5e5; } .jx-opt.bad{ background:#fde0dc; }
+.jx-track{ position:relative; height:70px; } .jx-track span{ position:absolute; top:0; font-size:30px; transition:left .4s; } .jx-track em{ position:absolute; right:0; top:10px; font-size:30px; font-style:normal; }
+.jx-face{ text-align:center; } .jx-bigface{ font-size:64px; line-height:1.1; } .jx-play{ border:0; border-radius:18px; padding:16px 28px; background:#b7791f; color:#fff; font-weight:800;font-size:18px; font-family:inherit; cursor:pointer; }
+.jx-end{ text-align:center; } .jx-big{ font-size:56px; } .jx-score{ font-size:16px; }
+:root[data-theme="dark"] .jx-cell,:root[data-theme="dark"] .jx-key,:root[data-theme="dark"] .jx-opt,:root[data-theme="dark"] .jx-card.up{ background:#26324f; color:#eef2ff; } :root[data-theme="dark"] .jx-chip{ background:#3a2e63; color:#d9ccff; } :root[data-theme="dark"] .jx-chip.ok{ background:#1f3d2a; color:#cdeed8; } :root[data-theme="dark"] .jx-title b{ background:color-mix(in srgb,var(--c) 30%,#14213d); color:#fff; }
