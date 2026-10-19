@@ -590,3 +590,8 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .jx-clue.ok{ background:#d9f5e5; } .jx-clue.ok .jx-pat{ color:#14532d; }
 :root[data-theme="dark"] .jx-clue{ background:#3a3014; } :root[data-theme="dark"] .jx-clue.ok{ background:#1f3d2a; } :root[data-theme="dark"] .jx-clue small{ color:#aab6d3; }
 .jx-hint{ margin-top:4px; font-size:15px; } .jx-hint b{ color:#a21caf; }
+
+/* Jeux — textes bilingues / aide française */
+.jx-sub{display:block;font-size:.78em;font-weight:500;opacity:.7;margin-top:1px}
+.jx-frbtn{width:100%;margin-top:10px}
+.jx-title b{white-space:normal}
