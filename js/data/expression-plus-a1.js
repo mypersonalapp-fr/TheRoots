@@ -1,6 +1,6 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019e2";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019e3";
 const T = (title, icon, model, rows, img) => ({
   title, icon, model, img,
   prompts: rows.map((r) => r[0]),

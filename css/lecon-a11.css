@@ -584,3 +584,4 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-xrow{ flex:none; margin-top:6px; } .lc-xchip{ padding:7px 6px; }
 .lc-tile-wide{ grid-column:1 / -1; }
 .lc-mosaic:not(.lc-fit) .lc-tile{ min-height:104px; }
+.jx-chip small{ font-weight:600; opacity:.75; margin-left:4px; text-decoration:none; display:inline-block; }

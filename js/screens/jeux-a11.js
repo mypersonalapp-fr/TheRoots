@@ -76,7 +76,7 @@ export function createGames(ctx) {
     function draw() {
       const cells = grid.map((row, r) => row.map((ch, c) => `<button type="button" class="jx-cell ${got.has(r + "," + c) ? "on" : ""} ${start && start[0] === r && start[1] === c ? "sel" : ""}" data-r="${r}" data-c="${c}">${ch}</button>`).join("")).join("");
       shell("Mots Mêlés", "#8B5CF6", `<section class="lc-card"><div class="jx-grid" style="grid-template-columns:repeat(${N},1fr)">${cells}</div></section>
-        <section class="lc-card"><div class="jx-h">Mots À Trouver · ${placed.filter((p) => p.found).length}/${placed.length}</div><div class="jx-chips">${placed.map((p) => `<span class="jx-chip ${p.found ? "ok" : ""}">${esc(p.found ? p.word : p.w.fr)}</span>`).join("")}</div><p class="jx-tip">Touche la première lettre, puis la dernière. L’indice est en français.</p></section>`);
+        <section class="lc-card"><div class="jx-h">Mots À Trouver · ${placed.filter((p) => p.found).length}/${placed.length}</div><div class="jx-chips">${placed.map((p) => `<span class="jx-chip ${p.found ? "ok" : ""}">${esc(p.word)}<small> ${esc(p.w.fr)}</small></span>`).join("")}</div><p class="jx-tip">Cherche ces mots anglais dans la grille. Touche la première lettre, puis la dernière.</p></section>`);
       el.querySelectorAll(".jx-cell").forEach((b) => b.addEventListener("click", () => {
         const r = +b.dataset.r, c = +b.dataset.c;
         if (!start) { start = [r, c]; draw(); return; }
