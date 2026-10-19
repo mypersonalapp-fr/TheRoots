@@ -114,5 +114,6 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - city/ : a26-m1 (salle d'attente), a26-m2 (pharmacie), a26-m3 (accueil hôpital), a26-m4 (parc sportif), a26-m5 (cuisine saine), a26-m6 (chambre de nuit)
 - lesson/ : describe-a26-waiting, describe-a26-park
 
-### A2.6 — 2 images supplémentaires (squelettes) à fournir par Ashley, DA Pixar
-- lesson/scene-a26-skeleton-man et scene-a26-skeleton-woman : REÇUES le 19/10 (Pixar), recadrées en 16:9.
+### A2.6 — images du corps humain
+- lesson/scene-a26-body-man, lesson/scene-a26-body-woman : à fournir (Pixar, corps entier de face, vêtements de sport moulants simples).
+- lesson/scene-a26-skeleton-man : reçue le 19/10 (page « Les os »). Squelette femme abandonné.
