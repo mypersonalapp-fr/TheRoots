@@ -9,11 +9,11 @@
 // rassemble ces résultats pour toutes les langues, façon livret scolaire.
 
 import { store } from "../data/store.js?v=20260930a";
-import { renderLesson } from "./lecon-a11.js?v=20261019a8";
-import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019a8";
-import { renderShell } from "./shell.js?v=20261019a8";
-import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019a8";
-import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019a8";
+import { renderLesson } from "./lecon-a11.js?v=20261019a9";
+import { A1_LIST, lessonStatus, isUnlocked, nextLessonN, loadBundle, loadExamBundle, examStatus, examUnlocked } from "../data/lecons-a1.js?v=20261019a9";
+import { renderShell } from "./shell.js?v=20261019a9";
+import { CREATOR_MODE, UNLOCK_COURSES_PREVIEW } from "../data/dev-config.js?v=20261019a9";
+import { UNLOCK_ALL_PREVIEW } from "../data/dev-config.js?v=20261019a9";
 import { renderLevelTest } from "./level-test.js?v=20260930a";
 import { t, formatDate } from "../data/i18n.js?v=20260930a";
 import { A1_EN_GENERAL_OBJECTIVE, A1_EN_PALIERS, A1_EN_ENTRY_MODULE } from "../data/programme-a1-en.js?v=20260930a";
@@ -23,14 +23,14 @@ import { B2_EN_GENERAL_OBJECTIVE, B2_EN_PALIERS, B2_EN_ENTRY_MODULE } from "../d
 import { C1_EN_GENERAL_OBJECTIVE, C1_EN_PALIERS, C1_EN_ENTRY_MODULE } from "../data/programme-c1-en.js?v=20260930a";
 import { A1_ES_GENERAL_OBJECTIVE, A1_ES_PALIERS } from "../data/programme-a1-es.js?v=20260930a";
 import { A2_ES_GENERAL_OBJECTIVE, A2_ES_PALIERS } from "../data/programme-a2-es.js?v=20261007a";
-import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019a8";
-import { plantSvg } from "./plant.js?v=20261019a8";
+import { langGrowth, skillGauges, profileSummary, controls, boosts, missions, lessonTitle } from "../data/progress.js?v=20261019a9";
+import { plantSvg } from "./plant.js?v=20261019a9";
 import { BLOCAGES_ES, BLOCAGES_ES_TITLE, blocageHref, blocagesDone } from "../data/atelier-es-blocages.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { currentCharacter } from "./lecon-a11.js?v=20261019a8";
-import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019a8";
-import { runRattrapage } from "./rattrapage.js?v=20261019a8";
-import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019a8";
+import { currentCharacter } from "./lecon-a11.js?v=20261019a9";
+import { A2_LIST, A2_BUILT, lessonStatusA2, loadBundleA2 } from "../data/lecons-a2.js?v=20261019a9";
+import { runRattrapage } from "./rattrapage.js?v=20261019a9";
+import { bulletinA1, rattrapagesFaits, PASS, pickRattrapage, rtLoad, rtSave } from "../data/bulletin-a1.js?v=20261019a9";
 import { renderAtelierEn } from "./atelier-en.js?v=20261008a";
 
 // --- Petits blocs du livret (24/09) : jauges, contrôles, missions, renforts ---
@@ -193,13 +193,13 @@ function bothFlagsFor(l) {
 }
 
 // --- Bulletin scolaire (maquette 1) : notes par compétence, lacunes détectées, tests réussis / à repasser ---
-const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019a8`;
+const BL_IMG = (f) => `assets/img/lesson/${f}.webp?v=20261019a9`;
 const BL_SK = [BL_IMG("exam-a1-reading"), BL_IMG("exam-a1-listening"), BL_IMG("ic-grammar"), BL_IMG("exam-a1-writing"), BL_IMG("exam-a1-speaking")];
 const BL_GAP = { "Grammaire": "ic-grammar", "Lecture": "ic-reading", "Écoute": "ic-listening" };
-export function bulletinHtml(level = "A1") {
+export function bulletinParts(level = "A1") {
   const B = bulletinA1(level), f = (n) => String(Math.round(n * 10) / 10).replace(".", ","), ch = currentCharacter();
   const nk = B.nDone - B.nOk;
-  if (!B.nDone) return `<div class="card bl-card"><h3 class="bl-h">Mon bulletin ${level}</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`;
+  if (!B.nDone) return { B, empty: true, head: `<div class="card bl-card"><h3 class="bl-h">Mon bulletin ${level}</h3><p class="bl-soft">Passe ton premier test de fin de leçon : tes notes et tes lacunes apparaîtront ici.</p></div>`, skills: "", gaps: "", rt: "", grid: "", word: "" };
   const head = `<div class="card bl-card bl-head"><img class="bl-ava" src="${ch.src}" alt=""/><div class="bl-hd"><div class="bl-big">Niveau ${level}</div><div class="bl-soft">${B.nDone} test${B.nDone > 1 ? "s" : ""} passé${B.nDone > 1 ? "s" : ""} · ${B.nOk} réussi${B.nOk > 1 ? "s" : ""} · ${nk} à repasser</div></div><div class="bl-avg"><b>${f(B.avg)}</b><small>moyenne / 40</small></div></div>`;
   const sk = B.skills.filter((s) => s.avg !== null).map((s, i) => { const r = s.avg / s.max, ok = r >= 0.85; return `<div class="bl-skrow"><img class="bl-sk-img" src="${BL_SK[i]}" alt="" loading="lazy"/><div class="bl-sk"><div class="bl-sk-top"><b>${s.name}</b><b>${f(s.avg)} <span class="bl-soft">/ ${f(s.max)}</span></b></div><div class="bl-bar"><i style="width:${Math.round(r * 100)}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"}</small></div></div>`; }).join("");
   const tr = B.tradAvg === null ? "" : (() => { const v = B.tradAvg / 10, ok = v >= 8; return `<div class="bl-skrow"><span class="bl-sk-img bl-sk-emo" aria-hidden="true">🔁</span><div class="bl-sk"><div class="bl-sk-top"><b>Traduction</b><b>${f(v)} <span class="bl-soft">/ 10</span></b></div><div class="bl-bar"><i style="width:${B.tradAvg}%;background:${ok ? "#2fa35e" : "#e2a13d"}"></i></div><small style="color:${ok ? "#1f7a45" : "#8a5a00"}">${ok ? "Très bien" : "À consolider"} · EN→FR et FR→EN</small></div></div>`; })();
@@ -211,8 +211,9 @@ export function bulletinHtml(level = "A1") {
   const rts = rattrapagesFaits(level), dfmt = (d) => d ? d.slice(8) + "/" + d.slice(5, 7) : "";
   const rtCard = rts.length ? `<div class="card bl-card"><h3 class="bl-h">↺ Mes rattrapages</h3>${rts.map((r) => `<div class="bl-rt"><div class="bl-rt-top"><b>${r.id} · ${r.title}</b><span class="bl-tag bl-st-${r.passed ? "ok" : "ko"}" style="background:${r.passed ? "#1f7a45" : "#c8382a"}">${r.passed ? "Réussi" : "À repasser"}</span></div>${r.hist.slice(-3).map((h) => `<small>• ${dfmt(h.d)} · série ${h.ok}/${h.tot}</small>`).join("")}<small>${r.series} série${r.series > 1 ? "s" : ""} faite${r.series > 1 ? "s" : ""} · ${r.retaken ? `test repassé : ${r.first}/40 → ${r.best}/40` : "test pas encore repassé"}</small></div>`).join("")}</div>` : "";
   const word = `<div class="card bl-card bl-emma"><img src="${ch.full || ch.src}" alt="" loading="lazy"/><div><div class="bl-lab">LE MOT D'${ch.name.toUpperCase()}</div><div class="bl-say">${emma}</div></div></div>`;
-  return head + skills + gaps + rtCard + grid + word;
+  return { B, head, skills, gaps, rt: rtCard, grid, word };
 }
+export function bulletinHtml(level = "A1") { const x = bulletinParts(level); return x.head + x.skills + x.gaps + x.rt + x.grid + x.word; }
 export function renderMesCours(container, shellRoot) {
   let openCode = null; // code de la langue ouverte, ou null = liste
   let openLivret = false;
@@ -311,6 +312,45 @@ export function renderMesCours(container, shellRoot) {
   // ne sont pas encore remontées ici (elles vivent aujourd'hui uniquement
   // dans lessons.html) — prochaine étape si besoin : faire remonter chaque
   // score de Grand Contrôle jusqu'ici pour un vrai historique de notes. ---
+  // Livret en « hub » : une page courte, des carrés à ouvrir (niveau → compétences / lacunes / tests…), jamais une longue page.
+  let lvView = { level: null, sec: null };
+  const tile = (attrs, img, title, sub, badge) => `<button type="button" class="bl-nav" ${attrs}><span class="bl-nav-i">${img}</span><span class="bl-nav-t"><b>${title}</b><small>${sub}</small></span>${badge ? `<em class="bl-nav-b">${badge}</em>` : ""}</button>`;
+  const emo = (e) => `<span class="bl-nav-e">${e}</span>`;
+  const im = (f) => `<img src="${BL_IMG(f)}" alt="" width="44" height="44"/>`;
+  function hubHtml(l) {
+    const back = (to, label) => `<button type="button" class="bl-back" data-lv="${to}">← ${label}</button>`;
+    if (l.code !== "en") {
+      return `<div class="dash-box"><h3>Mon profil</h3><div class="card">${profileHtml(l.code)}</div></div><div class="dash-box"><h3>Mes contrôles</h3><div class="card">${controlsHtml(l.code)}</div></div><div class="dash-box"><h3>Mes missions</h3><div class="card">${missionsHtml(l.code)}</div></div>`;
+    }
+    const { level, sec } = lvView;
+    if (level) {
+      const P = bulletinParts(level), B = P.B, f = (n) => String(Math.round(n * 10) / 10).replace(".", ",");
+      if (sec) {
+        const body = { skills: P.skills || P.head, gaps: P.gaps || `<div class="card bl-card"><p class="bl-soft">Aucune lacune détectée 🎉</p></div>`, tests: P.grid || P.head, rt: P.rt || `<div class="card bl-card"><p class="bl-soft">Aucun rattrapage pour l'instant.</p></div>` }[sec];
+        return back(level, "Niveau " + level) + body;
+      }
+      const nG = B.gaps.length;
+      return back("", "Mon livret") + P.head + `<div class="bl-hub">
+        ${tile(`data-lv="${level}:skills"`, im("ic-grammar"), "Mes compétences", B.skills.some((s) => s.avg !== null) ? "Notes par compétence + traduction" : "Pas encore de note", "")}
+        ${tile(`data-lv="${level}:gaps"`, emo("🔎"), "Mes lacunes", nG ? `${nG} à revoir` : "Aucune", nG ? String(nG) : "✓")}
+        ${tile(`data-lv="${level}:tests"`, im("ic-test"), "Mes tests de fin de leçon", `${B.nOk}/${B.tests.length} réussis`, "")}
+        ${tile(`data-lv="${level}:rt"`, emo("↺"), "Mes rattrapages", `${rattrapagesFaits(level).length} fait${rattrapagesFaits(level).length > 1 ? "s" : ""}`, "")}
+      </div>${P.word}`;
+    }
+    if (sec) {
+      const html = { profil: `<div class="card">${profileHtml(l.code)}</div>`, ctrl: `<div class="card">${controlsHtml(l.code)}</div>`, miss: `<div class="card">${missionsHtml(l.code)}</div>` }[sec];
+      return back("", "Mon livret") + html;
+    }
+    const A = bulletinParts("A1").B, A2 = bulletinParts("A2").B;
+    const sub = (B) => B.nDone ? `${B.nDone} test${B.nDone > 1 ? "s" : ""} · moyenne ${String(Math.round(B.avg * 10) / 10).replace(".", ",")}/40` : "Pas encore de test";
+    return `<div class="bl-hub">
+      ${tile(`data-lv="A1"`, emo("A1"), "Niveau A1", sub(A), "")}
+      ${tile(`data-lv="A2"`, emo("A2"), "Niveau A2", sub(A2), "")}
+      ${tile(`data-lv=":profil"`, emo("📊"), "Mon profil", "Forces et points à travailler", "")}
+      ${tile(`data-lv=":ctrl"`, emo("🏁"), "Mes contrôles", "A1, A2, contrôle final", "")}
+      ${tile(`data-lv=":miss"`, emo("🎯"), "Mes missions", "Erreurs à revoir", "")}
+    </div>`;
+  }
   let livretLang = null;
   function paintLivret() {
     const { settings } = store.get();
@@ -342,15 +382,13 @@ export function renderMesCours(container, shellRoot) {
               </div>
             </div>
           </div>
-          ${l.code === "en" ? bulletinHtml("A1") + bulletinHtml("A2") : ""}
-          <div class="dash-box"><h3>Mon profil</h3><div class="card">${profileHtml(l.code)}</div></div>
-          <div class="dash-box"><h3>Mes contrôles</h3><div class="card">${controlsHtml(l.code)}</div></div>
-          <div class="dash-box"><h3>Mes missions</h3><div class="card">${missionsHtml(l.code)}</div></div>
+          ${hubHtml(l)}
           `).join("")}
         `}
       </div>
     `;
     container.querySelector("#mcLivretBack").addEventListener("click", () => { openLivret = false; paint(); });
+    container.querySelectorAll("[data-lv]").forEach((b) => b.addEventListener("click", () => { const [a, c] = b.dataset.lv.split(":"); lvView = { level: a || null, sec: c || null }; paint(); }));
     container.querySelectorAll("[data-rt]").forEach((b) => b.addEventListener("click", () => paintRattrapage(b.dataset.rt)));
     container.querySelectorAll("[data-livret-lang]").forEach((b) => b.addEventListener("click", () => { livretLang = b.dataset.livretLang; paint(); }));
     container.querySelectorAll("[data-href]").forEach((b) => b.addEventListener("click", () => { window.location.href = b.dataset.href; }));
