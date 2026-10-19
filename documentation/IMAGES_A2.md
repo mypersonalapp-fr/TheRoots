@@ -115,5 +115,5 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - lesson/ : describe-a26-waiting, describe-a26-park
 
 ### A2.6 — images du corps humain
-- lesson/scene-a26-body-man, lesson/scene-a26-body-woman : à fournir (Pixar, corps entier de face, vêtements de sport moulants simples).
+- lesson/scene-a26-body-man et scene-a26-body-woman : REÇUES le 19/10, recadrées 16:9.
 - lesson/scene-a26-skeleton-man : reçue le 19/10 (page « Les os »). Squelette femme abandonné.
