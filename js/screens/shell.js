@@ -4,8 +4,8 @@
 // routage entre les onglets.
 
 import { renderDashboard } from "./dashboard.js?v=20261001a";
-import { renderSettings } from "./settings.js?v=20261019d2";
-import { renderMesCours } from "./mes-cours.js?v=20261019d2";
+import { renderSettings } from "./settings.js?v=20261019d3";
+import { renderMesCours } from "./mes-cours.js?v=20261019d3";
 import { renderMesArbres } from "./mes-arbres.js?v=20260930a";
 import { renderComprehension } from "./comprehension.js?v=20261001d";
 import { renderExpression } from "./expression.js?v=20261001d";
@@ -13,7 +13,7 @@ import { renderTraduction } from "./traduction.js?v=20260930a";
 import { renderDictionnaire } from "./dictionnaire.js?v=20260930a";
 import { renderConversation } from "./conversation.js?v=20260930a";
 import { renderAtelierEs } from "./atelier-es.js?v=20261008a";
-import { renderDaily } from "./daily.js?v=20261019d2";
+import { renderDaily } from "./daily.js?v=20261019d3";
 import { renderBibliotheque } from "./bibliotheque.js?v=20261001a";
 import { renderAideFaq } from "./aide-faq.js?v=20261001c";
 import { mountMyWorld } from "./my-world.js?v=20260930a";
