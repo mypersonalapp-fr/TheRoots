@@ -1180,3 +1180,4 @@
 .bl-trs{ display:flex; flex-direction:column; gap:6px; margin-top:10px; }
 .bl-tr{ display:grid; grid-template-columns:48px 1fr 1fr; gap:6px; align-items:center; font-size:12.5px; background:#f4f6fa; border-radius:12px; padding:7px 10px; }
 .bl-tr span{ font-weight:700; color:#6b7280; } .bl-tr span.ok{ color:#1f7a45; }
+.bl-sk-emo{ display:flex; align-items:center; justify-content:center; font-size:26px; background:#eef3fb; border-radius:12px; }
