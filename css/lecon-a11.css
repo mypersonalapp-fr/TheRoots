@@ -464,3 +464,6 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-see{border:0;background:#fff;border-radius:999px;padding:3px 10px;font:800 12px var(--font-main);color:#8a560c;box-shadow:0 2px 0 rgba(0,0,0,.12)}
 .lc-trad-ok{width:100%;margin-top:6px}
 .lc-trad-msg{margin:8px 0 0;text-align:center;font:700 13.5px/1.4 var(--font-main)}
+
+/* menu de leçon : un peu plus bas sous la barre de progression (même rythme sur tous les niveaux) */
+.lc-menu{ margin-top:16px; }
