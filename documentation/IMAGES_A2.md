@@ -121,5 +121,5 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 ### Réception du 19/10 (19 images reçues sur 22 annoncées, converties en 1280×720)
 - A2.4 placées (6, provisoires/approximatives d'après A_LIRE.txt) : scene-a24-decision, scene-a24-prediction, scene-a24-booking, scene-a24-appointment, describe-a24-agency, describe-a24-party.
 - A2.5 placées (11) : scene-a25-bigger, scene-a25-price (deux vestes de couleurs différentes : à refaire), scene-a25-equal, scene-a25-preference, scene-a25-cities, scene-a25-shopping, a25-m1, a25-m2, a25-m3, a25-m5 (panneaux de gare floutés), a25-m6.
-- A2.5 encore manquantes (3) : scene-a25-compare, a25-m4, describe-a25-street (l image reçue montre SUPERMARCHÉ et BOULANGERIE en lettres lisibles : refusée). Reçues ensuite : scene-a25-best (numéros de dossards floutés), describe-a25-market.
+- A2.5 encore manquantes (2) : (scene-a25-compare reçue le 19/10) a25-m4, describe-a25-street (l image reçue montre SUPERMARCHÉ et BOULANGERIE en lettres lisibles : refusée). Reçues ensuite : scene-a25-best (numéros de dossards floutés), describe-a25-market.
 - Images en trop non utilisées : enfants + drapeaux (salutations), femme qui lit le soir.
