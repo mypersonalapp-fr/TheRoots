@@ -513,3 +513,19 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 /* bulles : écriture un peu plus petite */
 .lc-bt, .lc-bl-full .lc-bt{ font-size:15px; }
 .lc-bt small{ font-size:12px; }
+
+/* conversation : visuel bulles (maquette D) */
+.lc-dlg-top{ display:flex; gap:10px; align-items:center; background:var(--surface); border-radius:16px; padding:8px 12px; box-shadow:var(--shadow-card); margin-bottom:8px; }
+.lc-dlg-top > span{ font-size:28px; } .lc-dlg-top b{ display:block; font-size:15px; font-weight:700; } .lc-dlg-top small{ display:block; font-size:12px; color:var(--ink-soft); }
+.lc-goals{ list-style:none; margin:0 0 8px; padding:8px 12px; border-radius:16px; background:color-mix(in srgb, var(--surface) 80%, transparent); display:grid; gap:4px; font-size:13px; }
+.lc-goals li{ display:flex; gap:8px; align-items:center; color:var(--ink-soft); } .lc-goals li i{ font-style:normal; width:20px; height:20px; border-radius:50%; background:rgba(127,127,127,.25); text-align:center; line-height:20px; font-size:11px; font-weight:700; flex:none; }
+.lc-goals li.now{ color:var(--ink); font-weight:600; } .lc-goals li.now i{ background:#e5a13a; color:#fff; } .lc-goals li.ok i{ background:#1f9d55; color:#fff; }
+.lc-dlg .lc-bl-full{ margin:6px 0; gap:10px; }
+.lc-tg{ display:block; font-style:normal; font-size:11px; color:#1f7a45; margin-top:2px; }
+.lc-dlg-foot{ display:block; }
+.lc-dlg-foot .lc-ta{ min-height:56px; }
+.lc-corr{ align-self:flex-end; max-width:88%; margin:-4px 0 4px; padding:6px 12px; border-radius:12px; background:#e3f5e6; font-size:13px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; color:#14532d; }
+.lc-corr.help{ background:#fff1d6; color:#7a4a00; } .lc-corr b{ font-weight:700; } .lc-corr .lc-spk{ width:26px; height:26px; min-width:26px; padding:0; font-size:12px; }
+.lc-score{ margin-top:6px; padding:10px 14px; border-radius:16px; background:var(--surface); display:grid; gap:2px; font-size:14px; } .lc-score b{ font-size:15px; }
+:root[data-theme="dark"] .lc-corr{ background:#1f3d2a; color:#cdeed8; } :root[data-theme="dark"] .lc-corr.help{ background:#4a3720; color:#ffe2b0; }
+.lc-corr .lc-spk{ position:static; margin-left:auto; }
