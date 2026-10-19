@@ -5,8 +5,8 @@
 
 import { store } from "../data/store.js?v=20260930a";
 import { t } from "../data/i18n.js?v=20260930a";
-import { langGrowth } from "../data/progress.js?v=20261019c9";
-import { plantSvg } from "./plant.js?v=20261019c9";
+import { langGrowth } from "../data/progress.js?v=20261019d2";
+import { plantSvg } from "./plant.js?v=20261019d2";
 
 const GROUP_FLAGS = { en: "🇬🇧", es: "🇪🇸", pt: "🇵🇹" };
 const VARIANT_FLAGS = { "en-gb": "🇬🇧", "en-us": "🇺🇸", "es-co": "🇨🇴", "es-es": "🇪🇸", "pt-br": "🇧🇷", "pt-pt": "🇵🇹" };
