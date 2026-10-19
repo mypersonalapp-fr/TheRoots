@@ -110,4 +110,16 @@ export const DIALOGUES_A2 = {
       { npc: "No, it is only two minutes on foot. Turn left at the corner.", ok: ["\\b(thank|thanks|ok|okay|great|left|corner|got it)\\b"], model: "Thank you very much!", hint: "Remercie." },
       { npc: "You're welcome. Have a nice day!", ok: ["\\b(you too|thank|bye|goodbye|see you)\\b"], model: "You too, goodbye!", hint: "Dis au revoir." }] },
   ],
+  "A2.9": [
+    { title: "Un appel au bureau", icon: "💼", scene: "Tu appelles une entreprise pour parler à un responsable.", turns: [
+      { npc: "Good morning, Green Office. How can I help you?", ok: ["\\b(could i|can i|may i|speak to|talk to|this is|i.d like)\\b"], model: "Hello, this is Sam. Could I speak to Mr Brown, please?", hint: "Présente-toi et demande à parler à M. Brown." },
+      { npc: "I'm sorry, Mr Brown is in a meeting. Would you like to leave a message?", ok: ["\\b(yes|please|message|tell him|ask him|call me back|call back)\\b"], model: "Yes, please. Could you ask him to call me back?", hint: "Accepte et demande qu'il te rappelle." },
+      { npc: "Of course. Can I have your number, please?", ok: ["\\b(zero|oh|[0-9]|number|it.s|my number|my mobile)\\b"], model: "My number is zero seven, nine one one, two three.", hint: "Donne ton numéro." },
+      { npc: "Thank you. I'll give him your message. Goodbye!", ok: ["\\b(thank|thanks|goodbye|bye|you too|see you)\\b"], model: "Thank you very much, goodbye!", hint: "Remercie et dis au revoir." }] },
+    { title: "Rapporter un appel à un ami", icon: "🗣️", scene: "Ton ami te demande ce que ta sœur a dit au téléphone.", turns: [
+      { npc: "Did your sister call? What did she say?", ok: ["\\b(she said|she told me|said that|told me that|she asked)\\b"], model: "Yes, she said that she was at the airport.", hint: "Utilise « She said that… »." },
+      { npc: "Oh, really? Is her flight on time?", ok: ["\\b(no|yes|late|delayed|on time|she said|she told)\\b"], model: "No, she told me that it was late.", hint: "Utilise « She told me that… »." },
+      { npc: "And what did she ask you to do?", ok: ["\\b(asked me to|told me to|wait|call|pick|bring)\\b"], model: "She asked me to wait for her at home.", hint: "Utilise « She asked me to… »." },
+      { npc: "Did she say when she would arrive?", ok: ["\\b(she said|she promised|would|tomorrow|the next day|tonight|that night|later|at)\\b"], model: "She promised she would call again when she landed.", hint: "Utilise would." }] },
+  ],
 };

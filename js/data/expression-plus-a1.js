@@ -1,6 +1,6 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b3";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b4";
 const T = (title, icon, model, rows, img) => ({
   title, icon, model, img,
   prompts: rows.map((r) => r[0]),
@@ -448,6 +448,22 @@ export const EXPRESSION_PLUS_A2 = {
     T("Mon quartier idéal", "🌳", "My ideal area is quiet, but it isn't too far from the city centre. There are a lot of parks and some small shops. There isn't much traffic, and there are good schools nearby. The bus stop is opposite my house. It is better than my area now.", [
       ["Dis comment est ton quartier idéal.", "Ambiance", "quiet|safe|green|friendly|clean|nice|ideal|calm|lively"], ["Utilise a lot of, some ou any.", "Quantité", "a lot of|some|any|many|much"],
       ["Place un lieu avec une préposition.", "Où ?", "next to|opposite|between|near|behind|in front of|not too far|far from"], ["Compare avec ton quartier actuel.", "Comparaison", "than|better|worse|more|less|bigger|quieter|cheaper|as .* as"]]),
+  ],
+  9: [
+    T("Décris l'image : le bureau", "💼", "In this picture, a man is talking on the phone at his desk. There is an open diary next to the computer, and a colleague is writing a note behind him. I think he is making an appointment. He looks busy, but he is smiling. Maybe the call is about a meeting tomorrow.", [
+      ["Dis ce que fait la personne.", "L'action", "talking|speaking|phone|calling|writing|working|sitting|holding"], ["Dis ce qu'il y a sur le bureau.", "Le bureau", "desk|computer|diary|notebook|pen|papers|lamp|phone|note"],
+      ["Utilise une préposition de lieu.", "Où ?", "next to|behind|in front of|near|between|opposite|on the"], ["Imagine de quoi parle l'appel.", "Hypothèse", "i think|maybe|probably|might|appointment|meeting|about"]],
+      "describe-a29-office"),
+    T("Décris l'image : l'appel au parc", "🌳", "In this picture, a boy is sitting on a bench in the park and talking on his phone. He is holding his school bag and he looks worried. A dog is sleeping near the bench. I think he is calling his mother, and maybe he is saying that he will be late.", [
+      ["Dis ce que fait le garçon.", "L'action", "sitting|talking|calling|holding|phone|bench|speaking"], ["Dis ce que tu vois autour.", "Autour", "dog|park|tree|trees|bag|bench|grass|sky"],
+      ["Dis comment il se sent.", "Émotion", "worried|happy|sad|tired|angry|smiling|looks"], ["Imagine ce qu'il dit.", "Il dit", "i think|maybe|probably|saying|says|said|will be late|calling"]],
+      "describe-a29-park"),
+    T("Laisser un message", "📝", "Hello, this is Sam. I'm calling for Mr Brown. Could you tell him that I can't come to the meeting tomorrow? Please ask him to call me back on my mobile. It's urgent. Thank you very much, goodbye.", [
+      ["Présente-toi.", "Présentation", "this is|my name is|it.s|i.m|speaking"], ["Dis pour qui tu appelles.", "Pour qui", "for|speak to|talk to|could i|can i"],
+      ["Demande de rappeler.", "Rappel", "call me back|call back|ring me|phone me|ask (him|her) to"], ["Dis que c'est urgent et remercie.", "Fin", "urgent|important|thank|thanks|goodbye|bye"]]),
+    T("Raconter un appel", "🗣️", "Yesterday, my friend called me. She said that she was ill and that she couldn't come to school. She asked me to bring her homework. She told me that she would call again the next day. I said that I would help her.", [
+      ["Dis qui a appelé et quand.", "L'appel", "called|phoned|yesterday|this morning|last night"], ["Utilise said that + passé.", "Said that", "said (that )?(she|he|they)|told me (that )?"],
+      ["Rapporte une demande.", "Demande", "asked me to|told me to|asked me if|told me not to"], ["Utilise would (ce qu'elle ferait).", "Would", "would|promised"]]),
   ],
 };
 

@@ -46,4 +46,9 @@ export const SITUATIONS_A2 = {
     S("📍", "Say where the bakery is.", "Utilise « next to », « opposite » ou « between ».", "\\b(next to|opposite|between|near|behind|in front of)\\b", "The bakery is next to the pharmacy."),
     S("🚫", "Say there are no shops in your street.", "Utilise « There aren't any… ».", "\\bthere (aren.t|isn.t|are no|is no)\\b", "There aren't any shops in my street."),
   ],
+  "A2.9": [
+    S("📞", "Ask politely to speak to Anna.", "Utilise « Could I speak to… ? ».", "\\b(could|can|may) i (speak|talk) to\\b|\\bi.d like to speak to\\b", "Could I speak to Anna, please?"),
+    S("🗣️", "Say what your friend said: « I am ill ».", "Utilise « She said that… » + passé.", "\\b(she|he) said (that )?(she|he) was\\b|\\b(told me|said) (that )?(she|he) was ill\\b", "She said that she was ill."),
+    S("📩", "Say what she asked you to do.", "Utilise « She asked me to… ».", "\\b(asked|told) me (not )?to\\b", "She asked me to call her back."),
+  ],
 };

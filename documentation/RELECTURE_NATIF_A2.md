@@ -5386,7 +5386,7 @@
 - `VOCAB_A27` pluie fine
 - `VOCAB_A27` forte pluie
 
-## A2.8 (843 lignes)
+## A2.8 (848 lignes)
 
 - `EXERCISES_A28` Vocabulaire — La maison
 - `EXERCISES_A28` Choisis le sens correct.
@@ -5938,6 +5938,11 @@
 - `TEST_AUDIOS_A28` A red door
 - `TEST_GRAMMAR_A28` There ___ a garden.
 - `TEST_GRAMMAR_A28` The shop is at the ___ of the street.
+- `TEST_GRAMMAR_A28` There ___ some milk in the fridge.
+- `TEST_GRAMMAR_A28` There ___ any milk in the fridge.
+- `TEST_GRAMMAR_A28` This is the ___ flat in the street.
+- `TEST_GRAMMAR_A28` more cheap
+- `TEST_GRAMMAR_A28` We ___ have a dishwasher.
 - `TEST_GRAMMAR_A28` “Landlord” means ___.
 - `TEST_GRAMMAR_A28` “Wardrobe” means ___.
 - `TEST_GRAMMAR_A28` “Spacious” means ___.
@@ -6043,6 +6048,702 @@
 - `VOCAB_A28` There is a lot of traffic in the city centre.
 - `VOCAB_A28` Il y a beaucoup de circulation dans le centre-ville.
 - `VOCAB_A28` “Neighbour” veut dire…
+
+## A2.9 (909 lignes)
+
+- `EXERCISES_A29` Choisis le sens correct.
+- `EXERCISES_A29` Charger = chargeur.
+- `EXERCISES_A29` Hang up = raccrocher.
+- `EXERCISES_A29` call back
+- `EXERCISES_A29` Call back = rappeler.
+- `EXERCISES_A29` messagerie vocale
+- `EXERCISES_A29` Voicemail = messagerie.
+- `EXERCISES_A29` wrong number
+- `EXERCISES_A29` Vocabulaire — Au bureau
+- `EXERCISES_A29` Appointment = rendez-vous.
+- `EXERCISES_A29` date limite
+- `EXERCISES_A29` emploi du temps
+- `EXERCISES_A29` Deadline = date limite.
+- `EXERCISES_A29` Customer = client.
+- `EXERCISES_A29` Extension = poste.
+- `EXERCISES_A29` Available = disponible.
+- `EXERCISES_A29` Demander poliment
+- `EXERCISES_A29` Choisis la bonne forme.
+- `EXERCISES_A29` ___ I speak to Anna, please?
+- `EXERCISES_A29` Could I… ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` Would you ___ to leave a message?
+- `EXERCISES_A29` Would you like to… ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` I'd ___ to make an appointment.
+- `EXERCISES_A29` I'd like to…
+- `EXERCISES_A29` ___ you hold on, please?
+- `EXERCISES_A29` Can you… ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` Could you ___ that, please?
+- `EXERCISES_A29` Could + base.
+- `EXERCISES_A29` ___ I leave a message?
+- `EXERCISES_A29` “I am busy.” → She said she ___ busy.
+- `EXERCISES_A29` am → was.
+- `EXERCISES_A29` “I work here.” → He said he ___ there.
+- `EXERCISES_A29` “We are tired.” → They said they ___ tired.
+- `EXERCISES_A29` are → were.
+- `EXERCISES_A29` “I like it.” → She said she ___ it.
+- `EXERCISES_A29` like → liked.
+- `EXERCISES_A29` “I'm waiting.” → He said he ___ waiting.
+- `EXERCISES_A29` “I live in Paris.” → She said she ___ in Paris.
+- `EXERCISES_A29` live → lived.
+- `EXERCISES_A29` Will → would, can → could
+- `EXERCISES_A29` “I will call you.” → He said he ___ call me.
+- `EXERCISES_A29` will → would.
+- `EXERCISES_A29` “I can come.” → She said she ___ come.
+- `EXERCISES_A29` can → could.
+- `EXERCISES_A29` “I must go.” → He said he ___ to go.
+- `EXERCISES_A29` must → had to.
+- `EXERCISES_A29` “I'll send it.” → She said she ___ send it.
+- `EXERCISES_A29` “I can't hear you.” → He said he ___ hear me.
+- `EXERCISES_A29` wouldn't to
+- `EXERCISES_A29` can't → couldn't.
+- `EXERCISES_A29` “I'm going to leave.” → She said she ___ going to leave.
+- `EXERCISES_A29` am going to → was going to.
+- `EXERCISES_A29` Say ou tell ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` Choisis say ou tell.
+- `EXERCISES_A29` He ___ me that he was late.
+- `EXERCISES_A29` tell + personne.
+- `EXERCISES_A29` She ___ that she was ill.
+- `EXERCISES_A29` say sans personne.
+- `EXERCISES_A29` They ___ us they would call.
+- `EXERCISES_A29` He ___ to me that it was urgent.
+- `EXERCISES_A29` say to + personne.
+- `EXERCISES_A29` Anna ___ me she was tired.
+- `EXERCISES_A29` The manager ___ that the meeting was at ten.
+- `EXERCISES_A29` said that.
+- `EXERCISES_A29` Choisis le bon mot.
+- `EXERCISES_A29` “I'll call you tomorrow.” → He said he would call me ___.
+- `EXERCISES_A29` the next day
+- `EXERCISES_A29` tomorrow → the next day.
+- `EXERCISES_A29` “I'm busy today.” → She said she was busy ___.
+- `EXERCISES_A29` today → that day.
+- `EXERCISES_A29` “I saw him yesterday.” → She said she had seen him ___.
+- `EXERCISES_A29` the day before
+- `EXERCISES_A29` yesterday → the day before.
+- `EXERCISES_A29` “I'm here now.” → He said he was ___ then.
+- `EXERCISES_A29` here → there.
+- `EXERCISES_A29` “My phone is broken.” → She said ___ phone was broken.
+- `EXERCISES_A29` my → her.
+- `EXERCISES_A29` “We'll arrive next week.” → They said they would arrive ___.
+- `EXERCISES_A29` next week
+- `EXERCISES_A29` the following week
+- `EXERCISES_A29` last week
+- `EXERCISES_A29` next week → the following week.
+- `EXERCISES_A29` Rapporter une demande
+- `EXERCISES_A29` “Call me back, please.” → She asked me ___ her back.
+- `EXERCISES_A29` asked + personne + to.
+- `EXERCISES_A29` “Don't hang up.” → He told me ___ hang up.
+- `EXERCISES_A29` to not to
+- `EXERCISES_A29` told me not to.
+- `EXERCISES_A29` “Hold on, please.” → She asked me ___ on.
+- `EXERCISES_A29` asked me to hold on.
+- `EXERCISES_A29` “Send the report.” → He told me ___ the report.
+- `EXERCISES_A29` told me to send.
+- `EXERCISES_A29` “Don't be late.” → She told us ___ late.
+- `EXERCISES_A29` to not be
+- `EXERCISES_A29` not to be
+- `EXERCISES_A29` told us not to be.
+- `EXERCISES_A29` “Please speak slowly.” → He asked me ___ slowly.
+- `EXERCISES_A29` asked me to speak.
+- `EXERCISES_A29` Rapporter une question
+- `EXERCISES_A29` “Are you free?” → He asked ___ I was free.
+- `EXERCISES_A29` Oui/non : asked if.
+- `EXERCISES_A29` “Where do you live?” → She asked where I ___.
+- `EXERCISES_A29` “What time is it?” → He asked what time it ___.
+- `EXERCISES_A29` is → was.
+- `EXERCISES_A29` “Can you hear me?” → She asked if I ___ hear her.
+- `EXERCISES_A29` “Do you like it?” → He asked ___ I liked it.
+- `EXERCISES_A29` asked if.
+- `EXERCISES_A29` “Who is calling?” → She asked who ___ calling.
+- `EXERCISES_A29` Compte rendu d'appel
+- `EXERCISES_A29` Anna called. She ___ she was ill.
+- `EXERCISES_A29` She wanted to know ___ you were free.
+- `EXERCISES_A29` wanted to know if.
+- `EXERCISES_A29` He promised he ___ call back.
+- `EXERCISES_A29` promised + would.
+- `EXERCISES_A29` Tom asked me ___ him back.
+- `EXERCISES_A29` asked me to call.
+- `EXERCISES_A29` The client said ___ he was in a hurry.
+- `EXERCISES_A29` She told ___ that the line was bad.
+- `EXERCISES_A29` La ligne est mauvaise : « It's a ___ line. »
+- `EXERCISES_A29` Bad line.
+- `EXERCISES_A29` No signal.
+- `EXERCISES_A29` Ma batterie est vide : « I'm out of ___. »
+- `EXERCISES_A29` Out of battery.
+- `EXERCISES_A29` « Speak ___! » (plus fort)
+- `EXERCISES_A29` Speak up.
+- `EXERCISES_A29` Choisis la bonne traduction.
+- `EXERCISES_A29` Could I speak to Anna, please?
+- `EXERCISES_A29` Anna peut-elle parler ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` She said that she was busy.
+- `EXERCISES_A29` He told me to call back.
+- `EXERCISES_A29` Il m'a dit de rappeler.
+- `EXERCISES_A29` Il rappellera.
+- `EXERCISES_A29` told me to = m'a dit de.
+- `EXERCISES_A29` Sorry, wrong number.
+- `EXERCISES_A29` Hold the line, please.
+- `EXERCISES_A29` hold the line = ne quittez pas.
+- `EXERCISES_A29` I'll call you back tomorrow.
+- `EXERCISES_A29` Je te rappellerai demain.
+- `EXERCISES_A29` call back = rappeler.
+- `EXERCISES_A29` Il a dit qu'il arriverait demain.
+- `EXERCISES_A29` He tells he would arrive.
+- `EXERCISES_A29` He said he will arrive tomorrow.
+- `EXERCISES_A29` He said he would arrive the next day.
+- `EXERCISES_A29` will → would, tomorrow → the next day.
+- `EXERCISES_A29` She asked me call her back.
+- `EXERCISES_A29` She asked me to call her back.
+- `EXERCISES_A29` She asked me for call her back.
+- `EXERCISES_A29` asked me to + verbe.
+- `EXERCISES_A29` He asked if I was free.
+- `EXERCISES_A29` He asked was I free.
+- `EXERCISES_A29` He asked that I was free.
+- `EXERCISES_A29` asked if + ordre normal.
+- `EXERCISES_A29` Je ne vous entends pas.
+- `EXERCISES_A29` I don't hear you well.
+- `EXERCISES_A29` I can't hear you.
+- `EXERCISES_A29` I not hear you.
+- `EXERCISES_A29` can't hear.
+- `EXERCISES_A29` Could you repeat that, please?
+- `EXERCISES_A29` Can you repeating, please?
+- `EXERCISES_A29` You could repeat please?
+- `EXERCISES_A29` Could you repeat that?
+- `EXERCISES_A29` Puis-je laisser un message ? ⚠ espacement/ponctuation
+- `EXERCISES_A29` May I to leave a message?
+- `EXERCISES_A29` Can I leaving a message?
+- `EXERCISES_A29` Can I leave a message?
+- `EXERCISES_A29` Can I leave…
+- `EXPRESSION_A29` Un appel professionnel
+- `EXPRESSION_A29` Demande de laisser un message.
+- `EXPRESSION_A29` Remercie et dis au revoir.
+- `EXPRESSION_A29` Hello, this is Sam. Could I speak to Mr Brown, please? Can I leave a message? Please ask him to call me back this afternoon. Thank you very much, goodbye.
+- `EXPRESSION_A29` Demander quelqu'un
+- `EXPRESSION_A29` Laisser un message
+- `EXPRESSION_A29` Remercier et finir
+- `EXPRESSION_A29` Ce que quelqu'un m'a dit
+- `EXPRESSION_A29` Dis ce que quelqu'un a dit (said that).
+- `EXPRESSION_A29` Dis ce qu'il a promis (would).
+- `EXPRESSION_A29` My friend called yesterday. She said that she was ill. She told me that she would come the next day. She asked me to bring her homework. She asked if I was free on Saturday.
+- `EXPRESSION_A29` Un « said that »
+- `EXPRESSION_A29` Un « would »
+- `GRAMMAR_A29` Could I + verbe : demande polie
+- `GRAMMAR_A29` Can you hold on a moment?
+- `GRAMMAR_A29` Pouvez-vous patienter un instant ? ⚠ espacement/ponctuation
+- `GRAMMAR_A29` Can you… ? : plus direct ⚠ espacement/ponctuation
+- `GRAMMAR_A29` Would you like to leave a message?
+- `GRAMMAR_A29` Souhaitez-vous laisser un message ? ⚠ espacement/ponctuation
+- `GRAMMAR_A29` I'd like to make an appointment.
+- `GRAMMAR_A29` Je voudrais prendre rendez-vous.
+- `GRAMMAR_A29` I'd like = I would like
+- `GRAMMAR_A29` Could you speak more slowly, please?
+- `GRAMMAR_A29` Could I leave a message for Mr Brown?
+- `GRAMMAR_A29` Pourrais-je laisser un message pour M. Brown ? ⚠ espacement/ponctuation
+- `GRAMMAR_A29` Demande polie : Could I… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A29` I'd like to… = I would like to…
+- `GRAMMAR_A29` “I am busy.” → She said (that) she was busy.
+- `GRAMMAR_A29` am / is / are → was / were
+- `GRAMMAR_A29` “I work in Paris.” → He said he worked in Paris.
+- `GRAMMAR_A29` “I'm waiting.” → She said she was waiting.
+- `GRAMMAR_A29` « J'attends. » → Elle a dit qu'elle attendait.
+- `GRAMMAR_A29` “We like it.” → They said they liked it.
+- `GRAMMAR_A29` like → liked
+- `GRAMMAR_A29` “I'm tired.” → He said he was tired.
+- `GRAMMAR_A29` “I live here.” → She said she lived there.
+- `GRAMMAR_A29` “I am ill.” → She said she ___ ill.
+- `GRAMMAR_A29` “We are waiting.” → They said they ___ waiting.
+- `GRAMMAR_A29` “I will call you.” → He said he would call me.
+- `GRAMMAR_A29` « Je t'appellerai. » → Il a dit qu'il m'appellerait.
+- `GRAMMAR_A29` will → would
+- `GRAMMAR_A29` “I can come.” → She said she could come.
+- `GRAMMAR_A29` « Je peux venir. » → Elle a dit qu'elle pouvait venir.
+- `GRAMMAR_A29` can → could
+- `GRAMMAR_A29` “I'm going to leave.” → He said he was going to leave.
+- `GRAMMAR_A29` « Je vais partir. » → Il a dit qu'il allait partir.
+- `GRAMMAR_A29` am going to → was going to
+- `GRAMMAR_A29` “I must go.” → She said she had to go.
+- `GRAMMAR_A29` « Je dois partir. » → Elle a dit qu'elle devait partir.
+- `GRAMMAR_A29` must → had to
+- `GRAMMAR_A29` “I will send the report.” → She said she would send the report.
+- `GRAMMAR_A29` « J'enverrai le rapport. » → Elle a dit qu'elle enverrait le rapport.
+- `GRAMMAR_A29` “I can't hear you.” → He said he couldn't hear me.
+- `GRAMMAR_A29` « Je ne vous entends pas. » → Il a dit qu'il ne m'entendait pas.
+- `GRAMMAR_A29` “I will help you.” → He said he ___ help me.
+- `GRAMMAR_A29` “I can swim.” → She said she ___ swim.
+- `GRAMMAR_A29` “I must leave.” → He said he ___ to leave.
+- `GRAMMAR_A29` He said that he was late.
+- `GRAMMAR_A29` say + that (sans personne)
+- `GRAMMAR_A29` He told me that he was late.
+- `GRAMMAR_A29` tell + personne + that
+- `GRAMMAR_A29` She said to me that she was busy.
+- `GRAMMAR_A29` say to + personne
+- `GRAMMAR_A29` He didn't tell anyone.
+- `GRAMMAR_A29` tell + personne toujours
+- `GRAMMAR_A29` Anna told me that she would call back.
+- `GRAMMAR_A29` Anna m'a dit qu'elle rappellerait.
+- `GRAMMAR_A29` The manager said that the meeting was at ten.
+- `GRAMMAR_A29` She ___ me that she was tired.
+- `GRAMMAR_A29` He ___ that he was busy.
+- `GRAMMAR_A29` They ___ us they would come.
+- `GRAMMAR_A29` Pronoms et marqueurs de temps
+- `GRAMMAR_A29` “I'm busy today.” → She said she was busy that day.
+- `GRAMMAR_A29` today → that day
+- `GRAMMAR_A29` “I'll call you tomorrow.” → He said he would call me the next day.
+- `GRAMMAR_A29` « Je t'appellerai demain. » → Il a dit qu'il m'appellerait le lendemain.
+- `GRAMMAR_A29` tomorrow → the next day
+- `GRAMMAR_A29` “I saw him yesterday.” → She said she had seen him the day before.
+- `GRAMMAR_A29` « Je l'ai vu hier. » → Elle a dit l'avoir vu la veille.
+- `GRAMMAR_A29` yesterday → the day before
+- `GRAMMAR_A29` “I'm here now.” → He said he was there then.
+- `GRAMMAR_A29` here → there, now → then
+- `GRAMMAR_A29` “My phone is broken.” → She said her phone was broken.
+- `GRAMMAR_A29` “We'll arrive tomorrow.” → They said they would arrive the next day.
+- `GRAMMAR_A29` « Nous arriverons demain. » → Ils ont dit qu'ils arriveraient le lendemain.
+- `GRAMMAR_A29` my → her (la personne qui parle).
+- `GRAMMAR_A29` “Please call me back.” → She asked me to call her back.
+- `GRAMMAR_A29` asked + personne + to + verbe
+- `GRAMMAR_A29` “Don't be late.” → He told me not to be late.
+- `GRAMMAR_A29` told + personne + not to + verbe
+- `GRAMMAR_A29` “Hold on, please.” → She asked me to hold on.
+- `GRAMMAR_A29` demande polie : asked
+- `GRAMMAR_A29` “Send the report.” → The manager told me to send the report.
+- `GRAMMAR_A29` « Envoie le rapport. » → Le responsable m'a dit d'envoyer le rapport.
+- `GRAMMAR_A29` ordre : told
+- `GRAMMAR_A29` He asked me to speak more slowly.
+- `GRAMMAR_A29` Mum told us not to call after ten.
+- `GRAMMAR_A29` asked + personne + to + verbe.
+- `GRAMMAR_A29` told me not to + verbe.
+- `GRAMMAR_A29` The manager told me ___ the report.
+- `GRAMMAR_A29` told + personne + to.
+- `GRAMMAR_A29` “Are you free?” → He asked if I was free.
+- `GRAMMAR_A29` question oui/non : asked if / whether
+- `GRAMMAR_A29` “Where do you live?” → She asked where I lived.
+- `GRAMMAR_A29` mot interrogatif + ordre normal
+- `GRAMMAR_A29` “What time is it?” → He asked what time it was.
+- `GRAMMAR_A29` pas d'inversion : what time it was
+- `GRAMMAR_A29` “Can you hear me?” → She asked if I could hear her.
+- `GRAMMAR_A29` He asked me if I was at home.
+- `GRAMMAR_A29` She asked who was calling.
+- `GRAMMAR_A29` “Are you busy?” → She asked ___ I was busy.
+- `GRAMMAR_A29` “Where do you work?” → He asked where I ___.
+- `GRAMMAR_A29` “What is your name?” → She asked what my name ___.
+- `GRAMMAR_A29` is → was, sans inversion.
+- `GRAMMAR_A29` Faire un compte rendu d'appel
+- `GRAMMAR_A29` Anna called. She said she was ill.
+- `GRAMMAR_A29` She asked you to call her back.
+- `GRAMMAR_A29` asked + to
+- `GRAMMAR_A29` She wanted to know if you were free.
+- `GRAMMAR_A29` wanted to know if
+- `GRAMMAR_A29` She promised she would send the report.
+- `GRAMMAR_A29` Elle a promis qu'elle enverrait le rapport.
+- `GRAMMAR_A29` promised + would
+- `GRAMMAR_A29` Tom called and said that he would be late.
+- `GRAMMAR_A29` The client asked if we could meet on Friday.
+- `LISTENING_A29` Answering the phone
+- `LISTENING_A29` Hello, Green Office, Anna speaking. How can I help you? Yes, of course, I'll put you through to Mr Brown. Hold the line, please. I'm sorry, the line is engaged. Would you like to leave a message?
+- `LISTENING_A29` Who is speaking?
+- `LISTENING_A29` Anna speaking.
+- `LISTENING_A29` What does Anna offer?
+- `LISTENING_A29` To hang up
+- `LISTENING_A29` To take a message
+- `LISTENING_A29` To call later
+- `LISTENING_A29` A wrong number
+- `LISTENING_A29` Hello? Is that Peter? No, I'm sorry, you have the wrong number. Oh, I'm sorry. What number is this? It's five five five, oh one eight nine. Oh, I dialled the wrong number. Sorry to disturb you. No problem. Goodbye. ⚠ mot répété
+- `LISTENING_A29` What does the man want?
+- `LISTENING_A29` To speak to Peter
+- `LISTENING_A29` To order food
+- `LISTENING_A29` To buy a flat
+- `LISTENING_A29` He wants Peter.
+- `LISTENING_A29` What happens?
+- `LISTENING_A29` He is cut off
+- `LISTENING_A29` The line is bad
+- `LISTENING_A29` He has the wrong number
+- `LISTENING_A29` He dialled the wrong number.
+- `LISTENING_A29` Leaving a message
+- `LISTENING_A29` Hello, this is Tom. I'm calling for Anna. Could you tell her that I can't come tomorrow? And please ask her to call me back on my mobile. It's zero seven, nine one one, two three. Thank you very much. ⚠ mot répété
+- `LISTENING_A29` Who is Tom calling for?
+- `LISTENING_A29` For Anna.
+- `LISTENING_A29` What does he ask?
+- `LISTENING_A29` For her to call him back
+- `LISTENING_A29` For her to come tomorrow
+- `LISTENING_A29` For her to send an email
+- `LISTENING_A29` To call him back.
+- `LISTENING_A29` Reported message
+- `LISTENING_A29` Anna, Tom called. He said he couldn't come tomorrow because he had a doctor's appointment. He asked if you could move the meeting to eleven. He also asked you to call him back on his mobile.
+- `LISTENING_A29` Why couldn't Tom come?
+- `LISTENING_A29` He was on holiday
+- `LISTENING_A29` He had a doctor's appointment
+- `LISTENING_A29` He was late
+- `LISTENING_A29` Doctor's appointment.
+- `LISTENING_A29` What did he ask Anna to do?
+- `LISTENING_A29` Call him back
+- `LISTENING_A29` Come to his house
+- `LISTENING_A29` Send a text
+- `LISTENING_A29` Call him back.
+- `LISTENING_A29` A bad line
+- `LISTENING_A29` Hello? Hello? I can't hear you. The line is terrible. Could you speak up, please? Is that better? Yes, a little. Let me call you back on the landline. OK, I'll hang up now. Talk to you in a minute.
+- `LISTENING_A29` What is the problem?
+- `LISTENING_A29` The number is wrong
+- `LISTENING_A29` The phone is off
+- `LISTENING_A29` The line is terrible.
+- `LISTENING_A29` What will they do?
+- `LISTENING_A29` Send a message
+- `LISTENING_A29` Call back on the landline
+- `LISTENING_A29` Meet at the office
+- `LISTENING_A29` Call back on the landline.
+- `LISTENING_A29` Making an appointment
+- `LISTENING_A29` Good morning, Dr Evans' surgery. I'd like to make an appointment for next week, please. Certainly. Is Tuesday at ten all right? I'm afraid I'm busy on Tuesday morning. Could we say Wednesday at four? Yes, that's fine. See you on Wednesday!
+- `LISTENING_A29` Why is Tuesday not possible?
+- `LISTENING_A29` The caller is busy
+- `LISTENING_A29` The doctor is ill
+- `LISTENING_A29` It is a holiday
+- `LISTENING_A29` The caller is busy on Tuesday morning.
+- `LISTENING_A29` When is the appointment?
+- `LISTENING_A29` Friday at four
+- `LISTENING_A29` Tuesday at ten
+- `LISTENING_A29` Wednesday at four
+- `LISTENING_A29` Wednesday at four.
+- `LISTENING_A29` Asking someone to call back
+- `LISTENING_A29` Hello, is Mr Brown there? I'm afraid he's out of the office until Thursday. Can I take a message? Yes, please ask him to call me back. It's about the order. Of course. Can I have your name and number, please?
+- `LISTENING_A29` When is Mr Brown back?
+- `LISTENING_A29` On Monday
+- `LISTENING_A29` On Thursday
+- `LISTENING_A29` Today at noon
+- `LISTENING_A29` Until Thursday.
+- `LISTENING_A29` What is the call about?
+- `LISTENING_A29` A holiday
+- `LISTENING_A29` A meeting
+- `LISTENING_A29` It's about the order.
+- `LISTENING_A29` What did she say?
+- `LISTENING_A29` What did Maria say on the phone? She said she was at the airport and that her flight was late. She asked me to wait for her at home. She promised she would call me again when she landed.
+- `LISTENING_A29` Where was Maria?
+- `LISTENING_A29` At the airport
+- `LISTENING_A29` At the office
+- `LISTENING_A29` At the airport.
+- `LISTENING_A29` What did she promise?
+- `LISTENING_A29` To call again when she landed
+- `LISTENING_A29` To send a text
+- `LISTENING_A29` To take a taxi
+- `LISTENING_A29` She would call again.
+- `LISTENING_A29` A job call
+- `LISTENING_A29` Good afternoon, this is Ms Evans from Blue Sky. You applied for the job in our shop. We would like to invite you for an interview on Friday at nine. Please bring your CV. If you can't come, please call us back before Thursday. Goodbye.
+- `LISTENING_A29` Who is calling?
+- `LISTENING_A29` Ms Evans from Blue Sky
+- `LISTENING_A29` Ms Evans.
+- `LISTENING_A29` What should the person bring?
+- `LISTENING_A29` A passport
+- `LISTENING_A29` Their CV.
+- `LISTENING_A29` Video call with family
+- `LISTENING_A29` Hi Grandma! Can you hear me? Yes, I can see you too. You look great! Thank you, dear. How are you? I'm fine, I miss you a lot. I'll visit you next month. Oh, that's wonderful! Keep in touch, and give my love to everyone.
+- `LISTENING_A29` Who is speaking with Grandma?
+- `LISTENING_A29` Her grandchild
+- `LISTENING_A29` Her neighbour
+- `LISTENING_A29` Her doctor
+- `LISTENING_A29` Her grandchild.
+- `LISTENING_A29` When will the grandchild visit?
+- `LISTENING_A29` Next year
+- `LISTENING_A29` Next month
+- `LISTENING_A29` Next month.
+- `MISSIONS_A29` Que dit-on ? ⚠ espacement/ponctuation
+- `MISSIONS_A29` Reculer le temps
+- `MISSIONS_A29` Choisis le bon verbe.
+- `MISSIONS_A29` Construis la phrase
+- `MISSIONS_A29` Remets les mots dans l'ordre.
+- `MISSIONS_A29` Say, tell ou ask ? ⚠ espacement/ponctuation
+- `MISSIONS_A29` Demain devient « le lendemain »
+- `MISSIONS_A29` Compose ta phrase avec la fiche.
+- `READING_A29` A phone message
+- `READING_A29` Hi Anna, it's Tom. I'm calling about the meeting tomorrow. I'm afraid I can't come at ten, because I have a doctor's appointment. Could we move it to eleven? Please call me back on my mobile. Thanks, bye!
+- `READING_A29` Why can't Tom come at ten?
+- `READING_A29` He is on holiday
+- `READING_A29` He has a doctor's appointment
+- `READING_A29` He is ill at home
+- `READING_A29` He has a doctor's appointment.
+- `READING_A29` To move the meeting to eleven
+- `READING_A29` To cancel the meeting
+- `READING_A29` To come at nine
+- `READING_A29` To move it to eleven.
+- `READING_A29` How can Anna reach him?
+- `READING_A29` On his mobile
+- `READING_A29` On his mobile.
+- `READING_A29` At reception
+- `READING_A29` Good morning, Green Office. How can I help you? — Hello, could I speak to Mr Brown, please? — I'm sorry, he's in a meeting. Can I take a message? — Yes, please. Tell him that Mrs Clark called, and ask him to call me back before noon. My number is oh seven, five five, one two three. — Of course. I'll tell him. ⚠ mot répété
+- `READING_A29` Where is Mr Brown?
+- `READING_A29` In a meeting
+- `READING_A29` On holiday
+- `READING_A29` He's in a meeting.
+- `READING_A29` What does Mrs Clark want?
+- `READING_A29` To cancel her order
+- `READING_A29` To make an appointment
+- `READING_A29` Mr Brown to call her back before noon
+- `READING_A29` Call back before noon.
+- `READING_A29` What does the receptionist do?
+- `READING_A29` Takes a message
+- `READING_A29` Puts her through
+- `READING_A29` She takes a message.
+- `READING_A29` Dear Mr Brown, Mrs Clark called at ten. She said that she was calling about the order. She told me that the package hadn't arrived. She asked you to call her back before noon, and she said it was urgent. Best wishes, Lisa (reception).
+- `READING_A29` What did Mrs Clark say about the package?
+- `READING_A29` It hadn't arrived
+- `READING_A29` It was broken
+- `READING_A29` It was late for a day
+- `READING_A29` It hadn't arrived.
+- `READING_A29` What did she ask Mr Brown to do?
+- `READING_A29` Come to her office
+- `READING_A29` Send a new package
+- `READING_A29` Call her back before noon
+- `READING_A29` Call her back.
+- `READING_A29` Who wrote the note?
+- `READING_A29` Mrs Clark
+- `READING_A29` Lisa, at reception
+- `READING_A29` Lisa from reception.
+- `READING_A29` Last night, the phone rang at eleven o'clock. A man said, “Hello, is Peter there?” I said that he had the wrong number. He asked me if this was 555-0189. I told him that it wasn't. He said sorry and hung up. I couldn't sleep after that!
+- `READING_A29` When did the phone ring?
+- `READING_A29` At seven in the morning
+- `READING_A29` At eleven at night
+- `READING_A29` At eleven o'clock.
+- `READING_A29` What did the man want?
+- `READING_A29` To sell something
+- `READING_A29` To order a pizza
+- `READING_A29` To speak to Peter.
+- `READING_A29` What did the writer say?
+- `READING_A29` That he had the wrong number
+- `READING_A29` That Peter was at home
+- `READING_A29` That it was too late
+- `READING_A29` He had the wrong number.
+- `READING_A29` Grandma's call
+- `READING_A29` My grandma called me yesterday. She said that she missed me and that she was going to visit us the following week. She asked if I was happy at school. I told her that I loved it. She promised she would bring a cake for my birthday. I can't wait!
+- `READING_A29` When is Grandma going to visit?
+- `READING_A29` The following week
+- `READING_A29` The following week.
+- `READING_A29` What did she ask?
+- `READING_A29` If the writer was ill
+- `READING_A29` If the writer was happy at school
+- `READING_A29` If the writer was hungry
+- `READING_A29` If he was happy at school.
+- `READING_A29` To bring a cake
+- `READING_A29` To send a letter
+- `READING_A29` To call again that day
+- `READING_A29` She promised a cake.
+- `READING_A29` I called my brother in Canada. The line was terrible. He said, “I can't hear you!” and I said that I would call back. Then we were cut off. I tried again, but his phone was out of battery. Finally, he texted me: “Sorry, my battery died. Call me tomorrow!”
+- `READING_A29` What was wrong with the line?
+- `READING_A29` It was too loud
+- `READING_A29` It was terrible
+- `READING_A29` It was engaged
+- `READING_A29` The line was terrible.
+- `READING_A29` Why couldn't the writer call again?
+- `READING_A29` His brother's phone was out of battery
+- `READING_A29` He had no money
+- `READING_A29` It was too late
+- `READING_A29` What did the brother text?
+- `READING_A29` I'm at work
+- `READING_A29` Don't call me
+- `READING_A29` Call me tomorrow
+- `READING_A29` Call me tomorrow.
+- `READING_A29` Job interview call
+- `READING_A29` Yesterday, the HR manager called me. She said that she liked my CV and that she wanted to meet me. She asked if I was free on Thursday. I told her that I could come at two o'clock. She said that the interview would last forty minutes and that I should bring my passport.
+- `READING_A29` What did the HR manager like?
+- `READING_A29` The phone
+- `READING_A29` The office
+- `READING_A29` She liked my CV.
+- `READING_A29` When can the writer come?
+- `READING_A29` On Thursday at two
+- `READING_A29` On Friday at ten
+- `READING_A29` On Monday at noon
+- `READING_A29` Thursday at two.
+- `READING_A29` How long will the interview last?
+- `READING_A29` Fourteen minutes
+- `READING_A29` Four hours
+- `READING_A29` Forty minutes
+- `READING_A29` Forty minutes.
+- `READING_A29` Phone etiquette
+- `READING_A29` Here are some tips for calling at work. Say your name first: “Hello, this is Sam.” Speak slowly and clearly. If the line is bad, ask the person to repeat. Don't hang up before the other person says goodbye. At the end, say thank you and repeat the important information.
+- `READING_A29` What should you say first?
+- `READING_A29` Your name
+- `READING_A29` The problem
+- `READING_A29` Your name first.
+- `READING_A29` What should you do if the line is bad?
+- `READING_A29` Ask the person to repeat
+- `READING_A29` Ask to repeat.
+- `READING_A29` What should you repeat at the end?
+- `READING_A29` The important information
+- `READING_A29` The date of the call
+- `READING_A29` The important information.
+- `READING_A29` You have reached the voicemail of Julia Smith. I'm not available at the moment. Please leave your name, your number and a short message after the tone, and I will call you back as soon as possible. If it is urgent, please call my colleague on extension two-one-four. Thank you.
+- `READING_A29` What should you leave?
+- `READING_A29` Your name, number and a short message
+- `READING_A29` Only your name
+- `READING_A29` Name, number, message.
+- `READING_A29` What will Julia do?
+- `READING_A29` Come to your house
+- `READING_A29` Send an email
+- `READING_A29` Call you back
+- `READING_A29` She will call you back.
+- `READING_A29` Who can you call if it is urgent?
+- `READING_A29` Her manager
+- `READING_A29` Her colleague
+- `READING_A29` The police
+- `READING_A29` Her colleague.
+- `READING_A29` A group chat
+- `READING_A29` Mia wrote in the group chat: “I'll be late tonight.” Then Tom wrote that he couldn't come because he was ill. Lucy asked if we could meet on Saturday instead. Everybody said that Saturday was fine. So tonight's dinner is cancelled, and we will meet on Saturday at seven.
+- `READING_A29` He was ill
+- `READING_A29` He was busy
+- `READING_A29` He was ill.
+- `READING_A29` What did Lucy ask?
+- `READING_A29` If it was late
+- `READING_A29` If they could cancel everything
+- `READING_A29` If they could meet on Saturday
+- `READING_A29` If they could meet on Saturday.
+- `READING_A29` When will they meet now?
+- `READING_A29` Saturday at seven
+- `READING_A29` Tonight at seven
+- `READING_A29` Sunday at eight
+- `READING_A29` Saturday at seven.
+- `TEST_AUDIOS_A29` What does she offer?
+- `TEST_AUDIOS_A29` Hello? Is that Peter? No, I'm sorry, you have the wrong number. Oh, I'm sorry. What number is this? It's five five five, oh one eight nine. Oh, I dialled the wrong number. Sorry to disturb you. ⚠ mot répété
+- `TEST_AUDIOS_A29` Who does the man want?
+- `TEST_AUDIOS_A29` He is late
+- `TEST_AUDIOS_A29` Hello, this is Tom. I'm calling for Anna. Could you tell her that I can't come tomorrow? And please ask her to call me back on my mobile. Thank you very much.
+- `TEST_AUDIOS_A29` What does Tom ask?
+- `TEST_AUDIOS_A29` For Anna to come
+- `TEST_AUDIOS_A29` For Anna to call him back
+- `TEST_AUDIOS_A29` For a meeting
+- `TEST_AUDIOS_A29` Anna, Tom called. He said he couldn't come tomorrow because he had a doctor's appointment. He asked if you could move the meeting to eleven. He also asked you to call him back.
+- `TEST_AUDIOS_A29` He was tired
+- `TEST_AUDIOS_A29` What did he ask?
+- `TEST_AUDIOS_A29` If the meeting was cancelled
+- `TEST_AUDIOS_A29` If the meeting could be at eleven
+- `TEST_AUDIOS_A29` If she was ill
+- `TEST_AUDIOS_A29` Hello? Hello? I can't hear you. The line is terrible. Could you speak up, please? Is that better? Yes, a little. Let me call you back on the landline.
+- `TEST_AUDIOS_A29` What is wrong?
+- `TEST_AUDIOS_A29` The line is terrible
+- `TEST_AUDIOS_A29` Good morning, Dr Evans' surgery. I'd like to make an appointment for next week, please. Certainly. Is Tuesday at ten all right? I'm afraid I'm busy on Tuesday morning. Could we say Wednesday at four? Yes, that's fine.
+- `TEST_AUDIOS_A29` What does the caller want?
+- `TEST_AUDIOS_A29` A prescription
+- `TEST_AUDIOS_A29` An appointment
+- `TEST_AUDIOS_A29` Some advice
+- `TEST_AUDIOS_A29` To come to the airport
+- `TEST_AUDIOS_A29` To wait at home
+- `TEST_AUDIOS_A29` To call a taxi
+- `TEST_GRAMMAR_A29` She ___ me she would call.
+- `TEST_GRAMMAR_A29` “Hang up” means ___.
+- `TEST_GRAMMAR_A29` “Voicemail” means ___.
+- `TEST_GRAMMAR_A29` “Wrong number” means ___.
+- `TEST_GRAMMAR_A29` “Appointment” means ___.
+- `TEST_TEXTS_A29` Hi Anna, it's Tom. I'm calling about the meeting tomorrow. I'm afraid I can't come at ten, because I have a doctor's appointment. Could we move it to eleven? Please call me back on my mobile.
+- `TEST_TEXTS_A29` By letter
+- `TEST_TEXTS_A29` Good morning, Green Office. How can I help you? — Could I speak to Mr Brown, please? — I'm sorry, he's in a meeting. Can I take a message? — Yes, please. Tell him that Mrs Clark called, and ask him to call me back before noon.
+- `TEST_TEXTS_A29` What does the receptionist offer?
+- `TEST_TEXTS_A29` To call back
+- `TEST_TEXTS_A29` To put her through
+- `TEST_TEXTS_A29` When should Mr Brown call back?
+- `TEST_TEXTS_A29` After lunch
+- `TEST_TEXTS_A29` Before noon
+- `TEST_TEXTS_A29` Dear Mr Brown, Mrs Clark called at ten. She said that she was calling about the order. She told me that the package hadn't arrived. She asked you to call her back before noon, and she said it was urgent.
+- `TEST_TEXTS_A29` How important was the call?
+- `TEST_TEXTS_A29` Not important
+- `TEST_TEXTS_A29` Last night, the phone rang at eleven o'clock. A man said, “Hello, is Peter there?” I said that he had the wrong number. He said sorry and hung up. I couldn't sleep after that!
+- `TEST_TEXTS_A29` My grandma called me yesterday. She said that she missed me and that she was going to visit us the following week. She asked if I was happy at school. She promised she would bring a cake for my birthday.
+- `TEST_TEXTS_A29` To call again
+- `TEST_TEXTS_A29` I called my brother in Canada. The line was terrible. He said, “I can't hear you!” and I said that I would call back. Then we were cut off. I tried again, but his phone was out of battery.
+- `TEST_TEXTS_A29` What happened then?
+- `TEST_TEXTS_A29` They talked for an hour
+- `TEST_TEXTS_A29` They were cut off
+- `TEST_TEXTS_A29` He hung up angrily
+- `TEST_TEXTS_A29` The phone was out of battery
+- `TEST_TEXTS_A29` There was no money
+- `TEST_TEXTS_A29` Yesterday, the HR manager called me. She said that she liked my CV and that she wanted to meet me. She asked if I was free on Thursday. I told her that I could come at two o'clock.
+- `TEST_TEXTS_A29` What did the manager like?
+- `TEST_TEXTS_A29` If the writer was free on Thursday
+- `TEST_TEXTS_A29` If the writer had a car
+- `TEST_TEXTS_A29` At ten o'clock
+- `TEST_TEXTS_A29` At two o'clock
+- `TEST_TEXTS_A29` You have reached the voicemail of Julia Smith. I'm not available at the moment. Please leave your name, your number and a short message after the tone, and I will call you back as soon as possible.
+- `TEST_TEXTS_A29` Where did the caller get through?
+- `TEST_TEXTS_A29` To a shop
+- `TEST_TEXTS_A29` To a voicemail
+- `TEST_TEXTS_A29` To a doctor
+- `TEST_TEXTS_A29` Visit you
+- `TEST_TEXTS_A29` Send a letter
+- `VOCAB_A29` Hello, this is Tom. Could I speak to Anna, please?
+- `VOCAB_A29` Hold on, please. I'll put you through.
+- `VOCAB_A29` Ne quittez pas. Je vous passe la personne.
+- `VOCAB_A29` My phone number is zero six, twelve, thirty-four.
+- `VOCAB_A29` I need my charger. My battery is low.
+- `VOCAB_A29` J'ai besoin de mon chargeur. Ma batterie est faible.
+- `VOCAB_A29` “Charger” veut dire…
+- `VOCAB_A29` Les actions de l'appel
+- `VOCAB_A29` appeler / appel
+- `VOCAB_A29` put through
+- `VOCAB_A29` passer (la communication)
+- `VOCAB_A29` parler plus fort
+- `VOCAB_A29` The phone is ringing. Can you pick up?
+- `VOCAB_A29` I'll call you back in ten minutes.
+- `VOCAB_A29` Je te rappelle dans dix minutes.
+- `VOCAB_A29` “Hang up” veut dire…
+- `VOCAB_A29` hold the line
+- `VOCAB_A29` ne quittez pas
+- `VOCAB_A29` engaged / busy
+- `VOCAB_A29` out of the office
+- `VOCAB_A29` absent du bureau
+- `VOCAB_A29` Who's calling?
+- `VOCAB_A29` Hold the line, please. I'll check.
+- `VOCAB_A29` I'm sorry, he's out of the office today.
+- `VOCAB_A29` “Wrong number” veut dire…
+- `VOCAB_A29` I'd like to make an appointment for Monday.
+- `VOCAB_A29` Je voudrais prendre rendez-vous pour lundi.
+- `VOCAB_A29` The manager is in a meeting.
+- `VOCAB_A29` “Deadline” veut dire…
+- `VOCAB_A29` leave a message
+- `VOCAB_A29` laisser un message
+- `VOCAB_A29` take a message
+- `VOCAB_A29` prendre un message
+- `VOCAB_A29` text message
+- `VOCAB_A29` noter / note
+- `VOCAB_A29` On dit “leave a message” (laisser) et “take a message” (prendre). “Can I take a message?” = Puis-je prendre un message ? “Text” est aussi un verbe : “I'll text you.” ⚠ espacement/ponctuation
+- `VOCAB_A29` Can I leave a message for Mr Brown?
+- `VOCAB_A29` Puis-je laisser un message pour M. Brown ? ⚠ espacement/ponctuation
+- `VOCAB_A29` Please ask her to call me back. It's urgent.
+- `VOCAB_A29` “Take a message” veut dire…
+- `VOCAB_A29` envoyer un SMS
+- `VOCAB_A29` mauvaise ligne
+- `VOCAB_A29` no signal
+- `VOCAB_A29` can't hear
+- `VOCAB_A29` n'entends pas
+- `VOCAB_A29` out of battery
+- `VOCAB_A29` couper le son
+- `VOCAB_A29` faible / calme
+- `VOCAB_A29` Sorry, it's a bad line. Could you repeat that?
+- `VOCAB_A29` I have no signal in the lift.
+- `VOCAB_A29` “No signal” veut dire…
+- `VOCAB_A29` batterie vide
+- `VOCAB_A29` Les verbes pour rapporter
+- `VOCAB_A29` “Say” : pas d'objet direct (“He said that…”). “Tell” : toujours une personne (“He told me that…”). On ne dit jamais “He said me”.
+- `VOCAB_A29` She said that she was tired.
+- `VOCAB_A29` He told me that he would call.
+- `VOCAB_A29` Il m'a dit qu'il appellerait.
+- `VOCAB_A29` “Promise” veut dire…
+- `VOCAB_A29` la veille
+- `VOCAB_A29` le lendemain
+- `VOCAB_A29` ce / cela
+- `VOCAB_A29` the week before
+- `VOCAB_A29` la semaine d'avant
+- `VOCAB_A29` la semaine suivante
+- `VOCAB_A29` plus tard
+- `VOCAB_A29` “I'm busy now.” → She said she was busy then.
+- `VOCAB_A29` “The next day” veut dire…
+- `VOCAB_A29` Prendre des nouvelles
+- `VOCAB_A29` rendre visite
+- `VOCAB_A29` video call
+- `VOCAB_A29` hear from
+- `VOCAB_A29` avoir des nouvelles de
+- `VOCAB_A29` keep in touch
+- `VOCAB_A29` rester en contact
+- `VOCAB_A29` I miss you! Call me soon.
+- `VOCAB_A29` It was great to hear from you.
+- `VOCAB_A29` “Keep in touch” veut dire…
 
 ## dialogues
 
@@ -6245,6 +6946,29 @@
 - `dialogues.A2.8.turns.npc` You're welcome. Have a nice day!
 - `dialogues.A2.8.turns.model` You too, goodbye!
 - `dialogues.A2.8.turns.hint` Dis au revoir.
+- `dialogues.A2.9.title` Un appel au bureau
+- `dialogues.A2.9.turns.npc` Good morning, Green Office. How can I help you?
+- `dialogues.A2.9.turns.model` Hello, this is Sam. Could I speak to Mr Brown, please?
+- `dialogues.A2.9.turns.npc` I'm sorry, Mr Brown is in a meeting. Would you like to leave a message?
+- `dialogues.A2.9.turns.model` Yes, please. Could you ask him to call me back?
+- `dialogues.A2.9.turns.hint` Accepte et demande qu'il te rappelle.
+- `dialogues.A2.9.turns.npc` Of course. Can I have your number, please?
+- `dialogues.A2.9.turns.model` My number is zero seven, nine one one, two three. ⚠ mot répété
+- `dialogues.A2.9.turns.npc` Thank you. I'll give him your message. Goodbye!
+- `dialogues.A2.9.turns.model` Thank you very much, goodbye!
+- `dialogues.A2.9.turns.hint` Remercie et dis au revoir.
+- `dialogues.A2.9.turns.npc` Did your sister call? What did she say?
+- `dialogues.A2.9.turns.model` Yes, she said that she was at the airport.
+- `dialogues.A2.9.turns.hint` Utilise « She said that… ».
+- `dialogues.A2.9.turns.npc` Oh, really? Is her flight on time?
+- `dialogues.A2.9.turns.model` No, she told me that it was late.
+- `dialogues.A2.9.turns.hint` Utilise « She told me that… ».
+- `dialogues.A2.9.turns.npc` And what did she ask you to do?
+- `dialogues.A2.9.turns.model` She asked me to wait for her at home.
+- `dialogues.A2.9.turns.hint` Utilise « She asked me to… ».
+- `dialogues.A2.9.turns.npc` Did she say when she would arrive?
+- `dialogues.A2.9.turns.model` She promised she would call again when she landed.
+- `dialogues.A2.9.turns.hint` Utilise would.
 
 ## situations
 
@@ -6327,8 +7051,16 @@
 - `situations.A2.8.cue` Say there are no shops in your street.
 - `situations.A2.8.hint` Utilise « There aren't any… ».
 - `situations.A2.8.model` There aren't any shops in my street.
+- `situations.A2.9.cue` Ask politely to speak to Anna.
+- `situations.A2.9.hint` Utilise « Could I speak to… ? ». ⚠ espacement/ponctuation
+- `situations.A2.9.model` Could I speak to Anna, please?
+- `situations.A2.9.cue` Say what your friend said: « I am ill ».
+- `situations.A2.9.model` She said that she was ill.
+- `situations.A2.9.cue` Say what she asked you to do.
+- `situations.A2.9.hint` Utilise « She asked me to… ».
+- `situations.A2.9.model` She asked me to call her back.
 
-## Alertes automatiques (149)
+## Alertes automatiques (170)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.qs : « You → Have you got… ? » → espacement/ponctuation
@@ -6476,6 +7208,27 @@
 - ⚠ A2.8 READING_A28.qs : « Flat A is bigger. » → « a » devant voyelle
 - ⚠ A2.8 TEST_TEXTS_A28.text : « Flat A is bigger than Flat B, and it has a balcony. But Flat A is more expensive: it is eight hundred euros, a » → « a » devant voyelle
 - ⚠ A2.8 VOCAB_A28.examples : « Comment est ton quartier ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.qs : « Could I… ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.qs : « Would you like to… ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.qs : « Can you… ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.title : « Say ou tell ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.qs : « Anna peut-elle parler ? » → espacement/ponctuation
+- ⚠ A2.9 EXERCISES_A29.qs : « Puis-je laisser un message ? » → espacement/ponctuation
+- ⚠ A2.9 GRAMMAR_A29.table : « Pouvez-vous patienter un instant ? » → espacement/ponctuation
+- ⚠ A2.9 GRAMMAR_A29.table : « Can you… ? : plus direct » → espacement/ponctuation
+- ⚠ A2.9 GRAMMAR_A29.table : « Souhaitez-vous laisser un message ? » → espacement/ponctuation
+- ⚠ A2.9 GRAMMAR_A29.examples : « Pourrais-je laisser un message pour M. Brown ? » → espacement/ponctuation
+- ⚠ A2.9 GRAMMAR_A29.qs : « Demande polie : Could I… ? » → espacement/ponctuation
+- ⚠ A2.9 LISTENING_A29.text : « Hello? Is that Peter? No, I'm sorry, you have the wrong number. Oh, I'm sorry. What number is this? It's five  » → mot répété
+- ⚠ A2.9 LISTENING_A29.text : « Hello, this is Tom. I'm calling for Anna. Could you tell her that I can't come tomorrow? And please ask her to » → mot répété
+- ⚠ A2.9 MISSIONS_A29.title : « Que dit-on ? » → espacement/ponctuation
+- ⚠ A2.9 MISSIONS_A29.title : « Say, tell ou ask ? » → espacement/ponctuation
+- ⚠ A2.9 READING_A29.text : « Good morning, Green Office. How can I help you? — Hello, could I speak to Mr Brown, please? — I'm sorry, he's  » → mot répété
+- ⚠ A2.9 TEST_AUDIOS_A29.script : « Hello? Is that Peter? No, I'm sorry, you have the wrong number. Oh, I'm sorry. What number is this? It's five  » → mot répété
+- ⚠ A2.9 VOCAB_A29.tip : « On dit “leave a message” (laisser) et “take a message” (prendre). “Can I take a message?” = Puis-je prendre un » → espacement/ponctuation
+- ⚠ A2.9 VOCAB_A29.examples : « Puis-je laisser un message pour M. Brown ? » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation
 - ⚠ dialogues.A2.7.title  : « Que fait-on s'il pleut ? » → espacement/ponctuation
 - ⚠ dialogues.A2.8.turns.hint  : « Demande s'il y a un ascenseur ou le prix du loyer. » → « a » devant voyelle
+- ⚠ dialogues.A2.9.turns.model  : « My number is zero seven, nine one one, two three. » → mot répété
+- ⚠ situations.A2.9.hint  : « Utilise « Could I speak to… ? ». » → espacement/ponctuation

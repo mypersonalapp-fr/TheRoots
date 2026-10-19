@@ -134,3 +134,8 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - lesson/ (scènes de vocabulaire) : scene-a28-rooms, scene-a28-furniture, scene-a28-kitchen, scene-a28-district, scene-a28-shops, scene-a28-prepos, scene-a28-adjectives, scene-a28-rent, scene-a28-neighbours
 - city/ : a28-m1 … a28-m6
 - lesson/ « Décris l'image » : describe-a28-living (salon lumineux : canapé près de la fenêtre, lampe derrière, fille qui lit sur le tapis, chat sous la table, plantes), describe-a28-street (rue de quartier : boulangerie à côté de la pharmacie, arrêt de bus en face du parc, enfants qui vont à l'école, peu de circulation)
+
+## A2.9 « On the Phone » — 17 images (leçon construite le 19/10, images à fournir en fin de parcours)
+- lesson/ (scènes de vocabulaire) : scene-a29-devices, scene-a29-actions, scene-a29-phrases, scene-a29-office, scene-a29-message, scene-a29-problems, scene-a29-verbs, scene-a29-time, scene-a29-family
+- city/ : a29-m1 … a29-m6
+- lesson/ « Décris l'image » : describe-a29-office (homme au téléphone à son bureau, agenda ouvert à côté de l'ordinateur, collègue qui écrit une note derrière lui, sans texte lisible), describe-a29-park (garçon assis sur un banc au parc qui téléphone, cartable, air inquiet, chien qui dort près du banc)

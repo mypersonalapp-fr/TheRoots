@@ -382,6 +382,29 @@ const A2 = {
       "La cuisine n'est pas assez grande. ¦ The kitchen isn't big enough. ¦ kitchen & enough & not/n t",
       "Ce quartier est plus calme que le centre-ville. ¦ This area is quieter than the city centre. ¦ quieter/more quiet & than & centre/center",
       "Nous déménageons le mois prochain. ¦ We are moving house next month. ¦ moving/move & next month"]))],
+  9: [PAIR(
+    PART("fr", "Message, appel et messagerie", [
+      "Hello, this is Tom. Could I speak to Anna, please? ¦ Bonjour, c'est Tom. Pourrais-je parler à Anna, s'il vous plaît ? ¦ tom & parler & anna",
+      "I'm sorry, she's in a meeting. Can I take a message? ¦ Je suis désolé, elle est en réunion. Puis-je prendre un message ? ¦ reunion & message",
+      "Please ask him to call me back before noon. ¦ Demandez-lui de me rappeler avant midi. ¦ rappeler & avant & midi",
+      "Sorry, wrong number. ¦ Désolé, faux numéro. ¦ faux & numero",
+      "Hold the line, please. I'll put you through. ¦ Ne quittez pas. Je vous passe la personne. ¦ quittez/patient/attend & passe",
+      "I can't hear you. The line is terrible. ¦ Je ne vous entends pas. La ligne est mauvaise. ¦ entends & ligne",
+      "She said that she was busy. ¦ Elle a dit qu'elle était occupée. ¦ dit & occupee",
+      "He told me that he would call back. ¦ Il m'a dit qu'il rappellerait. ¦ dit & rappell",
+      "She asked me to call her back. ¦ Elle m'a demandé de la rappeler. ¦ demande & rappel",
+      "He asked if I was free on Saturday. ¦ Il a demandé si j'étais libre samedi. ¦ demande & libre & samedi"]),
+    PART("en", "Appels et comptes rendus", [
+      "Bonjour, c'est Anna à l'appareil. ¦ Hello, this is Anna speaking. ¦ hello/hi & anna & speaking/this is",
+      "Pourrais-je laisser un message ? ¦ Could I leave a message? ¦ leave & message",
+      "Elle a dit qu'elle était malade. ¦ She said that she was ill. ¦ said & was & ill/sick",
+      "Il a dit qu'il viendrait demain. ¦ He said he would come the next day. ¦ said & would & next day/following day/tomorrow",
+      "Elle m'a demandé de patienter. ¦ She asked me to hold on. ¦ asked & hold on/wait",
+      "Il m'a dit de ne pas raccrocher. ¦ He told me not to hang up. ¦ told & not & hang up",
+      "Elle a demandé où j'habitais. ¦ She asked where I lived. ¦ asked & where & lived",
+      "Je n'ai pas de réseau ici. ¦ I have no signal here. ¦ signal & no/don t/not/n t",
+      "Ma batterie est vide, je te rappelle. ¦ My battery is dead, I'll call you back. ¦ battery & call & back",
+      "Il a promis qu'il enverrait le rapport. ¦ He promised he would send the report. ¦ promised & would & report"]))],
 };
 
 export const TRADUCTION_A1 = A1;
