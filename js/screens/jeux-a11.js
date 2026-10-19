@@ -48,7 +48,7 @@ export function createGames(ctx) {
     setScreen("games");
     const tiles = LIST.map((g, i) => { const off = !g.need(); const d = G[g.id]; return `<button type="button" class="lc-tile ${off ? "lc-tile-off" : ""}" data-g="${g.id}" style="--c:${g.c}">
       <span class="lc-tn">${i + 1}</span><span class="lc-tic"><span class="lc-ph-ic">${g.em}</span></span><b>${esc(g.t)}</b><small>${esc(off ? "Pas Assez De Mots" : g.s)}</small>${d && d.done ? `<span class="lc-tdone">✓</span>` : ""}</button>`; }).join("");
-    frame(HEAD, null, `<section class="lc-mosaic jx-hub">${tiles}</section>`);
+    frame(HEAD, null, `<section class="lc-mosaic lc-fit jx-hub" style="--rows:4">${tiles}</section>`);
     el.querySelector("#lcBack").onclick = back;
     el.querySelectorAll("[data-g]").forEach((b) => b.addEventListener("click", () => { const g = LIST.find((x) => x.id === b.dataset.g); if (!g.need()) return toast("Pas assez de mots pour ce jeu dans cette leçon"); g.run(); }));
   }

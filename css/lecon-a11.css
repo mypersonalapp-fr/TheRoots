@@ -574,3 +574,11 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .jx-face{ text-align:center; } .jx-bigface{ font-size:64px; line-height:1.1; } .jx-play{ border:0; border-radius:18px; padding:16px 28px; background:#b7791f; color:#fff; font-weight:800;font-size:18px; font-family:inherit; cursor:pointer; }
 .jx-end{ text-align:center; } .jx-big{ font-size:56px; } .jx-score{ font-size:16px; }
 :root[data-theme="dark"] .jx-cell,:root[data-theme="dark"] .jx-key,:root[data-theme="dark"] .jx-opt,:root[data-theme="dark"] .jx-card.up{ background:#26324f; color:#eef2ff; } :root[data-theme="dark"] .jx-chip{ background:#3a2e63; color:#d9ccff; } :root[data-theme="dark"] .jx-chip.ok{ background:#1f3d2a; color:#cdeed8; } :root[data-theme="dark"] .jx-title b{ background:color-mix(in srgb,var(--c) 30%,#14213d); color:#fff; }
+
+/* Mosaïque ajustée à la hauteur de l'écran : tout est visible sans couper (petits écrans inclus) */
+.lc-main:has(.lc-mosaic.lc-fit){ display:flex; flex-direction:column; overflow:hidden; padding-bottom:6px; }
+.lc-mosaic.lc-fit{ flex:1 1 auto; min-height:0; grid-template-rows:repeat(var(--rows,6),minmax(0,1fr)); margin-top:2px; }
+.lc-mosaic.lc-fit .lc-tile{ min-height:0; padding:4px; gap:1px; overflow:hidden; }
+.lc-mosaic.lc-fit .lc-tile .lc-tic{ width:clamp(26px,5.2dvh,46px); height:clamp(26px,5.2dvh,46px); }
+.lc-mosaic.lc-fit .lc-tile b{ font-size:clamp(12px,1.75dvh,14px); } .lc-mosaic.lc-fit .lc-tile small{ font-size:clamp(9.5px,1.35dvh,11px); }
+.lc-xrow{ flex:none; margin-top:6px; } .lc-xchip{ padding:7px 6px; }
