@@ -509,3 +509,7 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-bl-full .lc-bb{ max-width:88%; }
 .lc-bl-full .lc-bt{ font-size:18px; }
 .lc-card-bare .lc-tip{ background:#fff3d9; border-radius:16px; padding:10px 14px; }
+
+/* bulles : écriture un peu plus petite */
+.lc-bt, .lc-bl-full .lc-bt{ font-size:15px; }
+.lc-bt small{ font-size:12px; }
