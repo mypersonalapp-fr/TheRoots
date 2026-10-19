@@ -104,16 +104,16 @@ export function createGames(ctx) {
     const S = beeSet(); const letters = shuffle(S.letters); const got = []; let cur = "";
     const norm2 = (s) => s.toLowerCase();
     function draw(msg) {
-      shell("Spelling Bee", "#F59E0B", `<section class="lc-card"><div class="jx-h">Forme Des Mots Avec Ces Lettres · ${got.length}/${S.found.length}</div>
+      shell("Spelling Bee", "#F59E0B", `<section class="lc-card"><div class="jx-h">Forme Les Mots Avec Ces Lettres · ${got.length}/${S.found.length}</div>
         <div class="jx-letters">${letters.map((l, i) => `<button type="button" class="jx-key" data-i="${i}">${l.toUpperCase()}</button>`).join("")}</div>
         <div class="jx-word">${esc(cur.toUpperCase()) || "&nbsp;"}</div>${msg ? `<p class="jx-msg">${esc(msg)}</p>` : ""}
         <div class="jx-row"><button type="button" class="lc-sec-btn" id="jxDel">⌫ Effacer</button><button type="button" class="lc-cta" id="jxOk">Valider</button></div></section>
-        <section class="lc-card"><div class="jx-h">Mots Trouvés</div><div class="jx-chips">${got.length ? got.map((w) => `<span class="jx-chip ok">${esc(w.en)} = ${esc(w.fr)}</span>`).join("") : `<span class="jx-tip">Aucun pour l’instant. Indice : un mot de la leçon.</span>`}</div></section>`);
+        <section class="lc-card"><div class="jx-h">Mots À Trouver</div><div class="jx-clues">${S.found.map((w) => { const ok = got.includes(w); const pat = ok ? w.en.toUpperCase() : w.en[0].toUpperCase() + " " + "_ ".repeat(w.en.length - 1).trim(); return `<div class="jx-clue ${ok ? "ok" : ""}"><span class="jx-fr">${esc(w.fr)}</span><span class="jx-pat">${esc(pat)}</span><small>${w.en.length} lettres</small></div>`; }).join("")}</div></section>`);
       const used = []; el.querySelectorAll(".jx-key").forEach((b) => b.addEventListener("click", () => { cur += letters[+b.dataset.i]; b.disabled = true; used.push(b); el.querySelector(".jx-word").textContent = cur.toUpperCase(); }));
       el.querySelector("#jxDel").onclick = () => { cur = ""; draw(); };
       el.querySelector("#jxOk").onclick = () => {
         const w = S.found.find((x) => norm2(x.en) === norm2(cur));
-        if (!w) { cur = ""; return draw("Ce mot n’est pas dans la leçon, essaie encore."); }
+        if (!w) { cur = ""; return draw("Ce n’est pas un des mots à trouver. Regarde les indices en dessous."); }
         if (got.includes(w)) { cur = ""; return draw("Déjà trouvé !"); }
         got.push(w); speak(w.en); cur = "";
         if (got.length === S.found.length) return end("bee", "#F59E0B", "Spelling Bee", got.length * 10, "Tu as trouvé tous les mots !", bee);
