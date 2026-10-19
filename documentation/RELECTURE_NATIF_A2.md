@@ -2,7 +2,7 @@
 
 À relire par un anglophone : fautes, phrases peu naturelles, registre. Les lignes marquées ⚠ sont des alertes automatiques.
 
-## A2.0 (588 lignes)
+## A2.0 (782 lignes)
 
 - `EXERCISES_A20` Vocabulaire — Les verbes de base
 - `EXERCISES_A20` Choisis le sens correct.
@@ -76,25 +76,187 @@
 - `EXERCISES_A20` hasn't va avec he / she / it.
 - `EXERCISES_A20` I → haven't got.
 - `EXERCISES_A20` don't got n'est pas la forme standard.
+- `EXERCISES_A20` Vocabulaire — La famille et la maison
+- `EXERCISES_A20` Uncle = oncle.
+- `EXERCISES_A20` Cousin = cousin.
+- `EXERCISES_A20` Voisin = neighbour.
+- `EXERCISES_A20` Tante = aunt.
+- `EXERCISES_A20` Neighbour = voisin.
+- `EXERCISES_A20` Flat = appartement (britannique).
+- `EXERCISES_A20` Maison = house.
+- `EXERCISES_A20` Jardin = garden.
+- `EXERCISES_A20` salle de bains
+- `EXERCISES_A20` Chambre = bedroom.
+- `EXERCISES_A20` Salle de bains = bathroom.
+- `EXERCISES_A20` Kitchen = cuisine.
+- `EXERCISES_A20` Stairs = escalier.
+- `EXERCISES_A20` Porte = door.
+- `EXERCISES_A20` always, usually, often, sometimes, never.
+- `EXERCISES_A20` I ___ drink coffee at night. (jamais)
+- `EXERCISES_A20` Usually = d'habitude.
+- `EXERCISES_A20` Always = toujours.
+- `EXERCISES_A20` Never = jamais.
+- `EXERCISES_A20` She ___ goes to work by bus. (d'habitude)
+- `EXERCISES_A20` Now = maintenant, pas une habitude.
+- `EXERCISES_A20` We ___ eat out on Fridays. (souvent)
+- `EXERCISES_A20` Often = souvent.
+- `EXERCISES_A20` Ago = il y a, autre emploi.
+- `EXERCISES_A20` Yesterday = hier.
+- `EXERCISES_A20` He is ___ late. (toujours)
+- `EXERCISES_A20` Sometimes = parfois.
+- `EXERCISES_A20` Never = jamais, sens contraire.
+- `EXERCISES_A20` I ___ play tennis. (parfois)
+- `EXERCISES_A20` They ___ forget my birthday. (jamais)
+- `EXERCISES_A20` Always change le sens.
+- `EXERCISES_A20` Usually change le sens.
+- `EXERCISES_A20` at, on, in.
+- `EXERCISES_A20` The film starts ___ eight o'clock.
+- `EXERCISES_A20` On + jour.
+- `EXERCISES_A20` At + heure.
+- `EXERCISES_A20` My birthday is ___ Monday.
+- `EXERCISES_A20` On + jour de la semaine.
+- `EXERCISES_A20` In + mois.
+- `EXERCISES_A20` We go on holiday ___ August.
+- `EXERCISES_A20` I get up ___ seven.
+- `EXERCISES_A20` She was born ___ 1995.
+- `EXERCISES_A20` See you ___ Saturday!
+- `EXERCISES_A20` Le -s, -es ou -ies de la 3e personne.
+- `EXERCISES_A20` She ___ English every day. (study)
+- `EXERCISES_A20` On ne garde pas le y.
+- `EXERCISES_A20` Consonne + y → -ies.
+- `EXERCISES_A20` Avec she, il faut un -s.
+- `EXERCISES_A20` He ___ TV at night. (watch)
+- `EXERCISES_A20` Avec he, il faut un -s.
+- `EXERCISES_A20` Il faut -es, pas -s seul.
+- `EXERCISES_A20` Verbe en -ch → -es.
+- `EXERCISES_A20` My father ___ to work by car. (go)
+- `EXERCISES_A20` Go prend -es.
+- `EXERCISES_A20` Go → goes.
+- `EXERCISES_A20` Avec he / my father, il faut un -s.
+- `EXERCISES_A20` The shop ___ at nine. (open)
+- `EXERCISES_A20` It → opens.
+- `EXERCISES_A20` Avec it, il faut un -s.
+- `EXERCISES_A20` Pas de -ing pour un horaire fixe.
+- `EXERCISES_A20` She ___ a lot of books. (have)
+- `EXERCISES_A20` Avec she, on utilise has.
+- `EXERCISES_A20` Have devient has, pas haves.
+- `EXERCISES_A20` Have → has.
+- `EXERCISES_A20` He doesn't ___ meat.
+- `EXERCISES_A20` They ___ in London now.
+- `EXERCISES_A20` They → are.
+- `EXERCISES_A20` Is va avec he / she / it.
+- `EXERCISES_A20` Am va avec I.
+- `EXERCISES_A20` She ___ got two brothers.
+- `EXERCISES_A20` Is ne va pas avec got.
+- `EXERCISES_A20` Have va avec I / you / we / they.
+- `EXERCISES_A20` She → has got.
+- `EXERCISES_A20` I ___ a student.
+- `EXERCISES_A20` Are va avec you / we / they.
+- `EXERCISES_A20` ___ you got a pen?
+- `EXERCISES_A20` Are ne va pas avec got.
+- `EXERCISES_A20` Has va avec he / she / it.
+- `EXERCISES_A20` You → Have you got… ? ⚠ espacement/ponctuation
+- `EXERCISES_A20` We ___ not tired.
+- `EXERCISES_A20` We → are.
+- `EXERCISES_A20` Has ne s'utilise pas ici.
+- `EXERCISES_A20` He ___ a new car.
+- `EXERCISES_A20` He → has got.
+- `EXERCISES_A20` Have got va avec I / you / we / they.
+- `EXERCISES_A20` Is got n'existe pas.
+- `EXERCISES_A20` Les mots de temps
+- `EXERCISES_A20` Quel temps annoncent-ils ? ⚠ espacement/ponctuation
+- `EXERCISES_A20` “Every day” annonce…
+- `EXERCISES_A20` un projet
+- `EXERCISES_A20` une habitude
+- `EXERCISES_A20` Un projet : tomorrow, next week.
+- `EXERCISES_A20` “Right now” annonce…
+- `EXERCISES_A20` Une habitude : usually, always.
+- `EXERCISES_A20` “Next week” annonce…
+- `EXERCISES_A20` Next week = futur, going to.
+- `EXERCISES_A20` Une habitude : every day.
+- `EXERCISES_A20` Maintenant : at the moment.
+- `EXERCISES_A20` “Yesterday” annonce…
+- `EXERCISES_A20` Un projet : tomorrow.
+- `EXERCISES_A20` Une habitude : often.
+- `EXERCISES_A20` “At the moment” annonce…
+- `EXERCISES_A20` At the moment = maintenant.
+- `EXERCISES_A20` Une habitude : every Sunday.
+- `EXERCISES_A20` “Usually” annonce…
+- `EXERCISES_A20` Maintenant : right now.
+- `EXERCISES_A20` Vocabulaire — Verbes utiles
+- `EXERCISES_A20` Bring = apporter.
+- `EXERCISES_A20` Porter = carry.
+- `EXERCISES_A20` Find = trouver.
+- `EXERCISES_A20` Perdre = lose.
+- `EXERCISES_A20` Chercher = look for.
+- `EXERCISES_A20` se souvenir
+- `EXERCISES_A20` Apprendre = learn.
+- `EXERCISES_A20` Se souvenir = remember.
+- `EXERCISES_A20` Forget = oublier.
+- `EXERCISES_A20` Manquer = miss.
+- `EXERCISES_A20` Meet = rencontrer.
+- `EXERCISES_A20` Quitter = leave.
+- `EXERCISES_A20` Jeter = throw.
+- `EXERCISES_A20` Keep = garder.
+- `EXERCISES_A20` Teach = enseigner.
+- `EXERCISES_A20` Montrer = show.
+- `EXERCISES_A20` Mise en situation
+- `EXERCISES_A20` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A20` You say what you do every day:
+- `EXERCISES_A20` I usually get up at seven.
+- `EXERCISES_A20` I am usually get up at seven.
+- `EXERCISES_A20` I getting up at seven.
+- `EXERCISES_A20` Be + verbe de base est faux.
+- `EXERCISES_A20` You say what you are doing now:
+- `EXERCISES_A20` I'm read a book.
+- `EXERCISES_A20` I read a book now.
+- `EXERCISES_A20` I'm reading a book.
+- `EXERCISES_A20` Maintenant : am + -ing.
+- `EXERCISES_A20` You say your plan:
+- `EXERCISES_A20` I going to visit my aunt.
+- `EXERCISES_A20` I'm going to visit my aunt.
+- `EXERCISES_A20` I'm going visit my aunt.
+- `EXERCISES_A20` Il manque am.
+- `EXERCISES_A20` Going to : am + going to + base.
+- `EXERCISES_A20` Il manque to.
+- `EXERCISES_A20` You ask politely:
+- `EXERCISES_A20` Would you like some tea?
+- `EXERCISES_A20` Do you would like some tea?
+- `EXERCISES_A20` Would you liking some tea?
+- `EXERCISES_A20` Would you like + nom.
+- `EXERCISES_A20` Pas de do avec would.
+- `EXERCISES_A20` You say you have a sister:
+- `EXERCISES_A20` I am got a sister.
+- `EXERCISES_A20` I has a sister.
+- `EXERCISES_A20` I've got a sister.
+- `EXERCISES_A20` Be ne va pas avec got.
+- `EXERCISES_A20` I utilise have, pas has.
+- `EXERCISES_A20` I → have got.
+- `EXERCISES_A20` You ask about the family:
+- `EXERCISES_A20` Does she have any brothers?
+- `EXERCISES_A20` Do she have any brothers?
+- `EXERCISES_A20` Does she has any brothers?
+- `EXERCISES_A20` She → Does + base.
+- `EXERCISES_A20` Does, pas do, avec she.
 - `EXERCISES_A20` Choisir le bon temps
 - `EXERCISES_A20` Habitude, maintenant ou projet ? ⚠ espacement/ponctuation
 - `EXERCISES_A20` Every day I ___ to work.
-- `EXERCISES_A20` am walking
 - `EXERCISES_A20` am going to walk
-- `EXERCISES_A20` Continu = maintenant.
+- `EXERCISES_A20` am walking
 - `EXERCISES_A20` Going to = projet.
+- `EXERCISES_A20` Continu = maintenant.
 - `EXERCISES_A20` Right now I ___ to work.
-- `EXERCISES_A20` walks = he / she / it.
 - `EXERCISES_A20` walk = habitude.
 - `EXERCISES_A20` Right now → continu.
+- `EXERCISES_A20` walks = he / she / it.
 - `EXERCISES_A20` Tomorrow I ___ walk to work.
 - `EXERCISES_A20` am going to
-- `EXERCISES_A20` am walk : forme incorrecte.
 - `EXERCISES_A20` Tomorrow → going to.
+- `EXERCISES_A20` am walk : forme incorrecte.
 - `EXERCISES_A20` I ___ the answer. (know)
 - `EXERCISES_A20` am knowing
-- `EXERCISES_A20` On ne dit pas am knowing.
 - `EXERCISES_A20` knows : seulement he / she / it.
+- `EXERCISES_A20` On ne dit pas am knowing.
 - `EXPRESSION_A20` Ma routine d'aujourd'hui
 - `EXPRESSION_A20` Dis ce que tu fais d'habitude le matin.
 - `EXPRESSION_A20` Dis ce que tu fais en ce moment.
@@ -154,7 +316,6 @@
 - `GRAMMAR_A20` “is got” n'existe pas : on garde have / has got.
 - `GRAMMAR_A20` “have got” va avec I / you / we / they.
 - `GRAMMAR_A20` she → has got (possession).
-- `GRAMMAR_A20` I ___ a student.
 - `GRAMMAR_A20` ___ there a park near here?
 - `GRAMMAR_A20` “Do there” n'existe pas : on inverse is / are.
 - `GRAMMAR_A20` “Are there” demande un pluriel : parks.
@@ -205,8 +366,6 @@
 - `GRAMMAR_A20` Avant se dit before.
 - `GRAMMAR_A20` “I'm going to study medicine.” exprime…
 - `GRAMMAR_A20` un souvenir
-- `GRAMMAR_A20` une habitude
-- `GRAMMAR_A20` un projet
 - `GRAMMAR_A20` “I'm meeting Tom at six tonight.” exprime…
 - `GRAMMAR_A20` Une habitude aurait “every …”.
 - `GRAMMAR_A20` “It's the ___ day of the year.” (chaud)
@@ -242,9 +401,7 @@
 - `GRAMMAR_A20` Garage = garage, un autre mot.
 - `GRAMMAR_A20` Garden = jardin (A2.8, logement).
 - `GRAMMAR_A20` “I live in a flat near the station.” — flat =
-- `GRAMMAR_A20` Maison = house.
 - `GRAMMAR_A20` Flat = appartement en anglais britannique (A2.8).
-- `GRAMMAR_A20` Chambre = bedroom.
 - `GRAMMAR_A20` “Can I speak to Anna, please?” veut dire…
 - `GRAMMAR_A20` Je suis Anna.
 - `GRAMMAR_A20` Anna est partie.
@@ -370,17 +527,17 @@
 - `TEST_AUDIOS_A20` What is the father's job?
 - `TEST_AUDIOS_A20` We are not working today. We're going to the beach because the weather is sunny. We're going to take the train at ten.
 - `TEST_AUDIOS_A20` Where are they going?
-- `TEST_AUDIOS_A20` To the museum
 - `TEST_AUDIOS_A20` To the beach
+- `TEST_AUDIOS_A20` To the museum
 - `TEST_AUDIOS_A20` What time are they going to take the train?
 - `TEST_AUDIOS_A20` At eleven
 - `TEST_AUDIOS_A20` Excuse me, is there a bank near here? Yes, go straight on and turn left. It's next to the supermarket.
 - `TEST_AUDIOS_A20` What is the person looking for?
-- `TEST_AUDIOS_A20` A station
 - `TEST_AUDIOS_A20` A supermarket
+- `TEST_AUDIOS_A20` A station
 - `TEST_AUDIOS_A20` Where is it?
-- `TEST_AUDIOS_A20` Opposite the school
 - `TEST_AUDIOS_A20` Next to the supermarket
+- `TEST_AUDIOS_A20` Opposite the school
 - `TEST_AUDIOS_A20` Behind the station
 - `TEST_AUDIOS_A20` I don't eat meat, but I eat fish. I'm having fish today because I'm very hungry. I know a good restaurant near here.
 - `TEST_AUDIOS_A20` What doesn't the speaker eat?
@@ -416,9 +573,9 @@
 - `TEST_GRAMMAR_A20` ______ she live in London? (question)
 - `TEST_TEXTS_A20` I live in Lyon and I work in a bank. Every day I walk to work. Today is different: I'm working at home because the bus is on strike. Tomorrow I'm going to visit my sister in Paris.
 - `TEST_TEXTS_A20` Why is she at home today?
-- `TEST_TEXTS_A20` The bus is on strike
-- `TEST_TEXTS_A20` She is ill
 - `TEST_TEXTS_A20` It is Sunday
+- `TEST_TEXTS_A20` She is ill
+- `TEST_TEXTS_A20` The bus is on strike
 - `TEST_TEXTS_A20` Stay at home
 - `TEST_TEXTS_A20` I'm a student and I study English. Right now I'm waiting for the train to Oxford. I'd like a seat near the window. I'm going to arrive at ten.
 - `TEST_TEXTS_A20` What does Omar study?
@@ -441,20 +598,20 @@
 - `TEST_TEXTS_A20` A message
 - `TEST_TEXTS_A20` Hi Tom! I'm at the station. The train doesn't leave until six, so I'm having a coffee. I'm going to call you at five. Would you like to meet me at the park? Anna
 - `TEST_TEXTS_A20` Where is Anna?
-- `TEST_TEXTS_A20` At the station
 - `TEST_TEXTS_A20` At the park
+- `TEST_TEXTS_A20` At the station
 - `TEST_TEXTS_A20` What is she having?
 - `TEST_TEXTS_A20` A sandwich
 - `TEST_TEXTS_A20` What does she ask Tom?
-- `TEST_TEXTS_A20` To call at six
 - `TEST_TEXTS_A20` To meet at the park
+- `TEST_TEXTS_A20` To call at six
 - `TEST_TEXTS_A20` To come to the station
 - `TEST_TEXTS_A20` At the hotel
 - `TEST_TEXTS_A20` Good evening. I'd like to book a room for two nights, please. A single room or a double room? A single room. Breakfast is at eight. Are you going to have breakfast here? Yes, I am.
 - `TEST_TEXTS_A20` How many nights is the room for?
 - `TEST_TEXTS_A20` What kind of room does the guest want?
-- `TEST_TEXTS_A20` A double room
 - `TEST_TEXTS_A20` A single room
+- `TEST_TEXTS_A20` A double room
 - `TEST_TEXTS_A20` A family room
 - `TEST_TEXTS_A20` Is the guest going to have breakfast at the hotel?
 - `TEST_TEXTS_A20` We don't know
@@ -463,17 +620,17 @@
 - `TEST_TEXTS_A20` What is Mr Lee's job?
 - `TEST_TEXTS_A20` How does he usually go to work?
 - `TEST_TEXTS_A20` Why is he taking the bus today?
-- `TEST_TEXTS_A20` It's raining
 - `TEST_TEXTS_A20` His bike is old
+- `TEST_TEXTS_A20` It's raining
 - `TEST_TEXTS_A20` Weekend plans
 - `TEST_TEXTS_A20` This weekend I'm going to relax. On Saturday I'm going to see a film with my friends. On Sunday I'd like to cook a big lunch for my family. We usually eat together on Sundays.
 - `TEST_TEXTS_A20` What is she going to do on Saturday?
-- `TEST_TEXTS_A20` Visit her aunt
 - `TEST_TEXTS_A20` Cook lunch
 - `TEST_TEXTS_A20` See a film
+- `TEST_TEXTS_A20` Visit her aunt
 - `TEST_TEXTS_A20` What would she like to do on Sunday?
-- `TEST_TEXTS_A20` Cook a big lunch
 - `TEST_TEXTS_A20` Go shopping
+- `TEST_TEXTS_A20` Cook a big lunch
 - `TEST_TEXTS_A20` When does her family usually eat together?
 - `TEST_TEXTS_A20` On Saturdays
 - `TEST_TEXTS_A20` On Sundays
@@ -519,7 +676,7 @@
 - `VOCAB_A20` « En ce moment » se dit…
 - `VOCAB_A20` Next week = la semaine prochaine (going to).
 
-## A2.1 (811 lignes)
+## A2.1 (825 lignes)
 
 - `EXERCISES_A21` Vocabulaire — La routine
 - `EXERCISES_A21` Choisis le sens correct.
@@ -689,6 +846,19 @@
 - `EXERCISES_A21` wash the dishes
 - `EXERCISES_A21` mettre la table
 - `EXERCISES_A21` Dishes = vaisselle.
+- `EXERCISES_A21` Choisis la bonne forme.
+- `EXERCISES_A21` I ___ get up before six. (jamais)
+- `EXERCISES_A21` Never = jamais.
+- `EXERCISES_A21` She usually ___ the bus to work.
+- `EXERCISES_A21` is taking
+- `EXERCISES_A21` Right now they ___ dinner.
+- `EXERCISES_A21` He ___ his teeth twice a day.
+- `EXERCISES_A21` Habitude : brushes.
+- `EXERCISES_A21` ___ you work on Saturdays?
+- `EXERCISES_A21` Do you work… ? ⚠ espacement/ponctuation
+- `EXERCISES_A21` We ___ lunch at the moment.
+- `EXERCISES_A21` are eating
+- `EXERCISES_A21` At the moment : are eating.
 - `EXPRESSION_A21` Dis ce que tu fais le soir.
 - `EXPRESSION_A21` Dis une chose que tu ne fais jamais.
 - `EXPRESSION_A21` I usually get up at seven. I go to work by bus. In the evening I cook dinner and I relax. I never watch TV before ten.
@@ -1012,14 +1182,14 @@
 - `TEST_AUDIOS_A21` My sister usually works in an office, but this week she's working at home. She's using my laptop because hers is broken.
 - `TEST_AUDIOS_A21` Where is the sister working this week?
 - `TEST_AUDIOS_A21` Why is she using the laptop?
-- `TEST_AUDIOS_A21` It is new
 - `TEST_AUDIOS_A21` It is cheap
+- `TEST_AUDIOS_A21` It is new
 - `TEST_AUDIOS_A21` At weekends I don't get up early. I sleep until ten and then I have a long breakfast. Today is Saturday and I'm having breakfast in bed.
 - `TEST_AUDIOS_A21` What time does the speaker get up at weekends?
 - `TEST_AUDIOS_A21` About ten
 - `TEST_AUDIOS_A21` Good morning, this is Rita. I usually take the eight o'clock train, but today I'm driving because the trains are not running. I'm sitting in traffic and I'm already late.
-- `TEST_AUDIOS_A21` Her train is late
 - `TEST_AUDIOS_A21` She likes driving
+- `TEST_AUDIOS_A21` Her train is late
 - `TEST_AUDIOS_A21` I normally go to the gym on Tuesdays, but this week I'm working late, so I'm going on Saturday morning. Do you want to come? Sure, I'm free on Saturday.
 - `TEST_AUDIOS_A21` When is the speaker going this week?
 - `TEST_AUDIOS_A21` On Saturday morning
@@ -1049,8 +1219,8 @@
 - `TEST_TEXTS_A21` Where does he usually study?
 - `TEST_TEXTS_A21` When does he wake up?
 - `TEST_TEXTS_A21` Does he watch TV before ten?
-- `TEST_TEXTS_A21` No, never
 - `TEST_TEXTS_A21` Yes, always
+- `TEST_TEXTS_A21` No, never
 - `TEST_TEXTS_A21` I'm a nurse. On Mondays and Tuesdays I work at night, so I sleep in the day. I usually cook dinner for my children at six, then I leave for work at eight. Right now it's three in the afternoon and I'm running errands: I'm buying medicine at the pharmacy.
 - `TEST_TEXTS_A21` When does she work at night?
 - `TEST_TEXTS_A21` Monday and Tuesday
@@ -1060,8 +1230,8 @@
 - `TEST_TEXTS_A21` What is Omar's job?
 - `TEST_TEXTS_A21` Taxi driver
 - `TEST_TEXTS_A21` Why is tonight special?
-- `TEST_TEXTS_A21` It's his daughter's birthday
 - `TEST_TEXTS_A21` It's his birthday
+- `TEST_TEXTS_A21` It's his daughter's birthday
 - `TEST_TEXTS_A21` What are the children doing?
 - `TEST_TEXTS_A21` Playing football
 - `TEST_TEXTS_A21` I live in a small flat in London. I don't have a car, so I cycle to work every day. It usually takes me twenty minutes, but today it's raining, so I'm taking the bus. I'm sitting next to the window and I'm listening to music. I'm never late because I always leave home early.
@@ -3124,6 +3294,680 @@
 - `VOCAB_A24` Je suis d'accord avec toi.
 - `VOCAB_A24` “Agree” veut dire…
 
+## A2.5 (826 lignes)
+
+- `EXERCISES_A25` Vocabulaire — Comparer
+- `EXERCISES_A25` Choisis le sens correct.
+- `EXERCISES_A25` Fast = rapide.
+- `EXERCISES_A25` Heavy = lourd.
+- `EXERCISES_A25` Tiny = minuscule.
+- `EXERCISES_A25` Quiet = calme.
+- `EXERCISES_A25` Le comparatif court
+- `EXERCISES_A25` Adjectif + -er + than.
+- `EXERCISES_A25` My bag is ___ than yours.
+- `EXERCISES_A25` more heavy
+- `EXERCISES_A25` heavy → heavier.
+- `EXERCISES_A25` She is ___ than her brother.
+- `EXERCISES_A25` old → older.
+- `EXERCISES_A25` This road is ___ than that one.
+- `EXERCISES_A25` more wide
+- `EXERCISES_A25` wide → wider.
+- `EXERCISES_A25` Summer is ___ than winter.
+- `EXERCISES_A25` hot → hotter.
+- `EXERCISES_A25` My dog is ___ than your dog.
+- `EXERCISES_A25` more small
+- `EXERCISES_A25` small → smaller.
+- `EXERCISES_A25` The exam was ___ than I thought.
+- `EXERCISES_A25` more easy
+- `EXERCISES_A25` easy → easier.
+- `EXERCISES_A25` Le comparatif long
+- `EXERCISES_A25` More / less + adjectif + than.
+- `EXERCISES_A25` This sofa is ___ than that one.
+- `EXERCISES_A25` more comfortable
+- `EXERCISES_A25` most comfortable
+- `EXERCISES_A25` more comfortable.
+- `EXERCISES_A25` A taxi is ___ than a bus.
+- `EXERCISES_A25` most expensive
+- `EXERCISES_A25` more expensive
+- `EXERCISES_A25` more expensive.
+- `EXERCISES_A25` The village is ___ than the city. (moins bruyant)
+- `EXERCISES_A25` less noisy
+- `EXERCISES_A25` least noisy
+- `EXERCISES_A25` less noisy.
+- `EXERCISES_A25` This film is ___ than the book.
+- `EXERCISES_A25` more interesting
+- `EXERCISES_A25` most interesting
+- `EXERCISES_A25` more interesting.
+- `EXERCISES_A25` Is English ___ than French?
+- `EXERCISES_A25` most difficult
+- `EXERCISES_A25` more difficult
+- `EXERCISES_A25` more difficult.
+- `EXERCISES_A25` The new phone is ___ than the old one.
+- `EXERCISES_A25` more modern
+- `EXERCISES_A25` most modern
+- `EXERCISES_A25` more modern.
+- `EXERCISES_A25` good, bad, far, much.
+- `EXERCISES_A25` This phone is ___ than mine.
+- `EXERCISES_A25` more good
+- `EXERCISES_A25` good → better.
+- `EXERCISES_A25` The weather is ___ today.
+- `EXERCISES_A25` bad → worse.
+- `EXERCISES_A25` The shop is ___ than the bank.
+- `EXERCISES_A25` far → further.
+- `EXERCISES_A25` I have ___ time than you.
+- `EXERCISES_A25` more time.
+- `EXERCISES_A25` Your English is ___ than mine.
+- `EXERCISES_A25` better than.
+- `EXERCISES_A25` My cold is ___ than yesterday.
+- `EXERCISES_A25` Le superlatif
+- `EXERCISES_A25` The -est / the most.
+- `EXERCISES_A25` She is the ___ girl in the class.
+- `EXERCISES_A25` the tallest.
+- `EXERCISES_A25` It's the ___ expensive hotel in town.
+- `EXERCISES_A25` the most expensive.
+- `EXERCISES_A25` This is the ___ day of my life.
+- `EXERCISES_A25` the best.
+- `EXERCISES_A25` Who is the ___ of the three?
+- `EXERCISES_A25` the youngest.
+- `EXERCISES_A25` Everest is the ___ mountain in the world.
+- `EXERCISES_A25` the highest.
+- `EXERCISES_A25` That was the ___ film I've ever seen.
+- `EXERCISES_A25` the worst.
+- `EXERCISES_A25` As … as et the same as
+- `EXERCISES_A25` This flat is ___ big as that one.
+- `EXERCISES_A25` as big as.
+- `EXERCISES_A25` He isn't as tall ___ me.
+- `EXERCISES_A25` not as tall as.
+- `EXERCISES_A25` Your phone is the same ___ mine.
+- `EXERCISES_A25` the same as.
+- `EXERCISES_A25` Our house is different ___ yours.
+- `EXERCISES_A25` different from.
+- `EXERCISES_A25` She is as old ___ my sister.
+- `EXERCISES_A25` as old as.
+- `EXERCISES_A25` The bus is not ___ fast as the train.
+- `EXERCISES_A25` not as fast as.
+- `EXERCISES_A25` Than ou as ? ⚠ espacement/ponctuation
+- `EXERCISES_A25` Le bon petit mot.
+- `EXERCISES_A25` My sister is taller ___ me.
+- `EXERCISES_A25` taller than.
+- `EXERCISES_A25` He is as strong ___ a horse.
+- `EXERCISES_A25` as strong as.
+- `EXERCISES_A25` Tea is cheaper ___ coffee.
+- `EXERCISES_A25` cheaper than.
+- `EXERCISES_A25` I'm not as tired ___ yesterday.
+- `EXERCISES_A25` not as tired as.
+- `EXERCISES_A25` Paris is bigger ___ Lyon.
+- `EXERCISES_A25` bigger than.
+- `EXERCISES_A25` It's the same ___ before.
+- `EXERCISES_A25` More, fewer, less
+- `EXERCISES_A25` Comparer des noms.
+- `EXERCISES_A25` There are ___ cars in the village.
+- `EXERCISES_A25` Pluriel : fewer.
+- `EXERCISES_A25` There is ___ noise here.
+- `EXERCISES_A25` Qu'on ne compte pas : less.
+- `EXERCISES_A25` I have as ___ books as you.
+- `EXERCISES_A25` as many … as.
+- `EXERCISES_A25` She drinks ___ coffee than me.
+- `EXERCISES_A25` less coffee.
+- `EXERCISES_A25` We have ___ time than before.
+- `EXERCISES_A25` There are ___ people in the city.
+- `EXERCISES_A25` more people.
+- `EXERCISES_A25` Much, a bit, twice…
+- `EXERCISES_A25` This flat is ___ bigger than that one. (beaucoup)
+- `EXERCISES_A25` much bigger.
+- `EXERCISES_A25` It's ___ cheaper. (un peu)
+- `EXERCISES_A25` a bit cheaper.
+- `EXERCISES_A25` A taxi is ___ as expensive as a bus. (deux fois)
+- `EXERCISES_A25` twice as expensive.
+- `EXERCISES_A25` London is ___ more expensive than Leeds. (beaucoup)
+- `EXERCISES_A25` a lot more expensive.
+- `EXERCISES_A25` slightly colder.
+- `EXERCISES_A25` My new phone is ___ better than the old one.
+- `EXERCISES_A25` much better.
+- `EXERCISES_A25` Prefer, would rather, because.
+- `EXERCISES_A25` I prefer tea ___ coffee.
+- `EXERCISES_A25` prefer A to B.
+- `EXERCISES_A25` I'd rather ___ at home.
+- `EXERCISES_A25` would rather + verbe.
+- `EXERCISES_A25` I like the flat better ___ it's quieter.
+- `EXERCISES_A25` Which do you ___, tea or coffee?
+- `EXERCISES_A25` Which do you prefer ? ⚠ espacement/ponctuation
+- `EXERCISES_A25` I'd rather walk ___ take the bus.
+- `EXERCISES_A25` rather … than.
+- `EXERCISES_A25` My ___ colour is blue.
+- `EXERCISES_A25` favourite colour.
+- `EXERCISES_A25` Mise en situation
+- `EXERCISES_A25` Que dire ? ⚠ espacement/ponctuation
+- `EXERCISES_A25` You compare two flats:
+- `EXERCISES_A25` This flat is biggest than that one.
+- `EXERCISES_A25` This flat is more big than that one.
+- `EXERCISES_A25` This flat is bigger than that one.
+- `EXERCISES_A25` You say your hotel is the cheapest:
+- `EXERCISES_A25` It's cheapest hotel of town.
+- `EXERCISES_A25` It's the cheapest hotel in town.
+- `EXERCISES_A25` It's the most cheap hotel in town.
+- `EXERCISES_A25` the cheapest … in town.
+- `EXERCISES_A25` You say two phones cost the same:
+- `EXERCISES_A25` This phone is as expensive as that one.
+- `EXERCISES_A25` This phone is so expensive that one.
+- `EXERCISES_A25` This phone is expensive than that one.
+- `EXERCISES_A25` You say you prefer the village:
+- `EXERCISES_A25` I prefer the village at the city.
+- `EXERCISES_A25` I prefer the village than the city.
+- `EXERCISES_A25` I prefer the village to the city.
+- `EXERCISES_A25` You say your flat is quieter:
+- `EXERCISES_A25` My flat is more quiet that yours.
+- `EXERCISES_A25` My flat is quieter than yours.
+- `EXERCISES_A25` My flat is quiet than yours.
+- `EXERCISES_A25` quieter than.
+- `EXERCISES_A25` You give your reason:
+- `EXERCISES_A25` I prefer it than it's cheaper.
+- `EXERCISES_A25` I prefer it because it cheaper.
+- `EXERCISES_A25` I prefer it because it's cheaper.
+- `EXERCISES_A25` because + phrase.
+- `EXERCISES_A25` Vocabulaire — Prix, villes, confort
+- `EXERCISES_A25` bonne affaire
+- `EXERCISES_A25` avoir les moyens de
+- `EXERCISES_A25` instead of
+- `EXERCISES_A25` au lieu de
+- `EXERCISES_A25` Instead of.
+- `EXPRESSION_A25` Comparer deux appartements
+- `EXPRESSION_A25` Dis lequel est plus grand (ou plus petit) avec than.
+- `EXPRESSION_A25` Dis lequel est moins cher (ou plus cher).
+- `EXPRESSION_A25` Compare avec as … as.
+- `EXPRESSION_A25` The first flat is bigger than the second one. The second flat is cheaper, but it isn't as modern as the first one. I prefer the second flat because it's quieter.
+- `EXPRESSION_A25` Plus grand / plus petit
+- `EXPRESSION_A25` Moins cher / plus cher
+- `EXPRESSION_A25` Compare deux choses avec un comparatif.
+- `EXPRESSION_A25` Donne une raison avec because.
+- `EXPRESSION_A25` I prefer living in a village to living in a city. A village is quieter and cleaner than a city. I like it because there are fewer cars. I'd rather not live in the centre: it's too crowded.
+- `EXPRESSION_A25` Un comparatif
+- `EXPRESSION_A25` Une raison
+- `GRAMMAR_A25` Le comparatif : adjectifs courts
+- `GRAMMAR_A25` adjectif court + -er + than
+- `GRAMMAR_A25` My brother is taller than me.
+- `GRAMMAR_A25` tall → taller
+- `GRAMMAR_A25` Today is hotter than yesterday.
+- `GRAMMAR_A25` Aujourd'hui il fait plus chaud qu'hier.
+- `GRAMMAR_A25` on double la consonne : hot → hotter
+- `GRAMMAR_A25` This exercise is easier than the last one.
+- `GRAMMAR_A25` Cet exercice est plus facile que le dernier.
+- `GRAMMAR_A25` y → ier : easy → easier
+- `GRAMMAR_A25` Her house is older than ours.
+- `GRAMMAR_A25` Winter is colder than autumn.
+- `GRAMMAR_A25` L'hiver est plus froid que l'automne.
+- `GRAMMAR_A25` My brother is ___ than me.
+- `GRAMMAR_A25` more tall
+- `GRAMMAR_A25` Adjectif court : tall → taller.
+- `GRAMMAR_A25` Today is ___ than yesterday.
+- `GRAMMAR_A25` On double la consonne : hot → hotter.
+- `GRAMMAR_A25` This exercise is ___ than the last one.
+- `GRAMMAR_A25` y → ier : easy → easier.
+- `GRAMMAR_A25` Le comparatif : adjectifs longs
+- `GRAMMAR_A25` This sofa is more comfortable than that one.
+- `GRAMMAR_A25` more + adjectif long + than
+- `GRAMMAR_A25` London is more expensive than Leeds.
+- `GRAMMAR_A25` Londres est plus cher que Leeds.
+- `GRAMMAR_A25` expensive → more expensive
+- `GRAMMAR_A25` The village is less crowded than the city.
+- `GRAMMAR_A25` less + adjectif + than = moins
+- `GRAMMAR_A25` Is English more difficult than French?
+- `GRAMMAR_A25` Is + sujet + more … than ? ⚠ espacement/ponctuation
+- `GRAMMAR_A25` This book is more interesting than the film.
+- `GRAMMAR_A25` The train is less expensive than the plane.
+- `GRAMMAR_A25` Le train est moins cher que l'avion.
+- `GRAMMAR_A25` Adjectif long : more comfortable.
+- `GRAMMAR_A25` The village is ___ crowded than the city.
+- `GRAMMAR_A25` Moins : less + adjectif.
+- `GRAMMAR_A25` Paris is ___ expensive than Lyon.
+- `GRAMMAR_A25` more expensive than.
+- `GRAMMAR_A25` This phone is better than mine.
+- `GRAMMAR_A25` good → better (jamais “more good”)
+- `GRAMMAR_A25` The weather is worse today.
+- `GRAMMAR_A25` Le temps est pire aujourd'hui.
+- `GRAMMAR_A25` bad → worse
+- `GRAMMAR_A25` The station is further than the bank.
+- `GRAMMAR_A25` La gare est plus loin que la banque.
+- `GRAMMAR_A25` far → further (ou farther)
+- `GRAMMAR_A25` I have more time than you.
+- `GRAMMAR_A25` J'ai plus de temps que toi.
+- `GRAMMAR_A25` much / many → more
+- `GRAMMAR_A25` My English is better than last year.
+- `GRAMMAR_A25` Mon anglais est meilleur que l'an dernier. ⚠ « an » devant consonne
+- `GRAMMAR_A25` Is it far? — Yes, it's further than I thought.
+- `GRAMMAR_A25` C'est loin ? — Oui, c'est plus loin que je pensais. ⚠ espacement/ponctuation
+- `GRAMMAR_A25` The station is ___ than the bank.
+- `GRAMMAR_A25` This is the biggest flat in the building.
+- `GRAMMAR_A25` C'est le plus grand appartement de l'immeuble.
+- `GRAMMAR_A25` the + adjectif + -est
+- `GRAMMAR_A25` She is the tallest girl in the class.
+- `GRAMMAR_A25` Elle est la plus grande fille de la classe.
+- `GRAMMAR_A25` tall → the tallest
+- `GRAMMAR_A25` It's the most expensive hotel in town.
+- `GRAMMAR_A25` the most + adjectif long
+- `GRAMMAR_A25` This is the best day of my life.
+- `GRAMMAR_A25` C'est le meilleur jour de ma vie.
+- `GRAMMAR_A25` good → the best ; bad → the worst
+- `GRAMMAR_A25` Everest is the highest mountain in the world.
+- `GRAMMAR_A25` L'Everest est la plus haute montagne du monde.
+- `GRAMMAR_A25` Who is the youngest of the three?
+- `GRAMMAR_A25` Qui est le plus jeune des trois ? ⚠ espacement/ponctuation
+- `GRAMMAR_A25` Superlatif : the tallest.
+- `GRAMMAR_A25` most good
+- `GRAMMAR_A25` good → the best.
+- `GRAMMAR_A25` This flat is as big as that one.
+- `GRAMMAR_A25` as + adjectif + as
+- `GRAMMAR_A25` My brother is not as tall as me.
+- `GRAMMAR_A25` not as … as = moins … que
+- `GRAMMAR_A25` Your phone is the same as mine.
+- `GRAMMAR_A25` the same as
+- `GRAMMAR_A25` Our house is different from yours.
+- `GRAMMAR_A25` different from
+- `GRAMMAR_A25` She is as old as my sister.
+- `GRAMMAR_A25` The bus is not as fast as the train.
+- `GRAMMAR_A25` Le bus n'est pas aussi rapide que le train.
+- `GRAMMAR_A25` More, fewer, less avec un nom
+- `GRAMMAR_A25` There are more people in the city.
+- `GRAMMAR_A25` Il y a plus de gens en ville.
+- `GRAMMAR_A25` more + nom
+- `GRAMMAR_A25` There are fewer cars in the village.
+- `GRAMMAR_A25` Il y a moins de voitures au village.
+- `GRAMMAR_A25` fewer + nom pluriel (qu'on compte)
+- `GRAMMAR_A25` There is less noise here.
+- `GRAMMAR_A25` Il y a moins de bruit ici.
+- `GRAMMAR_A25` less + nom qu'on ne compte pas
+- `GRAMMAR_A25` I have as many books as you.
+- `GRAMMAR_A25` J'ai autant de livres que toi.
+- `GRAMMAR_A25` as many + pluriel + as ; as much + singulier + as
+- `GRAMMAR_A25` I drink less coffee than before.
+- `GRAMMAR_A25` She has as much time as me.
+- `GRAMMAR_A25` Elle a autant de temps que moi. ⚠ « a » devant voyelle
+- `GRAMMAR_A25` Pluriel qu'on compte : fewer.
+- `GRAMMAR_A25` Nom qu'on ne compte pas : less.
+- `GRAMMAR_A25` as many + pluriel + as.
+- `GRAMMAR_A25` Nuancer la comparaison
+- `GRAMMAR_A25` This flat is much bigger than that one.
+- `GRAMMAR_A25` Cet appartement est beaucoup plus grand.
+- `GRAMMAR_A25` much / a lot + comparatif
+- `GRAMMAR_A25` It's a bit cheaper than the other one.
+- `GRAMMAR_A25` C'est un peu moins cher que l'autre.
+- `GRAMMAR_A25` a bit / a little + comparatif
+- `GRAMMAR_A25` Today is slightly colder than yesterday.
+- `GRAMMAR_A25` Aujourd'hui il fait un peu plus froid.
+- `GRAMMAR_A25` It's twice as expensive as before.
+- `GRAMMAR_A25` C'est deux fois plus cher qu'avant.
+- `GRAMMAR_A25` twice as … as
+- `GRAMMAR_A25` London is a lot more expensive than Leeds.
+- `GRAMMAR_A25` Londres est beaucoup plus cher que Leeds.
+- `GRAMMAR_A25` My new phone is a bit better than my old one.
+- `GRAMMAR_A25` much + comparatif : much bigger.
+- `GRAMMAR_A25` It's ___ cheaper than the other one. (un peu)
+- `GRAMMAR_A25` a bit + comparatif.
+- `GRAMMAR_A25` twice as … as.
+- `GRAMMAR_A25` I prefer tea to coffee.
+- `GRAMMAR_A25` prefer A to B
+- `GRAMMAR_A25` I'd rather stay at home.
+- `GRAMMAR_A25` would rather + verbe (sans to)
+- `GRAMMAR_A25` Which do you prefer, the flat or the house?
+- `GRAMMAR_A25` Which … prefer ? ⚠ espacement/ponctuation
+- `GRAMMAR_A25` I like the flat better because it's quieter.
+- `GRAMMAR_A25` like … better + because
+- `GRAMMAR_A25` I prefer living in the country to living in town.
+- `GRAMMAR_A25` I'd rather walk than take the bus.
+- `GRAMMAR_A25` would rather + verbe sans to.
+- `GRAMMAR_A25` because + raison.
+- `LISTENING_A25` Two flats
+- `LISTENING_A25` Which flat do you like better? The first one is bigger, but the second one is cheaper. And the second one is quieter, too. I think I prefer the second flat.
+- `LISTENING_A25` Which flat is cheaper?
+- `LISTENING_A25` The first one
+- `LISTENING_A25` The second one
+- `LISTENING_A25` The second one is cheaper.
+- `LISTENING_A25` Which flat is bigger?
+- `LISTENING_A25` They're the same
+- `LISTENING_A25` The first one is bigger.
+- `LISTENING_A25` At the shop
+- `LISTENING_A25` Excuse me, how much is this jacket? Forty pounds. And that one? That one is cheaper, thirty pounds, but it isn't as warm. I'll take the warmer one, please.
+- `LISTENING_A25` How much is the cheaper jacket?
+- `LISTENING_A25` Twenty pounds
+- `LISTENING_A25` Forty pounds
+- `LISTENING_A25` Thirty pounds
+- `LISTENING_A25` Thirty pounds.
+- `LISTENING_A25` Which jacket does he take?
+- `LISTENING_A25` The cheaper one
+- `LISTENING_A25` The warmer one
+- `LISTENING_A25` He takes the warmer one.
+- `LISTENING_A25` My brother is taller than me. He's also older: he's twenty and I'm eighteen. But I'm stronger! We both love football, but he plays better than me.
+- `LISTENING_A25` How old is the brother?
+- `LISTENING_A25` He's twenty.
+- `LISTENING_A25` Who plays better?
+- `LISTENING_A25` The speaker
+- `LISTENING_A25` The brother
+- `LISTENING_A25` He plays better than me.
+- `LISTENING_A25` Village or city?
+- `LISTENING_A25` I love my village. It's quieter and cleaner than the city. There are fewer cars and the air is fresher. But the city has more shops, and the transport is better. Both are nice, but I prefer the village.
+- `LISTENING_A25` What is cleaner?
+- `LISTENING_A25` The village
+- `LISTENING_A25` The airport
+- `LISTENING_A25` The village is cleaner.
+- `LISTENING_A25` What does the city have more of?
+- `LISTENING_A25` The city has more shops.
+- `LISTENING_A25` Which does she prefer?
+- `LISTENING_A25` I prefer the village.
+- `LISTENING_A25` Today's race was very exciting! Anna was the fastest, Beth was second and Clara was the slowest. Anna's time was the best of the year. She is now the school champion!
+- `LISTENING_A25` Who was the fastest?
+- `LISTENING_A25` Who was second?
+- `LISTENING_A25` Beth was second.
+- `LISTENING_A25` Tea or coffee?
+- `LISTENING_A25` Do you prefer tea or coffee? I prefer tea. It's lighter and I like the taste better. My husband would rather have coffee in the morning. Coffee is stronger, he says.
+- `LISTENING_A25` What does she prefer?
+- `LISTENING_A25` She prefers tea.
+- `LISTENING_A25` What does her husband drink in the morning?
+- `LISTENING_A25` He'd rather have coffee.
+- `LISTENING_A25` The hotel
+- `LISTENING_A25` The hotel is nice, but the rooms are smaller than in the photos. The bed is more comfortable than my bed at home, though! The breakfast is the best I've ever had, and it's cheaper than I expected.
+- `LISTENING_A25` What is smaller than in the photos?
+- `LISTENING_A25` The rooms
+- `LISTENING_A25` The windows
+- `LISTENING_A25` The rooms are smaller.
+- `LISTENING_A25` What is the best?
+- `LISTENING_A25` The breakfast
+- `LISTENING_A25` The breakfast is the best.
+- `LISTENING_A25` How is the price?
+- `LISTENING_A25` More expensive than expected
+- `LISTENING_A25` Cheaper than expected
+- `LISTENING_A25` Cheaper than I expected.
+- `LISTENING_A25` Two phones
+- `LISTENING_A25` Which phone is better? The red one is faster, but the black one is lighter. The red one is twice as expensive as the black one. I think the black one is better value.
+- `LISTENING_A25` Which phone is faster?
+- `LISTENING_A25` The black one
+- `LISTENING_A25` The red one
+- `LISTENING_A25` The red one is faster.
+- `LISTENING_A25` Which is better value?
+- `LISTENING_A25` The black one.
+- `LISTENING_A25` We're twins, but we're not alike. I'm shy and my sister is talkative. I'm as tall as her, but she has longer hair. We have the same birthday, but different friends.
+- `LISTENING_A25` Are they alike?
+- `LISTENING_A25` Only a little
+- `LISTENING_A25` Yes, completely
+- `LISTENING_A25` No, they aren't
+- `LISTENING_A25` We're not alike.
+- `LISTENING_A25` Who has longer hair?
+- `LISTENING_A25` The sister
+- `LISTENING_A25` Their mother
+- `LISTENING_A25` She has longer hair.
+- `LISTENING_A25` Two cities
+- `LISTENING_A25` It's hotter in Madrid than in London. In August it's much hotter, but London is rainier all year. I prefer Madrid because the weather is better, but London is more exciting.
+- `LISTENING_A25` Where is it hotter?
+- `LISTENING_A25` In London
+- `LISTENING_A25` In Madrid
+- `LISTENING_A25` In Madrid.
+- `LISTENING_A25` Which city is rainier?
+- `LISTENING_A25` London is rainier.
+- `LISTENING_A25` Why does she prefer Madrid?
+- `LISTENING_A25` The weather is better
+- `LISTENING_A25` It is bigger
+- `LISTENING_A25` It is cheaper
+- `LISTENING_A25` The weather is better.
+- `MISSIONS_A25` Comparatif ou superlatif ? ⚠ espacement/ponctuation
+- `MISSIONS_A25` Quel mot ? ⚠ espacement/ponctuation
+- `MISSIONS_A25` Construis la phrase
+- `MISSIONS_A25` Remets les mots dans l'ordre.
+- `MISSIONS_A25` La bonne forme
+- `MISSIONS_A25` Than, as ou to ? ⚠ espacement/ponctuation
+- `MISSIONS_A25` Choisis le petit mot.
+- `MISSIONS_A25` Compare deux lieux
+- `MISSIONS_A25` Compose ta phrase avec la fiche.
+- `READING_A25` I'm looking for a new flat and I've seen two. The first one is bigger and brighter, but it's more expensive: it costs 900 pounds a month. The second one is smaller and quieter, and it's cheaper. It isn't as modern as the first flat, but I think it's more comfortable. I prefer the second one.
+- `READING_A25` They are the same
+- `READING_A25` The first one is bigger and brighter.
+- `READING_A25` Why does Lena prefer the second flat?
+- `READING_A25` It's more modern
+- `READING_A25` It's quieter and cheaper
+- `READING_A25` It's bigger
+- `READING_A25` The second one is quieter, cheaper and more comfortable.
+- `READING_A25` How much is the first flat?
+- `READING_A25` 900 pounds a month
+- `READING_A25` 600 pounds a month
+- `READING_A25` 900 pounds a year
+- `READING_A25` It costs 900 pounds a month.
+- `READING_A25` I grew up in a small village, but now I live in London. London is much bigger and more exciting than my village, but it's also noisier and more crowded. The air is cleaner in the village, and the people are friendlier. London is the best city for work, but my village is the best place for a holiday.
+- `READING_A25` Where does Omar live now?
+- `READING_A25` In a village
+- `READING_A25` Now he lives in London.
+- `READING_A25` What is cleaner in the village?
+- `READING_A25` The streets
+- `READING_A25` The river
+- `READING_A25` The air is cleaner in the village.
+- `READING_A25` What is London the best place for?
+- `READING_A25` A holiday
+- `READING_A25` London is the best city for work.
+- `READING_A25` I have two phones: an old one and a new one. The new phone is lighter and faster than the old one, and the camera is much better. But the battery isn't as good, so I charge it twice a day. My old phone is heavier, but its battery lasts longer. I think I'll keep both!
+- `READING_A25` The old one
+- `READING_A25` The new one
+- `READING_A25` The new phone is lighter and faster.
+- `READING_A25` What isn't as good on the new phone?
+- `READING_A25` The battery
+- `READING_A25` The camera
+- `READING_A25` The screen
+- `READING_A25` The battery isn't as good.
+- `READING_A25` What will Chloe do?
+- `READING_A25` Buy a third phone
+- `READING_A25` Sell the old one
+- `READING_A25` Keep both phones
+- `READING_A25` I think I'll keep both!
+- `READING_A25` My brother Tom is two years older than me, but I'm taller. He is the cleverest in the family and I'm the funniest! Tom is a better cook than me, but I'm a better swimmer. We're not alike at all, but we're best friends.
+- `READING_A25` Who is taller?
+- `READING_A25` I'm taller.
+- `READING_A25` Who is a better cook?
+- `READING_A25` Tom is a better cook.
+- `READING_A25` Yes, they are
+- `READING_A25` They are twins
+- `READING_A25` We're not alike at all.
+- `READING_A25` Last month I looked for a hotel in Edinburgh. The Castle Hotel is the most beautiful, but it's also the most expensive: 150 pounds a night. The City Inn is cheaper, only 80 pounds, but it's further from the station. In the end I chose the Park Hotel. It isn't as famous as the others, but it's the quietest and the nearest to the centre.
+- `READING_A25` Which hotel is the most expensive?
+- `READING_A25` The Castle Hotel
+- `READING_A25` The City Inn
+- `READING_A25` The Park Hotel
+- `READING_A25` The Castle Hotel: 150 pounds a night.
+- `READING_A25` How much is the City Inn?
+- `READING_A25` 80 pounds a week
+- `READING_A25` 150 pounds a night
+- `READING_A25` 80 pounds a night
+- `READING_A25` Only 80 pounds.
+- `READING_A25` Why did she choose the Park Hotel?
+- `READING_A25` It's the cheapest
+- `READING_A25` It's the quietest and the nearest
+- `READING_A25` It's the most famous
+- `READING_A25` It's the quietest and the nearest to the centre.
+- `READING_A25` My new school is bigger than my old school. There are more students and the classes are longer. But the teachers are as friendly as before, and the canteen is much better. The only problem is the journey: it takes forty minutes, so I get up earlier than last year.
+- `READING_A25` Which school is bigger?
+- `READING_A25` My new school is bigger.
+- `READING_A25` What is much better?
+- `READING_A25` The journey
+- `READING_A25` The canteen
+- `READING_A25` The classes
+- `READING_A25` The canteen is much better.
+- `READING_A25` How long is the journey?
+- `READING_A25` Forty minutes
+- `READING_A25` Four minutes
+- `READING_A25` It takes forty minutes.
+- `READING_A25` I like buying vegetables at the market better than at the supermarket. The market is cheaper and the vegetables are fresher. The supermarket is more convenient because it's open until ten at night, but the market is more fun. On Saturdays it's the busiest place in town, so I go early.
+- `READING_A25` Where are the vegetables fresher?
+- `READING_A25` At the supermarket
+- `READING_A25` At the market
+- `READING_A25` At the market.
+- `READING_A25` Why is the supermarket more convenient?
+- `READING_A25` It's cheaper
+- `READING_A25` It's open until ten at night
+- `READING_A25` It's nearer
+- `READING_A25` It's open until ten at night.
+- `READING_A25` When is the market the busiest?
+- `READING_A25` On Saturdays
+- `READING_A25` On Mondays
+- `READING_A25` On Sundays
+- `READING_A25` On Saturdays.
+- `READING_A25` My friends want to spend the holidays at the seaside, but I'd rather go to the mountains. The sea is warmer and the beaches are more popular, but the mountains are quieter and the air is fresher. In the end we choose a village in the hills: it's less crowded than the coast and not as hot.
+- `READING_A25` What do Hugo's friends want?
+- `READING_A25` To stay at home
+- `READING_A25` To go to the mountains
+- `READING_A25` To go to the seaside
+- `READING_A25` They want the seaside.
+- `READING_A25` Why does Hugo prefer the mountains?
+- `READING_A25` They are warmer
+- `READING_A25` They are quieter
+- `READING_A25` They are cheaper
+- `READING_A25` The mountains are quieter and the air is fresher.
+- `READING_A25` What do they choose in the end?
+- `READING_A25` A big hotel
+- `READING_A25` A village in the hills
+- `READING_A25` A village in the hills.
+- `TEST_AUDIOS_A25` Which flat is quieter?
+- `TEST_AUDIOS_A25` Which flat does she prefer?
+- `TEST_AUDIOS_A25` How old is the speaker?
+- `TEST_AUDIOS_A25` Who is stronger?
+- `TEST_AUDIOS_A25` I love my village. It's quieter and cleaner than the city. There are fewer cars and the air is fresher. But the city has more shops, and the transport is better.
+- `TEST_AUDIOS_A25` What are there fewer of in the village?
+- `TEST_AUDIOS_A25` What is better in the city?
+- `TEST_AUDIOS_A25` The transport
+- `TEST_AUDIOS_A25` The people
+- `TEST_AUDIOS_A25` Today's race was very exciting! Anna was the fastest, Beth was second and Clara was the slowest. Anna's time was the best of the year.
+- `TEST_AUDIOS_A25` Who was the slowest?
+- `TEST_AUDIOS_A25` Whose time was the best of the year?
+- `TEST_AUDIOS_A25` Do you prefer tea or coffee? I prefer tea. It's lighter and I like the taste better. My husband would rather have coffee in the morning.
+- `TEST_AUDIOS_A25` Why does she prefer tea?
+- `TEST_AUDIOS_A25` It's lighter
+- `TEST_AUDIOS_A25` It's hotter
+- `TEST_AUDIOS_A25` Who prefers coffee?
+- `TEST_AUDIOS_A25` Her friend
+- `TEST_AUDIOS_A25` Her sister
+- `TEST_AUDIOS_A25` Her husband
+- `TEST_AUDIOS_A25` The hotel is nice, but the rooms are smaller than in the photos. The bed is more comfortable than my bed at home, though! The breakfast is the best I've ever had.
+- `TEST_AUDIOS_A25` What is more comfortable than at home?
+- `TEST_AUDIOS_A25` The chair
+- `TEST_AUDIOS_A25` Which phone is better? The red one is faster, but the black one is lighter. The red one is twice as expensive as the black one.
+- `TEST_AUDIOS_A25` Which phone is lighter?
+- `TEST_AUDIOS_A25` How expensive is the red phone?
+- `TEST_AUDIOS_A25` Twice as expensive
+- `TEST_AUDIOS_A25` The same price
+- `TEST_GRAMMAR_A25` “Cheap” means…
+- `TEST_GRAMMAR_A25` “Crowded” means…
+- `TEST_GRAMMAR_A25` “Tiny” means…
+- `TEST_GRAMMAR_A25` “Spacious” means…
+- `TEST_GRAMMAR_A25` “Bargain” means…
+- `TEST_GRAMMAR_A25` “Instead of” means…
+- `TEST_TEXTS_A25` I'm looking for a new flat and I've seen two. The first one is bigger and brighter, but it's more expensive. The second one is smaller and quieter, and it's cheaper. It isn't as modern as the first flat, but I think it's more comfortable.
+- `TEST_TEXTS_A25` Which flat is brighter?
+- `TEST_TEXTS_A25` Why does she like the second one?
+- `TEST_TEXTS_A25` It's more comfortable
+- `TEST_TEXTS_A25` I grew up in a small village, but now I live in London. London is much bigger and more exciting than my village, but it's also noisier and more crowded. The air is cleaner in the village, and the people are friendlier.
+- `TEST_TEXTS_A25` Where did Omar grow up?
+- `TEST_TEXTS_A25` What is noisier?
+- `TEST_TEXTS_A25` The countryside
+- `TEST_TEXTS_A25` What are the people like in the village?
+- `TEST_TEXTS_A25` I have two phones: an old one and a new one. The new phone is lighter and faster than the old one, and the camera is much better. But the battery isn't as good, so I charge it twice a day. My old phone is heavier, but its battery lasts longer.
+- `TEST_TEXTS_A25` Which phone is heavier?
+- `TEST_TEXTS_A25` What is much better on the new phone?
+- `TEST_TEXTS_A25` The price
+- `TEST_TEXTS_A25` How often does she charge the new phone?
+- `TEST_TEXTS_A25` Once a week
+- `TEST_TEXTS_A25` Twice a day
+- `TEST_TEXTS_A25` Who is older?
+- `TEST_TEXTS_A25` Who is the funniest?
+- `TEST_TEXTS_A25` Their father
+- `TEST_TEXTS_A25` Who is a better swimmer?
+- `TEST_TEXTS_A25` Last month I looked for a hotel in Edinburgh. The Castle Hotel is the most beautiful, but it's also the most expensive. The City Inn is cheaper, but it's further from the station. In the end I chose the Park Hotel: it's the quietest and the nearest to the centre.
+- `TEST_TEXTS_A25` Which hotel is further from the station?
+- `TEST_TEXTS_A25` Which hotel is the most beautiful?
+- `TEST_TEXTS_A25` Which hotel did she choose?
+- `TEST_TEXTS_A25` My new school is bigger than my old school. There are more students and the classes are longer. But the teachers are as friendly as before, and the canteen is much better. The only problem is the journey: it takes forty minutes.
+- `TEST_TEXTS_A25` What is the problem?
+- `TEST_TEXTS_A25` The teachers
+- `TEST_TEXTS_A25` How are the teachers?
+- `TEST_TEXTS_A25` Less friendly
+- `TEST_TEXTS_A25` As friendly as before
+- `TEST_TEXTS_A25` More strict
+- `TEST_TEXTS_A25` What is longer at the new school?
+- `TEST_TEXTS_A25` The holidays
+- `TEST_TEXTS_A25` The breaks
+- `TEST_TEXTS_A25` I like buying vegetables at the market better than at the supermarket. The market is cheaper and the vegetables are fresher. The supermarket is more convenient because it's open until ten at night, but the market is more fun.
+- `TEST_TEXTS_A25` Where is it cheaper?
+- `TEST_TEXTS_A25` Until when is the supermarket open?
+- `TEST_TEXTS_A25` Until ten at night
+- `TEST_TEXTS_A25` Until six
+- `TEST_TEXTS_A25` Until noon
+- `TEST_TEXTS_A25` Which is more fun?
+- `TEST_TEXTS_A25` The supermarket
+- `TEST_TEXTS_A25` The market
+- `TEST_TEXTS_A25` My friends want to spend the holidays at the seaside, but I'd rather go to the mountains. The sea is warmer and the beaches are more popular, but the mountains are quieter and the air is fresher. In the end we choose a village in the hills.
+- `TEST_TEXTS_A25` Who wants to go to the seaside?
+- `TEST_TEXTS_A25` His friends
+- `TEST_TEXTS_A25` His parents
+- `TEST_TEXTS_A25` What is fresher in the mountains?
+- `TEST_TEXTS_A25` The water
+- `TEST_TEXTS_A25` Where do they go?
+- `TEST_TEXTS_A25` To a big city
+- `TEST_TEXTS_A25` To the beach
+- `TEST_TEXTS_A25` To a village in the hills
+- `VOCAB_A25` Comparer deux choses
+- `VOCAB_A25` Pour comparer : adjectif court + -er + than (“bigger than”), more + adjectif long + than (“more expensive than”). Pour dire que c'est pareil : as + adjectif + as.
+- `VOCAB_A25` Paris is more expensive than Lyon.
+- `VOCAB_A25` Paris est plus cher que Lyon.
+- `VOCAB_A25` My sister is as tall as me.
+- `VOCAB_A25` My new flat is bigger and quieter than my old one.
+- `VOCAB_A25` Comparer deux objets
+- `VOCAB_A25` vieux / ancien
+- `VOCAB_A25` nouveau / neuf
+- `VOCAB_A25` rapide / vite
+- `VOCAB_A25` meilleur / mieux
+- `VOCAB_A25` “Better” et “worse” sont les comparatifs de “good” et “bad”. On ne dit jamais “more good” ni “more bad”.
+- `VOCAB_A25` This bike is newer than that one.
+- `VOCAB_A25` English is easier than I thought.
+- `VOCAB_A25` L'anglais est plus facile que je le pensais.
+- `VOCAB_A25` “Worse” veut dire…
+- `VOCAB_A25` plus lent
+- `VOCAB_A25` Taille et poids
+- `VOCAB_A25` grand / gros
+- `VOCAB_A25` grand (personne)
+- `VOCAB_A25` petit (taille) / court
+- `VOCAB_A25` My dog is bigger than your dog.
+- `VOCAB_A25` Mon chien est plus gros que le tien.
+- `VOCAB_A25` This bag is heavier than mine.
+- `VOCAB_A25` Ce sac est plus lourd que le mien.
+- `VOCAB_A25` “Tiny” veut dire…
+- `VOCAB_A25` Prix et valeur
+- `VOCAB_A25` Un client compare deux vestes identiques dans une boutique
+- `VOCAB_A25` This jacket is more expensive than that one.
+- `VOCAB_A25` I can't afford it.
+- `VOCAB_A25` Je n'en ai pas les moyens.
+- `VOCAB_A25` “Bargain” veut dire…
+- `VOCAB_A25` Le meilleur, le premier
+- `VOCAB_A25` le meilleur
+- `VOCAB_A25` Le superlatif s'emploie avec “the” : “the best”, “the fastest”. On met “in” avec un lieu ou un groupe (in the class) et “of” avec un nombre ou un temps (of the three, of the year).
+- `VOCAB_A25` She is the fastest runner in the school.
+- `VOCAB_A25` C'est le plus beau jour de ma vie.
+- `VOCAB_A25` “Winner” veut dire…
+- `VOCAB_A25` jumeau / jumelle
+- `VOCAB_A25` aussi … que
+- `VOCAB_A25` We are both tired.
+- `VOCAB_A25` “Different” veut dire…
+- `VOCAB_A25` J'aime mieux…
+- `VOCAB_A25` would rather
+- `VOCAB_A25` parce que
+- `VOCAB_A25` que (comparaison)
+- `VOCAB_A25` “I prefer tea to coffee.” (prefer A to B). “I'd rather” est suivi du verbe sans “to” : “I'd rather stay at home.” Pour justifier, utilise “because”.
+- `VOCAB_A25` “Instead of” veut dire…
+- `VOCAB_A25` Villes et quartiers
+- `VOCAB_A25` calme / silencieux
+- `VOCAB_A25` The village is quieter than the city.
+- `VOCAB_A25` Le village est plus calme que la ville.
+- `VOCAB_A25` The centre is more crowded at the weekend.
+- `VOCAB_A25` “Crowded” veut dire…
+- `VOCAB_A25` Confort et style
+- `VOCAB_A25` doux / moelleux
+- `VOCAB_A25` “Comfortable” se prononce en trois syllabes : /ˈkʌmftəbl/. Pour comparer : “more comfortable than”, jamais “comfortabler”.
+- `VOCAB_A25` Our new flat is brighter and more spacious.
+- `VOCAB_A25` Notre nouvel appartement est plus lumineux et plus spacieux.
+- `VOCAB_A25` “Spacious” veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -3236,6 +4080,28 @@
 - `dialogues.A2.4.turns.model` I'll take the train.
 - `dialogues.A2.4.turns.npc` Great! I think the weather will be nice.
 - `dialogues.A2.4.turns.model` I hope so too!
+- `dialogues.A2.5.title` Choisir un appartement
+- `dialogues.A2.5.scene` Un agent immobilier te montre deux appartements.
+- `dialogues.A2.5.turns.npc` Hello! Here are two flats. This one is bigger, and that one is cheaper. Which do you prefer?
+- `dialogues.A2.5.turns.model` I prefer the bigger one.
+- `dialogues.A2.5.turns.npc` Why do you like it better?
+- `dialogues.A2.5.turns.model` Because it's brighter and more comfortable.
+- `dialogues.A2.5.turns.hint` Donne une raison avec because.
+- `dialogues.A2.5.turns.npc` It's more expensive, you know. Is that a problem?
+- `dialogues.A2.5.turns.model` No, it isn't as expensive as I thought.
+- `dialogues.A2.5.turns.npc` Great choice! Would you like to visit it again tomorrow?
+- `dialogues.A2.5.turns.model` Yes, please. I'll come at ten.
+- `dialogues.A2.5.title` Au restaurant : deux plats
+- `dialogues.A2.5.turns.npc` Good evening. The fish is fresher today, but the pasta is cheaper. What would you like?
+- `dialogues.A2.5.turns.model` I'll have the fish, please.
+- `dialogues.A2.5.turns.hint` Commande avec I'll have…
+- `dialogues.A2.5.turns.npc` Excellent choice. And to drink? We have tea, coffee and juice.
+- `dialogues.A2.5.turns.model` I'd rather have a tea than a coffee.
+- `dialogues.A2.5.turns.hint` I'd rather… ou I prefer…
+- `dialogues.A2.5.turns.npc` Here is your fish. Is everything all right?
+- `dialogues.A2.5.turns.model` Yes, it looks delicious. It's the biggest fish I've ever seen!
+- `dialogues.A2.5.turns.npc` Would you like a dessert?
+- `dialogues.A2.5.turns.model` No, thank you. The bill, please.
 
 ## situations
 
@@ -3282,10 +4148,22 @@
 - `situations.A2.4.cue` Book a table or a room.
 - `situations.A2.4.hint` Commence par « I'd like to… ».
 - `situations.A2.4.model` I'd like to book a table for two.
+- `situations.A2.5.cue` Compare two things you own.
+- `situations.A2.5.hint` Utilise « -er than » ou « more … than ».
+- `situations.A2.5.model` My new phone is faster than my old one.
+- `situations.A2.5.cue` Say what the best thing in your town is.
+- `situations.A2.5.hint` Utilise « the best » ou « the most … ».
+- `situations.A2.5.model` The best place in my town is the park.
+- `situations.A2.5.cue` Say what you prefer and why.
+- `situations.A2.5.hint` Commence par « I prefer… because… ».
+- `situations.A2.5.model` I prefer tea because it's lighter.
 
-## Alertes automatiques (75)
+## Alertes automatiques (91)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
+- ⚠ A2.0 EXERCISES_A20.qs : « You → Have you got… ? » → espacement/ponctuation
+- ⚠ A2.0 EXERCISES_A20.help : « Quel temps annoncent-ils ? » → espacement/ponctuation
+- ⚠ A2.0 EXERCISES_A20.help : « Que dire ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.help : « Habitude, maintenant ou projet ? » → espacement/ponctuation
 - ⚠ A2.0 GRAMMAR_A20.qs : « Quel mot annonce une HABITUDE ? » → espacement/ponctuation
 - ⚠ A2.0 GRAMMAR_A20.qs : « “Do” va avec le verbe de base : Do you read … ? » → espacement/ponctuation
@@ -3301,6 +4179,7 @@
 - ⚠ A2.1 EXERCISES_A21.title : « Simple ou Continuous ? » → espacement/ponctuation
 - ⚠ A2.1 EXERCISES_A21.help : « Que dire ? » → espacement/ponctuation
 - ⚠ A2.1 EXERCISES_A21.title : « Habitude ou maintenant ? » → espacement/ponctuation
+- ⚠ A2.1 EXERCISES_A21.qs : « Do you work… ? » → espacement/ponctuation
 - ⚠ A2.1 GRAMMAR_A21.title : « Simple ou Continuous : comment choisir ? » → espacement/ponctuation
 - ⚠ A2.1 GRAMMAR_A21.table : « Tu travailles en ce moment ? » → espacement/ponctuation
 - ⚠ A2.1 GRAMMAR_A21.examples : « Que fais-tu d'habitude le samedi ? » → espacement/ponctuation
@@ -3359,4 +4238,16 @@
 - ⚠ A2.4 VOCAB_A24.examples : « N'oublie pas ton passeport ! » → espacement/ponctuation
 - ⚠ A2.4 VOCAB_A24.words : « et si on… ? » → espacement/ponctuation
 - ⚠ A2.4 VOCAB_A24.examples : « Et si on faisait un pique-nique dimanche ? » → espacement/ponctuation
+- ⚠ A2.5 EXERCISES_A25.title : « Than ou as ? » → espacement/ponctuation
+- ⚠ A2.5 EXERCISES_A25.qs : « Which do you prefer ? » → espacement/ponctuation
+- ⚠ A2.5 EXERCISES_A25.help : « Que dire ? » → espacement/ponctuation
+- ⚠ A2.5 GRAMMAR_A25.table : « Is + sujet + more … than ? » → espacement/ponctuation
+- ⚠ A2.5 GRAMMAR_A25.examples : « Mon anglais est meilleur que l'an dernier. » → « an » devant consonne
+- ⚠ A2.5 GRAMMAR_A25.examples : « C'est loin ? — Oui, c'est plus loin que je pensais. » → espacement/ponctuation
+- ⚠ A2.5 GRAMMAR_A25.examples : « Qui est le plus jeune des trois ? » → espacement/ponctuation
+- ⚠ A2.5 GRAMMAR_A25.examples : « Elle a autant de temps que moi. » → « a » devant voyelle
+- ⚠ A2.5 GRAMMAR_A25.table : « Which … prefer ? » → espacement/ponctuation
+- ⚠ A2.5 MISSIONS_A25.title : « Comparatif ou superlatif ? » → espacement/ponctuation
+- ⚠ A2.5 MISSIONS_A25.title : « Quel mot ? » → espacement/ponctuation
+- ⚠ A2.5 MISSIONS_A25.title : « Than, as ou to ? » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation

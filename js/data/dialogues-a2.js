@@ -62,4 +62,16 @@ export const DIALOGUES_A2 = {
       { npc: "Will you drive or take the train?", ok: ["\\b(i.ll|i will|i.m going to|i.m taking|i.m driving|by (car|train)|drive|train|take)\\b"], model: "I'll take the train.", hint: "Décision : I'll + verbe." },
       { npc: "Great! I think the weather will be nice.", ok: ["\\b(i hope|hope so|me too|great|thanks|thank you|i think so|yes)\\b"], model: "I hope so too!", hint: "Réponds gentiment." }] },
   ],
+  "A2.5": [
+    { title: "Choisir un appartement", icon: "🏠", scene: "Un agent immobilier te montre deux appartements.", turns: [
+      { npc: "Hello! Here are two flats. This one is bigger, and that one is cheaper. Which do you prefer?", ok: ["\\b(i prefer|i.d prefer|i.d rather|i like|the (first|second|big|bigger|small|smaller|cheap|cheaper)|this one|that one)\\b"], model: "I prefer the bigger one.", hint: "Dis ta préférence : I prefer…" },
+      { npc: "Why do you like it better?", ok: ["\\b(because|it.s|it is|bigger|quieter|brighter|more|cheaper)\\b"], model: "Because it's brighter and more comfortable.", hint: "Donne une raison avec because." },
+      { npc: "It's more expensive, you know. Is that a problem?", ok: ["\\b(no|yes|not really|a bit|it.s|that.s|too|fine|ok|okay)\\b"], model: "No, it isn't as expensive as I thought.", hint: "Réponds, avec as … as si tu veux." },
+      { npc: "Great choice! Would you like to visit it again tomorrow?", ok: ["\\b(yes|no|sure|of course|please|thank|thanks|i.d like|i.ll|tomorrow)\\b"], model: "Yes, please. I'll come at ten.", hint: "Réponds poliment." }] },
+    { title: "Au restaurant : deux plats", icon: "🍽️", scene: "Le serveur t'aide à choisir ton repas.", turns: [
+      { npc: "Good evening. The fish is fresher today, but the pasta is cheaper. What would you like?", ok: ["\\b(i.d like|i would like|i.ll have|i.ll take|can i have|the (fish|pasta)|fish|pasta)\\b"], model: "I'll have the fish, please.", hint: "Commande avec I'll have…" },
+      { npc: "Excellent choice. And to drink? We have tea, coffee and juice.", ok: ["\\b(tea|coffee|juice|water|i.d like|i.ll have|i prefer|i.d rather)\\b"], model: "I'd rather have a tea than a coffee.", hint: "I'd rather… ou I prefer…" },
+      { npc: "Here is your fish. Is everything all right?", ok: ["\\b(yes|it.s|looks|thank|great|perfect|delicious|good|very)\\b"], model: "Yes, it looks delicious. It's the biggest fish I've ever seen!", hint: "Réponds avec un superlatif si tu peux." },
+      { npc: "Would you like a dessert?", ok: ["\\b(yes|no|please|thank|thanks|i.d like|i.ll have|not|maybe)\\b"], model: "No, thank you. The bill, please.", hint: "Réponds poliment." }] },
+  ],
 };

@@ -26,4 +26,9 @@ export const SITUATIONS_A2 = {
     S("🤝", "Offer to help someone right now.", "Utilise « I'll ».", "\\bi.ll\\s+\\w+|\\bi will\\s+\\w+", "I'll carry your bag."),
     S("🏨", "Book a table or a room.", "Commence par « I'd like to… ».", "\\bi.d like to (book|reserve|have)\\b|\\bi would like to (book|reserve|have)\\b", "I'd like to book a table for two."),
   ],
+  "A2.5": [
+    S("📏", "Compare two things you own.", "Utilise « -er than » ou « more … than ».", "\\b(\\w+er|more \\w+|less \\w+) than\\b", "My new phone is faster than my old one."),
+    S("🥇", "Say what the best thing in your town is.", "Utilise « the best » ou « the most … ».", "\\bthe (best|most \\w+|\\w+est)\\b", "The best place in my town is the park."),
+    S("⚖️", "Say what you prefer and why.", "Commence par « I prefer… because… ».", "\\bi (prefer|.d rather)\\b.*\\bbecause\\b|\\bbecause\\b.*\\bi (prefer|.d rather)\\b", "I prefer tea because it's lighter."),
+  ],
 };

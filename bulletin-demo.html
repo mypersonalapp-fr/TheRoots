@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aperçu du bulletin</title>
-<link rel="stylesheet" href="css/base.css"/><link rel="stylesheet" href="css/backgrounds.css"/><link rel="stylesheet" href="css/screens.css?v=20261018c7"/><link rel="stylesheet" href="css/lecon-a11.css?v=20261018c7"/></head>
+<link rel="stylesheet" href="css/base.css"/><link rel="stylesheet" href="css/backgrounds.css"/><link rel="stylesheet" href="css/screens.css?v=20261019a1"/><link rel="stylesheet" href="css/lecon-a11.css?v=20261019a1"/></head>
 <body><div id="r" style="max-width:420px;margin:0 auto;padding:14px"></div>
 <script type="module">
 const mk=(t,pts,gaps)=>JSON.stringify({scores:{test:t+"/40"},done:t>=32?{test:true}:{},testHist:[{d:"2026-10-17",total:t,passed:t>=32,pts,gaps}]});
@@ -7,6 +7,6 @@ if(new URLSearchParams(location.search).has("demo")){
 [[1,36,[6.6,6.2,8.8,6.5,7.9]],[2,38,[7,6.8,9,7,7.5]],[4,33,[6,6,8,6.5,6.5]],[5,40,[7.5,7.5,10,7.5,7.5]]].forEach(([n,t,p])=>localStorage.setItem(n==1?"the_roots_a11_lesson_v1":`the_roots_a1${n}_lesson_v1`,mk(t,p,[])));
 localStorage.setItem("the_roots_a13_lesson_v1",mk(29,[6,5,7,6,5],[{sk:"Grammaire",q:"She ___ in a bank. (work)"},{sk:"Grammaire",q:"He ___ like coffee."},{sk:"Écoute",q:"À quelle heure est l'invitation ?"}]));
 localStorage.setItem("the_roots_a1_exam_v1",JSON.stringify({scores:{test:"30/40"},testHist:[{total:30,passed:false,pts:[6,6,7,5,6],gaps:[]}]}));localStorage.setItem("the_roots_a1_rattrapage_v1",JSON.stringify({"A1.3":{series:2,last:"4/5",d:"2026-10-17",hist:[{d:"2026-10-16",ok:3,tot:5},{d:"2026-10-17",ok:4,tot:5}]},"A1.4":{series:1,last:"5/5",d:"2026-10-15",hist:[{d:"2026-10-15",ok:5,tot:5}]}}));localStorage.setItem("the_roots_a16_lesson_v1",JSON.stringify({scores:{test:"31/40"}}));}
-const {bulletinHtml}=await import("./js/screens/mes-cours.js?v=20261018c7");
+const {bulletinHtml}=await import("./js/screens/mes-cours.js?v=20261019a1");
 document.getElementById("r").innerHTML=bulletinHtml("A1");
 </script></body></html>

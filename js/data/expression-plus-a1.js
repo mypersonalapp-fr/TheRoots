@@ -362,4 +362,36 @@ export const EXPRESSION_PLUS_A2 = {
       ["Dis comment tu vas faire.", "Comment", "i.ll|i will|going to|by|every|class|course"],
       ["Fais une prévision.", "Prévision", "i think|probably|hope|will be"]]),
   ],
+  5: [
+    T("Décris l'image : le marché", "🍎", "In this picture, a busy fruit market. A seller is weighing apples and a woman is choosing tomatoes. Two children are sharing an orange. The market is more crowded than a supermarket, but the fruit is fresher and cheaper. I prefer the market because it's friendlier.", [
+      ["Dis ce que font les personnes.", "Les personnes", "is (weighing|choosing|sharing|buying|selling|carrying|talking|looking)|are (sharing|buying|selling|choosing|talking|looking|walking|carrying)"],
+      ["Dis ce que tu vois sur les étals.", "Les étals", "fruit|apples|tomatoes|oranges|vegetables|stall|bananas|flowers|basket|scales"],
+      ["Compare le marché au supermarché.", "Comparaison", "than|as \\w+ as|more \\w+|cheaper|fresher|bigger"],
+      ["Dis ce que tu préfères.", "Préférence", "prefer|rather|better|favourite|like"]], "describe-a25-market"),
+    T("Décris l'image : la rue", "🏪", "In this picture, two shops face each other. The supermarket is bigger and newer than the bakery, but the bakery is older and prettier. A man is riding a bike and a woman is carrying bags. I prefer the bakery because the bread is better.", [
+      ["Dis ce que font les personnes.", "Les personnes", "is (riding|carrying|walking|looking|going|standing|crossing)|are (walking|looking|talking|going|crossing|shopping)"],
+      ["Compare les deux magasins.", "Les magasins", "than|as \\w+ as|bigger|older|newer|smaller"],
+      ["Dis ce que tu vois dans la rue.", "La rue", "shop|bakery|supermarket|bike|bag|street|road|sign|bread"],
+      ["Dis lequel tu préfères.", "Préférence", "prefer|rather|better|favourite"]], "describe-a25-street"),
+    T("Mon logement idéal", "🏠", "My perfect flat is bigger than my flat now. It's quieter and brighter, and the kitchen is more modern. It isn't as cheap as my old flat, but it's the most comfortable place I know.", [
+      ["Compare avec ton logement actuel.", "Comparaison", "than"],
+      ["Dis deux qualités.", "Qualités", "quiet|bright|modern|comfortable|spacious|big|cosy|clean"],
+      ["Dis un défaut avec « not as … as ».", "Défaut", "not as|isn.t as|aren.t as|too"],
+      ["Dis ce qui est le plus important.", "Le plus important", "most|best|biggest|favourite|important"]]),
+    T("Deux villes", "🌆", "I know two cities: Lyon and Paris. Paris is bigger and more expensive than Lyon. Lyon is quieter and less crowded. Paris has more museums, but Lyon has better food, I think. I'd rather live in Lyon.", [
+      ["Compare la taille ou le prix.", "Taille ou prix", "bigger|larger|more expensive|cheaper|smaller|than"],
+      ["Compare le calme ou la foule.", "Calme ou foule", "quieter|less crowded|more crowded|noisier|busier|calmer"],
+      ["Utilise « more » ou « fewer » avec un nom.", "Quantité", "more \\w+|fewer \\w+|less \\w+"],
+      ["Dis où tu préfères vivre.", "Préférence", "rather|prefer|favourite|better"]]),
+    T("Ma famille", "👨‍👩‍👧", "My mother is the oldest person in my family, but she is as active as my father. My sister is taller than me, and my brother is the youngest. We are different, but we are all very close.", [
+      ["Dis qui est le plus âgé ou le plus jeune.", "Le plus…", "oldest|youngest|eldest|tallest|funniest|cleverest"],
+      ["Compare deux personnes.", "Comparaison", "than|taller|older|younger|stronger"],
+      ["Utilise « as … as ».", "Égalité", "as \\w+ as|the same as|both"],
+      ["Dis si vous êtes pareils ou différents.", "Pareils ?", "different|same|alike|similar|like"]]),
+    T("Mon objet préféré", "📱", "I have two phones. The new one is faster and lighter than the old one. The old one is cheaper, but it isn't as good. I prefer the new one because the camera is much better.", [
+      ["Compare deux objets.", "Deux objets", "than|as \\w+ as|faster|lighter|bigger"],
+      ["Dis lequel est moins cher ou plus cher.", "Prix", "cheaper|more expensive|less expensive|price"],
+      ["Dis lequel tu préfères.", "Préférence", "prefer|rather|favourite|better"],
+      ["Donne une raison avec « because ».", "Raison", "because"]]),
+  ],
 };

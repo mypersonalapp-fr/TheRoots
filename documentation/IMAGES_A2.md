@@ -95,7 +95,15 @@ Le prompt complet en français (un seul texte, noms de fichiers inclus) a été 
 ## A2.4 — 6 images manquantes (prompt redonné le 18/10)
 scene-a24-decision, scene-a24-prediction, scene-a24-booking, scene-a24-appointment, describe-a24-agency, describe-a24-party (dossier `assets/img/lesson/`).
 
-## A2.5 « Comparing » — 16 images à fournir (prompt donné le 18/10, leçon construite après réception)
-Scènes `assets/img/lesson/` : scene-a25-compare, bigger, price, best, equal, preference, cities, shopping.
-Roots City `assets/img/city/` : a25-m1 à a25-m6.
-« Décris l'image » `assets/img/lesson/` : describe-a25-market, describe-a25-street. Aucun texte lisible, écrans éteints.
+## A2.5 « Comparing » — 16 images (leçon construite le 19/10, images à placer à leur arrivée)
+Scènes `assets/img/lesson/` (légende dans le vocabulaire) :
+- scene-a25-compare : un enfant compare deux vélos (petit/vieux, grand/moderne)
+- scene-a25-bigger : une femme entre un tout petit chiot et un énorme chien
+- scene-a25-price : un client compare deux vestes identiques (étiquettes vides)
+- scene-a25-best : trois coureurs franchissent la ligne, le premier lève les bras
+- scene-a25-equal : deux amis de même taille, dos à dos, avec la même glace
+- scene-a25-preference : une femme avec une tasse de thé et une de café, sourit au thé
+- scene-a25-cities : village calme à gauche, rue de ville animée à droite
+- scene-a25-shopping : une famille compare deux canapés
+Roots City `assets/img/city/` : a25-m1 (petit appartement calme), a25-m2 (appartement moderne), a25-m3 (marché animé), a25-m4 (parc calme avec lac), a25-m5 (quai de gare à l'heure de pointe), a25-m6 (tour de bureaux à côté d'une vieille maison).
+« Décris l'image » `assets/img/lesson/` : describe-a25-market (marché de fruits et légumes, vendeur qui pèse des pommes, femme qui choisit des tomates, deux enfants avec une orange, chien sous une table), describe-a25-street (supermarché neuf face à une vieille boulangerie, homme à vélo, femme avec des sacs). Aucun texte lisible, écrans éteints.
