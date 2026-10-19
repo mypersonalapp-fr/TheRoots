@@ -14,7 +14,7 @@
 .dl-big .dl-meta,.dl-big .dl-title,.dl-big .dl-state{ padding:0 14px; }
 .dl-big .dl-meta{ padding-top:12px; }
 .dl-big .dl-title{ font-size:18px; }
-.dl-img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:12px 12px 0 0; }
+.dl-img{ width:100%; aspect-ratio:2/1; object-fit:cover; display:block; border-radius:12px 12px 0 0; }
 .dl-meta{ font-size:12px; color:var(--ink-soft); }
 .dl-title{ font-size:15px; line-height:1.3; }
 .dl-state{ font-size:12px; font-weight:700; color:var(--success); }
@@ -61,7 +61,7 @@
 .dp-stand{ font-style:italic; font-size:16px; line-height:1.4; color:var(--stand); }
 .dp-lead figure{ display:flex; flex-direction:column; gap:6px; }
 .dp-shot,.dp-thumb{ background:var(--frame); border-radius:2px; overflow:hidden; }
-.dp-shot{ aspect-ratio:3/2; } .dp-thumb{ aspect-ratio:1/1; }
+.dp-shot,.dp-thumb{ aspect-ratio:2/1; } /* toutes les images Daily sont en 2:1 : aucun recadrage */
 .dp-shot img,.dp-thumb img{ display:block; width:100%; height:100%; object-fit:cover; }
 .dp figcaption{ font-style:italic; font-size:12px; color:var(--soft); }
 .dp-cols p{ margin-bottom:10px; font-size:16px; }
@@ -126,7 +126,7 @@
   .dp-stand{ font-size:19px; line-height:1.4; }
   .dp figcaption{ font-size:13px; }
   .dp-cols p{ font-size:18.5px; line-height:1.6; margin-bottom:14px; }
-  .dp-lead .dp-shot{ aspect-ratio:3/2; }
+  .dp-lead .dp-shot{ aspect-ratio:2/1; }
 }
 
 /* Parcours « lire, puis une question à la fois » */
@@ -159,7 +159,7 @@
   .dp[data-page="1"] .dp-stand,.dp[data-page="1"] figcaption{ display:none; }
   .dp[data-page="1"] .dp-lead{ gap:10px; }
   .dp[data-page="1"] .dp-lead h2{ font-size:28px; margin:2px 0 0; }
-  .dp[data-page="1"] .dp-shot{ aspect-ratio:16/7; }
+  .dp[data-page="1"] .dp-shot{ aspect-ratio:2/1; }
   .dp[data-page="1"] .dp-cols p{ font-size:16.5px; line-height:1.5; margin-bottom:8px; }
   .dp[data-page="1"] .dp-issues,.dp[data-page="1"] .dp-tip{ display:none; }
   .dp[data-page="2"] .dp-tip{ display:none; }
