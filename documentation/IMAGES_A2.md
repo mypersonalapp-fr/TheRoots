@@ -139,3 +139,8 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 - lesson/ (scènes de vocabulaire) : scene-a29-devices, scene-a29-actions, scene-a29-phrases, scene-a29-office, scene-a29-message, scene-a29-problems, scene-a29-verbs, scene-a29-time, scene-a29-family
 - city/ : a29-m1 … a29-m6
 - lesson/ « Décris l'image » : describe-a29-office (homme au téléphone à son bureau, agenda ouvert à côté de l'ordinateur, collègue qui écrit une note derrière lui, sans texte lisible), describe-a29-park (garçon assis sur un banc au parc qui téléphone, cartable, air inquiet, chien qui dort près du banc)
+
+## A2.10 « Going Out and Invitations » — 17 images (leçon construite le 19/10, images à fournir en fin de parcours)
+- lesson/ (scènes de vocabulaire) : scene-a210-outings, scene-a210-restaurant, scene-a210-invite, scene-a210-dates, scene-a210-cancel, scene-a210-tickets, scene-a210-activities, scene-a210-reactions, scene-a210-organise
+- city/ : a210-m1 … a210-m6
+- lesson/ « Décris l'image » : describe-a210-cinema (trois amis souriants devant un cinéma, une femme tient des billets, un homme regarde son téléphone, affiche sans texte lisible), describe-a210-restaurant (couple à une table avec bougie et deux verres, serveur qui apporte deux assiettes, ambiance chaleureuse)

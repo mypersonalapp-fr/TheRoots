@@ -1,6 +1,6 @@
 // The Roots — A1 : sujets d'expression supplémentaires (parler / écrire), pour arriver à 6 sujets par leçon.
 // T(titre, icône, modèle, [[consigne FR, libellé court, mots-clés EN séparés par |], …×4])
-import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b4";
+import { TRADUCTION_A1, TRADUCTION_A2 } from "./traduction-a1a2.js?v=20261019b5";
 const T = (title, icon, model, rows, img) => ({
   title, icon, model, img,
   prompts: rows.map((r) => r[0]),
@@ -464,6 +464,24 @@ export const EXPRESSION_PLUS_A2 = {
     T("Raconter un appel", "🗣️", "Yesterday, my friend called me. She said that she was ill and that she couldn't come to school. She asked me to bring her homework. She told me that she would call again the next day. I said that I would help her.", [
       ["Dis qui a appelé et quand.", "L'appel", "called|phoned|yesterday|this morning|last night"], ["Utilise said that + passé.", "Said that", "said (that )?(she|he|they)|told me (that )?"],
       ["Rapporte une demande.", "Demande", "asked me to|told me to|asked me if|told me not to"], ["Utilise would (ce qu'elle ferait).", "Would", "would|promised"]]),
+  ],
+  10: [
+    T("Décris l'image : devant le cinéma", "🎬", "Three friends are standing outside a cinema. A woman is holding the tickets. A man is looking at his phone. They are smiling. I think they are going to see a film tonight.", [
+      ["Dis où sont les personnes.", "Où", "cinema|outside|in front|entrance|at the"],
+      ["Dis ce que font deux personnes.", "Ce qu'ils font", "is (holding|looking|smiling|talking|waiting)|are (standing|smiling|waiting|talking|holding)"],
+      ["Dis ce que tu vois autour.", "Autour", "tickets|phone|poster|queue|door|there is|there are|i can see"],
+      ["Dis ce qu'ils vont faire, à ton avis.", "À ton avis", "going to|will|think|maybe|film|see|watch"]], "describe-a210-cinema"),
+    T("Décris l'image : au restaurant", "🍽️", "A couple is sitting at a table in a restaurant. The waiter is bringing two plates. There is a candle and two glasses on the table. They look happy. I think it is a special evening.", [
+      ["Dis où sont les personnes.", "Où", "restaurant|table|inside|in a|at a"],
+      ["Dis ce que fait le serveur.", "Le serveur", "waiter is|is (bringing|carrying|holding|serving)"],
+      ["Dis ce que tu vois sur la table.", "Sur la table", "candle|glasses|plates|menu|bread|there is|there are|i can see"],
+      ["Dis ce que tu penses.", "À ton avis", "think|maybe|special|happy|birthday|anniversary|evening"]], "describe-a210-restaurant"),
+    T("Inviter pour le week-end", "🎉", "Hi Sam, would you like to come to a picnic on Sunday? It's at the park at noon. Shall I bring the drinks? I can't wait!", [
+      ["Invite ton ami.", "Invitation", "would you like|do you want|come|join|invite"], ["Dis où et quand.", "Où et quand", "sunday|saturday|friday|park|noon|at [0-9a-z]|on [a-z]+day"],
+      ["Propose d'apporter quelque chose.", "Proposition", "shall i|can i|i can|i.ll|bring|make"], ["Montre ton enthousiasme.", "Enthousiasme", "can.t wait|look forward|great|fun|love|excited"]]),
+    T("Annuler un rendez-vous", "🔄", "Hi Anna, I'm sorry, but I have to cancel tonight. I'm ill. Can we reschedule? How about Friday instead? Thank you for understanding.", [
+      ["Excuse-toi.", "Excuse", "sorry|apologise|afraid|unfortunately"], ["Dis que tu dois annuler et pourquoi.", "Annulation", "cancel|can.t come|ill|busy|work|because"],
+      ["Propose une autre date.", "Alternative", "how about|what about|would .* be better|instead|reschedule|another"], ["Remercie.", "Merci", "thank|thanks"]]),
   ],
 };
 

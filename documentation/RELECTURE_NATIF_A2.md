@@ -6745,6 +6745,660 @@
 - `VOCAB_A29` It was great to hear from you.
 - `VOCAB_A29` “Keep in touch” veut dire…
 
+## A2.10 (882 lignes)
+
+- `EXERCISES_A210` Vocabulaire — Les sorties
+- `EXERCISES_A210` Choisis le sens correct.
+- `EXERCISES_A210` Exhibition = exposition.
+- `EXERCISES_A210` Ticket = billet.
+- `EXERCISES_A210` file d'attente
+- `EXERCISES_A210` Queue = file.
+- `EXERCISES_A210` board game
+- `EXERCISES_A210` Festival = festival.
+- `EXERCISES_A210` Picnic = pique-nique.
+- `EXERCISES_A210` Vocabulaire — Inviter et annuler
+- `EXERCISES_A210` Invite = inviter.
+- `EXERCISES_A210` Cancel = annuler.
+- `EXERCISES_A210` Reschedule = reprogrammer.
+- `EXERCISES_A210` Unfortunately = malheureusement.
+- `EXERCISES_A210` Treat = offrir.
+- `EXERCISES_A210` Would like to
+- `EXERCISES_A210` Choisis la bonne forme.
+- `EXERCISES_A210` Would you ___ to come to dinner?
+- `EXERCISES_A210` Would you like to… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` I ___ like to invite you.
+- `EXERCISES_A210` I would like to…
+- `EXERCISES_A210` I'd like ___ table for two.
+- `EXERCISES_A210` I'd like a table.
+- `EXERCISES_A210` Would you like ___ coffee?
+- `EXERCISES_A210` Would you like a coffee ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` ___ you like to join us?
+- `EXERCISES_A210` Would you like… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` She'd like ___ come.
+- `EXERCISES_A210` would like to + verbe.
+- `EXERCISES_A210` Would you like to come? — I'd ___ to!
+- `EXERCISES_A210` I'd love to ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Would you like some tea? — Yes, ___.
+- `EXERCISES_A210` thanks you
+- `EXERCISES_A210` Yes, please.
+- `EXERCISES_A210` Thank you ___ inviting me.
+- `EXERCISES_A210` Thank you for + -ing.
+- `EXERCISES_A210` Shall we go out? — ___ good!
+- `EXERCISES_A210` Sounds good ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` I can't wait ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Would you like to come? — Yes, that would be ___.
+- `EXERCISES_A210` Yes, that would be great.
+- `EXERCISES_A210` Shall we ? Let's ⚠ espacement/ponctuation
+- `EXERCISES_A210` ___ we go to the cinema?
+- `EXERCISES_A210` Shall we… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Let's ___ at seven.
+- `EXERCISES_A210` Let's + verbe.
+- `EXERCISES_A210` Shall I ___ a table?
+- `EXERCISES_A210` Shall I + verbe.
+- `EXERCISES_A210` ___ not be late.
+- `EXERCISES_A210` Let's not…
+- `EXERCISES_A210` Shall we ___ a film?
+- `EXERCISES_A210` Shall we + verbe.
+- `EXERCISES_A210` Let's ___ to the park.
+- `EXERCISES_A210` Let's go.
+- `EXERCISES_A210` Why don't we ? How about ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Why don't we ___ a picnic?
+- `EXERCISES_A210` Why don't we + verbe.
+- `EXERCISES_A210` How about ___ to a concert?
+- `EXERCISES_A210` How about + -ing.
+- `EXERCISES_A210` What about ___?
+- `EXERCISES_A210` to Saturday
+- `EXERCISES_A210` go Saturday
+- `EXERCISES_A210` What about + nom.
+- `EXERCISES_A210` Why don't you ___ with us?
+- `EXERCISES_A210` Why don't you + verbe.
+- `EXERCISES_A210` How about ___ tonight?
+- `EXERCISES_A210` seeing a film
+- `EXERCISES_A210` see a film
+- `EXERCISES_A210` to see a film
+- `EXERCISES_A210` Why don't we… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Refuser poliment
+- `EXERCISES_A210` Choisis la bonne formule.
+- `EXERCISES_A210` I'm ___ I can't come.
+- `EXERCISES_A210` afraid of
+- `EXERCISES_A210` scared that
+- `EXERCISES_A210` I'm afraid I can't.
+- `EXERCISES_A210` I'd love to, ___ I'm busy.
+- `EXERCISES_A210` I'd love to, but…
+- `EXERCISES_A210` Sorry, I'm not ___ on Friday.
+- `EXERCISES_A210` I'm not free.
+- `EXERCISES_A210` Thank you, but I have other ___.
+- `EXERCISES_A210` other plans.
+- `EXERCISES_A210` I'd love to, ___ I have to work.
+- `EXERCISES_A210` I'm sorry, I ___ come.
+- `EXERCISES_A210` don't can
+- `EXERCISES_A210` Proposer une alternative
+- `EXERCISES_A210` I can't on Friday. How ___ Saturday?
+- `EXERCISES_A210` How about + nom.
+- `EXERCISES_A210` Would Sunday ___ better?
+- `EXERCISES_A210` Would + be.
+- `EXERCISES_A210` Maybe ___ time?
+- `EXERCISES_A210` another time.
+- `EXERCISES_A210` Can we meet ___?
+- `EXERCISES_A210` later = plus tard.
+- `EXERCISES_A210` How about Sunday ___?
+- `EXERCISES_A210` in stead of
+- `EXERCISES_A210` Is eight o'clock ___ for you?
+- `EXERCISES_A210` Is eight OK for you ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` I'd like to ___ a table for two.
+- `EXERCISES_A210` have book
+- `EXERCISES_A210` Book a table.
+- `EXERCISES_A210` A table ___ four, please.
+- `EXERCISES_A210` for + nombre.
+- `EXERCISES_A210` On Friday ___ eight o'clock.
+- `EXERCISES_A210` at + heure.
+- `EXERCISES_A210` Could I ___ your name, please?
+- `EXERCISES_A210` Could I have… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` I have a ___ under Brown.
+- `EXERCISES_A210` A reservation.
+- `EXERCISES_A210` Can we have the ___, please? (addition)
+- `EXERCISES_A210` The bill.
+- `EXERCISES_A210` We ___ meeting at seven.
+- `EXERCISES_A210` The film starts ___ eight.
+- `EXERCISES_A210` I'm going out ___ Friday.
+- `EXERCISES_A210` on + jour.
+- `EXERCISES_A210` See you ___ the evening.
+- `EXERCISES_A210` in the evening.
+- `EXERCISES_A210` What ___ you doing on Saturday?
+- `EXERCISES_A210` What are you doing ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` I'm having dinner ___ friends tonight.
+- `EXERCISES_A210` with friends.
+- `EXERCISES_A210` Sounds good!
+- `EXERCISES_A210` What a pity!
+- `EXERCISES_A210` Of course!
+- `EXERCISES_A210` What a pity ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Bad luck!
+- `EXERCISES_A210` Great idea!
+- `EXERCISES_A210` Great idea ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Pas de souci →
+- `EXERCISES_A210` No problem.
+- `EXERCISES_A210` Sounds fun!
+- `EXERCISES_A210` Sounds sad!
+- `EXERCISES_A210` Sounds late!
+- `EXERCISES_A210` Sounds fun ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Avec plaisir →
+- `EXERCISES_A210` I'd hate.
+- `EXERCISES_A210` I'm afraid.
+- `EXERCISES_A210` I'd love to!
+- `EXERCISES_A210` I can't come!
+- `EXERCISES_A210` I can't wait!
+- `EXERCISES_A210` I can't hear!
+- `EXERCISES_A210` Choisis la bonne traduction.
+- `EXERCISES_A210` Would you like to come to the cinema?
+- `EXERCISES_A210` Tu veux un film ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Would you like to = aimerais-tu.
+- `EXERCISES_A210` I'd love to, but I'm busy.
+- `EXERCISES_A210` I'd love to, but = j'aimerais bien, mais.
+- `EXERCISES_A210` Shall we meet at seven?
+- `EXERCISES_A210` Shall we = on… ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Why don't we have a picnic?
+- `EXERCISES_A210` Nous n'avons pas de pique-nique.
+- `EXERCISES_A210` Pourquoi ne pas manger ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Et si on faisait un pique-nique ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Why don't we = et si on…
+- `EXERCISES_A210` I'd like to book a table for two.
+- `EXERCISES_A210` Je voudrais une table pour douze.
+- `EXERCISES_A210` Unfortunately, I have to cancel.
+- `EXERCISES_A210` Malheureusement, je dois annuler.
+- `EXERCISES_A210` Heureusement, je dois confirmer.
+- `EXERCISES_A210` You like to come dinner on Friday?
+- `EXERCISES_A210` Do you would like come to dinner Friday?
+- `EXERCISES_A210` Would you like to come to dinner on Friday?
+- `EXERCISES_A210` I'm afraid I don't can.
+- `EXERCISES_A210` I'm scared I can't.
+- `EXERCISES_A210` How about going to the cinema?
+- `EXERCISES_A210` How about go to the cinema?
+- `EXERCISES_A210` What about to go cinema?
+- `EXERCISES_A210` Let's to meet at seven.
+- `EXERCISES_A210` Let's meet at seven.
+- `EXERCISES_A210` Let's meeting at seven.
+- `EXERCISES_A210` Pouvons-nous reprogrammer ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Can we reschedule?
+- `EXERCISES_A210` Can we rescheduling?
+- `EXERCISES_A210` Can we to reschedule?
+- `EXERCISES_A210` Can we reschedule ? ⚠ espacement/ponctuation
+- `EXERCISES_A210` Merci pour l'invitation ! ⚠ espacement/ponctuation
+- `EXERCISES_A210` Thanks the invitation!
+- `EXERCISES_A210` Thank you to the invitation!
+- `EXERCISES_A210` Thank you for the invitation!
+- `EXERCISES_A210` Thank you for…
+- `EXPRESSION_A210` Inviter un ami
+- `EXPRESSION_A210` Invite un ami avec Would you like to…
+- `EXPRESSION_A210` Hi Tom, would you like to come to the cinema on Saturday? The film starts at seven. Shall we have dinner after the film? I can't wait!
+- `EXPRESSION_A210` Une invitation
+- `EXPRESSION_A210` Une suggestion
+- `EXPRESSION_A210` Ton enthousiasme
+- `EXPRESSION_A210` Refuser et proposer autre chose
+- `EXPRESSION_A210` Remercie pour l'invitation.
+- `EXPRESSION_A210` Refuse poliment avec I'm afraid ou I'd love to, but.
+- `EXPRESSION_A210` Donne une raison.
+- `EXPRESSION_A210` Propose un autre jour avec How about…
+- `EXPRESSION_A210` Thank you for the invitation. I'd love to come, but I'm afraid I can't. I have to work on Friday. How about Saturday instead?
+- `EXPRESSION_A210` Un refus poli
+- `EXPRESSION_A210` Une raison
+- `EXPRESSION_A210` Une autre proposition
+- `GRAMMAR_A210` Would like to : inviter poliment
+- `GRAMMAR_A210` I would like to invite you to dinner.
+- `GRAMMAR_A210` would like to + verbe
+- `GRAMMAR_A210` Would you like to + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` I'd like a table for two.
+- `GRAMMAR_A210` Je voudrais une table pour deux.
+- `GRAMMAR_A210` I'd like + nom
+- `GRAMMAR_A210` Would you like a coffee?
+- `GRAMMAR_A210` Would you like + nom ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Would you like to join us on Saturday?
+- `GRAMMAR_A210` Aimerais-tu nous rejoindre samedi ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` I'd like to invite you to my birthday party.
+- `GRAMMAR_A210` I ___ like to invite you to the concert.
+- `GRAMMAR_A210` I would like to + verbe.
+- `GRAMMAR_A210` I'd like ___ a table for two.
+- `GRAMMAR_A210` I'd like + nom.
+- `GRAMMAR_A210` Accepter : I'd love to
+- `GRAMMAR_A210` Would you like to come? — I'd love to!
+- `GRAMMAR_A210` Aimerais-tu venir ? — Avec plaisir ! ⚠ espacement/ponctuation
+- `GRAMMAR_A210` I'd love to = oui avec enthousiasme
+- `GRAMMAR_A210` Yes, please. / Yes, that would be great.
+- `GRAMMAR_A210` Oui, volontiers. / Oui, ce serait super.
+- `GRAMMAR_A210` accepter une offre
+- `GRAMMAR_A210` Sounds good! What time?
+- `GRAMMAR_A210` accepter + poser une question
+- `GRAMMAR_A210` Thank you for inviting me.
+- `GRAMMAR_A210` Would you like some tea? — Yes, please.
+- `GRAMMAR_A210` I'd love to come. Thank you for the invitation!
+- `GRAMMAR_A210` J'adorerais venir. Merci pour l'invitation ! ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Would you like some coffee? — Yes, ___.
+- `GRAMMAR_A210` Shall we… ? et Let's ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Shall we go to the cinema?
+- `GRAMMAR_A210` Shall we + verbe ? (suggestion) ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Shall I book a table?
+- `GRAMMAR_A210` Shall I + verbe ? (proposer son aide) ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Let's + verbe
+- `GRAMMAR_A210` Let's not be late.
+- `GRAMMAR_A210` Ne soyons pas en retard.
+- `GRAMMAR_A210` Let's not + verbe
+- `GRAMMAR_A210` Shall we have dinner after the film?
+- `GRAMMAR_A210` Let's go to the museum on Sunday.
+- `GRAMMAR_A210` Let's + verbe sans to.
+- `GRAMMAR_A210` Why don't we… ? How about… ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Why don't we try the new restaurant?
+- `GRAMMAR_A210` Et si on essayait le nouveau restaurant ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Why don't we + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` How about going to a concert?
+- `GRAMMAR_A210` How about + verbe en -ing ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` What about Saturday?
+- `GRAMMAR_A210` Et samedi ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` What about + nom ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Why don't you come with us?
+- `GRAMMAR_A210` Pourquoi ne viens-tu pas avec nous ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Why don't you + verbe ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Why don't we have a picnic in the park?
+- `GRAMMAR_A210` Et si on faisait un pique-nique au parc ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` How about seeing a film tonight?
+- `GRAMMAR_A210` Et si on allait voir un film ce soir ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` How about ___ a concert?
+- `GRAMMAR_A210` What about ___? (samedi)
+- `GRAMMAR_A210` on go Saturday
+- `GRAMMAR_A210` I'm afraid = je regrette
+- `GRAMMAR_A210` I'd love to, but… = refus doux
+- `GRAMMAR_A210` Sorry, I'm not free on Friday.
+- `GRAMMAR_A210` I'm not free
+- `GRAMMAR_A210` Thank you, but I have other plans.
+- `GRAMMAR_A210` Merci, mais j'ai d'autres projets.
+- `GRAMMAR_A210` Thank you, but…
+- `GRAMMAR_A210` I'd love to come, but I have to work.
+- `GRAMMAR_A210` J'aimerais bien venir, mais je dois travailler.
+- `GRAMMAR_A210` I'm afraid I'm busy on Saturday.
+- `GRAMMAR_A210` I'm afraid I can't…
+- `GRAMMAR_A210` How about Sunday instead?
+- `GRAMMAR_A210` How about + jour + instead
+- `GRAMMAR_A210` Would Saturday be better?
+- `GRAMMAR_A210` Samedi serait-il mieux ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Would … be better ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` Maybe another time?
+- `GRAMMAR_A210` another time
+- `GRAMMAR_A210` Can we meet later?
+- `GRAMMAR_A210` Pouvons-nous nous voir plus tard ? ⚠ mot répété, espacement/ponctuation
+- `GRAMMAR_A210` later / earlier
+- `GRAMMAR_A210` I can't on Friday. How about Saturday instead?
+- `GRAMMAR_A210` Would eight o'clock be better for you?
+- `GRAMMAR_A210` Huit heures te conviendrait-il mieux ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` book a table + for + nombre
+- `GRAMMAR_A210` At eight o'clock, on Friday.
+- `GRAMMAR_A210` at + heure, on + jour
+- `GRAMMAR_A210` Could I have your name, please?
+- `GRAMMAR_A210` I have a reservation under Brown.
+- `GRAMMAR_A210` under + nom
+- `GRAMMAR_A210` Hello, I'd like to book a table for four on Saturday at eight.
+- `GRAMMAR_A210` Is there a table for two, please?
+- `GRAMMAR_A210` We're meeting at seven.
+- `GRAMMAR_A210` I'm going to the concert on Friday.
+- `GRAMMAR_A210` Je vais au concert vendredi.
+- `GRAMMAR_A210` on + jour
+- `GRAMMAR_A210` The film starts at half past eight.
+- `GRAMMAR_A210` at + heure
+- `GRAMMAR_A210` See you in the evening.
+- `GRAMMAR_A210` in the morning / afternoon / evening
+- `GRAMMAR_A210` What are you doing on Saturday night?
+- `GRAMMAR_A210` Que fais-tu samedi soir ? ⚠ espacement/ponctuation
+- `GRAMMAR_A210` I'm having dinner with friends tonight.
+- `LISTENING_A210` An invitation
+- `LISTENING_A210` Hi Anna, it's Mia. I'm having a party on Saturday at seven. Would you like to come? It's at my house. We will have music, food and games. Call me back, please. Bye!
+- `LISTENING_A210` What is Mia having?
+- `LISTENING_A210` A meeting
+- `LISTENING_A210` A concert
+- `LISTENING_A210` Where is it?
+- `LISTENING_A210` At a restaurant
+- `LISTENING_A210` At Mia's house
+- `LISTENING_A210` At the park
+- `LISTENING_A210` At her house.
+- `LISTENING_A210` Hello Mia, thank you for the invitation! I'd love to come. What time should we arrive? Shall I bring something? I can make a cake. Great, see you on Saturday!
+- `LISTENING_A210` What will Anna bring?
+- `LISTENING_A210` How does Anna feel?
+- `LISTENING_A210` She'd love to come.
+- `LISTENING_A210` Booking a table
+- `LISTENING_A210` Good evening, I'd like to book a table for two on Friday at half past seven, please. Certainly. Is it for a special occasion? Yes, it's our anniversary. Wonderful! Can I have your name, please? It's Smith, S-M-I-T-H.
+- `LISTENING_A210` For how many people?
+- `LISTENING_A210` Why is it special?
+- `LISTENING_A210` It's their anniversary
+- `LISTENING_A210` It's a birthday
+- `LISTENING_A210` It's a meeting
+- `LISTENING_A210` Their anniversary.
+- `LISTENING_A210` Saying no politely
+- `LISTENING_A210` Thank you for asking, but I'm afraid I can't come on Saturday. I have to visit my grandmother. I'd love to see the film, though. How about Sunday afternoon? That works for me. Great, let's meet at the cinema at three.
+- `LISTENING_A210` Why can't she come on Saturday?
+- `LISTENING_A210` She is ill
+- `LISTENING_A210` She has to visit her grandmother
+- `LISTENING_A210` She is working
+- `LISTENING_A210` Her grandmother.
+- `LISTENING_A210` When will they meet?
+- `LISTENING_A210` Sunday at three
+- `LISTENING_A210` Saturday at three
+- `LISTENING_A210` Sunday at noon
+- `LISTENING_A210` Sunday at three.
+- `LISTENING_A210` Changing the time
+- `LISTENING_A210` Hello, it's Tom. I'm sorry, but I'm going to be late. The bus is delayed. Could we meet at half past seven instead of seven? Don't worry, I'll wait for you at the entrance. Thank you for understanding.
+- `LISTENING_A210` Why is Tom late?
+- `LISTENING_A210` He is busy
+- `LISTENING_A210` He is ill
+- `LISTENING_A210` The bus is delayed
+- `LISTENING_A210` The bus is delayed.
+- `LISTENING_A210` What is the new time?
+- `LISTENING_A210` Half past seven
+- `LISTENING_A210` Half past seven.
+- `LISTENING_A210` At the cinema
+- `LISTENING_A210` Two tickets for the eight o'clock film, please. I'm sorry, that one is sold out. Do you have tickets for tomorrow at six? Yes. Two seats in row eight. That's twenty pounds. Here you are. Enjoy the film!
+- `LISTENING_A210` Why can't they see the eight o'clock film?
+- `LISTENING_A210` It is sold out
+- `LISTENING_A210` It is cancelled
+- `LISTENING_A210` It is too long
+- `LISTENING_A210` Sold out.
+- `LISTENING_A210` Where are the seats?
+- `LISTENING_A210` Row eight
+- `LISTENING_A210` Row eight.
+- `LISTENING_A210` Planning together
+- `LISTENING_A210` Shall we go out on Saturday night? Good idea! What would you like to do? How about going bowling? Then we can have dinner. Sounds great! Shall I book a table for six? Yes, please. Let's meet at the bowling alley at seven.
+- `LISTENING_A210` What will they do first?
+- `LISTENING_A210` Have dinner
+- `LISTENING_A210` Go bowling
+- `LISTENING_A210` See a film
+- `LISTENING_A210` Bowling, then dinner.
+- `LISTENING_A210` Where will they meet?
+- `LISTENING_A210` At the bowling alley
+- `LISTENING_A210` At the bowling alley.
+- `LISTENING_A210` Splitting the bill
+- `LISTENING_A210` Excuse me, could we have the bill, please? Certainly. Here you are. Shall we split it? Good idea. It's forty pounds, so twenty each. Oh, and let me leave a tip. Thank you very much. Have a nice evening!
+- `LISTENING_A210` How much is the bill?
+- `LISTENING_A210` Twenty pounds
+- `LISTENING_A210` Forty pounds
+- `LISTENING_A210` Sixty pounds
+- `LISTENING_A210` Forty pounds.
+- `LISTENING_A210` How much does each person pay?
+- `LISTENING_A210` Ten pounds
+- `LISTENING_A210` Twenty each.
+- `LISTENING_A210` A weekend plan
+- `LISTENING_A210` What are you doing this weekend? On Friday, I'm having dinner with my colleagues. On Saturday, I'm going to the market and then to a concert. On Sunday, I'm having a picnic with my family. It sounds like a busy weekend!
+- `LISTENING_A210` What is she doing on Friday?
+- `LISTENING_A210` Having a picnic
+- `LISTENING_A210` Going to a concert
+- `LISTENING_A210` Having dinner with colleagues
+- `LISTENING_A210` Dinner with colleagues.
+- `LISTENING_A210` What is she doing on Sunday?
+- `LISTENING_A210` Going to the market
+- `LISTENING_A210` A picnic with family.
+- `LISTENING_A210` Thank you
+- `LISTENING_A210` Thank you for a lovely evening, Mia. The food was delicious, and I loved the music. It was great to meet your friends. Next time, please come to my house. How about next month? Oh, that sounds wonderful. I can't wait!
+- `LISTENING_A210` What did she love?
+- `LISTENING_A210` The music
+- `LISTENING_A210` The weather
+- `LISTENING_A210` The queue
+- `LISTENING_A210` The music.
+- `LISTENING_A210` When does she suggest the next meeting?
+- `LISTENING_A210` Next week
+- `LISTENING_A210` Next month
+- `LISTENING_A210` Next month.
+- `MISSIONS_A210` Quelle sortie ? ⚠ espacement/ponctuation
+- `MISSIONS_A210` Construis la phrase
+- `MISSIONS_A210` Remets les mots dans l'ordre.
+- `MISSIONS_A210` Accepter, refuser, proposer
+- `MISSIONS_A210` At, on ou in ? ⚠ espacement/ponctuation
+- `MISSIONS_A210` Choisis le bon mot.
+- `MISSIONS_A210` Compose ta phrase avec la fiche.
+- `READING_A210` Dear Anna, I'm having a birthday party on Saturday at seven. It's at my house, and there will be music, food and games. Would you like to come? Please bring a friend if you want. Let me know before Thursday. Love, Mia.
+- `READING_A210` A dinner at a restaurant
+- `READING_A210` A birthday party
+- `READING_A210` A birthday party.
+- `READING_A210` When is it?
+- `READING_A210` On Saturday at seven
+- `READING_A210` On Friday at six
+- `READING_A210` On Sunday at noon
+- `READING_A210` Saturday at seven.
+- `READING_A210` Before when should Anna answer?
+- `READING_A210` Before Saturday
+- `READING_A210` Before Thursday
+- `READING_A210` Before Monday
+- `READING_A210` Before Thursday.
+- `READING_A210` Dear Mia, thank you so much for the invitation! I'd love to come to your party. I'm very happy, because I can't wait to see you. I'll bring a cake, and my brother Tom will come with me. What time should we arrive? Love, Anna.
+- `READING_A210` What does Anna say about the invitation?
+- `READING_A210` She'd love to come
+- `READING_A210` She can't come
+- `READING_A210` She isn't sure
+- `READING_A210` I'd love to come.
+- `READING_A210` What will she bring?
+- `READING_A210` Some drinks
+- `READING_A210` Who will come with her?
+- `READING_A210` Her friend Lucy
+- `READING_A210` Her brother Tom
+- `READING_A210` Her mother
+- `READING_A210` Her brother Tom.
+- `READING_A210` A polite refusal
+- `READING_A210` Hi Sam, thank you for inviting me to the concert on Friday. I'd love to come, but I'm afraid I can't. I have to work late that evening. How about going to the cinema on Saturday instead? My treat! Let me know. Best, Lucy.
+- `READING_A210` Why can't Lucy come on Friday?
+- `READING_A210` She has to work late
+- `READING_A210` She is on holiday
+- `READING_A210` She has to work late.
+- `READING_A210` What does she suggest?
+- `READING_A210` A picnic on Friday
+- `READING_A210` A concert on Sunday
+- `READING_A210` The cinema on Saturday
+- `READING_A210` The cinema on Saturday.
+- `READING_A210` Who pays?
+- `READING_A210` They split the bill
+- `READING_A210` My treat!
+- `READING_A210` Hello, I'd like to book a table for four on Saturday at eight, please. — Certainly. Do you prefer inside or outside? — Inside, please. — Can I have your name and phone number? — Yes, it's Brown, and my number is oh seven, nine one one, two three. — Thank you, Mr Brown. See you on Saturday! ⚠ mot répété
+- `READING_A210` How many people is the table for?
+- `READING_A210` Where do they want to sit?
+- `READING_A210` At the bar
+- `READING_A210` When is the reservation?
+- `READING_A210` Saturday at eight
+- `READING_A210` Friday at eight
+- `READING_A210` Saturday at six
+- `READING_A210` Saturday at eight.
+- `READING_A210` Changing plans
+- `READING_A210` Hi Tom, I'm sorry, but I have to cancel dinner tonight. My daughter is ill, and I need to stay at home. Can we reschedule? Would Sunday at seven be better for you? I'll book the table again. Sorry for the change! Anna.
+- `READING_A210` Why does Anna cancel?
+- `READING_A210` She is busy at work
+- `READING_A210` She is tired
+- `READING_A210` Her daughter is ill
+- `READING_A210` Her daughter is ill.
+- `READING_A210` Friday at seven
+- `READING_A210` Sunday at seven
+- `READING_A210` Monday at noon
+- `READING_A210` Sunday at seven.
+- `READING_A210` What will she do?
+- `READING_A210` Book the table again
+- `READING_A210` Call the restaurant tomorrow
+- `READING_A210` Cook at home
+- `READING_A210` She will book again.
+- `READING_A210` Cinema night
+- `READING_A210` Last Friday, my friends and I went to the cinema. We met outside at seven, bought tickets and sat in row ten. The film was funny, and we laughed a lot. After the film, we had pizza. We split the bill, and then we took the bus home.
+- `READING_A210` Where did they meet?
+- `READING_A210` Outside the cinema
+- `READING_A210` What was the film like?
+- `READING_A210` What did they do after the film?
+- `READING_A210` Went home at once
+- `READING_A210` Went dancing
+- `READING_A210` Had pizza
+- `READING_A210` They had pizza.
+- `READING_A210` This weekend, I'm going out a lot. On Friday, I'm having dinner with my colleagues. On Saturday morning, I'm going to the market, and in the evening, I'm seeing a concert with Sam. On Sunday, I'm having a picnic with my family. I can't wait!
+- `READING_A210` What is the writer doing on Friday?
+- `READING_A210` Seeing a concert
+- `READING_A210` What is the writer doing on Saturday evening?
+- `READING_A210` A concert with Sam.
+- `READING_A210` How does the writer feel?
+- `READING_A210` At the box office
+- `READING_A210` Good evening. Two tickets for the eight o'clock film, please. — I'm sorry, that film is sold out. The next one is at ten. — Oh, that's a bit late. Do you have tickets for tomorrow? — Yes, we have seats at six and eight. — Two seats at six, please. — That's twenty pounds.
+- `READING_A210` It's sold out.
+- `READING_A210` What do they buy?
+- `READING_A210` Four seats at eight
+- `READING_A210` Two seats at ten tonight
+- `READING_A210` Two seats at six tomorrow
+- `READING_A210` Two seats at six.
+- `READING_A210` How much is it?
+- `READING_A210` Eight pounds
+- `READING_A210` Twenty pounds.
+- `READING_A210` A good idea
+- `READING_A210` Why don't we do something different this weekend? Instead of the cinema, how about going bowling? Then we can have burgers and play some games. Shall we ask Lucy and Sam to come too? I'll book a lane for six people. It's going to be great!
+- `READING_A210` What does the writer suggest instead of the cinema?
+- `READING_A210` Going bowling
+- `READING_A210` Going bowling.
+- `READING_A210` Who will come too?
+- `READING_A210` Tom and Mia
+- `READING_A210` Lucy and Sam
+- `READING_A210` Lucy and Sam.
+- `READING_A210` For how many people will the writer book?
+- `READING_A210` Thank-you message
+- `READING_A210` Dear Mia, thank you for a wonderful evening! The food was delicious, the music was great and I loved the games. It was lovely to meet your friends. Next time, please come to my house. How about next month? Love, Anna.
+- `READING_A210` What does Anna thank Mia for?
+- `READING_A210` A wonderful evening
+- `READING_A210` A birthday present
+- `READING_A210` A lift home
+- `READING_A210` A wonderful evening.
+- `READING_A210` What did Anna love?
+- `READING_A210` The games
+- `READING_A210` The games.
+- `READING_A210` What does Anna suggest?
+- `READING_A210` Meeting at her house next month
+- `READING_A210` Going to a restaurant
+- `READING_A210` Going to the cinema
+- `READING_A210` Her house, next month.
+- `TEST_AUDIOS_A210` Hi Anna, it's Mia. I'm having a party on Saturday at seven. Would you like to come? It's at my house. We will have music, food and games. Call me back, please.
+- `TEST_AUDIOS_A210` When is the party?
+- `TEST_AUDIOS_A210` On Saturday
+- `TEST_AUDIOS_A210` On Sunday
+- `TEST_AUDIOS_A210` On Friday
+- `TEST_AUDIOS_A210` Good evening, I'd like to book a table for two on Friday at half past seven, please. Certainly. Is it for a special occasion? Yes, it's our anniversary. Can I have your name, please? It's Smith.
+- `TEST_AUDIOS_A210` What time?
+- `TEST_AUDIOS_A210` Thank you for asking, but I'm afraid I can't come on Saturday. I have to visit my grandmother. How about Sunday afternoon? That works for me. Let's meet at the cinema at three.
+- `TEST_AUDIOS_A210` Hello, it's Tom. I'm sorry, but I'm going to be late. The bus is delayed. Could we meet at half past seven instead of seven? I'll wait for you at the entrance.
+- `TEST_AUDIOS_A210` Shall we go out on Saturday night? Good idea! How about going bowling? Then we can have dinner. Sounds great! Shall I book a table for six? Yes, please. Let's meet at seven.
+- `TEST_AUDIOS_A210` How many people will the table be for?
+- `TEST_AUDIOS_A210` Excuse me, could we have the bill, please? Certainly. Here you are. Shall we split it? Good idea. It's forty pounds, so twenty each. Thank you very much.
+- `TEST_AUDIOS_A210` What do they do with the bill?
+- `TEST_AUDIOS_A210` Pay it all
+- `TEST_AUDIOS_A210` Refuse it
+- `TEST_GRAMMAR_A210` “Cancel” means ___.
+- `TEST_GRAMMAR_A210` “Queue” means ___.
+- `TEST_GRAMMAR_A210` “Invite” means ___.
+- `TEST_GRAMMAR_A210` “Exhibition” means ___.
+- `TEST_GRAMMAR_A210` What are you ___ on Saturday?
+- `TEST_GRAMMAR_A210` I'd like ___ invite you to my party.
+- `TEST_GRAMMAR_A210` Can we ___ for next week?
+- `TEST_GRAMMAR_A210` to reschedule
+- `TEST_TEXTS_A210` Dear Anna, I'm having a birthday party on Saturday at seven. It's at my house, and there will be music, food and games. Would you like to come? Please bring a friend if you want. Let me know before Thursday.
+- `TEST_TEXTS_A210` When should Anna answer?
+- `TEST_TEXTS_A210` After the party
+- `TEST_TEXTS_A210` Dear Mia, thank you so much for the invitation! I'd love to come to your party. I'll bring a cake, and my brother Tom will come with me. What time should we arrive?
+- `TEST_TEXTS_A210` What does Anna say?
+- `TEST_TEXTS_A210` She is not sure
+- `TEST_TEXTS_A210` Her brother
+- `TEST_TEXTS_A210` Her friend
+- `TEST_TEXTS_A210` Hi Sam, thank you for inviting me to the concert on Friday. I'd love to come, but I'm afraid I can't. I have to work late that evening. How about going to the cinema on Saturday instead? My treat!
+- `TEST_TEXTS_A210` Hello, I'd like to book a table for four on Saturday at eight, please. — Certainly. Do you prefer inside or outside? — Inside, please. — Can I have your name? — It's Brown.
+- `TEST_TEXTS_A210` How many people?
+- `TEST_TEXTS_A210` Where do they sit?
+- `TEST_TEXTS_A210` What is the name?
+- `TEST_TEXTS_A210` Hi Tom, I'm sorry, but I have to cancel dinner tonight. My daughter is ill, and I need to stay at home. Can we reschedule? Would Sunday at seven be better for you?
+- `TEST_TEXTS_A210` She is at work
+- `TEST_TEXTS_A210` What does she ask?
+- `TEST_TEXTS_A210` To reschedule
+- `TEST_TEXTS_A210` To come early
+- `TEST_TEXTS_A210` Last Friday, my friends and I went to the cinema. We met outside at seven, bought tickets and sat in row ten. The film was funny. After the film, we had pizza. We split the bill, and then we took the bus home.
+- `TEST_TEXTS_A210` What did they eat?
+- `TEST_TEXTS_A210` How did they go home?
+- `TEST_TEXTS_A210` This weekend, I'm going out a lot. On Friday, I'm having dinner with my colleagues. On Saturday evening, I'm seeing a concert with Sam. On Sunday, I'm having a picnic with my family. I can't wait!
+- `TEST_TEXTS_A210` Having dinner
+- `TEST_TEXTS_A210` Who is she seeing the concert with?
+- `TEST_TEXTS_A210` Her family
+- `TEST_TEXTS_A210` How does she feel?
+- `TEST_TEXTS_A210` Two tickets for the eight o'clock film, please. — I'm sorry, that film is sold out. Do you have tickets for tomorrow at six? — Yes. — Two seats at six, please. — That's twenty pounds.
+- `TEST_TEXTS_A210` Why not the eight o'clock film?
+- `TEST_TEXTS_A210` When do they buy tickets for?
+- `TEST_TEXTS_A210` Tomorrow at six
+- `TEST_TEXTS_A210` Tonight at ten
+- `TEST_TEXTS_A210` Tonight at eight
+- `VOCAB_A210` Inviter quelqu'un
+- `VOCAB_A210` Pour inviter : “Would you like to come to the cinema with me?” ou “Do you want to…?” (plus familier). Pour accepter : “I'd love to!” Pour refuser poliment : “I'm afraid I can't.”
+- `VOCAB_A210` I'd love to! What time?
+- `VOCAB_A210` I'm afraid I can't. I'm working.
+- `VOCAB_A210` Would you like to come to the cinema with me on Saturday?
+- `VOCAB_A210` Les sorties
+- `VOCAB_A210` There is a new exhibition in town.
+- `VOCAB_A210` Il y a une nouvelle exposition en ville. ⚠ « a » devant voyelle
+- `VOCAB_A210` “Exhibition” veut dire…
+- `VOCAB_A210` Un restaurant accueillant : serveur, table pour deux avec bougie, carte et verres, sans texte lisible
+- `VOCAB_A210` book a table
+- `VOCAB_A210` carte / menu
+- `VOCAB_A210` main course
+- `VOCAB_A210` plat principal
+- `VOCAB_A210` table for two
+- `VOCAB_A210` table pour deux
+- `VOCAB_A210` I'd like to book a table for two at eight.
+- `VOCAB_A210` Can we have the bill, please?
+- `VOCAB_A210` “Main course” veut dire…
+- `VOCAB_A210` come along
+- `VOCAB_A210` venir avec
+- `VOCAB_A210` “Invite” est un verbe (“I invite you”), “invitation” est le nom. “Come along” = nous accompagner. “My treat” = c'est moi qui offre.
+- `VOCAB_A210` Dinner is my treat tonight.
+- `VOCAB_A210` “Guest” veut dire…
+- `VOCAB_A210` next week
+- `VOCAB_A210` la semaine prochaine
+- `VOCAB_A210` Saturday night
+- `VOCAB_A210` samedi soir
+- `VOCAB_A210` heures (pile)
+- `VOCAB_A210` half past
+- `VOCAB_A210` On dit “on Friday”, “at seven”, “in the evening”. “Are you free on Saturday?” = es-tu libre samedi ? “I'm busy” = je suis pris. ⚠ espacement/ponctuation
+- `VOCAB_A210` Are you free tonight?
+- `VOCAB_A210` Es-tu libre ce soir ? ⚠ espacement/ponctuation
+- `VOCAB_A210` The film starts at half past seven.
+- `VOCAB_A210` “Free” (agenda) veut dire…
+- `VOCAB_A210` Annuler et reporter
+- `VOCAB_A210` une autre fois
+- `VOCAB_A210` Can we reschedule for next week?
+- `VOCAB_A210` Pouvons-nous reprogrammer pour la semaine prochaine ? ⚠ espacement/ponctuation
+- `VOCAB_A210` “Reschedule” veut dire…
+- `VOCAB_A210` Billets et salles
+- `VOCAB_A210` box office
+- `VOCAB_A210` Two tickets for the seven o'clock film, please.
+- `VOCAB_A210` The queue for tickets is very long.
+- `VOCAB_A210` “Queue” veut dire…
+- `VOCAB_A210` boissons / un verre
+- `VOCAB_A210` On dit “go bowling”, “go for a walk”, “have a barbecue”, “have dinner”, “go for a drink” (aller prendre un verre).
+- `VOCAB_A210` Why don't we go bowling on Friday?
+- `VOCAB_A210` Et si on allait au bowling vendredi ? ⚠ espacement/ponctuation
+- `VOCAB_A210` Shall we go for a walk after lunch?
+- `VOCAB_A210` “Board game” veut dire…
+- `VOCAB_A210` great idea
+- `VOCAB_A210` sounds good
+- `VOCAB_A210` sounds fun
+- `VOCAB_A210` I'd love to
+- `VOCAB_A210` avec plaisir
+- `VOCAB_A210` can't wait
+- `VOCAB_A210` no problem
+- `VOCAB_A210` pas de souci
+- `VOCAB_A210` what a pity
+- `VOCAB_A210` quel dommage
+- `VOCAB_A210` of course
+- `VOCAB_A210` That sounds great! I can't wait.
+- `VOCAB_A210` What a pity! Maybe another time.
+- `VOCAB_A210` “Can't wait” veut dire…
+- `VOCAB_A210` je ne peux pas attendre dehors
+- `VOCAB_A210` je suis en retard
+- `VOCAB_A210` S'organiser ensemble
+- `VOCAB_A210` se retrouver
+- `VOCAB_A210` meeting point
+- `VOCAB_A210` point de rendez-vous
+- `VOCAB_A210` passer chercher
+- `VOCAB_A210` split the bill
+- `VOCAB_A210` partager l'addition
+- `VOCAB_A210` Let's meet outside the cinema at seven.
+- `VOCAB_A210` I'll pick you up at six.
+- `VOCAB_A210` “Pick up” (quelqu'un) veut dire…
+
 ## dialogues
 
 - `dialogues.A2.0.turns.npc` Hi! What time do you usually get up?
@@ -6969,6 +7623,30 @@
 - `dialogues.A2.9.turns.npc` Did she say when she would arrive?
 - `dialogues.A2.9.turns.model` She promised she would call again when she landed.
 - `dialogues.A2.9.turns.hint` Utilise would.
+- `dialogues.A2.10.title` Inviter un ami
+- `dialogues.A2.10.turns.npc` Hi! What are you doing on Saturday?
+- `dialogues.A2.10.turns.model` Nothing special. Why? Would you like to do something?
+- `dialogues.A2.10.turns.hint` Dis que tu es libre ou pose une question.
+- `dialogues.A2.10.turns.npc` Would you like to come to the cinema with me?
+- `dialogues.A2.10.turns.model` I'd love to! What time does the film start?
+- `dialogues.A2.10.turns.hint` Accepte avec enthousiasme.
+- `dialogues.A2.10.turns.npc` At seven. Shall we have dinner before the film?
+- `dialogues.A2.10.turns.model` Good idea! Let's meet at half past five.
+- `dialogues.A2.10.turns.hint` Accepte et propose une heure.
+- `dialogues.A2.10.turns.npc` Perfect. Let's meet outside the cinema.
+- `dialogues.A2.10.turns.model` Perfect, see you on Saturday! I can't wait.
+- `dialogues.A2.10.title` Refuser et proposer
+- `dialogues.A2.10.turns.npc` Would you like to come to a concert on Friday?
+- `dialogues.A2.10.turns.model` Thank you for asking! I'd love to, but I'm afraid I can't.
+- `dialogues.A2.10.turns.hint` Remercie et refuse poliment.
+- `dialogues.A2.10.turns.npc` Oh, what a pity! Are you busy?
+- `dialogues.A2.10.turns.model` Yes, I have to work late on Friday.
+- `dialogues.A2.10.turns.hint` Donne une raison.
+- `dialogues.A2.10.turns.npc` That's OK. Maybe another time?
+- `dialogues.A2.10.turns.model` How about Saturday instead? I'm free all day.
+- `dialogues.A2.10.turns.hint` Propose un autre jour.
+- `dialogues.A2.10.turns.npc` Saturday is perfect. Let's go!
+- `dialogues.A2.10.turns.model` Great, thank you! See you on Saturday.
 
 ## situations
 
@@ -7059,8 +7737,17 @@
 - `situations.A2.9.cue` Say what she asked you to do.
 - `situations.A2.9.hint` Utilise « She asked me to… ».
 - `situations.A2.9.model` She asked me to call her back.
+- `situations.A2.10.cue` Invite a friend to the cinema.
+- `situations.A2.10.hint` Utilise « Would you like to… ? ». ⚠ espacement/ponctuation
+- `situations.A2.10.model` Would you like to come to the cinema with me?
+- `situations.A2.10.cue` Refuse an invitation politely.
+- `situations.A2.10.hint` Utilise « I'm afraid I can't ».
+- `situations.A2.10.model` I'm afraid I can't come.
+- `situations.A2.10.cue` Book a table for two at eight.
+- `situations.A2.10.hint` Utilise « I'd like to book… ».
+- `situations.A2.10.model` I'd like to book a table for two at eight.
 
-## Alertes automatiques (170)
+## Alertes automatiques (225)
 
 - ⚠ A2.0 EXERCISES_A20.qs : « Are you going to … ? » → espacement/ponctuation
 - ⚠ A2.0 EXERCISES_A20.qs : « You → Have you got… ? » → espacement/ponctuation
@@ -7227,8 +7914,63 @@
 - ⚠ A2.9 TEST_AUDIOS_A29.script : « Hello? Is that Peter? No, I'm sorry, you have the wrong number. Oh, I'm sorry. What number is this? It's five  » → mot répété
 - ⚠ A2.9 VOCAB_A29.tip : « On dit “leave a message” (laisser) et “take a message” (prendre). “Can I take a message?” = Puis-je prendre un » → espacement/ponctuation
 - ⚠ A2.9 VOCAB_A29.examples : « Puis-je laisser un message pour M. Brown ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Would you like to… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Would you like a coffee ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Would you like… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « I'd love to ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Sounds good ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « I can't wait ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.title : « Shall we ? Let's » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Shall we… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.title : « Why don't we ? How about ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Why don't we… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Is eight OK for you ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Could I have… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « What are you doing ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « What a pity ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Great idea ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Sounds fun ! » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Tu veux un film ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Shall we = on… ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Pourquoi ne pas manger ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Et si on faisait un pique-nique ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Pouvons-nous reprogrammer ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Can we reschedule ? » → espacement/ponctuation
+- ⚠ A2.10 EXERCISES_A210.qs : « Merci pour l'invitation ! » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Would you like to + verbe ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Would you like + nom ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « Aimerais-tu nous rejoindre samedi ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Aimerais-tu venir ? — Avec plaisir ! » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « J'adorerais venir. Merci pour l'invitation ! » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.title : « Shall we… ? et Let's » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Shall we + verbe ? (suggestion) » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Shall I + verbe ? (proposer son aide) » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.title : « Why don't we… ? How about… ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Et si on essayait le nouveau restaurant ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Why don't we + verbe ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « How about + verbe en -ing ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Et samedi ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « What about + nom ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Pourquoi ne viens-tu pas avec nous ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Why don't you + verbe ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « Et si on faisait un pique-nique au parc ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « Et si on allait voir un film ce soir ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Samedi serait-il mieux ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Would … be better ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.table : « Pouvons-nous nous voir plus tard ? » → mot répété, espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « Huit heures te conviendrait-il mieux ? » → espacement/ponctuation
+- ⚠ A2.10 GRAMMAR_A210.examples : « Que fais-tu samedi soir ? » → espacement/ponctuation
+- ⚠ A2.10 MISSIONS_A210.title : « Quelle sortie ? » → espacement/ponctuation
+- ⚠ A2.10 MISSIONS_A210.title : « At, on ou in ? » → espacement/ponctuation
+- ⚠ A2.10 READING_A210.text : « Hello, I'd like to book a table for four on Saturday at eight, please. — Certainly. Do you prefer inside or ou » → mot répété
+- ⚠ A2.10 VOCAB_A210.examples : « Il y a une nouvelle exposition en ville. » → « a » devant voyelle
+- ⚠ A2.10 VOCAB_A210.tip : « On dit “on Friday”, “at seven”, “in the evening”. “Are you free on Saturday?” = es-tu libre samedi ? “I'm busy » → espacement/ponctuation
+- ⚠ A2.10 VOCAB_A210.examples : « Es-tu libre ce soir ? » → espacement/ponctuation
+- ⚠ A2.10 VOCAB_A210.examples : « Pouvons-nous reprogrammer pour la semaine prochaine ? » → espacement/ponctuation
+- ⚠ A2.10 VOCAB_A210.examples : « Et si on allait au bowling vendredi ? » → espacement/ponctuation
 - ⚠ dialogues.A2.3.title  : « Que faisais-tu hier soir ? » → espacement/ponctuation
 - ⚠ dialogues.A2.7.title  : « Que fait-on s'il pleut ? » → espacement/ponctuation
 - ⚠ dialogues.A2.8.turns.hint  : « Demande s'il y a un ascenseur ou le prix du loyer. » → « a » devant voyelle
 - ⚠ dialogues.A2.9.turns.model  : « My number is zero seven, nine one one, two three. » → mot répété
 - ⚠ situations.A2.9.hint  : « Utilise « Could I speak to… ? ». » → espacement/ponctuation
+- ⚠ situations.A2.10.hint  : « Utilise « Would you like to… ? ». » → espacement/ponctuation

@@ -405,6 +405,29 @@ const A2 = {
       "Je n'ai pas de réseau ici. ¦ I have no signal here. ¦ signal & no/don t/not/n t",
       "Ma batterie est vide, je te rappelle. ¦ My battery is dead, I'll call you back. ¦ battery & call & back",
       "Il a promis qu'il enverrait le rapport. ¦ He promised he would send the report. ¦ promised & would & report"]))],
+  10: [PAIR(
+    PART("fr", "Invitations et sorties", [
+      "Would you like to come to the cinema with me? ¦ Aimerais-tu venir au cinéma avec moi ? ¦ aimerais & cinema",
+      "I'd love to, but I'm afraid I can't. ¦ J'aimerais bien, mais je suis désolé, je ne peux pas. ¦ aimerais/adorerais & desole & pas",
+      "Shall we meet outside at seven? ¦ On se retrouve dehors à sept heures ? ¦ retrouve & dehors & sept/7",
+      "Why don't we have a picnic in the park? ¦ Et si on faisait un pique-nique au parc ? ¦ pique & parc",
+      "How about going bowling on Saturday? ¦ Et si on allait au bowling samedi ? ¦ bowling & samedi",
+      "I'd like to book a table for four. ¦ Je voudrais réserver une table pour quatre. ¦ reserver & table & quatre/4",
+      "Unfortunately, I have to cancel dinner. ¦ Malheureusement, je dois annuler le dîner. ¦ malheureusement & annuler & diner",
+      "Can we reschedule for next week? ¦ Pouvons-nous reprogrammer pour la semaine prochaine ? ¦ reprogrammer/reporter/decaler & semaine prochaine",
+      "That sounds great! I can't wait. ¦ Ça a l'air super ! J'ai hâte. ¦ super/genial/bien & hate",
+      "Thank you for the invitation! ¦ Merci pour l'invitation ! ¦ merci & invitation"]),
+    PART("en", "Inviter et répondre", [
+      "Aimerais-tu venir dîner vendredi ? ¦ Would you like to come to dinner on Friday? ¦ would you like & dinner & friday",
+      "Avec plaisir, merci de m'avoir invité. ¦ I'd love to, thank you for inviting me. ¦ love/pleasure/happy & thank & invit",
+      "Je ne suis pas libre samedi soir. ¦ I'm not free on Saturday night. ¦ not & free/busy & saturday",
+      "Et si on allait au cinéma ce soir ? ¦ How about going to the cinema tonight? ¦ how about/why don t/shall we/what about & cinema & tonight",
+      "Retrouvons-nous devant le musée. ¦ Let's meet in front of the museum. ¦ let s/shall we & meet & museum",
+      "Je réserve une table pour deux ? ¦ Shall I book a table for two? ¦ shall i/should i/do you want me to & book/reserve & table & two",
+      "Je suis désolé, je dois annuler. ¦ I'm sorry, I have to cancel. ¦ sorry/afraid & cancel",
+      "Samedi serait-il mieux pour toi ? ¦ Would Saturday be better for you? ¦ would/is & saturday & better",
+      "Partageons l'addition. ¦ Let's split the bill. ¦ let s/shall we & split/share & bill/check",
+      "Le film commence à huit heures. ¦ The film starts at eight o'clock. ¦ film/movie & start/begin & eight"]))],
 };
 
 export const TRADUCTION_A1 = A1;

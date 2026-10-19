@@ -122,4 +122,16 @@ export const DIALOGUES_A2 = {
       { npc: "And what did she ask you to do?", ok: ["\\b(asked me to|told me to|wait|call|pick|bring)\\b"], model: "She asked me to wait for her at home.", hint: "Utilise « She asked me to… »." },
       { npc: "Did she say when she would arrive?", ok: ["\\b(she said|she promised|would|tomorrow|the next day|tonight|that night|later|at)\\b"], model: "She promised she would call again when she landed.", hint: "Utilise would." }] },
   ],
+  "A2.10": [
+    { title: "Inviter un ami", icon: "🎬", scene: "Tu invites un ami au cinéma ce week-end.", turns: [
+      { npc: "Hi! What are you doing on Saturday?", ok: ["\\b(nothing|not much|i.m (free|not doing)|i have no plans|why|saturday)\\b"], model: "Nothing special. Why? Would you like to do something?", hint: "Dis que tu es libre ou pose une question." },
+      { npc: "Would you like to come to the cinema with me?", ok: ["\\b(i.d love to|yes|sounds (good|great|fun)|great idea|of course|love to)\\b"], model: "I'd love to! What time does the film start?", hint: "Accepte avec enthousiasme." },
+      { npc: "At seven. Shall we have dinner before the film?", ok: ["\\b(good idea|sounds (good|great)|yes|great|why not|of course|let.s)\\b"], model: "Good idea! Let's meet at half past five.", hint: "Accepte et propose une heure." },
+      { npc: "Perfect. Let's meet outside the cinema.", ok: ["\\b(see you|perfect|great|thank|thanks|can.t wait|ok|okay)\\b"], model: "Perfect, see you on Saturday! I can't wait.", hint: "Conclus." }] },
+    { title: "Refuser et proposer", icon: "🙏", scene: "Un collègue t'invite, mais tu es occupé vendredi.", turns: [
+      { npc: "Would you like to come to a concert on Friday?", ok: ["\\b(thank|thanks|i.d love to|i.m afraid|sorry|unfortunately)\\b"], model: "Thank you for asking! I'd love to, but I'm afraid I can't.", hint: "Remercie et refuse poliment." },
+      { npc: "Oh, what a pity! Are you busy?", ok: ["\\b(i have to|i.m (busy|working)|i must|work|other plans|family)\\b"], model: "Yes, I have to work late on Friday.", hint: "Donne une raison." },
+      { npc: "That's OK. Maybe another time?", ok: ["\\b(how about|what about|saturday|sunday|next|another time|instead|maybe|yes)\\b"], model: "How about Saturday instead? I'm free all day.", hint: "Propose un autre jour." },
+      { npc: "Saturday is perfect. Let's go!", ok: ["\\b(great|perfect|thank|thanks|see you|sounds good|can.t wait)\\b"], model: "Great, thank you! See you on Saturday.", hint: "Conclus." }] },
+  ],
 };

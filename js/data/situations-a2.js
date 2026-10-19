@@ -51,4 +51,9 @@ export const SITUATIONS_A2 = {
     S("🗣️", "Say what your friend said: « I am ill ».", "Utilise « She said that… » + passé.", "\\b(she|he) said (that )?(she|he) was\\b|\\b(told me|said) (that )?(she|he) was ill\\b", "She said that she was ill."),
     S("📩", "Say what she asked you to do.", "Utilise « She asked me to… ».", "\\b(asked|told) me (not )?to\\b", "She asked me to call her back."),
   ],
+  "A2.10": [
+    S("💌", "Invite a friend to the cinema.", "Utilise « Would you like to… ? ».", "\\bwould you like to\\b|\\bdo you want to\\b", "Would you like to come to the cinema with me?"),
+    S("🙏", "Refuse an invitation politely.", "Utilise « I'm afraid I can't ».", "\\bi.m afraid\\b|\\bi.d love to,? but\\b|\\bsorry\\b", "I'm afraid I can't come."),
+    S("🍽️", "Book a table for two at eight.", "Utilise « I'd like to book… ».", "\\b(book|reserve)\\b.*\\btable\\b|\\btable for two\\b", "I'd like to book a table for two at eight."),
+  ],
 };
