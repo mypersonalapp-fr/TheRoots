@@ -117,3 +117,9 @@ Prompt livré à Ashley dans le chat (début commun 16:9, pas de texte lisible, 
 ### A2.6 — images du corps humain
 - lesson/scene-a26-body-man et scene-a26-body-woman : REÇUES le 19/10, recadrées 16:9.
 - lesson/scene-a26-skeleton-man : reçue le 19/10 (page « Les os »). Squelette femme abandonné.
+
+### Réception du 19/10 (19 images reçues sur 22 annoncées, converties en 1280×720)
+- A2.4 placées (6, provisoires/approximatives d'après A_LIRE.txt) : scene-a24-decision, scene-a24-prediction, scene-a24-booking, scene-a24-appointment, describe-a24-agency, describe-a24-party.
+- A2.5 placées (11) : scene-a25-bigger, scene-a25-price (deux vestes de couleurs différentes : à refaire), scene-a25-equal, scene-a25-preference, scene-a25-cities, scene-a25-shopping, a25-m1, a25-m2, a25-m3, a25-m5 (panneaux de gare floutés), a25-m6.
+- A2.5 encore manquantes (5) : scene-a25-compare, scene-a25-best, a25-m4, describe-a25-market, describe-a25-street.
+- Images en trop non utilisées : enfants + drapeaux (salutations), femme qui lit le soir.
