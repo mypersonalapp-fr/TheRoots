@@ -476,3 +476,36 @@ body:has(.lc-screen) #preview-reset-wrap{ display:none !important; }
 .lc-rules .lc-w b{ font-size:16px; }
 .lc-q{ font-weight:600; }
 .lc-card h2, .lc-card h3{ font-weight:700; }
+
+/* ===== Exemples façon conversation téléphone (bulles) ===== */
+.lc-list.lc-bub{ gap:10px; }
+.lc-list.lc-bub li{ background:transparent; padding:0; align-items:flex-end; gap:6px; }
+.lc-list.lc-bub li:nth-child(even){ flex-direction:row-reverse; }
+.lc-list.lc-bub .lc-w{ flex:0 1 auto; max-width:78%; position:relative; background:var(--surface); border-radius:18px 18px 18px 5px; padding:9px 13px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.lc-list.lc-bub li:nth-child(even) .lc-w{ background:#ffe3b8; color:#2b2113; border-radius:18px 18px 5px 18px; }
+:root[data-theme="dark"] .lc-list.lc-bub li:nth-child(even) .lc-w{ background:#5a4322; color:#fff3e0; }
+.lc-list.lc-bub .lc-w b{ font-size:15px; font-weight:500; line-height:1.3; }
+.lc-list.lc-bub .lc-w small{ font-size:12px; margin-top:3px; opacity:.8; }
+.lc-list.lc-bub .lc-spk, .lc-list.lc-bub button{ flex:none; width:30px; height:30px; min-width:30px; padding:0; }
+.lc-list.lc-bub .lc-ava-sm{ width:30px; height:30px; flex:none; }
+.lc-list.lc-bub{ align-content:start; }
+.lc-list.lc-bub li{ flex:none !important; height:auto !important; min-height:0 !important; margin:0 !important; }
+
+/* conversation : bulles (maquette D) */
+.lc-bl{ display:flex; flex-direction:column; gap:10px; margin:6px 0 10px; }
+.lc-bb{ position:relative; max-width:82%; padding:10px 14px; border-radius:18px; }
+.lc-bb.npc{ align-self:flex-start; background:#fff; border-bottom-left-radius:5px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.lc-bb.me{ align-self:flex-end; background:#ffe3b8; border-bottom-right-radius:5px; }
+.lc-bt{ display:block; font-size:17px; font-weight:500; line-height:1.3; color:#1b1d22; padding-right:22px; }
+.lc-bt small{ display:block; margin-top:3px; font-size:13px; font-weight:400; color:#6b7280; }
+.lc-bb .lc-spk{ position:absolute; right:-8px; bottom:-8px; width:30px; height:30px; min-width:30px; padding:0; font-size:14px; }
+:root[data-theme="dark"] .lc-bb.npc{ background:#2b3340; } :root[data-theme="dark"] .lc-bb.me{ background:#5a4021; }
+:root[data-theme="dark"] .lc-bt{ color:#f2f4f8; } :root[data-theme="dark"] .lc-bt small{ color:#aab3c2; }
+.lc-bb .lc-spk{ position:absolute !important; right:-8px !important; bottom:-8px !important; margin:0 !important; width:30px !important; height:30px !important; min-width:30px !important; }
+
+/* parties « conversation » : bulles pleine page (page suivante si c'est long) */
+.lc-card-bare{ background:transparent; box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none; padding:4px 2px; }
+.lc-bl-full{ gap:16px; margin:10px 0 14px; }
+.lc-bl-full .lc-bb{ max-width:88%; }
+.lc-bl-full .lc-bt{ font-size:18px; }
+.lc-card-bare .lc-tip{ background:#fff3d9; border-radius:16px; padding:10px 14px; }
